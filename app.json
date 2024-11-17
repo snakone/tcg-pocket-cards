@@ -36,6 +36,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "a4436d34-1409-4197-96fb-60024ff351b6"
+      }
+    },
+    "owner": "snakone"
   }
 }
