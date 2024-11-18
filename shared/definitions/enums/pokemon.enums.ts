@@ -1,0 +1,3 @@
+export enum PokemonTypeENUM {
+  GRASS, FIRE, WATER, ELECTRIC, PSYCHIC, FIGHT, DARK, NORMAL
+}

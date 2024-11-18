@@ -1,4 +1,4 @@
-import BackgroundMusic from '@/components/shared/music';
+
 import { DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
@@ -7,23 +7,19 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
+import BackgroundMusic from '@/components/shared/BackgroundMusic';
+import { FONT_REGULAR } from '@/shared/definitions/sentences/path.sentences';
+
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+  const [loaded] = useFonts({SpaceMono: FONT_REGULAR});
 
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
+    if (loaded) { SplashScreen.hideAsync() }
   }, [loaded]);
 
-  if (!loaded) {
-    return null;
-  }
+  if (!loaded) { return null; }
 
   return (
     <ThemeProvider value={DefaultTheme}>
@@ -31,9 +27,8 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
-      <StatusBar style="auto" />
+      <StatusBar style="light" hidden={true} />
       <BackgroundMusic></BackgroundMusic>
     </ThemeProvider>
-    
   );
 }

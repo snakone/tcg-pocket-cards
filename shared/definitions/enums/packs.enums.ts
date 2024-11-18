@@ -1,0 +1,6 @@
+export enum GENETIC_APEX {
+  PIKACHU, MEWTWO, CHARIZARD
+}
+
+export type PACKS = 
+  GENETIC_APEX;
