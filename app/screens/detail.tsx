@@ -1,15 +1,21 @@
 import Animated, { Extrapolation, interpolate, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
-import { useEffect } from "react";
-import { useLocalSearchParams } from 'expo-router/build/hooks';
+import { useEffect, useRef } from "react";
+import { useLocalSearchParams, useRouter } from 'expo-router/build/hooks';
 import { Image } from 'expo-image';
-import { Platform } from "react-native";
+import { Platform, TouchableOpacity, View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import { Audio } from 'expo-av';
 
-import { DetailStyles } from '@/shared/styles/component.styles';
+import { ButtonStyles, DetailStyles } from '@/shared/styles/component.styles';
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { CardExpansionENUM, CardRarityENUM, CardTypeENUM } from "@/shared/definitions/enums/card.enums";
 import { GENETIC_APEX } from "@/shared/definitions/enums/packs.enums";
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
+import { useNavigation } from "expo-router";
+import { ThemedView } from "@/components/ThemedView";
+import { ThemedText } from "@/components/ThemedText";
+import { BACK_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
+import { AUDIO_MENU_CLOSE } from "@/shared/definitions/sentences/path.sentences";
 
 const cards: Card[] = [
   {
@@ -202,6 +208,12 @@ const cards: Card[] = [
 
 const NewScreen = () => {
   const styles = DetailStyles;
+  const router = useRouter();
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    navigation.setOptions({ headerShown: false });
+  }, [navigation]);
 
   const { name } = useLocalSearchParams<{ name: string }>();
   const selected = getCardFromName(name);
@@ -272,25 +284,63 @@ const NewScreen = () => {
     return cards.find(card => card.name.toLowerCase() === name.toLowerCase());
   }
 
+  async function goBack(): Promise<void> {
+    if (router.canGoBack()) {
+      await playSound();
+      router.back();
+    }
+  }
+
+  const audio = useRef<Audio.Sound>();
+
+  useEffect(() => {
+    async function loadSounds() {
+      const { sound } = await Audio.Sound.createAsync(AUDIO_MENU_CLOSE);
+      audio.current = sound;
+      audio.current.setVolumeAsync(.6);
+
+      if (Platform.OS === 'web') {
+        audio.current.setVolumeAsync(.3);
+      }
+    }
+
+    loadSounds();
+  }, []);
+
+  const playSound = async () => {
+    if (audio.current) {
+      audio.current.replayAsync();
+    }
+  }
+
   return (
-    <Animated.View style={[styles.container, opacityStyle]}>
+    <Animated.View style={styles.container}>
       {
         Platform.OS === 'web' ? (
-          <Animated.View>
-            <Image style={DetailStyles.image}
-              source={selected?.image}
-              contentFit={'fill'} />
+          <Animated.View style={opacityStyle}>
+            <Image style={styles.image}
+                   source={selected?.image}
+                   contentFit={'fill'} />
           </Animated.View>
-        ) : (
+        ) : (<>
           <GestureDetector gesture={gesture}>
-            <Animated.View style={rotationStyle}>
-              <Image style={DetailStyles.image}
-                source={selected?.image}
-                contentFit={'fill'} />
+            <Animated.View style={[opacityStyle, rotationStyle]}>
+              <Image style={styles.image}
+                     source={selected?.image}
+                     contentFit={'fill'} />
             </Animated.View>
           </GestureDetector>
-        )
+        </>)
       }
+      <ThemedView style={styles.bottomContainer}>
+        <TouchableOpacity style={ButtonStyles.button} 
+                          onPress={goBack} 
+                          accessibilityLabel={BACK_SENTENCE}>
+          <View style={ButtonStyles.insetBorder}>
+            <ThemedText style={ButtonStyles.buttonText}>{BACK_SENTENCE}</ThemedText>
+          </View>
+        </TouchableOpacity>
+      </ThemedView>
     </Animated.View>
   );
 };

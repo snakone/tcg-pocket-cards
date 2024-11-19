@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 const HEADER_HEIGHT = 100;
 const CARD_IMAGE_WIDTH = 103.2;
@@ -143,7 +143,7 @@ export const ModalStyles = StyleSheet.create({
     overflow: 'hidden',
   },
   modalHeader: {
-    backgroundColor: 'white',
+    backgroundColor: '#F2F2F2',
     padding: 16,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -159,12 +159,12 @@ export const ModalStyles = StyleSheet.create({
   modalScrollView: {
     maxHeight: '70%',
     padding: 16,
-    backgroundColor: '#F2F2F2',
+    backgroundColor: 'white',
     zIndex: 0
   },
   modalFooter: {
-    backgroundColor: 'white',
-    padding: 16,
+    backgroundColor: '#F2F2F2',
+    padding: 12,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     alignItems: 'center',
@@ -213,5 +213,36 @@ export const DetailStyles = StyleSheet.create({
     width: 315,
     height: 443.6,
     aspectRatio: 0.71
-  }
+  },
+  bottomContainer: {
+    position: 'fixed',
+    bottom: Platform.OS === 'web' ? 60 : -100,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+  },
+});
+
+export const ButtonStyles = StyleSheet.create({
+  button: {
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 3, // Inset
+    elevation: 2,
+  },
+  insetBorder: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: "skyblue",
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonText: {
+    color: "#000",
+    fontSize: 16,
+    fontWeight: 600,
+  },
 });

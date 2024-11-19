@@ -3,10 +3,10 @@ import MaterialIcons from '@expo/vector-icons/build/MaterialIcons';
 export const ICONS_MAPPING = {
   'house.fill': 'weekend',
   'paperplane.fill': 'send',
-  'bookmark.square.fill': 'stacks',
   'chevron.left.forwardslash.chevron.right': 'code',
   'chevron.right': 'chevron-right',
-  'newspaper.fill': 'playlist-add',
+  'newspaper.fill': 'add-box',
+  'menubar.rectangle' : 'menu',
   'questionmark.app.fill': 'question-mark'
 } as Partial<
   Record<

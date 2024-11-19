@@ -30,7 +30,7 @@ export default function RootLayout() {
           <Stack.Screen name="+not-found" />
         </Stack>
         <StatusBar style="light" hidden={true} />
-        
+        <BackgroundMusic></BackgroundMusic>
       </ThemeProvider>
     </GestureHandlerRootView>
   );

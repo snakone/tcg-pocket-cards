@@ -255,7 +255,6 @@ export default function ImageGridWithSearch() {
 
   const goToDetailScreen = async (name: string) => {
     await playSound();
-    console.log(name)
     router.push(`/screens/detail?name=${encodeURIComponent(name)}`);
   };
 

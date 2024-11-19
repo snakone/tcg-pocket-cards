@@ -5,7 +5,7 @@ import { Audio } from 'expo-av';
 import { HeaderWithCustomModalProps } from '@/shared/definitions/interfaces/layout.interfaces';
 import { CLOSE_SENTENCE } from '@/shared/definitions/sentences/global.sentences';
 import { AUDIO_MENU_CLOSE, AUDIO_MENU_OPEN } from '@/shared/definitions/sentences/path.sentences';
-import { IconStyles, ModalStyles } from '@/shared/styles/component.styles';
+import { ButtonStyles, IconStyles, ModalStyles } from '@/shared/styles/component.styles';
 
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
@@ -41,8 +41,8 @@ export default function HeaderWithCustomModal({
   const playSound = async () => {
     if (!modalVisible && opened.current) {
         await opened.current.replayAsync();
-      } else if (modalVisible && closed.current){
-        await closed.current.replayAsync();
+      } else if (modalVisible && closed.current) {
+        closed.current.replayAsync();
     }
   }
 
@@ -67,6 +67,7 @@ export default function HeaderWithCustomModal({
         transparent={false}
         visible={modalVisible}
         onRequestClose={toggleModal}
+        hardwareAccelerated={true}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
@@ -75,12 +76,12 @@ export default function HeaderWithCustomModal({
             </View>
             <ScrollView style={styles.modalScrollView}>{modalContent}</ScrollView>
             <View style={styles.modalFooter}>
-              <TouchableOpacity
-                style={styles.closeButton}
-                onPress={toggleModal}
-                accessibilityLabel={CLOSE_SENTENCE}
-              >
-                <Text>{closeText}</Text>
+              <TouchableOpacity style={ButtonStyles.button} 
+                                onPress={toggleModal} 
+                                accessibilityLabel={CLOSE_SENTENCE}>
+                <View style={ButtonStyles.insetBorder}>
+                  <ThemedText style={ButtonStyles.buttonText}>{CLOSE_SENTENCE}</ThemedText>
+                </View>
               </TouchableOpacity>
             </View>
           </View>
