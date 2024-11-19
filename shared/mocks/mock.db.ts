@@ -3,7 +3,7 @@ import { GENETIC_APEX } from "../definitions/enums/packs.enums";
 import { PokemonTypeENUM } from "../definitions/enums/pokemon.enums";
 import { Card } from "../definitions/interfaces/card.interfaces";
 
-export const MOCK_DB_CARDS: Card[] = [
+const MOCK_DB_CARDS: Card[] = [
   {
     number: 1,
     name: 'Bulbasaur',
@@ -191,3 +191,5 @@ export const MOCK_DB_CARDS: Card[] = [
     }
   }
 ];
+
+export default MOCK_DB_CARDS;

@@ -96,6 +96,7 @@ export const CardGridStyles = StyleSheet.create({
   image: {
     width: CARD_IMAGE_WIDTH,
     height: 150,
+    zIndex: 0
   },
   imageTitle: {
     padding: 8,
@@ -135,13 +136,7 @@ export const ModalStyles = StyleSheet.create({
   modalView: {
     backgroundColor: 'white',
     borderRadius: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
     elevation: 5,
     width: '90%',
     maxHeight: '80%',
@@ -152,12 +147,7 @@ export const ModalStyles = StyleSheet.create({
     padding: 16,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    shadowColor: 'rgba(0, 0, 0, 0.2)',
-    shadowOffset: {
-      width: 0,
-      height: 4
-    },
-    shadowRadius: 16,
+    boxShadow: '0px 4px 16px rgba(0, 0, 0, 0.2)',
     zIndex: 1,
     textAlign: 'center'
   },
@@ -210,5 +200,18 @@ export const HomeScreenStyles = StyleSheet.create({
   stepContainer: {
     gap: 8,
     marginBottom: 8,
+  }
+});
+
+export const DetailStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: 315,
+    height: 443.6,
+    aspectRatio: 0.71
   }
 });

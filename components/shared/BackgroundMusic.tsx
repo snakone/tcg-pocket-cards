@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react';
 import { Audio } from 'expo-av';
 import { Platform } from 'react-native';
 
+import { BACKGROUND_MUSIC } from '@/shared/definitions/sentences/path.sentences';
+
 const BackgroundMusic = () => {
   if (Platform.OS === 'web') { return null; }
   
@@ -9,7 +11,7 @@ const BackgroundMusic = () => {
 
   useEffect(() => {
     const loadAndPlayMusic = async () => {
-      const { sound } = await Audio.Sound.createAsync(require('@/assets/sounds/music.mp3'));
+      const { sound } = await Audio.Sound.createAsync(BACKGROUND_MUSIC);
       try {
         audio.current = sound;
         await audio.current.setVolumeAsync(.5);

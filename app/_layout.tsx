@@ -9,6 +9,7 @@ import 'react-native-reanimated';
 
 import BackgroundMusic from '@/components/shared/BackgroundMusic';
 import { FONT_REGULAR } from '@/shared/definitions/sentences/path.sentences';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -22,13 +23,15 @@ export default function RootLayout() {
   if (!loaded) { return null; }
 
   return (
-    <ThemeProvider value={DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="light" hidden={true} />
-      <BackgroundMusic></BackgroundMusic>
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ThemeProvider value={DefaultTheme}>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+        <StatusBar style="light" hidden={true} />
+        
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
 }

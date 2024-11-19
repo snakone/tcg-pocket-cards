@@ -1,19 +1,17 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { View, TextInput, FlatList, Text, SafeAreaView, Pressable } from 'react-native';
+import Animated, { Extrapolation, interpolate, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
+import { useEffect } from "react";
+import { useLocalSearchParams } from 'expo-router/build/hooks';
 import { Image } from 'expo-image';
-import { useIsFocused } from '@react-navigation/native';
-import { useRouter } from 'expo-router';
-import { Audio } from 'expo-av';
+import { Platform } from "react-native";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
 
-import { CardExpansionENUM, CardRarityENUM, CardTypeENUM } from '@/shared/definitions/enums/card.enums';
-import { GENETIC_APEX } from '@/shared/definitions/enums/packs.enums';
-import { PokemonTypeENUM } from '@/shared/definitions/enums/pokemon.enums';
-import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { CardGridStyles } from '@/shared/styles/component.styles';
-import { SEARCH_CARD_PLACEHOLDER, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
-import { PICK_CARD_SOUND } from '@/shared/definitions/sentences/path.sentences';
+import { DetailStyles } from '@/shared/styles/component.styles';
+import { Card } from "@/shared/definitions/interfaces/card.interfaces";
+import { CardExpansionENUM, CardRarityENUM, CardTypeENUM } from "@/shared/definitions/enums/card.enums";
+import { GENETIC_APEX } from "@/shared/definitions/enums/packs.enums";
+import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 
-const initialCards: Card[] = [
+const cards: Card[] = [
   {
     number: 1,
     name: 'Bulbasaur',
@@ -202,83 +200,99 @@ const initialCards: Card[] = [
   }
 ];
 
-let numColumns = 3;
+const NewScreen = () => {
+  const styles = DetailStyles;
 
-export default function ImageGridWithSearch() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [images, setImages] = useState(initialCards);
+  const { name } = useLocalSearchParams<{ name: string }>();
+  const selected = getCardFromName(name);
 
-  const styles = CardGridStyles;
-  const flatListRef = useRef<FlatList<Card> | null>(null);
-  const audio = useRef<Audio.Sound>();
+  const opacity = useSharedValue(0.5);
+  const opacityDuration = Platform.OS === 'web' ? 500 : 1000;
 
-  // useEffect(() => {
-  //   if (isFocused && flatListRef.current) {
-  //     flatListRef.current.scrollToOffset({animated: false, offset: 0});
-  //   }
-  // }, [isFocused]);
+  const rotateX = useSharedValue(0);
+  const rotateY = useSharedValue(0);
+
+  const gesture = Gesture.Pan().onBegin((event) => {
+    rotateX.value = withTiming(
+      interpolate(
+        event.y, 
+        [0, styles.image.height], 
+        [10, -10], Extrapolation.CLAMP
+      ), {duration: 200}
+    );
+
+    rotateY.value = withTiming(
+      interpolate(
+        event.x, 
+        [0, styles.image.width], 
+        [-10, 10], 
+        Extrapolation.CLAMP
+      ), {duration: 200}
+    );
+  }).onUpdate((event => {
+    rotateX.value = interpolate(
+      event.y, 
+      [0, styles.image.height], 
+      [10, -10], Extrapolation.CLAMP
+    );
+
+    rotateY.value = interpolate(
+      event.x, 
+      [0, styles.image.width], 
+      [-10, 10], 
+      Extrapolation.CLAMP
+    );
+   })
+  ).onFinalize(() => {
+    rotateX.value = withTiming(0, {duration: 250});
+    rotateY.value = withTiming(0, {duration: 250});
+  });
 
   useEffect(() => {
-    async function loadSounds() {
-      const { sound } = await Audio.Sound.createAsync(PICK_CARD_SOUND);
-      audio.current = sound;
-      audio.current.setVolumeAsync(.5);
-    }
-
-    loadSounds();
-  }, [])
-
-  const handleSearch = useCallback((text: string) => {
-    setSearchQuery(text);
-    const filteredImages = initialCards.filter(img => 
-      img.name.toLowerCase().includes(text.toLowerCase())
-    );
-    setImages(filteredImages);
+    opacity.value = withTiming(1, { duration: opacityDuration });
   }, []);
 
-  const renderItem = useCallback(({ item }: { item: Card }) => (
-    <View style={styles.imageContainer}>
-        <Pressable onPress={() => goToDetailScreen(item.name)} style={{zIndex: 1}}>
-          <Image style={styles.image} source={item.image} contentFit={'fill'}/>
-        </Pressable>
-      <Text style={styles.imageTitle} numberOfLines={1}>{item.name}</Text>
-    </View>
-  ), []);
+  const opacityStyle = useAnimatedStyle(() => {
+    return {
+      opacity: opacity.value,
+    };
+  });
 
-  const router = useRouter();
+  const rotationStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        { perspective: 350 },
+        { rotateX: `${rotateX.value}deg` },
+        { rotateY: `${rotateY.value}deg` }
+      ]
+    };
+  }, []);
 
-  const playSound = async () => {
-    if (audio.current) {
-        await audio.current.replayAsync();
-      }
+  function getCardFromName(name: string): Card | undefined {
+    return cards.find(card => card.name.toLowerCase() === name.toLowerCase());
   }
 
-  const goToDetailScreen = async (name: string) => {
-    await playSound();
-    console.log(name)
-    router.push(`/screens/detail?name=${encodeURIComponent(name)}`);
-  };
-
-  const keyExtractor = useCallback((item: Card) => String(item.number), []);
-
   return (
-    <SafeAreaView style={styles.container}>
-      <TextInput
-        style={styles.searchInput}
-        placeholder={SEARCH_CARD_PLACEHOLDER}
-        value={searchQuery}
-        onChangeText={handleSearch}
-        accessibilityLabel={SEARCH_LABEL}
-      />
-        <FlatList
-          data={images}
-          ref={flatListRef}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-          numColumns={numColumns}
-          contentContainerStyle={styles.gridContainer}
-          showsVerticalScrollIndicator={false}
-        />
-    </SafeAreaView>
+    <Animated.View style={[styles.container, opacityStyle]}>
+      {
+        Platform.OS === 'web' ? (
+          <Animated.View>
+            <Image style={DetailStyles.image}
+              source={selected?.image}
+              contentFit={'fill'} />
+          </Animated.View>
+        ) : (
+          <GestureDetector gesture={gesture}>
+            <Animated.View style={rotationStyle}>
+              <Image style={DetailStyles.image}
+                source={selected?.image}
+                contentFit={'fill'} />
+            </Animated.View>
+          </GestureDetector>
+        )
+      }
+    </Animated.View>
   );
-}
+};
+
+export default NewScreen;
