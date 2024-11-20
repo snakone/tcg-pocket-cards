@@ -6,3 +6,9 @@ export interface HeaderWithCustomModalProps {
   modalContent: ReactNode;
   closeText: string;
 }
+
+export interface TabMenu {
+  isVisible: boolean;
+  onClose: () => void;
+  animatedStyle: any;
+}

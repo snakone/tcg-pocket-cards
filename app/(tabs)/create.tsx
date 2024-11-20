@@ -3,12 +3,13 @@ import { StyleSheet, Image } from 'react-native';
 import { Collapsible } from '@/components/Collapsible';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
+import { CreateScreenModal } from '@/components/modals/CreateScreenModal';
 
 export default function CreateDeckScreen() {
   return (
     <ParallaxScrollView title={"Creación de mazos"} 
                         modalTitle='Crear mazos' 
-                        modalContent={CreateModalContent()}>
+                        modalContent={CreateScreenModal()}>
       <ThemedText>This app includes example code to help you get started.</ThemedText>
       <Collapsible title="Android, iOS, and web support">
         <ThemedText>
@@ -20,15 +21,4 @@ export default function CreateDeckScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-});
 
-export function CreateModalContent() {
-  return (
-    <ThemedText>Hi</ThemedText>
-  )
-}

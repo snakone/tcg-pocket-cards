@@ -7,7 +7,7 @@ export const ICONS_MAPPING = {
   'chevron.right': 'chevron-right',
   'newspaper.fill': 'add-box',
   'menubar.rectangle' : 'menu',
-  'questionmark.app.fill': 'question-mark'
+  'questionmark.app.fill': 'question-mark',
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

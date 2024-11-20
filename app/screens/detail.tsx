@@ -1,10 +1,25 @@
-import Animated, { Extrapolation, interpolate, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
+import 
+  Animated, { 
+  Extrapolation, 
+  interpolate, 
+  useAnimatedStyle, 
+  useSharedValue, 
+  withTiming 
+} from "react-native-reanimated";
+
 import { useEffect, useRef } from "react";
 import { useLocalSearchParams, useRouter } from 'expo-router/build/hooks';
 import { Image } from 'expo-image';
 import { Platform, TouchableOpacity, View } from "react-native";
-import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { Audio } from 'expo-av';
+
+import { 
+  Gesture,
+  GestureDetector,
+  GestureStateChangeEvent,
+  GestureUpdateEvent,
+  PanGestureHandlerEventPayload 
+} from "react-native-gesture-handler";
 
 import { ButtonStyles, DetailStyles } from '@/shared/styles/component.styles';
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
@@ -210,10 +225,7 @@ const NewScreen = () => {
   const styles = DetailStyles;
   const router = useRouter();
   const navigation = useNavigation();
-
-  useEffect(() => {
-    navigation.setOptions({ headerShown: false });
-  }, [navigation]);
+  const audio = useRef<Audio.Sound>();
 
   const { name } = useLocalSearchParams<{ name: string }>();
   const selected = getCardFromName(name);
@@ -224,45 +236,11 @@ const NewScreen = () => {
   const rotateX = useSharedValue(0);
   const rotateY = useSharedValue(0);
 
-  const gesture = Gesture.Pan().onBegin((event) => {
-    rotateX.value = withTiming(
-      interpolate(
-        event.y, 
-        [0, styles.image.height], 
-        [10, -10], Extrapolation.CLAMP
-      ), {duration: 200}
-    );
-
-    rotateY.value = withTiming(
-      interpolate(
-        event.x, 
-        [0, styles.image.width], 
-        [-10, 10], 
-        Extrapolation.CLAMP
-      ), {duration: 200}
-    );
-  }).onUpdate((event => {
-    rotateX.value = interpolate(
-      event.y, 
-      [0, styles.image.height], 
-      [10, -10], Extrapolation.CLAMP
-    );
-
-    rotateY.value = interpolate(
-      event.x, 
-      [0, styles.image.width], 
-      [-10, 10], 
-      Extrapolation.CLAMP
-    );
-   })
-  ).onFinalize(() => {
-    rotateX.value = withTiming(0, {duration: 250});
-    rotateY.value = withTiming(0, {duration: 250});
-  });
-
-  useEffect(() => {
-    opacity.value = withTiming(1, { duration: opacityDuration });
-  }, []);
+  const playSound = async () => {
+    if (audio.current) {
+      audio.current.replayAsync();
+    }
+  }
 
   const opacityStyle = useAnimatedStyle(() => {
     return {
@@ -280,18 +258,61 @@ const NewScreen = () => {
     };
   }, []);
 
-  function getCardFromName(name: string): Card | undefined {
-    return cards.find(card => card.name.toLowerCase() === name.toLowerCase());
+  function onGestureBegin(
+    event: GestureStateChangeEvent<PanGestureHandlerEventPayload>
+  ) {
+    rotateX.value = withTiming(
+      interpolate(
+        event.y, 
+        [0, styles.image.height], 
+        [10, -10], Extrapolation.CLAMP
+      ), {duration: 200}
+    );
+
+    rotateY.value = withTiming(
+      interpolate(
+        event.x, 
+        [0, styles.image.width], 
+        [-10, 10], 
+        Extrapolation.CLAMP
+      ), {duration: 200}
+    );
   }
 
-  async function goBack(): Promise<void> {
-    if (router.canGoBack()) {
-      await playSound();
-      router.back();
-    }
+  function onGestureUpdate(
+    event: GestureUpdateEvent<PanGestureHandlerEventPayload>
+  ) {
+    rotateX.value = interpolate(
+      event.y, 
+      [0, styles.image.height], 
+      [10, -10], Extrapolation.CLAMP
+    );
+
+    rotateY.value = interpolate(
+      event.x, 
+      [0, styles.image.width], 
+      [-10, 10], 
+      Extrapolation.CLAMP
+    );
   }
 
-  const audio = useRef<Audio.Sound>();
+  function onGestureFinish() {
+    rotateX.value = withTiming(0, {duration: 250});
+    rotateY.value = withTiming(0, {duration: 250});
+  }
+
+  const gesture = Gesture.Pan()
+                          .onBegin(onGestureBegin)
+                          .onUpdate(onGestureUpdate)
+                          .onFinalize(onGestureFinish);
+
+  useEffect(() => {
+    navigation.setOptions({ headerShown: false });
+  }, [navigation]);
+
+  useEffect(() => {
+    opacity.value = withTiming(1, { duration: opacityDuration });
+  }, []);
 
   useEffect(() => {
     async function loadSounds() {
@@ -307,9 +328,14 @@ const NewScreen = () => {
     loadSounds();
   }, []);
 
-  const playSound = async () => {
-    if (audio.current) {
-      audio.current.replayAsync();
+  function getCardFromName(name: string): Card | undefined {
+    return cards.find(card => card.name.toLowerCase() === name.toLowerCase());
+  }
+
+  async function goBack(): Promise<void> {
+    if (router.canGoBack()) {
+      await playSound();
+      router.back();
     }
   }
 

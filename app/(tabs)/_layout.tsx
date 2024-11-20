@@ -1,23 +1,22 @@
 import { Tabs } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
-import { Button, Modal, Platform, Pressable, PressableAndroidRippleConfig, StyleSheet, View } from 'react-native';
+import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { Platform, Pressable } from 'react-native';
 import { Audio } from 'expo-av';
-import * as NavigationBar from 'expo-navigation-bar';
 import { Portal, Provider } from 'react-native-paper';
 
-import { IconSymbol, SvgStackSymbol } from '@/components/ui/IconSymbol';
+import { IconSymbol, SvgStackSymbol, SvgStylusSymbol } from '@/components/ui/IconSymbol';
 import { Colors } from '@/constants/Colors';
-import { BlurView } from 'expo-blur';
-import { ThemedText } from '@/components/ThemedText';
 import { CHANGE_VIEW } from '@/shared/definitions/sentences/path.sentences';
-import { ThemedView } from '@/components/ThemedView';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-
-const menuWidth = 250;
+import { MENU_WIDTH, RIPPLE_CONFIG } from '@/shared/definitions/utils/contants';
+import { customTabButtonStyles, tabButtonStyles } from '@/shared/styles/component.styles';
+import TabsMenu from '@/components/shared/TabsMenu';
 
 export default function TabLayout() {
 
   const audio = useRef<Audio.Sound>();
+  const menuRight = useSharedValue(MENU_WIDTH);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const playSound = async () => {
     if (audio.current) {
@@ -25,9 +24,18 @@ export default function TabLayout() {
     }
   };
 
-  const menuRight = useSharedValue(menuWidth);
+  const menuAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        { translateX: menuRight.value },
+      ]
+    };
+  });
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  async function handleModal(value: boolean): Promise<void> {
+    await playSound();
+    setIsModalVisible(value);
+  }
 
   useEffect(() => {
     async function loadSound() {
@@ -37,14 +45,6 @@ export default function TabLayout() {
 
     loadSound();
   }, []);
-
-  const menuAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      transform: [
-        { translateX: menuRight.value },
-      ]
-    };
-  });
 
   useEffect(() => {
     if (Platform.OS === 'web') {
@@ -56,16 +56,11 @@ export default function TabLayout() {
     } else { menuRight.value = 200; }
   }, [isModalVisible]);
 
-  async function handleModal(value: boolean): Promise<void> {
-    await playSound();
-    setIsModalVisible(value);
-  }
-
   return (
     <Provider>
       <Tabs
         screenOptions={{
-          tabBarActiveTintColor: Colors.light.tint,
+          tabBarActiveTintColor: 'skyblue',
           headerShown: false,
           tabBarLabel: '',
           tabBarStyle: Platform.select({
@@ -100,7 +95,7 @@ export default function TabLayout() {
             title: 'Cartas',
             tabBarIcon: ({ color }) => 
               <SvgStackSymbol color={color} 
-                              style={tabButtonStyles.icon} />,
+                              style={tabButtonStyles.stacks} />,
             animation: 'shift'
           }}
         />
@@ -108,9 +103,8 @@ export default function TabLayout() {
           name="create"
           options={{
             tabBarIcon: ({ color }) => 
-              <IconSymbol name="newspaper.fill" 
-                          color={color}
-                          style={tabButtonStyles.icon} />,
+              <SvgStylusSymbol color={color}
+                               style={tabButtonStyles.stylus} />,
             animation: 'shift'
           }}
         />
@@ -121,7 +115,7 @@ export default function TabLayout() {
             tabBarButton: () => (
               <Pressable onPress={() => handleModal(true)} 
                          style={{padding: 5, flex: 1}} 
-                         android_ripple={rippleConfig}>
+                         android_ripple={RIPPLE_CONFIG}>
                 <IconSymbol name="menubar.rectangle" 
                             color={'#8E8E8F'}
                             style={customTabButtonStyles.icon} />
@@ -132,69 +126,13 @@ export default function TabLayout() {
       </Tabs>
       <Portal>
           {isModalVisible && (
-            <>
-            <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
-                      style={StyleSheet.absoluteFill} 
-                      tint="light" 
-                      experimentalBlurMethod='dimezisBlurView'/>
-            <Pressable style={styles.overlay} 
-                       onPress={() => setIsModalVisible(false)}>
-            </Pressable>
-            <Animated.View style={[menuStyles.container, menuAnimatedStyle]}>
-              <ThemedText>HELLO</ThemedText>
-            </Animated.View>
-            </>
+            <TabsMenu isVisible={isModalVisible} 
+                      animatedStyle={menuAnimatedStyle} 
+                      onClose={() => setIsModalVisible(false)}> 
+            </TabsMenu>
           )}
       </Portal>
     </Provider>
   );
 }
 
-const tabButtonStyles = StyleSheet.create({
-  icon: {
-    marginTop: 7,
-    fontSize: 24
-  },
-});
-
-const customTabButtonStyles = StyleSheet.create({
-  icon: {
-    fontSize: 24,
-    justifyContent: 'center', 
-    marginTop: Platform.OS === 'web' ? 6 : 8,
-    marginLeft: Platform.OS === 'web' ? 3 : 28,
-    display: 'flex'
-  },
-});
-
-const styles = StyleSheet.create({
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    zIndex: 0,
-    position: 'absolute'
-  },
-});
-
-const menuStyles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    width: menuWidth,
-    height: 425,
-    borderBottomLeftRadius: 50,
-    borderTopLeftRadius: 50,
-    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
-    position: 'absolute',
-    right: 0,
-    bottom: 60,
-    overflow: 'hidden',
-    paddingInline: 24,
-    paddingBlock: 42 
-  },
-});
-
-const rippleConfig: PressableAndroidRippleConfig = {
-  color: 'rgba(0, 0, 0, .32)', 
-  borderless: true, 
-  foreground: false, 
-  radius: 58
-}

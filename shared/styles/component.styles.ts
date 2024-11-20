@@ -1,4 +1,6 @@
+import { Colors } from '@/constants/Colors';
 import { Platform, StyleSheet } from 'react-native';
+import { MENU_WIDTH } from '../definitions/utils/contants';
 
 const HEADER_HEIGHT = 100;
 const CARD_IMAGE_WIDTH = 103.2;
@@ -79,7 +81,8 @@ export const CardGridStyles = StyleSheet.create({
     padding: 10,
     borderRadius: 8,
     backgroundColor: 'white',
-    marginBottom: 18
+    marginBottom: 18,
+    color: 'Colors.light.text'
   },
   gridContainer: {
     flexWrap: 'nowrap'
@@ -95,7 +98,7 @@ export const CardGridStyles = StyleSheet.create({
   },
   image: {
     width: CARD_IMAGE_WIDTH,
-    height: 150,
+    height: 142,
     zIndex: 0
   },
   imageTitle: {
@@ -111,16 +114,16 @@ export const IconStyles = StyleSheet.create({
     right: -69,
     top: -28,
     bottom: 0,
-    padding: 3,
+    padding: 2,
     borderRadius: 50,
-    borderColor: 'grey',
-    borderWidth: 1,
+    borderColor: 'skyblue',
+    borderWidth: 2,
     borderStyle: 'solid',
     width: 24,
     height: 24,
   },
   icon: {
-    color: 'grey',
+    color: Colors.light.icon,
     fontSize: 16,
     marginTop: -1
   }
@@ -245,4 +248,75 @@ export const ButtonStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 600,
   },
+});
+
+export const menuStyles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    width: MENU_WIDTH,
+    height: 425,
+    borderBottomLeftRadius: 50,
+    borderTopLeftRadius: 50,
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
+    position: 'absolute',
+    right: 0,
+    bottom: 60,
+    overflow: 'hidden',
+    paddingInline: 24,
+    paddingBlock: 42 
+  },
+});
+
+export const tabButtonStyles = StyleSheet.create({
+  icon: {
+    marginTop: Platform.OS === 'web' ? 10 : 5,
+    top: 2,
+    position: 'relative',
+    fontSize: 24,
+  },
+  stacks: {
+    marginTop: 7,
+    fontSize: 24,
+    top: Platform.OS === 'web' ? 3 : 2,
+    position: 'relative'
+  },
+  stylus: {
+    marginTop: 7,
+    fontSize: 15,
+    top: Platform.OS === 'web' ? 3 : 2,
+    position: 'relative'
+  },
+  menu: {
+    marginTop: Platform.OS === 'web' ? 10 : 5,
+    top: 2,
+    position: 'relative',
+    fontSize: 24,
+  },
+});
+
+export const customTabButtonStyles = StyleSheet.create({
+  icon: {
+    fontSize: 24,
+    justifyContent: 'center', 
+    marginTop: Platform.OS === 'web' ? 9 : 8,
+    marginLeft: Platform.OS === 'web' ? 3 : 28,
+    display: 'flex'
+  },
+});
+
+export const layoutStyles = StyleSheet.create({
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    zIndex: 0,
+    position: 'absolute'
+  },
+});
+
+export const webStyles = StyleSheet.create({
+  view: {
+    width: 390, 
+    height: 844,
+    alignSelf: 'center',
+    backgroundColor: '#F2F2F2'
+  }
 });

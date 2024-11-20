@@ -28,10 +28,10 @@ export default function HeaderWithCustomModal({
       const { sound: close } = await Audio.Sound.createAsync(AUDIO_MENU_CLOSE);
       opened.current = open;
       closed.current = close;
-      opened.current.setVolumeAsync(.6);
+      opened.current.setVolumeAsync(.5);
 
       if (Platform.OS === 'web') {
-        closed.current.setVolumeAsync(.3);
+        closed.current.setVolumeAsync(.2);
       }
     }
 
@@ -72,7 +72,7 @@ export default function HeaderWithCustomModal({
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <View style={styles.modalHeader}>
-              <Text style={styles.modalHeaderTitle}>{modalTitle}</Text>
+              <ThemedText style={styles.modalHeaderTitle}>{modalTitle}</ThemedText>
             </View>
             <ScrollView style={styles.modalScrollView}>{modalContent}</ScrollView>
             <View style={styles.modalFooter}>

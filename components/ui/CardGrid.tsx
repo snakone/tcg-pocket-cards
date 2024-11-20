@@ -10,8 +10,9 @@ import { GENETIC_APEX } from '@/shared/definitions/enums/packs.enums';
 import { PokemonTypeENUM } from '@/shared/definitions/enums/pokemon.enums';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 import { CardGridStyles } from '@/shared/styles/component.styles';
-import { SEARCH_CARD_PLACEHOLDER, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
+import { NO_MATCH_SENTENCE, SEARCH_CARD_PLACEHOLDER, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
 import { PICK_CARD_SOUND } from '@/shared/definitions/sentences/path.sentences';
+import { ThemedText } from '../ThemedText';
 
 const initialCards: Card[] = [
   {
@@ -241,7 +242,7 @@ export default function ImageGridWithSearch() {
         <Pressable onPress={() => goToDetailScreen(item.name)} style={{zIndex: 1}}>
           <Image style={styles.image} source={item.image} contentFit={'fill'}/>
         </Pressable>
-      <Text style={styles.imageTitle} numberOfLines={1}>{item.name}</Text>
+      <ThemedText style={styles.imageTitle} numberOfLines={1}>{item.name}</ThemedText>
     </View>
   ), []);
 
@@ -277,6 +278,7 @@ export default function ImageGridWithSearch() {
           numColumns={numColumns}
           contentContainerStyle={styles.gridContainer}
           showsVerticalScrollIndicator={false}
+          ListEmptyComponent={<ThemedText>{NO_MATCH_SENTENCE}</ThemedText>}
         />
     </SafeAreaView>
   );
