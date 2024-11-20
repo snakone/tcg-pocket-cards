@@ -6,7 +6,6 @@ import { Audio } from 'expo-av';
 import { Portal, Provider } from 'react-native-paper';
 
 import { IconSymbol, SvgStackSymbol, SvgStylusSymbol } from '@/components/ui/IconSymbol';
-import { Colors } from '@/constants/Colors';
 import { CHANGE_VIEW } from '@/shared/definitions/sentences/path.sentences';
 import { MENU_WIDTH, RIPPLE_CONFIG } from '@/shared/definitions/utils/contants';
 import { customTabButtonStyles, tabButtonStyles } from '@/shared/styles/component.styles';
@@ -53,7 +52,7 @@ export default function TabLayout() {
     }
     if (isModalVisible) {
       menuRight.value = withTiming(0, { duration: 150 });
-    } else { menuRight.value = 200; }
+    } else { menuRight.value = MENU_WIDTH; }
   }, [isModalVisible]);
 
   return (
@@ -68,7 +67,7 @@ export default function TabLayout() {
               position: 'absolute',
             },
             default: {
-              boxShadow: '0px -4px 16px rgba(0, 0, 0, 0.2)'
+              boxShadow: '0px -4px 12px rgba(0, 0, 0, 0.2)'
             },
           }),
         }}

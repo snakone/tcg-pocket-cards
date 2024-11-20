@@ -1,5 +1,7 @@
-import { StyleSheet, Image, Animated, Platform, Pressable } from 'react-native';
+import { StyleSheet, Platform, Pressable, View } from 'react-native';
 import { BlurView } from 'expo-blur';
+import Animated from 'react-native-reanimated';
+import { Image } from 'expo-image';
 
 import { layoutStyles, menuStyles } from '@/shared/styles/component.styles';
 import { TabMenu } from '@/shared/definitions/interfaces/layout.interfaces';
@@ -22,6 +24,9 @@ export default function TabsMenu({
                  onPress={() => onClose()}>
       </Pressable>
       <Animated.View style={[menuStyles.container, animatedStyle]}>
+        <View>
+          <Image source={require("@/assets/images/coins/eevee.png")}></Image>
+        </View>
         <ThemedText>HELLO</ThemedText>
       </Animated.View>
     </>

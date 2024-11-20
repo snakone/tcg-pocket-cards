@@ -12,6 +12,7 @@ import { FONT_REGULAR } from '@/shared/definitions/sentences/path.sentences';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Platform } from 'react-native';
 import { webStyles } from '@/shared/styles/component.styles';
+import { PAGE_TITLE } from '@/shared/definitions/utils/contants';
 
 SplashScreen.preventAutoHideAsync();
 

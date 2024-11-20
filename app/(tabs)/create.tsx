@@ -1,5 +1,3 @@
-import { StyleSheet, Image } from 'react-native';
-
 import { Collapsible } from '@/components/Collapsible';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';

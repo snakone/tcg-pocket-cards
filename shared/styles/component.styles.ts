@@ -1,6 +1,6 @@
-import { Colors } from '@/constants/Colors';
 import { Platform, StyleSheet } from 'react-native';
 import { MENU_WIDTH } from '../definitions/utils/contants';
+import { Colors } from '../definitions/utils/colors';
 
 const HEADER_HEIGHT = 100;
 const CARD_IMAGE_WIDTH = 103.2;
@@ -47,7 +47,8 @@ export const ParallaxStyles = StyleSheet.create({
     paddingInline: 32,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 26
+    paddingTop: 26,
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
   },
   content: {
     flex: 1,
@@ -150,7 +151,7 @@ export const ModalStyles = StyleSheet.create({
     padding: 16,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    boxShadow: '0px 4px 16px rgba(0, 0, 0, 0.2)',
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
     zIndex: 1,
     textAlign: 'center'
   },
@@ -171,6 +172,7 @@ export const ModalStyles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     alignItems: 'center',
+    boxShadow: '0px -4px 12px rgba(0, 0, 0, 0.2)'
   },
   closeButton: {
     backgroundColor: 'white',
@@ -232,6 +234,7 @@ export const ButtonStyles = StyleSheet.create({
     borderRadius: 20,
     padding: 3, // Inset
     elevation: 2,
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
   },
   insetBorder: {
     paddingVertical: 10,

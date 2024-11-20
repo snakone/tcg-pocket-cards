@@ -1,6 +1,7 @@
 import { PressableAndroidRippleConfig } from "react-native";
 
 export const MENU_WIDTH = 250;
+export const PAGE_TITLE = "TCG Pocket Cards";
 
 export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
   color: 'rgba(0, 0, 0, .32)', 
