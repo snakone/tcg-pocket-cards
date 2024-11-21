@@ -8,6 +8,10 @@ export const ICONS_MAPPING = {
   'newspaper.fill': 'add-box',
   'menubar.rectangle' : 'menu',
   'questionmark.app.fill': 'question-mark',
+  'star': 'star-outline',
+  'washer.circle': 'settings',
+  'clear': 'close',
+  'wind': 'dataset'
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

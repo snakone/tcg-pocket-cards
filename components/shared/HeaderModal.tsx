@@ -5,7 +5,7 @@ import { Audio } from 'expo-av';
 import { HeaderWithCustomModalProps } from '@/shared/definitions/interfaces/layout.interfaces';
 import { CLOSE_SENTENCE } from '@/shared/definitions/sentences/global.sentences';
 import { AUDIO_MENU_CLOSE, AUDIO_MENU_OPEN } from '@/shared/definitions/sentences/path.sentences';
-import { ButtonStyles, IconStyles, ModalStyles } from '@/shared/styles/component.styles';
+import { ButtonStyles, IconStyles, ModalStyles, WebStyles } from '@/shared/styles/component.styles';
 
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
@@ -31,7 +31,7 @@ export default function HeaderWithCustomModal({
       opened.current.setVolumeAsync(.5);
 
       if (Platform.OS === 'web') {
-        closed.current.setVolumeAsync(.2);
+        closed.current.setVolumeAsync(.3);
       }
     }
 
@@ -69,7 +69,7 @@ export default function HeaderWithCustomModal({
         onRequestClose={toggleModal}
         hardwareAccelerated={true}
       >
-        <View style={styles.centeredView}>
+        <View style={[styles.centeredView, Platform.OS === 'web' ? WebStyles.view : null]}>
           <View style={styles.modalView}>
             <View style={styles.modalHeader}>
               <ThemedText style={styles.modalHeaderTitle}>{modalTitle}</ThemedText>
@@ -80,7 +80,7 @@ export default function HeaderWithCustomModal({
                                 onPress={toggleModal} 
                                 accessibilityLabel={CLOSE_SENTENCE}>
                 <View style={ButtonStyles.insetBorder}>
-                  <ThemedText style={ButtonStyles.buttonText}>{CLOSE_SENTENCE}</ThemedText>
+                  <IconSymbol name="clear"></IconSymbol>
                 </View>
               </TouchableOpacity>
             </View>

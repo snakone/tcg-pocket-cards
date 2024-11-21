@@ -14,6 +14,7 @@ export const ThemeTextStyles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     fontWeight: '600',
+    color: Colors.light.bold
   },
   title: {
     fontSize: 32,
@@ -23,6 +24,7 @@ export const ThemeTextStyles = StyleSheet.create({
   subtitle: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: Colors.light.bold
   },
   link: {
     lineHeight: 30,
@@ -32,7 +34,8 @@ export const ThemeTextStyles = StyleSheet.create({
   headerTitle: {
     fontSize: 22,
     lineHeight: 28,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    color: Colors.light.bold
   },
 });
 
@@ -83,7 +86,8 @@ export const CardGridStyles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: 'white',
     marginBottom: 18,
-    color: 'Colors.light.text'
+    color: 'Colors.light.text',
+    borderColor: 'skyblue',
   },
   gridContainer: {
     flexWrap: 'nowrap'
@@ -113,7 +117,7 @@ export const IconStyles = StyleSheet.create({
   iconContainer: {
     position: 'absolute',
     right: -69,
-    top: -28,
+    top: -20,
     bottom: 0,
     padding: 2,
     borderRadius: 50,
@@ -132,7 +136,7 @@ export const IconStyles = StyleSheet.create({
 
 export const ModalStyles = StyleSheet.create({
   centeredView: {
-    flex: 1,
+    flex: Platform.OS === 'web' ? -1 : 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -156,9 +160,10 @@ export const ModalStyles = StyleSheet.create({
     textAlign: 'center'
   },
   modalHeaderTitle: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: '600',
     textAlign: 'center',
+    color: Colors.light.bold
   },
   modalScrollView: {
     maxHeight: '70%',
@@ -220,11 +225,12 @@ export const DetailStyles = StyleSheet.create({
     aspectRatio: 0.71
   },
   bottomContainer: {
-    position: 'fixed',
-    bottom: Platform.OS === 'web' ? 60 : -100,
+    position: 'absolute',
+    bottom: 30,
     left: 0,
     right: 0,
     alignItems: 'center',
+    flex: 1
   },
 });
 
@@ -253,7 +259,7 @@ export const ButtonStyles = StyleSheet.create({
   },
 });
 
-export const menuStyles = StyleSheet.create({
+export const MenuStyles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     width: MENU_WIDTH,
@@ -263,14 +269,15 @@ export const menuStyles = StyleSheet.create({
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
     position: 'absolute',
     right: 0,
-    bottom: 60,
+    bottom: 80,
     overflow: 'hidden',
     paddingInline: 24,
-    paddingBlock: 42 
+    paddingBlock: 32,
+    userSelect: 'none'
   },
 });
 
-export const tabButtonStyles = StyleSheet.create({
+export const TabButtonStyles = StyleSheet.create({
   icon: {
     marginTop: Platform.OS === 'web' ? 10 : 5,
     top: 2,
@@ -297,7 +304,7 @@ export const tabButtonStyles = StyleSheet.create({
   },
 });
 
-export const customTabButtonStyles = StyleSheet.create({
+export const CustomTabButtonStyles = StyleSheet.create({
   icon: {
     fontSize: 24,
     justifyContent: 'center', 
@@ -307,7 +314,7 @@ export const customTabButtonStyles = StyleSheet.create({
   },
 });
 
-export const layoutStyles = StyleSheet.create({
+export const LayoutStyles = StyleSheet.create({
   overlay: {
     ...StyleSheet.absoluteFillObject,
     zIndex: 0,
@@ -315,11 +322,92 @@ export const layoutStyles = StyleSheet.create({
   },
 });
 
-export const webStyles = StyleSheet.create({
+export const WebStyles = StyleSheet.create({
   view: {
     width: 390, 
     height: 844,
     alignSelf: 'center',
-    backgroundColor: '#F2F2F2'
+  }
+});
+
+export const TabsMenuStyles = StyleSheet.create({
+  container: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: '100%',
+    zIndex: 1,
+    borderRadius: 50,
+    opacity: 0.3,
+    backgroundColor: 'skyblue'
+  },
+  user: {
+    justifyContent: 'flex-start', 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    borderRadius: 50,
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+    backgroundColor: Colors.light.background,
+    width: 202,
+    userSelect: 'none',
+  },
+  avatar: {
+    width: 50, 
+    height: 50, 
+    zIndex: 4, 
+    backgroundColor: 'skyblue', 
+    borderRadius: 22
+  },
+  listItem: {
+    paddingBlock: 10,
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  listIcon: {
+    fontSize: 25,
+    width: 24,
+    color: 'skyblue'
+  },
+  listLabel: {
+    userSelect: 'none',
+    fontSize: 16,
+    marginLeft: 16
+  },
+  iconSmall: {
+    fontSize: 19,
+    position: 'relative',
+    top: 3,
+    width: 24,
+    color: 'skyblue'
+  },
+  separator: {
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)',
+    height: 1
+  },
+  itemSmall: {
+    paddingBlock: 10,
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  labelSmall: {
+    userSelect: 'none',
+    fontSize: 14,
+    marginLeft: 16
+  }
+});
+
+export const ScreenStyles = StyleSheet.create({
+  content: {
+    flex: 1, 
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    padding: 28,
+    gap: 8
+  },
+  bottomContent: {
+    flex: 1,
+    position: 'absolute',
+    bottom: 30,
+    alignSelf: 'center'
   }
 });

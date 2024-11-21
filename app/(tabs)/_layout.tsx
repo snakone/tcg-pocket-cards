@@ -8,7 +8,7 @@ import { Portal, Provider } from 'react-native-paper';
 import { IconSymbol, SvgStackSymbol, SvgStylusSymbol } from '@/components/ui/IconSymbol';
 import { CHANGE_VIEW } from '@/shared/definitions/sentences/path.sentences';
 import { MENU_WIDTH, RIPPLE_CONFIG } from '@/shared/definitions/utils/contants';
-import { customTabButtonStyles, tabButtonStyles } from '@/shared/styles/component.styles';
+import { CustomTabButtonStyles, TabButtonStyles } from '@/shared/styles/component.styles';
 import TabsMenu from '@/components/shared/TabsMenu';
 
 export default function TabLayout() {
@@ -84,7 +84,7 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => 
             <IconSymbol name="house.fill" 
                         color={color}
-                        style={tabButtonStyles.icon} />,
+                        style={TabButtonStyles.icon} />,
             animation: 'shift'
           }}
         />
@@ -94,7 +94,7 @@ export default function TabLayout() {
             title: 'Cartas',
             tabBarIcon: ({ color }) => 
               <SvgStackSymbol color={color} 
-                              style={tabButtonStyles.stacks} />,
+                              style={TabButtonStyles.stacks} />,
             animation: 'shift'
           }}
         />
@@ -103,7 +103,7 @@ export default function TabLayout() {
           options={{
             tabBarIcon: ({ color }) => 
               <SvgStylusSymbol color={color}
-                               style={tabButtonStyles.stylus} />,
+                               style={TabButtonStyles.stylus} />,
             animation: 'shift'
           }}
         />
@@ -117,9 +117,19 @@ export default function TabLayout() {
                          android_ripple={RIPPLE_CONFIG}>
                 <IconSymbol name="menubar.rectangle" 
                             color={'#8E8E8F'}
-                            style={customTabButtonStyles.icon} />
+                            style={CustomTabButtonStyles.icon} />
               </Pressable>
             ),
+          }}
+        />
+        <Tabs.Screen
+          name="profile"
+          options={{
+            animation: 'shift',
+            tabBarItemStyle: {
+              display: 'none'
+            },
+            tabBarButton: () => null,
           }}
         />
       </Tabs>

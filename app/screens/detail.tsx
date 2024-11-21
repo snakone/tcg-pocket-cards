@@ -28,9 +28,9 @@ import { GENETIC_APEX } from "@/shared/definitions/enums/packs.enums";
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 import { useNavigation } from "expo-router";
 import { ThemedView } from "@/components/ThemedView";
-import { ThemedText } from "@/components/ThemedText";
 import { BACK_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
 import { AUDIO_MENU_CLOSE } from "@/shared/definitions/sentences/path.sentences";
+import { IconSymbol } from "@/components/ui/IconSymbol";
 
 const cards: Card[] = [
   {
@@ -318,7 +318,6 @@ const NewScreen = () => {
     async function loadSounds() {
       const { sound } = await Audio.Sound.createAsync(AUDIO_MENU_CLOSE);
       audio.current = sound;
-      audio.current.setVolumeAsync(.6);
 
       if (Platform.OS === 'web') {
         audio.current.setVolumeAsync(.3);
@@ -363,7 +362,7 @@ const NewScreen = () => {
                           onPress={goBack} 
                           accessibilityLabel={BACK_SENTENCE}>
           <View style={ButtonStyles.insetBorder}>
-            <ThemedText style={ButtonStyles.buttonText}>{BACK_SENTENCE}</ThemedText>
+            <IconSymbol name="clear"></IconSymbol>
           </View>
         </TouchableOpacity>
       </ThemedView>
