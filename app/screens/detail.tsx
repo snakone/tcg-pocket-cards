@@ -12,6 +12,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router/build/hooks';
 import { Image } from 'expo-image';
 import { Platform, TouchableOpacity, View } from "react-native";
 import { Audio } from 'expo-av';
+import { useNavigation } from "expo-router";
 
 import { 
   Gesture,
@@ -26,7 +27,6 @@ import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { CardExpansionENUM, CardRarityENUM, CardTypeENUM } from "@/shared/definitions/enums/card.enums";
 import { GENETIC_APEX } from "@/shared/definitions/enums/packs.enums";
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
-import { useNavigation } from "expo-router";
 import { ThemedView } from "@/components/ThemedView";
 import { BACK_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
 import { AUDIO_MENU_CLOSE } from "@/shared/definitions/sentences/path.sentences";
@@ -218,6 +218,31 @@ const cards: Card[] = [
       name: 'Powder Heal',
       description: 'Once during your turn, you may heal 20 damage from each of your Pokémon.'
     }
+  },
+  {
+    number: 8,
+    name: 'Weedle',
+    image: require("@/assets/cards/en/Genetic Apex/cPK_10_000080_00_BEEDLE_C.png"),
+    artist: 'Hajime Kusajima',
+    attacks: [
+      {
+        name: 'Sting',
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS]
+      }
+    ],
+    evolve: 'Kakuna',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    flavor: 'Often found in forests and grasslands. It has a sharp, toxic barb of around two inches on top of its head.',
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    type: CardTypeENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.MEWTWO
+    ],
   }
 ];
 

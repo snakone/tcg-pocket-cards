@@ -18,7 +18,8 @@ export const ICONS_MAPPING = {
   'location.fill': 'help-outline',
   'laurel.leading': 'insert-chart-outlined',
   'door.garage.open': 'bookmark-outline',
-  'mail': 'mail-outline'
+  'mail': 'mail-outline',
+  'note': 'bookmark-outline'
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

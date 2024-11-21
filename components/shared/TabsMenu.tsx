@@ -87,6 +87,7 @@ export default function TabsMenu({
 
   const LIST: any[] = [
     { label: 'Mazos', icon: 'wind', route: '' },
+    { label: 'Expansiones', icon: 'note', route: '' },
     { label: 'Favoritos', icon: 'star', route: '' },
   ];
 

@@ -200,6 +200,31 @@ const initialCards: Card[] = [
       name: 'Powder Heal',
       description: 'Once during your turn, you may heal 20 damage from each of your Pokémon.'
     }
+  },
+  {
+    number: 8,
+    name: 'Weedle',
+    image: require("@/assets/cards/en/Genetic Apex/cPK_10_000080_00_BEEDLE_C.png"),
+    artist: 'Hajime Kusajima',
+    attacks: [
+      {
+        name: 'Sting',
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS]
+      }
+    ],
+    evolve: 'Kakuna',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    flavor: 'Often found in forests and grasslands. It has a sharp, toxic barb of around two inches on top of its head.',
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    type: CardTypeENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.MEWTWO
+    ],
   }
 ];
 
