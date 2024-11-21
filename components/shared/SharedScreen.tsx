@@ -21,9 +21,11 @@ export default function HelpScreen({title, children}: SharedScreenProps) {
   const navigation = useNavigation();
   
   async function goBack(): Promise<void> {
+    await playSound();
     if (router.canGoBack()) {
-      await playSound();
       router.back();
+    } else {
+      router.replace('/');
     }
   }
 

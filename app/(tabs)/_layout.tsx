@@ -32,8 +32,8 @@ export default function TabLayout() {
   });
 
   async function handleModal(value: boolean): Promise<void> {
-    await playSound();
     setIsModalVisible(value);
+    playSound();
   }
 
   useEffect(() => {

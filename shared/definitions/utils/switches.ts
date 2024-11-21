@@ -11,7 +11,14 @@ export const ICONS_MAPPING = {
   'star': 'star-outline',
   'washer.circle': 'settings',
   'clear': 'close',
-  'wind': 'dataset'
+  'wind': 'dataset',
+  'chevron.right.circle': 'chevron-right',
+  'terminal': 'info-outline',
+  'candybarphone': 'lock-outline',
+  'location.fill': 'help-outline',
+  'laurel.leading': 'insert-chart-outlined',
+  'door.garage.open': 'bookmark-outline',
+  'mail': 'mail-outline'
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

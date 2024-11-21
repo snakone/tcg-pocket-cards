@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, TouchableOpacity, Modal, Text, ScrollView, Platform } from 'react-native';
+import { View, TouchableOpacity, Modal, ScrollView, Platform } from 'react-native';
 import { Audio } from 'expo-av';
 
 import { HeaderWithCustomModalProps } from '@/shared/definitions/interfaces/layout.interfaces';
 import { CLOSE_SENTENCE } from '@/shared/definitions/sentences/global.sentences';
 import { AUDIO_MENU_CLOSE, AUDIO_MENU_OPEN } from '@/shared/definitions/sentences/path.sentences';
 import { ButtonStyles, IconStyles, ModalStyles, WebStyles } from '@/shared/styles/component.styles';
-
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
 import { ThemedView } from '../ThemedView';

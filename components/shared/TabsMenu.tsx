@@ -7,7 +7,7 @@ import { useRef, useEffect, useState } from 'react';
 import { Audio } from 'expo-av';
 
 import { LayoutStyles, MenuStyles, TabsMenuStyles } from '@/shared/styles/component.styles';
-import { TabMenu } from '@/shared/definitions/interfaces/layout.interfaces';
+import { RouteItem, TabMenu } from '@/shared/definitions/interfaces/layout.interfaces';
 import { IconSymbolName } from '@/shared/definitions/utils/switches';
 import { CHANGE_VIEW } from '@/shared/definitions/sentences/path.sentences';
 import { ThemedText } from '../ThemedText';
@@ -85,12 +85,12 @@ export default function TabsMenu({
     loadSound();
   }, []);
 
-  const LIST = [
+  const LIST: any[] = [
     { label: 'Mazos', icon: 'wind', route: '' },
     { label: 'Favoritos', icon: 'star', route: '' },
   ];
 
-  const HELP = [
+  const HELP: any[] = [
     { label: 'Configuración', icon: 'washer.circle', route: 'settings' },
     { label: 'Ayuda', icon: 'questionmark.app.fill', route: 'help' },
   ];

@@ -12,3 +12,15 @@ export interface TabMenu {
   onClose: () => void;
   animatedStyle: any;
 }
+
+export interface RouteItem {
+  onClick: () => void;
+  children: React.ReactNode;
+}
+
+export interface IconItemWithModal {
+  modal: string;
+  label: string;
+  icon: string;
+  content?: React.ReactNode;
+}

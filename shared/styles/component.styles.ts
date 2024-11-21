@@ -411,3 +411,32 @@ export const ScreenStyles = StyleSheet.create({
     alignSelf: 'center'
   }
 });
+
+export const HelpItemStyles = StyleSheet.create({
+  item: {
+    backgroundColor: 'white',
+    paddingBlock: 6,
+    paddingInline: 12,
+    borderRadius: 50,
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+    justifyContent: 'flex-start',
+    display: 'flex',
+    flexDirection: 'row',
+    userSelect: 'none',
+    marginBottom: 14,
+    width: '100%',
+    alignItems: 'center'
+  },
+  icon: {
+    color: 'skyblue',
+    marginInlineEnd: 12,
+    fontSize: 28
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    width: '100%',
+    position: 'relative',
+    top: -14
+  }
+});
