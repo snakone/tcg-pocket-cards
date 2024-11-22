@@ -60,12 +60,7 @@ export default function HelpScreen() {
     }
   ];
 
-  const [modals, setModals] = useState(items.reduce((acc, item) => {
-    acc[item.modal] = false;
-    return acc;
-  }, {} as {[key: string]: boolean}));
-
-  const getModalVisible = (modalName: string) => modals[modalName];
+  const [currentModal, setCurrentModal] = useState<string | null>(null);
 
   const open = (modalName: string) => {
     if (modalName === 'exit') {
@@ -73,26 +68,12 @@ export default function HelpScreen() {
       return;
     }
 
-    setModals(prevState => ({
-      ...prevState,
-      [modalName]: true,
-    }));
+    setCurrentModal(modalName);
   };
 
-  const close = async (modalName: string) => {
+  const close = async () => {
     await playSound();
-
-    if (modalName) {
-      setModals(prevState => ({
-        ...prevState,
-        [modalName]: false,
-      }));
-    } else {
-      setModals(items.reduce((acc, item) => {
-        acc[item.modal] = false;
-        return acc;
-      }, {} as {[key: string]: boolean}));
-    }
+    setCurrentModal(null);
   };
 
   const playSound = async () => {
@@ -133,8 +114,8 @@ export default function HelpScreen() {
           <Modal
             animationType="slide"
             transparent={false}
-            visible={getModalVisible(item.modal)}
-            onRequestClose={() => close(item.modal)}
+            visible={currentModal === item.modal}
+            onRequestClose={() => close()}
             hardwareAccelerated={true}
             key={item.modal}
           >
@@ -150,7 +131,7 @@ export default function HelpScreen() {
                 </ScrollView>
                 <View style={ModalStyles.modalFooter}>
                   <TouchableOpacity style={ButtonStyles.button} 
-                                    onPress={() => close(item.modal)} 
+                                    onPress={() => close()} 
                                     accessibilityLabel={CLOSE_SENTENCE}>
                     <View style={ButtonStyles.insetBorder}>
                       <IconSymbol name="clear"></IconSymbol>

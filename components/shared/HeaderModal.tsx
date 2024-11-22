@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { View, TouchableOpacity, Modal, ScrollView, Platform } from 'react-native';
 import { Audio } from 'expo-av';
 
@@ -35,30 +35,37 @@ export default function HeaderWithCustomModal({
     }
 
     loadSounds();
+
+    return () => {
+      if (opened.current) opened.current.unloadAsync();
+      if (closed.current) closed.current.unloadAsync();
+    };
   }, []);
 
-  const playSound = async () => {
-    if (!modalVisible && opened.current) {
-        await opened.current.replayAsync();
-      } else if (modalVisible && closed.current) {
-        closed.current.replayAsync();
-    }
-  }
+  const playSound = useCallback(async () => {
+    const sound = modalVisible ? closed.current : opened.current;
+    if (sound) await sound.replayAsync();
+  }, [modalVisible]);
 
-  const toggleModal = async () => {
+  const toggleModal = useCallback(async () => {
     await playSound();
-    setModalVisible(!modalVisible);
-  };
+    setModalVisible((prev) => !prev);
+  }, [playSound]);
+
+  const RenderModalToggle = () => (
+    <TouchableOpacity 
+      style={IconStyles.iconContainer} 
+      onPress={toggleModal}
+    >
+      <IconSymbol name="questionmark.app.fill" style={IconStyles.icon} />
+    </TouchableOpacity>
+  );
 
   return (
     <ThemedView>
       <ThemedText type="headerTitle">{title}</ThemedText>
       {
-        modalVisible ? null : (
-          <TouchableOpacity style={IconStyles.iconContainer} onPress={toggleModal}>
-            <IconSymbol name="questionmark.app.fill" style={IconStyles.icon}/>
-          </TouchableOpacity>
-        )
+        modalVisible ? null : (<RenderModalToggle></RenderModalToggle>)
       }
 
       <Modal

@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Platform, Pressable } from 'react-native';
 import { Audio } from 'expo-av';
@@ -31,7 +31,7 @@ export default function TabLayout() {
     };
   });
 
-  async function handleModal(value: boolean): Promise<void> {
+  function handleModal(value: boolean): void {
     setIsModalVisible(value);
     playSound();
   }
@@ -48,12 +48,17 @@ export default function TabLayout() {
   useEffect(() => {
     if (Platform.OS === 'web') {
       menuRight.value = 0;
-      return; 
+      return;
     }
-    if (isModalVisible) {
-      menuRight.value = withTiming(0, { duration: 150 });
-    } else { menuRight.value = MENU_WIDTH; }
+    menuRight.value = isModalVisible ? withTiming(0, { duration: 150 }) : MENU_WIDTH;
   }, [isModalVisible]);
+
+  const memoizedMenu = useMemo(() => {
+    return <TabsMenu isVisible={isModalVisible} 
+                     animatedStyle={menuAnimatedStyle} 
+                     onClose={() => setIsModalVisible(false)} 
+            />;
+  }, [isModalVisible, menuAnimatedStyle]);
 
   return (
     <Provider>
@@ -133,14 +138,7 @@ export default function TabLayout() {
           }}
         />
       </Tabs>
-      <Portal>
-          {isModalVisible && (
-            <TabsMenu isVisible={isModalVisible} 
-                      animatedStyle={menuAnimatedStyle} 
-                      onClose={() => setIsModalVisible(false)}> 
-            </TabsMenu>
-          )}
-      </Portal>
+      <Portal>{isModalVisible && memoizedMenu}</Portal>
     </Provider>
   );
 }
