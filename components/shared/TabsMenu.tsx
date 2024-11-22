@@ -3,15 +3,16 @@ import { BlurView } from 'expo-blur';
 import Animated, { Easing, runOnJS, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import { Audio } from 'expo-av';
 
 import { LayoutStyles, MenuStyles, TabsMenuStyles } from '@/shared/styles/component.styles';
-import { RouteItem, TabMenu } from '@/shared/definitions/interfaces/layout.interfaces';
+import { TabMenu } from '@/shared/definitions/interfaces/layout.interfaces';
 import { IconSymbolName } from '@/shared/definitions/utils/switches';
 import { CHANGE_VIEW } from '@/shared/definitions/sentences/path.sentences';
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
+import { LIST, HELP } from '@/shared/definitions/utils/contants';
 
 export default function TabsMenu({
   isVisible,
@@ -36,11 +37,11 @@ export default function TabsMenu({
     });
   };
 
-  const playSound = async () => {
+  const playSound = useCallback(async () => {
     if (audio.current) {
       await audio.current.replayAsync();
     }
-  };
+  }, []);
 
   const handleRoute = async (route: string) => {
     await playSound();
@@ -84,17 +85,6 @@ export default function TabsMenu({
 
     loadSound();
   }, []);
-
-  const LIST: any[] = [
-    { label: 'Mazos', icon: 'wind', route: '' },
-    { label: 'Expansiones', icon: 'note', route: '' },
-    { label: 'Favoritos', icon: 'star', route: '' },
-  ];
-
-  const HELP: any[] = [
-    { label: 'Configuración', icon: 'washer.circle', route: 'settings' },
-    { label: 'Ayuda', icon: 'questionmark.app.fill', route: 'help' },
-  ];
 
   return (
     <>

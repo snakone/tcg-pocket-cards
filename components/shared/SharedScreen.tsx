@@ -1,5 +1,5 @@
 import { View, TouchableOpacity, Platform } from "react-native";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { Audio } from "expo-av";
 import { useNavigation, useRouter } from "expo-router";
 
@@ -19,22 +19,16 @@ export default function HelpScreen({title, children}: SharedScreenProps) {
   const router = useRouter();
   const audio = useRef<Audio.Sound>();
   const navigation = useNavigation();
+
+  const playSound = useCallback(async () => {
+    if (audio.current) { await audio.current.replayAsync(); }
+  }, []);
   
-  async function goBack(): Promise<void> {
+  const goBack = useCallback(async (): Promise<void> => {
     await playSound();
-    if (router.canGoBack()) {
-      router.back();
-    } else {
-      router.replace('/');
-    }
-  }
-
-  const playSound = async () => {
-    if (audio.current) {
-      audio.current.replayAsync();
-    }
-  }
-
+    router.canGoBack() ? router.back() : router.replace('/');
+  }, []);
+  
   useEffect(() => {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
@@ -70,6 +64,5 @@ export default function HelpScreen({title, children}: SharedScreenProps) {
         </TouchableOpacity>
       </View>
     </ThemedView>
-
   )
 }

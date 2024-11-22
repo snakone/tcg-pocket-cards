@@ -24,3 +24,9 @@ export interface IconItemWithModal {
   icon: string;
   content?: React.ReactNode;
 }
+
+export interface ItemWithRoute {
+  label: string;
+  icon: string;
+  route: string;
+}

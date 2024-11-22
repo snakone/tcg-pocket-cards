@@ -25,7 +25,6 @@ export interface Card extends BaseCard {
   attacks: Attack[],
   ability?: Ability;
   found: PACKS[];
-  image: string;
 }
 
 interface Attack {

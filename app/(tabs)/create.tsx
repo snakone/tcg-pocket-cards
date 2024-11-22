@@ -2,6 +2,8 @@ import { Collapsible } from '@/components/Collapsible';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { CreateScreenModal } from '@/components/modals/CreateScreenModal';
+import { useContext, useEffect } from 'react';
+import { AppContext } from '../_layout';
 
 export default function CreateDeckScreen() {
   return (
