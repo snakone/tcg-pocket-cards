@@ -1,49 +1,35 @@
 import { Tabs } from 'expo-router';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { runOnJS, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Platform, Pressable } from 'react-native';
 import { Audio } from 'expo-av';
 import { Portal, Provider } from 'react-native-paper';
 
 import { IconSymbol, SvgStackSymbol, SvgStylusSymbol } from '@/components/ui/IconSymbol';
 import { CHANGE_VIEW } from '@/shared/definitions/sentences/path.sentences';
-import { MENU_WIDTH, RIPPLE_CONFIG } from '@/shared/definitions/utils/contants';
+import { FILTER_CARDS_HEIGHT, MENU_WIDTH, RIPPLE_CONFIG } from '@/shared/definitions/utils/contants';
 import { CustomTabButtonStyles, TabButtonStyles } from '@/shared/styles/component.styles';
 import TabsMenu from '@/components/shared/TabsMenu';
+import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
+import { AppContext } from '../_layout';
+import FilterCardMenu from '@/components/shared/FilterCardMenu';
 
 export default function TabLayout() {
-
+  const context = useContext(AppContext);
+  if (!context) { throw new Error(NO_CONTEXT); }
+  const { state, dispatch } = context;
   const audio = useRef<Audio.Sound>();
   const menuRight = useSharedValue(MENU_WIDTH);
+  const filterBottom = useSharedValue(FILTER_CARDS_HEIGHT);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isFilterVisible, setIsFilterVisible] = useState(false);
 
-  const playSound = async () => {
-    if (audio.current) {
-      await audio.current.replayAsync();
-    }
-  };
-
+  // MENU
   const menuAnimatedStyle = useAnimatedStyle(() => {
     return {
-      transform: [
-        { translateX: menuRight.value },
-      ]
+      transform: [{ translateX: menuRight.value }]
     };
   });
-
-  function handleModal(value: boolean): void {
-    setIsModalVisible(value);
-    playSound();
-  }
-
-  useEffect(() => {
-    async function loadSound() {
-      const { sound } = await Audio.Sound.createAsync(CHANGE_VIEW);
-      audio.current = sound;
-    }
-
-    loadSound();
-  }, []);
 
   useEffect(() => {
     if (Platform.OS === 'web') {
@@ -56,9 +42,55 @@ export default function TabLayout() {
   const memoizedMenu = useMemo(() => {
     return <TabsMenu isVisible={isModalVisible} 
                      animatedStyle={menuAnimatedStyle} 
-                     onClose={() => setIsModalVisible(false)} 
-            />;
+                     onClose={() => setIsModalVisible(false)} />;
   }, [isModalVisible, menuAnimatedStyle]);
+
+  // FILTER CARDS
+  const filterAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateY: filterBottom.value }]
+    };
+  });
+
+  useEffect(() => {
+    filterBottom.value = isFilterVisible ? 
+                          withTiming(0, { duration: 150 }) : 
+                          FILTER_CARDS_HEIGHT;
+  }, [isFilterVisible]);
+
+  const memoizedFilter = useMemo(() => {
+    return <FilterCardMenu isVisible={isFilterVisible} 
+                           animatedStyle={filterAnimatedStyle} 
+                           onClose={runOnJS(() => {
+                              setIsFilterVisible(false);
+                              dispatch({type: 'OPEN', value: false});
+                            })
+                          }/>
+  }, [isFilterVisible, filterAnimatedStyle]);
+
+  useEffect(() => {
+    setIsFilterVisible(state.modalState.opened);
+  }, [state.modalState.opened])
+
+  function handleModal(value: boolean): void {
+    setIsModalVisible(value);
+    playSound();
+  }
+
+  const playSound = async () => {
+    if (audio.current) {
+      await audio.current.replayAsync();
+    }
+  };
+
+  useEffect(() => {
+    async function loadSound() {
+      const { sound } = await Audio.Sound.createAsync(CHANGE_VIEW);
+      audio.current = sound;
+    }
+
+    loadSound();
+  }, []);
 
   return (
     <Provider>
@@ -139,6 +171,7 @@ export default function TabLayout() {
         />
       </Tabs>
       <Portal>{isModalVisible && memoizedMenu}</Portal>
+      <Portal>{isFilterVisible && memoizedFilter}</Portal>
     </Provider>
   );
 }

@@ -288,6 +288,142 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       GENETIC_APEX.MEWTWO
     ],
+  },
+  {
+    id: 11,
+    number: 11,
+    pokedex: 43,
+    name: 'Oddish',
+    artist: 'HYOGONOSUKE',
+    attacks: [
+      {
+        name: 'Ram',
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS]
+      }
+    ],
+    evolve: 'Gloom',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'If exposed to moonlight, it starts to move. It roams far and wide at night to scatter its seeds.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.CHARIZARD
+    ],
+  },
+  {
+    id: 12,
+    number: 12,
+    pokedex: 44,
+    name: 'Gloom',
+    artist: 'Anesaki Dynamic',
+    attacks: [
+      {
+        name: 'Drool',
+        damage: 40,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Vileplume',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Its pistils exude an incredibly foul odor. The horrid stench can cause fainting at a distance of 1.25 miles.',
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.CHARIZARD
+    ],
+  },
+  {
+    id: 13,
+    number: 13,
+    pokedex: 45,
+    name: 'Viluplume',
+    artist: 'Kyoko Umemoto',
+    attacks: [
+      {
+        name: 'Soothing Scent',
+        damage: 80,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+        description: "Your opponent's Active Pokémon is now Asleep."
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'It has the world’s largest petals. With every step, the petals shake out heavy clouds of toxic pollen.',
+    health: 140,
+    rarity: CardRarityENUM.RARE,
+    retreat: 3,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.CHARIZARD
+    ],
+  },
+  {
+    id: 14,
+    number: 14,
+    pokedex: 46,
+    name: 'Paras',
+    artist: 'Naoyo Kimura',
+    attacks: [
+      {
+        name: 'Scratch',
+        damage: 30,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: 'Parasect',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'The mushrooms, known as tochukaso, are controlling the bug. Even if the bug bugs the mushrooms, they tell it to bug off.',
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.PIKACHU
+    ],
+  },
+  {
+    id: 14,
+    number: 14,
+    pokedex: 46,
+    name: 'Parasect',
+    artist: 'Eri Yamaki',
+    attacks: [
+      {
+        name: 'Slash',
+        damage: 80,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'The bug is mostly dead, with the mushroom on its back having become the main body. If the mushroom comes off, the bug stops moving.',
+    health: 120,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.PIKACHU
+    ],
   }
 ];
 

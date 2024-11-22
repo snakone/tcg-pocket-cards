@@ -19,7 +19,10 @@ export const ICONS_MAPPING = {
   'laurel.leading': 'insert-chart-outlined',
   'door.garage.open': 'bookmark-outline',
   'mail': 'mail-outline',
-  'note': 'bookmark-outline'
+  'note': 'bookmark-outline',
+  'arrow.backward.circle': 'arrow-back-ios',
+  'arrow.forward.circle': 'arrow-forward-ios',
+  'suit.heart': 'content-paste-search'
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

@@ -5,6 +5,7 @@ export const MENU_WIDTH = 250;
 export const PAGE_TITLE = "TCG Pocket Cards";
 export const LOCAL_HOST = 'http://192.168.1.71:3000';
 export const DEFAULT_LANG = 'es';
+export const FILTER_CARDS_HEIGHT = 350;
 
 export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
   color: 'rgba(0, 0, 0, .32)', 
@@ -21,7 +22,14 @@ export const CARD_IMAGE_MAP: any = {
   'Caterpie': require("@/assets/cards/en/Genetic Apex/cPK_10_000050_00_CATERPIE_C.png"),
   'Metapod': require("@/assets/cards/en/Genetic Apex/cPK_10_000060_00_TRANSEL_C.png"),
   'Butterfree': require("@/assets/cards/en/Genetic Apex/cPK_10_000070_00_BUTTERFREE_R.png"),
-  'Weedle': require("@/assets/cards/en/Genetic Apex/cPK_10_000080_00_BEEDLE_C.png")
+  'Weedle': require("@/assets/cards/en/Genetic Apex/cPK_10_000080_00_BEEDLE_C.png"),
+  'Kakuna': require("@/assets/cards/en/Genetic Apex/cPK_10_000090_00_COCOON_C.png"),
+  'Beedrill': require("@/assets/cards/en/Genetic Apex/cPK_10_000100_00_SPEAR_R.png"),
+  'Oddish': require("@/assets/cards/en/Genetic Apex/cPK_10_000110_00_NAZONOKUSA_C.png"),
+  'Gloom': require("@/assets/cards/en/Genetic Apex/cPK_10_000120_00_KUSAIHANA_U.png"),
+  'Vileplume': require("@/assets/cards/en/Genetic Apex/cPK_10_000130_00_RUFFRESIA_R.png"),
+  'Paras': require("@/assets/cards/en/Genetic Apex/cPK_10_000140_00_PARAS_C.png"),
+  'Parasect': require("@/assets/cards/en/Genetic Apex/cPK_10_000150_00_PARASECT_U.png"),
 };
 
 export const LIST: ItemWithRoute[] = [

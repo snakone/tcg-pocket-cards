@@ -22,7 +22,12 @@ export const TRANSLATIONS = {
     butterfree: 'Butterfree',
     weedle: 'Weedle',
     kakuna: 'Kakuna',
-    beedrill: 'Beedrill'
+    beedrill: 'Beedrill',
+    oddish: 'Oddish',
+    gloom: 'Gloom',
+    vileplume: 'Vileplume',
+    paras: 'Paras',
+    parasect: 'Parasect'
   },
   ja: {
     config: '構成',
@@ -47,7 +52,12 @@ export const TRANSLATIONS = {
     butterfree: 'バタフリー',
     weedle: 'ビードル',
     kakuna: 'コクーン',
-    beedrill: 'スピアー'
+    beedrill: 'スピアー',
+    oddish: 'ナゾノクサ',
+    gloom: 'クサイハナ',
+    vileplume: 'ラフレシア',
+    paras: 'パラス',
+    parasect: 'パラセクト'
   },
   es: {
     config: 'Configuración',
@@ -72,6 +82,11 @@ export const TRANSLATIONS = {
     butterfree: 'Butterfree',
     weedle: 'Weedle',
     kakuna: 'Kakuna',
-    beedrill: 'Beedrill'
+    beedrill: 'Beedrill',
+    oddish: 'Oddish',
+    gloom: 'Gloom',
+    vileplume: 'Vileplume',
+    paras: 'Paras',
+    parasect: 'Parasect'
   }
 }

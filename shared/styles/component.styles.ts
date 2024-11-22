@@ -3,7 +3,7 @@ import { MENU_WIDTH } from '../definitions/utils/contants';
 import { Colors } from '../definitions/utils/colors';
 
 const HEADER_HEIGHT = 100;
-const CARD_IMAGE_WIDTH = 103.2;
+export const CARD_IMAGE_WIDTH = 103.2;
 
 export const ThemeTextStyles = StyleSheet.create({
   default: {
@@ -58,7 +58,6 @@ export const ParallaxStyles = StyleSheet.create({
     padding: 28,
     paddingBottom: 8,
     gap: 16,
-    overflow: 'hidden',
   },
 });
 
@@ -166,7 +165,7 @@ export const ModalStyles = StyleSheet.create({
     color: Colors.light.bold
   },
   modalScrollView: {
-    maxHeight: '70%',
+    maxHeight: '85%',
     padding: 16,
     backgroundColor: 'white',
     zIndex: 0
@@ -439,4 +438,28 @@ export const HelpItemStyles = StyleSheet.create({
     position: 'relative',
     top: -14
   }
+});
+
+export const LoadingStyles = StyleSheet.create({
+  size: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 10,
+    backgroundColor: 'transparent'
+  },
+  box: {
+    width: 60,
+    height: 60,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    boxShadow: '0px 6px 12px rgba(0, 0, 0, 0.3)',
+    elevation: 10,
+    position: 'absolute'
+  },
 });

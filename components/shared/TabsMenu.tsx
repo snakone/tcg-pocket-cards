@@ -135,7 +135,6 @@ export default function TabsMenu({
               </TouchableOpacity>
             </View>}>
           </FlatList>
-          <View style={[TabsMenuStyles.separator, {height: 1.1}]}></View>
         </View>
       </Animated.View>
     </>

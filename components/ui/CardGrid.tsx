@@ -16,6 +16,7 @@ import {
   SEARCH_CARD_PLACEHOLDER, 
   SEARCH_LABEL 
 } from '@/shared/definitions/sentences/global.sentences';
+import SkeletonCardGrid from '../skeletons/SkeletonCardGrid';
 
 let numColumns = 3;
 
@@ -88,7 +89,9 @@ export default function ImageGridWithSearch({ cards }: { cards: Card[] }) {
         numColumns={numColumns}
         contentContainerStyle={CardGridStyles.gridContainer}
         showsVerticalScrollIndicator={false}
-        ListEmptyComponent={<ThemedText>{NO_MATCH_SENTENCE}</ThemedText>}
+        ListEmptyComponent={
+          <SkeletonCardGrid columns={numColumns}></SkeletonCardGrid>
+        }
       />
     </SafeAreaView>
   );
