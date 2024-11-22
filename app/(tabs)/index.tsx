@@ -8,8 +8,8 @@ export default function HomeScreen() {
   const styles = HomeScreenStyles;
 
   return (
-    <ParallaxScrollView title={"TCG Pocket Cards"} 
-                        modalTitle='Cartas' 
+    <ParallaxScrollView title={"tcg"} 
+                        modalTitle='welcome' 
                         modalContent={HomeScreenModal()}>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Explore</ThemedText>

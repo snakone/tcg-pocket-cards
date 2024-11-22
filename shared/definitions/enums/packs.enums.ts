@@ -1,5 +1,9 @@
 export enum GENETIC_APEX {
-  PIKACHU, MEWTWO, CHARIZARD
+  PIKACHU, MEWTWO, CHARIZARD,
+}
+
+export enum EVENTS {
+  WONDER_PICK
 }
 
 export type PACKS = 

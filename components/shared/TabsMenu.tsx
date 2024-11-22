@@ -13,6 +13,7 @@ import { CHANGE_VIEW } from '@/shared/definitions/sentences/path.sentences';
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
 import { LIST, HELP } from '@/shared/definitions/utils/contants';
+import { useI18n } from './LanguageProvider';
 
 export default function TabsMenu({
   isVisible,
@@ -25,6 +26,7 @@ export default function TabsMenu({
   const [progress, setProgress] = useState(false);
   const fillProgress = useSharedValue(0.26);
   const audio = useRef<Audio.Sound>();
+  const {i18n} = useI18n();
 
   const startAnimation = () => {
     fillProgress.value = withTiming(1, {
@@ -117,7 +119,7 @@ export default function TabsMenu({
               <IconSymbol name={item.icon as IconSymbolName} 
                           style={TabsMenuStyles.listIcon}/>
               <TouchableOpacity style={{width: '100%'}} onPress={() => handleRoute(item.route)}>
-                <ThemedText style={TabsMenuStyles.listLabel}>{item.label}</ThemedText>
+                <ThemedText style={TabsMenuStyles.listLabel}>{i18n.t(item.label)}</ThemedText>
               </TouchableOpacity>
             </View>}>
           </FlatList>
@@ -129,7 +131,7 @@ export default function TabsMenu({
               <IconSymbol name={item.icon as IconSymbolName} 
                           style={TabsMenuStyles.iconSmall}/>
               <TouchableOpacity style={{width: '100%'}} onPress={() => handleRoute(item.route)}>
-                <ThemedText style={TabsMenuStyles.labelSmall}>{item.label}</ThemedText>
+                <ThemedText style={TabsMenuStyles.labelSmall}>{i18n.t(item.label)}</ThemedText>
               </TouchableOpacity>
             </View>}>
           </FlatList>

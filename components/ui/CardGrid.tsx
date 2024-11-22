@@ -9,6 +9,7 @@ import { CardGridStyles } from '@/shared/styles/component.styles';
 import { PICK_CARD_SOUND } from '@/shared/definitions/sentences/path.sentences';
 import { ThemedText } from '../ThemedText';
 import { CARD_IMAGE_MAP } from '@/shared/definitions/utils/contants';
+import { useI18n } from '../shared/LanguageProvider';
 
 import { 
   NO_MATCH_SENTENCE, 
@@ -24,6 +25,7 @@ export default function ImageGridWithSearch({ cards }: { cards: Card[] }) {
   const audio = useRef<Audio.Sound | null>(null);
   const flatListRef = useRef<FlatList<Card> | null>(null);
   const router = useRouter();
+  const {i18n} = useI18n();
 
   useEffect(() => {
     async function loadSounds() {
@@ -52,7 +54,7 @@ export default function ImageGridWithSearch({ cards }: { cards: Card[] }) {
       <Pressable onPress={() => goToDetailScreen(item.name)} style={{ zIndex: 1 }}>
         <Image style={CardGridStyles.image} source={CARD_IMAGE_MAP[item.name]} contentFit="fill" />
       </Pressable>
-      <ThemedText style={CardGridStyles.imageTitle} numberOfLines={1}>{item.name}</ThemedText>
+      <ThemedText style={CardGridStyles.imageTitle} numberOfLines={1}>{i18n.t(item.name.toLowerCase())}</ThemedText>
     </View>
   ), []);
 

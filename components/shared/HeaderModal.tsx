@@ -9,6 +9,7 @@ import { ButtonStyles, IconStyles, ModalStyles, WebStyles } from '@/shared/style
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
 import { ThemedView } from '../ThemedView';
+import { useI18n } from './LanguageProvider';
 
 export default function HeaderWithCustomModal({ 
   title, 
@@ -20,6 +21,7 @@ export default function HeaderWithCustomModal({
   const styles = ModalStyles;
   const opened = useRef<Audio.Sound>();
   const closed = useRef<Audio.Sound>();
+  const {i18n} = useI18n();
 
   useEffect(() => {
     async function loadSounds() {
@@ -63,7 +65,7 @@ export default function HeaderWithCustomModal({
 
   return (
     <ThemedView>
-      <ThemedText type="headerTitle">{title}</ThemedText>
+      <ThemedText type="headerTitle">{i18n.t(title)}</ThemedText>
       {
         modalVisible ? null : (<RenderModalToggle></RenderModalToggle>)
       }
@@ -78,7 +80,7 @@ export default function HeaderWithCustomModal({
         <View style={[styles.centeredView, Platform.OS === 'web' ? WebStyles.view : null]}>
           <View style={styles.modalView}>
             <View style={styles.modalHeader}>
-              <ThemedText style={styles.modalHeaderTitle}>{modalTitle}</ThemedText>
+              <ThemedText style={styles.modalHeaderTitle}>{i18n.t(modalTitle)}</ThemedText>
             </View>
             <ScrollView style={styles.modalScrollView}>{modalContent}</ScrollView>
             <View style={styles.modalFooter}>

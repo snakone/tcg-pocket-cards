@@ -7,8 +7,8 @@ import { AppContext } from '../_layout';
 
 export default function CreateDeckScreen() {
   return (
-    <ParallaxScrollView title={"Creación de mazos"} 
-                        modalTitle='Crear mazos' 
+    <ParallaxScrollView title={"deck_creation"} 
+                        modalTitle='create_deck' 
                         modalContent={CreateScreenModal()}>
       <ThemedText>This app includes example code to help you get started.</ThemedText>
       <Collapsible title="Android, iOS, and web support">

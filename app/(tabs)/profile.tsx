@@ -5,8 +5,8 @@ import { ProfileScreenModal } from '@/components/modals/ProfileScreenModal';
 
 export default function ProfileScreen() {
   return (
-    <ParallaxScrollView title={"Perfil de entrenador"} 
-                        modalTitle='Perfil'
+    <ParallaxScrollView title={"trainer_profile"} 
+                        modalTitle='profile'
                         modalContent={ProfileScreenModal()}>
       <ThemedView>
         <ThemedText>Profile</ThemedText>

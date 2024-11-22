@@ -9,7 +9,7 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "androidNavigationBar": {
-      "visible": "immersive"
+      "visible": "sticky-immersive"
     },
     "ios": {
       "supportsTablet": true
@@ -42,7 +42,8 @@
         {
           "initialOrientation": "portrait"
         }
-      ]
+      ],
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": true

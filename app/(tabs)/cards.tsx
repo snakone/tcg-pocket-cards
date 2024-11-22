@@ -46,8 +46,8 @@ export default function CardsScreen() {
   }
 
   return (
-    <ParallaxScrollView title={"Colección de cartas"} 
-                        modalTitle='Cartas'
+    <ParallaxScrollView title={"card_collection"} 
+                        modalTitle='cards'
                         modalContent={CardsScreenModal()}>
       <ImageGridWithSearch cards={state.cardState.cards}/>
     </ParallaxScrollView>

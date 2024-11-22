@@ -1,4 +1,4 @@
-export enum CardTypeENUM {
+export enum CardStageENUM {
   BASIC, SUPPORTER, ITEM, ONE, TWO
 }
 
@@ -8,5 +8,9 @@ export enum CardRarityENUM {
 
 export enum CardExpansionENUM {
   GENETIC_APEX, PROMO_A
+}
+
+export enum CardExpansionTypeENUM {
+  A
 }
 

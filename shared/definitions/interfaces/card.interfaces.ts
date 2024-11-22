@@ -1,21 +1,22 @@
 import { PACKS } from "../enums/packs.enums";
-import { CardExpansionENUM, CardRarityENUM, CardTypeENUM } from "../enums/card.enums";
+import { CardExpansionENUM, CardExpansionTypeENUM, CardRarityENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 
 interface BaseCard {
+  id: number,
   name: string;
   rarity: CardRarityENUM,
   expansion: CardExpansionENUM,
-  type: CardTypeENUM,
+  stage: CardStageENUM,
   artist: string;
   number: number;
 }
 
 export interface UsableCard extends BaseCard {
-  description: string;
+  description?: string;
 }
 
-export interface Card extends BaseCard {
+export interface Card extends UsableCard {
   health: number;
   retreat: number;
   element: PokemonTypeENUM;
@@ -25,6 +26,9 @@ export interface Card extends BaseCard {
   attacks: Attack[],
   ability?: Ability;
   found: PACKS[];
+  pokedex?: number;
+  series?: CardExpansionTypeENUM;
+  related?: number[];
 }
 
 interface Attack {

@@ -4,6 +4,7 @@ import { ItemWithRoute } from "../interfaces/layout.interfaces";
 export const MENU_WIDTH = 250;
 export const PAGE_TITLE = "TCG Pocket Cards";
 export const LOCAL_HOST = 'http://192.168.1.71:3000';
+export const DEFAULT_LANG = 'es';
 
 export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
   color: 'rgba(0, 0, 0, .32)', 
@@ -24,12 +25,12 @@ export const CARD_IMAGE_MAP: any = {
 };
 
 export const LIST: ItemWithRoute[] = [
-  { label: 'Mazos', icon: 'wind', route: '' },
-  { label: 'Expansiones', icon: 'note', route: '' },
-  { label: 'Favoritos', icon: 'star', route: '' },
+  { label: 'decks', icon: 'wind', route: '' },
+  { label: 'expansions', icon: 'note', route: '' },
+  { label: 'favorites', icon: 'star', route: '' },
 ];
 
 export const HELP: ItemWithRoute[] = [
-  { label: 'Configuración', icon: 'washer.circle', route: 'settings' },
-  { label: 'Ayuda', icon: 'questionmark.app.fill', route: 'help' },
+  { label: 'config', icon: 'washer.circle', route: 'settings' },
+  { label: 'help', icon: 'questionmark.app.fill', route: 'help' },
 ];

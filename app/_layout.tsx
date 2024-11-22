@@ -6,12 +6,14 @@ import { StatusBar } from 'expo-status-bar';
 import { createContext, useEffect, useMemo, useReducer } from 'react';
 import 'react-native-reanimated';
 import { Platform } from 'react-native';
+import * as NavigationBar from "expo-navigation-bar";
 
 import { rootReducer, initialRootState, AppState } from '@/hooks/root.reducer';
 import BackgroundMusic from '@/components/shared/BackgroundMusic';
 import { FONT_REGULAR } from '@/shared/definitions/sentences/path.sentences';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { WebStyles } from '@/shared/styles/component.styles';
+import { I18nProvider } from '@/components/shared/LanguageProvider';
 
 export const AppContext = createContext<{ state: AppState; dispatch: React.Dispatch<any> } | undefined>(undefined);
 
@@ -23,7 +25,8 @@ export default function RootLayout() {
   const contextValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
 
   useEffect(() => {
-    if (loaded) { SplashScreen.hideAsync() }
+    if (loaded) SplashScreen.hideAsync();
+    if (Platform.OS !== 'web') NavigationBar.setVisibilityAsync("hidden");
   }, [loaded]);
 
   if (!loaded) { return null; }
@@ -31,14 +34,16 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={Platform.OS === 'web' ? WebStyles.view : { flex: 1 }}>
       <AppContext.Provider value={contextValue}>
-        <ThemeProvider value={DefaultTheme}>
-          <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="+not-found" />
-          </Stack>
-          <StatusBar hidden={true} />
-          <BackgroundMusic/>
-        </ThemeProvider>       
+        <I18nProvider>
+          <ThemeProvider value={DefaultTheme}>
+            <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="+not-found" />
+            </Stack>
+            <StatusBar hidden={true} />
+            <BackgroundMusic/>
+          </ThemeProvider>         
+        </I18nProvider>
       </AppContext.Provider>
     </GestureHandlerRootView>
   );
