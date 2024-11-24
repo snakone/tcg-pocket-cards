@@ -4,7 +4,6 @@ import HeaderWithCustomModal from './shared/HeaderModal';
 import { ThemedView } from './ThemedView';
 import { ParallaxProps } from '@/shared/definitions/types/global.types';
 import { ParallaxStyles } from '@/shared/styles/component.styles';
-import { CLOSE_SENTENCE } from '@/shared/definitions/sentences/global.sentences';
 
 export default function ParallaxScrollView({
   children,
@@ -17,11 +16,10 @@ export default function ParallaxScrollView({
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={{flex: 1}}>
-        <View style={[styles.header, { backgroundColor: "#fff" }]}>
+        <View style={styles.header}>
           <HeaderWithCustomModal title={title} 
                                  modalContent={modalContent} 
-                                 modalTitle={modalTitle} 
-                                 closeText={CLOSE_SENTENCE}/>
+                                 modalTitle={modalTitle}/>
         </View>
         <ThemedView style={styles.content}>{children}</ThemedView>
       </SafeAreaView>

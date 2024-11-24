@@ -1,5 +1,5 @@
-import { from, Observable, of, throwError} from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { from, Observable, throwError} from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
 
 export default class HttpService {
   private readonly auth = 'tcg-token';
@@ -13,7 +13,6 @@ export default class HttpService {
       .pipe(
         switchMap((response: Response) => response.json() as Promise<T>),
         catchError((err: Error) => {
-          console.error(err);
           return throwError(() => err);
         })
       );

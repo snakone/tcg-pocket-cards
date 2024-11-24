@@ -1,18 +1,18 @@
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { Subscription } from 'rxjs';
+import { debounceTime, Subscription } from 'rxjs';
 import { TouchableOpacity, StyleSheet } from 'react-native';
+import { Audio } from 'expo-av';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import { AppContext } from '../_layout';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
 import ImageGridWithSearch from '@/components/ui/CardGrid';
-import { CardsScreenModal } from '@/components/modals/CardsScreenModal';
 import CardsService from '@/core/services/cards.service';
 import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
 import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { AUDIO_MENU_OPEN } from '@/shared/definitions/sentences/path.sentences';
-import { Audio } from 'expo-av';
+import { useError } from '@/core/providers/error.provider';
 
 export default function CardsScreen() {
   const context = useContext(AppContext);
@@ -21,10 +21,11 @@ export default function CardsScreen() {
   const cardsService = useMemo(() => new CardsService(), []);
   const [loading, setLoading] = useState(true);
   const opened = useRef<Audio.Sound>();
+  const { show: showError } = useError();
 
-  async function handleFilterMenu(): Promise<void> {
+  async function handleActionMenu(action: string): Promise<void> {
     await playSound();
-    dispatch({type: 'OPEN', value: true});
+    dispatch({type: action, value: true});
   }
 
   useEffect(() => {
@@ -48,18 +49,23 @@ export default function CardsScreen() {
   const loadCards = useCallback(() => {
     const sub = cardsService
       .getCards()
+      .pipe(debounceTime(300))
       .subscribe({
         next: (res) => {
           setTimeout(() => {
             dispatch({ type: 'SET_CARDS', cards: res });
             setLoading(false);
-          }, 5000);
+          }, 3000);
         },
-        error: () => setLoading(false)
+        error: (err) => {
+          console.log(err);
+          showError("error_get_cards");
+          setLoading(false);
+        }
       });
 
       return sub;
-  }, [cardsService, dispatch]);
+  }, [dispatch]);
   
   useEffect(() => {
     let sub: Subscription;
@@ -70,23 +76,29 @@ export default function CardsScreen() {
         sub.unsubscribe();
       }
     };
-  }, [loading]);
+  }, [state.cardState.loaded]);
 
   return (
-    <ParallaxScrollView title={"card_collection"} 
-                        modalTitle='cards'
-                        modalContent={CardsScreenModal()}>
+    <>
       { loading ? <LoadingOverlay></LoadingOverlay> : null }
-      <ImageGridWithSearch cards={state.cardState.cards} key={loading ? 'loading' : 'loaded'}/>
+      <ImageGridWithSearch state={state.cardState} 
+                           key={loading ? 'loading' : 'loaded'}/>
       { loading ? null : (
-        <TouchableOpacity onPress={() => handleFilterMenu()} style={styles.container}>
-          <ThemedView >
-            <IconSymbol name="suit.heart" color={'skyblue'} style={{fontSize: 30}}></IconSymbol>
-          </ThemedView>
-        </TouchableOpacity>
+        <>
+          <TouchableOpacity onPress={() => handleActionMenu('OPEN_SORT')} style={styles.container}>
+            <ThemedView>
+              <IconSymbol name="suit.heart" color={'skyblue'} style={{fontSize: 32}}></IconSymbol>
+              <MaterialIcons name="arrow-upward" style={styles.sortIcon}></MaterialIcons>
+            </ThemedView>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => (handleActionMenu('OPEN_FILTER'))} style={[styles.container, {bottom: 88}]}>
+            <ThemedView>
+              <IconSymbol name="cat.circle" color={'mediumaquamarine'} style={{fontSize: 32}}></IconSymbol>
+            </ThemedView>
+          </TouchableOpacity>       
+        </>
       )}
-
-    </ParallaxScrollView>
+    </>
   );
 }
 
@@ -102,7 +114,17 @@ const styles = StyleSheet.create({
     padding: 4,
     alignItems: 'center',
     justifyContent: 'center',
-    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)'
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)',
+    opacity: 0.8
+  },
+  sortIcon: {
+    position: 'absolute',
+    fontSize: 16,
+    backgroundColor: 'rgba(170, 170, 170, .8)',
+    borderRadius: 20,
+    color: 'white',
+    right: -16,
+    top: 8.5
   }
 });
 

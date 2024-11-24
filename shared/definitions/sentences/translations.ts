@@ -1,6 +1,6 @@
 export const TRANSLATIONS = {
   en: {
-    config: 'Configuration',
+    config: 'Settings',
     help: 'Help',
     decks: 'Decks',
     expansions: 'Expansions',
@@ -12,7 +12,10 @@ export const TRANSLATIONS = {
     create_deck: 'Create a Deck',
     welcome: 'Welcome',
     profile: 'Profile',
-    //
+    error: 'Error',
+    // ERRORS
+    error_get_cards: '',
+    // POKEMON
     bulbasaur: 'Bulbasaur',
     ivysaur: 'Ivysaur',
     venusaur: 'Venusaur',
@@ -30,7 +33,7 @@ export const TRANSLATIONS = {
     parasect: 'Parasect'
   },
   ja: {
-    config: '構成',
+    config: '設定',
     help: 'ヘルプ',
     decks: 'カードのデッキ',
     expansions: 'カード拡張',
@@ -42,7 +45,10 @@ export const TRANSLATIONS = {
     create_deck: 'デッキを作成',
     welcome: 'ようこそ',
     profile: 'プロフィール',
-    //
+    error: 'エラー',
+    // ERRORS
+    error_get_cards: '',
+    // POKEMON
     bulbasaur: 'フシギダネ',
     ivysaur: 'フシギソウ',
     venusaur: 'フシギバナ',
@@ -60,7 +66,7 @@ export const TRANSLATIONS = {
     parasect: 'パラセクト'
   },
   es: {
-    config: 'Configuración',
+    config: 'Ajustes',
     help: 'Ayuda',
     decks: 'Mazos',
     expansions: 'Expansiones',
@@ -72,7 +78,10 @@ export const TRANSLATIONS = {
     create_deck: 'Crear mazos',
     welcome: 'Bienvenido/a',
     profile: 'Perfil',
-    //
+    error: 'Error',
+    // ERRORS
+    error_get_cards: 'Ha habido un error al obtener los datos. Si el error persiste, vuelve a abrir la aplicación o ponte en contacto con nosotros.',
+    // POKEMON
     bulbasaur: 'Bulbasaur',
     ivysaur: 'Ivysaur',
     venusaur: 'Venusaur',

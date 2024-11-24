@@ -25,7 +25,7 @@ export const SvgStackSymbol = (props: SvgProps) => (
     fill={props.color}
     width={24}
     height={24}
-    viewBox="0 -960 960 960"
+    viewBox="0 -930 920 920"
     style={props.style}
     {...props}
   >

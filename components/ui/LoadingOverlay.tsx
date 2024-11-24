@@ -24,19 +24,12 @@ const LoadingOverlay = () => {
 
   const points = Array.from({ length: dots });
 
-  const styles = StyleSheet.create({
-    size: {
-      width: Platform.OS === 'web' ? '100%' : width,
-      height: Platform.OS === 'web' ? '100%' : height - 75,
-    },
-  });
-
   return (
-    <SafeAreaView style={[LoadingStyles.size, styles.size]}>
+    <SafeAreaView style={[LoadingStyles.size]}>
       <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
-              style={StyleSheet.absoluteFill} 
-              tint="light" 
-              experimentalBlurMethod='dimezisBlurView'/>
+                style={StyleSheet.absoluteFill} 
+                tint="light" 
+                experimentalBlurMethod='dimezisBlurView'/>
       <View style={LoadingStyles.box}>
         <Animated.View style={[animatedStyle]}>
           <Svg height="50" width="50" viewBox="0 0 100 100">

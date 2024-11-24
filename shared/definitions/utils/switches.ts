@@ -11,7 +11,7 @@ export const ICONS_MAPPING = {
   'star': 'star-outline',
   'washer.circle': 'settings',
   'clear': 'close',
-  'wind': 'dataset',
+  'wind': 'insert-chart-outlined',
   'chevron.right.circle': 'chevron-right',
   'terminal': 'info-outline',
   'candybarphone': 'lock-outline',
@@ -22,7 +22,8 @@ export const ICONS_MAPPING = {
   'note': 'bookmark-outline',
   'arrow.backward.circle': 'arrow-back-ios',
   'arrow.forward.circle': 'arrow-forward-ios',
-  'suit.heart': 'content-paste-search'
+  'suit.heart': 'content-paste-search',
+  'cat.circle': 'my-location'
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

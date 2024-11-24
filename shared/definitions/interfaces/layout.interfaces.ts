@@ -4,7 +4,8 @@ export interface HeaderWithCustomModalProps {
   title: string;
   modalTitle: string;
   modalContent: ReactNode;
-  closeText: string;
+  animatedStyle?: any,
+  animatedIconStyle?: any
 }
 
 export interface TabMenu {

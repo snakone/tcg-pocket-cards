@@ -12,7 +12,7 @@ import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences"
 import { IconSymbol } from "../ui/IconSymbol";
 import { AUDIO_MENU_CLOSE } from "@/shared/definitions/sentences/path.sentences";
 
-export default function FilterCardMenu({
+export default function SortCardMenu({
   isVisible,
   onClose,
   animatedStyle,
@@ -51,7 +51,7 @@ export default function FilterCardMenu({
       </Pressable>
       <Animated.View style={[animatedStyle, filterStyles.container]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
-          <ThemedText style={ModalStyles.modalHeaderTitle}>Filtrar</ThemedText>
+          <ThemedText style={ModalStyles.modalHeaderTitle}>Ordenar</ThemedText>
         </View>
         <ScrollView style={styles.modalScrollView}>
           <ThemedView></ThemedView>

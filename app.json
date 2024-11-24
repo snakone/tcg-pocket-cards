@@ -19,7 +19,8 @@
         "foregroundImage": "./assets/images/favicon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.pokemonlover.tcgpocketcards"
+      "package": "com.pokemonlover.tcgpocketcards",
+      "softwareKeyboardLayoutMode": "pan"
     },
     "web": {
       "bundler": "metro",

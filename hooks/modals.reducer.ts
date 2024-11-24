@@ -1,19 +1,27 @@
 export const modalInitialState: ModalsState = { 
-  opened: false
+  sort_opened: false,
+  filter_opened: false
 };
 
-export const modalsReducer = (state: ModalsState, action: ModalAction) => {
+export const modalsReducer = (state: ModalsState, action: ModalAction): ModalsState => {
   switch (action.type) {
-    case 'OPEN':
-      return { ...state,  opened: action.value };
+    case 'OPEN_SORT':
+      return { ...state,  sort_opened: action.value };
+    case 'OPEN_FILTER':
+        return { ...state,  filter_opened: action.value };
+    case 'CLOSE_MODALS':
+        return { ...state,  sort_opened: false, filter_opened: false};
     default:
       return state;
   }
 };
 
 export interface ModalsState {
-  opened: boolean;
+  sort_opened: boolean;
+  filter_opened: boolean;
 }
 
 export type ModalAction =
-  | { type: 'OPEN', value: boolean }
+  | { type: 'OPEN_SORT', value: boolean }
+  | { type: 'OPEN_FILTER', value: boolean }
+  | { type: 'CLOSE_MODALS' }

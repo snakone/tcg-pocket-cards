@@ -13,3 +13,5 @@ export type ParallaxProps = PropsWithChildren<{
   modalContent: ReactNode,
   modalTitle: string
 }>;
+
+export type ErrorType = 'error' | 'info' | 'warning';

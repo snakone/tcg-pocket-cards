@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { runOnJS, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Platform, Pressable } from 'react-native';
 import { Audio } from 'expo-av';
 import { Portal, Provider } from 'react-native-paper';
@@ -12,6 +12,7 @@ import { CustomTabButtonStyles, TabButtonStyles } from '@/shared/styles/componen
 import TabsMenu from '@/components/shared/TabsMenu';
 import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
 import { AppContext } from '../_layout';
+import SortCardMenu from '@/components/shared/SortCardMenu';
 import FilterCardMenu from '@/components/shared/FilterCardMenu';
 
 export default function TabLayout() {
@@ -20,8 +21,9 @@ export default function TabLayout() {
   const { state, dispatch } = context;
   const audio = useRef<Audio.Sound>();
   const menuRight = useSharedValue(MENU_WIDTH);
-  const filterBottom = useSharedValue(FILTER_CARDS_HEIGHT);
+  const distanceFromBottom = useSharedValue(FILTER_CARDS_HEIGHT);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isSortVisible, setIsSortVisible] = useState(false);
   const [isFilterVisible, setIsFilterVisible] = useState(false);
 
   // MENU
@@ -45,32 +47,38 @@ export default function TabLayout() {
                      onClose={() => setIsModalVisible(false)} />;
   }, [isModalVisible, menuAnimatedStyle]);
 
-  // FILTER CARDS
-  const filterAnimatedStyle = useAnimatedStyle(() => {
+  // SORT CARDS
+  const modalAnimatedStyle = useAnimatedStyle(() => {
     return {
-      transform: [{ translateY: filterBottom.value }]
+      transform: [{ translateY: distanceFromBottom.value }]
     };
   });
 
   useEffect(() => {
-    filterBottom.value = isFilterVisible ? 
+    distanceFromBottom.value = isSortVisible || isFilterVisible ? 
                           withTiming(0, { duration: 150 }) : 
                           FILTER_CARDS_HEIGHT;
-  }, [isFilterVisible]);
+  }, [isSortVisible, isFilterVisible]);
+
+  const memoizedSort = useMemo(() => {
+    return <SortCardMenu isVisible={isSortVisible} 
+                         animatedStyle={modalAnimatedStyle} 
+                         onClose={onClose}/>
+  }, [isSortVisible, modalAnimatedStyle]);
 
   const memoizedFilter = useMemo(() => {
     return <FilterCardMenu isVisible={isFilterVisible} 
-                           animatedStyle={filterAnimatedStyle} 
-                           onClose={runOnJS(() => {
-                              setIsFilterVisible(false);
-                              dispatch({type: 'OPEN', value: false});
-                            })
-                          }/>
-  }, [isFilterVisible, filterAnimatedStyle]);
+                           animatedStyle={modalAnimatedStyle} 
+                           onClose={onClose}/>
+  }, [isFilterVisible, modalAnimatedStyle]);
 
   useEffect(() => {
-    setIsFilterVisible(state.modalState.opened);
-  }, [state.modalState.opened])
+    setIsSortVisible(state.modalState.sort_opened);
+  }, [state.modalState.sort_opened]);
+
+  useEffect(() => {
+    setIsFilterVisible(state.modalState.filter_opened);
+  }, [state.modalState.filter_opened]);
 
   function handleModal(value: boolean): void {
     setIsModalVisible(value);
@@ -82,6 +90,12 @@ export default function TabLayout() {
       await audio.current.replayAsync();
     }
   };
+
+  function onClose(): void {
+    setIsSortVisible(false);
+    setIsFilterVisible(false);
+    dispatch({type: 'CLOSE_MODALS'});
+  }
 
   useEffect(() => {
     async function loadSound() {
@@ -97,6 +111,7 @@ export default function TabLayout() {
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: 'skyblue',
+          tabBarHideOnKeyboard: false,
           headerShown: false,
           tabBarLabel: '',
           tabBarStyle: Platform.select({
@@ -171,6 +186,7 @@ export default function TabLayout() {
         />
       </Tabs>
       <Portal>{isModalVisible && memoizedMenu}</Portal>
+      <Portal>{isSortVisible && memoizedSort}</Portal>
       <Portal>{isFilterVisible && memoizedFilter}</Portal>
     </Provider>
   );

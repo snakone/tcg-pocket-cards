@@ -30,6 +30,15 @@ export const CARD_IMAGE_MAP: any = {
   'Vileplume': require("@/assets/cards/en/Genetic Apex/cPK_10_000130_00_RUFFRESIA_R.png"),
   'Paras': require("@/assets/cards/en/Genetic Apex/cPK_10_000140_00_PARAS_C.png"),
   'Parasect': require("@/assets/cards/en/Genetic Apex/cPK_10_000150_00_PARASECT_U.png"),
+  'Venonat': require("@/assets/cards/en/Genetic Apex/cPK_10_000160_00_KONGPANG_C.png"),
+  'Venomoth': require("@/assets/cards/en/Genetic Apex/cPK_10_000170_00_MORPHON_U.png"),
+  'Bellsprout': require("@/assets/cards/en/Genetic Apex/cPK_10_000180_00_MADATSUBOMI_C.png"),
+  'Weepinbell': require("@/assets/cards/en/Genetic Apex/cPK_10_000190_00_UTSUDON_U.png"),
+  'Victreebel': require("@/assets/cards/en/Genetic Apex/cPK_10_000200_00_UTSUBOT_R.png"),
+  'Exeggcute': require("@/assets/cards/en/Genetic Apex/cPK_10_000210_00_TAMATAMA_C.png"),
+  'Exeggutor': require("@/assets/cards/en/Genetic Apex/cPK_10_000220_00_NASSY_R.png"),
+  'Exeggutor EX': require("@/assets/cards/en/Genetic Apex/cPK_10_000230_00_NASSYex_RR.png"),
+  'Tangela': require("@/assets/cards/en/Genetic Apex/cPK_10_000240_00_MONJARA_C.png"),
 };
 
 export const LIST: ItemWithRoute[] = [

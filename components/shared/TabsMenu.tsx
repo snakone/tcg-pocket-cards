@@ -99,12 +99,12 @@ export default function TabsMenu({
       </Pressable>
       <Animated.View style={[MenuStyles.container, animatedStyle]}>
         <Pressable onPressIn={startAnimation}
-                   onPressOut={resetAnimation}>
+                  onPressOut={resetAnimation}>
           <Animated.View style={[TabsMenuStyles.container, animatedFillStyle]} 
           />
           <View style={TabsMenuStyles.user}>
             <Image source={require("@/assets/images/coins/eevee.png")} 
-                   style={TabsMenuStyles.avatar}>
+                  style={TabsMenuStyles.avatar}>
             </Image>
             <View style={{paddingInline: 18}}>
               <ThemedText type='defaultSemiBold' style={{zIndex: 4}}>Alejandra2346</ThemedText>
@@ -118,19 +118,21 @@ export default function TabsMenu({
             <View style={TabsMenuStyles.listItem}>
               <IconSymbol name={item.icon as IconSymbolName} 
                           style={TabsMenuStyles.listIcon}/>
-              <TouchableOpacity style={{width: '100%'}} onPress={() => handleRoute(item.route)}>
+              <TouchableOpacity style={{width: 'auto'}} onPress={() => handleRoute(item.route)}>
                 <ThemedText style={TabsMenuStyles.listLabel}>{i18n.t(item.label)}</ThemedText>
               </TouchableOpacity>
             </View>}>
           </FlatList>
+
           <View style={TabsMenuStyles.separator}></View>
+
           <FlatList data={HELP}
                     style={{paddingBlock: 24, paddingInline: 10}}
                     renderItem={({item}) => 
             <View style={TabsMenuStyles.itemSmall}>
               <IconSymbol name={item.icon as IconSymbolName} 
                           style={TabsMenuStyles.iconSmall}/>
-              <TouchableOpacity style={{width: '100%'}} onPress={() => handleRoute(item.route)}>
+              <TouchableOpacity style={{width: 'auto'}} onPress={() => handleRoute(item.route)}>
                 <ThemedText style={TabsMenuStyles.labelSmall}>{i18n.t(item.label)}</ThemedText>
               </TouchableOpacity>
             </View>}>

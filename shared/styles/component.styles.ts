@@ -2,8 +2,10 @@ import { Platform, StyleSheet } from 'react-native';
 import { MENU_WIDTH } from '../definitions/utils/contants';
 import { Colors } from '../definitions/utils/colors';
 
-const HEADER_HEIGHT = 100;
-export const CARD_IMAGE_WIDTH = 103.2;
+export const HEADER_HEIGHT = 100;
+export const HEADER_MIN_HEIGHT = 40;
+export const CARD_IMAGE_WIDTH_3 = 103;
+export const CARD_IMAGE_WIDTH_5 = 58.4;
 
 export const ThemeTextStyles = StyleSheet.create({
   default: {
@@ -51,11 +53,13 @@ export const ParallaxStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 26,
+    marginBottom: 18,
+    backgroundColor: "#fff",
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
   },
   content: {
     flex: 1,
-    padding: 28,
+    paddingInline: 28,
     paddingBottom: 8,
     gap: 16,
   },
@@ -79,17 +83,18 @@ export const CardGridStyles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
   },
   searchInput: {
-    height: 40,
+    height: 36,
     borderWidth: 1,
-    padding: 10,
+    padding: Platform.OS === 'web' ? 10 : 8,
+    paddingInline: 16,
     borderRadius: 8,
     backgroundColor: 'white',
-    marginBottom: 18,
+    marginBottom: 8,
     color: 'Colors.light.text',
     borderColor: 'skyblue',
   },
   gridContainer: {
-    flexWrap: 'nowrap'
+    flexWrap: 'nowrap',
   },
   imageContainer: {
     marginHorizontal: 4,
@@ -101,9 +106,9 @@ export const CardGridStyles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    width: CARD_IMAGE_WIDTH,
-    height: 142,
-    zIndex: 0
+    width: CARD_IMAGE_WIDTH_3,
+    zIndex: 0,
+    aspectRatio: 367/512
   },
   imageTitle: {
     padding: 8,
@@ -115,8 +120,8 @@ export const CardGridStyles = StyleSheet.create({
 export const IconStyles = StyleSheet.create({
   iconContainer: {
     position: 'absolute',
-    right: -69,
-    top: -20,
+    right: 32,
+    top: 26,
     bottom: 0,
     padding: 2,
     borderRadius: 50,
@@ -139,6 +144,7 @@ export const ModalStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    zIndex: 100
   },
   modalView: {
     backgroundColor: 'white',
@@ -166,7 +172,7 @@ export const ModalStyles = StyleSheet.create({
   },
   modalScrollView: {
     maxHeight: '85%',
-    padding: 16,
+    padding: 24,
     backgroundColor: 'white',
     zIndex: 0
   },
@@ -369,7 +375,7 @@ export const TabsMenuStyles = StyleSheet.create({
   },
   listLabel: {
     userSelect: 'none',
-    fontSize: 16,
+    fontSize: 15,
     marginLeft: 16
   },
   iconSmall: {
@@ -436,16 +442,18 @@ export const HelpItemStyles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     position: 'relative',
-    top: -14
+    top: -48
   }
 });
 
 export const LoadingStyles = StyleSheet.create({
   size: {
     position: 'absolute',
-    top: 0,
+    top: HEADER_HEIGHT,
     bottom: 0,
     left: 0,
+    right: 0,
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 10,

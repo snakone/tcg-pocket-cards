@@ -399,9 +399,9 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
   },
   {
-    id: 14,
-    number: 14,
-    pokedex: 46,
+    id: 15,
+    number: 15,
+    pokedex: 47,
     name: 'Parasect',
     artist: 'Eri Yamaki',
     attacks: [
@@ -424,7 +424,258 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       GENETIC_APEX.PIKACHU
     ],
-  }
+  },
+  {
+    id: 16,
+    number: 16,
+    pokedex: 48,
+    name: 'Venonat',
+    artist: 'HYOGONOSUKE',
+    attacks: [
+      {
+        name: 'Tackle',
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS],
+      }
+    ],
+    evolve: 'Venomoth',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Poison oozes from all over its body. It catches small bug Pokémon at night that are attracted by light.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.MEWTWO
+    ],
+  },
+  {
+    id: 17,
+    number: 17,
+    pokedex: 49,
+    name: 'Venomoth',
+    artist: 'Mina Nakai',
+    attacks: [
+      {
+        name: 'Poison Powder',
+        damage: 30,
+        energy: [PokemonTypeENUM.GRASS],
+        description: 'Your opponent\'s Active Pokémon is now Poisoned.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'The wings are covered with dustlike scales. Every time it flaps its wings, it looses highly toxic dust.',
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.MEWTWO
+    ],
+  },
+  {
+    id: 18,
+    number: 18,
+    pokedex: 69,
+    name: 'Bellsprout',
+    artist: 'HYOGONOSUKE',
+    attacks: [
+      {
+        name: 'Vine Whip',
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS],
+      }
+    ],
+    evolve: 'Weepinbell',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Even though its body is extremely skinny, it is blindingly fast when catching its prey.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.CHARIZARD
+    ],
+  },
+  {
+    id: 19,
+    number: 19,
+    pokedex: 70,
+    name: 'Weepinbell',
+    artist: 'Miki Tanaka',
+    attacks: [
+      {
+        name: 'Razor Leaf',
+        damage: 40,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: 'Victreebel',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'The leafy parts act as cutters for slashing foes. It spits a fluid that dissolves everything.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.CHARIZARD
+    ],
+  },
+  {
+    id: 20,
+    number: 20,
+    pokedex: 71,
+    name: 'Victreebel',
+    artist: 'Sumiyoshi Kizuki',
+    attacks: [
+      {
+        name: 'Vine Whip',
+        damage: 60,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    ability: {
+      name: 'Fragrance Trap',
+      description: 'If this Pokémon is in the Active Spot, once during your turn, you may switch in 1 of your opponent’s Benched Basic Pokémon to the Active Spot.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Said to live in huge colonies deep in jungles, although no one has ever returned from there.',
+    health: 140,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.CHARIZARD
+    ],
+  },
+  {
+    id: 21,
+    number: 21,
+    pokedex: 102,
+    name: 'Exeggcute',
+    artist: 'kawayoo',
+    attacks: [
+      {
+        name: 'Seed Bomb',
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS],
+      }
+    ],
+    evolve: 'Exeggutor',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Though it may look like it’s just a bunch of eggs, it’s a proper Pokémon. Exeggcute communicates with others of its kind via telepathy, apparently.',
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.CHARIZARD
+    ],
+  },
+  {
+    id: 22,
+    number: 22,
+    pokedex: 103,
+    name: 'Exeggutor',
+    artist: 'Yukiko Baba',
+    attacks: [
+      {
+        name: 'Stomp',
+        damage: 30,
+        energy: [PokemonTypeENUM.GRASS],
+        description: 'Flip a coin. If heads, this attack does 30 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Each of Exeggutor’s three heads is thinking different thoughts. The three don’t seem to be very interested in one another.',
+    health: 130,
+    rarity: CardRarityENUM.RARE,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.CHARIZARD
+    ],
+  },
+  {
+    id: 23,
+    number: 23,
+    pokedex: 103,
+    name: 'Exeggutor EX',
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: 'Tropical Swing',
+        damage: 40,
+        energy: [PokemonTypeENUM.GRASS],
+        description: 'Flip a coin. If heads, this attack does 40 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: '',
+    health: 160,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.CHARIZARD
+    ],
+  },
+  {
+    id: 24,
+    number: 24,
+    pokedex: 114,
+    name: 'Tangela',
+    artist: 'Midori Harada',
+    attacks: [
+      {
+        name: 'Absorb',
+        damage: 40,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+        description: 'Heal 10 damage from this Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Hidden beneath a tangle of vines that grows nonstop even if the vines are torn off, this Pokémon’s true appearance remains a mystery.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    found: [
+      GENETIC_APEX.CHARIZARD
+    ],
+  },
 ];
 
 export default MOCK_DB_CARDS;

@@ -6,4 +6,6 @@ export const NO_MATCH_SENTENCE = 'No se han encontrado cartas...';
 export const HELP_SENTENCE = 'Ayuda';
 export const SETTINGS_SENTENCE = 'Configuración';
 export const NO_CONTEXT = 'No Context';
-export const MUSIC_ERROR = 'Error al cargar/reproducir la música.'
+export const MUSIC_ERROR = 'Error al cargar/reproducir la música.';
+export const CLOSE_MODAL = 'Cerrar modal';
+export const GO_UP = 'Volver arriba';

@@ -65,6 +65,7 @@ export default function DetailScreen() {
   function onGestureBegin(
     event: GestureStateChangeEvent<PanGestureHandlerEventPayload>
   ) {
+    'worklet';
     rotateX.value = withTiming(
       interpolate(
         event.y, 
@@ -86,6 +87,7 @@ export default function DetailScreen() {
   function onGestureUpdate(
     event: GestureUpdateEvent<PanGestureHandlerEventPayload>
   ) {
+    'worklet';
     rotateX.value = interpolate(
       event.y, 
       [0, styles.image.height], 
@@ -101,6 +103,7 @@ export default function DetailScreen() {
   }
 
   function onGestureFinish() {
+    'worklet';
     rotateX.value = withTiming(0, {duration: 250});
     rotateY.value = withTiming(0, {duration: 250});
   }

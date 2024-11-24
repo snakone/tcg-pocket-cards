@@ -14,6 +14,8 @@ import { FONT_REGULAR } from '@/shared/definitions/sentences/path.sentences';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { WebStyles } from '@/shared/styles/component.styles';
 import { I18nProvider } from '@/components/shared/LanguageProvider';
+import { ErrorProvider } from '@/core/providers/error.provider';
+import { Provider } from 'react-native-paper';
 
 export const AppContext = createContext<{ state: AppState; dispatch: React.Dispatch<any> } | undefined>(undefined);
 
@@ -32,19 +34,23 @@ export default function RootLayout() {
   if (!loaded) { return null; }
 
   return (
-    <GestureHandlerRootView style={Platform.OS === 'web' ? WebStyles.view : { flex: 1 }}>
-      <AppContext.Provider value={contextValue}>
-        <I18nProvider>
-          <ThemeProvider value={DefaultTheme}>
-            <Stack>
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              <Stack.Screen name="+not-found" />
-            </Stack>
-            <StatusBar hidden={true} />
-            <BackgroundMusic/>
-          </ThemeProvider>         
-        </I18nProvider>
-      </AppContext.Provider>
-    </GestureHandlerRootView>
+    <Provider>
+      <GestureHandlerRootView style={Platform.OS === 'web' ? WebStyles.view : { flex: 1 }}>
+        <AppContext.Provider value={contextValue}>
+          <ErrorProvider>
+            <I18nProvider>
+              <ThemeProvider value={DefaultTheme}>
+                <Stack>
+                  <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                  <Stack.Screen name="+not-found" />
+                </Stack>
+                <StatusBar hidden={true} />
+                <BackgroundMusic/>
+              </ThemeProvider>         
+            </I18nProvider>
+          </ErrorProvider>
+        </AppContext.Provider>
+      </GestureHandlerRootView>
+    </Provider>
   );
 }
