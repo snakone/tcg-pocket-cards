@@ -29,9 +29,11 @@ export default function SortCardMenu({
 
   const initialData: SortItem[] = [
     { id: 1, label: 'order_by_number', icon: 'content-paste-search', active: true, order: 'asc' },
-    { id: 2, label: 'order_by_type', icon: 'stars', active: false, order: 'asc' },
-    { id: 3, label: 'order_by_rarity', icon: 'diamond', active: false, order: 'asc' },
-    { id: 4, label: 'order_by_pokedex', icon: 'smartphone', active: false, order: 'asc' },
+    { id: 2, label: 'order_by_type', icon: 'stars', active: false, order: 'desc' },
+    { id: 3, label: 'order_by_rarity', icon: 'diamond', active: false, order: 'desc' },
+    { id: 4, label: 'order_by_pokedex', icon: 'smartphone', active: false, order: 'desc' },
+    { id: 5, label: 'order_by_retreat', icon: 'grass', active: false, order: 'desc' },
+    { id: 6, label: 'order_by_hp', icon: 'favorite-outline', active: false, order: 'desc' },
   ];
 
   const [data, setData] = useState(initialData);
@@ -141,7 +143,7 @@ export default function SortCardMenu({
 
 const filterStyles = StyleSheet.create({
   container: {
-    height: 375, 
+    height: 469, 
     position: 'absolute', 
     width: '100%',
     bottom: 0,

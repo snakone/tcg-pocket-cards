@@ -1,5 +1,6 @@
 import { PressableAndroidRippleConfig } from "react-native";
 import { ItemWithRoute } from "../interfaces/layout.interfaces";
+import { Card } from "../interfaces/card.interfaces";
 
 export const MENU_WIDTH = 250;
 export const PAGE_TITLE = "TCG Pocket Cards";
@@ -51,3 +52,12 @@ export const HELP: ItemWithRoute[] = [
   { label: 'config', icon: 'washer.circle', route: 'settings' },
   { label: 'help', icon: 'questionmark.app.fill', route: 'help' },
 ];
+
+export const SORT_FIELD_MAP: Record<string, keyof Card> = {
+  order_by_number: 'number',
+  order_by_type: 'stage',
+  order_by_rarity: 'rarity',
+  order_by_pokedex: 'pokedex',
+  order_by_retreat: 'retreat',
+  order_by_hp: 'health'
+};

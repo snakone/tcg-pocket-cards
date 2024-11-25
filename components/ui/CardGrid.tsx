@@ -8,7 +8,8 @@ import {
   TouchableOpacity, 
   View, 
   Platform, 
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  GestureResponderEvent
 } from 'react-native';
 
 import { Image } from 'expo-image';
@@ -45,10 +46,11 @@ import { Colors } from '@/shared/definitions/utils/colors';
 import useHeaderAnimation from './HeaderAnimation';
 import { useIsFocused } from '@react-navigation/native';
 import { AppState } from '@/hooks/root.reducer';
-import { FilterState } from '@/hooks/filter.reducer';
 import { CHANGE_VIEW, PICK_CARD_SOUND } from '@/shared/definitions/sentences/path.sentences';
-import { CARD_IMAGE_MAP } from '@/shared/definitions/utils/contants';
+import { CARD_IMAGE_MAP, SORT_FIELD_MAP } from '@/shared/definitions/utils/contants';
 import { useI18n } from '@/core/providers/LanguageProvider';
+import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
+import { sortData } from '@/shared/definitions/utils/functions';
 
 export default function ImageGridWithSearch({ state }: { state: AppState }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -111,7 +113,9 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
   }, [isFocused]);
 
   useEffect(() => {
-    console.log(state.filterState.sort);
+    const sorted = filterOrSortCards('sort', filtered, state.filterState.sort.find(s => s.active));
+    setFiltered(sorted);
+    goUp(null, false);
   }, [state.filterState.sort])
 
   const handleSearch = useCallback((text: string) => {
@@ -120,7 +124,32 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
       card.name.toLowerCase().includes(text.toLowerCase())
   ))}, [state.cardState.cards]);
 
-  function filterOrSortCards(type: 'sort' | 'filter', data: Card[], state: FilterState): Card[] {
+  function filterOrSortCards(type: 'sort' | 'filter', data: Card[], sort: SortItem | undefined): Card[] {
+    switch (type) {
+      case 'sort': {
+        if (!sort) { return data; }
+        return manageSort(sort, data);
+      }
+
+      case 'filter': {
+        return manageFilter({}, data);
+      }
+    }
+  }
+
+  function manageSort(sort: SortItem, data: Card[]): Card[] {
+    const sortField = SORT_FIELD_MAP[sort.label];
+  
+    if (!sortField) {
+      console.error(`Unsupported sorting option: ${sort.label}`);
+      return data;
+    }
+  
+    return sortData(sortField, data, sort);
+  }
+
+  function manageFilter(filter: any, data: Card[]): Card[] {
+    console.log('filtering')
     return data;
   }
 
@@ -190,9 +219,9 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
 
   const keyExtractor = useCallback((item: Card) => String(item.number), []);
 
-  async function goUp(): Promise<void> {
-    await playSound();
-    flatListRef.current?.scrollToOffset({offset: 0, animated: false})
+  async function goUp(ev: GestureResponderEvent | null, sound = true): Promise<void> {
+    if (sound) await playSound();
+    flatListRef.current?.scrollToOffset({offset: 0, animated: false});
   }
 
   const ResetFilterButton = () => (

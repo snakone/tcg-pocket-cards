@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { debounceTime, Subscription } from 'rxjs';
-import { TouchableOpacity, StyleSheet } from 'react-native';
+import { TouchableOpacity, StyleSheet, StyleProp, TextStyle } from 'react-native';
 import { Audio } from 'expo-av';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -13,6 +13,7 @@ import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { AUDIO_MENU_OPEN } from '@/shared/definitions/sentences/path.sentences';
 import { useError } from '@/core/providers/ErrorProvider';
+import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 
 export default function CardsScreen() {
   const context = useContext(AppContext);
@@ -22,6 +23,7 @@ export default function CardsScreen() {
   const [loading, setLoading] = useState(true);
   const opened = useRef<Audio.Sound>();
   const { show: showError } = useError();
+  const [sort, setSort] = useState<SortItem>();
 
   async function handleActionMenu(action: string): Promise<void> {
     await playSound();
@@ -41,6 +43,13 @@ export default function CardsScreen() {
       if (opened.current) opened.current.unloadAsync();
     };
   }, []);
+
+  useEffect(() => {
+    if (state.filterState.sort.length > 0) {
+      const active = state.filterState.sort.find(s => s.active);
+      setSort(active);
+    }
+  }, [state.filterState.sort])
 
   const playSound = useCallback(async () => {
     if (opened.current) await opened.current.replayAsync();
@@ -78,6 +87,19 @@ export default function CardsScreen() {
     };
   }, [state.cardState.loaded]);
 
+  const getFilterIcon = useCallback(() => {
+    return [
+      { fontSize: 32, position: 'relative' }, 
+      sort?.label === 'order_by_hp' || sort?.label === 'order_by_rarity' ? {top: 1} : null,
+      sort?.label === 'order_by_retreat' ? {top: -2} : null
+    ]
+  }, [sort]);
+
+  const getOrderIcon = useCallback(() => {
+    return !sort?.order ? 'arrow-upward' : 
+            sort.order === 'asc' ? 'arrow-upward' : 'arrow-downward'
+  }, [sort])
+
   return (
     <>
       { loading ? <LoadingOverlay></LoadingOverlay> : null }
@@ -87,13 +109,21 @@ export default function CardsScreen() {
         <>
           <TouchableOpacity onPress={() => handleActionMenu('OPEN_SORT')} style={styles.container}>
             <ThemedView>
-              <IconSymbol name="suit.heart" color={'skyblue'} style={{fontSize: 32}}></IconSymbol>
-              <MaterialIcons name="arrow-upward" style={styles.sortIcon}></MaterialIcons>
+              <MaterialIcons name={(sort?.icon as any) || 'content-paste-search'} 
+                             color={'skyblue'} 
+                             style={getFilterIcon() as StyleProp<TextStyle>}> 
+              </MaterialIcons>
+              <MaterialIcons name={getOrderIcon()} style={styles.sortIcon}>
+              </MaterialIcons>
             </ThemedView>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => (handleActionMenu('OPEN_FILTER'))} style={[styles.container, {bottom: 88}]}>
+          <TouchableOpacity onPress={() => (handleActionMenu('OPEN_FILTER'))} 
+                            style={[styles.container, {bottom: 88}]}>
             <ThemedView>
-              <IconSymbol name="cat.circle" color={'mediumaquamarine'} style={{fontSize: 32}}></IconSymbol>
+              <IconSymbol name="cat.circle" 
+                          color={'mediumaquamarine'} 
+                          style={{fontSize: 32}}>
+              </IconSymbol>
             </ThemedView>
           </TouchableOpacity>       
         </>
@@ -120,7 +150,7 @@ const styles = StyleSheet.create({
   sortIcon: {
     position: 'absolute',
     fontSize: 16,
-    backgroundColor: 'rgba(170, 170, 170, .8)',
+    backgroundColor: 'rgba(120, 120, 120, .8)',
     borderRadius: 20,
     color: 'white',
     right: -16,
