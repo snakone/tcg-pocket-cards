@@ -9,16 +9,18 @@ import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences"
 import { ButtonStyles, ParallaxStyles, ScreenStyles } from "@/shared/styles/component.styles";
 import { AUDIO_MENU_CLOSE } from "@/shared/definitions/sentences/path.sentences";
 import { ThemedText } from "@/components/ThemedText";
+import { useI18n } from "@/core/providers/LanguageProvider";
 
 interface SharedScreenProps {
   title: string,
   children: React.ReactNode
 }
 
-export default function HelpScreen({title, children}: SharedScreenProps) {
+export default function SharedScreen({title, children}: SharedScreenProps) {
   const router = useRouter();
   const audio = useRef<Audio.Sound>();
   const navigation = useNavigation();
+  const {i18n} = useI18n();
 
   const playSound = useCallback(async () => {
     if (audio.current) { await audio.current.replayAsync(); }
@@ -49,7 +51,7 @@ export default function HelpScreen({title, children}: SharedScreenProps) {
   return (
     <ThemedView style={{flex: 1}}>
       <View style={[ParallaxStyles.header, { backgroundColor: "#fff" }]}>
-        <ThemedText type="headerTitle">{title}</ThemedText>
+        <ThemedText type="headerTitle">{i18n.t(title)}</ThemedText>
       </View>
       <ThemedView style={ScreenStyles.content}>
         {children}

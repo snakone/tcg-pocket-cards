@@ -21,7 +21,6 @@ export interface RouteItem {
 
 export interface IconItemWithModal {
   modal: string;
-  label: string;
   icon: string;
   content?: React.ReactNode;
 }
@@ -30,4 +29,12 @@ export interface ItemWithRoute {
   label: string;
   icon: string;
   route: string;
+}
+
+export interface SortItem {
+  id: number,
+  label: string;
+  icon: string,
+  active: boolean,
+  order: 'desc' | 'asc'
 }

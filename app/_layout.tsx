@@ -1,4 +1,3 @@
-import { DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -13,12 +12,11 @@ import BackgroundMusic from '@/components/shared/BackgroundMusic';
 import { FONT_REGULAR } from '@/shared/definitions/sentences/path.sentences';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { WebStyles } from '@/shared/styles/component.styles';
-import { I18nProvider } from '@/components/shared/LanguageProvider';
-import { ErrorProvider } from '@/core/providers/error.provider';
+import { I18nProvider } from '@/core/providers/LanguageProvider';
+import { ErrorProvider } from '@/core/providers/ErrorProvider';
 import { Provider } from 'react-native-paper';
 
 export const AppContext = createContext<{ state: AppState; dispatch: React.Dispatch<any> } | undefined>(undefined);
-
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -39,14 +37,12 @@ export default function RootLayout() {
         <AppContext.Provider value={contextValue}>
           <ErrorProvider>
             <I18nProvider>
-              <ThemeProvider value={DefaultTheme}>
-                <Stack>
-                  <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                  <Stack.Screen name="+not-found" />
-                </Stack>
-                <StatusBar hidden={true} />
-                <BackgroundMusic/>
-              </ThemeProvider>         
+              <Stack>
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                <Stack.Screen name="+not-found" />
+              </Stack>
+              <StatusBar hidden={true} />
+              <BackgroundMusic/>      
             </I18nProvider>
           </ErrorProvider>
         </AppContext.Provider>

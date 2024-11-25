@@ -6,7 +6,7 @@ import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
 import HelpItem from "@/components/ui/HelpItem";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { CLOSE_SENTENCE, HELP_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
+import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
 import { AUDIO_MENU_CLOSE } from "@/shared/definitions/sentences/path.sentences";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { IconItemWithModal } from "@/shared/definitions/interfaces/layout.interfaces";
@@ -17,44 +17,40 @@ import { PoliticsModal } from "@/components/modals/PoliticsModal";
 import { AboutModal } from "@/components/modals/AboutModal";
 import { PrivacyModal } from "@/components/modals/PrivacyModal";
 import { ContactModal } from "@/components/modals/ContactModal";
+import { useI18n } from "@/core/providers/LanguageProvider";
 
 export default function HelpScreen() {
   const styles = HelpItemStyles;
   const audio = useRef<Audio.Sound>();
+  const {i18n} = useI18n();
 
   const items: IconItemWithModal[] = [
     { 
-      label: 'Términos de uso',
       icon: 'terminal',
       modal: 'terms',
       content: <TermsModal></TermsModal>
     },
     { 
-      label: 'Política de privacidad',
       icon: 'candybarphone',
       modal: 'politics',
       content: <PoliticsModal></PoliticsModal>
     },
     {
-      label: 'Sobre esta aplicación',
       icon: 'location.fill',
       modal: 'about',
       content: <AboutModal></AboutModal>
     },
     { 
-      label: 'Recopilación de datos',
       icon: 'laurel.leading',
       modal: 'privacy',
       content: <PrivacyModal></PrivacyModal>
     },
     { 
-      label: 'Contacta con nosotros',
       icon: 'mail',
       modal: 'contact',
       content: <ContactModal></ContactModal>
     },
     {
-      label: 'Ir a la pantalla de título',
       icon: 'door.garage.open',
       modal: 'exit'
     }
@@ -97,13 +93,13 @@ export default function HelpScreen() {
 
   return (
     <>
-      <SharedScreen title={HELP_SENTENCE}>
+      <SharedScreen title={'help'}>
         <View style={styles.content}>
           {
             items.map(item => (
-            <HelpItem onClick={() => open(item.modal)} key={item.label}>
+            <HelpItem onClick={() => open(item.modal)} key={item.modal}>
               <IconSymbol name={item.icon as IconSymbolName} style={styles.icon}></IconSymbol>
-              <ThemedText style={{color: Colors.light.text}}>{item.label}</ThemedText>
+              <ThemedText style={{color: Colors.light.text}}>{i18n.t(item.modal)}</ThemedText>
             </HelpItem>
             ))
           }
@@ -123,7 +119,7 @@ export default function HelpScreen() {
               <View style={ModalStyles.modalView}>
                 <View style={ModalStyles.modalHeader}>
                   <ThemedText style={ModalStyles.modalHeaderTitle}>
-                    {item.label}
+                    {i18n.t(item.modal)}
                   </ThemedText>
                 </View>
                 <ScrollView style={ModalStyles.modalScrollView}>

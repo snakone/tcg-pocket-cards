@@ -5,15 +5,15 @@ import { Platform, Pressable } from 'react-native';
 import { Audio } from 'expo-av';
 import { Portal, Provider } from 'react-native-paper';
 
+import { AppContext } from '../_layout';
 import { IconSymbol, SvgStackSymbol, SvgStylusSymbol } from '@/components/ui/IconSymbol';
 import { CHANGE_VIEW } from '@/shared/definitions/sentences/path.sentences';
 import { FILTER_CARDS_HEIGHT, MENU_WIDTH, RIPPLE_CONFIG } from '@/shared/definitions/utils/contants';
 import { CustomTabButtonStyles, TabButtonStyles } from '@/shared/styles/component.styles';
 import TabsMenu from '@/components/shared/TabsMenu';
 import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
-import { AppContext } from '../_layout';
-import SortCardMenu from '@/components/shared/SortCardMenu';
-import FilterCardMenu from '@/components/shared/FilterCardMenu';
+import FilterCardMenu from '@/components/shared/cards/FilterCardMenu';
+import SortCardMenu from '@/components/shared/cards/SortCardMenu';
 
 export default function TabLayout() {
   const context = useContext(AppContext);

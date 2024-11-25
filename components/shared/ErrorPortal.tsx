@@ -1,17 +1,15 @@
 import React from "react";
-import { StyleSheet, View, Text, Pressable, Platform, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Platform, ScrollView, TouchableOpacity } from "react-native";
 import { Portal } from "react-native-paper";
 import { BlurView } from "expo-blur";
 
 import { ErrorType } from "@/shared/definitions/types/global.types";
-import { ThemedView } from "../ThemedView";
 import { ThemedText } from "../ThemedText";
 import { ButtonStyles, ModalStyles, WebStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
 import { IconSymbol } from "../ui/IconSymbol";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useI18n } from "./LanguageProvider";
-import { IconSymbolName } from "@/shared/definitions/utils/switches";
+import { useI18n } from "../../core/providers/LanguageProvider";
 
 export interface ErrorPortalProps {
   visible: boolean,

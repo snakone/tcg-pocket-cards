@@ -12,7 +12,7 @@ import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { AUDIO_MENU_OPEN } from '@/shared/definitions/sentences/path.sentences';
-import { useError } from '@/core/providers/error.provider';
+import { useError } from '@/core/providers/ErrorProvider';
 
 export default function CardsScreen() {
   const context = useContext(AppContext);
@@ -81,7 +81,7 @@ export default function CardsScreen() {
   return (
     <>
       { loading ? <LoadingOverlay></LoadingOverlay> : null }
-      <ImageGridWithSearch state={state.cardState} 
+      <ImageGridWithSearch state={state} 
                            key={loading ? 'loading' : 'loaded'}/>
       { loading ? null : (
         <>

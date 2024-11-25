@@ -5,12 +5,13 @@ import { Audio } from "expo-av";
 import { useRef, useEffect, useCallback } from "react";
 
 import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ThemedText } from "../ThemedText";
-import { ThemedView } from "../ThemedView";
 import { ButtonStyles, LayoutStyles, ModalStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
-import { IconSymbol } from "../ui/IconSymbol";
 import { AUDIO_MENU_CLOSE } from "@/shared/definitions/sentences/path.sentences";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import { useI18n } from "@/core/providers/LanguageProvider";
 
 export default function FilterCardMenu({
   isVisible,
@@ -21,6 +22,7 @@ export default function FilterCardMenu({
 
   const styles = ModalStyles;
   const closed = useRef<Audio.Sound>();
+  const {i18n} = useI18n();
 
   useEffect(() => {
     async function loadSounds() {
@@ -51,7 +53,7 @@ export default function FilterCardMenu({
       </Pressable>
       <Animated.View style={[animatedStyle, filterStyles.container]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
-          <ThemedText style={ModalStyles.modalHeaderTitle}>Filtrar</ThemedText>
+          <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('filter')}</ThemedText>
         </View>
         <ScrollView style={styles.modalScrollView}>
           <ThemedView></ThemedView>

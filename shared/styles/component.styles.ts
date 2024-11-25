@@ -4,8 +4,8 @@ import { Colors } from '../definitions/utils/colors';
 
 export const HEADER_HEIGHT = 100;
 export const HEADER_MIN_HEIGHT = 40;
-export const CARD_IMAGE_WIDTH_3 = 103;
-export const CARD_IMAGE_WIDTH_5 = 58.4;
+export const CARD_IMAGE_WIDTH_3 = 106.6;
+export const CARD_IMAGE_WIDTH_5 = 64.5;
 
 export const ThemeTextStyles = StyleSheet.create({
   default: {
@@ -53,7 +53,7 @@ export const ParallaxStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 26,
-    marginBottom: 18,
+    marginBottom: 20,
     backgroundColor: "#fff",
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
   },
@@ -82,14 +82,23 @@ export const CardGridStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f0f0f0',
   },
+  inputContainer: {
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    paddingBottom: Platform.OS === 'web' ? 14 : 10, 
+    justifyContent: 'space-between',
+    backgroundColor: '#F2F2F2',
+    position: 'relative',
+    zIndex: 100
+  },
   searchInput: {
+    width: '78%',
     height: 36,
     borderWidth: 1,
     padding: Platform.OS === 'web' ? 10 : 8,
     paddingInline: 16,
     borderRadius: 8,
     backgroundColor: 'white',
-    marginBottom: 8,
     color: 'Colors.light.text',
     borderColor: 'skyblue',
   },
@@ -97,8 +106,8 @@ export const CardGridStyles = StyleSheet.create({
     flexWrap: 'nowrap',
   },
   imageContainer: {
-    marginHorizontal: 4,
-    marginVertical: 8,
+    marginHorizontal: 2,
+    marginVertical: 2,
     borderRadius: 8,
     overflow: 'hidden',
     backgroundColor: 'white',
@@ -115,6 +124,13 @@ export const CardGridStyles = StyleSheet.create({
     fontSize: 13,
     textAlign: 'center',
   },
+  switch: {
+    position: 'relative', 
+    right: Platform.OS === 'web' ? 10 : 4, 
+    transform: [
+      { scale: Platform.OS === 'web' ? 1 : 1.1 }
+    ]
+  }
 });
 
 export const IconStyles = StyleSheet.create({
@@ -174,7 +190,8 @@ export const ModalStyles = StyleSheet.create({
     maxHeight: '85%',
     padding: 24,
     backgroundColor: 'white',
-    zIndex: 0
+    zIndex: 0,
+    flex: 1
   },
   modalFooter: {
     backgroundColor: '#F2F2F2',
@@ -330,7 +347,7 @@ export const LayoutStyles = StyleSheet.create({
 export const WebStyles = StyleSheet.create({
   view: {
     width: 390, 
-    height: 844,
+    height: '100%',
     alignSelf: 'center',
   }
 });
@@ -406,7 +423,8 @@ export const ScreenStyles = StyleSheet.create({
     flex: 1, 
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    padding: 28,
+    paddingInline: 28,
+    paddingBottom: 8,
     gap: 8
   },
   bottomContent: {
@@ -442,7 +460,7 @@ export const HelpItemStyles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     position: 'relative',
-    top: -48
+    top: -40
   }
 });
 

@@ -1,12 +1,22 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { FlatList, TextInput, SafeAreaView, Pressable, TouchableOpacity, View } from 'react-native';
+
+import { 
+  FlatList, 
+  TextInput, 
+  SafeAreaView, 
+  Pressable, 
+  TouchableOpacity, 
+  View, 
+  Platform, 
+  KeyboardAvoidingView
+} from 'react-native';
+
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { Audio } from 'expo-av';
-import { KeyboardAvoidingView } from 'react-native';
+import { Switch } from 'react-native-paper';
 
 import Animated, { 
-  runOnJS,
   useAnimatedScrollHandler, 
   useAnimatedStyle, 
   useSharedValue, 
@@ -14,19 +24,17 @@ import Animated, {
   withTiming
 } from 'react-native-reanimated';
 
+import { 
+  ButtonStyles,
+  CARD_IMAGE_WIDTH_3,
+  CARD_IMAGE_WIDTH_5,
+  CardGridStyles,
+  ModalStyles,
+  ParallaxStyles
+} from '@/shared/styles/component.styles';
+
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { ButtonStyles, CardGridStyles, ModalStyles, ParallaxStyles } from '@/shared/styles/component.styles';
-import { PICK_CARD_SOUND } from '@/shared/definitions/sentences/path.sentences';
-import { CARD_IMAGE_MAP } from '@/shared/definitions/utils/contants';
-import { useI18n } from '../shared/LanguageProvider';
-
-import {  
-  GO_UP,
-  NO_MATCH_SENTENCE, 
-  SEARCH_CARD_PLACEHOLDER, 
-  SEARCH_LABEL 
-} from '@/shared/definitions/sentences/global.sentences';
-
+import { GO_UP, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
 import SkeletonCardGrid from '../skeletons/SkeletonCardGrid';
 import { ThemedView } from '../ThemedView';
 import HeaderWithCustomModal from '../shared/HeaderModal';
@@ -35,20 +43,29 @@ import { ThemedText } from '../ThemedText';
 import { IconSymbol } from './IconSymbol';
 import { Colors } from '@/shared/definitions/utils/colors';
 import useHeaderAnimation from './HeaderAnimation';
-import { CardsState } from '@/hooks/cards.reducer';
+import { useIsFocused } from '@react-navigation/native';
+import { AppState } from '@/hooks/root.reducer';
+import { FilterState } from '@/hooks/filter.reducer';
+import { CHANGE_VIEW, PICK_CARD_SOUND } from '@/shared/definitions/sentences/path.sentences';
+import { CARD_IMAGE_MAP } from '@/shared/definitions/utils/contants';
+import { useI18n } from '@/core/providers/LanguageProvider';
 
-let numColumns = 3;
-
-export default function ImageGridWithSearch({ state }: { state: CardsState }) {
+export default function ImageGridWithSearch({ state }: { state: AppState }) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [filtered, setFiltered] = useState<Card[]>(state.cards);
+  const [filtered, setFiltered] = useState<Card[]>(state.cardState.cards);
   const audio = useRef<Audio.Sound | null>(null);
+  const audioSwitch = useRef<Audio.Sound | null>(null);
   const [selected, setSelected] = useState<string>('');
   const flatListRef = useRef<FlatList<Card> | null>(null);
   const router = useRouter();
   const {i18n} = useI18n();
-  
+  const isFocused = useIsFocused();
   const scrollY = useSharedValue(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [numColumns, setNumColumns] = useState(3);
+  const [isEnabled, setIsEnabled] = useState(false);
+  const rotate = useSharedValue(0);
+  const scale = useSharedValue(1);
 
   const { 
     animatedHeaderStyle, 
@@ -62,22 +79,6 @@ export default function ImageGridWithSearch({ state }: { state: CardsState }) {
     },
   });
 
-  useEffect(() => {
-    async function loadSounds() {
-      const { sound } = await Audio.Sound.createAsync(PICK_CARD_SOUND);
-      audio.current = sound;
-      await sound.setVolumeAsync(0.5);
-    }
-
-    loadSounds();
-    return () => {
-      if (audio.current) audio.current.unloadAsync();
-    };
-  }, []);
-
-  const rotate = useSharedValue(0);
-  const scale = useSharedValue(1);
-
   const animatedStyle = useAnimatedStyle(() => {
     return {
       transform: [
@@ -89,27 +90,85 @@ export default function ImageGridWithSearch({ state }: { state: CardsState }) {
     };
   });
 
+  const toggleSwitch = () => {
+    !isEnabled ? setNumColumns(5) : setNumColumns(3);
+    setIsEnabled(previousState => !previousState);
+    playSound(true);
+    setTimeout(() => scrollY.value = 0, 150);
+  };
+
+  const borderAnimatedStyle = useAnimatedStyle(() => {
+    const isWeb = Platform.OS === 'web';
+
+    return {
+      elevation: scrollY.value > 16 ? 20 : 0,
+      ...(isWeb && { boxShadow: scrollY.value > 16 ? '0px 4px 10px rgba(0, 0, 0, 0.25)' : 'none' }),
+    };
+  });
+
+  useEffect(() => {
+    if (isFocused) setIsLoading(false);
+  }, [isFocused]);
+
+  useEffect(() => {
+    console.log(state.filterState.sort);
+  }, [state.filterState.sort])
+
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
-    setFiltered(state.cards.filter(card =>
+    setFiltered(state.cardState.cards.filter(card =>
       card.name.toLowerCase().includes(text.toLowerCase())
-  ))}, [state.cards]);
+  ))}, [state.cardState.cards]);
+
+  function filterOrSortCards(type: 'sort' | 'filter', data: Card[], state: FilterState): Card[] {
+    return data;
+  }
 
   const renderItem = useCallback(({ item }: { item: Card }) => (
-    <Animated.View style={[CardGridStyles.imageContainer, item.name === selected ? animatedStyle : null]}>
-      <Pressable onPress={() => goToDetailScreen(item.name)} style={{ zIndex: 1 }}>
-        <Image style={CardGridStyles.image} source={CARD_IMAGE_MAP[item.name]} contentFit="fill" />
+    <Animated.View style={[
+        CardGridStyles.imageContainer, 
+        item.name === selected ? animatedStyle : null, 
+        isEnabled ? {marginHorizontal: 1, marginVertical: 1} : null
+      ]}>
+      <Pressable disabled={isLoading} 
+                 onPress={() => goToDetailScreen(item.name)} style={{ zIndex: 1 }}>
+        <Image style={[
+          CardGridStyles.image, 
+          isEnabled ? {width: CARD_IMAGE_WIDTH_5} : {width: CARD_IMAGE_WIDTH_3}
+        ]} 
+        source={CARD_IMAGE_MAP[item.name]} contentFit="fill" />
       </Pressable>
     </Animated.View>
-  ), [selected]);
+  ), [selected, isLoading, isEnabled]);
 
-  const playSound = async () => {
-    if (audio.current) await audio.current.replayAsync();
+  useEffect(() => {
+    async function loadSounds() {
+      const { sound } = await Audio.Sound.createAsync(PICK_CARD_SOUND);
+      const { sound: switchSound } = await Audio.Sound.createAsync(CHANGE_VIEW);
+      audio.current = sound;
+      audioSwitch.current = switchSound;
+      await sound.setVolumeAsync(0.5);
+    }
+
+    loadSounds();
+    return () => {
+      if (audio.current) audio.current.unloadAsync();
+    };
+  }, []);
+
+  const playSound = async (isSwitch: boolean = false) => {
+    if (isSwitch && audioSwitch.current) { 
+      await audioSwitch.current.replayAsync();
+      return;
+    }
+    if (audio.current) {await audio.current.replayAsync();}
   };
 
   const goToDetailScreen = async (name: string) => {
+    if(isLoading) { return; }
     setSelected(name);
     animateCard();
+    setIsLoading(true);
     await playSound();
     router.push(`/screens/detail?name=${encodeURIComponent(name)}`);
   };
@@ -138,7 +197,7 @@ export default function ImageGridWithSearch({ state }: { state: CardsState }) {
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={{position: 'absolute', right: 12, top: 8}}
+                      style={{position: 'absolute', right: 83, top: Platform.OS === 'web' ? 8 : 13}}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
@@ -165,29 +224,38 @@ export default function ImageGridWithSearch({ state }: { state: CardsState }) {
               onScroll={scrollHandler}
               renderItem={renderItem}
               keyExtractor={keyExtractor}
+              key={numColumns}
               numColumns={numColumns}
               keyboardDismissMode={'on-drag'}
               contentContainerStyle={CardGridStyles.gridContainer}
               keyboardShouldPersistTaps={'never'}
               showsVerticalScrollIndicator={false}
               ListEmptyComponent={
-                state.loaded ? <ThemedText style={{padding: 6}}>{NO_MATCH_SENTENCE}</ThemedText> 
-                      : <SkeletonCardGrid columns={numColumns}></SkeletonCardGrid>
+                state.cardState.loaded ? <ThemedText style={{padding: 6}}>{i18n.t('no_cards_found')}</ThemedText> 
+                                       : <SkeletonCardGrid columns={numColumns}></SkeletonCardGrid>
               }
               stickyHeaderIndices={[0]}
               scrollEventThrottle={16}
               ListHeaderComponent={<>
                 <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
-                  <TextInput style={CardGridStyles.searchInput}
-                              placeholder={SEARCH_CARD_PLACEHOLDER}
-                              value={searchQuery}
-                              onChangeText={handleSearch}
-                              placeholderTextColor={Colors.light.text}
-                              accessibilityLabel={SEARCH_LABEL}/>
-                        {searchQuery.length > 0 && <ResetFilterButton/>}                         
+                  <Animated.View style={[CardGridStyles.inputContainer, borderAnimatedStyle]}>
+                    <TextInput style={CardGridStyles.searchInput}
+                               placeholder={i18n.t('search_card_placeholder')}
+                               value={searchQuery}
+                               onChangeText={handleSearch}
+                               placeholderTextColor={Colors.light.text}
+                               accessibilityLabel={SEARCH_LABEL}/>
+                          {searchQuery.length > 0 && <ResetFilterButton/>}
+                    <Switch trackColor={{false: '#767577', true: 'mediumaquamarine'}}
+                            color={'white'}
+                            onValueChange={toggleSwitch}
+                            value={isEnabled}
+                            style={CardGridStyles.switch} 
+                    />
+                  </Animated.View>
                 </KeyboardAvoidingView>
               </>}
-              ListFooterComponent={
+              ListFooterComponent={ !!searchQuery ? null : 
                 <View style={[ModalStyles.modalFooter, {marginBlock: 34, boxShadow: 'none'}]}>
                   <TouchableOpacity style={ButtonStyles.button} 
                                     onPress={goUp} 
@@ -195,7 +263,7 @@ export default function ImageGridWithSearch({ state }: { state: CardsState }) {
                                     accessibilityRole="button"
                                     accessible={true}>
                     <View style={ButtonStyles.insetBorder}>
-                      <ThemedText>Volver arriba</ThemedText>
+                      <ThemedText>{i18n.t('go_up')}</ThemedText>
                     </View>
                   </TouchableOpacity>
                 </View>

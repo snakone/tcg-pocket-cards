@@ -13,7 +13,7 @@ import { CHANGE_VIEW } from '@/shared/definitions/sentences/path.sentences';
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
 import { LIST, HELP } from '@/shared/definitions/utils/contants';
-import { useI18n } from './LanguageProvider';
+import { useI18n } from '../../core/providers/LanguageProvider';
 
 export default function TabsMenu({
   isVisible,
@@ -118,7 +118,7 @@ export default function TabsMenu({
             <View style={TabsMenuStyles.listItem}>
               <IconSymbol name={item.icon as IconSymbolName} 
                           style={TabsMenuStyles.listIcon}/>
-              <TouchableOpacity style={{width: 'auto'}} onPress={() => handleRoute(item.route)}>
+              <TouchableOpacity style={{width: '100%'}} onPress={() => handleRoute(item.route)}>
                 <ThemedText style={TabsMenuStyles.listLabel}>{i18n.t(item.label)}</ThemedText>
               </TouchableOpacity>
             </View>}>
@@ -132,7 +132,7 @@ export default function TabsMenu({
             <View style={TabsMenuStyles.itemSmall}>
               <IconSymbol name={item.icon as IconSymbolName} 
                           style={TabsMenuStyles.iconSmall}/>
-              <TouchableOpacity style={{width: 'auto'}} onPress={() => handleRoute(item.route)}>
+              <TouchableOpacity style={{width: '100%'}} onPress={() => handleRoute(item.route)}>
                 <ThemedText style={TabsMenuStyles.labelSmall}>{i18n.t(item.label)}</ThemedText>
               </TouchableOpacity>
             </View>}>

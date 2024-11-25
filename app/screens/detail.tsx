@@ -41,9 +41,7 @@ export default function DetailScreen() {
   const { name } = useLocalSearchParams<{ name: string }>();
 
   const playSound = async () => {
-    if (audio.current) {
-      audio.current.replayAsync();
-    }
+    if (audio.current) audio.current.replayAsync();
   }
 
   const opacityStyle = useAnimatedStyle(() => {

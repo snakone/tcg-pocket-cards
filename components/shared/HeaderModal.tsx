@@ -10,7 +10,7 @@ import { ButtonStyles, IconStyles, ModalStyles, ThemeTextStyles, WebStyles } fro
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
 import { ThemedView } from '../ThemedView';
-import { useI18n } from './LanguageProvider';
+import { useI18n } from '../../core/providers/LanguageProvider';
 
 export default function HeaderWithCustomModal({ 
   title, 
@@ -32,6 +32,10 @@ export default function HeaderWithCustomModal({
       opened.current = open;
       closed.current = close;
       opened.current.setVolumeAsync(.5);
+
+      if (Platform.OS === 'web') {
+        closed.current.setVolumeAsync(.3);
+      }
     }
 
     loadSounds();
