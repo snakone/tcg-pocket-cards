@@ -35,9 +35,6 @@ const BounceArrow = ({ direction = 'right' }) => {
       right: direction === 'right' ? 0 : null
     },
     icon: {
-      textShadowRadius: 3, 
-      textShadowColor: 'rgba(0, 0, 0, 0.5)',
-      textShadowOffset: direction === 'left' ? {width: 4, height: 3} : {width: -4, height: 3},
       color: 'skyblue',
       fontSize: 24
     }

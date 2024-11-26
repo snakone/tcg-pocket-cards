@@ -14,6 +14,7 @@ import { IconSymbol } from "@/components/ui/IconSymbol";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useI18n } from "../../../core/providers/LanguageProvider";
 import { AppContext } from "@/app/_layout";
+import { INITIAL_SORT_DATA } from "@/shared/definitions/utils/contants";
 
 export default function SortCardMenu({
   isVisible,
@@ -26,18 +27,7 @@ export default function SortCardMenu({
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
   const {i18n} = useI18n();
-
-  const initialData: SortItem[] = [
-    { id: 1, label: 'order_by_number', icon: 'content-paste-search', active: true, order: 'asc' },
-    { id: 2, label: 'order_by_type', icon: 'stars', active: false, order: 'desc' },
-    { id: 3, label: 'order_by_rarity', icon: 'diamond', active: false, order: 'desc' },
-    { id: 4, label: 'order_by_pokedex', icon: 'smartphone', active: false, order: 'desc' },
-    { id: 5, label: 'order_by_retreat', icon: 'grass', active: false, order: 'desc' },
-    { id: 6, label: 'order_by_hp', icon: 'favorite-outline', active: false, order: 'desc' },
-  ];
-
-  const [data, setData] = useState(initialData);
-
+  const [data, setData] = useState(INITIAL_SORT_DATA);
   const styles = ModalStyles;
   const closed = useRef<Audio.Sound>();
 
@@ -70,11 +60,6 @@ export default function SortCardMenu({
     setData(updated);
     dispatch({ type: 'SET_SORT', value: updated });
   };
-
-  const deactivateAll = () => {
-    const updated = data.map(d => (d.active = false, d));
-    setData(updated);
-  }
 
   useEffect(() => {
     if (state.filterState.sort.length > 0) {
@@ -143,7 +128,7 @@ export default function SortCardMenu({
 
 const filterStyles = StyleSheet.create({
   container: {
-    height: 469, 
+    height: 518, 
     position: 'absolute', 
     width: '100%',
     bottom: 0,

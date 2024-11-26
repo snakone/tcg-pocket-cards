@@ -137,7 +137,8 @@ export default function TabLayout() {
             <IconSymbol name="house.fill" 
                         color={color}
                         style={TabButtonStyles.icon} />,
-            animation: 'shift'
+            animation: 'shift',
+            title: 'Home'
           }}
         />
         <Tabs.Screen
@@ -147,7 +148,7 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => 
               <SvgStackSymbol color={color} 
                               style={TabButtonStyles.stacks} />,
-            animation: 'shift'
+            animation: 'shift',
           }}
         />
         <Tabs.Screen
@@ -156,7 +157,8 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => 
               <SvgStylusSymbol color={color}
                                style={TabButtonStyles.stylus} />,
-            animation: 'shift'
+            animation: 'shift',
+            title: 'Create'
           }}
         />
         <Tabs.Screen
@@ -182,6 +184,7 @@ export default function TabLayout() {
               display: 'none'
             },
             tabBarButton: () => null,
+            title: 'Profile'
           }}
         />
       </Tabs>
