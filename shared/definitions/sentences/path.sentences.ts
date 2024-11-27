@@ -20,3 +20,7 @@ export const NORMAL_ICON = require('@/assets/images/types/normal.png');
 export const PSYCHIC_ICON = require('@/assets/images/types/psychic.png');
 export const STEEL_ICON = require('@/assets/images/types/steel.png');
 export const WATER_ICON = require('@/assets/images/types/water.png');
+
+export const MEWTWO_PACK = require('@/assets/images/packs/mewtwo.png');
+export const CHARIZARD_PACK = require('@/assets/images/packs/charizard.png');
+export const PIKACHU_PACK = require('@/assets/images/packs/pikachu.png');

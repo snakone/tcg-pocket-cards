@@ -1,5 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
-import { MENU_WIDTH } from '../definitions/utils/contants';
+import { iconWidth, MENU_WIDTH } from '../definitions/utils/contants';
 import { Colors } from '../definitions/utils/colors';
 
 export const HEADER_HEIGHT = 100;
@@ -26,7 +26,8 @@ export const ThemeTextStyles = StyleSheet.create({
   subtitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: Colors.light.bold
+    color: Colors.light.bold,
+    marginBottom: 12
   },
   link: {
     lineHeight: 30,
@@ -191,7 +192,7 @@ export const ModalStyles = StyleSheet.create({
     padding: 24,
     backgroundColor: 'white',
     zIndex: 0,
-    flex: 1
+    flex: 1,
   },
   modalFooter: {
     backgroundColor: '#F2F2F2',
@@ -297,6 +298,16 @@ export const MenuStyles = StyleSheet.create({
     paddingBlock: 32,
     userSelect: 'none'
   },
+  expansions: {
+    backgroundColor: 'white',
+    width: '100%',
+    height: '69%',
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
+    overflow: 'hidden',
+    userSelect: 'none'
+  }
 });
 
 export const TabButtonStyles = StyleSheet.create({
@@ -488,4 +499,101 @@ export const LoadingStyles = StyleSheet.create({
     elevation: 10,
     position: 'absolute'
   },
+});
+
+export const filterStyles = StyleSheet.create({
+  container: {
+    height: '75%', 
+    position: 'absolute', 
+    width: '100%',
+    bottom: 0,
+    zIndex: 100,
+    backgroundColor: 'white',
+    borderTopLeftRadius: 40, 
+    borderTopRightRadius: 40
+  },
+  header: {
+    fontSize: 20, 
+    fontWeight: 600, 
+    marginBottom: 24, 
+    color: '#333'
+  },
+  list: {
+    padding: Platform.OS === 'web' ? 20 : 0
+  },
+  button: {
+    boxShadow: '8px 12px 12px rgba(0, 0, 0, 0.2)',
+    borderRadius: 20,
+    fontSize: 14,
+    fontWeight: '400',
+    textAlign: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 4,
+    color: '#555',
+    zIndex: 100
+  },
+  image: {
+    width: 19,
+    height: 20,
+  },
+  imageContainer: {
+    height: 32,
+    width: iconWidth,
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    paddingHorizontal: 0,
+    paddingVertical: 0,
+    flexDirection: 'row'
+  },
+  flexContainer: {
+    flexDirection: 'row',
+    marginTop: 8,
+    marginBottom: 36, 
+    columnGap: 12,
+    rowGap: 16
+  },
+  showAll: {
+    position: 'absolute', 
+    right: 0, 
+    top: -45
+  },
+  gridButton: {
+    flexDirection: 'row', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    width: '48%', 
+    left: 0,
+    zIndex: 100
+  },
+  buttonText: {
+    color: '#555',
+    position: 'relative',
+    fontSize: 14,
+    textAlign: 'center'
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  separator: {
+    position: 'absolute',
+    width: '100%',
+    textAlign: 'center',
+    alignItems: 'center',
+    top: 12,
+    color: Colors.light.text,
+    transform: [{scaleX: 2}]
+  },
+  buttonContainer: {
+    justifyContent: 'space-between', 
+    flexWrap: 'wrap', 
+    marginBottom: 48
+  },
+  expansionShadow: {
+    width: '100%', 
+    height: 4, 
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)', 
+    position: 'relative', 
+    top: -4
+  }
 });

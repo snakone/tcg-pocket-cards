@@ -128,10 +128,10 @@ const FILTER_SEARCH: FilterSearch = {
     "8": null,
   },
   stage: {
-    fossil: null,
     object: null,
+    tool: null,
+    fossil: null,
     supporter: null,
-    tool: null
   }
 }
 
@@ -173,3 +173,7 @@ export const TYPE_MAP: any = {
   8: { image: DRAGON_ICON, label: 'dragon' },
   9: { image: NORMAL_ICON, label: 'normal' },
 }
+
+export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);
+
+export const iconWidth = 36;

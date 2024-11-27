@@ -1,22 +1,26 @@
+import React from "react";
 import { BlurView } from "expo-blur";
-import { Platform, Pressable, SafeAreaView, SectionList, StyleSheet, TouchableOpacity, View } from "react-native";
-import Animated from 'react-native-reanimated'
+import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
 import { Audio } from "expo-av";
-import { useRef, useEffect, useCallback, useState, useContext } from "react";
+import { useRef, useEffect, useCallback, useState, useContext, useMemo } from "react";
+import { Image } from "expo-image";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Portal, Provider } from "react-native-paper";
+import { Subject } from "rxjs";
 
 import { AppContext } from "@/app/_layout";
-import { DataSection, FilterSearch, TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, LayoutStyles, ModalStyles } from "@/shared/styles/component.styles";
+import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
+import { ButtonStyles, filterStyles, LayoutStyles, MenuStyles, ModalStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AUDIO_MENU_CLOSE } from "@/shared/definitions/sentences/path.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { getFilterSearch, RARITY_MAP, TYPE_MAP } from "@/shared/definitions/utils/contants";
-import { Image } from "expo-image";
-
-const iconWidth = 36;
+import { DAMAGES, FILTER_CARDS_HEIGHT, getFilterSearch, iconWidth, RARITY_MAP, TYPE_MAP } from "@/shared/definitions/utils/contants";
+import SelectInput from "@/components/ui/SelectInput";
+import StateButton from "@/components/ui/StateButton";
 
 export default function FilterCardMenu({
   isVisible,
@@ -29,9 +33,26 @@ export default function FilterCardMenu({
   const { state, dispatch } = context;
   const closed = useRef<Audio.Sound>();
   const {i18n} = useI18n();
-  const [filterSearch, setFilterSearch] = useState<FilterSearch>(getFilterSearch());
-  const [filterList, setFilterList] = useState<DataSection[]>([]);
+  const [filterSearch, setFilterSearch] = useState<any>(getFilterSearch());
+  const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
+  const distanceFromBottom = useSharedValue(FILTER_CARDS_HEIGHT);
 
+  const typeSelectAll$ = new Subject<boolean>();
+  const raritySelectAll$ = new Subject<boolean>();
+  const stageSelectAll$ = new Subject<boolean>();
+
+  function onTypeSelectAll(): void {
+    typeSelectAll$.next(true);
+  }
+
+  function onRaritySelectAll(): void {
+    raritySelectAll$.next(true);
+  }
+
+  function onStageSelectAll(): void {
+    stageSelectAll$.next(true);
+  }
+  
   useEffect(() => {
     async function loadSounds() {
       const { sound } = await Audio.Sound.createAsync(AUDIO_MENU_CLOSE);
@@ -41,22 +62,17 @@ export default function FilterCardMenu({
     loadSounds();
   }, []);
 
-  useEffect(() => {
-    const DATA: DataSection[] = [
-      {title: 'favorites', data: [filterSearch.favorite]},
-      {title: 'rarity', data: [filterSearch.rarity]},
-      {title: 'pokemon', data: [
-        filterSearch.element, 
-        filterSearch.health, 
-        filterSearch.attack, 
-        filterSearch.ability
-      ]},
-      {title: 'trainer_card', data: [filterSearch.stage]},
-      {title: 'expansions', data: [filterSearch.expansion]},
-    ];
+  const modalAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateY: distanceFromBottom.value }]
+    };
+  });
 
-    setFilterList(DATA);
-  }, [filterSearch])
+  useEffect(() => {
+    distanceFromBottom.value = expansionVisible ? 
+                          withTiming(0, { duration: 150 }) : 
+                          FILTER_CARDS_HEIGHT;
+  }, [expansionVisible]);
 
   const playSound = useCallback(async () => {
     if (closed.current) await closed.current.replayAsync();
@@ -67,63 +83,131 @@ export default function FilterCardMenu({
     onClose();
   }
 
-  const favoriteItem = (item: Pick<FilterSearch, "favorite">, index: number) => {
-    return (
-      <ThemedView style={filterStyles.flexContainer}>
-        <ThemedText style={filterStyles.button}>Favoritas</ThemedText>
-        <ThemedText style={filterStyles.button}>No favoritas</ThemedText>
-      </ThemedView>
-    )
+  function closeExpansionMenu() {
+    setExpansionVisible(false);
   }
 
-  const rarityItem = (item: Pick<FilterSearch, "rarity">, index: number) => {
+  const FavoriteItem = () => {
+    return (
+      <ThemedView style={filterStyles.flexContainer}>
+        <StateButton showLabel={true} label={'favorites'} style={filterStyles.button}></StateButton>
+        <StateButton showLabel={true} label={'no_favorites'} style={filterStyles.button}></StateButton>
+      </ThemedView>
+    );
+  };
+
+  const RarityItem = ({rarity}: {rarity: any}) => {
     return (
       <ThemedView style={[filterStyles.flexContainer, {flexWrap: 'wrap', marginBottom: 48}]}>
         {
-          Object.keys(item).map((key, index) => {
+          Object.keys(rarity).map((key, index) => {
             const image = RARITY_MAP[key]?.image;
             const amount = RARITY_MAP[key]?.amount;
               return image ? (
-                <ThemedView key={index} style={
-                  [{overflow: 'hidden'}, filterStyles.button, filterStyles.imageContainer, {
-                    width: iconWidth + (amount - 1) * 44
-                  }]
+                <StateButton onPress={raritySelectAll$} key={index} style={
+                  [{overflow: 'hidden'}, 
+                    filterStyles.button, 
+                    filterStyles.imageContainer, 
+                    { width: iconWidth + (amount - 1) * 44}]
                 }>
-                  {Array.from({ length: amount }).map((_, i) => (
-                    <Image
-                      key={index + (i + 1)}
-                      source={image}
-                      style={[filterStyles.image, index === 7 ? {width: 30, transform: [{scale: 0.86}]} : null]}
-                    />
-                  ))}
-                </ThemedView>
-              ) : <ThemedText key={index + Math.random()} style={filterStyles.button}>PROMO</ThemedText>
+                    {Array.from({ length: amount }).map((_, i) => (
+                      <Image
+                        key={index + (i + 1)}
+                        source={image}
+                        style={[
+                          filterStyles.image, index === 7 ? 
+                            {width: 30, transform: [{scale: 0.86}]} : null
+                        ]}
+                      />
+                    ))}
+                </StateButton>
+
+              ) : <StateButton key={index + Math.random()} 
+                               onPress={raritySelectAll$} 
+                               style={filterStyles.button} 
+                               label={'promo'} 
+                               showLabel={true}>
+                  </StateButton>
           })
         }
       </ThemedView>
     )
   }
 
-  const pokemonItem = (item: Pick<FilterSearch, "element">, index: number) => {
+  const PokemonItem = (item: any) => {
     return (
       <>
         <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('type')}</ThemedText>
-        <ThemedView style={[filterStyles.flexContainer, {justifyContent: 'space-between', flexWrap: 'wrap', marginBottom: 48}]}>
+        <ThemedView style={[
+          filterStyles.flexContainer, 
+          {justifyContent: 'space-between', flexWrap: 'wrap', marginBottom: 48}
+        ]}>
           {
-            Object.keys(item).map((key, i) => {
-              if (index === 0) {
+            Object.keys(item.element).map((key, i) => {
                 const image = TYPE_MAP[key]?.image;
                 const label = TYPE_MAP[key]?.label;
                 return (
-                  <ThemedView style={[filterStyles.button, {flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '48%'}]} key={index + i}>
-                    <Image source={image} style={{width: 21, height: 21, position: 'absolute', left: 20}}></Image>
-                    <ThemedText key={index + Math.random()} style={{color: '#555', position: 'relative', left: 8}}>{i18n.t(label)}</ThemedText>
-                  </ThemedView>
+                  <StateButton label={label} 
+                            showLabel={true} 
+                            onPress={typeSelectAll$}
+                            labelMargin={true}
+                            key={i} style={[filterStyles.button, 
+                            {flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '48%'}]}>
+                    <Image source={image} style={{width: 21, height: 21, position: 'absolute', left: 20, marginRight: 8}}></Image>
+                  </StateButton>
                 )
-              }
+            })
+          }
+        </ThemedView>
 
+        {/* HEALTH */}
+        <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('health')}</ThemedText>
+        <ThemedView style={[
+          filterStyles.flexContainer, 
+          {justifyContent: 'space-between', flexWrap: 'wrap', marginBottom: 48}
+        ]}>
+          {
+            ['min', 'max'].map((k, i) => {
               return (
-                <ThemedText key={index + i}>{key}</ThemedText>
+                <SelectInput key={i} 
+                             options={DAMAGES} 
+                             label={k} 
+                             onSelect={(opt, i) => null}>
+                </SelectInput>  
+              )
+            })
+          }
+          <MaterialIcons name="remove" style={filterStyles.separator}></MaterialIcons>
+        </ThemedView>
+
+        {/* ATTACK */}
+        <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('attack')}</ThemedText>
+        <ThemedView style={[filterStyles.flexContainer, filterStyles.buttonContainer]}>
+          {
+            ['min', 'max'].map((k, i) => {
+              return (
+                <SelectInput key={i} 
+                             options={DAMAGES} 
+                             label={k} 
+                             onSelect={(opt, i) => console.log({opt, i})}>
+                </SelectInput>  
+              )
+            })
+          }
+          <MaterialIcons name="remove" style={filterStyles.separator}></MaterialIcons>
+        </ThemedView>
+
+        {/* OTHERS */}
+        <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('others')}</ThemedText>
+        <ThemedView style={[filterStyles.flexContainer, filterStyles.buttonContainer]}>
+          {
+            ['with_ability', 'without_ability'].map((k, i) => {
+              return (
+                <StateButton key={i} 
+                             style={[filterStyles.button, filterStyles.gridButton]} 
+                             showLabel={true} 
+                             label={k}>
+                </StateButton>     
               )
             })
           }
@@ -132,65 +216,134 @@ export default function FilterCardMenu({
     )
   }
 
-  const stageItem = (item: Pick<FilterSearch, "stage">, index: number) => {
+  const StageItem = ({stage}: {stage: any}) => {
     return (
-      <ThemedView style={{flexDirection: 'row'}}>
-        {
-          Object.keys(item).map(i => {
-            return (
-              <ThemedText key={index + i}>{i}</ThemedText>
-            )
-          })
-        }
+      <ThemedView style={[filterStyles.flexContainer, filterStyles.buttonContainer]}>
+          {
+            Object.keys(stage).map((key, i) => {
+                return (
+                  <StateButton style={[filterStyles.button, filterStyles.gridButton]} 
+                               key={i} 
+                               onPress={stageSelectAll$} 
+                               showLabel={true} 
+                               label={key}>
+                  </StateButton>
+                )
+            })
+          }
       </ThemedView>
     )
   }
 
-  const expansionItem = (item: Pick<FilterSearch, "expansion">, index: number) => {
+  const ExpansionItem = ({expansion} : {expansion: any}) => {
     return (
-      <ThemedView style={{flexDirection: 'row'}}>
-        <ThemedText>Select Expansion</ThemedText>
-      </ThemedView>
+      <Pressable onPress={() => setExpansionVisible(true)}>
+        <ThemedView style={[
+          filterStyles.button, 
+          filterStyles.gridButton, 
+          {width: '100%', marginBottom: 28}
+        ]}>
+          <ThemedText style={filterStyles.buttonText}>{i18n.t('expansions')}</ThemedText>
+          <MaterialIcons name="keyboard-arrow-right" 
+                           style={{
+                            position: 'absolute', 
+                            justifyContent: 'flex-end', 
+                            fontSize: 24,
+                            marginTop: 1,
+                            color: '#555',
+                            right: 7
+                      }}/>
+        </ThemedView>
+      </Pressable>
     )
   }
 
-  const sectionSwitch = (item: Pick<FilterSearch, any>, index: number): any => ({
-    favorites: () => favoriteItem(item, index),
-    rarity: () => rarityItem(item, index),
-    pokemon: () => pokemonItem(item, index),
-    trainer_card: () => stageItem(item, index),
-    expansions: () => expansionItem(item, index)
-  })
+  const memoizedExpansionsMenu = useMemo(() => {
+    return (
+    <Animated.View style={[MenuStyles.expansions, modalAnimatedStyle]}>
+      <ThemedView style={{flex: 1}}>
+          <ThemedView style={filterStyles.expansionShadow}></ThemedView>
+          <ThemedView style={{flex: 1, padding: 20}}>
+            <ThemedText>{i18n.t('expansions')}</ThemedText>
+          </ThemedView>
+        <View style={[ModalStyles.modalFooter, {width: '100%'}]}>
+                  <TouchableOpacity style={ButtonStyles.button} 
+                                    onPress={closeExpansionMenu} 
+                                    accessibilityLabel={CLOSE_SENTENCE}
+                                    accessibilityRole="button"
+                                    accessible={true}>
+                    <View style={ButtonStyles.insetBorder}>
+                      <IconSymbol name="clear"></IconSymbol>
+                    </View>
+                  </TouchableOpacity>
+                </View>
+      </ThemedView>
+    </Animated.View>
+   )
+  }, [expansionVisible, modalAnimatedStyle]);
 
   return (
-    <>
-    <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
-              style={StyleSheet.absoluteFill} 
-              tint="light" 
-              experimentalBlurMethod='dimezisBlurView'/>
-      <Pressable style={LayoutStyles.overlay} 
-                 onPress={() => closeMenu()}>
-      </Pressable>
+    <Provider>
+      <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
+                style={StyleSheet.absoluteFill} 
+                tint="light" 
+                experimentalBlurMethod='dimezisBlurView'/>
+      <Pressable style={LayoutStyles.overlay} onPress={() => closeMenu()}></Pressable>
       <Animated.View style={[animatedStyle, filterStyles.container]}>
         <View style={[ModalStyles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('filter')}</ThemedText>
         </View>
-        <SafeAreaView style={ModalStyles.modalScrollView}>
-        <SectionList
-            sections={filterList}
-            keyExtractor={(item, index) => `${index}`}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={filterStyles.list}
-            renderItem={({item, section, index}) => sectionSwitch(item, index)[section.title]()}
-            renderSectionHeader={({section: {title}}) => (
-              <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <ThemedText style={filterStyles.header}>{i18n.t(title)}</ThemedText>
+        <SafeAreaView style={[ModalStyles.modalScrollView]}>
+          {/* SCROLL */}
+          <ScrollView style={filterStyles.list} showsVerticalScrollIndicator={false}>
+            <>
+              <ThemedView style={filterStyles.row}>
+                <ThemedText style={filterStyles.header}>{i18n.t('favorites')}</ThemedText>
+              </ThemedView>
+              <FavoriteItem></FavoriteItem>
+            </>
+            <>
+              <ThemedView style={filterStyles.row}>
+                <ThemedText style={filterStyles.header}>{i18n.t('rarity')}</ThemedText>
+                <Pressable onPress={() => onRaritySelectAll()}>
+                  <ThemedView style={[]}>
+                    <ThemedText>Mostrar</ThemedText>
+                  </ThemedView>
+                </Pressable>
+
+              </ThemedView>
+              <RarityItem rarity={filterSearch.rarity}></RarityItem>
+            </>
+            <>
+              <ThemedView style={filterStyles.row}>
+                <ThemedText style={filterStyles.header}>{i18n.t('pokemon')}</ThemedText>
                 <ThemedView style={[]}>
-                  <ThemedText>Mostrar</ThemedText>
+                  <Pressable onPress={() => onTypeSelectAll()}>
+                    <ThemedText>Mostrar</ThemedText>
+                  </Pressable>
                 </ThemedView>
               </ThemedView>
-            )}
-          />
+              <PokemonItem element={filterSearch.element}></PokemonItem>
+            </>
+            <>
+              <ThemedView style={filterStyles.row}>
+                <ThemedText style={filterStyles.header}>{i18n.t('trainer_card')}</ThemedText>
+                <ThemedView style={[]}>
+                <Pressable onPress={() => onStageSelectAll()}>
+                    <ThemedText>Mostrar</ThemedText>
+                  </Pressable>
+                </ThemedView>
+              </ThemedView>
+              <StageItem stage={filterSearch.stage}></StageItem>
+            </>
+            <>
+              <ThemedView style={filterStyles.row}>
+                <ThemedText style={filterStyles.header}>{i18n.t('expansions')}</ThemedText>
+              </ThemedView>
+              <ExpansionItem expansion={filterSearch.expansion}></ExpansionItem>
+            </>
+          </ScrollView>
+
         </SafeAreaView>
         <View style={ModalStyles.modalFooter}>
           <TouchableOpacity style={ButtonStyles.button} 
@@ -202,64 +355,9 @@ export default function FilterCardMenu({
           </TouchableOpacity>
         </View>
       </Animated.View>
-    </>
+      <Portal>{expansionVisible && memoizedExpansionsMenu}</Portal>
+    </Provider>
   );
 }
-
-const filterStyles = StyleSheet.create({
-  container: {
-    height: '75%', 
-    position: 'absolute', 
-    width: '100%',
-    bottom: 0,
-    zIndex: 100,
-    backgroundColor: 'white',
-    borderTopLeftRadius: 40, borderTopRightRadius: 40
-  },
-  header: {
-    fontSize: 20, 
-    fontWeight: 600, 
-    marginBottom: 24, 
-    color: '#333'
-  },
-  list: {
-    padding: Platform.OS === 'web' ? 20 : 0
-  },
-  button: {
-    boxShadow: '8px 12px 12px rgba(0, 0, 0, 0.2)',
-    borderRadius: 20,
-    fontSize: 15,
-    fontWeight: '400',
-    textAlign: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 4,
-    color: '#555'
-  },
-  image: {
-    width: 19,
-    height: 20,
-  },
-  imageContainer: {
-    height: 32,
-    width: iconWidth,
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-    paddingHorizontal: 0,
-    paddingVertical: 0,
-    flexDirection: 'row'
-  },
-  flexContainer: {
-    flexDirection: 'row',
-    marginTop: 8,
-    marginBottom: 36, 
-    columnGap: 12,
-    rowGap: 16
-  },
-  showAll: {
-    position: 'absolute', 
-    right: 0, 
-    top: -45
-  }
-});
 
 

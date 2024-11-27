@@ -33,7 +33,7 @@ export default function RootLayout() {
 
   return (
     <Provider>
-      <GestureHandlerRootView style={Platform.OS === 'web' ? WebStyles.view : { flex: 1 }}>
+      <GestureHandlerRootView style={WebStyles.view}>
         <AppContext.Provider value={contextValue}>
           <ErrorProvider>
             <I18nProvider>

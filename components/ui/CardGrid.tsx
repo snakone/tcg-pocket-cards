@@ -65,7 +65,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
   const scrollY = useSharedValue(0);
   const [isLoading, setIsLoading] = useState(false);
   const [numColumns, setNumColumns] = useState(3);
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [isGrid5, setIsGrid5] = useState(false);
   const rotate = useSharedValue(0);
   const scale = useSharedValue(1);
 
@@ -93,8 +93,8 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
   });
 
   const toggleSwitch = () => {
-    !isEnabled ? setNumColumns(5) : setNumColumns(3);
-    setIsEnabled(previousState => !previousState);
+    !isGrid5 ? setNumColumns(5) : setNumColumns(3);
+    setIsGrid5(previousState => !previousState);
     playSound(true);
     setTimeout(() => scrollY.value = 0, 150);
   };
@@ -157,18 +157,18 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
     <Animated.View style={[
         CardGridStyles.imageContainer, 
         item.name === selected ? animatedStyle : null, 
-        isEnabled ? {marginHorizontal: 1, marginVertical: 1} : null
+        isGrid5 ? {marginHorizontal: 1, marginVertical: 1} : null
       ]}>
       <Pressable disabled={isLoading} 
                  onPress={() => goToDetailScreen(item.name)} style={{ zIndex: 1 }}>
         <Image style={[
           CardGridStyles.image, 
-          isEnabled ? {width: CARD_IMAGE_WIDTH_5} : {width: CARD_IMAGE_WIDTH_3}
+          isGrid5 ? {width: CARD_IMAGE_WIDTH_5} : {width: CARD_IMAGE_WIDTH_3}
         ]} 
         source={CARD_IMAGE_MAP[item.name]} contentFit="fill" />
       </Pressable>
     </Animated.View>
-  ), [selected, isLoading, isEnabled]);
+  ), [selected, isLoading, isGrid5]);
 
   useEffect(() => {
     async function loadSounds() {
@@ -275,10 +275,10 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                                placeholderTextColor={Colors.light.text}
                                accessibilityLabel={SEARCH_LABEL}/>
                           {searchQuery.length > 0 && <ResetFilterButton/>}
-                    <Switch trackColor={{false: '#767577', true: 'mediumaquamarine'}}
+                    <Switch trackColor={{false: Colors.light.skeleton, true: 'skyblue'}}
                             color={'white'}
                             onValueChange={toggleSwitch}
-                            value={isEnabled}
+                            value={isGrid5}
                             style={CardGridStyles.switch} 
                     />
                   </Animated.View>

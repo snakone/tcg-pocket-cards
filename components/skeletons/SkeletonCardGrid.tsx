@@ -2,6 +2,7 @@ import { SafeAreaView, FlatList, View } from "react-native";
 import { useCallback, useRef } from "react";
 
 import { CardGridStyles } from "@/shared/styles/component.styles";
+import { Colors } from "@/shared/definitions/utils/colors";
 
 interface SkeletonProps {
   columns: number;
@@ -14,7 +15,7 @@ export default function SkeletonCardGrid({columns}: SkeletonProps) {
 
   const renderItem = useCallback(() => (
     <View style={CardGridStyles.imageContainer}>
-      <View style={{flex: 1, backgroundColor: '#d2d2d2'}}>
+      <View style={{flex: 1, backgroundColor: Colors.light.skeleton}}>
         <View style={CardGridStyles.image}></View></View>
     </View>
   ), []);
