@@ -1,5 +1,5 @@
 import { PropsWithChildren, ReactNode } from "react";
-import { TextProps } from "react-native";
+import { StyleProp, TextProps, ViewStyle } from "react-native";
 
 export type ThemedTextProps = TextProps & {
   color?: string;
@@ -11,7 +11,8 @@ export type ThemeTextType = 'default' | 'title' | 'defaultSemiBold' | 'subtitle'
 export type ParallaxProps = PropsWithChildren<{
   title: string,
   modalContent: ReactNode,
-  modalTitle: string
+  modalTitle: string,
+  styles?: StyleProp<ViewStyle>
 }>;
 
 export type ErrorType = 'error' | 'info' | 'warning';

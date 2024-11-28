@@ -140,7 +140,7 @@ export default function FilterCardMenu({
         <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('type')}</ThemedText>
         <ThemedView style={[
           filterStyles.flexContainer, 
-          {justifyContent: 'space-between', flexWrap: 'wrap', marginBottom: 48}
+          {justifyContent: 'space-between', flexWrap: 'wrap', marginBottom: 48, paddingRight: 16}
         ]}>
           {
             Object.keys(item.element).map((key, i) => {
@@ -164,7 +164,7 @@ export default function FilterCardMenu({
         <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('health')}</ThemedText>
         <ThemedView style={[
           filterStyles.flexContainer, 
-          {justifyContent: 'space-between', flexWrap: 'wrap', marginBottom: 48}
+          filterStyles.buttonContainer
         ]}>
           {
             ['min', 'max'].map((k, i) => {
@@ -240,8 +240,8 @@ export default function FilterCardMenu({
       <Pressable onPress={() => setExpansionVisible(true)}>
         <ThemedView style={[
           filterStyles.button, 
-          filterStyles.gridButton, 
-          {width: '100%', marginBottom: 28}
+          filterStyles.buttonContainer,  
+          {marginBottom: 28, marginRight: 16}
         ]}>
           <ThemedText style={filterStyles.buttonText}>{i18n.t('expansions')}</ThemedText>
           <MaterialIcons name="keyboard-arrow-right" 
@@ -285,19 +285,19 @@ export default function FilterCardMenu({
   return (
     <Provider>
       <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
-                style={StyleSheet.absoluteFill} 
+                style={[StyleSheet.absoluteFill]} 
                 tint="light" 
                 experimentalBlurMethod='dimezisBlurView'/>
-      <Pressable style={LayoutStyles.overlay} onPress={() => closeMenu()}></Pressable>
+      <Pressable style={[LayoutStyles.overlay]} onPress={() => closeMenu()}></Pressable>
       <Animated.View style={[animatedStyle, filterStyles.container]}>
         <View style={[ModalStyles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('filter')}</ThemedText>
         </View>
         <SafeAreaView style={[ModalStyles.modalScrollView]}>
           {/* SCROLL */}
-          <ScrollView style={filterStyles.list} showsVerticalScrollIndicator={false}>
+          <ScrollView style={[filterStyles.list]} showsVerticalScrollIndicator={false}>
             <>
-              <ThemedView style={filterStyles.row}>
+              <ThemedView style={[filterStyles.row, {marginTop: 4}]}>
                 <ThemedText style={filterStyles.header}>{i18n.t('favorites')}</ThemedText>
               </ThemedView>
               <FavoriteItem></FavoriteItem>

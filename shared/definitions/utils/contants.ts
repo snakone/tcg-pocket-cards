@@ -177,3 +177,19 @@ export const TYPE_MAP: any = {
 export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);
 
 export const iconWidth = 36;
+
+export function getDaysRemaining(): { progress: number; remainingText: string } {
+  const target = new Date(2025, 0, 29); 
+  const start = new Date(2024, 10, 25);
+  const today = new Date();
+  const diff = target.getTime() - today.getTime();
+  const totalDiff = target.getTime() - start.getTime();
+  const remainingDays = Math.ceil(diff / (1000 * 3600 * 24));
+  const elapsedDiff = today.getTime() - start.getTime();
+  const elapsedDays = Math.ceil(elapsedDiff / (1000 * 3600 * 24));
+  const progress = (elapsedDays / (totalDiff / (1000 * 3600 * 24))) * 100;
+  const hours = Math.floor((diff % (1000 * 3600 * 24)) / (1000 * 3600));
+  const remainingText = `${remainingDays} d ${hours} h`;
+
+  return { progress, remainingText };
+}

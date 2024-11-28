@@ -105,7 +105,7 @@ export default function CardsScreen() {
       { loading ? <LoadingOverlay></LoadingOverlay> : null }
       <ImageGridWithSearch state={state} 
                            key={loading ? 'loading' : 'loaded'}/>
-      { loading ? null : (
+      { loading ? null : state.cardState.cards?.length > 0 ? (
         <>
           <TouchableOpacity onPress={() => handleActionMenu('OPEN_SORT')} style={styles.container}>
             <ThemedView>
@@ -127,7 +127,7 @@ export default function CardsScreen() {
             </ThemedView>
           </TouchableOpacity>       
         </>
-      )}
+      ) : null}
     </>
   );
 }

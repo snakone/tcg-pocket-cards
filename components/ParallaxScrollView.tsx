@@ -9,19 +9,19 @@ export default function ParallaxScrollView({
   children,
   title,
   modalContent,
-  modalTitle
+  modalTitle,
+  styles = {}
 }: ParallaxProps) {
-  const styles = ParallaxStyles;
-  
+ 
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView style={ParallaxStyles.container}>
       <SafeAreaView style={{flex: 1}}>
-        <View style={styles.header}>
+        <View style={ParallaxStyles.header}>
           <HeaderWithCustomModal title={title} 
                                  modalContent={modalContent} 
                                  modalTitle={modalTitle}/>
         </View>
-        <ThemedView style={styles.content}>{children}</ThemedView>
+        <ThemedView style={[ParallaxStyles.content, styles]}>{children}</ThemedView>
       </SafeAreaView>
     </ThemedView>
   );

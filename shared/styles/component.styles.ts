@@ -4,8 +4,8 @@ import { Colors } from '../definitions/utils/colors';
 
 export const HEADER_HEIGHT = 100;
 export const HEADER_MIN_HEIGHT = 40;
-export const CARD_IMAGE_WIDTH_3 = 106.6;
-export const CARD_IMAGE_WIDTH_5 = 64.5;
+export const CARD_IMAGE_WIDTH_3 = 114.5;
+export const CARD_IMAGE_WIDTH_5 = 69.1;
 
 export const ThemeTextStyles = StyleSheet.create({
   default: {
@@ -60,7 +60,7 @@ export const ParallaxStyles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    paddingInline: 28,
+    paddingInline: 16,
     paddingBottom: 8,
     gap: 16,
   },
@@ -233,6 +233,7 @@ export const HomeScreenStyles = StyleSheet.create({
   stepContainer: {
     gap: 8,
     marginBottom: 8,
+    marginTop: 12
   }
 });
 
@@ -510,7 +511,7 @@ export const filterStyles = StyleSheet.create({
     zIndex: 100,
     backgroundColor: 'white',
     borderTopLeftRadius: 40, 
-    borderTopRightRadius: 40
+    borderTopRightRadius: 40,
   },
   header: {
     fontSize: 20, 
@@ -587,7 +588,8 @@ export const filterStyles = StyleSheet.create({
   buttonContainer: {
     justifyContent: 'space-between', 
     flexWrap: 'wrap', 
-    marginBottom: 48
+    marginBottom: 48,
+    paddingRight: 16
   },
   expansionShadow: {
     width: '100%', 
@@ -595,5 +597,59 @@ export const filterStyles = StyleSheet.create({
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)', 
     position: 'relative', 
     top: -4
+  }
+});
+
+export const indexScreenStyles = StyleSheet.create({
+  progressBarBackground: {
+    width: '70%',
+    height: 11,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    overflow: 'hidden',
+    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.25)',
+    marginTop: 3
+  },
+  progressBarFill: {
+    height: '100%',
+    backgroundColor: '#ff69b4',
+    borderRadius: 10,
+  },
+  imageWidth: {
+    width: 102, 
+    height: 210
+  },
+  cardShadow: {
+    boxShadow: '0px 8px 8px rgba(0, 0, 0, 0.4)'
+  },
+  timerContainer: {
+    position: 'relative', 
+    elevation: 10, 
+    justifyContent: 'center', 
+    width: '100%', 
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
+  timerOutter: {
+    position: 'absolute',
+    bottom: -9, 
+    padding: 6,
+    borderRadius: 25,
+    backgroundColor: 'white',
+    overflow: 'visible',
+    width: 130,
+  },
+  timerInner: {
+    boxShadow: 'rgba(0, 0, 0, 0.5) 0px 8px 21px 0px', 
+    padding: 2,
+    borderRadius: 25,
+    backgroundColor: 'white',
+    width: '100%',
+    height: '100%',
+  },
+  row: {
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'center'
   }
 });
