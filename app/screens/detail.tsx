@@ -42,7 +42,7 @@ export default function DetailScreen() {
   const opacityDuration = Platform.OS === 'web' ? 500 : 1000;
   const rotateX = useSharedValue(0);
   const rotateY = useSharedValue(0);
-  const { name } = useLocalSearchParams<{ name: string }>();
+  const { id } = useLocalSearchParams<{ id: string }>();
 
   const playSound = async () => {
     if (audio.current) audio.current.replayAsync();
@@ -152,14 +152,14 @@ export default function DetailScreen() {
         Platform.OS === 'web' ? (
           <Animated.View style={opacityStyle}>
             <Image style={styles.image}
-                   source={CARD_IMAGE_MAP[name]}
+                   source={CARD_IMAGE_MAP[id]}
                    contentFit={'fill'} />
           </Animated.View>
         ) : (<>
           <GestureDetector gesture={gesture}>
             <Animated.View style={[opacityStyle, rotationStyle]}>
               <Image style={styles.image}
-                     source={CARD_IMAGE_MAP[name]}
+                     source={CARD_IMAGE_MAP[id]}
                      contentFit={'fill'} />
             </Animated.View>
           </GestureDetector>

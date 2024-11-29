@@ -14,6 +14,7 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import { AUDIO_MENU_OPEN } from '@/shared/definitions/sentences/path.sentences';
 import { useError } from '@/core/providers/ErrorProvider';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
+import { Colors } from '@/shared/definitions/utils/colors';
 
 export default function CardsScreen() {
   const context = useContext(AppContext);
@@ -87,7 +88,7 @@ export default function CardsScreen() {
     };
   }, [state.cardState.loaded]);
 
-  const getFilterIcon = useCallback(() => {
+  const fixFilterIcon = useCallback(() => {
     return [
       { fontSize: 32, position: 'relative' }, 
       sort?.label === 'order_by_hp' || sort?.label === 'order_by_rarity' ? {top: 1} : null,
@@ -100,6 +101,10 @@ export default function CardsScreen() {
             sort.order === 'asc' ? 'arrow-upward' : 'arrow-downward'
   }, [sort])
 
+  const getFilterOrderIcon = useCallback(() => {
+    return state.filterState.filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
+  }, [state.filterState.filter])
+
   return (
     <>
       { loading ? <LoadingOverlay></LoadingOverlay> : null }
@@ -107,23 +112,25 @@ export default function CardsScreen() {
                            key={loading ? 'loading' : 'loaded'}/>
       { loading ? null : state.cardState.cards?.length > 0 ? (
         <>
-          <TouchableOpacity onPress={() => handleActionMenu('OPEN_SORT')} style={styles.container}>
+          <TouchableOpacity onPress={() => handleActionMenu('OPEN_SORT')} style={cardStyles.container}>
             <ThemedView>
               <MaterialIcons name={(sort?.icon as any) || 'content-paste-search'} 
                              color={'skyblue'} 
-                             style={getFilterIcon() as StyleProp<TextStyle>}> 
+                             style={fixFilterIcon() as StyleProp<TextStyle>}> 
               </MaterialIcons>
-              <MaterialIcons name={getOrderIcon()} style={styles.sortIcon}>
+              <MaterialIcons name={getOrderIcon()} style={cardStyles.sortIcon}>
               </MaterialIcons>
             </ThemedView>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => (handleActionMenu('OPEN_FILTER'))} 
-                            style={[styles.container, {bottom: 88}]}>
+                            style={[cardStyles.container, {bottom: 88}]}>
             <ThemedView>
               <IconSymbol name="cat.circle" 
                           color={'mediumaquamarine'} 
                           style={{fontSize: 32}}>
               </IconSymbol>
+              <MaterialIcons name={getFilterOrderIcon()} style={cardStyles.sortIcon}>
+              </MaterialIcons>
             </ThemedView>
           </TouchableOpacity>       
         </>
@@ -132,7 +139,7 @@ export default function CardsScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+export const cardStyles = StyleSheet.create({
   container: {
     position: 'absolute', 
     right: 24, 
@@ -155,6 +162,14 @@ const styles = StyleSheet.create({
     color: 'white',
     right: -16,
     top: 8.5
+  },
+  sortIconList: {
+    position: 'absolute',
+    fontSize: 20,
+    borderRadius: 20,
+    right: -30,
+    top: 9,
+    color: Colors.light.text,
   }
 });
 

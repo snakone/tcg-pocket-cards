@@ -15,6 +15,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useI18n } from "../../../core/providers/LanguageProvider";
 import { AppContext } from "@/app/_layout";
 import { INITIAL_SORT_DATA } from "@/shared/definitions/utils/contants";
+import { cardStyles } from "@/app/(tabs)/cards";
 
 export default function SortCardMenu({
   isVisible,
@@ -68,6 +69,11 @@ export default function SortCardMenu({
     }
   }, [state.filterState.sort])
 
+  const getOrderIcon = useCallback((item: SortItem) => {
+    return !item?.order ? 'arrow-upward' : 
+              item.order === 'asc' ? 'arrow-upward' : 'arrow-downward';
+  }, [state.filterState.sort]);
+
   const renderItem = ({ item } : any) => (
     <TouchableOpacity onPress={() => toggleActive(item.id)} style={sortStyles.itemContainer}>
       <ThemedView style={[sortStyles.item, item.active && sortStyles.activeItem]}>
@@ -85,6 +91,10 @@ export default function SortCardMenu({
                         width: 25, 
                         fontWeight: 'normal'
                       }, item.id === 3 ? sortStyles.diamond : null]}/>
+        {
+          item.active && <MaterialIcons name={getOrderIcon(item)} style={cardStyles.sortIconList}></MaterialIcons>
+        }
+        
       </ThemedView>
     </TouchableOpacity>
   );
@@ -108,6 +118,7 @@ export default function SortCardMenu({
                     keyExtractor={(item: any) => item.id}
                     renderItem={renderItem}
                     scrollEnabled={false}
+                    contentContainerStyle={{marginRight: 30}}
                     showsVerticalScrollIndicator={false}
           />
           </ThemedView>

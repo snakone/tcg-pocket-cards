@@ -29,11 +29,12 @@ export interface Card extends UsableCard {
   pokedex?: number;
   series?: CardExpansionTypeENUM;
   related?: number[];
+  isEX: boolean;
 }
 
 interface Attack {
   name: string;
-  damage: number | null;
+  damage: number;
   energy: PokemonTypeENUM[];
   description?: string;
 }

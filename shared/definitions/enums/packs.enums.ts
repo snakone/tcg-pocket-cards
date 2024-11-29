@@ -1,4 +1,4 @@
-export enum GENETIC_APEX {
+export enum EXPANSION {
   PIKACHU, MEWTWO, CHARIZARD,
 }
 
@@ -7,4 +7,4 @@ export enum EVENTS {
 }
 
 export type PACKS = 
-  GENETIC_APEX;
+  EXPANSION;

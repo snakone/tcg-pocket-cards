@@ -1,5 +1,5 @@
 export enum CardStageENUM {
-  BASIC, ONE, TWO, SUPPORTER, ITEM, TOOL, FOSSIL
+  BASIC, ONE, TWO, ITEM, TOOL, FOSSIL, SUPPORTER
 }
 
 export enum CardRarityENUM {

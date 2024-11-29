@@ -1,5 +1,5 @@
 import { CardExpansionENUM, CardExpansionTypeENUM, CardRarityENUM, CardStageENUM } from "../definitions/enums/card.enums";
-import { GENETIC_APEX } from "../definitions/enums/packs.enums";
+import { EXPANSION } from "../definitions/enums/packs.enums";
 import { PokemonTypeENUM } from "../definitions/enums/pokemon.enums";
 import { Card } from "../definitions/interfaces/card.interfaces";
 
@@ -27,8 +27,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.MEWTWO
+      EXPANSION.MEWTWO
     ],
     related: [2, 3, 4],
   },
@@ -55,8 +56,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.MEWTWO
+      EXPANSION.MEWTWO
     ],
     related: [1, 3, 4]
   },
@@ -84,8 +86,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.TWO,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.MEWTWO
+      EXPANSION.MEWTWO
     ],
     related: [1, 2, 3]
   },
@@ -118,8 +121,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.TWO,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: true,
     found: [
-      GENETIC_APEX.MEWTWO
+      EXPANSION.MEWTWO
     ]
   },
   {
@@ -131,7 +135,7 @@ export const MOCK_DB_CARDS: Card[] = [
     attacks: [
       {
         name: 'Find a Friend',
-        damage: null,
+        damage: 0,
         energy: [PokemonTypeENUM.NORMAL],
         description: 'Put 1 random Grass Pokémon from your deck into your hand.'
       }
@@ -146,8 +150,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU
+      EXPANSION.PIKACHU
     ]
   },
   {
@@ -173,8 +178,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU
+      EXPANSION.PIKACHU
     ]
   },
   {
@@ -200,8 +206,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.TWO,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU
+      EXPANSION.PIKACHU
     ],
     ability: {
       name: 'Powder Heal',
@@ -231,8 +238,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.MEWTWO
+      EXPANSION.MEWTWO
     ],
   },
   {
@@ -258,8 +266,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.MEWTWO
+      EXPANSION.MEWTWO
     ],
   },
   {
@@ -285,8 +294,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.TWO,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.MEWTWO
+      EXPANSION.MEWTWO
     ],
   },
   {
@@ -312,8 +322,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -339,8 +350,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -367,8 +379,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.TWO,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -394,8 +407,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU
+      EXPANSION.PIKACHU
     ],
   },
   {
@@ -421,8 +435,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU
+      EXPANSION.PIKACHU
     ],
   },
   {
@@ -448,8 +463,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.MEWTWO
+      EXPANSION.MEWTWO
     ],
   },
   {
@@ -476,8 +492,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.MEWTWO
+      EXPANSION.MEWTWO
     ],
   },
   {
@@ -503,8 +520,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -530,8 +548,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -561,8 +580,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.TWO,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -588,8 +608,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -616,8 +637,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -644,8 +666,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: true,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -672,8 +695,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -699,8 +723,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.MEWTWO
+      EXPANSION.MEWTWO
     ],
   },
   {
@@ -726,10 +751,11 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
-      GENETIC_APEX.MEWTWO,
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -755,10 +781,11 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
-      GENETIC_APEX.MEWTWO,
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -784,10 +811,11 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
-      GENETIC_APEX.MEWTWO,
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -814,10 +842,11 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
-      GENETIC_APEX.MEWTWO,
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -844,10 +873,11 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
-      GENETIC_APEX.MEWTWO,
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -874,10 +904,11 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
-      GENETIC_APEX.MEWTWO,
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -904,8 +935,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -931,8 +963,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -959,8 +992,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -986,8 +1020,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -1014,8 +1049,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.TWO,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -1047,8 +1083,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.TWO,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: true,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -1075,8 +1112,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -1103,8 +1141,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -1130,8 +1169,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU
+      EXPANSION.PIKACHU
     ],
   },
   {
@@ -1157,8 +1197,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU
+      EXPANSION.PIKACHU
     ],
   },
   {
@@ -1184,8 +1225,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: true,
     found: [
-      GENETIC_APEX.PIKACHU
+      EXPANSION.PIKACHU
     ],
   },
   {
@@ -1211,10 +1253,11 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
-      GENETIC_APEX.MEWTWO,
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -1240,10 +1283,11 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
-      GENETIC_APEX.MEWTWO,
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -1269,15 +1313,16 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
     id: 45,
     number: 45,
     pokedex: 136,
-    name: 'Flaeron',
+    name: 'Flareon',
     artist: 'sui',
     attacks: [
       {
@@ -1294,11 +1339,12 @@ export const MOCK_DB_CARDS: Card[] = [
     health: 120,
     rarity: CardRarityENUM.RARE,
     retreat: 2,
-    stage: CardStageENUM.BASIC,
+    stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -1325,8 +1371,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -1358,8 +1405,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: true,
     found: [
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -1385,10 +1433,11 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
-      GENETIC_APEX.MEWTWO,
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -1414,8 +1463,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.MEWTWO,
+      EXPANSION.MEWTWO,
     ],
   },
   {
@@ -1441,8 +1491,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.MEWTWO,
+      EXPANSION.MEWTWO,
     ],
   },
   {
@@ -1468,10 +1519,11 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
-      GENETIC_APEX.MEWTWO,
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -1498,10 +1550,11 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
-      GENETIC_APEX.MEWTWO,
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -1527,8 +1580,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
+      EXPANSION.PIKACHU,
     ],
   },
   {
@@ -1554,8 +1608,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
+      EXPANSION.PIKACHU,
     ],
   },
   {
@@ -1582,8 +1637,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.TWO,
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
+      EXPANSION.PIKACHU,
     ],
   },
   {
@@ -1615,8 +1671,9 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.TWO,
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
+    isEX: true,
     found: [
-      GENETIC_APEX.PIKACHU,
+      EXPANSION.PIKACHU,
     ],
   },
   {
@@ -1643,10 +1700,11 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
-      GENETIC_APEX.MEWTWO,
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
     ],
   },
   {
@@ -1672,10 +1730,1024 @@ export const MOCK_DB_CARDS: Card[] = [
     stage: CardStageENUM.ONE,
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
     found: [
-      GENETIC_APEX.PIKACHU,
-      GENETIC_APEX.MEWTWO,
-      GENETIC_APEX.CHARIZARD
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 59,
+    number: 59,
+    pokedex: 60,
+    name: 'Poliwag',
+    artist: 'Shibuzoh.',
+    attacks: [
+      {
+        name: 'Razor Fin',
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: ' Poliwhirl',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'For Poliwag, swimming is easier than walking. The swirl pattern on its belly is actually part of the Pokémon’s innards showing through the skin.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 60,
+    number: 60,
+    pokedex: 61,
+    name: 'Poliwhirl',
+    artist: 'Yuka Morii',
+    attacks: [
+      {
+        name: 'Knuckle Punch',
+        damage: 40,
+        energy: [PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: 'Poliwrath',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Staring at the swirl on its belly causes drowsiness. This trait of Poliwhirl’s has been used in place of lullabies to get children to go to sleep.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 61,
+    number: 61,
+    pokedex: 62,
+    name: 'Poliwrath',
+    artist: 'Akira Komayama',
+    attacks: [
+      {
+        name: 'Mega Punch',
+        damage: 80,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    ability: {
+      name: 'Counterattack',
+      description: 'If this Pokémon is in the Active Spot and is damaged by an attack from your opponent’s Pokémon, do 20 damage to the Attacking Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Its body is solid muscle. When swimming through cold seas, Poliwrath uses its impressive arms to smash through drift ice and plow forward.',
+    health: 150,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 62,
+    number: 62,
+    pokedex: 72,
+    name: 'Tentacool',
+    artist: 'Shinya Komatsu',
+    attacks: [
+      {
+        name: 'Gentle Slap',
+        damage: 20,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: 'Tentacruel',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Tentacool is not a particularly strong swimmer. It drifts across the surface of shallow seas as it searches for prey.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.MEWTWO
+    ],
+  },
+  {
+    id: 63,
+    number: 63,
+    pokedex: 73,
+    name: 'Tentacruel',
+    artist: 'kodama',
+    attacks: [
+      {
+        name: 'Poison Tentacles',
+        damage: 50,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+        description: 'Your opponent’s Active Pokémon is now Poisoned.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'When the red orbs on Tentacruel’s head glow brightly, watch out. The Pokémon is about to fire off a burst of ultrasonic waves.',
+    health: 110,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.MEWTWO
+    ],
+  },
+  {
+    id: 64,
+    number: 64,
+    pokedex: 86,
+    name: 'Seel',
+    artist: 'Masako Yamashita',
+    attacks: [
+      {
+        name: 'Headbutt',
+        damage: 30,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: 'Dewgong',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Thanks to its thick fat, cold seas don’t bother it at all, but it gets tired pretty easily in warm waters.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU
+    ],
+  },
+  {
+    id: 65,
+    number: 65,
+    pokedex: 87,
+    name: 'Dewgong',
+    artist: 'Kanako Eo',
+    attacks: [
+      {
+        name: 'Surf',
+        damage: 90,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'It sunbathes on the beach after meals. The rise in its body temperature helps its digestion.',
+    health: 120,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU
+    ],
+  },
+  {
+    id: 66,
+    number: 66,
+    pokedex: 90,
+    name: 'Shellder',
+    artist: 'Sumiyoshi Kizuki',
+    attacks: [
+      {
+        name: 'Tongue Slap',
+        damage: 20,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: 'Cloyster',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'It is encased in a shell that is harder than diamond. Inside, however, it is surprisingly tender.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.MEWTWO
+    ],
+  },
+  {
+    id: 67,
+    number: 67,
+    pokedex: 91,
+    name: 'Cloyster',
+    artist: 'Saya Tsuruta',
+    attacks: [
+      {
+        name: 'Surf',
+        damage: 70,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    ability: {
+      name: 'Shell Armor',
+      description: 'This Pokémon takes −10 damage from attacks.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Cloyster that live in seas with harsh tidal currents grow large, sharp spikes on their shells.',
+    health: 120,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.MEWTWO
+    ],
+  },
+  {
+    id: 68,
+    number: 68,
+    pokedex: 98,
+    name: 'Krabby',
+    artist: 'Tomokazu Komiya',
+    attacks: [
+      {
+        name: 'Vise Grip',
+        damage: 40,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: 'Kingler',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'It can be found near the sea. The large pincers grow back if they are torn out of their sockets.',
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.MEWTWO
+    ],
+  },
+  {
+    id: 69,
+    number: 69,
+    pokedex: 99,
+    name: 'Kingler',
+    artist: 'Shigenori Negishi',
+    attacks: [
+      {
+        name: 'KO Crab',
+        damage: 80,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+        description: 'Flip coins. If all of them are heads, this attack does 80 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Its large and hard pincer has 10,000-horsepower strength. However, being so big, it is unwieldy to move.',
+    health: 120,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.MEWTWO
+    ],
+  },
+  {
+    id: 70,
+    number: 70,
+    pokedex: 116,
+    name: 'Horsea',
+    artist: 'Saya Tsuruta',
+    attacks: [
+      {
+        name: 'Water Gun',
+        damage: 60,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: 'Seadra',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Horsea makes its home in oceans with gentle currents. If this Pokémon is under attack, it spits out pitch-black ink and escapes.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU
+    ],
+  },
+  {
+    id: 71,
+    number: 71,
+    pokedex: 117,
+    name: 'Seadra',
+    artist: 'Sanosuke Sakuma',
+    attacks: [
+      {
+        name: 'Water Arrow',
+        damage: 50,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+        description: 'This attack does 50 damage to 1 of your opponent’s Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'It’s the males that raise the offspring. While Seadra are raising young, the spines on their backs secrete thicker and stronger poison.',
+    health: 70,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU
+    ],
+  },
+  {
+    id: 72,
+    number: 72,
+    pokedex: 118,
+    name: 'Goldeen',
+    artist: 'Kyoko Umemoto',
+    attacks: [
+      {
+        name: 'Flop',
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: 'Seaking',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Its dorsal, pectoral, and tail fins wave elegantly in water. That is why it is known as the Water Dancer.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU
+    ],
+  },
+  {
+    id: 73,
+    number: 73,
+    pokedex: 119,
+    name: 'Seaking',
+    artist: 'Kyoko Umemoto',
+    attacks: [
+      {
+        name: 'Horn Hazard',
+        damage: 80,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'In autumn, its body becomes more fatty in preparing to propose to a mate. It takes on beautiful colors.',
+    health: 100,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU
+    ],
+  },
+  {
+    id: 74,
+    number: 74,
+    pokedex: 120,
+    name: 'Staryu',
+    artist: 'Hiroki Asanuma',
+    attacks: [
+      {
+        name: 'Smack',
+        damage: 20,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: 'Starmie',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'If you visit a beach at the end of summer, you’ll be able to see groups of Staryu lighting up in a steady rhythm.',
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 75,
+    number: 75,
+    pokedex: 121,
+    name: 'Starmie',
+    artist: 'Yukiko Baba',
+    attacks: [
+      {
+        name: 'Wave Splash',
+        damage: 40,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'This Pokémon has an organ known as its core. The organ glows in seven colors when Starmie is unleashing its potent psychic powers.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 0,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 76,
+    number: 76,
+    pokedex: 121,
+    name: 'Starmie EX',
+    artist: 'PLANETA Igarashi',
+    attacks: [
+      {
+        name: 'Hydro Splash',
+        damage: 90,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: '',
+    health: 130,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 0,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: true,
+    found: [
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 77,
+    number: 77,
+    pokedex: 129,
+    name: 'Magikarp',
+    artist: 'Sekio',
+    attacks: [
+      {
+        name: 'Splash',
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: 'Gyarados',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'An underpowered, pathetic Pokémon. It may jump high on rare occasions but never more than seven feet.',
+    health: 30,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU
+    ],
+  },
+  {
+    id: 78,
+    number: 78,
+    pokedex: 130,
+    name: 'Gyarados',
+    artist: 'Mitsuhiro Arita',
+    attacks: [
+      {
+        name: 'Hyper Beam',
+        damage: 100,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+        description: 'Discard 1 random Energy from your opponent’s Active Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Once it appears, it goes on a rampage. It remains enraged until it demolishes everything around it.',
+    health: 150,
+    rarity: CardRarityENUM.RARE,
+    retreat: 4,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU
+    ],
+  },
+  {
+    id: 79,
+    number: 79,
+    pokedex: 131,
+    name: 'Lapras',
+    artist: 'Sekio',
+    attacks: [
+      {
+        name: 'Hydro Pump',
+        damage: 20,
+        energy: [PokemonTypeENUM.WATER],
+        description: 'If this Pokémon has at least 3 extra Water Energy attached, this attack does 70 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'A smart and kindhearted Pokémon, it glides across the surface of the sea while its beautiful song echoes around it.',
+    health: 100,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU
+    ],
+  },
+  {
+    id: 80,
+    number: 80,
+    pokedex: 134,
+    name: 'Vaporeon',
+    artist: 'Kagemaru Himeno',
+    attacks: [
+      {
+        name: 'Bubble Drain',
+        damage: 60,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'Heal 30 damage from this Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'It lives close to water. Its long tail is ridged with a fin, which is often mistaken for a mermaid’s.',
+    health: 130,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU
+    ],
+  },
+  {
+    id: 81,
+    number: 81,
+    pokedex: 138,
+    name: 'Omanyte',
+    artist: 'Suwama Chiaki',
+    attacks: [
+      {
+        name: 'Water Gun',
+        damage: 40,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: 'Omastar',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Because some Omanyte manage to escape after being restored or are released into the wild by people, this species is becoming a problem.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU
+    ],
+  },
+  {
+    id: 82,
+    number: 82,
+    pokedex: 139,
+    name: 'Omastar',
+    artist: 'kirisAki',
+    attacks: [
+      {
+        name: 'Ancient Whirlpool',
+        damage: 70,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'During your opponent’s next turn, the Defending Pokémon can’t attack.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Weighed down by a large and heavy shell, Omastar couldn’t move very fast. Some say it went extinct because it was unable to catch food.',
+    health: 140,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU
+    ],
+  },
+  {
+    id: 83,
+    number: 83,
+    pokedex: 144,
+    name: 'Articuno',
+    artist: 'Hitoshi Ariga',
+    attacks: [
+      {
+        name: 'Ice Beam',
+        damage: 60,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+        description: 'Flip a coin. If heads, your opponent’s Active Pokémon is now Paralyzed.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'It’s said that this Pokémon’s beautiful blue wings are made of ice. Articuno flies over snowy mountains, its long tail fluttering along behind it.',
+    health: 100,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.MEWTWO
+    ],
+  },
+  {
+    id: 84,
+    number: 84,
+    pokedex: 144,
+    name: 'Articuno EX',
+    artist: 'PLANETA Saito',
+    attacks: [
+      {
+        name: 'Ice Wing',
+        damage: 40,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+      },
+      {
+        name: 'Blizzard',
+        damage: 80,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+        description: 'This attack also does 10 damage to each of your opponent’s Benched Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: true,
+    found: [
+      EXPANSION.MEWTWO
+    ],
+  },
+  {
+    id: 85,
+    number: 85,
+    pokedex: 580,
+    name: 'Ducklett',
+    artist: 'Yumi',
+    attacks: [
+      {
+        name: 'Flap',
+        damage: 30,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: 'Swanna',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'When attacked, it uses its feathers to splash water, escaping under cover of the spray.',
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 86,
+    number: 86,
+    pokedex: 581,
+    name: 'Swanna',
+    artist: 'sui',
+    attacks: [
+      {
+        name: 'Wing Attack',
+        damage: 70,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Despite their elegant appearance, they can flap their wings strongly and fly for thousands of miles.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 87,
+    number: 87,
+    pokedex: 656,
+    name: 'Froakie',
+    artist: 'Aya Kusube',
+    attacks: [
+      {
+        name: 'Flop',
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: 'Frogadier',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'It secretes flexible bubbles from its chest and back. The bubbles reduce the damage it would otherwise take when attacked.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 88,
+    number: 88,
+    pokedex: 657,
+    name: 'Frogadier',
+    artist: 'Akira Komayama',
+    attacks: [
+      {
+        name: 'Water Drip',
+        damage: 30,
+        energy: [PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: 'Greninja',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'It can throw bubble-covered pebbles with precise control, hitting empty cans up to a hundred feet away.',
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 89,
+    number: 89,
+    pokedex: 658,
+    name: 'Greninja',
+    artist: '5ban Graphics',
+    attacks: [
+      {
+        name: 'Mist Slash',
+        damage: 60,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    ability: {
+      name: 'Water Shuriken',
+      description: 'Once during your turn, you may do 20 damage to 1 of your opponent’s Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'It creates throwing stars out of compressed water. When it spins them and throws them at high speed, these stars can split metal in two.',
+    health: 120,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 90,
+    number: 90,
+    pokedex: 771,
+    name: 'Pyukumuku',
+    artist: 'OOYAMA',
+    attacks: [
+      {
+        name: 'Rain Splash',
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER],
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'It lives in warm, shallow waters. If it encounters a foe, it will spit out its internal organs as a means to punch them.',
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 91,
+    number: 91,
+    pokedex: 779,
+    name: 'Bruxish',
+    artist: 'Mizue',
+    attacks: [
+      {
+        name: 'Second Strike',
+        damage: 10,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+        description: 'If your opponent’s Active Pokémon has damage on it, this attack does 60 more damage.'
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'It grinds its teeth with great force to stimulate its brain. It fires the psychic energy created by this process from the protuberance on its head.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 92,
+    number: 92,
+    pokedex: 872,
+    name: 'Snom',
+    artist: 'ryoma uratsuka',
+    attacks: [
+      {
+        name: 'Ram',
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: 'Frosmoth',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'It eats snow that has accumulated on the ground. It prefers soft, freshly fallen snow, so it will eat its way up a mountain, aiming for the peak.',
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
+    ],
+  },
+  {
+    id: 93,
+    number: 93,
+    pokedex: 873,
+    name: 'Frosmoth',
+    artist: 'aoki',
+    attacks: [
+      {
+        name: 'Powder Snow',
+        damage: 40,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: 'Frosmoth',
+    expansion: CardExpansionENUM.GENETIC_APEX,
+    series: CardExpansionTypeENUM.A,
+    flavor: 'Frosmoth senses air currents with its antennae. It sends its scales drifting on frigid air, making them fall like snow.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.PIKACHU,
+      EXPANSION.MEWTWO,
+      EXPANSION.CHARIZARD
     ],
   },
 ];

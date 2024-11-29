@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BlurView } from "expo-blur";
 import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
@@ -20,6 +20,7 @@ import {
 
 import { 
   AUDIO_MENU_CLOSE, 
+  AUDIO_MENU_OPEN, 
   CHARIZARD_ICON,
    GENETIC_APEX, 
    MEWTWO_ICON, 
@@ -33,10 +34,11 @@ import {
   getFilterSearch, 
   iconWidth, 
   RARITY_MAP, 
+  STAGE_MAP, 
   TYPE_MAP 
 } from "@/shared/definitions/utils/contants";
 
-import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
+import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -45,20 +47,30 @@ import { useI18n } from "@/core/providers/LanguageProvider";
 import SelectInput from "@/components/ui/SelectInput";
 import StateButton from "@/components/ui/StateButton";
 import InvertButton from "@/components/ui/InvertButton";
+import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import { AppContext } from "@/app/_layout";
 
 export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabMenu) {
   if (!isVisible) return null;
+  const context = useContext(AppContext);
+  if (!context) { throw new Error(NO_CONTEXT); }
+  const { dispatch } = context;
+  
   const closed = useRef<Audio.Sound>();
   const pick = useRef<Audio.Sound>();
+  const open = useRef<Audio.Sound>();
   const {i18n} = useI18n();
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
   const distanceFromBottom = useSharedValue(FILTER_CARDS_HEIGHT);
 
-  const filterObj = useRef(getFilterSearch());
+  const filterObj = useRef<FilterSearch>(getFilterSearch());
+
+  const [expansionSelected, setExpansionSelected] = useState<boolean>(false);
 
   const typeSelectAll$ = new Subject<boolean>();
   const raritySelectAll$ = new Subject<boolean>();
   const stageSelectAll$ = new Subject<boolean>();
+  const miscellaniaSelectAll$ = new Subject<boolean>();
 
   function onTypeSelectAll(): void {
     typeSelectAll$.next(true);
@@ -71,13 +83,23 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
   function onStageSelectAll(): void {
     stageSelectAll$.next(true);
   }
+
+  function onMiscellaniaSelectAll(): void {
+    miscellaniaSelectAll$.next(true);
+  }
   
   useEffect(() => {
     async function loadSounds() {
       const { sound } = await Audio.Sound.createAsync(AUDIO_MENU_CLOSE);
       const { sound: pickSound } = await Audio.Sound.createAsync(POP_PICK);
+      const { sound: openSound } = await Audio.Sound.createAsync(AUDIO_MENU_OPEN);
       closed.current = sound;
       pick.current = pickSound;
+      open.current = openSound;
+
+      if (Platform.OS === 'web') {
+        closed.current.setVolumeAsync(.3);
+      }
     }
 
     loadSounds();
@@ -104,13 +126,27 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
     if (pick.current) await pick.current.replayAsync();
   }, []);
 
+  const playOpen = useCallback(async () => {
+    if (open.current) await open.current.replayAsync();
+  }, []);
+
   async function closeMenu(): Promise<void> {
     await playClose();
     onClose();
+    dispatch({type: 'SET_FILTER', value: filterObj.current});
   }
 
   async function handleExpansion(value: boolean): Promise<void> {
-    await playPop();
+    if (value) {
+      filterObj.current.resetExpansion();
+      playOpen();
+    } else {
+      playClose();
+      setExpansionSelected(
+        Object.keys(filterObj.current.expansion)
+         .some(key => (Boolean((filterObj.current.expansion as any)[key])))
+      );
+    }
     setExpansionVisible(value);
   }
 
@@ -187,7 +223,10 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
   const PokemonItem = (item: any) => {
     return (
       <>
-        <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('type')}</ThemedText>
+        <ThemedView style={filterStyles.row}>
+          <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('type')}</ThemedText>
+          <InvertButton sound={pick} onClick={() => onTypeSelectAll()}></InvertButton>
+        </ThemedView>
         <ThemedView style={[
           filterStyles.flexContainer, 
           {justifyContent: 'space-between', flexWrap: 'wrap', marginBottom: 48, paddingRight: 16}
@@ -231,12 +270,12 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
           filterStyles.buttonContainer
         ]}>
           {
-            ['min', 'max'].map((k, i) => {
+            ['min', 'max'].map((k: any, i) => {
               return (
                 <SelectInput key={i} 
                              options={DAMAGES} 
                              label={k} 
-                             onSelect={(opt, i) => (playPop(), filterObj.current.health[k] = opt)}>
+                             onSelect={(opt) => (playPop(), (filterObj.current.health as any)[k] = opt)}>
                 </SelectInput>  
               )
           })}
@@ -252,7 +291,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                 <SelectInput key={i} 
                              options={DAMAGES} 
                              label={k} 
-                             onSelect={(opt, i) => (playPop(), filterObj.current.attack[k] = opt)}>
+                             onSelect={(opt) => (playPop(), (filterObj.current.attack as any)[k] = opt)}>
                 </SelectInput>  
             )})}
           <MaterialIcons name="remove" style={filterStyles.separator}></MaterialIcons>
@@ -284,18 +323,20 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
       <ThemedView style={[filterStyles.flexContainer, filterStyles.buttonContainer]}>
           {
             Object.keys(stage).map((key, i) => {
-                return (
-                  <StateButton style={[filterStyles.button, filterStyles.gridButton]} 
-                               key={i} 
-                               onPress={stageSelectAll$} 
-                               showLabel={true}
-                               sound={pick}
-                               label={key}
-                               propFilter="stage"
-                               keyFilter={key}
-                               obj={filterObj}>
-                  </StateButton>
-                )
+              const label = STAGE_MAP[key]?.label;
+
+              return (
+                <StateButton style={[filterStyles.button, filterStyles.gridButton]} 
+                              key={i} 
+                              onPress={stageSelectAll$} 
+                              showLabel={true}
+                              sound={pick}
+                              label={label}
+                              propFilter="stage"
+                              keyFilter={key}
+                              obj={filterObj}>
+                </StateButton>
+              )
           })}
       </ThemedView>
     )
@@ -307,9 +348,13 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
         <ThemedView style={[
           filterStyles.button, 
           filterStyles.buttonContainer,  
-          {marginBottom: 28, marginRight: 16}
+          {marginBottom: 48, marginRight: 16},
+          expansionSelected && {backgroundColor: '#444444'}
         ]}>
-          <ThemedText style={filterStyles.buttonText}>{i18n.t('expansions')}</ThemedText>
+          <ThemedText style={[
+            filterStyles.buttonText, expansionSelected && {color: 'white'}
+            ]}>{i18n.t(expansionSelected ? 'with_select' : 'no_select')}
+          </ThemedText>
           <MaterialIcons name="keyboard-arrow-right" 
                            style={{
                             position: 'absolute', 
@@ -321,6 +366,73 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                       }}/>
         </ThemedView>
       </Pressable>
+    )
+  }
+
+  const MiscellaniaItem = ({miscellania} : {miscellania: any}) => {
+    return (
+      <>
+        <ThemedView style={filterStyles.row}>
+          <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('weak')}</ThemedText>
+          <InvertButton sound={pick} onClick={() => onMiscellaniaSelectAll()}></InvertButton>
+        </ThemedView>
+        <ThemedView style={[
+          filterStyles.flexContainer, 
+          {justifyContent: 'space-between', flexWrap: 'wrap', marginBottom: 48, paddingRight: 16}
+        ]}>
+          {
+            Object.keys(miscellania).map((key, i) => {
+                const image = TYPE_MAP[key]?.image;
+                const label = TYPE_MAP[key]?.label;
+                return (
+                  <StateButton label={label} 
+                               showLabel={true}
+                               sound={pick} 
+                               onPress={miscellaniaSelectAll$}
+                               labelMargin={true}
+                               propFilter="weak"
+                               keyFilter={i}
+                               obj={filterObj}
+                               key={i} style={[filterStyles.button, 
+                              {
+                                flexDirection: 'row', 
+                                justifyContent: 'center', 
+                                alignItems: 'center', 
+                                width: '48%'
+                              }]}>
+                    <Image source={image} style={{
+                      width: 21, 
+                      height: 21, 
+                      position: 'absolute', 
+                      left: 20, 
+                      marginRight: 8}}>
+                    </Image>
+                  </StateButton>
+              )})
+          }
+        </ThemedView>
+
+        {/* EX */}
+        <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('ex')}</ThemedText>
+        <ThemedView style={[
+          filterStyles.flexContainer, 
+          filterStyles.buttonContainer
+        ]}>
+          {
+            ['not_ex', 'is_ex'].map((k, i) => {
+              return (
+                <StateButton key={i} 
+                             style={[filterStyles.button, filterStyles.gridButton]} 
+                             showLabel={true} 
+                             label={k}
+                             sound={pick}
+                             propFilter="ex"
+                             keyFilter={k}
+                             obj={filterObj}>
+                </StateButton>     
+            )})}
+        </ThemedView>
+      </>
     )
   }
 
@@ -392,7 +504,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
             <>
               <ThemedView style={filterStyles.row}>
                 <ThemedText style={filterStyles.header}>{i18n.t('pokemon')}</ThemedText>
-                <InvertButton sound={pick} onClick={() => onTypeSelectAll()}></InvertButton>
               </ThemedView>
               <PokemonItem element={filterObj.current.element}></PokemonItem>
             </>
@@ -408,6 +519,12 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                 <ThemedText style={filterStyles.header}>{i18n.t('expansions')}</ThemedText>
               </ThemedView>
               <ExpansionItem expansion={filterObj.current.expansion}></ExpansionItem>
+            </>
+            <>
+              <ThemedView style={filterStyles.row}>
+                <ThemedText style={filterStyles.header}>{i18n.t('miscellania')}</ThemedText>
+              </ThemedView>
+              <MiscellaniaItem miscellania={filterObj.current.weak}></MiscellaniaItem>
             </>
           </ScrollView>
 

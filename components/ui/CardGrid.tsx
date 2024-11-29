@@ -49,7 +49,7 @@ import { CHANGE_VIEW, PICK_CARD_SOUND } from '@/shared/definitions/sentences/pat
 import { CARD_IMAGE_MAP, SORT_FIELD_MAP } from '@/shared/definitions/utils/contants';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
-import { sortData } from '@/shared/definitions/utils/functions';
+import { filterCards, isEmptyObject, sortCards } from '@/shared/definitions/utils/functions';
 import { AppContext } from '@/app/_layout';
 
 export default function ImageGridWithSearch({ state }: { state: AppState }) {
@@ -60,7 +60,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
   const [filtered, setFiltered] = useState<Card[]>(state.cardState.cards);
   const audio = useRef<Audio.Sound | null>(null);
   const audioSwitch = useRef<Audio.Sound | null>(null);
-  const [selected, setSelected] = useState<string>('');
+  const [selected, setSelected] = useState<number>();
   const flatListRef = useRef<FlatList<Card> | null>(null);
   const router = useRouter();
   const {i18n} = useI18n();
@@ -110,10 +110,26 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
   });
 
   useEffect(() => {
+    if (!filtered || filtered.length === 0) { return; }
     const sorted = filterOrSortCards('sort', filtered, state.filterState.sort.find(s => s.active));
     setFiltered(sorted);
     goUp(null, false);
   }, [state.filterState.sort])
+
+  useEffect(() => {
+    if (!filtered) { return; }
+    
+    if (!state.modalState.filter_opened && state.filterState.filter.areAllPropertiesNull()) {
+      handleSearch('');
+      return;
+    }
+
+    if(state.modalState.filter_opened) { return; }
+  
+    const sorted = filterOrSortCards('filter', state.cardState.cards);
+    setFiltered(sorted);
+    goUp(null, false);
+  }, [state.modalState.filter_opened])
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
@@ -121,7 +137,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
       card.name.toLowerCase().includes(text.toLowerCase())
   ))}, [state.cardState.cards]);
 
-  function filterOrSortCards(type: 'sort' | 'filter', data: Card[], sort: SortItem | undefined): Card[] {
+  function filterOrSortCards(type: 'sort' | 'filter', data: Card[], sort?: SortItem | undefined): Card[] {
     switch (type) {
       case 'sort': {
         if (!sort) { return data; }
@@ -129,7 +145,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
       }
 
       case 'filter': {
-        return manageFilter({}, data);
+        return manageFilter(data);
       }
     }
   }
@@ -142,27 +158,27 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
       return data;
     }
   
-    return sortData(sortField, data, sort);
+    return sortCards(sortField, data, sort);
   }
 
-  function manageFilter(filter: any, data: Card[]): Card[] {
-    console.log('filtering')
-    return data;
+  function manageFilter(data: Card[]): Card[] {
+    const filter = state.filterState.filter;
+    return filterCards(filter, data);
   }
 
   const renderItem = useCallback(({ item }: { item: Card }) => (
     <Animated.View style={[
         CardGridStyles.imageContainer, 
-        item.name === selected ? animatedStyle : null, 
+        item.id === selected ? animatedStyle : null, 
         isGrid5 ? {marginHorizontal: 1, marginVertical: 1} : null
       ]}>
       <Pressable disabled={state.cardState.navigating} 
-                 onPress={() => goToDetailScreen(item.name)} style={{ zIndex: 1 }}>
+                 onPress={() => goToDetailScreen(item.id)} style={{ zIndex: 1 }}>
         <Image style={[
           CardGridStyles.image, 
           isGrid5 ? {width: CARD_IMAGE_WIDTH_5} : {width: CARD_IMAGE_WIDTH_3}
         ]} 
-        source={CARD_IMAGE_MAP[item.name]} contentFit="fill" />
+        source={CARD_IMAGE_MAP[String(item.id)]} contentFit="fill" />
       </Pressable>
     </Animated.View>
   ), [selected, isGrid5, state.cardState.navigating]);
@@ -190,13 +206,13 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
     if (audio.current) {await audio.current.replayAsync();}
   };
 
-  const goToDetailScreen = async (name: string) => {
+  const goToDetailScreen = async (id: number) => {
     if(state.cardState.navigating) { return; }
-    setSelected(name);
+    setSelected(id);
     animateCard();
     dispatch({type: 'SET_NAVIGATING', value: true});
     await playSound();
-    router.push(`/screens/detail?name=${encodeURIComponent(name)}`);
+    router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
   };
 
   function animateCard(): void {
@@ -281,7 +297,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                     </Animated.View>
                   </KeyboardAvoidingView>
                 </>}
-                ListFooterComponent={ !!searchQuery ? null : 
+                ListFooterComponent={ !!searchQuery || filtered.length < 10 ? null : 
                   <View style={[ModalStyles.modalFooter, {marginBlock: 34, boxShadow: 'none'}]}>
                     <TouchableOpacity style={ButtonStyles.button} 
                                       onPress={goUp} 
