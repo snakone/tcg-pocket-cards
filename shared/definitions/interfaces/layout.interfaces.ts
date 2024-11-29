@@ -42,22 +42,6 @@ export interface SortItem {
   order: 'desc' | 'asc'
 }
 
-export interface FilterSearch {
-  favorite: { included: boolean | null, not_favorite: boolean | null },
-  rarity: { [key in RarityWithoutSpecial]: boolean | null },
-  element: { [key in PokemonTypeENUM]: boolean | null },
-  health: { min: number | null, max: number | null },
-  attack: { min: number | null, max: number | null },
-  ability: { with: boolean | null, without: boolean | null },
-  stage: { 
-    object: boolean | null, 
-    tool: boolean | null, 
-    fossil: boolean | null, 
-    supporter: boolean | null
-  },
-  expansion: { pack: PACKS | null}
-}
-
 export interface DataSection {
   title: string;
   data: (

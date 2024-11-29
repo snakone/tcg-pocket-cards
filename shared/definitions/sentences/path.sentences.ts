@@ -4,6 +4,7 @@ export const FONT_REGULAR = require('@/assets/fonts/SpaceMono-Regular.ttf');
 export const PICK_CARD_SOUND = require('@/assets/sounds/pick-card.mp3');
 export const BACKGROUND_MUSIC = require('@/assets/sounds/music.mp3');
 export const CHANGE_VIEW = require('@/assets/sounds/change-view.mp3');
+export const POP_PICK = require('@/assets/sounds/pop.mp3');
 
 // IMAGES
 export const NORMAL_RARITY = require('@/assets/images/rarity/normal_rarity.png');
@@ -21,6 +22,8 @@ export const PSYCHIC_ICON = require('@/assets/images/types/psychic.png');
 export const STEEL_ICON = require('@/assets/images/types/steel.png');
 export const WATER_ICON = require('@/assets/images/types/water.png');
 
-export const MEWTWO_PACK = require('@/assets/images/packs/mewtwo.png');
-export const CHARIZARD_PACK = require('@/assets/images/packs/charizard.png');
-export const PIKACHU_PACK = require('@/assets/images/packs/pikachu.png');
+// PACKS
+export const GENETIC_APEX = require('@/assets/images/packs/geneticapex.png');
+export const PIKACHU_ICON = require('@/assets/images/packs/pikachu_logo.png');
+export const MEWTWO_ICON = require('@/assets/images/packs/mewtwo_logo.png');
+export const CHARIZARD_ICON = require('@/assets/images/packs/charizard_logo.png');

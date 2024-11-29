@@ -224,19 +224,6 @@ export const NotFoundStyles = StyleSheet.create({
   },
 });
 
-export const HomeScreenStyles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-    marginTop: 12
-  }
-});
-
 export const DetailStyles = StyleSheet.create({
   container: {
     flex: 1,
@@ -597,59 +584,5 @@ export const filterStyles = StyleSheet.create({
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)', 
     position: 'relative', 
     top: -4
-  }
-});
-
-export const indexScreenStyles = StyleSheet.create({
-  progressBarBackground: {
-    width: '70%',
-    height: 11,
-    backgroundColor: 'white',
-    borderRadius: 10,
-    overflow: 'hidden',
-    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.25)',
-    marginTop: 3
-  },
-  progressBarFill: {
-    height: '100%',
-    backgroundColor: '#ff69b4',
-    borderRadius: 10,
-  },
-  imageWidth: {
-    width: 102, 
-    height: 210
-  },
-  cardShadow: {
-    boxShadow: '0px 8px 8px rgba(0, 0, 0, 0.4)'
-  },
-  timerContainer: {
-    position: 'relative', 
-    elevation: 10, 
-    justifyContent: 'center', 
-    width: '100%', 
-    alignItems: 'center',
-    flexDirection: 'row'
-  },
-  timerOutter: {
-    position: 'absolute',
-    bottom: -9, 
-    padding: 6,
-    borderRadius: 25,
-    backgroundColor: 'white',
-    overflow: 'visible',
-    width: 130,
-  },
-  timerInner: {
-    boxShadow: 'rgba(0, 0, 0, 0.5) 0px 8px 21px 0px', 
-    padding: 2,
-    borderRadius: 25,
-    backgroundColor: 'white',
-    width: '100%',
-    height: '100%',
-  },
-  row: {
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    justifyContent: 'center'
   }
 });

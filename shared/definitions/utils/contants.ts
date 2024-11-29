@@ -1,7 +1,23 @@
 import { PressableAndroidRippleConfig } from "react-native";
-import { FilterSearch, ItemWithRoute, SortItem } from "../interfaces/layout.interfaces";
+import { ItemWithRoute, SortItem } from "../interfaces/layout.interfaces";
 import { Card } from "../interfaces/card.interfaces";
-import { NORMAL_RARITY, STAR_RARITY, CROWN_RARITY, GRASS_ICON, FIRE_ICON, WATER_ICON, ELECTRIC_ICON, PSYCHIC_ICON, FIGHT_ICON, DARK_ICON, STEEL_ICON, DRAGON_ICON, NORMAL_ICON } from "../sentences/path.sentences";
+
+import { 
+  NORMAL_RARITY,
+  STAR_RARITY,
+  CROWN_RARITY,
+  GRASS_ICON,
+  FIRE_ICON,
+  WATER_ICON,
+  ELECTRIC_ICON,
+  PSYCHIC_ICON,
+  FIGHT_ICON,
+  DARK_ICON,
+  STEEL_ICON,
+  DRAGON_ICON,
+  NORMAL_ICON 
+} from "../sentences/path.sentences";
+import { FilterSearch } from "../classes/filter.class";
 
 export const MENU_WIDTH = 250;
 export const PAGE_TITLE = "TCG Pocket Cards";
@@ -98,45 +114,8 @@ export const SORT_FIELD_MAP: Record<string, keyof Card> = {
   order_by_stage: 'stage'
 };
 
-const FILTER_SEARCH: FilterSearch = {
-  ability: {with: null, without: null},
-  attack: {min: null, max: null},
-  element: {
-    "0": null,
-    "1": null,
-    "2": null,
-    "3": null,
-    "4": null,
-    "5": null,
-    "6": null,
-    "7": null,
-    "8": null,
-    "9": null
-  },
-  expansion: {pack: null},
-  favorite: {included: null, not_favorite: null},
-  health: {min: null, max: null},
-  rarity: {
-    "0": null,
-    "1": null,
-    "2": null,
-    "3": null,
-    "4": null,
-    "5": null,
-    "6": null,
-    "7": null,
-    "8": null,
-  },
-  stage: {
-    object: null,
-    tool: null,
-    fossil: null,
-    supporter: null,
-  }
-}
-
-export function getFilterSearch(): FilterSearch {
-  return {...FILTER_SEARCH};
+export function getFilterSearch(): any {
+  return new FilterSearch();
 }
 
 export const INITIAL_SORT_DATA: SortItem[] = [

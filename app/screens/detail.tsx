@@ -7,7 +7,7 @@ import
   withTiming 
 } from "react-native-reanimated";
 
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { useLocalSearchParams, useRouter } from 'expo-router/build/hooks';
 import { Image } from 'expo-image';
 import { Platform, TouchableOpacity, View } from "react-native";
@@ -24,12 +24,16 @@ import {
 
 import { ButtonStyles, DetailStyles } from '@/shared/styles/component.styles';
 import { ThemedView } from "@/components/ThemedView";
-import { BACK_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
+import { BACK_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AUDIO_MENU_CLOSE } from "@/shared/definitions/sentences/path.sentences";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { CARD_IMAGE_MAP } from "@/shared/definitions/utils/contants";
+import { AppContext } from "../_layout";
 
 export default function DetailScreen() {
+  const context = useContext(AppContext);
+  if (!context) { throw new Error(NO_CONTEXT); }
+  const { dispatch } = context;
   const styles = DetailStyles;
   const router = useRouter();
   const navigation = useNavigation();
@@ -133,6 +137,7 @@ export default function DetailScreen() {
   }, []);
 
   async function goBack(): Promise<void> {
+    dispatch({type: 'SET_NAVIGATING', value: false});
     if (router.canGoBack()) {
       await playSound();
       router.back();

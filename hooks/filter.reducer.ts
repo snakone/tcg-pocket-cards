@@ -9,8 +9,6 @@ export const filterReducer = (state: FilterState, action: FilterAction): FilterS
   switch (action.type) {
     case 'SET_SORT':
       return { ...state, sort: action.value };
-    case 'SET_FILTER':
-        return { ...state, filter: action.value };
     default:
       return state;
   }
@@ -22,5 +20,4 @@ export interface FilterState {
 }
 
 export type FilterAction =
-  | { type: 'SET_FILTER', value: any }
   | { type: 'SET_SORT', value: any }

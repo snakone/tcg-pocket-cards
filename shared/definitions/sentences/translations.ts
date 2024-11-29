@@ -52,6 +52,7 @@ export const TRANSLATIONS = {
     current_packs: 'Current packs',
     ends_in: 'Ends in ',
     days: 'days',
+    news: 'News',
     //TYPES
     grass: 'Grass',
     fire: 'Fire',
@@ -135,6 +136,7 @@ export const TRANSLATIONS = {
     current_packs: '現在のパック',
     ends_in: 'で終わる ',
     days: '日',
+    news: 'ニュース',
     //TYPES
     grass: '草',
     fire: '火事',
@@ -218,6 +220,7 @@ export const TRANSLATIONS = {
     current_packs: 'Expansiones actuales',
     ends_in: 'Termina en ',
     days: 'días',
+    news: 'Noticias',
     //TYPES
     grass: 'Planta',
     fire: 'Fuego',

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useCallback, useEffect, useRef, useContext } from 'react';
 
 import { 
   FlatList, 
@@ -35,7 +35,7 @@ import {
 } from '@/shared/styles/component.styles';
 
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { GO_UP, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
+import { GO_UP, NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
 import SkeletonCardGrid from '../skeletons/SkeletonCardGrid';
 import { ThemedView } from '../ThemedView';
 import HeaderWithCustomModal from '../shared/HeaderModal';
@@ -44,15 +44,18 @@ import { ThemedText } from '../ThemedText';
 import { IconSymbol } from './IconSymbol';
 import { Colors } from '@/shared/definitions/utils/colors';
 import useHeaderAnimation from './HeaderAnimation';
-import { useIsFocused } from '@react-navigation/native';
 import { AppState } from '@/hooks/root.reducer';
 import { CHANGE_VIEW, PICK_CARD_SOUND } from '@/shared/definitions/sentences/path.sentences';
 import { CARD_IMAGE_MAP, SORT_FIELD_MAP } from '@/shared/definitions/utils/contants';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { sortData } from '@/shared/definitions/utils/functions';
+import { AppContext } from '@/app/_layout';
 
 export default function ImageGridWithSearch({ state }: { state: AppState }) {
+  const context = useContext(AppContext);
+  if (!context) { throw new Error(NO_CONTEXT); }
+  const { dispatch } = context;
   const [searchQuery, setSearchQuery] = useState('');
   const [filtered, setFiltered] = useState<Card[]>(state.cardState.cards);
   const audio = useRef<Audio.Sound | null>(null);
@@ -61,9 +64,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
   const flatListRef = useRef<FlatList<Card> | null>(null);
   const router = useRouter();
   const {i18n} = useI18n();
-  const isFocused = useIsFocused();
   const scrollY = useSharedValue(0);
-  const [isLoading, setIsLoading] = useState(false);
   const [numColumns, setNumColumns] = useState(3);
   const [isGrid5, setIsGrid5] = useState(false);
   const rotate = useSharedValue(0);
@@ -107,10 +108,6 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
       ...(isWeb && { boxShadow: scrollY.value > 16 ? '0px 4px 10px rgba(0, 0, 0, 0.25)' : 'none' }),
     };
   });
-
-  useEffect(() => {
-    if (isFocused) setIsLoading(false);
-  }, [isFocused]);
 
   useEffect(() => {
     const sorted = filterOrSortCards('sort', filtered, state.filterState.sort.find(s => s.active));
@@ -159,7 +156,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
         item.name === selected ? animatedStyle : null, 
         isGrid5 ? {marginHorizontal: 1, marginVertical: 1} : null
       ]}>
-      <Pressable disabled={isLoading} 
+      <Pressable disabled={state.cardState.navigating} 
                  onPress={() => goToDetailScreen(item.name)} style={{ zIndex: 1 }}>
         <Image style={[
           CardGridStyles.image, 
@@ -168,7 +165,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
         source={CARD_IMAGE_MAP[item.name]} contentFit="fill" />
       </Pressable>
     </Animated.View>
-  ), [selected, isLoading, isGrid5]);
+  ), [selected, isGrid5, state.cardState.navigating]);
 
   useEffect(() => {
     async function loadSounds() {
@@ -194,10 +191,10 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
   };
 
   const goToDetailScreen = async (name: string) => {
-    if(isLoading) { return; }
+    if(state.cardState.navigating) { return; }
     setSelected(name);
     animateCard();
-    setIsLoading(true);
+    dispatch({type: 'SET_NAVIGATING', value: true});
     await playSound();
     router.push(`/screens/detail?name=${encodeURIComponent(name)}`);
   };
@@ -244,61 +241,61 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
         </Animated.View>
         <Animated.View style={[ParallaxStyles.content]}>
           <SafeAreaView style={CardGridStyles.container}>
-          <KeyboardAvoidingView style={{ flex: 1 }}
-                                behavior={'height'}
-                                keyboardVerticalOffset={-550}>
-            <Animated.FlatList
-              data={filtered}
-              ref={flatListRef}
-              onScroll={scrollHandler}
-              renderItem={renderItem}
-              keyExtractor={keyExtractor}
-              key={numColumns}
-              numColumns={numColumns}
-              keyboardDismissMode={'on-drag'}
-              contentContainerStyle={CardGridStyles.gridContainer}
-              keyboardShouldPersistTaps={'never'}
-              showsVerticalScrollIndicator={false}
-              ListEmptyComponent={
-                state.cardState.loaded ? <ThemedText style={{padding: 6}}>{i18n.t('no_cards_found')}</ThemedText> 
-                                       : <SkeletonCardGrid columns={numColumns}></SkeletonCardGrid>
-              }
-              stickyHeaderIndices={[0]}
-              scrollEventThrottle={16}
-              ListHeaderComponent={<>
-                <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
-                  <Animated.View style={[CardGridStyles.inputContainer, borderAnimatedStyle]}>
-                    <TextInput style={CardGridStyles.searchInput}
-                               placeholder={i18n.t('search_card_placeholder')}
-                               value={searchQuery}
-                               onChangeText={handleSearch}
-                               placeholderTextColor={Colors.light.text}
-                               accessibilityLabel={SEARCH_LABEL}/>
-                          {searchQuery.length > 0 && <ResetFilterButton/>}
-                    <Switch trackColor={{false: Colors.light.skeleton, true: 'skyblue'}}
-                            color={'white'}
-                            onValueChange={toggleSwitch}
-                            value={isGrid5}
-                            style={CardGridStyles.switch} 
-                    />
-                  </Animated.View>
-                </KeyboardAvoidingView>
-              </>}
-              ListFooterComponent={ !!searchQuery ? null : 
-                <View style={[ModalStyles.modalFooter, {marginBlock: 34, boxShadow: 'none'}]}>
-                  <TouchableOpacity style={ButtonStyles.button} 
-                                    onPress={goUp} 
-                                    accessibilityLabel={GO_UP}
-                                    accessibilityRole="button"
-                                    accessible={true}>
-                    <View style={ButtonStyles.insetBorder}>
-                      <ThemedText>{i18n.t('go_up')}</ThemedText>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-              }
-            />               
-          </KeyboardAvoidingView>
+            <KeyboardAvoidingView style={{ flex: 1 }}
+                                  behavior={'height'}
+                                  keyboardVerticalOffset={-550}>
+              <Animated.FlatList
+                data={filtered}
+                ref={flatListRef}
+                onScroll={scrollHandler}
+                renderItem={renderItem}
+                keyExtractor={keyExtractor}
+                key={numColumns}
+                numColumns={numColumns}
+                keyboardDismissMode={'on-drag'}
+                contentContainerStyle={CardGridStyles.gridContainer}
+                keyboardShouldPersistTaps={'never'}
+                showsVerticalScrollIndicator={false}
+                ListEmptyComponent={
+                  state.cardState.loaded ? <ThemedText style={{padding: 6}}>{i18n.t('no_cards_found')}</ThemedText> 
+                                        : <SkeletonCardGrid columns={numColumns}></SkeletonCardGrid>
+                }
+                stickyHeaderIndices={[0]}
+                scrollEventThrottle={16}
+                ListHeaderComponent={<>
+                  <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
+                    <Animated.View style={[CardGridStyles.inputContainer, borderAnimatedStyle]}>
+                      <TextInput style={CardGridStyles.searchInput}
+                                placeholder={i18n.t('search_card_placeholder')}
+                                value={searchQuery}
+                                onChangeText={handleSearch}
+                                placeholderTextColor={Colors.light.text}
+                                accessibilityLabel={SEARCH_LABEL}/>
+                            {searchQuery.length > 0 && <ResetFilterButton/>}
+                      <Switch trackColor={{false: Colors.light.skeleton, true: 'skyblue'}}
+                              color={'white'}
+                              onValueChange={toggleSwitch}
+                              value={isGrid5}
+                              style={CardGridStyles.switch} 
+                      />
+                    </Animated.View>
+                  </KeyboardAvoidingView>
+                </>}
+                ListFooterComponent={ !!searchQuery ? null : 
+                  <View style={[ModalStyles.modalFooter, {marginBlock: 34, boxShadow: 'none'}]}>
+                    <TouchableOpacity style={ButtonStyles.button} 
+                                      onPress={goUp} 
+                                      accessibilityLabel={GO_UP}
+                                      accessibilityRole="button"
+                                      accessible={true}>
+                      <View style={ButtonStyles.insetBorder}>
+                        <ThemedText>{i18n.t('go_up')}</ThemedText>
+                      </View>
+                    </TouchableOpacity>
+                  </View>
+                }
+              />               
+            </KeyboardAvoidingView>
           </SafeAreaView>
         </Animated.View>
       </SafeAreaView>
