@@ -8,15 +8,12 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "androidNavigationBar": {
-      "visible": "sticky-immersive"
-    },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/favicon.png",
+        "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.pokemonlover.tcgpocketcards",
@@ -44,7 +41,15 @@
           "initialOrientation": "portrait"
         }
       ],
-      "expo-localization"
+      "expo-localization",
+      [      
+        "expo-navigation-bar",
+        {
+          "position": "relative",
+          "visibility": "hidden",
+          "behavior": "inset-swipe"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
