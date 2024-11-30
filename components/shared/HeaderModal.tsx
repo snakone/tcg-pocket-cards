@@ -19,12 +19,12 @@ export default function HeaderWithCustomModal({
   animatedStyle = {},
   animatedIconStyle = {}
 }: HeaderWithCustomModalProps) {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
   const styles = ModalStyles;
   const opened = useRef<Audio.Sound>();
   const closed = useRef<Audio.Sound>();
   const {i18n} = useI18n();
-
+  
   useEffect(() => {
     async function loadSounds() {
       const { sound: open } = await Audio.Sound.createAsync(AUDIO_MENU_OPEN);
@@ -47,12 +47,12 @@ export default function HeaderWithCustomModal({
   }, []);
 
   const toggleModal = useCallback(async () => {
-    setModalVisible((prev) => {
-      const sound = modalVisible ? closed.current : opened.current;
+    setVisible((prev) => {
+      const sound = visible ? closed.current : opened.current;
       if (sound) sound.replayAsync();
      return !prev;
     });
-  }, [modalVisible]);
+  }, [visible]);
 
   const RenderModalToggle = () => (
     <Animated.View style={[IconStyles.iconContainer, animatedIconStyle]}>
@@ -76,11 +76,10 @@ export default function HeaderWithCustomModal({
     <>
       <RenderModalToggle></RenderModalToggle>
       <RenderHeader></RenderHeader>
-        {modalVisible && (
+        {visible && (
           <Portal>
             <PaperModal dismissable={false}
-                        visible={modalVisible}
-                        onDismiss={toggleModal}
+                        visible={visible}
                         contentContainerStyle={{height: '200%'}}>
               <View style={[styles.centeredView, Platform.OS === 'web' ? WebStyles.view : null]}>
                 <View style={styles.modalView}>

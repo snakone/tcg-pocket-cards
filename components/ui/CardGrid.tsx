@@ -53,9 +53,6 @@ import { filterCards, sortCards } from '@/shared/definitions/utils/functions';
 import { AppContext } from '@/app/_layout';
 
 export default function ImageGridWithSearch({ state }: { state: AppState }) {
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { dispatch } = context;
   const [searchQuery, setSearchQuery] = useState('');
   const [filtered, setFiltered] = useState<Card[]>(state.cardState.cards);
   const audio = useRef<Audio.Sound | null>(null);
@@ -69,6 +66,9 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
   const [isGrid5, setIsGrid5] = useState(false);
   const rotate = useSharedValue(0);
   const scale = useSharedValue(1);
+  const context = useContext(AppContext);
+  if (!context) { throw new Error(NO_CONTEXT); }
+  const { dispatch } = context;
 
   const { 
     animatedHeaderStyle, 
@@ -291,7 +291,11 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                                  value={searchQuery}
                                  onChangeText={handleSearch}
                                  placeholderTextColor={Colors.light.text}
-                                 accessibilityLabel={SEARCH_LABEL}/>
+                                 accessibilityLabel={SEARCH_LABEL}
+                                 editable={state.cardState.loaded}
+                                 inputMode='text'
+                                 underlineColorAndroid={'red'}
+                                 />
                             {searchQuery.length > 0 && <ResetFilterButton/>}
                       <Switch trackColor={{false: Colors.light.skeleton, true: 'skyblue'}}
                               color={'white'}

@@ -589,3 +589,52 @@ export const filterStyles = StyleSheet.create({
     top: -4
   }
 });
+
+export const indexScreenStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  heroImage: {
+    width: '115%',
+    height: 225,
+    marginBottom: 36,
+    position: 'relative',
+    marginTop: -20
+  },
+  title: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  subtitle: {
+    fontSize: 16,
+    textAlign: 'center',
+    lineHeight: 22,
+  },
+  infoSection: {
+    marginBottom: 30,
+    paddingHorizontal: 20,
+  },
+  infoText: {
+    fontSize: 12,
+    textAlign: 'center',
+    marginBottom: 15,
+    lineHeight: 16,
+  },
+  ctaButton: {
+    backgroundColor: 'skyblue',
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 8,
+    marginBlock: 55,
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+  },
+  ctaText: {
+    color: '#333',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+});

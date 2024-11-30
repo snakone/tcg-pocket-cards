@@ -22,6 +22,8 @@ export const PSYCHIC_ICON = require('@/assets/images/types/psychic.png');
 export const STEEL_ICON = require('@/assets/images/types/steel.png');
 export const WATER_ICON = require('@/assets/images/types/water.png');
 
+export const HERO_IMAGE = require('@/assets/images/hero.png');
+
 // PACKS
 export const GENETIC_APEX = require('@/assets/images/packs/geneticapex.png');
 export const PIKACHU_ICON = require('@/assets/images/packs/pikachu_logo.png');

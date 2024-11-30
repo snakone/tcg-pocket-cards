@@ -23,7 +23,6 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded] = useFonts({SpaceMono: FONT_REGULAR});
-  if (!loaded) { return null; }
   const [state, dispatch] = useReducer(rootReducer, initialRootState);
   const contextValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
 
@@ -31,6 +30,24 @@ export default function RootLayout() {
     if (loaded) SplashScreen.hideAsync();
     if (Platform.OS !== 'web') NavigationBar.setVisibilityAsync("hidden");
   }, [loaded]);
+
+  if (!loaded) { return null; }
+
+  useEffect(() => {
+    const checkStorage = async () => {
+      const version = await Storage.get('version');
+      if (version === null) {
+        Storage.setSettings({...state.settingsState, version: APP_VERSION});
+      } else {
+        const settings = await Storage.loadSettings();
+        if (settings !== null) {
+          dispatch({type: 'SET_SETTINGS', value: settings});
+        }
+      }
+    }
+
+    checkStorage();
+  }, [])
 
   useEffect(() => {
     const checkStorage = async () => {

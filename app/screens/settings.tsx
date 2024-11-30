@@ -4,17 +4,18 @@ import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
 import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AppContext } from "../_layout";
+import { SettingsState } from "@/hooks/settings.reducer";
 
 export default function SettingsScreen() {
+  const settings = useRef<SettingsState>();
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
 
-  const settings = useRef(state.settingsState);
-
   useEffect(() => {
     settings.current = state.settingsState;
-  }, [state.settingsState])
+    console.log(settings.current)
+  }, [])
 
   return (
     <SharedScreen title={'config'}>

@@ -10,7 +10,7 @@ export default function ParallaxScrollView({
   title,
   modalContent,
   modalTitle,
-  styles = {}
+  styles = {},
 }: ParallaxProps) {
  
   return (
