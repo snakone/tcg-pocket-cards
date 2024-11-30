@@ -60,7 +60,7 @@ const InvertButton = ({
             </MaterialIcons>
         </Animated.View>
 
-        <ThemedText>Invertir</ThemedText>
+        <ThemedText>{i18n.t('invert')}</ThemedText>
       </ThemedView>
     </TouchableOpacity>
   );

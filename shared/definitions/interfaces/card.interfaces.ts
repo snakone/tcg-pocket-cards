@@ -20,7 +20,7 @@ export interface Card extends UsableCard {
   health: number;
   retreat: number;
   element: PokemonTypeENUM;
-  weak: PokemonTypeENUM,
+  weak: PokemonTypeENUM | null,
   evolve: string | null;
   flavor: string;
   attacks: Attack[],

@@ -19,8 +19,9 @@ import {
 } from "../sentences/path.sentences";
 import { FilterSearch } from "../classes/filter.class";
 
+export const APP_VERSION = '1.0.2';
 export const MENU_WIDTH = 250;
-export const PAGE_TITLE = "TCG Pocket Cards";
+export const PAGE_TITLE = 'TCG Pocket Cards';
 export const LOCAL_HOST = 'http://192.168.1.71:3000';
 export const DEFAULT_LANG = 'es';
 export const FILTER_CARDS_HEIGHT = 350;

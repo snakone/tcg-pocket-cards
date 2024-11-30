@@ -11,7 +11,7 @@ export enum CardExpansionENUM {
 }
 
 export enum CardExpansionTypeENUM {
-  A
+  A1
 }
 
 export type RarityWithoutSpecial = Exclude<CardRarityENUM, CardRarityENUM.SPECIAL>;

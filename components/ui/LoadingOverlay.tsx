@@ -1,13 +1,12 @@
 import { LoadingStyles } from '@/shared/styles/component.styles';
 import { BlurView } from 'expo-blur';
 import { ReactElement, useEffect } from 'react';
-import { Platform, SafeAreaView, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { Platform, SafeAreaView, StyleSheet, View } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import Svg, { Circle } from 'react-native-svg';
 
 const LoadingOverlay = () => {
   const rotation = useSharedValue(0);
-  const { width, height } = useWindowDimensions();
   const dots = 10;
 
   useEffect(() => {

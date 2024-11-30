@@ -21,7 +21,6 @@ export default function TabsMenu({
   animatedStyle,
 }: TabMenu) {
   if (!isVisible) return null;
-
   const router = useRouter();
   const [progress, setProgress] = useState(false);
   const fillProgress = useSharedValue(0.26);

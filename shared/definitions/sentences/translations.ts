@@ -62,6 +62,7 @@ export const TRANSLATIONS = {
     ex: 'EX',
     is_ex: 'Is EX',
     not_ex: 'Is not EX',
+    invert: 'Reverse',
     //TYPES
     grass: 'Grass',
     fire: 'Fire',
@@ -155,6 +156,7 @@ export const TRANSLATIONS = {
     ex: 'EX',
     is_ex: 'EXです',
     not_ex: 'EXではない',
+    invert: '逆',
     //TYPES
     grass: '草',
     fire: '火事',
@@ -248,6 +250,7 @@ export const TRANSLATIONS = {
     is_ex: 'Es EX',
     not_ex: 'No es EX',
     ex: 'EX',
+    invert: 'Invertir',
     //TYPES
     grass: 'Planta',
     fire: 'Fuego',

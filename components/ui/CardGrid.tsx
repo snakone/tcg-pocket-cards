@@ -49,7 +49,7 @@ import { CHANGE_VIEW, PICK_CARD_SOUND } from '@/shared/definitions/sentences/pat
 import { CARD_IMAGE_MAP, SORT_FIELD_MAP } from '@/shared/definitions/utils/contants';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
-import { filterCards, isEmptyObject, sortCards } from '@/shared/definitions/utils/functions';
+import { filterCards, sortCards } from '@/shared/definitions/utils/functions';
 import { AppContext } from '@/app/_layout';
 
 export default function ImageGridWithSearch({ state }: { state: AppState }) {
@@ -174,7 +174,9 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
       ]}>
       <Pressable disabled={state.cardState.navigating} 
                  onPress={() => goToDetailScreen(item.id)} style={{ zIndex: 1 }}>
-        <Image style={[
+        <Image cachePolicy="memory-disk"
+               accessibilityLabel={item.name} 
+               style={[
           CardGridStyles.image, 
           isGrid5 ? {width: CARD_IMAGE_WIDTH_5} : {width: CARD_IMAGE_WIDTH_3}
         ]} 
@@ -215,20 +217,20 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
     router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
   };
 
-  function animateCard(): void {
+  const animateCard = useCallback(() => {
     rotate.value = withSequence(
       withTiming(-12, { duration: 50 }),
-      withTiming(12, { duration: 50 }), 
-      withTiming(-8, { duration: 50 }), 
+      withTiming(12, { duration: 50 }),
+      withTiming(-8, { duration: 50 }),
       withTiming(8, { duration: 50 }),
-      withTiming(0, { duration: 25 })   
+      withTiming(0, { duration: 25 })
     );
-
+  
     scale.value = withSequence(
       withTiming(1.1, { duration: 100 }),
       withTiming(1, { duration: 100 })
     );
-  }
+  }, [rotate, scale]);
 
   const keyExtractor = useCallback((item: Card) => String(item.number), []);
 
@@ -239,7 +241,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={{position: 'absolute', right: 83, top: Platform.OS === 'web' ? 8 : 13}}
+                      style={{position: 'absolute', right: 89, top: Platform.OS === 'web' ? 8 : 13}}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
@@ -268,6 +270,9 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                 keyExtractor={keyExtractor}
                 key={numColumns}
                 numColumns={numColumns}
+                initialNumToRender={12}
+                maxToRenderPerBatch={9}
+                windowSize={12}
                 keyboardDismissMode={'on-drag'}
                 contentContainerStyle={CardGridStyles.gridContainer}
                 keyboardShouldPersistTaps={'never'}
@@ -282,11 +287,11 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                   <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
                     <Animated.View style={[CardGridStyles.inputContainer, borderAnimatedStyle]}>
                       <TextInput style={CardGridStyles.searchInput}
-                                placeholder={i18n.t('search_card_placeholder')}
-                                value={searchQuery}
-                                onChangeText={handleSearch}
-                                placeholderTextColor={Colors.light.text}
-                                accessibilityLabel={SEARCH_LABEL}/>
+                                 placeholder={i18n.t('search_card_placeholder')}
+                                 value={searchQuery}
+                                 onChangeText={handleSearch}
+                                 placeholderTextColor={Colors.light.text}
+                                 accessibilityLabel={SEARCH_LABEL}/>
                             {searchQuery.length > 0 && <ResetFilterButton/>}
                       <Switch trackColor={{false: Colors.light.skeleton, true: 'skyblue'}}
                               color={'white'}

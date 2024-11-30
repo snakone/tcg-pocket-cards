@@ -3,7 +3,7 @@ import { View, StyleSheet, Animated } from 'react-native';
 import { IconSymbol } from './IconSymbol';
 
 const BounceArrow = ({ direction = 'right' }) => {
-  const bounceAnim = useRef(new Animated.Value(0)).current; // Valor animado
+  const bounceAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     Animated.loop(
