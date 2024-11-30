@@ -18,6 +18,7 @@ import { AboutModal } from "@/components/modals/AboutModal";
 import { PrivacyModal } from "@/components/modals/PrivacyModal";
 import { ContactModal } from "@/components/modals/ContactModal";
 import { useI18n } from "@/core/providers/LanguageProvider";
+import { Modal as PaperModal, Portal } from "react-native-paper";
 
 export default function HelpScreen() {
   const styles = HelpItemStyles;
@@ -105,40 +106,41 @@ export default function HelpScreen() {
           }
         </View>
       </SharedScreen>
-      {
-        items.map(item => (
-          <Modal
-            animationType="slide"
-            transparent={false}
-            visible={currentModal === item.modal}
-            onRequestClose={() => close()}
-            hardwareAccelerated={true}
-            key={item.modal}
-          >
-            <View style={[ModalStyles.centeredView, Platform.OS === 'web' ? WebStyles.view : null]}>
-              <View style={ModalStyles.modalView}>
-                <View style={ModalStyles.modalHeader}>
-                  <ThemedText style={ModalStyles.modalHeaderTitle}>
-                    {i18n.t(item.modal)}
-                  </ThemedText>
-                </View>
-                <ScrollView style={ModalStyles.modalScrollView}>
-                  {item.content}
-                </ScrollView>
-                <View style={ModalStyles.modalFooter}>
-                  <TouchableOpacity style={ButtonStyles.button} 
-                                    onPress={() => close()} 
-                                    accessibilityLabel={CLOSE_SENTENCE}>
-                    <View style={ButtonStyles.insetBorder}>
-                      <IconSymbol name="clear"></IconSymbol>
-                    </View>
-                  </TouchableOpacity>
+      <Portal>
+        {
+          items.map(item => (
+            <PaperModal
+              visible={currentModal === item.modal}
+              onDismiss={close}
+              key={item.modal}
+              dismissable={false}
+              contentContainerStyle={{height: '200%'}}
+            >
+              <View style={[ModalStyles.centeredView, Platform.OS === 'web' ? WebStyles.view : null]}>
+                <View style={ModalStyles.modalView}>
+                  <View style={ModalStyles.modalHeader}>
+                    <ThemedText style={ModalStyles.modalHeaderTitle}>
+                      {i18n.t(item.modal)}
+                    </ThemedText>
+                  </View>
+                  <ScrollView style={ModalStyles.modalScrollView}>
+                    {item.content}
+                  </ScrollView>
+                  <View style={ModalStyles.modalFooter}>
+                    <TouchableOpacity style={ButtonStyles.button} 
+                                      onPress={close} 
+                                      accessibilityLabel={CLOSE_SENTENCE}>
+                      <View style={ButtonStyles.insetBorder}>
+                        <IconSymbol name="clear"></IconSymbol>
+                      </View>
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
-            </View>
-          </Modal>
-        ))
-      }
+            </PaperModal>
+          ))
+        }
+      </Portal>
     </>
   )
 }

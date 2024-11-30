@@ -6,11 +6,11 @@ export const modalInitialState: ModalsState = {
 export const modalsReducer = (state: ModalsState, action: ModalAction): ModalsState => {
   switch (action.type) {
     case 'OPEN_SORT':
-      return { ...state,  sort_opened: action.value };
+      return { ...state, sort_opened: action.value };
     case 'OPEN_FILTER':
-        return { ...state,  filter_opened: action.value };
+        return { ...state, filter_opened: action.value };
     case 'CLOSE_MODALS':
-        return { ...state,  sort_opened: false, filter_opened: false};
+        return { ...state, sort_opened: false, filter_opened: false};
     default:
       return state;
   }

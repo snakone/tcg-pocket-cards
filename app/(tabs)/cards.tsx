@@ -59,13 +59,13 @@ export default function CardsScreen() {
   const loadCards = useCallback(() => {
     const sub = cardsService
       .getCards()
-      .pipe(debounceTime(300))
+      .pipe(debounceTime(666))
       .subscribe({
         next: (res) => {
           setTimeout(() => {
             dispatch({ type: 'SET_CARDS', cards: res });
             setLoading(false);
-          }, 3000);
+          }, 2500);
         },
         error: (err) => {
           console.log(err);
@@ -107,9 +107,8 @@ export default function CardsScreen() {
 
   return (
     <>
-      { loading ? <LoadingOverlay></LoadingOverlay> : null }
-      <ImageGridWithSearch state={state} 
-                           key={loading ? 'loading' : 'loaded'}/>
+      { loading && <LoadingOverlay/> }
+      <ImageGridWithSearch state={state} key={loading ? 'loading' : 'loaded'}/>
       { loading ? null : state.cardState.cards?.length > 0 ? (
         <>
           <TouchableOpacity onPress={() => handleActionMenu('OPEN_SORT')} style={cardStyles.container}>

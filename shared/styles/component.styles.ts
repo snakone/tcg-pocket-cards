@@ -170,7 +170,9 @@ export const ModalStyles = StyleSheet.create({
     elevation: 5,
     width: '90%',
     maxHeight: '80%',
+    minHeight: 250,
     overflow: 'hidden',
+    top: -10
   },
   modalHeader: {
     backgroundColor: '#F2F2F2',
@@ -189,7 +191,8 @@ export const ModalStyles = StyleSheet.create({
   },
   modalScrollView: {
     maxHeight: '85%',
-    padding: 24,
+    minHeight: Platform.OS === 'web' ? 120 : 118,
+    padding: Platform.OS === 'web' ? 24 : 20,
     backgroundColor: 'white',
     zIndex: 0,
     flex: 1,

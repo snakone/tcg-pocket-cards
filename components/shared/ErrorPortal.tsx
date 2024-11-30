@@ -41,54 +41,37 @@ const ErrorPortal = ({ visible, message, type = "error", close}: ErrorPortalProp
                 style={StyleSheet.absoluteFill} 
                 tint="light" 
                 experimentalBlurMethod='dimezisBlurView'/>
-            <View style={[styles.centeredView, Platform.OS === 'web' ? WebStyles.view : null]}>
-              <View style={styles.modalView}>
-                <View style={[styles.modalHeader, {flexDirection: 'row', justifyContent: 'center'}]}>
-
-                  <ThemedText style={styles.modalHeaderTitle}>{i18n.t('error')}</ThemedText>
-                  <MaterialIcons name={errorData.icon} style={
-                    {
-                      fontSize: 24,
-                      position: 'relative',
-                      left: 12,
-                      color: errorData.color
-                      }}></MaterialIcons>
-                </View>
-                <ScrollView style={styles.modalScrollView}>
-                  <ThemedText style={{textAlign: 'center'}}>{i18n.t(message)}</ThemedText>
-                </ScrollView>
-                <View style={styles.modalFooter}>
-                  <TouchableOpacity style={ButtonStyles.button} 
-                                    onPress={close} 
-                                    accessibilityLabel={CLOSE_SENTENCE}
-                                    accessibilityRole="button"
-                                    accessible={true}>
-                    <View style={ButtonStyles.insetBorder}>
-                      <IconSymbol name="clear"></IconSymbol>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-              </View>
+        <View style={[styles.centeredView, Platform.OS === 'web' ? WebStyles.view : null]}>
+          <View style={styles.modalView}>
+            <View style={[styles.modalHeader, {flexDirection: 'row', justifyContent: 'center'}]}>
+              <ThemedText style={styles.modalHeaderTitle}>{i18n.t('error')}</ThemedText>
+              <MaterialIcons name={errorData.icon} style={
+                {
+                  fontSize: 24,
+                  position: 'relative',
+                  left: 12,
+                  color: errorData.color
+                  }}>
+              </MaterialIcons>
             </View>
+            <ScrollView style={styles.modalScrollView}>
+              <ThemedText style={{textAlign: 'center'}}>{i18n.t(message)}</ThemedText>
+            </ScrollView>
+            <View style={styles.modalFooter}>
+              <TouchableOpacity style={ButtonStyles.button} 
+                                onPress={close} 
+                                accessibilityLabel={CLOSE_SENTENCE}
+                                accessibilityRole="button"
+                                accessible={true}>
+                <View style={ButtonStyles.insetBorder}>
+                  <IconSymbol name="clear"></IconSymbol>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
     </Portal>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    position: "absolute",
-    top: 50,
-    left: 20,
-    right: 20,
-    padding: 15,
-    borderRadius: 8,
-    elevation: 4,
-  },
-  message: {
-    color: "#fff",
-    fontSize: 16,
-    textAlign: "center",
-  },
-});
 
 export default ErrorPortal;

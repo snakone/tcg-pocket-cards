@@ -292,7 +292,8 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                               color={'white'}
                               onValueChange={toggleSwitch}
                               value={isGrid5}
-                              style={CardGridStyles.switch} 
+                              style={CardGridStyles.switch}
+                              disabled={filtered.length <= 3}
                       />
                     </Animated.View>
                   </KeyboardAvoidingView>

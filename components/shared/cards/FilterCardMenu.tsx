@@ -64,7 +64,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
   const distanceFromBottom = useSharedValue(FILTER_CARDS_HEIGHT);
 
   const filterObj = useRef<FilterSearch>(getFilterSearch());
-
   const [expansionSelected, setExpansionSelected] = useState<boolean>(false);
 
   const typeSelectAll$ = new Subject<boolean>();
