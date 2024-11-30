@@ -15,6 +15,7 @@ import { AUDIO_MENU_OPEN } from '@/shared/definitions/sentences/path.sentences';
 import { useError } from '@/core/providers/ErrorProvider';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { Colors } from '@/shared/definitions/utils/colors';
+import SoundService from '@/core/services/sounds.service';
 
 export default function CardsScreen() {
   const context = useContext(AppContext);
@@ -22,7 +23,6 @@ export default function CardsScreen() {
   const { state, dispatch } = context;
   const cardsService = useMemo(() => new CardsService(), []);
   const [loading, setLoading] = useState(true);
-  const opened = useRef<Audio.Sound>();
   const { show: showError } = useError();
   const [sort, setSort] = useState<SortItem>();
 
@@ -32,20 +32,6 @@ export default function CardsScreen() {
   }
 
   useEffect(() => {
-    async function loadSounds() {
-      const { sound } = await Audio.Sound.createAsync(AUDIO_MENU_OPEN);
-      opened.current = sound;
-      opened.current.setVolumeAsync(.5);
-    }
-
-    loadSounds();
-
-    return () => {
-      if (opened.current) opened.current.unloadAsync();
-    };
-  }, []);
-
-  useEffect(() => {
     if (state.filterState.sort.length > 0) {
       const active = state.filterState.sort.find(s => s.active);
       setSort(active);
@@ -53,7 +39,7 @@ export default function CardsScreen() {
   }, [state.filterState.sort])
 
   const playSound = useCallback(async () => {
-    if (opened.current) await opened.current.replayAsync();
+    await SoundService.play('AUDIO_MENU_OPEN');
   }, []);
 
   const loadCards = useCallback(() => {

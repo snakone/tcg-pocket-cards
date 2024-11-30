@@ -1,16 +1,15 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, TouchableOpacity, ScrollView, Platform } from 'react-native';
-import { Audio } from 'expo-av';
 import Animated from 'react-native-reanimated';
 import { Modal as PaperModal, Portal } from 'react-native-paper';
 
 import { HeaderWithCustomModalProps } from '@/shared/definitions/interfaces/layout.interfaces';
 import { CLOSE_MODAL, CLOSE_SENTENCE } from '@/shared/definitions/sentences/global.sentences';
-import { AUDIO_MENU_CLOSE, AUDIO_MENU_OPEN } from '@/shared/definitions/sentences/path.sentences';
 import { ButtonStyles, IconStyles, ModalStyles, ThemeTextStyles, WebStyles } from '@/shared/styles/component.styles';
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
 import { useI18n } from '../../core/providers/LanguageProvider';
+import SoundService from '@/core/services/sounds.service';
 
 export default function HeaderWithCustomModal({ 
   title, 
@@ -21,35 +20,12 @@ export default function HeaderWithCustomModal({
 }: HeaderWithCustomModalProps) {
   const [visible, setVisible] = useState(false);
   const styles = ModalStyles;
-  const opened = useRef<Audio.Sound>();
-  const closed = useRef<Audio.Sound>();
   const {i18n} = useI18n();
-  
-  useEffect(() => {
-    async function loadSounds() {
-      const { sound: open } = await Audio.Sound.createAsync(AUDIO_MENU_OPEN);
-      const { sound: close } = await Audio.Sound.createAsync(AUDIO_MENU_CLOSE);
-      opened.current = open;
-      closed.current = close;
-      opened.current.setVolumeAsync(.5);
-
-      if (Platform.OS === 'web') {
-        closed.current.setVolumeAsync(.3);
-      }
-    }
-
-    loadSounds();
-
-    return () => {
-      if (opened.current) opened.current.unloadAsync();
-      if (closed.current) closed.current.unloadAsync();
-    };
-  }, []);
 
   const toggleModal = useCallback(async () => {
     setVisible((prev) => {
-      const sound = visible ? closed.current : opened.current;
-      if (sound) sound.replayAsync();
+      const sound = visible ? 'AUDIO_MENU_CLOSE' : 'AUDIO_MENU_OPEN';
+      SoundService.play(sound);
      return !prev;
     });
   }, [visible]);

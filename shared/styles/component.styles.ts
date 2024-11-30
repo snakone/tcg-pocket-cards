@@ -572,6 +572,7 @@ export const filterStyles = StyleSheet.create({
     textAlign: 'center',
     alignItems: 'center',
     top: 12,
+    left: -8,
     color: Colors.light.text,
     transform: [{scaleX: 2}]
   },
@@ -629,7 +630,7 @@ export const indexScreenStyles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 30,
     borderRadius: 8,
-    marginBlock: 55,
+    marginBlock: 60,
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
   },
   ctaText: {

@@ -14,7 +14,6 @@ import {
 
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
-import { Audio } from 'expo-av';
 import { Switch } from 'react-native-paper';
 
 import Animated, { 
@@ -45,18 +44,17 @@ import { IconSymbol } from './IconSymbol';
 import { Colors } from '@/shared/definitions/utils/colors';
 import useHeaderAnimation from './HeaderAnimation';
 import { AppState } from '@/hooks/root.reducer';
-import { CHANGE_VIEW, PICK_CARD_SOUND } from '@/shared/definitions/sentences/path.sentences';
-import { CARD_IMAGE_MAP, SORT_FIELD_MAP } from '@/shared/definitions/utils/contants';
+import { SORT_FIELD_MAP } from '@/shared/definitions/utils/contants';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { filterCards, sortCards } from '@/shared/definitions/utils/functions';
 import { AppContext } from '@/app/_layout';
+import { CARD_IMAGE_MAP } from '@/shared/definitions/utils/card.images';
+import SoundService from '@/core/services/sounds.service';
 
 export default function ImageGridWithSearch({ state }: { state: AppState }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [filtered, setFiltered] = useState<Card[]>(state.cardState.cards);
-  const audio = useRef<Audio.Sound | null>(null);
-  const audioSwitch = useRef<Audio.Sound | null>(null);
   const [selected, setSelected] = useState<number>();
   const flatListRef = useRef<FlatList<Card> | null>(null);
   const router = useRouter();
@@ -185,27 +183,12 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
     </Animated.View>
   ), [selected, isGrid5, state.cardState.navigating]);
 
-  useEffect(() => {
-    async function loadSounds() {
-      const { sound } = await Audio.Sound.createAsync(PICK_CARD_SOUND);
-      const { sound: switchSound } = await Audio.Sound.createAsync(CHANGE_VIEW);
-      audio.current = sound;
-      audioSwitch.current = switchSound;
-      await sound.setVolumeAsync(0.5);
-    }
-
-    loadSounds();
-    return () => {
-      if (audio.current) audio.current.unloadAsync();
-    };
-  }, []);
-
   const playSound = async (isSwitch: boolean = false) => {
-    if (isSwitch && audioSwitch.current) { 
-      await audioSwitch.current.replayAsync();
+    if (isSwitch) { 
+      await SoundService.play('CHANGE_VIEW');
       return;
     }
-    if (audio.current) {await audio.current.replayAsync();}
+    SoundService.play('PICK_CARD_SOUND');
   };
 
   const goToDetailScreen = async (id: number) => {

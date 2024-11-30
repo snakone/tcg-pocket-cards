@@ -3,17 +3,16 @@ import { BlurView } from 'expo-blur';
 import Animated, { Easing, runOnJS, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
-import { useRef, useEffect, useState, useCallback } from 'react';
-import { Audio } from 'expo-av';
+import { useEffect, useState, useCallback } from 'react';
 
 import { LayoutStyles, MenuStyles, TabsMenuStyles } from '@/shared/styles/component.styles';
 import { TabMenu } from '@/shared/definitions/interfaces/layout.interfaces';
 import { IconSymbolName } from '@/shared/definitions/utils/switches';
-import { CHANGE_VIEW } from '@/shared/definitions/sentences/path.sentences';
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
 import { LIST, HELP } from '@/shared/definitions/utils/contants';
 import { useI18n } from '../../core/providers/LanguageProvider';
+import SoundService from '@/core/services/sounds.service';
 
 export default function TabsMenu({
   isVisible,
@@ -24,7 +23,6 @@ export default function TabsMenu({
   const router = useRouter();
   const [progress, setProgress] = useState(false);
   const fillProgress = useSharedValue(0.26);
-  const audio = useRef<Audio.Sound>();
   const {i18n} = useI18n();
 
   const startAnimation = () => {
@@ -39,9 +37,7 @@ export default function TabsMenu({
   };
 
   const playSound = useCallback(async () => {
-    if (audio.current) {
-      await audio.current.replayAsync();
-    }
+    await SoundService.play('CHANGE_VIEW');
   }, []);
 
   const handleRoute = async (route: string) => {
@@ -78,15 +74,6 @@ export default function TabsMenu({
     });
   };
 
-  useEffect(() => {
-    async function loadSound() {
-      const { sound } = await Audio.Sound.createAsync(CHANGE_VIEW);
-      audio.current = sound;
-    }
-
-    loadSound();
-  }, []);
-
   return (
     <>
       <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
@@ -98,7 +85,7 @@ export default function TabsMenu({
       </Pressable>
       <Animated.View style={[MenuStyles.container, animatedStyle]}>
         <Pressable onPressIn={startAnimation}
-                  onPressOut={resetAnimation}>
+                   onPressOut={resetAnimation}>
           <Animated.View style={[TabsMenuStyles.container, animatedFillStyle]} 
           />
           <View style={TabsMenuStyles.user}>

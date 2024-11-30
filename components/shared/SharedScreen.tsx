@@ -1,15 +1,14 @@
-import { View, TouchableOpacity, Platform } from "react-native";
-import { useRef, useEffect, useCallback } from "react";
-import { Audio } from "expo-av";
+import { View, TouchableOpacity } from "react-native";
+import { useEffect, useCallback } from "react";
 import { useNavigation, useRouter } from "expo-router";
 
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
 import { ButtonStyles, ParallaxStyles, ScreenStyles } from "@/shared/styles/component.styles";
-import { AUDIO_MENU_CLOSE } from "@/shared/definitions/sentences/path.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { useI18n } from "@/core/providers/LanguageProvider";
+import SoundService from "@/core/services/sounds.service";
 
 interface SharedScreenProps {
   title: string,
@@ -18,12 +17,11 @@ interface SharedScreenProps {
 
 export default function SharedScreen({title, children}: SharedScreenProps) {
   const router = useRouter();
-  const audio = useRef<Audio.Sound>();
   const navigation = useNavigation();
   const {i18n} = useI18n();
 
   const playSound = useCallback(async () => {
-    if (audio.current) { await audio.current.replayAsync(); }
+    SoundService.play('AUDIO_MENU_CLOSE');
   }, []);
   
   const goBack = useCallback(async (): Promise<void> => {
@@ -34,19 +32,6 @@ export default function SharedScreen({title, children}: SharedScreenProps) {
   useEffect(() => {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
-
-  useEffect(() => {
-    async function loadSounds() {
-      const { sound } = await Audio.Sound.createAsync(AUDIO_MENU_CLOSE);
-      audio.current = sound;
-
-      if (Platform.OS === 'web') {
-        audio.current.setVolumeAsync(.3);
-      }
-    }
-
-    loadSounds();
-  }, []);
 
   return (
     <ThemedView style={{flex: 1}}>

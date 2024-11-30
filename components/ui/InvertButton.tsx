@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Sound } from 'expo-av/build/Audio';
 
 import { ThemedText } from '../ThemedText';
 import { useI18n } from '@/core/providers/LanguageProvider';
-import { Sound } from 'expo-av/build/Audio';
-import { MaterialIcons } from '@expo/vector-icons';
 import { ThemedView } from '../ThemedView';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Colors } from '@/shared/definitions/utils/colors';
+import SoundService from '@/core/services/sounds.service';
 
 interface InvertButtonProps {
-  sound: React.MutableRefObject<Sound | undefined>,
   onClick: () => void
 }
 
 const InvertButton = ({
-  sound,
   onClick
 }: InvertButtonProps) => {
   const {i18n} = useI18n();
@@ -36,7 +35,7 @@ const InvertButton = ({
 
   const handlePress = () => {
     rotate();
-    sound.current && sound.current.replayAsync();
+    SoundService.play('POP_PICK');
     onClick();
   };
 

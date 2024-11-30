@@ -14,12 +14,12 @@ import TabsMenu from '@/components/shared/TabsMenu';
 import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
 import FilterCardMenu from '@/components/shared/cards/FilterCardMenu';
 import SortCardMenu from '@/components/shared/cards/SortCardMenu';
+import SoundService from '@/core/services/sounds.service';
 
 export default function TabLayout() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
-  const audio = useRef<Audio.Sound>();
   const menuRight = useSharedValue(MENU_WIDTH);
   const distanceFromBottom = useSharedValue(FILTER_CARDS_HEIGHT);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -86,9 +86,7 @@ export default function TabLayout() {
   }
 
   const playSound = async () => {
-    if (audio.current) {
-      await audio.current.replayAsync();
-    }
+    await SoundService.play('CHANGE_VIEW');
   };
 
   function onClose(): void {
@@ -96,15 +94,6 @@ export default function TabLayout() {
     setIsFilterVisible(false);
     dispatch({type: 'CLOSE_MODALS'});
   }
-
-  useEffect(() => {
-    async function loadSound() {
-      const { sound } = await Audio.Sound.createAsync(CHANGE_VIEW);
-      audio.current = sound;
-    }
-
-    loadSound();
-  }, []);
 
   return (
     <Provider>

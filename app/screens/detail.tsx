@@ -27,8 +27,8 @@ import { ThemedView } from "@/components/ThemedView";
 import { BACK_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AUDIO_MENU_CLOSE } from "@/shared/definitions/sentences/path.sentences";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { CARD_IMAGE_MAP } from "@/shared/definitions/utils/contants";
 import { AppContext } from "../_layout";
+import { CARD_IMAGE_MAP } from "@/shared/definitions/utils/card.images";
 
 export default function DetailScreen() {
   const context = useContext(AppContext);

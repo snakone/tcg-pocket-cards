@@ -1,13 +1,11 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { Audio } from "expo-av";
-import { useRef, useEffect, useCallback, useState, useContext } from "react";
+import { useEffect, useCallback, useState, useContext } from "react";
 
 import { SortItem, TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
-import { AUDIO_MENU_CLOSE } from "@/shared/definitions/sentences/path.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -16,6 +14,7 @@ import { useI18n } from "../../../core/providers/LanguageProvider";
 import { AppContext } from "@/app/_layout";
 import { INITIAL_SORT_DATA } from "@/shared/definitions/utils/contants";
 import { cardStyles } from "@/app/(tabs)/cards";
+import SoundService from "@/core/services/sounds.service";
 
 export default function SortCardMenu({
   isVisible,
@@ -30,19 +29,9 @@ export default function SortCardMenu({
   const {i18n} = useI18n();
   const [data, setData] = useState(INITIAL_SORT_DATA);
   const styles = ModalStyles;
-  const closed = useRef<Audio.Sound>();
-
-  useEffect(() => {
-    async function loadSounds() {
-      const { sound } = await Audio.Sound.createAsync(AUDIO_MENU_CLOSE);
-      closed.current = sound;
-    }
-
-    loadSounds();
-  }, []);
 
   const playSound = useCallback(async () => {
-    if (closed.current) await closed.current.replayAsync();
+    await SoundService.play('AUDIO_MENU_CLOSE')
   }, []);
 
   async function closeMenu(): Promise<void> {

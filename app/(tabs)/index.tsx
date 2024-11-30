@@ -7,31 +7,17 @@ import { ThemedView } from '@/components/ThemedView';
 import { HomeScreenModal } from '@/components/modals/HomeScreenModal';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { indexScreenStyles } from '@/shared/styles/component.styles';
-import { CHANGE_VIEW, HERO_IMAGE } from '@/shared/definitions/sentences/path.sentences';
+import { HERO_IMAGE } from '@/shared/definitions/sentences/path.sentences';
 import { useRouter } from 'expo-router';
-import { Audio } from 'expo-av';
-import { useEffect, useRef } from 'react';
+import SoundService from '@/core/services/sounds.service';
 
 export default function HomeScreen() {
   const {i18n} = useI18n();
   const styles = indexScreenStyles;
   const router = useRouter();
 
-  const audio = useRef<Audio.Sound>();
-
-  useEffect(() => {
-    async function loadSound() {
-      const { sound } = await Audio.Sound.createAsync(CHANGE_VIEW);
-      audio.current = sound;
-    }
-
-    loadSound();
-  }, []);
-
   const playSound = async () => {
-    if (audio.current) {
-      await audio.current.replayAsync();
-    }
+    SoundService.play('CHANGE_VIEW');
   };
 
   return (

@@ -8,6 +8,7 @@ import { useI18n } from '@/core/providers/LanguageProvider';
 import { Sound } from 'expo-av/build/Audio';
 import { AppContext } from '@/app/_layout';
 import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
+import SoundService from '@/core/services/sounds.service';
 
 interface StateButtonProps {
   children?: ReactNode,
@@ -16,7 +17,6 @@ interface StateButtonProps {
   onPress?: Observable<boolean>,
   showLabel?: boolean,
   labelMargin?: boolean,
-  sound: React.MutableRefObject<Sound | undefined>,
   color?: string,
   isImage?: boolean,
   propFilter: string,
@@ -31,7 +31,6 @@ const StateButton = ({
   onPress, 
   showLabel, 
   labelMargin, 
-  sound, 
   color = '#444444',
   isImage = false,
   propFilter,
@@ -42,7 +41,7 @@ const StateButton = ({
   const {i18n} = useI18n();
 
   const handlePress = () => {
-    sound.current && sound.current.replayAsync();
+    SoundService.play('POP_PICK');
     setPressed((prevPressed) => !prevPressed);
     if(obj?.current) {
       obj.current[propFilter][keyFilter] = !pressed;

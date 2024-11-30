@@ -17,6 +17,7 @@ import { ErrorProvider } from '@/core/providers/ErrorProvider';
 import { Provider } from 'react-native-paper';
 import Storage from '@/core/storage/storage.service';
 import { APP_VERSION } from '@/shared/definitions/utils/contants';
+import { SoundService } from '@/core/services/sounds.service';
 
 export const AppContext = createContext<{ state: AppState; dispatch: React.Dispatch<any> } | undefined>(undefined);
 SplashScreen.preventAutoHideAsync();
@@ -42,12 +43,22 @@ export default function RootLayout() {
         const settings = await Storage.loadSettings();
         if (settings !== null) {
           dispatch({type: 'SET_SETTINGS', value: settings});
+          if (!settings.sound) {
+            SoundService.setEnabled(false);
+          }
         }
       }
     }
 
     checkStorage();
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    SoundService.preloadAllSounds();
+    return () => {
+      SoundService.unloadAllSounds();
+    };
+  }, []);
 
   useEffect(() => {
     const checkStorage = async () => {

@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { BlurView } from "expo-blur";
 import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
-import { Audio } from "expo-av";
 import { useRef, useEffect, useCallback, useState, useMemo } from "react";
 import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -19,14 +18,11 @@ import {
 } from "@/shared/styles/component.styles";
 
 import { 
-  AUDIO_MENU_CLOSE, 
-  AUDIO_MENU_OPEN, 
   CHARIZARD_ICON,
-   GENETIC_APEX, 
-   MEWTWO_ICON, 
-   PIKACHU_ICON, 
-   POP_PICK 
-  } from "@/shared/definitions/sentences/path.sentences";
+  GENETIC_APEX, 
+  MEWTWO_ICON, 
+  PIKACHU_ICON, 
+} from "@/shared/definitions/sentences/path.sentences";
 
 import { 
   DAMAGES, 
@@ -49,6 +45,7 @@ import StateButton from "@/components/ui/StateButton";
 import InvertButton from "@/components/ui/InvertButton";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { AppContext } from "@/app/_layout";
+import SoundService from "@/core/services/sounds.service";
 
 export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabMenu) {
   if (!isVisible) return null;
@@ -56,9 +53,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
   if (!context) { throw new Error(NO_CONTEXT); }
   const { dispatch } = context;
   
-  const closed = useRef<Audio.Sound>();
-  const pick = useRef<Audio.Sound>();
-  const open = useRef<Audio.Sound>();
   const {i18n} = useI18n();
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
   const distanceFromBottom = useSharedValue(FILTER_CARDS_HEIGHT);
@@ -88,20 +82,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
   }
   
   useEffect(() => {
-    async function loadSounds() {
-      const { sound } = await Audio.Sound.createAsync(AUDIO_MENU_CLOSE);
-      const { sound: pickSound } = await Audio.Sound.createAsync(POP_PICK);
-      const { sound: openSound } = await Audio.Sound.createAsync(AUDIO_MENU_OPEN);
-      closed.current = sound;
-      pick.current = pickSound;
-      open.current = openSound;
-
-      if (Platform.OS === 'web') {
-        closed.current.setVolumeAsync(.3);
-      }
-    }
-
-    loadSounds();
     filterObj.current = getFilterSearch();
   }, []);
 
@@ -117,20 +97,12 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                           FILTER_CARDS_HEIGHT;
   }, [expansionVisible]);
 
-  const playClose = useCallback(async () => {
-    if (closed.current) await closed.current.replayAsync();
-  }, []);
-
-  const playPop = useCallback(async () => {
-    if (pick.current) await pick.current.replayAsync();
-  }, []);
-
-  const playOpen = useCallback(async () => {
-    if (open.current) await open.current.replayAsync();
-  }, []);
+  const playSound = async (value: string) => {
+    await SoundService.play(value);
+  }
 
   async function closeMenu(): Promise<void> {
-    await playClose();
+    await playSound('AUDIO_MENU_CLOSE');
     onClose();
     dispatch({type: 'SET_FILTER', value: filterObj.current});
   }
@@ -138,9 +110,9 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
   async function handleExpansion(value: boolean): Promise<void> {
     if (value) {
       filterObj.current.resetExpansion();
-      playOpen();
+      await playSound('AUDIO_MENU_OPEN');
     } else {
-      playClose();
+      await playSound('AUDIO_MENU_CLOSE');
       setExpansionSelected(
         Object.keys(filterObj.current.expansion)
          .some(key => (Boolean((filterObj.current.expansion as any)[key])))
@@ -153,7 +125,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
     return (
       <ThemedView style={filterStyles.flexContainer}>
         <StateButton obj={filterObj} 
-                     sound={pick} 
                      showLabel={true} 
                      label={'favorites'} 
                      style={filterStyles.button} 
@@ -161,7 +132,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                      keyFilter={"included"}>
         </StateButton>
         <StateButton obj={filterObj} 
-                     sound={pick} 
                      showLabel={true} 
                      label={'no_favorites'} 
                      style={filterStyles.button} 
@@ -184,7 +154,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                              keyFilter={index} 
                              onPress={raritySelectAll$} 
                              key={index} 
-                             sound={pick} 
                              obj={filterObj}
                              style={
                               [
@@ -209,7 +178,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                                style={filterStyles.button} 
                                label={'promo'} 
                                showLabel={true}
-                               sound={pick}
                                propFilter="rarity"
                                keyFilter={8}
                                obj={filterObj}>
@@ -224,7 +192,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
       <>
         <ThemedView style={filterStyles.row}>
           <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('type')}</ThemedText>
-          <InvertButton sound={pick} onClick={() => onTypeSelectAll()}></InvertButton>
+          <InvertButton onClick={() => onTypeSelectAll()}></InvertButton>
         </ThemedView>
         <ThemedView style={[
           filterStyles.flexContainer, 
@@ -237,7 +205,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                 return (
                   <StateButton label={label} 
                                showLabel={true}
-                               sound={pick} 
                                onPress={typeSelectAll$}
                                labelMargin={true}
                                propFilter="element"
@@ -274,7 +241,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                 <SelectInput key={i} 
                              options={DAMAGES} 
                              label={k} 
-                             onSelect={(opt) => (playPop(), (filterObj.current.health as any)[k] = opt)}>
+                             onSelect={(opt) => (playSound('POP_PICK'), (filterObj.current.health as any)[k] = opt)}>
                 </SelectInput>  
               )
           })}
@@ -290,7 +257,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                 <SelectInput key={i} 
                              options={DAMAGES} 
                              label={k} 
-                             onSelect={(opt) => (playPop(), (filterObj.current.attack as any)[k] = opt)}>
+                             onSelect={(opt) => (playSound('POP_PICK'), (filterObj.current.attack as any)[k] = opt)}>
                 </SelectInput>  
             )})}
           <MaterialIcons name="remove" style={filterStyles.separator}></MaterialIcons>
@@ -306,7 +273,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                              style={[filterStyles.button, filterStyles.gridButton]} 
                              showLabel={true} 
                              label={k}
-                             sound={pick}
                              propFilter="ability"
                              keyFilter={k}
                              obj={filterObj}>
@@ -329,7 +295,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                               key={i} 
                               onPress={stageSelectAll$} 
                               showLabel={true}
-                              sound={pick}
                               label={label}
                               propFilter="stage"
                               keyFilter={key}
@@ -373,7 +338,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
       <>
         <ThemedView style={filterStyles.row}>
           <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('weak')}</ThemedText>
-          <InvertButton sound={pick} onClick={() => onMiscellaniaSelectAll()}></InvertButton>
+          <InvertButton onClick={() => onMiscellaniaSelectAll()}></InvertButton>
         </ThemedView>
         <ThemedView style={[
           filterStyles.flexContainer, 
@@ -386,7 +351,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                 return (
                   <StateButton label={label} 
                                showLabel={true}
-                               sound={pick} 
                                onPress={miscellaniaSelectAll$}
                                labelMargin={true}
                                propFilter="weak"
@@ -424,7 +388,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                              style={[filterStyles.button, filterStyles.gridButton]} 
                              showLabel={true} 
                              label={k}
-                             sound={pick}
                              propFilter="ex"
                              keyFilter={k}
                              obj={filterObj}>
@@ -443,13 +406,13 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
         <ThemedView style={{flex: 1, padding: 20, justifyContent: 'flex-start', alignItems: 'center', marginTop: 10}}>
           <Image source={GENETIC_APEX} style={{width: 106, height: 50}}></Image>
           <ThemedView style={{flexDirection: 'row', marginTop: 20, marginBottom: 38, gap: 10}}>
-            <StateButton sound={pick} isImage={true} color="" propFilter="expansion" keyFilter={0} obj={filterObj}>
+            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={0} obj={filterObj}>
               <Image source={PIKACHU_ICON} style={{width: 110, height: 40}}></Image>
             </StateButton>
-            <StateButton sound={pick} isImage={true} color="" propFilter="expansion" keyFilter={1} obj={filterObj}>
+            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={1} obj={filterObj}>
               <Image source={MEWTWO_ICON} style={{width: 110, height: 40}}></Image>
             </StateButton>
-            <StateButton sound={pick} isImage={true} color="" propFilter="expansion" keyFilter={2} obj={filterObj}>
+            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={2} obj={filterObj}>
               <Image source={CHARIZARD_ICON} style={{width: 110, height: 40}}></Image>
             </StateButton>
           </ThemedView>
@@ -496,7 +459,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
             <>
               <ThemedView style={filterStyles.row}>
                 <ThemedText style={filterStyles.header}>{i18n.t('rarity')}</ThemedText>
-                <InvertButton sound={pick} onClick={() => onRaritySelectAll()}></InvertButton>
+                <InvertButton onClick={() => onRaritySelectAll()}></InvertButton>
               </ThemedView>
               <RarityItem rarity={filterObj.current.rarity}></RarityItem>
             </>
@@ -509,7 +472,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
             <>
               <ThemedView style={filterStyles.row}>
                 <ThemedText style={filterStyles.header}>{i18n.t('trainer_card')}</ThemedText>
-                <InvertButton sound={pick} onClick={() => onStageSelectAll()}></InvertButton>
+                <InvertButton onClick={() => onStageSelectAll()}></InvertButton>
               </ThemedView>
               <StageItem stage={filterObj.current.stage}></StageItem>
             </>
