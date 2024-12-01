@@ -172,7 +172,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
       ]}>
       <Pressable disabled={state.cardState.navigating} 
                  onPress={() => goToDetailScreen(item.id)} style={{ zIndex: 1 }}>
-        <Image cachePolicy="memory-disk"
+        <Image cachePolicy="memory"
                accessibilityLabel={item.name} 
                style={[
           CardGridStyles.image, 
@@ -215,7 +215,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
     );
   }, [rotate, scale]);
 
-  const keyExtractor = useCallback((item: Card) => String(item.number), []);
+  const keyExtractor = useCallback((item: Card) => String(item.id), []);
 
   async function goUp(ev: GestureResponderEvent | null, sound = true): Promise<void> {
     if (sound) await playSound();
@@ -253,9 +253,9 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                 keyExtractor={keyExtractor}
                 key={numColumns}
                 numColumns={numColumns}
-                initialNumToRender={12}
-                maxToRenderPerBatch={9}
-                windowSize={12}
+                initialNumToRender={isGrid5 ? 45 : 12}
+                maxToRenderPerBatch={isGrid5 ? 80 : 15}
+                windowSize={isGrid5 ? 40 : 25}
                 keyboardDismissMode={'on-drag'}
                 contentContainerStyle={CardGridStyles.gridContainer}
                 keyboardShouldPersistTaps={'never'}

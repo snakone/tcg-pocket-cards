@@ -7,18 +7,21 @@ export function sortCards(field: keyof Card, data: Card[], sort: SortItem): Card
     const aValue = a[field] ?? '';
     const bValue = b[field] ?? '';
 
-    if (aValue < bValue) return sort.order === 'asc' ? -1 : 1;
-    if (aValue > bValue) return sort.order === 'asc' ? 1 : -1;
+    if (aValue === 'NONE' && bValue !== 'NONE') return 1;
+    if (bValue === 'NONE' && aValue !== 'NONE') return -1;
 
-    const numberA = a.number ?? 0;
-    const numberB = b.number ?? 0;
-    if (numberA < numberB) return -1;
-    if (numberA > numberB) return 1;
+    if (field === 'rarity') {
+      if (aValue === 8 && bValue !== 8) return 1;
+      if (bValue === 8 && aValue !== 8) return -1;
+    }
 
-    const pokedexA = a.pokedex ?? 0;
-    const pokedexB = b.pokedex ?? 0;
-    if (pokedexA < pokedexB) return -1;
-    if (pokedexA > pokedexB) return 1;
+    if (aValue <= bValue) return sort.order === 'asc' ? -1 : 1;
+    if (aValue >= bValue) return sort.order === 'asc' ? 1 : -1;
+
+    const numberA = a.id ?? 0;
+    const numberB = b.id ?? 0;
+    if (numberA <= numberB) return -1;
+    if (numberA >= numberB) return 1;
 
     return 0;
   });
@@ -46,19 +49,22 @@ export function filterCards(filter: FilterSearch, data: Card[]): Card[] {
 
     const element = Object.keys(filter.element).filter(key => Boolean((filter.element as any)[key]));
     
-    if(element.length > 0 && !element.includes(String(card.element))) {
+    if(card.element === 'NONE' || (element.length > 0 && !element.includes(String(card.element)))) {
       return false;
     }
 
     if (
+      card.health === 'NONE' ||
+      (card.health && 
       filter.health.min !== null && 
       filter.health.min > 0 &&
-      filter.health.min > card.health 
+      filter.health.min > card.health)
     ) {
       return false;
     }
 
     if (
+      card.health &&
       filter.health.max !== null && 
       filter.health.max > 0 &&
       filter.health.max < card.health 
@@ -73,18 +79,18 @@ export function filterCards(filter: FilterSearch, data: Card[]): Card[] {
       filter.attack.min > 0
     ) {
 
-      if (card.attacks.length === 1 && card.attacks[0].damage === 0) {
+      if (!card.attacks || (card.attacks?.length === 1 && card.attacks[0].damage === 0)) {
         return false;
       }
 
-      const lower = Math.min(...card.attacks.map(att => att.damage).filter(k => Boolean(k)));
-      const upper = Math.max(...card.attacks.map(att => att.damage).filter(k => Boolean(k)));
+      const lower = Math.min(...card.attacks!.map(att => att.damage).filter(k => Boolean(k)));
+      const upper = Math.max(...card.attacks!.map(att => att.damage).filter(k => Boolean(k)));
 
       if (filter.attack.min && lower < filter.attack.min) {
         return false;
       }
 
-      if (card.attacks.length === 1 && card.attacks[0].damage === 0) {
+      if (card.attacks?.length === 1 && card.attacks[0].damage === 0) {
         return false;
       }
 
@@ -101,7 +107,7 @@ export function filterCards(filter: FilterSearch, data: Card[]): Card[] {
 
     const expansion = Object.keys(filter.expansion).filter(key => Boolean((filter.expansion as any)[key]));
     
-    if(expansion.length > 0 && !card.found.some(pack => expansion.includes(String(pack)))) {
+    if(expansion.length > 0 && !card.found?.some(pack => expansion.includes(String(pack)))) {
       return false;
     }
 

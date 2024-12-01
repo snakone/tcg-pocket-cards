@@ -43,9 +43,7 @@ export default function RootLayout() {
         const settings = await Storage.loadSettings();
         if (settings !== null) {
           dispatch({type: 'SET_SETTINGS', value: settings});
-          if (!settings.sound) {
-            SoundService.setEnabled(false);
-          }
+          if (!settings.sound) SoundService.setEnabled(false)
         }
       }
     }
@@ -55,9 +53,6 @@ export default function RootLayout() {
 
   useEffect(() => {
     SoundService.preloadAllSounds();
-    return () => {
-      SoundService.unloadAllSounds();
-    };
   }, []);
 
   useEffect(() => {

@@ -7,11 +7,10 @@ import
   withTiming 
 } from "react-native-reanimated";
 
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect } from "react";
 import { useLocalSearchParams, useRouter } from 'expo-router/build/hooks';
 import { Image } from 'expo-image';
 import { Platform, TouchableOpacity, View } from "react-native";
-import { Audio } from 'expo-av';
 import { useNavigation } from "expo-router";
 
 import { 
@@ -25,10 +24,10 @@ import {
 import { ButtonStyles, DetailStyles } from '@/shared/styles/component.styles';
 import { ThemedView } from "@/components/ThemedView";
 import { BACK_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
-import { AUDIO_MENU_CLOSE } from "@/shared/definitions/sentences/path.sentences";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { AppContext } from "../_layout";
 import { CARD_IMAGE_MAP } from "@/shared/definitions/utils/card.images";
+import SoundService from "@/core/services/sounds.service";
 
 export default function DetailScreen() {
   const context = useContext(AppContext);
@@ -37,7 +36,6 @@ export default function DetailScreen() {
   const styles = DetailStyles;
   const router = useRouter();
   const navigation = useNavigation();
-  const audio = useRef<Audio.Sound>();
   const opacity = useSharedValue(0.5);
   const opacityDuration = Platform.OS === 'web' ? 500 : 1000;
   const rotateX = useSharedValue(0);
@@ -45,7 +43,7 @@ export default function DetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
 
   const playSound = async () => {
-    if (audio.current) audio.current.replayAsync();
+    SoundService.play('AUDIO_MENU_CLOSE');
   }
 
   const opacityStyle = useAnimatedStyle(() => {
@@ -121,19 +119,6 @@ export default function DetailScreen() {
 
   useEffect(() => {
     opacity.value = withTiming(1, { duration: opacityDuration });
-  }, []);
-
-  useEffect(() => {
-    async function loadSounds() {
-      const { sound } = await Audio.Sound.createAsync(AUDIO_MENU_CLOSE);
-      audio.current = sound;
-
-      if (Platform.OS === 'web') {
-        audio.current.setVolumeAsync(.3);
-      }
-    }
-
-    loadSounds();
   }, []);
 
   async function goBack(): Promise<void> {

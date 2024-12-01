@@ -9,9 +9,9 @@ interface SkeletonProps {
 }
 
 export default function SkeletonCardGrid({columns}: SkeletonProps) {
-  const flatListRef = useRef<FlatList<{number: number}> | null>(null);
-  const array = Array.from({ length: 12 }, (_, index) => ({ number: index }));
-  const keyExtractor = useCallback((item: {number: number}) => String(item.number), []);
+  const flatListRef = useRef<FlatList<{id: number}> | null>(null);
+  const array = Array.from({ length: 12 }, (_, index) => ({ id: index }));
+  const keyExtractor = useCallback((item: {id: number}) => String(item.id), []);
 
   const renderItem = useCallback(() => (
     <View style={CardGridStyles.imageContainer}>

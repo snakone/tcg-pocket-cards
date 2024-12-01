@@ -45,8 +45,8 @@ export const HELP: ItemWithRoute[] = [
 ];
 
 export const SORT_FIELD_MAP: Record<string, keyof Card> = {
-  order_by_number: 'number',
-  order_by_type: 'element',
+  order_by_id: 'id',
+  order_by_element: 'element',
   order_by_rarity: 'rarity',
   order_by_pokedex: 'pokedex',
   order_by_retreat: 'retreat',
@@ -59,8 +59,8 @@ export function getFilterSearch(): FilterSearch {
 }
 
 export const INITIAL_SORT_DATA: SortItem[] = [
-  { id: 1, label: 'order_by_number', icon: 'content-paste-search', active: true, order: 'asc' },
-  { id: 2, label: 'order_by_type', icon: 'stars', active: false, order: 'desc' },
+  { id: 1, label: 'order_by_id', icon: 'content-paste-search', active: true, order: 'asc' },
+  { id: 2, label: 'order_by_element', icon: 'stars', active: false, order: 'desc' },
   { id: 3, label: 'order_by_rarity', icon: 'diamond', active: false, order: 'desc' },
   { id: 4, label: 'order_by_pokedex', icon: 'smartphone', active: false, order: 'desc' },
   { id: 5, label: 'order_by_retreat', icon: 'grass', active: false, order: 'desc' },

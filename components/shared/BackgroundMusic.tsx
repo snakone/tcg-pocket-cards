@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { Audio } from 'expo-av';
 import { Platform } from 'react-native';
-import Storage from '@/core/storage/storage.service'
 
+import Storage from '@/core/storage/storage.service'
 import { BACKGROUND_MUSIC } from '@/shared/definitions/sentences/path.sentences';
 import { MUSIC_ERROR } from '@/shared/definitions/sentences/global.sentences';
 
