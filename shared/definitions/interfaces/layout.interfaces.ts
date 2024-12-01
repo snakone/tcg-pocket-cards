@@ -7,6 +7,7 @@ export interface HeaderWithCustomModalProps {
   title: string;
   modalTitle: string;
   modalContent: ReactNode;
+  modalHeight?: number;
   animatedStyle?: any,
   animatedIconStyle?: any
 }

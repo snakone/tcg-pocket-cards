@@ -44,7 +44,7 @@ import { IconSymbol } from './IconSymbol';
 import { Colors } from '@/shared/definitions/utils/colors';
 import useHeaderAnimation from './HeaderAnimation';
 import { AppState } from '@/hooks/root.reducer';
-import { SORT_FIELD_MAP } from '@/shared/definitions/utils/contants';
+import { MIN_MODAL_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/contants';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { filterCards, sortCards } from '@/shared/definitions/utils/functions';
@@ -235,10 +235,11 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
       <SafeAreaView style={{flex: 1}}>
         <Animated.View style={[ParallaxStyles.header, animatedHeaderStyle]}>
           <HeaderWithCustomModal title={"card_collection"} 
-                                modalContent={CardsScreenModal()} 
-                                modalTitle={"cards"} 
-                                animatedStyle={animatedTitleStyle}
-                                animatedIconStyle={animatedIconStyle}/>
+                                 modalContent={CardsScreenModal()} 
+                                 modalTitle={"cards"} 
+                                 animatedStyle={animatedTitleStyle}
+                                 animatedIconStyle={animatedIconStyle}
+                                 modalHeight={MIN_MODAL_HEIGHT}/>
         </Animated.View>
         <Animated.View style={[ParallaxStyles.content]}>
           <SafeAreaView style={CardGridStyles.container}>
@@ -253,6 +254,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                 keyExtractor={keyExtractor}
                 key={numColumns}
                 numColumns={numColumns}
+                scrollEnabled={state.cardState.loaded}
                 initialNumToRender={isGrid5 ? 45 : 12}
                 maxToRenderPerBatch={isGrid5 ? 80 : 15}
                 windowSize={isGrid5 ? 40 : 25}

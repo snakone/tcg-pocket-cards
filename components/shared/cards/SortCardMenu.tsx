@@ -21,14 +21,13 @@ export default function SortCardMenu({
   onClose,
   animatedStyle,
 }: TabMenu) {
-  if (!isVisible) return null;
-
+  const [data, setData] = useState(INITIAL_SORT_DATA);
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
   const {i18n} = useI18n();
-  const [data, setData] = useState(INITIAL_SORT_DATA);
   const styles = ModalStyles;
+  if (!isVisible) return null;
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE')

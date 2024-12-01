@@ -1,13 +1,11 @@
 import { Tabs } from 'expo-router';
-import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Platform, Pressable } from 'react-native';
-import { Audio } from 'expo-av';
 import { Portal, Provider } from 'react-native-paper';
 
 import { AppContext } from '../_layout';
 import { IconSymbol, SvgStackSymbol, SvgStylusSymbol } from '@/components/ui/IconSymbol';
-import { CHANGE_VIEW } from '@/shared/definitions/sentences/path.sentences';
 import { FILTER_CARDS_HEIGHT, MENU_WIDTH, RIPPLE_CONFIG } from '@/shared/definitions/utils/contants';
 import { CustomTabButtonStyles, TabButtonStyles } from '@/shared/styles/component.styles';
 import TabsMenu from '@/components/shared/TabsMenu';
@@ -17,14 +15,15 @@ import SortCardMenu from '@/components/shared/cards/SortCardMenu';
 import SoundService from '@/core/services/sounds.service';
 
 export default function TabLayout() {
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
-  const menuRight = useSharedValue(MENU_WIDTH);
   const distanceFromBottom = useSharedValue(FILTER_CARDS_HEIGHT);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isSortVisible, setIsSortVisible] = useState(false);
   const [isFilterVisible, setIsFilterVisible] = useState(false);
+  const [isMobileEmulator, setIsMobileEmulator] = useState(false);
+  const context = useContext(AppContext);
+  if (!context) { throw new Error(NO_CONTEXT); }
+  const { state, dispatch } = context;
+  const menuRight = useSharedValue(MENU_WIDTH);
 
   // MENU
   const menuAnimatedStyle = useAnimatedStyle(() => {
@@ -53,6 +52,13 @@ export default function TabLayout() {
       transform: [{ translateY: distanceFromBottom.value }]
     };
   });
+
+  useEffect(() => {
+    if (Platform.OS === 'web' && window && window.devicePixelRatio > 1) {
+      setIsMobileEmulator(true);
+    }
+  }, []); 
+
 
   useEffect(() => {
     distanceFromBottom.value = isSortVisible || isFilterVisible ? 
@@ -95,6 +101,8 @@ export default function TabLayout() {
     dispatch({type: 'CLOSE_MODALS'});
   }
 
+  const emulatorStyle = () => Platform.OS === 'web' && !isMobileEmulator;
+
   return (
     <Provider>
       <Tabs
@@ -125,7 +133,7 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => 
             <IconSymbol name="house.fill" 
                         color={color}
-                        style={TabButtonStyles.icon} />,
+                        style={[TabButtonStyles.icon, emulatorStyle() && {top: -1}]} />,
             animation: 'shift',
             title: 'Home'
           }}
@@ -136,7 +144,7 @@ export default function TabLayout() {
             title: 'Cartas',
             tabBarIcon: ({ color }) => 
               <SvgStackSymbol color={color} 
-                              style={TabButtonStyles.stacks} />,
+                              style={[TabButtonStyles.stacks, emulatorStyle() && {top: -1, left: 4}]} />,
             animation: 'shift',
           }}
         />
@@ -145,7 +153,7 @@ export default function TabLayout() {
           options={{
             tabBarIcon: ({ color }) => 
               <SvgStylusSymbol color={color}
-                               style={TabButtonStyles.stylus} />,
+                               style={[TabButtonStyles.stylus, emulatorStyle() && {top: -1, left: 4}]} />,
             animation: 'shift',
             title: 'Create'
           }}
@@ -160,7 +168,7 @@ export default function TabLayout() {
                          android_ripple={RIPPLE_CONFIG}>
                 <IconSymbol name="menubar.rectangle" 
                             color={'#8E8E8F'}
-                            style={CustomTabButtonStyles.icon} />
+                            style={[CustomTabButtonStyles.icon, emulatorStyle() && {top: -1}]} />
               </Pressable>
             ),
           }}

@@ -10,6 +10,7 @@ import { homeScreenStyles } from '@/shared/styles/component.styles';
 import { HERO_IMAGE } from '@/shared/definitions/sentences/path.sentences';
 import { useRouter } from 'expo-router';
 import SoundService from '@/core/services/sounds.service';
+import { HOME_MODAL_HEIGHT } from '@/shared/definitions/utils/contants';
 
 export default function HomeScreen() {
   const {i18n} = useI18n();
@@ -24,7 +25,7 @@ export default function HomeScreen() {
     <ParallaxScrollView title={"tcg"} 
                         modalTitle='welcome' 
                         modalContent={HomeScreenModal()}
-                        styles={{overflow: 'visible'}}>
+                        modalHeight={HOME_MODAL_HEIGHT}>
       <ThemedView style={styles.container}>
         <Image
           source={HERO_IMAGE}

@@ -169,10 +169,10 @@ export const ModalStyles = StyleSheet.create({
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
     elevation: 5,
     width: '90%',
-    maxHeight: '80%',
+    maxHeight: '82%',
     minHeight: 250,
     overflow: 'hidden',
-    top: -10
+    top: -10,
   },
   modalHeader: {
     backgroundColor: '#F2F2F2',
@@ -190,20 +190,19 @@ export const ModalStyles = StyleSheet.create({
     color: Colors.light.bold
   },
   modalScrollView: {
-    maxHeight: '85%',
-    minHeight: Platform.OS === 'web' ? 120 : 118,
+    maxHeight: '79%',
     padding: Platform.OS === 'web' ? 24 : 20,
     backgroundColor: 'white',
-    zIndex: 0,
-    flex: 1,
   },
   modalFooter: {
     backgroundColor: '#F2F2F2',
-    padding: 12,
+    paddingTop: 14,
+    paddingInline: 14,
+    paddingBottom: 16,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     alignItems: 'center',
-    boxShadow: '0px -4px 12px rgba(0, 0, 0, 0.2)'
+    boxShadow: '0px -4px 12px rgba(0, 0, 0, 0.2)',
   },
   closeButton: {
     backgroundColor: 'white',
@@ -321,7 +320,7 @@ export const TabButtonStyles = StyleSheet.create({
     position: 'relative'
   },
   menu: {
-    marginTop: Platform.OS === 'web' ? 10 : 5,
+    marginTop: 5,
     top: 2,
     position: 'relative',
     fontSize: 24,
@@ -349,7 +348,7 @@ export const LayoutStyles = StyleSheet.create({
 export const WebStyles = StyleSheet.create({
   view: {
     width: 390, 
-    height: '100%',
+    height: 844,
     alignSelf: 'center',
   }
 });
@@ -427,10 +426,10 @@ export const ScreenStyles = StyleSheet.create({
     alignItems: 'flex-start',
     paddingInline: 28,
     paddingBottom: 8,
-    gap: 8
+    gap: 8,
+    marginTop: 6
   },
   bottomContent: {
-    flex: 1,
     position: 'absolute',
     bottom: 30,
     alignSelf: 'center'
@@ -579,7 +578,7 @@ export const filterStyles = StyleSheet.create({
   buttonContainer: {
     justifyContent: 'space-between', 
     flexWrap: 'wrap', 
-    marginBottom: 48,
+    marginBottom: 32,
     paddingRight: 16
   },
   expansionShadow: {
@@ -657,7 +656,7 @@ export const homeScreenModalStyles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   text: {
-    fontSize: 15,
+    fontSize: 14,
     textAlign: 'center',
     lineHeight: 16,
   },

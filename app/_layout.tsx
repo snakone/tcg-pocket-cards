@@ -2,7 +2,7 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { createContext, useEffect, useMemo, useReducer } from 'react';
+import { createContext, useEffect, useMemo, useReducer, useState } from 'react';
 import 'react-native-reanimated';
 import { Platform } from 'react-native';
 import * as NavigationBar from "expo-navigation-bar";
@@ -26,13 +26,11 @@ export default function RootLayout() {
   const [loaded] = useFonts({SpaceMono: FONT_REGULAR});
   const [state, dispatch] = useReducer(rootReducer, initialRootState);
   const contextValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
-
+  
   useEffect(() => {
     if (loaded) SplashScreen.hideAsync();
     if (Platform.OS !== 'web') NavigationBar.setVisibilityAsync("hidden");
   }, [loaded]);
-
-  if (!loaded) { return null; }
 
   useEffect(() => {
     const checkStorage = async () => {
@@ -55,22 +53,7 @@ export default function RootLayout() {
     SoundService.preloadAllSounds();
   }, []);
 
-  useEffect(() => {
-    const checkStorage = async () => {
-      const version = await Storage.get('version');
-      if (version === null) {
-        Storage.setSettings({...state.settingsState, version: APP_VERSION});
-      } else {
-        const settings = await Storage.loadSettings();
-        if (settings !== null) {
-          dispatch({type: 'SET_SETTINGS', value: settings});
-        }
-      }
-    }
-
-    checkStorage();
-  }, [])
-
+  if (!loaded) { return null; }
 
   return (
     <Provider>
@@ -83,7 +66,7 @@ export default function RootLayout() {
                 <Stack.Screen name="+not-found" />
               </Stack>
               <StatusBar hidden={true} />
-              <BackgroundMusic/>      
+              <BackgroundMusic state={contextValue.state}/>      
             </I18nProvider>
           </ErrorProvider>
         </AppContext.Provider>

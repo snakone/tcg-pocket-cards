@@ -50,7 +50,6 @@ import { AppContext } from "@/app/_layout";
 import SoundService from "@/core/services/sounds.service";
 
 export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabMenu) {
-  if (!isVisible) return null;
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { dispatch } = context;
@@ -58,9 +57,10 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
   const {i18n} = useI18n();
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
   const distanceFromBottom = useSharedValue(FILTER_CARDS_HEIGHT);
-
   const filterObj = useRef<FilterSearch>(getFilterSearch());
   const [expansionSelected, setExpansionSelected] = useState<boolean>(false);
+
+  if (!isVisible) return null;
 
   const typeSelectAll$ = new Subject<boolean>();
   const raritySelectAll$ = new Subject<boolean>();

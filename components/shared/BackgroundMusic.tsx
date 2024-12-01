@@ -5,12 +5,13 @@ import { Platform } from 'react-native';
 import Storage from '@/core/storage/storage.service'
 import { BACKGROUND_MUSIC } from '@/shared/definitions/sentences/path.sentences';
 import { MUSIC_ERROR } from '@/shared/definitions/sentences/global.sentences';
+import { AppState } from '@/hooks/root.reducer';
 
-const BackgroundMusic = () => {
-  if (Platform.OS === 'web') { return null; }
+const BackgroundMusic = ({state}: {state: AppState}) => {
   const audio = useRef<Audio.Sound>();
 
   useEffect(() => {
+    if (Platform.OS === 'web') { return; }
     const loadAndPlayMusic = async () => {
       const music = await Storage.get('music');
       if (!music || music === null) { return; }
@@ -27,6 +28,11 @@ const BackgroundMusic = () => {
 
     loadAndPlayMusic();
   }, []);
+
+  useEffect(() => {
+    if (state.settingsState.version === null) return;
+    console.log(state.settingsState);
+  }, [state.settingsState])
 
   return null;
 };

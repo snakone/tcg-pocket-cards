@@ -26,6 +26,10 @@ export const LOCAL_HOST = 'http://192.168.1.71:3000';
 export const DEFAULT_LANG = 'es';
 export const FILTER_CARDS_HEIGHT = 350;
 
+// MODALS
+export const MIN_MODAL_HEIGHT = 120;
+export const HOME_MODAL_HEIGHT = 508;
+
 export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
   color: 'rgba(0, 0, 0, .32)', 
   borderless: true, 

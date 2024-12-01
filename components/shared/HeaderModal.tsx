@@ -15,6 +15,7 @@ export default function HeaderWithCustomModal({
   title, 
   modalTitle, 
   modalContent,
+  modalHeight,
   animatedStyle = {},
   animatedIconStyle = {}
 }: HeaderWithCustomModalProps) {
@@ -57,12 +58,12 @@ export default function HeaderWithCustomModal({
             <PaperModal dismissable={false}
                         visible={visible}
                         contentContainerStyle={{height: '200%'}}>
-              <View style={[styles.centeredView, Platform.OS === 'web' ? WebStyles.view : null]}>
+              <View style={[styles.centeredView, Platform.OS === 'web' ? WebStyles.view : {flex: 1}]}>
                 <View style={styles.modalView}>
                   <View style={styles.modalHeader}>
                     <ThemedText style={styles.modalHeaderTitle}>{i18n.t(modalTitle)}</ThemedText>
                   </View>
-                  <ScrollView style={styles.modalScrollView}>{modalContent}</ScrollView>
+                  <View style={[styles.modalScrollView, {minHeight: modalHeight}]}>{modalContent}</View>
                   <View style={styles.modalFooter}>
                     <TouchableOpacity style={ButtonStyles.button} 
                                       onPress={toggleModal} 

@@ -12,7 +12,8 @@ export type ParallaxProps = PropsWithChildren<{
   title: string,
   modalContent: ReactNode,
   modalTitle: string,
-  styles?: StyleProp<ViewStyle>
+  modalHeight?: number,
+  styles?: StyleProp<ViewStyle>,
 }>;
 
 export type ErrorType = 'error' | 'info' | 'warning';
