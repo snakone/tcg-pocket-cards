@@ -7,20 +7,33 @@ import { ThemedView } from "../ThemedView";
 import { ThemedText } from "../ThemedText";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { filterStyles } from "@/shared/styles/component.styles";
+import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 
 interface SelectInputProps {
   options: any[], 
   label: string, 
-  onSelect: (value: any, index: number) => void
+  onSelect: (value: any, index: number) => void,
+  filterObj?: React.MutableRefObject<FilterSearch>,
+  propFilter: string,
+  keyFilter: string | number
 }
 
-export default function SelectInput({options, label, onSelect}: SelectInputProps) {
+export default function SelectInput({
+  options, 
+  label, 
+  onSelect, 
+  filterObj,
+  propFilter,
+  keyFilter,
+}: SelectInputProps) {
   const {i18n} = useI18n();
 
   return (
     <SelectDropdown
       data={options}
       onSelect={onSelect}
+      disableAutoScroll={true}
+      defaultValue={(filterObj?.current as any)[propFilter][keyFilter] ?? keyFilter}
       dropdownOverlayColor="invisible"
       showsVerticalScrollIndicator={false}
       dropdownStyle={styles.dropDown}

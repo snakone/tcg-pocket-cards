@@ -591,7 +591,7 @@ export const filterStyles = StyleSheet.create({
   }
 });
 
-export const indexScreenStyles = StyleSheet.create({
+export const homeScreenStyles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
@@ -637,5 +637,28 @@ export const indexScreenStyles = StyleSheet.create({
     color: '#333',
     fontSize: 16,
     fontWeight: '600',
+  },
+});
+
+export const homeScreenModalStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  infoSection: {
+    marginBottom: 30,
+    paddingHorizontal: 20,
+  },
+  text: {
+    fontSize: 15,
+    textAlign: 'center',
+    lineHeight: 16,
   },
 });

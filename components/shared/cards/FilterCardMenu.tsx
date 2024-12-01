@@ -21,7 +21,9 @@ import {
   CHARIZARD_ICON,
   GENETIC_APEX, 
   MEWTWO_ICON, 
-  PIKACHU_ICON, 
+  PIKACHU_ICON,
+  PROMO_A1,
+  PROMO_A2, 
 } from "@/shared/definitions/sentences/path.sentences";
 
 import { 
@@ -124,14 +126,14 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
   const FavoriteItem = () => {
     return (
       <ThemedView style={filterStyles.flexContainer}>
-        <StateButton obj={filterObj} 
+        <StateButton filterObj={filterObj} 
                      showLabel={true} 
                      label={'favorites'} 
                      style={filterStyles.button} 
                      propFilter="favorite" 
                      keyFilter={"included"}>
         </StateButton>
-        <StateButton obj={filterObj} 
+        <StateButton filterObj={filterObj} 
                      showLabel={true} 
                      label={'no_favorites'} 
                      style={filterStyles.button} 
@@ -154,7 +156,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                              keyFilter={index} 
                              onPress={raritySelectAll$} 
                              key={index} 
-                             obj={filterObj}
+                             filterObj={filterObj}
                              style={
                               [
                                 {overflow: 'hidden'}, 
@@ -180,7 +182,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                                showLabel={true}
                                propFilter="rarity"
                                keyFilter={8}
-                               obj={filterObj}>
+                               filterObj={filterObj}>
                   </StateButton>
           })}
       </ThemedView>
@@ -209,7 +211,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                                labelMargin={true}
                                propFilter="element"
                                keyFilter={i}
-                               obj={filterObj}
+                               filterObj={filterObj}
                                key={i} style={[filterStyles.button, 
                               {
                                 flexDirection: 'row', 
@@ -240,7 +242,10 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
               return (
                 <SelectInput key={i} 
                              options={DAMAGES} 
-                             label={k} 
+                             label={k}
+                             filterObj={filterObj}
+                             propFilter="health"
+                             keyFilter={k}
                              onSelect={(opt) => (playSound('POP_PICK'), (filterObj.current.health as any)[k] = opt)}>
                 </SelectInput>  
               )
@@ -256,7 +261,10 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
               return (
                 <SelectInput key={i} 
                              options={DAMAGES} 
-                             label={k} 
+                             label={k}
+                             filterObj={filterObj}
+                             propFilter="attack"
+                             keyFilter={k}
                              onSelect={(opt) => (playSound('POP_PICK'), (filterObj.current.attack as any)[k] = opt)}>
                 </SelectInput>  
             )})}
@@ -275,7 +283,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                              label={k}
                              propFilter="ability"
                              keyFilter={k}
-                             obj={filterObj}>
+                             filterObj={filterObj}>
                 </StateButton>     
             )})}
         </ThemedView>
@@ -298,7 +306,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                               label={label}
                               propFilter="stage"
                               keyFilter={key}
-                              obj={filterObj}>
+                              filterObj={filterObj}>
                 </StateButton>
               )
           })}
@@ -355,7 +363,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                                labelMargin={true}
                                propFilter="weak"
                                keyFilter={i}
-                               obj={filterObj}
+                               filterObj={filterObj}
                                key={i} style={[filterStyles.button, 
                               {
                                 flexDirection: 'row', 
@@ -390,7 +398,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                              label={k}
                              propFilter="ex"
                              keyFilter={k}
-                             obj={filterObj}>
+                             filterObj={filterObj}>
                 </StateButton>     
             )})}
         </ThemedView>
@@ -405,19 +413,28 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
         <ThemedView style={filterStyles.expansionShadow}></ThemedView>
         <ThemedView style={{flex: 1, padding: 20, justifyContent: 'flex-start', alignItems: 'center', marginTop: 10}}>
           <Image source={GENETIC_APEX} style={{width: 106, height: 50}}></Image>
-          <ThemedView style={{flexDirection: 'row', marginTop: 20, marginBottom: 38, gap: 10}}>
-            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={0} obj={filterObj}>
+          <ThemedView style={{flexDirection: 'row', marginBlock: 38, gap: 10}}>
+            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={0} filterObj={filterObj}>
               <Image source={PIKACHU_ICON} style={{width: 110, height: 40}}></Image>
             </StateButton>
-            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={1} obj={filterObj}>
+            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={1} filterObj={filterObj}>
               <Image source={MEWTWO_ICON} style={{width: 110, height: 40}}></Image>
             </StateButton>
-            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={2} obj={filterObj}>
+            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={2} filterObj={filterObj}>
               <Image source={CHARIZARD_ICON} style={{width: 110, height: 40}}></Image>
             </StateButton>
           </ThemedView>
 
-          <View style={[TabsMenuStyles.separator, {width: '100%'}]}></View>
+          <ThemedView style={{flexDirection: 'row', marginTop: 4, marginBottom: 24, gap: 40}}>
+            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={3} filterObj={filterObj}>
+              <Image source={PROMO_A1} style={{width: 50, height: 94}}></Image>
+            </StateButton>
+            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={4} filterObj={filterObj}>
+              <Image source={PROMO_A2} style={{width: 50, height: 94}}></Image>
+            </StateButton>
+          </ThemedView>
+
+          <View style={[TabsMenuStyles.separator, {width: '100%', height: 3, marginTop: 20}]}></View>
         </ThemedView>
 
         <View style={[ModalStyles.modalFooter, {width: '100%'}]}>

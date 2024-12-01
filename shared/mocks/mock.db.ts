@@ -6291,8 +6291,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 217,
@@ -6311,8 +6311,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 218,
@@ -6331,8 +6331,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 219,
@@ -6351,13 +6351,13 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 220,
     number: 220,
-    pokedex: 'NONE',
+    pokedex: -1,
     name: 'Misty',
     artist: 'Sanosuke Sakuma',
     evolve: null,
@@ -6372,7 +6372,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    element: 'NONE',
+    element: -1,
   },
   {
     id: 221,
@@ -6391,8 +6391,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 222,
@@ -6411,8 +6411,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 223,
@@ -6431,8 +6431,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 224,
@@ -6451,8 +6451,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 225,
@@ -6471,8 +6471,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 226,
@@ -6491,8 +6491,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 227,
@@ -7674,8 +7674,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 267,
@@ -7694,8 +7694,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 268,
@@ -7714,8 +7714,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 269,
@@ -7734,8 +7734,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 270,
@@ -7755,8 +7755,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 271,
@@ -7775,8 +7775,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 272,
@@ -7795,8 +7795,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 273,
@@ -7815,8 +7815,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    element: 'NONE',
-    pokedex: 'NONE',
+    element: -1,
+    pokedex: -1,
   },
   {
     id: 274,
@@ -8246,10 +8246,10 @@ export const MOCK_DB_CARDS: Card[] = [
     rarity: CardRarityENUM.COMMON,
     stage: CardStageENUM.ITEM,
     extra: 'PROMO-A - Obtained from the shop',
-    element: 'NONE',
-    pokedex: 'NONE',
-    health: 'NONE',
-    retreat: 'NONE'
+    element: -1,
+    pokedex: -1,
+    health: -1,
+    retreat: -1
   },
   {
     id: 288,
@@ -8262,10 +8262,10 @@ export const MOCK_DB_CARDS: Card[] = [
     rarity: CardRarityENUM.COMMON,
     stage: CardStageENUM.ITEM,
     extra: 'PROMO-A - Obtained from the shop',
-    element: 'NONE',
-    pokedex: 'NONE',
-    health: 'NONE',
-    retreat: 'NONE'
+    element: -1,
+    pokedex: -1,
+    health: -1,
+    retreat: -1
   },
   {
     id: 289,
@@ -8278,10 +8278,10 @@ export const MOCK_DB_CARDS: Card[] = [
     rarity: CardRarityENUM.COMMON,
     stage: CardStageENUM.ITEM,
     extra: 'PROMO-A - Obtained from the shop',
-    element: 'NONE',
-    pokedex: 'NONE',
-    health: 'NONE',
-    retreat: 'NONE'
+    element: -1,
+    pokedex: -1,
+    health: -1,
+    retreat: -1
   },
   {
     id: 290,
@@ -8294,10 +8294,10 @@ export const MOCK_DB_CARDS: Card[] = [
     rarity: CardRarityENUM.COMMON,
     stage: CardStageENUM.ITEM,
     extra: 'PROMO-A - Obtained from the shop',
-    element: 'NONE',
-    pokedex: 'NONE',
-    health: 'NONE',
-    retreat: 'NONE'
+    element: -1,
+    pokedex: -1,
+    health: -1,
+    retreat: -1
   },
   {
     id: 291,
@@ -8310,10 +8310,10 @@ export const MOCK_DB_CARDS: Card[] = [
     rarity: CardRarityENUM.COMMON,
     stage: CardStageENUM.ITEM,
     extra: 'PROMO-A - Obtained from the shop',
-    element: 'NONE',
-    pokedex: 'NONE',
-    health: 'NONE',
-    retreat: 'NONE'
+    element: -1,
+    pokedex: -1,
+    health: -1,
+    retreat: -1
   },
   {
     id: 292,
@@ -8326,10 +8326,10 @@ export const MOCK_DB_CARDS: Card[] = [
     rarity: CardRarityENUM.COMMON,
     stage: CardStageENUM.ITEM,
     extra: 'PROMO-A - Obtained from the shop',
-    element: 'NONE',
-    pokedex: 'NONE',
-    health: 'NONE',
-    retreat: 'NONE'
+    element: -1,
+    pokedex: -1,
+    health: -1,
+    retreat: -1
   },
   {
     id: 293,
@@ -8342,10 +8342,10 @@ export const MOCK_DB_CARDS: Card[] = [
     rarity: CardRarityENUM.COMMON,
     stage: CardStageENUM.ITEM,
     extra: 'PROMO-A - Obtained from the shop',
-    element: 'NONE',
-    pokedex: 'NONE',
-    health: 'NONE',
-    retreat: 'NONE'
+    element: -1,
+    pokedex: -1,
+    health: -1,
+    retreat: -1
   },
   {
     id: 294,

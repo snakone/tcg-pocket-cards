@@ -28,6 +28,9 @@ export function sortCards(field: keyof Card, data: Card[], sort: SortItem): Card
 }
 
 export function filterCards(filter: FilterSearch, data: Card[]): Card[] {
+  // @TODO - Filter with stage not card battle have -1, if stage combine battle stage and object, 
+  // like stage 1 and fossil, both options and filtered, this is wrong. check if filter stage is battle or object, if both return false
+  // since that search will always return false, no object will have something from a battle card
   return data.filter(card => {
     if (
       filter.ability.with_ability !== null &&
@@ -49,14 +52,12 @@ export function filterCards(filter: FilterSearch, data: Card[]): Card[] {
 
     const element = Object.keys(filter.element).filter(key => Boolean((filter.element as any)[key]));
     
-    if(card.element === 'NONE' || (element.length > 0 && !element.includes(String(card.element)))) {
+    if(element.length > 0 && !element.includes(String(card.element))) {
       return false;
     }
 
-    if (
-      card.health === 'NONE' ||
-      (card.health && 
-      filter.health.min !== null && 
+    if (card.health && 
+      (filter.health.min !== null && 
       filter.health.min > 0 &&
       filter.health.min > card.health)
     ) {
@@ -87,10 +88,6 @@ export function filterCards(filter: FilterSearch, data: Card[]): Card[] {
       const upper = Math.max(...card.attacks!.map(att => att.damage).filter(k => Boolean(k)));
 
       if (filter.attack.min && lower < filter.attack.min) {
-        return false;
-      }
-
-      if (card.attacks?.length === 1 && card.attacks[0].damage === 0) {
         return false;
       }
 

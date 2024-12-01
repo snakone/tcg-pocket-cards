@@ -34,7 +34,11 @@ export class FilterSearch {
     this.expansion = {
       [EXPANSION.PIKACHU]: null,
       [EXPANSION.MEWTWO]: null,
-      [EXPANSION.CHARIZARD]: null
+      [EXPANSION.CHARIZARD]: null,
+      [EXPANSION.PROMO_A1]: null,
+      [EXPANSION.PROMO_A2]: null,
+      [EXPANSION.PREMIUM]: null,
+      [EXPANSION.WONDER_PICK]: null
     };
 
     this.favorite = {included: null, not_favorite: null};
@@ -85,7 +89,11 @@ export class FilterSearch {
     this.expansion = {
       [EXPANSION.PIKACHU]: null,
       [EXPANSION.MEWTWO]: null,
-      [EXPANSION.CHARIZARD]: null
+      [EXPANSION.CHARIZARD]: null,
+      [EXPANSION.PROMO_A1]: null,
+      [EXPANSION.PROMO_A2]: null,
+      [EXPANSION.PREMIUM]: null,
+      [EXPANSION.WONDER_PICK]: null
     };
   }
 

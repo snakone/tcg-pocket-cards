@@ -23,6 +23,8 @@ export const STEEL_ICON = require('@/assets/images/types/steel.png');
 export const WATER_ICON = require('@/assets/images/types/water.png');
 
 export const HERO_IMAGE = require('@/assets/images/hero.png');
+export const PROMO_A1 = require('@/assets/images/packs/promoA1.png');
+export const PROMO_A2 = require('@/assets/images/packs/promoA2.png');
 
 // PACKS
 export const GENETIC_APEX = require('@/assets/images/packs/geneticapex.png');

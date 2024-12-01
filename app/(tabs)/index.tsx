@@ -6,14 +6,14 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { HomeScreenModal } from '@/components/modals/HomeScreenModal';
 import { useI18n } from '@/core/providers/LanguageProvider';
-import { indexScreenStyles } from '@/shared/styles/component.styles';
+import { homeScreenStyles } from '@/shared/styles/component.styles';
 import { HERO_IMAGE } from '@/shared/definitions/sentences/path.sentences';
 import { useRouter } from 'expo-router';
 import SoundService from '@/core/services/sounds.service';
 
 export default function HomeScreen() {
   const {i18n} = useI18n();
-  const styles = indexScreenStyles;
+  const styles = homeScreenStyles;
   const router = useRouter();
 
   const playSound = async () => {

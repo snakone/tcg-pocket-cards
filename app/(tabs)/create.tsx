@@ -1,20 +1,18 @@
-import { Collapsible } from '@/components/Collapsible';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { CreateScreenModal } from '@/components/modals/CreateScreenModal';
+import { useI18n } from '@/core/providers/LanguageProvider';
 
 export default function CreateDeckScreen() {
+  const {i18n} = useI18n();
+
   return (
     <ParallaxScrollView title={"deck_creation"} 
                         modalTitle='create_deck' 
                         modalContent={CreateScreenModal()}>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="Android, iOS, and web support">
         <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
+          {i18n.t('under_construction')}
         </ThemedText>
-      </Collapsible>
     </ParallaxScrollView>
   );
 }

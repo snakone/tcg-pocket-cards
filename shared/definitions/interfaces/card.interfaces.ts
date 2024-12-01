@@ -17,16 +17,16 @@ export interface UsableCard extends BaseCard {
 }
 
 export interface Card extends UsableCard {
-  health: number | 'NONE';
-  retreat: number | 'NONE';
-  element: PokemonTypeENUM | 'NONE';
+  health: number | -1;
+  retreat: number | -1;
+  element: PokemonTypeENUM | -1;
   weak?: PokemonTypeENUM | null,
   evolve?: string | null;
   flavor: string;
   attacks?: Attack[],
   ability?: Ability;
   found?: PACKS[];
-  pokedex: number | 'NONE';
+  pokedex: number | -1;
   series?: CardExpansionTypeENUM;
   related?: number[];
   isEX?: boolean;

@@ -15,8 +15,10 @@ import { useState } from "react";
 import BounceArrow from "../ui/BounceArrow";
 import { ThemedView } from "../ThemedView";
 import { Colors } from "@/shared/definitions/utils/colors";
+import { useI18n } from "@/core/providers/LanguageProvider";
 
 export function CreateScreenModal() {
+  const {i18n} = useI18n();
   const [activeIndex, setActiveIndex] = useState(0);
   const { width } = Dimensions.get('window');
   const size = ((width + 49) * 80) / 100;
@@ -45,6 +47,12 @@ export function CreateScreenModal() {
       </View>
     </View>
   );
+
+  return (
+    <ThemedText>
+      {i18n.t('under_construction')}
+    </ThemedText>
+  )
 
   return (
     <>

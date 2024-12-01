@@ -104,7 +104,7 @@ export default function TabsMenu({
             <View style={TabsMenuStyles.listItem}>
               <IconSymbol name={item.icon as IconSymbolName} 
                           style={TabsMenuStyles.listIcon}/>
-              <TouchableOpacity style={{width: '100%'}} onPress={() => handleRoute(item.route)}>
+              <TouchableOpacity style={{width: '100%'}} disabled={true} onPress={() => handleRoute(item.route)}>
                 <ThemedText style={TabsMenuStyles.listLabel}>{i18n.t(item.label)}</ThemedText>
               </TouchableOpacity>
             </View>}>

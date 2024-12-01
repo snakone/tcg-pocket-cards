@@ -1,14 +1,12 @@
-import React, { ReactNode, useContext, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { StyleProp, TouchableOpacity, ViewStyle } from 'react-native';
 import { Observable, Subscription } from 'rxjs';
 
 import { ThemedText } from '../ThemedText';
 import { filterStyles } from '@/shared/styles/component.styles';
 import { useI18n } from '@/core/providers/LanguageProvider';
-import { Sound } from 'expo-av/build/Audio';
-import { AppContext } from '@/app/_layout';
-import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
 import SoundService from '@/core/services/sounds.service';
+import { FilterSearch } from '@/shared/definitions/classes/filter.class';
 
 interface StateButtonProps {
   children?: ReactNode,
@@ -21,7 +19,7 @@ interface StateButtonProps {
   isImage?: boolean,
   propFilter: string,
   keyFilter: string | number,
-  obj?: any
+  filterObj?: React.MutableRefObject<FilterSearch>
 }
 
 const StateButton = ({
@@ -35,7 +33,7 @@ const StateButton = ({
   isImage = false,
   propFilter,
   keyFilter,
-  obj
+  filterObj
 }: StateButtonProps) => {
   const [pressed, setPressed] = useState(false);
   const {i18n} = useI18n();
@@ -43,16 +41,16 @@ const StateButton = ({
   const handlePress = () => {
     SoundService.play('POP_PICK');
     setPressed((prevPressed) => !prevPressed);
-    if(obj?.current) {
-      obj.current[propFilter][keyFilter] = !pressed;
+    if(filterObj?.current) {
+      (filterObj.current as any)[propFilter][keyFilter] = !pressed;
     }
   };
 
   useEffect(() => {
     const sub: Subscription | undefined = onPress?.subscribe(() => {
       setPressed((prevPressed) => {
-        if(obj?.current) {
-          obj.current[propFilter][keyFilter] = !prevPressed;
+        if(filterObj?.current) {
+          (filterObj.current as any)[propFilter][keyFilter] = !prevPressed;
         }
         return !prevPressed
       });
@@ -67,9 +65,9 @@ const StateButton = ({
     <TouchableOpacity
       style={[
         style,
-        pressed && { backgroundColor: color },
-        isImage && { opacity: 0.6 },
-        pressed && isImage && { opacity: 1}
+        (pressed || (filterObj?.current as any)[propFilter][keyFilter]) && { backgroundColor: color },
+        isImage && { opacity: 0.5 },
+        (pressed || (filterObj?.current as any)[propFilter][keyFilter]) && isImage && { opacity: 1}
       ]}
       onPress={handlePress}
     >
@@ -79,7 +77,7 @@ const StateButton = ({
       <ThemedText style={[
         filterStyles.buttonText, 
         labelMargin && {left: 8}, 
-        pressed && {color: 'white'}]}>{i18n.t(label || '')}
+        (pressed || (filterObj?.current as any)[propFilter][keyFilter]) && {color: 'white'}]}>{i18n.t(label || '')}
       </ThemedText>}
     </TouchableOpacity>
   );
