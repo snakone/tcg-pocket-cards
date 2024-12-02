@@ -21,7 +21,7 @@ export const I18nProvider = ({ children }: {children: ReactNode}) => {
   };
 
   i18n.locale = locale;
-  i18n.locale = 'ja';
+  // i18n.locale = 'ja';
 
   return (
     <I18nContext.Provider value={{ i18n, setLocale: changeLocale }}>

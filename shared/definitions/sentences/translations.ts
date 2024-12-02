@@ -95,6 +95,7 @@ export const TRANSLATIONS = {
     // SETTINGS
     sound: 'Sound',
     volume: 'Volume',
+    sound_effects: 'Sound effects',
     music: 'Music',
     system: 'System',
     language: 'Language',
@@ -227,6 +228,7 @@ export const TRANSLATIONS = {
     // SETTINGS
     sound: '音',
     volume: 'ボリューム',
+    sound_effects: '効果音',
     music: '音楽',
     system: '制',
     language: '言語',
@@ -359,6 +361,7 @@ export const TRANSLATIONS = {
     // SETTINGS
     sound: 'Sonido',
     volume: 'Volumen',
+    sound_effects: 'Efectos de sonido',
     music: 'Música',
     system: 'Sistema',
     language: 'Idioma',

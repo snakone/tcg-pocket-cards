@@ -23,7 +23,11 @@ export const ICONS_MAPPING = {
   'arrow.backward.circle': 'arrow-back-ios',
   'arrow.forward.circle': 'arrow-forward-ios',
   'suit.heart': 'content-paste-search',
-  'cat.circle': 'my-location'
+  'cat.circle': 'my-location',
+  'voiceover': 'volume-up',
+  'video.circle': 'volume-off',
+  'app.dashed': 'music-note',
+  'app.badge': 'music-off',
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

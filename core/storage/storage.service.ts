@@ -5,7 +5,14 @@ export default class Storage {
 
   constructor() {}
 
-  static keys = ['music', 'sound', 'language', 'version'];
+  static keys = [
+    'music', 
+    'sound',
+    'language',
+    'version',
+    'music_volume',
+    'sound_volume'
+  ];
 
   public static async set(key: string, value: any): Promise<void> {
     try {

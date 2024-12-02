@@ -30,7 +30,7 @@ export default function HomeScreen() {
         <Image
           source={HERO_IMAGE}
           style={styles.heroImage}/>
-        <ThemedText style={styles.title}>{i18n.t('hero_title')}</ThemedText>
+        <ThemedText style={[styles.title, {paddingTop: 2}]}>{i18n.t('hero_title')}</ThemedText>
         <ThemedText style={styles.subtitle}>
           {i18n.t('hero_discover')} <ThemedText style={{fontWeight: 'bold'}}>{i18n.t('pocket')}</ThemedText>. {i18n.t('hero_create')}
         </ThemedText>

@@ -1,4 +1,4 @@
-import { Audio } from 'expo-av';
+import { Audio, AVPlaybackSource } from 'expo-av';
 
 import { 
   AUDIO_MENU_CLOSE,
@@ -6,16 +6,18 @@ import {
   BACKGROUND_MUSIC,
   CHANGE_VIEW, 
   PICK_CARD_SOUND, 
-  POP_PICK 
+  POP_PICK,
+  SCALE
 } from '@/shared/definitions/sentences/path.sentences';
 
-export const Sounds: {[key: string]: any} = {
+export const Sounds: {[key: string]: AVPlaybackSource} = {
   AUDIO_MENU_OPEN,
   AUDIO_MENU_CLOSE,
   PICK_CARD_SOUND,
   BACKGROUND_MUSIC,
   CHANGE_VIEW,
   POP_PICK,
+  SCALE
 };
 
 export class SoundService {
@@ -55,12 +57,25 @@ export class SoundService {
     this.enabled = value;
   }
 
+  public static setVolume(value: number) {
+    const volume = Math.max(0, Math.min(1, value));
+    this.setVolumeAllSounds(volume);
+  }
+
   static async unloadAllSounds() {
     for (const key in this.sounds) {
       const sound = this.sounds[key];
       if (sound) {
         await sound.unloadAsync();
         delete this.sounds[key];
+      }
+    }
+  }
+
+  private static async setVolumeAllSounds(volume: number): Promise<void> {
+    for (const key in Sounds) {
+      if (Sounds.hasOwnProperty(key) && this.sounds[key]) {
+        (this.sounds[key] as Audio.Sound).setVolumeAsync(volume);
       }
     }
   }

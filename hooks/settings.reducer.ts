@@ -1,6 +1,8 @@
 export const settingsInitialState: SettingsState = { 
   music: true,
   sound: true,
+  music_volume: 0.5,
+  sound_volume: 0.5,
   language: 'es',
   version: null
 };
@@ -8,8 +10,7 @@ export const settingsInitialState: SettingsState = {
 export const settingsReducer = (state: SettingsState, action: SettingsAction): SettingsState => {
   switch (action.type) {
     case 'SET_SETTINGS':
-      const { music, sound, language, version } = action.value;
-      return { ...state, music, sound, language, version };
+      return { ...state, ...action.value };
     default:
       return state;
   }
@@ -19,6 +20,8 @@ export interface SettingsState {
   music: boolean;
   sound: boolean;
   language: 'es' | 'en' | 'ja';
+  music_volume: number;
+  sound_volume: number;
   version: string | null;
 }
 

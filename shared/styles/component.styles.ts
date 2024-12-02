@@ -11,6 +11,7 @@ export const ThemeTextStyles = StyleSheet.create({
   default: {
     fontSize: 16,
     lineHeight: 24,
+    color: Colors.light.text
   },
   defaultSemiBold: {
     fontSize: 16,
@@ -126,8 +127,10 @@ export const CardGridStyles = StyleSheet.create({
     textAlign: 'center',
   },
   switch: {
-    position: 'relative', 
-    right: Platform.OS === 'web' ? 10 : 4, 
+    position: 'relative',
+    zIndex: 100, 
+    right: 0,
+    height: 20,
     transform: [
       { scale: Platform.OS === 'web' ? 1 : 1.1 }
     ]
@@ -193,6 +196,7 @@ export const ModalStyles = StyleSheet.create({
     maxHeight: '79%',
     padding: Platform.OS === 'web' ? 24 : 20,
     backgroundColor: 'white',
+    minHeight: Platform.OS === 'web' ? 120 : 118,
   },
   modalFooter: {
     backgroundColor: '#F2F2F2',
@@ -505,7 +509,7 @@ export const filterStyles = StyleSheet.create({
   header: {
     fontSize: 20, 
     fontWeight: 600, 
-    marginBottom: 24, 
+    marginBottom: 20, 
     color: '#333'
   },
   list: {
@@ -578,7 +582,7 @@ export const filterStyles = StyleSheet.create({
   buttonContainer: {
     justifyContent: 'space-between', 
     flexWrap: 'wrap', 
-    marginBottom: 32,
+    marginBottom: 24,
     paddingRight: 16
   },
   expansionShadow: {

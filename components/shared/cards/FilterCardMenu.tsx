@@ -318,9 +318,8 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
     return (
       <Pressable onPress={() => handleExpansion(true)}>
         <ThemedView style={[
-          filterStyles.button, 
-          filterStyles.buttonContainer,  
-          {marginBottom: 48, marginRight: 16},
+          filterStyles.button,  
+          {marginBottom: 48, marginRight: 16, alignItems: 'center', justifyContent: 'center'},
           expansionSelected && {backgroundColor: '#444444'}
         ]}>
           <ThemedText style={[
@@ -332,7 +331,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                             position: 'absolute', 
                             justifyContent: 'flex-end', 
                             fontSize: 24,
-                            marginTop: 1,
+                            top: 4,
                             color: '#555',
                             right: 7
                       }}/>

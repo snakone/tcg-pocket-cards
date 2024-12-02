@@ -100,7 +100,7 @@ export default function SortCardMenu({
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('order')}</ThemedText>
         </View>
-        <ThemedView style={styles.modalScrollView}>
+        <ThemedView style={[styles.modalScrollView, {flex: 1}]}>
           <ThemedView style={{flex: 1}}>
           <FlatList data={data}
                     keyExtractor={(item: any) => item.id}
