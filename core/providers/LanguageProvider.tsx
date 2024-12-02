@@ -9,19 +9,17 @@ const i18n = new I18n(TRANSLATIONS);
 
 const I18nContext = createContext({
   i18n,
-  setLocale: (locale: string) => {},
+  setLocale: (locale: string) => i18n.locale = locale,
 });
 
 export const I18nProvider = ({ children }: {children: ReactNode}) => {
-  const [locale, setLocale] = useState(getLocales()[0].languageCode ?? DEFAULT_LANG);
+  const [_, set] = useState(getLocales()[0].languageCode ?? DEFAULT_LANG);
 
   const changeLocale = (newLocale: string) => {
+    set(newLocale);
     i18n.locale = newLocale;
-    setLocale(newLocale);
+    return newLocale;
   };
-
-  i18n.locale = locale;
-  // i18n.locale = 'ja';
 
   return (
     <I18nContext.Provider value={{ i18n, setLocale: changeLocale }}>

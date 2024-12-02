@@ -15,12 +15,13 @@ import Storage from "@/core/storage/storage.service";
 import SoundService from "@/core/services/sounds.service";
 import { Slider } from "@miblanchard/react-native-slider";
 import { SettingsState } from "@/hooks/settings.reducer";
+import SelectInput from "@/components/ui/SelectInput";
 
 export default function SettingsScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
-  const {i18n} = useI18n();
+  const {i18n, setLocale} = useI18n();
 
   const settings = useMemo(() => state.settingsState, [state.settingsState]);
 
@@ -32,6 +33,18 @@ export default function SettingsScreen() {
   
     dispatch({ type: 'SET_SETTINGS', value: updatedSettings });
     Storage.set('music', updatedSettings.music);
+    await SoundService.play('POP_PICK');
+  }
+
+  async function toggleSound(): Promise<void> {
+    const updated: SettingsState = {
+      ...state.settingsState,
+      sound: !state.settingsState.sound,
+    };
+  
+    SoundService.setEnabled(updated.sound);
+    dispatch({ type: 'SET_SETTINGS', value: updated });
+    Storage.set('sound', updated.sound);
     await SoundService.play('POP_PICK');
   }
 
@@ -52,6 +65,7 @@ export default function SettingsScreen() {
   }, []);
 
   function handleMusicVolumeChange(ev: number[]): void {
+    SoundService.play('SCALE');
     const value = ev[0];
     const updated: SettingsState = {
       ...state.settingsState,
@@ -63,6 +77,7 @@ export default function SettingsScreen() {
   }
 
   function handleSoundVolumeChange(ev: number[]): void {
+    SoundService.play('SCALE');
     const value = ev[0];
     const updated: SettingsState = {
       ...state.settingsState,
@@ -74,22 +89,9 @@ export default function SettingsScreen() {
     SoundService.setVolume(updated.sound_volume);
   }
 
-  async function toggleSound(): Promise<void> {
-    const updated: SettingsState = {
-      ...state.settingsState,
-      sound: !state.settingsState.sound,
-    };
-  
-    SoundService.setEnabled(updated.sound);
-    dispatch({ type: 'SET_SETTINGS', value: updated });
-    Storage.set('sound', updated.sound);
-    await SoundService.play('POP_PICK');
-  }
-
   return (
     <SharedScreen title={'config'}>
       <ThemedText style={filterStyles.header}>{i18n.t('sound')}</ThemedText>
-
       <ThemedView style={styles.container}>
         <ThemedView style={styles.row}>
           <ThemedText>{i18n.t('music')}</ThemedText>
@@ -102,8 +104,7 @@ export default function SettingsScreen() {
                                 color={'white'}
                                 onValueChange={toggleMusic}
                                 style={CardGridStyles.switch}
-                                value={settings?.music}
-                        />
+                                value={settings?.music}/>
           </ThemedView>
         </ThemedView>
         <Slider maximumValue={10} 
@@ -116,13 +117,12 @@ export default function SettingsScreen() {
                 animationType={'timing'}
                 thumbStyle={styles.thumb}
                 trackStyle={styles.track}
+                trackClickable={true}
                 value={settings.music_volume * 10}
-                onSlidingStart={() => SoundService.play('SCALE')}
                 onSlidingComplete={handleMusicVolumeChange}
                 trackMarks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
                 renderTrackMarkComponent={(index) => <TrackItem index={index}></TrackItem>}/>
       </ThemedView>
-
       <ThemedView style={styles.container}>
         <ThemedView style={styles.row}>
         <ThemedText>{i18n.t('sound_effects')}</ThemedText>
@@ -135,25 +135,42 @@ export default function SettingsScreen() {
                                 color={'white'}
                                 onValueChange={toggleSound}
                                 style={CardGridStyles.switch}
-                                value={settings?.sound}
-                        />
+                                value={settings?.sound}/>
           </ThemedView>
+        </ThemedView>
+        <Slider maximumValue={10} 
+                minimumValue={0} 
+                step={1} 
+                containerStyle={styles.slider}
+                maximumTrackTintColor={Colors.light.skeleton}
+                minimumTrackTintColor="mediumaquamarine" 
+                animateTransitions={true} 
+                animationType={'timing'}
+                thumbStyle={styles.thumb}
+                trackStyle={styles.track}
+                trackClickable={true}
+                value={settings.sound_volume * 10}
+                onSlidingComplete={handleSoundVolumeChange}
+                trackMarks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                renderTrackMarkComponent={(index) => <TrackItem index={index}></TrackItem>}/>
+      </ThemedView>
+
+      <ThemedText style={[filterStyles.header, {marginTop: 24}]}>{i18n.t('system')}</ThemedText>
+      <ThemedView style={styles.container}>
+        <ThemedView style={styles.row}>
+          <ThemedText>{i18n.t('language')}</ThemedText>
+          <ThemedView style={{marginLeft: 'auto'}}>
+            <SelectInput options={['es', 'en', 'ja']} 
+                         label={settings.language}
+                         onSelect={(opt) => (SoundService.play('POP_PICK'), setLocale(opt))}
+                         width={100}
+                         height={82}
+                         shadow={false}
+                         textStyle={{left: -10}}
+                         iconStyle={{right: -4}}>
+            </SelectInput>
           </ThemedView>
-          <Slider maximumValue={10} 
-                  minimumValue={0} 
-                  step={1} 
-                  containerStyle={styles.slider}
-                  maximumTrackTintColor={Colors.light.skeleton}
-                  minimumTrackTintColor="mediumaquamarine" 
-                  animateTransitions={true} 
-                  animationType={'timing'}
-                  thumbStyle={styles.thumb}
-                  trackStyle={styles.track}
-                  value={settings.sound_volume * 10}
-                  onSlidingStart={() => SoundService.play('SCALE')}
-                  onSlidingComplete={handleSoundVolumeChange}
-                  trackMarks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-                  renderTrackMarkComponent={(index) => <TrackItem index={index}></TrackItem>}/>
+        </ThemedView>
       </ThemedView>
     </SharedScreen>
   )
@@ -193,9 +210,9 @@ const styles = StyleSheet.create({
   },
   thumb: { 
     backgroundColor: 'white', 
-    width: Platform.OS === 'web' ? 20 : 23, 
-    height: Platform.OS === 'web' ? 20 : 23,
-    borderRadius: Platform.OS === 'web' ? 20 : 23,
+    width: Platform.OS === 'web' ? 20.5 : 23, 
+    height: Platform.OS === 'web' ? 20.5 : 23,
+    borderRadius: Platform.OS === 'web' ? 20.5 : 23,
     boxShadow: '0px 8px 12px rgba(0, 0, 0, 0.5)'
   },
   track: {

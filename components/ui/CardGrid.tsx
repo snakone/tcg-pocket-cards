@@ -282,7 +282,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                                  underlineColorAndroid={'red'}
                                  />
                             {searchQuery.length > 0 && <ResetFilterButton/>}
-                      <Switch trackColor={{false: Colors.light.skeleton, true: 'skyblue'}}
+                      <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
                               color={'white'}
                               onValueChange={toggleSwitch}
                               value={isGrid5}

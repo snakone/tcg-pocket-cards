@@ -1,4 +1,4 @@
-import { Platform, ScrollView, TouchableOpacity, View } from "react-native";
+import { Platform, TouchableOpacity, View } from "react-native";
 import { useState } from "react";
 
 import { ThemedText } from "@/components/ThemedText";
@@ -18,6 +18,8 @@ import { ContactModal } from "@/components/modals/ContactModal";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { Modal as PaperModal, Portal } from "react-native-paper";
 import SoundService from "@/core/services/sounds.service";
+import { ThemedView } from "@/components/ThemedView";
+import { DEFAULT_MODAL_HEIGHT, HOME_MODAL_HEIGHT, MIN_MODAL_HEIGHT } from "@/shared/definitions/utils/contants";
 
 export default function HelpScreen() {
   const styles = HelpItemStyles;
@@ -27,31 +29,37 @@ export default function HelpScreen() {
     { 
       icon: 'terminal',
       modal: 'terms',
-      content: <TermsModal></TermsModal>
+      content: <TermsModal></TermsModal>,
+      height: HOME_MODAL_HEIGHT
     },
     { 
       icon: 'candybarphone',
       modal: 'politics',
-      content: <PoliticsModal></PoliticsModal>
+      content: <PoliticsModal></PoliticsModal>,
+      height: MIN_MODAL_HEIGHT
     },
     {
       icon: 'location.fill',
       modal: 'about',
-      content: <AboutModal></AboutModal>
+      content: <AboutModal></AboutModal>,
+      height: MIN_MODAL_HEIGHT
     },
     { 
       icon: 'laurel.leading',
       modal: 'privacy',
-      content: <PrivacyModal></PrivacyModal>
+      content: <PrivacyModal></PrivacyModal>,
+      height: MIN_MODAL_HEIGHT
     },
     { 
       icon: 'mail',
       modal: 'contact',
-      content: <ContactModal></ContactModal>
+      content: <ContactModal></ContactModal>,
+      height: MIN_MODAL_HEIGHT
     },
     {
       icon: 'door.garage.open',
-      modal: 'exit'
+      modal: 'exit',
+      height: MIN_MODAL_HEIGHT
     }
   ];
 
@@ -102,13 +110,13 @@ export default function HelpScreen() {
               <View style={[ModalStyles.centeredView, Platform.OS === 'web' ? WebStyles.view : null]}>
                 <View style={ModalStyles.modalView}>
                   <View style={ModalStyles.modalHeader}>
-                    <ThemedText style={ModalStyles.modalHeaderTitle}>
+                    <ThemedText style={[ModalStyles.modalHeaderTitle, {marginTop: 4}]}>
                       {i18n.t(item.modal)}
                     </ThemedText>
                   </View>
-                  <ScrollView style={ModalStyles.modalScrollView}>
+                  <ThemedView style={[ModalStyles.modalScrollView, {height: item.height}]}>
                     {item.content}
-                  </ScrollView>
+                  </ThemedView>
                   <View style={ModalStyles.modalFooter}>
                     <TouchableOpacity style={ButtonStyles.button} 
                                       onPress={close} 

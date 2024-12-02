@@ -27,6 +27,7 @@ export interface IconItemWithModal {
   modal: string;
   icon: string;
   content?: React.ReactNode;
+  height: number;
 }
 
 export interface ItemWithRoute {

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { BlurView } from "expo-blur";
 import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
-import { useRef, useEffect, useCallback, useState, useMemo } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Portal, Provider } from "react-native-paper";
@@ -61,6 +61,14 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
   const [expansionSelected, setExpansionSelected] = useState<boolean>(false);
 
   if (!isVisible) return null;
+
+  const packs = [
+    PIKACHU_ICON,
+    MEWTWO_ICON,
+    CHARIZARD_ICON,
+    PROMO_A1,
+    PROMO_A2,
+  ];
 
   const typeSelectAll$ = new Subject<boolean>();
   const raritySelectAll$ = new Subject<boolean>();
@@ -235,7 +243,8 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
         <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('health')}</ThemedText>
         <ThemedView style={[
           filterStyles.flexContainer, 
-          filterStyles.buttonContainer
+          filterStyles.buttonContainer,
+          { marginBottom: 48 }
         ]}>
           {
             ['min', 'max'].map((k: any, i) => {
@@ -255,7 +264,11 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
 
         {/* ATTACK */}
         <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('attack')}</ThemedText>
-        <ThemedView style={[filterStyles.flexContainer, filterStyles.buttonContainer]}>
+        <ThemedView style={[
+          filterStyles.flexContainer,
+          filterStyles.buttonContainer,
+          { marginBottom: 48 }
+        ]}>
           {
             ['min', 'max'].map((k: any, i) => {
               return (
@@ -273,7 +286,11 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
 
         {/* OTHERS */}
         <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('others')}</ThemedText>
-        <ThemedView style={[filterStyles.flexContainer, filterStyles.buttonContainer]}>
+        <ThemedView style={[
+          filterStyles.flexContainer,
+          filterStyles.buttonContainer,
+          { marginBottom: 54 }
+        ]}>
           {
             ['with_ability', 'without_ability'].map((k, i) => {
               return (
@@ -293,7 +310,11 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
 
   const StageItem = ({stage}: {stage: any}) => {
     return (
-      <ThemedView style={[filterStyles.flexContainer, filterStyles.buttonContainer]}>
+      <ThemedView style={[
+        filterStyles.flexContainer,
+        filterStyles.buttonContainer,
+        { marginBottom: 48 }
+      ]}>
           {
             Object.keys(stage).map((key, i) => {
               const label = STAGE_MAP[key]?.label;
@@ -410,30 +431,25 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
     <Animated.View style={[MenuStyles.expansions, modalAnimatedStyle]}>
       <ThemedView style={{flex: 1}}>
         <ThemedView style={filterStyles.expansionShadow}></ThemedView>
-        <ThemedView style={{flex: 1, padding: 20, justifyContent: 'flex-start', alignItems: 'center', marginTop: 10}}>
+        <ThemedView style={filterStyles.expansionContainer}>
           <Image source={GENETIC_APEX} style={{width: 106, height: 50}}></Image>
           <ThemedView style={{flexDirection: 'row', marginBlock: 38, gap: 10}}>
-            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={0} filterObj={filterObj}>
-              <Image source={PIKACHU_ICON} style={{width: 110, height: 40}}></Image>
-            </StateButton>
-            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={1} filterObj={filterObj}>
-              <Image source={MEWTWO_ICON} style={{width: 110, height: 40}}></Image>
-            </StateButton>
-            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={2} filterObj={filterObj}>
-              <Image source={CHARIZARD_ICON} style={{width: 110, height: 40}}></Image>
-            </StateButton>
+            {
+              packs.map((icon, index) => (
+                <StateButton
+                  key={index}
+                  isImage={true}
+                  color=""
+                  propFilter="expansion"
+                  keyFilter={index}
+                  filterObj={filterObj}
+                >
+                  <Image source={icon} style={filterStyles.packImage} />
+                </StateButton>
+              ))
+            }
           </ThemedView>
-
-          <ThemedView style={{flexDirection: 'row', marginTop: 4, marginBottom: 24, gap: 40}}>
-            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={3} filterObj={filterObj}>
-              <Image source={PROMO_A1} style={{width: 50, height: 94}}></Image>
-            </StateButton>
-            <StateButton isImage={true} color="" propFilter="expansion" keyFilter={4} filterObj={filterObj}>
-              <Image source={PROMO_A2} style={{width: 50, height: 94}}></Image>
-            </StateButton>
-          </ThemedView>
-
-          <View style={[TabsMenuStyles.separator, {width: '100%', height: 3, marginTop: 20}]}></View>
+          <View style={[TabsMenuStyles.separator, {width: '100%', height: 3, marginTop: 6}]}></View>
         </ThemedView>
 
         <View style={[ModalStyles.modalFooter, {width: '100%'}]}>
@@ -521,5 +537,3 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
     </Provider>
   );
 }
-
-

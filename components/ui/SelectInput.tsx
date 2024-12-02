@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from 'react-native'
+import { Platform, StyleProp, StyleSheet, TextStyle, ViewStyle } from 'react-native'
 import { MaterialIcons } from "@expo/vector-icons";
 
 import SelectDropdown from "react-native-select-dropdown";
@@ -8,14 +8,21 @@ import { ThemedText } from "../ThemedText";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { filterStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import { Portal } from "react-native-paper";
 
 interface SelectInputProps {
   options: any[], 
   label: string, 
   onSelect: (value: any, index: number) => void,
   filterObj?: React.MutableRefObject<FilterSearch>,
-  propFilter: string,
-  keyFilter: string | number
+  propFilter?: string,
+  keyFilter?: string | number,
+  dropDownStyle?: StyleProp<ViewStyle>,
+  width?: number | string,
+  height?: number,
+  shadow?: boolean,
+  textStyle?: StyleProp<TextStyle>,
+  iconStyle?: StyleProp<TextStyle>,
 }
 
 export default function SelectInput({
@@ -25,6 +32,11 @@ export default function SelectInput({
   filterObj,
   propFilter,
   keyFilter,
+  height = 225,
+  width = '45%',
+  shadow = true,
+  textStyle = {},
+  iconStyle = {}
 }: SelectInputProps) {
   const {i18n} = useI18n();
 
@@ -32,34 +44,47 @@ export default function SelectInput({
     <SelectDropdown
       data={options}
       onSelect={onSelect}
+      statusBarTranslucent={true}
       disableAutoScroll={true}
-      defaultValue={(filterObj?.current as any)[propFilter][keyFilter] ?? keyFilter}
-      dropdownOverlayColor="invisible"
+      
+      defaultValue={
+        filterObj && propFilter && keyFilter && 
+        ((filterObj.current as any)[propFilter][keyFilter] ?? keyFilter)
+      }
+      dropdownOverlayColor="transparent"
       showsVerticalScrollIndicator={false}
-      dropdownStyle={styles.dropDown}
-      renderButton={(selectedItem, isOpened) => {
+      dropdownStyle={{...styles.dropDown, height}}
+      renderButton={(item, isOpened) => {
+        const selected = filterObj && item;
         return (
           <ThemedView style={[
             filterStyles.button, 
-            filterStyles.gridButton, {width: '45%'}, 
-            {...(selectedItem && {backgroundColor: '#444444'})}
+            filterStyles.gridButton, {width}, 
+            {...(selected && {backgroundColor: '#444444'})},
+            !shadow && {boxShadow: 'none'} 
           ]}>
-            <ThemedText style={[filterStyles.buttonText, {...(selectedItem && {color: 'white'})}]}>
-              {(selectedItem && selectedItem) || i18n.t(label)}
+            <ThemedText style={[filterStyles.buttonText, {...(selected && {color: 'white'})}, textStyle]}>
+             {(selected && item) ? item : (!selected && item) ? i18n.t(item) : i18n.t(label)}
             </ThemedText>
             <MaterialIcons name={isOpened ? 'keyboard-arrow-up' : 'keyboard-arrow-down'} 
-                           style={[styles.icon, {color: selectedItem ? 'white' : '#555'}]}/>
+                           style={[styles.icon, {color: selected ? 'white' : '#555'}, iconStyle]}/>
           </ThemedView>
         );
       }}
       renderItem={(item, _, isSelected) => {
+        const selected = filterObj && item;
         return (
+          <Portal>
           <ThemedView style={[styles.item, {...(isSelected && {backgroundColor: '#444444'})}]}>
-            <ThemedText style={[filterStyles.buttonText, {...(isSelected && {color: 'white'})}]}>{item}</ThemedText>
+            <ThemedText style={[
+                filterStyles.buttonText, {...(isSelected && {color: 'white'})}
+              ]}>{!selected ? i18n.t(item) : item}
+            </ThemedText>
           </ThemedView>
+          </Portal>
+
         );
-      }}
-  />
+      }}/>
   )
 }
 
@@ -71,8 +96,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 4,
     backgroundColor: 'white',
-    height: 225,
-    marginTop: 8
+    marginTop: Platform.OS === 'web' ? 12 : -12
   },
   item: {
     backgroundColor: 'white',

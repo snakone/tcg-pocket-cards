@@ -30,6 +30,6 @@ export const PROMO_A2 = require('@/assets/images/packs/promoA2.png');
 
 // PACKS
 export const GENETIC_APEX = require('@/assets/images/packs/geneticapex.png');
-export const PIKACHU_ICON = require('@/assets/images/packs/pikachu_logo.png');
-export const MEWTWO_ICON = require('@/assets/images/packs/mewtwo_logo.png');
-export const CHARIZARD_ICON = require('@/assets/images/packs/charizard_logo.png');
+export const PIKACHU_ICON = require('@/assets/images/packs/pikachu.png');
+export const MEWTWO_ICON = require('@/assets/images/packs/mewtwo.png');
+export const CHARIZARD_ICON = require('@/assets/images/packs/charizard.png');

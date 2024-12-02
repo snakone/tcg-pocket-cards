@@ -1,5 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
-import { iconWidth, MENU_WIDTH } from '../definitions/utils/contants';
+import { DEFAULT_MODAL_HEIGHT, iconWidth, MENU_WIDTH, MIN_MODAL_HEIGHT } from '../definitions/utils/contants';
 import { Colors } from '../definitions/utils/colors';
 
 export const HEADER_HEIGHT = 100;
@@ -112,7 +112,7 @@ export const CardGridStyles = StyleSheet.create({
     marginVertical: 2,
     borderRadius: 8,
     overflow: 'hidden',
-    backgroundColor: 'white',
+    backgroundColor: Colors.light.skeleton,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -129,7 +129,7 @@ export const CardGridStyles = StyleSheet.create({
   switch: {
     position: 'relative',
     zIndex: 100, 
-    right: 0,
+    right: 4,
     height: 20,
     transform: [
       { scale: Platform.OS === 'web' ? 1 : 1.1 }
@@ -172,8 +172,8 @@ export const ModalStyles = StyleSheet.create({
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
     elevation: 5,
     width: '90%',
-    maxHeight: '82%',
-    minHeight: 250,
+    maxHeight: '79%',
+    minHeight: DEFAULT_MODAL_HEIGHT,
     overflow: 'hidden',
     top: -10,
   },
@@ -196,7 +196,7 @@ export const ModalStyles = StyleSheet.create({
     maxHeight: '79%',
     padding: Platform.OS === 'web' ? 24 : 20,
     backgroundColor: 'white',
-    minHeight: Platform.OS === 'web' ? 120 : 118,
+    minHeight: MIN_MODAL_HEIGHT,
   },
   modalFooter: {
     backgroundColor: '#F2F2F2',
@@ -239,7 +239,8 @@ export const DetailStyles = StyleSheet.create({
   image: {
     width: 315,
     height: 443.6,
-    aspectRatio: 0.71
+    aspectRatio: 0.71,
+    
   },
   bottomContainer: {
     position: 'absolute',
@@ -458,7 +459,7 @@ export const HelpItemStyles = StyleSheet.create({
   icon: {
     color: 'skyblue',
     marginInlineEnd: 12,
-    fontSize: 28
+    fontSize: 24
   },
   content: {
     flex: 1,
@@ -575,7 +576,7 @@ export const filterStyles = StyleSheet.create({
     textAlign: 'center',
     alignItems: 'center',
     top: 12,
-    left: -8,
+    left: Platform.OS === 'web' ? -8 : 0,
     color: Colors.light.text,
     transform: [{scaleX: 2}]
   },
@@ -585,12 +586,23 @@ export const filterStyles = StyleSheet.create({
     marginBottom: 24,
     paddingRight: 16
   },
+  expansionContainer: {
+    flex: 1, 
+    padding: 20, 
+    justifyContent: 'flex-start', 
+    alignItems: 'center', 
+    marginTop: 10
+  },
   expansionShadow: {
     width: '100%', 
     height: 4, 
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)', 
     position: 'relative', 
     top: -4
+  },
+  packImage: {
+    width: 58, 
+    height: 110
   }
 });
 
@@ -608,15 +620,16 @@ export const homeScreenStyles = StyleSheet.create({
     marginTop: -20
   },
   title: {
-    fontSize: 26,
+    fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 20,
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: 14,
     textAlign: 'center',
     lineHeight: 22,
+    paddingInline: 12
   },
   infoSection: {
     marginBottom: 30,
@@ -643,7 +656,7 @@ export const homeScreenStyles = StyleSheet.create({
   },
 });
 
-export const homeScreenModalStyles = StyleSheet.create({
+export const sharedModalStyles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',

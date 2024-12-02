@@ -27,7 +27,8 @@ export const DEFAULT_LANG = 'es';
 export const FILTER_CARDS_HEIGHT = 350;
 
 // MODALS
-export const MIN_MODAL_HEIGHT = 120;
+export const MIN_MODAL_HEIGHT = 96;
+export const DEFAULT_MODAL_HEIGHT = 236;
 export const HOME_MODAL_HEIGHT = 508;
 
 export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
@@ -44,8 +45,8 @@ export const LIST: ItemWithRoute[] = [
 ];
 
 export const HELP: ItemWithRoute[] = [
-  { label: 'config', icon: 'washer.circle', route: 'settings' },
   { label: 'help', icon: 'questionmark.app.fill', route: 'help' },
+  { label: 'config', icon: 'washer.circle', route: 'settings' },
 ];
 
 export const SORT_FIELD_MAP: Record<string, keyof Card> = {

@@ -10,7 +10,7 @@ import
 import { useContext, useEffect } from "react";
 import { useLocalSearchParams, useRouter } from 'expo-router/build/hooks';
 import { Image } from 'expo-image';
-import { Platform, TouchableOpacity, View } from "react-native";
+import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "expo-router";
 
 import { 
@@ -136,13 +136,17 @@ export default function DetailScreen() {
       {
         Platform.OS === 'web' ? (
           <Animated.View style={opacityStyle}>
-            <Image style={styles.image}
+            <Image style={[styles.image, cardStyles.card]}
                    source={CARD_IMAGE_MAP[id]}
                    contentFit={'fill'} />
           </Animated.View>
         ) : (<>
           <GestureDetector gesture={gesture}>
-            <Animated.View style={[opacityStyle, rotationStyle]}>
+            <Animated.View style={[
+                opacityStyle, 
+                rotationStyle, 
+                cardStyles.card
+              ]}>
               <Image style={styles.image}
                      source={CARD_IMAGE_MAP[id]}
                      contentFit={'fill'} />
@@ -162,3 +166,10 @@ export default function DetailScreen() {
     </Animated.View>
   );
 };
+
+const cardStyles = StyleSheet.create({
+  card: {
+    boxShadow: '8px 12px 12px 2px rgba(0, 0, 0, 0.2)',
+    borderRadius: 20
+  }
+})

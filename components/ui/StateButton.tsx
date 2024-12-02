@@ -76,7 +76,7 @@ const StateButton = ({
       showLabel && 
       <ThemedText style={[
         filterStyles.buttonText, 
-        labelMargin && {left: 8}, 
+        labelMargin && {left: 18}, 
         (pressed || (filterObj?.current as any)[propFilter][keyFilter]) && {color: 'white'}]}>{i18n.t(label || '')}
       </ThemedText>}
     </TouchableOpacity>

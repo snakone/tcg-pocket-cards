@@ -1,9 +1,31 @@
-import { StyleSheet } from 'react-native';
-import Animated, { useAnimatedStyle, interpolate, interpolateColor, useSharedValue, withRepeat, withTiming } from "react-native-reanimated";
-import { ThemedView } from "../ThemedView";
+import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import { useEffect } from 'react';
 
-export default function ScrollIndicator({contentHeight, scrollViewHeight, scrollY}: any) {
+import Animated, { 
+  useAnimatedStyle, 
+  interpolate, 
+  interpolateColor, 
+  useSharedValue, 
+  withRepeat, 
+  withTiming, 
+  SharedValue 
+} from "react-native-reanimated";
+
+import { ThemedView } from "../ThemedView";
+
+interface ScrollIndicatorProps {
+  contentHeight: number,
+  scrollViewHeight: number,
+  scrollY: SharedValue<number>,
+  styles?: StyleProp<ViewStyle>
+}
+
+export default function ScrollIndicator({
+  contentHeight,
+  scrollViewHeight,
+  scrollY, 
+  styles
+}: ScrollIndicatorProps) {
   const colorAnimation = useSharedValue(0);
 
   useEffect(() => {
@@ -33,13 +55,13 @@ export default function ScrollIndicator({contentHeight, scrollViewHeight, scroll
   });
 
   return (
-    <ThemedView style={styles.progressContainer}>
-      <Animated.View style={[styles.progressBar, progressBarStyle]} />
+    <ThemedView style={[scrollStyles.progressContainer, styles]}>
+      <Animated.View style={[scrollStyles.progressBar, progressBarStyle]} />
     </ThemedView>
   )
 }
 
-const styles = StyleSheet.create({
+const scrollStyles = StyleSheet.create({
   progressContainer: {
     position: 'absolute',
     top: -24,

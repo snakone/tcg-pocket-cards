@@ -1,16 +1,17 @@
+import { useState } from "react";
+import { ScrollView } from "react-native";
+import { useSharedValue } from 'react-native-reanimated';
+
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { ThemedText } from "../ThemedText";
-import { ScrollView } from "react-native";
 import { ThemedView } from "../ThemedView";
-import { homeScreenModalStyles } from "@/shared/styles/component.styles";
+import { sharedModalStyles } from "@/shared/styles/component.styles";
 import { IconSymbol } from "../ui/IconSymbol";
-import { useSharedValue } from 'react-native-reanimated';
-import { useState } from "react";
 import ScrollIndicator from "../ui/ScrollIndicator";
 
 export function HomeScreenModal() {
   const {i18n} = useI18n();
-  const styles = homeScreenModalStyles;
+  const styles = sharedModalStyles;
   const scrollY = useSharedValue(0);
   const [contentHeight, setContentHeight] = useState(1);
   const [scrollViewHeight, setScrollViewHeight] = useState(1);
@@ -39,7 +40,7 @@ export function HomeScreenModal() {
                   scrollEventThrottle={16}
                   onContentSizeChange={handleContentSizeChange}
                   onLayout={handleLayout}>
-        <ThemedText style={styles.title}>{i18n.t('home_welcome')}</ThemedText>
+        <ThemedText style={[styles.title, {marginTop: 4}]}>{i18n.t('home_welcome')}</ThemedText>
         <ThemedText style={styles.text}>
           {i18n.t('home_modal_intro')}
         </ThemedText>
@@ -104,23 +105,11 @@ export function HomeScreenModal() {
           <ThemedText style={styles.text}>{i18n.t('home_modal_create_sentence')}</ThemedText>
         </ThemedView>
 
-        <ThemedText type="subtitle" 
-                    style={[styles.text, {fontSize: 15}]}>{i18n.t('home_modal_new')}
-        </ThemedText>
-        <ThemedText style={styles.text}>
-          - {i18n.t('home_modal_filter_exclusive')}
-        </ThemedText>
-        <ThemedText style={styles.text}>
-          - {i18n.t('home_modal_new_sort')}
-        </ThemedText>
-        <ThemedText style={styles.text}>
-          - {i18n.t('home_modal_design')}
-        </ThemedText>
-
-        <ThemedText style={[styles.text, {marginBottom: 12}]}>
-          {i18n.t('home_modal_want')} {i18n.t('home_modal_last')}
-        </ThemedText>
-
+        <ThemedText type="subtitle" style={[styles.text, {fontSize: 15}]}>{i18n.t('home_modal_new')}</ThemedText>
+        <ThemedText style={styles.text}>- {i18n.t('home_modal_filter_exclusive')}</ThemedText>
+        <ThemedText style={styles.text}>- {i18n.t('home_modal_new_sort')}</ThemedText>
+        <ThemedText style={styles.text}>- {i18n.t('home_modal_design')}</ThemedText>
+        <ThemedText style={[styles.text, {marginBottom: 12}]}>{i18n.t('home_modal_want')} {i18n.t('home_modal_last')}</ThemedText>
       </ScrollView>
     </ThemedView>
   )
