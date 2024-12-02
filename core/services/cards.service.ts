@@ -1,11 +1,11 @@
-import { LOCAL_HOST } from "@/shared/definitions/utils/contants";
+import { LOCAL_HOST, SERVER_URL } from "@/shared/definitions/utils/contants";
 import HttpService from "./http.service";
 import { filter, map, Observable } from "rxjs";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { CardsResponse } from "@/shared/definitions/interfaces/global.interfaces";
 
 export default class CardsService extends HttpService {
-  private readonly uri = LOCAL_HOST + '/';
+  private readonly uri = SERVER_URL + '/';
 
   public getCards(): Observable<Card[]> {
     return this.get<CardsResponse>(this.uri + 'get-cards')
