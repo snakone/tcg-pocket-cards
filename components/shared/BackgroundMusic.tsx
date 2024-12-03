@@ -30,7 +30,6 @@ const BackgroundMusic = ({state}: {state: AppState}) => {
   }, []);
 
   useEffect(() => {
-    if (state.settingsState.version === null) return;
     if (audio.current) {
       const { music } = state.settingsState;
       music ? audio.current.replayAsync() : audio.current.stopAsync();
@@ -38,7 +37,6 @@ const BackgroundMusic = ({state}: {state: AppState}) => {
   }, [state.settingsState.music]);
 
   useEffect(() => {
-    if (state.settingsState.version === null) return;
     if (audio.current) {
       const volume = state.settingsState.music_volume;
       audio.current.setVolumeAsync(volume);

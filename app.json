@@ -8,15 +8,17 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "listUnknownPackages": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.pokemonlover.tcgpocketcards",
+      "package": "com.snakone.tcgpocketcards",
       "softwareKeyboardLayoutMode": "pan"
     },
     "web": {

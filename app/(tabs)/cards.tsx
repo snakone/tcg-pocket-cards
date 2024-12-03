@@ -1,7 +1,6 @@
-import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { debounceTime, Subscription } from 'rxjs';
 import { TouchableOpacity, StyleSheet, StyleProp, TextStyle } from 'react-native';
-import { Audio } from 'expo-av';
 import { MaterialIcons } from '@expo/vector-icons';
 
 import { AppContext } from '../_layout';
@@ -11,7 +10,6 @@ import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
 import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
-import { AUDIO_MENU_OPEN } from '@/shared/definitions/sentences/path.sentences';
 import { useError } from '@/core/providers/ErrorProvider';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { Colors } from '@/shared/definitions/utils/colors';
@@ -45,13 +43,10 @@ export default function CardsScreen() {
   const loadCards = useCallback(() => {
     const sub = cardsService
       .getCards()
-      .pipe(debounceTime(666))
       .subscribe({
         next: (res) => {
-          setTimeout(() => {
-            dispatch({ type: 'SET_CARDS', cards: res });
-            setLoading(false);
-          }, 2500);
+          dispatch({ type: 'SET_CARDS', cards: res });
+          setLoading(false);
         },
         error: (err) => {
           console.log(err);
