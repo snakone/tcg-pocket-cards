@@ -98,15 +98,6 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
     setTimeout(() => scrollY.value = 0, 150);
   };
 
-  const borderAnimatedStyle = useAnimatedStyle(() => {
-    const isWeb = Platform.OS === 'web';
-
-    return {
-      elevation: scrollY.value > 16 ? 20 : 0,
-      ...(isWeb && { boxShadow: scrollY.value > 16 ? '0px 4px 10px rgba(0, 0, 0, 0.25)' : 'none' }),
-    };
-  });
-
   useEffect(() => {
     if (!filtered || filtered.length === 0) { return; }
     const sorted = filterOrSortCards('sort', filtered, state.filterState.sort.find(s => s.active));
@@ -165,20 +156,20 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
   }
 
   const renderItem = useCallback(({ item }: { item: Card }) => (
-    <Animated.View style={[
+    <Animated.View key={item.id} style={[
         CardGridStyles.imageContainer, 
         item.id === selected ? animatedStyle : null, 
         isGrid5 ? {marginHorizontal: 1, marginVertical: 1} : null
       ]}>
       <Pressable disabled={state.cardState.navigating} 
                  onPress={() => goToDetailScreen(item.id)} style={{ zIndex: 1 }}>
-        <Image cachePolicy="memory"
-               accessibilityLabel={item.name} 
-               style={[
-          CardGridStyles.image, 
-          isGrid5 ? {width: CARD_IMAGE_WIDTH_5} : {width: CARD_IMAGE_WIDTH_3}
-        ]} 
-        source={CARD_IMAGE_MAP[String(item.id)]} contentFit="fill" />
+          <Image cachePolicy="disk" 
+                 accessibilityLabel={item.name} 
+                 style={[
+            CardGridStyles.image, 
+            isGrid5 ? {width: CARD_IMAGE_WIDTH_5} : {width: CARD_IMAGE_WIDTH_3}
+          ]} 
+          source={CARD_IMAGE_MAP[String(item.id)]}/>
       </Pressable>
     </Animated.View>
   ), [selected, isGrid5, state.cardState.navigating]);
@@ -249,15 +240,17 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
               <Animated.FlatList
                 data={filtered}
                 ref={flatListRef}
+                removeClippedSubviews={true}
                 onScroll={scrollHandler}
                 renderItem={renderItem}
                 keyExtractor={keyExtractor}
                 key={numColumns}
+                updateCellsBatchingPeriod={filtered.length}
                 numColumns={numColumns}
                 scrollEnabled={state.cardState.loaded}
-                initialNumToRender={isGrid5 ? 45 : 12}
-                maxToRenderPerBatch={isGrid5 ? 80 : 15}
-                windowSize={isGrid5 ? 40 : 25}
+                initialNumToRender={5}
+                maxToRenderPerBatch={isGrid5 ? 25 : 12}
+                windowSize={isGrid5 ? 4 : 6}
                 keyboardDismissMode={'on-drag'}
                 contentContainerStyle={CardGridStyles.gridContainer}
                 keyboardShouldPersistTaps={'never'}
@@ -270,7 +263,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                 scrollEventThrottle={16}
                 ListHeaderComponent={<>
                   <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
-                    <Animated.View style={[CardGridStyles.inputContainer, borderAnimatedStyle]}>
+                    <Animated.View style={[CardGridStyles.inputContainer]}>
                       <TextInput style={CardGridStyles.searchInput}
                                  placeholder={i18n.t('search_card_placeholder')}
                                  value={searchQuery}
@@ -279,7 +272,6 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                                  accessibilityLabel={SEARCH_LABEL}
                                  editable={state.cardState.loaded}
                                  inputMode='text'
-                                 underlineColorAndroid={'red'}
                                  />
                             {searchQuery.length > 0 && <ResetFilterButton/>}
                       <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
