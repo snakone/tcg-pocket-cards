@@ -16,7 +16,7 @@ import SoundService from '@/core/services/sounds.service';
 
 export default function TabLayout() {
   const distanceFromBottom = useSharedValue(FILTER_CARDS_HEIGHT);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isSortVisible, setIsSortVisible] = useState(false);
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [isMobileEmulator, setIsMobileEmulator] = useState(false);
@@ -32,19 +32,18 @@ export default function TabLayout() {
     };
   });
 
-  useEffect(() => {
+  useEffect(() => { 
     if (Platform.OS === 'web') {
-      menuRight.value = 0;
-      return;
+      menuRight.value = withTiming(0, { duration: 0 });
     }
-    menuRight.value = isModalVisible ? withTiming(0, { duration: 150 }) : MENU_WIDTH;
-  }, [isModalVisible]);
+    menuRight.value = isMenuVisible ? withTiming(0, { duration: 150 }) : MENU_WIDTH;
+  }, [isMenuVisible]);
 
   const memoizedMenu = useMemo(() => {
-    return <TabsMenu isVisible={isModalVisible} 
+    return <TabsMenu isVisible={isMenuVisible} 
                      animatedStyle={menuAnimatedStyle} 
-                     onClose={() => setIsModalVisible(false)} />;
-  }, [isModalVisible, menuAnimatedStyle]);
+                     onClose={() => setIsMenuVisible(false)} />;
+  }, [isMenuVisible]);
 
   // SORT CARDS
   const modalAnimatedStyle = useAnimatedStyle(() => {
@@ -59,7 +58,6 @@ export default function TabLayout() {
     }
   }, []); 
 
-
   useEffect(() => {
     distanceFromBottom.value = isSortVisible || isFilterVisible ? 
                           withTiming(0, { duration: 150 }) : 
@@ -70,13 +68,13 @@ export default function TabLayout() {
     return <SortCardMenu isVisible={isSortVisible} 
                          animatedStyle={modalAnimatedStyle} 
                          onClose={onClose}/>
-  }, [isSortVisible, modalAnimatedStyle]);
+  }, [isSortVisible]);
 
   const memoizedFilter = useMemo(() => {
     return <FilterCardMenu isVisible={isFilterVisible} 
                            animatedStyle={modalAnimatedStyle} 
                            onClose={onClose}/>
-  }, [isFilterVisible, modalAnimatedStyle]);
+  }, [isFilterVisible]);
 
   useEffect(() => {
     setIsSortVisible(state.modalState.sort_opened);
@@ -86,8 +84,8 @@ export default function TabLayout() {
     setIsFilterVisible(state.modalState.filter_opened);
   }, [state.modalState.filter_opened]);
 
-  function handleModal(value: boolean): void {
-    setIsModalVisible(value);
+  function handleMenu(value: boolean): void {
+    setIsMenuVisible(value);
     playSound();
   }
 
@@ -163,7 +161,7 @@ export default function TabLayout() {
           options={{
             animation: 'shift',
             tabBarButton: () => (
-              <Pressable onPress={() => handleModal(true)} 
+              <Pressable onPress={() => handleMenu(true)} 
                          style={{padding: 5, flex: 1}} 
                          android_ripple={RIPPLE_CONFIG}>
                 <IconSymbol name="menubar.rectangle" 
@@ -185,7 +183,7 @@ export default function TabLayout() {
           }}
         />
       </Tabs>
-      <Portal>{isModalVisible && memoizedMenu}</Portal>
+      <Portal>{isMenuVisible && memoizedMenu}</Portal>
       <Portal>{isSortVisible && memoizedSort}</Portal>
       <Portal>{isFilterVisible && memoizedFilter}</Portal>
     </Provider>

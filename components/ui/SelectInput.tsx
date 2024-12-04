@@ -8,7 +8,6 @@ import { ThemedText } from "../ThemedText";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { filterStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
-import { Portal } from "react-native-paper";
 
 interface SelectInputProps {
   options: any[], 
@@ -46,7 +45,6 @@ export default function SelectInput({
       onSelect={onSelect}
       statusBarTranslucent={true}
       disableAutoScroll={true}
-      
       defaultValue={
         filterObj && propFilter && keyFilter && 
         ((filterObj.current as any)[propFilter][keyFilter] ?? keyFilter)
@@ -74,15 +72,12 @@ export default function SelectInput({
       renderItem={(item, _, isSelected) => {
         const selected = filterObj && item;
         return (
-          <Portal>
           <ThemedView style={[styles.item, {...(isSelected && {backgroundColor: '#444444'})}]}>
             <ThemedText style={[
                 filterStyles.buttonText, {...(isSelected && {color: 'white'})}
               ]}>{!selected ? i18n.t(item) : item}
             </ThemedText>
           </ThemedView>
-          </Portal>
-
         );
       }}/>
   )
@@ -100,7 +95,8 @@ const styles = StyleSheet.create({
   },
   item: {
     backgroundColor: 'white',
-    borderRadius: 20
+    borderRadius: 20,
+    paddingBlock: 4
   },
   icon: {
     position: 'absolute', 

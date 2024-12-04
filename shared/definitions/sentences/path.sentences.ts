@@ -33,3 +33,11 @@ export const GENETIC_APEX = require('@/assets/images/packs/geneticapex.png');
 export const PIKACHU_ICON = require('@/assets/images/packs/pikachu.png');
 export const MEWTWO_ICON = require('@/assets/images/packs/mewtwo.png');
 export const CHARIZARD_ICON = require('@/assets/images/packs/charizard.png');
+
+export const PACKS = [
+  PIKACHU_ICON,
+  MEWTWO_ICON,
+  CHARIZARD_ICON,
+  PROMO_A1,
+  PROMO_A2,
+];

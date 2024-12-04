@@ -163,11 +163,11 @@ export default function SettingsScreen() {
             <SelectInput options={['es', 'en', 'ja']} 
                          label={settings.language}
                          onSelect={(opt) => (SoundService.play('POP_PICK'), setLocale(opt))}
-                         width={100}
-                         height={82}
+                         width={140}
+                         height={106}
                          shadow={false}
-                         textStyle={{left: -10}}
-                         iconStyle={{right: -4}}>
+                         textStyle={{left: 0}}
+                         iconStyle={{right: -2}}>
             </SelectInput>
           </ThemedView>
         </ThemedView>
@@ -194,7 +194,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row', 
     justifyContent: 'space-between', 
     alignItems: 'center', 
-    width: 80
+    width: 80,
+    position: 'relative',
+    left: 4
   }, 
   icon: {
     position: 'relative',

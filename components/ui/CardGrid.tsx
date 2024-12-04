@@ -56,6 +56,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [filtered, setFiltered] = useState<Card[]>(state.cardState.cards);
   const [selected, setSelected] = useState<number>();
+  const [footerVisible, setFooterVisible] = useState<boolean>(false);
   const flatListRef = useRef<FlatList<Card> | null>(null);
   const router = useRouter();
   const {i18n} = useI18n();
@@ -155,16 +156,58 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
     return filterCards(filter, data);
   }
 
+  const RenderFooter = () => {
+    const renderFooter = useCallback(() => {
+      if (!!searchQuery || !footerVisible || filtered.length < 46) {
+        return <ThemedView style={{ height: 20 }}></ThemedView>;
+      }
+  
+      return (
+        <View
+          style={[
+            ModalStyles.modalFooter,
+            { marginBlock: 34, boxShadow: 'none' },
+          ]}
+        >
+          <TouchableOpacity
+            style={ButtonStyles.button}
+            onPress={goUp}
+            accessibilityLabel={GO_UP}
+            accessibilityRole="button"
+            accessible={true}
+          >
+            <View style={ButtonStyles.insetBorder}>
+              <ThemedText>{i18n.t('go_up')}</ThemedText>
+            </View>
+          </TouchableOpacity>
+        </View>
+      );
+    }, [searchQuery, footerVisible, filtered.length]);
+  
+    return renderFooter();
+  };
+
+  const RenderEmpty = () => {
+    const renderCardState = useCallback(() => {
+      return state.cardState.loaded ? (
+        <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
+      ) : (
+        <SkeletonCardGrid columns={numColumns} />
+      );
+    }, [state.cardState.loaded, numColumns]);
+  
+    return renderCardState();
+  };
+
   const renderItem = useCallback(({ item }: { item: Card }) => (
     <Animated.View key={item.id} style={[
         CardGridStyles.imageContainer, 
-        item.id === selected ? animatedStyle : null, 
-        isGrid5 ? {marginHorizontal: 1, marginVertical: 1} : null
+        item.id === selected && animatedStyle, 
+        isGrid5 && {marginHorizontal: 1, marginVertical: 1}
       ]}>
       <Pressable disabled={state.cardState.navigating} 
                  onPress={() => goToDetailScreen(item.id)} style={{ zIndex: 1 }}>
-          <Image cachePolicy="disk" 
-                 accessibilityLabel={item.name} 
+          <Image accessibilityLabel={item.name} 
                  style={[
             CardGridStyles.image, 
             isGrid5 ? {width: CARD_IMAGE_WIDTH_5} : {width: CARD_IMAGE_WIDTH_3}
@@ -184,10 +227,10 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
 
   const goToDetailScreen = async (id: number) => {
     if(state.cardState.navigating) { return; }
+    await playSound();
     setSelected(id);
     animateCard();
     dispatch({type: 'SET_NAVIGATING', value: true});
-    await playSound();
     router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
   };
 
@@ -208,14 +251,14 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
 
   const keyExtractor = useCallback((item: Card) => String(item.id), []);
 
-  async function goUp(ev: GestureResponderEvent | null, sound = true): Promise<void> {
+  async function goUp(_: GestureResponderEvent | null, sound = true): Promise<void> {
     if (sound) await playSound();
     flatListRef.current?.scrollToOffset({offset: 0, animated: false});
   }
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={{position: 'absolute', right: 89, top: Platform.OS === 'web' ? 8 : 13}}
+                      style={{position: 'absolute', right: 89, top: 8}}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
@@ -247,6 +290,10 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                 key={numColumns}
                 updateCellsBatchingPeriod={filtered.length}
                 numColumns={numColumns}
+                onStartReached={() => setFooterVisible(false)}
+                onStartReachedThreshold={1}
+                onEndReached={() => setFooterVisible(true)}
+                onEndReachedThreshold={0.6}
                 scrollEnabled={state.cardState.loaded}
                 initialNumToRender={5}
                 maxToRenderPerBatch={isGrid5 ? 25 : 12}
@@ -255,48 +302,35 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                 contentContainerStyle={CardGridStyles.gridContainer}
                 keyboardShouldPersistTaps={'never'}
                 showsVerticalScrollIndicator={false}
-                ListEmptyComponent={
-                  state.cardState.loaded ? <ThemedText style={{padding: 6}}>{i18n.t('no_cards_found')}</ThemedText> 
-                                        : <SkeletonCardGrid columns={numColumns}></SkeletonCardGrid>
-                }
                 stickyHeaderIndices={[0]}
+                ListEmptyComponent={RenderEmpty}
                 scrollEventThrottle={16}
-                ListHeaderComponent={<>
-                  <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
-                    <Animated.View style={[CardGridStyles.inputContainer]}>
-                      <TextInput style={CardGridStyles.searchInput}
-                                 placeholder={i18n.t('search_card_placeholder')}
-                                 value={searchQuery}
-                                 onChangeText={handleSearch}
-                                 placeholderTextColor={Colors.light.text}
-                                 accessibilityLabel={SEARCH_LABEL}
-                                 editable={state.cardState.loaded}
-                                 inputMode='text'
-                                 />
-                            {searchQuery.length > 0 && <ResetFilterButton/>}
-                      <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
-                              color={'white'}
-                              onValueChange={toggleSwitch}
-                              value={isGrid5}
-                              style={CardGridStyles.switch}
-                              disabled={filtered.length <= 3}
-                      />
-                    </Animated.View>
-                  </KeyboardAvoidingView>
-                </>}
-                ListFooterComponent={ !!searchQuery || filtered.length < 10 ? null : 
-                  <View style={[ModalStyles.modalFooter, {marginBlock: 34, boxShadow: 'none'}]}>
-                    <TouchableOpacity style={ButtonStyles.button} 
-                                      onPress={goUp} 
-                                      accessibilityLabel={GO_UP}
-                                      accessibilityRole="button"
-                                      accessible={true}>
-                      <View style={ButtonStyles.insetBorder}>
-                        <ThemedText>{i18n.t('go_up')}</ThemedText>
-                      </View>
-                    </TouchableOpacity>
-                  </View>
+                ListHeaderComponent={
+                  <>
+                    <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
+                      <Animated.View style={[CardGridStyles.inputContainer]}>
+                        <TextInput style={CardGridStyles.searchInput}
+                                   placeholder={i18n.t('search_card_placeholder')}
+                                   value={searchQuery}
+                                   onChangeText={handleSearch}
+                                   placeholderTextColor={Colors.light.text}
+                                   accessibilityLabel={SEARCH_LABEL}
+                                  editable={state.cardState.loaded}
+                                   inputMode='text'
+                                  />
+                              {searchQuery.length > 0 && <ResetFilterButton/>}
+                        <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
+                                color={'white'}
+                                onValueChange={toggleSwitch}
+                                value={isGrid5}
+                                style={CardGridStyles.switch}
+                                disabled={filtered.length <= 3}
+                        />
+                      </Animated.View>
+                    </KeyboardAvoidingView>
+                  </>
                 }
+                ListFooterComponent={RenderFooter}
               />               
             </KeyboardAvoidingView>
           </SafeAreaView>

@@ -13,7 +13,7 @@ const I18nContext = createContext({
 });
 
 export const I18nProvider = ({ children }: {children: ReactNode}) => {
-  const [_, set] = useState(getLocales()[0].languageCode ?? DEFAULT_LANG);
+  const [_, set] = useState(getLocales()[0]?.languageCode ?? DEFAULT_LANG);
 
   const changeLocale = (newLocale: string) => {
     set(newLocale);

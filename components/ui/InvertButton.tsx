@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { Pressable, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Sound } from 'expo-av/build/Audio';
 
@@ -40,17 +40,17 @@ const InvertButton = ({
   };
 
   return (
-    <TouchableOpacity
+    <Pressable
       style={{height: 20}}
       onPress={handlePress}
     >
-      <ThemedView style={{flexDirection: 'row'}}>
+      <ThemedView style={{flexDirection: 'row', left: -16}}>
         <Animated.View style={[{
           width: 20, 
           height: 20, 
           position: 'relative', 
-          left: -7, 
-          top: 3}, animatedStyle
+          left: -9, 
+          top: 1}, animatedStyle
         ]}>
           <MaterialIcons name="sync" 
                             size={20} 
@@ -59,9 +59,9 @@ const InvertButton = ({
             </MaterialIcons>
         </Animated.View>
 
-        <ThemedText>{i18n.t('invert')}</ThemedText>
+        <ThemedText style={{fontSize: 14, position: 'relative', top: -2}}>{i18n.t('invert')}</ThemedText>
       </ThemedView>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

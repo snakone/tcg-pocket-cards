@@ -200,7 +200,7 @@ export const ModalStyles = StyleSheet.create({
   },
   modalFooter: {
     backgroundColor: '#F2F2F2',
-    paddingTop: 14,
+    paddingTop: 12,
     paddingInline: 14,
     paddingBottom: 16,
     borderBottomLeftRadius: 20,
@@ -296,7 +296,7 @@ export const MenuStyles = StyleSheet.create({
   expansions: {
     backgroundColor: 'white',
     width: '100%',
-    height: '69%',
+    height: '68.5%',
     position: 'absolute',
     right: 0,
     bottom: 0,
@@ -514,7 +514,7 @@ export const filterStyles = StyleSheet.create({
     color: '#333'
   },
   list: {
-    padding: Platform.OS === 'web' ? 20 : 0
+    paddingTop: 20,
   },
   button: {
     boxShadow: '8px 12px 12px rgba(0, 0, 0, 0.2)',
@@ -591,14 +591,13 @@ export const filterStyles = StyleSheet.create({
     padding: 20, 
     justifyContent: 'flex-start', 
     alignItems: 'center', 
-    marginTop: 10
   },
   expansionShadow: {
     width: '100%', 
-    height: 4, 
+    height: 6, 
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)', 
     position: 'relative', 
-    top: -4
+    top: -6
   },
   packImage: {
     width: 58, 
@@ -677,4 +676,80 @@ export const sharedModalStyles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 16,
   },
+});
+
+export const expansionStyles = StyleSheet.create({
+  buttonBase: {
+    marginBottom: 48,
+    marginRight: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  selectedBackground: {
+    backgroundColor: '#444444',
+  },
+  buttonTextSelected: {
+    color: 'white',
+  },
+  icon: {
+    position: 'absolute',
+    justifyContent: 'flex-end',
+    fontSize: 24,
+    top: 4,
+    color: '#555',
+    right: 7,
+  },
+});
+
+export const sortStyles = StyleSheet.create({
+  container: {
+    height: 518, 
+    position: 'absolute', 
+    width: '100%',
+    bottom: 0,
+    zIndex: 100,
+    backgroundColor: 'white',
+    borderTopLeftRadius: 40, borderTopRightRadius: 40
+  },
+  itemContainer: {
+    paddingBlock: 4,
+  },
+  label: {
+    fontSize: 15,
+    color: '#555',
+    flex: 1,
+    marginLeft: 12,
+    fontWeight: '400',
+    width: '100%',
+    textAlign: 'right',
+  },
+  item: {
+    borderRadius: 18,
+    flexDirection: 'row',
+    paddingBlock: 8,
+    paddingInline: 12
+  },
+  activeItem: {
+    color: 'white',
+    backgroundColor: '#515151',
+    fontWeight: 'bold'
+  },
+  actions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  button: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 4,
+    marginLeft: 8,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 12,
+  },
+  diamond: {
+    position: 'relative',
+    top: 1
+  }
 });

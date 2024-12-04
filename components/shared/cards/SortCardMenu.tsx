@@ -4,7 +4,7 @@ import Animated from 'react-native-reanimated'
 import { useEffect, useCallback, useState, useContext } from "react";
 
 import { SortItem, TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, LayoutStyles, ModalStyles } from "@/shared/styles/component.styles";
+import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -96,7 +96,7 @@ export default function SortCardMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, filterStyles.container]}>
+      <Animated.View style={[animatedStyle, sortStyles.container]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('order')}</ThemedText>
         </View>
@@ -124,60 +124,4 @@ export default function SortCardMenu({
     </>
   );
 }
-
-const filterStyles = StyleSheet.create({
-  container: {
-    height: 518, 
-    position: 'absolute', 
-    width: '100%',
-    bottom: 0,
-    zIndex: 100,
-    backgroundColor: 'white',
-    borderTopLeftRadius: 40, borderTopRightRadius: 40
-  },
-});
-
-const sortStyles = StyleSheet.create({
-  itemContainer: {
-    paddingBlock: 4,
-  },
-  label: {
-    fontSize: 15,
-    color: '#555',
-    flex: 1,
-    marginLeft: 12,
-    fontWeight: '400',
-    width: '100%',
-    textAlign: 'right',
-  },
-  item: {
-    borderRadius: 18,
-    flexDirection: 'row',
-    paddingBlock: 8,
-    paddingInline: 12
-  },
-  activeItem: {
-    color: 'white',
-    backgroundColor: '#515151',
-    fontWeight: 'bold'
-  },
-  actions: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  button: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 4,
-    marginLeft: 8,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 12,
-  },
-  diamond: {
-    position: 'relative',
-    top: 1
-  }
-});
 
