@@ -57,7 +57,7 @@ export default function HeaderWithCustomModal({
           <Portal>
             <PaperModal dismissable={false}
                         visible={visible}
-                        contentContainerStyle={{height: '200%'}}>
+                        contentContainerStyle={{height: Platform.OS === 'web' ? '100%' : '110%'}}>
               <View style={[styles.centeredView, Platform.OS === 'web' ? WebStyles.view : {flex: 1}]}>
                 <View style={styles.modalView}>
                   <View style={styles.modalHeader}>

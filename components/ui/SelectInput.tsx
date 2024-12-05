@@ -88,8 +88,7 @@ const styles = StyleSheet.create({
     boxShadow: '8px 12px 12px rgba(0, 0, 0, 0.2)',
     borderRadius: 20,
     textAlign: 'center',
-    paddingHorizontal: 10,
-    paddingVertical: 4,
+    padding: 10,
     backgroundColor: 'white',
     marginTop: Platform.OS === 'web' ? 12 : -12
   },

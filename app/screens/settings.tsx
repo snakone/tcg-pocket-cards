@@ -101,6 +101,16 @@ export default function SettingsScreen() {
     Storage.set('language', updated.language);
   }
 
+  function handleIntro(value: 'show' | 'hide'): void {
+    const updated: SettingsState = {
+      ...state.settingsState,
+      show_intro: value === 'show',
+    };
+  
+    dispatch({ type: 'SET_SETTINGS', value: updated });
+    Storage.set('show_intro', updated.show_intro);
+  }
+
   return (
     <SharedScreen title={'config'}>
       <ThemedText style={filterStyles.header}>{i18n.t('sound')}</ThemedText>
@@ -176,7 +186,23 @@ export default function SettingsScreen() {
                          label={settings.language}
                          onSelect={(opt) => (SoundService.play('POP_PICK'), handleLanguage(opt))}
                          width={140}
-                         height={118}
+                         height={128}
+                         shadow={false}
+                         textStyle={{left: 6}}
+                         iconStyle={{right: -2}}>
+            </SelectInput>
+          </ThemedView>
+        </ThemedView>
+      </ThemedView>
+      <ThemedView style={styles.container}>
+        <ThemedView style={styles.row}>
+          <ThemedText>{i18n.t('start_screen')}</ThemedText>
+          <ThemedView style={{marginLeft: 'auto'}}>
+            <SelectInput options={['show', 'hide']} 
+                         label={settings.show_intro ? 'show' : 'hide'}
+                         onSelect={(opt) => (SoundService.play('POP_PICK'), handleIntro(opt))}
+                         width={140}
+                         height={92}
                          shadow={false}
                          textStyle={{left: 6}}
                          iconStyle={{right: -2}}>
@@ -233,4 +259,4 @@ const styles = StyleSheet.create({
     height: 16,
     borderRadius: 16
   }
-})
+});

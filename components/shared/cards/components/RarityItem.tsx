@@ -4,7 +4,7 @@ import { Image } from 'expo-image';
 
 import { ThemedView } from "@/components/ThemedView";
 import StateButton from "@/components/ui/StateButton";
-import { RARITY_MAP, iconWidth } from "@/shared/definitions/utils/contants";
+import { RARITY_MAP, ICON_WIDTH } from "@/shared/definitions/utils/contants";
 import { filterStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { RarityWithoutSpecial } from "@/shared/definitions/enums/card.enums";
@@ -33,7 +33,7 @@ export const RarityItem = memo(({ rarity, filterObj, raritySelectAll$ }: RarityI
               { overflow: 'hidden' },
               filterStyles.button,
               filterStyles.imageContainer,
-              { width: iconWidth + (amount - 1) * 44 },
+              { width: ICON_WIDTH + (amount - 1) * 44 },
             ]}
           >
             {Array.from({ length: amount }).map((_, i) => (

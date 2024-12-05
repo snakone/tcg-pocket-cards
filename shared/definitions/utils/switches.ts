@@ -28,6 +28,7 @@ export const ICONS_MAPPING = {
   'video.circle': 'volume-off',
   'app.dashed': 'music-note',
   'app.badge': 'music-off',
+  'creditcard': 'list-alt'
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

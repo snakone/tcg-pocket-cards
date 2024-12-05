@@ -1,19 +1,16 @@
 import { useEffect, useRef } from 'react';
 import { Audio } from 'expo-av';
-import { Platform } from 'react-native';
 
 import Storage from '@/core/storage/storage.service'
-import { BACKGROUND_MUSIC } from '@/shared/definitions/sentences/path.sentences';
 import { MUSIC_ERROR } from '@/shared/definitions/sentences/global.sentences';
 import { AppState } from '@/hooks/root.reducer';
-import SoundService from '@/core/services/sounds.service';
 
-const BackgroundMusic = ({state}: {state: AppState}) => {
+const BackgroundMusic = ({state, music}: {state: AppState, music: any}) => {
   const audio = useRef<Audio.Sound>();
 
   useEffect(() => {
     const loadAndPlayMusic = async () => {
-      const { sound } = await Audio.Sound.createAsync(BACKGROUND_MUSIC);
+      const { sound } = await Audio.Sound.createAsync(music);
       try {
         audio.current = sound;
         await audio.current.setVolumeAsync(.5);
@@ -27,6 +24,10 @@ const BackgroundMusic = ({state}: {state: AppState}) => {
     };
 
     loadAndPlayMusic();
+
+    return () => {
+      audio.current?.stopAsync();
+    }
   }, []);
 
   useEffect(() => {

@@ -8,7 +8,7 @@ import { ThemedText } from "../ThemedText";
 import { ThemedView } from "../ThemedView";
 import ScrollIndicator from "../ui/ScrollIndicator";
 
-export function UserData() {
+export function UserDataModal() {
   const scrollY = useSharedValue(0);
   const [contentHeight, setContentHeight] = useState(1);
   const [scrollViewHeight, setScrollViewHeight] = useState(1);

@@ -21,6 +21,7 @@ import { FilterSearch } from "../classes/filter.class";
 
 export const APP_VERSION = '1.0.2';
 export const MENU_WIDTH = 250;
+export const MENU_HEIGHT = 405;
 export const PAGE_TITLE = 'TCG Pocket Cards';
 export const LOCAL_HOST = 'http://192.168.1.71:3000';
 export const SERVER_URL = 'https://tcg-pocket-cards.onrender.com';
@@ -112,7 +113,7 @@ export const STAGE_MAP: any = {
 
 export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);
 
-export const iconWidth = 36;
+export const ICON_WIDTH = 36;
 
 export function getDaysRemaining(): { progress: number; remainingText: string } {
   const target = new Date(2025, 0, 29); 

@@ -1,5 +1,5 @@
 import { BlurView } from 'expo-blur';
-import { ReactElement, useEffect } from 'react';
+import { ReactElement, useEffect, useMemo, useState } from 'react';
 import { Platform, SafeAreaView, StyleSheet, View } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 import Svg, { Circle } from 'react-native-svg';
@@ -8,21 +8,33 @@ import { LoadingStyles } from '@/shared/styles/component.styles';
 
 const LoadingOverlay = () => {
   const rotation = useSharedValue(0);
+  const [isReanimatedReady, setIsReanimatedReady] = useState(false);
   const dots = 10;
+
+  useEffect(() => {
+    setTimeout(() => setIsReanimatedReady(true), 100);
+  }, []);
 
   useEffect(() => {
     rotation.value = withRepeat(
       withTiming(360, {
         duration: 3000,
         easing: Easing.linear,
-      }), -1);
-  }, [rotation]);
+      }),
+      -1,
+      false
+    );
+  }, [isReanimatedReady]);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ rotate: `${rotation.value}deg` }],
   }));
 
-  const points = Array.from({ length: dots });
+  const points = useMemo(() => Array.from({ length: dots }), [dots]);
+
+  if (!isReanimatedReady) {
+    return null;
+  }
 
   return (
     <SafeAreaView style={[LoadingStyles.size]}>

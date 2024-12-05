@@ -7,7 +7,8 @@ import {
   CHANGE_VIEW, 
   PICK_CARD_SOUND, 
   POP_PICK,
-  SCALE
+  SCALE,
+  SPLASH_MUSIC
 } from '@/shared/definitions/sentences/path.sentences';
 
 export const Sounds: {[key: string]: AVPlaybackSource} = {
@@ -17,7 +18,8 @@ export const Sounds: {[key: string]: AVPlaybackSource} = {
   BACKGROUND_MUSIC,
   CHANGE_VIEW,
   POP_PICK,
-  SCALE
+  SCALE,
+  SPLASH_MUSIC
 };
 
 export class SoundService {
@@ -35,11 +37,14 @@ export class SoundService {
     }
   }
 
-  static async play(key: string) {
+  static async play(key: string, loop = false) {
     if (!this.enabled) return;
     const sound = this.sounds[key];
     if (sound) {
       await sound.replayAsync();
+      if (loop) {
+        sound.setIsLoopingAsync(true);
+      }
     } else {
       console.warn(`El sonido con clave "${key}" no está cargado.`);
       await this.preloadAllSounds();
@@ -50,6 +55,7 @@ export class SoundService {
     const sound = this.sounds[key]; 
     if (sound) {
       await sound.stopAsync();
+      sound.setIsLoopingAsync(false);
     }
   }
 

@@ -1,5 +1,14 @@
 import { Platform, StyleSheet } from 'react-native';
-import { DEFAULT_MODAL_HEIGHT, iconWidth, MENU_WIDTH, MIN_MODAL_HEIGHT, SORT_MODAL_HEIGHT } from '../definitions/utils/contants';
+
+import { 
+  DEFAULT_MODAL_HEIGHT,
+  ICON_WIDTH,
+  MENU_HEIGHT,
+  MENU_WIDTH,
+  MIN_MODAL_HEIGHT,
+  SORT_MODAL_HEIGHT
+} from '../definitions/utils/contants';
+
 import { Colors } from '../definitions/utils/colors';
 
 export const HEADER_HEIGHT = 100;
@@ -292,7 +301,7 @@ export const MenuStyles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     width: MENU_WIDTH,
-    height: 425,
+    height: MENU_HEIGHT,
     borderBottomLeftRadius: 50,
     borderTopLeftRadius: 50,
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
@@ -365,7 +374,12 @@ export const WebStyles = StyleSheet.create({
   view: {
     width: 390, 
     height: 844,
+    minWidth: 390,
+    minHeight: 844,
+    maxWidth: 390,
+    maxHeight: 844,
     alignSelf: 'center',
+    boxShadow: '0px 0px 25px 10px rgba(0, 0, 0, .8)'
   }
 });
 
@@ -378,7 +392,7 @@ export const TabsMenuStyles = StyleSheet.create({
     zIndex: 1,
     borderRadius: 50,
     opacity: 0.3,
-    backgroundColor: 'skyblue'
+    backgroundColor: 'mediumaquamarine'
   },
   user: {
     justifyContent: 'flex-start', 
@@ -394,7 +408,7 @@ export const TabsMenuStyles = StyleSheet.create({
     width: 50, 
     height: 50, 
     zIndex: 4, 
-    backgroundColor: 'skyblue', 
+    backgroundColor: 'mediumaquamarine', 
     borderRadius: 22
   },
   listItem: {
@@ -478,10 +492,10 @@ export const HelpItemStyles = StyleSheet.create({
 export const LoadingStyles = StyleSheet.create({
   size: {
     position: 'absolute',
-    top: HEADER_HEIGHT,
     bottom: 0,
     left: 0,
     right: 0,
+    top: 0,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -538,7 +552,7 @@ export const filterStyles = StyleSheet.create({
   },
   imageContainer: {
     height: 32,
-    width: iconWidth,
+    width: ICON_WIDTH,
     alignItems: 'center',
     justifyContent: 'space-evenly',
     paddingHorizontal: 0,
@@ -667,7 +681,7 @@ export const sharedModalStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 20,
@@ -679,6 +693,17 @@ export const sharedModalStyles = StyleSheet.create({
   text: {
     fontSize: 14,
     textAlign: 'center',
+  },
+  subTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  subText: {
+    fontSize: 14,
+    textAlign: 'center',
+    marginBottom: 24
   },
 });
 

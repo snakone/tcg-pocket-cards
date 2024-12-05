@@ -34,7 +34,7 @@ export default function SharedScreen({title, children}: SharedScreenProps) {
   }, [navigation]);
 
   return (
-    <ThemedView style={{flex: 1}}>
+    <ThemedView style={{flex: 1, overflow: 'hidden'}}>
       <View style={[ParallaxStyles.header, { backgroundColor: "#fff" }]}>
         <ThemedText type="headerTitle">{i18n.t(title)}</ThemedText>
       </View>

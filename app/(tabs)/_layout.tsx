@@ -66,13 +66,13 @@ export default function TabLayout() {
 
   const memoizedSort = useMemo(() => {
     return <SortCardMenu isVisible={isSortVisible} 
-                         animatedStyle={modalAnimatedStyle} 
+                         animatedStyle={Platform.OS === 'web' ? {} : modalAnimatedStyle} 
                          onClose={onClose}/>
   }, [isSortVisible]);
 
   const memoizedFilter = useMemo(() => {
     return <FilterCardMenu isVisible={isFilterVisible} 
-                           animatedStyle={modalAnimatedStyle} 
+                           animatedStyle={Platform.OS === 'web' ? {} : modalAnimatedStyle} 
                            onClose={onClose}/>
   }, [isFilterVisible]);
 
@@ -131,7 +131,7 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => 
             <IconSymbol name="house.fill" 
                         color={color}
-                        style={[TabButtonStyles.icon, emulatorStyle() && {top: -1}]} />,
+                        style={[TabButtonStyles.icon, emulatorStyle() && {top: -3}]} />,
             animation: 'shift',
             title: 'Home'
           }}
@@ -142,7 +142,7 @@ export default function TabLayout() {
             title: 'Cartas',
             tabBarIcon: ({ color }) => 
               <SvgStackSymbol color={color} 
-                              style={[TabButtonStyles.stacks, emulatorStyle() && {top: -1, left: 4}]} />,
+                              style={[TabButtonStyles.stacks, emulatorStyle() && {top: -3, left: 4}]} />,
             animation: 'shift',
           }}
         />
@@ -151,7 +151,7 @@ export default function TabLayout() {
           options={{
             tabBarIcon: ({ color }) => 
               <SvgStylusSymbol color={color}
-                               style={[TabButtonStyles.stylus, emulatorStyle() && {top: -1, left: 4}]} />,
+                               style={[TabButtonStyles.stylus, emulatorStyle() && {top: -3, left: 4}]} />,
             animation: 'shift',
             title: 'Create'
           }}

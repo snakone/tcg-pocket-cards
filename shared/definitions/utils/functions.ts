@@ -1,3 +1,6 @@
+import { Platform } from "react-native";
+import { NavigationProp } from "@react-navigation/native";
+
 import { FilterSearch } from "../classes/filter.class";
 import { Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
@@ -7,8 +10,8 @@ export function sortCards(field: keyof Card, data: Card[], sort: SortItem): Card
     const aValue = a[field] ?? '';
     const bValue = b[field] ?? '';
 
-    if (aValue === 'NONE' && bValue !== 'NONE') return 1;
-    if (bValue === 'NONE' && aValue !== 'NONE') return -1;
+    if (aValue === -1 && bValue !== -1) return 1;
+    if (bValue === -1 && aValue !== -1) return -1;
 
     if (field === 'rarity') {
       if (aValue === 8 && bValue !== 8) return 1;
@@ -132,4 +135,19 @@ export function filterCards(filter: FilterSearch, data: Card[]): Card[] {
 
 export function isEmptyObject(obj: any): boolean {
   return obj && typeof obj === 'object' && Object.keys(obj).length === 0;
+}
+
+export function handleWebInit(): void {
+  if (Platform.OS !== 'web') return;
+  require('@/shared/styles/web_styles.css');
+}
+
+export function isRouteComingFromSettings(
+  navigation: NavigationProp<ReactNavigation.RootParamList>
+): boolean {
+  const state = navigation.getState();
+  return state && 
+         state.routes && 
+         state.routes[1]?.params && 
+         (state.routes[1].params as any).show === 'true';
 }

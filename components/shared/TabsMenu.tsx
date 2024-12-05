@@ -86,8 +86,7 @@ export default function TabsMenu({
       <Animated.View style={[MenuStyles.container, animatedStyle]}>
         <Pressable onPressIn={startAnimation}
                    onPressOut={resetAnimation}>
-          <Animated.View style={[TabsMenuStyles.container, animatedFillStyle]} 
-          />
+          <Animated.View style={[TabsMenuStyles.container, animatedFillStyle]} />
           <View style={TabsMenuStyles.user}>
             <Image source={require("@/assets/images/coins/eevee.png")} 
                   style={TabsMenuStyles.avatar}>

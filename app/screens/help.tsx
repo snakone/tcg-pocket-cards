@@ -1,6 +1,7 @@
 import { Platform, TouchableOpacity, View } from "react-native";
 import { useState } from "react";
 import { Modal as PaperModal, Portal } from "react-native-paper";
+import { useRouter } from "expo-router";
 
 import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
@@ -11,19 +12,25 @@ import { Colors } from "@/shared/definitions/utils/colors";
 import { IconItemWithModal } from "@/shared/definitions/interfaces/layout.interfaces";
 import { IconSymbolName } from "@/shared/definitions/utils/switches";
 import { ButtonStyles, HelpItemStyles, ModalStyles, WebStyles } from "@/shared/styles/component.styles";
-import { TermsModal } from "@/components/modals/TermsModal";
-import { PoliticsModal } from "@/components/modals/PoliticsModal";
-import { AboutModal } from "@/components/modals/AboutModal";
-import { ContactModal } from "@/components/modals/ContactModal";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import SoundService from "@/core/services/sounds.service";
-import { ThemedView } from "@/components/ThemedView";
 import { LARGE_MODAL_HEIGHT, MIN_MODAL_HEIGHT } from "@/shared/definitions/utils/contants";
-import { UserData } from "@/components/modals/UserDataModal";
+import SoundService from "@/core/services/sounds.service";
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import {
+  AboutModal,
+  ContactModal,
+  CreditsModal,
+  PoliticsModal,
+  TermsModal,
+  ThemedView,
+  UserDataModal
+} from '@/components/modals/index';
 
 export default function HelpScreen() {
   const styles = HelpItemStyles;
   const {i18n} = useI18n();
+  const router = useRouter();
+  const [currentModal, setCurrentModal] = useState<string | null>(null);
 
   const items: IconItemWithModal[] = [
     { 
@@ -47,7 +54,7 @@ export default function HelpScreen() {
     { 
       icon: 'laurel.leading',
       modal: 'privacy',
-      content: <UserData></UserData>,
+      content: <UserDataModal></UserDataModal>,
       height: MIN_MODAL_HEIGHT
     },
     { 
@@ -56,6 +63,12 @@ export default function HelpScreen() {
       content: <ContactModal></ContactModal>,
       height: MIN_MODAL_HEIGHT
     },
+    { 
+      icon: 'creditcard',
+      modal: 'credits',
+      content: <CreditsModal></CreditsModal>,
+      height: LARGE_MODAL_HEIGHT
+    },
     {
       icon: 'door.garage.open',
       modal: 'exit',
@@ -63,11 +76,9 @@ export default function HelpScreen() {
     }
   ];
 
-  const [currentModal, setCurrentModal] = useState<string | null>(null);
-
   const open = (modalName: string) => {
-    if (modalName === 'exit') {
-      // EXIT HERE
+    if (modalName === 'exit') { 
+      router.replace('/?show=true')
       return;
     }
 
@@ -105,9 +116,10 @@ export default function HelpScreen() {
               onDismiss={close}
               key={item.modal}
               dismissable={false}
-              contentContainerStyle={{height: '200%'}}
-            >
-              <View style={[ModalStyles.centeredView, Platform.OS === 'web' ? WebStyles.view : null]}>
+              contentContainerStyle={{height: Platform.OS === 'web' ? '100%' : '110%'}}>
+              <View style={[
+                ModalStyles.centeredView, Platform.OS === 'web' ? 
+                 {...WebStyles.view, top: -60} : {flex: 1, top: 0}]}>
                 <View style={ModalStyles.modalView}>
                   <View style={ModalStyles.modalHeader}>
                     <ThemedText style={[ModalStyles.modalHeaderTitle, {marginTop: 4}]}>
