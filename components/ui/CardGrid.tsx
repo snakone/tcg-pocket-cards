@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect, useRef, useContext } from 'react';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import { 
   FlatList, 
@@ -258,7 +259,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={{position: 'absolute', right: 89, top: 8}}
+                      style={CardGridStyles.clearInput}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
@@ -305,6 +306,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                 stickyHeaderIndices={[0]}
                 ListEmptyComponent={RenderEmpty}
                 scrollEventThrottle={16}
+                ListFooterComponent={RenderFooter}
                 ListHeaderComponent={
                   <>
                     <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
@@ -315,22 +317,29 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                                    onChangeText={handleSearch}
                                    placeholderTextColor={Colors.light.text}
                                    accessibilityLabel={SEARCH_LABEL}
-                                  editable={state.cardState.loaded}
+                                   editable={state.cardState.loaded}
                                    inputMode='text'
                                   />
                               {searchQuery.length > 0 && <ResetFilterButton/>}
-                        <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
-                                color={'white'}
-                                onValueChange={toggleSwitch}
-                                value={isGrid5}
-                                style={CardGridStyles.switch}
-                                disabled={filtered.length <= 3}
-                        />
+                        <ThemedView style={[{flexDirection: 'row', alignItems: 'center', marginRight: 4}, Platform.OS === 'web' ? null : {marginRight: 2}]}>
+                          <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
+                                  color={'white'}
+                                  onValueChange={toggleSwitch}
+                                  value={isGrid5}
+                                  style={CardGridStyles.switch}
+                                  disabled={filtered.length <= 3}
+                          />
+                          <MaterialIcons name="library-books" 
+                                         style={{fontSize: 24, marginLeft: 16}} 
+                                         color={Colors.light.skeleton}>
+                          </MaterialIcons>
+                          <ThemedText style={CardGridStyles.totalCards}>{filtered.length}</ThemedText>                    
+                        </ThemedView>
+
                       </Animated.View>
                     </KeyboardAvoidingView>
                   </>
                 }
-                ListFooterComponent={RenderFooter}
               />               
             </KeyboardAvoidingView>
           </SafeAreaView>

@@ -44,7 +44,7 @@ export function HomeScreenModal() {
         <ThemedText style={styles.text}>
           {i18n.t('home_modal_intro')}
         </ThemedText>
-        <ThemedView style={{marginBottom: 20}}>
+        <ThemedView style={{marginBottom: 20, marginTop: 6}}>
           <ThemedView style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
             <IconSymbol
                 name="chevron.right"
@@ -59,7 +59,7 @@ export function HomeScreenModal() {
           </ThemedView>
           <ThemedText style={styles.text}>{i18n.t('home_modal_explore_sentence')}</ThemedText>
         </ThemedView>
-        <ThemedView style={{marginBottom: 20}}>
+        <ThemedView style={{marginBottom: 20, marginTop: 6}}>
           <ThemedView style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
             <IconSymbol
                 name="chevron.right"
@@ -74,7 +74,7 @@ export function HomeScreenModal() {
           </ThemedView>
           <ThemedText style={styles.text}>{i18n.t('home_modal_filter_sentence')}</ThemedText>
         </ThemedView>
-        <ThemedView style={{marginBottom: 20}}>
+        <ThemedView style={{marginBottom: 20, marginTop: 6}}>
           <ThemedView style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
             <IconSymbol
                 name="chevron.right"
@@ -89,7 +89,7 @@ export function HomeScreenModal() {
           </ThemedView>
           <ThemedText style={styles.text}>{i18n.t('home_modal_order_sentence')}</ThemedText>
         </ThemedView>
-        <ThemedView style={{marginBottom: 20}}>
+        <ThemedView style={{marginBottom: 20, marginTop: 6}}>
           <ThemedView style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
             <IconSymbol
                 name="chevron.right"

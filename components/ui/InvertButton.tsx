@@ -50,12 +50,13 @@ const InvertButton = ({
           height: 20, 
           position: 'relative', 
           left: -9, 
-          top: 1}, animatedStyle
+          top: -1
+        }, animatedStyle
         ]}>
           <MaterialIcons name="sync" 
-                            size={20} 
-                            color={color}
-                            style={{width: 20, height: 20}}>   
+                         size={20} 
+                         color={color}
+                         style={{width: 20, height: 20}}>   
             </MaterialIcons>
         </Animated.View>
 

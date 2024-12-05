@@ -1,5 +1,6 @@
 import { Platform, TouchableOpacity, View } from "react-native";
 import { useState } from "react";
+import { Modal as PaperModal, Portal } from "react-native-paper";
 
 import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
@@ -13,13 +14,12 @@ import { ButtonStyles, HelpItemStyles, ModalStyles, WebStyles } from "@/shared/s
 import { TermsModal } from "@/components/modals/TermsModal";
 import { PoliticsModal } from "@/components/modals/PoliticsModal";
 import { AboutModal } from "@/components/modals/AboutModal";
-import { PrivacyModal } from "@/components/modals/PrivacyModal";
 import { ContactModal } from "@/components/modals/ContactModal";
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { Modal as PaperModal, Portal } from "react-native-paper";
 import SoundService from "@/core/services/sounds.service";
 import { ThemedView } from "@/components/ThemedView";
-import { DEFAULT_MODAL_HEIGHT, HOME_MODAL_HEIGHT, MIN_MODAL_HEIGHT } from "@/shared/definitions/utils/contants";
+import { LARGE_MODAL_HEIGHT, MIN_MODAL_HEIGHT } from "@/shared/definitions/utils/contants";
+import { UserData } from "@/components/modals/UserDataModal";
 
 export default function HelpScreen() {
   const styles = HelpItemStyles;
@@ -30,13 +30,13 @@ export default function HelpScreen() {
       icon: 'terminal',
       modal: 'terms',
       content: <TermsModal></TermsModal>,
-      height: HOME_MODAL_HEIGHT
+      height: LARGE_MODAL_HEIGHT
     },
     { 
       icon: 'candybarphone',
       modal: 'politics',
       content: <PoliticsModal></PoliticsModal>,
-      height: MIN_MODAL_HEIGHT
+      height: LARGE_MODAL_HEIGHT
     },
     {
       icon: 'location.fill',
@@ -47,7 +47,7 @@ export default function HelpScreen() {
     { 
       icon: 'laurel.leading',
       modal: 'privacy',
-      content: <PrivacyModal></PrivacyModal>,
+      content: <UserData></UserData>,
       height: MIN_MODAL_HEIGHT
     },
     { 

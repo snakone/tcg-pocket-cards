@@ -27,7 +27,7 @@ export default function TabsMenu({
 
   const startAnimation = () => {
     fillProgress.value = withTiming(1, {
-      duration: 1200,
+      duration: 800,
       easing: Easing.poly(1.2),
     }, function (isFinished) {
       if (isFinished !== undefined) {
@@ -117,7 +117,7 @@ export default function TabsMenu({
                     renderItem={({item}) => 
             <View style={TabsMenuStyles.itemSmall}>
               <IconSymbol name={item.icon as IconSymbolName} 
-                          style={TabsMenuStyles.iconSmall}/>
+                          style={[TabsMenuStyles.listIcon, {fontSize: 24}]}/>
               <TouchableOpacity style={{width: '100%'}} onPress={() => handleRoute(item.route)}>
                 <ThemedText style={TabsMenuStyles.labelSmall}>{i18n.t(item.label)}</ThemedText>
               </TouchableOpacity>

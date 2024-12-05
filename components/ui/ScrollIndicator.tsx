@@ -35,7 +35,7 @@ export default function ScrollIndicator({
       true
     );
 
-    scrollY.value = 0;
+    scrollY.value = withTiming(0, { duration: 0 });
   }, []);
 
   const progressBarStyle = useAnimatedStyle(() => {

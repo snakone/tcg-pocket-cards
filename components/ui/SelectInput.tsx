@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: 'white',
     borderRadius: 20,
-    paddingBlock: 4
+    paddingBlock: 6
   },
   icon: {
     position: 'absolute', 

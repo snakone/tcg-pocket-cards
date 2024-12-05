@@ -16,6 +16,7 @@ import SoundService from "@/core/services/sounds.service";
 import { Slider } from "@miblanchard/react-native-slider";
 import { SettingsState } from "@/hooks/settings.reducer";
 import SelectInput from "@/components/ui/SelectInput";
+import { LanguageType } from "@/shared/definitions/types/global.types";
 
 export default function SettingsScreen() {
   const context = useContext(AppContext);
@@ -87,6 +88,17 @@ export default function SettingsScreen() {
     dispatch({ type: 'SET_SETTINGS', value: updated });
     Storage.set('sound_volume', updated.sound_volume);
     SoundService.setVolume(updated.sound_volume);
+  }
+
+  function handleLanguage(lang: LanguageType): void {
+    setLocale(lang);
+    const updated: SettingsState = {
+      ...state.settingsState,
+      language: lang,
+    };
+  
+    dispatch({ type: 'SET_SETTINGS', value: updated });
+    Storage.set('language', updated.language);
   }
 
   return (
@@ -162,11 +174,11 @@ export default function SettingsScreen() {
           <ThemedView style={{marginLeft: 'auto'}}>
             <SelectInput options={['es', 'en', 'ja']} 
                          label={settings.language}
-                         onSelect={(opt) => (SoundService.play('POP_PICK'), setLocale(opt))}
+                         onSelect={(opt) => (SoundService.play('POP_PICK'), handleLanguage(opt))}
                          width={140}
-                         height={106}
+                         height={118}
                          shadow={false}
-                         textStyle={{left: 0}}
+                         textStyle={{left: 6}}
                          iconStyle={{right: -2}}>
             </SelectInput>
           </ThemedView>

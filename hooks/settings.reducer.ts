@@ -1,3 +1,5 @@
+import { LanguageType } from "@/shared/definitions/types/global.types";
+
 export const settingsInitialState: SettingsState = { 
   music: true,
   sound: true,
@@ -19,7 +21,7 @@ export const settingsReducer = (state: SettingsState, action: SettingsAction): S
 export interface SettingsState {
   music: boolean;
   sound: boolean;
-  language: 'es' | 'en' | 'ja';
+  language: LanguageType;
   music_volume: number;
   sound_volume: number;
   version: string | null;

@@ -60,8 +60,8 @@ export default function TabLayout() {
 
   useEffect(() => {
     distanceFromBottom.value = isSortVisible || isFilterVisible ? 
-                          withTiming(0, { duration: 150 }) : 
-                          FILTER_CARDS_HEIGHT;
+                                withTiming(0, { duration: 150 }) : 
+                                withTiming(FILTER_CARDS_HEIGHT, { duration: 0 });
   }, [isSortVisible, isFilterVisible]);
 
   const memoizedSort = useMemo(() => {

@@ -15,6 +15,7 @@ export function TermsModal() {
   const {i18n} = useI18n();
 
   const styles = sharedModalStyles;
+  const lastUpdate = '03/12/2024';
 
   const handleContentSizeChange = (width: number, height: number) => {
     setContentHeight(height);
@@ -71,6 +72,10 @@ export function TermsModal() {
 
         <ThemedText style={styles.title}>{i18n.t('terms_contact')}</ThemedText>
         <ThemedText style={styles.text}>{i18n.t('terms_contact_sentence')}</ThemedText>
+
+        <ThemedText style={[styles.text, {marginTop: 25, fontSize: 13}]}>{i18n.t('last_update')}
+          <ThemedText style={[styles.text, {fontSize: 13}]}>{lastUpdate}</ThemedText>
+        </ThemedText>
       </ScrollView>
     </ThemedView>
   )

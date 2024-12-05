@@ -1,5 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
-import { DEFAULT_MODAL_HEIGHT, iconWidth, MENU_WIDTH, MIN_MODAL_HEIGHT } from '../definitions/utils/contants';
+import { DEFAULT_MODAL_HEIGHT, iconWidth, MENU_WIDTH, MIN_MODAL_HEIGHT, SORT_MODAL_HEIGHT } from '../definitions/utils/contants';
 import { Colors } from '../definitions/utils/colors';
 
 export const HEADER_HEIGHT = 100;
@@ -9,20 +9,17 @@ export const CARD_IMAGE_WIDTH_5 = 69.1;
 
 export const ThemeTextStyles = StyleSheet.create({
   default: {
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: 14,
     color: Colors.light.text
   },
   defaultSemiBold: {
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: 14,
     fontWeight: '600',
     color: Colors.light.bold
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    lineHeight: 32,
   },
   subtitle: {
     fontSize: 20,
@@ -31,13 +28,11 @@ export const ThemeTextStyles = StyleSheet.create({
     marginBottom: 12
   },
   link: {
-    lineHeight: 30,
-    fontSize: 16,
+    fontSize: 14,
     color: '#0a7ea4',
   },
   headerTitle: {
     fontSize: 22,
-    lineHeight: 28,
     fontWeight: "bold",
     color: Colors.light.bold
   },
@@ -94,7 +89,7 @@ export const CardGridStyles = StyleSheet.create({
     zIndex: 100
   },
   searchInput: {
-    width: '78%',
+    width: '60%',
     height: 36,
     borderWidth: 1,
     padding: Platform.OS === 'web' ? 10 : 8,
@@ -131,9 +126,25 @@ export const CardGridStyles = StyleSheet.create({
     zIndex: 100, 
     right: 4,
     height: 20,
+    width: 40,
+    left: Platform.OS === 'web' ? -4 : 4,
     transform: [
       { scale: Platform.OS === 'web' ? 1 : 1.1 }
     ]
+  },
+  clearInput: {
+    position: 'absolute',
+    left: 184,
+    top: 8
+  },
+  totalCards: {
+    marginLeft: 8,
+    fontSize: 14,
+    minWidth: 24,
+    textAlign: 'right',
+    position: 'relative',
+    top: -1,
+    marginRight: Platform.OS === 'web' ? 0 : 4
   }
 });
 
@@ -200,7 +211,7 @@ export const ModalStyles = StyleSheet.create({
   },
   modalFooter: {
     backgroundColor: '#F2F2F2',
-    paddingTop: 12,
+    paddingTop: 14,
     paddingInline: 14,
     paddingBottom: 16,
     borderBottomLeftRadius: 20,
@@ -296,7 +307,7 @@ export const MenuStyles = StyleSheet.create({
   expansions: {
     backgroundColor: 'white',
     width: '100%',
-    height: '68.5%',
+    height: '74.9%',
     position: 'absolute',
     right: 0,
     bottom: 0,
@@ -394,19 +405,13 @@ export const TabsMenuStyles = StyleSheet.create({
   listIcon: {
     fontSize: 25,
     width: 24,
-    color: 'skyblue'
+    color: 'mediumaquamarine',
+    position: 'relative',
+    top: -2
   },
   listLabel: {
     userSelect: 'none',
-    fontSize: 15,
     marginLeft: 16
-  },
-  iconSmall: {
-    fontSize: 19,
-    position: 'relative',
-    top: 3,
-    width: 24,
-    color: 'skyblue'
   },
   separator: {
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)',
@@ -498,7 +503,7 @@ export const LoadingStyles = StyleSheet.create({
 
 export const filterStyles = StyleSheet.create({
   container: {
-    height: '75%', 
+    height: '82.1%', 
     position: 'absolute', 
     width: '100%',
     bottom: 0,
@@ -564,7 +569,8 @@ export const filterStyles = StyleSheet.create({
     color: '#555',
     position: 'relative',
     fontSize: 14,
-    textAlign: 'center'
+    textAlign: 'center',
+    lineHeight: 24,
   },
   row: {
     flexDirection: 'row',
@@ -627,7 +633,6 @@ export const homeScreenStyles = StyleSheet.create({
   subtitle: {
     fontSize: 14,
     textAlign: 'center',
-    lineHeight: 22,
     paddingInline: 12
   },
   infoSection: {
@@ -674,7 +679,6 @@ export const sharedModalStyles = StyleSheet.create({
   text: {
     fontSize: 14,
     textAlign: 'center',
-    lineHeight: 16,
   },
 });
 
@@ -703,7 +707,7 @@ export const expansionStyles = StyleSheet.create({
 
 export const sortStyles = StyleSheet.create({
   container: {
-    height: 518, 
+    height: SORT_MODAL_HEIGHT, 
     position: 'absolute', 
     width: '100%',
     bottom: 0,

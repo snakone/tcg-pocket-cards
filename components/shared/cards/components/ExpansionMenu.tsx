@@ -1,6 +1,7 @@
 import { Image } from 'expo-image';
 import React, { MutableRefObject } from "react";
-import { Animated, View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
+import Animated from 'react-native-reanimated';
 
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -45,7 +46,7 @@ export const ExpansionsMenu = React.memo(({PACKS, filterObj, handleExpansion }: 
           ></View>
         </ThemedView>
 
-        <View style={[ModalStyles.modalFooter, {paddingBottom: 11}]}>
+        <View style={[ModalStyles.modalFooter]}>
           <TouchableOpacity style={ButtonStyles.button} 
                             onPress={() => handleExpansion(false)} 
                             accessibilityLabel={CLOSE_SENTENCE}>

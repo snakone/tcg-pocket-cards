@@ -17,3 +17,5 @@ export type ParallaxProps = PropsWithChildren<{
 }>;
 
 export type ErrorType = 'error' | 'info' | 'warning';
+
+export type LanguageType = 'es' | 'en' | 'ja';

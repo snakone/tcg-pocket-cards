@@ -1,20 +1,22 @@
 import React, { useRef, useEffect } from 'react';
-import { View, StyleSheet, Animated } from 'react-native';
+import { View, StyleSheet, Animated as ReactAnimated } from 'react-native';
+import Animated from 'react-native-reanimated';
+
 import { IconSymbol } from './IconSymbol';
 
 const BounceArrow = ({ direction = 'right' }) => {
-  const bounceAnim = useRef(new Animated.Value(0)).current;
+  const bounceAnim = useRef(new ReactAnimated.Value(0)).current;
 
   useEffect(() => {
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(bounceAnim, {
+    ReactAnimated.loop(
+      ReactAnimated.sequence([
+        ReactAnimated.timing(bounceAnim, {
           toValue: 1,
           duration: 500,
           easing: (t) => t * .9,
           useNativeDriver: true,
         }),
-        Animated.timing(bounceAnim, {
+        ReactAnimated.timing(bounceAnim, {
           toValue: 0,
           duration: 500,
           easing: (t) => t * .9,
