@@ -39,6 +39,7 @@ export const AttackItem = memo(({ filterObj, playSound }: AttackItemProps) => {
             propFilter="attack"
             keyFilter={k}
             textStyle={{left: -4}}
+            itemStyle={{paddingBlock: 4}}
             onSelect={(opt) => {
               playSound('POP_PICK');
               (filterObj.current.attack as any)[k] = opt;

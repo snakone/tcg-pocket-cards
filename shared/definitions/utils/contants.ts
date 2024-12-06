@@ -17,6 +17,7 @@ import {
   DRAGON_ICON,
   NORMAL_ICON 
 } from "../sentences/path.sentences";
+
 import { FilterSearch } from "../classes/filter.class";
 
 export const APP_VERSION = '1.0.2';

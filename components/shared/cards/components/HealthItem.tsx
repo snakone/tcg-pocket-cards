@@ -39,6 +39,7 @@ export const HealthItem = memo(({ filterObj, playSound }: HealthItemProps) => {
             propFilter="health"
             keyFilter={k}
             textStyle={{left: -4}}
+            itemStyle={{paddingBlock: 4}}
             onSelect={(opt) => {
               playSound('POP_PICK');
               (filterObj.current.health as any)[k] = opt;

@@ -31,9 +31,6 @@ export function sortCards(field: keyof Card, data: Card[], sort: SortItem): Card
 }
 
 export function filterCards(filter: FilterSearch, data: Card[]): Card[] {
-  // @TODO - Filter with stage not card battle have -1, if stage combine battle stage and object, 
-  // like stage 1 and fossil, both options and filtered, this is wrong. check if filter stage is battle or object, if both return false
-  // since that search will always return false, no object will have something from a battle card
   return data.filter(card => {
     if (
       filter.ability.with_ability !== null &&

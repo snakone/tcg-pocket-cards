@@ -22,6 +22,7 @@ interface SelectInputProps {
   shadow?: boolean,
   textStyle?: StyleProp<TextStyle>,
   iconStyle?: StyleProp<TextStyle>,
+  itemStyle?: StyleProp<ViewStyle>,
 }
 
 export default function SelectInput({
@@ -35,7 +36,8 @@ export default function SelectInput({
   width = '45%',
   shadow = true,
   textStyle = {},
-  iconStyle = {}
+  iconStyle = {},
+  itemStyle = {}
 }: SelectInputProps) {
   const {i18n} = useI18n();
 
@@ -72,7 +74,7 @@ export default function SelectInput({
       renderItem={(item, _, isSelected) => {
         const selected = filterObj && item;
         return (
-          <ThemedView style={[styles.item, {...(isSelected && {backgroundColor: '#444444'})}]}>
+          <ThemedView style={[styles.item, itemStyle, {...(isSelected && {backgroundColor: '#444444'})}]}>
             <ThemedText style={[
                 filterStyles.buttonText, {...(isSelected && {color: 'white'})}
               ]}>{!selected ? i18n.t(item) : item}
@@ -95,7 +97,6 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: 'white',
     borderRadius: 20,
-    paddingBlock: 6
   },
   icon: {
     position: 'absolute', 

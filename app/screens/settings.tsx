@@ -189,7 +189,8 @@ export default function SettingsScreen() {
                          height={128}
                          shadow={false}
                          textStyle={{left: 6}}
-                         iconStyle={{right: -2}}>
+                         iconStyle={{right: -2}}
+                         itemStyle={{paddingBlock: 6}}>
             </SelectInput>
           </ThemedView>
         </ThemedView>
@@ -205,7 +206,8 @@ export default function SettingsScreen() {
                          height={92}
                          shadow={false}
                          textStyle={{left: 6}}
-                         iconStyle={{right: -2}}>
+                         iconStyle={{right: -2}}
+                         itemStyle={{paddingBlock: 6}}>
             </SelectInput>
           </ThemedView>
         </ThemedView>

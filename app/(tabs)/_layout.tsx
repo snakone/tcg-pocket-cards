@@ -66,13 +66,13 @@ export default function TabLayout() {
 
   const memoizedSort = useMemo(() => {
     return <SortCardMenu isVisible={isSortVisible} 
-                         animatedStyle={Platform.OS === 'web' ? {} : modalAnimatedStyle} 
+                         animatedStyle={modalAnimatedStyle} 
                          onClose={onClose}/>
   }, [isSortVisible]);
 
   const memoizedFilter = useMemo(() => {
     return <FilterCardMenu isVisible={isFilterVisible} 
-                           animatedStyle={Platform.OS === 'web' ? {} : modalAnimatedStyle} 
+                           animatedStyle={{}} 
                            onClose={onClose}/>
   }, [isFilterVisible]);
 
