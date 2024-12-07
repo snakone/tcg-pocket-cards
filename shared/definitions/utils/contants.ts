@@ -112,6 +112,10 @@ export const STAGE_MAP: any = {
   6: { label: 'supporter' },
 }
 
+export const SERIES_MAP: any = {
+  0: { label: 'A' },
+}
+
 export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);
 
 export const ICON_WIDTH = 36;

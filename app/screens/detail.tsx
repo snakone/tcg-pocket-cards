@@ -28,7 +28,7 @@ import {
   PanGestureHandlerEventPayload, 
 } from "react-native-gesture-handler";
 
-import { ButtonStyles, DetailStyles } from '@/shared/styles/component.styles';
+import { ButtonStyles, DetailStyles, filterStyles } from '@/shared/styles/component.styles';
 import { ThemedView } from "@/components/ThemedView";
 import { BACK_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -38,16 +38,19 @@ import SoundService from "@/core/services/sounds.service";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { ThemedText } from "@/components/ThemedText";
+import { Card } from "@/shared/definitions/interfaces/card.interfaces";
+import { RARITY_MAP, SERIES_MAP, STAGE_MAP, TYPE_MAP } from "@/shared/definitions/utils/contants";
+import { useI18n } from "@/core/providers/LanguageProvider";
 
-const INITIAL_INFO_HEIGHT = 150;
-const MAX_HEIGHT = 500;
-const ANDROID_INFO_HEIGHT = 200;
-const ANDROID_MAX_HEIGHT = 450;
+const INITIAL_INFO_HEIGHT = 100;
+const MAX_HEIGHT = 450;
+const ANDROID_INFO_HEIGHT = 220;
+const movingHeight = 110;
 
 export default function DetailScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
-  const { dispatch } = context;
+  const { state, dispatch } = context;
   const styles = DetailStyles;
   const router = useRouter();
   const navigation = useNavigation();
@@ -66,10 +69,12 @@ export default function DetailScreen() {
   const isAtMaxHeight = useSharedValue(false);
   const scrollRef = useRef<Animated.ScrollView>(null);
   const scrollYAndroid = useSharedValue(0);
+  const [card, setCard] = useState<Card>();
+  const {i18n} = useI18n();
   
   useEffect(() => {
     if (Platform.OS === 'web') return;
-    top.value = withTiming(isSwiping ? 0 : -120, { duration: 300 });
+    top.value = withTiming(isSwiping ? 0 : (movingHeight * -1), { duration: 300 });
   }, [isSwiping]);
 
   const topAnimatedStyle = useAnimatedStyle(() => {
@@ -77,6 +82,10 @@ export default function DetailScreen() {
       transform: [{ translateY: top.value }]
     };
   });
+
+  useEffect(() => {
+    setCard(state.cardState.cards.find(card => card.id === Number(id)));
+  }, [])
 
   const playSound = async () => {
     SoundService.play('AUDIO_MENU_CLOSE');
@@ -120,7 +129,7 @@ export default function DetailScreen() {
       ), {duration: 200}
     );
 
-    runOnJS(foo2)()
+    runOnJS(startSwipe)();
   }
 
   function onGestureUpdate(
@@ -141,7 +150,7 @@ export default function DetailScreen() {
     );
   }
 
-  function foo2(): void {
+  function startSwipe(): void {
     heightAndroid.value = withTiming(ANDROID_INFO_HEIGHT, { duration: 250 }, () => {
       runOnJS(setIsSwiping)(true);
     });
@@ -151,7 +160,7 @@ export default function DetailScreen() {
     }, 20);
   }
 
-  function foo(): void {
+  function stopSwipe(): void {
     heightAndroid.value = withTiming(ANDROID_INFO_HEIGHT, { duration: 250 }, () => {
       runOnJS(setIsSwiping)(false)
     });
@@ -255,7 +264,7 @@ export default function DetailScreen() {
 
   const cardAndroidAnimatedScale = useDerivedValue(() =>
     withSpring(
-      interpolate(heightAndroid.value, [ANDROID_INFO_HEIGHT, ANDROID_MAX_HEIGHT], [1, 0.5], 'clamp'),
+      interpolate(heightAndroid.value, [ANDROID_INFO_HEIGHT, MAX_HEIGHT], [1, 0.5], 'clamp'),
       {
         damping: 20,
         stiffness: 90,
@@ -267,7 +276,7 @@ export default function DetailScreen() {
   
   const cardAndroidAnimatedTranslateY = useDerivedValue(() =>
     withSpring(
-      interpolate(heightAndroid.value, [ANDROID_INFO_HEIGHT, ANDROID_MAX_HEIGHT], [0, -225 + 120], 'clamp'),
+      interpolate(heightAndroid.value, [ANDROID_INFO_HEIGHT, MAX_HEIGHT], [0, -225 + movingHeight], 'clamp'),
       {
         damping: 20,
         stiffness: 90,
@@ -326,10 +335,10 @@ export default function DetailScreen() {
           heightAndroid.value = Math.max(heightAndroid.value + deltaY, ANDROID_INFO_HEIGHT);
         }
       } else {
-        heightAndroid.value = Math.min(Math.max(heightAndroid.value + deltaY, ANDROID_INFO_HEIGHT), ANDROID_MAX_HEIGHT);
-        if (heightAndroid.value >= ANDROID_MAX_HEIGHT) {
+        heightAndroid.value = Math.min(Math.max(heightAndroid.value + deltaY, ANDROID_INFO_HEIGHT), MAX_HEIGHT);
+        if (heightAndroid.value >= MAX_HEIGHT) {
           isAtMaxHeight.value = true;
-          heightAndroid.value = ANDROID_MAX_HEIGHT;
+          heightAndroid.value = MAX_HEIGHT;
         }
       }
     }
@@ -345,7 +354,7 @@ export default function DetailScreen() {
             right: 0,
             left: 0
           }}>
-            <Pressable style={{flex: 1, width: '100%'}} onPress={foo}></Pressable>
+            <Pressable style={{flex: 1, width: '100%'}} onPress={stopSwipe}></Pressable>
         </ThemedView>
 }
         <Animated.View style={Platform.OS !== 'web' && topAnimatedStyle}>
@@ -359,11 +368,9 @@ export default function DetailScreen() {
             ) : (<>
               <GestureDetector gesture={gesture}>
                 <Animated.View style={[opacityStyle, rotationStyle, cardStyles.card, cardAndroidAnimatedStyle]}>
-                  <Pressable onPress={() => console.log('pressed')}>
-                    <Image style={[styles.image]}
-                          source={CARD_IMAGE_MAP[id]}
-                          contentFit={'fill'} />
-                  </Pressable>
+                  <Image style={[styles.image]}
+                        source={CARD_IMAGE_MAP[id]}
+                        contentFit={'fill'} />
                 </Animated.View>
               </GestureDetector>
             </>)
@@ -383,7 +390,7 @@ export default function DetailScreen() {
         }
 
 {
-        Platform.OS !== 'web' && showContent ?
+        Platform.OS !== 'web' && showContent && card ?
         <ThemedView style={cardStyles.scrollContainer}>
           <GestureDetector gesture={panGesture} touchAction="pan-y">
             <ThemedView style={cardStyles.panContainer}>
@@ -396,29 +403,165 @@ export default function DetailScreen() {
             bounces={false}
             contentContainerStyle={{alignItems: 'center', justifyContent: 'center'}}
             style={[scrollAndroidAnimatedStyle]}>
-            <ThemedView>
-            {
-              new Array(40).fill(null).map((e, i) => <ThemedText key={i}>{i}</ThemedText>)
-            }
+            <ThemedView style={{padding: 20, marginBottom: 65}}>
+              <ThemedText style={{fontSize: 30, textAlign: 'center', marginTop: 4, color: Colors.light.bold}}>{card.name}</ThemedText>
+              <ThemedView style={{flexDirection: 'row', gap: 6, justifyContent: 'center', alignItems: 'center', marginTop: 12, marginBottom: 30}}>
+                
+                {Array.from({ length: RARITY_MAP[card.rarity]?.amount }).map((_, i) => (
+                <Image
+                  key={i}
+                  source={RARITY_MAP[card.rarity]?.image}
+                  style={[
+                    { width: 25, height: 25},
+                    card.rarity === 7 && {width: 38}
+                  ]}
+                />
+              ))}
+              </ThemedView>
+
+              <ThemedView style={cardStyles.itemInfo}>
+                <ThemedText style={{textAlign: 'center', fontSize: 13}}>{card.flavor}</ThemedText>
+              </ThemedView>
+
+              <ThemedView style={[cardStyles.itemInfo, {overflow: 'hidden', padding: 0, flexDirection: 'row', borderRadius: 12}]}>
+                <ThemedView style={{width: '35%', paddingVertical: 10, paddingHorizontal: 20, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', zIndex: 100}}>
+                  <ThemedText style={{textAlign: 'center', fontSize: 13}}>{i18n.t('illustration')}</ThemedText>
+                </ThemedView>
+                <ThemedView style={{backgroundColor: 'white', width: '65%', paddingVertical: 10, paddingHorizontal: 20}}>
+                  <ThemedText style={{textAlign: 'center', fontSize: 13}}>{card.artist}</ThemedText>
+                </ThemedView>
+              </ThemedView>
+
+              <ThemedView style={[cardStyles.itemInfo, {padding: 0, overflow: 'hidden'}]}>
+                <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
+                  <ThemedText style={{textAlign: 'center', fontSize: 13, backgroundColor: 'white', paddingVertical: 4}}>{i18n.t('attacks')}</ThemedText>
+                </ThemedView>
+
+                <ThemedView style={{padding: 16}}>
+                  {
+                    card.attacks?.map((att, i) => (
+                      <ThemedView key={i} style={[{
+                        flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap'}, 
+                        i !== (card.attacks!.length - 1) && {marginBottom: 20}]}>
+                        <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                          <ThemedView style={{flexDirection: 'row', alignItems: 'center', minWidth: 100}}>
+                            {
+                              att.energy.map((energy, j) => (
+                                <Image key={j} source={TYPE_MAP[energy].image} style={{width: 18, height: 18, top: 1, marginRight: 5}}></Image>
+                              ))
+                            }
+                          </ThemedView>
+                          <ThemedText style={{fontSize: 16, marginLeft: 16, color: Colors.light.bold}}>{att.name}</ThemedText>
+                        </ThemedView>
+
+                        <ThemedText style={{fontSize: 16, color: Colors.light.bold}}>{att.damage}</ThemedText>
+
+                        {att.description && <ThemedView style={{width: '100%'}}>
+                          <ThemedText style={{marginTop: 12}}>{att.description}</ThemedText>
+                        </ThemedView>}
+                      </ThemedView>
+                    ))
+                  }
+                </ThemedView>
+              </ThemedView>
+
+              <ThemedView style={[cardStyles.itemInfo, {overflow: 'hidden', padding: 0, flexDirection: 'row', borderRadius: 12, marginBottom: 10}]}>
+                <ThemedView style={{width: '40%', paddingVertical: 10, paddingHorizontal: 20, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', zIndex: 100}}>
+                  <ThemedText style={{textAlign: 'center', fontSize: 13}}>{i18n.t('pokemon')}</ThemedText>
+                </ThemedView>
+                <ThemedView style={{backgroundColor: 'white', width: '60%', paddingVertical: 10, paddingHorizontal: 20}}>
+                  <ThemedText style={{textAlign: 'center', fontSize: 13}}>{i18n.t(STAGE_MAP[card.stage].label)}</ThemedText>
+                </ThemedView>
+              </ThemedView>
+
+              <ThemedView style={[cardStyles.itemInfo, {overflow: 'hidden', padding: 0, flexDirection: 'row', borderRadius: 12, marginBottom: 10}]}>
+                <ThemedView style={{width: '40%', paddingVertical: 10, paddingHorizontal: 20, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', zIndex: 100}}>
+                  <ThemedText style={{textAlign: 'center', fontSize: 13}}>{i18n.t('type')}</ThemedText>
+                </ThemedView>
+                <ThemedView style={{backgroundColor: 'white', width: '60%', paddingVertical: 10, paddingHorizontal: 20, justifyContent: 'center', alignItems: 'center'}}>
+                  <Image source={TYPE_MAP[card.element].image} style={{width: 18, height: 18, top: 1, left: 2}}></Image>
+                </ThemedView>
+              </ThemedView>
+
+              <ThemedView style={[cardStyles.itemInfo, {overflow: 'hidden', padding: 0, flexDirection: 'row', borderRadius: 12, marginBottom: 10}]}>
+                <ThemedView style={{width: '40%', paddingVertical: 10, paddingHorizontal: 20, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', zIndex: 100}}>
+                  <ThemedText style={{textAlign: 'center', fontSize: 13}}>{i18n.t('PS')}</ThemedText>
+                </ThemedView>
+                <ThemedView style={{backgroundColor: 'white', width: '60%', paddingVertical: 10, paddingHorizontal: 20, justifyContent: 'center', alignItems: 'center'}}>
+                  <ThemedText style={{textAlign: 'center', fontSize: 13}}>{card.health}</ThemedText>
+                </ThemedView>
+              </ThemedView>
+
+              <ThemedView style={[cardStyles.itemInfo, {overflow: 'hidden', padding: 0, flexDirection: 'row', borderRadius: 12, marginBottom: 10}]}>
+                <ThemedView style={{width: '40%', paddingVertical: 10, paddingHorizontal: 20, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', zIndex: 100}}>
+                  <ThemedText style={{textAlign: 'center', fontSize: 13}}>{i18n.t('weak')}</ThemedText>
+                </ThemedView>
+                <ThemedView style={{backgroundColor: 'white', width: '60%', paddingVertical: 10, paddingHorizontal: 20, justifyContent: 'center', alignItems: 'center'}}>
+                  <ThemedView style={{flexDirection: 'row', gap: 2, position: 'relative'}}>
+                    <Image source={card.weak && TYPE_MAP[card.weak].image} style={{width: 18, height: 18, top: 1}}></Image>
+                    <ThemedText style={{textAlign: 'center', fontSize: 13, top: 1, position: 'absolute', left: 25}}>+20</ThemedText>
+                  </ThemedView>
+                </ThemedView>
+              </ThemedView>
+
+              
+              <ThemedView style={[cardStyles.itemInfo, {overflow: 'hidden', padding: 0, flexDirection: 'row', borderRadius: 12, marginBottom: 10}]}>
+                <ThemedView style={{width: '40%', paddingVertical: 10, paddingHorizontal: 20, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', zIndex: 100}}>
+                  <ThemedText style={{textAlign: 'center', fontSize: 13}}>{i18n.t('cost_of_retire')}</ThemedText>
+                </ThemedView>
+                <ThemedView style={{backgroundColor: 'white', width: '60%', paddingVertical: 10, paddingHorizontal: 20, justifyContent: 'center', alignItems: 'center', flexDirection: 'row', gap: 6}}>
+                  {Array.from({ length: card.retreat }).map((_, i) => (
+                    <Image key={i} source={TYPE_MAP[9].image} style={{width: 18, height: 18, top: 1}}></Image>
+                  ))}
+                </ThemedView>
+              </ThemedView>
+
+              <ThemedView style={[cardStyles.itemInfo, {overflow: 'hidden', padding: 0, flexDirection: 'row', borderRadius: 12, marginBottom: 30}]}>
+                <ThemedView style={{width: '40%', paddingVertical: 10, paddingHorizontal: 20, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', zIndex: 100}}>
+                  <ThemedText style={{textAlign: 'center', fontSize: 13}}>{i18n.t('serie')}</ThemedText>
+                </ThemedView>
+                <ThemedView style={{backgroundColor: 'white', width: '60%', paddingVertical: 10, paddingHorizontal: 20}}>
+                  <ThemedText style={{textAlign: 'center', fontSize: 13}}>{card.series !== undefined && SERIES_MAP[card.series].label}</ThemedText>
+                </ThemedView>
+              </ThemedView>
+
+              <ThemedView style={[cardStyles.itemInfo, {padding: 0, overflow: 'hidden'}]}>
+                <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
+                  <ThemedText style={{textAlign: 'center', fontSize: 13, backgroundColor: 'white', paddingVertical: 4}}>{i18n.t('related_cards')}</ThemedText>
+                </ThemedView>
+
+                <ThemedView style={{padding: 16}}>
+                 <ThemedText>CARDS</ThemedText>
+                </ThemedView>
+              </ThemedView>
+
             </ThemedView>
           </Animated.ScrollView>
         </ThemedView>
 
 
-: Platform.OS === 'web' && showContent && <Animated.ScrollView 
-    showsVerticalScrollIndicator={false}
-    scrollEventThrottle={69}
-    onScroll={scrollHandler}
-    scrollEnabled={false}
-    ref={scrollRef}
-    contentContainerStyle={{alignItems: 'center', justifyContent: 'center'}}
-    style={[cardStyles.scrollContainer, scrollAnimatedStyle]}>
-    <ThemedView>
-    {
-      new Array(40).fill(null).map((e, i) => <ThemedText key={i}>{i}</ThemedText>)
-    }
-    </ThemedView>
-  </Animated.ScrollView>
+: Platform.OS === 'web' && showContent && 
+<ThemedView style={[cardStyles.scrollContainer]}>
+<ThemedView style={cardStyles.panContainer}>
+              <ThemedView style={cardStyles.panIndicator}></ThemedView>
+            </ThemedView>
+  <Animated.ScrollView 
+      showsVerticalScrollIndicator={false}
+      scrollEventThrottle={69}
+      onScroll={scrollHandler}
+      scrollEnabled={false}
+      ref={scrollRef}
+      contentContainerStyle={{alignItems: 'center', justifyContent: 'center'}}
+      style={scrollAnimatedStyle}>
+      <ThemedView>
+      {
+        new Array(40).fill(null).map((e, i) => <ThemedText key={i}>{i}</ThemedText>)
+      }
+      </ThemedView>
+    </Animated.ScrollView>
+</ThemedView>
+
+
       }
       </Animated.View>
 
@@ -464,7 +607,7 @@ const cardStyles = StyleSheet.create({
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
   },
   panIndicator: {
-    width: 50,
+    width: 60,
     height: 6,
     borderRadius: 40,
     alignItems: 'center',
@@ -472,5 +615,13 @@ const cardStyles = StyleSheet.create({
     top: 10,
     backgroundColor: Colors.light.skeleton,
     marginInline: 'auto'
+  },
+  itemInfo: {
+    padding: 16,
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+    backgroundColor: Colors.light.background,
+    borderRadius: 20,
+    width: '100%',
+    marginBottom: 30,
   }
 })
