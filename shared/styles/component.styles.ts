@@ -260,6 +260,7 @@ export const DetailStyles = StyleSheet.create({
     width: 315,
     height: 443.6,
     aspectRatio: 0.71,
+    zIndex: 10
     
   },
   bottomContainer: {
@@ -268,7 +269,8 @@ export const DetailStyles = StyleSheet.create({
     left: 0,
     right: 0,
     alignItems: 'center',
-    flex: 1
+    flex: 1,
+    zIndex: 1000
   },
 });
 
