@@ -12,7 +12,8 @@ export default class Storage {
     'version',
     'music_volume',
     'sound_volume',
-    'show_intro'
+    'show_intro',
+    'favorites'
   ];
 
   public static async set(key: string, value: any): Promise<void> {
@@ -46,5 +47,29 @@ export default class Storage {
     }
 
     return settings as SettingsState;
+  }
+
+  public static async setFavorite(id: number): Promise<any | null> {
+    try {
+      const favorites: number[] = await this.get('favorites');
+      if (favorites !== null) {
+        const value = Array.from(new Set([...favorites, id]));
+        this.set('favorites', value);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  public static async removeFavorite(id: number): Promise<any | null> {
+    try {
+      const favorites: number[] = await this.get('favorites');
+      if (favorites !== null) {
+        const value = favorites.filter(f => f !== id);
+        this.set('favorites', value);
+      }
+    } catch (e) {
+      console.log(e);
+    }
   }
 }

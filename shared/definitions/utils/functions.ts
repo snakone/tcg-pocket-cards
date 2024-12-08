@@ -30,8 +30,20 @@ export function sortCards(field: keyof Card, data: Card[], sort: SortItem): Card
   });
 }
 
-export function filterCards(filter: FilterSearch, data: Card[]): Card[] {
+export function filterCards(filter: FilterSearch, data: Card[], favorites: number[]): Card[] {
   return data.filter(card => {
+    if (
+      filter.favorite.included !== null &&
+      !favorites?.includes(card.id) &&
+      filter.favorite.included != filter.favorite.not_favorite
+    ) return false;
+
+    if (
+      filter.favorite.not_favorite !== null &&
+      favorites?.includes(card.id) && 
+      filter.favorite.not_favorite != filter.favorite.included
+    ) return false;
+
     if (
       filter.ability.with_ability !== null &&
       filter.ability.with_ability !== !!card.ability &&

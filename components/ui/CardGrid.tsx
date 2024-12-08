@@ -154,7 +154,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
 
   function manageFilter(data: Card[]): Card[] {
     const filter = state.filterState.filter;
-    return filterCards(filter, data);
+    return filterCards(filter, data, state.settingsState.favorites);
   }
 
   const RenderFooter = () => {
@@ -204,10 +204,13 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
     <Animated.View key={item.id} style={[
         CardGridStyles.imageContainer, 
         item.id === selected && animatedStyle, 
-        isGrid5 && {marginHorizontal: 1, marginVertical: 1}
+        {marginHorizontal: 1, marginVertical: 1}
       ]}>
       <Pressable disabled={state.cardState.navigating} 
-                 onPress={() => goToDetailScreen(item.id)} style={{ zIndex: 1 }}>
+                 onPress={() => goToDetailScreen(item.id)} style={{ zIndex: 1, position: 'relative' }}>
+          { state.settingsState.favorites?.includes(item.id) && 
+            <ThemedView style={CardGridStyles.triangle}></ThemedView>
+          }
           <Image accessibilityLabel={item.name} 
                  style={[
             CardGridStyles.image, 
@@ -321,7 +324,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                                    inputMode='text'
                                   />
                               {searchQuery.length > 0 && <ResetFilterButton/>}
-                        <ThemedView style={[{flexDirection: 'row', alignItems: 'center', marginRight: 4}, Platform.OS === 'web' ? null : {marginRight: 2}]}>
+                        <ThemedView style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && {marginRight: 2}]}>
                           <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
                                   color={'white'}
                                   onValueChange={toggleSwitch}
@@ -330,7 +333,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                                   disabled={filtered.length <= 3}
                           />
                           <MaterialIcons name="library-books" 
-                                         style={{fontSize: 24, marginLeft: 16}} 
+                                         style={{fontSize: 24, marginLeft: 16, left: -4}} 
                                          color={Colors.light.skeleton}>
                           </MaterialIcons>
                           <ThemedText style={CardGridStyles.totalCards}>{filtered.length}</ThemedText>                    

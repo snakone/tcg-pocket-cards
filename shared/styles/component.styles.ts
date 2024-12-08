@@ -13,7 +13,7 @@ import { Colors } from '../definitions/utils/colors';
 
 export const HEADER_HEIGHT = 100;
 export const HEADER_MIN_HEIGHT = 40;
-export const CARD_IMAGE_WIDTH_3 = 114.5;
+export const CARD_IMAGE_WIDTH_3 = 116.5;
 export const CARD_IMAGE_WIDTH_5 = 69.1;
 
 export const ThemeTextStyles = StyleSheet.create({
@@ -150,10 +150,30 @@ export const CardGridStyles = StyleSheet.create({
     marginLeft: 8,
     fontSize: 14,
     minWidth: 24,
-    textAlign: 'right',
+    left: 0,
     position: 'relative',
     top: -1,
-    marginRight: Platform.OS === 'web' ? 0 : 4
+    marginRight: Platform.OS === 'web' ? 0 : 4,
+    fontWeight: 600
+  },
+  triangle: {
+    width: 0,
+    height: 0,
+    borderStyle: 'solid',
+    borderLeftWidth: 0,
+    borderRightWidth: 15,
+    borderBottomWidth: 15,
+    borderRightColor: 'transparent',
+    borderBottomColor: 'darkorange',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    zIndex: 10
+  },
+  actionsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 4
   }
 });
 
@@ -782,5 +802,70 @@ export const sortStyles = StyleSheet.create({
   diamond: {
     position: 'relative',
     top: 1
+  }
+});
+
+export const cardDetailStyles = StyleSheet.create({
+  card: {
+    boxShadow: '8px 12px 12px 2px rgba(0, 0, 0, 0.2)',
+    borderRadius: 20
+  },
+  favoriteContainer: {
+    position: 'absolute',
+    right: 29,
+    top: 22,
+    bottom: 0,
+    padding: 2
+  },
+  favoriteIcon: {
+    fontSize: 32,
+    width: 30,
+    height: 30,
+    color: Colors.light.icon,
+    textShadowColor: 'rgba(0, 0, 0, 0.2)',
+    textShadowOffset: {height: 2, width: 2},
+    textShadowRadius: 4 
+  },
+  scrollContainer: {
+    width: '100%',  
+    backgroundColor: 'white', 
+    position: 'absolute', 
+    bottom: 0, 
+    touchAction: 'none', 
+    borderTopLeftRadius: 60, 
+    borderTopRightRadius: 60,
+  },
+  panContainer: {
+    borderTopLeftRadius: 60, 
+    borderTopRightRadius: 60,
+    height: 50,
+    backgroundColor: Colors.light.background,
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+    zIndex: 150
+  },
+  panIndicator: {
+    width: 60,
+    height: 6,
+    borderRadius: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 10,
+    backgroundColor: Colors.light.skeleton,
+    marginInline: 'auto'
+  },
+  itemInfo: {
+    padding: 16,
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+    backgroundColor: Colors.light.background,
+    borderRadius: 20,
+    width: '100%',
+    marginBottom: 30,
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0
   }
 });
