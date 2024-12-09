@@ -11,7 +11,9 @@ import
   withTiming 
 } from "react-native-reanimated";
 
-import { useContext, useEffect, useRef, useState } from "react";
+import { Vibration } from 'react-native';
+
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLocalSearchParams, useRouter } from 'expo-router/build/hooks';
 import { Image } from 'expo-image';
 import { Platform, Pressable, TouchableOpacity, View } from "react-native";
@@ -36,6 +38,10 @@ import SoundService from "@/core/services/sounds.service";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import DetailCardScroll from "@/components/dedicated/detail/detail.scroll";
 import Storage from "@/core/storage/storage.service";
+import CardsService from "@/core/services/cards.service";
+import { Subscription } from "rxjs";
+import { useError } from "@/core/providers/ErrorProvider";
+import LoadingOverlay from "@/components/ui/LoadingOverlay";
 
 const INITIAL_INFO_HEIGHT = 100;
 const MAX_HEIGHT = 450;
@@ -46,6 +52,7 @@ export default function DetailScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
+  const cardsService = useMemo(() => new CardsService(), []);
   const styles = DetailStyles;
   const router = useRouter();
   const navigation = useNavigation();
@@ -65,6 +72,37 @@ export default function DetailScreen() {
   const scrollRef = useRef<Animated.ScrollView>(null);
   const scrollYAndroid = useSharedValue(0);
   const [card, setCard] = useState<Card>();
+  const [loading, setLoading] = useState(true);
+  const { show: showError } = useError();
+
+  const loadCards = useCallback(() => {
+    const sub = cardsService
+      .getCards()
+      .subscribe({
+        next: (res) => {
+          dispatch({ type: 'SET_CARDS', cards: res });
+          setLoading(false);
+        },
+        error: (err) => {
+          console.log(err);
+          showError("error_get_cards");
+          setLoading(false);
+        }
+      });
+
+      return sub;
+  }, [dispatch]);
+  
+  useEffect(() => {
+    let sub: Subscription;
+    !state.cardState.loaded ? sub = loadCards() : setLoading(false);
+
+    return () => {
+      if (sub) {
+        sub.unsubscribe();
+      }
+    };
+  }, []);
   
   useEffect(() => {
     if (Platform.OS === 'web') return;
@@ -79,7 +117,7 @@ export default function DetailScreen() {
 
   useEffect(() => {
     setCard(state.cardState.cards.find(card => card.id === Number(id)));
-  }, [])
+  }, [state.cardState.loaded])
 
   const playSound = async () => {
     SoundService.play('AUDIO_MENU_CLOSE');
@@ -379,6 +417,7 @@ export default function DetailScreen() {
 
   return (
     <Animated.View style={styles.container}>
+       { loading && <LoadingOverlay/> }
       { showContent && <RenderFavoriteToggle></RenderFavoriteToggle>}
       { isSwiping && <ThemedView style={cardDetailStyles.overlay}>
                       <Pressable style={{flex: 1, width: '100%'}} 

@@ -1,5 +1,5 @@
 import { CardExpansionENUM, CardExpansionTypeENUM, CardRarityENUM, CardStageENUM } from "../definitions/enums/card.enums";
-import { EVENTS, EXPANSION } from "../definitions/enums/packs.enums";
+import { EXPANSION } from "../definitions/enums/packs.enums";
 import { PokemonTypeENUM } from "../definitions/enums/pokemon.enums";
 import { Card } from "../definitions/interfaces/card.interfaces";
 

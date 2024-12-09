@@ -14,6 +14,7 @@ import { useError } from '@/core/providers/ErrorProvider';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { Colors } from '@/shared/definitions/utils/colors';
 import SoundService from '@/core/services/sounds.service';
+import { CardsScreenModal } from '@/components/modals/CardsScreenModal';
 
 export default function CardsScreen() {
   const context = useContext(AppContext);
@@ -67,7 +68,7 @@ export default function CardsScreen() {
         sub.unsubscribe();
       }
     };
-  }, [state.cardState.loaded]);
+  }, []);
 
   const fixFilterIcon = useCallback(() => {
     return [
@@ -89,7 +90,11 @@ export default function CardsScreen() {
   return (
     <>
       { loading && <LoadingOverlay/> }
-        <ImageGridWithSearch state={state} key={loading ? 'loading' : 'loaded'}/>
+        <ImageGridWithSearch state={state} 
+                             key={loading ? 'loading' : 'loaded'}
+                             modal={CardsScreenModal()}
+                             modalTitle='cards'
+                             title='card_collection'/>
       { loading ? null : state.cardState.cards?.length > 0 ? (
         <>
           <TouchableOpacity onPress={() => handleActionMenu('OPEN_SORT')} style={cardStyles.container}>

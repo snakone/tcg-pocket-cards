@@ -45,7 +45,7 @@ export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
 export const LIST: ItemWithRoute[] = [
   { label: 'decks', icon: 'wind', route: '' },
   { label: 'expansions', icon: 'note', route: '' },
-  { label: 'favorites', icon: 'star', route: '' },
+  { label: 'favorites', icon: 'star', route: 'favorites' },
 ];
 
 export const HELP: ItemWithRoute[] = [

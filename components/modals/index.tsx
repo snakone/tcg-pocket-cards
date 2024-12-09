@@ -5,3 +5,4 @@ export { ContactModal } from "@/components/modals/ContactModal";
 export { ThemedView } from "@/components/ThemedView";
 export { UserDataModal } from "@/components/modals/UserDataModal";
 export { CreditsModal } from "@/components/modals/CreditsModal";
+export { FavoritesModal } from "@/components/modals/FavoritesModal";

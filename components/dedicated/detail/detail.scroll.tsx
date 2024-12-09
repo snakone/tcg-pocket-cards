@@ -16,7 +16,6 @@ export default function DetailCardScroll({card}: {card: Card}) {
     <ThemedView style={{padding: 20, marginBottom: 65}}>
       <ThemedText style={styles.name}>{card.name}</ThemedText>
       <ThemedView style={styles.rarityContainer}>
-        
         {Array.from({ length: RARITY_MAP[card.rarity]?.amount }).map((_, i) => (
         <Image
           key={i}
@@ -26,7 +25,7 @@ export default function DetailCardScroll({card}: {card: Card}) {
       ))}
       </ThemedView>
 
-      { card.flavor && 
+      { !!card.flavor && 
         <ThemedView style={cardDetailStyles.itemInfo}>
           <ThemedText style={styles.text}>{card.flavor}</ThemedText>
         </ThemedView>
@@ -64,7 +63,7 @@ export default function DetailCardScroll({card}: {card: Card}) {
                   <ThemedText style={styles.attackName}>{att.name}</ThemedText>
                 </ThemedView>
 
-                <ThemedText style={styles.attackDamage}>{att.damage}</ThemedText>
+                { att.damage > 0 && <ThemedText style={styles.attackDamage}>{att.damage}</ThemedText>}
 
                 { att.description && 
                   <ThemedView style={{width: '100%', marginTop: 16}}>
@@ -116,7 +115,6 @@ export default function DetailCardScroll({card}: {card: Card}) {
         </ThemedView>
       </ThemedView>
 
-      
       <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
         <ThemedView style={styles.infoTitle}>
           <ThemedText style={styles.text}>{i18n.t('cost_of_retire')}</ThemedText>
@@ -216,7 +214,7 @@ const styles = StyleSheet.create({
   attackEnergy: {
     flexDirection: 'row',
     alignItems: 'center',
-    minWidth: 80
+    minWidth: 94
   },
   energy: {
     width: 18, 

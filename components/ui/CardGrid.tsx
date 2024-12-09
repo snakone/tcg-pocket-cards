@@ -53,9 +53,18 @@ import { AppContext } from '@/app/_layout';
 import { CARD_IMAGE_MAP } from '@/shared/definitions/utils/card.images';
 import SoundService from '@/core/services/sounds.service';
 
-export default function ImageGridWithSearch({ state }: { state: AppState }) {
+interface GridCardProps {
+  state: AppState,
+  title: string,
+  modal: JSX.Element,
+  modalTitle: string
+  type?: 'default' | 'favorites'
+}
+
+export default function ImageGridWithSearch({ state, title, modal, modalTitle, type = 'default' }: GridCardProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [filtered, setFiltered] = useState<Card[]>(state.cardState.cards);
+  const [favorites, setFavorites] = useState<Card[]>(state.cardState.cards.filter(c => state.settingsState.favorites.includes(c.id)));
   const [selected, setSelected] = useState<number>();
   const [footerVisible, setFooterVisible] = useState<boolean>(false);
   const flatListRef = useRef<FlatList<Card> | null>(null);
@@ -105,7 +114,7 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
     const sorted = filterOrSortCards('sort', filtered, state.filterState.sort.find(s => s.active));
     setFiltered(sorted);
     goUp(null, false);
-  }, [state.filterState.sort])
+  }, [state.filterState.sort]);
 
   useEffect(() => {
     if (!filtered) { return; }
@@ -124,9 +133,9 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
-    setFiltered(state.cardState.cards.filter(card =>
+    setFiltered((type === 'favorites' ? favorites : state.cardState.cards).filter(card =>
       card.name.toLowerCase().includes(text.toLowerCase())
-  ))}, [state.cardState.cards]);
+  ))}, [(type === 'favorites' ? favorites : state.cardState.cards)]);
 
   function filterOrSortCards(type: 'sort' | 'filter', data: Card[], sort?: SortItem | undefined): Card[] {
     switch (type) {
@@ -200,6 +209,15 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
     return renderCardState();
   };
 
+  useEffect(() => {
+    if (modalTitle !== 'favorites') return;
+    const favorites = state.cardState.cards.filter(
+      card => state.settingsState.favorites.includes(card.id)
+    );
+    setFiltered(favorites);
+    setFavorites(favorites);
+  }, [state.settingsState.favorites]);
+
   const renderItem = useCallback(({ item }: { item: Card }) => (
     <Animated.View key={item.id} style={[
         CardGridStyles.imageContainer, 
@@ -272,9 +290,9 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
     <ThemedView style={ParallaxStyles.container}>
       <SafeAreaView style={{flex: 1}}>
         <Animated.View style={[ParallaxStyles.header, animatedHeaderStyle]}>
-          <HeaderWithCustomModal title={"card_collection"} 
-                                 modalContent={CardsScreenModal()} 
-                                 modalTitle={"cards"} 
+          <HeaderWithCustomModal title={title} 
+                                 modalContent={modal} 
+                                 modalTitle={modalTitle} 
                                  animatedStyle={animatedTitleStyle}
                                  animatedIconStyle={animatedIconStyle}
                                  modalHeight={MIN_MODAL_HEIGHT}/>
@@ -299,8 +317,8 @@ export default function ImageGridWithSearch({ state }: { state: AppState }) {
                 onEndReached={() => setFooterVisible(true)}
                 onEndReachedThreshold={0.6}
                 scrollEnabled={state.cardState.loaded}
-                initialNumToRender={5}
-                maxToRenderPerBatch={isGrid5 ? 25 : 12}
+                initialNumToRender={isGrid5 ? 5 : 3}
+                maxToRenderPerBatch={isGrid5 ? 35 : 12}
                 windowSize={isGrid5 ? 4 : 6}
                 keyboardDismissMode={'on-drag'}
                 contentContainerStyle={CardGridStyles.gridContainer}

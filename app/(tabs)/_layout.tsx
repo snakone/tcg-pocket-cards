@@ -182,6 +182,17 @@ export default function TabLayout() {
             title: 'Profile'
           }}
         />
+        <Tabs.Screen
+          name="favorites"
+          options={{
+            animation: 'shift',
+            tabBarItemStyle: {
+              display: 'none'
+            },
+            tabBarButton: () => null,
+            title: 'Favorites'
+          }}
+        />
       </Tabs>
       <Portal>{isMenuVisible && memoizedMenu}</Portal>
       <Portal>{isSortVisible && memoizedSort}</Portal>
