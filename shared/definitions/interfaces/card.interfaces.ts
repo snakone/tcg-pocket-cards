@@ -1,4 +1,4 @@
-import { PACKS } from "../enums/packs.enums";
+import { PACKS_TYPE } from "../enums/packs.enums";
 import { CardExpansionENUM, CardExpansionTypeENUM, CardRarityENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 
@@ -25,7 +25,7 @@ export interface Card extends UsableCard {
   flavor: string;
   attacks?: Attack[],
   ability?: Ability;
-  found?: PACKS[];
+  found?: PACKS_TYPE[];
   pokedex: number | -1;
   series?: CardExpansionTypeENUM;
   related?: number[];
@@ -43,5 +43,13 @@ interface Attack {
 interface Ability {
   name: string;
   description: string;
+}
+
+export interface CardPackTag {
+  label: string, 
+  tag: string, 
+  color: string, 
+  background: string,
+  amount: string;
 }
 

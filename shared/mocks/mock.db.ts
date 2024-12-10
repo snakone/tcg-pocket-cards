@@ -31,7 +31,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
-    related: [2, 3, 4],
+    related: [2, 3, 4, 227, 251, 303, 308],
   },
   {
     id: 2,
@@ -8130,7 +8130,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
-    found: [],
+    found: [
+      EXPANSION.SPECIAL_MISSION
+    ],
+    extra: 'Obtained from a Special Mission'
   },
   {
     id: 284,
@@ -8245,7 +8248,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: 'Heal 20 damage from 1 of your Pokémon.',
     rarity: CardRarityENUM.COMMON,
     stage: CardStageENUM.ITEM,
-    extra: 'PROMO-A - Obtained from the shop',
+    extra: 'Obtained from the shop',
     element: -1,
     pokedex: -1,
     health: -1,
@@ -8261,7 +8264,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: 'During this turn, the Retreat Cost of your Active Pokémon is 1 less.',
     rarity: CardRarityENUM.COMMON,
     stage: CardStageENUM.ITEM,
-    extra: 'PROMO-A - Obtained from the shop',
+    extra: 'Obtained from the shop',
     element: -1,
     pokedex: -1,
     health: -1,
@@ -8277,7 +8280,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: 'Your opponent reveals their hand.',
     rarity: CardRarityENUM.COMMON,
     stage: CardStageENUM.ITEM,
-    extra: 'PROMO-A - Obtained from the shop',
+    extra: 'Obtained from the shop',
     element: -1,
     pokedex: -1,
     health: -1,
@@ -8293,7 +8296,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: 'Look at the top 3 cards of your deck.',
     rarity: CardRarityENUM.COMMON,
     stage: CardStageENUM.ITEM,
-    extra: 'PROMO-A - Obtained from the shop',
+    extra: 'Obtained from the shop',
     element: -1,
     pokedex: -1,
     health: -1,
@@ -8309,7 +8312,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: 'Put 1 random Basic Pokémon from your deck into your hand.',
     rarity: CardRarityENUM.COMMON,
     stage: CardStageENUM.ITEM,
-    extra: 'PROMO-A - Obtained from the shop',
+    extra: 'Obtained from the shop',
     element: -1,
     pokedex: -1,
     health: -1,
@@ -8325,7 +8328,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: 'Your opponent shuffles their hand into their deck and draws 3 cards.',
     rarity: CardRarityENUM.COMMON,
     stage: CardStageENUM.ITEM,
-    extra: 'PROMO-A - Obtained from the shop',
+    extra: 'Obtained from the shop',
     element: -1,
     pokedex: -1,
     health: -1,
@@ -8341,7 +8344,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: 'Draw 2 cards.',
     rarity: CardRarityENUM.COMMON,
     stage: CardStageENUM.ITEM,
-    extra: 'PROMO-A - Obtained from the shop',
+    extra: 'Obtained from the shop',
     element: -1,
     pokedex: -1,
     health: -1,
@@ -8374,7 +8377,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PREMIUM
     ],
-    extra: 'PROMO-A - Obtained from Premium Pass'
+    extra: 'Obtained from Premium Pass'
   },
   {
     id: 295,
@@ -8404,7 +8407,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PREMIUM
     ],
-    extra: 'PROMO-A - Obtained from Premium Pass'
+    extra: 'Obtained from Premium Pass'
   },
   {
     id: 296,
@@ -8433,7 +8436,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK
     ],
-    extra: 'PROMO-A - Obtained from a Wonder Pick'
+    extra: 'Obtained from a Wonder Pick'
   },
   {
     id: 297,
@@ -8463,7 +8466,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK
     ],
-    extra: 'PROMO-A - Obtained from a Wonder Pick'
+    extra: 'Obtained from a Wonder Pick'
   },
   {
     id: 298,
@@ -8496,7 +8499,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A1
     ],
-    extra: 'PROMO-A - Obtained from a Promo Pack'
+    extra: 'Obtained from a Promo Pack'
   },
   {
     id: 299,
@@ -8526,7 +8529,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A1
     ],
-    extra: 'PROMO-A - Obtained from a Promo Pack'
+    extra: 'Obtained from a Promo Pack'
   },
   {
     id: 300,
@@ -8555,7 +8558,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A1,
     ],
-    extra: 'PROMO-A - Obtained from a Promo Pack'
+    extra: 'Obtained from a Promo Pack'
   },
   {
     id: 301,
@@ -8584,7 +8587,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A1,
     ],
-    extra: 'PROMO-A - Obtained from a Promo Pack'
+    extra: 'Obtained from a Promo Pack'
   },
   {
     id: 302,
@@ -8614,7 +8617,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A1,
     ],
-    extra: 'PROMO-A - Obtained from a Promo Pack'
+    extra: 'Obtained from a Promo Pack'
   },
   {
     id: 303,
@@ -8644,7 +8647,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A2
     ],
-    extra: 'PROMO-A - Obtained from a Promo Pack'
+    extra: 'Obtained from a Promo Pack'
   },
   {
     id: 304,
@@ -8677,7 +8680,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A2
     ],
-    extra: 'PROMO-A - Obtained from a Promo Pack'
+    extra: 'Obtained from a Promo Pack'
   },
   {
     id: 305,
@@ -8707,7 +8710,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A2,
     ],
-    extra: 'PROMO-A - Obtained from a Promo Pack'
+    extra: 'Obtained from a Promo Pack'
   },
   {
     id: 306,
@@ -8736,7 +8739,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A2,
     ],
-    extra: 'PROMO-A - Obtained from a Promo Pack'
+    extra: 'Obtained from a Promo Pack'
   },
   {
     id: 307,
@@ -8766,7 +8769,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A2
     ],
-    extra: 'PROMO-A - Obtained from a Promo Pack',
+    extra: 'Obtained from a Promo Pack',
   },
   {
     id: 308,
@@ -8795,7 +8798,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK
     ],
-    extra: 'PROMO-A - Obtained from a Wonder Pick'
+    extra: 'Obtained from a Wonder Pick'
   },
   {
     id: 309,
@@ -8824,7 +8827,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK,
     ],
-    extra: 'PROMO-A - Obtained from a Wonder Pick'
+    extra: 'Obtained from a Wonder Pick'
   },
 ];
 

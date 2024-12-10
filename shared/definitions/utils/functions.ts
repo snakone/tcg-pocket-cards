@@ -4,6 +4,9 @@ import { NavigationProp } from "@react-navigation/native";
 import { FilterSearch } from "../classes/filter.class";
 import { Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
+import { CardExpansionENUM } from "../enums/card.enums";
+import { GENETIC_APEX, PROMO_A_ICON } from "../sentences/path.sentences";
+import { PACK_MAP } from "./contants";
 
 export function sortCards(field: keyof Card, data: Card[], sort: SortItem): Card[] {
   return [...data].sort((a, b) => {
@@ -159,4 +162,32 @@ export function isRouteComingFromSettings(
          state.routes && 
          state.routes[1]?.params && 
          (state.routes[1].params as any).show === 'true';
+}
+
+export function getCardPackFrom(card: Card): {image: any, width: number, height: number} | undefined {
+  if (card.expansion === CardExpansionENUM.GENETIC_APEX) {
+    if (card.found?.length === 3 || card.name === 'Mew') {
+      return {image: GENETIC_APEX, width: 68, height: 30};
+    } else if (card.found !== undefined) {
+      return {image: PACK_MAP[card.found[0]], width: 60, height: 45};
+    }
+  } else if (card.expansion === CardExpansionENUM.PROMO_A) {
+    return {image: PROMO_A_ICON, width: 74, height: 40};
+  }
+}
+
+export function isNotBattleCard(card: Card): boolean {
+  return card.pokedex === -1 || card.element === -1;
+}
+
+export function isCardPromo(card: Card): boolean {
+  return card.expansion === CardExpansionENUM.PROMO_A;
+}
+
+export function isCardPromoAndNoBattle(card: Card): boolean {
+  return isNotBattleCard(card) && card.expansion === CardExpansionENUM.PROMO_A;
+}
+
+export function isCardPromoAndBattle(card: Card): boolean {
+  return !isNotBattleCard(card) && card.expansion === CardExpansionENUM.PROMO_A;
 }

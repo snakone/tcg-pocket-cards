@@ -867,5 +867,17 @@ export const cardDetailStyles = StyleSheet.create({
     bottom: 0,
     right: 0,
     left: 0
+  },
+  expansionContainer: {
+    position: 'relative',
+    width: '40%',
+    height: 60,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  expansionTag: {
+    borderRadius: 4,
+    paddingVertical: 2,
+    paddingHorizontal: 16
   }
 });

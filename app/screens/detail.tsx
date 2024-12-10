@@ -11,14 +11,13 @@ import
   withTiming 
 } from "react-native-reanimated";
 
-import { Vibration } from 'react-native';
-
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLocalSearchParams, useRouter } from 'expo-router/build/hooks';
 import { Image } from 'expo-image';
 import { Platform, Pressable, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
+import { Subscription } from "rxjs";
 
 import { 
   Gesture,
@@ -39,9 +38,9 @@ import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import DetailCardScroll from "@/components/dedicated/detail/detail.scroll";
 import Storage from "@/core/storage/storage.service";
 import CardsService from "@/core/services/cards.service";
-import { Subscription } from "rxjs";
 import { useError } from "@/core/providers/ErrorProvider";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
+import ScrollService from "@/core/services/scroll.service";
 
 const INITIAL_INFO_HEIGHT = 100;
 const MAX_HEIGHT = 450;
@@ -53,6 +52,7 @@ export default function DetailScreen() {
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
   const cardsService = useMemo(() => new CardsService(), []);
+  const scrollService = useMemo(() => new ScrollService(), []);
   const styles = DetailStyles;
   const router = useRouter();
   const navigation = useNavigation();
@@ -97,6 +97,24 @@ export default function DetailScreen() {
     let sub: Subscription;
     !state.cardState.loaded ? sub = loadCards() : setLoading(false);
 
+    return () => {
+      if (sub) {
+        sub.unsubscribe();
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (Platform.OS !== 'web') return;
+    let sub: Subscription;
+    scrollService.isReLatedCardScrollAtBegin$
+      .subscribe(res => {
+      if (!res) {
+        window.removeEventListener('wheel', handleWheel);
+      } else {
+        window.addEventListener('wheel', handleWheel);
+      }
+    });
     return () => {
       if (sub) {
         sub.unsubscribe();
@@ -249,7 +267,7 @@ export default function DetailScreen() {
     scrollY.value = event.contentOffset.y;
   });
 
-  const handleWheel = (event: any) => {
+  const handleWheel = (event: WheelEvent) => {
     const deltaY = event.deltaY * 0.5;
 
     if (isAtMaxHeight.value) {
@@ -258,7 +276,7 @@ export default function DetailScreen() {
         height.value = Math.max(height.value + deltaY, INITIAL_INFO_HEIGHT);
       } else {
         if (scrollRef.current) {
-          scrollY.value = Math.min(scrollY.value + deltaY, 500); 
+          scrollY.value = Math.min(scrollY.value + deltaY, 720); 
           // Change depending on the Scroll content height
           scrollRef.current.scrollTo({ y: scrollY.value, animated: false });
         }
@@ -473,7 +491,7 @@ export default function DetailScreen() {
               bounces={false}
               contentContainerStyle={{alignItems: 'center', justifyContent: 'center'}}
               style={[scrollAndroidAnimatedStyle]}>
-              <DetailCardScroll card={card}></DetailCardScroll>
+              <DetailCardScroll card={card} state={state}></DetailCardScroll>
             </Animated.ScrollView>
           </ThemedView> : 
         Platform.OS === 'web' && showContent && card &&
@@ -489,7 +507,7 @@ export default function DetailScreen() {
                 ref={scrollRef}
                 contentContainerStyle={{alignItems: 'center', justifyContent: 'center'}}
                 style={scrollAnimatedStyle}>
-              <DetailCardScroll card={card}></DetailCardScroll>
+              <DetailCardScroll card={card} state={state} scrollService={scrollService}></DetailCardScroll>
             </Animated.ScrollView>
           </ThemedView>
       }

@@ -7,13 +7,32 @@ import { useI18n } from "@/core/providers/LanguageProvider";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { cardDetailStyles } from "@/shared/styles/component.styles";
-import { RARITY_MAP, TYPE_MAP, STAGE_MAP, SERIES_MAP } from "@/shared/definitions/utils/contants";
+import { RARITY_MAP, TYPE_MAP, STAGE_MAP, EXPANSION_MAP, PACK_AMOUNT_MAP } from "@/shared/definitions/utils/contants";
+import { getCardPackFrom, isCardPromo, isCardPromoAndBattle, isCardPromoAndNoBattle, isNotBattleCard } from '@/shared/definitions/utils/functions';
+import DetailRelatedCards from './detail.related.cards';
+import { AppState } from '@/hooks/root.reducer';
+import ScrollService from '@/core/services/scroll.service';
 
-export default function DetailCardScroll({card}: {card: Card}) {
+export default function DetailCardScroll({card, state, scrollService}: {card: Card, state: AppState, scrollService?: ScrollService}) {
   const {i18n} = useI18n();
 
+  const expansionImage = (card: Card) => {
+    const data = getCardPackFrom(card);
+    if (data) {
+      const {width, height, image} = data;
+
+      return (
+        <Image source={image} style={{
+          width, 
+          height,
+          overflow: 'visible'
+        }}></Image>
+      )
+    }
+  }
+
   return (
-    <ThemedView style={{padding: 20, marginBottom: 65}}>
+    <ThemedView style={{padding: 20, marginBottom: 65, width: '100%'}}>
       <ThemedText style={styles.name}>{card.name}</ThemedText>
       <ThemedView style={styles.rarityContainer}>
         {Array.from({ length: RARITY_MAP[card.rarity]?.amount }).map((_, i) => (
@@ -32,99 +51,187 @@ export default function DetailCardScroll({card}: {card: Card}) {
       }
 
       <ThemedView style={[cardDetailStyles.itemInfo, styles.artistContainer]}>
-        <ThemedView style={styles.artistLeft}>
-          <ThemedText style={styles.text}>{i18n.t('illustration')}</ThemedText>
+        <ThemedView style={cardDetailStyles.expansionContainer}>
+          {expansionImage(card)}
         </ThemedView>
-        <ThemedView style={styles.artistRight}>
-          <ThemedText style={styles.text}>{card.artist}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-
-      <ThemedView style={[cardDetailStyles.itemInfo, {padding: 0, overflow: 'hidden'}]}>
-        <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
-          <ThemedText style={styles.textWhite}>{i18n.t('attacks')}</ThemedText>
-        </ThemedView>
-
-        <ThemedView style={{padding: 16}}>
-          {
-            card.attacks?.map((att, i) => (
-              <ThemedView key={i} style={[
-                styles.attackContainer, 
-                i !== (card.attacks!.length - 1) && {marginBottom: 20}
-              ]}>
-                <ThemedView style={styles.attackItem}>
-                  <ThemedView style={styles.attackEnergy}>
-                    {
-                      att.energy.map((energy, j) => (
-                        <Image key={j} source={TYPE_MAP[energy].image} style={styles.energy}></Image>
-                      ))
-                    }
-                  </ThemedView>
-                  <ThemedText style={styles.attackName}>{att.name}</ThemedText>
-                </ThemedView>
-
-                { att.damage > 0 && <ThemedText style={styles.attackDamage}>{att.damage}</ThemedText>}
-
-                { att.description && 
-                  <ThemedView style={{width: '100%', marginTop: 16}}>
-                    <ThemedText style={{fontSize: 12}}>{att.description}</ThemedText>
-                  </ThemedView>
-                }
-              </ThemedView>
-            ))
-          }
-        </ThemedView>
-      </ThemedView>
-
-      <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
-        <ThemedView style={styles.infoTitle}>
-          <ThemedText style={styles.text}>{i18n.t('pokemon')}</ThemedText>
-        </ThemedView>
-        <ThemedView style={styles.infoValue}>
-          <ThemedText style={styles.text}>{i18n.t(STAGE_MAP[card.stage].label)}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-
-      <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
-        <ThemedView style={styles.infoTitle}>
-          <ThemedText style={styles.text}>{i18n.t('type')}</ThemedText>
-        </ThemedView>
-        <ThemedView style={[styles.infoValue, {justifyContent: 'center', alignItems: 'center'}]}>
-          <Image source={TYPE_MAP[card.element].image} style={styles.element}></Image>
-        </ThemedView>
-      </ThemedView>
-
-      <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
-        <ThemedView style={styles.infoTitle}>
-          <ThemedText style={styles.text}>{i18n.t('PS')}</ThemedText>
-        </ThemedView>
-        <ThemedView style={styles.infoValue}>
-          <ThemedText style={styles.text}>{card.health}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-
-      <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
-        <ThemedView style={styles.infoTitle}>
-          <ThemedText style={styles.text}>{i18n.t('weak')}</ThemedText>
-        </ThemedView>
-        <ThemedView style={[styles.infoValue, {justifyContent: 'center', alignItems: 'center'}]}>
-          <ThemedView style={{flexDirection: 'row', gap: 2, position: 'relative'}}>
-            <Image source={card.weak && TYPE_MAP[card.weak].image} style={styles.element}></Image>
-            <ThemedText style={[styles.text, {top: 1, position: 'absolute', left: 25}]}>+20</ThemedText>
+        <ThemedView style={[styles.infoValue, {alignItems: 'center', justifyContent: 'center'}]}>
+          <ThemedView style={{flexDirection: 'row', gap: 16, alignItems: 'center', justifyContent: 'center'}}>
+            {
+              card.expansion !== undefined &&
+              <>
+                <ThemedView style={[{backgroundColor: EXPANSION_MAP[card.expansion].background}, cardDetailStyles.expansionTag]}>
+                  <ThemedText style={{color: EXPANSION_MAP[card.expansion].color, fontWeight: 'bold'}}>
+                    { card.series !== undefined && EXPANSION_MAP[card.expansion].tag}
+                  </ThemedText>
+                </ThemedView> 
+                <ThemedText style={{fontWeight: 600}}>{card.number} / {
+                  isCardPromo(card) ? EXPANSION_MAP[card.expansion].amount : PACK_AMOUNT_MAP[card.expansion]
+                }</ThemedText>            
+              </>
+            }
           </ThemedView>
         </ThemedView>
       </ThemedView>
 
-      <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
+      {
+        <>
+        { 
+          isCardPromoAndBattle(card) && 
+          <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
+            <ThemedView style={styles.infoTitle}>
+              <ThemedText style={styles.text}>{i18n.t('promo')}</ThemedText>
+            </ThemedView>
+            <ThemedView style={styles.infoValue}>
+              <ThemedText style={styles.text}>{EXPANSION_MAP[card.expansion].tag}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+        }
+        {
+          (Boolean(card.extra) || card.name === 'Mew') &&
+          <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
+            <ThemedView style={styles.infoTitle}>
+              <ThemedText style={styles.text}>{i18n.t('how_to_obtain')}</ThemedText>
+            </ThemedView>
+            <ThemedView style={styles.infoValue}>
+              <ThemedText style={styles.text}>{card.extra}</ThemedText>
+            </ThemedView>
+          </ThemedView> 
+        }
+        </>
+      }
+
+      <ThemedView style={[cardDetailStyles.itemInfo, styles.artistContainer]}>
         <ThemedView style={styles.infoTitle}>
-          <ThemedText style={styles.text}>{i18n.t('cost_of_retire')}</ThemedText>
+          <ThemedText style={styles.text}>{i18n.t('illustration')}</ThemedText>
         </ThemedView>
-        <ThemedView style={styles.retireContainer}>
-          {Array.from({ length: card.retreat }).map((_, i) => (
-            <Image key={i} source={TYPE_MAP[9].image} style={styles.element}></Image>
-          ))}
+        <ThemedView style={styles.infoValue}>
+          <ThemedText style={styles.text}>{card.artist}</ThemedText>
         </ThemedView>
       </ThemedView>
+
+      { card.attacks && card.attacks?.length > 0 && 
+        <ThemedView style={[cardDetailStyles.itemInfo, {padding: 0, overflow: 'hidden'}]}>
+          <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
+            <ThemedText style={styles.textWhite}>{i18n.t('attacks')}</ThemedText>
+          </ThemedView>
+
+          <ThemedView style={{padding: 16}}>
+            {
+              card.attacks?.map((att, i) => (
+                <ThemedView key={i} style={[
+                  styles.attackContainer, 
+                  i !== (card.attacks!.length - 1) && {marginBottom: 20}
+                ]}>
+                  <ThemedView style={styles.attackItem}>
+                    <ThemedView style={styles.attackEnergy}>
+                      {
+                        att.energy.map((energy, j) => (
+                          <Image key={j} source={TYPE_MAP[energy].image} style={styles.energy}></Image>
+                        ))
+                      }
+                    </ThemedView>
+                    <ThemedText style={styles.attackName}>{att.name}</ThemedText>
+                  </ThemedView>
+
+                  { att.damage > 0 && <ThemedText style={styles.attackDamage}>{att.damage}</ThemedText>}
+
+                  { att.description && 
+                    <ThemedView style={{width: '100%', marginTop: 16}}>
+                      <ThemedText style={{fontSize: 12}}>{att.description}</ThemedText>
+                    </ThemedView>
+                  }
+                </ThemedView>
+              ))
+            }
+          </ThemedView>
+        </ThemedView>
+      }
+
+      { !isNotBattleCard(card) ? 
+        <> 
+          <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
+                <ThemedView style={styles.infoTitle}>
+                  <ThemedText style={styles.text}>{i18n.t('pokemon')}</ThemedText>
+                </ThemedView>
+                <ThemedView style={styles.infoValue}>
+                  <ThemedText style={styles.text}>{i18n.t(STAGE_MAP[card.stage].label)}</ThemedText>
+                </ThemedView>
+          </ThemedView>
+
+          <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
+            <ThemedView style={styles.infoTitle}>
+              <ThemedText style={styles.text}>{i18n.t('type')}</ThemedText>
+            </ThemedView>
+            <ThemedView style={[styles.infoValue, {justifyContent: 'center', alignItems: 'center'}]}>
+              <Image source={TYPE_MAP[card.element].image} style={styles.element}></Image>
+            </ThemedView>
+          </ThemedView>
+
+          <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
+            <ThemedView style={styles.infoTitle}>
+              <ThemedText style={styles.text}>{i18n.t('PS')}</ThemedText>
+            </ThemedView>
+            <ThemedView style={styles.infoValue}>
+              <ThemedText style={styles.text}>{card.health}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+
+          <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
+            <ThemedView style={styles.infoTitle}>
+              <ThemedText style={styles.text}>{i18n.t('weak')}</ThemedText>
+            </ThemedView>
+            <ThemedView style={[styles.infoValue, {justifyContent: 'center', alignItems: 'center'}]}>
+              <ThemedView style={{flexDirection: 'row', gap: 2, position: 'relative'}}>
+                <Image source={card.weak && TYPE_MAP[card.weak].image} style={styles.element}></Image>
+                <ThemedText style={[styles.text, {top: 1, position: 'absolute', left: 25}]}>+20</ThemedText>
+              </ThemedView>
+            </ThemedView>
+          </ThemedView>
+
+          <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
+            <ThemedView style={styles.infoTitle}>
+              <ThemedText style={styles.text}>{i18n.t('cost_of_retire')}</ThemedText>
+            </ThemedView>
+            <ThemedView style={styles.retireContainer}>
+              {Array.from({ length: card.retreat }).map((_, i) => (
+                <Image key={i} source={TYPE_MAP[9].image} style={styles.element}></Image>
+              ))}
+            </ThemedView>
+          </ThemedView>
+        </> :
+        <>
+          { 
+            isCardPromoAndNoBattle(card) && 
+            <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
+              <ThemedView style={styles.infoTitle}>
+                <ThemedText style={styles.text}>{i18n.t('promo')}</ThemedText>
+              </ThemedView>
+              <ThemedView style={styles.infoValue}>
+                <ThemedText style={styles.text}>{EXPANSION_MAP[card.expansion].tag}</ThemedText>
+              </ThemedView>
+            </ThemedView>
+          }
+          {
+            (Boolean(card.extra) || card.name === 'Mew') &&
+            <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
+              <ThemedView style={styles.infoTitle}>
+                <ThemedText style={styles.text}>{i18n.t('how_to_obtain')}</ThemedText>
+              </ThemedView>
+              <ThemedView style={styles.infoValue}>
+                <ThemedText style={styles.text}>{card.extra}</ThemedText>
+              </ThemedView>
+            </ThemedView> 
+          }
+          <ThemedView style={[cardDetailStyles.itemInfo, styles.info]}>
+                <ThemedView style={styles.infoTitle}>
+                  <ThemedText style={styles.text}>{i18n.t('sub_type')}</ThemedText>
+                </ThemedView>
+                <ThemedView style={styles.infoValue}>
+                  <ThemedText style={styles.text}>{i18n.t(STAGE_MAP[card.stage].label)}</ThemedText>
+                </ThemedView>
+          </ThemedView>
+        </>
+      }
 
       <ThemedView style={[cardDetailStyles.itemInfo, styles.info, {marginBottom: 30}]}>
         <ThemedView style={styles.infoTitle}>
@@ -132,20 +239,22 @@ export default function DetailCardScroll({card}: {card: Card}) {
         </ThemedView>
         <ThemedView style={styles.infoValue}>
           <ThemedText style={styles.text}>
-            {card.series !== undefined && SERIES_MAP[card.series].label}
+            {card.series !== undefined && EXPANSION_MAP[card.series].label}
           </ThemedText>
         </ThemedView>
       </ThemedView>
 
-      <ThemedView style={[cardDetailStyles.itemInfo, {padding: 0, overflow: 'hidden'}]}>
-        <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
-          <ThemedText style={styles.textWhite}>{i18n.t('related_cards')}</ThemedText>
-        </ThemedView>
+      { card.related && card.related?.length > 0 &&
+        <ThemedView style={[cardDetailStyles.itemInfo, {padding: 0, overflow: 'hidden'}]}>
+          <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
+            <ThemedText style={styles.textWhite}>{i18n.t('related_cards')}</ThemedText>
+          </ThemedView>
 
-        <ThemedView style={{padding: 16}}>
-          <ThemedText>CARDS</ThemedText>
+          <ThemedView style={{padding: 16, paddingRight: 0}}>
+            <DetailRelatedCards card={card} state={state} scrollService={scrollService}></DetailRelatedCards>
+          </ThemedView>
         </ThemedView>
-      </ThemedView>
+      }
 
     </ThemedView>
   )

@@ -1,6 +1,6 @@
 import { PressableAndroidRippleConfig } from "react-native";
 import { ItemWithRoute, SortItem } from "../interfaces/layout.interfaces";
-import { Card } from "../interfaces/card.interfaces";
+import { Card, CardPackTag } from "../interfaces/card.interfaces";
 
 import { 
   NORMAL_RARITY,
@@ -15,10 +15,17 @@ import {
   DARK_ICON,
   STEEL_ICON,
   DRAGON_ICON,
-  NORMAL_ICON 
+  NORMAL_ICON, 
+  GENETIC_APEX_PIKACHU_ICON,
+  GENETIC_APEX_CHARIZARD_ICON,
+  GENETIC_APEX_MEWTWO_ICON,
+  PROMO_A_ICON
 } from "../sentences/path.sentences";
 
 import { FilterSearch } from "../classes/filter.class";
+import { EXPANSION } from "../enums/packs.enums";
+import { CardExpansionENUM, CardExpansionTypeENUM, CardRarityENUM, CardStageENUM } from "../enums/card.enums";
+import { PokemonTypeENUM } from "../enums/pokemon.enums";
 
 export const APP_VERSION = '1.0.2';
 export const MENU_WIDTH = 250;
@@ -77,43 +84,62 @@ export const INITIAL_SORT_DATA: SortItem[] = [
   { id: 7, label: 'order_by_stage', icon: 'pets', active: false, order: 'desc' },
 ];
 
-export const RARITY_MAP: any = {
-  0: { image: NORMAL_RARITY, amount: 1 },
-  1: { image: NORMAL_RARITY, amount: 2 },
-  2: { image: NORMAL_RARITY, amount: 3 },
-  3: { image: NORMAL_RARITY, amount: 4 },
-  4: { image: STAR_RARITY, amount: 1 },
-  5: { image: STAR_RARITY, amount: 2 },
-  6: { image: STAR_RARITY, amount: 3 },
-  7: { image: CROWN_RARITY, amount: 1 },
-  8: { image: null, amount: 0 },
+export const RARITY_MAP: Record<CardRarityENUM, {image: any, amount: number}> = {
+  [CardRarityENUM.COMMON]: { image: NORMAL_RARITY, amount: 1 },
+  [CardRarityENUM.UNCOMMON]: { image: NORMAL_RARITY, amount: 2 },
+  [CardRarityENUM.RARE]: { image: NORMAL_RARITY, amount: 3 },
+  [CardRarityENUM.DOUBLE]: { image: NORMAL_RARITY, amount: 4 },
+  [CardRarityENUM.ART]: { image: STAR_RARITY, amount: 1 },
+  [CardRarityENUM.SUPER]: { image: STAR_RARITY, amount: 2 },
+  [CardRarityENUM.INMERSIVE]: { image: STAR_RARITY, amount: 3 },
+  [CardRarityENUM.CROWN]: { image: CROWN_RARITY, amount: 1 },
+  [CardRarityENUM.PROMO]: { image: null, amount: 0 },
+  [CardRarityENUM.SPECIAL]: { image: null, amount: 0 },
 }
 
-export const TYPE_MAP: any = {
-  0: { image: GRASS_ICON, label: 'grass' },
-  1: { image: FIRE_ICON, label: 'fire' },
-  2: { image: WATER_ICON, label: 'water' },
-  3: { image: ELECTRIC_ICON, label: 'electric' },
-  4: { image: PSYCHIC_ICON, label: 'psychic' },
-  5: { image: FIGHT_ICON, label: 'fight' },
-  6: { image: DARK_ICON, label: 'dark' },
-  7: { image: STEEL_ICON, label: 'steel' },
-  8: { image: DRAGON_ICON, label: 'dragon' },
-  9: { image: NORMAL_ICON, label: 'normal' },
+export const TYPE_MAP: Record<PokemonTypeENUM | -1, {image: any, label: string}> = {
+  [PokemonTypeENUM.GRASS]: { image: GRASS_ICON, label: 'grass' },
+  [PokemonTypeENUM.FIRE]: { image: FIRE_ICON, label: 'fire' },
+  [PokemonTypeENUM.WATER]: { image: WATER_ICON, label: 'water' },
+  [PokemonTypeENUM.ELECTRIC]: { image: ELECTRIC_ICON, label: 'electric' },
+  [PokemonTypeENUM.PSYCHIC]: { image: PSYCHIC_ICON, label: 'psychic' },
+  [PokemonTypeENUM.FIGHT]: { image: FIGHT_ICON, label: 'fight' },
+  [PokemonTypeENUM.DARK]: { image: DARK_ICON, label: 'dark' },
+  [PokemonTypeENUM.STEEL]: { image: STEEL_ICON, label: 'steel' },
+  [PokemonTypeENUM.DRAGON]: { image: DRAGON_ICON, label: 'dragon' },
+  [PokemonTypeENUM.NORMAL]: { image: NORMAL_ICON, label: 'normal' },
+  [-1]: { image: null, label: '' }
 }
 
-export const STAGE_MAP: any = {
-  0: { label: 'basic' },
-  1: { label: 'stage_one' },
-  2: { label: 'stage_two' },
-  3: { label: 'object' },
-  4: { label: 'tool' },
-  5: { label: 'fossil' },
-  6: { label: 'supporter' },
+export const STAGE_MAP: Record<CardStageENUM, {label: string}> = {
+  [CardStageENUM.BASIC]: { label: 'basic' },
+  [CardStageENUM.ONE]: { label: 'stage_one' },
+  [CardStageENUM.TWO]: { label: 'stage_two' },
+  [CardStageENUM.ITEM]: { label: 'object' },
+  [CardStageENUM.TOOL]: { label: 'tool' },
+  [CardStageENUM.FOSSIL]: { label: 'fossil' },
+  [CardStageENUM.SUPPORTER]: { label: 'supporter' },
 }
 
-export const SERIES_MAP: any = {
-  0: { label: 'A' },
+export const EXPANSION_MAP: Record<CardExpansionENUM, CardPackTag> = {
+  [CardExpansionENUM.GENETIC_APEX]: { label: 'A', tag: 'A1', color: 'white', background: 'black', amount: 'P-A' },
+  [CardExpansionENUM.PROMO_A]: { label: 'A', tag: 'PROMO-A', color: 'white', background: 'black', amount: 'P-A' },
+}
+
+export const PACK_MAP: Record<EXPANSION, any> = {
+  [EXPANSION.PIKACHU]: GENETIC_APEX_PIKACHU_ICON,
+  [EXPANSION.MEWTWO]: GENETIC_APEX_MEWTWO_ICON,
+  [EXPANSION.CHARIZARD]: GENETIC_APEX_CHARIZARD_ICON,
+  [EXPANSION.PROMO_A1]: PROMO_A_ICON,
+  [EXPANSION.PROMO_A2]: PROMO_A_ICON,
+  [EXPANSION.PREMIUM]: null,
+  [EXPANSION.WONDER_PICK]: null,
+  [EXPANSION.SPECIAL_MISSION]: null
+}
+
+export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {
+  [CardExpansionENUM.GENETIC_APEX]: 286,
+  [CardExpansionENUM.PROMO_A]: 23
 }
 
 export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);

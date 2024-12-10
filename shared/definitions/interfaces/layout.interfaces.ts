@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { RarityWithoutSpecial } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
-import { PACKS } from "../enums/packs.enums";
+import { PACKS_TYPE } from "../enums/packs.enums";
 
 export interface HeaderWithCustomModalProps {
   title: string;
@@ -54,6 +54,6 @@ export interface DataSection {
     | { min: number | null, max: number | null } 
     | { with: boolean | null, without: boolean | null }
     | { object: boolean | null, tool: boolean | null, fossil: boolean | null, supporter: boolean | null }
-    | { pack: PACKS | null }
+    | { pack: PACKS_TYPE | null }
   )[];
 }

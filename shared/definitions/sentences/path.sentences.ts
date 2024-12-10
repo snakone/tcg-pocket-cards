@@ -44,6 +44,10 @@ export const GENETIC_APEX = require('@/assets/images/packs/geneticapex.png');
 export const PIKACHU_ICON = require('@/assets/images/packs/pikachu.png');
 export const MEWTWO_ICON = require('@/assets/images/packs/mewtwo.png');
 export const CHARIZARD_ICON = require('@/assets/images/packs/charizard.png');
+export const GENETIC_APEX_PIKACHU_ICON = require('@/assets/images/packs/genetic-apex-pikachu.png');
+export const GENETIC_APEX_MEWTWO_ICON = require('@/assets/images/packs/genetic-apex-mewtwo.png');
+export const GENETIC_APEX_CHARIZARD_ICON = require('@/assets/images/packs/genetic-apex-charizard.png');
+export const PROMO_A_ICON = require('@/assets/images/packs/promo_a.png');
 
 export const PACKS = [
   PIKACHU_ICON,
