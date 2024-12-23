@@ -5,7 +5,7 @@ import { FilterSearch } from "../classes/filter.class";
 import { Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
 import { CardExpansionENUM } from "../enums/card.enums";
-import { GENETIC_APEX, PROMO_A_ICON } from "../sentences/path.sentences";
+import { GENETIC_APEX, MEW_ICON, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON } from "../sentences/path.sentences";
 import { PACK_MAP } from "./contants";
 
 export function sortCards(field: keyof Card, data: Card[], sort: SortItem): Card[] {
@@ -173,6 +173,8 @@ export function getCardPackFrom(card: Card): {image: any, width: number, height:
     }
   } else if (card.expansion === CardExpansionENUM.PROMO_A) {
     return {image: PROMO_A_ICON, width: 74, height: 40};
+  } else if (card.expansion === CardExpansionENUM.MYTHICAL_ISLAND) {
+    return {image: MYTHICAL_ISLAND_MEW_ICON, width: 74, height: 36};
   }
 }
 

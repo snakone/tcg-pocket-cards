@@ -19,12 +19,13 @@ import {
   GENETIC_APEX_PIKACHU_ICON,
   GENETIC_APEX_CHARIZARD_ICON,
   GENETIC_APEX_MEWTWO_ICON,
-  PROMO_A_ICON
+  PROMO_A_ICON,
+  MYTHICAL_ISLAND_MEW_ICON
 } from "../sentences/path.sentences";
 
 import { FilterSearch } from "../classes/filter.class";
 import { EXPANSION } from "../enums/packs.enums";
-import { CardExpansionENUM, CardExpansionTypeENUM, CardRarityENUM, CardStageENUM } from "../enums/card.enums";
+import { CardExpansionENUM, CardRarityENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 
 export const APP_VERSION = '1.0.2';
@@ -124,7 +125,7 @@ export const STAGE_MAP: Record<CardStageENUM, {label: string}> = {
 export const EXPANSION_MAP: Record<CardExpansionENUM, CardPackTag> = {
   [CardExpansionENUM.GENETIC_APEX]: { label: 'A', tag: 'A1', color: 'white', background: 'black', amount: 'P-A' },
   [CardExpansionENUM.PROMO_A]: { label: 'A', tag: 'PROMO-A', color: 'white', background: 'black', amount: 'P-A' },
-  [CardExpansionENUM.MYSTICAL_ISLAND]: { label: 'A', tag: 'A1a', color: 'white', background: 'black', amount: 'P-A' }
+  [CardExpansionENUM.MYTHICAL_ISLAND]: { label: 'A', tag: 'A1a', color: 'white', background: 'black', amount: 'P-A' }
 }
 
 export const PACK_MAP: Record<EXPANSION, any> = {
@@ -136,13 +137,13 @@ export const PACK_MAP: Record<EXPANSION, any> = {
   [EXPANSION.PREMIUM]: null,
   [EXPANSION.WONDER_PICK]: null,
   [EXPANSION.SPECIAL_MISSION]: null,
-  [EXPANSION.MYSTICAL_ISLAND]: null,
+  [EXPANSION.MYTHICAL_ISLAND]: MYTHICAL_ISLAND_MEW_ICON,
 }
 
 export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.GENETIC_APEX]: 286,
   [CardExpansionENUM.PROMO_A]: 23,
-  [CardExpansionENUM.MYSTICAL_ISLAND]: 0
+  [CardExpansionENUM.MYTHICAL_ISLAND]: 86
 }
 
 export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);

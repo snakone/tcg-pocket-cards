@@ -27,7 +27,6 @@ import {
 } from "@/shared/styles/component.styles";
 
 import { getFilterSearch } from "@/shared/definitions/utils/contants";
-import { PACKS } from "@/shared/definitions/sentences/path.sentences";
 import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ThemedText } from "@/components/ThemedText";
@@ -107,7 +106,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
     <>
       {expansionVisible && (
         <ExpansionsMenu
-          PACKS={PACKS}
           filterObj={filterObj}
           handleExpansion={handleExpansion}
         />

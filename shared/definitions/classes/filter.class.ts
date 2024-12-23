@@ -38,7 +38,9 @@ export class FilterSearch {
       [EXPANSION.PROMO_A1]: null,
       [EXPANSION.PROMO_A2]: null,
       [EXPANSION.PREMIUM]: null,
-      [EXPANSION.WONDER_PICK]: null
+      [EXPANSION.WONDER_PICK]: null,
+      [EXPANSION.SPECIAL_MISSION]: null,
+      [EXPANSION.MYTHICAL_ISLAND]: null
     };
 
     this.favorite = {included: null, not_favorite: null};
@@ -93,7 +95,9 @@ export class FilterSearch {
       [EXPANSION.PROMO_A1]: null,
       [EXPANSION.PROMO_A2]: null,
       [EXPANSION.PREMIUM]: null,
-      [EXPANSION.WONDER_PICK]: null
+      [EXPANSION.WONDER_PICK]: null,
+      [EXPANSION.SPECIAL_MISSION]: null,
+      [EXPANSION.MYTHICAL_ISLAND]: null
     };
   }
 

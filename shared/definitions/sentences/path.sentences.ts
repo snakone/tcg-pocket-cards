@@ -1,3 +1,5 @@
+import { CardExpansionENUM } from "../enums/card.enums";
+
 // SOUNDS
 export const AUDIO_MENU_OPEN = require("@/assets/sounds/menu-button.mp3");
 export const AUDIO_MENU_CLOSE = require("@/assets/sounds/close.mp3");
@@ -44,17 +46,28 @@ export const GENETIC_APEX = require('@/assets/images/packs/geneticapex.png');
 export const PIKACHU_ICON = require('@/assets/images/packs/pikachu.png');
 export const MEWTWO_ICON = require('@/assets/images/packs/mewtwo.png');
 export const CHARIZARD_ICON = require('@/assets/images/packs/charizard.png');
+export const MEW_ICON = require('@/assets/images/packs/mew.png');
 export const GENETIC_APEX_PIKACHU_ICON = require('@/assets/images/packs/genetic-apex-pikachu.png');
 export const GENETIC_APEX_MEWTWO_ICON = require('@/assets/images/packs/genetic-apex-mewtwo.png');
 export const GENETIC_APEX_CHARIZARD_ICON = require('@/assets/images/packs/genetic-apex-charizard.png');
 export const PROMO_A_ICON = require('@/assets/images/packs/promo_a.png');
+export const MYTHICAL_ISLAND_MEW_ICON = require('@/assets/images/packs/mythical-island-mew.png');
 
-export const PACKS = [
+export const GENETIC_APEX_PACKS = [
   PIKACHU_ICON,
   MEWTWO_ICON,
   CHARIZARD_ICON,
   PROMO_A1,
   PROMO_A2,
+];
+
+export const MYTHICAL_ISLAND_PACKS = [
+  MEW_ICON
+];
+
+export const ALL_PACKS = [
+  ...GENETIC_APEX_PACKS,
+  ...MYTHICAL_ISLAND_PACKS,
 ];
 
 export const SPLASH = [

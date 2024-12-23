@@ -7,7 +7,7 @@ export enum CardRarityENUM {
 }
 
 export enum CardExpansionENUM {
-  GENETIC_APEX, PROMO_A, MYSTICAL_ISLAND
+  GENETIC_APEX, PROMO_A, MYTHICAL_ISLAND
 }
 
 export enum CardExpansionTypeENUM {
