@@ -60,7 +60,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
-    related: [1, 3, 4]
+    related: [1, 2, 227, 251, 303, 308]
   },
   {
     id: 3,
@@ -90,7 +90,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
-    related: [1, 2, 3]
+    related: [1, 2, 227, 303, 308]
   },
   {
     id: 4,
@@ -124,7 +124,8 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: true,
     found: [
       EXPANSION.MEWTWO
-    ]
+    ],
+    related: [1, 2, 227, 251, 308]
   },
   {
     id: 5,
@@ -153,7 +154,8 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     found: [
       EXPANSION.PIKACHU
-    ]
+    ],
+    related: [6, 7, 298]
   },
   {
     id: 6,
@@ -181,7 +183,8 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     found: [
       EXPANSION.PIKACHU
-    ]
+    ],
+    related: [5, 7, 298]
   },
   {
     id: 7,
@@ -196,6 +199,10 @@ export const MOCK_DB_CARDS: Card[] = [
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
       }
     ],
+    ability: {
+      name: 'Powder Heal',
+      description: 'Once during your turn, you may heal 20 damage from each of your Pokémon.'
+    },
     evolve: null,
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
@@ -210,10 +217,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
-    ability: {
-      name: 'Powder Heal',
-      description: 'Once during your turn, you may heal 20 damage from each of your Pokémon.'
-    }
+    related: [5, 6, 298]
   },
   {
     id: 8,
@@ -242,6 +246,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [9, 10]
   },
   {
     id: 9,
@@ -270,6 +275,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [8, 10]
   },
   {
     id: 10,
@@ -298,6 +304,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [8, 9]
   },
   {
     id: 11,
@@ -326,6 +333,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [12, 13, 228]
   },
   {
     id: 12,
@@ -354,6 +362,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [11, 13, 228]
   },
   {
     id: 13,
@@ -383,6 +392,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [11, 12, 228]
   },
   {
     id: 14,
@@ -411,6 +421,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [15]
   },
   {
     id: 15,
@@ -439,6 +450,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [14]
   },
   {
     id: 16,
@@ -467,6 +479,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [17]
   },
   {
     id: 17,
@@ -496,6 +509,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [16]
   },
   {
     id: 18,
@@ -524,6 +538,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [19, 20]
   },
   {
     id: 19,
@@ -552,6 +567,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [18, 20]
   },
   {
     id: 20,
@@ -584,6 +600,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [18, 19]
   },
   {
     id: 21,
@@ -612,6 +629,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [22, 23, 252]
   },
   {
     id: 22,
@@ -641,6 +659,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [21]
   },
   {
     id: 23,
@@ -670,6 +689,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [21, 252]
   },
   {
     id: 24,
@@ -787,6 +807,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [28]
   },
   {
     id: 28,
@@ -817,6 +838,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [27]
   },
   {
     id: 29,
@@ -848,6 +870,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [30]
   },
   {
     id: 30,
@@ -879,6 +902,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [29]
   },
   {
     id: 31,
@@ -908,6 +932,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [32]
   },
   {
     id: 32,
@@ -936,6 +961,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [31]
   },
   {
     id: 33,
@@ -965,6 +991,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [34, 35, 36, 230, 253, 280, 284]
   },
   {
     id: 34,
@@ -993,6 +1020,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [33, 35, 36, 230, 253, 280, 284]
   },
   {
     id: 35,
@@ -1022,6 +1050,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [33, 34, 230]
   },
   {
     id: 36,
@@ -1056,6 +1085,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [33, 34, 230, 253, 280, 284]
   },
   {
     id: 37,
@@ -1085,6 +1115,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [38]
   },
   {
     id: 38,
@@ -1114,6 +1145,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [37]
   },
   {
     id: 39,
@@ -1142,6 +1174,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [40, 41, 254]
   },
   {
     id: 40,
@@ -1171,6 +1204,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [39]
   },
   {
     id: 41,
@@ -1200,6 +1234,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [39, 254]
   },
   {
     id: 42,
@@ -1230,6 +1265,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [43, 231]
   },
   {
     id: 43,
@@ -1260,6 +1296,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [42, 231]
   },
   {
     id: 44,
@@ -1317,6 +1354,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [206, 207, 208, 248]
   },
   {
     id: 46,
@@ -1380,6 +1418,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [255, 274]
   },
   {
     id: 48,
@@ -1438,6 +1477,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [50]
   },
   {
     id: 50,
@@ -1466,6 +1506,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [49]
   },
   {
     id: 51,
@@ -1496,6 +1537,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [52]
   },
   {
     id: 52,
@@ -1527,6 +1569,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [51]
   },
   {
     id: 53,
@@ -6549,6 +6592,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [11, 12, 13]
   },
   {
     id: 229,
@@ -8241,6 +8285,725 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 287,
     number: 1,
+    pokedex: 102,
+    name: 'Exeggcute',
+    artist: 'Yuka Morii',
+    attacks: [
+      {
+        name: 'Growth Spurt',
+        damage: 0,
+        energy: [PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: 'Exeggutor',
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'Though it may look like it’s just a bunch of eggs, it’s a proper Pokémon. Exeggcute communicates with others of its kind via telepathy, apparently.',
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: [22, 23, 252]
+  },
+  {
+    id: 288,
+    number: 2,
+    pokedex: 103,
+    name: 'Exeggutor',
+    artist: 'Masakazu Fukuda',
+    attacks: [
+      {
+        name: 'Psychic',
+        damage: 80,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'This attack does 20 damage for each Energy attached to your opponent\'s Active Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'Each of Exeggutor’s three heads is thinking different thoughts. The three don’t seem to be very interested in one another.',
+    health: 130,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: [21]
+  },
+  {
+    id: 289,
+    number: 3,
+    pokedex: 251,
+    name: 'Celebi EX',
+    artist: 'Planeta CG Works',
+    attacks: [
+      {
+        name: 'Powerful Bloom',
+        damage: 50,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+        description: 'Flip a coin for each Energy attached to this Pokémon. This attack does 50 damage for each heads.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: '',
+    health: 130,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: []
+  },
+  {
+    id: 290,
+    number: 4,
+    pokedex: 495,
+    name: 'Snivy',
+    artist: 'Kagemaru Himeno',
+    attacks: [
+      {
+        name: 'Vine Whip',
+        damage: 40,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'Being exposed to sunlight makes its movements swiftier. It uses vines more adeptly than its hands.',
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: []
+  },
+  {
+    id: 291,
+    number: 5,
+    pokedex: 496,
+    name: 'Servine',
+    artist: 'Shigenori Nagishi',
+    attacks: [
+      {
+        name: 'Vine Whip',
+        damage: 50,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: 'Snivy',
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'It moves along the ground as if sliding. Its swift movements befuddle its foes, and it then attacks with a vine whip.',
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: [290]
+  },  
+  {
+    id: 292,
+    number: 6,
+    pokedex: 497,
+    name: 'Serperior',
+    artist: 'Yoshioka',
+    attacks: [
+      {
+        name: 'Solar Beam',
+        damage: 70,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: 'Jungle Totem',
+      description: "Each Grass Energy attached to your Grass Pokémon provides 2 Grass Energy. This effect doesn't stack."
+    },
+    evolve: 'Servine',
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: "It only gives its all against strong opponents who are not fazed by the glare from Serperior's noble eyes.",
+    health: 110,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: [291]
+  },
+  {
+    id: 293,
+    number: 7,
+    pokedex: 755,
+    name: 'Morelull',
+    artist: 'Saya Tsuruta',
+    attacks: [
+      {
+        name: 'Ram',
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: '	Pokémon living in the forest eat the delicious caps on Morelull\'s head. The caps regrow overnight.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: []
+  },
+  {
+    id: 294,
+    number: 8,
+    pokedex: 756,
+    name: 'Shiinotic',
+    artist: 'Mizue',
+    attacks: [
+      {
+        name: 'Flickering Spores',
+        damage: 50,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
+        description: "Your opponent's Active Pokémon is now Asleep."
+      }
+    ],
+    evolve: 'Morelull',
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: "Its flickering spores lure in prey and put them to sleep. Once this Pokémon has its prey snoozing, it drains their vitality with its fingertips.",
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: [293]
+  },
+  {
+    id: 295,
+    number: 9,
+    pokedex: 781,
+    name: 'Dhelmise',
+    artist: 'Hasuno',
+    attacks: [
+      {
+        name: 'Energy Whip',
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS],
+        description: "If this Pokémon has at least 3 extra Grass Energy attached, this attack does 70 more damage."
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: "After a piece of seaweed merged with debris from a sunken ship, it was reborn as this ghost Pokémon.",
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: []
+  },
+  {
+    id: 296,
+    number: 10,
+    pokedex: 77,
+    name: 'Ponyta',
+    artist: 'Tomokazu Kamiya',
+    attacks: [
+      {
+        name: 'Stomp',
+        damage: 10,
+        energy: [PokemonTypeENUM.FIRE],
+        description: "Flip a coin if heads, this attack does 30 more damage."
+      }
+    ],
+    evolve: 'Rapidash',
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: "It can’t run properly when it’s newly born. As it races around with others of its kind, its legs grow stronger.",
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: []
+  },
+  {
+    id: 297,
+    number: 11,
+    pokedex: 78,
+    name: 'Rapidash',
+    artist: 'AKIRA EGAWA',
+    attacks: [
+      {
+        name: 'Rising Lunge',
+        damage: 40,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
+        description: "Flip a coin. If heads, this attack does 60 more damage."
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: "This Pokémon can be seen galloping through fields at speeds of up to 150 mph, its fiery mane fluttering in the wind.",
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: [296]
+  },
+  {
+    id: 298,
+    number: 12,
+    pokedex: 126,
+    name: 'Magmar',
+    artist: 'sui',
+    attacks: [
+      {
+        name: 'Fire Blast',
+        damage: 80,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE],
+        description: "Discard 2 Fire Energy from this Pokémon."
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: "Magmar dispatches its prey with fire. But it regrets this habit once it realizes that it has burned its intended prey to a charred crisp.",
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: []
+  },
+  {
+    id: 299,
+    number: 13,
+    pokedex: 636,
+    name: 'Larvesta',
+    artist: 'kawayoo',
+    attacks: [
+      {
+        name: 'Combustion',
+        damage: 30,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Volcarona',
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: "This Pokémon was called the Larve That Stole the Sun. The fire Larvesta spouts from its horns can cut right through a sheet of iron.",
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: []
+  },
+  {
+    id: 300,
+    number: 14,
+    pokedex: 637,
+    name: 'Volcarona',
+    artist: 'DOM',
+    attacks: [
+      {
+        name: 'Volcanic Ash',
+        damage: 80,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
+        description: "Discard 2 Fire Energy from this Pokémon. This attack does 80 damage to 1 of your opponent's Pokémon."
+      }
+    ],
+    evolve: 'Larvesta',
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: "Its burning body causes it to be unpopular in hot parts of the world, but in cold ones, Volcarona is revered as an embodiment of the sun.",
+    health: 120,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: [299]
+  },
+  {
+    id: 301,
+    number: 15,
+    pokedex: 757,
+    name: 'Salandit',
+    artist: 'Naoki Saito',
+    attacks: [
+      {
+        name: 'Venoshock',
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: "If your opponent's Active Pokémon is Poisoned, this attack does 40 more damage."
+      }
+    ],
+    evolve: 'Salazzle',
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: "It taunts its prey and lures them into narrow, rocky areas where it then sprays them with toxic gas to make them dizzy and take them down.",
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: []
+  },
+  {
+    id: 302,
+    number: 16,
+    pokedex: 758,
+    name: 'Salazzle',
+    artist: 'Mitsuhiro Arita',
+    attacks: [
+      {
+        name: 'Poison Claws',
+        damage: 30,
+        energy: [PokemonTypeENUM.FIRE],
+        description: 'Your opponent\'s Active Pokémon is now Poisoned.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'Salazzle makes its opponents light-headed with poisonous gas, then captivates them with alluring movements to turn them into loyal servants.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: [301]
+  },
+  {
+    id: 303,
+    number: 17,
+    pokedex: 129,
+    name: 'Magikarp',
+    artist: 'Mitsuhiro Arita',
+    attacks: [
+      {
+        name: 'Leap Out',
+        damage: 0,
+        energy: [PokemonTypeENUM.WATER],
+        description: 'Switch this Pokémon with 1 of your Benched Pokémon.'
+      }
+    ],
+    evolve: 'Gyarados',
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'An underpowered, pathetic Pokémon. It may jump high on rare occasions, but usually not more than seven feet.',
+    health: 30,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: []
+  },
+  {
+    id: 304,
+    number: 18,
+    pokedex: 130,
+    name: 'Gyarados EX',
+    artist: 'Planeta CG Works',
+    attacks: [
+      {
+        name: 'Rampaging Whirlpool',
+        damage: 140,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+        description: 'Discard a random Energy from among the Energy attached to all Pokémon (both yours and your opponent\'s).'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'Once it appears, it goes on a rampage. It remains enraged until it demolishes everything around it.',
+    health: 180,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: true,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: [303]
+  },
+  {
+    id: 305,
+    number: 19,
+    pokedex: 134,
+    name: 'Vaporeon',
+    artist: 'LINNE',
+    attacks: [
+      {
+        name: 'Wave Splash',
+        damage: 60,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: 'Wash Out',
+      description: 'As often as you like during your turn, you may move a Water Energy from 1 of your Benched Water Pokémon to your Active Water Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'It lives close to water. Its long tail is ridged with a fin, which is often mistaken for a mermaid’s.',
+    health: 120,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: [],
+  },
+  {
+    id: 306,
+    number: 20,
+    pokedex: 456,
+    name: 'Finneon',
+    artist: 'Sekio',
+    attacks: [
+      {
+        name: 'Water Gun',
+        damage: 20,
+        energy: [PokemonTypeENUM.WATER]
+      }
+    ],
+    evolve: 'Lumineon',
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'The line running down its side can store sunlight. It shines vividly at night.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: []
+  },
+  {
+    id: 307,
+    number: 21,
+    pokedex: 457,
+    name: 'Lumineon',
+    artist: 'Sekio',
+    attacks: [
+      {
+        name: 'Aqua Liner',
+        damage: 50,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+        description: "This attack does 50 damage to 1 of your opponent's Benched Pokémon."
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'With its shining light, it lures its prey close. However, the light also happens to attract ferocious fish Pokémon—its natural predators.',
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 0,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: [306]
+  },
+  {
+    id: 308,
+    number: 22,
+    pokedex: 833,
+    name: 'Chewtle',
+    artist: 'Taiga Kamiya',
+    attacks: [
+      {
+        name: 'Bite',
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Drednaw',
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'Its large front tooth is still growing in. When the tooth itches, this Pokémon will bite another Chewtle’s horn, and the two Pokémon will tussle.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: []
+  },
+  {
+    id: 309,
+    number: 23,
+    pokedex: 834,
+    name: 'Drednaw',
+    artist: 'nisimono',
+    attacks: [
+      {
+        name: 'Crunch',
+        damage: 70,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+        description: "Flip a coin. If heads, discard a random Energy from your opponent's Active Pokémon."
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'Its massive, jagged teeth can crush a boulder in a single bite. This Pokémon has an extremely vicious disposition.',
+    health: 130,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: [308]
+  },
+  {
+    id: 310,
+    number: 24,
+    pokedex: 845,
+    name: 'Cramorant',
+    artist: 'Jerky',
+    attacks: [
+      {
+        name: 'Dive',
+        damage: 60,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+        description: "Flip a coin. If heads, during your opponent's next turn, prevent all damage from—and effects of—attacks done to this Pokémon."
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.MYSTICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'It’s so strong that it can knock out some opponents in a single hit, but it also may forget what it’s battling midfight.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.MYSTICAL_ISLAND
+    ],
+    related: []
+  },
+  {
+    id: 372,
+    number: 1,
     name: 'Potion',
     artist: '5ban Graphics',
     expansion: CardExpansionENUM.PROMO_A,
@@ -8255,7 +9018,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1
   },
   {
-    id: 288,
+    id: 373,
     number: 2,
     name: 'X Speed',
     artist: 'Toyste Beach',
@@ -8271,7 +9034,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1
   },
   {
-    id: 289,
+    id: 374,
     number: 3,
     name: 'Hand Scope',
     artist: 'Toyste Beach',
@@ -8287,7 +9050,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1
   },
   {
-    id: 290,
+    id: 375,
     number: 4,
     name: 'Pokédex',
     artist: 'Ryo Ueda',
@@ -8303,7 +9066,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1
   },
   {
-    id: 291,
+    id: 376,
     number: 5,
     name: 'Poké Ball',
     artist: 'Ryo Ueda',
@@ -8319,7 +9082,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1
   },
   {
-    id: 292,
+    id: 377,
     number: 6,
     name: 'Red Card',
     artist: '5ban Graphics',
@@ -8335,7 +9098,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1
   },
   {
-    id: 293,
+    id: 378,
     number: 7,
     name: 'Professor\'s Research',
     artist: 'Naoki Saito',
@@ -8829,6 +9592,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     extra: 'Obtained from a Wonder Pick'
   },
+
 ];
 
 export default MOCK_DB_CARDS;

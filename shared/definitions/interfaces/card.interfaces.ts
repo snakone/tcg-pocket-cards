@@ -12,11 +12,7 @@ interface BaseCard {
   number: number;
 }
 
-export interface UsableCard extends BaseCard {
-  description?: string;
-}
-
-export interface Card extends UsableCard {
+export interface Card extends BaseCard {
   health: number | -1;
   retreat: number | -1;
   element: PokemonTypeENUM | -1;

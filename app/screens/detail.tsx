@@ -41,6 +41,7 @@ import CardsService from "@/core/services/cards.service";
 import { useError } from "@/core/providers/ErrorProvider";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import ScrollService from "@/core/services/scroll.service";
+import React from "react";
 
 const INITIAL_INFO_HEIGHT = 100;
 const MAX_HEIGHT = 450;
@@ -105,22 +106,23 @@ export default function DetailScreen() {
   }, []);
 
   useEffect(() => {
-    if (Platform.OS !== 'web') return;
+    if (Platform.OS !== 'web' || !state.cardState.loaded) return;
     let sub: Subscription;
-    scrollService.isReLatedCardScrollAtBegin$
+    sub = scrollService.isReLatedCardScrollAtBegin$
       .subscribe(res => {
-      if (!res) {
-        window.removeEventListener('wheel', handleWheel);
-      } else {
-        window.addEventListener('wheel', handleWheel);
-      }
+        if (!res) {
+          window.removeEventListener('wheel', handleWheel);
+        } else {
+          window.addEventListener('wheel', handleWheel);
+        }
     });
+    
     return () => {
       if (sub) {
         sub.unsubscribe();
       }
     };
-  }, []);
+  }, [state.cardState.loaded]);
   
   useEffect(() => {
     if (Platform.OS === 'web') return;

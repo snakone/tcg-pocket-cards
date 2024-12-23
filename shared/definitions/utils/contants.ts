@@ -124,6 +124,7 @@ export const STAGE_MAP: Record<CardStageENUM, {label: string}> = {
 export const EXPANSION_MAP: Record<CardExpansionENUM, CardPackTag> = {
   [CardExpansionENUM.GENETIC_APEX]: { label: 'A', tag: 'A1', color: 'white', background: 'black', amount: 'P-A' },
   [CardExpansionENUM.PROMO_A]: { label: 'A', tag: 'PROMO-A', color: 'white', background: 'black', amount: 'P-A' },
+  [CardExpansionENUM.MYSTICAL_ISLAND]: { label: 'A', tag: 'A1a', color: 'white', background: 'black', amount: 'P-A' }
 }
 
 export const PACK_MAP: Record<EXPANSION, any> = {
@@ -134,12 +135,14 @@ export const PACK_MAP: Record<EXPANSION, any> = {
   [EXPANSION.PROMO_A2]: PROMO_A_ICON,
   [EXPANSION.PREMIUM]: null,
   [EXPANSION.WONDER_PICK]: null,
-  [EXPANSION.SPECIAL_MISSION]: null
+  [EXPANSION.SPECIAL_MISSION]: null,
+  [EXPANSION.MYSTICAL_ISLAND]: null,
 }
 
 export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.GENETIC_APEX]: 286,
-  [CardExpansionENUM.PROMO_A]: 23
+  [CardExpansionENUM.PROMO_A]: 23,
+  [CardExpansionENUM.MYSTICAL_ISLAND]: 0
 }
 
 export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);

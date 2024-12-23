@@ -7,11 +7,11 @@ export enum CardRarityENUM {
 }
 
 export enum CardExpansionENUM {
-  GENETIC_APEX, PROMO_A
+  GENETIC_APEX, PROMO_A, MYSTICAL_ISLAND
 }
 
 export enum CardExpansionTypeENUM {
-  A1
+  A1, A1A
 }
 
 export type RarityWithoutSpecial = Exclude<CardRarityENUM, CardRarityENUM.SPECIAL>;

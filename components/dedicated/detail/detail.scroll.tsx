@@ -12,6 +12,7 @@ import { getCardPackFrom, isCardPromo, isCardPromoAndBattle, isCardPromoAndNoBat
 import DetailRelatedCards from './detail.related.cards';
 import { AppState } from '@/hooks/root.reducer';
 import ScrollService from '@/core/services/scroll.service';
+import React from 'react';
 
 export default function DetailCardScroll({card, state, scrollService}: {card: Card, state: AppState, scrollService?: ScrollService}) {
   const {i18n} = useI18n();
@@ -34,16 +35,21 @@ export default function DetailCardScroll({card, state, scrollService}: {card: Ca
   return (
     <ThemedView style={{padding: 20, marginBottom: 65, width: '100%'}}>
       <ThemedText style={styles.name}>{card.name}</ThemedText>
-      <ThemedView style={styles.rarityContainer}>
-        {Array.from({ length: RARITY_MAP[card.rarity]?.amount }).map((_, i) => (
-        <Image
-          key={i}
-          source={RARITY_MAP[card.rarity]?.image}
-          style={[styles.rarityItem, card.rarity === 7 && {width: 38}]}
-        />
-      ))}
-      </ThemedView>
-
+      
+        {
+          RARITY_MAP[card.rarity]?.amount !== 0 ?
+            <ThemedView style={styles.rarityContainer}>
+              { Array.from({ length: RARITY_MAP[card.rarity]?.amount }).map((_, i) => (
+                <Image
+                  key={i}
+                  source={RARITY_MAP[card.rarity]?.image}
+                  style={[styles.rarityItem, card.rarity === 7 && {width: 38}]}
+                />
+            ))}
+            </ThemedView> :
+            <ThemedView style={{height: 20}}></ThemedView>
+        }
+      
       { !!card.flavor && 
         <ThemedView style={cardDetailStyles.itemInfo}>
           <ThemedText style={styles.text}>{card.flavor}</ThemedText>
@@ -264,7 +270,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 30,
     textAlign: 'center',
-    marginTop: 4,
+    marginTop: 24,
     color: Colors.light.bold
   },
   rarityContainer: {
