@@ -294,14 +294,6 @@ export default function DetailScreen() {
     }
   };
 
-  useEffect(() => {
-    if (Platform.OS !== 'web') return;
-    window.addEventListener('wheel', handleWheel);
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-    };
-  }, []);
-
   const cardAnimatedScale = useDerivedValue(() =>
     withSpring(
       interpolate(

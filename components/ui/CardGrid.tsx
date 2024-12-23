@@ -113,7 +113,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
     if (!filtered || filtered.length === 0) { return; }
     const sorted = filterOrSortCards('sort', filtered, state.filterState.sort.find(s => s.active));
     setFiltered(sorted);
-    goUp(null, false);
+    setTimeout(() => goUp(null, false), 100);
   }, [state.filterState.sort]);
 
   useEffect(() => {
@@ -128,7 +128,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
   
     const sorted = filterOrSortCards('filter', state.cardState.cards);
     setFiltered(sorted);
-    goUp(null, false);
+    setTimeout(() => goUp(null, false), 100);
   }, [state.modalState.filter_opened])
 
   const handleSearch = useCallback((text: string) => {

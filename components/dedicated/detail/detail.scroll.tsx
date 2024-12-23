@@ -115,6 +115,20 @@ export default function DetailCardScroll({card, state, scrollService}: {card: Ca
         </ThemedView>
       </ThemedView>
 
+      { card.ability && 
+        <ThemedView style={[cardDetailStyles.itemInfo, styles.artistContainer, {flexWrap: 'wrap'}]}>
+          <ThemedView style={styles.infoTitle}>
+            <ThemedText style={styles.text}>{i18n.t('ability')}</ThemedText>
+          </ThemedView>
+          <ThemedView style={styles.infoValue}>
+            <ThemedText style={[styles.attackName, styles.abilityName]}>{card.ability.name}</ThemedText>
+          </ThemedView>
+          <ThemedView style={[styles.attackContainer, {width: '100%', padding: 16, justifyContent: 'center'}]}>
+            <ThemedText style={styles.text}>{card.ability.description}</ThemedText>
+          </ThemedView>
+        </ThemedView>
+      }
+
       { card.attacks && card.attacks?.length > 0 && 
         <ThemedView style={[cardDetailStyles.itemInfo, {padding: 0, overflow: 'hidden'}]}>
           <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
@@ -188,7 +202,7 @@ export default function DetailCardScroll({card, state, scrollService}: {card: Ca
             </ThemedView>
             <ThemedView style={[styles.infoValue, {justifyContent: 'center', alignItems: 'center'}]}>
               <ThemedView style={{flexDirection: 'row', gap: 2, position: 'relative'}}>
-                <Image source={card.weak && TYPE_MAP[card.weak].image} style={styles.element}></Image>
+                <Image source={card.weak !== null && card.weak !== undefined && TYPE_MAP[card.weak].image} style={styles.element}></Image>
                 <ThemedText style={[styles.text, {top: 1, position: 'absolute', left: 25}]}>+20</ThemedText>
               </ThemedView>
             </ThemedView>
@@ -359,7 +373,8 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 20,
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
-    zIndex: 100
+    zIndex: 100,
+    justifyContent: 'center',
   },
   infoValue: {
     backgroundColor: 'white',
@@ -381,5 +396,10 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     flexDirection: 'row', 
     gap: 6
+  },
+  abilityName: {
+    textAlign: 'center',
+    color: 'rgb(165, 7, 17)',
+    fontWeight: '600'
   }
 });

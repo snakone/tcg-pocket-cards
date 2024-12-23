@@ -1,5 +1,6 @@
 export const TRANSLATIONS = {
   en: {
+    ability: 'Ability',
     about: "About this app",
     adaptation: "Adaptation",
     art: "Art Direction",
@@ -215,6 +216,7 @@ export const TRANSLATIONS = {
     without_ability: "Without Ability"
   },
   es: {
+    ability: 'Habilidad',
     about: "Sobre esta aplicación",
     adaptation: "Adaptación",
     art: "Dirección de arte",
@@ -430,6 +432,7 @@ export const TRANSLATIONS = {
     without_ability: "Sin habilidad"
   },
   ja: {
+    ability: '特性',
     about: "このアプリについて",
     adaptation: "適応",
     art: "アートディレクション",
