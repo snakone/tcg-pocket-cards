@@ -8,25 +8,26 @@ import { ThemedView } from "../ThemedView";
 import ScrollIndicator from "../ui/ScrollIndicator";
 
 export function AboutModal() {
-    const scrollY = useSharedValue(0);
-    const [contentHeight, setContentHeight] = useState(1);
-    const [scrollViewHeight, setScrollViewHeight] = useState(1);
-    const {i18n} = useI18n();
-    const lastUpdate = '24/12/2024';
+  const scrollY = useSharedValue(0);
+  const [contentHeight, setContentHeight] = useState(1);
+  const [scrollViewHeight, setScrollViewHeight] = useState(1);
+  const {i18n} = useI18n();
+  const lastUpdate = '24/12/2024';
+
+  const styles = sharedModalStyles;
+
+  const handleContentSizeChange = (width: number, height: number) => {
+    setContentHeight(height);
+  };
+
+  const handleScroll = (event: any) => {
+    scrollY.value = event.nativeEvent.contentOffset.y;
+  };
+
+  const handleLayout = (event: any) => {
+    setScrollViewHeight(event.nativeEvent.layout.height);
+  };
   
-    const styles = sharedModalStyles;
-  
-    const handleContentSizeChange = (width: number, height: number) => {
-      setContentHeight(height);
-    };
-  
-    const handleScroll = (event: any) => {
-      scrollY.value = event.nativeEvent.contentOffset.y;
-    };
-  
-    const handleLayout = (event: any) => {
-      setScrollViewHeight(event.nativeEvent.layout.height);
-    };
   return (
     <ThemedView style={{flex: 1}}>
       <ScrollIndicator contentHeight={contentHeight} 

@@ -28,6 +28,17 @@ export const PSYCHIC_ICON = require('@/assets/images/types/psychic.png');
 export const STEEL_ICON = require('@/assets/images/types/steel.png');
 export const WATER_ICON = require('@/assets/images/types/water.png');
 
+export const FAVORITE_HOW_TO = require('@/assets/images/favorites/how_to.png');
+export const FAVORITE_SYMBOL = require('@/assets/images/favorites/symbol.png');
+export const FAVORITE_MEW = require('@/assets/images/favorites/mew_favorite.png');
+export const FAVORITE_FILTER = require('@/assets/images/favorites/filter.png');
+
+export const GRID_SEARCH = require('@/assets/images/grid/search.png');
+export const GRID_FILTER = require('@/assets/images/grid/filter_icon.png');
+export const GRID_OPTION = require('@/assets/images/grid/filter_open.png');
+export const GRID_SORT = require('@/assets/images/grid/sort_open.png');
+export const GRID_SORT_ICON = require('@/assets/images/grid/sort_icon.png');
+
 // SPLASH
 export const WINTER_SPLASH = require('@/assets/images/splash/winter.webp');
 export const SPRING_SPLASH = require('@/assets/images/splash/spring.webp');

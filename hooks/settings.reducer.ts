@@ -1,3 +1,4 @@
+import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 
 export interface SettingsState {
@@ -9,6 +10,7 @@ export interface SettingsState {
   version: string | null;
   show_intro: boolean;
   favorites: number[];
+  cards: Card[];
 }
 
 export const settingsInitialState: SettingsState = { 
@@ -19,7 +21,8 @@ export const settingsInitialState: SettingsState = {
   language: 'es',
   version: null,
   show_intro: true,
-  favorites: []
+  favorites: [],
+  cards: []
 };
 
 export const settingsReducer = (state: SettingsState, action: SettingsAction): SettingsState => {

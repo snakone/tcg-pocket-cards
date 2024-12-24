@@ -13,7 +13,8 @@ export default class Storage {
     'music_volume',
     'sound_volume',
     'show_intro',
-    'favorites'
+    'favorites',
+    'cards'
   ];
 
   public static async set(key: string, value: any): Promise<void> {

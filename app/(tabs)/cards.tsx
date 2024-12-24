@@ -15,7 +15,9 @@ import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { Colors } from '@/shared/definitions/utils/colors';
 import SoundService from '@/core/services/sounds.service';
 import { CardsScreenModal } from '@/components/modals/CardsScreenModal';
+import Storage from '@/core/storage/storage.service';
 import React from 'react';
+import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 
 export default function CardsScreen() {
   const context = useContext(AppContext);
@@ -48,11 +50,13 @@ export default function CardsScreen() {
       .subscribe({
         next: (res) => {
           dispatch({ type: 'SET_CARDS', cards: res });
+          Storage.set('cards', res);
           setLoading(false);
         },
         error: (err) => {
           console.log(err);
           showError("error_get_cards");
+          Storage.set('cards', []);
           setLoading(false);
         }
       });
@@ -61,7 +65,16 @@ export default function CardsScreen() {
   }, [dispatch]);
   
   useEffect(() => {
+    const cards: Card[] = state.settingsState.cards;
+
+    if (cards.length !== 0 && !state.cardState.loaded) {
+      dispatch({ type: 'SET_CARDS', cards });
+      setLoading(false);
+      return;
+    }
+
     let sub: Subscription;
+
     !state.cardState.loaded ? sub = loadCards() : setLoading(false);
 
     return () => {

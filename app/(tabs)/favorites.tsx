@@ -8,6 +8,9 @@ import { useError } from "@/core/providers/ErrorProvider";
 import ImageGridWithSearch from "@/components/ui/CardGrid";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import { FavoritesModal } from "@/components/modals";
+import React from "react";
+import Storage from '@/core/storage/storage.service';
+import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 
 export default function FavoritesScreen() {
   const context = useContext(AppContext);
@@ -24,11 +27,13 @@ export default function FavoritesScreen() {
       .subscribe({
         next: (res) => {
           dispatch({ type: 'SET_CARDS', cards: res });
+          Storage.set('cards', res);
           setLoading(false);
         },
         error: (err) => {
           console.log(err);
           showError("error_get_cards");
+          Storage.set('cards', []);
           setLoading(false);
         }
       });
@@ -37,6 +42,14 @@ export default function FavoritesScreen() {
   }, [dispatch]);
   
   useEffect(() => {
+    const cards: Card[] = state.settingsState.cards;
+
+    if (cards.length !== 0 && !state.cardState.loaded) {
+      dispatch({ type: 'SET_CARDS', cards });
+      setLoading(false);
+      return;
+    }
+    
     let sub: Subscription;
     !state.cardState.loaded ? sub = loadCards() : setLoading(false);
 
@@ -54,7 +67,7 @@ export default function FavoritesScreen() {
                              key={loading ? 'loading' : 'loaded'}
                              modal={FavoritesModal()}
                              title="favorites"
-                             modalTitle="favorites"
+                             modalTitle="favorites_modal_title"
                              type="favorites"/>
     </>
   );

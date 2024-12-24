@@ -82,11 +82,13 @@ export default function DetailScreen() {
       .subscribe({
         next: (res) => {
           dispatch({ type: 'SET_CARDS', cards: res });
+          Storage.set('cards', res);
           setLoading(false);
         },
         error: (err) => {
           console.log(err);
           showError("error_get_cards");
+          Storage.set('cards', []);
           setLoading(false);
         }
       });
@@ -95,6 +97,14 @@ export default function DetailScreen() {
   }, [dispatch]);
   
   useEffect(() => {
+    const cards: Card[] = state.settingsState.cards;
+
+    if (cards.length !== 0 && !state.cardState.loaded) {
+      dispatch({ type: 'SET_CARDS', cards });
+      setLoading(false);
+      return;
+    }
+    
     let sub: Subscription;
     !state.cardState.loaded ? sub = loadCards() : setLoading(false);
 

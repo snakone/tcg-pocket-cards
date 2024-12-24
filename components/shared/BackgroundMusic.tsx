@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Audio } from 'expo-av';
 
-import Storage from '@/core/storage/storage.service'
+import Storage from '@/core/storage/storage.service';
 import { MUSIC_ERROR } from '@/shared/definitions/sentences/global.sentences';
 import { AppState } from '@/hooks/root.reducer';
 
