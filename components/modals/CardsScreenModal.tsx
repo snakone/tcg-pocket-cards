@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Image } from 'expo-image';
 import { ThemedText } from "../ThemedText";
 import { useSharedValue } from "react-native-reanimated";
-import { FAVORITE_HOW_TO, FAVORITE_SYMBOL, FAVORITE_MEW, FAVORITE_FILTER, GRID_SEARCH, GRID_FILTER, GRID_OPTION, GRID_SORT, GRID_SORT_ICON } from "@/shared/definitions/sentences/path.sentences";
+import { GRID_SEARCH, GRID_FILTER, GRID_OPTION, GRID_SORT, GRID_SORT_ICON } from "@/shared/definitions/sentences/path.sentences";
 import { ScrollView } from "react-native";
 import { ThemedView } from "../ThemedView";
 import ScrollIndicator from "../ui/ScrollIndicator";

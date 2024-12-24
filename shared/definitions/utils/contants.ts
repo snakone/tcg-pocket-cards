@@ -28,7 +28,7 @@ import { EXPANSION } from "../enums/packs.enums";
 import { CardExpansionENUM, CardRarityENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 
-export const APP_VERSION = '1.0.2';
+export const APP_VERSION = '1.0.3';
 export const MENU_WIDTH = 250;
 export const MENU_HEIGHT = 405;
 export const PAGE_TITLE = 'TCG Pocket Cards';

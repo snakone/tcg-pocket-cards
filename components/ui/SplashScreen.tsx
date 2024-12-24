@@ -9,6 +9,7 @@ import { ThemedView } from "../ThemedView";
 import { splashImage } from "./SplashImage";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import React from "react";
+import { APP_VERSION } from "@/shared/definitions/utils/contants";
 
 export const SplashScreenMemo = memo(({handleStart}: {handleStart: () => void}) => {
   const {i18n} = useI18n();
@@ -21,6 +22,9 @@ export const SplashScreenMemo = memo(({handleStart}: {handleStart: () => void}) 
           Platform.OS === 'web' ? WebStyles.view : {flex: 1}, 
           {boxShadow: 'none'}
         ]}>
+        <ThemedText style={styles.version}>
+          v{APP_VERSION}
+        </ThemedText>
         <Image source={TCG_LOGO} style={styles.logo} />
         <ThemedView style={styles.container}>
           <Pressable
@@ -62,6 +66,17 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     height: 42,
     width: 150,
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+  },
+  version: {
+    position: 'absolute',
+    right: 20,
+    top: 20,
+    backgroundColor: 'white',
+    padding: 4,
+    borderRadius: 4,
+    paddingHorizontal: 8,
+    fontSize: 12,
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
   }
 });

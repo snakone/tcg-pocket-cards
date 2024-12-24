@@ -39,13 +39,12 @@ import { GO_UP, NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/
 import SkeletonCardGrid from '../skeletons/SkeletonCardGrid';
 import { ThemedView } from '../ThemedView';
 import HeaderWithCustomModal from '../shared/HeaderModal';
-import { CardsScreenModal } from '../modals/CardsScreenModal';
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from './IconSymbol';
 import { Colors } from '@/shared/definitions/utils/colors';
 import useHeaderAnimation from './HeaderAnimation';
 import { AppState } from '@/hooks/root.reducer';
-import { MIN_MODAL_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/contants';
+import { LARGE_MODAL_HEIGHT, MIN_MODAL_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/contants';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { filterCards, sortCards } from '@/shared/definitions/utils/functions';
@@ -295,7 +294,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                                  modalTitle={modalTitle} 
                                  animatedStyle={animatedTitleStyle}
                                  animatedIconStyle={animatedIconStyle}
-                                 modalHeight={MIN_MODAL_HEIGHT}/>
+                                 modalHeight={LARGE_MODAL_HEIGHT}/>
         </Animated.View>
         <Animated.View style={[ParallaxStyles.content]}>
           <SafeAreaView style={CardGridStyles.container}>

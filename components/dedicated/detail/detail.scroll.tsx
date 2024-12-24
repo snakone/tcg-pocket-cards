@@ -117,10 +117,10 @@ export default function DetailCardScroll({card, state, scrollService}: {card: Ca
 
       { card.ability && 
         <ThemedView style={[cardDetailStyles.itemInfo, styles.artistContainer, {flexWrap: 'wrap'}]}>
-          <ThemedView style={styles.infoTitle}>
+          <ThemedView style={[styles.infoTitle, {width: '39.9%'}]}>
             <ThemedText style={styles.text}>{i18n.t('ability')}</ThemedText>
           </ThemedView>
-          <ThemedView style={styles.infoValue}>
+          <ThemedView style={[styles.infoValue, {boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}]}>
             <ThemedText style={[styles.attackName, styles.abilityName]}>{card.ability.name}</ThemedText>
           </ThemedView>
           <ThemedView style={[styles.attackContainer, {width: '100%', padding: 16, justifyContent: 'center'}]}>
@@ -400,6 +400,7 @@ const styles = StyleSheet.create({
   abilityName: {
     textAlign: 'center',
     color: 'rgb(165, 7, 17)',
-    fontWeight: '600'
+    fontWeight: '600',
+    top: -1
   }
 });

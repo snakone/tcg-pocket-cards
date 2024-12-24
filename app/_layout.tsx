@@ -59,7 +59,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     navigation.addListener('state', (_) => {
-      if (isRouteComingFromSettings(navigation)) {
+      if (isRouteComingFromSettings((navigation as any))) {
         setComingFromSettings(true);
       }
     });

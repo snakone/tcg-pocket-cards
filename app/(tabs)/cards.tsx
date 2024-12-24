@@ -67,7 +67,7 @@ export default function CardsScreen() {
   useEffect(() => {
     const cards: Card[] = state.settingsState.cards;
 
-    if (cards.length !== 0 && !state.cardState.loaded) {
+    if (cards && cards.length !== 0 && !state.cardState.loaded) {
       dispatch({ type: 'SET_CARDS', cards });
       setLoading(false);
       return;
