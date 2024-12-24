@@ -15,6 +15,7 @@ import { AppContext } from "@/app/_layout";
 import { INITIAL_SORT_DATA } from "@/shared/definitions/utils/contants";
 import { cardStyles } from "@/app/(tabs)/cards";
 import SoundService from "@/core/services/sounds.service";
+import React from "react";
 
 export default function SortCardMenu({
   isVisible,

@@ -1,7 +1,7 @@
 import MaterialIcons from '@expo/vector-icons/build/MaterialIcons';
 
 export const ICONS_MAPPING = {
-  'house.fill': 'weekend',
+  'house.fill': 'other-houses',
   'paperplane.fill': 'send',
   'chevron.left.forwardslash.chevron.right': 'code',
   'chevron.right': 'chevron-right',
@@ -19,7 +19,7 @@ export const ICONS_MAPPING = {
   'laurel.leading': 'insert-chart-outlined',
   'door.garage.open': 'bookmark-outline',
   'mail': 'mail-outline',
-  'note': 'bookmark-outline',
+  'note': 'share',
   'arrow.backward.circle': 'arrow-back-ios',
   'arrow.forward.circle': 'arrow-forward-ios',
   'suit.heart': 'content-paste-search',

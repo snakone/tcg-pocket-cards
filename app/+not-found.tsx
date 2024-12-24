@@ -3,6 +3,7 @@ import { Link, Stack } from 'expo-router';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { NotFoundStyles } from '@/shared/styles/component.styles';
+import React from 'react';
 
 export default function NotFoundScreen() {
   const styles = NotFoundStyles;

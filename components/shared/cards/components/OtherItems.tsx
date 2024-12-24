@@ -6,6 +6,7 @@ import StateButton from "@/components/ui/StateButton";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { filterStyles } from "@/shared/styles/component.styles";
+import React from "react";
 
 export const OtherItems = memo(({ filterObj }: {filterObj: MutableRefObject<FilterSearch>}) => {
   const {i18n} = useI18n();

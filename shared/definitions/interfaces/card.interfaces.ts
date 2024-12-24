@@ -46,6 +46,6 @@ export interface CardPackTag {
   tag: string, 
   color: string, 
   background: string,
-  amount: string;
+  promo_amount: string;
 }
 

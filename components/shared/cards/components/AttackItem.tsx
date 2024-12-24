@@ -8,6 +8,7 @@ import { DAMAGES } from "@/shared/definitions/utils/contants";
 import { filterStyles } from "@/shared/styles/component.styles";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import React from "react";
 
 interface AttackItemProps {
   filterObj: MutableRefObject<FilterSearch>,

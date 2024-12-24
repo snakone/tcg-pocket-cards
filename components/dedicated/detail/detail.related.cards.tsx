@@ -12,6 +12,7 @@ import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { CARD_IMAGE_MAP } from "@/shared/definitions/utils/card.images";
 import { CardGridStyles, CARD_IMAGE_WIDTH_3 } from "@/shared/styles/component.styles";
 import ScrollService from "@/core/services/scroll.service";
+import React from "react";
 
 interface DetailRelatedProps {
   card: Card,

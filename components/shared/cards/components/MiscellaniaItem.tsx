@@ -13,6 +13,7 @@ import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { IsExButtonList } from "./IsExItem";
+import React from "react";
 
 interface MiscellaniaItemProps {
   weak: { [key in PokemonTypeENUM]: boolean | null },
@@ -39,8 +40,8 @@ export const MiscellaniaItem = memo(({
 
       <ThemedView style={[filterStyles.flexContainer, styles.container]}>
         {Object.keys(weak).map((key, i) => {
-          const image = TYPE_MAP[key]?.image;
-          const label = TYPE_MAP[key]?.label;
+          const image = (TYPE_MAP as any)[key]?.image;
+          const label = (TYPE_MAP as any)[key]?.label;
 
           return (
             <StateButton

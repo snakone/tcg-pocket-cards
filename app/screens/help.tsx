@@ -25,6 +25,7 @@ import {
   ThemedView,
   UserDataModal
 } from '@/components/modals/index';
+import React from "react";
 
 export default function HelpScreen() {
   const styles = HelpItemStyles;
@@ -49,19 +50,19 @@ export default function HelpScreen() {
       icon: 'location.fill',
       modal: 'about',
       content: <AboutModal></AboutModal>,
-      height: MIN_MODAL_HEIGHT
+      height: LARGE_MODAL_HEIGHT
     },
     { 
       icon: 'laurel.leading',
       modal: 'privacy',
       content: <UserDataModal></UserDataModal>,
-      height: MIN_MODAL_HEIGHT
+      height: LARGE_MODAL_HEIGHT
     },
     { 
       icon: 'mail',
       modal: 'contact',
       content: <ContactModal></ContactModal>,
-      height: MIN_MODAL_HEIGHT
+      height: LARGE_MODAL_HEIGHT
     },
     { 
       icon: 'creditcard',

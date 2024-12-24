@@ -71,7 +71,7 @@ export default function DetailCardScroll({card, state, scrollService}: {card: Ca
                   </ThemedText>
                 </ThemedView> 
                 <ThemedText style={{fontWeight: 600}}>{card.number} / {
-                  isCardPromo(card) ? EXPANSION_MAP[card.expansion].amount : PACK_AMOUNT_MAP[card.expansion]
+                  isCardPromo(card) ? EXPANSION_MAP[card.expansion].promo_amount : PACK_AMOUNT_MAP[card.expansion]
                 }</ThemedText>            
               </>
             }

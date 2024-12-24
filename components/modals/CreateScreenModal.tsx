@@ -16,6 +16,7 @@ import BounceArrow from "../ui/BounceArrow";
 import { ThemedView } from "../ThemedView";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { useI18n } from "@/core/providers/LanguageProvider";
+import React from "react";
 
 export function CreateScreenModal() {
   const {i18n} = useI18n();

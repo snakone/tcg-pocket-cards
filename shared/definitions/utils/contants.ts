@@ -51,8 +51,8 @@ export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
 }
 
 export const LIST: ItemWithRoute[] = [
-  { label: 'decks', icon: 'wind', route: '' },
-  { label: 'expansions', icon: 'note', route: '' },
+  { label: 'decks', icon: 'wind', route: 'decks' },
+  { label: 'share', icon: 'note', route: 'share' },
   { label: 'favorites', icon: 'star', route: 'favorites' },
 ];
 
@@ -123,9 +123,9 @@ export const STAGE_MAP: Record<CardStageENUM, {label: string}> = {
 }
 
 export const EXPANSION_MAP: Record<CardExpansionENUM, CardPackTag> = {
-  [CardExpansionENUM.GENETIC_APEX]: { label: 'A', tag: 'A1', color: 'white', background: 'black', amount: 'P-A' },
-  [CardExpansionENUM.PROMO_A]: { label: 'A', tag: 'PROMO-A', color: 'white', background: 'black', amount: 'P-A' },
-  [CardExpansionENUM.MYTHICAL_ISLAND]: { label: 'A', tag: 'A1a', color: 'white', background: 'black', amount: 'P-A' }
+  [CardExpansionENUM.GENETIC_APEX]: { label: 'A', tag: 'A1', color: 'white', background: 'black', promo_amount: 'P-A' },
+  [CardExpansionENUM.PROMO_A]: { label: 'A', tag: 'PROMO-A', color: 'white', background: 'black', promo_amount: 'P-A' },
+  [CardExpansionENUM.MYTHICAL_ISLAND]: { label: 'A', tag: 'A1a', color: 'white', background: 'black', promo_amount: 'P-A' }
 }
 
 export const PACK_MAP: Record<EXPANSION, any> = {

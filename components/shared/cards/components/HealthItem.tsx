@@ -8,6 +8,7 @@ import { filterStyles } from "@/shared/styles/component.styles";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import React from "react";
 
 interface HealthItemProps {
   filterObj: MutableRefObject<FilterSearch>,

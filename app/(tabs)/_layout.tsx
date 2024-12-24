@@ -13,6 +13,7 @@ import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
 import FilterCardMenu from '@/components/shared/cards/FilterCardMenu';
 import SortCardMenu from '@/components/shared/cards/SortCardMenu';
 import SoundService from '@/core/services/sounds.service';
+import { useI18n } from '@/core/providers/LanguageProvider';
 
 export default function TabLayout() {
   const distanceFromBottom = useSharedValue(FILTER_CARDS_HEIGHT);
@@ -24,6 +25,7 @@ export default function TabLayout() {
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
   const menuRight = useSharedValue(MENU_WIDTH);
+  const {i18n} = useI18n();
 
   // MENU
   const menuAnimatedStyle = useAnimatedStyle(() => {
@@ -131,15 +133,15 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => 
             <IconSymbol name="house.fill" 
                         color={color}
-                        style={[TabButtonStyles.icon, emulatorStyle() && {top: -3}]} />,
+                        style={[TabButtonStyles.icon, emulatorStyle() && {top: -5}]} />,
             animation: 'shift',
-            title: 'Home'
+            title: i18n.t('home')
           }}
         />
         <Tabs.Screen
           name="cards"
           options={{
-            title: 'Cartas',
+            title: i18n.t('cards'),
             tabBarIcon: ({ color }) => 
               <SvgStackSymbol color={color} 
                               style={[TabButtonStyles.stacks, emulatorStyle() && {top: -3, left: 4}]} />,
@@ -153,7 +155,7 @@ export default function TabLayout() {
               <SvgStylusSymbol color={color}
                                style={[TabButtonStyles.stylus, emulatorStyle() && {top: -3, left: 4}]} />,
             animation: 'shift',
-            title: 'Create'
+            title: i18n.t('create')
           }}
         />
         <Tabs.Screen
@@ -179,7 +181,29 @@ export default function TabLayout() {
               display: 'none'
             },
             tabBarButton: () => null,
-            title: 'Profile'
+            title: i18n.t('profile')
+          }}
+        />
+        <Tabs.Screen
+          name="decks"
+          options={{
+            animation: 'shift',
+            tabBarItemStyle: {
+              display: 'none'
+            },
+            tabBarButton: () => null,
+            title: i18n.t('decks')
+          }}
+        />
+        <Tabs.Screen
+          name="share"
+          options={{
+            animation: 'shift',
+            tabBarItemStyle: {
+              display: 'none'
+            },
+            tabBarButton: () => null,
+            title: i18n.t('share')
           }}
         />
         <Tabs.Screen
@@ -190,7 +214,7 @@ export default function TabLayout() {
               display: 'none'
             },
             tabBarButton: () => null,
-            title: 'Favorites'
+            title: i18n.t('favorites')
           }}
         />
       </Tabs>

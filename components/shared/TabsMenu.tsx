@@ -13,6 +13,7 @@ import { IconSymbol } from '../ui/IconSymbol';
 import { LIST, HELP } from '@/shared/definitions/utils/contants';
 import { useI18n } from '../../core/providers/LanguageProvider';
 import SoundService from '@/core/services/sounds.service';
+import React from 'react';
 
 export default function TabsMenu({
   isVisible,
@@ -43,12 +44,16 @@ export default function TabsMenu({
   const handleRoute = async (route: string) => {
     await playSound();
     switch(route) {
-      case 'help': router.push('/screens/help');
-       break;
-      case 'settings': router.push('/screens/settings');
-       break;
+      case 'decks': router.push('/decks');
+        break;
       case 'favorites': router.push('/favorites');
-       break;
+        break;
+      case 'share': router.push('/share');
+        break;
+      case 'help': router.push('/screens/help');
+        break;
+      case 'settings': router.push('/screens/settings');
+        break;
     }
     onClose();
   }

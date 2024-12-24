@@ -15,6 +15,7 @@ import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { Colors } from '@/shared/definitions/utils/colors';
 import SoundService from '@/core/services/sounds.service';
 import { CardsScreenModal } from '@/components/modals/CardsScreenModal';
+import React from 'react';
 
 export default function CardsScreen() {
   const context = useContext(AppContext);
