@@ -12,10 +12,11 @@ import SoundService from "@/core/services/sounds.service";
 
 interface SharedScreenProps {
   title: string,
-  children: React.ReactNode
+  children: React.ReactNode,
+  styles?: any
 }
 
-export default function SharedScreen({title, children}: SharedScreenProps) {
+export default function SharedScreen({title, children, styles}: SharedScreenProps) {
   const router = useRouter();
   const navigation = useNavigation();
   const {i18n} = useI18n();
@@ -28,17 +29,13 @@ export default function SharedScreen({title, children}: SharedScreenProps) {
     await playSound();
     router.canGoBack() ? router.back() : router.replace('/');
   }, []);
-  
-  useEffect(() => {
-    navigation.setOptions({ headerShown: false });
-  }, [navigation]);
 
   return (
     <ThemedView style={{flex: 1, overflow: 'hidden'}}>
       <View style={[ParallaxStyles.header, { backgroundColor: "#fff" }]}>
         <ThemedText type="headerTitle">{i18n.t(title)}</ThemedText>
       </View>
-      <ThemedView style={ScreenStyles.content}>
+      <ThemedView style={[ScreenStyles.content, styles]}>
         {children}
       </ThemedView>
       <View style={ScreenStyles.bottomContent}>

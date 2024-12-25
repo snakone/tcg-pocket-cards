@@ -1,5 +1,3 @@
-import { CardExpansionENUM } from "../enums/card.enums";
-
 // SOUNDS
 export const AUDIO_MENU_OPEN = require("@/assets/sounds/menu-button.mp3");
 export const AUDIO_MENU_CLOSE = require("@/assets/sounds/close.mp3");

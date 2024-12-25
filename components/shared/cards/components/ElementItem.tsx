@@ -24,8 +24,8 @@ export const ElementItem = memo(({ element, filterObj, typeSelectAll$ }: Element
       ]}
     >
       {Object.keys(element).map((key, i) => {
-        const image = TYPE_MAP[key]?.image;
-        const label = TYPE_MAP[key]?.label;
+        const image = (TYPE_MAP as any)[key]?.image;
+        const label = (TYPE_MAP as any)[key]?.label;
 
         return (
           <StateButton

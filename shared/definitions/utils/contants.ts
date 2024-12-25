@@ -42,6 +42,7 @@ export const MIN_MODAL_HEIGHT = 96;
 export const DEFAULT_MODAL_HEIGHT = 236;
 export const LARGE_MODAL_HEIGHT = 508;
 export const SORT_MODAL_HEIGHT = 527;
+export const SELECT_ENERGY_HEIGHT = 575;
 
 export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
   color: 'rgba(0, 0, 0, .32)', 

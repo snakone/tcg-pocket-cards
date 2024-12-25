@@ -16,7 +16,8 @@ export default function SkeletonCardGrid({columns}: SkeletonProps) {
   const renderItem = useCallback(() => (
     <View style={CardGridStyles.imageContainer}>
       <View style={{flex: 1, backgroundColor: Colors.light.skeleton}}>
-        <View style={CardGridStyles.image}></View></View>
+        <View style={CardGridStyles.image}></View>
+      </View>
     </View>
   ), []);
   

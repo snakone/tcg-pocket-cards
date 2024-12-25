@@ -44,13 +44,14 @@ import { IconSymbol } from './IconSymbol';
 import { Colors } from '@/shared/definitions/utils/colors';
 import useHeaderAnimation from './HeaderAnimation';
 import { AppState } from '@/hooks/root.reducer';
-import { LARGE_MODAL_HEIGHT, MIN_MODAL_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/contants';
+import { LARGE_MODAL_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/contants';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { filterCards, sortCards } from '@/shared/definitions/utils/functions';
 import { AppContext } from '@/app/_layout';
 import { CARD_IMAGE_MAP } from '@/shared/definitions/utils/card.images';
 import SoundService from '@/core/services/sounds.service';
+import { useFocusEffect } from '@react-navigation/native';
 
 interface GridCardProps {
   state: AppState,
@@ -209,7 +210,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
   };
 
   useEffect(() => {
-    if (modalTitle !== 'favorites') return;
+    if (modalTitle !== 'favorites_modal_title') return;
     const favorites = state.cardState.cards.filter(
       card => state.settingsState.favorites.includes(card.id)
     );
@@ -283,7 +284,11 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
-  )
+  );
+
+  useFocusEffect(
+    useCallback(() => { goUp(null, false); }, [])
+  );
 
   return (
     <ThemedView style={ParallaxStyles.container}>
@@ -365,6 +370,6 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
           </SafeAreaView>
         </Animated.View>
       </SafeAreaView>
-  </ThemedView>
+    </ThemedView>
   );
 }

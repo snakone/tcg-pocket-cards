@@ -136,7 +136,7 @@ export const CardGridStyles = StyleSheet.create({
     right: 4,
     height: 20,
     width: 40,
-    left: Platform.OS === 'web' ? -4 : 4,
+    left: Platform.OS === 'web' ? -6 : -2,
     transform: [
       { scale: Platform.OS === 'web' ? 1 : 1.1 }
     ]
@@ -690,7 +690,7 @@ export const homeScreenStyles = StyleSheet.create({
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
   },
   ctaText: {
-    color: '#333',
+    color: 'white',
     fontSize: 16,
     fontWeight: '600',
   },
