@@ -16,6 +16,5 @@ export type ParallaxProps = PropsWithChildren<{
   styles?: StyleProp<ViewStyle>,
 }>;
 
-export type ErrorType = 'error' | 'info' | 'warning';
-
+export type ErrorType = 'error' | 'info' | 'warning' | 'delete';
 export type LanguageType = 'es' | 'en' | 'ja';

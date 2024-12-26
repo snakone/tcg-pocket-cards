@@ -1,4 +1,4 @@
-import { HEADER_HEIGHT, HEADER_MIN_HEIGHT } from '@/shared/styles/component.styles';
+import { CREATE_GRID_HEIGHT, CREATE_GRID_MAX_HEIGHT, HEADER_HEIGHT, HEADER_MIN_HEIGHT } from '@/shared/styles/component.styles';
 import { useDerivedValue, useAnimatedStyle, interpolate, Extrapolation, SharedValue } from 'react-native-reanimated';
 
 const useHeaderAnimation = (scrollY: SharedValue<number>) => {
@@ -35,6 +35,17 @@ const useHeaderAnimation = (scrollY: SharedValue<number>) => {
     Extrapolation.CLAMP
   ));
 
+  const derivedGridHeight = useDerivedValue(() => interpolate(
+    scrollY.value,
+    [60, 90],
+    [CREATE_GRID_HEIGHT, CREATE_GRID_MAX_HEIGHT],
+    Extrapolation.CLAMP
+  ));
+
+  const animatedGridHeaderStyle = useAnimatedStyle(() => ({
+    height: derivedGridHeight.value,
+  }));
+
   const animatedIconStyle = useAnimatedStyle(() => ({
     top: derivedTop.value,
     opacity: derivedOpacity.value,
@@ -58,6 +69,7 @@ const useHeaderAnimation = (scrollY: SharedValue<number>) => {
     animatedHeaderStyle,
     animatedIconStyle,
     animatedTitleStyle,
+    animatedGridHeaderStyle
   };
 };
 

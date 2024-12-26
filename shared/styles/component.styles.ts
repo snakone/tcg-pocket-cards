@@ -15,6 +15,8 @@ export const HEADER_HEIGHT = 100;
 export const HEADER_MIN_HEIGHT = 40;
 export const CARD_IMAGE_WIDTH_3 = 116.5;
 export const CARD_IMAGE_WIDTH_5 = 69.1;
+export const CREATE_GRID_HEIGHT = 520;
+export const CREATE_GRID_MAX_HEIGHT = CREATE_GRID_HEIGHT + 60;
 
 export const ThemeTextStyles = StyleSheet.create({
   default: {
@@ -86,7 +88,6 @@ export const CollapsideStyles = StyleSheet.create({
 export const CardGridStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
   },
   inputContainer: {
     flexDirection: 'row', 

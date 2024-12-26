@@ -1,6 +1,6 @@
 import { View, TouchableOpacity } from "react-native";
-import { useEffect, useCallback } from "react";
-import { useNavigation, useRouter } from "expo-router";
+import { useCallback } from "react";
+import { useRouter } from "expo-router";
 
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -13,12 +13,12 @@ import SoundService from "@/core/services/sounds.service";
 interface SharedScreenProps {
   title: string,
   children: React.ReactNode,
-  styles?: any
+  styles?: any,
+  customClose?: () => void
 }
 
-export default function SharedScreen({title, children, styles}: SharedScreenProps) {
+export default function SharedScreen({title, children, styles, customClose}: SharedScreenProps) {
   const router = useRouter();
-  const navigation = useNavigation();
   const {i18n} = useI18n();
 
   const playSound = useCallback(async () => {
@@ -40,7 +40,7 @@ export default function SharedScreen({title, children, styles}: SharedScreenProp
       </ThemedView>
       <View style={ScreenStyles.bottomContent}>
         <TouchableOpacity style={ButtonStyles.button} 
-                          onPress={goBack} 
+                          onPress={customClose ?? goBack} 
                           accessibilityLabel={CLOSE_SENTENCE}>
           <View style={ButtonStyles.insetBorder}>
             <IconSymbol name="clear"></IconSymbol>

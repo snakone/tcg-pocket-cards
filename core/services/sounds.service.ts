@@ -5,6 +5,7 @@ import {
   AUDIO_MENU_OPEN,
   BACKGROUND_MUSIC,
   CHANGE_VIEW, 
+  DELETE_SOUND, 
   PICK_CARD_SOUND, 
   POP_PICK,
   SCALE,
@@ -19,7 +20,8 @@ export const Sounds: {[key: string]: AVPlaybackSource} = {
   CHANGE_VIEW,
   POP_PICK,
   SCALE,
-  SPLASH_MUSIC
+  SPLASH_MUSIC,
+  DELETE_SOUND
 };
 
 export class SoundService {

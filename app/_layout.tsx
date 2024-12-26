@@ -3,18 +3,17 @@ import { Stack, useNavigation } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { createContext, useEffect, useMemo, useReducer, useState } from 'react';
-import { Platform, Pressable } from 'react-native';
+import { Platform } from 'react-native';
+import { Provider } from 'react-native-paper';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as NavigationBar from "expo-navigation-bar";
-import { ImageBackground, Image } from 'expo-image';
 
 import { rootReducer, initialRootState, AppState } from '@/hooks/root.reducer';
 import BackgroundMusic from '@/components/shared/BackgroundMusic';
 import { BACKGROUND_MUSIC, FONT_REGULAR } from '@/shared/definitions/sentences/path.sentences';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { WebStyles } from '@/shared/styles/component.styles';
 import { I18nProvider, useI18n } from '@/core/providers/LanguageProvider';
 import { ErrorProvider } from '@/core/providers/ErrorProvider';
-import { Provider } from 'react-native-paper';
 import Storage from '@/core/storage/storage.service';
 import { APP_VERSION } from '@/shared/definitions/utils/contants';
 import { SoundService } from '@/core/services/sounds.service';
@@ -23,6 +22,7 @@ import { ThemedView } from '@/components/ThemedView';
 import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import { splashImage } from '@/components/ui/SplashImage';
 import { SplashScreenMemo } from '@/components/ui/SplashScreen';
+import { ConfirmationProvider } from '@/core/providers/ConfirmationProvider';
 
 export const AppContext = createContext<{ state: AppState; dispatch: React.Dispatch<any> } | undefined>(undefined);
 SplashScreen.preventAutoHideAsync();
@@ -121,16 +121,18 @@ export default function RootLayout() {
     <Provider>
       <GestureHandlerRootView style={Platform.OS === 'web' ? WebStyles.view : { flex: 1 }}>
         <AppContext.Provider value={contextValue}>
-          <ErrorProvider>
-            <I18nProvider>
-              <Stack screenOptions={{headerShown: false}}>
-                <Stack.Screen name="(tabs)" options={{ headerShown: false }}/>
-                <Stack.Screen name="+not-found" options={{ headerShown: false }}/>
-              </Stack>
-              <StatusBar hidden={true} />
-              <BackgroundMusic state={contextValue.state} music={BACKGROUND_MUSIC}/>      
-            </I18nProvider>
-          </ErrorProvider>
+          <ConfirmationProvider>
+            <ErrorProvider>
+              <I18nProvider>
+                <Stack screenOptions={{headerShown: false}}>
+                  <Stack.Screen name="(tabs)" options={{ headerShown: false }}/>
+                  <Stack.Screen name="+not-found" options={{ headerShown: false }}/>
+                </Stack>
+                <StatusBar hidden={true} />
+                <BackgroundMusic state={contextValue.state} music={BACKGROUND_MUSIC}/>      
+              </I18nProvider>
+            </ErrorProvider>
+          </ConfirmationProvider>
         </AppContext.Provider>
       </GestureHandlerRootView>
     </Provider>

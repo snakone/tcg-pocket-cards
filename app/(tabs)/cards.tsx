@@ -117,8 +117,7 @@ export default function CardsScreen() {
                              color={'skyblue'} 
                              style={fixFilterIcon() as StyleProp<TextStyle>}> 
               </MaterialIcons>
-              <MaterialIcons name={getOrderIcon()} style={cardStyles.sortIcon}>
-              </MaterialIcons>
+              <MaterialIcons name={getOrderIcon()} style={cardStyles.sortIcon}></MaterialIcons>
             </ThemedView>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => (handleActionMenu('OPEN_FILTER'))} 
@@ -128,8 +127,7 @@ export default function CardsScreen() {
                           color={'mediumaquamarine'} 
                           style={{fontSize: 32}}>
               </IconSymbol>
-              <MaterialIcons name={getFilterOrderIcon()} style={cardStyles.sortIcon}>
-              </MaterialIcons>
+              <MaterialIcons name={getFilterOrderIcon()} style={cardStyles.sortIcon}></MaterialIcons>
             </ThemedView>
           </TouchableOpacity>       
         </>

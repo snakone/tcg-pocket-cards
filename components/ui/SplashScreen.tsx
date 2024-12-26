@@ -22,15 +22,15 @@ export const SplashScreenMemo = memo(({handleStart}: {handleStart: () => void}) 
           Platform.OS === 'web' ? WebStyles.view : {flex: 1}, 
           {boxShadow: 'none'}
         ]}>
-        <ThemedText style={styles.version}>
+        <ThemedText style={splashStyles.version}>
           v{APP_VERSION}
         </ThemedText>
-        <Image source={TCG_LOGO} style={styles.logo} />
-        <ThemedView style={styles.container}>
+        <Image source={TCG_LOGO} style={splashStyles.logo} />
+        <ThemedView style={splashStyles.container}>
           <Pressable
             onPress={handleStart}
-            style={styles.button}>
-            <ThemedText style={styles.text}>
+            style={[splashStyles.button, {width: 120}]}>
+            <ThemedText style={splashStyles.text}>
               {i18n.t('enter')}
             </ThemedText>
           </Pressable>
@@ -40,7 +40,7 @@ export const SplashScreenMemo = memo(({handleStart}: {handleStart: () => void}) 
   );
 });
 
-const styles = StyleSheet.create({
+export const splashStyles = StyleSheet.create({
   logo: {
     width: 300, 
     height: 200, 
@@ -57,16 +57,19 @@ const styles = StyleSheet.create({
     fontSize: 18, 
     color: 'white', 
     position: 'relative', 
-    top: 1
+    top: -2,
+    fontWeight: 600
   },
   button: {
     backgroundColor: 'mediumaquamarine',
     paddingVertical: 6,
-    paddingHorizontal: 50,
+    paddingHorizontal: 35,
     borderRadius: 30,
     height: 42,
     width: 150,
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   version: {
     position: 'absolute',
@@ -78,5 +81,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     fontSize: 12,
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+    opacity: 0.5
   }
 });
