@@ -3,7 +3,7 @@ export enum CardStageENUM {
 }
 
 export enum CardRarityENUM {
-  COMMON, UNCOMMON, RARE, DOUBLE, ART, SUPER, INMERSIVE, CROWN, PROMO, SPECIAL
+  PROMO, SPECIAL, COMMON, UNCOMMON, RARE, DOUBLE, ART, SUPER, INMERSIVE, CROWN
 }
 
 export enum CardExpansionENUM {

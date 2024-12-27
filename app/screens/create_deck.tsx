@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { FlatList, Platform, Pressable, StyleProp, TextInput, TextStyle, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { StyleSheet } from 'react-native';
@@ -48,6 +48,8 @@ import SoundService from "@/core/services/sounds.service";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import Animated, { useSharedValue, useAnimatedScrollHandler } from "react-native-reanimated";
 import useHeaderAnimation from "@/components/ui/HeaderAnimation";
+import { StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
+import { CardStageENUM } from "@/shared/definitions/enums/card.enums";
 
 export default function CreateDeckScreen() {
   const {i18n} = useI18n();
@@ -66,12 +68,11 @@ export default function CreateDeckScreen() {
   const [isSortVisible, setIsSortVisible] = useState(false);
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [sort, setSort] = useState<SortItem>();
-  const [notSaved, setNotSaved] = useState(true);
+  const [notSaved, setNotSaved] = useState(false);
   const router = useRouter();
   const [deckName, setDeckName] = useState(i18n.t('new_deck_value'));
   const { confirm } = useConfirmation();
-  const scrollY = useSharedValue(0);
-  const { animatedHeaderStyle, animatedTitleStyle, animatedGridHeaderStyle } = useHeaderAnimation(scrollY);
+  const { deck_id } = useLocalSearchParams<{ deck_id: string }>();
 
   const [element, setElement] = useState({
     [PokemonTypeENUM.GRASS]: null, 
@@ -105,6 +106,27 @@ export default function CreateDeckScreen() {
     };
   }, []);
 
+  useEffect(() => {
+    const checkDeck = async () => {
+      if (deck_id !== undefined) {
+        const selected = state.settingsState.decks.find(deck => deck.id === Number(deck_id));
+        if (selected) {
+          const deck = selected.cards.map(card => state.cardState.cards.find(c => c.id === card) || null);
+          setDeck(deck);
+          setDeckName(selected.name);
+          setIsWithEnergy(selected.energies.length > 0);
+          Object.keys(element).forEach((key: any) => {
+            if (selected.energies.includes(key)) {
+              (element as any)[key] = true;
+            }
+          })
+        }
+      }
+    };
+
+    checkDeck();
+  }, [state.cardState.cards]);
+
   const loadCards = useCallback(() => {
     const sub = cardsService
       .getCards()
@@ -130,7 +152,7 @@ export default function CreateDeckScreen() {
   }
 
   const renderItem = useCallback(({item, index}: {item: Card, index: number}) => (
-    <View style={CardGridStyles.imageContainer}>
+    <View style={[CardGridStyles.imageContainer]}>
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <TouchableOpacity onPress={() => handlePick(index)}
               style={[CardGridStyles.image, {justifyContent: 'center', alignItems: 'center'}]}>
@@ -152,7 +174,7 @@ export default function CreateDeckScreen() {
         </TouchableOpacity>
       </View>
     </View>
-  ), [deck]);
+  ), []);
 
   const renderPreviewItem = useCallback(({item}: {item: Card}) => (
     <View style={createDeckStyles.previewItem}>
@@ -199,7 +221,7 @@ export default function CreateDeckScreen() {
   };
 
   const ResetFilterButton = ({style}: any) => (
-    <TouchableOpacity onPress={() => (setDeckName(''), handleSearch(''))} 
+    <TouchableOpacity onPress={() => (setDeckName(''), handleSearch(''), setNotSaved(true))} 
                       style={[CardGridStyles.clearInput, style]}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
@@ -222,7 +244,6 @@ export default function CreateDeckScreen() {
       SoundService.play('AUDIO_MENU_CLOSE');
     }
     setIsGridVisible(value);
-    scrollY.value = 0;
   }
 
   const handlePick = (index: number) => {
@@ -232,6 +253,7 @@ export default function CreateDeckScreen() {
 
   const handleEnergy = (key: any) => {
     playSound();
+    setNotSaved(true);
 
     setElement(prev => {
       return {
@@ -257,19 +279,83 @@ export default function CreateDeckScreen() {
       const index = newDeck.findIndex(c => c?.name === card.name);
       if (index !== -1) {
         newDeck[index] = null;
+        setNotSaved(true);
       }
       SoundService.play('DELETE_SOUND');
       return newDeck.sort((a, b) => Boolean(b) ? 1 : -1);
     });
   }
 
-  function handleSave(): void {
+  async function handleSave(): Promise<void> {
     playSound();
+    const newDeck = await convertDeckToStorage();
+    
+    if (!newDeck.valid) {
+      const userConfirmed = await confirm("save_invalid", "save_invalid_deck");
+      if (userConfirmed) {
+        saveDeck(newDeck);
+      }
+    } else { saveDeck(newDeck); }
+  }
+
+  function saveDeck(deck: StorageDeck): void {
     setLoading(true);
+    Storage.addDeck(deck);
+    dispatch({type: 'ADD_DECK', value: deck});
+
     setTimeout(() => {
       setNotSaved(false);
       setLoading(false);
-    }, 2000);
+      router.canGoBack() ? router.back() : router.replace('/');
+    }, 1000);
+  }
+
+  async function convertDeckToStorage(): Promise<StorageDeck> {
+    const popular = (deck as Card[]).filter(card => Boolean(card))
+                                    .sort((a, b) => b.rarity > a.rarity ? 1 : -1)
+                                    .map(card => card.id);
+
+    const energies = Object.keys(element).filter(key => Boolean((element as any)[key]))
+                                         .map(key => (key as unknown as PokemonTypeENUM));
+
+    popular.length = 2;
+    
+    const data: StorageDeck = {
+      id: Number(deck_id) ? Number(deck_id) : state.settingsState.decks?.length + 1,
+      name: deckName,
+      cards: deck.map(card => card?.id || null),
+      energies,
+      popular,
+      valid: isDeckValid(deck, energies)
+    };
+
+    return data;
+  }
+
+  function isDeckValid(deck: Card[], energies: PokemonTypeENUM[]): boolean {
+    if (
+      deckName.length <= 0 ||
+      energies.length === 0 || 
+      deck.filter(card => Boolean(card)).length !== 20 ||
+      !deck.find(card => card.stage === CardStageENUM.BASIC) ||
+      !getUniqueEnergies(deck).some(type => energies.map(energy => Number(energy)).includes(type))
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  function getUniqueEnergies(cards: Card[]): PokemonTypeENUM[] {
+    const energySet = new Set<PokemonTypeENUM>();
+  
+    cards.forEach(card => {
+      card?.attacks?.forEach(attack => {
+        attack.energy.forEach(energy => energySet.add(energy));
+      });
+    });
+  
+    return Array.from(energySet).sort();
   }
 
   const memoizedSort = useMemo(() => {
@@ -361,31 +447,20 @@ export default function CreateDeckScreen() {
   }
 
   const addToDeck = (card: Card) => {
-    if (addNumberToList(card)) {
+    if (canAddToDeck(card)) {
       SoundService.play('PICK_CARD_SOUND');
+      setNotSaved(true);
+      addNumberToList(card);
     };
   }
 
   function addNumberToList(
-    card: Card,
-    maxRepeats: number = 2
-  ): boolean {
-
-    const sameNameCards = deck.filter(
-      (c) => Boolean(c) && c.name === card.name
-    ) as Card[];
-
-    if (sameNameCards.length < maxRepeats) {
-      const emptyIndex = deck.indexOf(null);
-  
-      if (emptyIndex !== -1) {
-        const newDeck = [...deck];
-        newDeck[emptyIndex] = card;
-        setDeck(newDeck);
-        return true;
-      }
-    }
-    return false;
+    card: Card
+  ): void {
+    const emptyIndex = deck.indexOf(null);
+    const newDeck = [...deck];
+    newDeck[emptyIndex] = card;
+    setDeck(newDeck);
   }
 
   function canAddToDeck(card: Card): boolean {
@@ -466,15 +541,78 @@ export default function CreateDeckScreen() {
       [PokemonTypeENUM.DRAGON]: null,
       [PokemonTypeENUM.NORMAL]: null
     });
-    setDeck(Array.from({ length: 20 }, (_, i) => (null)))
+    setDeck(Array.from({ length: 20 }, (_, i) => (null)));
+    setIsWithEnergy(false);
+    setNotSaved(true);
   }, []);
 
-  const scrollHandler = useAnimatedScrollHandler({
-    onScroll: (event) => {
-      scrollY.value = event.contentOffset.y;
-    },
-  });
+  const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
+    <View style={{margin: 1, backgroundColor: Colors.light.skeleton, borderRadius: 8}}>
+      <TouchableOpacity
+            onPress={() => addToDeck(item)}
+            disabled={!canAddToDeck(item)}
+            style={[{justifyContent: 'center', alignItems: 'center'}]}>
+        <View>
+          { state.settingsState.favorites?.includes(item.id) && 
+            <ThemedView style={[CardGridStyles.triangle, {
+              borderRightWidth: 10,
+              borderBottomWidth: 10
+            }]}></ThemedView>
+          }
+          <Image accessibilityLabel={item.name} 
+                  style={[
+            CardGridStyles.image, 
+            {width: Platform.OS === 'web' ? 49 : 49.4}, !canAddToDeck(item) && {opacity: 0.3}
+          ]} 
+          source={CARD_IMAGE_MAP[String(item.id)]}/>
+        </View>
+      </TouchableOpacity>
+    </View>
+  ), [deck]);
 
+  const previewList = useCallback(() => (
+    <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
+      <FlatList data={deck}
+                numColumns={10}
+                contentContainerStyle={{width: '100%', padding: 16, paddingTop: 20}}
+                renderItem={renderPreviewItem}
+                keyExtractor={(item, index) => index + 1 + ''}
+      />
+      <ThemedView style={{padding: 16, paddingTop: 0}}>
+        <Animated.View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+          <TextInput style={[CardGridStyles.searchInput, {width: '80%'}]} 
+                      placeholder={i18n.t('search_card_placeholder')}
+                      placeholderTextColor={Colors.light.text}
+                      accessibilityLabel={SEARCH_LABEL}
+                      inputMode='text'
+                      onChangeText={handleSearch}/>
+            {searchCard.length > 0 && <ResetFilterButton style={{left: 252}}/>}
+            <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+              <MaterialIcons name={'image'} style={{fontSize: 18, top: 1, color: Colors.light.icon}}></MaterialIcons>
+              <ThemedText style={{fontSize: 13, width: 40, right: -6}}>{deck.filter(d => Boolean(d)).length}/20</ThemedText>
+            </ThemedView>
+        </Animated.View>
+      </ThemedView>
+    </ThemedView>
+  ), [deck]);
+
+  const cardListGrid = useCallback(() => (
+    <View style={{height: 520}}>
+      <FlatList data={filtered}
+                numColumns={7}
+                contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0,}]}
+                keyExtractor={keyExtractor}
+                initialNumToRender={35}
+                maxToRenderPerBatch={35}
+                windowSize={12}
+                showsVerticalScrollIndicator={false}
+                ListEmptyComponent={RenderEmpty}
+                renderItem={renderCard}
+                ListFooterComponent={<ThemedView style={{height: 80}}></ThemedView>}
+      />
+    </View>
+), [searchCard, filtered, deck]);
+  
   const memoizedGridMenu = useMemo(() => {
     return (
       <>
@@ -487,77 +625,16 @@ export default function CreateDeckScreen() {
           </Pressable>
           <Animated.View style={[sortStyles.container, {height: '100%'}]}>
             { loading && <LoadingOverlay/> }
-            <Animated.View style={[ParallaxStyles.header, { backgroundColor: "#fff", marginBottom: 0 }, animatedHeaderStyle]}>
-              <Animated.View style={animatedTitleStyle}>
+            <Animated.View style={[ParallaxStyles.header, { backgroundColor: "#fff", marginBottom: 0 }]}>
+              <Animated.View>
                 <ThemedText type="headerTitle">{i18n.t('card_selection')}</ThemedText>
               </Animated.View>
             </Animated.View>
-            <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
-              <FlatList data={deck}
-                        numColumns={10}
-                        contentContainerStyle={{width: '100%', padding: 16, paddingTop: 20}}
-                        renderItem={renderPreviewItem}
-                        keyExtractor={(item, index) => index + 1 + ''}
-              />
-              <ThemedView style={{padding: 16, paddingTop: 0}}>
-                <Animated.View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-                  <TextInput style={[CardGridStyles.searchInput, {width: '80%'}]} 
-                             placeholder={i18n.t('search_card_placeholder')}
-                             placeholderTextColor={Colors.light.text}
-                             accessibilityLabel={SEARCH_LABEL}
-                             inputMode='text'
-                             value={searchCard}
-                             onChangeText={handleSearch}/>
-                    {searchCard.length > 0 && <ResetFilterButton style={{left: 252}}/>}
-                    <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-                      <MaterialIcons name={'image'} style={{fontSize: 18, top: 1, color: Colors.light.icon}}></MaterialIcons>
-                      <ThemedText style={{fontSize: 13, width: 40, right: -6}}>{deck.filter(d => Boolean(d)).length}/20</ThemedText>
-                    </ThemedView>
-                </Animated.View>
-              </ThemedView>
-            </ThemedView>
+            {previewList()}
 
             <ThemedView style={{marginBottom: 16 }}></ThemedView>
+            {cardListGrid()}
 
-            <Animated.View style={animatedGridHeaderStyle}>
-              <Animated.FlatList data={filtered}
-                        numColumns={7}
-                        contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0,}]}
-                        keyExtractor={keyExtractor}
-                        initialNumToRender={50}
-                        maxToRenderPerBatch={50}
-                        windowSize={15}
-                        onScroll={scrollHandler}
-                        keyboardDismissMode={'on-drag'}
-                        keyboardShouldPersistTaps={'never'}
-                        showsVerticalScrollIndicator={false}
-                        scrollEventThrottle={16}
-                        ListEmptyComponent={RenderEmpty}
-                        renderItem={({item, index}) =>     
-                        <View style={{margin: 1, backgroundColor: Colors.light.skeleton, borderRadius: 8}}>
-                          <TouchableOpacity
-                                onPress={() => addToDeck(item)}
-                                disabled={!canAddToDeck(item)}
-                                style={[{justifyContent: 'center', alignItems: 'center'}]}>
-                            <View>
-                              { state.settingsState.favorites?.includes(item.id) && 
-                                <ThemedView style={[CardGridStyles.triangle, {
-                                  borderRightWidth: 10,
-                                  borderBottomWidth: 10
-                                }]}></ThemedView>
-                              }
-                              <Image accessibilityLabel={item.name} 
-                                      style={[
-                                CardGridStyles.image, 
-                                {width: Platform.OS === 'web' ? 49 : 49.4}, !canAddToDeck(item) && {opacity: 0.3}
-                              ]} 
-                              source={CARD_IMAGE_MAP[String(item.id)]}/>
-                            </View>
-                          </TouchableOpacity>
-                        </View>}
-                        ListFooterComponent={<ThemedView style={{height: 80}}></ThemedView>}
-              />
-            </Animated.View>
             { loading ? null : state.cardState.cards?.length > 0 ? (
         <>
         <TouchableOpacity onPress={() => (setIsSortVisible(true), SoundService.play('AUDIO_MENU_OPEN'))} style={cardStyles.container}>
@@ -593,20 +670,21 @@ export default function CreateDeckScreen() {
           </Animated.View>
       </>
     )
-  }, [isGridVisible, deck, filtered]);
+  }, [isGridVisible, filtered, deck]);
 
   return (
     <Provider>
       { loading && <LoadingOverlay/> }
-      <SharedScreen title={'create_new_deck'} styles={{paddingInline: 16, marginTop: 0}} customClose={goBack}>
+      <SharedScreen title={'create_new_deck'} styles={{paddingInline: 16, marginTop: 0, paddingBottom: 16}} customClose={goBack}>
         <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between'}}>
           <TextInput style={[CardGridStyles.searchInput, {width: '87%'}]}
                      placeholder={i18n.t('new_deck_placeholder')}
                      value={deckName}
-                     onChangeText={setDeckName}
+                     onChangeText={(text) => (setDeckName(text), setNotSaved(true))}
                      placeholderTextColor={Colors.light.text}
                      accessibilityLabel={SEARCH_LABEL}
                      inputMode='text'
+                     maxLength={24}
                   />
             {deckName.length > 0 && <ResetFilterButton style={{left: 278}}/>}
             <TouchableOpacity onPress={handleReset}>
@@ -618,9 +696,13 @@ export default function CreateDeckScreen() {
         </ThemedView>
         <TouchableOpacity style={{width: '100%'}} onPress={() => handleEnergyModal(true)}>
           <ThemedView style={[detailScrollStyles.artistContainer, createDeckStyles.selectButton]}>
-            <ThemedView style={[detailScrollStyles.infoValue, createDeckStyles.selectEnergy]}>
+            <ThemedView style={[detailScrollStyles.infoValue, createDeckStyles.selectEnergy, {paddingHorizontal: 16}]}>
               <ThemedView>
-                <ThemedText style={detailScrollStyles.text}>{i18n.t('energy_select')}</ThemedText> 
+                {
+                  isWithEnergy ? 
+                  <ThemedText style={[detailScrollStyles.text]}>{i18n.t('energy_selected')}</ThemedText>
+                  : <ThemedText style={detailScrollStyles.text}>{i18n.t('energy_select')}</ThemedText>
+                } 
               </ThemedView>
               <ThemedView>
               { isWithEnergy ?
@@ -654,14 +736,14 @@ export default function CreateDeckScreen() {
                   data={deck}
                   renderItem={renderItem}
                   numColumns={3}
-                  contentContainerStyle={{width: '100%', marginBottom: 65, marginTop: -2}}
+                  contentContainerStyle={{width: '100%', marginBottom: 65}}
                   style={{width: '100%', borderRadius: 8}}
                   stickyHeaderIndices={[0]}
                   showsVerticalScrollIndicator={false}
                   keyExtractor={(item, index) => index + ''}
                   ListFooterComponent={
                     <ThemedView style={Platform.OS !== 'web' && {marginBottom: 55}}>
-                      <TouchableOpacity style={[homeScreenStyles.ctaButton, {marginBlock: 45}]} onPress={() => handleSave()}>
+                      <TouchableOpacity style={[homeScreenStyles.ctaButton, {marginBlock: 45, flex: 1}]} onPress={() => handleSave()}>
                         <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>{i18n.t('save_deck')}</ThemedText>
                       </TouchableOpacity>
                     </ThemedView>
@@ -710,7 +792,10 @@ export const createDeckStyles = StyleSheet.create({
     height: 37, 
     justifyContent: 'space-between',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'rgb(135, 206, 235)',
+    borderRadius: 8
   },
   previewItem: {
     flex: 1, 

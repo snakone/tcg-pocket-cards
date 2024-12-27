@@ -323,7 +323,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                 scrollEnabled={state.cardState.loaded}
                 initialNumToRender={isGrid5 ? 5 : 3}
                 maxToRenderPerBatch={isGrid5 ? 35 : 12}
-                windowSize={isGrid5 ? 4 : 6}
+                windowSize={isGrid5 ? 6 : 8}
                 keyboardDismissMode={'on-drag'}
                 contentContainerStyle={CardGridStyles.gridContainer}
                 keyboardShouldPersistTaps={'never'}
@@ -355,10 +355,10 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                                   disabled={filtered.length <= 3}
                           />
                           <MaterialIcons name="library-books" 
-                                         style={{fontSize: 24, marginLeft: 16, left: -4}} 
+                                         style={{fontSize: 24, marginLeft: 16, left: -1}} 
                                          color={Colors.light.skeleton}>
                           </MaterialIcons>
-                          <ThemedText style={CardGridStyles.totalCards}>{filtered.length}</ThemedText>                    
+                          <ThemedText style={[CardGridStyles.totalCards]}>{filtered.length}</ThemedText>                    
                         </ThemedView>
 
                       </Animated.View>

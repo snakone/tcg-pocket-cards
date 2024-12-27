@@ -1,4 +1,5 @@
 import { SettingsState } from '@/hooks/settings.reducer';
+import { StorageDeck } from '@/shared/definitions/interfaces/global.interfaces';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default class Storage {
@@ -14,7 +15,8 @@ export default class Storage {
     'sound_volume',
     'show_intro',
     'favorites',
-    'cards'
+    'cards',
+    'decks'
   ];
 
   public static async set(key: string, value: any): Promise<void> {
@@ -62,6 +64,7 @@ export default class Storage {
     }
   }
 
+  
   public static async removeFavorite(id: number): Promise<any | null> {
     try {
       const favorites: number[] = await this.get('favorites');
@@ -73,4 +76,46 @@ export default class Storage {
       console.log(e);
     }
   }
+
+  public static async addDeck(data: StorageDeck): Promise<any | null> {
+    try {
+      const decks: StorageDeck[] = await this.get('decks');
+      if (decks !== null) {
+        const index = decks.findIndex(d => d.id === data.id);
+        let value: StorageDeck[];
+        if (index !== -1) {
+          decks[index] = data;
+          value = decks;
+        } else {
+          value = [...decks, data];
+        }
+
+        this.set('decks', value);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  public static async getDecks(): Promise<any | null> {
+    try {
+      const decks: StorageDeck[] = await this.get('decks');
+      return decks || null;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  public static async removeDeck(id: number): Promise<any | null> {
+    try {
+      const decks: StorageDeck[] = await this.get('decks');
+      if (decks !== null) {
+        const value = decks.filter(deck => deck.id !== id);
+        this.set('decks', value);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
 }

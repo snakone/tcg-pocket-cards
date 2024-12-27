@@ -1,4 +1,5 @@
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
+import { StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 
 export interface SettingsState {
@@ -11,6 +12,7 @@ export interface SettingsState {
   show_intro: boolean;
   favorites: number[];
   cards: Card[];
+  decks: StorageDeck[];
 }
 
 export const settingsInitialState: SettingsState = { 
@@ -22,7 +24,8 @@ export const settingsInitialState: SettingsState = {
   version: null,
   show_intro: true,
   favorites: [],
-  cards: []
+  cards: [],
+  decks: []
 };
 
 export const settingsReducer = (state: SettingsState, action: SettingsAction): SettingsState => {
@@ -33,6 +36,18 @@ export const settingsReducer = (state: SettingsState, action: SettingsAction): S
       return { ...state, favorites: Array.from(new Set([...state.favorites, action.value])) };
     case 'REMOVE_FAVORITE':
       return { ...state, favorites: state.favorites.filter(f => f !== action.value) };
+    case 'ADD_DECK':
+      {
+        const index = state.decks.findIndex(d => d.id === action.value.id);
+        let value: StorageDeck[];
+        if (index !== -1) {
+          state.decks[index] = action.value;
+          value = state.decks;
+        } else {
+          value = [...state.decks, action.value];
+        }
+        return { ...state, decks: value };
+      }
     default:
       return state;
   }
@@ -42,3 +57,4 @@ export type SettingsAction =
   | { type: 'SET_SETTINGS', value: SettingsState }
   | { type: 'SET_FAVORITE', value: number }
   | { type: 'REMOVE_FAVORITE', value: number }
+  | { type: 'ADD_DECK', value: StorageDeck }

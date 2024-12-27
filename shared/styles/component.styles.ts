@@ -149,9 +149,9 @@ export const CardGridStyles = StyleSheet.create({
   },
   totalCards: {
     marginLeft: 8,
-    fontSize: 14,
+    fontSize: 12,
     minWidth: 24,
-    left: 0,
+    left: 1,
     position: 'relative',
     top: -1,
     marginRight: Platform.OS === 'web' ? 0 : 4,

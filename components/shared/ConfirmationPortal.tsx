@@ -62,7 +62,7 @@ const ConfirmationPortal = ({ visible, title, message, type = "info", handleConf
               <TouchableOpacity onPress={() => handleClose(true)}
                                 style={[
                                   splashStyles.button, type === 'delete' && 
-                                  {backgroundColor: 'transparent', borderWidth: 1, borderColor: 'crimson'}
+                                  {backgroundColor: 'transparent', borderWidth: 2, borderColor: 'crimson'}
                                 ]} >
                 <ThemedText style={[
                   {color: 'white', fontWeight: 600}, 

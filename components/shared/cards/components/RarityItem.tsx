@@ -18,14 +18,14 @@ interface RarityItemProps {
 export const RarityItem = memo(({ rarity, filterObj, raritySelectAll$ }: RarityItemProps) => {
   return (
     <ThemedView style={[filterStyles.flexContainer, { flexWrap: 'wrap', marginBottom: 48 }]}>
-      {Object.keys(rarity).map((key, index) => {
-        const image = RARITY_MAP[key]?.image;
-        const amount = RARITY_MAP[key]?.amount;
+      {Object.keys(rarity).filter(key => key !== '0').map((key, index) => {
+        const image = (RARITY_MAP as any)[key]?.image;
+        const amount = (RARITY_MAP as any)[key]?.amount;
 
-        return image ? (
+        return image && (
           <StateButton
             propFilter="rarity"
-            keyFilter={index}
+            keyFilter={key}
             onPress={raritySelectAll$}
             key={index}
             filterObj={filterObj}
@@ -47,20 +47,17 @@ export const RarityItem = memo(({ rarity, filterObj, raritySelectAll$ }: RarityI
               />
             ))}
           </StateButton>
-        ) : (
-          // PROMO
-          <StateButton
-            key={index}
-            onPress={raritySelectAll$}
-            style={filterStyles.button}
-            label={'promo'}
-            showLabel={true}
-            propFilter="rarity"
-            keyFilter={8}
-            filterObj={filterObj}
-          />
-        );
+        )
       })}
+      <StateButton
+        onPress={raritySelectAll$}
+        style={filterStyles.button}
+        label={'promo'}
+        showLabel={true}
+        propFilter="rarity"
+        keyFilter={0}
+        filterObj={filterObj}
+      />
     </ThemedView>
   );
 });
