@@ -8177,7 +8177,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.SPECIAL_MISSION
     ],
-    extra: 'Obtained from a Special Mission'
+    extra: 'Special Mission'
   },
   {
     id: 284,
@@ -10911,6 +10911,22 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 380,
+    number: 8,
+    name: 'Pokédex',
+    artist: 'Yuu Nishida',
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'Look at the top 3 cards of your deck.',
+    rarity: CardRarityENUM.COMMON,
+    stage: CardStageENUM.ITEM,
+    extra: 'Obtained from a Event',
+    element: -1,
+    pokedex: -1,
+    health: -1,
+    retreat: -1,
+  },
+  {
+    id: 381,
     number: 9,
     pokedex: 25,
     name: 'Pikachu',
@@ -10936,10 +10952,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PREMIUM
     ],
-    extra: 'Obtained from Premium Pass'
+    extra: 'Premium Pass'
   },
   {
-    id: 381,
+    id: 382,
     number: 10,
     pokedex: 150,
     name: 'Mewtwo',
@@ -10966,10 +10982,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PREMIUM
     ],
-    extra: 'Obtained from Premium Pass'
+    extra: 'Premium Pass'
   },
   {
-    id: 382,
+    id: 383,
     number: 11,
     pokedex: 113,
     name: 'Chansey',
@@ -10995,10 +11011,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK
     ],
-    extra: 'Obtained from a Wonder Pick'
+    extra: 'Wonder Pick'
   },
   {
-    id: 383,
+    id: 384,
     number: 12,
     pokedex: 52,
     name: 'Meowth',
@@ -11025,10 +11041,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK
     ],
-    extra: 'Obtained from a Wonder Pick'
+    extra: 'Wonder Pick'
   },
   {
-    id: 384,
+    id: 385,
     number: 13,
     pokedex: 12,
     name: 'Butterfree',
@@ -11058,10 +11074,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A1
     ],
-    extra: 'Obtained from a Promo Pack'
+    extra: 'Promo Pack'
   },
   {
-    id: 385,
+    id: 386,
     number: 14,
     pokedex: 131,
     name: 'Lapras EX',
@@ -11088,10 +11104,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A1
     ],
-    extra: 'Obtained from a Promo Pack'
+    extra: 'Promo Pack'
   },
   {
-    id: 386,
+    id: 387,
     number: 15,
     pokedex: 25,
     name: 'Pikachu',
@@ -11117,10 +11133,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A1,
     ],
-    extra: 'Obtained from a Promo Pack'
+    extra: 'Promo Pack'
   },
   {
-    id: 387,
+    id: 388,
     number: 16,
     pokedex: 35,
     name: 'Clefairy',
@@ -11146,10 +11162,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A1,
     ],
-    extra: 'Obtained from a Promo Pack'
+    extra: 'Promo Pack'
   },
   {
-    id: 388,
+    id: 389,
     number: 17,
     pokedex: 56,
     name: 'Mankey',
@@ -11176,10 +11192,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A1,
     ],
-    extra: 'Obtained from a Promo Pack'
+    extra: 'Promo Pack'
   },
   {
-    id: 389,
+    id: 390,
     number: 18,
     pokedex: 3,
     name: 'Venusaur',
@@ -11206,10 +11222,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A2
     ],
-    extra: 'Obtained from a Promo Pack'
+    extra: 'Promo Pack'
   },
   {
-    id: 390,
+    id: 391,
     number: 19,
     pokedex: 658,
     name: 'Greninja',
@@ -11239,10 +11255,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A2
     ],
-    extra: 'Obtained from a Promo Pack'
+    extra: 'Promo Pack'
   },
   {
-    id: 391,
+    id: 392,
     number: 20,
     pokedex: 93,
     name: 'Haunter',
@@ -11269,10 +11285,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A2,
     ],
-    extra: 'Obtained from a Promo Pack'
+    extra: 'Promo Pack'
   },
   {
-    id: 392,
+    id: 393,
     number: 21,
     pokedex: 95,
     name: 'Onix',
@@ -11298,10 +11314,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A2,
     ],
-    extra: 'Obtained from a Promo Pack'
+    extra: 'Promo Pack'
   },
   {
-    id: 393,
+    id: 394,
     number: 22,
     pokedex: 39,
     name: 'Jigglypuff',
@@ -11328,10 +11344,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A2
     ],
-    extra: 'Obtained from a Promo Pack',
+    extra: 'Promo Pack',
   },
   {
-    id: 394,
+    id: 395,
     number: 23,
     pokedex: 1,
     name: 'Bulbasaur',
@@ -11357,10 +11373,10 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK
     ],
-    extra: 'Obtained from a Wonder Pick'
+    extra: 'Wonder Pick'
   },
   {
-    id: 395,
+    id: 396,
     number: 24,
     pokedex: 81,
     name: 'Magnemite',
@@ -11386,9 +11402,284 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK,
     ],
-    extra: 'Obtained from a Wonder Pick'
+    extra: 'Wonder Pick'
   },
-
+  {
+    id: 397,
+    number: 25,
+    pokedex: 145,
+    name: 'Moltres EX',
+    artist: 'PLANETA Igarashi',
+    attacks: [
+      {
+        name: 'Inferno Dance',
+        damage: 0,
+        energy: [PokemonTypeENUM.FIRE],
+        description: 'Flip 3 coins. Take an amount of Fire Energy from your Energy Zone equal to the number of heads and attach it to your Benched Fire Pokémon in any way you like.'
+      },
+      {
+        name: 'Heat Blast',
+        damage: 70,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A1,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: true,
+    found: [
+      EXPANSION.PREMIUM
+    ],
+    related: [255, 274],
+    extra: 'Premium Pass'
+  },
+  {
+    id: 398,
+    number: 26,
+    pokedex: 25,
+    name: 'Pikachu',
+    artist: 'Kouki Saifou',
+    attacks: [
+      {
+        name: 'Gnaw',
+        damage: 20,
+        energy: [PokemonTypeENUM.ELECTRIC],
+      },
+    ],
+    evolve: 'Raichu',
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.',
+    health: 60,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.SPECIAL_MISSION,
+    ],
+    extra: 'Special Event'
+  },
+  {
+    id: 399,
+    number: 27,
+    pokedex: 495,
+    name: 'Snivy',
+    artist: 'Yoriyuki ikegami',
+    attacks: [
+      {
+        name: 'Tackle',
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS]
+      }
+    ],
+    evolve: 'Servine',
+    expansion: CardExpansionENUM.MYTHICAL_ISLAND,
+    series: CardExpansionTypeENUM.A1A,
+    flavor: 'Being exposed to sunlight makes its movements swiftier. It uses vines more adeptly than its hands.',
+    health: 70,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.PROMO_A3
+    ],
+    related: [],
+    extra: 'Promo Pack'
+  },
+  {
+    id: 400,
+    number: 28,
+    pokedex: 637,
+    name: 'Volcarona',
+    artist: 'Shin Nagasawa',
+    attacks: [
+      {
+        name: 'Volcanic Ash',
+        damage: 80,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
+        description: "Discard 2 Fire Energy from this Pokémon. This attack does 80 damage to 1 of your opponent's Pokémon."
+      }
+    ],
+    evolve: 'Larvesta',
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A1A,
+    flavor: "Its burning body causes it to be unpopular in hot parts of the world, but in cold ones, Volcarona is revered as an embodiment of the sun.",
+    health: 120,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.PROMO_A3
+    ],
+    related: [299],
+    extra: 'Promo Pack'
+  },
+  {
+    id: 401,
+    number: 29,
+    pokedex: 9,
+    name: 'Blastoise',
+    artist: 'danciao',
+    attacks: [
+      {
+        name: 'Hydro Pump',
+        damage: 80,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+        description: 'If this Pokémon has at least 2 extra Water Energy attached, this attack does 60 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'It crushes its foe under its heavy body to cause fainting. In a pinch, it will withdraw inside its shell.',
+    health: 150,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 3,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PROMO_A3,
+    ],
+    extra: 'Promo Pack'
+  },
+  {
+    id: 402,
+    number: 30,
+    pokedex: 133,
+    name: 'Eevee',
+    artist: 'En Morikura',
+    attacks: [
+      {
+        name: 'Growl',
+        damage: 0,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: 'During your opponent’s next turn, attacks used by the Defending Pokémon do −20 damage.'
+      },
+    ],
+    evolve: "Flareon Vaporeon Jolteon",
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'Its ability to evolve into many forms allows it to adapt smoothly and perfectly to any environment.',
+    health: 60,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.PROMO_A3,
+    ],
+    extra: 'Promo Pack'
+  },
+  {
+    id: 403,
+    number: 31,
+    pokedex: 573,
+    name: 'Cinccino',
+    artist: 'MAHOU',
+    attacks: [
+      {
+        name: 'Do the Wave',
+        damage: 30,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'This attack does 30 damage for each of your Benched Pokémon.'
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'Its body secretes oil that this Pokémon spreads over its nest as a coating to protect it from dust. Cinccino won’t tolerate even a speck of the stuff.',
+    health: 90,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.PROMO_A3
+    ],
+    extra: 'Promo Pack'
+  },
+  {
+    id: 404,
+    number: 32,
+    pokedex: 4,
+    name: 'Charmander',
+    artist: 'Naoyo Kimura',
+    attacks: [
+      {
+        name: 'Ember',
+        damage: 30,
+        energy: [PokemonTypeENUM.FIRE],
+        description: 'Discard 1 Fire Energy from this Pokémon.'
+      }
+    ],
+    evolve: 'Charmeleon',
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail.',
+    health: 60,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.WONDER_PICK
+    ],
+    related: [34, 35, 36, 230, 253, 280, 284],
+    extra: 'Wonder Pick'
+  },
+  {
+    id: 405,
+    number: 33,
+    pokedex: 7,
+    name: 'Squirtle',
+    artist: 'Kanako Eo',
+    attacks: [
+      {
+        name: 'Water Gun',
+        damage: 20,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: 'Wartortle',
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A1,
+    flavor: 'When it retracts its long neck into its shell, it squirts out water with vigorous force.',
+    health: 60,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.WONDER_PICK,
+    ],
+    extra: 'Wonder Pick'
+  },
 ];
 
 export default MOCK_DB_CARDS;

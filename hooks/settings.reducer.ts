@@ -42,12 +42,14 @@ export const settingsReducer = (state: SettingsState, action: SettingsAction): S
         let value: StorageDeck[];
         if (index !== -1) {
           state.decks[index] = action.value;
-          value = state.decks;
+          value = [...state.decks];
         } else {
           value = [...state.decks, action.value];
         }
         return { ...state, decks: value };
       }
+    case 'REMOVE_DECK':
+        return { ...state, decks: state.decks.filter(d => d.id !== action.value) };
     default:
       return state;
   }
@@ -58,3 +60,4 @@ export type SettingsAction =
   | { type: 'SET_FAVORITE', value: number }
   | { type: 'REMOVE_FAVORITE', value: number }
   | { type: 'ADD_DECK', value: StorageDeck }
+  | { type: 'REMOVE_DECK', value: number }

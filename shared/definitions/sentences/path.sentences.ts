@@ -50,6 +50,7 @@ export const TCG_LOGO = require('@/assets/images/tcgpocketlogo_en.webp');
 export const HERO_IMAGE = require('@/assets/images/hero.png');
 export const PROMO_A1 = require('@/assets/images/packs/promoA1.png');
 export const PROMO_A2 = require('@/assets/images/packs/promoA2.png');
+export const PROMO_A3 = require('@/assets/images/packs/promoA3.png');
 
 // PACKS
 export const GENETIC_APEX = require('@/assets/images/packs/geneticapex.png');
@@ -72,7 +73,8 @@ export const GENETIC_APEX_PACKS = [
 ];
 
 export const MYTHICAL_ISLAND_PACKS = [
-  MEW_ICON
+  MEW_ICON,
+  PROMO_A3
 ];
 
 export const ALL_PACKS = [

@@ -1,3 +1,10 @@
+import { Image } from 'expo-image';
+import { MaterialIcons } from '@expo/vector-icons';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { useRouter } from 'expo-router';
+import Animated from 'react-native-reanimated';
+import { FlatList, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { CreateScreenModal } from '@/components/modals/CreateScreenModal';
@@ -5,18 +12,10 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
 import { Colors } from '@/shared/definitions/utils/colors';
-import { CardGridStyles, HEADER_HEIGHT, HEADER_MIN_HEIGHT, ParallaxStyles } from '@/shared/styles/component.styles';
-import { MaterialIcons } from '@expo/vector-icons';
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { FlatList, GestureResponderEvent, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-import Animated, { Extrapolation, interpolate, useAnimatedScrollHandler, useAnimatedStyle, useDerivedValue, useSharedValue } from 'react-native-reanimated';
+import { CardGridStyles, ParallaxStyles } from '@/shared/styles/component.styles';
 import HeaderWithCustomModal from '@/components/shared/HeaderModal';
 import { LARGE_MODAL_HEIGHT, TYPE_MAP } from '@/shared/definitions/utils/contants';
-import useHeaderAnimation from '@/components/ui/HeaderAnimation';
-import { useRouter } from 'expo-router';
-import { Image } from 'expo-image';
 import SoundService from '@/core/services/sounds.service';
-import { useFocusEffect } from '@react-navigation/native';
 import { AppContext } from '../_layout';
 import { StorageDeck } from '@/shared/definitions/interfaces/global.interfaces';
 import { CARD_IMAGE_MAP } from '@/shared/definitions/utils/card.images';
@@ -26,9 +25,10 @@ export default function CreateDeckScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
   const [decks, setDecks] = useState<any[]>([]);
+  const [filtered, setFiltered] = useState<any[]>([]);
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
+  const { state } = context;
 
   const createNewDeck = () => {
     SoundService.play('AUDIO_MENU_OPEN');
@@ -48,142 +48,159 @@ export default function CreateDeckScreen() {
     </TouchableOpacity>
   );
 
+  const RenderEmpty = () => {
+    const renderCardState = useCallback(() => {
+      return state.cardState.loaded && 
+        <ThemedText style={{ padding: 6 }}>{i18n.t('no_decks_found')}</ThemedText>
+    }, [state.cardState.loaded]);
+  
+    return renderCardState();
+  };
+
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
-  }, []);
+    setFiltered(prev => {
+      if(decks.length === 0) { return prev; }
+      return decks.filter(card =>
+        card.name.toLowerCase().includes(text.toLowerCase()));
+    })
+  }, [decks]);
 
   useEffect(() => {
     setDecks(state.settingsState.decks);
+    setFiltered(state.settingsState.decks);
   }, [state.settingsState.decks]);
 
   const renderDeck = useCallback(({item, index}: {item: StorageDeck, index: number}) => {
     return (
-      <ThemedView style={styles.deckItem}>
+      <ThemedView style={[styles.deckItem, 
+                          {
+                            borderColor: !item.valid  ? 'goldenrod' : 'transparent', 
+                            borderWidth: 1, 
+                            borderLeftWidth: 0, 
+                            borderTopWidth: 0, 
+                            borderBottomWidth: 0
+                          }]}>
         <TouchableOpacity style={{flex: 1}} onPress={() => openDeck(item)}>
           <ThemedView style={{flexDirection: 'row'}}>
-            <ThemedView style={{flexDirection: 'row', minHeight: 30, minWidth: 150, position: 'relative', left: 4}}>
+            <ThemedView style={styles.popularCards}>
               {
                 [0, 1].map((i) => (
-                  <Image style={[
-                    CardGridStyles.image, {
-                      width: 70, 
-                      borderRadius: 4, 
-                      position: 'absolute', 
+                  Boolean(item.popular[i]) ? <Image style={[
+                    CardGridStyles.image,
+                    styles.popularImage, {
                       transform: [{rotate: `${10 + (i * 8)}deg`}],
-                      left: i * 35, 
+                      left: i * 25, 
                       zIndex: (1 / (i + 1) * 100),
-                      backgroundColor: Colors.light.skeleton,
-                      shadowColor: 'black',
-                      shadowRadius: 4,
-                      shadowOffset: {height: 2, width: 2},
-                      shadowOpacity: 0.2,
-                      opacity: 0.8,
-                      top: 4,
                     }, CARD_IMAGE_MAP[String(item.popular[i])] && {opacity: 1}
                   ]} 
                   source={CARD_IMAGE_MAP[String(item.popular[i])]}
+                  key={i}/> :
+                  <ThemedView style={[
+                    CardGridStyles.image,
+                    styles.popularImage, {
+                      transform: [{rotate: `${10 + (i * 8)}deg`}],
+                      left: i * 25, 
+                      zIndex: (1 / (i + 1) * 100),
+                      opacity: 0.8
+                    }
+                  ]}
                   key={i}/>
                 ))
               }
             </ThemedView>
-            <ThemedView style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-              <ThemedText style={{fontSize: 12}}>{item.name}</ThemedText>
-              {
-                item && item.energies?.length > 0 && 
-                  <ThemedView style={
+            <ThemedView style={styles.deckName}>
+              <ThemedText style={{fontSize: 12, left: 4, top: 1}}>{item.name}</ThemedText>
+              <ThemedView style={{position: 'absolute', right: 2, bottom: 0}}>
+                {
+                  item && item.energies?.length > 0 && 
+                    <ThemedView style={styles.energies}>
                     {
-                      flexDirection: 'row',
-                      gap: 4, 
-                      justifyContent: 'center', 
-                      marginTop: 2, 
-                      backgroundColor: Colors.light.background, 
-                      padding: 4, 
-                      borderRadius: 40,
-                      top: 2
-                    }}>
-                  {
-                    item.energies.map((energy, i) => {                   
-                      const image = (TYPE_MAP as any)[energy]?.image;
-                      return (
-                        <Image
-                          key={i}
-                          source={image}
-                          style={{
-                            width: 22,
-                            height: 22,
-                            position: 'relative',
-                          }}
-                        />
-                      );
-                    })
-                  }
-                </ThemedView>
-              }
+                      item.energies.map((energy, i) => {                   
+                        const image = (TYPE_MAP as any)[energy]?.image;
+                        return (
+                          <Image
+                            key={i}
+                            source={image}
+                            style={{
+                              width: 18,
+                              height: 18,
+                              position: 'relative',
+                            }}
+                          />
+                        );
+                      })
+                    }
+                  </ThemedView>
+                }
+              </ThemedView>
             </ThemedView>
           </ThemedView>
         </TouchableOpacity>
       </ThemedView>
     )
-  }, [decks]);
+  }, [decks, filtered]);
 
   return (
     <ThemedView style={ParallaxStyles.container}>
       <SafeAreaView style={{flex: 1}}>
-        <Animated.View style={[ParallaxStyles.header]}>
+        <View style={[ParallaxStyles.header]}>
           <HeaderWithCustomModal title={'deck_creation'} 
                                  modalContent={CreateScreenModal()} 
                                  modalTitle={'create_deck'}
                                  modalHeight={LARGE_MODAL_HEIGHT}/>
-        </Animated.View>
-        
-          <Animated.View style={{
-              paddingHorizontal: 16, 
-              paddingBottom: 20, 
-              boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', 
-              backgroundColor: Colors.light.background
-            }}>
-            <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
-                <Animated.View style={[CardGridStyles.inputContainer]}>
-                  <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
-                             placeholder={i18n.t('search_decks_placeholder')}
-                             value={searchQuery}
-                             onChangeText={handleSearch}
-                             placeholderTextColor={Colors.light.text}
-                             accessibilityLabel={SEARCH_LABEL}
-                             inputMode='text'
-                            />
-                    {searchQuery.length > 0 && <ResetFilterButton/>}
-                </Animated.View>
-            </KeyboardAvoidingView>
-            <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-              <TouchableOpacity onPress={createNewDeck} style={{backgroundColor: Colors.light.background, width: '75%'}}>
-                <ThemedView style={styles.addContainer}>
-                  <ThemedText style={styles.textContainer}>{i18n.t('add_new_deck')}</ThemedText>
-                  <MaterialIcons name='add' style={styles.addIcon}></MaterialIcons>
-                </ThemedView>          
-              </TouchableOpacity>
-              <Animated.View style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && 
-                                  {marginRight: 2}, {justifyContent: 'flex-end', top: 1}
-                                ]}>
-                <MaterialIcons name="photo-library" 
-                              style={{fontSize: 24, marginLeft: 16}} 
-                              color={Colors.light.skeleton}>
-                </MaterialIcons>
-                <ThemedText style={[CardGridStyles.totalCards]}>{decks?.length}/30</ThemedText>                    
+        </View>
+        <View style={{
+            paddingHorizontal: 16, 
+            paddingVertical: 20,
+            marginTop: -20,
+            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', 
+            backgroundColor: Colors.light.background
+          }}>
+          <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
+              <Animated.View style={[CardGridStyles.inputContainer]}>
+                <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
+                           placeholder={i18n.t('search_decks_placeholder')}
+                           value={searchQuery}
+                           onChangeText={handleSearch}
+                           placeholderTextColor={Colors.light.text}
+                           accessibilityLabel={SEARCH_LABEL}
+                           inputMode='text'
+                          />
+                  {searchQuery.length > 0 && <ResetFilterButton/>}
               </Animated.View>
-            </ThemedView>
-          </Animated.View>
-          <ThemedView style={[styles.decksContainer, {height: 575}]}>
-            <ThemedView style={{flex: 1}}>
-              <FlatList data={decks}
-                        numColumns={1}
-                        contentContainerStyle={[{width: '100%', marginTop: 12, paddingBottom: 0}]}
-                        renderItem={renderDeck}
-                        keyExtractor={(item, index) => index + 1 + ''}
-                        showsVerticalScrollIndicator={false}
-              />
-            </ThemedView>
-          </ThemedView> 
+          </KeyboardAvoidingView>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+            <TouchableOpacity onPress={createNewDeck} 
+                              style={{backgroundColor: Colors.light.background, width: '75%'}}
+                              disabled={decks.length >= 30}>
+              <ThemedView style={styles.addContainer}>
+                <ThemedText style={styles.textContainer}>{i18n.t('add_new_deck')}</ThemedText>
+                <MaterialIcons name='add' style={styles.addIcon}></MaterialIcons>
+              </ThemedView>          
+            </TouchableOpacity>
+            <Animated.View style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && 
+                                {marginRight: 2}, {justifyContent: 'flex-end', top: 1}
+                              ]}>
+              <MaterialIcons name="photo-library" 
+                            style={{fontSize: 24, marginLeft: 16}} 
+                            color={Colors.light.skeleton}>
+              </MaterialIcons>
+              <ThemedText style={[CardGridStyles.totalCards]}>{decks?.length}/30</ThemedText>                    
+            </Animated.View>
+          </ThemedView>
+        </View>
+        <ThemedView style={[styles.decksContainer, {height: 575}]}>
+          <ThemedView style={{flex: 1}}>
+            <FlatList data={filtered}
+                      numColumns={1}
+                      contentContainerStyle={[{width: '100%', marginTop: 4, paddingBottom: 0}]}
+                      renderItem={renderDeck}
+                      keyExtractor={(item, index) => index + 1 + ''}
+                      showsVerticalScrollIndicator={false}
+                      ListEmptyComponent={RenderEmpty}/>
+          </ThemedView>
+        </ThemedView> 
       </SafeAreaView>
     </ThemedView>
   );
@@ -225,6 +242,37 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 6,
     marginBottom: 16,
     overflow: 'hidden',
+  },
+  popularCards: {
+    flexDirection: 'row', 
+    minHeight: 30, 
+    minWidth: 114, 
+    position: 'relative'
+  },
+  deckName: {
+    flex: 1, 
+    alignItems: 'center', 
+    justifyContent: 'flex-start', 
+    flexDirection: 'row'
+  },
+  energies: {
+    flexDirection: 'row',
+    gap: 6, 
+    justifyContent: 'center', 
+    backgroundColor: Colors.light.background, 
+    padding: 4, 
+    borderRadius: 40,
+  },
+  popularImage: {
+    width: 55, 
+    borderRadius: 4, 
+    position: 'absolute', 
+    backgroundColor: Colors.light.skeleton,
+    shadowColor: 'black',
+    shadowRadius: 4,
+    shadowOffset: {height: 2, width: 2},
+    shadowOpacity: 0.2,
+    top: 4,
   }
 });
 

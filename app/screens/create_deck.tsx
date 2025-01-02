@@ -75,7 +75,6 @@ export default function CreateDeckScreen() {
   const { confirm } = useConfirmation();
   const { deck_id } = useLocalSearchParams<{ deck_id: string }>();
   const createService = useMemo(() => new CreateService(), []);
-  const [deckBeforeSave, setDeckBeforeSave] = useState<any[]>([]);
 
   const [element, setElement] = useState({
     [PokemonTypeENUM.GRASS]: null, 
@@ -290,7 +289,7 @@ export default function CreateDeckScreen() {
     popular.length = 2;
     
     const data: StorageDeck = {
-      id: Number(deck_id) ? Number(deck_id) : state.settingsState.decks?.length + 1,
+      id: Number(deck_id) ? Number(deck_id) : state.settingsState.decks.sort((a, b) => b.id > a.id ? -1 : 1).findLast(d => Boolean(d))!.id + 1,
       name: deckName,
       cards: deck.map(card => card?.id || null),
       energies,
@@ -455,9 +454,25 @@ export default function CreateDeckScreen() {
 
   async function handleReset(): Promise<void> {
     SoundService.play('AUDIO_MENU_OPEN');
-    const userConfirmed = await confirm("delete_deck", "delete_deck_question", 'delete');
+    const userConfirmed = await confirm("clean_deck", "clean_deck_question");
     if (userConfirmed) {
       resetAll();
+    }
+  }
+
+  async function handleDelete(): Promise<void> {
+    SoundService.play('AUDIO_MENU_OPEN');
+    const userConfirmed = await confirm("delete_deck", "delete_deck_question", 'delete');
+    if (userConfirmed) {
+      setLoading(true);
+      Storage.removeDeck(Number(deck_id));
+      dispatch({type: 'REMOVE_DECK', value: Number(deck_id)});
+
+      setTimeout(() => {
+        setNotSaved(false);
+        setLoading(false);
+        router.canGoBack() ? router.back() : router.replace('/');
+      }, 1000);
     }
   }
 
@@ -588,22 +603,34 @@ export default function CreateDeckScreen() {
       { loading && <LoadingOverlay/> }
       <SharedScreen title={'create_new_deck'} styles={{paddingInline: 16, marginTop: 0, paddingBottom: 16}} customClose={goBack}>
         <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between'}}>
-          <TextInput style={[CardGridStyles.searchInput, {width: '87%'}]}
+          <TextInput style={[CardGridStyles.searchInput, {width: '76%'}]}
                      placeholder={i18n.t('new_deck_placeholder')}
                      value={deckName}
                      onChangeText={(text) => (setDeckName(text), setNotSaved(true))}
                      placeholderTextColor={Colors.light.text}
                      accessibilityLabel={SEARCH_LABEL}
                      inputMode='text'
-                     maxLength={24}
+                     maxLength={21}
                   />
-            {deckName.length > 0 && <ResetFilterButton style={{left: 278}}/>}
+            {deckName.length > 0 && <ResetFilterButton style={{left: 240}}/>}
+
+          <ThemedView style={{flexDirection: 'row', gap: 8}}>
             <TouchableOpacity onPress={handleReset}>
-              <MaterialIcons name="delete-outline" 
-                            style={{fontSize: 28, left: -2, top: 3.1, opacity: 0.7}} 
-                            color={'crimson'}>
+              <MaterialIcons name="sync" 
+                            style={{fontSize: 26, left: -4, top: 5, opacity: 0.8}} 
+                            color={Colors.light.icon}>
               </MaterialIcons>
             </TouchableOpacity>
+
+            { Boolean(deck_id) && 
+              <TouchableOpacity onPress={handleDelete}>
+                <MaterialIcons name="delete-outline" 
+                              style={{fontSize: 28, left: -2, top: 3.1, opacity: 0.7}} 
+                              color={'crimson'}>
+                </MaterialIcons>
+              </TouchableOpacity>
+            }
+          </ThemedView>
         </ThemedView>
         <TouchableOpacity style={{width: '100%'}} onPress={() => handleEnergyModal(true)}>
           <ThemedView style={[detailScrollStyles.artistContainer, createDeckStyles.selectButton]}>
@@ -627,8 +654,8 @@ export default function CreateDeckScreen() {
                               key={key}
                               source={image}
                               style={{
-                                width: 22,
-                                height: 22,
+                                width: 20,
+                                height: 20,
                                 position: 'relative'
                               }}
                             />
@@ -643,13 +670,20 @@ export default function CreateDeckScreen() {
           </ThemedView>
         </TouchableOpacity>
 
-        <FlatList ListHeaderComponent={renderHeader} 
+        {
+          Platform.OS !== 'web' &&
+           <ThemedView style={{position: 'absolute', right: 16, top: 108, zIndex: 100}}>
+            {renderHeader()}
+           </ThemedView>
+        }
+
+        <FlatList ListHeaderComponent={Platform.OS === 'web' ? renderHeader : null} 
                   data={deck}
                   renderItem={renderItem}
                   numColumns={3}
                   contentContainerStyle={{width: '100%', marginBottom: 65}}
                   style={{width: '100%', borderRadius: 8}}
-                  stickyHeaderIndices={[0]}
+                  stickyHeaderIndices={Platform.OS === 'web' ? [0] : []}
                   showsVerticalScrollIndicator={false}
                   keyExtractor={(item, index) => index + ''}
                   ListFooterComponent={
