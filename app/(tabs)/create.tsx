@@ -24,9 +24,7 @@ import { CARD_IMAGE_MAP } from '@/shared/definitions/utils/card.images';
 export default function CreateDeckScreen() {
   const {i18n} = useI18n();
   const [searchQuery, setSearchQuery] = useState('');
-  const scrollY = useSharedValue(0);
   const router = useRouter();
-  const scrollRef = useRef<Animated.FlatList<StorageDeck[]> | null>(null);
   const [decks, setDecks] = useState<any[]>([]);
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
@@ -54,23 +52,9 @@ export default function CreateDeckScreen() {
     setSearchQuery(text);
   }, []);
 
-  const scrollHandler = useAnimatedScrollHandler({
-    onScroll: (event) => {
-      scrollY.value = event.contentOffset.y;
-    },
-  });
-
-  useFocusEffect(
-    useCallback(() => { goUp(null); }, [])
-  );
-
   useEffect(() => {
     setDecks(state.settingsState.decks);
   }, [state.settingsState.decks]);
-
-  async function goUp(_: GestureResponderEvent | null): Promise<void> {
-    scrollRef.current?.scrollToOffset({animated: false, offset: 0});
-  }
 
   const renderDeck = useCallback(({item, index}: {item: StorageDeck, index: number}) => {
     return (
@@ -237,7 +221,8 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 8,
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.2)',
-    padding: 12,
+    paddingVertical: 10,
+    paddingHorizontal: 6,
     marginBottom: 16,
     overflow: 'hidden',
   }

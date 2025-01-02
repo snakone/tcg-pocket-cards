@@ -6,7 +6,7 @@ import { StyleSheet } from 'react-native';
 import { Portal, Provider } from "react-native-paper";
 import { Image } from 'expo-image';
 import { BlurView } from "expo-blur";
-import { Subscription } from "rxjs";
+import { Subject, Subscription } from "rxjs";
 
 import { 
   ButtonStyles,
@@ -46,10 +46,11 @@ import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
 import SoundService from "@/core/services/sounds.service";
 import { useI18n } from "@/core/providers/LanguageProvider";
-import Animated, { useSharedValue, useAnimatedScrollHandler } from "react-native-reanimated";
-import useHeaderAnimation from "@/components/ui/HeaderAnimation";
+import Animated from "react-native-reanimated";
 import { StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
 import { CardStageENUM } from "@/shared/definitions/enums/card.enums";
+import PreviewList from "@/components/dedicated/create/PreviewList";
+import CreateService from "@/core/services/create.service";
 
 export default function CreateDeckScreen() {
   const {i18n} = useI18n();
@@ -73,6 +74,8 @@ export default function CreateDeckScreen() {
   const [deckName, setDeckName] = useState(i18n.t('new_deck_value'));
   const { confirm } = useConfirmation();
   const { deck_id } = useLocalSearchParams<{ deck_id: string }>();
+  const createService = useMemo(() => new CreateService(), []);
+  const [deckBeforeSave, setDeckBeforeSave] = useState<any[]>([]);
 
   const [element, setElement] = useState({
     [PokemonTypeENUM.GRASS]: null, 
@@ -127,6 +130,13 @@ export default function CreateDeckScreen() {
     checkDeck();
   }, [state.cardState.cards]);
 
+  useEffect(() => {
+    const sub = createService.currentDeck$.subscribe(deck => setDeck(deck));
+    return () => {
+      sub.unsubscribe();
+    }
+  }, []);
+
   const loadCards = useCallback(() => {
     const sub = cardsService
       .getCards()
@@ -175,33 +185,6 @@ export default function CreateDeckScreen() {
       </View>
     </View>
   ), []);
-
-  const renderPreviewItem = useCallback(({item}: {item: Card}) => (
-    <View style={createDeckStyles.previewItem}>
-      <TouchableOpacity
-            onPress={() => previewPress(item)}
-            style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
-        <View>
-          { item ? 
-          <ThemedView style={{backgroundColor: Colors.light.background}}>
-            <Image accessibilityLabel={item?.name} 
-                    style={[
-              CardGridStyles.image, 
-              {width: Platform.OS === 'web' ? 31.8 : 49.4, height: 46, borderRadius: 4}
-            ]} 
-            source={CARD_IMAGE_MAP[String(item?.id)]}/>
-            { state.settingsState.favorites?.includes(item.id) && 
-              <ThemedView style={[CardGridStyles.triangle, {
-                borderRightWidth: 8,
-                borderBottomWidth: 8
-              }]}></ThemedView>
-            }
-          </ThemedView> : <MaterialIcons name="add" style={{fontSize: 16, color: Colors.light.icon}}></MaterialIcons>
-          }
-        </View>
-      </TouchableOpacity>
-    </View>
-  ), [])
 
   const renderHeader = useCallback(() => (
     <ThemedView style={createDeckStyles.amount}>
@@ -271,20 +254,6 @@ export default function CreateDeckScreen() {
         card.name.toLowerCase().includes(text.toLowerCase()));
     })
   }, [state.cardState.cards]);
-
-  function previewPress(card: Card): void {
-    if (!card) { return; }
-    setDeck(prev => {
-      const newDeck = [...prev];
-      const index = newDeck.findIndex(c => c?.name === card.name);
-      if (index !== -1) {
-        newDeck[index] = null;
-        setNotSaved(true);
-      }
-      SoundService.play('DELETE_SOUND');
-      return newDeck.sort((a, b) => Boolean(b) ? 1 : -1);
-    });
-  }
 
   async function handleSave(): Promise<void> {
     playSound();
@@ -446,41 +415,6 @@ export default function CreateDeckScreen() {
     return sortCards(sortField, data, sort);
   }
 
-  const addToDeck = (card: Card) => {
-    if (canAddToDeck(card)) {
-      SoundService.play('PICK_CARD_SOUND');
-      setNotSaved(true);
-      addNumberToList(card);
-    };
-  }
-
-  function addNumberToList(
-    card: Card
-  ): void {
-    const emptyIndex = deck.indexOf(null);
-    const newDeck = [...deck];
-    newDeck[emptyIndex] = card;
-    setDeck(newDeck);
-  }
-
-  function canAddToDeck(card: Card): boolean {
-    const maxRepeats: number = 2;
-
-    const sameNameCards = deck.filter(
-      (c) => Boolean(c) && c.name === card.name
-    ) as Card[];
-
-    if (sameNameCards.length < maxRepeats) {
-      const emptyIndex = deck.indexOf(null);
-  
-      if (emptyIndex !== -1) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
   const fixFilterIcon = useCallback(() => {
     return [
       { fontSize: 32, position: 'relative' }, 
@@ -549,9 +483,8 @@ export default function CreateDeckScreen() {
   const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
     <View style={{margin: 1, backgroundColor: Colors.light.skeleton, borderRadius: 8}}>
       <TouchableOpacity
-            onPress={() => addToDeck(item)}
-            disabled={!canAddToDeck(item)}
-            style={[{justifyContent: 'center', alignItems: 'center'}]}>
+            onPress={() => createService.onAddNumber(item)}
+            style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
         <View>
           { state.settingsState.favorites?.includes(item.id) && 
             <ThemedView style={[CardGridStyles.triangle, {
@@ -562,56 +495,30 @@ export default function CreateDeckScreen() {
           <Image accessibilityLabel={item.name} 
                   style={[
             CardGridStyles.image, 
-            {width: Platform.OS === 'web' ? 49 : 49.4}, !canAddToDeck(item) && {opacity: 0.3}
+            {width: Platform.OS === 'web' ? 57.6 : 58}
           ]} 
           source={CARD_IMAGE_MAP[String(item.id)]}/>
         </View>
       </TouchableOpacity>
     </View>
-  ), [deck]);
-
-  const previewList = useCallback(() => (
-    <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
-      <FlatList data={deck}
-                numColumns={10}
-                contentContainerStyle={{width: '100%', padding: 16, paddingTop: 20}}
-                renderItem={renderPreviewItem}
-                keyExtractor={(item, index) => index + 1 + ''}
-      />
-      <ThemedView style={{padding: 16, paddingTop: 0}}>
-        <Animated.View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-          <TextInput style={[CardGridStyles.searchInput, {width: '80%'}]} 
-                      placeholder={i18n.t('search_card_placeholder')}
-                      placeholderTextColor={Colors.light.text}
-                      accessibilityLabel={SEARCH_LABEL}
-                      inputMode='text'
-                      onChangeText={handleSearch}/>
-            {searchCard.length > 0 && <ResetFilterButton style={{left: 252}}/>}
-            <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-              <MaterialIcons name={'image'} style={{fontSize: 18, top: 1, color: Colors.light.icon}}></MaterialIcons>
-              <ThemedText style={{fontSize: 13, width: 40, right: -6}}>{deck.filter(d => Boolean(d)).length}/20</ThemedText>
-            </ThemedView>
-        </Animated.View>
-      </ThemedView>
-    </ThemedView>
-  ), [deck]);
+  ), []);
 
   const cardListGrid = useCallback(() => (
-    <View style={{height: 520}}>
+    <View style={{height: Platform.OS === 'web' ? 520 : 527}}>
       <FlatList data={filtered}
-                numColumns={7}
+                numColumns={6}
                 contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0,}]}
                 keyExtractor={keyExtractor}
-                initialNumToRender={35}
-                maxToRenderPerBatch={35}
+                initialNumToRender={20}
+                maxToRenderPerBatch={20}
                 windowSize={12}
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={RenderEmpty}
                 renderItem={renderCard}
-                ListFooterComponent={<ThemedView style={{height: 80}}></ThemedView>}
+                ListFooterComponent={<ThemedView style={{height: 124}}></ThemedView>}
       />
     </View>
-), [searchCard, filtered, deck]);
+), [searchCard, filtered]);
   
   const memoizedGridMenu = useMemo(() => {
     return (
@@ -630,8 +537,12 @@ export default function CreateDeckScreen() {
                 <ThemedText type="headerTitle">{i18n.t('card_selection')}</ThemedText>
               </Animated.View>
             </Animated.View>
-            {previewList()}
-
+            <PreviewList state={state} 
+                         handleSearch={handleSearch} 
+                         setNotSaved={setNotSaved} 
+                         styles={createDeckStyles}
+                         service={createService}
+                         previousDeck={deck}/>
             <ThemedView style={{marginBottom: 16 }}></ThemedView>
             {cardListGrid()}
 
@@ -670,7 +581,7 @@ export default function CreateDeckScreen() {
           </Animated.View>
       </>
     )
-  }, [isGridVisible, filtered, deck]);
+  }, [isGridVisible, filtered]);
 
   return (
     <Provider>

@@ -58,7 +58,7 @@ export const splashStyles = StyleSheet.create({
     fontSize: 18, 
     color: 'white', 
     position: 'relative', 
-    top: -2,
+    top: -1,
     fontWeight: 600
   },
   button: {
