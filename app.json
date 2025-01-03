@@ -2,7 +2,7 @@
   "expo": {
     "name": "TCG Pocket Cards",
     "slug": "tcg-pocket-cards",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/images/favicon.png",
     "scheme": "myapp",
@@ -32,7 +32,7 @@
         "expo-splash-screen",
         {
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
+          "imageWidth": 1000,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }

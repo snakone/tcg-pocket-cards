@@ -1,4 +1,4 @@
-import { View, TouchableOpacity } from "react-native";
+import { View, Pressable } from "react-native";
 import { useCallback } from "react";
 import { useRouter } from "expo-router";
 
@@ -39,13 +39,13 @@ export default function SharedScreen({title, children, styles, customClose}: Sha
         {children}
       </ThemedView>
       <View style={ScreenStyles.bottomContent}>
-        <TouchableOpacity style={ButtonStyles.button} 
+        <Pressable style={ButtonStyles.button} 
                           onPress={customClose ?? goBack} 
                           accessibilityLabel={CLOSE_SENTENCE}>
           <View style={ButtonStyles.insetBorder}>
             <IconSymbol name="clear"></IconSymbol>
           </View>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </ThemedView>
   )

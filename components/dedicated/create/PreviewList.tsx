@@ -3,7 +3,7 @@ import { ThemedView } from "@/components/ThemedView";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
-import { CARD_IMAGE_MAP } from "@/shared/definitions/utils/card.images";
+import { CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";
 import { CardGridStyles } from "@/shared/styles/component.styles";
 import { MaterialIcons } from "@expo/vector-icons";
 import React, { useCallback, useEffect, useState } from "react";
@@ -81,7 +81,7 @@ export default function PreviewList({
     if (!card) { return; }
     setDeck(prev => {
       const newDeck = [...prev];
-      const index = newDeck.findIndex(c => c?.name === card.name);
+      const index = prev.findIndex(c => c?.name === card.name);
       if (index !== -1) {
         newDeck[index] = null;
         setNotSaved(true);
@@ -108,7 +108,7 @@ export default function PreviewList({
               CardGridStyles.image, 
               {width: Platform.OS === 'web' ? 31.8 : 49.4, height: 46, borderRadius: 4}
             ]} 
-            source={CARD_IMAGE_MAP[String(item?.id)]}/>
+            source={CARD_IMAGE_MAP_69x96[String(item?.id)]}/>
             { state.settingsState.favorites?.includes(item.id) && 
               <ThemedView style={[CardGridStyles.triangle, {
                 borderRightWidth: 8,

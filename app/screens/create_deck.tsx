@@ -6,7 +6,8 @@ import { StyleSheet } from 'react-native';
 import { Portal, Provider } from "react-native-paper";
 import { Image } from 'expo-image';
 import { BlurView } from "expo-blur";
-import { Subject, Subscription } from "rxjs";
+import { Subscription } from "rxjs";
+import Animated from "react-native-reanimated";
 
 import { 
   ButtonStyles,
@@ -27,7 +28,7 @@ import { detailScrollStyles } from "@/components/dedicated/detail/detail.scroll"
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 import { SORT_FIELD_MAP, TYPE_MAP } from "@/shared/definitions/utils/contants";
 import { AppContext } from "../_layout";
-import { CARD_IMAGE_MAP } from "@/shared/definitions/utils/card.images";
+import { CARD_IMAGE_MAP_116x162, CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import CardsService from "@/core/services/cards.service";
@@ -46,7 +47,6 @@ import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
 import SoundService from "@/core/services/sounds.service";
 import { useI18n } from "@/core/providers/LanguageProvider";
-import Animated from "react-native-reanimated";
 import { StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
 import { CardStageENUM } from "@/shared/definitions/enums/card.enums";
 import PreviewList from "@/components/dedicated/create/PreviewList";
@@ -173,7 +173,7 @@ export default function CreateDeckScreen() {
                   CardGridStyles.image, 
                   {width: CARD_IMAGE_WIDTH_3}
                 ]} 
-              source={CARD_IMAGE_MAP[String(item?.id)]}/>        
+              source={CARD_IMAGE_MAP_116x162[String(item?.id)]}/>        
               { state.settingsState.favorites?.includes(item.id) && 
                 <ThemedView style={[CardGridStyles.triangle]}></ThemedView>
               }
@@ -289,7 +289,10 @@ export default function CreateDeckScreen() {
     popular.length = 2;
     
     const data: StorageDeck = {
-      id: Number(deck_id) ? Number(deck_id) : state.settingsState.decks.sort((a, b) => b.id > a.id ? -1 : 1).findLast(d => Boolean(d))!.id + 1,
+      id: Number(deck_id) ? Number(deck_id) : 
+            (state.settingsState.decks.filter(d => Boolean(d))
+                                      .sort((a, b) => b.id > a.id ? -1 : 1)
+                                      .findLast(d => Boolean(d))?.id || 0) + 1,
       name: deckName,
       cards: deck.map(card => card?.id || null),
       energies,
@@ -507,12 +510,12 @@ export default function CreateDeckScreen() {
               borderBottomWidth: 10
             }]}></ThemedView>
           }
-          <Image accessibilityLabel={item.name} 
-                  style={[
-            CardGridStyles.image, 
-            {width: Platform.OS === 'web' ? 57.6 : 58}
-          ]} 
-          source={CARD_IMAGE_MAP[String(item.id)]}/>
+          <Image accessibilityLabel={item.name}
+                 source={CARD_IMAGE_MAP_69x96[String(item.id)]}
+                 style={[
+                  CardGridStyles.image, 
+                  {width: Platform.OS === 'web' ? 57.6 : 58}
+                ]}/>
         </View>
       </TouchableOpacity>
     </View>
@@ -524,13 +527,14 @@ export default function CreateDeckScreen() {
                 numColumns={6}
                 contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0,}]}
                 keyExtractor={keyExtractor}
-                initialNumToRender={20}
-                maxToRenderPerBatch={20}
-                windowSize={12}
+                initialNumToRender={25}
+                maxToRenderPerBatch={35}
+                windowSize={15}
+                removeClippedSubviews={false}
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={RenderEmpty}
                 renderItem={renderCard}
-                ListFooterComponent={<ThemedView style={{height: 124}}></ThemedView>}
+                ListFooterComponent={<ThemedView style={{height: 132}}></ThemedView>}
       />
     </View>
 ), [searchCard, filtered]);
@@ -585,13 +589,13 @@ export default function CreateDeckScreen() {
       </>
       ) : null}
             <View style={ScreenStyles.bottomContent}>
-              <TouchableOpacity style={ButtonStyles.button} 
+              <Pressable style={ButtonStyles.button} 
                                 onPress={() => handleGridModal(false)} 
                                 accessibilityLabel={CLOSE_SENTENCE}>
                 <View style={ButtonStyles.insetBorder}>
                   <IconSymbol name="clear"></IconSymbol>
                 </View>
-              </TouchableOpacity>
+              </Pressable>
             </View>
           </Animated.View>
       </>
@@ -612,7 +616,7 @@ export default function CreateDeckScreen() {
                      inputMode='text'
                      maxLength={21}
                   />
-            {deckName.length > 0 && <ResetFilterButton style={{left: 240}}/>}
+            {deckName.length > 0 && <ResetFilterButton style={{left: 242}}/>}
 
           <ThemedView style={{flexDirection: 'row', gap: 8}}>
             <TouchableOpacity onPress={handleReset}>
@@ -625,8 +629,8 @@ export default function CreateDeckScreen() {
             { Boolean(deck_id) && 
               <TouchableOpacity onPress={handleDelete}>
                 <MaterialIcons name="delete-outline" 
-                              style={{fontSize: 28, left: -2, top: 3.1, opacity: 0.7}} 
-                              color={'crimson'}>
+                               style={{fontSize: 28, left: -2, top: 3.1, opacity: 0.7}} 
+                               color={'crimson'}>
                 </MaterialIcons>
               </TouchableOpacity>
             }
@@ -663,7 +667,10 @@ export default function CreateDeckScreen() {
                       })
                     }
                   </ThemedView> : 
-                  <MaterialIcons name={'chevron-right'} style={{fontSize: 25, left: 8, color: Colors.light.icon}}/>
+                  <MaterialIcons name={'chevron-right'} 
+                                 style={[{fontSize: 25, left: 8, color: Colors.light.icon}, 
+                                    Platform.OS !== 'web' && {top: -3}
+                                 ]}/>
                 }
               </ThemedView>
             </ThemedView>
@@ -678,7 +685,7 @@ export default function CreateDeckScreen() {
         }
 
         <FlatList ListHeaderComponent={Platform.OS === 'web' ? renderHeader : null} 
-                  data={deck}
+                  data={Platform.OS === 'web' ? deck.sort((a, b) => b?.id > a?.id ? -1 : 1) : deck}
                   renderItem={renderItem}
                   numColumns={3}
                   contentContainerStyle={{width: '100%', marginBottom: 65}}

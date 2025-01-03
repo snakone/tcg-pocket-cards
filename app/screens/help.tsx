@@ -1,4 +1,4 @@
-import { Platform, TouchableOpacity, View } from "react-native";
+import { Platform, Pressable, View } from "react-native";
 import { useState } from "react";
 import { Modal as PaperModal, Portal } from "react-native-paper";
 import { useRouter } from "expo-router";
@@ -131,13 +131,13 @@ export default function HelpScreen() {
                     {item.content}
                   </ThemedView>
                   <View style={ModalStyles.modalFooter}>
-                    <TouchableOpacity style={ButtonStyles.button} 
+                    <Pressable style={ButtonStyles.button} 
                                       onPress={close} 
                                       accessibilityLabel={CLOSE_SENTENCE}>
                       <View style={ButtonStyles.insetBorder}>
                         <IconSymbol name="clear"></IconSymbol>
                       </View>
-                    </TouchableOpacity>
+                    </Pressable>
                   </View>
                 </View>
               </View>

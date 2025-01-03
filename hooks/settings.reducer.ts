@@ -44,7 +44,11 @@ export const settingsReducer = (state: SettingsState, action: SettingsAction): S
           state.decks[index] = action.value;
           value = [...state.decks];
         } else {
-          value = [...state.decks, action.value];
+          if (state.decks.length === 0 || (state.decks.length === 1 && state.decks[0] === null)) {
+            value = [action.value];
+          } else {
+            value = [...state.decks, action.value];
+          }
         }
         return { ...state, decks: value };
       }

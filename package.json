@@ -1,7 +1,7 @@
 {
   "name": "tcg-pocket-cards",
   "main": "expo-router/entry",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
@@ -10,7 +10,8 @@
     "web": "expo start --web",
     "test": "jest --watchAll",
     "lint": "expo lint",
-    "build": "eas build --profile preview --platform android"
+    "build": "eas build --profile preview --platform android",
+    "pre": "expo prebuild --platform android"
   },
   "jest": {
     "preset": "jest-expo"
@@ -52,7 +53,9 @@
     "react-native-svg": "15.8.0",
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "react-native-view-shot": "~4.0.3",
+    "expo-media-library": "~17.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

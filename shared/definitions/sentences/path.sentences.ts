@@ -38,6 +38,16 @@ export const GRID_OPTION = require('@/assets/images/grid/filter_open.png');
 export const GRID_SORT = require('@/assets/images/grid/sort_open.png');
 export const GRID_SORT_ICON = require('@/assets/images/grid/sort_icon.png');
 
+export const CREATE_ADD_NEW = require('@/assets/images/creation/add_new.png');
+export const CREATE_HOME_NEW = require('@/assets/images/creation/create_new.png');
+export const CREATE_SELECT_ENERGY = require('@/assets/images/creation/select_energy.png');
+export const CREATE_ENERGY_SHOW = require('@/assets/images/creation/energy_show.png');
+export const CREATE_CARD_SELECTION = require('@/assets/images/creation/card_selection.png');
+export const CREATE_PREVIEW = require('@/assets/images/creation/preview.png');
+export const CREATE_DECK_READY = require('@/assets/images/creation/deck_ready.png');
+export const CREATE_DECK_LIST = require('@/assets/images/creation/deck_list.png');
+export const CREATE_DELETE = require('@/assets/images/creation/delete.png');
+
 // SPLASH
 export const WINTER_SPLASH = require('@/assets/images/splash/winter.webp');
 export const SPRING_SPLASH = require('@/assets/images/splash/spring.webp');

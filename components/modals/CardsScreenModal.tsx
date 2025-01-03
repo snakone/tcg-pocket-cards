@@ -1,20 +1,27 @@
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { sharedModalStyles } from "@/shared/styles/component.styles";
 import { useState } from "react";
-import { Image } from 'expo-image';
-import { ThemedText } from "../ThemedText";
-import { useSharedValue } from "react-native-reanimated";
-import { GRID_SEARCH, GRID_FILTER, GRID_OPTION, GRID_SORT, GRID_SORT_ICON } from "@/shared/definitions/sentences/path.sentences";
 import { ScrollView } from "react-native";
+import { Image } from 'expo-image';
+import { useSharedValue } from "react-native-reanimated";
+
+import { sharedModalStyles } from "@/shared/styles/component.styles";
+import { useI18n } from "@/core/providers/LanguageProvider";
+import { ThemedText } from "../ThemedText";
 import { ThemedView } from "../ThemedView";
 import ScrollIndicator from "../ui/ScrollIndicator";
+
+import { 
+  GRID_SEARCH,
+  GRID_FILTER, 
+  GRID_OPTION, 
+  GRID_SORT, 
+  GRID_SORT_ICON
+} from "@/shared/definitions/sentences/path.sentences";
 
 export function CardsScreenModal() {
   const scrollY = useSharedValue(0);
   const [contentHeight, setContentHeight] = useState(1);
   const [scrollViewHeight, setScrollViewHeight] = useState(1);
   const {i18n} = useI18n();
-  const lastUpdate = '24/12/2024';
 
   const styles = sharedModalStyles;
 

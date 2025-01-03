@@ -43,7 +43,7 @@ export default function DetailCardScroll({card, state, scrollService}: {card: Ca
                 <Image
                   key={i}
                   source={RARITY_MAP[card.rarity]?.image}
-                  style={[detailScrollStyles.rarityItem, card.rarity === 7 && {width: 38}]}
+                  style={[detailScrollStyles.rarityItem, card.rarity === 9 && {width: 38}]}
                 />
             ))}
             </ThemedView> :
@@ -231,24 +231,13 @@ export default function DetailCardScroll({card, state, scrollService}: {card: Ca
               </ThemedView>
             </ThemedView>
           }
-          {
-            (Boolean(card.extra) || card.name === 'Mew') &&
-            <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info]}>
-              <ThemedView style={detailScrollStyles.infoTitle}>
-                <ThemedText style={detailScrollStyles.text}>{i18n.t('how_to_obtain')}</ThemedText>
-              </ThemedView>
-              <ThemedView style={detailScrollStyles.infoValue}>
-                <ThemedText style={detailScrollStyles.text}>{card.extra}</ThemedText>
-              </ThemedView>
-            </ThemedView> 
-          }
           <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info]}>
-                <ThemedView style={detailScrollStyles.infoTitle}>
-                  <ThemedText style={detailScrollStyles.text}>{i18n.t('sub_type')}</ThemedText>
-                </ThemedView>
-                <ThemedView style={detailScrollStyles.infoValue}>
-                  <ThemedText style={detailScrollStyles.text}>{i18n.t(STAGE_MAP[card.stage].label)}</ThemedText>
-                </ThemedView>
+            <ThemedView style={detailScrollStyles.infoTitle}>
+              <ThemedText style={detailScrollStyles.text}>{i18n.t('sub_type')}</ThemedText>
+            </ThemedView>
+            <ThemedView style={detailScrollStyles.infoValue}>
+              <ThemedText style={detailScrollStyles.text}>{i18n.t(STAGE_MAP[card.stage].label)}</ThemedText>
+            </ThemedView>
           </ThemedView>
         </>
       }

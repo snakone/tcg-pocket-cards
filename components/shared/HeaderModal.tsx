@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View, TouchableOpacity, ScrollView, Platform } from 'react-native';
+import { View, TouchableOpacity, Platform, Pressable } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { Modal as PaperModal, Portal } from 'react-native-paper';
 
@@ -65,15 +65,15 @@ export default function HeaderWithCustomModal({
                   </View>
                   <View style={[styles.modalScrollView, {minHeight: modalHeight}]}>{modalContent}</View>
                   <View style={styles.modalFooter}>
-                    <TouchableOpacity style={ButtonStyles.button} 
-                                      onPress={toggleModal} 
-                                      accessibilityLabel={CLOSE_SENTENCE}
-                                      accessibilityRole="button"
-                                      accessible={true}>
+                    <Pressable style={ButtonStyles.button} 
+                                              onPress={toggleModal} 
+                                              accessibilityLabel={CLOSE_SENTENCE}
+                                              accessibilityRole="button"
+                                              accessible={true}>
                       <View style={ButtonStyles.insetBorder}>
                         <IconSymbol name="clear"></IconSymbol>
                       </View>
-                    </TouchableOpacity>
+                    </Pressable>
                   </View>
                 </View>
               </View>

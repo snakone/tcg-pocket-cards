@@ -10,7 +10,6 @@ import { splashImage } from "./SplashImage";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import React from "react";
 import { APP_VERSION } from "@/shared/definitions/utils/contants";
-import { Colors } from "@/shared/definitions/utils/colors";
 
 export const SplashScreenMemo = memo(({handleStart}: {handleStart: () => void}) => {
   const {i18n} = useI18n();

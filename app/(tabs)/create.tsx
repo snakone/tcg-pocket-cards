@@ -18,7 +18,7 @@ import { LARGE_MODAL_HEIGHT, TYPE_MAP } from '@/shared/definitions/utils/contant
 import SoundService from '@/core/services/sounds.service';
 import { AppContext } from '../_layout';
 import { StorageDeck } from '@/shared/definitions/interfaces/global.interfaces';
-import { CARD_IMAGE_MAP } from '@/shared/definitions/utils/card.images';
+import { CARD_IMAGE_MAP, CARD_IMAGE_MAP_116x162 } from '@/shared/definitions/utils/card.images';
 
 export default function CreateDeckScreen() {
   const {i18n} = useI18n();
@@ -94,7 +94,7 @@ export default function CreateDeckScreen() {
                       zIndex: (1 / (i + 1) * 100),
                     }, CARD_IMAGE_MAP[String(item.popular[i])] && {opacity: 1}
                   ]} 
-                  source={CARD_IMAGE_MAP[String(item.popular[i])]}
+                  source={CARD_IMAGE_MAP_116x162[String(item.popular[i])]}
                   key={i}/> :
                   <ThemedView style={[
                     CardGridStyles.image,
@@ -110,7 +110,7 @@ export default function CreateDeckScreen() {
               }
             </ThemedView>
             <ThemedView style={styles.deckName}>
-              <ThemedText style={{fontSize: 12, left: 4, top: 1}}>{item.name}</ThemedText>
+              <ThemedText style={{fontSize: 12, left: 0, top: 1}}>{item.name}</ThemedText>
               <ThemedView style={{position: 'absolute', right: 2, bottom: 0}}>
                 {
                   item && item.energies?.length > 0 && 
@@ -240,7 +240,7 @@ export const styles = StyleSheet.create({
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.2)',
     paddingVertical: 10,
     paddingHorizontal: 6,
-    marginBottom: 16,
+    marginBottom: 10,
     overflow: 'hidden',
   },
   popularCards: {

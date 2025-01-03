@@ -9,7 +9,7 @@ import SoundService from "@/core/services/sounds.service";
 import { AppState } from "@/hooks/root.reducer";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
-import { CARD_IMAGE_MAP } from "@/shared/definitions/utils/card.images";
+import { CARD_IMAGE_MAP_116x162 } from "@/shared/definitions/utils/card.images";
 import { CardGridStyles, CARD_IMAGE_WIDTH_3 } from "@/shared/styles/component.styles";
 import ScrollService from "@/core/services/scroll.service";
 import React from "react";
@@ -64,7 +64,7 @@ export default function DetailRelatedCards({card, state, scrollService}: DetailR
           }
           <Image accessibilityLabel={item.name} 
                  style={[CardGridStyles.image, {width: CARD_IMAGE_WIDTH_3}]} 
-                 source={CARD_IMAGE_MAP[String(item.id)]}/>
+                 source={CARD_IMAGE_MAP_116x162[String(item.id)]}/>
       </Pressable>
     </Animated.View>
   ), []);

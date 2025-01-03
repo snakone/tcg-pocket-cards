@@ -17,8 +17,8 @@ export function sortCards(field: keyof Card, data: Card[], sort: SortItem): Card
     if (bValue === -1 && aValue !== -1) return -1;
 
     if (field === 'rarity') {
-      if (aValue === 8 && bValue !== 8) return 1;
-      if (bValue === 8 && aValue !== 8) return -1;
+      if (aValue === 0 && bValue !== 0) return 1;
+      if (bValue === 0 && aValue !== 0) return -1;
     }
 
     if (aValue <= bValue) return sort.order === 'asc' ? -1 : 1;

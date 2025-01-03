@@ -6,7 +6,6 @@ import { ThemedText } from "../ThemedText";
 import { Linking, Pressable, ScrollView } from "react-native";
 import { ThemedView } from "../ThemedView";
 import ScrollIndicator from "../ui/ScrollIndicator";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { Colors } from "@/shared/definitions/utils/colors";
 
 export function ContactModal() {

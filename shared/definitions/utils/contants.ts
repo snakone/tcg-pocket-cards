@@ -28,7 +28,7 @@ import { EXPANSION } from "../enums/packs.enums";
 import { CardExpansionENUM, CardRarityENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 
-export const APP_VERSION = '1.0.3';
+export const APP_VERSION = '1.0.4';
 export const MENU_WIDTH = 250;
 export const MENU_HEIGHT = 405;
 export const PAGE_TITLE = 'TCG Pocket Cards';
@@ -42,7 +42,7 @@ export const MIN_MODAL_HEIGHT = 96;
 export const DEFAULT_MODAL_HEIGHT = 236;
 export const LARGE_MODAL_HEIGHT = 508;
 export const SORT_MODAL_HEIGHT = 527;
-export const SELECT_ENERGY_HEIGHT = 575;
+export const SELECT_ENERGY_HEIGHT = 590;
 
 export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
   color: 'rgba(0, 0, 0, .32)', 
@@ -139,6 +139,7 @@ export const PACK_MAP: Record<EXPANSION, any> = {
   [EXPANSION.WONDER_PICK]: null,
   [EXPANSION.SPECIAL_MISSION]: null,
   [EXPANSION.MYTHICAL_ISLAND]: MYTHICAL_ISLAND_MEW_ICON,
+  [EXPANSION.PROMO_A3]: PROMO_A_ICON
 }
 
 export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {
