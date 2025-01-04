@@ -1,8 +1,8 @@
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
+import { StorageDeck, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 
-export interface SettingsState {
+export interface SettingsState extends UserProfile {
   music: boolean;
   sound: boolean;
   language: LanguageType;
@@ -25,7 +25,11 @@ export const settingsInitialState: SettingsState = {
   show_intro: true,
   favorites: [],
   cards: [],
-  decks: []
+  decks: [],
+  name: '',
+  avatar: 'eevee',
+  coin: 'eevee',
+  best: null
 };
 
 export const settingsReducer = (state: SettingsState, action: SettingsAction): SettingsState => {

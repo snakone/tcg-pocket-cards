@@ -108,6 +108,7 @@ export const CardGridStyles = StyleSheet.create({
     backgroundColor: 'white',
     color: 'Colors.light.text',
     borderColor: 'skyblue',
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'
   },
   gridContainer: {
     flexWrap: 'nowrap',
@@ -137,19 +138,19 @@ export const CardGridStyles = StyleSheet.create({
     right: 4,
     height: 20,
     width: 40,
-    left: Platform.OS === 'web' ? -6 : -2,
+    left: Platform.OS === 'web' ? -8 : -4,
     transform: [
       { scale: Platform.OS === 'web' ? 1 : 1.1 }
     ]
   },
   clearInput: {
     position: 'absolute',
-    left: 184,
+    left: 222,
     top: 8
   },
   totalCards: {
     marginLeft: 8,
-    fontSize: 12,
+    fontSize: 13,
     minWidth: 24,
     left: 1,
     position: 'relative',
@@ -426,6 +427,7 @@ export const TabsMenuStyles = StyleSheet.create({
     backgroundColor: Colors.light.background,
     width: 202,
     userSelect: 'none',
+    gap: 2
   },
   avatar: {
     width: 50, 
@@ -880,5 +882,76 @@ export const cardDetailStyles = StyleSheet.create({
     borderRadius: 4,
     paddingVertical: 2,
     paddingHorizontal: 16
+  }
+});
+
+export const CreateScreenStyles = StyleSheet.create({
+  addContainer: {
+    backgroundColor: 'white',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderRadius: 10,
+    overflow: 'hidden',
+    zIndex: 10
+  },
+  addIcon: {
+    width: 20, 
+    height: 20, 
+    color: 'mediumaquamarine', 
+    fontSize: 25,
+    top: -2,
+  },
+  textContainer: {
+    
+  },
+  decksContainer: {
+    padding: 16,
+    zIndex: 0,
+    overflow: 'hidden',
+    height: '100%'
+  },
+  deckItem: {
+    backgroundColor: 'white',
+    borderRadius: 8,
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.2)',
+    paddingVertical: 10,
+    paddingHorizontal: 6,
+    marginBottom: 10,
+    overflow: 'hidden'
+  },
+  popularCards: {
+    flexDirection: 'row', 
+    minHeight: 30, 
+    minWidth: 114, 
+    position: 'relative'
+  },
+  deckName: {
+    flex: 1, 
+    alignItems: 'center', 
+    justifyContent: 'flex-start', 
+    flexDirection: 'row',
+    position: 'relative'
+  },
+  energies: {
+    flexDirection: 'row',
+    gap: 6, 
+    justifyContent: 'center', 
+    backgroundColor: Colors.light.background, 
+    padding: 4, 
+    borderRadius: 40,
+  },
+  popularImage: {
+    width: 55, 
+    borderRadius: 4, 
+    position: 'absolute', 
+    backgroundColor: Colors.light.skeleton,
+    shadowColor: 'black',
+    shadowRadius: 4,
+    shadowOffset: {height: 2, width: 2},
+    shadowOpacity: 0.2,
+    top: 4,
   }
 });

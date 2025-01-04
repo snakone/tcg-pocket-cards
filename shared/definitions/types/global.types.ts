@@ -10,10 +10,11 @@ export type ThemeTextType = 'default' | 'title' | 'defaultSemiBold' | 'subtitle'
 
 export type ParallaxProps = PropsWithChildren<{
   title: string,
-  modalContent: ReactNode,
+  modalContent?: ReactNode,
   modalTitle: string,
   modalHeight?: number,
   styles?: StyleProp<ViewStyle>,
+  showHeader?: boolean,
 }>;
 
 export type ErrorType = 'error' | 'info' | 'warning' | 'delete';

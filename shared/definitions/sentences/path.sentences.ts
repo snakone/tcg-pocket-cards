@@ -74,6 +74,29 @@ export const GENETIC_APEX_CHARIZARD_ICON = require('@/assets/images/packs/geneti
 export const PROMO_A_ICON = require('@/assets/images/packs/promo_a.png');
 export const MYTHICAL_ISLAND_MEW_ICON = require('@/assets/images/packs/mythical-island-mew.png');
 
+// COINS
+export const EEVEE_COIN = require("@/assets/images/coins/eevee.png");
+export const ERIKA_GREEN_COIN = require("@/assets/images/coins/erika_green.png");
+export const ERIKA_RAINBOW_COIN = require("@/assets/images/coins/erika_rainbow.png");
+export const GARDEVOIR_COIN = require("@/assets/images/coins/gardevoir.png");
+export const MEOWTH_COIN = require("@/assets/images/coins/meowth.png");
+export const MEWTWO_COIN = require("@/assets/images/coins/mewtwo.png");
+export const POKEBALL_COIN = require("@/assets/images/coins/pokeball.png");
+export const SPECIAL1_COIN = require("@/assets/images/coins/special1.png");
+
+// AVATARS
+export const EEVEE_AVATAR = require("@/assets/images/avatars/eevee.png");
+export const CHARIZARD_AVATAR = require("@/assets/images/avatars/charizard.png");
+export const ELECTRODE_AVATAR = require("@/assets/images/avatars/electrode.png");
+export const ERIKA_AVATAR = require("@/assets/images/avatars/erika.png");
+export const GARDEVOIR_AVATAR = require("@/assets/images/avatars/gardevoir.png");
+export const GIOVANNI_AVATAR = require("@/assets/images/avatars/giovanni.png");
+export const MEOWTH_AVATAR = require("@/assets/images/avatars/meowth.png");
+export const MEWTWO_AVATAR = require("@/assets/images/avatars/mewtwo.png");
+export const PIKACHU_AVATAR = require("@/assets/images/avatars/pikachu.png");
+export const SLOWPOKE_AVATAR = require("@/assets/images/avatars/slowpoke.png");
+export const SNORLAX_AVATAR = require("@/assets/images/avatars/snorlax.png");
+
 export const GENETIC_APEX_PACKS = [
   PIKACHU_ICON,
   MEWTWO_ICON,

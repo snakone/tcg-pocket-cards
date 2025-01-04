@@ -60,7 +60,7 @@ interface GridCardProps {
 export default function ImageGridWithSearch({ state, title, modal, modalTitle, type = 'default' }: GridCardProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [filtered, setFiltered] = useState<Card[]>(state.cardState.cards);
-  const [favorites, setFavorites] = useState<Card[]>(state.cardState.cards.filter(c => state.settingsState.favorites.includes(c.id)));
+  const [favorites, setFavorites] = useState<Card[]>(state.cardState.cards.filter(c => state.settingsState.favorites?.includes(c.id)));
   const [footerVisible, setFooterVisible] = useState<boolean>(false);
   const flatListRef = useRef<FlatList<Card> | null>(null);
   const router = useRouter();
@@ -116,7 +116,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
   useEffect(() => {
     if (modalTitle !== 'favorites_modal_title') return;
     const favorites = state.cardState.cards.filter(
-      card => state.settingsState.favorites.includes(card.id)
+      card => state.settingsState.favorites?.includes(card.id)
     );
     setFiltered(favorites);
     setFavorites(favorites);
@@ -125,7 +125,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
     setFiltered((type === 'favorites' ? favorites : state.cardState.cards).filter(card =>
-      card.name.toLowerCase().includes(text.toLowerCase())
+      card.name.toLowerCase()?.includes(text.toLowerCase())
   ))}, [(type === 'favorites' ? favorites : state.cardState.cards)]);
 
   function filterOrSortCards(type: 'sort' | 'filter', data: Card[], sort?: SortItem | undefined): Card[] {
@@ -296,7 +296,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                   <>
                     <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
                       <Animated.View style={[CardGridStyles.inputContainer]}>
-                        <TextInput style={CardGridStyles.searchInput}
+                        <TextInput style={[CardGridStyles.searchInput, {boxShadow: '5px 4px 12px rgba(0, 0, 0, 0.2)', width: '71%'}]}
                                    placeholder={i18n.t('search_card_placeholder')}
                                    value={searchQuery}
                                    onChangeText={handleSearch}
@@ -314,10 +314,6 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                                   style={CardGridStyles.switch}
                                   disabled={filtered.length <= 3}
                           />
-                          <MaterialIcons name="library-books" 
-                                         style={{fontSize: 24, marginLeft: 16, left: -1}} 
-                                         color={Colors.light.skeleton}>
-                          </MaterialIcons>
                           <ThemedText style={[CardGridStyles.totalCards]}>{filtered.length}</ThemedText>                    
                         </ThemedView>
 

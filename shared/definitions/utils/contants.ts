@@ -20,13 +20,33 @@ import {
   GENETIC_APEX_CHARIZARD_ICON,
   GENETIC_APEX_MEWTWO_ICON,
   PROMO_A_ICON,
-  MYTHICAL_ISLAND_MEW_ICON
+  MYTHICAL_ISLAND_MEW_ICON,
+  EEVEE_COIN,
+  EEVEE_AVATAR,
+  ERIKA_GREEN_COIN,
+  ERIKA_RAINBOW_COIN,
+  GARDEVOIR_COIN,
+  MEOWTH_COIN,
+  MEWTWO_COIN,
+  POKEBALL_COIN,
+  SPECIAL1_COIN,
+  ELECTRODE_AVATAR,
+  CHARIZARD_AVATAR,
+  ERIKA_AVATAR,
+  GARDEVOIR_AVATAR,
+  GIOVANNI_AVATAR,
+  MEWTWO_AVATAR,
+  PIKACHU_AVATAR,
+  SLOWPOKE_AVATAR,
+  SNORLAX_AVATAR,
+  MEOWTH_AVATAR
 } from "../sentences/path.sentences";
 
 import { FilterSearch } from "../classes/filter.class";
 import { EXPANSION } from "../enums/packs.enums";
 import { CardExpansionENUM, CardRarityENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
+import { AvatarIcon } from "../interfaces/global.interfaces";
 
 export const APP_VERSION = '1.0.4';
 export const MENU_WIDTH = 250;
@@ -147,6 +167,56 @@ export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.PROMO_A]: 23,
   [CardExpansionENUM.MYTHICAL_ISLAND]: 86
 }
+
+export const COIN_MAP: Record<string, any> = {
+  eevee: EEVEE_COIN,
+  erika_green: ERIKA_GREEN_COIN,
+  erika_rainbow: ERIKA_RAINBOW_COIN,
+  gardevoir: GARDEVOIR_COIN,
+  meowth: MEOWTH_COIN,
+  mewtwo: MEWTWO_COIN,
+  pokeball: POKEBALL_COIN,
+  special1: SPECIAL1_COIN
+}
+
+export const AVATAR_MAP: Record<string, any> = {
+  eevee: EEVEE_AVATAR,
+  charizard: CHARIZARD_AVATAR,
+  electrode: ELECTRODE_AVATAR,
+  erika: ERIKA_AVATAR,
+  gardevoir: GARDEVOIR_AVATAR,
+  giovanni: GIOVANNI_AVATAR,
+  meowth: MEOWTH_AVATAR,
+  mewtwo: MEWTWO_AVATAR,
+  pikachu: PIKACHU_AVATAR,
+  slowpoke: SLOWPOKE_AVATAR,
+  snorlax: SNORLAX_AVATAR
+}
+
+export const AVATAR_LIST: AvatarIcon[] = [
+  { label: 'Eevee', value: 'eevee', icon: EEVEE_AVATAR },
+  { label: 'Charizard', value: 'charizard', icon: CHARIZARD_AVATAR },
+  { label: 'Electrode', value: 'electrode', icon: ELECTRODE_AVATAR },
+  { label: 'Erika', value: 'erika', icon: ERIKA_AVATAR },
+  { label: 'Gardevoir', value: 'gardevoir', icon: GARDEVOIR_AVATAR },
+  { label: 'Giovanni', value: 'giovanni', icon: GIOVANNI_AVATAR },
+  { label: 'Meowth', value: 'meowth', icon: MEWTWO_AVATAR },
+  { label: 'Mewtwo', value: 'mewtwo', icon: MEWTWO_AVATAR },
+  { label: 'Pikachu', value: 'pikachu', icon: PIKACHU_AVATAR },
+  { label: 'Slowpoke', value: 'slowpoke', icon: SLOWPOKE_AVATAR },
+  { label: 'Snorlax', value: 'snorlax', icon: SNORLAX_AVATAR }
+];
+
+export const COIN_LIST: AvatarIcon[] = [
+  { label: 'Eevee', value: 'eevee', icon: EEVEE_COIN },
+  { label: 'Erika Green', value: 'erika_green', icon: ERIKA_GREEN_COIN },
+  { label: 'Erika Rainbow', value: 'erika_rainbow', icon: ERIKA_RAINBOW_COIN },
+  { label: 'Gardevoir', value: 'gardevoir', icon: GARDEVOIR_COIN },
+  { label: 'Meowth', value: 'meowth', icon: MEOWTH_COIN },
+  { label: 'Mewtwo', value: 'mewtwo', icon: MEWTWO_COIN },
+  { label: 'Pokéball', value: 'pokeball', icon: POKEBALL_COIN },
+  { label: 'Special 1', value: 'special1', icon: SPECIAL1_COIN }
+];
 
 export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);
 

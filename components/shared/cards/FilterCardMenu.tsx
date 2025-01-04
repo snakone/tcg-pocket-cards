@@ -174,13 +174,13 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
 
         </SafeAreaView>
         <View style={ModalStyles.modalFooter}>
-          <TouchableOpacity style={ButtonStyles.button} 
+          <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
                             accessibilityLabel={CLOSE_SENTENCE}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </Animated.View>
       <Portal>{renderExpansionsMenu()}</Portal>

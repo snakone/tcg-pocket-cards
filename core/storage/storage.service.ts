@@ -1,5 +1,5 @@
 import { SettingsState } from '@/hooks/settings.reducer';
-import { StorageDeck } from '@/shared/definitions/interfaces/global.interfaces';
+import { StorageDeck, UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default class Storage {
@@ -17,6 +17,13 @@ export default class Storage {
     'favorites',
     'cards',
     'decks'
+  ];
+
+  static profileKeys = [
+    'name',
+    'avatar',
+    'coin',
+    'best'
   ];
 
   public static async set(key: string, value: any): Promise<void> {
@@ -116,6 +123,16 @@ export default class Storage {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  public static async getProfile(): Promise<UserProfile> {
+    let profile: UserProfile = {name: '', avatar: 'eevee', coin: 'eevee', best: null};
+
+    for (const key of this.profileKeys) {
+      (profile as any)[key] = await this.get(key);
+    }
+
+    return profile as UserProfile;
   }
 
 }

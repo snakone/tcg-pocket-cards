@@ -96,7 +96,7 @@ export default function PreviewList({
   }
 
   const renderPreviewItem = useCallback(({item}: {item: Card}) => (
-    <View style={styles.previewItem}>
+    <View style={[styles.previewItem, !item && {opacity: 0.8}]}>
       <TouchableOpacity
             onPress={() => previewPress(item)}
             style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
@@ -126,22 +126,22 @@ export default function PreviewList({
     <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
       <FlatList data={deck}
                 numColumns={10}
-                contentContainerStyle={{width: '100%', padding: 16, paddingTop: 20}}
+                contentContainerStyle={{width: '100%', padding: 16, paddingTop: 20, paddingBottom: 12}}
                 renderItem={renderPreviewItem}
                 keyExtractor={(item, index) => index + 1 + ''}
       />
-      <ThemedView style={{padding: 16, paddingTop: 0}}>
+      <ThemedView style={{padding: 16, paddingTop: 0, paddingBottom: 18}}>
         <Animated.View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-          <TextInput style={[CardGridStyles.searchInput, {width: '80%'}]} 
+          <TextInput style={[CardGridStyles.searchInput, {width: '78%'}]} 
                       placeholder={i18n.t('search_card_placeholder')}
                       placeholderTextColor={Colors.light.text}
                       accessibilityLabel={SEARCH_LABEL}
                       inputMode='text'
                       onChangeText={handleSearch}/>
-            <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-              <MaterialIcons name={'image'} style={{fontSize: 18, top: 1, color: Colors.light.icon}}></MaterialIcons>
-              <ThemedText style={{fontSize: 13, width: 40, right: -6}}>{deck.filter(d => Boolean(d)).length}/20</ThemedText>
-            </ThemedView>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', left: -2}}>
+            <MaterialIcons name={'image'} style={{fontSize: 18, top: 1, color: Colors.light.skeleton}}></MaterialIcons>
+            <ThemedText style={{fontSize: 13, width: 40, right: -6}}>{deck.filter(d => Boolean(d)).length}/20</ThemedText>
+          </ThemedView>
         </Animated.View>
       </ThemedView>
     </ThemedView>

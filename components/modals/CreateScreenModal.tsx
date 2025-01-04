@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Image } from 'expo-image';
 import { useSharedValue } from "react-native-reanimated";
-import { ScrollView } from "react-native";
+import { Platform, ScrollView } from "react-native";
 
 import { ThemedText } from "../ThemedText";
 import { ThemedView } from "../ThemedView";
@@ -105,7 +105,7 @@ export function CreateScreenModal() {
         <ThemedText style={styles.text}>{i18n.t('create_deck_intro')}</ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={CREATE_DECK_READY} style={{width: '75%', height: 459}}></Image>
+          <Image source={CREATE_DECK_READY} style={{width: '75%', height: Platform.OS === 'web' ? 459 : 480}}></Image>
         </ThemedView>
 
         <ThemedText style={styles.text}>{i18n.t('create_deck_requisites')}</ThemedText>

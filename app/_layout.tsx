@@ -80,6 +80,12 @@ export default function RootLayout() {
           SoundService.setEnabled(settings.sound)
           setLocale(settings.language);
           setShowStartScreen(settings.show_intro);
+
+          if (version !== APP_VERSION) {
+            Storage.set('version', APP_VERSION);
+            Storage.set('cards', []);
+            dispatch({type: 'SET_LOADED', value: false});
+          }
         }
       }
       setTimeout(() => setWaiting(false), 1500);

@@ -67,7 +67,7 @@ export function filterCards(filter: FilterSearch, data: Card[], favorites: numbe
 
     const element = Object.keys(filter.element).filter(key => Boolean((filter.element as any)[key]));
     
-    if(element.length > 0 && !element.includes(String(card.element))) {
+    if(element.length > 0 && !element?.includes(String(card.element))) {
       return false;
     }
 
@@ -113,19 +113,19 @@ export function filterCards(filter: FilterSearch, data: Card[], favorites: numbe
 
     const stage = Object.keys(filter.stage).filter(key => Boolean((filter.stage as any)[key]));
     
-    if(stage.length > 0 && !stage.includes(String(card.stage))) {
+    if(stage.length > 0 && !stage?.includes(String(card.stage))) {
       return false;
     }
 
     const expansion = Object.keys(filter.expansion).filter(key => Boolean((filter.expansion as any)[key]));
     
-    if(expansion.length > 0 && !card.found?.some(pack => expansion.includes(String(pack)))) {
+    if(expansion.length > 0 && !card.found?.some(pack => expansion?.includes(String(pack)))) {
       return false;
     }
 
     const weakenss = Object.keys(filter.weak).filter(key => Boolean((filter.weak as any)[key]));
     
-    if(weakenss.length > 0 && !weakenss.includes(String(card.weak))) {
+    if(weakenss.length > 0 && !weakenss?.includes(String(card.weak))) {
       return false;
     }
 

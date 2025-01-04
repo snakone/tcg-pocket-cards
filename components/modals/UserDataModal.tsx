@@ -15,7 +15,7 @@ export function UserDataModal() {
   const {i18n} = useI18n();
 
   const styles = sharedModalStyles;
-  const lastUpdate = '24/12/2024';
+  const lastUpdate = '04/01/2025';
 
   const handleContentSizeChange = (width: number, height: number) => {
     setContentHeight(height);
@@ -114,6 +114,10 @@ export function UserDataModal() {
 
         <ThemedText style={[styles.text, {fontWeight: 600}]}>{i18n.t('user_data_local_storage_elements_user')}</ThemedText>
 
+        <ThemedText style={styles.text}>- {i18n.t('user_data_local_storage_elements_name')}</ThemedText>
+        <ThemedText style={styles.text}>- {i18n.t('user_data_local_storage_elements_avatar')}</ThemedText>
+        <ThemedText style={styles.text}>- {i18n.t('user_data_local_storage_elements_coin')}</ThemedText>
+        <ThemedText style={styles.text}>- {i18n.t('user_data_local_storage_elements_best')}</ThemedText>
         <ThemedText style={styles.text}>- {i18n.t('user_data_local_storage_elements_favorites')}</ThemedText>
         <ThemedText style={styles.text}>- {i18n.t('user_data_local_storage_elements_decks')}</ThemedText>
 

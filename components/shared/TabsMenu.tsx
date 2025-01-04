@@ -10,10 +10,12 @@ import { TabMenu } from '@/shared/definitions/interfaces/layout.interfaces';
 import { IconSymbolName } from '@/shared/definitions/utils/switches';
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
-import { LIST, HELP } from '@/shared/definitions/utils/contants';
+import { LIST, HELP, COIN_MAP } from '@/shared/definitions/utils/contants';
 import { useI18n } from '../../core/providers/LanguageProvider';
 import SoundService from '@/core/services/sounds.service';
 import React from 'react';
+import Storage from '@/core/storage/storage.service';
+import { UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
 
 export default function TabsMenu({
   isVisible,
@@ -25,6 +27,9 @@ export default function TabsMenu({
   const [progress, setProgress] = useState(false);
   const fillProgress = useSharedValue(0.26);
   const {i18n} = useI18n();
+  const [profile, setProfile] = useState<UserProfile>(
+    {name: '', avatar: 'eevee', coin: 'eevee', best: null}
+  );
 
   const startAnimation = () => {
     fillProgress.value = withTiming(1, {
@@ -72,7 +77,16 @@ export default function TabsMenu({
         router.push('/profile')
       }, 50);
     }
-  }, [progress])
+  }, [progress]);
+
+  useEffect(() => {
+    const getProfile = async () => {
+      const profile: UserProfile = await Storage.getProfile();
+      setProfile(profile);
+    };
+
+    getProfile();
+  }, []);
 
   const resetAnimation = () => {
     fillProgress.value = withTiming(0.26, {
@@ -95,11 +109,13 @@ export default function TabsMenu({
                    onPressOut={resetAnimation}>
           <Animated.View style={[TabsMenuStyles.container, animatedFillStyle]} />
           <View style={TabsMenuStyles.user}>
-            <Image source={require("@/assets/images/coins/eevee.png")} 
+            <Image source={COIN_MAP[profile.coin]} 
                   style={TabsMenuStyles.avatar}>
             </Image>
             <View style={{paddingInline: 18}}>
-              <ThemedText type='defaultSemiBold' style={{zIndex: 4}}>Alejandra2346</ThemedText>
+              <ThemedText type='defaultSemiBold' style={{zIndex: 4, textAlign: 'center'}}>
+                {profile.name || i18n.t('press_here')}
+              </ThemedText>
             </View>
           </View>
         </Pressable>

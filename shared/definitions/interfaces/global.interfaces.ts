@@ -19,3 +19,16 @@ export interface StorageDeck {
   energies: PokemonTypeENUM[];
   popular: number[];
 }
+
+export interface UserProfile {
+  name: string;
+  avatar: string;
+  coin: string;
+  best: number | null;
+}
+
+export interface AvatarIcon {
+  label: string;
+  value: string;
+  icon: any;
+}

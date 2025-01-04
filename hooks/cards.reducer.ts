@@ -12,6 +12,8 @@ export const cardsReducer = (state: CardsState, action: CardAction): CardsState 
       return { ...state, cards: [...action.cards], loaded: true };
     case 'SET_NAVIGATING':
         return { ...state, navigating: action.value };
+    case 'SET_LOADED':
+        return { ...state, loaded: action.value };
     default:
       return state;
   }
@@ -26,3 +28,4 @@ export interface CardsState {
 export type CardAction =
   | { type: 'SET_CARDS', cards: Card[] }
   | { type: 'SET_NAVIGATING', value: boolean }
+  | { type: 'SET_LOADED', value: boolean }

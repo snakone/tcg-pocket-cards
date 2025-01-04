@@ -118,7 +118,7 @@ export default function CreateDeckScreen() {
           setDeckName(selected.name);
           setIsWithEnergy(selected.energies.length > 0);
           Object.keys(element).forEach((key: any) => {
-            if (selected.energies.includes(key)) {
+            if (selected.energies?.includes(key)) {
               (element as any)[key] = true;
             }
           })
@@ -161,7 +161,7 @@ export default function CreateDeckScreen() {
   }
 
   const renderItem = useCallback(({item, index}: {item: Card, index: number}) => (
-    <View style={[CardGridStyles.imageContainer]}>
+    <View style={[CardGridStyles.imageContainer, !item && {opacity: 0.8}]}>
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <TouchableOpacity onPress={() => handlePick(index)}
               style={[CardGridStyles.image, {justifyContent: 'center', alignItems: 'center'}]}>
@@ -187,7 +187,7 @@ export default function CreateDeckScreen() {
 
   const renderHeader = useCallback(() => (
     <ThemedView style={createDeckStyles.amount}>
-      <MaterialIcons name={'image'} style={{fontSize: 18, top: 1, color: Colors.light.icon}}></MaterialIcons>
+      <MaterialIcons name={'image'} style={{fontSize: 18, top: 1, color: Colors.light.skeleton}}></MaterialIcons>
       <ThemedText style={{fontSize: 13}}>{deck.filter(d => Boolean(d)).length}/20</ThemedText>
     </ThemedView>
   ), [deck]);
@@ -250,7 +250,7 @@ export default function CreateDeckScreen() {
     setFiltered(prev => {
       if(state.cardState.cards.length === 0) { return prev; }
       return state.cardState.cards.filter(card =>
-        card.name.toLowerCase().includes(text.toLowerCase()));
+        card.name.toLowerCase()?.includes(text.toLowerCase()));
     })
   }, [state.cardState.cards]);
 
@@ -522,7 +522,7 @@ export default function CreateDeckScreen() {
   ), []);
 
   const cardListGrid = useCallback(() => (
-    <View style={{height: Platform.OS === 'web' ? 520 : 527}}>
+    <View style={{height: Platform.OS === 'web' ? 518 : 525}}>
       <FlatList data={filtered}
                 numColumns={6}
                 contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0,}]}
@@ -562,12 +562,13 @@ export default function CreateDeckScreen() {
                          styles={createDeckStyles}
                          service={createService}
                          previousDeck={deck}/>
-            <ThemedView style={{marginBottom: 16 }}></ThemedView>
+            <ThemedView style={{marginBottom: 20 }}></ThemedView>
             {cardListGrid()}
 
             { loading ? null : state.cardState.cards?.length > 0 ? (
         <>
-        <TouchableOpacity onPress={() => (setIsSortVisible(true), SoundService.play('AUDIO_MENU_OPEN'))} style={cardStyles.container}>
+        <TouchableOpacity onPress={() => (setIsSortVisible(true), SoundService.play('AUDIO_MENU_OPEN'))} 
+                          style={cardStyles.container}>
           <ThemedView>
             <MaterialIcons name={(sort?.icon as any) || 'content-paste-search'} 
                            color={'skyblue'} 
@@ -621,7 +622,7 @@ export default function CreateDeckScreen() {
           <ThemedView style={{flexDirection: 'row', gap: 8}}>
             <TouchableOpacity onPress={handleReset}>
               <MaterialIcons name="sync" 
-                            style={{fontSize: 26, left: -4, top: 5, opacity: 0.8}} 
+                            style={{fontSize: 26, left: -4, top: 5, opacity: 0.5}} 
                             color={Colors.light.icon}>
               </MaterialIcons>
             </TouchableOpacity>
@@ -648,7 +649,7 @@ export default function CreateDeckScreen() {
               </ThemedView>
               <ThemedView>
               { isWithEnergy ?
-                  <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8}}>
+                  <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
                     {
                       Object.keys(element).map((key, i) => {
                         const image = (TYPE_MAP as any)[key]?.image;
@@ -658,8 +659,8 @@ export default function CreateDeckScreen() {
                               key={key}
                               source={image}
                               style={{
-                                width: 20,
-                                height: 20,
+                                width: 19,
+                                height: 19,
                                 position: 'relative'
                               }}
                             />
@@ -695,7 +696,8 @@ export default function CreateDeckScreen() {
                   keyExtractor={(item, index) => index + ''}
                   ListFooterComponent={
                     <ThemedView style={Platform.OS !== 'web' && {marginBottom: 55}}>
-                      <TouchableOpacity style={[homeScreenStyles.ctaButton, {marginBlock: 45, flex: 1}]} onPress={() => handleSave()}>
+                      <TouchableOpacity style={[homeScreenStyles.ctaButton, {marginBlock: 45, flex: 1}]} 
+                                        onPress={() => handleSave()}>
                         <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>{i18n.t('save_deck')}</ThemedText>
                       </TouchableOpacity>
                     </ThemedView>
@@ -732,7 +734,7 @@ export const createDeckStyles = StyleSheet.create({
     borderRadius: 12,
     paddingVertical: 6,
     paddingHorizontal: 12,
-    opacity: 0.8,
+    opacity: 0.9,
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
     flexDirection: 'row',
     alignItems: 'center',

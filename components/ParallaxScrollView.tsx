@@ -13,17 +13,20 @@ export default function ParallaxScrollView({
   modalTitle,
   modalHeight = MIN_MODAL_HEIGHT,
   styles = {},
+  showHeader = true
 }: ParallaxProps) {
  
   return (
     <ThemedView style={ParallaxStyles.container}>
       <SafeAreaView style={{flex: 1}}>
-        <View style={ParallaxStyles.header}>
-          <HeaderWithCustomModal title={title} 
-                                 modalContent={modalContent} 
-                                 modalTitle={modalTitle}
-                                 modalHeight={modalHeight}/>
-        </View>
+        { showHeader && 
+          <View style={ParallaxStyles.header}>
+            <HeaderWithCustomModal title={title} 
+                                  modalContent={modalContent} 
+                                  modalTitle={modalTitle}
+                                  modalHeight={modalHeight}/>
+          </View>
+        }
         <ThemedView style={[ParallaxStyles.content, styles]}>{children}</ThemedView>
       </SafeAreaView>
     </ThemedView>

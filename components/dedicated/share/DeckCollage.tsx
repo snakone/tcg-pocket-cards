@@ -143,9 +143,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row', 
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 20,
-    marginTop: 12,
-    marginBottom: 22
+    gap: 6,
   },
   author: {
     position: 'absolute',

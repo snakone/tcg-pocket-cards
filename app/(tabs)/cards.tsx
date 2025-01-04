@@ -2,6 +2,7 @@ import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Subscription } from 'rxjs';
 import { TouchableOpacity, StyleSheet, StyleProp, TextStyle } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import React from 'react';
 
 import { AppContext } from '../_layout';
 import ImageGridWithSearch from '@/components/ui/CardGrid';
@@ -16,7 +17,6 @@ import { Colors } from '@/shared/definitions/utils/colors';
 import SoundService from '@/core/services/sounds.service';
 import { CardsScreenModal } from '@/components/modals/CardsScreenModal';
 import Storage from '@/core/storage/storage.service';
-import React from 'react';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 
 export default function CardsScreen() {

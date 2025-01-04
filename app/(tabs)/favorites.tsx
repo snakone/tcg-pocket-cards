@@ -1,5 +1,6 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Subscription } from "rxjs";
+import React from "react";
 
 import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AppContext } from "../_layout";
@@ -8,7 +9,6 @@ import { useError } from "@/core/providers/ErrorProvider";
 import ImageGridWithSearch from "@/components/ui/CardGrid";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import { FavoritesModal } from "@/components/modals";
-import React from "react";
 import Storage from '@/core/storage/storage.service';
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 

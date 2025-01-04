@@ -1,5 +1,6 @@
 import { Image } from 'expo-image';
 import { TouchableOpacity} from 'react-native';
+import { useRouter } from 'expo-router';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
@@ -8,7 +9,6 @@ import { HomeScreenModal } from '@/components/modals/HomeScreenModal';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { homeScreenStyles } from '@/shared/styles/component.styles';
 import { HERO_IMAGE } from '@/shared/definitions/sentences/path.sentences';
-import { useRouter } from 'expo-router';
 import SoundService from '@/core/services/sounds.service';
 import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/contants';
 

@@ -65,7 +65,7 @@ const ConfirmationPortal = ({ visible, title, message, type = "info", handleConf
                                   {backgroundColor: 'transparent', borderWidth: 2, borderColor: 'crimson'}
                                 ]} >
                 <ThemedText style={[
-                  {color: 'white', fontWeight: 600}, 
+                  {color: 'white', fontWeight: 600, fontSize: 15}, 
                   type === 'delete' && {color: 'crimson'}
                 ]}>{i18n.t('ok')}</ThemedText>
               </TouchableOpacity>

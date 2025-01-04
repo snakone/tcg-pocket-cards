@@ -14,12 +14,18 @@ import FilterCardMenu from '@/components/shared/cards/FilterCardMenu';
 import SortCardMenu from '@/components/shared/cards/SortCardMenu';
 import SoundService from '@/core/services/sounds.service';
 import { useI18n } from '@/core/providers/LanguageProvider';
+import PickAvatarMenu from '@/components/dedicated/profile/PickAvatarMenu';
+import PickCoinMenu from '@/components/dedicated/profile/PickCoinMenu';
+import PickBestMenu from '@/components/dedicated/profile/PickBestMenu';
 
 export default function TabLayout() {
   const distanceFromBottom = useSharedValue(FILTER_CARDS_HEIGHT);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isSortVisible, setIsSortVisible] = useState(false);
   const [isFilterVisible, setIsFilterVisible] = useState(false);
+  const [isAvatarVisible, setIsAvatarVisible] = useState(false);
+  const [isCoinVisible, setIsCoinVisible] = useState(false);
+  const [isBestVisible, setIsBestVisible] = useState(false);
   const [isMobileEmulator, setIsMobileEmulator] = useState(false);
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
@@ -58,13 +64,21 @@ export default function TabLayout() {
     if (Platform.OS === 'web' && window && window.devicePixelRatio > 1) {
       setIsMobileEmulator(true);
     }
-  }, []); 
+  }, []);
+
+  function isAnyModalVisible(): boolean {
+    return isSortVisible || 
+           isFilterVisible || 
+           isAvatarVisible || 
+           isCoinVisible || 
+           isBestVisible;
+  }
 
   useEffect(() => {
-    distanceFromBottom.value = isSortVisible || isFilterVisible ? 
+    distanceFromBottom.value = isAnyModalVisible() ? 
                                 withTiming(0, { duration: 150 }) : 
                                 withTiming(FILTER_CARDS_HEIGHT, { duration: 0 });
-  }, [isSortVisible, isFilterVisible]);
+  }, [isSortVisible, isFilterVisible, isAvatarVisible, isCoinVisible, isBestVisible]);
 
   const memoizedSort = useMemo(() => {
     return <SortCardMenu isVisible={isSortVisible} 
@@ -78,6 +92,24 @@ export default function TabLayout() {
                            onClose={onClose}/>
   }, [isFilterVisible]);
 
+  const memoizedPickAvatar = useMemo(() => {
+    return <PickAvatarMenu isVisible={isAvatarVisible} 
+                           animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
+                           onClose={onClose}/>
+  }, [isAvatarVisible]);
+
+  const memoizedPickCoin = useMemo(() => {
+    return <PickCoinMenu isVisible={isCoinVisible} 
+                         animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
+                         onClose={onClose}/>
+  }, [isCoinVisible]);
+
+  const memoizedPickBest = useMemo(() => {
+    return <PickBestMenu isVisible={isBestVisible} 
+                         animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
+                         onClose={onClose}/>
+  }, [isBestVisible]);
+
   useEffect(() => {
     setIsSortVisible(state.modalState.sort_opened);
   }, [state.modalState.sort_opened]);
@@ -85,6 +117,18 @@ export default function TabLayout() {
   useEffect(() => {
     setIsFilterVisible(state.modalState.filter_opened);
   }, [state.modalState.filter_opened]);
+
+  useEffect(() => {
+    setIsAvatarVisible(state.modalState.avatar_opened);
+  }, [state.modalState.avatar_opened]);
+
+  useEffect(() => {
+    setIsCoinVisible(state.modalState.coin_opened);
+  }, [state.modalState.coin_opened]);
+
+  useEffect(() => {
+    setIsBestVisible(state.modalState.best_opened);
+  }, [state.modalState.best_opened]);
 
   function handleMenu(value: boolean): void {
     setIsMenuVisible(value);
@@ -98,6 +142,9 @@ export default function TabLayout() {
   function onClose(): void {
     setIsSortVisible(false);
     setIsFilterVisible(false);
+    setIsAvatarVisible(false);
+    setIsCoinVisible(false);
+    setIsBestVisible(false);
     dispatch({type: 'CLOSE_MODALS'});
   }
 
@@ -221,6 +268,9 @@ export default function TabLayout() {
       <Portal>{isMenuVisible && memoizedMenu}</Portal>
       <Portal>{isSortVisible && memoizedSort}</Portal>
       <Portal>{isFilterVisible && memoizedFilter}</Portal>
+      <Portal>{isAvatarVisible && memoizedPickAvatar}</Portal>
+      <Portal>{isCoinVisible && memoizedPickCoin}</Portal>
+      <Portal>{isBestVisible && memoizedPickBest}</Portal>
     </Provider>
   );
 }
