@@ -100,15 +100,11 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
 
   useEffect(() => {
     if (!filtered) { return; }
-    
-    if (!state.modalState.filter_opened && state.filterState.filter.areAllPropertiesNull()) {
-      handleSearch('');
-      return;
-    }
-
     if(state.modalState.filter_opened) { return; }
   
-    const sorted = filterOrSortCards('filter', state.cardState.cards);
+    const filterCards = filterOrSortCards('filter', state.cardState.cards);
+    const sorted = filterOrSortCards('sort', filterCards, state.filterState.sort.find(s => s.active));
+
     setFiltered(sorted);
     setTimeout(() => goUp(null, false), 100);
   }, [state.modalState.filter_opened]);
@@ -312,7 +308,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                                   onValueChange={toggleSwitch}
                                   value={isGrid5}
                                   style={CardGridStyles.switch}
-                                  disabled={filtered.length <= 3}
+                                  disabled={filtered.length <= 4}
                           />
                           <ThemedText style={[CardGridStyles.totalCards]}>{filtered.length}</ThemedText>                    
                         </ThemedView>

@@ -47,7 +47,7 @@ export function FavoritesModal() {
 
         <ThemedText style={styles.text}>{i18n.t('favorites_access')}</ThemedText>
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={FAVORITE_HOW_TO} style={{width: '75%', height: Platform.OS === 'web' ? 390 : 420}}></Image>
+          <Image source={FAVORITE_HOW_TO} style={{width: '75%', height: 414}}></Image>
         </ThemedView>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>

@@ -39,7 +39,47 @@ import {
   PIKACHU_AVATAR,
   SLOWPOKE_AVATAR,
   SNORLAX_AVATAR,
-  MEOWTH_AVATAR
+  MEOWTH_AVATAR,
+  DECK_BG_BLACK,
+  DECK_BG_BLUE,
+  DECK_BG_CHARIZARD,
+  DECK_BG_CHARIZARD_2,
+  DECK_BG_EEVEE,
+  DECK_BG_ERIKA,
+  DECK_BG_FOREST,
+  DECK_BG_GARDEVOIR,
+  DECK_BG_LAKE,
+  DECK_BG_MEOWTH,
+  DECK_BG_MEW,
+  DECK_BG_MEWTWO,
+  DECK_BG_MEWTWO_2,
+  DECK_BG_PIKACHU,
+  DECK_BG_PIKACHU_2,
+  DECK_BG_ROCK,
+  DECK_BG_SERPERIOR,
+  DECK_BG_SPECIAL_1,
+  DECK_BG_TREES,
+  DECK_BG_VENUSAUR,
+  DECK_BG_TREES_70x70,
+  DECK_BG_BLACK_70x70,
+  DECK_BG_BLUE_70x70,
+  DECK_BG_CHARIZARD_2_70x70,
+  DECK_BG_CHARIZARD_70x70,
+  DECK_BG_EEVEE_70x70,
+  DECK_BG_ERIKA_70x70,
+  DECK_BG_FOREST_70x70,
+  DECK_BG_GARDEVOIR_70x70,
+  DECK_BG_LAKE_70x70,
+  DECK_BG_MEOWTH_70x70,
+  DECK_BG_MEW_70x70,
+  DECK_BG_MEWTWO_2_70x70,
+  DECK_BG_MEWTWO_70x70,
+  DECK_BG_PIKACHU_2_70x70,
+  DECK_BG_PIKACHU_70x70,
+  DECK_BG_ROCK_70x70,
+  DECK_BG_SERPERIOR_70x70,
+  DECK_BG_SPECIAL_1_70x70,
+  DECK_BG_VENUSAUR_70x70
 } from "../sentences/path.sentences";
 
 import { FilterSearch } from "../classes/filter.class";
@@ -54,6 +94,7 @@ export const MENU_HEIGHT = 405;
 export const PAGE_TITLE = 'TCG Pocket Cards';
 export const LOCAL_HOST = 'http://192.168.1.71:3000';
 export const SERVER_URL = 'https://tcg-pocket-cards.onrender.com';
+export const FRONTEND_URL = 'https://tcg-pocket-cards.netlify.app/';
 export const DEFAULT_LANG = 'es';
 export const FILTER_CARDS_HEIGHT = 350;
 
@@ -72,9 +113,9 @@ export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
 }
 
 export const LIST: ItemWithRoute[] = [
-  { label: 'decks', icon: 'wind', route: 'decks' },
   { label: 'share', icon: 'note', route: 'share' },
   { label: 'favorites', icon: 'star', route: 'favorites' },
+  { label: 'news', icon: 'newspaper', route: 'news' },
 ];
 
 export const HELP: ItemWithRoute[] = [
@@ -193,6 +234,52 @@ export const AVATAR_MAP: Record<string, any> = {
   snorlax: SNORLAX_AVATAR
 }
 
+export const DECK_BACKGROUND_MAP: Record<string, any> = {
+  trees: DECK_BG_TREES,
+  forest: DECK_BG_FOREST,
+  charizard: DECK_BG_CHARIZARD,
+  mewtwo: DECK_BG_MEWTWO,
+  pikachu: DECK_BG_PIKACHU,
+  lake: DECK_BG_LAKE,
+  black: DECK_BG_BLACK,
+  serperior: DECK_BG_SERPERIOR,
+  rock: DECK_BG_ROCK,
+  blue: DECK_BG_BLUE,
+  charizard_2: DECK_BG_CHARIZARD_2,
+  eevee: DECK_BG_EEVEE,
+  erika: DECK_BG_ERIKA,
+  gardevoir: DECK_BG_GARDEVOIR,
+  mew: DECK_BG_MEW,
+  meowth: DECK_BG_MEOWTH,
+  mewtwo_2: DECK_BG_MEWTWO_2,
+  pikachu_2: DECK_BG_PIKACHU_2,
+  special_1: DECK_BG_SPECIAL_1,
+  venusaur: DECK_BG_VENUSAUR
+}
+
+export const DECK_BACKGROUND_MAP_70x70: Record<string, any> = {
+  trees: DECK_BG_TREES_70x70,
+  forest: DECK_BG_FOREST_70x70,
+  charizard: DECK_BG_CHARIZARD_70x70,
+  mewtwo: DECK_BG_MEWTWO_70x70,
+  pikachu: DECK_BG_PIKACHU_70x70,
+  lake: DECK_BG_LAKE_70x70,
+  black: DECK_BG_BLACK_70x70,
+  serperior: DECK_BG_SERPERIOR_70x70,
+  rock: DECK_BG_ROCK_70x70,
+  blue: DECK_BG_BLUE_70x70,
+  charizard_2: DECK_BG_CHARIZARD_2_70x70,
+  eevee: DECK_BG_EEVEE_70x70,
+  erika: DECK_BG_ERIKA_70x70,
+  gardevoir: DECK_BG_GARDEVOIR_70x70,
+  mew: DECK_BG_MEW_70x70,
+  meowth: DECK_BG_MEOWTH_70x70,
+  mewtwo_2: DECK_BG_MEWTWO_2_70x70,
+  pikachu_2: DECK_BG_PIKACHU_2_70x70,
+  special_1: DECK_BG_SPECIAL_1_70x70,
+  venusaur: DECK_BG_VENUSAUR_70x70
+}
+
 export const AVATAR_LIST: AvatarIcon[] = [
   { label: 'Eevee', value: 'eevee', icon: EEVEE_AVATAR },
   { label: 'Charizard', value: 'charizard', icon: CHARIZARD_AVATAR },
@@ -216,6 +303,52 @@ export const COIN_LIST: AvatarIcon[] = [
   { label: 'Mewtwo', value: 'mewtwo', icon: MEWTWO_COIN },
   { label: 'Pokéball', value: 'pokeball', icon: POKEBALL_COIN },
   { label: 'Special 1', value: 'special1', icon: SPECIAL1_COIN }
+];
+
+export const DECK_BACKGROUNDS: AvatarIcon[] = [
+  {label: 'Trees', value: 'trees', icon: DECK_BG_TREES},
+  {label: 'Forest', value: 'forest', icon: DECK_BG_FOREST},
+  {label: 'Charizard', value: 'charizard', icon: DECK_BG_CHARIZARD},
+  {label: 'Mewtwo', value: 'mewtwo', icon: DECK_BG_MEWTWO},
+  {label: 'Pikachu', value: 'pikachu', icon: DECK_BG_PIKACHU},
+  {label: 'Lake', value: 'lake', icon: DECK_BG_LAKE},
+  {label: 'Black', value: 'black', icon: DECK_BG_BLACK},
+  {label: 'Serperior', value: 'serperior', icon: DECK_BG_SERPERIOR},
+  {label: 'Rocks', value: 'rock', icon: DECK_BG_ROCK},
+  {label: 'Blue', value: 'blue', icon: DECK_BG_BLUE},
+  {label: 'Charizard 2', value: 'charizard_2', icon: DECK_BG_CHARIZARD_2},
+  {label: 'Eevee', value: 'eevee', icon: DECK_BG_EEVEE},
+  {label: 'Erika', value: 'erika', icon: DECK_BG_ERIKA},
+  {label: 'Gardevoir', value: 'gardevoir', icon: DECK_BG_GARDEVOIR},
+  {label: 'Mew', value: 'mew', icon: DECK_BG_MEW},
+  {label: 'Meowth', value: 'meowth', icon: DECK_BG_MEOWTH},
+  {label: 'Mewtwo 2', value: 'mewtwo_2', icon: DECK_BG_MEWTWO_2},
+  {label: 'Pikachu 2', value: 'pikachu_2', icon: DECK_BG_PIKACHU_2},
+  {label: 'Special 1', value: 'special_1', icon: DECK_BG_SPECIAL_1},
+  {label: 'Venusaur', value: 'venusaur', icon: DECK_BG_VENUSAUR}
+];
+
+export const DECK_BACKGROUNDS_70x70: AvatarIcon[] = [
+  {label: 'Trees', value: 'trees', icon: DECK_BG_TREES_70x70},
+  {label: 'Forest', value: 'forest', icon: DECK_BG_FOREST_70x70},
+  {label: 'Charizard', value: 'charizard', icon: DECK_BG_CHARIZARD_70x70},
+  {label: 'Mewtwo', value: 'mewtwo', icon: DECK_BG_MEWTWO_70x70},
+  {label: 'Pikachu', value: 'pikachu', icon: DECK_BG_PIKACHU_70x70},
+  {label: 'Lake', value: 'lake', icon: DECK_BG_LAKE_70x70},
+  {label: 'Black', value: 'black', icon: DECK_BG_BLACK_70x70},
+  {label: 'Serperior', value: 'serperior', icon: DECK_BG_SERPERIOR_70x70},
+  {label: 'Rocks', value: 'rock', icon: DECK_BG_ROCK_70x70},
+  {label: 'Blue', value: 'blue', icon: DECK_BG_BLUE_70x70},
+  {label: 'Charizard 2', value: 'charizard_2', icon: DECK_BG_CHARIZARD_2_70x70},
+  {label: 'Eevee', value: 'eevee', icon: DECK_BG_EEVEE_70x70},
+  {label: 'Erika', value: 'erika', icon: DECK_BG_ERIKA_70x70},
+  {label: 'Gardevoir', value: 'gardevoir', icon: DECK_BG_GARDEVOIR_70x70},
+  {label: 'Mew', value: 'mew', icon: DECK_BG_MEW_70x70},
+  {label: 'Meowth', value: 'meowth', icon: DECK_BG_MEOWTH_70x70},
+  {label: 'Mewtwo 2', value: 'mewtwo_2', icon: DECK_BG_MEWTWO_2_70x70},
+  {label: 'Pikachu 2', value: 'pikachu_2', icon: DECK_BG_PIKACHU_2_70x70},
+  {label: 'Special 1', value: 'special_1', icon: DECK_BG_SPECIAL_1_70x70},
+  {label: 'Venusaur', value: 'venusaur', icon: DECK_BG_VENUSAUR_70x70}
 ];
 
 export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);

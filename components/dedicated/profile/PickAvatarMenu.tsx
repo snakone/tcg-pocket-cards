@@ -15,7 +15,7 @@ import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { AppContext } from "@/app/_layout";
 import SoundService from "@/core/services/sounds.service";
-import { AVATAR_LIST, AVATAR_MAP } from "@/shared/definitions/utils/contants";
+import { AVATAR_LIST } from "@/shared/definitions/utils/contants";
 import { AvatarIcon } from "@/shared/definitions/interfaces/global.interfaces";
 import Storage from "@/core/storage/storage.service";
 import { splashStyles } from "@/components/ui/SplashScreen";
@@ -68,7 +68,7 @@ export default function PickAvatarMenu({
   const renderItem = ({ item } : {item: AvatarIcon}) => (
     <TouchableOpacity onPress={() => handleClick(item.value)}>
       <ThemedView style={[pickAvatarStyles.avatarCircle, selected === item.value && {backgroundColor: 'slategray'}]}>
-        <Image source={AVATAR_MAP[item.value]} style={pickAvatarStyles.avatar}/>
+        <Image source={item.icon} style={pickAvatarStyles.avatar}/>
         {
           selected === item.value && 
           <MaterialIcons name="check" 

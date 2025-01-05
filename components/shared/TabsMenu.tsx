@@ -49,7 +49,7 @@ export default function TabsMenu({
   const handleRoute = async (route: string) => {
     await playSound();
     switch(route) {
-      case 'decks': router.push('/decks');
+      case 'news': router.push('/news');
         break;
       case 'favorites': router.push('/favorites');
         break;
@@ -113,7 +113,7 @@ export default function TabsMenu({
                   style={TabsMenuStyles.avatar}>
             </Image>
             <View style={{paddingInline: 18}}>
-              <ThemedText type='defaultSemiBold' style={{zIndex: 4, textAlign: 'center'}}>
+              <ThemedText type='defaultSemiBold' style={{zIndex: 4, textAlign: 'center', fontSize: 16}}>
                 {profile.name || i18n.t('press_here')}
               </ThemedText>
             </View>

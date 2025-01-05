@@ -1,7 +1,7 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { Image } from "expo-image";
@@ -14,13 +14,12 @@ import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
-import { COIN_LIST } from "@/shared/definitions/utils/contants";
+import { DECK_BACKGROUNDS_70x70 } from "@/shared/definitions/utils/contants";
 import { AvatarIcon } from "@/shared/definitions/interfaces/global.interfaces";
-import Storage from "@/core/storage/storage.service";
 import { splashStyles } from "@/components/ui/SplashScreen";
 import { AppContext } from "@/app/_layout";
 
-export default function PickCoinMenu({
+export default function PickBackgroundMenu({
   isVisible,
   onClose,
   animatedStyle,
@@ -28,53 +27,39 @@ export default function PickCoinMenu({
   const {i18n} = useI18n();
   const styles = ModalStyles;
   if (!isVisible) return null;
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
-  const [selected, setSelected] = useState('');
-  const [original, setOriginal] = useState('');
+  const [selected, setSelected] = useState<AvatarIcon>();
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
   }, []);
 
-  async function closeMenu(): Promise<void> {
+  async function closeMenu(value = false): Promise<void> {
     await playSound();
-    onClose();
+    onClose(value ? selected : null);
   }
 
-  async function handleClick(value: string): Promise<void> {
+  async function handleClick(value: AvatarIcon): Promise<void> {
     await SoundService.play('POP_PICK');
     setSelected(value);
   }
 
   function handleSave(): void {
-    Storage.set('coin', selected);
-    const settings = {...state.settingsState, coin: selected};
-    dispatch({type: 'SET_SETTINGS', value: settings});
-    closeMenu();
+    closeMenu(true);
   }
 
-  useEffect(() => {
-    const getCoin = async () => {
-      const coin = await Storage.get('coin');
-      setSelected(coin);
-      setOriginal(coin);
-    };
-
-    getCoin();
-  }, []);
-
   const renderItem = ({ item } : {item: AvatarIcon}) => (
-    <TouchableOpacity onPress={() => handleClick(item.value)}>
-      <ThemedView style={[pickCoinStyles.coinCircle, selected === item.value && {backgroundColor: 'slategray'}]}>
-        <Image source={item.icon} style={pickCoinStyles.coin}/>
+    <TouchableOpacity onPress={() => handleClick(item)}>
+      <ThemedView style={[
+         pickBackgroundStyles.coinCircle, 
+         selected?.value === item.value && {backgroundColor: 'slategray'}
+        ]}>
+        <Image source={item.icon} style={pickBackgroundStyles.coin}/>
         {
-          selected === item.value && 
+          selected?.value === item.value && 
           <MaterialIcons name="check" 
                          size={16} 
                          color={'white'} 
-                         style={pickCoinStyles.selectedIcon}/>
+                         style={pickBackgroundStyles.selectedIcon}/>
         }
       </ThemedView>
     </TouchableOpacity>
@@ -91,22 +76,23 @@ export default function PickCoinMenu({
       </Pressable>
       <Animated.View style={[animatedStyle, sortStyles.container, {height: 605}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
-          <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_avatar')}</ThemedText>
+          <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_background')}</ThemedText>
         </View>
         <ThemedView style={[styles.modalScrollView, {flex: 1, padding: 0}]}>
           <ThemedView style={{flex: 1, alignItems: 'center', marginTop: 12}}>
-            <FlatList data={COIN_LIST}
+            <FlatList data={DECK_BACKGROUNDS_70x70}
                       renderItem={renderItem}
                       numColumns={3}
                       showsVerticalScrollIndicator={false}
                       keyExtractor={(item, index) => index + ''}
+                      ListFooterComponent={<ThemedView style={{height: 110}}></ThemedView>}
                     />
             <ThemedView style={{alignItems: 'center', position: 'absolute', bottom: 30}}>
               <TouchableOpacity onPress={() => handleSave()}
-                                disabled={selected === original}  
+                                disabled={!selected}  
                                 style={[
                                   splashStyles.button,
-                                  selected === original && {backgroundColor: 'lightgray'}
+                                  !selected && {backgroundColor: 'lightgray'}
                                 ]} >
                 <ThemedText style={[
                   {color: 'white', fontWeight: 600, fontSize: 15},
@@ -129,26 +115,26 @@ export default function PickCoinMenu({
   );
 }
 
-const pickCoinStyles = StyleSheet.create({
+const pickBackgroundStyles = StyleSheet.create({
   coin: {
     width: 70, 
     height: 70, 
     zIndex: 4, 
     backgroundColor: 'mediumaquamarine', 
-    borderRadius: 100
+    borderRadius: 22
   },
   coinCircle: {
     margin: 10,
     marginInline: 14,
     padding: 4,
     backgroundColor: 'white',
-    borderRadius: 100,
+    borderRadius: 22,
     boxShadow: 'rgba(0, 0, 0, 0.5) 4px 8px 12px'
   },
   selectedIcon: {
     position: 'absolute', 
-    right: 0, 
-    top: 0, 
+    right: -4, 
+    top: -4, 
     backgroundColor: 'slategray', 
     borderRadius: 50, 
     padding: 2, 

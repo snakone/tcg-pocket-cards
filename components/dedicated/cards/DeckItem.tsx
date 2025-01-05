@@ -48,7 +48,7 @@ import { CardGridStyles, CreateScreenStyles } from "@/shared/styles/component.st
                 ))
               }
             </ThemedView>
-            <ThemedView style={CreateScreenStyles.deckName}>
+            <ThemedView style={[CreateScreenStyles.deckName, {justifyContent: 'space-between', width: '67%'}]}>
               <ThemedText style={{fontSize: 12, left: 0, top: 1}}>{item.name}</ThemedText>
               <ThemedView style={{position: 'absolute', right: 2, marginTop: 2}}>
                 {

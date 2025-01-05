@@ -97,6 +97,49 @@ export const PIKACHU_AVATAR = require("@/assets/images/avatars/pikachu.png");
 export const SLOWPOKE_AVATAR = require("@/assets/images/avatars/slowpoke.png");
 export const SNORLAX_AVATAR = require("@/assets/images/avatars/snorlax.png");
 
+// DECK BACKGROUND
+export const DECK_BG_TREES = require("@/assets/images/decks/Ilustración_portada_árbol_del_descanso_TCGP.png");
+export const DECK_BG_FOREST = require("@/assets/images/decks/Ilustración_portada_bosque_virgen_TCGP.png");
+export const DECK_BG_CHARIZARD = require("@/assets/images/decks/Ilustración_portada_Genes_Formidables_Charizard_TCGP.png");
+export const DECK_BG_MEWTWO = require("@/assets/images/decks/Ilustración_portada_Genes_Formidables_Mewtwo_TCGP.png");
+export const DECK_BG_PIKACHU = require("@/assets/images/decks/Ilustración_portada_Genes_Formidables_Pikachu_TCGP.png");
+export const DECK_BG_LAKE = require("@/assets/images/decks/Ilustración_portada_lago_sereno_TCGP.png");
+export const DECK_BG_BLACK = require("@/assets/images/decks/Ilustración_portada_Poké_Ball_TCGP.png");
+export const DECK_BG_SERPERIOR = require("@/assets/images/decks/Ilustración_portada_ruinas_olvidadas_TCGP.png");
+export const DECK_BG_ROCK = require("@/assets/images/decks/Ilustración_portada_tierras_ígneas_TCGP.png");
+export const DECK_BG_BLUE = require("@/assets/images/decks/Ilustración_tapete_Azul_y_Blastoise_TCGP.png");
+export const DECK_BG_CHARIZARD_2 = require("@/assets/images/decks/Ilustración_tapete_Charizard_TCGP.png");
+export const DECK_BG_EEVEE = require("@/assets/images/decks/Ilustración_tapete_Eevee_TCGP.png");
+export const DECK_BG_ERIKA = require("@/assets/images/decks/Ilustración_tapete_Erika_TCGP.png");
+export const DECK_BG_GARDEVOIR = require("@/assets/images/decks/Ilustración_tapete_Gardevoir_TCGP.png");
+export const DECK_BG_MEW = require("@/assets/images/decks/Ilustración_tapete_La_Isla_Singular_Mew_TCGP.png");
+export const DECK_BG_MEOWTH = require("@/assets/images/decks/Ilustración_tapete_Meowth_TCGP.png");
+export const DECK_BG_MEWTWO_2 = require("@/assets/images/decks/Ilustración_tapete_Mewtwo_TCGP.png");
+export const DECK_BG_PIKACHU_2 = require("@/assets/images/decks/Ilustración_tapete_Pikachu_TCGP.png");
+export const DECK_BG_SPECIAL_1 = require("@/assets/images/decks/Ilustración_tapete_set_especial_01_TCGP.png");
+export const DECK_BG_VENUSAUR = require("@/assets/images/decks/Ilustración_tapete_Venusaur_TCGP.png");
+
+export const DECK_BG_TREES_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_árbol_del_descanso_TCGP.png");
+export const DECK_BG_FOREST_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_bosque_virgen_TCGP.png");
+export const DECK_BG_CHARIZARD_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_Genes_Formidables_Charizard_TCGP.png");
+export const DECK_BG_MEWTWO_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_Genes_Formidables_Mewtwo_TCGP.png");
+export const DECK_BG_PIKACHU_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_Genes_Formidables_Pikachu_TCGP.png");
+export const DECK_BG_LAKE_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_lago_sereno_TCGP.png");
+export const DECK_BG_BLACK_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_Poké_Ball_TCGP.png");
+export const DECK_BG_SERPERIOR_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_ruinas_olvidadas_TCGP.png");
+export const DECK_BG_ROCK_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_tierras_ígneas_TCGP.png");
+export const DECK_BG_BLUE_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_tapete_Azul_y_Blastoise_TCGP.png");
+export const DECK_BG_CHARIZARD_2_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_tapete_Charizard_TCGP.png");
+export const DECK_BG_EEVEE_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_tapete_Eevee_TCGP.png");
+export const DECK_BG_ERIKA_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_tapete_Erika_TCGP.png");
+export const DECK_BG_GARDEVOIR_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_tapete_Gardevoir_TCGP.png");
+export const DECK_BG_MEW_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_tapete_La_Isla_Singular_Mew_TCGP.png");
+export const DECK_BG_MEOWTH_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_tapete_Meowth_TCGP.png");
+export const DECK_BG_MEWTWO_2_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_tapete_Mewtwo_TCGP.png");
+export const DECK_BG_PIKACHU_2_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_tapete_Pikachu_TCGP.png");
+export const DECK_BG_SPECIAL_1_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_tapete_set_especial_01_TCGP.png");
+export const DECK_BG_VENUSAUR_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_tapete_Venusaur_TCGP.png");
+
 export const GENETIC_APEX_PACKS = [
   PIKACHU_ICON,
   MEWTWO_ICON,

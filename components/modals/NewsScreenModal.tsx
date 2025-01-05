@@ -1,7 +1,7 @@
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { ThemedText } from "../ThemedText";
 
-export function DecksScreenModal() {
+export function NewsScreenModal() {
   const {i18n} = useI18n();
   
   return (

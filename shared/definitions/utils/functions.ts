@@ -193,3 +193,20 @@ export function isCardPromoAndNoBattle(card: Card): boolean {
 export function isCardPromoAndBattle(card: Card): boolean {
   return !isNotBattleCard(card) && card.expansion === CardExpansionENUM.PROMO_A;
 }
+
+export function convertBase64ToJpeg(base64Png: string, quality = 1): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx?.drawImage(img, 0, 0);
+      const jpegBase64 = canvas.toDataURL('image/jpeg', quality);
+      resolve(jpegBase64);
+    };
+    img.onerror = reject;
+    img.src = base64Png;
+  });
+}

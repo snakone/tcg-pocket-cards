@@ -124,7 +124,7 @@ export default function CreateDeckScreen() {
         </View>
         <ThemedView style={[CreateScreenStyles.decksContainer, {height: 575}]}>
           <ThemedView style={{flex: 1}}>
-            <FlatList data={filtered}
+            <FlatList data={filtered.sort((a, b) => a?.id > b?.id ? -1 : 1)}
                       numColumns={1}
                       contentContainerStyle={[{width: '100%', marginTop: 4, paddingBottom: 0}]}
                       renderItem={({item, index}) => renderDeckItem({item, index, onPress: () => openDeck(item)})}

@@ -6,5 +6,5 @@ export { ThemedView } from "@/components/ThemedView";
 export { UserDataModal } from "@/components/modals/UserDataModal";
 export { CreditsModal } from "@/components/modals/CreditsModal";
 export { FavoritesModal } from "@/components/modals/FavoritesModal";
-export { DecksScreenModal } from '@/components/modals/DecksScreenModal';
+export { NewsScreenModal } from '@/components/modals/NewsScreenModal';
 export { ShareScreenModal } from '@/components/modals/ShareScreenModal';

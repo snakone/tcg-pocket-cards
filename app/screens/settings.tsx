@@ -114,12 +114,12 @@ export default function SettingsScreen() {
   return (
     <SharedScreen title={'config'}>
       <ThemedText style={filterStyles.header}>{i18n.t('sound')}</ThemedText>
-      <ThemedView style={styles.container}>
-        <ThemedView style={styles.row}>
+      <ThemedView style={settingsStyles.container}>
+        <ThemedView style={settingsStyles.row}>
           <ThemedText>{i18n.t('music')}</ThemedText>
-          <ThemedView style={styles.rightContainer}>
+          <ThemedView style={settingsStyles.rightContainer}>
             <IconSymbol name={settings?.music ? 'app.dashed' : 'app.badge'} 
-                        style={[styles.icon, {transform: [{scaleX: 1.3}]}]} 
+                        style={[settingsStyles.icon, {transform: [{scaleX: 1.3}]}]} 
                         color={Colors.light.text}>
             </IconSymbol>
             <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
@@ -132,25 +132,25 @@ export default function SettingsScreen() {
         <Slider maximumValue={10} 
                 minimumValue={0} 
                 step={1} 
-                containerStyle={styles.slider}
+                containerStyle={settingsStyles.slider}
                 maximumTrackTintColor={Colors.light.skeleton}
                 minimumTrackTintColor="mediumaquamarine" 
                 animateTransitions={true} 
                 animationType={'timing'}
-                thumbStyle={styles.thumb}
-                trackStyle={styles.track}
+                thumbStyle={settingsStyles.thumb}
+                trackStyle={settingsStyles.track}
                 trackClickable={true}
                 value={settings.music_volume * 10}
                 onSlidingComplete={handleMusicVolumeChange}
                 trackMarks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
                 renderTrackMarkComponent={(index) => <TrackItem index={index}></TrackItem>}/>
       </ThemedView>
-      <ThemedView style={styles.container}>
-        <ThemedView style={styles.row}>
+      <ThemedView style={settingsStyles.container}>
+        <ThemedView style={settingsStyles.row}>
         <ThemedText>{i18n.t('sound_effects')}</ThemedText>
-          <ThemedView style={styles.rightContainer}>
+          <ThemedView style={settingsStyles.rightContainer}>
             <IconSymbol name={settings?.sound ? 'voiceover' : 'video.circle'} 
-                        style={styles.icon} 
+                        style={settingsStyles.icon} 
                         color={Colors.light.text}>
             </IconSymbol>
             <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
@@ -163,13 +163,13 @@ export default function SettingsScreen() {
         <Slider maximumValue={10} 
                 minimumValue={0} 
                 step={1} 
-                containerStyle={styles.slider}
+                containerStyle={settingsStyles.slider}
                 maximumTrackTintColor={Colors.light.skeleton}
                 minimumTrackTintColor="mediumaquamarine" 
                 animateTransitions={true} 
                 animationType={'timing'}
-                thumbStyle={styles.thumb}
-                trackStyle={styles.track}
+                thumbStyle={settingsStyles.thumb}
+                trackStyle={settingsStyles.track}
                 trackClickable={true}
                 value={settings.sound_volume * 10}
                 onSlidingComplete={handleSoundVolumeChange}
@@ -178,8 +178,8 @@ export default function SettingsScreen() {
       </ThemedView>
 
       <ThemedText style={[filterStyles.header, {marginTop: 24}]}>{i18n.t('system')}</ThemedText>
-      <ThemedView style={styles.container}>
-        <ThemedView style={styles.row}>
+      <ThemedView style={settingsStyles.container}>
+        <ThemedView style={settingsStyles.row}>
           <ThemedText>{i18n.t('language')}</ThemedText>
           <ThemedView style={{marginLeft: 'auto'}}>
             <SelectInput options={['es', 'en', 'ja']} 
@@ -195,8 +195,8 @@ export default function SettingsScreen() {
           </ThemedView>
         </ThemedView>
       </ThemedView>
-      <ThemedView style={styles.container}>
-        <ThemedView style={styles.row}>
+      <ThemedView style={settingsStyles.container}>
+        <ThemedView style={settingsStyles.row}>
           <ThemedText>{i18n.t('start_screen')}</ThemedText>
           <ThemedView style={{marginLeft: 'auto'}}>
             <SelectInput options={['show', 'hide']} 
@@ -216,7 +216,7 @@ export default function SettingsScreen() {
   )
 }
 
-const styles = StyleSheet.create({
+export const settingsStyles = StyleSheet.create({
   container: {
     padding: 16,
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
   },
   slider: {
     width: '100%',
-    marginTop: 16,
+    marginTop: 12,
     justifyContent: 'center', 
     marginInline: 'auto',
   },

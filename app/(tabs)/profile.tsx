@@ -118,7 +118,8 @@ export default function ProfileScreen() {
             </Pressable>
           </ThemedView>
           <ThemedView style={[{width: '100%', flex: 1, marginTop: 40, alignItems: 'center'}]}>
-            <ThemedText style={{fontSize: 13}}>{i18n.t('best_card')}</ThemedText>
+            <ThemedText style={{fontSize: 13, height: 17}}>{i18n.t('best_card')}</ThemedText>
+
             <ThemedView style={styles.separator}></ThemedView>
               <ThemedView style={[
                   CardGridStyles.imageContainer, 

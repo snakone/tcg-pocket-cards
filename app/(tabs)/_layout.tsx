@@ -106,7 +106,7 @@ export default function TabLayout() {
 
   const memoizedPickBest = useMemo(() => {
     return <PickBestMenu isVisible={isBestVisible} 
-                         animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
+                         animatedStyle={{}} 
                          onClose={onClose}/>
   }, [isBestVisible]);
 
@@ -232,14 +232,14 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="decks"
+          name="news"
           options={{
             animation: 'shift',
             tabBarItemStyle: {
               display: 'none'
             },
             tabBarButton: () => null,
-            title: i18n.t('decks')
+            title: i18n.t('news')
           }}
         />
         <Tabs.Screen

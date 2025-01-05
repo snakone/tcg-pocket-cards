@@ -92,7 +92,7 @@ export const CardGridStyles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row', 
     alignItems: 'center', 
-    paddingBottom: Platform.OS === 'web' ? 14 : 10, 
+    paddingBottom: 20, 
     justifyContent: 'space-between',
     backgroundColor: '#F2F2F2',
     position: 'relative',
@@ -138,10 +138,7 @@ export const CardGridStyles = StyleSheet.create({
     right: 4,
     height: 20,
     width: 40,
-    left: Platform.OS === 'web' ? -8 : -4,
-    transform: [
-      { scale: Platform.OS === 'web' ? 1 : 1.1 }
-    ]
+    left: Platform.OS === 'web' ? -8 : -3,
   },
   clearInput: {
     position: 'absolute',
@@ -152,11 +149,12 @@ export const CardGridStyles = StyleSheet.create({
     marginLeft: 8,
     fontSize: 13,
     minWidth: 24,
-    left: 1,
+    left: -2,
     position: 'relative',
     top: -1,
     marginRight: Platform.OS === 'web' ? 0 : 4,
-    fontWeight: 600
+    fontWeight: 600,
+    textAlign: 'right'
   },
   triangle: {
     width: 0,
@@ -928,8 +926,7 @@ export const CreateScreenStyles = StyleSheet.create({
     minWidth: 114, 
     position: 'relative'
   },
-  deckName: {
-    flex: 1, 
+  deckName: { 
     alignItems: 'center', 
     justifyContent: 'flex-start', 
     flexDirection: 'row',

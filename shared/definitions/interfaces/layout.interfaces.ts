@@ -14,7 +14,7 @@ export interface HeaderWithCustomModalProps {
 
 export interface TabMenu {
   isVisible: boolean;
-  onClose: () => void;
+  onClose: (value?: any) => void;
   animatedStyle: any;
 }
 
