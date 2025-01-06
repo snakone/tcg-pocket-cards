@@ -26,7 +26,7 @@ export default function FavoritesScreen() {
       .getCards()
       .subscribe({
         next: (res) => {
-          dispatch({ type: 'SET_CARDS', cards: res });
+          dispatch({ type: 'SET_CARDS', value: res });
           Storage.set('cards', res);
           setLoading(false);
         },
@@ -45,7 +45,7 @@ export default function FavoritesScreen() {
     const cards: Card[] = state.settingsState.cards;
 
     if (cards && cards.length !== 0 && !state.cardState.loaded) {
-      dispatch({ type: 'SET_CARDS', cards });
+      dispatch({ type: 'SET_CARDS', value: cards });
       setLoading(false);
       return;
     }

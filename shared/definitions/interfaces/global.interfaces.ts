@@ -13,6 +13,10 @@ export interface CardsResponse extends ServerResponse {
   cards: Card[];
 }
 
+export interface PocketNewsResponse extends ServerResponse {
+  news: PocketNews[];
+}
+
 export interface StorageDeck {
   id: number;
   name: string;
@@ -48,5 +52,4 @@ export interface PocketNews {
 export type NewsContent =
   | { type: 'title'; value: string; style?: StyleProp<TextStyle> }
   | { type: 'text'; value: string; style?: StyleProp<TextStyle> }
-  | { type: 'image'; value: string; style?: StyleProp<ImageStyle> }
-  | { type: 'list'; value: string[]; style?: StyleProp<TextStyle> };
+  | { type: 'image'; value: string; style?: StyleProp<ImageStyle> };

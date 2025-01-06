@@ -372,8 +372,6 @@ export function getDaysRemaining(): { progress: number; remainingText: string } 
   return { progress, remainingText };
 }
 
-
-
 export const MOCK_NEWS: PocketNews[] = [
   {
     _id: '1',
@@ -412,7 +410,7 @@ export const MOCK_NEWS: PocketNews[] = [
   {
     _id: '2',
     title: {
-      es: 'Inauguración de TCG Pocket Cards',
+      es: 'Nueva actualización: Fuerzas renovadas ya disponible!',
       en: 'Inauguration of TCG Pocket Cards',
       ja: 'TCGポケットカード発足',
     },

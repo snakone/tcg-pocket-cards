@@ -248,11 +248,12 @@ export const getDynamicheight = (length: number): number => {
 };
 
 export const formatDate = (date: Date, language: LanguageType) => {
-  const day = new Intl.DateTimeFormat(language, { day: '2-digit' }).format(date);
-  const month = new Intl.DateTimeFormat(language, { month: '2-digit' }).format(date);
-  const year = new Intl.DateTimeFormat(language, { year: 'numeric' }).format(date);
-  const hours = new Intl.DateTimeFormat(language, { hour: '2-digit', hour12: false }).format(date);
-  const minutes = new Intl.DateTimeFormat(language, { minute: '2-digit' }).format(date);
+  const newDate = new Date(date);
+  const day = new Intl.DateTimeFormat(language, { day: '2-digit' }).format(newDate);
+  const month = new Intl.DateTimeFormat(language, { month: '2-digit' }).format(newDate);
+  const year = new Intl.DateTimeFormat(language, { year: 'numeric' }).format(newDate);
+  const hours = new Intl.DateTimeFormat(language, { hour: '2-digit', hour12: false }).format(newDate);
+  const minutes = new Intl.DateTimeFormat(language, { minute: '2-digit' }).format(newDate);
 
   const languageSwitch = {
     es: `${day}/${month}/${year} a las ${hours}:${minutes}`,

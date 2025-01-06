@@ -73,7 +73,7 @@ export default function ShareDeckScreen() {
     const cards: Card[] = state.settingsState.cards;
 
     if (cards && cards.length !== 0 && !state.cardState.loaded) {
-      dispatch({ type: 'SET_CARDS', cards });
+      dispatch({ type: 'SET_CARDS', value: cards });
       setLoading(false);
       return;
     }
@@ -93,7 +93,7 @@ export default function ShareDeckScreen() {
       .getCards()
       .subscribe({
         next: (res) => {
-          dispatch({ type: 'SET_CARDS', cards: res });
+          dispatch({ type: 'SET_CARDS', value: res });
           Storage.set('cards', res);
           setLoading(false);
         },

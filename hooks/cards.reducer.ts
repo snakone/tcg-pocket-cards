@@ -9,7 +9,7 @@ export const cardsInitialState: CardsState = {
 export const cardsReducer = (state: CardsState, action: CardAction): CardsState => {
   switch (action.type) {
     case 'SET_CARDS':
-      return { ...state, cards: [...action.cards], loaded: true };
+      return { ...state, cards: [...action.value], loaded: true };
     case 'SET_NAVIGATING':
         return { ...state, navigating: action.value };
     case 'SET_LOADED':
@@ -26,6 +26,6 @@ export interface CardsState {
 }
 
 export type CardAction =
-  | { type: 'SET_CARDS', cards: Card[] }
+  | { type: 'SET_CARDS', value: Card[] }
   | { type: 'SET_NAVIGATING', value: boolean }
   | { type: 'SET_LOADED', value: boolean }

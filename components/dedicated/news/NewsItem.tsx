@@ -1,6 +1,6 @@
 import { PocketNews } from '@/shared/definitions/interfaces/global.interfaces';
 import React from 'react';
-import { StyleSheet, } from 'react-native';
+import { StyleSheet, TouchableOpacity, } from 'react-native';
 import { Image } from 'expo-image';
 import { I18n } from 'i18n-js';
 
@@ -37,16 +37,18 @@ export default function NewsItem(
   }
 
   return (
-    <ThemedView style={styles.item}>
-      <Image source={pocketNew.image} style={styles.image} />
-      <ThemedView style={styles.info}>
-        <ThemedView style={styles.date}>
-          {typeElement(pocketNew.type)}
-          <ThemedText style={{fontSize: 13, top: 1}}>{formatDate(pocketNew.date, language)}</ThemedText>
+    <TouchableOpacity>
+      <ThemedView style={styles.item}>
+        <Image source={pocketNew.image} style={styles.image} />
+        <ThemedView style={styles.info}>
+          <ThemedView style={styles.date}>
+            {typeElement(pocketNew.type)}
+            <ThemedText style={{fontSize: 13, top: 1}}>{formatDate(pocketNew.date, language)}</ThemedText>
+          </ThemedView>
+          <ThemedText style={styles.title}>{pocketNew.title[language]}</ThemedText>
         </ThemedView>
-        <ThemedText style={styles.title}>{pocketNew.title[language]}</ThemedText>
       </ThemedView>
-    </ThemedView>
+    </TouchableOpacity>
   );
 };
 
@@ -60,7 +62,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 600,
     marginTop: 10,
-    marginBottom: 6
+    marginBottom: 6,
+    lineHeight: 22
   },
   image: { 
     width: '100%', 
@@ -75,7 +78,7 @@ const styles = StyleSheet.create({
   },
   info: {
     paddingVertical: 12,
-    paddingHorizontal: 14
+    paddingHorizontal: 16
   },
   type: {
     paddingVertical: 2, 
