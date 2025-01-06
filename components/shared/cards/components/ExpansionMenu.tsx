@@ -7,9 +7,15 @@ import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import StateButton from "@/components/ui/StateButton";
 import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
-import { GENETIC_APEX, GENETIC_APEX_PACKS, MEW_ICON, MYTHICAL_ISLAND_MEW_ICON, MYTHICAL_ISLAND_PACKS } from "@/shared/definitions/sentences/path.sentences";
 import { MenuStyles, filterStyles, TabsMenuStyles, ModalStyles, ButtonStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+
+import { 
+  GENETIC_APEX,
+  GENETIC_APEX_PACKS,
+  MYTHICAL_ISLAND_MEW_ICON,
+  MYTHICAL_ISLAND_PACKS 
+} from "@/shared/definitions/sentences/path.sentences";
 
 interface ExpansionMenuProps {
   filterObj: MutableRefObject<FilterSearch>,

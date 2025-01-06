@@ -7,6 +7,7 @@ import { SortItem } from "../interfaces/layout.interfaces";
 import { CardExpansionENUM } from "../enums/card.enums";
 import { GENETIC_APEX, MEW_ICON, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON } from "../sentences/path.sentences";
 import { PACK_MAP } from "./contants";
+import { LanguageType } from "../types/global.types";
 
 export function sortCards(field: keyof Card, data: Card[], sort: SortItem): Card[] {
   return [...data].sort((a, b) => {
@@ -166,7 +167,7 @@ export function isRouteComingFromSettings(
 
 export function getCardPackFrom(card: Card): {image: any, width: number, height: number} | undefined {
   if (card.expansion === CardExpansionENUM.GENETIC_APEX) {
-    if (card.found?.length === 3 || card.name === 'Mew') {
+    if (card.found?.length === 3 || (card.name === 'Mew' && card.id === 283)) {
       return {image: GENETIC_APEX, width: 68, height: 30};
     } else if (card.found !== undefined) {
       return {image: PACK_MAP[card.found[0]], width: 60, height: 45};
@@ -210,3 +211,54 @@ export function convertBase64ToJpeg(base64Png: string, quality = 1): Promise<str
     img.src = base64Png;
   });
 }
+
+export const filterUniqueItems = (array: Card[]): { items: Card[]; ids: number[] } => {
+  const uniqueMap = new Map<string, Card>();
+  const filteredIdsSet = new Set<number>();
+
+  array.forEach((item) => {
+    const uniqueKey = `${item.id}-${item.name}`;
+    if (!uniqueMap.has(uniqueKey)) {
+      uniqueMap.set(uniqueKey, item);
+    } else {
+      filteredIdsSet.add(item.id);
+    }
+  });
+
+  return {
+    items: Array.from(uniqueMap.values()),
+    ids: Array.from(filteredIdsSet),
+  };
+};
+
+export const getDynamicheight = (length: number): number => {
+  const maxHeight = 2229;
+  const minHeight = 1225;
+  const midHeight = 1633;
+
+  if (length <= 10) {
+    return minHeight;
+  } else if (length <= 15) {
+    return midHeight;
+  } else if (length <= 20) {
+    return maxHeight;
+  } else {
+    throw new Error("El totalLength debe estar entre 1 y 20.");
+  }
+};
+
+export const formatDate = (date: Date, language: LanguageType) => {
+  const day = new Intl.DateTimeFormat(language, { day: '2-digit' }).format(date);
+  const month = new Intl.DateTimeFormat(language, { month: '2-digit' }).format(date);
+  const year = new Intl.DateTimeFormat(language, { year: 'numeric' }).format(date);
+  const hours = new Intl.DateTimeFormat(language, { hour: '2-digit', hour12: false }).format(date);
+  const minutes = new Intl.DateTimeFormat(language, { minute: '2-digit' }).format(date);
+
+  const languageSwitch = {
+    es: `${day}/${month}/${year} a las ${hours}:${minutes}`,
+    en: `${month}/${day}/${year} at ${hours}:${minutes}`,
+    ja: `${year}${month}${day}${hours}:${minutes}`,
+  }
+
+  return languageSwitch[language];
+};

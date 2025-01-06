@@ -1,19 +1,25 @@
 import * as MediaLibrary from 'expo-media-library';
 import { Platform } from 'react-native';
 import { captureRef } from 'react-native-view-shot';
-import { convertBase64ToJpeg } from '@/shared/definitions/utils/functions';
+import { convertBase64ToJpeg, getDynamicheight } from '@/shared/definitions/utils/functions';
 
 export default class ShareService {
   constructor() {}
 
-  public async makeScreenShot(ref: any, name: string, quality: number = 1): Promise<void> {
+  public async makeScreenShot(
+    ref: React.MutableRefObject<any>, 
+    name: string, 
+    quality: number = 1,
+    length: number
+  ): Promise<void> {
     try {
+      const height = getDynamicheight(length);
       const localUri = await captureRef(ref, {
         quality,
         format: 'jpg',
         fileName: name || 'deck-tcg-pocket-cards',
         width: 1920,
-        height: 2420,
+        height,
       });
 
       if (Platform.OS === 'web') {

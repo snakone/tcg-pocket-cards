@@ -452,7 +452,7 @@ export default function DetailScreen() {
           Platform.OS === 'web' ? (
             <Animated.View style={[opacityStyle, cardAnimatedStyle]}>
               <Image style={[styles.image, cardDetailStyles.card]}
-                    source={CARD_IMAGE_MAP[id]}
+                     source={CARD_IMAGE_MAP[id]}
                       />
             </Animated.View>
           ) : (<>

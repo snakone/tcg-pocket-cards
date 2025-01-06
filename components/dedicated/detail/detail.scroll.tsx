@@ -93,7 +93,7 @@ export default function DetailCardScroll({card, state, scrollService}: {card: Ca
           </ThemedView>
         }
         {
-          (Boolean(card.extra) || card.name === 'Mew') &&
+          (Boolean(card.extra) || (card.name === 'Mew' && card.id === 283)) &&
           <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info]}>
             <ThemedView style={detailScrollStyles.infoTitle}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t('how_to_obtain')}</ThemedText>

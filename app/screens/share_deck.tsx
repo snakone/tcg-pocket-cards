@@ -32,6 +32,7 @@ import { IconSymbol } from "@/components/ui/IconSymbol";
 import SoundService from "@/core/services/sounds.service";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import PickBackgroundMenu from "@/components/dedicated/share/PickCBackgroundMenu";
+import { filterUniqueItems } from "@/shared/definitions/utils/functions";
 
 export default function ShareDeckScreen() {
   const {i18n} = useI18n();
@@ -49,6 +50,7 @@ export default function ShareDeckScreen() {
   const [isBackgroundVisible, setIsBackgroundVisible] = useState(false);
   const [background, setBackground] = useState<AvatarIcon>();
   const [quality, setQuality] = useState<number>(0.8);
+  const [duplicated, setDuplicated] = useState<boolean>(true);
 
   const [profile, setProfile] = useState<UserProfile>(
     {name: '', avatar: 'eevee', coin: 'eevee', best: null}
@@ -138,13 +140,17 @@ export default function ShareDeckScreen() {
   const handleShare = () => {
     SoundService.play('POP_PICK');
     setLoading(true);
-    shareService.makeScreenShot(ref, deckName, quality).then(_ => setLoading(false));
+    const length = getFilteredLength();
+    shareService.makeScreenShot(ref, deckName, quality, length).then(_ => setLoading(false));
+  }
+
+  function getFilteredLength(): number {
+    const {items} = filterUniqueItems(deck);
+    return duplicated ? deck.length : items.length;
   }
 
   function onClose(value: AvatarIcon): void {
-    if (value) {
-      setBackground(value);
-    }
+    setBackground(value);
     setIsBackgroundVisible(false);
   }
 
@@ -205,26 +211,35 @@ export default function ShareDeckScreen() {
     setQuality(value);
   }
 
+  function handleDuplicatedChange(value: boolean): void {
+    SoundService.play('CHANGE_VIEW');
+    setDuplicated(value);
+  }
+
+  //  style={{position: 'absolute', left: -9999}}
+
   return (
     <Provider>
       { loading && <LoadingOverlay/> }
       <SharedScreen title={'share_deck'} styles={{marginTop: 0}}>
-        <ThemedView style={{position: 'absolute', left: -9999}}>
+        <ThemedView style={{position: 'absolute', left: -9999}}  >
           {
             Platform.OS === 'web' ?
             <View ref={ref} style={{width: 'auto'}}>
               <DeckCollage deck={deck} 
-                          element={element} 
-                          name={deckName}
-                          profile={profile}
-                          background={background}/>
+                           element={element} 
+                           name={deckName}
+                           profile={profile}
+                           background={background}
+                           duplicated={duplicated}/>
             </View> :
             <ViewShot ref={ref} style={{width: 'auto'}}>
               <DeckCollage deck={deck} 
-                          element={element} 
-                          name={deckName}
-                          profile={profile}
-                          background={background}/>
+                           element={element} 
+                           name={deckName}
+                           profile={profile}
+                           background={background}
+                           duplicated={duplicated}/>
             </ViewShot>
           }
         </ThemedView>
@@ -272,9 +287,9 @@ export default function ShareDeckScreen() {
               <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
                 <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
                                     color={'white'}
-                                    onValueChange={() => undefined}
+                                    onValueChange={handleDuplicatedChange}
                                     style={CardGridStyles.switch}
-                                    value={true}/>
+                                    value={duplicated}/>
               </ThemedView>
             </ThemedView>
           </ThemedView>

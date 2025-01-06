@@ -279,7 +279,7 @@ export default function CreateDeckScreen() {
   }
 
   async function convertDeckToStorage(): Promise<StorageDeck> {
-    const popular = (deck as Card[]).filter(card => Boolean(card))
+    const popular = (deck as Card[]).filter(card => Boolean(card) && card.health > 0)
                                     .sort((a, b) => b.rarity > a.rarity ? 1 : -1)
                                     .map(card => card.id);
 
@@ -297,7 +297,8 @@ export default function CreateDeckScreen() {
       cards: deck.map(card => card?.id || null),
       energies,
       popular,
-      valid: isDeckValid(deck, energies)
+      valid: isDeckValid(deck, energies),
+      created: new Date().getTime()
     };
 
     return data;
@@ -686,7 +687,7 @@ export default function CreateDeckScreen() {
         }
 
         <FlatList ListHeaderComponent={Platform.OS === 'web' ? renderHeader : null} 
-                  data={Platform.OS === 'web' ? deck.sort((a, b) => b?.id > a?.id ? -1 : 1) : deck}
+                  data={deck}
                   renderItem={renderItem}
                   numColumns={3}
                   contentContainerStyle={{width: '100%', marginBottom: 65}}

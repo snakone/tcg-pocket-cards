@@ -1379,7 +1379,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 1,
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
-    weak: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
     found: [
       EXPANSION.CHARIZARD
@@ -1413,7 +1413,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 2,
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
-    weak: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
     found: [
       EXPANSION.CHARIZARD
@@ -7385,7 +7385,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 2,
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
-    weak: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
     found: [
       EXPANSION.CHARIZARD
@@ -7890,7 +7890,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 2,
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
-    weak: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
     found: [
       EXPANSION.CHARIZARD
@@ -11432,7 +11432,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 2,
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
-    weak: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
     found: [
       EXPANSION.PREMIUM

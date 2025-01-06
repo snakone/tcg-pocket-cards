@@ -22,9 +22,9 @@ export default function ParallaxScrollView({
         { showHeader && 
           <View style={ParallaxStyles.header}>
             <HeaderWithCustomModal title={title} 
-                                  modalContent={modalContent} 
-                                  modalTitle={modalTitle}
-                                  modalHeight={modalHeight}/>
+                                   modalContent={modalContent} 
+                                   modalTitle={modalTitle}
+                                   modalHeight={modalHeight}/>
           </View>
         }
         <ThemedView style={[ParallaxStyles.content, styles]}>{children}</ThemedView>

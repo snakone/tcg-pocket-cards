@@ -1,3 +1,7 @@
+import { router } from 'expo-router';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+import Animated from 'react-native-reanimated';
+
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
@@ -6,15 +10,12 @@ import { ShareScreenModal } from '@/components/modals';
 import { FlatList, KeyboardAvoidingView, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
 import { NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
 import { CardGridStyles, CreateScreenStyles } from '@/shared/styles/component.styles';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
-import Animated from 'react-native-reanimated';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { Colors } from '@/shared/definitions/utils/colors';
 import { AppContext } from '../_layout';
 import { renderDeckItem } from '@/components/dedicated/cards/DeckItem';
 import SoundService from '@/core/services/sounds.service';
 import { StorageDeck } from '@/shared/definitions/interfaces/global.interfaces';
-import { router } from 'expo-router';
 
 export default function ShareScreen() {
   const {i18n} = useI18n();

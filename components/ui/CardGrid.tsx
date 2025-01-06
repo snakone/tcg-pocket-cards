@@ -88,7 +88,6 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
     !isGrid5 ? setNumColumns(5) : setNumColumns(3);
     setIsGrid5(previousState => !previousState);
     playSound(true);
-    setTimeout(() => scrollY.value = 0, 150);
   };
 
   useEffect(() => {
