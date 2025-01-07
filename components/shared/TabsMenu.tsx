@@ -113,7 +113,7 @@ export default function TabsMenu({
                   style={TabsMenuStyles.avatar}>
             </Image>
             <View style={{paddingInline: 18}}>
-              <ThemedText type='defaultSemiBold' style={{zIndex: 4, textAlign: 'center', fontSize: 16}}>
+              <ThemedText type='defaultSemiBold' style={{zIndex: 4, textAlign: 'center', fontSize: 14}}>
                 {profile.name || i18n.t('press_here')}
               </ThemedText>
             </View>

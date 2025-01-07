@@ -1,10 +1,10 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { FlatList, RefreshControl } from 'react-native';
+import { FlatList, RefreshControl, TouchableOpacity } from 'react-native';
 import React from 'react';
+import { Subscription } from 'rxjs';
+import { useRouter } from 'expo-router';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedView } from '@/components/ThemedView';
-import { ThemedText } from '@/components/ThemedText';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { NewsScreenModal } from '@/components/modals';
 import NewsItem from '@/components/dedicated/news/NewsItem';
@@ -16,7 +16,7 @@ import PocketNewsService from '@/core/services/news.service';
 import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
 import { AppContext } from '../_layout';
 import { useError } from '@/core/providers/ErrorProvider';
-import { Subscription } from 'rxjs';
+import SoundService from '@/core/services/sounds.service';
 
 export default function NewsScreen() {
   const {i18n} = useI18n();
@@ -28,6 +28,7 @@ export default function NewsScreen() {
   const newsService = useMemo(() => new PocketNewsService(), []);
   const { show: showError } = useError();
   const [refreshing, setRefreshing] = React.useState(false);
+  const router = useRouter();
 
   const loadPocketNews = useCallback(() => {
     const sub = newsService
@@ -61,11 +62,18 @@ export default function NewsScreen() {
     };
   }, []);
 
+  function handleClick(id: string): void {
+    SoundService.play('CHANGE_VIEW');
+    router.push(`/screens/news_detail?id=${encodeURIComponent(id)}`);
+  }
+
   const renderItem = useCallback(({item}: {item: PocketNews}) => {
     return (
-      <NewsItem pocketNew={item} 
-                language={i18n.locale as LanguageType} 
-                i18n={i18n}/>
+      <TouchableOpacity onPress={() => handleClick(item._id)}>
+        <NewsItem pocketNew={item} 
+                  language={i18n.locale as LanguageType} 
+                  i18n={i18n}/>
+      </TouchableOpacity>
     )
   }, []);
 

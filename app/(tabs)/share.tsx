@@ -110,15 +110,3 @@ export default function ShareScreen() {
     </ParallaxScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  footer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0, 
-    width: '100%', 
-    backgroundColor: 'white',
-    paddingVertical: 10,
-    paddingHorizontal: 20
-  },
-});

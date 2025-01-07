@@ -5,7 +5,7 @@ import { FilterSearch } from "../classes/filter.class";
 import { Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
 import { CardExpansionENUM } from "../enums/card.enums";
-import { GENETIC_APEX, MEW_ICON, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON } from "../sentences/path.sentences";
+import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON } from "../sentences/path.sentences";
 import { PACK_MAP } from "./contants";
 import { LanguageType } from "../types/global.types";
 

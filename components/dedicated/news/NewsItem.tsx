@@ -26,7 +26,7 @@ export default function NewsItem(
   const typeElement = (type: 'pocket' | 'game') => {
     return (
       <ThemedView style={[
-        styles.type,
+        pocketNewsStyles.type,
         {backgroundColor: type === 'pocket' ? 'rgb(226, 22, 192)' : 'mediumaquamarine'}
         ]}>
         <ThemedText style={{color: 'white', fontSize: 12, fontWeight: 'bold'}}>
@@ -37,22 +37,20 @@ export default function NewsItem(
   }
 
   return (
-    <TouchableOpacity>
-      <ThemedView style={styles.item}>
-        <Image source={pocketNew.image} style={styles.image} />
-        <ThemedView style={styles.info}>
-          <ThemedView style={styles.date}>
-            {typeElement(pocketNew.type)}
-            <ThemedText style={{fontSize: 13, top: 1}}>{formatDate(pocketNew.date, language)}</ThemedText>
-          </ThemedView>
-          <ThemedText style={styles.title}>{pocketNew.title[language]}</ThemedText>
+    <ThemedView style={pocketNewsStyles.item}>
+      <Image source={pocketNew.image} style={pocketNewsStyles.image} />
+      <ThemedView style={pocketNewsStyles.info}>
+        <ThemedView style={pocketNewsStyles.date}>
+          {typeElement(pocketNew.type)}
+          <ThemedText style={{fontSize: 13, top: 1}}>{formatDate(pocketNew.date, language)}</ThemedText>
         </ThemedView>
+        <ThemedText style={pocketNewsStyles.title}>{pocketNew.title[language]}</ThemedText>
       </ThemedView>
-    </TouchableOpacity>
+    </ThemedView>
   );
 };
 
-const styles = StyleSheet.create({
+export const pocketNewsStyles = StyleSheet.create({
   item: {
     borderRadius: 20,
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)',
