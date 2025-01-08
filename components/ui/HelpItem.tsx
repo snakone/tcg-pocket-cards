@@ -7,7 +7,7 @@ import { ThemedView } from "../ThemedView";
 import { IconSymbol } from './IconSymbol';
 import SoundService from '@/core/services/sounds.service';
 
-export default function HelpItem({ onClick, children }: RouteItem) {
+export default function HelpItem({ onClick, children, item }: RouteItem) {
   const handleClick = async () => {
     await SoundService.play('AUDIO_MENU_OPEN');
     onClick();
@@ -15,10 +15,12 @@ export default function HelpItem({ onClick, children }: RouteItem) {
 
   return (
     <TouchableOpacity onPress={handleClick}>
-      <ThemedView style={HelpItemStyles.item}>
+      <ThemedView style={[
+          HelpItemStyles.item, 
+          item.modal === 'make_backup' && {borderWidth: 1, borderColor: 'mediumaquamarine'}]}>
         {children}
         <ThemedView style={{ marginLeft: 'auto' }}>
-          <IconSymbol name="chevron.right.circle" color={Colors.light.text} />
+          <IconSymbol name="chevron.right.circle" color={item.modal === 'make_backup' ? 'mediumaquamarine' : Colors.light.text} />
         </ThemedView>
       </ThemedView>
     </TouchableOpacity>

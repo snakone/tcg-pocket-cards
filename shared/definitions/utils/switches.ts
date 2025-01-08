@@ -31,7 +31,8 @@ export const ICONS_MAPPING = {
   'creditcard': 'list-alt',
   'newspaper': 'newspaper',
   'cabinet': 'dynamic-feed',
-  'q.circle': 'image-aspect-ratio'
+  'q.circle': 'image-aspect-ratio',
+  'u.square': 'verified-user'
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

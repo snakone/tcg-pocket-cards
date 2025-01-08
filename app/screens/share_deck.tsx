@@ -216,8 +216,6 @@ export default function ShareDeckScreen() {
     setDuplicated(value);
   }
 
-  //  style={{position: 'absolute', left: -9999}}
-
   return (
     <Provider>
       { loading && <LoadingOverlay/> }

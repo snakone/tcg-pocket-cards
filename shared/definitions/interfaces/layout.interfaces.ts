@@ -21,6 +21,7 @@ export interface TabMenu {
 export interface RouteItem {
   onClick: () => void;
   children: React.ReactNode;
+  item: IconItemWithModal;
 }
 
 export interface IconItemWithModal {

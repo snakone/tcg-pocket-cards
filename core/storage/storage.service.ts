@@ -52,7 +52,7 @@ export default class Storage {
   public static async loadSettings(): Promise<SettingsState> {
     let settings: {[key: string]: any} = {}
 
-    for (const key of this.keys) {
+    for (const key of [...this.keys, ...this.profileKeys]) {
       settings[key] = await this.get(key);
     }
 
@@ -70,7 +70,6 @@ export default class Storage {
       console.log(e);
     }
   }
-
   
   public static async removeFavorite(id: number): Promise<any | null> {
     try {

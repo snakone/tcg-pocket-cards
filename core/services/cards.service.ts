@@ -5,7 +5,7 @@ import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { CardsResponse } from "@/shared/definitions/interfaces/global.interfaces";
 
 export default class CardsService extends HttpService {
-  private readonly uri = LOCAL_HOST + '/';
+  private readonly uri = SERVER_URL + '/';
 
   public getCards(): Observable<Card[]> {
     return this.get<CardsResponse>(this.uri + 'get-cards')

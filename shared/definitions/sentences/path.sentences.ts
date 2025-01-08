@@ -48,6 +48,10 @@ export const CREATE_DECK_READY = require('@/assets/images/creation/deck_ready.pn
 export const CREATE_DECK_LIST = require('@/assets/images/creation/deck_list.png');
 export const CREATE_DELETE = require('@/assets/images/creation/delete.png');
 
+export const SHARE_LIST = require('@/assets/images/share/deck_list.png');
+export const SHARE_OPTIONS = require('@/assets/images/share/export.png');
+export const SHARE_IMAGE = require('@/assets/images/share/Charizard.jpeg');
+
 // SPLASH
 export const WINTER_SPLASH = require('@/assets/images/splash/winter.webp');
 export const SPRING_SPLASH = require('@/assets/images/splash/spring.webp');

@@ -1,5 +1,9 @@
 import { Platform } from "react-native";
 import { NavigationProp } from "@react-navigation/native";
+import CryptoJS from "crypto-js";
+import CryptoES from 'crypto-es';
+import * as FileSystem from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
 
 import { FilterSearch } from "../classes/filter.class";
 import { Card } from "../interfaces/card.interfaces";
@@ -263,3 +267,97 @@ export const formatDate = (date: Date, language: LanguageType) => {
 
   return languageSwitch[language];
 };
+
+export function encryptDataWeb(data: any): string {
+  const jsonString = JSON.stringify(data);
+  return CryptoJS.AES.encrypt(jsonString, String(process.env.EXPO_PUBLIC_CRYPTO_KEY)).toString();
+};
+
+export function encryptDataAndroid(data: any): string {
+  const jsonString = JSON.stringify(data);
+  return CryptoES.AES.encrypt(jsonString, String(process.env.EXPO_PUBLIC_CRYPTO_KEY)).toString();
+}
+
+export function decryptDataWeb(data: any): any {
+  const key = String(process.env.EXPO_PUBLIC_CRYPTO_KEY);
+  const decrypted = CryptoJS.AES.decrypt(data, key).toString(CryptoJS.enc.Utf8);
+  return JSON.parse(decrypted);
+};
+
+export function decryptDataAndroid(data: any): string {
+  const key = String(process.env.EXPO_PUBLIC_CRYPTO_KEY);
+  const decrypted = CryptoES.AES.decrypt(data, key).toString();
+  return JSON.parse(decrypted);
+}
+
+export function saveEncryptedFileWeb(
+  data: any, 
+  filename = "pocket-cards-backup.tcg"
+): Promise<void> {
+  return new Promise((res) => {
+    if (Platform.OS !== 'web') { return ; }
+    const encryptedData = encryptDataWeb(data);
+    const blob = new Blob([encryptedData], { type: "text/plain" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    return res;
+  });
+};
+
+export async function saveEncryptedFileAndroid(
+  data: any,
+  filename = "pocket-cards-backup.tcg"
+) {
+  if(Platform.OS === 'android') {
+    const encrypt = encryptDataAndroid(data);
+    const fileUri = `${FileSystem.documentDirectory}${filename}`;
+    await FileSystem.writeAsStringAsync(fileUri, encrypt);
+    await Sharing.shareAsync(fileUri);
+  }
+}
+
+export function importEncryptedFileWeb(): Promise<string> {
+  return new Promise((res, rej) => {
+    if (Platform.OS !== 'web') { return ; }
+    
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.tcg';
+
+    input.onchange = async (event: any) => {
+      const file = event?.target?.files[0];
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = () => {
+          if(reader.result) {
+            res((reader.result as string))
+          }
+        };
+
+        reader.onerror = (err) => {
+          console.log(err);
+          rej(err);
+        };
+
+        reader.readAsText(file);
+      }
+    };
+
+    input.click();
+    return res;
+  });
+};
+
+export function isObjectSettings(obj: any): boolean {
+  if (typeof obj !== 'object') { return false; }
+  if (Object.keys(obj).length === 0) { return false; }
+  if (!(obj as Object).hasOwnProperty('version')) { return false; }
+  if (!(obj as Object).hasOwnProperty('language')) { return false; }
+
+  return true;
+}

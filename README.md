@@ -49,13 +49,70 @@ Además puedes **descargar tus mazos en formato imagen**. Previsualización:
 * Web: [TCG Pocket Cards Página Oficial](https://tcg-pocket-cards.netlify.app/)
 * APK: [Android Signed APK Bundle](https://tcg-pocket-cards.netlify.app/)
 
-[Insert Antivirus Pictures here]
+### Análisis Web
+
+![alt text](https://i.ibb.co/tzhjZFn/web-check.png "Web Check")
+
+Más información: [Análisis Web](https://www.virustotal.com/gui/url/7dbec75ed10d580e843567a8072592281a032205d731654e04f38d0c4b7e196d/detection)
+
+### Análisis APK
+
+![alt text](https://i.ibb.co/dDzDHQ2/apk-check.png "APK Check")
+
+Más información: [Análisis APK](https://www.virustotal.com/gui/file/2d161d586c52b8768a88e15271b9b7f2640b079b67f47b3596054137331526f1/details)
 
 ## Instalación
 
-En construcción...
+Para instalar la aplicación en local sigue los siguientes pasos:
 
-<br><br>
+Descargar el software necesario...
+
+* [Nodejs](https://nodejs.org/)
+* [Android Studio](https://developer.android.com/)
+* [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) (Opcional)
+
+Clona o descarga el repositorio desde la rama **master** a una carpeta en tu ordenador con un *path* corto, dentro de C:/ sería lo ideal, ya que para hacer la build de Android, ciertos plugins dan error si el *path* al archivo es demasiado largo. (250 carácteres máximo)
+
+En la raíz del proyecto ejecuta:
+
+```bash
+npm install
+npm start
+```
+
+Si quieres revisar la versión web, visita: [Localhost](http://localhost:8081)
+
+Para ver una versión "light" de la aplicación en un dispositivo móvil, descarga Expo GO y sigue sus instrucciones.
+
+### Generar APK
+
+En la raíz del proyecto ejecuta:
+
+```bash
+npm run pre
+```
+
+Esto creará una carpeta llamada **"android"** en la misma raíz. Abrimos esta carpeta con Android Studio. 
+
+Si tienes problemas con Android Studio, visita su página oficial para saber como configurarlo correctamente [Configurar Android Studio](https://developer.android.com/studio/intro/studio-config).
+
+Antes de nada, asegúrate de tener las versiones correspondientes de las dependencias de Android Studio. Nosotros utilizamos:
+
+* Android gradle plugin: 8.6.0
+* Gradle: 8.10.2
+* Java SDK 20
+* Compile SDK 35
+* Target SDK 34
+
+Una vez cargado el proyecto, abre el menú de **Build variants** y selecciona la opción **release** como se ve en la imagen:
+
+![alt text](https://i.ibb.co/WnnhGyX/android-build.png "Build variants")
+
+Una vez con todo configurado ya se puede generar el archivo APK de la manera que prefieras.
+
+![alt text](https://i.ibb.co/zJKcNYJ/android-apk.png "Build APK")
+
+<br>
 
 # English
 
@@ -108,13 +165,70 @@ You can also **download your decks in image format**. Preview:
 * Web: [TCG Pocket Cards Official Page](https://tcg-pocket-cards.netlify.app/)
 * APK: [Android Signed APK Bundle](https://tcg-pocket-cards.netlify.app/)
 
-[Insert Antivirus Pictures here]
+### Web Analysis
+
+![alt text](https://i.ibb.co/tzhjZFn/web-check.png "Web Check")
+
+More info: [Web Analysis](https://www.virustotal.com/gui/url/7dbec75ed10d580e843567a8072592281a032205d731654e04f38d0c4b7e196d/detection)
+
+### APK Analysis
+
+![alt text](https://i.ibb.co/dDzDHQ2/apk-check.png "APK Check")
+
+More info: [APK Analysis](https://www.virustotal.com/gui/file/2d161d586c52b8768a88e15271b9b7f2640b079b67f47b3596054137331526f1/details)
 
 ## Installation
 
-Under construction...
+To install the app locally, follow these steps:
 
-<br><br>
+Download the necessary software...
+
+* [Nodejs](https://nodejs.org/)
+* [Android Studio](https://developer.android.com/)
+* [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) (Optional)
+
+Clone or download the repository from the **master** branch to a folder on your computer with a short *path*, within C:/ would be ideal, since to do the Android build, certain plugins give an error if the *path* to the file is too long. (250 characters maximum)
+
+At the root of the project execute:
+
+```bash
+npm install
+npm start
+```
+
+If you want to review the web version, visit: [Localhost](http://localhost:8081)
+
+To view a "light" version of the app on a mobile device, download Expo GO and follow its instructions.
+
+### Generate APK
+
+At the root of the project execute:
+
+```bash
+npm run pre
+```
+
+This will create a folder called "android" in the same root. We open this folder with Android Studio.
+
+If you are having problems with Android Studio, visit its official website to find out how to set it up correctly [Configure Android Studio](https://developer.android.com/studio/intro/studio-config).
+
+First of all, make sure you have the corresponding versions of Android Studio dependencies. We use:
+
+* Android gradle plugin: 8.6.0
+* Gradle: 8.10.2
+* Java SDK 20
+* Compile SDK 35
+* Target SDK 34
+
+Once the project is loaded, open the **Build variants** menu and select the **release** option as seen in the image:
+
+![alt text](https://i.ibb.co/WnnhGyX/android-build.png "Build variants")
+
+Once everything is configured, you can generate the APK file in the way you prefer.
+
+![alt text](https://i.ibb.co/zJKcNYJ/android-apk.png "Build APK")
+
+<br>
 
 # 日本語
 
@@ -167,8 +281,65 @@ Android モバイル デバイスと Web ブラウザーの両方をカバーす
 * ウェブ: [TCGポケットカード公式ページ](https://tcg-pocket-cards.netlify.app/)
 * APK: [Android 署名済み APK バンドル](https://tcg-pocket-cards.netlify.app/)
 
-[Insert Antivirus Pictures here]
+### ウェブ解析
+
+![alt text](https://i.ibb.co/tzhjZFn/web-check.png "Web Check")
+
+詳細情報: [ウェブ解析](https://www.virustotal.com/gui/url/7dbec75ed10d580e843567a8072592281a032205d731654e04f38d0c4b7e196d/detection)
+
+### APK分析
+
+![alt text](https://i.ibb.co/dDzDHQ2/apk-check.png "APK Check")
+
+詳細情報: [APK分析](https://www.virustotal.com/gui/file/2d161d586c52b8768a88e15271b9b7f2640b079b67f47b3596054137331526f1/details)
 
 ## インストール
 
-工事中...
+アプリをローカルにインストールするには、次の手順に従います。
+
+必要なソフトウェアをダウンロードします...
+
+* [Nodejs](https://nodejs.org/)
+* [Android Studio](https://developer.android.com/)
+* [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) (随意)
+
+リポジトリを **master** ブランチからコンピュータ上のフォルダにクローンまたはダウンロードします。これは、C:/ 内で C:/ 内が理想的です。なぜなら、ファイルへの *パス* が長すぎると特定のプラグインでエラーが発生します。(最大250文字)
+
+プロジェクトのルートで、以下を実行します。
+
+```bash
+npm install
+npm start
+```
+
+Webバージョンを確認するには、次のWebサイトにアクセスしてください。[Localhost](http://localhost:8081)
+
+モバイルデバイスでアプリの「軽量」バージョンを表示するには、Expo GOをダウンロードし、その指示に従ってください。
+
+### APKを生成します
+
+プロジェクトのルートで、以下を実行します。
+
+```bash
+npm run pre
+```
+
+これにより、同じルートに「android」というフォルダが作成されます。このフォルダをAndroid Studioで開きます。
+
+Android Studioに問題がある場合は、公式Webサイトにアクセスして、正しく設定する方法を確認してください [Android Studio を設定する](https://developer.android.com/studio/intro/studio-config).
+
+まず、対応するバージョンのAndroid Studio依存関係があることを確認してください。私たちは使用します:
+
+* Android gradle plugin: 8.6.0
+* Gradle: 8.10.2
+* Java SDK 20
+* Compile SDK 35
+* Target SDK 34
+
+プロジェクトが読み込まれたら、**Build variants** メニューを開き、画像に示されているように **release** オプションを選択します。
+
+![alt text](https://i.ibb.co/WnnhGyX/android-build.png "Build variants")
+
+すべての設定が完了したら、お好みの方法でAPKファイルを生成できます。
+
+![alt text](https://i.ibb.co/zJKcNYJ/android-apk.png "Build APK")

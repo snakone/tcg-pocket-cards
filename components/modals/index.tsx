@@ -1,10 +1,13 @@
-export { TermsModal } from "@/components/modals/TermsModal";
-export { PoliticsModal } from "@/components/modals/PoliticsModal";
 export { AboutModal } from "@/components/modals/AboutModal";
+export { BackupModal } from "@/components/modals/BackupModal";
+export { CardsScreenModal } from "@/components/modals/CardsScreenModal";
 export { ContactModal } from "@/components/modals/ContactModal";
-export { ThemedView } from "@/components/ThemedView";
-export { UserDataModal } from "@/components/modals/UserDataModal";
+export { CreateScreenModal } from "@/components/modals/CreateScreenModal";
 export { CreditsModal } from "@/components/modals/CreditsModal";
 export { FavoritesModal } from "@/components/modals/FavoritesModal";
+export { HomeScreenModal } from "@/components/modals/HomeScreenModal";
 export { NewsScreenModal } from '@/components/modals/NewsScreenModal';
+export { PoliticsModal } from "@/components/modals/PoliticsModal";
 export { ShareScreenModal } from '@/components/modals/ShareScreenModal';
+export { TermsModal } from "@/components/modals/TermsModal";
+export { UserDataModal } from "@/components/modals/UserDataModal";
