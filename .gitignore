@@ -1,7 +1,6 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
-
 # dependencies
 node_modules/
+.env
 
 # Expo
 .expo/
@@ -16,6 +15,7 @@ expo-env.d.ts
 *.p12
 *.key
 *.mobileprovision
+android
 
 # Metro
 .metro-health-check*
@@ -34,5 +34,3 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
-
-app-example
