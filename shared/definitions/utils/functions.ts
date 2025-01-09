@@ -4,6 +4,7 @@ import CryptoJS from "crypto-js";
 import CryptoES from 'crypto-es';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
+import * as DocumentPicker from 'expo-document-picker';
 
 import { FilterSearch } from "../classes/filter.class";
 import { Card } from "../interfaces/card.interfaces";
@@ -284,9 +285,9 @@ export function decryptDataWeb(data: any): any {
   return JSON.parse(decrypted);
 };
 
-export function decryptDataAndroid(data: any): string {
+export function decryptDataAndroid(data: any): any {
   const key = String(process.env.EXPO_PUBLIC_CRYPTO_KEY);
-  const decrypted = CryptoES.AES.decrypt(data, key).toString();
+  const decrypted = CryptoES.AES.decrypt(data, key).toString(CryptoES.enc.Utf8);
   return JSON.parse(decrypted);
 }
 
@@ -320,7 +321,7 @@ export async function saveEncryptedFileAndroid(
   }
 }
 
-export function importEncryptedFileWeb(): Promise<string> {
+export async function importEncryptedFileWeb(): Promise<string> {
   return new Promise((res, rej) => {
     if (Platform.OS !== 'web') { return ; }
     
@@ -352,6 +353,31 @@ export function importEncryptedFileWeb(): Promise<string> {
     return res;
   });
 };
+
+export async function importEncryptedFileAndroid(): Promise<string> {
+  return new Promise(async (res, rej) => {
+    if (Platform.OS !== 'android') { return ; }
+
+    try {
+      const result = await DocumentPicker.getDocumentAsync({
+        type: 'application/*',
+        copyToCacheDirectory: false,
+      });
+
+      if (result.canceled) {
+        return;
+      }
+
+      if (result.assets) {
+        const response = await FileSystem.readAsStringAsync(result.assets[0].uri);
+        res(response);
+      }
+    } catch (error) {
+      console.error('Error al seleccionar el archivo', error);
+      rej(error);
+    }
+  })
+}
 
 export function isObjectSettings(obj: any): boolean {
   if (typeof obj !== 'object') { return false; }

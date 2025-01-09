@@ -63,11 +63,11 @@ export function CardsScreenModal() {
         <ThemedText style={styles.text}>{i18n.t('grid_filter_icon')}</ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={GRID_FILTER} style={{width: '75%', height: 283}}></Image>
+          <Image source={GRID_FILTER} style={{width: '100%', height: 382}}></Image>
         </ThemedView>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={GRID_OPTION} style={{width: '75%', height: 337}}></Image>
+          <Image source={GRID_OPTION} style={{width: '100%', height: 460}}></Image>
         </ThemedView>
 
         <ThemedText style={styles.text}>{i18n.t('grid_option')}</ThemedText>
@@ -78,11 +78,11 @@ export function CardsScreenModal() {
         <ThemedText style={styles.text}>{i18n.t('grid_sort_icon')}</ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={GRID_SORT_ICON} style={{width: '75%', height: 283}}></Image>
+          <Image source={GRID_SORT_ICON} style={{width: '100%', height: 380}}></Image>
         </ThemedView>
         
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={GRID_SORT} style={{width: '75%', height: 337}}></Image>
+          <Image source={GRID_SORT} style={{width: '100%', height: 460}}></Image>
         </ThemedView>
 
         <ThemedText style={styles.text}>{i18n.t('grid_sort_start')}</ThemedText>

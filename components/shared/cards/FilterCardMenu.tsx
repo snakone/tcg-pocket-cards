@@ -120,7 +120,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                 tint="light" 
                 experimentalBlurMethod='dimezisBlurView'/>
       <Pressable style={[LayoutStyles.overlay]} onPress={() => closeMenu()}></Pressable>
-      <Animated.View style={[animatedStyle, filterStyles.container]}>
+      <Animated.View style={[animatedStyle, filterStyles.container, i18n.locale === 'ja' && {height: '86.1%'}]}>
         <View style={[ModalStyles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('filter')}</ThemedText>
         </View>

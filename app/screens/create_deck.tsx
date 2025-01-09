@@ -279,14 +279,23 @@ export default function CreateDeckScreen() {
   }
 
   async function convertDeckToStorage(): Promise<StorageDeck> {
-    const popular = (deck as Card[]).filter(card => Boolean(card) && card.health > 0)
-                                    .sort((a, b) => b.rarity > a.rarity ? 1 : -1)
-                                    .map(card => card.id);
+    const filteredDecks = (deck as Card[]).filter(card => Boolean(card) && card.health > 0)
+                                   .sort((a, b) => b.rarity > a.rarity ? 1 : -1);
+
+    const result = filteredDecks.slice(0, filteredDecks.length > 2 ? 3 : filteredDecks.length);
+
+    if (
+      (filteredDecks.length > 2 && result.length > 1) && 
+      (result[0].name === result[1].name && result[0].id === result[1].id)) {
+      result.splice(1, 1, result[2]);
+    }
+
+    result.length = 2;
+    const popular = result.map(card => card.id);
 
     const energies = Object.keys(element).filter(key => Boolean((element as any)[key]))
                                          .map(key => (key as unknown as PokemonTypeENUM));
 
-    popular.length = 2;
     
     const data: StorageDeck = {
       id: Number(deck_id) ? Number(deck_id) : 
@@ -310,7 +319,14 @@ export default function CreateDeckScreen() {
       energies.length === 0 || 
       deck.filter(card => Boolean(card)).length !== 20 ||
       !deck.find(card => card.stage === CardStageENUM.BASIC) ||
-      !getUniqueEnergies(deck).some(type => energies.map(energy => Number(energy)).includes(type))
+      (
+        !getUniqueEnergies(deck).some(type => energies.map(energy => Number(energy)).includes(type)) && 
+        !isPokemonNormalWithEnergy(deck)
+      ) ||
+      (
+        energies.map(energy => Number(energy)).includes(PokemonTypeENUM.NORMAL) && 
+        !isPokemonNormalWithEnergy(deck)
+      )
     ) {
       return false;
     }
@@ -328,6 +344,12 @@ export default function CreateDeckScreen() {
     });
   
     return Array.from(energySet).sort();
+  }
+
+  function isPokemonNormalWithEnergy(deck: Card[]): boolean {
+    return deck.some(card => 
+        card.attacks?.some(att => 
+          att.energy.every(ener => ener === PokemonTypeENUM.NORMAL)));
   }
 
   const memoizedSort = useMemo(() => {

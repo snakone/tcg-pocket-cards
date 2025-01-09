@@ -191,6 +191,19 @@ export const EXPANSION_MAP: Record<CardExpansionENUM, CardPackTag> = {
   [CardExpansionENUM.MYTHICAL_ISLAND]: { label: 'A', tag: 'A1a', color: 'white', background: 'black', promo_amount: 'P-A' }
 }
 
+export const EXPANSION_POINTS_RARITY: Record<CardRarityENUM, number> = {
+  [CardRarityENUM.COMMON]: 35,
+  [CardRarityENUM.UNCOMMON]: 70,
+  [CardRarityENUM.RARE]: 150,
+  [CardRarityENUM.DOUBLE]: 500,
+  [CardRarityENUM.ART]: 400,
+  [CardRarityENUM.SUPER]: 1250,
+  [CardRarityENUM.INMERSIVE]: 1500,
+  [CardRarityENUM.CROWN]: 2500,
+  [CardRarityENUM.PROMO]: 0,
+  [CardRarityENUM.SPECIAL]: 0,
+}
+
 export const PACK_MAP: Record<EXPANSION, any> = {
   [EXPANSION.PIKACHU]: GENETIC_APEX_PIKACHU_ICON,
   [EXPANSION.MEWTWO]: GENETIC_APEX_MEWTWO_ICON,

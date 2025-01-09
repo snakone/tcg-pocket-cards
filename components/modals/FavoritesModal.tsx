@@ -47,7 +47,7 @@ export function FavoritesModal() {
 
         <ThemedText style={styles.text}>{i18n.t('favorites_access')}</ThemedText>
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={FAVORITE_HOW_TO} style={{width: '75%', height: 414}}></Image>
+          <Image source={FAVORITE_HOW_TO} style={{width: '100%', height: 554}}></Image>
         </ThemedView>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
@@ -61,13 +61,13 @@ export function FavoritesModal() {
         </ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={FAVORITE_MEW} style={{width: '75%', height: 317}}></Image>
+          <Image source={FAVORITE_MEW} style={{width: '100%', height: 428}}></Image>
         </ThemedView>
 
         <ThemedText style={styles.text}>{i18n.t('favorites_filter')}</ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 16}}>
-          <Image source={FAVORITE_FILTER} style={{width: '75%', height: 317}}></Image>
+          <Image source={FAVORITE_FILTER} style={{width: '100%', height: 521}}></Image>
         </ThemedView>
       </ScrollView>
     </ThemedView>

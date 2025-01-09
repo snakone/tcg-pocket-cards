@@ -31,7 +31,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
-    related: [2, 3, 4, 227, 251, 303, 308],
+    related: [2, 3, 4, 227, 251, 395, 390],
   },
   {
     id: 2,
@@ -60,7 +60,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
-    related: [1, 2, 227, 251, 303, 308]
+    related: [1, 3, 4, 227, 251, 395, 390]
   },
   {
     id: 3,
@@ -7356,6 +7356,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [39, 41]
   },
   {
     id: 255,

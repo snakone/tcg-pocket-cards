@@ -50,7 +50,10 @@ export const CREATE_DELETE = require('@/assets/images/creation/delete.png');
 
 export const SHARE_LIST = require('@/assets/images/share/deck_list.png');
 export const SHARE_OPTIONS = require('@/assets/images/share/export.png');
-export const SHARE_IMAGE = require('@/assets/images/share/Charizard.jpeg');
+export const SHARE_CHARIZARD = require('@/assets/images/share/Charizard.jpeg');
+export const SHARE_IMAGE = require('@/assets/images/share/share_image.png');
+
+export const PACK_POINTS = require('@/assets/images/pack-points.png');
 
 // SPLASH
 export const WINTER_SPLASH = require('@/assets/images/splash/winter.webp');

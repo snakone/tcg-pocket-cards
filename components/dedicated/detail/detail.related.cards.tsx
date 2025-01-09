@@ -30,7 +30,10 @@ export default function DetailRelatedCards({card, state, scrollService}: DetailR
   const { dispatch } = context;
 
   useEffect(() => {
-    setRelatedCards(state.cardState.cards.filter(c => card.related?.includes(c.id)))
+    const related = card.related?.map(id => state.cardState.cards.find(c => c.id === id)).filter(Boolean);
+    if (related && related.length > 0) {
+      setRelatedCards((related as Card[]));
+    }
   }, []);
 
   const playSound = async () => {

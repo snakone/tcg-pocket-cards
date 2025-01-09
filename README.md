@@ -34,15 +34,17 @@ Gracias por confiar en nosotros y por formar parte de esta comunidad. ¡Esperamo
 
 Aquí te mostramos algunas de las secciones clave de la aplicación, aunque hay muchas más. No dudes en descubrirlas.
 
-![alt text](https://i.ibb.co/zmSGn0W/home-es.png "Home Screen")
+![alt text](https://i.postimg.cc/grWM01mN/home-es.png "Home Screen")
 
-![alt text](https://i.ibb.co/pLJg6Q0/cards-es.png "Cards")
+![alt text](https://i.postimg.cc/WdHrJqrs/cards-es.png "Cards")
 
-![alt text](https://i.ibb.co/yFHykWz/decks-es.png "Decks")
+![alt text](https://i.postimg.cc/VS0t9sBn/decks-es.png "Decks")
+
+![alt text](https://i.postimg.cc/2VHT26vK/settings-es.png "Settings")
 
 Además puedes **descargar tus mazos en formato imagen**. Previsualización:
 
-![alt text](https://i.ibb.co/YcP1ZzT/Mazo-Venusaur.jpg "Collage")
+![alt text](https://i.postimg.cc/v4chjstH/Mazo-Venusaur.jpg "Collage")
 
 ## Acceso y descarga
 
@@ -150,15 +152,17 @@ Thank you for trusting us and for being part of this community. We hope you enjo
 
 Here are some of the key sections of the app, but there are many more. Feel free to discover them.
 
-![alt text](https://i.ibb.co/zmSGn0W/home-es.png "Home Screen")
+![alt text](https://i.postimg.cc/fSD0hc4f/home-en.png "Home Screen")
 
-![alt text](https://i.ibb.co/pLJg6Q0/cards-es.png "Cards")
+![alt text](https://i.postimg.cc/k24K4v2j/cards-en.png "Cards")
 
-![alt text](https://i.ibb.co/yFHykWz/decks-es.png "Decks")
+![alt text](https://i.postimg.cc/sQpZ8nL2/decks-en.png "Decks")
+
+![alt text](https://i.postimg.cc/bsY3xbGn/settings-en.png "Decks")
 
 You can also **download your decks in image format**. Preview:
 
-![alt text](https://i.ibb.co/YcP1ZzT/Mazo-Venusaur.jpg "Collage")
+![alt text](https://i.postimg.cc/yJRP1yGM/Venusaur-Deck.jpg "Collage")
 
 ## Access and Download
 
@@ -266,15 +270,17 @@ Android モバイル デバイスと Web ブラウザーの両方をカバーす
 
 ここにはアプリの主要なセクションの一部を示しますが、他にも多くのセクションがあります。ぜひご覧ください。
 
-![alt text](https://i.ibb.co/zmSGn0W/home-es.png "Home Screen")
+![alt text](https://i.postimg.cc/XXksBxv3/home-ja.png "Home Screen")
 
-![alt text](https://i.ibb.co/pLJg6Q0/cards-es.png "Cards")
+![alt text](https://i.postimg.cc/k6rbTrfZ/cards-ja.png "Cards")
 
-![alt text](https://i.ibb.co/yFHykWz/decks-es.png "Decks")
+![alt text](https://i.postimg.cc/xN5NjXnD/decks-ja.png "Decks")
+
+![alt text](https://i.postimg.cc/sMqmCNTP/settings-ja.png "Settings")
 
 **デッキを画像形式でダウンロード**することもできます。プレビュー:
 
-![alt text](https://i.ibb.co/YcP1ZzT/Mazo-Venusaur.jpg "Collage")
+![alt text](https://i.postimg.cc/5YMm6Fd6/image.jpg "Collage")
 
 ## アクセスとダウンロード
 

@@ -47,6 +47,7 @@ export default function TabsMenu({
   }, []);
 
   const handleRoute = async (route: string) => {
+    onClose();
     await playSound();
     switch(route) {
       case 'news': router.push('/news');
@@ -60,7 +61,6 @@ export default function TabsMenu({
       case 'settings': router.push('/screens/settings');
         break;
     }
-    onClose();
   }
 
   const animatedFillStyle = useAnimatedStyle(() => {

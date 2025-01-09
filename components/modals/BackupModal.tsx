@@ -15,7 +15,9 @@ import LoadingOverlay from "../ui/LoadingOverlay";
 import ShareService from "@/core/services/share.service";
 
 import { 
+  decryptDataAndroid,
   decryptDataWeb, 
+  importEncryptedFileAndroid, 
   importEncryptedFileWeb, 
   isObjectSettings, 
   saveEncryptedFileAndroid, 
@@ -44,17 +46,21 @@ export function BackupModal() {
     SoundService.play('CHANGE_VIEW');
     const userConfirmed = await confirm("backup_replace", "backup_replace_question");
     if (userConfirmed) {
+      let unsavedSettings: SettingsState;
+
       if (Platform.OS === 'web') {
-        setLoading(true);
         const encrypted = await importEncryptedFileWeb();
-        const importedSettings: SettingsState = decryptDataWeb(encrypted);
-
-        if (isObjectSettings(importedSettings)) {
-          Storage.setSettings(importedSettings);
-          ShareService.onImport(importedSettings);
-        }
+        unsavedSettings = decryptDataWeb(encrypted);
+        setLoading(true);
       } else {
+        const encrypted = await importEncryptedFileAndroid();
+        unsavedSettings = decryptDataAndroid(encrypted);
+        setLoading(true);
+      }
 
+      if (isObjectSettings(unsavedSettings)) {
+        Storage.setSettings(unsavedSettings);
+        ShareService.onImport(unsavedSettings);
       }
 
       setTimeout(() => setLoading(false), 1000);
@@ -77,8 +83,8 @@ export function BackupModal() {
   
   return (
     <>
-      <ThemedView style={{flex: 1}}>
       { loading && <LoadingOverlay/> }
+      <ThemedView style={{flex: 1}}>
         <ScrollView style={{flex: 1}} 
                     showsVerticalScrollIndicator={false} >
           <ThemedText style={[styles.text, {marginTop: 4, marginBottom: 30}]}>{i18n.t('backup_intro')}</ThemedText>

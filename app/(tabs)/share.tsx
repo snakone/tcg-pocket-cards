@@ -1,6 +1,7 @@
 import { router } from 'expo-router';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Animated from 'react-native-reanimated';
+import { Image } from 'expo-image';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedView } from '@/components/ThemedView';
@@ -16,6 +17,8 @@ import { AppContext } from '../_layout';
 import { renderDeckItem } from '@/components/dedicated/cards/DeckItem';
 import SoundService from '@/core/services/sounds.service';
 import { StorageDeck } from '@/shared/definitions/interfaces/global.interfaces';
+import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/contants';
+import { SHARE_IMAGE } from '@/shared/definitions/sentences/path.sentences';
 
 export default function ShareScreen() {
   const {i18n} = useI18n();
@@ -76,6 +79,7 @@ export default function ShareScreen() {
     <ParallaxScrollView title={"share"} 
                         modalTitle='share'
                         modalContent={ShareScreenModal()}
+                        modalHeight={LARGE_MODAL_HEIGHT}
                         styles={{gap: 0}}>
       <ThemedView style={{ 
           paddingVertical: 20,
@@ -95,6 +99,9 @@ export default function ShareScreen() {
                 {searchQuery.length > 0 && <ResetFilterButton/>}
             </Animated.View>
         </KeyboardAvoidingView>
+      </ThemedView>
+      <ThemedView style={{marginBottom: 20, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', borderRadius: 8}}>
+        <Image source={SHARE_IMAGE} style={{width: '100%', height: 105, borderRadius: 8}}></Image>
       </ThemedView>
       <ThemedView style={[CreateScreenStyles.decksContainer, {height: 575, padding: 0}]}>
         <ThemedView style={{flex: 1}}>

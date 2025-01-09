@@ -8,7 +8,7 @@ import { ThemedText } from "../ThemedText";
 import { sharedModalStyles } from "@/shared/styles/component.styles";
 import { ThemedView } from "../ThemedView";
 import ScrollIndicator from "../ui/ScrollIndicator";
-import { SHARE_IMAGE, SHARE_LIST, SHARE_OPTIONS } from "@/shared/definitions/sentences/path.sentences";
+import { SHARE_CHARIZARD, SHARE_LIST, SHARE_OPTIONS } from "@/shared/definitions/sentences/path.sentences";
 
 export function ShareScreenModal() {
   const scrollY = useSharedValue(0);
@@ -62,7 +62,7 @@ export function ShareScreenModal() {
         <ThemedText style={styles.text}>{i18n.t('share_download')}</ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={SHARE_IMAGE} style={{width: '100%', height: 352}}></Image>
+          <Image source={SHARE_CHARIZARD} style={{width: '100%', height: 352}}></Image>
         </ThemedView>
 
         <ThemedText style={styles.text}>{i18n.t('share_expect')}</ThemedText>

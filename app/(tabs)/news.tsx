@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { FlatList, RefreshControl, TouchableOpacity } from 'react-native';
+import { FlatList, Platform, RefreshControl, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Subscription } from 'rxjs';
 import { useRouter } from 'expo-router';
@@ -9,7 +9,7 @@ import { useI18n } from '@/core/providers/LanguageProvider';
 import { NewsScreenModal } from '@/components/modals';
 import NewsItem from '@/components/dedicated/news/NewsItem';
 import { LanguageType } from '@/shared/definitions/types/global.types';
-import { MOCK_NEWS } from '@/shared/definitions/utils/contants';
+import { BACKUP_HEIGHT } from '@/shared/definitions/utils/contants';
 import { PocketNews } from '@/shared/definitions/interfaces/global.interfaces';
 import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import PocketNewsService from '@/core/services/news.service';
@@ -23,7 +23,6 @@ export default function NewsScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
-  const news = MOCK_NEWS;
   const [loading, setLoading] = useState(true);
   const newsService = useMemo(() => new PocketNewsService(), []);
   const { show: showError } = useError();
@@ -88,7 +87,8 @@ export default function NewsScreen() {
       <ParallaxScrollView title={"news"} 
                           modalTitle='news'
                           modalContent={NewsScreenModal()}
-                          styles={{padding: 0}}>
+                          styles={{padding: 0, paddingInline: 0}}
+                          modalHeight={BACKUP_HEIGHT}>
         <FlatList
           data={state.pocketNewsState.news}
           renderItem={renderItem}
@@ -99,9 +99,9 @@ export default function NewsScreen() {
           refreshControl={
             <RefreshControl refreshing={refreshing} 
                             onRefresh={onRefresh} 
-                            progressBackgroundColor={'mediumaquamarine'}/>
+                            progressBackgroundColor={'white'}/>
           }
-          contentContainerStyle={{padding: 16, paddingTop: 2, paddingBottom: 4}}
+          contentContainerStyle={{paddingHorizontal: 16, paddingTop: 2, paddingBottom: 4}}
         />
       </ParallaxScrollView>
     </>

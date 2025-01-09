@@ -1,5 +1,6 @@
 import { Image } from 'expo-image';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import React, { useRef, useState } from 'react';
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -7,14 +8,20 @@ import { useI18n } from "@/core/providers/LanguageProvider";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { cardDetailStyles } from "@/shared/styles/component.styles";
-import { RARITY_MAP, TYPE_MAP, STAGE_MAP, EXPANSION_MAP, PACK_AMOUNT_MAP } from "@/shared/definitions/utils/contants";
+import { RARITY_MAP, TYPE_MAP, STAGE_MAP, EXPANSION_MAP, PACK_AMOUNT_MAP, EXPANSION_POINTS_RARITY } from "@/shared/definitions/utils/contants";
 import { getCardPackFrom, isCardPromo, isCardPromoAndBattle, isCardPromoAndNoBattle, isNotBattleCard } from '@/shared/definitions/utils/functions';
 import DetailRelatedCards from './detail.related.cards';
 import { AppState } from '@/hooks/root.reducer';
 import ScrollService from '@/core/services/scroll.service';
-import React from 'react';
+import { PACK_POINTS } from '@/shared/definitions/sentences/path.sentences';
 
-export default function DetailCardScroll({card, state, scrollService}: {card: Card, state: AppState, scrollService?: ScrollService}) {
+interface CardDetailScroll {
+  card: Card,
+  state: AppState,
+  scrollService?: ScrollService
+}
+
+export default function DetailCardScroll({card, state, scrollService}: CardDetailScroll) {
   const {i18n} = useI18n();
 
   const expansionImage = (card: Card) => {
@@ -242,7 +249,7 @@ export default function DetailCardScroll({card, state, scrollService}: {card: Ca
         </>
       }
 
-      <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info, {marginBottom: 30}]}>
+      <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info]}>
         <ThemedView style={detailScrollStyles.infoTitle}>
           <ThemedText style={detailScrollStyles.text}>{i18n.t('serie')}</ThemedText>
         </ThemedView>
@@ -252,6 +259,23 @@ export default function DetailCardScroll({card, state, scrollService}: {card: Ca
           </ThemedText>
         </ThemedView>
       </ThemedView>
+
+      {
+        EXPANSION_POINTS_RARITY[card.rarity] > 0 && 
+        <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info, {marginBottom: 30}]}>
+          <ThemedView style={detailScrollStyles.infoTitle}>
+            <ThemedText style={detailScrollStyles.text}>{i18n.t('points')}</ThemedText>
+          </ThemedView>
+          <ThemedView style={[detailScrollStyles.infoValue, {justifyContent: 'center', alignItems: 'center'}]}>
+            <ThemedView style={{flexDirection: 'row', gap: 2, position: 'relative'}}>
+              <Image source={PACK_POINTS} style={[detailScrollStyles.element, detailScrollStyles.points]}></Image>
+              <ThemedText style={detailScrollStyles.text}>
+                {EXPANSION_POINTS_RARITY[card.rarity]}
+              </ThemedText>
+            </ThemedView>
+          </ThemedView>
+        </ThemedView>
+      }
 
       { card.related && card.related?.length > 0 &&
         <ThemedView style={[cardDetailStyles.itemInfo, {padding: 0, overflow: 'hidden'}]}>
@@ -273,7 +297,7 @@ export const detailScrollStyles = StyleSheet.create({
   name: {
     fontSize: 30,
     textAlign: 'center',
-    marginTop: 24,
+    marginTop: 20,
     color: Colors.light.bold
   },
   rarityContainer: {
@@ -391,5 +415,12 @@ export const detailScrollStyles = StyleSheet.create({
     color: 'rgb(165, 7, 17)',
     fontWeight: '600',
     top: -1
+  },
+  points: {
+    width: 14,
+    height: 20,
+    top: -1,
+    left: -22,
+    position: 'absolute'
   }
 });

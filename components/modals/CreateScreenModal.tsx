@@ -70,13 +70,13 @@ export function CreateScreenModal() {
         <ThemedText style={styles.text}>4. {i18n.t('create_add_new_amount')}</ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={CREATE_HOME_NEW} style={{width: '75%', height: 314}}></Image>
+          <Image source={CREATE_HOME_NEW} style={{width: '100%', height: 436}}></Image>
         </ThemedView>
 
         <ThemedText style={styles.text}>{i18n.t('create_add_new_energy_menu')}</ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={CREATE_SELECT_ENERGY} style={{width: '75%', height: 471}}></Image>
+          <Image source={CREATE_SELECT_ENERGY} style={{width: '100%', height: 450}}></Image>
         </ThemedView> 
 
         <ThemedText style={styles.text}>{i18n.t('create_add_new_energy_menu_after')}</ThemedText>
@@ -89,13 +89,13 @@ export function CreateScreenModal() {
         <ThemedText style={styles.text}>{i18n.t('create_selection_intro')}</ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={CREATE_CARD_SELECTION} style={{width: '75%', height: 308}}></Image>
+          <Image source={CREATE_CARD_SELECTION} style={{width: '100%', height: 426}}></Image>
         </ThemedView> 
 
         <ThemedText style={styles.text}>{i18n.t('create_selection_upper')}</ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={CREATE_PREVIEW} style={{width: '75%', height: 143}}></Image>
+          <Image source={CREATE_PREVIEW} style={{width: '100%', height: 195}}></Image>
         </ThemedView> 
 
         <ThemedText style={styles.text}>{i18n.t('create_selection_lower')}</ThemedText>
@@ -105,7 +105,7 @@ export function CreateScreenModal() {
         <ThemedText style={styles.text}>{i18n.t('create_deck_intro')}</ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={CREATE_DECK_READY} style={{width: '75%', height: Platform.OS === 'web' ? 459 : 480}}></Image>
+          <Image source={CREATE_DECK_READY} style={{width: '100%', height: 446}}></Image>
         </ThemedView>
 
         <ThemedText style={styles.text}>{i18n.t('create_deck_requisites')}</ThemedText>

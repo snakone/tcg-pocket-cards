@@ -1,12 +1,13 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
 import { Image } from 'expo-image';
-import { FlatList, StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import { Subscription } from "rxjs";
 
 import Animated, { 
   Extrapolation, 
   interpolate, 
+  useAnimatedScrollHandler, 
   useAnimatedStyle, 
   useDerivedValue, 
   useSharedValue 
@@ -119,9 +120,11 @@ export default function NewsDetailScreen() {
     height: derivedHeight.value
   }));
 
-  const handleScroll = (event: any) => {
-    scrollY.value = event.nativeEvent.contentOffset.y;
-  };
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      scrollY.value = Math.max(0, Math.round(event.contentOffset.y));
+    },
+  });
 
   return (
     <>
@@ -131,12 +134,12 @@ export default function NewsDetailScreen() {
           pocketNew && 
           <>
             <ThemedView style={[pocketNewsStyles.item, styles.content]}>
-              <Animated.View style={animatedImageStyle}>
+              <Animated.View style={Platform.OS === 'web' && animatedImageStyle}>
                 <Animated.Image source={{uri: pocketNew.image}} 
                                 style={[
                                   pocketNewsStyles.image, 
                                   styles.animatedImage, 
-                                  animatedImageStyle]} />
+                                  Platform.OS === 'web' && animatedImageStyle]} />
               </Animated.View>
               <ThemedView style={[pocketNewsStyles.info, styles.time]}>
                 <ThemedView style={pocketNewsStyles.date}>
@@ -150,13 +153,13 @@ export default function NewsDetailScreen() {
                 </ThemedText>
               </ThemedView>
 
-              <FlatList
+              <Animated.FlatList
                 data={(pocketNew.content as any)[i18n.locale]}
                 renderItem={renderContent}
                 keyExtractor={(item, index) => `${item.type}-${index}`}
                 contentContainerStyle={{paddingHorizontal: 20}}
                 showsVerticalScrollIndicator={false}
-                onScroll={handleScroll}
+                onScroll={Platform.OS === 'web' ? scrollHandler : undefined}
                 scrollEventThrottle={24}
                 ListFooterComponent={
                   <ThemedView style={{height: 75}}></ThemedView>

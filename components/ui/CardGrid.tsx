@@ -60,7 +60,9 @@ interface GridCardProps {
 export default function ImageGridWithSearch({ state, title, modal, modalTitle, type = 'default' }: GridCardProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [filtered, setFiltered] = useState<Card[]>(state.cardState.cards);
-  const [favorites, setFavorites] = useState<Card[]>(state.cardState.cards.filter(c => state.settingsState.favorites?.includes(c.id)));
+  const [favorites, setFavorites] = useState<Card[]>(
+    state.cardState.cards.filter(c => state.settingsState.favorites?.includes(c.id))
+  );
   const [footerVisible, setFooterVisible] = useState<boolean>(false);
   const flatListRef = useRef<FlatList<Card> | null>(null);
   const router = useRouter();
@@ -113,6 +115,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
     const favorites = state.cardState.cards.filter(
       card => state.settingsState.favorites?.includes(card.id)
     );
+
     setFiltered(favorites);
     setFavorites(favorites);
   }, [state.settingsState.favorites]);
@@ -123,7 +126,11 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
       card.name.toLowerCase()?.includes(text.toLowerCase())
   ))}, [(type === 'favorites' ? favorites : state.cardState.cards)]);
 
-  function filterOrSortCards(type: 'sort' | 'filter', data: Card[], sort?: SortItem | undefined): Card[] {
+  function filterOrSortCards(
+    type: 'sort' | 'filter', 
+    data: Card[], 
+    sort?: SortItem | undefined
+  ): Card[] {
     switch (type) {
       case 'sort': {
         if (!sort) { return data; }
@@ -211,10 +218,11 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
             CardGridStyles.image, 
             {width: isGrid5 ? CARD_IMAGE_WIDTH_5 : CARD_IMAGE_WIDTH_3}
           ]} 
-          source={isGrid5 ? CARD_IMAGE_MAP_69x96[String(item.id)] : CARD_IMAGE_MAP_116x162[String(item.id)]}/>
+          source={isGrid5 ? CARD_IMAGE_MAP_69x96[String(item.id)] : 
+                            CARD_IMAGE_MAP_116x162[String(item.id)]}/>
       </Pressable>
     </View>
-  ), [isGrid5, state.cardState.navigating]);
+  ), [isGrid5, state.cardState.navigating, state.settingsState.favorites]);
 
   const playSound = async (isSwitch: boolean = false) => {
     if (isSwitch) { 
