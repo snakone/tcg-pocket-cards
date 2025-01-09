@@ -14,7 +14,7 @@ import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
-import { COIN_LIST } from "@/shared/definitions/utils/contants";
+import { COIN_LIST } from "@/shared/definitions/utils/constants";
 import { AvatarIcon } from "@/shared/definitions/interfaces/global.interfaces";
 import Storage from "@/core/storage/storage.service";
 import { splashStyles } from "@/components/ui/SplashScreen";

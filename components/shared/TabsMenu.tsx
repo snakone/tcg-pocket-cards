@@ -10,7 +10,7 @@ import { TabMenu } from '@/shared/definitions/interfaces/layout.interfaces';
 import { IconSymbolName } from '@/shared/definitions/utils/switches';
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
-import { LIST, HELP, COIN_MAP } from '@/shared/definitions/utils/contants';
+import { LIST, HELP, COIN_MAP } from '@/shared/definitions/utils/constants';
 import { useI18n } from '../../core/providers/LanguageProvider';
 import SoundService from '@/core/services/sounds.service';
 import React from 'react';

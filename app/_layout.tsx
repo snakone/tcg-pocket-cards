@@ -15,12 +15,11 @@ import { WebStyles } from '@/shared/styles/component.styles';
 import { I18nProvider, useI18n } from '@/core/providers/LanguageProvider';
 import { ErrorProvider } from '@/core/providers/ErrorProvider';
 import Storage from '@/core/storage/storage.service';
-import { APP_VERSION } from '@/shared/definitions/utils/contants';
+import { APP_VERSION } from '@/shared/definitions/utils/constants';
 import { SoundService } from '@/core/services/sounds.service';
-import { handleWebInit, isRouteComingFromSettings } from '@/shared/definitions/utils/functions';
+import { handleWebInit, forceShowSplash } from '@/shared/definitions/utils/functions';
 import { ThemedView } from '@/components/ThemedView';
 import LoadingOverlay from '@/components/ui/LoadingOverlay';
-import { splashImage } from '@/components/ui/SplashImage';
 import { SplashScreenMemo } from '@/components/ui/SplashScreen';
 import { ConfirmationProvider } from '@/core/providers/ConfirmationProvider';
 
@@ -31,11 +30,10 @@ export default function RootLayout() {
   const [loaded] = useFonts({SpaceMono: FONT_REGULAR});
   const [state, dispatch] = useReducer(rootReducer, initialRootState);
   const [showStartScreen, setShowStartScreen] = useState(true);
-  const [comingFromSettings, setComingFromSettings] = useState(false);
+  const [shouldShowSplash, setShouldShowSplash] = useState(false);
   const [waiting, setWaiting] = useState(true);
   const contextValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
   const { setLocale }  = useI18n();
-  const splash = splashImage;
   const {i18n} = useI18n();
   const navigation = useNavigation();
 
@@ -59,8 +57,8 @@ export default function RootLayout() {
 
   useEffect(() => {
     navigation.addListener('state', (_) => {
-      if (isRouteComingFromSettings((navigation as any))) {
-        setComingFromSettings(true);
+      if (forceShowSplash((navigation as any))) {
+        setShouldShowSplash(true);
       }
     });
   }, []);
@@ -84,7 +82,7 @@ export default function RootLayout() {
           if (version !== APP_VERSION) {
             Storage.set('version', APP_VERSION);
             Storage.set('cards', []);
-            dispatch({type: 'SET_LOADED', value: false});
+            dispatch({type: 'RESET_CARDS'});
           }
         }
       }
@@ -101,7 +99,7 @@ export default function RootLayout() {
   function handleStart(): void {
     SoundService.stop('SPLASH_MUSIC');
     setShowStartScreen(false);
-    setComingFromSettings(false);
+    setShouldShowSplash(false);
     SoundService.play('CHANGE_VIEW');
   }
 
@@ -111,7 +109,7 @@ export default function RootLayout() {
     )
   }
 
-  if (showStartScreen || comingFromSettings) {
+  if (showStartScreen || shouldShowSplash) {
     if (state.settingsState.music) {
       SoundService.play('SPLASH_MUSIC', true)
     }

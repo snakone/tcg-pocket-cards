@@ -13,10 +13,15 @@ import { Colors } from "@/shared/definitions/utils/colors";
 import { IconItemWithModal } from "@/shared/definitions/interfaces/layout.interfaces";
 import { IconSymbolName } from "@/shared/definitions/utils/switches";
 import { ButtonStyles, HelpItemStyles, ModalStyles, WebStyles } from "@/shared/styles/component.styles";
-import { BACKUP_HEIGHT, LARGE_MODAL_HEIGHT, MIN_MODAL_HEIGHT } from "@/shared/definitions/utils/contants";
+import { BACKUP_HEIGHT, LARGE_MODAL_HEIGHT, MIN_MODAL_HEIGHT } from "@/shared/definitions/utils/constants";
 import SoundService from "@/core/services/sounds.service";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { ThemedView } from "@/components/ThemedView";
+import { ConfirmationProvider } from "@/core/providers/ConfirmationProvider";
+import ShareService from "@/core/services/share.service";
+import { AppContext } from "../_layout";
+import { ErrorProvider } from "@/core/providers/ErrorProvider";
+import Storage from "@/core/storage/storage.service";
 
 import {
   AboutModal,
@@ -27,10 +32,6 @@ import {
   TermsModal,
   UserDataModal
 } from '@/components/modals/index';
-import { ConfirmationProvider } from "@/core/providers/ConfirmationProvider";
-import ShareService from "@/core/services/share.service";
-import { AppContext } from "../_layout";
-
 
 export default function HelpScreen() {
   const styles = HelpItemStyles;
@@ -43,14 +44,24 @@ export default function HelpScreen() {
 
   useEffect(() => {
     // NO CONTEXT ON SHARED SCREEN
-    const sub = ShareService.importedSettings$.subscribe(res => {
+    const subImport = ShareService.importedSettings$.subscribe(res => {
       if (res !== null) {
+        if (state.cardState.cards.length > 0) {
+          res.cards = state.cardState.cards;
+        }
         dispatch({type: 'SET_SETTINGS', value: res});
+        Storage.setSettings(res);
       }
-    })
+    });
+
+    const subDelete = ShareService.deleteSettings$.subscribe(_ => {
+        dispatch({type: 'RESET_SETTINGS'});
+        dispatch({type: 'RESET_CARDS'});
+    });
 
     return () => {
-      sub.unsubscribe();
+      subImport.unsubscribe();
+      subDelete.unsubscribe();
     }
   }, [])
 
@@ -106,7 +117,7 @@ export default function HelpScreen() {
 
   const open = (modalName: string) => {
     if (modalName === 'exit') { 
-      router.replace('/?show=true')
+      router.replace('/?show=true');
       return;
     }
 
@@ -142,40 +153,42 @@ export default function HelpScreen() {
       </SharedScreen>
       <Portal>
         <ConfirmationProvider>
-          {
-            items.map(item => (
-              <PaperModal
-                visible={currentModal === item.modal}
-                onDismiss={close}
-                key={item.modal}
-                dismissable={false}
-                contentContainerStyle={{height: Platform.OS === 'web' ? '100%' : '110%'}}>
-                <View style={[
-                  ModalStyles.centeredView, Platform.OS === 'web' ? 
-                  {...WebStyles.view, top: -60} : {flex: 1, top: 0}]}>
-                  <View style={ModalStyles.modalView}>
-                    <View style={ModalStyles.modalHeader}>
-                      <ThemedText style={[ModalStyles.modalHeaderTitle, {marginTop: 4}]}>
-                        {i18n.t(item.modal)}
-                      </ThemedText>
-                    </View>
-                    <ThemedView style={[ModalStyles.modalScrollView, {height: item.height}]}>
-                      {item.content}
-                    </ThemedView>
-                    <View style={ModalStyles.modalFooter}>
-                      <Pressable style={ButtonStyles.button} 
-                                        onPress={close} 
-                                        accessibilityLabel={CLOSE_SENTENCE}>
-                        <View style={ButtonStyles.insetBorder}>
-                          <IconSymbol name="clear"></IconSymbol>
-                        </View>
-                      </Pressable>
+          <ErrorProvider>
+            {
+              items.map(item => (
+                <PaperModal
+                  visible={currentModal === item.modal}
+                  onDismiss={close}
+                  key={item.modal}
+                  dismissable={false}
+                  contentContainerStyle={{height: Platform.OS === 'web' ? '100%' : '110%'}}>
+                  <View style={[
+                    ModalStyles.centeredView, Platform.OS === 'web' ? 
+                    {...WebStyles.view, top: -60} : {flex: 1, top: 0}]}>
+                    <View style={ModalStyles.modalView}>
+                      <View style={ModalStyles.modalHeader}>
+                        <ThemedText style={[ModalStyles.modalHeaderTitle, {marginTop: 4}]}>
+                          {i18n.t(item.modal)}
+                        </ThemedText>
+                      </View>
+                      <ThemedView style={[ModalStyles.modalScrollView, {height: item.height}]}>
+                        {item.content}
+                      </ThemedView>
+                      <View style={ModalStyles.modalFooter}>
+                        <Pressable style={ButtonStyles.button} 
+                                          onPress={close} 
+                                          accessibilityLabel={CLOSE_SENTENCE}>
+                          <View style={ButtonStyles.insetBorder}>
+                            <IconSymbol name="clear"></IconSymbol>
+                          </View>
+                        </Pressable>
+                      </View>
                     </View>
                   </View>
-                </View>
-              </PaperModal>
-            ))
-          }
+                </PaperModal>
+              ))
+            }
+          </ErrorProvider>
         </ConfirmationProvider>
       </Portal>
     </>

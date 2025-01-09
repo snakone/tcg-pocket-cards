@@ -4,7 +4,7 @@ import { Image } from 'expo-image';
 
 import { ThemedView } from "@/components/ThemedView";
 import StateButton from "@/components/ui/StateButton";
-import { RARITY_MAP, ICON_WIDTH } from "@/shared/definitions/utils/contants";
+import { RARITY_MAP, ICON_WIDTH } from "@/shared/definitions/utils/constants";
 import { filterStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { RarityWithoutSpecial } from "@/shared/definitions/enums/card.enums";

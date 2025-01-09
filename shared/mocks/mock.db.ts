@@ -90,7 +90,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
-    related: [1, 2, 227, 303, 308]
+    related: [1, 2, 227, 395, 390]
   },
   {
     id: 4,
@@ -125,7 +125,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
-    related: [1, 2, 227, 251, 308]
+    related: [1, 2, 227, 251, 395]
   },
   {
     id: 5,
@@ -155,7 +155,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
-    related: [6, 7, 298]
+    related: [6, 7, 385]
   },
   {
     id: 6,
@@ -184,7 +184,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
-    related: [5, 7, 298]
+    related: [5, 7, 385]
   },
   {
     id: 7,
@@ -217,7 +217,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
-    related: [5, 6, 298]
+    related: [5, 6, 385]
   },
   {
     id: 8,
@@ -629,7 +629,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [22, 23, 252]
+    related: [22, 23, 287, 288, 252, 355]
   },
   {
     id: 22,
@@ -659,7 +659,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [21]
+    related: [21, 287, 288, 355]
   },
   {
     id: 23,
@@ -689,7 +689,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [21, 252]
+    related: [21, 287, 252]
   },
   {
     id: 24,
@@ -777,6 +777,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [229]
   },
   {
     id: 27,
@@ -991,7 +992,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [34, 35, 36, 230, 253, 280, 284]
+    related: [34, 35, 36, 230, 253, 280, 284, 404]
   },
   {
     id: 34,
@@ -1020,7 +1021,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [33, 35, 36, 230, 253, 280, 284]
+    related: [33, 35, 36, 230, 253, 280, 284, 404]
   },
   {
     id: 35,
@@ -1050,7 +1051,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [33, 34, 230]
+    related: [33, 34, 230, 404]
   },
   {
     id: 36,
@@ -1085,7 +1086,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [33, 34, 230, 253, 280, 284]
+    related: [33, 34, 230, 253, 280, 284, 404]
   },
   {
     id: 37,
@@ -1265,7 +1266,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
-    related: [43, 231]
+    related: [43, 296, 297, 231]
   },
   {
     id: 43,
@@ -1296,7 +1297,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
-    related: [42, 231]
+    related: [42, 296, 297, 231]
   },
   {
     id: 44,
@@ -1325,6 +1326,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [298]
   },
   {
     id: 45,
@@ -1354,7 +1356,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [206, 207, 208, 248]
+    related: [206, 207, 208, 347, 248, 402]
   },
   {
     id: 46,
@@ -1418,7 +1420,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [255, 274]
+    related: [255, 274, 397]
   },
   {
     id: 48,
@@ -1477,7 +1479,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    related: [50]
+    related: [50, 301, 302, 357]
   },
   {
     id: 50,
@@ -1506,7 +1508,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    related: [49]
+    related: [49, 301, 302, 357]
   },
   {
     id: 51,
@@ -1598,6 +1600,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [54, 55, 56, 232, 256, 405, 401]
   },
   {
     id: 54,
@@ -1626,6 +1629,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [53, 55, 56, 232, 256, 405, 401]
   },
   {
     id: 55,
@@ -1655,6 +1659,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [53, 54, 232, 405, 401]
   },
   {
     id: 56,
@@ -1689,6 +1694,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [53, 54, 232, 256, 405]
   },
   {
     id: 57,
@@ -1720,6 +1726,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [58]
   },
   {
     id: 58,
@@ -1750,6 +1757,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [57]
   },
   {
     id: 59,
@@ -1778,6 +1786,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [60, 61]
   },
   {
     id: 60,
@@ -1806,6 +1815,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [59, 61]
   },
   {
     id: 61,
@@ -1838,6 +1848,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [59, 60]
   },
   {
     id: 62,
@@ -1866,6 +1877,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [63]
   },
   {
     id: 63,
@@ -1895,6 +1907,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [62]
   },
   {
     id: 64,
@@ -1923,6 +1936,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [65]
   },
   {
     id: 65,
@@ -1951,6 +1965,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [64]
   },
   {
     id: 66,
@@ -1979,6 +1994,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [67]
   },
   {
     id: 67,
@@ -2011,6 +2027,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [66]
   },
   {
     id: 68,
@@ -2039,6 +2056,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [69]
   },
   {
     id: 69,
@@ -2068,6 +2086,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [68]
   },
   {
     id: 70,
@@ -2096,6 +2115,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [71]
   },
   {
     id: 71,
@@ -2125,6 +2145,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [70]
   },
   {
     id: 72,
@@ -2153,6 +2174,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [73]
   },
   {
     id: 73,
@@ -2181,6 +2203,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [72]
   },
   {
     id: 74,
@@ -2209,6 +2232,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [75, 76, 257]
   },
   {
     id: 75,
@@ -2237,6 +2261,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [74]
   },
   {
     id: 76,
@@ -2265,6 +2290,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [74, 257]
   },
   {
     id: 77,
@@ -2293,6 +2319,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [78, 303, 304, 233, 362]
   },
   {
     id: 78,
@@ -2322,6 +2349,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [77, 303, 233]
   },
   {
     id: 79,
@@ -2351,6 +2379,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [234]
   },
   {
     id: 80,
@@ -2380,6 +2409,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [206, 207, 208, 305, 347, 248, 358, 402]
   },
   {
     id: 81,
@@ -2408,6 +2438,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [82, 216]
   },
   {
     id: 82,
@@ -2437,6 +2468,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [81, 216]
   },
   {
     id: 83,
@@ -2500,6 +2532,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [258, 275]
   },
   {
     id: 85,
@@ -2528,6 +2561,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [86]
   },
   {
     id: 86,
@@ -2556,6 +2590,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [85]
   },
   {
     id: 87,
@@ -2584,6 +2619,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [88, 89, 391]
   },
   {
     id: 88,
@@ -2612,6 +2648,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [87, 89, 391]
   },
   {
     id: 89,
@@ -2644,6 +2681,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [87, 88, 391]
   },
   {
     id: 90,
@@ -2733,6 +2771,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [93]
   },
   {
     id: 93,
@@ -2763,6 +2802,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [92]
   },
   {
     id: 94,
@@ -2791,6 +2831,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [95, 311, 312, 398, 387, 381]
   },
   {
     id: 95,
@@ -2820,6 +2861,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [94, 311, 312, 398, 387, 381]
   },
   {
     id: 96,
@@ -2849,6 +2891,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [259, 281, 285]
   },
   {
     id: 97,
@@ -2877,6 +2920,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [98, 396]
   },
   {
     id: 98,
@@ -2909,6 +2953,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [97, 396]
   },
   {
     id: 99,
@@ -2937,6 +2982,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [100, 235]
   },
   {
     id: 100,
@@ -2965,6 +3011,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [99, 235]
   },
   {
     id: 101,
@@ -2994,6 +3041,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [313]
   },
   {
     id: 102,
@@ -3023,6 +3071,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [206, 207, 208, 347, 248, 402]
   },
   {
     id: 103,
@@ -3086,6 +3135,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [260, 276]
   },
   {
     id: 105,
@@ -3116,6 +3166,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [106]
   },
   {
     id: 106,
@@ -3147,6 +3198,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [105]
   },
   {
     id: 107,
@@ -3175,6 +3227,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [108, 109]
   },
   {
     id: 108,
@@ -3203,6 +3256,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [107, 109]
   },
   {
     id: 109,
@@ -3232,6 +3286,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [107, 108]
   },
   {
     id: 110,
@@ -3262,6 +3317,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [111]
   },
   {
     id: 111,
@@ -3293,6 +3349,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [110]
   },
   {
     id: 112,
@@ -3352,6 +3409,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [114, 388]
   },
   {
     id: 114,
@@ -3380,6 +3438,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [113, 388]
   },
   {
     id: 115,
@@ -3409,6 +3468,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [116, 117, 236]
   },
   {
     id: 116,
@@ -3437,6 +3497,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [115, 117, 236]
   },
   {
     id: 117,
@@ -3466,6 +3527,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [115, 116, 236]
   },
   {
     id: 118,
@@ -3496,6 +3558,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD,
     ],
+    related: [119, 237]
   },
   {
     id: 119,
@@ -3526,6 +3589,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD,
     ],
+    related: [118, 237]
   },
   {
     id: 120,
@@ -3554,6 +3618,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [121, 122, 123, 261, 277, 392]
   },
   {
     id: 121,
@@ -3582,6 +3647,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [120, 122, 123, 261, 277, 392]
   },
   {
     id: 122,
@@ -3611,6 +3677,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [120, 121, 392]
   },
   {
     id: 123,
@@ -3643,6 +3710,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [120, 121, 261, 277, 392]
   },
   {
     id: 124,
@@ -3671,6 +3739,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [125]
   },
   {
     id: 125,
@@ -3703,6 +3772,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [124]
   },
   {
     id: 126,
@@ -3790,6 +3860,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [382]
   },
   {
     id: 129,
@@ -3824,6 +3895,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [262, 282, 286]
   },
   {
     id: 130,
@@ -3852,6 +3924,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [131, 132]
   },
   {
     id: 131,
@@ -3880,6 +3953,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [130, 132]
   },
   {
     id: 132,
@@ -3912,6 +3986,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [130, 131]
   },
   {
     id: 133,
@@ -3942,6 +4017,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [134]
   },
   {
     id: 134,
@@ -3972,6 +4048,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [133]
   },
   {
     id: 135,
@@ -4002,6 +4079,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [136]
   },
   {
     id: 136,
@@ -4032,6 +4110,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [135]
   },
   {
     id: 137,
@@ -4062,6 +4141,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [138]
   },
   {
     id: 138,
@@ -4092,6 +4172,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [137]
   },
   {
     id: 139,
@@ -4120,6 +4201,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [140, 238]
   },
   {
     id: 140,
@@ -4149,6 +4231,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [139, 238]
   },
   {
     id: 141,
@@ -4177,6 +4260,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [142, 327, 328, 389]
   },
   {
     id: 142,
@@ -4206,6 +4290,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [141, 327, 328, 389]
   },
   {
     id: 143,
@@ -4234,6 +4319,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [144, 145, 146, 263, 278]
   },
   {
     id: 144,
@@ -4262,6 +4348,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [143, 145, 146, 263, 278]
   },
   {
     id: 145,
@@ -4290,6 +4377,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [143, 144]
   },
   {
     id: 146,
@@ -4318,6 +4406,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [143, 144, 263, 278]
   },
   {
     id: 147,
@@ -4346,6 +4435,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [148, 149, 329, 330, 331]
   },
   {
     id: 148,
@@ -4374,6 +4464,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [147, 149, 329, 330, 331]
   },
   {
     id: 149,
@@ -4403,6 +4494,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [147, 148, 329, 330, 331]
   },
   {
     id: 150,
@@ -4431,6 +4523,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [393]
   },
   {
     id: 151,
@@ -4460,6 +4553,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [152, 153, 239, 264]
   },
   {
     id: 152,
@@ -4488,6 +4582,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [151, 239]
   },
   {
     id: 153,
@@ -4517,6 +4612,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [151, 239, 264]
   },
   {
     id: 154,
@@ -4602,6 +4698,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [157]
   },
   {
     id: 157,
@@ -4630,6 +4727,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [156]
   },
   {
     id: 158,
@@ -4658,6 +4756,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [159, 217]
   },
   {
     id: 159,
@@ -4687,6 +4786,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [158, 217]
   },
   {
     id: 160,
@@ -4715,6 +4815,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [161]
   },
   {
     id: 161,
@@ -4743,6 +4844,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [160]
   },
   {
     id: 162,
@@ -4773,6 +4875,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [163]
   },
   {
     id: 163,
@@ -4804,6 +4907,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [162]
   },
   {
     id: 164,
@@ -4834,6 +4938,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [165]
   },
   {
     id: 165,
@@ -4864,6 +4969,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [164]
   },
   {
     id: 166,
@@ -4893,6 +4999,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [167, 168, 240]
   },
   {
     id: 167,
@@ -4921,6 +5028,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [166, 168, 240]
   },
   {
     id: 168,
@@ -4950,6 +5058,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [166, 167, 240]
   },
   {
     id: 169,
@@ -4978,6 +5087,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [170, 171, 241]
   },
   {
     id: 170,
@@ -5006,6 +5116,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [169, 171, 241]
   },
   {
     id: 171,
@@ -5035,6 +5146,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [169, 170, 241]
   },
   {
     id: 172,
@@ -5063,6 +5175,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [173, 242]
   },
   {
     id: 173,
@@ -5091,6 +5204,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [172, 242]
   },
   {
     id: 174,
@@ -5120,6 +5234,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [175]
   },
   {
     id: 175,
@@ -5149,6 +5264,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [174]
   },
   {
     id: 176,
@@ -5177,6 +5293,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [177, 335, 336, 243]
   },
   {
     id: 177,
@@ -5209,6 +5326,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [176, 335, 336, 243]
   },
   {
     id: 178,
@@ -5268,6 +5386,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD,
     ],
+    related: [180]
   },
   {
     id: 180,
@@ -5298,6 +5417,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD,
     ],
+    related: [179]
   },
   {
     id: 181,
@@ -5327,6 +5447,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [182]
   },
   {
     id: 182,
@@ -5359,6 +5480,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [181]
   },
   {
     id: 183,
@@ -5387,6 +5509,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [184, 185, 244]
   },
   {
     id: 184,
@@ -5415,6 +5538,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [183, 185, 244]
   },
   {
     id: 185,
@@ -5444,6 +5568,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [183, 184, 244]
   },
   {
     id: 186,
@@ -5472,6 +5597,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [187, 188, 343, 344, 345, 245, 365]
   },
   {
     id: 187,
@@ -5500,6 +5626,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [186, 188, 343, 344, 345, 245, 365]
   },
   {
     id: 188,
@@ -5532,6 +5659,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [186, 187, 343, 344, 245]
   },
   {
     id: 189,
@@ -5562,6 +5690,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [190]
   },
   {
     id: 190,
@@ -5592,6 +5721,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [189]
   },
   {
     id: 191,
@@ -5620,6 +5750,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [192]
   },
   {
     id: 192,
@@ -5649,6 +5780,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [191]
   },
   {
     id: 193,
@@ -5677,6 +5809,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [194, 195, 265, 279, 394]
   },
   {
     id: 194,
@@ -5705,6 +5838,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [193, 394]
   },
   {
     id: 195,
@@ -5733,6 +5867,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [193, 265, 279, 394]
   },
   {
     id: 196,
@@ -5762,6 +5897,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [197, 246, 384]
   },
   {
     id: 197,
@@ -5791,6 +5927,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [196, 246, 384]
   },
   {
     id: 198,
@@ -5851,6 +5988,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [200]
   },
   {
     id: 200,
@@ -5881,6 +6019,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [199]
   },
   {
     id: 201,
@@ -5937,6 +6076,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [383]
   },
   {
     id: 203,
@@ -5993,6 +6133,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [346]
   },
   {
     id: 205,
@@ -6022,6 +6163,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [247]
   },
   {
     id: 206,
@@ -6050,6 +6192,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [45, 80, 102, 207, 208, 305, 347, 248, 358, 402]
   },
   {
     id: 207,
@@ -6078,6 +6221,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [45, 80, 102, 206, 208, 305, 347, 248, 358, 402]
   },
   {
     id: 208,
@@ -6106,6 +6250,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [45, 80, 102, 206, 207, 305, 347, 248, 358, 402]
   },
   {
     id: 209,
@@ -6138,6 +6283,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [249]
   },
   {
     id: 210,
@@ -6167,6 +6313,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [218]
   },
   {
     id: 211,
@@ -6195,6 +6342,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [250]
   },
   {
     id: 212,
@@ -6225,6 +6373,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [213, 403]
   },
   {
     id: 213,
@@ -6256,6 +6405,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [212, 403]
   },
   {
     id: 214,
@@ -6286,6 +6436,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [215]
   },
   {
     id: 215,
@@ -6316,6 +6467,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [214]
   },
   {
     id: 216,
@@ -6336,6 +6488,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [81, 82]
   },
   {
     id: 217,
@@ -6356,6 +6509,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [158, 159]
   },
   {
     id: 218,
@@ -6376,6 +6530,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [210, 332, 364, 370]
   },
   {
     id: 219,
@@ -6396,6 +6551,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 220,
@@ -6416,6 +6572,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PIKACHU,
     ],
     element: -1,
+    related: [219, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 221,
@@ -6436,6 +6593,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 222,
@@ -6456,6 +6614,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 223,
@@ -6476,6 +6635,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 224,
@@ -6496,6 +6656,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 225,
@@ -6516,6 +6677,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 226,
@@ -6536,6 +6698,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 227,
@@ -6564,6 +6727,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [1, 2, 3, 4, 251, 395, 390],
   },
   {
     id: 228,
@@ -6621,6 +6785,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [26]
   },
   {
     id: 230,
@@ -6650,6 +6815,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [33, 34, 35, 36, 253, 280, 284, 404]
   },
   {
     id: 231,
@@ -6678,6 +6844,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [42, 43, 296, 297]
   },
   {
     id: 232,
@@ -6706,6 +6873,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [53, 54, 55, 56, 256, 405, 401]
   },
   {
     id: 233,
@@ -6735,6 +6903,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [77, 78, 303]
   },
   {
     id: 234,
@@ -6764,6 +6933,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [79]
   },
   {
     id: 235,
@@ -6792,6 +6962,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [99, 100]
   },
   {
     id: 236,
@@ -6821,6 +6992,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [115, 116, 117]
   },
   {
     id: 237,
@@ -6849,6 +7021,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [118, 119]
   },
   {
     id: 238,
@@ -6877,6 +7050,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [139, 140]
   },
   {
     id: 239,
@@ -6906,6 +7080,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [151, 152, 153, 264]
   },
   {
     id: 240,
@@ -6935,6 +7110,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [166, 167, 168]
   },
   {
     id: 241,
@@ -6964,6 +7140,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [169, 170, 171]
   },
   {
     id: 242,
@@ -6992,6 +7169,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [172, 173]
   },
   {
     id: 243,
@@ -7024,6 +7202,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [176, 177, 335, 336]
   },
   {
     id: 244,
@@ -7053,6 +7232,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [183, 184, 185]
   },
   {
     id: 245,
@@ -7085,6 +7265,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [186, 187, 188, 343, 344]
   },
   {
     id: 246,
@@ -7114,6 +7295,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [196, 197, 384]
   },
   {
     id: 247,
@@ -7143,6 +7325,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [205]
   },
   {
     id: 248,
@@ -7171,6 +7354,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [45, 80, 102, 206, 207, 208, 305, 347, 358, 402]
   },
   {
     id: 249,
@@ -7203,6 +7387,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [209]
   },
   {
     id: 250,
@@ -7231,6 +7416,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [211]
   },
   {
     id: 251,
@@ -7265,6 +7451,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [1, 2, 4, 227, 395]
   },
   {
     id: 252,
@@ -7294,6 +7481,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [21, 23, 287]
   },
   {
     id: 253,
@@ -7328,7 +7516,9 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-  },  {
+    related: [33, 34, 36, 230, 280, 284, 404]
+  },  
+  {
     id: 254,
     number: 254,
     pokedex: 59,
@@ -7391,6 +7581,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [47, 274, 397]
   },
   {
     id: 256,
@@ -7425,6 +7616,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [53, 54, 56, 232, 405]
   },
   {
     id: 257,
@@ -7453,6 +7645,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [74, 76]
   },
   {
     id: 258,
@@ -7487,6 +7680,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [84, 275]
   },
   {
     id: 259,
@@ -7516,6 +7710,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [96, 281, 285]
   },
   {
     id: 260,
@@ -7550,6 +7745,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [104, 276]
   },
   {
     id: 261,
@@ -7582,6 +7778,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [120, 121, 123, 277, 392]
   },
   {
     id: 262,
@@ -7616,6 +7813,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [129, 282, 286]
   },
   {
     id: 263,
@@ -7644,6 +7842,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [143, 144, 146, 278]
   },
   {
     id: 264,
@@ -7673,6 +7872,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [151, 153, 239]
   },
   {
     id: 265,
@@ -7701,6 +7901,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [193, 195, 279, 394]
   },
   {
     id: 266,
@@ -7721,6 +7922,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 267,
@@ -7741,6 +7943,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 268,
@@ -7761,6 +7964,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 269, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 269,
@@ -7781,6 +7985,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 270,
@@ -7802,6 +8007,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 271,
@@ -7822,6 +8028,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 272,
@@ -7842,6 +8049,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 273, 367, 366, 368, 379]
   },
   {
     id: 273,
@@ -7862,6 +8070,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 367, 366, 368, 379]
   },
   {
     id: 274,
@@ -7896,6 +8105,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [47, 255, 397]
   },
   {
     id: 275,
@@ -7930,6 +8140,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
+    related: [84, 258]
   },
   {
     id: 276,
@@ -7964,6 +8175,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [104, 260]
   },
   {
     id: 277,
@@ -7996,6 +8208,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [120, 121, 123, 261, 392]
   },
   {
     id: 278,
@@ -8024,6 +8237,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [143, 144, 146, 263]
   },
   {
     id: 279,
@@ -8052,6 +8266,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
+    related: [193, 195, 265, 394]
   },
   {
     id: 280,
@@ -8086,6 +8301,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
+    related: [33, 34, 36, 230, 253, 284, 404]
   },
   {
     id: 281,
@@ -8115,6 +8331,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
+    related: [96, 259, 285]
   },
   {
     id: 282,
@@ -8149,6 +8366,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: [129, 262, 286]
   },
   {
     id: 283,
@@ -8178,7 +8396,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.SPECIAL_MISSION
     ],
-    extra: 'Special Mission'
+    extra: 'Special Mission',
+    related: [317]
   },
   {
     id: 284,
@@ -8215,6 +8434,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD,
     ],
+    related: [33, 34, 36, 230, 253, 280, 404]
   },
   {
     id: 285,
@@ -8246,6 +8466,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [96, 259, 281]
   },
   {
     id: 286,
@@ -8282,6 +8503,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD
     ],
+    related: [129, 262, 282]
   },
   {
     id: 287,
@@ -8311,7 +8533,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [22, 23, 252]
+    related: [21, 22, 23, 288, 252, 355]
   },
   {
     id: 288,
@@ -8341,7 +8563,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [21]
+    related: [21, 22, 287, 355]
   },
   {
     id: 289,
@@ -8371,7 +8593,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [361, 371]
   },
   {
     id: 290,
@@ -8400,7 +8622,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [291, 292, 356, 399]
   },
   {
     id: 291,
@@ -8429,7 +8651,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [290]
+    related: [290, 292, 356, 399]
   },  
   {
     id: 292,
@@ -8462,7 +8684,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [291]
+    related: [290, 291, 356, 399]
   },
   {
     id: 293,
@@ -8491,7 +8713,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [294]
   },
   {
     id: 294,
@@ -8581,7 +8803,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [42, 43, 297, 231]
   },
   {
     id: 297,
@@ -8611,7 +8833,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [296]
+    related: [42, 43, 296, 231]
   },
   {
     id: 298,
@@ -8641,7 +8863,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [44]
   },
   {
     id: 299,
@@ -8670,7 +8892,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [300, 400] 
   },
   {
     id: 300,
@@ -8700,7 +8922,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [299]
+    related: [299, 400]
   },
   {
     id: 301,
@@ -8730,7 +8952,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [49, 50, 302, 357]
   },
   {
     id: 302,
@@ -8760,7 +8982,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [301]
+    related: [49, 50, 301, 357]
   },
   {
     id: 303,
@@ -8790,7 +9012,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [77, 78, 304, 233, 362]
   },
   {
     id: 304,
@@ -8820,7 +9042,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [303]
+    related: [77, 303, 362]
   },
   {
     id: 305,
@@ -8853,7 +9075,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [],
+    related: [80, 206, 207, 208, 347, 248, 358, 402]
   },
   {
     id: 306,
@@ -8882,7 +9104,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [307]
   },
   {
     id: 307,
@@ -8941,7 +9163,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [309]
   },
   {
     id: 309,
@@ -9031,7 +9253,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [94, 95, 312, 398, 387, 381]
   },
   {
     id: 312,
@@ -9061,7 +9283,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [311]
+    related: [94, 95, 311, 398, 387, 381]
   },
   {
     id: 313,
@@ -9091,7 +9313,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [101]
   },
   {
     id: 314,
@@ -9120,7 +9342,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [315]
   },
   {
     id: 315,
@@ -9180,7 +9402,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [359]
   },
   {
     id: 317,
@@ -9245,7 +9467,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [317]
+    related: [363, 369, 372]
   },
   {
     id: 319,
@@ -9304,7 +9526,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [321]
   },
   {
     id: 321,
@@ -9364,7 +9586,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [323, 324]
   },
   {
     id: 323,
@@ -9394,7 +9616,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [322]
+    related: [322, 324]
   },
   {
     id: 324,
@@ -9424,7 +9646,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [323]
+    related: [322, 323]
   },
   {
     id: 325,
@@ -9453,7 +9675,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [326]
   },
   {
     id: 326,
@@ -9512,7 +9734,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [141, 142, 328, 389]
   },
   {
     id: 328,
@@ -9541,7 +9763,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [327]
+    related: [141, 142, 327, 389]
   },
   {
     id: 329,
@@ -9570,7 +9792,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [147, 148, 149, 330, 331]
   },
   {
     id: 330,
@@ -9599,7 +9821,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [329]
+    related: [147, 148, 149, 329, 331]
   },
   {
     id: 331,
@@ -9629,7 +9851,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [330]
+    related: [147, 148, 149, 329, 330]
   },
   {
     id: 332,
@@ -9662,7 +9884,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [364, 370, 349]
   },
   {
     id: 333,
@@ -9692,7 +9914,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [360]
   },
   {
     id: 334,
@@ -9751,7 +9973,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [176, 177, 336, 243]
   },
   {
     id: 336,
@@ -9781,7 +10003,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [335]
+    related: [176, 177, 335, 243]
   },
   {
     id: 337,
@@ -9810,7 +10032,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [338]
   },
   {
     id: 338,
@@ -9868,7 +10090,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [340, 341]
   },
   {
     id: 340,
@@ -9898,7 +10120,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [339]
+    related: [339, 341]
   },
   {
     id: 341,
@@ -9990,7 +10212,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [186, 187, 188, 344, 345, 245, 365]
   },
   {
     id: 344,
@@ -10019,7 +10241,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [343]
+    related: [186, 187, 188, 343, 345, 245, 365]
   },
   {
     id: 345,
@@ -10049,7 +10271,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [344]
+    related: [186, 187, 343, 344, 365]
   },
   {
     id: 346,
@@ -10079,7 +10301,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [204]
   },
   {
     id: 347,
@@ -10109,7 +10331,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [45, 80, 102, 206, 207, 208, 305, 248, 358, 402]
   },
   {
     id: 348,
@@ -10160,6 +10382,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [210, 332, 364, 370]
   },
   {
     id: 350,
@@ -10180,6 +10403,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [351, 373, 374, 377, 375, 376, 380, 378]
   },
   {
     id: 351,
@@ -10200,6 +10424,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [350, 373, 374, 377, 375, 376, 380, 378]
   },
   {
     id: 352,
@@ -10220,6 +10445,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 353,
@@ -10240,6 +10466,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 354,
@@ -10260,6 +10487,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
   },
   {
     id: 355,
@@ -10289,7 +10517,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [21]
+    related: [21, 22, 287, 288]
   },
   {
     id: 356,
@@ -10322,7 +10550,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [291]
+    related: [290, 291, 292, 399]
   },
   {
     id: 357,
@@ -10352,7 +10580,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [49, 50, 301, 302]
   },
   {
     id: 358,
@@ -10385,7 +10613,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [],
+    related: [80, 206, 207, 208, 305, 347, 248, 402]
   },
   {
     id: 359,
@@ -10415,7 +10643,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [316]
   },
   {
     id: 360,
@@ -10445,7 +10673,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [333]
   },
   {
     id: 361,
@@ -10475,7 +10703,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [289, 371]
   },
   {
     id: 362,
@@ -10505,7 +10733,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [303]
+    related: [77, 303, 304]
   },
   {
     id: 363,
@@ -10540,7 +10768,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [317]
+    related: [318, 369, 372]
   },
   {
     id: 364,
@@ -10573,7 +10801,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [332, 370, 349]
   },
   {
     id: 365,
@@ -10603,7 +10831,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [344]
+    related: [186, 187, 343, 344, 345]
   },
   {
     id: 366,
@@ -10624,6 +10852,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 368, 379]
   },
   {
     id: 367,
@@ -10644,6 +10873,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 366, 368, 379]
   },
   {
     id: 368,
@@ -10664,6 +10894,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 379]
   },
   {
     id: 369,
@@ -10698,7 +10929,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [317]
+    related: [318, 363, 372]
   },
   {
     id: 370,
@@ -10731,7 +10962,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [332, 364, 349]
   },
   {
     id: 371,
@@ -10761,7 +10992,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [289, 361]
   },
   {
     id: 372,
@@ -10796,7 +11027,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [317]
+    related: [318, 363, 369]
   },
   {
     id: 373,
@@ -10806,13 +11037,14 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Heal 20 damage from 1 of your Pokémon.',
-    rarity: CardRarityENUM.COMMON,
+    rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: 'Obtained from the shop',
     element: -1,
     pokedex: -1,
     health: -1,
-    retreat: -1
+    retreat: -1,
+    related: [351, 350, 374, 377, 375, 376, 380, 378]
   },
   {
     id: 374,
@@ -10822,13 +11054,14 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: 'During this turn, the Retreat Cost of your Active Pokémon is 1 less.',
-    rarity: CardRarityENUM.COMMON,
+    rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: 'Obtained from the shop',
     element: -1,
     pokedex: -1,
     health: -1,
-    retreat: -1
+    retreat: -1,
+    related: [351, 350, 373, 377, 375, 376, 380, 378]
   },
   {
     id: 375,
@@ -10838,13 +11071,14 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Your opponent reveals their hand.',
-    rarity: CardRarityENUM.COMMON,
+    rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: 'Obtained from the shop',
     element: -1,
     pokedex: -1,
     health: -1,
-    retreat: -1
+    retreat: -1,
+    related: [351, 350, 373, 374, 377, 376, 380, 378]
   },
   {
     id: 376,
@@ -10854,13 +11088,14 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Look at the top 3 cards of your deck.',
-    rarity: CardRarityENUM.COMMON,
+    rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: 'Obtained from the shop',
     element: -1,
     pokedex: -1,
     health: -1,
-    retreat: -1
+    retreat: -1,
+    related: [351, 350, 373, 374, 377, 375, 380, 378]
   },
   {
     id: 377,
@@ -10870,13 +11105,14 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Put 1 random Basic Pokémon from your deck into your hand.',
-    rarity: CardRarityENUM.COMMON,
+    rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: 'Obtained from the shop',
     element: -1,
     pokedex: -1,
     health: -1,
-    retreat: -1
+    retreat: -1,
+    related: [351, 350, 373, 374, 375, 376, 380, 378]
   },
   {
     id: 378,
@@ -10886,13 +11122,14 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Your opponent shuffles their hand into their deck and draws 3 cards.',
-    rarity: CardRarityENUM.COMMON,
+    rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: 'Obtained from the shop',
     element: -1,
     pokedex: -1,
     health: -1,
-    retreat: -1
+    retreat: -1,
+    related: [351, 350, 373, 374, 377, 375, 376, 380]
   },
   {
     id: 379,
@@ -10902,13 +11139,14 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Draw 2 cards.',
-    rarity: CardRarityENUM.COMMON,
+    rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: 'Obtained from the shop',
     element: -1,
     pokedex: -1,
     health: -1,
-    retreat: -1
+    retreat: -1,
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368]
   },
   {
     id: 380,
@@ -10918,13 +11156,14 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Look at the top 3 cards of your deck.',
-    rarity: CardRarityENUM.COMMON,
+    rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: 'Special Event',
     element: -1,
     pokedex: -1,
     health: -1,
     retreat: -1,
+    related: [351, 350, 373, 374, 377, 375, 376, 378]
   },
   {
     id: 381,
@@ -10953,7 +11192,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PREMIUM
     ],
-    extra: 'Premium Pass'
+    extra: 'Premium Pass',
+    related: [94, 95, 311, 312, 398, 387]
   },
   {
     id: 382,
@@ -10983,7 +11223,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PREMIUM
     ],
-    extra: 'Premium Pass'
+    extra: 'Premium Pass',
+    related: [128]
   },
   {
     id: 383,
@@ -11012,7 +11253,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK
     ],
-    extra: 'Wonder Pick'
+    extra: 'Wonder Pick',
+    related: [202]
   },
   {
     id: 384,
@@ -11042,7 +11284,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK
     ],
-    extra: 'Wonder Pick'
+    extra: 'Wonder Pick',
+    related: [196, 197, 246]
   },
   {
     id: 385,
@@ -11075,7 +11318,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A1
     ],
-    extra: 'Promo Pack'
+    extra: 'Promo Pack',
+    related: [5, 6, 7]
   },
   {
     id: 386,
@@ -11134,7 +11378,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A1,
     ],
-    extra: 'Promo Pack'
+    extra: 'Promo Pack',
+    related: [94, 95, 311, 312, 398, 381]
   },
   {
     id: 388,
@@ -11163,7 +11408,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A1,
     ],
-    extra: 'Promo Pack'
+    extra: 'Promo Pack',
+    related: [113, 114]
   },
   {
     id: 389,
@@ -11193,7 +11439,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A1,
     ],
-    extra: 'Promo Pack'
+    extra: 'Promo Pack',
+    related: [141, 142, 327, 328]
   },
   {
     id: 390,
@@ -11223,7 +11470,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A2
     ],
-    extra: 'Promo Pack'
+    extra: 'Promo Pack',
+    related: [1, 2, 3, 227, 395]
   },
   {
     id: 391,
@@ -11256,7 +11504,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A2
     ],
-    extra: 'Promo Pack'
+    extra: 'Promo Pack',
+    related: [87, 88, 89]
   },
   {
     id: 392,
@@ -11286,7 +11535,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A2,
     ],
-    extra: 'Promo Pack'
+    extra: 'Promo Pack',
+    related: [120, 121, 122, 123, 261, 277]
   },
   {
     id: 393,
@@ -11315,7 +11565,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A2,
     ],
-    extra: 'Promo Pack'
+    extra: 'Promo Pack',
+    related: [150]
   },
   {
     id: 394,
@@ -11346,6 +11597,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PROMO_A2
     ],
     extra: 'Promo Pack',
+    related: [193, 194, 195, 265, 279]
   },
   {
     id: 395,
@@ -11374,7 +11626,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK
     ],
-    extra: 'Wonder Pick'
+    extra: 'Wonder Pick',
+    related: [1, 2, 3, 4, 227, 251, 390],
   },
   {
     id: 396,
@@ -11403,7 +11656,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK,
     ],
-    extra: 'Wonder Pick'
+    extra: 'Wonder Pick',
+    related: [97, 98]
   },
   {
     id: 397,
@@ -11438,7 +11692,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PREMIUM
     ],
-    related: [255, 274],
+    related: [47, 255, 274],
     extra: 'Premium Pass'
   },
   {
@@ -11468,7 +11722,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.SPECIAL_MISSION,
     ],
-    extra: 'Special Event'
+    extra: 'Special Event',
+    related: [94, 95, 311, 312, 387, 381]
   },
   {
     id: 399,
@@ -11497,7 +11752,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A3
     ],
-    related: [],
+    related: [290, 291, 292, 356],
     extra: 'Promo Pack'
   },
   {
@@ -11528,7 +11783,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A3
     ],
-    related: [299],
+    related: [299, 300],
     extra: 'Promo Pack'
   },
   {
@@ -11559,7 +11814,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A3,
     ],
-    extra: 'Promo Pack'
+    extra: 'Promo Pack',
+    related: [53, 54, 55, 232, 405]
   },
   {
     id: 402,
@@ -11589,7 +11845,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A3,
     ],
-    extra: 'Promo Pack'
+    extra: 'Promo Pack',
+    related: [45, 80, 102, 206, 207, 208, 305, 347, 248, 358]
   },
   {
     id: 403,
@@ -11619,7 +11876,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A3
     ],
-    extra: 'Promo Pack'
+    extra: 'Promo Pack',
+    related: [212, 213]
   },
   {
     id: 404,
@@ -11649,7 +11907,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK
     ],
-    related: [34, 35, 36, 230, 253, 280, 284],
+    related: [33, 34, 35, 36, 230, 253, 280, 284],
     extra: 'Wonder Pick'
   },
   {
@@ -11679,7 +11937,8 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK,
     ],
-    extra: 'Wonder Pick'
+    extra: 'Wonder Pick',
+    related: [53, 54, 55, 56, 232, 256, 401]
   },
 ];
 

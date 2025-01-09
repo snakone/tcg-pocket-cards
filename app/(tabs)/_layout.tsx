@@ -6,7 +6,7 @@ import { Portal, Provider } from 'react-native-paper';
 
 import { AppContext } from '../_layout';
 import { IconSymbol, SvgStackSymbol, SvgStylusSymbol } from '@/components/ui/IconSymbol';
-import { FILTER_CARDS_HEIGHT, MENU_WIDTH, RIPPLE_CONFIG } from '@/shared/definitions/utils/contants';
+import { FILTER_CARDS_HEIGHT, MENU_WIDTH, RIPPLE_CONFIG } from '@/shared/definitions/utils/constants';
 import { CustomTabButtonStyles, TabButtonStyles } from '@/shared/styles/component.styles';
 import TabsMenu from '@/components/shared/TabsMenu';
 import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';

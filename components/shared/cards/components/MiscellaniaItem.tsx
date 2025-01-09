@@ -7,7 +7,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import InvertButton from "@/components/ui/InvertButton";
 import StateButton from "@/components/ui/StateButton";
-import { TYPE_MAP } from "@/shared/definitions/utils/contants";
+import { TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { filterStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";

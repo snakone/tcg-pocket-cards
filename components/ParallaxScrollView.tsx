@@ -4,7 +4,7 @@ import HeaderWithCustomModal from './shared/HeaderModal';
 import { ThemedView } from './ThemedView';
 import { ParallaxProps } from '@/shared/definitions/types/global.types';
 import { ParallaxStyles } from '@/shared/styles/component.styles';
-import { MIN_MODAL_HEIGHT } from '@/shared/definitions/utils/contants';
+import { MIN_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
 
 export default function ParallaxScrollView({
   children,

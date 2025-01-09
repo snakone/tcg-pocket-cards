@@ -26,7 +26,7 @@ import {
   ModalStyles, 
 } from "@/shared/styles/component.styles";
 
-import { getFilterSearch } from "@/shared/definitions/utils/contants";
+import { getFilterSearch } from "@/shared/definitions/utils/constants";
 import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ThemedText } from "@/components/ThemedText";

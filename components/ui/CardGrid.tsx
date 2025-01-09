@@ -41,7 +41,7 @@ import { IconSymbol } from './IconSymbol';
 import { Colors } from '@/shared/definitions/utils/colors';
 import useHeaderAnimation from './HeaderAnimation';
 import { AppState } from '@/hooks/root.reducer';
-import { LARGE_MODAL_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/contants';
+import { LARGE_MODAL_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/constants';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { filterCards, sortCards } from '@/shared/definitions/utils/functions';

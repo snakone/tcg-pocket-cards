@@ -9,7 +9,7 @@ import { ThemedView } from "../ThemedView";
 import { splashImage } from "./SplashImage";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import React from "react";
-import { APP_VERSION } from "@/shared/definitions/utils/contants";
+import { APP_VERSION } from "@/shared/definitions/utils/constants";
 
 export const SplashScreenMemo = memo(({handleStart}: {handleStart: () => void}) => {
   const {i18n} = useI18n();

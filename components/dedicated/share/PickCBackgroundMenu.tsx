@@ -14,7 +14,7 @@ import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
-import { DECK_BACKGROUNDS_70x70 } from "@/shared/definitions/utils/contants";
+import { DECK_BACKGROUNDS_70x70 } from "@/shared/definitions/utils/constants";
 import { AvatarIcon } from "@/shared/definitions/interfaces/global.interfaces";
 import { splashStyles } from "@/components/ui/SplashScreen";
 import { AppContext } from "@/app/_layout";

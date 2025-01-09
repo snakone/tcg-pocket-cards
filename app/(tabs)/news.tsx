@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { FlatList, Platform, RefreshControl, TouchableOpacity } from 'react-native';
+import { FlatList, RefreshControl, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Subscription } from 'rxjs';
 import { useRouter } from 'expo-router';
@@ -9,7 +9,7 @@ import { useI18n } from '@/core/providers/LanguageProvider';
 import { NewsScreenModal } from '@/components/modals';
 import NewsItem from '@/components/dedicated/news/NewsItem';
 import { LanguageType } from '@/shared/definitions/types/global.types';
-import { BACKUP_HEIGHT } from '@/shared/definitions/utils/contants';
+import { BACKUP_HEIGHT } from '@/shared/definitions/utils/constants';
 import { PocketNews } from '@/shared/definitions/interfaces/global.interfaces';
 import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import PocketNewsService from '@/core/services/news.service';

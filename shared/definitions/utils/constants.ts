@@ -88,7 +88,7 @@ import { CardExpansionENUM, CardRarityENUM, CardStageENUM } from "../enums/card.
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { AvatarIcon, PocketNews } from "../interfaces/global.interfaces";
 
-export const APP_VERSION = '1.0.5';
+export const APP_VERSION = '1.0.6';
 export const MENU_WIDTH = 250;
 export const MENU_HEIGHT = 405;
 export const PAGE_TITLE = 'TCG Pocket Cards';
@@ -104,7 +104,7 @@ export const DEFAULT_MODAL_HEIGHT = 236;
 export const LARGE_MODAL_HEIGHT = 508;
 export const SORT_MODAL_HEIGHT = 527;
 export const SELECT_ENERGY_HEIGHT = 590;
-export const BACKUP_HEIGHT = 440;
+export const BACKUP_HEIGHT = 516;
 
 export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
   color: 'rgba(0, 0, 0, .32)', 

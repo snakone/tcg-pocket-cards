@@ -5,7 +5,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
 import { CARD_IMAGE_MAP, CARD_IMAGE_MAP_116x162 } from "@/shared/definitions/utils/card.images";
-import { TYPE_MAP } from "@/shared/definitions/utils/contants";
+import { TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { CardGridStyles, CreateScreenStyles } from "@/shared/styles/component.styles";
 
   export const renderDeckItem = (

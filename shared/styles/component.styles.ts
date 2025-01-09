@@ -7,7 +7,7 @@ import {
   MENU_WIDTH,
   MIN_MODAL_HEIGHT,
   SORT_MODAL_HEIGHT
-} from '../definitions/utils/contants';
+} from '../definitions/utils/constants';
 
 import { Colors } from '../definitions/utils/colors';
 

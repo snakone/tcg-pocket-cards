@@ -8,11 +8,16 @@ import { Subject } from 'rxjs';
 export default class ShareService {
 
   public static importedSettings$ = new Subject<SettingsState>();
+  public static deleteSettings$ = new Subject<void>();
 
   constructor() {}
 
-  public static onImport(settings: SettingsState): void {
+  public static onSettingsImport(settings: SettingsState): void {
     this.importedSettings$.next(settings);
+  }
+
+  public static onDeleteSettings(): void {
+    this.deleteSettings$.next();
   }
 
   public async makeScreenShot(

@@ -3,7 +3,7 @@ import { getLocales } from 'expo-localization';
 import { I18n } from 'i18n-js';
 
 import { TRANSLATIONS } from '@/shared/definitions/sentences/translations';
-import { DEFAULT_LANG } from '@/shared/definitions/utils/contants';
+import { DEFAULT_LANG } from '@/shared/definitions/utils/constants';
 
 const i18n = new I18n(TRANSLATIONS);
 

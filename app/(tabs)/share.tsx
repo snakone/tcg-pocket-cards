@@ -8,7 +8,7 @@ import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { ShareScreenModal } from '@/components/modals';
-import { FlatList, KeyboardAvoidingView, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { FlatList, KeyboardAvoidingView, TextInput, TouchableOpacity, View } from 'react-native';
 import { NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
 import { CardGridStyles, CreateScreenStyles } from '@/shared/styles/component.styles';
 import { IconSymbol } from '@/components/ui/IconSymbol';
@@ -17,7 +17,7 @@ import { AppContext } from '../_layout';
 import { renderDeckItem } from '@/components/dedicated/cards/DeckItem';
 import SoundService from '@/core/services/sounds.service';
 import { StorageDeck } from '@/shared/definitions/interfaces/global.interfaces';
-import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/contants';
+import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
 import { SHARE_IMAGE } from '@/shared/definitions/sentences/path.sentences';
 
 export default function ShareScreen() {
@@ -103,7 +103,7 @@ export default function ShareScreen() {
       <ThemedView style={{marginBottom: 20, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', borderRadius: 8}}>
         <Image source={SHARE_IMAGE} style={{width: '100%', height: 105, borderRadius: 8}}></Image>
       </ThemedView>
-      <ThemedView style={[CreateScreenStyles.decksContainer, {height: 575, padding: 0}]}>
+      <ThemedView style={[CreateScreenStyles.decksContainer, {height: 478, padding: 0}]}>
         <ThemedView style={{flex: 1}}>
           <FlatList data={filtered.sort((a, b) => a?.id > b?.id ? -1 : 1)}
                     numColumns={1}

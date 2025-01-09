@@ -11,7 +11,7 @@ import { Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
 import { CardExpansionENUM } from "../enums/card.enums";
 import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON } from "../sentences/path.sentences";
-import { PACK_MAP } from "./contants";
+import { PACK_MAP } from "./constants";
 import { LanguageType } from "../types/global.types";
 
 export function sortCards(field: keyof Card, data: Card[], sort: SortItem): Card[] {
@@ -160,7 +160,7 @@ export function handleWebInit(): void {
   require('@/shared/styles/web_styles.css');
 }
 
-export function isRouteComingFromSettings(
+export function forceShowSplash(
   navigation: NavigationProp<ReactNavigation.RootParamList>
 ): boolean {
   const state = navigation.getState();

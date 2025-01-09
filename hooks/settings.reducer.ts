@@ -58,6 +58,8 @@ export const settingsReducer = (state: SettingsState, action: SettingsAction): S
       }
     case 'REMOVE_DECK':
         return { ...state, decks: state.decks.filter(d => d.id !== action.value) };
+    case 'RESET_SETTINGS':
+      return { ...settingsInitialState };
     default:
       return state;
   }
@@ -69,3 +71,4 @@ export type SettingsAction =
   | { type: 'REMOVE_FAVORITE', value: number }
   | { type: 'ADD_DECK', value: StorageDeck }
   | { type: 'REMOVE_DECK', value: number }
+  | { type: 'RESET_SETTINGS' }

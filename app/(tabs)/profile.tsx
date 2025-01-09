@@ -2,6 +2,7 @@ import { Platform, Pressable, StyleSheet, TextInput, TouchableOpacity } from 're
 import { Image } from 'expo-image';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
+import React from 'react';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedView } from '@/components/ThemedView';
@@ -9,14 +10,13 @@ import { ThemedText } from '@/components/ThemedText';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import Storage from '@/core/storage/storage.service';
 import { UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
-import { AVATAR_MAP, COIN_MAP } from '@/shared/definitions/utils/contants';
+import { AVATAR_MAP, COIN_MAP } from '@/shared/definitions/utils/constants';
 import { Colors } from '@/shared/definitions/utils/colors';
 import SoundService from '@/core/services/sounds.service';
 import { NO_CONTEXT, USER_LABEL } from '@/shared/definitions/sentences/global.sentences';
 import { AppContext } from '../_layout';
 import { CardGridStyles, TabsMenuStyles } from '@/shared/styles/component.styles';
 import { createDeckStyles } from '../screens/create_deck';
-import React from 'react';
 import { CARD_IMAGE_MAP } from '@/shared/definitions/utils/card.images';
 
 export default function ProfileScreen() {

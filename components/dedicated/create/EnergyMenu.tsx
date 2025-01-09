@@ -8,8 +8,17 @@ import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
-import { SELECT_ENERGY_HEIGHT, TYPE_MAP } from "@/shared/definitions/utils/contants";
-import { LayoutStyles, sortStyles, ModalStyles, filterStyles, ScreenStyles, ButtonStyles } from "@/shared/styles/component.styles";
+import { SELECT_ENERGY_HEIGHT, TYPE_MAP } from "@/shared/definitions/utils/constants";
+
+import { 
+  LayoutStyles,
+  sortStyles,
+  ModalStyles,
+  filterStyles,
+  ScreenStyles, 
+  ButtonStyles
+} from "@/shared/styles/component.styles";
+import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 
 interface EnergyMenuProps {
   element: any,
@@ -18,12 +27,23 @@ interface EnergyMenuProps {
   handleEnergy: (value: string) => void,
 }
 
-export default function EnergyMenu({element, isVisible, handleEnergyModal, handleEnergy}: EnergyMenuProps) {
+export default function EnergyMenu({
+  element, 
+  isVisible, 
+  handleEnergyModal, 
+  handleEnergy
+}: EnergyMenuProps) {
   if (!isVisible) {return; }
   const {i18n} = useI18n();
 
   const isElementWith3MoreEnergy = (element: any): boolean => {
     return Object.keys(element).filter(k => !!(element as any)[k]).length >= 3;
+  }
+
+  const isEnergyDisabled = (key: string): boolean => {
+    return (isElementWith3MoreEnergy(element) && !(element as any)[key]) || 
+    key === String(PokemonTypeENUM.NORMAL) ||
+    key === String(PokemonTypeENUM.DRAGON);
   }
   
   return (
@@ -53,7 +73,7 @@ export default function EnergyMenu({element, isVisible, handleEnergyModal, handl
 
                 return (
                   <TouchableOpacity onPress={() => handleEnergy(key)}
-                                    disabled={isElementWith3MoreEnergy(element) && !(element as any)[key]}
+                                    disabled={isEnergyDisabled(key)}
                                     key={i}
                                     style={[
                                       filterStyles.button,
@@ -62,8 +82,9 @@ export default function EnergyMenu({element, isVisible, handleEnergyModal, handl
                                         justifyContent: 'center',
                                         alignItems: 'center',
                                         width: '48%',
-                                      }, (element as any)[key] && {backgroundColor: '#444444'},
-                                      (isElementWith3MoreEnergy(element) && !(element as any)[key]) && { opacity: 0.5 }
+                                      }, 
+                                      (element as any)[key] && {backgroundColor: '#444444'},
+                                      isEnergyDisabled(key) && { opacity: 0.5 }
                   ]}>
                     <Image
                       source={image}
@@ -75,7 +96,10 @@ export default function EnergyMenu({element, isVisible, handleEnergyModal, handl
                         marginRight: 8,
                       }}
                     />
-                    <ThemedText style={[filterStyles.buttonText, {left: 18}, (element as any)[key] && {color: 'white'},]}>
+                    <ThemedText style={[
+                        filterStyles.buttonText, 
+                        {left: 18}, 
+                        (element as any)[key] && {color: 'white'},]}>
                       {i18n.t(label)}
                     </ThemedText>
                   </TouchableOpacity>

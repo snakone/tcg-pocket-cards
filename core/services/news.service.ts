@@ -1,4 +1,4 @@
-import { LOCAL_HOST, SERVER_URL } from "@/shared/definitions/utils/contants";
+import { LOCAL_HOST, SERVER_URL } from "@/shared/definitions/utils/constants";
 import HttpService from "./http.service";
 import { filter, map, Observable } from "rxjs";
 import { PocketNews, PocketNewsResponse } from "@/shared/definitions/interfaces/global.interfaces";

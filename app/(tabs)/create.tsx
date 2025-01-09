@@ -13,7 +13,7 @@ import { NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.
 import { Colors } from '@/shared/definitions/utils/colors';
 import { CardGridStyles, CreateScreenStyles, ParallaxStyles } from '@/shared/styles/component.styles';
 import HeaderWithCustomModal from '@/components/shared/HeaderModal';
-import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/contants';
+import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
 import SoundService from '@/core/services/sounds.service';
 import { AppContext } from '../_layout';
 import { StorageDeck } from '@/shared/definitions/interfaces/global.interfaces';
@@ -122,7 +122,7 @@ export default function CreateDeckScreen() {
             </Animated.View>
           </ThemedView>
         </View>
-        <ThemedView style={[CreateScreenStyles.decksContainer, {height: 575}]}>
+        <ThemedView style={[CreateScreenStyles.decksContainer, {height: 560}]}>
           <ThemedView style={{flex: 1}}>
             <FlatList data={filtered.sort((a, b) => a?.id > b?.id ? -1 : 1)}
                       numColumns={1}

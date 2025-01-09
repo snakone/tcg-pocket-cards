@@ -26,7 +26,7 @@ import { IconSymbol } from "@/components/ui/IconSymbol";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { detailScrollStyles } from "@/components/dedicated/detail/detail.scroll";
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
-import { SORT_FIELD_MAP, TYPE_MAP } from "@/shared/definitions/utils/contants";
+import { SORT_FIELD_MAP, TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { AppContext } from "../_layout";
 import { CARD_IMAGE_MAP_116x162, CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
@@ -321,10 +321,6 @@ export default function CreateDeckScreen() {
       !deck.find(card => card.stage === CardStageENUM.BASIC) ||
       (
         !getUniqueEnergies(deck).some(type => energies.map(energy => Number(energy)).includes(type)) && 
-        !isPokemonNormalWithEnergy(deck)
-      ) ||
-      (
-        energies.map(energy => Number(energy)).includes(PokemonTypeENUM.NORMAL) && 
         !isPokemonNormalWithEnergy(deck)
       )
     ) {

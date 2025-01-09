@@ -22,7 +22,7 @@ import Storage from '@/core/storage/storage.service';
 import { useError } from "@/core/providers/ErrorProvider";
 import ShareService from "@/core/services/share.service";
 import { AvatarIcon, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
-import { TYPE_MAP } from "@/shared/definitions/utils/contants";
+import { TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { CardGridStyles, CreateScreenStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";

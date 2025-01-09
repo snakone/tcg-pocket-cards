@@ -14,6 +14,8 @@ export const cardsReducer = (state: CardsState, action: CardAction): CardsState 
         return { ...state, navigating: action.value };
     case 'SET_LOADED':
         return { ...state, loaded: action.value };
+    case 'RESET_CARDS':
+      return { ...state, loaded: false, cards: [] };
     default:
       return state;
   }
@@ -29,3 +31,4 @@ export type CardAction =
   | { type: 'SET_CARDS', value: Card[] }
   | { type: 'SET_NAVIGATING', value: boolean }
   | { type: 'SET_LOADED', value: boolean }
+  | { type: 'RESET_CARDS' }

@@ -12,7 +12,7 @@ import { IconSymbol } from "@/components/ui/IconSymbol";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useI18n } from "../../../core/providers/LanguageProvider";
 import { AppContext } from "@/app/_layout";
-import { INITIAL_SORT_DATA } from "@/shared/definitions/utils/contants";
+import { INITIAL_SORT_DATA } from "@/shared/definitions/utils/constants";
 import { cardStyles } from "@/app/(tabs)/cards";
 import SoundService from "@/core/services/sounds.service";
 import React from "react";

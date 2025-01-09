@@ -3,7 +3,7 @@ import { memo, MutableRefObject } from "react";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import SelectInput from "@/components/ui/SelectInput";
-import { DAMAGES } from "@/shared/definitions/utils/contants";
+import { DAMAGES } from "@/shared/definitions/utils/constants";
 import { filterStyles } from "@/shared/styles/component.styles";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useI18n } from "@/core/providers/LanguageProvider";

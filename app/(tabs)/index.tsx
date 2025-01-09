@@ -10,7 +10,7 @@ import { useI18n } from '@/core/providers/LanguageProvider';
 import { homeScreenStyles } from '@/shared/styles/component.styles';
 import { HERO_IMAGE } from '@/shared/definitions/sentences/path.sentences';
 import SoundService from '@/core/services/sounds.service';
-import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/contants';
+import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
 
 export default function HomeScreen() {
   const {i18n} = useI18n();
