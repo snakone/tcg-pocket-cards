@@ -36,9 +36,9 @@ Aquí te mostramos algunas de las secciones clave de la aplicación, aunque hay 
 
 ![alt text](https://i.postimg.cc/ZY9Xwhgt/home-es.png "Home Screen")
 
-![alt text](https://i.postimg.cc/25zxM4SL/cards-es.png "Cards")
+![alt text](https://i.postimg.cc/VsWsYXS1/cards-es.png "Cards")
 
-![alt text](https://i.postimg.cc/xdtP2cXx/decks-es.png "Decks")
+![alt text](https://i.postimg.cc/wTxq33JN/decks-es.png "Decks")
 
 ![alt text](https://i.postimg.cc/fRsFWSbD/settings-es.png "Settings")
 
@@ -158,7 +158,7 @@ Here are some of the key sections of the app, but there are many more. Feel free
 
 ![alt text](https://i.postimg.cc/LXWBJwBj/decks-en.png "Decks")
 
-![alt text](https://i.postimg.cc/8PM9VmNZ/settings-en.png "Decks")
+![alt text](https://i.postimg.cc/dV1VNDVF/settings-en.png "Decks")
 
 You can also **download your decks in image format**. Preview:
 
@@ -276,7 +276,7 @@ Android モバイル デバイスと Web ブラウザーの両方をカバーす
 
 ![alt text](https://i.postimg.cc/hhWLrmYj/decks-ja.png "Decks")
 
-![alt text](https://i.postimg.cc/zfXcKmWQ/settings-ja.png "Settings")
+![alt text](https://i.postimg.cc/Jz24fmsk/settings-ja.png "Settings")
 
 **デッキを画像形式でダウンロード**することもできます。プレビュー:
 

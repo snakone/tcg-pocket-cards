@@ -11,7 +11,7 @@
     "lint": "expo lint",
     "build": "eas build --profile preview --platform android",
     "pre": "expo prebuild --platform android",
-    "web": "npx expo export"
+    "web": "npx expo export --platform web"
   },
   "jest": {
     "preset": "jest-expo"
