@@ -307,6 +307,30 @@ export default function DetailScreen() {
     }
   };
 
+  const panGesture = Gesture.Pan()
+    .onUpdate((event) => {
+      let deltaY = event.translationY < 0 ? 10 : -10;
+      if (isAtMaxHeight.value) {
+        if (scrollYAndroid.value === 0 && deltaY < 0) {
+          isAtMaxHeight.value = false;
+          heightAndroid.value = Math.max(
+            heightAndroid.value + deltaY, 
+            ANDROID_INFO_HEIGHT
+          );
+        }
+      } else {
+        heightAndroid.value = Math.min(
+          Math.max(heightAndroid.value + deltaY, ANDROID_INFO_HEIGHT), 
+          MAX_HEIGHT
+        );
+        if (heightAndroid.value >= MAX_HEIGHT) {
+          isAtMaxHeight.value = true;
+          heightAndroid.value = MAX_HEIGHT;
+        }
+      }
+    }
+  );
+
   const cardAnimatedScale = useDerivedValue(() =>
     withSpring(
       interpolate(
@@ -416,30 +440,6 @@ export default function DetailScreen() {
     };
   });
 
-  const panGesture = Gesture.Pan()
-    .onUpdate((event) => {
-      let deltaY = event.translationY < 0 ? 10 : -10;
-      if (isAtMaxHeight.value) {
-        if (scrollYAndroid.value === 0 && deltaY < 0) {
-          isAtMaxHeight.value = false;
-          heightAndroid.value = Math.max(
-            heightAndroid.value + deltaY, 
-            ANDROID_INFO_HEIGHT
-          );
-        }
-      } else {
-        heightAndroid.value = Math.min(
-          Math.max(heightAndroid.value + deltaY, ANDROID_INFO_HEIGHT), 
-          MAX_HEIGHT
-        );
-        if (heightAndroid.value >= MAX_HEIGHT) {
-          isAtMaxHeight.value = true;
-          heightAndroid.value = MAX_HEIGHT;
-        }
-      }
-    }
-  );
-
   return (
     <Animated.View style={styles.container}>
        { loading && <LoadingOverlay/> }
@@ -497,7 +497,7 @@ export default function DetailScreen() {
               scrollEventThrottle={69}
               bounces={false}
               contentContainerStyle={{alignItems: 'center', justifyContent: 'center'}}
-              style={[]}>
+              style={[scrollAndroidAnimatedStyle]}>
               <DetailCardScroll card={card} state={state}></DetailCardScroll>
             </Animated.ScrollView>
           </ThemedView> : 

@@ -49,7 +49,7 @@ Además puedes **descargar tus mazos en formato imagen**. Previsualización:
 ## Acceso y descarga
 
 * Web: [TCG Pocket Cards Página Oficial](https://tcg-pocket-cards.netlify.app/)
-* APK: [Android Signed APK Bundle](https://mega.nz/file/M9pVzZiQ#VV3cXP-qgP1RX-BT-O3MoZ8lyOoxy4ZFMFQL-MkdSvI)
+* APK: [Android Signed APK Bundle](https://mega.nz/file/M5YhHQzT#4ZU3RhNKZxIMJbvZg_QPkBPPbw9AHKF1E83P3C0B_Y4)
 
 ### Análisis Web
 
@@ -167,7 +167,7 @@ You can also **download your decks in image format**. Preview:
 ## Access and Download
 
 * Web: [TCG Pocket Cards Official Page](https://tcg-pocket-cards.netlify.app/)
-* APK: [Android Signed APK Bundle](https://mega.nz/file/M9pVzZiQ#VV3cXP-qgP1RX-BT-O3MoZ8lyOoxy4ZFMFQL-MkdSvI)
+* APK: [Android Signed APK Bundle](https://mega.nz/file/M5YhHQzT#4ZU3RhNKZxIMJbvZg_QPkBPPbw9AHKF1E83P3C0B_Y4)
 
 ### Web Analysis
 
@@ -285,7 +285,7 @@ Android モバイル デバイスと Web ブラウザーの両方をカバーす
 ## アクセスとダウンロード
 
 * ウェブ: [TCGポケットカード公式ページ](https://tcg-pocket-cards.netlify.app/)
-* APK: [Android 署名済み APK バンドル](https://mega.nz/file/M9pVzZiQ#VV3cXP-qgP1RX-BT-O3MoZ8lyOoxy4ZFMFQL-MkdSvI)
+* APK: [Android 署名済み APK バンドル](https://mega.nz/file/M5YhHQzT#4ZU3RhNKZxIMJbvZg_QPkBPPbw9AHKF1E83P3C0B_Y4)
 
 ### ウェブ解析
 
