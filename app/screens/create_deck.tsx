@@ -6,7 +6,6 @@ import { StyleSheet } from 'react-native';
 import { Portal, Provider } from "react-native-paper";
 import { Image } from 'expo-image';
 import { BlurView } from "expo-blur";
-import { Subscription } from "rxjs";
 import Animated from "react-native-reanimated";
 
 import { 
@@ -31,9 +30,7 @@ import { AppContext } from "../_layout";
 import { CARD_IMAGE_MAP_116x162, CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
-import CardsService from "@/core/services/cards.service";
 import Storage from '@/core/storage/storage.service';
-import { useError } from "@/core/providers/ErrorProvider";
 import FilterCardMenu from "@/components/shared/cards/FilterCardMenu";
 import SortCardMenu from "@/components/shared/cards/SortCardMenu";
 import { SortItem } from "@/shared/definitions/interfaces/layout.interfaces";
@@ -58,13 +55,11 @@ export default function CreateDeckScreen() {
   const [isGridVisible, setIsGridVisible] = useState(false);
   const [isWithEnergy, setIsWithEnergy] = useState(false);
   const [searchCard, setSearchCard] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
   const [deck, setDeck] = useState<any[]>(Array.from({ length: 20 }, (_, i) => (null)));
-  const cardsService = useMemo(() => new CardsService(), []);
-  const { show: showError } = useError();
   const [filtered, setFiltered] = useState<Card[]>(state.cardState.cards);
   const [isSortVisible, setIsSortVisible] = useState(false);
   const [isFilterVisible, setIsFilterVisible] = useState(false);
@@ -88,25 +83,6 @@ export default function CreateDeckScreen() {
     [PokemonTypeENUM.DRAGON]: null,
     [PokemonTypeENUM.NORMAL]: null
   });
-
-  useEffect(() => {
-    const cards: Card[] = state.settingsState.cards;
-
-    if (cards && cards.length !== 0 && !state.cardState.loaded) {
-      dispatch({ type: 'SET_CARDS', value: cards });
-      setLoading(false);
-      return;
-    }
-
-    let sub: Subscription;
-    !state.cardState.loaded ? sub = loadCards() : setLoading(false);
-
-    return () => {
-      if (sub) {
-        sub.unsubscribe();
-      }
-    };
-  }, []);
 
   useEffect(() => {
     const checkDeck = async () => {
@@ -135,26 +111,6 @@ export default function CreateDeckScreen() {
       sub.unsubscribe();
     }
   }, []);
-
-  const loadCards = useCallback(() => {
-    const sub = cardsService
-      .getCards()
-      .subscribe({
-        next: (res) => {
-          dispatch({ type: 'SET_CARDS', value: res });
-          Storage.set('cards', res);
-          setLoading(false);
-        },
-        error: (err) => {
-          console.log(err);
-          showError("error_get_cards");
-          Storage.set('cards', []);
-          setLoading(false);
-        }
-      });
-
-      return sub;
-  }, [dispatch]);
 
   const playSound = async () => {
     SoundService.play('POP_PICK');
@@ -625,7 +581,8 @@ export default function CreateDeckScreen() {
   return (
     <Provider>
       { loading && <LoadingOverlay/> }
-      <SharedScreen title={'create_new_deck'} styles={{paddingInline: 16, marginTop: 0, paddingBottom: 16}} customClose={goBack}>
+      <SharedScreen title={'create_new_deck'} 
+                    styles={{paddingInline: 16, marginTop: 0, paddingBottom: 16}} customClose={goBack}>
         <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between'}}>
           <TextInput style={[CardGridStyles.searchInput, {width: '76%'}]}
                      placeholder={i18n.t('new_deck_placeholder')}

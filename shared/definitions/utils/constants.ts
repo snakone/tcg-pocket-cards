@@ -188,7 +188,8 @@ export const STAGE_MAP: Record<CardStageENUM, {label: string}> = {
 export const EXPANSION_MAP: Record<CardExpansionENUM, CardPackTag> = {
   [CardExpansionENUM.GENETIC_APEX]: { label: 'A', tag: 'A1', color: 'white', background: 'black', promo_amount: 'P-A' },
   [CardExpansionENUM.PROMO_A]: { label: 'A', tag: 'PROMO-A', color: 'white', background: 'black', promo_amount: 'P-A' },
-  [CardExpansionENUM.MYTHICAL_ISLAND]: { label: 'A', tag: 'A1a', color: 'white', background: 'black', promo_amount: 'P-A' }
+  [CardExpansionENUM.MYTHICAL_ISLAND]: { label: 'A', tag: 'A1a', color: 'white', background: 'black', promo_amount: 'P-A' },
+  [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: { label: 'A', tag: 'A2', color: 'white', background: 'black', promo_amount: 'P-A' }
 }
 
 export const EXPANSION_POINTS_RARITY: Record<CardRarityENUM, number> = {
@@ -214,13 +215,16 @@ export const PACK_MAP: Record<EXPANSION, any> = {
   [EXPANSION.WONDER_PICK]: null,
   [EXPANSION.SPECIAL_MISSION]: null,
   [EXPANSION.MYTHICAL_ISLAND]: MYTHICAL_ISLAND_MEW_ICON,
-  [EXPANSION.PROMO_A3]: PROMO_A_ICON
+  [EXPANSION.PROMO_A3]: PROMO_A_ICON,
+  [EXPANSION.DIALGA]: null,
+  [EXPANSION.PALKIA]: null
 }
 
 export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.GENETIC_APEX]: 286,
   [CardExpansionENUM.PROMO_A]: 23,
-  [CardExpansionENUM.MYTHICAL_ISLAND]: 86
+  [CardExpansionENUM.MYTHICAL_ISLAND]: 86,
+  [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 140
 }
 
 export const COIN_MAP: Record<string, any> = {

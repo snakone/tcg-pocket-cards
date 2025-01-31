@@ -8,12 +8,11 @@ import { useI18n } from "@/core/providers/LanguageProvider";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { cardDetailStyles } from "@/shared/styles/component.styles";
-import { RARITY_MAP, TYPE_MAP, STAGE_MAP, EXPANSION_MAP, PACK_AMOUNT_MAP, EXPANSION_POINTS_RARITY } from "@/shared/definitions/utils/constants";
+import { RARITY_MAP, TYPE_MAP, STAGE_MAP, EXPANSION_MAP, PACK_AMOUNT_MAP } from "@/shared/definitions/utils/constants";
 import { getCardPackFrom, isCardPromo, isCardPromoAndBattle, isCardPromoAndNoBattle, isNotBattleCard } from '@/shared/definitions/utils/functions';
 import DetailRelatedCards from './detail.related.cards';
 import { AppState } from '@/hooks/root.reducer';
 import ScrollService from '@/core/services/scroll.service';
-import { PACK_POINTS } from '@/shared/definitions/sentences/path.sentences';
 
 interface CardDetailScroll {
   card: Card,
@@ -249,7 +248,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
         </>
       }
 
-      <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info]}>
+      <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info, {marginBottom: 30}]}>
         <ThemedView style={detailScrollStyles.infoTitle}>
           <ThemedText style={detailScrollStyles.text}>{i18n.t('serie')}</ThemedText>
         </ThemedView>
@@ -259,23 +258,6 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
           </ThemedText>
         </ThemedView>
       </ThemedView>
-
-      {
-        EXPANSION_POINTS_RARITY[card.rarity] > 0 && 
-        <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info, {marginBottom: 30}]}>
-          <ThemedView style={detailScrollStyles.infoTitle}>
-            <ThemedText style={detailScrollStyles.text}>{i18n.t('points')}</ThemedText>
-          </ThemedView>
-          <ThemedView style={[detailScrollStyles.infoValue, {justifyContent: 'center', alignItems: 'center'}]}>
-            <ThemedView style={{flexDirection: 'row', gap: 2, position: 'relative'}}>
-              <Image source={PACK_POINTS} style={[detailScrollStyles.element, detailScrollStyles.points]}></Image>
-              <ThemedText style={detailScrollStyles.text}>
-                {EXPANSION_POINTS_RARITY[card.rarity]}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-        </ThemedView>
-      }
 
       { card.related && card.related?.length > 0 &&
         <ThemedView style={[cardDetailStyles.itemInfo, {padding: 0, overflow: 'hidden'}]}>

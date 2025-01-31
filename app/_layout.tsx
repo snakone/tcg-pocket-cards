@@ -2,11 +2,12 @@ import { useFonts } from 'expo-font';
 import { Stack, useNavigation } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { createContext, useEffect, useMemo, useReducer, useState } from 'react';
+import { createContext, useCallback, useEffect, useMemo, useReducer, useState } from 'react';
 import { Platform } from 'react-native';
 import { Provider } from 'react-native-paper';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as NavigationBar from "expo-navigation-bar";
+import { Subscription } from 'rxjs';
 
 import { rootReducer, initialRootState, AppState } from '@/hooks/root.reducer';
 import BackgroundMusic from '@/components/shared/BackgroundMusic';
@@ -22,6 +23,8 @@ import { ThemedView } from '@/components/ThemedView';
 import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import { SplashScreenMemo } from '@/components/ui/SplashScreen';
 import { ConfirmationProvider } from '@/core/providers/ConfirmationProvider';
+import CardsService from '@/core/services/cards.service';
+import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 
 export const AppContext = createContext<{ state: AppState; dispatch: React.Dispatch<any> } | undefined>(undefined);
 SplashScreen.preventAutoHideAsync();
@@ -34,8 +37,47 @@ export default function RootLayout() {
   const [waiting, setWaiting] = useState(true);
   const contextValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
   const { setLocale }  = useI18n();
-  const {i18n} = useI18n();
   const navigation = useNavigation();
+  const cardsService = new CardsService();
+  const [loading, setLoading] = useState(true);
+  
+  const loadCards = useCallback(() => {
+    const sub = cardsService
+      .getCards()
+      .subscribe({
+        next: (res) => {
+          dispatch({ type: 'SET_CARDS', value: res });
+          Storage.set('cards', res);
+          setLoading(false);
+        },
+        error: (err) => {
+          console.log(err);
+          Storage.set('cards', []);
+          setLoading(false);
+        }
+      });
+
+      return sub;
+  }, []);
+
+  useEffect(() => {
+    const cards: Card[] = state.settingsState.cards;
+
+    if (cards && cards.length !== 0 && !state.cardState.loaded) {
+      dispatch({ type: 'SET_CARDS', value: cards });
+      setLoading(false);
+      return;
+    }
+    
+    let sub: Subscription;
+    !state.cardState.loaded ? sub = loadCards() : setLoading(false);
+
+    return () => {
+      if (sub) {
+        sub.unsubscribe();
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (loaded) SplashScreen.hideAsync();
@@ -103,7 +145,7 @@ export default function RootLayout() {
     SoundService.play('CHANGE_VIEW');
   }
 
-  if (!loaded || waiting) { 
+  if (!loaded || waiting || loading) { 
     return (
       <LoadingOverlay></LoadingOverlay>
     )

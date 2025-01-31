@@ -353,6 +353,7 @@ export const TabButtonStyles = StyleSheet.create({
     top: 2,
     position: 'relative',
     fontSize: 24,
+    left: 2
   },
   stacks: {
     marginTop: 7,
@@ -364,6 +365,10 @@ export const TabButtonStyles = StyleSheet.create({
     marginTop: 7,
     fontSize: 15,
     top: Platform.OS === 'web' ? 3 : 2,
+    position: 'relative'
+  },
+  trade: {
+    top: Platform.OS === 'web' ? 6 : 4,
     position: 'relative'
   },
   menu: {

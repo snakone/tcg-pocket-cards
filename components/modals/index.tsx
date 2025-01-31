@@ -11,3 +11,4 @@ export { PoliticsModal } from "@/components/modals/PoliticsModal";
 export { ShareScreenModal } from '@/components/modals/ShareScreenModal';
 export { TermsModal } from "@/components/modals/TermsModal";
 export { UserDataModal } from "@/components/modals/UserDataModal";
+export { TradeScreenModal } from "@/components/modals/TradeScreenModal";

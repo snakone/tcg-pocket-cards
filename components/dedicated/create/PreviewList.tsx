@@ -1,3 +1,8 @@
+import { FlatList, Animated, TextInput, Platform, TouchableOpacity, View } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import React, { useCallback, useEffect, useState } from "react";
+import { Image } from 'expo-image';
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { useI18n } from "@/core/providers/LanguageProvider";
@@ -5,10 +10,6 @@ import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
 import { CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";
 import { CardGridStyles } from "@/shared/styles/component.styles";
-import { MaterialIcons } from "@expo/vector-icons";
-import React, { useCallback, useEffect, useState } from "react";
-import { FlatList, Animated, TextInput, Platform, TouchableOpacity, View } from "react-native";
-import { Image } from 'expo-image';
 import { SoundService } from "@/core/services/sounds.service";
 import { AppState } from "@/hooks/root.reducer";
 import { Colors } from "@/shared/definitions/utils/colors";

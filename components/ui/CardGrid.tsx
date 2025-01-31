@@ -59,7 +59,7 @@ interface GridCardProps {
 
 export default function ImageGridWithSearch({ state, title, modal, modalTitle, type = 'default' }: GridCardProps) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [filtered, setFiltered] = useState<Card[]>(state.cardState.cards);
+  const [filtered, setFiltered] = useState<Card[]>([]);
   const [favorites, setFavorites] = useState<Card[]>(
     state.cardState.cards.filter(c => state.settingsState.favorites?.includes(c.id))
   );
@@ -91,6 +91,10 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
     setIsGrid5(previousState => !previousState);
     playSound(true);
   };
+
+  useEffect(() => {
+    setFiltered(state.cardState.cards);
+  }, [state.cardState.cards]);
 
   useEffect(() => {
     if (!filtered || filtered.length === 0) { return; }

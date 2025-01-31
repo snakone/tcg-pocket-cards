@@ -1,5 +1,4 @@
 import { useLocalSearchParams } from "expo-router";
-import { Subscription } from "rxjs";
 import { FlatList, Platform, Pressable, View, StyleSheet, TouchableOpacity } from "react-native";
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -17,9 +16,7 @@ import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AppContext } from "../_layout";
 import DeckCollage from "@/components/dedicated/share/DeckCollage";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import CardsService from "@/core/services/cards.service";
 import Storage from '@/core/storage/storage.service';
-import { useError } from "@/core/providers/ErrorProvider";
 import ShareService from "@/core/services/share.service";
 import { AvatarIcon, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { TYPE_MAP } from "@/shared/definitions/utils/constants";
@@ -42,10 +39,8 @@ export default function ShareDeckScreen() {
   const { state, dispatch } = context;
   const [deck, setDeck] = useState<any[]>(Array.from({ length: 20 }, (_, i) => (null)));
   const [deckName, setDeckName] = useState('');
-  const [loading, setLoading] = useState(true);
-  const cardsService = useMemo(() => new CardsService(), []);
+  const [loading, setLoading] = useState(false);
   const shareService = useMemo(() => new ShareService(), []);
-  const { show: showError } = useError();
   const ref = useRef<any>(null);
   const [isBackgroundVisible, setIsBackgroundVisible] = useState(false);
   const [background, setBackground] = useState<AvatarIcon>();
@@ -68,45 +63,6 @@ export default function ShareDeckScreen() {
     [PokemonTypeENUM.DRAGON]: null,
     [PokemonTypeENUM.NORMAL]: null
   });
-
-  useEffect(() => {
-    const cards: Card[] = state.settingsState.cards;
-
-    if (cards && cards.length !== 0 && !state.cardState.loaded) {
-      dispatch({ type: 'SET_CARDS', value: cards });
-      setLoading(false);
-      return;
-    }
-
-    let sub: Subscription;
-    !state.cardState.loaded ? sub = loadCards() : setLoading(false);
-
-    return () => {
-      if (sub) {
-        sub.unsubscribe();
-      }
-    };
-  }, []);
-
-  const loadCards = useCallback(() => {
-    const sub = cardsService
-      .getCards()
-      .subscribe({
-        next: (res) => {
-          dispatch({ type: 'SET_CARDS', value: res });
-          Storage.set('cards', res);
-          setLoading(false);
-        },
-        error: (err) => {
-          console.log(err);
-          showError("error_get_cards");
-          Storage.set('cards', []);
-          setLoading(false);
-        }
-      });
-
-      return sub;
-  }, [dispatch]);
 
   useEffect(() => {
     const checkDeck = async () => {

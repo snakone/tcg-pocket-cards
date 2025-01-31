@@ -5,4 +5,14 @@ body {
   background-image: url('https://wallpapercave.com/wp/wp2711094.jpg');
   overflow-y: auto;
   touch-action: none;
+  user-select: none;
+}
+
+@media screen and (max-height: 844px) {
+  html, body {
+    height: auto;
+    min-height: 100%;
+    display: grid;
+    place-items: center;
+  }
 }
