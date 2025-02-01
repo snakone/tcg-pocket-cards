@@ -40,6 +40,42 @@ export default function RootLayout() {
   const navigation = useNavigation();
   const cardsService = new CardsService();
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const checkStorage = async () => {
+      const version = await Storage.get('version');
+      if (version === null) {
+        const settings = {...state.settingsState, version: APP_VERSION};
+        dispatch({type: 'SET_SETTINGS', value: settings});
+        setLocale(settings.language);
+        Storage.setSettings(settings);
+        loadCards();
+      } else {
+        const settings = await Storage.loadSettings();
+        if (settings !== null) {
+          dispatch({type: 'SET_SETTINGS', value: {...settings, version: APP_VERSION}});
+          SoundService.setEnabled(settings.sound)
+          setLocale(settings.language);
+          setShowStartScreen(settings.show_intro);
+
+          if (version !== APP_VERSION || settings.cards.length === 0) {
+            Storage.set('version', APP_VERSION);
+            Storage.set('cards', []);
+            dispatch({type: 'RESET_CARDS'});
+            loadCards();
+          } 
+
+          if (settings.cards.length !== 0) {
+            dispatch({ type: 'SET_CARDS', value: settings.cards });
+            setLoading(false);
+          }
+        }
+      }
+      setTimeout(() => setWaiting(false), 1500);
+    }
+
+    checkStorage();
+  }, []);
   
   const loadCards = useCallback(() => {
     const sub = cardsService
@@ -58,25 +94,6 @@ export default function RootLayout() {
       });
 
       return sub;
-  }, []);
-
-  useEffect(() => {
-    const cards: Card[] = state.settingsState.cards;
-
-    if (cards && cards.length !== 0 && !state.cardState.loaded) {
-      dispatch({ type: 'SET_CARDS', value: cards });
-      setLoading(false);
-      return;
-    }
-    
-    let sub: Subscription;
-    !state.cardState.loaded ? sub = loadCards() : setLoading(false);
-
-    return () => {
-      if (sub) {
-        sub.unsubscribe();
-      }
-    };
   }, []);
 
   useEffect(() => {
@@ -103,35 +120,6 @@ export default function RootLayout() {
         setShouldShowSplash(true);
       }
     });
-  }, []);
-
-  useEffect(() => {
-    const checkStorage = async () => {
-      const version = await Storage.get('version');
-      if (version === null) {
-        const settings = {...state.settingsState, version: APP_VERSION};
-        dispatch({type: 'SET_SETTINGS', value: settings});
-        setLocale(settings.language);
-        Storage.setSettings(settings);
-      } else {
-        const settings = await Storage.loadSettings();
-        if (settings !== null) {
-          dispatch({type: 'SET_SETTINGS', value: {...settings, version: APP_VERSION}});
-          SoundService.setEnabled(settings.sound)
-          setLocale(settings.language);
-          setShowStartScreen(settings.show_intro);
-
-          if (version !== APP_VERSION) {
-            Storage.set('version', APP_VERSION);
-            Storage.set('cards', []);
-            dispatch({type: 'RESET_CARDS'});
-          }
-        }
-      }
-      setTimeout(() => setWaiting(false), 1500);
-    }
-
-    checkStorage();
   }, []);
 
   useEffect(() => {
