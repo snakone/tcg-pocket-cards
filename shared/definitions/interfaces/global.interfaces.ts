@@ -57,7 +57,6 @@ export type NewsContent =
 export interface TradeItem {
   id: string;
   title: string;
-  name: string;
   tcg: number[];
   discord: string;
   desired: number;

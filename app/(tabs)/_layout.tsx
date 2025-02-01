@@ -210,7 +210,7 @@ export default function TabLayout() {
           options={{
             tabBarIcon: ({ color }) =>
               <SvgTradeSymbol color={color}
-                              style={[TabButtonStyles.trade, emulatorStyle() && {top: 0, left: 2}]} />,
+                              style={[TabButtonStyles.trade, emulatorStyle() && {top: 1, left: 3}]} />,
             animation: 'shift',
             title: i18n.t('trade')
           }}

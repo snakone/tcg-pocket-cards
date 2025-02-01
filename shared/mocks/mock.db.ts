@@ -6178,7 +6178,7 @@ export const MOCK_DB_CARDS: Card[] = [
         energy: [PokemonTypeENUM.NORMAL],
       },
     ],
-    evolve: "Flareon Vaporeon Jolteon",
+    evolve: "Flareon Vaporeon Jolteon Leafon Glaceon",
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Its ability to evolve into many forms allows it to adapt smoothly and perfectly to any environment.',
@@ -6207,7 +6207,7 @@ export const MOCK_DB_CARDS: Card[] = [
         energy: [PokemonTypeENUM.NORMAL],
       },
     ],
-    evolve: "Flareon Vaporeon Jolteon",
+    evolve: "Flareon Vaporeon Jolteon Leafon Glaceon",
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Its ability to evolve into many forms allows it to adapt smoothly and perfectly to any environment.',
@@ -6236,7 +6236,7 @@ export const MOCK_DB_CARDS: Card[] = [
         energy: [PokemonTypeENUM.NORMAL],
       },
     ],
-    evolve: "Flareon Vaporeon Jolteon",
+    evolve: "Flareon Vaporeon Jolteon Leafon Glaceon",
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Its ability to evolve into many forms allows it to adapt smoothly and perfectly to any environment.',
@@ -6474,7 +6474,7 @@ export const MOCK_DB_CARDS: Card[] = [
     number: 216,
     name: 'Helix Fossil',
     artist: 'Toyste Beach',
-    evolve: null,
+    evolve: 'Omanyte',
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Play this card as if it were a 40-HP Basic Colorless Pokémon. At any time during your turn, you may discard this card from play. This card can’t retreat.',
@@ -6495,7 +6495,7 @@ export const MOCK_DB_CARDS: Card[] = [
     number: 217,
     name: 'Dome Fossil',
     artist: 'Toyste Beach',
-    evolve: null,
+    evolve: 'Kabuto',
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Play this card as if it were a 40-HP Basic Colorless Pokémon. At any time during your turn, you may discard this card from play. This card can’t retreat.',
@@ -6516,7 +6516,7 @@ export const MOCK_DB_CARDS: Card[] = [
     number: 218,
     name: 'Old Amber',
     artist: 'Toyste Beach',
-    evolve: null,
+    evolve: 'Aerodactyl',
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Play this card as if it were a 40-HP Basic Colorless Pokémon. At any time during your turn, you may discard this card from play. This card can’t retreat.',
@@ -7340,7 +7340,7 @@ export const MOCK_DB_CARDS: Card[] = [
         energy: [PokemonTypeENUM.NORMAL],
       },
     ],
-    evolve: "Flareon Vaporeon Jolteon",
+    evolve: "Flareon Vaporeon Jolteon Leafon Glaceon",
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Its ability to evolve into many forms allows it to adapt smoothly and perfectly to any environment.',
@@ -10317,7 +10317,7 @@ export const MOCK_DB_CARDS: Card[] = [
         description: "Flip a coin until you get tails. This attack does 20 more damage for each heads."
       }
     ],
-    evolve: "Flareon Vaporeon Jolteon",
+    evolve: "Flareon Vaporeon Jolteon Leafon Glaceon",
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: 'Its ability to evolve into many forms allows it to adapt smoothly and perfectly to any environment.',
@@ -10368,7 +10368,7 @@ export const MOCK_DB_CARDS: Card[] = [
     number: 63,
     name: 'Old Amber',
     artist: 'Toyste Beach',
-    evolve: null,
+    evolve: 'Aerodactyl',
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: 'Play this card as if it were a 40-HP Basic Colorless Pokémon. At any time during your turn, you may discard this card from play. This card can’t retreat.',
@@ -11032,6 +11032,6119 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 373,
     number: 1,
+    pokedex: 43,
+    name: 'Oddish',
+    artist: 'Asako Ito',
+    attacks: [
+      {
+        name: 'Blot',
+        damage: 10,
+        energy: [PokemonTypeENUM.GRASS],
+        description: 'Heal 10 damage from this Pokémon.'
+      }
+    ],
+    evolve: 'Gloom',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'If exposed to moonlight, it starts to move. It roams far and wide at night to scatter its seeds.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 374,
+    number: 2,
+    pokedex: 44,
+    name: 'Gloom',
+    artist: 'Shibuzah',
+    attacks: [
+      {
+        name: 'Razor Leaf',
+        damage: 30,
+        energy: [PokemonTypeENUM.GRASS],
+      }
+    ],
+    evolve: 'Vileplume Bellossom',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its pistils exude an incredibly foul odor. The horrid stench can cause fainting at a distance of 1.25 miles.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [406]
+  },
+  {
+    id: 375,
+    number: 3,
+    pokedex: 182,
+    name: 'Bellossom',
+    artist: 'Naoyo Kimura',
+    attacks: [
+      {
+        name: 'Leaf Step',
+        damage: 80,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Plentiful in the tropics. When it dances, its petals rub together and make a pleasant ringing sound.',
+    health: 130,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [407]
+  },
+  {
+    id: 376,
+    number: 4,
+    pokedex: 114,
+    name: 'Tangela',
+    artist: 'Narumi Sato',
+    attacks: [
+      {
+        name: 'Vine Whip',
+        damage: 30,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Tangrowth',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Hidden beneath a tangle of vines that grows nonstop even if the vines are torn off, this Pokémon’s true appearance remains a mystery.',
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 377,
+    number: 5,
+    pokedex: 465,
+    name: 'Tangrowth',
+    artist: 'kodama',
+    attacks: [
+      {
+        name: 'Mega Drain',
+        damage: 90,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+        description: 'Heal 30 damage from this Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Tangrowth has two arms that it can extend as it pleases. Recent research has shown that these arms are, in fact, bundles of vines.',
+    health: 130,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [409]
+  },
+  {
+    id: 378,
+    number: 6,
+    pokedex: 193,
+    name: 'Yanma',
+    artist: 'Eri Yamaki',
+    attacks: [
+      {
+        name: 'Flap',
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: 'Yanmega',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its eyes can see 360 degrees without moving its head. It won’t miss prey—even those behind it.',
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 379,
+    number: 7,
+    pokedex: 469,
+    name: 'Yanmega EX',
+    artist: 'PLANETA Tsuji',
+    attacks: [
+      {
+        name: 'Air Slash',
+        damage: 120,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'Discard a random Energy from this Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [411]
+  },
+  {
+    id: 380,
+    number: 8,
+    pokedex: 315,
+    name: 'Roselia',
+    artist: 'kirisAki',
+    attacks: [
+      {
+        name: 'Sting',
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS]
+      }
+    ],
+    evolve: 'Roserade',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its flowers give off a relaxing fragrance. The stronger its aroma, the healthier the Roselia is.',
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 381,
+    number: 9,
+    pokedex: 407,
+    name: 'Roserade',
+    artist: 'Masakazu Fukuda',
+    attacks: [
+      {
+        name: 'Poisonous Whip',
+        damage: 50,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+        description: 'Your opponent’s Active Pokémon is now Poisoned.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'After captivating opponents with its sweet scent, it lashes them with its thorny whips.',
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [380]
+  },
+  {
+    id: 382,
+    number: 10,
+    pokedex: 387,
+    name: 'Turtwig',
+    artist: 'OOYAMA',
+    attacks: [
+      {
+        name: 'Bite',
+        damage: 30,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Grotle',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It uses its whole body to photosynthesize when exposed to sunlight. Its shell is made from hardened soil.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 383,
+    number: 11,
+    pokedex: 388,
+    name: 'Grotle',
+    artist: 'Sumiyoshi Kizuki',
+    attacks: [
+      {
+        name: 'Razor Leaf',
+        damage: 60,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Torterra',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It lives along water in forests. In the daytime, it leaves the forest to sunbathe its treed shell.',
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [382]
+  },
+  {
+    id: 384,
+    number: 12,
+    pokedex: 389,
+    name: 'Torterra',
+    artist: 'kawayoo',
+    attacks: [
+      {
+        name: 'Frenzy Plant',
+        damage: 160,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'During your next turn, this Pokémon can’t use Frenzy Plant.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Ancient people imagined that beneath the ground dwelt a gigantic Torterra.',
+    health: 160,
+    rarity: CardRarityENUM.RARE,
+    retreat: 4,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [383]
+  },
+  {
+    id: 385,
+    number: 13,
+    pokedex: 401,
+    name: 'Kricketot',
+    artist: 'Shigenori Negishi',
+    attacks: [
+      {
+        name: 'Bug Bite',
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS]
+      }
+    ],
+    evolve: 'Kricketune',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its legs are short. Whenever it stumbles, its stiff antennae clack with a xylophone-like sound.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 386,
+    number: 14,
+    pokedex: 402,
+    name: 'Kricketune',
+    artist: 'Naoyo Kimura',
+    attacks: [
+      {
+        name: 'Entrancing Melody',
+        damage: 50,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+        description: 'Your opponent’s Active Pokémon is now Confused.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'By allowing its cry to resonate in the hollow of its belly, it produces a captivating sound.',
+    health: 90,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [385]
+  },
+  {
+    id: 387,
+    number: 15,
+    pokedex: 412,
+    name: 'Burmy',
+    artist: 'Mugi Hamada',
+    attacks: [
+      {
+        name: 'Tackle',
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Wormadam',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'To shelter itself from cold, wintry winds, it covers itself with a cloak made of twigs and leaves.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 388,
+    number: 16,
+    pokedex: 413,
+    name: 'Wormadam',
+    artist: 'Kouki Saitou',
+    attacks: [
+      {
+        name: 'Leaf Cutter',
+        damage: 60,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'Flip a coin. If heads, this attack does 30 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its appearance changes depending on where it evolved. The materials on hand become a part of its body.',
+    health: 120,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [387]
+  },
+  {
+    id: 389,
+    number: 17,
+    pokedex: 415,
+    name: 'Combee',
+    artist: 'Yukiko Baba',
+    attacks: [
+      {
+        name: 'Call for Family',
+        damage: 0,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: 'Put 1 random Combee from your deck onto your Bench.'
+      }
+    ],
+    evolve: 'Vespiquen',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'At night, Combee sleep in a group of about a hundred, packed closely together in a lump.',
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA
+    ],
+    related: []
+  },
+  {
+    id: 390,
+    number: 18,
+    pokedex: 416,
+    name: 'Vespiquen',
+    artist: 'chibi',
+    attacks: [
+      {
+        name: 'Pierce',
+        damage: 70,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It houses its colony in cells in its body and releases various pheromones to make those grubs do its bidding.',
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA
+    ],
+    related: [389]
+  },
+  {
+    id: 391,
+    number: 19,
+    pokedex: 455,
+    name: 'Carnivine',
+    artist: 'Anesaki Dynamic',
+    attacks: [
+      {
+        name: 'Flog',
+        damage: 40,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+        description: 'Flip a coin. If heads, this attack does 50 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It attracts prey with its sweet-smelling saliva, then chomps down. It takes a whole day to eat prey.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 392,
+    number: 20,
+    pokedex: 470,
+    name: 'Leafeon',
+    artist: 'Kouki Saitou',
+    attacks: [
+      {
+        name: 'Leafy Cyclone',
+        damage: 90,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+        description: 'During your next turn, this Pokémon can’t attack.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'When you see Leafeon asleep in a patch of sunshine, you’ll know it is using photosynthesis to produce clean air.',
+    health: 90,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA
+    ],
+    related: []
+  },
+  {
+    id: 393,
+    number: 21,
+    pokedex: 479,
+    name: 'Mow Rotom',
+    artist: 'kawayoo',
+    attacks: [
+      {
+        name: 'Energy Cutoff',
+        damage: 30,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+        description: 'Flip a coin. If heads, discard a random Energy from your opponent’s Active Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'The lawn mower is one of the household appliances that led to the development of the Rotom Dex.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 394,
+    number: 22,
+    pokedex: 492,
+    name: 'Shaymin',
+    artist: 'Narumi Sato',
+    attacks: [
+      {
+        name: 'Flop',
+        damage: 30,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: 'Fragrant Flower Garden',
+      description: 'Once during your turn, you may heal 10 damage from each of your Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It can dissolve toxins in the air to instantly transform ruined land into a lush field of flowers.',
+    health: 60,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA
+    ],
+    related: []
+  },
+  {
+    id: 395,
+    number: 23,
+    pokedex: 126,
+    name: 'Magmar',
+    artist: 'Hiroki Asanuma',
+    attacks: [
+      {
+        name: 'Stoke',
+        damage: 0,
+        energy: [PokemonTypeENUM.FIRE],
+        description: 'Take a Fire Energy from your Energy Zone and attach it to this Pokémon.'
+      }
+    ],
+    evolve: 'Magmortar',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Magmar dispatches its prey with fire. But it regrets this habit once it realizes that it has burned its intended prey to a charred crisp.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 396,
+    number: 24,
+    pokedex: 467,
+    name: 'Magmortar',
+    artist: 'KEIICHIRO ITO',
+    attacks: [
+      {
+        name: 'Bursting Inferno',
+        damage: 100,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE],
+        description: 'Your opponent’s Active Pokémon is now Burned.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'When Magmortar inhales deeply, the fire burning in its belly intensifies, rising in temperature to over 3,600 degrees Fahrenheit.',
+    health: 130,
+    rarity: CardRarityENUM.RARE,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [395]
+  },
+  {
+    id: 397,
+    number: 25,
+    pokedex: 218,
+    name: 'Slugma',
+    artist: 'Naoyo Kimura',
+    attacks: [
+      {
+        name: 'Flare',
+        damage: 20,
+        energy: [PokemonTypeENUM.FIRE]
+      }
+    ],
+    evolve: 'Magcargo',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'A common sight in volcanic areas, it slowly slithers around in a constant search for warm places.',
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 398,
+    number: 26,
+    pokedex: 219,
+    name: 'Magcargo',
+    artist: 'Oswaldo KATO',
+    attacks: [
+      {
+        name: 'Searing Flame',
+        damage: 30,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
+        description: 'Your opponent’s Active Pokémon is now Burned.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its brittle shell occasionally spouts intense flames that circulate throughout its body.',
+    health: 120,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [397]
+  },
+  {
+    id: 399,
+    number: 27,
+    pokedex: 390,
+    name: 'Chimchar',
+    artist: 'Kagemaru Himeno',
+    attacks: [
+      {
+        name: 'Scratch',
+        damage: 20,
+        energy: [PokemonTypeENUM.FIRE]
+      }
+    ],
+    evolve: 'Monferno',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its fiery rear end is fueled by gas made in its belly. Even rain can’t extinguish the fire.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 400,
+    number: 28,
+    pokedex: 391,
+    name: 'Monferno',
+    artist: 'Masakazu Fukuda',
+    attacks: [
+      {
+        name: 'Fiery Punch',
+        damage: 30,
+        energy: [PokemonTypeENUM.FIRE]
+      }
+    ],
+    evolve: 'Infernape',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It skillfully controls the intensity of the fire on its tail to keep its foes at an ideal distance.',
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [399]
+  },
+  {
+    id: 401,
+    number: 29,
+    pokedex: 392,
+    name: 'Infernape EX',
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: 'Flare Blitz',
+        damage: 140,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE],
+        description: 'Discard all Fire Energy from this Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 170,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 0,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [400]
+  },
+  {
+    id: 402,
+    number: 30,
+    pokedex: 479,
+    name: 'Heat Rotom',
+    artist: 'Kedamahadaitai Yawarakai',
+    attacks: [
+      {
+        name: 'Heat Breath',
+        damage: 30,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
+        description: 'Flip a coin. If heads, this attack does 30 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'If the convection microwave oven is not working properly, then the Rotom inhabiting it will become lethargic.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 403,
+    number: 31,
+    pokedex: 220,
+    name: 'Swinub',
+    artist: 'Eri Yamaki',
+    attacks: [
+      {
+        name: 'Headbutt',
+        damage: 40,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Piloswine',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It rubs its snout on the ground to find and dig up food. It sometimes discovers hot springs.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 404,
+    number: 32,
+    pokedex: 221,
+    name: 'Piloswine',
+    artist: 'Suwama Chiaki',
+    attacks: [
+      {
+        name: 'Hammer In',
+        damage: 60,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: 'Thick Fat',
+      description: 'This Pokémon takes −20 damage from attacks from Fire or Water Pokémon.'
+    },
+    evolve: 'Mamoswine',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'If it charges at an enemy, the hairs on its back stand up straight. It is very sensitive to sound.',
+    health: 110,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [403]
+  },
+  {
+    id: 405,
+    number: 33,
+    pokedex: 473,
+    name: 'Mamoswine',
+    artist: 'match',
+    attacks: [
+      {
+        name: 'Frosty Flattening',
+        damage: 120,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: 'Thick Fat',
+      description: 'This Pokémon takes −20 damage from attacks from Fire or Water Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'This Pokémon can be spotted in wall paintings from as far back as 10,000 years ago. For a while, it was thought to have gone extinct.',
+    health: 160,
+    rarity: CardRarityENUM.RARE,
+    retreat: 4,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [404]
+  },
+  {
+    id: 406,
+    number: 34,
+    pokedex: 378,
+    name: 'Regice',
+    artist: 'Tomokazu Komiya',
+    attacks: [
+      {
+        name: 'Frost Smash',
+        damage: 50,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER]
+      }
+    ],
+    ability: {
+      name: 'Crystal Body',
+      description: 'Prevent all effects of attacks used by your opponent’s Pokémon done to this Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'With cold air that can reach temperatures as low as −328 degrees Fahrenheit, Regice instantly freezes any creature that approaches it.',
+    health: 110,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 407,
+    number: 35,
+    pokedex: 393,
+    name: 'Piplup',
+    artist: 'Hajime Kusajima',
+    attacks: [
+      {
+        name: 'Nap',
+        damage: 0,
+        energy: [PokemonTypeENUM.WATER],
+        description: 'Heal 20 damage from this Pokémon.'
+      }
+    ],
+    evolve: 'Prinplup',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It doesn’t like to be taken care of. It’s difficult to bond with since it won’t listen to its Trainer.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 408,
+    number: 36,
+    pokedex: 394,
+    name: 'Prinplup',
+    artist: 'Mizue',
+    attacks: [
+      {
+        name: 'Surf',
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Empoleon',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It lives alone, away from others. Apparently, every one of them believes it is the most important.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [407]
+  },
+  {
+    id: 409,
+    number: 37,
+    pokedex: 395,
+    name: 'Empoleon',
+    artist: 'Satoshi Shirai',
+    attacks: [
+      {
+        name: 'Aqua Jet',
+        damage: 80,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+        description: 'This attack also does 30 damage to 1 of your opponent’s Benched Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It swims as fast as a jet boat. The edges of its wings are sharp and can slice apart drifting ice.',
+    health: 150,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [408]
+  },
+  {
+    id: 410,
+    number: 38,
+    pokedex: 418,
+    name: 'Buizel',
+    artist: 'OKUBO',
+    attacks: [
+      {
+        name: 'Water Gun',
+        damage: 20,
+        energy: [PokemonTypeENUM.WATER]
+      }
+    ],
+    evolve: 'Floatzel',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It spins its two tails like a screw to propel itself through water. The tails also slice clinging seaweed.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 411,
+    number: 39,
+    pokedex: 419,
+    name: 'Floatzel',
+    artist: 'Kanako Eo',
+    attacks: [
+      {
+        name: 'Jet Screw',
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER],
+        description: 'Flip a coin. If heads, this attack does 30 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'With its flotation sac inflated, it can carry people on its back. It deflates the sac before it dives.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [410]
+  },
+  {
+    id: 412,
+    number: 40,
+    pokedex: 422,
+    name: 'Shellos',
+    artist: 'Teeziro',
+    attacks: [
+      {
+        name: 'Mud-Slap',
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Gastrodon',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It used to have a shell on its back long ago. This species is closely related to Pokémon like Shellder.',
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 413,
+    number: 41,
+    pokedex: 423,
+    name: 'Gastrodon',
+    artist: 'Aya Kusube',
+    attacks: [
+      {
+        name: 'Muddy Water',
+        damage: 60,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'They normally inhabit rocky seashores, but in times of continuous rain, they can sometimes be found in the mountains, far from the sea.',
+    health: 120,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [412]
+  },
+  {
+    id: 414,
+    number: 42,
+    pokedex: 456,
+    name: 'Finneon',
+    artist: 'Shigenori Negishi',
+    attacks: [
+      {
+        name: 'Elegant Swim',
+        damage: 10,
+        energy: [PokemonTypeENUM.WATER],
+        description: 'Flip a coin. If heads, during your opponent’s next turn, prevent all damage from-and effects of-attacks done to this Pokémon.'
+      }
+    ],
+    evolve: 'Lumineon',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'The line running down its side can store sunlight. It shines vividly at night.',
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 415,
+    number: 43,
+    pokedex: 457,
+    name: 'Lumineon',
+    artist: 'rika',
+    attacks: [
+      {
+        name: 'Waterfall',
+        damage: 50,
+        energy: [PokemonTypeENUM.WATER]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'With its shining light, it lures its prey close. However, the light also happens to attract ferocious fish Pokémon—its natural predators.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [414]
+  },
+  {
+    id: 416,
+    number: 44,
+    pokedex: 459,
+    name: 'Snover',
+    artist: 'match',
+    attacks: [
+      {
+        name: 'Ice Shard',
+        damage: 10,
+        energy: [PokemonTypeENUM.WATER],
+        description: 'If your opponent’s Active Pokémon is a Fire Pokémon, this attack does 30 more damage.'
+      }
+    ],
+    evolve: 'Abomasnow',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'During cold seasons, it migrates to the mountain’s lower reaches. It returns to the snow-covered summit in the spring.',
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 417,
+    number: 45,
+    pokedex: 460,
+    name: 'Abomasnow',
+    artist: 'Shin Nagasawa',
+    attacks: [
+      {
+        name: 'Frost Breath',
+        damage: 120,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It lives a quiet life on mountains that are perpetually covered in snow. It hides itself by whipping up blizzards.',
+    health: 140,
+    rarity: CardRarityENUM.RARE,
+    retreat: 4,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [416]
+  },
+  {
+    id: 418,
+    number: 46,
+    pokedex: 471,
+    name: 'Glaceon',
+    artist: 'Naoyo Kimura',
+    attacks: [
+      {
+        name: 'Ice Beam',
+        damage: 60,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+        description: 'Flip a coin. If heads, your opponent’s Active Pokémon is now Paralyzed.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It can control its body temperature at will. This enables it to freeze the moisture in the atmosphere, creating flurries of diamond dust.',
+    health: 90,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 419,
+    number: 47,
+    pokedex: 479,
+    name: 'Wash Rotom',
+    artist: 'Saboteri',
+    attacks: [
+      {
+        name: 'Wave Splash',
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'This Rotom has entered a washing machine. It nods with satisfaction after it floods the surrounding area.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 420,
+    number: 48,
+    pokedex: 479,
+    name: 'Frost Rotom',
+    artist: 'MAHOU',
+    attacks: [
+      {
+        name: 'Blizzard',
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+        description: 'This attack also does 10 damage to each of your opponent’s Benched Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'This Rotom has entered a refrigerator. It leaps around gleefully after it uses cold air to freeze the area around it.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 421,
+    number: 49,
+    pokedex: 484,
+    name: 'Palkia EX',
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: 'Slash',
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER]
+      },
+      {
+        name: 'Dimensional Storm',
+        damage: 150,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+        description: 'Discard 3 Water Energy from this Pokémon. This attack also does 20 damage to each of your opponent’s Benched Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 150,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 422,
+    number: 50,
+    pokedex: 490,
+    name: 'Manaphy',
+    artist: 'MINAMINAMI Take',
+    attacks: [
+      {
+        name: 'Oceanic Gift',
+        damage: 0,
+        energy: [PokemonTypeENUM.WATER],
+        description: 'Choose 2 of your Benched Pokémon. For each of those Pokémon, take a Water Energy from your Energy Zone and attach it to that Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It is born with a wondrous power that lets it bond with any kind of Pokémon.',
+    health: 50,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 423,
+    number: 51,
+    pokedex: 81,
+    name: 'Magnemite',
+    artist: 'MAHOU',
+    attacks: [
+      {
+        name: 'Ram',
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Magneton',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'The electromagnetic waves emitted by the units at the sides of its head expel antigravity, which allows it to float.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 424,
+    number: 52,
+    pokedex: 82,
+    name: 'Magneton',
+    artist: 'Yumi',
+    attacks: [
+      {
+        name: 'Lighting Ball',
+        damage: 50,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC]
+      }
+    ],
+    evolve: 'Magnezone',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Three Magnemite are linked by a strong magnetic force. Earaches will occur if you get too close.',
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [423]
+  },
+  {
+    id: 425,
+    number: 53,
+    pokedex: 462,
+    name: 'Magnezone',
+    artist: 'Yoshinobu Saito',
+    attacks: [
+      {
+        name: 'Thunder Blast',
+        damage: 110,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'As it zooms through the sky, this Pokémon seems to be receiving signals of unknown origin while transmitting signals of unknown purpose.',
+    health: 140,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [424]
+  },
+  {
+    id: 426,
+    number: 54,
+    pokedex: 100,
+    name: 'Voltorb',
+    artist: 'Midori Harada',
+    attacks: [
+      {
+        name: 'Big Explosion',
+        damage: 30,
+        energy: [PokemonTypeENUM.ELECTRIC],
+        description: 'This Pokémon also does 10 damage to itself.'
+      }
+    ],
+    evolve: 'Electrode',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It rolls to move. If the ground is uneven, a sudden jolt from hitting a bump can cause it to explode.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 427,
+    number: 55,
+    pokedex: 101,
+    name: 'Electrode',
+    artist: 'Anesaki Dynamic',
+    attacks: [
+      {
+        name: 'Rolling Attack',
+        damage: 50,
+        energy: [PokemonTypeENUM.ELECTRIC]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'The more energy it charges up, the faster it gets. But this also makes it more likely to explode.',
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [426]
+  },
+  {
+    id: 428,
+    number: 56,
+    pokedex: 125,
+    name: 'Electabuzz',
+    artist: 'Shin Nagasawa',
+    attacks: [
+      {
+        name: 'Charge',
+        damage: 0,
+        energy: [PokemonTypeENUM.ELECTRIC],
+        description: 'Take a Electric Energy from your Energy Zone and attach it to this Pokémon.'
+      }
+    ],
+    evolve: 'Electivire',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Many power plants keep Ground-type Pokémon around as a defense against Electabuzz that come seeking electricity.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 429,
+    number: 57,
+    pokedex: 466,
+    name: 'Electivire',
+    artist: 'Sumiyoshi Kizuki',
+    attacks: [
+      {
+        name: 'Exciting Voltage',
+        damage: 40,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+        description: 'If this Pokémon has at least 2 extra Electric Energy attached, this attack does 80 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'The amount of electrical energy this Pokémon produces is proportional to the rate of its pulse. The voltage jumps while Electivire is battling.',
+    health: 120,
+    rarity: CardRarityENUM.RARE,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [428]
+  },
+  {
+    id: 430,
+    number: 58,
+    pokedex: 403,
+    name: 'Shinx',
+    artist: 'Shibuzoh.',
+    attacks: [
+      {
+        name: 'Hide',
+        damage: 0,
+        energy: [PokemonTypeENUM.ELECTRIC],
+        description: 'Flip a coin. If heads, during your opponent’s next turn, prevent all damage from—and effects of—attacks done to this Pokémon.'
+      }
+    ],
+    evolve: 'Luxio',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'The extension and contraction of its muscles generates electricity. It glows when in trouble.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 431,
+    number: 59,
+    pokedex: 404,
+    name: 'Luxio',
+    artist: 'Naoki Saito',
+    attacks: [
+      {
+        name: 'Electric Claws',
+        damage: 40,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Luxray',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Strong electricity courses through the tips of its sharp claws. A light scratch causes fainting in foes.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [430]
+  },
+  {
+    id: 432,
+    number: 60,
+    pokedex: 405,
+    name: 'Luxray',
+    artist: 'Hitoshi Ariga',
+    attacks: [
+      {
+        name: 'Volt Bolt',
+        damage: 120,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+        description: 'Discard all Electric Energy from this Pokémon. This attack does 120 damage to 1 of your opponent’s Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It can see clearly through walls to track down its prey and seek its lost young.',
+    health: 130,
+    rarity: CardRarityENUM.RARE,
+    retreat: 0,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [431]
+  },
+  {
+    id: 433,
+    number: 61,
+    pokedex: 417,
+    name: 'Pachirisu EX',
+    artist: 'PLANETA Tsuji',
+    attacks: [
+      {
+        name: 'Sparking Gadget',
+        damage: 40,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+        description: 'If this Pokémon has a Pokémon Tool attached, this attack does 40 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 120,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 434,
+    number: 62,
+    pokedex: 479,
+    name: 'Rotom',
+    artist: 'Krgc',
+    attacks: [
+      {
+        name: 'Assault Laser',
+        damage: 20,
+        energy: [PokemonTypeENUM.ELECTRIC],
+        description: 'If your opponent’s Active Pokémon has a Pokémon Tool attached, this attack does 30 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its electricity-like body can enter some kinds of machines and take control in order to make mischief.',
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 435,
+    number: 63,
+    pokedex: 175,
+    name: 'Togepi',
+    artist: 'Narumi Sato',
+    attacks: [
+      {
+        name: 'Pound',
+        damage: 20,
+        energy: [PokemonTypeENUM.PSYCHIC]
+      }
+    ],
+    evolve: 'Togetic',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'The shell seems to be filled with joy. It is said that it will share good luck when treated kindly.',
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 436,
+    number: 64,
+    pokedex: 176,
+    name: 'Togetic',
+    artist: 'Kanako Eo',
+    attacks: [
+      {
+        name: 'Fairy Wind',
+        damage: 40,
+        energy: [PokemonTypeENUM.PSYCHIC]
+      }
+    ],
+    evolve: 'Togekiss',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'They say that it will appear before kindhearted, caring people and shower them with happiness.',
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [435]
+  },
+  {
+    id: 437,
+    number: 65,
+    pokedex: 468,
+    name: 'Togekiss',
+    artist: 'kawayoo',
+    attacks: [
+      {
+        name: 'Overdrive Smash',
+        damage: 60,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC],
+        description: 'During your next turn, this Pokémon’s attack does +60 damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'These Pokémon are never seen anywhere near conflict or turmoil. In recent times, they’ve hardly been seen at all.',
+    health: 140,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [436]
+  },
+  {
+    id: 438,
+    number: 66,
+    pokedex: 200,
+    name: 'Misdreavus',
+    artist: 'Sumiyoshi Kizuki',
+    attacks: [
+      {
+        name: 'Mumble',
+        damage: 20,
+        energy: [PokemonTypeENUM.PSYCHIC]
+      }
+    ],
+    evolve: 'Mismagius',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'This Pokémon startles people in the middle of the night. It gathers fear as its energy.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 439,
+    number: 67,
+    pokedex: 429,
+    name: 'Mismagius EX',
+    artist: 'PLANETA Igarashi',
+    attacks: [
+      {
+        name: 'Magical Delusion',
+        damage: 70,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC],
+        description: 'Your opponent’s Active Pokémon is now Confused.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [438]
+  },
+  {
+    id: 440,
+    number: 68,
+    pokedex: 280,
+    name: 'Ralts',
+    artist: 'Miki Tanaka',
+    attacks: [
+      {
+        name: 'Teleport',
+        damage: 0,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: 'Switch this Pokémon with 1 of your Benched Pokémon.'
+      }
+    ],
+    evolve: 'Kirlia',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'The horns on its head provide a strong power that enables it to sense people’s emotions.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA
+    ],
+    related: []
+  },
+  {
+    id: 441,
+    number: 69,
+    pokedex: 281,
+    name: 'Kirlia',
+    artist: 'Yukiko Baba',
+    attacks: [
+      {
+        name: 'Slap',
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Gardevoir',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It has a psychic power that enables it to distort the space around it and see into the future.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [440]
+  },
+  {
+    id: 442,
+    number: 70,
+    pokedex: 355,
+    name: 'Duskull',
+    artist: 'ryoma uratsuka',
+    attacks: [
+      {
+        name: 'Will-O-Wisp',
+        damage: 20,
+        energy: [PokemonTypeENUM.PSYCHIC]
+      }
+    ],
+    evolve: 'Dusclops',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'If it finds bad children who won’t listen to their parents, it will spirit them away—or so it’s said.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 443,
+    number: 71,
+    pokedex: 356,
+    name: 'Dusclops',
+    artist: 'Sumiyoshi Kizuki',
+    attacks: [
+      {
+        name: 'Psypunch',
+        damage: 50,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Dusknoir',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It seeks drifting will-o’-the-wisps and sucks them into its empty body. What happens inside is a mystery.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [442]
+  },
+  {
+    id: 444,
+    number: 72,
+    pokedex: 477,
+    name: 'Dusknoir',
+    artist: 'Suwama Chiaki',
+    attacks: [
+      {
+        name: 'Devour Soul',
+        damage: 70,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: 'Shadow Void',
+      description: 'As often as you like during your turn, you may choose 1 of your Pokémon that has damage on it, and move all of its damage to this Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'At the bidding of transmissions from the spirit world, it steals people and Pokémon away. No one knows whether it has a will of its own.',
+    health: 130,
+    rarity: CardRarityENUM.RARE,
+    retreat: 3,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [443]
+  },
+  {
+    id: 445,
+    number: 73,
+    pokedex: 425,
+    name: 'Drifloon',
+    artist: 'Atsuko Nishida',
+    attacks: [
+      {
+        name: 'Expand',
+        damage: 10,
+        energy: [PokemonTypeENUM.PSYCHIC],
+        description: 'During your opponent’s next turn, this Pokémon takes −20 damage from attacks.'
+      }
+    ],
+    evolve: 'Drifblim',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It is whispered that any child who mistakes Drifloon for a balloon and holds on to it could wind up missing.',
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 446,
+    number: 74,
+    pokedex: 426,
+    name: 'Drifblim',
+    artist: 'Miki Tanaka',
+    attacks: [
+      {
+        name: 'Balloon Strike',
+        damage: 60,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Some say this Pokémon is a collection of souls burdened with regrets, silently drifting through the dusk.',
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [445]
+  },
+  {
+    id: 447,
+    number: 75,
+    pokedex: 480,
+    name: 'Uxie',
+    artist: 'AKIRA EGAWA',
+    attacks: [
+      {
+        name: 'Mind Boost',
+        damage: 20,
+        energy: [PokemonTypeENUM.PSYCHIC],
+        description: 'Take a Psychic Energy from your Energy Zone and attach it to Mesprit or Azelf.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Known as “The Being of Knowledge.” It is said that it can wipe out the memory of those who see its eyes.',
+    health: 70,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 448,
+    number: 76,
+    pokedex: 481,
+    name: 'Mesprit',
+    artist: 'AKIRA EGAWA',
+    attacks: [
+      {
+        name: 'Supreme Blast',
+        damage: 160,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC],
+        description: 'You can use this attack only if you have Uxie and Azelf on your Bench. Discard all Energy from this Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Known as “The Being of Emotion.” It taught humans the nobility of sorrow, pain, and joy.',
+    health: 70,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 449,
+    number: 77,
+    pokedex: 482,
+    name: 'Azelf',
+    artist: 'AKIRA EGAWA',
+    attacks: [
+      {
+        name: 'Psychic Arrow',
+        damage: 20,
+        energy: [PokemonTypeENUM.PSYCHIC],
+        description: 'This attack does 20 damage to 1 of your opponent’s Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Known as “The Being of Willpower.” It sleeps at the bottom of a lake to keep the world in balance.',
+    health: 70,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 450,
+    number: 78,
+    pokedex: 487,
+    name: 'Giratina',
+    artist: 'AKIRA EGAWA',
+    attacks: [
+      {
+        name: 'Spooky Shot',
+        damage: 70,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL],
+        description: 'If this Pokémon has any Energy attached, it has no Retreat Cost.'
+      }
+    ],
+    ability: {
+      name: 'Levitate',
+      description: 'If this Pokémon has any Energy attached, it has no Retreat Cost.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'This Pokémon is said to live in a world on the reverse side of ours, where common knowledge is distorted and strange.',
+    health: 120,
+    rarity: CardRarityENUM.RARE,
+    retreat: 3,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 451,
+    number: 79,
+    pokedex: 488,
+    name: 'Cresselia',
+    artist: 'Masako Tomii',
+    attacks: [
+      {
+        name: 'Moonlight Gain',
+        damage: 50,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC],
+        description: 'Heal 20 damage from this Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Shiny particles are released from its wings like a veil. It is said to represent the crescent moon.',
+    health: 110,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 452,
+    number: 80,
+    pokedex: 111,
+    name: 'Rhyhorn',
+    artist: 'otumami',
+    attacks: [
+      {
+        name: 'Horn Attack',
+        damage: 40,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Rhydon',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Strong, but not too bright, this Pokémon can shatter even a skyscraper with its charging tackles.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 3,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 453,
+    number: 81,
+    pokedex: 112,
+    name: 'Rhydon',
+    artist: 'Oswaldo KATO',
+    attacks: [
+      {
+        name: 'Wrack Down',
+        damage: 70,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Rhyperior',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It begins walking on its hind legs after evolution. It can punch holes through boulders with its horn.',
+    health: 110,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [452]
+  },
+  {
+    id: 454,
+    number: 82,
+    pokedex: 464,
+    name: 'Rhyperior',
+    artist: 'Naoki Saito',
+    attacks: [
+      {
+        name: 'Mountain Swing',
+        damage: 150,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL],
+        description: 'Discard the top 3 cards of your deck.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It can load up to three projectiles per arm into the holes in its hands. What launches out of those holes could be either rocks or Roggenrola.',
+    health: 160,
+    rarity: CardRarityENUM.RARE,
+    retreat: 4,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [453]
+  },
+  {
+    id: 455,
+    number: 83,
+    pokedex: 207,
+    name: 'Gligar',
+    artist: 'Sanosuke Sakuma',
+    attacks: [
+      {
+        name: 'Pierce',
+        damage: 20,
+        energy: [PokemonTypeENUM.FIGHT]
+      }
+    ],
+    evolve: 'Gliscor',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It usually clings to cliffs. When it spots its prey, it spreads its wings and glides down to attack.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 456,
+    number: 84,
+    pokedex: 472,
+    name: 'Gliscor',
+    artist: 'Mizue',
+    attacks: [
+      {
+        name: 'Acrobatics',
+        damage: 20,
+        energy: [PokemonTypeENUM.FIGHT],
+        description: 'Flip 2 coins. This attack does 20 more damage for each heads.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It observes prey while hanging inverted from branches. When the chance presents itself, it swoops!',
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [455]
+  },
+  {
+    id: 457,
+    number: 85,
+    pokedex: 237,
+    name: 'Hitmontop',
+    artist: 'sowsow',
+    attacks: [
+      {
+        name: 'Spinning Attack',
+        damage: 50,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It launches kicks while spinning. If it spins at high speed, it may bore its way into the ground.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 458,
+    number: 86,
+    pokedex: 299,
+    name: 'Nosepass',
+    artist: 'Midori Harada',
+    attacks: [
+      {
+        name: 'Ram',
+        damage: 30,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Probopass',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It moves less than an inch a year, but when it’s in a jam, it will spin and drill down into the ground in a split second.',
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 459,
+    number: 87,
+    pokedex: 377,
+    name: 'Regirock',
+    artist: 'Tomokazu Komiya',
+    attacks: [
+      {
+        name: 'Boulder Crush',
+        damage: 100,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: 'Exoskeleton',
+      description: 'This Pokémon takes −20 damage from attacks.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Every bit of Regirock’s body is made of stone. As parts of its body erode, this Pokémon sticks rocks to itself to repair what’s been lost.',
+    health: 120,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 460,
+    number: 88,
+    pokedex: 408,
+    name: 'Cranidos',
+    artist: 'Kouki Saitou',
+    attacks: [
+      {
+        name: 'Headbutt',
+        damage: 50,
+        energy: [PokemonTypeENUM.FIGHT]
+      }
+    ],
+    evolve: 'Rampardos',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'A primeval Pokémon, it possesses a hard and sturdy skull, lacking any intelligence within.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 461,
+    number: 89,
+    pokedex: 409,
+    name: 'Rampardos',
+    artist: 'Yoshinobu Saito',
+    attacks: [
+      {
+        name: 'Head Smash',
+        damage: 130,
+        energy: [PokemonTypeENUM.FIGHT],
+        description: 'If your opponent’s Pokémon is Knocked Out by damage from this attack, this Pokémon also does 50 damage to itself.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'In ancient times, people would dig up fossils of this Pokémon and use its skull, which is harder than steel, to make helmets.',
+    health: 150,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [460]
+  },
+  {
+    id: 462,
+    number: 90,
+    pokedex: 413,
+    name: 'Wormadam',
+    artist: 'Hajime Kusajima',
+    attacks: [
+      {
+        name: 'Land Crush',
+        damage: 70,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its appearance changes depending on where it evolved. The materials on hand become a part of its body.',
+    health: 120,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 463,
+    number: 91,
+    pokedex: 447,
+    name: 'Riolu',
+    artist: 'AKIRA EGAWA',
+    attacks: [
+      {
+        name: 'Jab',
+        damage: 20,
+        energy: [PokemonTypeENUM.FIGHT]
+      }
+    ],
+    evolve: 'Lucario',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'They communicate with one another using their auras. They are able to run all through the night.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 464,
+    number: 92,
+    pokedex: 448,
+    name: 'Lucario',
+    artist: 'nagimiso',
+    attacks: [
+      {
+        name: 'Submarine Blow',
+        damage: 40,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT]
+      }
+    ],
+    ability: {
+      name: 'Fighting Coach',
+      description: 'Attacks used by your Fighting Pokémon do +20 damage to your opponent’s Active Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It’s said that no foe can remain invisible to Lucario, since it can detect auras—even those of foes it could not otherwise see.',
+    health: 100,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [463]
+  },
+  {
+    id: 465,
+    number: 93,
+    pokedex: 449,
+    name: 'Hippopotas',
+    artist: 'Akira Komayama',
+    attacks: [
+      {
+        name: 'Rolling Tackle',
+        damage: 60,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Hippowdon',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It shuts its nostrils tight, then travels through sand as if walking. They form colonies of around 10.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 3,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 466,
+    number: 94,
+    pokedex: 450,
+    name: 'Hippowdon',
+    artist: 'KEIICHIRO ITO',
+    attacks: [
+      {
+        name: 'Earthen Press',
+        damage: 120,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It is surprisingly quick to anger. It holds its mouth agape as a display of its strength.',
+    health: 140,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 4,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [465]
+  },
+  {
+    id: 467,
+    number: 95,
+    pokedex: 475,
+    name: 'Gallade EX',
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: 'Energized Blade',
+        damage: 70,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
+        description: 'This attack does 20 more damage for each Energy attached to your opponent’s Active Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 170,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 468,
+    number: 96,
+    pokedex: 198,
+    name: 'Murkrow',
+    artist: 'Yukiko Baba',
+    attacks: [
+      {
+        name: 'Peck',
+        damage: 20,
+        energy: [PokemonTypeENUM.DARK]
+      }
+    ],
+    evolve: 'Honchkrow',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Feared and loathed by many, it is believed to bring misfortune to all those who see it at night.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 469,
+    number: 97,
+    pokedex: 430,
+    name: 'Honchkrow',
+    artist: 'Hideki Ishikawa',
+    attacks: [
+      {
+        name: 'Skill Dive',
+        damage: 50,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK],
+        description: 'This attack does 50 damage to 1 of your opponent’s Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It is merciless by nature. It is said that it never forgives the mistakes of its Murkrow followers.',
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [468]
+  },
+  {
+    id: 470,
+    number: 98,
+    pokedex: 215,
+    name: 'Sneasel',
+    artist: 'Hasuno',
+    attacks: [
+      {
+        name: 'Double Scratch',
+        damage: 20,
+        energy: [PokemonTypeENUM.DARK],
+        description: 'Flip 2 coins. This attack does 20 damage for each heads.'
+      }
+    ],
+    evolve: 'Weavile',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'This cunning Pokémon hides under the cover of darkness, waiting to attack its prey.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 471,
+    number: 99,
+    pokedex: 461,
+    name: 'Weavile EX',
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: 'Scratching Nails',
+        damage: 30,
+        energy: [PokemonTypeENUM.DARK],
+        description: 'If your opponent’s Active Pokémon has damage on it, this attack does 40 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [470]
+  },
+  {
+    id: 472,
+    number: 100,
+    pokedex: 261,
+    name: 'Poochyena',
+    artist: 'Midori Harada',
+    attacks: [
+      {
+        name: 'Bite',
+        damage: 20,
+        energy: [PokemonTypeENUM.DARK]
+      }
+    ],
+    evolve: 'Mightyena',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'A Pokémon with a persistent nature, it chases its chosen prey until the prey becomes exhausted.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 473,
+    number: 101,
+    pokedex: 262,
+    name: 'Mightyena',
+    artist: 'Kouki Saitou',
+    attacks: [
+      {
+        name: 'Darkness Fang',
+        damage: 60,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It will always obey the commands of a skilled Trainer. Its behavior arises from its living in packs in ancient times.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [472]
+  },
+  {
+    id: 474,
+    number: 102,
+    pokedex: 434,
+    name: 'Stunky',
+    artist: 'Kyoko Umemoto',
+    attacks: [
+      {
+        name: 'Scratch',
+        damage: 10,
+        energy: [PokemonTypeENUM.DARK]
+      }
+    ],
+    evolve: 'Skuntank',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It sprays a foul fluid from its rear. Its stench spreads over a mile radius, driving Pokémon away.',
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 475,
+    number: 103,
+    pokedex: 435,
+    name: 'Skuntank',
+    artist: 'kirisAki',
+    attacks: [
+      {
+        name: 'Poison Gas',
+        damage: 50,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.NORMAL],
+        description: 'Your opponent’s Active Pokémon is now Poisoned.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It attacks by spraying a horribly smelly fluid from the tip of its tail. Attacks from above confound it.',
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [474]
+  },
+  {
+    id: 476,
+    number: 104,
+    pokedex: 442,
+    name: 'Spiritomb',
+    artist: 'HYOGONOSUKE',
+    attacks: [
+      {
+        name: 'Swirling Disaster',
+        damage: 0,
+        energy: [PokemonTypeENUM.DARK],
+        description: 'This attack does 10 damage to each of your opponent’s Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its constant mischief and misdeeds resulted in it being bound to an Odd Keystone by a mysterious spell.',
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 477,
+    number: 105,
+    pokedex: 451,
+    name: 'Skorupi',
+    artist: 'Naoki Saito',
+    attacks: [
+      {
+        name: 'Pierce',
+        damage: 30,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Drapion',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'After burrowing into the sand, it waits patiently for prey to come near. This Pokémon and Sizzlipede share common descent.',
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 478,
+    number: 106,
+    pokedex: 452,
+    name: 'Drapion',
+    artist: 'Naoki Saito',
+    attacks: [
+      {
+        name: 'Cross Poison',
+        damage: 40,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK, PokemonTypeENUM.DARK],
+        description: 'Flip 4 coins. This attack does 40 damage for each heads. If at least 2 of them are heads, your opponent’s Active Pokémon is now Poisoned.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its poison is potent, but it rarely sees use. This Pokémon prefers to use physical force instead, going on rampages with its car-crushing strength.',
+    health: 120,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: [477]
+  },
+  {
+    id: 479,
+    number: 107,
+    pokedex: 453,
+    name: 'Croagunk',
+    artist: 'Masakazu Fukuda',
+    attacks: [
+      {
+        name: 'Group Beatdown',
+        damage: 20,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK],
+        description: 'Flip a coin for each Pokémon you have in play. This attack does 20 damage for each heads.'
+      }
+    ],
+    evolve: 'Toxicroak',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Inflating its poison sacs, it fills the area with an odd sound and hits flinching opponents with a poison jab.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 480,
+    number: 108,
+    pokedex: 454,
+    name: 'Toxicroak',
+    artist: 'Hajime Kusajima',
+    attacks: [
+      {
+        name: 'Group Beatdown',
+        damage: 40,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK],
+        description: 'Flip a coin for each Pokémon you have in play. This attack does 40 damage for each heads.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Swaying and dodging the attacks of its foes, it weaves its flexible body in close, then lunges out with its poisonous claws.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA
+    ],
+    related: [479]
+  },
+  {
+    id: 481,
+    number: 109,
+    pokedex: 491,
+    name: 'Darkrai',
+    artist: 'Masako Tomii',
+    attacks: [
+      {
+        name: 'Dark Void',
+        damage: 60,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK, PokemonTypeENUM.NORMAL],
+        description: 'Your opponent’s Active Pokémon is now Asleep.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It chases people and Pokémon from its territory by causing them to experience deep, nightmarish slumbers.',
+    health: 110,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 482,
+    number: 110,
+    pokedex: 491,
+    name: 'Darkrai EX',
+    artist: 'PLANETA Yamashita',
+    attacks: [
+      {
+        name: 'Dark Prism',
+        damage: 80,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: 'Nightmare Aura',
+      description: 'Whenever you attach a Dark Energy from your Energy Zone to this Pokémon, do 20 damage to your opponent’s Active Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 483,
+    number: 111,
+    pokedex: 227,
+    name: 'Skarmory',
+    artist: 'Oswaldo KATO',
+    attacks: [
+      {
+        name: 'Metal Arms',
+        damage: 20,
+        energy: [PokemonTypeENUM.STEEL],
+        description: 'If this Pokémon has a Pokémon Tool attached, this attack does 30 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'People fashion swords from Skarmory’s shed feathers, so this Pokémon is a popular element in heraldic designs.',
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 484,
+    number: 112,
+    pokedex: 379,
+    name: 'Registeel',
+    artist: 'Tomokazu Komiya',
+    attacks: [
+      {
+        name: 'Metal Claw',
+        damage: 90,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Registeel’s body is made of a strange material that is flexible enough to stretch and shrink but also more durable than any metal.',
+    health: 110,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+
+    ],
+    related: []
+  },
+  {
+    id: 485,
+    number: 113,
+    pokedex: 410,
+    name: 'Shieldon',
+    artist: 'Kouki Saitou',
+    attacks: [
+      {
+        name: 'Headbutt',
+        damage: 50,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Bastiodon',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'A mild-mannered, herbivorous Pokémon, it used its face to dig up tree roots to eat. The skin on its face was plenty tough.',
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 486,
+    number: 114,
+    pokedex: 411,
+    name: 'Bastiodon',
+    artist: 'Kagemaru Himeno',
+    attacks: [
+      {
+        name: 'Headbang',
+        damage: 80,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: 'Guarded Grill',
+      description: 'If any damage is done to this Pokémon by attacks, flip a coin. If heads, this Pokémon takes −100 damage from that attack.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'The bones of its face are huge and hard, so they were mistaken for its spine until after this Pokémon was successfully restored.',
+    health: 160,
+    rarity: CardRarityENUM.RARE,
+    retreat: 4,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 487,
+    number: 115,
+    pokedex: 413,
+    name: 'Wormadam',
+    artist: 'Kyoko Umemoto',
+    attacks: [
+      {
+        name: 'Iron Head',
+        damage: 50,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL],
+        description: 'Flip a coin until you get tails. This attack does 30 more damage for each heads.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its appearance changes depending on where it evolved. The materials on hand become a part of its body.',
+    health: 110,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [387]
+  },
+  {
+    id: 488,
+    number: 116,
+    pokedex: 436,
+    name: 'Bronzor',
+    artist: 'Miki Tanaka',
+    attacks: [
+      {
+        name: 'Tackle',
+        damage: 30,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: 'Bronzong',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Ancient people believed that the pattern on Bronzor’s back contained a mysterious power.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA
+    ],
+    related: []
+  },
+  {
+    id: 489,
+    number: 117,
+    pokedex: 437,
+    name: 'Bronzong',
+    artist: 'Yuka Morii',
+    attacks: [
+      {
+        name: 'Guard Press',
+        damage: 60,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
+        description: 'During your opponent’s next turn, this Pokémon takes −20 damage from attacks.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'In ages past, this Pokémon was revered as a bringer of rain. It was found buried in the ground.',
+    health: 60,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA
+    ],
+    related: [488]
+  },
+  {
+    id: 490,
+    number: 118,
+    pokedex: 476,
+    name: 'Probopass',
+    artist: 'MAHOU',
+    attacks: [
+      {
+        name: 'Triple Nose',
+        damage: 30,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
+        description: 'Flip 3 coins. This attack does 50 more damage for each heads.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Although it can control its units known as Mini-Noses, they sometimes get lost and don’t come back.',
+    health: 130,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 4,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 491,
+    number: 119,
+    pokedex: 483,
+    name: 'Dialga EX',
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: 'Metallic Turbo',
+        damage: 30,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL],
+        description: 'Take 2  Energy from your Energy Zone and attach it to 1 of your Benched Pokémon.'
+      },
+      {
+        name: 'Heavy Impact',
+        damage: 100,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 150,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 492,
+    number: 120,
+    pokedex: 485,
+    name: 'Heatran',
+    artist: 'Oswaldo KATO',
+    attacks: [
+      {
+        name: 'Steel Tackle',
+        damage: 110,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL],
+        description: 'This Pokémon also does 20 damage to itself.'
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It dwells in volcanic caves. It digs in with its cross-shaped feet to crawl on ceilings and walls.',
+    health: 120,
+    rarity: CardRarityENUM.RARE,
+    retreat: 3,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 493,
+    number: 121,
+    pokedex: 443,
+    name: 'Gible',
+    artist: 'Naoyo Kimura',
+    attacks: [
+      {
+        name: 'Gnaw',
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: 'Gabite',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It skulks in caves, and when prey or an enemy passes by, it leaps out and chomps them. The force of its attack sometimes chips its teeth.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DRAGON,
+    weak: null,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 494,
+    number: 122,
+    pokedex: 444,
+    name: 'Gabite',
+    artist: 'Shigenori Negishi',
+    attacks: [
+      {
+        name: 'Slash',
+        damage: 60,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.FIGHT],
+      },
+    ],
+    evolve: 'Garchomp',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'In rare cases, it molts and sheds its scales. Medicine containing its scales as an ingredient will make a weary body feel invigorated.',
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DRAGON,
+    weak: null,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 495,
+    number: 123,
+    pokedex: 445,
+    name: 'Garchomp',
+    artist: 'Atsushi Furusawa',
+    attacks: [
+      {
+        name: 'Dragon Claw',
+        damage: 100,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.FIGHT],
+      },
+    ],
+    ability: {
+      name: 'Reckless Shearing',
+      description: 'You must discard a card from your hand in order to use this Ability. Once during your turn, you may draw a card.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It is said that when one runs at high speed, its wings create blades of wind that can fell nearby trees.',
+    health: 140,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.DRAGON,
+    weak: null,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 496,
+    number: 124,
+    pokedex: 108,
+    name: 'Lickitung',
+    artist: 'Yukiko Baba',
+    attacks: [
+      {
+        name: 'Tongue Slap',
+        damage: 50,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: 'Lickilicky',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'If this Pokémon’s sticky saliva gets on you and you don’t clean it off, an intense itch will set in. The itch won’t go away, either.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 497,
+    number: 125,
+    pokedex: 463,
+    name: 'Lickilicky EX',
+    artist: 'PLANETA Igarashi',
+    attacks: [
+      {
+        name: 'Licking Fury',
+        damage: 100,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 160,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 4,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 498,
+    number: 126,
+    pokedex: 133,
+    name: 'Eevee',
+    artist: 'Shibuzoh.',
+    attacks: [
+      {
+        name: 'Quick Attack',
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: 'Flip a coin. If heads, this attack does 20 more damage.'
+      },
+    ],
+    evolve: 'Flareon Vaporeon Jolteon Leafon Glaceon',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its ability to evolve into many forms allows it to adapt smoothly and perfectly to any environment.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 499,
+    number: 127,
+    pokedex: 137,
+    name: 'Porygon',
+    artist: 'Shin Nagasawa.',
+    attacks: [
+      {
+        name: 'Beam',
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL]
+      },
+    ],
+    evolve: 'Porygon2',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'State-of-the-art technology was used to create Porygon. It was the first artificial Pokémon to be created via computer programming.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 500,
+    number: 128,
+    pokedex: 233,
+    name: 'Porygon2',
+    artist: 'sowsow',
+    attacks: [
+      {
+        name: 'Sharpen',
+        damage: 30,
+        energy: [PokemonTypeENUM.NORMAL]
+      },
+    ],
+    evolve: 'Porygon-Z',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'This is a Porygon that was updated with special data. Porygon2 develops itself by learning about many different subjects all on its own.',
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 501,
+    number: 129,
+    pokedex: 474,
+    name: 'Porygon-Z',
+    artist: 'Shin Nagasawa',
+    attacks: [
+      {
+        name: 'Buggy Beam',
+        damage: 80,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'Change the type of the next Energy that will be generated for your opponent to 1 of the following at random: Grass, Fire, Water, Electric, Psychic, Fighting, Dark, or Metalic.'
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Porygon-Z had a program installed to allow it to move between dimensions, but the program also caused instability in Porygon-Z’s behavior.',
+    health: 140,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 502,
+    number: 130,
+    pokedex: 190,
+    name: 'Aipom',
+    artist: 'Miki Tanaka',
+    attacks: [
+      {
+        name: 'Tail Jab',
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL]
+      },
+    ],
+    evolve: 'Ambipom',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'As it did more and more with its tail, its hands became clumsy. It makes its nest high in the treetops.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 503,
+    number: 131,
+    pokedex: 191,
+    name: 'Ambipom',
+    artist: 'Naoyo Kimura',
+    attacks: [
+      {
+        name: 'Double Hit',
+        damage: 40,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: 'Flip 2 coins. This attack does 40 damage for each heads.'
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It uses its tails for everything. If it wraps both of its tails around you and gives you a squeeze, that’s proof it really likes you.',
+    health: 90,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 504,
+    number: 132,
+    pokedex: 396,
+    name: 'Starly',
+    artist: 'Atsuko Nishida',
+    attacks: [
+      {
+        name: 'Pluck',
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: 'Before doing damage, discard all Pokémon Tools from your opponent’s Active Pokémon.'
+      },
+    ],
+    evolve: 'Staravia',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'They flock around mountains and fields, chasing after bug Pokémon. Their singing is noisy and annoying.',
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 505,
+    number: 133,
+    pokedex: 397,
+    name: 'Staravia',
+    artist: 'REND',
+    attacks: [
+      {
+        name: 'Wing Attack',
+        damage: 40,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      },
+    ],
+    evolve: 'Staraptor',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Recognizing their own weakness, they always live in a group. When alone, a Staravia cries noisily.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 506,
+    number: 134,
+    pokedex: 398,
+    name: 'Staraptor',
+    artist: 'Sekio',
+    attacks: [
+      {
+        name: 'Clutch',
+        damage: 80,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'During your opponent’s next turn, the Defending Pokémon can’t retreat.'
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'When Staravia evolve into Staraptor, they leave the flock to live alone. They have sturdy wings.',
+    health: 140,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 507,
+    number: 135,
+    pokedex: 399,
+    name: 'Bidoof',
+    artist: 'Kagemaru Himeno',
+    attacks: [
+      {
+        name: 'Super Fang',
+        damage: 0,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'Halve your opponent’s Active Pokémon’s remaining HP, rounded down.'
+      },
+    ],
+    evolve: 'Bibarel',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'With nerves of steel, nothing can perturb it. It is more agile and active than it appears.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 508,
+    number: 136,
+    pokedex: 400,
+    name: 'Bibarel',
+    artist: 'kirisAki',
+    attacks: [
+      {
+        name: 'Rolling Tackle',
+        damage: 60,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It busily makes its nest with stacks of branches and roots it has cut up with its sharp incisors.',
+    health: 110,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 509,
+    number: 137,
+    pokedex: 427,
+    name: 'Buneary',
+    artist: 'Narumi Sato',
+    attacks: [
+      {
+        name: 'Splash',
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL]
+      },
+    ],
+    evolve: 'Lopunny',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'If both of Buneary’s ears are rolled up, something is wrong with its body or mind. It’s a sure sign the Pokémon is in need of care.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 510,
+    number: 138,
+    pokedex: 428,
+    name: 'Lopunny',
+    artist: 'Sanosuke Sakuma',
+    attacks: [
+      {
+        name: 'Jump Kick',
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: 'This attack also does 20 damage to 1 of your opponent’s Benched Pokémon.'
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Lopunny is constantly monitoring its surroundings. If danger approaches, this Pokémon responds with superdestructive kicks.',
+    health: 90,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 511,
+    number: 139,
+    pokedex: 431,
+    name: 'Glameow',
+    artist: 'sowsow',
+    attacks: [
+      {
+        name: 'Pose',
+        damage: 40,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: 'Flip a coin. If tails, this attack does nothing.'
+      },
+    ],
+    evolve: 'Purugly',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It claws if displeased and purrs when affectionate. Its fickleness is very popular among some.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 512,
+    number: 140,
+    pokedex: 432,
+    name: 'Purugly',
+    artist: 'Kagemaru Himeno',
+    attacks: [
+      {
+        name: 'Interrupt',
+        damage: 60,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'Your opponent reveals their hand. Choose a card you find there and shuffle it into your opponent’s deck.'
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It would claim another Pokémon’s nest as its own if it finds a nest sufficiently comfortable.',
+    health: 110,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 513,
+    number: 141,
+    pokedex: 441,
+    name: 'Chatot',
+    artist: 'HYOGONOSUKE',
+    attacks: [
+      {
+        name: 'Fury Attack',
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: 'Flip 3 coins. This attack does 20 damage for each heads.'
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It mimics the cries of other Pokémon to trick them into thinking it’s one of them. This way they won’t attack it.',
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 514,
+    number: 142,
+    pokedex: 479,
+    name: 'Rotom',
+    artist: 'Masakazu Fukuda',
+    attacks: [
+      {
+        name: 'Spin Storm',
+        damage: 0,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'Flip a coin. If heads, put your opponent’s Active Pokémon into their hand.'
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'This Rotom has entered an electric fan. It smirks with satisfaction over a prank well pulled after it blows away everything around it.',
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 515,
+    number: 145,
+    pokedex: 486,
+    name: 'Regigigas',
+    artist: 'Tomokazu Komiya',
+    attacks: [
+      {
+        name: 'Raging Hammer',
+        damage: 50,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'This attack does more damage equal to the damage this Pokémon has on it.'
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It is said to have made Pokémon that look like itself from a special ice mountain, rocks, and magma.',
+    health: 140,
+    rarity: CardRarityENUM.RARE,
+    retreat: 4,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 516,
+    number: 146,
+    name: 'Skull Fossil',
+    artist: 'Toyste Beach',
+    evolve: 'Cranidos',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Play this card as if it were a 40-HP Basic Colorless Pokémon. At any time during your turn, you may discard this card from play. This card can’t retreat.',
+    health: 40,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 0,
+    stage: CardStageENUM.FOSSIL,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: []
+  },
+  {
+    id: 517,
+    number: 147,
+    name: 'Armor Fossil',
+    artist: 'Toyste Beach',
+    evolve: 'Shieldon',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Play this card as if it were a 40-HP Basic Colorless Pokémon. At any time during your turn, you may discard this card from play. This card can’t retreat.',
+    health: 40,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 0,
+    stage: CardStageENUM.FOSSIL,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: []
+  },
+  {
+    id: 518,
+    number: 148,
+    name: 'Pokémon Communication',
+    artist: 'Ayaka Yoshida',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Choose a Pokémon in your hand and switch it with a random Pokémon in your deck.',
+    rarity: CardRarityENUM.PROMO,
+    stage: CardStageENUM.ITEM,
+    extra: 'Obtained from the shop',
+    element: -1,
+    pokedex: -1,
+    health: -1,
+    retreat: -1,
+    related: [351, 350, 374, 377, 375, 376, 380, 378]
+  },
+  {
+    id: 519,
+    number: 149,
+    name: 'Giant Cape',
+    artist: 'Ryo Ueda',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'The Pokémon this card is attached to gets +20 HP.',
+    rarity: CardRarityENUM.UNCOMMON,
+    stage: CardStageENUM.TOOL,
+    element: -1,
+    pokedex: -1,
+    health: -1,
+    retreat: -1,
+    related: [351, 350, 374, 377, 375, 376, 380, 378],
+    found: [
+      EXPANSION.DIALGA
+    ]
+  },
+  {
+    id: 520,
+    number: 150,
+    name: 'Rocky Helmet',
+    artist: 'Ayaka Yoshida',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'If the Pokémon this card is attached to is in the Active Spot and is damaged by an attack from your opponent’s Pokémon, do 20 damage to the Attacking Pokémon.',
+    rarity: CardRarityENUM.UNCOMMON,
+    stage: CardStageENUM.TOOL,
+    element: -1,
+    pokedex: -1,
+    health: -1,
+    retreat: -1,
+    related: [351, 350, 374, 377, 375, 376, 380, 378],
+    found: [
+      EXPANSION.PALKIA
+    ]
+  },
+  {
+    id: 521,
+    number: 151,
+    name: 'Lum Berry',
+    artist: 'Yoshinobu Saito',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'At the end of each turn, if the Pokémon this card is attached to is affected by any Special Conditions, it recovers from all of them, and discard this card.',
+    rarity: CardRarityENUM.UNCOMMON,
+    stage: CardStageENUM.TOOL,
+    element: -1,
+    pokedex: -1,
+    health: -1,
+    retreat: -1,
+    related: [351, 350, 374, 377, 375, 376, 380, 378],
+    found: [
+      EXPANSION.PALKIA
+    ]
+  },
+  {
+    id: 522,
+    number: 152,
+    name: 'Cyrus',
+    artist: 'akagi',
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Switch in 1 of your opponent’s Benched Pokémon that has damage on it to the Active Spot.',
+    rarity: CardRarityENUM.UNCOMMON,
+    health: 0,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+  },
+  {
+    id: 523,
+    number: 153,
+    name: 'Team Galactic Grunt',
+    artist: 'GOSSAN',
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Put 1 random Glameow, Stunky, or Croagunk from your deck into your hand.',
+    rarity: CardRarityENUM.UNCOMMON,
+    health: 0,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+  },
+  {
+    id: 524,
+    number: 154,
+    name: 'Cynthia',
+    artist: 'Ryuta Fuse',
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'During this turn, attacks used by your Garchomp or Togekiss do +50 damage to your opponent’s Active Pokémon.',
+    rarity: CardRarityENUM.UNCOMMON,
+    health: 0,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+  },
+  {
+    id: 525,
+    number: 155,
+    name: 'Volkner',
+    artist: 'GIDORA',
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Choose 1 of your Electivire or Luxray. Attach 2 Electric Energy from your discard pile to that Pokémon.',
+    rarity: CardRarityENUM.UNCOMMON,
+    health: 0,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+  },
+  {
+    id: 526,
+    number: 156,
+    name: 'Dawn',
+    artist: 'saino misaki',
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Move an Energy from 1 of your Benched Pokémon to your Active Pokémon.',
+    rarity: CardRarityENUM.UNCOMMON,
+    health: 0,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+  },
+  {
+    id: 527,
+    number: 157,
+    name: 'Mars',
+    artist: 'Yuu Nishida',
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Your opponent shuffles their hand into their deck and draws a card for each of their remaining points needed to win.',
+    rarity: CardRarityENUM.UNCOMMON,
+    health: 0,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+  },
+  {
+    id: 528,
+    number: 158,
+    pokedex: 465,
+    name: 'Tangrowth',
+    artist: 'Saboteri',
+    attacks: [
+      {
+        name: 'Mega Drain',
+        damage: 90,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+        description: 'Heal 30 damage from this Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Tangrowth has two arms that it can extend as it pleases. Recent research has shown that these arms are, in fact, bundles of vines.',
+    health: 130,
+    rarity: CardRarityENUM.ART,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 529,
+    number: 159,
+    pokedex: 415,
+    name: 'Combee',
+    artist: 'Shibuzoh.',
+    attacks: [
+      {
+        name: 'Call for Family',
+        damage: 0,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: 'Put 1 random Combee from your deck onto your Bench.'
+      }
+    ],
+    evolve: 'Vespiquen',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'At night, Combee sleep in a group of about a hundred, packed closely together in a lump.',
+    health: 50,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA
+    ],
+    related: []
+  },
+  {
+    id: 530,
+    number: 160,
+    pokedex: 455,
+    name: 'Carnivine',
+    artist: 'Yoriyuki Ikegami',
+    attacks: [
+      {
+        name: 'Flog',
+        damage: 40,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+        description: 'Flip a coin. If heads, this attack does 50 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It attracts prey with its sweet-smelling saliva, then chomps down. It takes a whole day to eat prey.',
+    health: 90,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 531,
+    number: 161,
+    pokedex: 492,
+    name: 'Shaymin',
+    artist: 'REND',
+    attacks: [
+      {
+        name: 'Flop',
+        damage: 30,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: 'Fragrant Flower Garden',
+      description: 'Once during your turn, you may heal 10 damage from each of your Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It can dissolve toxins in the air to instantly transform ruined land into a lush field of flowers.',
+    health: 60,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA
+    ],
+    related: []
+  },
+  {
+    id: 532,
+    number: 162,
+    pokedex: 473,
+    name: 'Mamoswine',
+    artist: 'OKACHEKE',
+    attacks: [
+      {
+        name: 'Frosty Flattening',
+        damage: 120,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: 'Thick Fat',
+      description: 'This Pokémon takes −20 damage from attacks from Fire or Water Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'This Pokémon can be spotted in wall paintings from as far back as 10,000 years ago. For a while, it was thought to have gone extinct.',
+    health: 160,
+    rarity: CardRarityENUM.ART,
+    retreat: 4,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [404]
+  },
+  {
+    id: 533,
+    number: 163,
+    pokedex: 423,
+    name: 'Gastrodon',
+    artist: 'takashi shiraishi',
+    attacks: [
+      {
+        name: 'Muddy Water',
+        damage: 60,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'They normally inhabit rocky seashores, but in times of continuous rain, they can sometimes be found in the mountains, far from the sea.',
+    health: 120,
+    rarity: CardRarityENUM.ART,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [412]
+  },
+  {
+    id: 534,
+    number: 164,
+    pokedex: 490,
+    name: 'Manaphy',
+    artist: 'miki kudo',
+    attacks: [
+      {
+        name: 'Oceanic Gift',
+        damage: 0,
+        energy: [PokemonTypeENUM.WATER],
+        description: 'Choose 2 of your Benched Pokémon. For each of those Pokémon, take a Water Energy from your Energy Zone and attach it to that Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It is born with a wondrous power that lets it bond with any kind of Pokémon.',
+    health: 50,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 535,
+    number: 165,
+    pokedex: 403,
+    name: 'Shinx',
+    artist: 'Yuu Nishida',
+    attacks: [
+      {
+        name: 'Hide',
+        damage: 0,
+        energy: [PokemonTypeENUM.ELECTRIC],
+        description: 'Flip a coin. If heads, during your opponent’s next turn, prevent all damage from—and effects of—attacks done to this Pokémon.'
+      }
+    ],
+    evolve: 'Luxio',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'The extension and contraction of its muscles generates electricity. It glows when in trouble.',
+    health: 60,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 536,
+    number: 166,
+    pokedex: 479,
+    name: 'Rotom',
+    artist: 'Shimaris Yukichi',
+    attacks: [
+      {
+        name: 'Assault Laser',
+        damage: 20,
+        energy: [PokemonTypeENUM.ELECTRIC],
+        description: 'If your opponent’s Active Pokémon has a Pokémon Tool attached, this attack does 30 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its electricity-like body can enter some kinds of machines and take control in order to make mischief.',
+    health: 70,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 537,
+    number: 167,
+    pokedex: 425,
+    name: 'Drifloon',
+    artist: 'Orca',
+    attacks: [
+      {
+        name: 'Expand',
+        damage: 10,
+        energy: [PokemonTypeENUM.PSYCHIC],
+        description: 'During your opponent’s next turn, this Pokémon takes −20 damage from attacks.'
+      }
+    ],
+    evolve: 'Drifblim',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It is whispered that any child who mistakes Drifloon for a balloon and holds on to it could wind up missing.',
+    health: 50,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 538,
+    number: 168,
+    pokedex: 481,
+    name: 'Mesprit',
+    artist: 'Orca',
+    attacks: [
+      {
+        name: 'Supreme Blast',
+        damage: 160,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC],
+        description: 'You can use this attack only if you have Uxie and Azelf on your Bench. Discard all Energy from this Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Known as “The Being of Emotion.” It taught humans the nobility of sorrow, pain, and joy.',
+    health: 70,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 539,
+    number: 169,
+    pokedex: 487,
+    name: 'Giratina',
+    artist: 'Rond',
+    attacks: [
+      {
+        name: 'Spooky Shot',
+        damage: 70,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL],
+        description: 'If this Pokémon has any Energy attached, it has no Retreat Cost.'
+      }
+    ],
+    ability: {
+      name: 'Levitate',
+      description: 'If this Pokémon has any Energy attached, it has no Retreat Cost.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'This Pokémon is said to live in a world on the reverse side of ours, where common knowledge is distorted and strange.',
+    health: 120,
+    rarity: CardRarityENUM.ART,
+    retreat: 3,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 540,
+    number: 170,
+    pokedex: 488,
+    name: 'Cresselia',
+    artist: 'rika',
+    attacks: [
+      {
+        name: 'Moonlight Gain',
+        damage: 50,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC],
+        description: 'Heal 20 damage from this Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Shiny particles are released from its wings like a veil. It is said to represent the crescent moon.',
+    health: 110,
+    rarity: CardRarityENUM.ART,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 541,
+    number: 171,
+    pokedex: 464,
+    name: 'Rhyperior',
+    artist: 'Taiga Kayama',
+    attacks: [
+      {
+        name: 'Mountain Swing',
+        damage: 150,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL],
+        description: 'Discard the top 3 cards of your deck.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It can load up to three projectiles per arm into the holes in its hands. What launches out of those holes could be either rocks or Roggenrola.',
+    health: 160,
+    rarity: CardRarityENUM.ART,
+    retreat: 4,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [453]
+  },
+  {
+    id: 542,
+    number: 172,
+    pokedex: 448,
+    name: 'Lucario',
+    artist: 'Akira Komayama',
+    attacks: [
+      {
+        name: 'Submarine Blow',
+        damage: 40,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT]
+      }
+    ],
+    ability: {
+      name: 'Fighting Coach',
+      description: 'Attacks used by your Fighting Pokémon do +20 damage to your opponent’s Active Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It’s said that no foe can remain invisible to Lucario, since it can detect auras—even those of foes it could not otherwise see.',
+    health: 100,
+    rarity: CardRarityENUM.ART,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [463]
+  },
+  {
+    id: 543,
+    number: 173,
+    pokedex: 449,
+    name: 'Hippopotas',
+    artist: 'Teeziro',
+    attacks: [
+      {
+        name: 'Rolling Tackle',
+        damage: 60,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Hippowdon',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It shuts its nostrils tight, then travels through sand as if walking. They form colonies of around 10.',
+    health: 80,
+    rarity: CardRarityENUM.ART,
+    retreat: 3,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 544,
+    number: 174,
+    pokedex: 442,
+    name: 'Spiritomb',
+    artist: 'Shinji Kanda',
+    attacks: [
+      {
+        name: 'Swirling Disaster',
+        damage: 0,
+        energy: [PokemonTypeENUM.DARK],
+        description: 'This attack does 10 damage to each of your opponent’s Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its constant mischief and misdeeds resulted in it being bound to an Odd Keystone by a mysterious spell.',
+    health: 80,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 545,
+    number: 175,
+    pokedex: 453,
+    name: 'Croagunk',
+    artist: 'GOSSAN',
+    attacks: [
+      {
+        name: 'Group Beatdown',
+        damage: 20,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK],
+        description: 'Flip a coin for each Pokémon you have in play. This attack does 20 damage for each heads.'
+      }
+    ],
+    evolve: 'Toxicroak',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Inflating its poison sacs, it fills the area with an odd sound and hits flinching opponents with a poison jab.',
+    health: 60,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 546,
+    number: 176,
+    pokedex: 485,
+    name: 'Heatran',
+    artist: 'OKUBO',
+    attacks: [
+      {
+        name: 'Steel Tackle',
+        damage: 110,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL],
+        description: 'This Pokémon also does 20 damage to itself.'
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It dwells in volcanic caves. It digs in with its cross-shaped feet to crawl on ceilings and walls.',
+    health: 120,
+    rarity: CardRarityENUM.ART,
+    retreat: 3,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 547,
+    number: 177,
+    pokedex: 445,
+    name: 'Garchomp',
+    artist: 'MINAMINAMI Take',
+    attacks: [
+      {
+        name: 'Dragon Claw',
+        damage: 100,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.FIGHT],
+      },
+    ],
+    ability: {
+      name: 'Reckless Shearing',
+      description: 'You must discard a card from your hand in order to use this Ability. Once during your turn, you may draw a card.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It is said that when one runs at high speed, its wings create blades of wind that can fell nearby trees.',
+    health: 140,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.DRAGON,
+    weak: null,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 548,
+    number: 178,
+    pokedex: 398,
+    name: 'Staraptor',
+    artist: 'Ryota Murayama',
+    attacks: [
+      {
+        name: 'Clutch',
+        damage: 80,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'During your opponent’s next turn, the Defending Pokémon can’t retreat.'
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'When Staravia evolve into Staraptor, they leave the flock to live alone. They have sturdy wings.',
+    health: 140,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 549,
+    number: 179,
+    pokedex: 399,
+    name: 'Bidoof',
+    artist: 'Shinya Komatsu',
+    attacks: [
+      {
+        name: 'Super Fang',
+        damage: 0,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'Halve your opponent’s Active Pokémon’s remaining HP, rounded down.'
+      },
+    ],
+    evolve: 'Bibarel',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'With nerves of steel, nothing can perturb it. It is more agile and active than it appears.',
+    health: 60,
+    rarity: CardRarityENUM.ART,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 550,
+    number: 180,
+    pokedex: 431,
+    name: 'Glameow',
+    artist: 'matazo',
+    attacks: [
+      {
+        name: 'Pose',
+        damage: 40,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: 'Flip a coin. If tails, this attack does nothing.'
+      },
+    ],
+    evolve: 'Purugly',
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It claws if displeased and purrs when affectionate. Its fickleness is very popular among some.',
+    health: 60,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 551,
+    number: 181,
+    pokedex: 486,
+    name: 'Regigigas',
+    artist: 'Tetsu Kayama',
+    attacks: [
+      {
+        name: 'Raging Hammer',
+        damage: 50,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'This attack does more damage equal to the damage this Pokémon has on it.'
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It is said to have made Pokémon that look like itself from a special ice mountain, rocks, and magma.',
+    health: 140,
+    rarity: CardRarityENUM.ART,
+    retreat: 4,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 552,
+    number: 182,
+    pokedex: 469,
+    name: 'Yanmega EX',
+    artist: 'PLANETA Tsuji',
+    attacks: [
+      {
+        name: 'Air Slash',
+        damage: 120,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'Discard a random Energy from this Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [411]
+  },
+  {
+    id: 553,
+    number: 183,
+    pokedex: 392,
+    name: 'Infernape EX',
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: 'Flare Blitz',
+        damage: 140,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE],
+        description: 'Discard all Fire Energy from this Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 170,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 0,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [400]
+  },
+  {
+    id: 554,
+    number: 184,
+    pokedex: 484,
+    name: 'Palkia EX',
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: 'Slash',
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER]
+      },
+      {
+        name: 'Dimensional Storm',
+        damage: 150,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+        description: 'Discard 3 Water Energy from this Pokémon. This attack also does 20 damage to each of your opponent’s Benched Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 150,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 555,
+    number: 185,
+    pokedex: 417,
+    name: 'Pachirisu EX',
+    artist: 'PLANETA Tsuji',
+    attacks: [
+      {
+        name: 'Sparking Gadget',
+        damage: 40,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+        description: 'If this Pokémon has a Pokémon Tool attached, this attack does 40 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 120,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 556,
+    number: 186,
+    pokedex: 429,
+    name: 'Mismagius EX',
+    artist: 'PLANETA Tsuji',
+    attacks: [
+      {
+        name: 'Magical Delusion',
+        damage: 70,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC],
+        description: 'Your opponent’s Active Pokémon is now Confused.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [438]
+  },
+  {
+    id: 557,
+    number: 187,
+    pokedex: 475,
+    name: 'Gallade EX',
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: 'Energized Blade',
+        damage: 70,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
+        description: 'This attack does 20 more damage for each Energy attached to your opponent’s Active Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 170,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 558,
+    number: 188,
+    pokedex: 461,
+    name: 'Weavile EX',
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: 'Scratching Nails',
+        damage: 30,
+        energy: [PokemonTypeENUM.DARK],
+        description: 'If your opponent’s Active Pokémon has damage on it, this attack does 40 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [470]
+  },
+  {
+    id: 559,
+    number: 189,
+    pokedex: 491,
+    name: 'Darkrai EX',
+    artist: 'PLANETA Yamashita',
+    attacks: [
+      {
+        name: 'Dark Prism',
+        damage: 80,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: 'Nightmare Aura',
+      description: 'Whenever you attach a Dark Energy from your Energy Zone to this Pokémon, do 20 damage to your opponent’s Active Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 560,
+    number: 190,
+    pokedex: 483,
+    name: 'Dialga EX',
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: 'Metallic Turbo',
+        damage: 30,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL],
+        description: 'Take 2  Energy from your Energy Zone and attach it to 1 of your Benched Pokémon.'
+      },
+      {
+        name: 'Heavy Impact',
+        damage: 100,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 150,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 561,
+    number: 191,
+    pokedex: 463,
+    name: 'Lickilicky EX',
+    artist: 'PLANETA Tsuji',
+    attacks: [
+      {
+        name: 'Licking Fury',
+        damage: 100,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 160,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 4,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 562,
+    number: 192,
+    name: 'Cyrus',
+    artist: 'akagi',
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Switch in 1 of your opponent’s Benched Pokémon that has damage on it to the Active Spot.',
+    rarity: CardRarityENUM.SUPER,
+    health: 0,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+  },
+  {
+    id: 563,
+    number: 193,
+    name: 'Team Galactic Grunt',
+    artist: 'GOSSAN',
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Put 1 random Glameow, Stunky, or Croagunk from your deck into your hand.',
+    rarity: CardRarityENUM.SUPER,
+    health: 0,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+  },
+  {
+    id: 564,
+    number: 194,
+    name: 'Cynthia',
+    artist: 'Ryuta Fuse',
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'During this turn, attacks used by your Garchomp or Togekiss do +50 damage to your opponent’s Active Pokémon.',
+    rarity: CardRarityENUM.SUPER,
+    health: 0,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+  },
+  {
+    id: 565,
+    number: 195,
+    name: 'Volkner',
+    artist: 'GIDORA',
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Choose 1 of your Electivire or Luxray. Attach 2 Electric Energy from your discard pile to that Pokémon.',
+    rarity: CardRarityENUM.SUPER,
+    health: 0,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+  },
+  {
+    id: 566,
+    number: 196,
+    name: 'Dawn',
+    artist: 'saino misaki',
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Move an Energy from 1 of your Benched Pokémon to your Active Pokémon.',
+    rarity: CardRarityENUM.SUPER,
+    health: 0,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+  },
+  {
+    id: 567,
+    number: 197,
+    name: 'Mars',
+    artist: 'Yuu Nishida',
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Your opponent shuffles their hand into their deck and draws a card for each of their remaining points needed to win.',
+    rarity: CardRarityENUM.SUPER,
+    health: 0,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+  },
+  {
+    id: 568,
+    number: 198,
+    pokedex: 469,
+    name: 'Yanmega EX',
+    artist: 'Mina Nakai',
+    attacks: [
+      {
+        name: 'Air Slash',
+        damage: 120,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: 'Discard a random Energy from this Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: [411]
+  },
+  {
+    id: 569,
+    number: 199,
+    pokedex: 392,
+    name: 'Infernape EX',
+    artist: 'nagimiso',
+    attacks: [
+      {
+        name: 'Flare Blitz',
+        damage: 140,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE],
+        description: 'Discard all Fire Energy from this Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 170,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 0,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [400]
+  },
+  {
+    id: 570,
+    number: 200,
+    pokedex: 417,
+    name: 'Pachirisu EX',
+    artist: 'Nurikabe',
+    attacks: [
+      {
+        name: 'Sparking Gadget',
+        damage: 40,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+        description: 'If this Pokémon has a Pokémon Tool attached, this attack does 40 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 120,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 571,
+    number: 201,
+    pokedex: 429,
+    name: 'Mismagius EX',
+    artist: 'Kuroimori',
+    attacks: [
+      {
+        name: 'Magical Delusion',
+        damage: 70,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC],
+        description: 'Your opponent’s Active Pokémon is now Confused.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [438]
+  },
+  {
+    id: 572,
+    number: 202,
+    pokedex: 475,
+    name: 'Gallade EX',
+    artist: 'Takumi Wada',
+    attacks: [
+      {
+        name: 'Energized Blade',
+        damage: 70,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
+        description: 'This attack does 20 more damage for each Energy attached to your opponent’s Active Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 170,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 573,
+    number: 203,
+    pokedex: 461,
+    name: 'Weavile EX',
+    artist: 'hncl',
+    attacks: [
+      {
+        name: 'Scratching Nails',
+        damage: 30,
+        energy: [PokemonTypeENUM.DARK],
+        description: 'If your opponent’s Active Pokémon has damage on it, this attack does 40 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: [470]
+  },
+  {
+    id: 574,
+    number: 204,
+    pokedex: 491,
+    name: 'Darkrai EX',
+    artist: 'Oswaldo KATO',
+    attacks: [
+      {
+        name: 'Dark Prism',
+        damage: 80,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: 'Nightmare Aura',
+      description: 'Whenever you attach a Dark Energy from your Energy Zone to this Pokémon, do 20 damage to your opponent’s Active Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 575,
+    number: 205,
+    pokedex: 463,
+    name: 'Lickilicky EX',
+    artist: 'Jerky',
+    attacks: [
+      {
+        name: 'Licking Fury',
+        damage: 100,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 160,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 4,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA,
+    ],
+    related: []
+  },
+  {
+    id: 576,
+    number: 206,
+    pokedex: 484,
+    name: 'Palkia EX',
+    artist: 'N-DESIGN Inc.',
+    attacks: [
+      {
+        name: 'Slash',
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER]
+      },
+      {
+        name: 'Dimensional Storm',
+        damage: 150,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+        description: 'Discard 3 Water Energy from this Pokémon. This attack also does 20 damage to each of your opponent’s Benched Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 150,
+    rarity: CardRarityENUM.INMERSIVE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 577,
+    number: 207,
+    pokedex: 483,
+    name: 'Dialga EX',
+    artist: 'N-DESIGN Inc.',
+    attacks: [
+      {
+        name: 'Metallic Turbo',
+        damage: 30,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL],
+        description: 'Take 2  Energy from your Energy Zone and attach it to 1 of your Benched Pokémon.'
+      },
+      {
+        name: 'Heavy Impact',
+        damage: 100,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 150,
+    rarity: CardRarityENUM.INMERSIVE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 578,
+    number: 208,
+    pokedex: 484,
+    name: 'Palkia EX',
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: 'Slash',
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER]
+      },
+      {
+        name: 'Dimensional Storm',
+        damage: 150,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+        description: 'Discard 3 Water Energy from this Pokémon. This attack also does 20 damage to each of your opponent’s Benched Pokémon.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 150,
+    rarity: CardRarityENUM.CROWN,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: true,
+    found: [
+      EXPANSION.PALKIA
+    ],
+    related: []
+  },
+  {
+    id: 579,
+    number: 209,
+    pokedex: 483,
+    name: 'Dialga EX',
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: 'Metallic Turbo',
+        damage: 30,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL],
+        description: 'Take 2  Energy from your Energy Zone and attach it to 1 of your Benched Pokémon.'
+      },
+      {
+        name: 'Heavy Impact',
+        damage: 100,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 150,
+    rarity: CardRarityENUM.CROWN,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    found: [
+      EXPANSION.DIALGA,
+    ],
+    related: []
+  },
+  {
+    id: 580,
+    number: 1,
     name: 'Potion',
     artist: '5ban Graphics',
     expansion: CardExpansionENUM.PROMO_A,
@@ -11047,7 +17160,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [351, 350, 374, 377, 375, 376, 380, 378]
   },
   {
-    id: 374,
+    id: 581,
     number: 2,
     name: 'X Speed',
     artist: 'Toyste Beach',
@@ -11064,7 +17177,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [351, 350, 373, 377, 375, 376, 380, 378]
   },
   {
-    id: 375,
+    id: 582,
     number: 3,
     name: 'Hand Scope',
     artist: 'Toyste Beach',
@@ -11081,7 +17194,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [351, 350, 373, 374, 377, 376, 380, 378]
   },
   {
-    id: 376,
+    id: 583,
     number: 4,
     name: 'Pokédex',
     artist: 'Ryo Ueda',
@@ -11098,7 +17211,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [351, 350, 373, 374, 377, 375, 380, 378]
   },
   {
-    id: 377,
+    id: 584,
     number: 5,
     name: 'Poké Ball',
     artist: 'Ryo Ueda',
@@ -11115,7 +17228,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [351, 350, 373, 374, 375, 376, 380, 378]
   },
   {
-    id: 378,
+    id: 585,
     number: 6,
     name: 'Red Card',
     artist: '5ban Graphics',
@@ -11132,7 +17245,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [351, 350, 373, 374, 377, 375, 376, 380]
   },
   {
-    id: 379,
+    id: 586,
     number: 7,
     name: 'Professor\'s Research',
     artist: 'Naoki Saito',
@@ -11149,7 +17262,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368]
   },
   {
-    id: 380,
+    id: 587,
     number: 8,
     name: 'Pokédex',
     artist: 'Yuu Nishida',
@@ -11166,7 +17279,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [351, 350, 373, 374, 377, 375, 376, 378]
   },
   {
-    id: 381,
+    id: 588,
     number: 9,
     pokedex: 25,
     name: 'Pikachu',
@@ -11196,7 +17309,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [94, 95, 311, 312, 398, 387]
   },
   {
-    id: 382,
+    id: 589,
     number: 10,
     pokedex: 150,
     name: 'Mewtwo',
@@ -11227,7 +17340,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [128]
   },
   {
-    id: 383,
+    id: 590,
     number: 11,
     pokedex: 113,
     name: 'Chansey',
@@ -11257,7 +17370,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [202]
   },
   {
-    id: 384,
+    id: 591,
     number: 12,
     pokedex: 52,
     name: 'Meowth',
@@ -11288,7 +17401,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [196, 197, 246]
   },
   {
-    id: 385,
+    id: 592,
     number: 13,
     pokedex: 12,
     name: 'Butterfree',
@@ -11322,7 +17435,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [5, 6, 7]
   },
   {
-    id: 386,
+    id: 593,
     number: 14,
     pokedex: 131,
     name: 'Lapras EX',
@@ -11352,7 +17465,7 @@ export const MOCK_DB_CARDS: Card[] = [
     extra: 'Promo Pack'
   },
   {
-    id: 387,
+    id: 594,
     number: 15,
     pokedex: 25,
     name: 'Pikachu',
@@ -11382,7 +17495,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [94, 95, 311, 312, 398, 381]
   },
   {
-    id: 388,
+    id: 595,
     number: 16,
     pokedex: 35,
     name: 'Clefairy',
@@ -11412,7 +17525,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [113, 114]
   },
   {
-    id: 389,
+    id: 596,
     number: 17,
     pokedex: 56,
     name: 'Mankey',
@@ -11443,7 +17556,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [141, 142, 327, 328]
   },
   {
-    id: 390,
+    id: 597,
     number: 18,
     pokedex: 3,
     name: 'Venusaur',
@@ -11474,7 +17587,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [1, 2, 3, 227, 395]
   },
   {
-    id: 391,
+    id: 598,
     number: 19,
     pokedex: 658,
     name: 'Greninja',
@@ -11508,7 +17621,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [87, 88, 89]
   },
   {
-    id: 392,
+    id: 599,
     number: 20,
     pokedex: 93,
     name: 'Haunter',
@@ -11539,7 +17652,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [120, 121, 122, 123, 261, 277]
   },
   {
-    id: 393,
+    id: 600,
     number: 21,
     pokedex: 95,
     name: 'Onix',
@@ -11569,7 +17682,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [150]
   },
   {
-    id: 394,
+    id: 601,
     number: 22,
     pokedex: 39,
     name: 'Jigglypuff',
@@ -11600,7 +17713,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [193, 194, 195, 265, 279]
   },
   {
-    id: 395,
+    id: 602,
     number: 23,
     pokedex: 1,
     name: 'Bulbasaur',
@@ -11630,7 +17743,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [1, 2, 3, 4, 227, 251, 390],
   },
   {
-    id: 396,
+    id: 603,
     number: 24,
     pokedex: 81,
     name: 'Magnemite',
@@ -11660,7 +17773,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [97, 98]
   },
   {
-    id: 397,
+    id: 604,
     number: 25,
     pokedex: 145,
     name: 'Moltres EX',
@@ -11696,7 +17809,7 @@ export const MOCK_DB_CARDS: Card[] = [
     extra: 'Premium Pass'
   },
   {
-    id: 398,
+    id: 605,
     number: 26,
     pokedex: 25,
     name: 'Pikachu',
@@ -11726,7 +17839,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [94, 95, 311, 312, 387, 381]
   },
   {
-    id: 399,
+    id: 606,
     number: 27,
     pokedex: 495,
     name: 'Snivy',
@@ -11756,7 +17869,7 @@ export const MOCK_DB_CARDS: Card[] = [
     extra: 'Promo Pack'
   },
   {
-    id: 400,
+    id: 607,
     number: 28,
     pokedex: 637,
     name: 'Volcarona',
@@ -11787,7 +17900,7 @@ export const MOCK_DB_CARDS: Card[] = [
     extra: 'Promo Pack'
   },
   {
-    id: 401,
+    id: 608,
     number: 29,
     pokedex: 9,
     name: 'Blastoise',
@@ -11818,7 +17931,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [53, 54, 55, 232, 405]
   },
   {
-    id: 402,
+    id: 609,
     number: 30,
     pokedex: 133,
     name: 'Eevee',
@@ -11831,7 +17944,7 @@ export const MOCK_DB_CARDS: Card[] = [
         description: 'During your opponent’s next turn, attacks used by the Defending Pokémon do −20 damage.'
       },
     ],
-    evolve: "Flareon Vaporeon Jolteon",
+    evolve: "Flareon Vaporeon Jolteon Leafon Glaceon",
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: 'Its ability to evolve into many forms allows it to adapt smoothly and perfectly to any environment.',
@@ -11849,7 +17962,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [45, 80, 102, 206, 207, 208, 305, 347, 248, 358]
   },
   {
-    id: 403,
+    id: 610,
     number: 31,
     pokedex: 573,
     name: 'Cinccino',
@@ -11880,7 +17993,7 @@ export const MOCK_DB_CARDS: Card[] = [
     related: [212, 213]
   },
   {
-    id: 404,
+    id: 611,
     number: 32,
     pokedex: 4,
     name: 'Charmander',
@@ -11911,7 +18024,7 @@ export const MOCK_DB_CARDS: Card[] = [
     extra: 'Wonder Pick'
   },
   {
-    id: 405,
+    id: 612,
     number: 33,
     pokedex: 7,
     name: 'Squirtle',
@@ -11940,6 +18053,246 @@ export const MOCK_DB_CARDS: Card[] = [
     extra: 'Wonder Pick',
     related: [53, 54, 55, 56, 232, 256, 401]
   },
+  {
+    id: 613,
+    number: 34,
+    pokedex: 393,
+    name: 'Piplup',
+    artist: 'Kariya',
+    attacks: [
+      {
+        name: 'Nap',
+        damage: 0,
+        energy: [PokemonTypeENUM.WATER],
+        description: 'Heal 20 damage from this Pokémon.'
+      }
+    ],
+    evolve: 'Prinplup',
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It doesn’t like to be taken care of. It’s difficult to bond with since it won’t listen to its Trainer.',
+    health: 60,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PREMIUM
+    ],
+    related: []
+  },
+  {
+    id: 614,
+    number: 35,
+    pokedex: 387,
+    name: 'Turtwig',
+    artist: 'Atsuko Nishida',
+    attacks: [
+      {
+        name: 'Bite',
+        damage: 30,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    evolve: 'Grotle',
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'It uses its whole body to photosynthesize when exposed to sunlight. Its shell is made from hardened soil.',
+    health: 80,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    found: [
+      EXPANSION.PROMO_A4
+    ],
+    related: []
+  },
+  {
+    id: 615,
+    number: 36,
+    pokedex: 466,
+    name: 'Electivire',
+    artist: 'Sumiyoshi Kizuki',
+    attacks: [
+      {
+        name: 'Exciting Voltage',
+        damage: 40,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+        description: 'If this Pokémon has at least 2 extra Electric Energy attached, this attack does 80 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'The amount of electrical energy this Pokémon produces is proportional to the rate of its pulse. The voltage jumps while Electivire is battling.',
+    health: 120,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    found: [
+      EXPANSION.PROMO_A4
+    ],
+    related: []
+  },
+  {
+    id: 616,
+    number: 37,
+    pokedex: 488,
+    name: 'Cresselia EX',
+    artist: 'PLANETA Mochizuki',
+    attacks: [
+      {
+        name: 'Psychic Flash',
+        damage: 80,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: 'Lunar Plumage',
+      description: 'Whenever you attach a Psychic Energy from your Energy Zone to this Pokémon, heal 20 damage from this Pokémon.'
+    },
+    evolve: null,
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2,
+    flavor: '',
+    health: 140,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: true,
+    found: [
+      EXPANSION.PROMO_A4
+    ],
+    related: []
+  },
+  {
+    id: 617,
+    number: 38,
+    pokedex: 200,
+    name: 'Misdreavus',
+    artist: 'Miki Tanaka',
+    attacks: [
+      {
+        name: 'Confuse Ray',
+        damage: 0,
+        energy: [PokemonTypeENUM.PSYCHIC],
+        description: 'Your opponent’s Active Pokémon is now Confused.'
+      }
+    ],
+    evolve: 'Mismagius',
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'This Pokémon startles people in the middle of the night. It gathers fear as its energy.',
+    health: 60,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    found: [
+      EXPANSION.PROMO_A4
+    ],
+    related: []
+  },
+  {
+    id: 618,
+    number: 39,
+    pokedex: 227,
+    name: 'Skarmory',
+    artist: 'Anesaki Dynamic',
+    attacks: [
+      {
+        name: 'Metal Arms',
+        damage: 30,
+        energy: [PokemonTypeENUM.STEEL],
+        description: 'If this Pokémon has a Pokémon Tool attached, this attack does 30 more damage.'
+      }
+    ],
+    evolve: null,
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'People fashion swords from Skarmory’s shed feathers, so this Pokémon is a popular element in heraldic designs.',
+    health: 80,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    found: [
+      EXPANSION.PROMO_A4
+    ],
+    related: []
+  },
+  {
+    id: 619,
+    number: 40,
+    pokedex: 390,
+    name: 'Chimchar',
+    artist: 'sui',
+    attacks: [
+      {
+        name: 'Scratch',
+        damage: 20,
+        energy: [PokemonTypeENUM.FIRE]
+      }
+    ],
+    evolve: 'Monferno',
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'Its fiery rear end is fueled by gas made in its belly. Even rain can’t extinguish the fire.',
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    found: [
+      EXPANSION.WONDER_PICK
+    ],
+    related: []
+  },
+  {
+    id: 620,
+    number: 41,
+    pokedex: 175,
+    name: 'Togepi',
+    artist: 'Naoyo Kimura',
+    attacks: [
+      {
+        name: 'Pound',
+        damage: 20,
+        energy: [PokemonTypeENUM.PSYCHIC]
+      }
+    ],
+    evolve: 'Togetic',
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2,
+    flavor: 'The shell seems to be filled with joy. It is said that it will share good luck when treated kindly.',
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    found: [
+      EXPANSION.WONDER_PICK
+    ],
+    related: []
+  }
 ];
 
 export default MOCK_DB_CARDS;

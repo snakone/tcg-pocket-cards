@@ -10,7 +10,8 @@ export enum EXPANSION {
   MYTHICAL_ISLAND,
   PROMO_A3,
   DIALGA,
-  PALKIA
+  PALKIA,
+  PROMO_A4,
 }
 
 export type PACKS_TYPE = 
