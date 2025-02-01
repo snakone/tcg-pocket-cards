@@ -79,7 +79,22 @@ import {
   DECK_BG_ROCK_70x70,
   DECK_BG_SERPERIOR_70x70,
   DECK_BG_SPECIAL_1_70x70,
-  DECK_BG_VENUSAUR_70x70
+  DECK_BG_VENUSAUR_70x70,
+  CYNTHIA_COIN,
+  CHARIZARD_COIN,
+  MEW_COIN,
+  BLUE_AVATAR,
+  BLASTOISE_AVATAR,
+  CHIMCHAR_AVATAR,
+  MEW_AVATAR,
+  PIPLUP_AVATAR,
+  TURTWIG_AVATAR,
+  DECK_BG_DIALGA,
+  DECK_BG_PALKIA,
+  DECK_BG_DIALGA_70x70,
+  DECK_BG_PALKIA_70x70,
+  SMACK_DOWN_DIALGA_ICON,
+  SMACK_DOWN_PALKIA_ICON
 } from "../sentences/path.sentences";
 
 import { FilterSearch } from "../classes/filter.class";
@@ -88,7 +103,7 @@ import { CardExpansionENUM, CardRarityENUM, CardStageENUM } from "../enums/card.
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { AvatarIcon } from "../interfaces/global.interfaces";
 
-export const APP_VERSION = '1.0.6';
+export const APP_VERSION = '1.0.7';
 export const MENU_WIDTH = 250;
 export const MENU_HEIGHT = 405;
 export const PAGE_TITLE = 'TCG Pocket Cards';
@@ -216,16 +231,16 @@ export const PACK_MAP: Record<EXPANSION, any> = {
   [EXPANSION.SPECIAL_MISSION]: null,
   [EXPANSION.MYTHICAL_ISLAND]: MYTHICAL_ISLAND_MEW_ICON,
   [EXPANSION.PROMO_A3]: PROMO_A_ICON,
-  [EXPANSION.DIALGA]: null,
-  [EXPANSION.PALKIA]: null,
+  [EXPANSION.DIALGA]: SMACK_DOWN_DIALGA_ICON,
+  [EXPANSION.PALKIA]: SMACK_DOWN_PALKIA_ICON,
   [EXPANSION.PROMO_A4]: PROMO_A_ICON,
 }
 
 export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.GENETIC_APEX]: 286,
-  [CardExpansionENUM.PROMO_A]: 23,
+  [CardExpansionENUM.PROMO_A]: 41,
   [CardExpansionENUM.MYTHICAL_ISLAND]: 86,
-  [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 140
+  [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 207
 }
 
 export const COIN_MAP: Record<string, any> = {
@@ -236,7 +251,10 @@ export const COIN_MAP: Record<string, any> = {
   meowth: MEOWTH_COIN,
   mewtwo: MEWTWO_COIN,
   pokeball: POKEBALL_COIN,
-  special1: SPECIAL1_COIN
+  special1: SPECIAL1_COIN,
+  cynthia: CYNTHIA_COIN,
+  charizard: CHARIZARD_COIN,
+  mew: MEW_COIN
 }
 
 export const AVATAR_MAP: Record<string, any> = {
@@ -250,7 +268,13 @@ export const AVATAR_MAP: Record<string, any> = {
   mewtwo: MEWTWO_AVATAR,
   pikachu: PIKACHU_AVATAR,
   slowpoke: SLOWPOKE_AVATAR,
-  snorlax: SNORLAX_AVATAR
+  snorlax: SNORLAX_AVATAR,
+  blue: BLUE_AVATAR,
+  blastoise: BLASTOISE_AVATAR,
+  chimchar: CHIMCHAR_AVATAR,
+  mew: MEW_AVATAR,
+  piplup: PIPLUP_AVATAR,
+  turtwig: TURTWIG_AVATAR
 }
 
 export const DECK_BACKGROUND_MAP: Record<string, any> = {
@@ -273,30 +297,9 @@ export const DECK_BACKGROUND_MAP: Record<string, any> = {
   mewtwo_2: DECK_BG_MEWTWO_2,
   pikachu_2: DECK_BG_PIKACHU_2,
   special_1: DECK_BG_SPECIAL_1,
-  venusaur: DECK_BG_VENUSAUR
-}
-
-export const DECK_BACKGROUND_MAP_70x70: Record<string, any> = {
-  trees: DECK_BG_TREES_70x70,
-  forest: DECK_BG_FOREST_70x70,
-  charizard: DECK_BG_CHARIZARD_70x70,
-  mewtwo: DECK_BG_MEWTWO_70x70,
-  pikachu: DECK_BG_PIKACHU_70x70,
-  lake: DECK_BG_LAKE_70x70,
-  black: DECK_BG_BLACK_70x70,
-  serperior: DECK_BG_SERPERIOR_70x70,
-  rock: DECK_BG_ROCK_70x70,
-  blue: DECK_BG_BLUE_70x70,
-  charizard_2: DECK_BG_CHARIZARD_2_70x70,
-  eevee: DECK_BG_EEVEE_70x70,
-  erika: DECK_BG_ERIKA_70x70,
-  gardevoir: DECK_BG_GARDEVOIR_70x70,
-  mew: DECK_BG_MEW_70x70,
-  meowth: DECK_BG_MEOWTH_70x70,
-  mewtwo_2: DECK_BG_MEWTWO_2_70x70,
-  pikachu_2: DECK_BG_PIKACHU_2_70x70,
-  special_1: DECK_BG_SPECIAL_1_70x70,
-  venusaur: DECK_BG_VENUSAUR_70x70
+  venusaur: DECK_BG_VENUSAUR,
+  dialga: DECK_BG_DIALGA,
+  palkia: DECK_BG_PALKIA
 }
 
 export const AVATAR_LIST: AvatarIcon[] = [
@@ -310,7 +313,13 @@ export const AVATAR_LIST: AvatarIcon[] = [
   { label: 'Mewtwo', value: 'mewtwo', icon: MEWTWO_AVATAR },
   { label: 'Pikachu', value: 'pikachu', icon: PIKACHU_AVATAR },
   { label: 'Slowpoke', value: 'slowpoke', icon: SLOWPOKE_AVATAR },
-  { label: 'Snorlax', value: 'snorlax', icon: SNORLAX_AVATAR }
+  { label: 'Snorlax', value: 'snorlax', icon: SNORLAX_AVATAR },
+  { label: 'Blue', value: 'blue', icon: BLUE_AVATAR },
+  { label: 'Blastoise', value: 'blastoise', icon: BLASTOISE_AVATAR },
+  { label: 'Chimchar', value: 'chimchar', icon: CHIMCHAR_AVATAR },
+  { label: 'Mew', value: 'mew', icon: MEW_AVATAR },
+  { label: 'Piplup', value: 'piplup', icon: PIPLUP_AVATAR },
+  { label: 'Turtwig', value: 'turtwig', icon: TURTWIG_AVATAR },
 ];
 
 export const COIN_LIST: AvatarIcon[] = [
@@ -321,30 +330,10 @@ export const COIN_LIST: AvatarIcon[] = [
   { label: 'Meowth', value: 'meowth', icon: MEOWTH_COIN },
   { label: 'Mewtwo', value: 'mewtwo', icon: MEWTWO_COIN },
   { label: 'Pokéball', value: 'pokeball', icon: POKEBALL_COIN },
-  { label: 'Special 1', value: 'special1', icon: SPECIAL1_COIN }
-];
-
-export const DECK_BACKGROUNDS: AvatarIcon[] = [
-  {label: 'Trees', value: 'trees', icon: DECK_BG_TREES},
-  {label: 'Forest', value: 'forest', icon: DECK_BG_FOREST},
-  {label: 'Charizard', value: 'charizard', icon: DECK_BG_CHARIZARD},
-  {label: 'Mewtwo', value: 'mewtwo', icon: DECK_BG_MEWTWO},
-  {label: 'Pikachu', value: 'pikachu', icon: DECK_BG_PIKACHU},
-  {label: 'Lake', value: 'lake', icon: DECK_BG_LAKE},
-  {label: 'Black', value: 'black', icon: DECK_BG_BLACK},
-  {label: 'Serperior', value: 'serperior', icon: DECK_BG_SERPERIOR},
-  {label: 'Rocks', value: 'rock', icon: DECK_BG_ROCK},
-  {label: 'Blue', value: 'blue', icon: DECK_BG_BLUE},
-  {label: 'Charizard 2', value: 'charizard_2', icon: DECK_BG_CHARIZARD_2},
-  {label: 'Eevee', value: 'eevee', icon: DECK_BG_EEVEE},
-  {label: 'Erika', value: 'erika', icon: DECK_BG_ERIKA},
-  {label: 'Gardevoir', value: 'gardevoir', icon: DECK_BG_GARDEVOIR},
-  {label: 'Mew', value: 'mew', icon: DECK_BG_MEW},
-  {label: 'Meowth', value: 'meowth', icon: DECK_BG_MEOWTH},
-  {label: 'Mewtwo 2', value: 'mewtwo_2', icon: DECK_BG_MEWTWO_2},
-  {label: 'Pikachu 2', value: 'pikachu_2', icon: DECK_BG_PIKACHU_2},
-  {label: 'Special 1', value: 'special_1', icon: DECK_BG_SPECIAL_1},
-  {label: 'Venusaur', value: 'venusaur', icon: DECK_BG_VENUSAUR}
+  { label: 'Special 1', value: 'special1', icon: SPECIAL1_COIN },
+  { label: 'Charizard', value: 'charizard', icon: CHARIZARD_COIN },
+  { label: 'Cynthia', value: 'cynthia', icon: CYNTHIA_COIN },
+  { label: 'Mew', value: 'mew', icon: MEW_COIN },
 ];
 
 export const DECK_BACKGROUNDS_70x70: AvatarIcon[] = [
@@ -367,7 +356,9 @@ export const DECK_BACKGROUNDS_70x70: AvatarIcon[] = [
   {label: 'Mewtwo 2', value: 'mewtwo_2', icon: DECK_BG_MEWTWO_2_70x70},
   {label: 'Pikachu 2', value: 'pikachu_2', icon: DECK_BG_PIKACHU_2_70x70},
   {label: 'Special 1', value: 'special_1', icon: DECK_BG_SPECIAL_1_70x70},
-  {label: 'Venusaur', value: 'venusaur', icon: DECK_BG_VENUSAUR_70x70}
+  {label: 'Venusaur', value: 'venusaur', icon: DECK_BG_VENUSAUR_70x70},
+  {label: 'Dialga', value: 'dialga', icon: DECK_BG_DIALGA_70x70},
+  {label: 'Palkia', value: 'palkia', icon: DECK_BG_PALKIA_70x70},
 ];
 
 export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);

@@ -10,6 +10,7 @@ interface BaseCard {
   stage: CardStageENUM,
   artist: string;
   number: number;
+  order: number;
 }
 
 export interface Card extends BaseCard {

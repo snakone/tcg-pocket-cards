@@ -92,7 +92,7 @@ export function BackupModal() {
 
   async function handleDelete(): Promise<void> {
     SoundService.play('CHANGE_VIEW');
-    const userConfirmed = await confirm("delete_config", "delete_config_question");
+    const userConfirmed = await confirm("delete_config", "delete_config_question", "delete");
     if (userConfirmed) {
       ShareService.onDeleteSettings();
       Storage.setSettings(settingsInitialState);

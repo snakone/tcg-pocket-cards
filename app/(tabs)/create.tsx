@@ -47,7 +47,7 @@ export default function CreateDeckScreen() {
     </TouchableOpacity>
   );
 
-  const RenderEmpty = () => {
+  const renderEmpty = () => {
     const renderCardState = useCallback(() => {
       return state.cardState.loaded && 
         <ThemedText style={{ padding: 6 }}>{i18n.t('no_decks_found')}</ThemedText>
@@ -130,7 +130,7 @@ export default function CreateDeckScreen() {
                       renderItem={({item, index}) => renderDeckItem({item, index, onPress: () => openDeck(item)})}
                       keyExtractor={(item, index) => index + 1 + ''}
                       showsVerticalScrollIndicator={false}
-                      ListEmptyComponent={RenderEmpty}/>
+                      ListEmptyComponent={renderEmpty}/>
           </ThemedView>
         </ThemedView> 
       </SafeAreaView>

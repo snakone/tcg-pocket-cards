@@ -53,17 +53,17 @@ export default function ShareScreen() {
   }, [decks]);
 
   
-  const RenderEmpty = useCallback(() => {
+  const renderEmpty = useCallback(() => {
     if (searchQuery.length > 0) {
       return (
         <ThemedView style={{marginTop: 6}}>
-          <ThemedText style={{ paddingHorizontal: 6 }}>{i18n.t('no_decks_found')}</ThemedText>
+          <ThemedText style={{ paddingHorizontal: 6 }}>{i18n.t('no_share_found')}</ThemedText>
         </ThemedView>
       )
     }
     return (
       <ThemedView style={{marginTop: 6}}>
-        <ThemedText style={{ paddingHorizontal: 6 }}>{i18n.t('no_valid_decks_found')}</ThemedText>
+        <ThemedText style={{ paddingHorizontal: 6 }}>{i18n.t('no_valid_share_found')}</ThemedText>
         <ThemedText style={{ paddingHorizontal: 6}}>{i18n.t('no_valid_remember')}</ThemedText>
         <ThemedText style={{ paddingHorizontal: 6}}>{i18n.t('no_valid_empty')}</ThemedText>
       </ThemedView>
@@ -100,20 +100,26 @@ export default function ShareScreen() {
             </Animated.View>
         </KeyboardAvoidingView>
       </ThemedView>
-      <ThemedView style={{marginBottom: 20, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', borderRadius: 8}}>
-        <Image source={SHARE_IMAGE} style={{width: '100%', height: 105, borderRadius: 8}}></Image>
-      </ThemedView>
+
       <ThemedView style={[CreateScreenStyles.decksContainer, {height: 478, padding: 0}]}>
+        {/* DECKS */}
         <ThemedView style={{flex: 1}}>
+          {
+            filtered.length > 0 && <ThemedText type='subtitle'>{i18n.t('decks')}</ThemedText>
+          }
           <FlatList data={filtered.sort((a, b) => a?.id > b?.id ? -1 : 1)}
                     numColumns={1}
                     contentContainerStyle={[{width: '100%', paddingBottom: 0}]}
                     renderItem={({item, index}) => renderDeckItem({item, index, onPress: () => openDeck(item)})}
                     keyExtractor={(item, index) => index + 1 + ''}
                     showsVerticalScrollIndicator={false}
-                    ListEmptyComponent={RenderEmpty}/>
+                    ListEmptyComponent={renderEmpty}/>
         </ThemedView>
-      </ThemedView>               
+      </ThemedView>
+
+      <ThemedView style={{marginTop: 20, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', borderRadius: 8}}>
+        <Image source={SHARE_IMAGE} style={{width: '100%', height: 132, borderRadius: 8}}></Image>
+      </ThemedView>             
     </ParallaxScrollView>
   );
 }

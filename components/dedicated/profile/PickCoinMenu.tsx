@@ -91,7 +91,7 @@ export default function PickCoinMenu({
       </Pressable>
       <Animated.View style={[animatedStyle, sortStyles.container, {height: 605}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
-          <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_avatar')}</ThemedText>
+          <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_coin')}</ThemedText>
         </View>
         <ThemedView style={[styles.modalScrollView, {flex: 1, padding: 0}]}>
           <ThemedView style={{flex: 1, alignItems: 'center', marginTop: 12}}>
@@ -100,6 +100,7 @@ export default function PickCoinMenu({
                       numColumns={3}
                       showsVerticalScrollIndicator={false}
                       keyExtractor={(item, index) => index + ''}
+                      contentContainerStyle={{paddingBottom: 96}}
                     />
             <ThemedView style={{alignItems: 'center', position: 'absolute', bottom: 30}}>
               <TouchableOpacity onPress={() => handleSave()}
