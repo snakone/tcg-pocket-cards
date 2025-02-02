@@ -53,7 +53,7 @@ export const SHARE_OPTIONS = require('@/assets/images/share/export.png');
 export const SHARE_CHARIZARD = require('@/assets/images/share/Charizard.jpeg');
 export const SHARE_IMAGE = require('@/assets/images/share/share_image.png');
 
-export const PACK_POINTS = require('@/assets/images/pack-points.png');
+export const TRADE_POINTS = require('@/assets/images/trade_token.png');
 
 // SPLASH
 export const WINTER_SPLASH = require('@/assets/images/splash/winter.webp');

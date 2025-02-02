@@ -1,6 +1,6 @@
 import { FlatList, TextInput, TouchableOpacity, View, StyleSheet } from "react-native";
-import { useCallback, useContext, useMemo, useRef, useState } from "react";
-import { useRouter } from "expo-router";
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import React from "react";
 import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -19,6 +19,10 @@ import { CARD_IMAGE_MAP_116x162 } from "@/shared/definitions/utils/card.images";
 import { createDeckStyles } from "./create_deck";
 import PickDesiredMenu from "@/components/dedicated/trade/PickDesiredMenu";
 import PickOffersMenu from "@/components/dedicated/trade/PickOffersMenu";
+import { TradeItem } from "@/shared/definitions/interfaces/global.interfaces";
+import Storage from "@/core/storage/storage.service";
+import { useConfirmation } from "@/core/providers/ConfirmationProvider";
+import LoadingOverlay from "@/components/ui/LoadingOverlay";
 
 export default function CreateTradeScreen() {
   const {i18n} = useI18n();
@@ -26,14 +30,35 @@ export default function CreateTradeScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
-  const [name, setName] = useState<string>('');
+  const [title, setTitle] = useState<string>('');
   const [discord, setDiscord] = useState<string>('');
   const [tcg, setTcg] = useState<string[]>(['', '', '', '']);
   const inputRefs = useRef<TextInput[]>([]);
   const [desired, setDesired] = useState<any>(null);
-  const [offers, setOffers] = useState<number[] | null[]>([null, null, null, null, null]);
+  const [offers, setOffers] = useState<(number| null)[]>([null, null, null, null, null]);
   const [isDesiredVisible, setIsDesiredVisible] = useState<boolean>(false);
   const [isOffersVisible, setIsOffersVisible] = useState<boolean>(false);
+  const { confirm } = useConfirmation();
+  const [loading, setLoading] = useState(false);
+  const [notSaved, setNotSaved] = useState(false);
+  const { trade_id } = useLocalSearchParams<{ trade_id: string }>();
+
+  useEffect(() => {
+    const checkTrade = async () => {
+      if (trade_id !== undefined) {
+        const selected = state.settingsState.trades.find(trade => trade.id === Number(trade_id));
+        if (selected) {
+          setTitle(selected.title);
+          setDiscord(selected.discord);
+          setTcg(selected.tcg);
+          setDesired(selected.desired);
+          setOffers(selected.offers);
+        }
+      }
+    };
+
+    checkTrade();
+  }, [state.settingsState.trades]);
 
   const playSound = async () => {
     SoundService.play('AUDIO_MENU_CLOSE');
@@ -49,10 +74,12 @@ export default function CreateTradeScreen() {
     return <PickOffersMenu isVisible={isOffersVisible} 
                             animatedStyle={{}} 
                             onClose={onOffersClose}
+                            desired={desired}
                             offers={offers}/>
   }, [isOffersVisible, offers]);
 
   function handleTCG(value: string, index: number): void {
+    setNotSaved(true);
     if (/^\d*$/.test(value)) {
       const newTcg = [...tcg];
       newTcg[index] = value;
@@ -65,27 +92,72 @@ export default function CreateTradeScreen() {
   }
 
   const handleKeyPress = (event: any, index: number) => {
+    setNotSaved(true);
     if (event.nativeEvent.key === "Backspace" && tcg[index] === "" && index > 0) {
       inputRefs.current[index - 1]?.focus();
     }
   };
 
   function onDesiredClose(id: number): void {
-    if (id !== null) {
-      setDesired(id);
-    }
+    if (desired !== id) { setNotSaved(true); }
+    setDesired(id);
     setIsDesiredVisible(false);
   }
 
-  function onOffersClose(offers: number[]): void {
-    if (offers !== null) {
-      setOffers(offers);
+  function onOffersClose(data: number[]): void {
+    if (JSON.stringify(data) !== JSON.stringify(offers)) { setNotSaved(true); }
+    if (data !== null) {
+      setOffers(data);
     }
     setIsOffersVisible(false);
   }
 
-  function createTrade(): void {
-   console.log({name, discord, tcg, desired, offers})
+  async function createTrade(): Promise<void> {
+    SoundService.play('POP_PICK');
+    const item = convertTrade();
+    item.valid = isTradeValid(item);
+
+    if (!item.valid) {
+      const userConfirmed = await confirm("save_a_trade", "save_invalid_trade");
+      if (userConfirmed) {
+        saveTrade(item);
+      }
+    } else { saveTrade(item); }
+  }
+
+  function saveTrade(item: TradeItem): void {
+    setLoading(true);
+    dispatch({type: 'ADD_TRADE', value: item});
+    Storage.addTrade(item);
+
+    setTimeout(() => {
+      setNotSaved(false);
+      setLoading(false);
+      router.canGoBack() ? router.back() : router.replace('/');
+    }, 1000);
+  }
+
+  function convertTrade(): TradeItem {
+    const trades = state.settingsState.trades;
+    return {
+        id: trade_id ? Number(trade_id) : trades.length + 1,
+        created: new Date().getTime(),
+        desired,
+        title,
+        discord,
+        offers,
+        tcg,
+        valid: false
+    }
+  }
+
+  function isTradeValid(item: TradeItem): boolean {
+    if (
+      (!desired || !title) ||
+      !tcg.every(num => num && num.length === 4) ||
+      offers.filter(Boolean).length === 0
+    ) { return false; }
+    return true;
   }
 
   function handleDesired(): void {
@@ -102,7 +174,8 @@ export default function CreateTradeScreen() {
     <View style={[CardGridStyles.imageContainer]}>
       <View style={{flex: 1, backgroundColor: 'white', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)'}}>
         <TouchableOpacity onPress={() => handleOffer(index)}
-                          style={[CardGridStyles.image, styles.image]}>
+                          style={[CardGridStyles.image, styles.image, !desired && {opacity: 0.3}]}
+                          disabled={!desired}>
           <View>
             { offers[index] ? 
             <>
@@ -118,26 +191,69 @@ export default function CreateTradeScreen() {
         </TouchableOpacity>
       </View>
     </View>
-  ), [offers]);
+  ), [offers, desired]);
+
+  const goBack = useCallback(async (): Promise<void> => {
+    SoundService.play('AUDIO_MENU_CLOSE');
+    if (notSaved) {
+      const userConfirmed = await confirm("exit_no_save", "exit_without_save_trade");
+      if (userConfirmed) {
+        router.canGoBack() ? router.back() : router.replace('/');
+      }
+    } else {
+      router.canGoBack() ? router.back() : router.replace('/');
+    }
+  }, [notSaved]);
+
+  async function handleDelete(): Promise<void> {
+    SoundService.play('AUDIO_MENU_OPEN');
+    const userConfirmed = await confirm("delete_trade", "delete_trade_question", 'delete');
+    if (userConfirmed) {
+      setLoading(true);
+      Storage.removeTrade(Number(trade_id));
+      dispatch({type: 'REMOVE_TRADE', value: Number(trade_id)});
+
+      setTimeout(() => {
+        setNotSaved(false);
+        setLoading(false);
+        router.canGoBack() ? router.back() : router.replace('/');
+      }, 1000);
+    }
+  }
 
   return (
     <Provider>
-      <SharedScreen title={'create_trade'} styles={{paddingHorizontal: 16}}>
-        <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
-                   placeholder={i18n.t('trade_name')}
-                   value={name}
-                   onChangeText={setName}
-                   placeholderTextColor={Colors.light.text}
-                   accessibilityLabel={SEARCH_LABEL}
-                   inputMode='text'
-                />
+      { loading && <LoadingOverlay/> }
+      <SharedScreen title={trade_id ? 'edit_trade' : 'create_trade'} 
+                    styles={{paddingHorizontal: 16, marginTop: 0}} customClose={goBack}>
+        <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between'}}>
+          <TextInput style={[CardGridStyles.searchInput, {width: trade_id ? '87%' : '100%'}]}
+                    placeholder={i18n.t('trade_name')}
+                    value={title}
+                    onChangeText={(text) => (setTitle(text), setNotSaved(true))}
+                    placeholderTextColor={Colors.light.text}
+                    accessibilityLabel={SEARCH_LABEL}
+                    inputMode='text'
+                    maxLength={40}
+                  />
+          { Boolean(trade_id) && 
+            <TouchableOpacity onPress={handleDelete}>
+              <MaterialIcons name="delete-outline" 
+                              style={{fontSize: 28, left: -2, top: 3.1, opacity: 0.7}} 
+                              color={'crimson'}>
+              </MaterialIcons>
+            </TouchableOpacity>
+          }
+        </ThemedView>
+
         <TextInput style={[CardGridStyles.searchInput, {width: '100%'}, styles.item]}
                    placeholder={i18n.t('trade_discord_name')}
                    value={discord}
-                   onChangeText={setDiscord}
+                   onChangeText={(text) => (setDiscord(text), setNotSaved(true))}
                    placeholderTextColor={Colors.light.text}
                    accessibilityLabel={SEARCH_LABEL}
                    inputMode='text'
+                   maxLength={25}
                 />
         <ThemedView style={styles.item}>
           <ThemedText type="defaultSemiBold">{i18n.t('trade_friend_ID')}</ThemedText>

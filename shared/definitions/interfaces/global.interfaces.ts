@@ -55,12 +55,12 @@ export type NewsContent =
   | { type: 'image'; value: string; style?: StyleProp<ImageStyle> };
 
 export interface TradeItem {
-  id: string;
+  id: number;
   title: string;
-  tcg: number[];
+  tcg: string[];
   discord: string;
   desired: number;
-  offer: number[];
+  offers: (number | null)[];
   created: number;
   valid: boolean;
 }

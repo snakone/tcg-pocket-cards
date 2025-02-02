@@ -1,5 +1,5 @@
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { StorageDeck, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
+import { StorageDeck, TradeItem, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 
 export interface SettingsState extends UserProfile {
@@ -13,6 +13,7 @@ export interface SettingsState extends UserProfile {
   favorites: number[];
   cards: Card[];
   decks: StorageDeck[];
+  trades: TradeItem[];
 }
 
 export const settingsInitialState: SettingsState = { 
@@ -29,7 +30,8 @@ export const settingsInitialState: SettingsState = {
   name: '',
   avatar: 'eevee',
   coin: 'eevee',
-  best: null
+  best: null,
+  trades: []
 };
 
 export const settingsReducer = (state: SettingsState, action: SettingsAction): SettingsState => {
@@ -58,6 +60,24 @@ export const settingsReducer = (state: SettingsState, action: SettingsAction): S
       }
     case 'REMOVE_DECK':
         return { ...state, decks: state.decks.filter(d => d.id !== action.value) };
+    case 'ADD_TRADE':
+      {
+        const index = state.trades.findIndex(d => d.id === action.value.id);
+        let value: TradeItem[];
+        if (index !== -1) {
+          state.trades[index] = action.value;
+          value = [...state.trades];
+        } else {
+          if (state.trades.length === 0 || (state.trades.length === 1 && state.trades[0] === null)) {
+            value = [action.value];
+          } else {
+            value = [...state.trades, action.value];
+          }
+        }
+        return { ...state, trades: value };
+      }
+    case 'REMOVE_TRADE':
+        return { ...state, trades: state.trades.filter(d => d.id !== action.value) };
     case 'RESET_SETTINGS':
       return { ...settingsInitialState };
     default:
@@ -71,4 +91,6 @@ export type SettingsAction =
   | { type: 'REMOVE_FAVORITE', value: number }
   | { type: 'ADD_DECK', value: StorageDeck }
   | { type: 'REMOVE_DECK', value: number }
+  | { type: 'ADD_TRADE', value: TradeItem }
+  | { type: 'REMOVE_TRADE', value: number }
   | { type: 'RESET_SETTINGS' }

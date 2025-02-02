@@ -1,16 +1,86 @@
 import { StyleSheet } from 'react-native';
+import { Image } from 'expo-image';
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
+import { CARD_IMAGE_MAP, CARD_IMAGE_MAP_116x162 } from '@/shared/definitions/utils/card.images';
+import { CardGridStyles, CreateScreenStyles } from '@/shared/styles/component.styles';
+import { SvgTradePassSymbol } from '@/components/ui/IconSymbol';
+import { TRADE_POINTS } from '@/shared/definitions/sentences/path.sentences';
+import { TRADE_COST_MAP } from '@/shared/definitions/utils/constants';
+import { CardRarityENUM } from '@/shared/definitions/enums/card.enums';
 
-export default function TradeUserItem({}) {
+export default function TradeUserItem({item, rarity}: {item: TradeItem, rarity: CardRarityENUM | undefined}) {
   return (
-    <ThemedView style={[
-      tradeItemStyles.item, { 
-        
-      }
-    ]}>
-      <ThemedText>Hello</ThemedText>
+    <ThemedView style={[tradeItemStyles.item, {
+      borderColor: !item.valid ? 'goldenrod' : 'transparent', 
+      borderWidth: 1, 
+      borderLeftWidth: 0, 
+      borderTopWidth: 0, 
+      borderBottomWidth: 0
+    }]}>
+      <ThemedView style={{flex: 1}}>
+        <ThemedText style={{marginBottom: 12}}>{item.title}</ThemedText>
+        <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', width: '46%'}}>
+          <ThemedView style={{}}>
+            {
+              item.desired ? <Image style={[
+                CardGridStyles.image,
+                CreateScreenStyles.popularImage, {
+                  left: 0,
+                  width: 65,
+                }, CARD_IMAGE_MAP[String(item.desired)] && {opacity: 1}
+              ]} 
+              source={CARD_IMAGE_MAP_116x162[String(item.desired)]}/> :
+              <ThemedView style={[
+                CardGridStyles.image,
+                CreateScreenStyles.popularImage, {
+                  left: 0,
+                  opacity: 0.8
+                }
+              ]}/>
+            }
+          </ThemedView>
+          <ThemedView style={{left: 34}}>
+            {
+              SvgTradePassSymbol({})
+            }
+          </ThemedView>
+          <ThemedView>
+            {
+              item.offers.map((offer, i) => (
+                offer ? <Image style={[
+                  CardGridStyles.image,
+                  CreateScreenStyles.popularImage, {
+                    left: i * 28,
+                    width: 65,
+                    opacity: 0.8,
+                    zIndex: Math.round((1 / (i + 1) * 100)),
+                  }
+                ]} 
+                source={CARD_IMAGE_MAP_116x162[String(offer)]}
+                key={i}/> :
+                <ThemedView style={[
+                  CardGridStyles.image,
+                  CreateScreenStyles.popularImage, {
+                    left: i * 28,
+                    width: 65,
+                    zIndex: Math.round((1 / (i + 1) * 100)),
+                    opacity: 0.8
+                  }
+                ]}
+                key={i}/>
+              ))
+            }
+          </ThemedView>
+        </ThemedView>
+      </ThemedView>
+
+      <ThemedView style={tradeItemStyles.token}>
+        <Image source={TRADE_POINTS} style={{width: 25, height: 25, left: 8, position: 'absolute', top: 2}}/>
+        <ThemedText style={{top: -1, left: 12}}>{rarity !== undefined && (TRADE_COST_MAP as any)[rarity]}</ThemedText>
+      </ThemedView>
     </ThemedView> 
   )
 }
@@ -19,8 +89,24 @@ const tradeItemStyles = StyleSheet.create({
   item: {
     paddingVertical: 12, 
     paddingHorizontal: 16, 
-    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 4px 4px', 
+    paddingBottom: 20,
+    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 4px 12px', 
     borderRadius: 8,
-    marginBottom: 20
+    marginBottom: 50,
+    minHeight: 184,
   },
+  token: {
+    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 10px 12px',
+    position: 'absolute',
+    width: 80,
+    height: 30,
+    borderRadius: 20,
+    bottom: -15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgb(241 241 241)',
+    left: '37%',
+    flexDirection: 'row',
+    gap: 6
+  }
 });

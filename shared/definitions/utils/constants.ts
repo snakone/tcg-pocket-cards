@@ -388,3 +388,11 @@ export const RARITY_CAN_TRADE = [
   CardRarityENUM.DOUBLE,
   CardRarityENUM.ART
 ]
+
+export const TRADE_COST_MAP = {
+  [CardRarityENUM.COMMON]: 0,
+  [CardRarityENUM.UNCOMMON]: 0,
+  [CardRarityENUM.RARE]: 120,
+  [CardRarityENUM.DOUBLE]: 500,
+  [CardRarityENUM.ART]: 400
+}

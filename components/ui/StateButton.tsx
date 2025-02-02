@@ -20,7 +20,8 @@ interface StateButtonProps {
   propFilter: string,
   keyFilter: string | number,
   onClick?: () => void,
-  filterObj?: React.MutableRefObject<FilterSearch>
+  filterObj?: React.MutableRefObject<FilterSearch>,
+  disabled?: boolean
 }
 
 const StateButton = ({
@@ -35,7 +36,8 @@ const StateButton = ({
   propFilter,
   keyFilter,
   filterObj,
-  onClick
+  onClick,
+  disabled
 }: StateButtonProps) => {
   const [pressed, setPressed] = useState(false);
   const {i18n} = useI18n();
@@ -73,6 +75,7 @@ const StateButton = ({
         (pressed || (filterObj?.current as any)[propFilter][keyFilter]) && isImage && { opacity: 1}
       ]}
       onPress={handlePress}
+      disabled={disabled}
     >
       {children}
       {

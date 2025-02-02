@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { RarityWithoutSpecial } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { PACKS_TYPE } from "../enums/packs.enums";
+import { Card } from "./card.interfaces";
 
 export interface HeaderWithCustomModalProps {
   title: string;
@@ -19,6 +20,7 @@ export interface TabMenu {
 }
 
 export interface TabOffersMenu extends TabMenu {
+  desired: number;
   offers: (number | null)[];
 }
 

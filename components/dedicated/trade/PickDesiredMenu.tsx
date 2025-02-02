@@ -22,6 +22,7 @@ import SkeletonCardGrid from "@/components/skeletons/SkeletonCardGrid";
 import StateButton from "@/components/ui/StateButton";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { filterCards } from "@/shared/definitions/utils/functions";
+import { CardExpansionENUM, CardExpansionTypeENUM } from "@/shared/definitions/enums/card.enums";
 
 export default function PickDesiredMenu({
   isVisible,
@@ -71,7 +72,7 @@ export default function PickDesiredMenu({
   }
 
   useEffect(() => {
-    setCards(state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity)));
+    setCards(state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2));
   }, [state.cardState.cards]);
 
   const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
@@ -101,7 +102,7 @@ export default function PickDesiredMenu({
 
   const renderRarityGrid = useCallback(() => {
     return (
-      <ThemedView style={[filterStyles.flexContainer, { flexWrap: 'wrap' }]}>
+      <ThemedView style={[filterStyles.flexContainer, { flexWrap: 'wrap', justifyContent: 'center' }]}>
       {RARITY_CAN_TRADE.map((key, index) => {
         const image = (RARITY_MAP as any)[key]?.image;
         const amount = (RARITY_MAP as any)[key]?.amount;
@@ -159,7 +160,7 @@ export default function PickDesiredMenu({
                       contentContainerStyle={{width: '100%', padding: 16, paddingTop: 0}}
                       keyExtractor={(item, index) => index + ''}
                       ListHeaderComponent={
-                        <ThemedView style={{height: 116, backgroundColor: 'white'}}>
+                        <ThemedView style={{height: 118, backgroundColor: 'white'}}>
                           <TextInput placeholder={i18n.t('search')}
                                      value={searchQuery}
                                      onChangeText={handleSearch}
@@ -169,7 +170,7 @@ export default function PickDesiredMenu({
                                      inputMode='text'
                                      style={[
                                       CardGridStyles.searchInput, 
-                                      {boxShadow: '5px 4px 12px rgba(0, 0, 0, 0.2)', width: '100%', marginTop: 16, marginBottom: 6}
+                                      {boxShadow: '5px 4px 12px rgba(0, 0, 0, 0.2)', width: 357.56, marginTop: 16, marginBottom: 6}
                                     ]}
                                   />
                                   {renderRarityGrid()}

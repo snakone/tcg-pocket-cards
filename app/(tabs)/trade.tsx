@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Animated from 'react-native-reanimated';
 import { FlatList, KeyboardAvoidingView, Platform, RefreshControl, TextInput, TouchableOpacity } from 'react-native';
 
@@ -6,7 +6,7 @@ import { TradeScreenModal } from '@/components/modals';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
-import { SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
+import { NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
 import { CardGridStyles, homeScreenStyles } from '@/shared/styles/component.styles';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { useI18n } from '@/core/providers/LanguageProvider';
@@ -16,16 +16,23 @@ import { SoundService } from '@/core/services/sounds.service';
 import { useRouter } from 'expo-router';
 import TradeUserItem from '@/components/dedicated/trade/TradeUserItem';
 import { ThemedView } from '@/components/ThemedView';
+import { AppContext } from '../_layout';
+import { TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
 
 export default function TradeScreen() {
   const {i18n} = useI18n();
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
+  const [trades, setTrades] = useState<TradeItem[]>([]);
+  const [filtered, setFiltered] = useState<TradeItem[]>([]);
+  const context = useContext(AppContext);
+  if (!context) { throw new Error(NO_CONTEXT); }
+  const { state, dispatch } = context;
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={[CardGridStyles.clearInput, {left: 324}]}
+                      style={[CardGridStyles.clearInput, {left: 340}]}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
@@ -33,24 +40,34 @@ export default function TradeScreen() {
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
-    console.log(text)
-  }, []);
+    setFiltered(prev => {
+      if(trades.length === 0) { return prev; }
+      return trades.filter(trade =>
+        trade.title.toLowerCase()?.includes(text.toLowerCase()));
+    })
+  }, [trades]);
 
-  function handleClick(id: number): void {
+  useEffect(() => {
+    setTrades(state.settingsState.trades);
+    setFiltered(state.settingsState.trades);
+  }, [state.settingsState.trades])
+
+  function handleClick(item: TradeItem): void {
     SoundService.play('CHANGE_VIEW');
-    // router.push(`/screens/news_detail?id=${encodeURIComponent(id)}`);
+    router.push(`/screens/create_trade?trade_id=${encodeURIComponent(item.id)}`);
   }
 
-  const renderItem = useCallback(({item}: {item: number}) => {
+  const renderItem = useCallback(({item}: {item: TradeItem}) => {
+    const rarity = state.cardState.cards.find(card => card.id === item.desired)?.rarity;
     return (
       <TouchableOpacity onPress={() => handleClick(item)} style={{paddingHorizontal: 16}}>
-        <TradeUserItem/>
+        <TradeUserItem item={item} rarity={rarity}/>
       </TouchableOpacity>
     )
-  }, []);
+  }, [state.cardState.cards]);
 
   const renderEmpty = useCallback(() => {
-    return <ThemedText style={{ paddingVertical: 6, paddingHorizontal: 22 }}>
+    return <ThemedText style={{ paddingVertical: 6, paddingHorizontal: 22}}>
         {i18n.t('no_trades_found')}
       </ThemedText>
   }, []);
@@ -85,7 +102,7 @@ export default function TradeScreen() {
                           modalHeight={LARGE_MODAL_HEIGHT}
                           styles={{paddingHorizontal: 0, gap: 0}}>
         <FlatList
-          data={[1, 2, 3]}
+          data={filtered}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
           showsVerticalScrollIndicator={false}

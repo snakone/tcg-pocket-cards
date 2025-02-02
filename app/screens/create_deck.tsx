@@ -236,7 +236,7 @@ export default function CreateDeckScreen() {
 
   async function convertDeckToStorage(): Promise<StorageDeck> {
     const filteredDecks = (deck as Card[]).filter(card => Boolean(card) && card.health > 0)
-                                   .sort((a, b) => b.rarity > a.rarity ? 1 : -1);
+                                          .sort((a, b) => b.rarity > a.rarity ? 1 : -1);
 
     const result = filteredDecks.slice(0, filteredDecks.length > 2 ? 3 : filteredDecks.length);
 
@@ -581,7 +581,7 @@ export default function CreateDeckScreen() {
   return (
     <Provider>
       { loading && <LoadingOverlay/> }
-      <SharedScreen title={'create_new_deck'} 
+      <SharedScreen title={deck_id ? 'edit_deck' : 'create_new_deck'} 
                     styles={{paddingInline: 16, marginTop: 0, paddingBottom: 16}} customClose={goBack}>
         <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between'}}>
           <TextInput style={[CardGridStyles.searchInput, {width: '76%'}]}

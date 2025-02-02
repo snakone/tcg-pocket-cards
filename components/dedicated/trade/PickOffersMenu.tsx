@@ -4,6 +4,7 @@ import Animated from 'react-native-reanimated'
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import React from "react";
 import { Image } from "expo-image";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import { TabMenu, TabOffersMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, CARD_IMAGE_WIDTH_3, CardGridStyles, filterStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
@@ -24,12 +25,13 @@ import StateButton from "@/components/ui/StateButton";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { filterCards } from "@/shared/definitions/utils/functions";
 import { createDeckStyles } from "@/app/screens/create_deck";
-import { MaterialIcons } from "@expo/vector-icons";
+import { CardExpansionTypeENUM } from "@/shared/definitions/enums/card.enums";
 
 export default function PickOffersMenu({
   isVisible,
   onClose,
   animatedStyle,
+  desired,
   offers
 }: TabOffersMenu) {
   const {i18n} = useI18n();
@@ -39,15 +41,17 @@ export default function PickOffersMenu({
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
   const [cards, setCards] = useState<Card[]>([]);
+  const [filtered, setFiltered] = useState<Card[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const filterObj = useRef<FilterSearch>(getFilterSearch());
   const [current, setCurrent] = useState<(number | null)[]>(offers);
+  const [filterDisabled, setFilterDisabled] = useState<boolean>(false);
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
-    setCards(state.cardState.cards.filter(card =>
+    setFiltered(cards.filter(card =>
       card.name.toLowerCase()?.includes(text.toLowerCase())
-  ))}, [state.cardState.cards]);
+  ))}, [cards]);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
@@ -90,7 +94,31 @@ export default function PickOffersMenu({
   }, [current])
 
   useEffect(() => {
-    setCards(state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity)));
+    const desiredCard = state.cardState.cards.find(card => card.id === desired);
+
+    if (desiredCard) {
+      const filter = state.cardState.cards
+                      .filter(card => card?.rarity === desiredCard.rarity && 
+                                      card.series !== CardExpansionTypeENUM.A2);
+      setCards(filter);
+      setFiltered(filter);
+
+      setCurrent(prev => 
+        prev.map(p => (state.cardState.cards
+            .find(card => card.id === p)?.rarity === desiredCard.rarity) ? p : null
+        )
+      );
+
+      (filterObj.current.rarity as any)[desiredCard.rarity] = true;
+      setFilterDisabled(true);
+      return;
+    }
+
+    const filter = state.cardState.cards
+                    .filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && 
+                                    card.series !== CardExpansionTypeENUM.A2);
+    setCards(filter);
+    setFiltered(filter);
   }, [state.cardState.cards]);
 
   const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
@@ -150,14 +178,17 @@ export default function PickOffersMenu({
   const manageFilter = useCallback((index: number) => {
     const filter = filterObj.current;
     (filter.rarity as any)[index] = !(filter.rarity as any)[index];
-    const tradeable = state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity));
+    const tradeable = cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity));
     const filtered = filterCards(filter, tradeable, []);
-    setCards(filtered)
+    setFiltered(filtered)
   }, [filterObj.current])
 
   const renderRarityGrid = useCallback(() => {
     return (
-      <ThemedView style={[filterStyles.flexContainer, { flexWrap: 'wrap', marginBottom: 20  }]}>
+      <ThemedView style={[
+        filterStyles.flexContainer, 
+        { flexWrap: 'wrap', marginBottom: 20, justifyContent: 'center'}
+      ]}>
       {RARITY_CAN_TRADE.map((key, index) => {
         const image = (RARITY_MAP as any)[key]?.image;
         const amount = (RARITY_MAP as any)[key]?.amount;
@@ -169,13 +200,13 @@ export default function PickOffersMenu({
             onClick={() => manageFilter(key)}
             key={index}
             filterObj={filterObj}
+            disabled={filterDisabled}
             style={[
               { overflow: 'hidden' },
               filterStyles.button,
               filterStyles.imageContainer,
               { width: ICON_WIDTH + (amount - 1) * 20 },
-            ]}
-          >
+            ]}>
             {Array.from({ length: amount }).map((_, i) => (
               <Image
                 key={index + (i + 1)}
@@ -188,7 +219,7 @@ export default function PickOffersMenu({
       })}
     </ThemedView>
     )
-  }, []);
+  }, [filterDisabled]);
 
   return (
     <>
@@ -205,7 +236,7 @@ export default function PickOffersMenu({
         </View>
         <ThemedView style={[styles.modalScrollView, {flex: 1, padding: 0, maxHeight: '81%'}]}>
           <ThemedView style={{flex: 1, alignItems: 'center'}}>
-            <FlatList data={cards}
+            <FlatList data={filtered}
                       renderItem={renderCard}
                       numColumns={6}
                       showsVerticalScrollIndicator={false}
@@ -215,7 +246,7 @@ export default function PickOffersMenu({
                       contentContainerStyle={{width: '100%', padding: 16, paddingTop: 0}}
                       keyExtractor={(item, index) => index + ''}
                       ListHeaderComponent={
-                        <ThemedView style={{height: 240, backgroundColor: 'white'}}>
+                        <ThemedView style={{height: 236, backgroundColor: 'white'}}>
                           <TextInput placeholder={i18n.t('search')}
                                      value={searchQuery}
                                      onChangeText={handleSearch}
@@ -271,7 +302,7 @@ const offersStyles = StyleSheet.create({
     position: 'absolute', 
     zIndex: 10, 
     opacity: 0.7, 
-    backgroundColor: 'black', 
+    backgroundColor: 'rgba(0, 0, 0, 0.7)', 
     borderRadius: 4,
     justifyContent: 'center',
     alignItems: 'center'

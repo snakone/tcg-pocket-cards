@@ -3,7 +3,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { SymbolWeight } from 'expo-symbols';
 import React from 'react';
 import { OpaqueColorValue, StyleProp, TextStyle } from 'react-native';
-import Svg, { Path, SvgProps } from 'react-native-svg';
+import Svg, { G, Path, Polygon, SvgProps } from 'react-native-svg';
 
 export function IconSymbol({
   name,
@@ -71,3 +71,32 @@ export const SvgTradeSymbol = (props: SvgProps) => (
     32t32 78q0 45-32 77.5T160-460Zm640 0q-45 0-77.5-32.5T690-570q0-46 32.5-78t77.5-32q46 0 78 32t32 78q0 45-32 77.5T800-460Z"/>
   </Svg>
 )
+
+export const SvgTradePassSymbol = (props: any) => {
+  return (
+    <Svg
+      width={props.width || 100}
+      height={props.height || 100}
+      viewBox="0 0 512 512"
+      scale={0.5}
+      {...props}
+    >
+      <Polygon
+        fill="#4FBA6F"
+        points="512,256 317.793,114.759 317.793,211.862 211.862,211.862 211.862,300.138 317.793,300.138 317.793,397.241"
+      />
+      <Path
+        fill="#4FBA6F"
+        d="M158.897,211.862c-9.71,0-17.655,7.945-17.655,17.655v52.966c0,9.71,7.945,17.655,17.655,17.655 c9.71,0,17.655-7.945,17.655-17.655v-52.966C176.552,219.807,168.607,211.862,158.897,211.862"
+      />
+      <Path
+        fill="#4FBA6F"
+        d="M88.276,211.862c-9.71,0-17.655,7.945-17.655,17.655v52.966c0,9.71,7.945,17.655,17.655,17.655 s17.655-7.945,17.655-17.655v-52.966C105.931,219.807,97.986,211.862,88.276,211.862"
+      />
+      <Path
+        fill="#4FBA6F"
+        d="M17.655,211.862C7.945,211.862,0,219.807,0,229.517v52.966c0,9.71,7.945,17.655,17.655,17.655 s17.655-7.945,17.655-17.655v-52.966C35.31,219.807,27.366,211.862,17.655,211.862"
+      />
+    </Svg>
+  );
+};
