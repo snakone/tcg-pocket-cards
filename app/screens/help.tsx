@@ -161,10 +161,10 @@ export default function HelpScreen() {
                   onDismiss={close}
                   key={item.modal}
                   dismissable={false}
-                  contentContainerStyle={{height: Platform.OS === 'web' ? '100%' : '110%'}}>
+                  contentContainerStyle={{height: Platform.OS === 'web' ? '100%' : '110%', justifyContent: 'flex-start'}}>
                   <View style={[
                     ModalStyles.centeredView, Platform.OS === 'web' ? 
-                    {...WebStyles.view, top: -60} : {flex: 1, top: 0}]}>
+                    {...WebStyles.view} : {flex: 1, top: 0}]}>
                     <View style={ModalStyles.modalView}>
                       <View style={ModalStyles.modalHeader}>
                         <ThemedText style={[ModalStyles.modalHeaderTitle, {marginTop: 4}]}>

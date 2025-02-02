@@ -10,7 +10,7 @@ import { FilterSearch } from "../classes/filter.class";
 import { Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
 import { CardExpansionENUM } from "../enums/card.enums";
-import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON } from "../sentences/path.sentences";
+import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SMACK_DOWN } from "../sentences/path.sentences";
 import { PACK_MAP } from "./constants";
 import { LanguageType } from "../types/global.types";
 
@@ -181,6 +181,12 @@ export function getCardPackFrom(card: Card): {image: any, width: number, height:
     return {image: PROMO_A_ICON, width: 74, height: 40};
   } else if (card.expansion === CardExpansionENUM.MYTHICAL_ISLAND) {
     return {image: MYTHICAL_ISLAND_MEW_ICON, width: 74, height: 36};
+  } else if (card.expansion === CardExpansionENUM.SPACE_TIME_SMACKDOWN) {
+    if (card.found?.length === 2) {
+      return {image: SMACK_DOWN, width: 74, height: 36};
+    } else if (card.found !== undefined) {
+      return {image: PACK_MAP[card.found[0]], width: 77, height: 38};
+    }
   }
 }
 

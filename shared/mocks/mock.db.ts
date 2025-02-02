@@ -15832,7 +15832,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 515,
     order: 515,
-    number: 145,
+    number: 143,
     pokedex: 486,
     name: 'Regigigas',
     artist: 'Tomokazu Komiya',
@@ -15864,7 +15864,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 516,
     order: 516,
-    number: 146,
+    number: 144,
     name: 'Skull Fossil',
     artist: 'Toyste Beach',
     evolve: 'Cranidos',
@@ -15886,7 +15886,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 517,
     order: 517,
-    number: 147,
+    number: 145,
     name: 'Armor Fossil',
     artist: 'Toyste Beach',
     evolve: 'Shieldon',
@@ -15908,7 +15908,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 518,
     order: 518,
-    number: 148,
+    number: 146,
     name: 'Pokémon Communication',
     artist: 'Ayaka Yoshida',
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
@@ -15926,7 +15926,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 519,
     order: 519,
-    number: 149,
+    number: 147,
     name: 'Giant Cape',
     artist: 'Ryo Ueda',
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
@@ -15946,7 +15946,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 520,
     order: 520,
-    number: 150,
+    number: 148,
     name: 'Rocky Helmet',
     artist: 'Ayaka Yoshida',
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
@@ -15966,7 +15966,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 521,
     order: 521,
-    number: 151,
+    number: 149,
     name: 'Lum Berry',
     artist: 'Yoshinobu Saito',
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
@@ -15986,7 +15986,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 522,
     order: 522,
-    number: 152,
+    number: 150,
     name: 'Cyrus',
     artist: 'akagi',
     evolve: null,
@@ -16008,7 +16008,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 523,
     order: 523,
-    number: 153,
+    number: 151,
     name: 'Team Galactic Grunt',
     artist: 'GOSSAN',
     evolve: null,
@@ -16030,7 +16030,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 524,
     order: 524,
-    number: 154,
+    number: 152,
     name: 'Cynthia',
     artist: 'Ryuta Fuse',
     evolve: null,
@@ -16052,7 +16052,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 525,
     order: 525,
-    number: 155,
+    number: 153,
     name: 'Volkner',
     artist: 'GIDORA',
     evolve: null,
@@ -16074,7 +16074,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 526,
     order: 526,
-    number: 156,
+    number: 154,
     name: 'Dawn',
     artist: 'saino misaki',
     evolve: null,
@@ -16096,7 +16096,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 527,
     order: 527,
-    number: 157,
+    number: 155,
     name: 'Mars',
     artist: 'Yuu Nishida',
     evolve: null,
@@ -16118,7 +16118,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 528,
     order: 528,
-    number: 158,
+    number: 156,
     pokedex: 465,
     name: 'Tangrowth',
     artist: 'Saboteri',
@@ -16149,7 +16149,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 529,
     order: 529,
-    number: 159,
+    number: 157,
     pokedex: 415,
     name: 'Combee',
     artist: 'Shibuzoh.',
@@ -16180,7 +16180,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 530,
     order: 530,
-    number: 160,
+    number: 158,
     pokedex: 455,
     name: 'Carnivine',
     artist: 'Yoriyuki Ikegami',
@@ -16211,7 +16211,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 531,
     order: 531,
-    number: 161,
+    number: 159,
     pokedex: 492,
     name: 'Shaymin',
     artist: 'REND',
@@ -16245,7 +16245,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 532,
     order: 532,
-    number: 162,
+    number: 160,
     pokedex: 473,
     name: 'Mamoswine',
     artist: 'OKACHEKE',
@@ -16279,7 +16279,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 533,
     order: 533,
-    number: 163,
+    number: 161,
     pokedex: 423,
     name: 'Gastrodon',
     artist: 'takashi shiraishi',
@@ -16309,7 +16309,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 534,
     order: 534,
-    number: 164,
+    number: 162,
     pokedex: 490,
     name: 'Manaphy',
     artist: 'miki kudo',
@@ -16340,7 +16340,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 535,
     order: 535,
-    number: 165,
+    number: 163,
     pokedex: 403,
     name: 'Shinx',
     artist: 'Yuu Nishida',
@@ -16371,7 +16371,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 536,
     order: 536,
-    number: 166,
+    number: 164,
     pokedex: 479,
     name: 'Rotom',
     artist: 'Shimaris Yukichi',
@@ -16402,7 +16402,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 537,
     order: 537,
-    number: 167,
+    number: 165,
     pokedex: 425,
     name: 'Drifloon',
     artist: 'Orca',
@@ -16433,7 +16433,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 538,
     order: 538,
-    number: 168,
+    number: 166,
     pokedex: 481,
     name: 'Mesprit',
     artist: 'Orca',
@@ -16464,7 +16464,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 539,
     order: 539,
-    number: 169,
+    number: 167,
     pokedex: 487,
     name: 'Giratina',
     artist: 'Rond',
@@ -16499,7 +16499,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 540,
     order: 540,
-    number: 170,
+    number: 168,
     pokedex: 488,
     name: 'Cresselia',
     artist: 'rika',
@@ -16530,7 +16530,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 541,
     order: 541,
-    number: 171,
+    number: 169,
     pokedex: 464,
     name: 'Rhyperior',
     artist: 'Taiga Kayama',
@@ -16561,7 +16561,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 542,
     order: 542,
-    number: 172,
+    number: 170,
     pokedex: 448,
     name: 'Lucario',
     artist: 'Akira Komayama',
@@ -16595,7 +16595,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 543,
     order: 543,
-    number: 173,
+    number: 171,
     pokedex: 449,
     name: 'Hippopotas',
     artist: 'Teeziro',
@@ -16625,7 +16625,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 544,
     order: 544,
-    number: 174,
+    number: 172,
     pokedex: 442,
     name: 'Spiritomb',
     artist: 'Shinji Kanda',
@@ -16656,7 +16656,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 545,
     order: 545,
-    number: 175,
+    number: 173,
     pokedex: 453,
     name: 'Croagunk',
     artist: 'GOSSAN',
@@ -16687,7 +16687,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 546,
     order: 546,
-    number: 176,
+    number: 174,
     pokedex: 485,
     name: 'Heatran',
     artist: 'OKUBO',
@@ -16718,7 +16718,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 547,
     order: 547,
-    number: 177,
+    number: 175,
     pokedex: 445,
     name: 'Garchomp',
     artist: 'MINAMINAMI Take',
@@ -16752,7 +16752,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 548,
     order: 548,
-    number: 178,
+    number: 176,
     pokedex: 398,
     name: 'Staraptor',
     artist: 'Ryota Murayama',
@@ -16783,7 +16783,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 549,
     order: 549,
-    number: 179,
+    number: 177,
     pokedex: 399,
     name: 'Bidoof',
     artist: 'Shinya Komatsu',
@@ -16814,7 +16814,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 550,
     order: 550,
-    number: 180,
+    number: 178,
     pokedex: 431,
     name: 'Glameow',
     artist: 'matazo',
@@ -16845,7 +16845,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 551,
     order: 551,
-    number: 181,
+    number: 179,
     pokedex: 486,
     name: 'Regigigas',
     artist: 'Tetsu Kayama',
@@ -16876,7 +16876,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 552,
     order: 552,
-    number: 182,
+    number: 180,
     pokedex: 469,
     name: 'Yanmega EX',
     artist: 'PLANETA Tsuji',
@@ -16907,7 +16907,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 553,
     order: 553,
-    number: 183,
+    number: 181,
     pokedex: 392,
     name: 'Infernape EX',
     artist: 'PLANETA CG Works',
@@ -16938,7 +16938,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 554,
     order: 554,
-    number: 184,
+    number: 182,
     pokedex: 484,
     name: 'Palkia EX',
     artist: 'PLANETA CG Works',
@@ -16974,7 +16974,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 555,
     order: 555,
-    number: 185,
+    number: 183,
     pokedex: 417,
     name: 'Pachirisu EX',
     artist: 'PLANETA Tsuji',
@@ -17005,7 +17005,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 556,
     order: 556,
-    number: 186,
+    number: 184,
     pokedex: 429,
     name: 'Mismagius EX',
     artist: 'PLANETA Tsuji',
@@ -17036,7 +17036,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 557,
     order: 557,
-    number: 187,
+    number: 185,
     pokedex: 475,
     name: 'Gallade EX',
     artist: 'PLANETA CG Works',
@@ -17067,7 +17067,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 558,
     order: 558,
-    number: 188,
+    number: 186,
     pokedex: 461,
     name: 'Weavile EX',
     artist: 'PLANETA CG Works',
@@ -17098,7 +17098,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 559,
     order: 559,
-    number: 189,
+    number: 187,
     pokedex: 491,
     name: 'Darkrai EX',
     artist: 'PLANETA Yamashita',
@@ -17132,7 +17132,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 560,
     order: 560,
-    number: 190,
+    number: 188,
     pokedex: 483,
     name: 'Dialga EX',
     artist: 'PLANETA CG Works',
@@ -17168,7 +17168,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 561,
     order: 561,
-    number: 191,
+    number: 189,
     pokedex: 463,
     name: 'Lickilicky EX',
     artist: 'PLANETA Tsuji',
@@ -17198,7 +17198,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 562,
     order: 562,
-    number: 192,
+    number: 190,
     name: 'Cyrus',
     artist: 'akagi',
     evolve: null,
@@ -17220,7 +17220,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 563,
     order: 563,
-    number: 193,
+    number: 191,
     name: 'Team Galactic Grunt',
     artist: 'GOSSAN',
     evolve: null,
@@ -17242,7 +17242,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 564,
     order: 564,
-    number: 194,
+    number: 192,
     name: 'Cynthia',
     artist: 'Ryuta Fuse',
     evolve: null,
@@ -17264,7 +17264,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 565,
     order: 565,
-    number: 195,
+    number: 193,
     name: 'Volkner',
     artist: 'GIDORA',
     evolve: null,
@@ -17286,7 +17286,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 566,
     order: 566,
-    number: 196,
+    number: 194,
     name: 'Dawn',
     artist: 'saino misaki',
     evolve: null,
@@ -17308,7 +17308,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 567,
     order: 567,
-    number: 197,
+    number: 195,
     name: 'Mars',
     artist: 'Yuu Nishida',
     evolve: null,
@@ -17330,7 +17330,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 568,
     order: 568,
-    number: 198,
+    number: 196,
     pokedex: 469,
     name: 'Yanmega EX',
     artist: 'Mina Nakai',
@@ -17361,7 +17361,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 569,
     order: 569,
-    number: 199,
+    number: 197,
     pokedex: 392,
     name: 'Infernape EX',
     artist: 'nagimiso',
@@ -17392,7 +17392,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 570,
     order: 570,
-    number: 200,
+    number: 198,
     pokedex: 417,
     name: 'Pachirisu EX',
     artist: 'Nurikabe',
@@ -17423,7 +17423,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 571,
     order: 571,
-    number: 201,
+    number: 199,
     pokedex: 429,
     name: 'Mismagius EX',
     artist: 'Kuroimori',
@@ -17454,7 +17454,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 572,
     order: 572,
-    number: 202,
+    number: 200,
     pokedex: 475,
     name: 'Gallade EX',
     artist: 'Takumi Wada',
@@ -17485,7 +17485,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 573,
     order: 573,
-    number: 203,
+    number: 201,
     pokedex: 461,
     name: 'Weavile EX',
     artist: 'hncl',
@@ -17516,7 +17516,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 574,
     order: 574,
-    number: 204,
+    number: 202,
     pokedex: 491,
     name: 'Darkrai EX',
     artist: 'Oswaldo KATO',
@@ -17550,7 +17550,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 575,
     order: 575,
-    number: 205,
+    number: 203,
     pokedex: 463,
     name: 'Lickilicky EX',
     artist: 'Jerky',
@@ -17580,7 +17580,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 576,
     order: 576,
-    number: 206,
+    number: 204,
     pokedex: 484,
     name: 'Palkia EX',
     artist: 'N-DESIGN Inc.',
@@ -17616,7 +17616,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 577,
     order: 577,
-    number: 207,
+    number: 205,
     pokedex: 483,
     name: 'Dialga EX',
     artist: 'N-DESIGN Inc.',
@@ -17652,7 +17652,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 578,
     order: 578,
-    number: 208,
+    number: 206,
     pokedex: 484,
     name: 'Palkia EX',
     artist: 'PLANETA CG Works',
@@ -17681,6 +17681,7 @@ export const MOCK_DB_CARDS: Card[] = [
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
     found: [
+      EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
     related: []
@@ -17688,7 +17689,7 @@ export const MOCK_DB_CARDS: Card[] = [
   {
     id: 579,
     order: 579,
-    number: 209,
+    number: 207,
     pokedex: 483,
     name: 'Dialga EX',
     artist: 'PLANETA CG Works',
@@ -17718,6 +17719,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: true,
     found: [
       EXPANSION.DIALGA,
+      EXPANSION.PALKIA
     ],
     related: []
   },

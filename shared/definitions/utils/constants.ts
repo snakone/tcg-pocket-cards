@@ -380,3 +380,11 @@ export function getDaysRemaining(): { progress: number; remainingText: string } 
 
   return { progress, remainingText };
 }
+
+export const RARITY_CAN_TRADE = [
+  CardRarityENUM.COMMON,
+  CardRarityENUM.UNCOMMON,
+  CardRarityENUM.RARE,
+  CardRarityENUM.DOUBLE,
+  CardRarityENUM.ART
+]

@@ -38,8 +38,8 @@ export default function PickBestMenu({
     await SoundService.play('AUDIO_MENU_CLOSE');
   }, []);
 
-  async function closeMenu(): Promise<void> {
-    await playSound();
+  async function closeMenu(sound = true): Promise<void> {
+    if (sound) { await playSound(); }
     onClose();
   }
 
@@ -59,7 +59,7 @@ export default function PickBestMenu({
     Storage.set('best', value);
     const settings = {...state.settingsState, best: value};
     dispatch({type: 'SET_SETTINGS', value: settings});
-    closeMenu();
+    closeMenu(false);
   }
 
   useEffect(() => {

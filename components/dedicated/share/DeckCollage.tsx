@@ -134,8 +134,8 @@ export default function DeckCollage({
                               key={key}
                               source={image}
                               style={{
-                                width: 26,
-                                height: 26,
+                                width: 40,
+                                height: 40,
                                 position: 'relative',
                                 top: 1
                               }}
@@ -207,14 +207,16 @@ export const styles = StyleSheet.create({
   },
   footerContent: {
     top: -1,
-    marginRight: 75,
+    marginRight: 100,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'
   },
   footerText: {
     textAlign: 'right', 
-    fontSize: 24, 
-    color: 'black'
+    fontSize: 32, 
+    color: 'black',
+    marginLeft: 20,
+    top: -1
   }
 });

@@ -18,6 +18,10 @@ export interface TabMenu {
   animatedStyle: any;
 }
 
+export interface TabOffersMenu extends TabMenu {
+  offers: (number | null)[];
+}
+
 export interface RouteItem {
   onClick: () => void;
   children: React.ReactNode;
