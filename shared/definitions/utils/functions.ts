@@ -242,7 +242,7 @@ export const filterUniqueItems = (array: Card[]): { items: Card[]; ids: number[]
   };
 };
 
-export const getDynamicheight = (length: number): number => {
+export const getDynamicHeight = (length: number): number => {
   const maxHeight = 2229;
   const minHeight = 1225;
   const midHeight = 1633;

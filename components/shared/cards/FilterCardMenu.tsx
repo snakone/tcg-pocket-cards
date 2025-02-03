@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { BlurView } from "expo-blur";
-import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import Animated from 'react-native-reanimated'
 import { useRef, useState,  } from "react";
 import { Portal, Provider } from "react-native-paper";
@@ -135,9 +135,12 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
             <>
               <ThemedView style={filterStyles.row}>
                 <ThemedText style={filterStyles.header}>{i18n.t('rarity')}</ThemedText>
-                <InvertButton onClick={() => onNext('rarity$')}></InvertButton>
+                <InvertButton onClick={() => onNext('rarity$')} styles={{top: 8}}></InvertButton>
               </ThemedView>
-              <RarityItem rarity={filterObj.current.rarity} filterObj={filterObj} raritySelectAll$={nextValues.rarity$}></RarityItem>
+              <RarityItem rarity={filterObj.current.rarity} 
+                          filterObj={filterObj} 
+                          raritySelectAll$={nextValues.rarity$}>
+              </RarityItem>
             </>
             <>
               <ThemedView style={filterStyles.row}>
@@ -148,9 +151,12 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
             <>
               <ThemedView style={filterStyles.row}>
                 <ThemedText style={filterStyles.header}>{i18n.t('trainer_card')}</ThemedText>
-                <InvertButton onClick={() => onNext('stage$')}></InvertButton>
+                <InvertButton onClick={() => onNext('stage$')} styles={{top: 9}}></InvertButton>
               </ThemedView>
-              <StageItem stage={filterObj.current.stage} filterObj={filterObj} stageSelectAll$={nextValues.stage$}></StageItem>
+              <StageItem stage={filterObj.current.stage} 
+                         filterObj={filterObj} 
+                         stageSelectAll$={nextValues.stage$}>
+               </StageItem>
             </>
             <>
               <ThemedView style={filterStyles.row}>

@@ -37,7 +37,7 @@ const StateButton = ({
   keyFilter,
   filterObj,
   onClick,
-  disabled
+  disabled = false
 }: StateButtonProps) => {
   const [pressed, setPressed] = useState(false);
   const {i18n} = useI18n();
@@ -75,7 +75,7 @@ const StateButton = ({
         (pressed || (filterObj?.current as any)[propFilter][keyFilter]) && isImage && { opacity: 1}
       ]}
       onPress={handlePress}
-      disabled={disabled}
+      disabled={disabled} 
     >
       {children}
       {

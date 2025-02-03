@@ -572,7 +572,7 @@ export const filterStyles = StyleSheet.create({
     fontWeight: '400',
     textAlign: 'center',
     paddingHorizontal: 20,
-    paddingVertical: 4,
+    paddingVertical: 0,
     color: '#555',
     zIndex: 100
   },

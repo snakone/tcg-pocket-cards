@@ -1,7 +1,7 @@
 import * as MediaLibrary from 'expo-media-library';
 import { Platform } from 'react-native';
 import { captureRef } from 'react-native-view-shot';
-import { convertBase64ToJpeg, getDynamicheight } from '@/shared/definitions/utils/functions';
+import { convertBase64ToJpeg, getDynamicHeight } from '@/shared/definitions/utils/functions';
 import { SettingsState } from '@/hooks/settings.reducer';
 import { Subject } from 'rxjs';
 
@@ -27,7 +27,7 @@ export default class ShareService {
     length: number
   ): Promise<void> {
     try {
-      const height = getDynamicheight(length);
+      const height = getDynamicHeight(length);
       const localUri = await captureRef(ref, {
         quality,
         format: 'jpg',

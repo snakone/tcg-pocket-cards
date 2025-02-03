@@ -35,7 +35,7 @@ export const MiscellaniaItem = memo(({
         <ThemedText type="defaultSemiBold" style={{ marginBottom: 12 }}>
           {i18n.t('weak')}
         </ThemedText>
-        <InvertButton onClick={() => onMiscellaniaSelectAll()} />
+        <InvertButton onClick={() => onMiscellaniaSelectAll()} styles={{top: 1}} />
       </ThemedView>
 
       <ThemedView style={[filterStyles.flexContainer, styles.container]}>

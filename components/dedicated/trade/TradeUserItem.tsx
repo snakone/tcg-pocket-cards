@@ -10,34 +10,46 @@ import { SvgTradePassSymbol } from '@/components/ui/IconSymbol';
 import { TRADE_POINTS } from '@/shared/definitions/sentences/path.sentences';
 import { TRADE_COST_MAP } from '@/shared/definitions/utils/constants';
 import { CardRarityENUM } from '@/shared/definitions/enums/card.enums';
+import { useI18n } from '@/core/providers/LanguageProvider';
 
-export default function TradeUserItem({item, rarity}: {item: TradeItem, rarity: CardRarityENUM | undefined}) {
+interface TradeUserItemProps {
+  item: TradeItem,
+  rarity: CardRarityENUM | undefined,
+  styles?: any
+}
+
+export default function TradeUserItem({item, rarity, styles}: TradeUserItemProps) {
+  const {i18n} = useI18n();
+
+  if (!item) { return; }
+  
   return (
     <ThemedView style={[tradeItemStyles.item, {
-      borderColor: !item.valid ? 'goldenrod' : 'transparent', 
+      borderColor: !item?.valid ? 'goldenrod' : 'transparent', 
       borderWidth: 1, 
       borderLeftWidth: 0, 
       borderTopWidth: 0, 
       borderBottomWidth: 0
-    }]}>
+    }, styles]}>
       <ThemedView style={{flex: 1}}>
-        <ThemedText style={{marginBottom: 12}}>{item.title}</ThemedText>
+        <ThemedText style={{marginBottom: 12}}>{item?.title || i18n.t('trade') + ' ' + (item.id)}</ThemedText>
         <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', width: '46%'}}>
-          <ThemedView style={{}}>
+          <ThemedView>
             {
               item.desired ? <Image style={[
                 CardGridStyles.image,
                 CreateScreenStyles.popularImage, {
                   left: 0,
                   width: 65,
-                }, CARD_IMAGE_MAP[String(item.desired)] && {opacity: 1}
+                }, CARD_IMAGE_MAP[String(item?.desired)] && {opacity: 1}
               ]} 
               source={CARD_IMAGE_MAP_116x162[String(item.desired)]}/> :
               <ThemedView style={[
                 CardGridStyles.image,
                 CreateScreenStyles.popularImage, {
                   left: 0,
-                  opacity: 0.8
+                  opacity: 0.8,
+                  width: 65
                 }
               ]}/>
             }
@@ -55,7 +67,7 @@ export default function TradeUserItem({item, rarity}: {item: TradeItem, rarity: 
                   CreateScreenStyles.popularImage, {
                     left: i * 28,
                     width: 65,
-                    opacity: 0.8,
+                    opacity: 1 - 0.10 * i,
                     zIndex: Math.round((1 / (i + 1) * 100)),
                   }
                 ]} 
@@ -67,7 +79,7 @@ export default function TradeUserItem({item, rarity}: {item: TradeItem, rarity: 
                     left: i * 28,
                     width: 65,
                     zIndex: Math.round((1 / (i + 1) * 100)),
-                    opacity: 0.8
+                    opacity: 1 - 0.10 * i
                   }
                 ]}
                 key={i}/>
@@ -79,7 +91,7 @@ export default function TradeUserItem({item, rarity}: {item: TradeItem, rarity: 
 
       <ThemedView style={tradeItemStyles.token}>
         <Image source={TRADE_POINTS} style={{width: 25, height: 25, left: 8, position: 'absolute', top: 2}}/>
-        <ThemedText style={{top: -1, left: 12}}>{rarity !== undefined && (TRADE_COST_MAP as any)[rarity]}</ThemedText>
+        <ThemedText style={{top: -1, left: 12}}>{rarity !== undefined && (TRADE_COST_MAP as any)[rarity] || 0}</ThemedText>
       </ThemedView>
     </ThemedView> 
   )
@@ -94,6 +106,7 @@ const tradeItemStyles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 50,
     minHeight: 184,
+    width: '100%'
   },
   token: {
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 10px 12px',

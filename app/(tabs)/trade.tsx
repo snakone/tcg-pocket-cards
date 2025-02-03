@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Animated from 'react-native-reanimated';
-import { FlatList, KeyboardAvoidingView, Platform, RefreshControl, TextInput, TouchableOpacity } from 'react-native';
+import { FlatList, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native';
 
 import { TradeScreenModal } from '@/components/modals';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -21,7 +21,6 @@ import { TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
 
 export default function TradeScreen() {
   const {i18n} = useI18n();
-  const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
   const [trades, setTrades] = useState<TradeItem[]>([]);
@@ -95,14 +94,13 @@ export default function TradeScreen() {
 
   return (
     <>
-      { loading && <LoadingOverlay/> }
       <ParallaxScrollView title={"trades"} 
                           modalTitle='trades'
                           modalContent={TradeScreenModal()}
                           modalHeight={LARGE_MODAL_HEIGHT}
                           styles={{paddingHorizontal: 0, gap: 0}}>
         <FlatList
-          data={filtered}
+          data={filtered.sort((b, a) => b.id > a.id ? -1 : 1)}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
           showsVerticalScrollIndicator={false}
