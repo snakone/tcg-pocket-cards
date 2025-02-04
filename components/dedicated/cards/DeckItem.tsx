@@ -62,8 +62,8 @@ import { CardGridStyles, CreateScreenStyles } from "@/shared/styles/component.st
                             key={i}
                             source={image}
                             style={{
-                              width: 18,
-                              height: 18,
+                              width: 20,
+                              height: 20,
                               position: 'relative',
                             }}
                           />

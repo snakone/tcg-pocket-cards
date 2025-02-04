@@ -635,8 +635,8 @@ export default function CreateDeckScreen() {
                               key={key}
                               source={image}
                               style={{
-                                width: 19,
-                                height: 19,
+                                width: 20,
+                                height: 20,
                                 position: 'relative'
                               }}
                             />

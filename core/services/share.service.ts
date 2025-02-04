@@ -24,10 +24,11 @@ export default class ShareService {
     ref: React.MutableRefObject<any>, 
     name: string, 
     quality: number = 1,
-    length: number
+    length: number,
+    type: 'deck' | 'trade'
   ): Promise<void> {
     try {
-      const height = getDynamicHeight(length);
+      const height = getDynamicHeight(length, type);
       const localUri = await captureRef(ref, {
         quality,
         format: 'jpg',

@@ -25,8 +25,7 @@ import SoundService from "@/core/services/sounds.service";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import PickBackgroundMenu from "@/components/dedicated/share/PickCBackgroundMenu";
 import TradeUserItem from "@/components/dedicated/trade/TradeUserItem";
-import { LanguageType } from "@/shared/definitions/types/global.types";
-import SelectInput from "@/components/ui/SelectInput";
+import TradeCollage from "@/components/dedicated/trade/TradeCollage";
 
 export default function ShareTradeScreen() {
   const {i18n} = useI18n();
@@ -35,7 +34,6 @@ export default function ShareTradeScreen() {
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
   const [trade, setTrade] = useState<TradeItem>();
-  const [deckName, setDeckName] = useState('');
   const [loading, setLoading] = useState(false);
   const shareService = useMemo(() => new ShareService(), []);
   const ref = useRef<any>(null);
@@ -43,8 +41,6 @@ export default function ShareTradeScreen() {
   const [background, setBackground] = useState<AvatarIcon>();
   const [quality, setQuality] = useState<number>(0.8);
   const [desired, setDesired] = useState<Card>();
-  const settings = useMemo(() => state.settingsState, [state.settingsState]);
-  const [locale, setLocale] = useState<LanguageType>();
 
   const [profile, setProfile] = useState<UserProfile>(
     {name: '', avatar: 'eevee', coin: 'eevee', best: null}
@@ -79,7 +75,7 @@ export default function ShareTradeScreen() {
   const handleShare = () => {
     SoundService.play('POP_PICK');
     setLoading(true);
-    shareService.makeScreenShot(ref, deckName, quality, 5).then(_ => setLoading(false));
+    shareService.makeScreenShot(ref, (trade?.title || 'Trade'), quality, 10, 'trade').then(_ => setLoading(false));
   }
 
   function onClose(value: AvatarIcon): void {
@@ -120,10 +116,6 @@ export default function ShareTradeScreen() {
     setQuality(value);
   }
 
-  function handleLanguage(lang: LanguageType): void {
-    setLocale(lang);
-  }
-
   return (
     <Provider>
       { loading && <LoadingOverlay/> }
@@ -132,10 +124,18 @@ export default function ShareTradeScreen() {
           {
             Platform.OS === 'web' ?
             <View ref={ref} style={{width: 'auto'}}>
-              <ThemedText>COLLAGE</ThemedText>
+              <TradeCollage trade={trade} 
+                            background={background} 
+                            profile={profile}
+                            rarity={desired?.rarity}>
+              </TradeCollage>
             </View> :
             <ViewShot ref={ref} style={{width: 'auto'}}>
-              <ThemedText>COLLAGE</ThemedText>
+              <TradeCollage trade={trade} 
+                            background={background} 
+                            profile={profile}
+                            rarity={desired?.rarity}>
+              </TradeCollage>
             </ViewShot>
           }
         </ThemedView>
@@ -144,24 +144,6 @@ export default function ShareTradeScreen() {
         }
         <ThemedView style={styles.options}>
           <ThemedText style={filterStyles.header}>{i18n.t('export')}</ThemedText>
-
-          <ThemedView style={settingsStyles.container}>
-            <ThemedView style={settingsStyles.row}>
-              <ThemedText>{i18n.t('language')}</ThemedText>
-              <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
-                <SelectInput options={['es', 'en', 'ja']} 
-                             label={settings.language}
-                             onSelect={(opt) => (SoundService.play('POP_PICK'), handleLanguage(opt))}
-                             width={140}
-                             height={128}
-                             shadow={false}
-                             textStyle={{left: 6}}
-                             iconStyle={{right: -2}}
-                             itemStyle={{paddingBlock: 6}}>
-                </SelectInput>
-              </ThemedView>
-            </ThemedView>
-          </ThemedView>
 
           <ThemedView style={[settingsStyles.container, {height: 52}]}>
             <Pressable onPress={handleBackground} style={{flex: 1}} >
@@ -227,7 +209,8 @@ export default function ShareTradeScreen() {
 const styles = StyleSheet.create({
   options: {
     width: '100%',
-    gap: 8
+    gap: 8,
+    marginTop: 16
   },
   coin: {
     width: 34, 

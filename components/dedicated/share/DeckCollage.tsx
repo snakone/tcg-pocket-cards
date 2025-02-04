@@ -85,7 +85,7 @@ export default function DeckCollage({
   };
 
   const renderItem = useCallback(({item, index}: {item: Card, index: number}) => (
-    <View style={[CardGridStyles.imageContainer]}>
+    <View style={[CardGridStyles.imageContainer, {marginHorizontal: 11}]}>
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <View>
           { item && 
@@ -93,7 +93,7 @@ export default function DeckCollage({
             <Image accessibilityLabel={item?.name} 
                   style={[
                 CardGridStyles.image, 
-                {width: 356}
+                {width: 354}
               ]} 
             source={CARD_IMAGE_MAP[String(item?.id)]}/>        
           </>
@@ -113,7 +113,7 @@ export default function DeckCollage({
       <View style={{width: COLLAGE_WIDTH}}>
         <ImageBackground source={background && DECK_BACKGROUND_MAP[background.value]} 
                          contentFit="cover" 
-                         style={{padding: 60, paddingBottom: 20}}>
+                         style={{padding: 20}}>
           <FlatList data={data}
             renderItem={renderItem}
             numColumns={5}
@@ -147,7 +147,7 @@ export default function DeckCollage({
                   <ThemedText style={[styles.footerText, {fontWeight: 'bold'}]}>{name}</ThemedText>
                 </ThemedView>
                 <Image source={COIN_MAP[profile.coin]} 
-                      style={[TabsMenuStyles.avatar, {width: 40, height: 40, marginRight: 20, top: 1}]}>
+                       style={[TabsMenuStyles.avatar, {width: 40, height: 40, marginRight: 16, top: 1}]}>
                 </Image>
                 <ThemedText style={styles.footerText}>
                   {profile.name || 'Username'} - TCG Pocket Cards - {FRONTEND_URL}
@@ -160,20 +160,7 @@ export default function DeckCollage({
   );
 }
 
-export const styles = StyleSheet.create({
-  header: {
-    width: 'auto',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 60,
-    padding: 20,
-    paddingInline: 50,
-    paddingBottom: 26,
-    backgroundColor: 'white',
-    opacity: 0.8,
-    borderRadius: 25,
-    marginHorizontal: 'auto'
-  },
+const styles = StyleSheet.create({
   title: {
     fontSize: 54, 
     fontWeight: 'bold',
@@ -186,14 +173,14 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 10,
     borderRadius: 40,
-    marginRight: 20, 
+    marginRight: 16, 
     padding: 0, 
     backgroundColor: 'transparent', 
-    top: 2
+    top: 1
   },
   footer: {
     marginTop: 20,
-    width: 1800,
+    width: 1920 - 40,
     backgroundColor: 'white',
     opacity: 0.8,
     borderRadius: 15,
@@ -203,7 +190,6 @@ export const styles = StyleSheet.create({
     paddingVertical: 4,
     paddingHorizontal: 24,
     flexDirection: 'row',
-    borderWidth: 2
   },
   footerContent: {
     top: -1,

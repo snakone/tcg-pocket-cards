@@ -54,6 +54,8 @@ export const SHARE_CHARIZARD = require('@/assets/images/share/Charizard.jpeg');
 export const SHARE_IMAGE = require('@/assets/images/share/share_image.png');
 
 export const TRADE_POINTS = require('@/assets/images/trade_token.png');
+export const SALE_CARD = require('@/assets/images/Discount-512.png');
+export const DISCORD_LOGO = require('@/assets/images/Discord-Nouveau-Logo.png');
 
 // SPLASH
 export const WINTER_SPLASH = require('@/assets/images/splash/winter.webp');

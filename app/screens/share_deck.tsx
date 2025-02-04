@@ -97,7 +97,7 @@ export default function ShareDeckScreen() {
     SoundService.play('POP_PICK');
     setLoading(true);
     const length = getFilteredLength();
-    shareService.makeScreenShot(ref, deckName, quality, length).then(_ => setLoading(false));
+    shareService.makeScreenShot(ref, deckName, quality, length, 'deck').then(_ => setLoading(false));
   }
 
   function getFilteredLength(): number {

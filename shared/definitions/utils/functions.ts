@@ -242,10 +242,13 @@ export const filterUniqueItems = (array: Card[]): { items: Card[]; ids: number[]
   };
 };
 
-export const getDynamicHeight = (length: number): number => {
+export const getDynamicHeight = (length: number, type: 'deck' | 'trade'): number => {
   const maxHeight = 2229;
   const minHeight = 1225;
   const midHeight = 1633;
+  const tradeHeight = 1290;
+
+  if (type === 'trade') { return tradeHeight; }
 
   if (length <= 10) {
     return minHeight;
