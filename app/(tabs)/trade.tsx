@@ -57,7 +57,7 @@ export default function TradeScreen() {
   }
 
   const renderItem = useCallback(({item}: {item: TradeItem}) => {
-    const rarity = state.cardState.cards.find(card => card.id === item.desired)?.rarity;
+    const rarity = state.cardState.cards.find(card => item.desired.includes(card.id))?.rarity;
     return (
       <TouchableOpacity onPress={() => handleClick(item)} style={{paddingHorizontal: 16}}>
         <TradeUserItem item={item} rarity={rarity}/>

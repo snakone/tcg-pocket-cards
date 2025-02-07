@@ -33,56 +33,59 @@ export default function TradeUserItem({item, rarity, styles}: TradeUserItemProps
     }, styles]}>
       <ThemedView style={{flex: 1}}>
         <ThemedText style={{marginBottom: 12}}>{item?.title || i18n.t('trade') + ' ' + (item.id)}</ThemedText>
-        <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', width: '46%'}}>
-          <ThemedView>
+        <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
+          <ThemedView style={{width: '38%'}}>
             {
-              item.desired ? <Image style={[
-                CardGridStyles.image,
-                CreateScreenStyles.popularImage, {
-                  left: 0,
-                  width: 65,
-                }, CARD_IMAGE_MAP[String(item?.desired)] && {opacity: 1}
-              ]} 
-              source={CARD_IMAGE_MAP_116x162[String(item.desired)]}/> :
-              <ThemedView style={[
-                CardGridStyles.image,
-                CreateScreenStyles.popularImage, {
-                  left: 0,
-                  opacity: 0.8,
-                  width: 65
-                }
-              ]}/>
+              item.desired.map((item, i) => (
+                item ? <Image style={[
+                  CardGridStyles.image,
+                  CreateScreenStyles.popularImage, {
+                    left: i * 17,
+                    width: 56,
+                    opacity: 1 - 0.10 * i,
+                    zIndex: Math.round((1 / (i + 1) * 100)),
+                  }
+                ]} 
+                source={CARD_IMAGE_MAP_116x162[String(item)]}
+                key={i}/> : <ThemedView style={[
+                  CardGridStyles.image,
+                  CreateScreenStyles.popularImage, {
+                    left: i * 17,
+                    width: 56,
+                    opacity: 1 - 0.10 * i,
+                    zIndex: Math.round((1 / (i + 1) * 100)),
+                  }
+                ]} key={i}/>
+              ))
             }
           </ThemedView>
-          <ThemedView style={{left: 34}}>
+          <ThemedView style={{width: '24%', top: 4}}>
             {
               SvgTradePassSymbol({})
             }
           </ThemedView>
-          <ThemedView>
+          <ThemedView style={{width: '38%'}}>
             {
               item.offers.map((offer, i) => (
                 offer ? <Image style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
-                    left: i * 28,
-                    width: 65,
+                    left: i * 17,
+                    width: 56,
                     opacity: 1 - 0.10 * i,
                     zIndex: Math.round((1 / (i + 1) * 100)),
                   }
                 ]} 
                 source={CARD_IMAGE_MAP_116x162[String(offer)]}
-                key={i}/> :
-                <ThemedView style={[
+                key={i}/> : <ThemedView style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
-                    left: i * 28,
-                    width: 65,
+                    left: i * 17,
+                    width: 56,
+                    opacity: 1 - 0.10 * i,
                     zIndex: Math.round((1 / (i + 1) * 100)),
-                    opacity: 1 - 0.10 * i
                   }
-                ]}
-                key={i}/>
+                ]} key={i}/>
               ))
             }
           </ThemedView>
@@ -105,7 +108,7 @@ const tradeItemStyles = StyleSheet.create({
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 4px 12px', 
     borderRadius: 8,
     marginBottom: 50,
-    minHeight: 184,
+    minHeight: 174,
     width: '100%'
   },
   token: {

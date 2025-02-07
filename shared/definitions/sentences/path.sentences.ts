@@ -70,6 +70,7 @@ export const HERO_IMAGE = require('@/assets/images/hero.png');
 export const PROMO_A1 = require('@/assets/images/packs/promoA1.png');
 export const PROMO_A2 = require('@/assets/images/packs/promoA2.png');
 export const PROMO_A3 = require('@/assets/images/packs/promoA3.png');
+export const PROMO_A4 = require('@/assets/images/packs/promoA4.png');
 
 // PACKS
 export const GENETIC_APEX = require('@/assets/images/packs/geneticapex.png');
@@ -184,7 +185,8 @@ export const MYTHICAL_ISLAND_PACKS = [
 
 export const SMACK_DOWN_PACKS = [
   DIALGA_ICON,
-  PALKIA_ICON
+  PALKIA_ICON,
+  PROMO_A4
 ]
 
 export const ALL_PACKS = [

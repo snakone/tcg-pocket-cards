@@ -23,6 +23,8 @@ import { TradeItem } from "@/shared/definitions/interfaces/global.interfaces";
 import Storage from "@/core/storage/storage.service";
 import { useConfirmation } from "@/core/providers/ConfirmationProvider";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
+import { tradeCollageStyles } from "@/components/dedicated/share/TradeCollage";
+import { SALE_CARD } from "@/shared/definitions/sentences/path.sentences";
 
 export default function CreateTradeScreen() {
   const {i18n} = useI18n();
@@ -34,7 +36,7 @@ export default function CreateTradeScreen() {
   const [discord, setDiscord] = useState<string>('');
   const [tcg, setTcg] = useState<string[]>(['', '', '', '']);
   const inputRefs = useRef<TextInput[]>([]);
-  const [desired, setDesired] = useState<any>(null);
+  const [desired, setDesired] = useState<(number| null)[]>([null, null, null, null, null]);
   const [offers, setOffers] = useState<(number| null)[]>([null, null, null, null, null]);
   const [isDesiredVisible, setIsDesiredVisible] = useState<boolean>(false);
   const [isOffersVisible, setIsOffersVisible] = useState<boolean>(false);
@@ -67,15 +69,16 @@ export default function CreateTradeScreen() {
   const memoizedPickDesired = useMemo(() => {
     return <PickDesiredMenu isVisible={isDesiredVisible} 
                             animatedStyle={{}} 
-                            onClose={onDesiredClose}/>
+                            onClose={onDesiredClose}
+                            desired={desired}/>
   }, [isDesiredVisible]);
 
   const memoizedPickOffers = useMemo(() => {
     return <PickOffersMenu isVisible={isOffersVisible} 
-                            animatedStyle={{}} 
-                            onClose={onOffersClose}
-                            desired={desired}
-                            offers={offers}/>
+                           animatedStyle={{}} 
+                           onClose={onOffersClose}
+                           desired={desired}
+                           offers={offers}/>
   }, [isOffersVisible, offers]);
 
   function handleTCG(value: string, index: number): void {
@@ -98,9 +101,11 @@ export default function CreateTradeScreen() {
     }
   };
 
-  function onDesiredClose(id: number): void {
-    if (desired !== id) { setNotSaved(true); }
-    setDesired(id);
+  function onDesiredClose(data: number[]): void {
+    if (JSON.stringify(data) !== JSON.stringify(offers)) { setNotSaved(true); }
+    if (data !== null) {
+      setDesired(data);
+    }
     setIsDesiredVisible(false);
   }
 
@@ -152,10 +157,13 @@ export default function CreateTradeScreen() {
   }
 
   function isTradeValid(item: TradeItem): boolean {
+    const desiredRarity = desired.filter(Boolean).map(id => state.cardState.cards.find(card => card.id === id))[0]?.rarity;
+    const offeredCards = offers.filter(Boolean).map(id => state.cardState.cards.find(card => card.id === id));
     if (
       (!desired || !title) ||
       !tcg.every(num => num && num.length === 4) ||
-      offers.filter(Boolean).length === 0
+      offers.filter(Boolean).length === 0 ||
+      !offeredCards.every(card => card?.rarity === desiredRarity)
     ) { return false; }
     return true;
   }
@@ -165,17 +173,17 @@ export default function CreateTradeScreen() {
     setIsDesiredVisible(prev => !prev);
   }
 
-  function handleOffer(index: number): void {
+  function handleOffer(): void {
     SoundService.play('POP_PICK');
     setIsOffersVisible(prev => !prev);
   }
 
-  const renderItem = useCallback(({item, index}: {item: any, index: number}) => (
+  const renderOffered = useCallback(({item, index}: {item: any, index: number}) => (
     <View style={[CardGridStyles.imageContainer]}>
       <View style={{flex: 1, backgroundColor: 'white', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)'}}>
-        <TouchableOpacity onPress={() => handleOffer(index)}
-                          style={[CardGridStyles.image, styles.image, !desired && {opacity: 0.3}]}
-                          disabled={!desired}>
+        <TouchableOpacity onPress={() => handleOffer()}
+                          style={[CardGridStyles.image, styles.image, desired.filter(Boolean).length === 0 && {opacity: 0.3}]}
+                          disabled={desired.filter(Boolean).length === 0}>
           <View>
             { offers[index] ? 
             <>
@@ -192,6 +200,29 @@ export default function CreateTradeScreen() {
       </View>
     </View>
   ), [offers, desired]);
+
+  const renderDesired = useCallback(({item, index}: {item: any, index: number}) => (
+    <View style={[CardGridStyles.imageContainer]}>
+      <View style={{flex: 1, backgroundColor: 'white', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)'}}>
+        <TouchableOpacity onPress={() => handleDesired()}
+                          style={[CardGridStyles.image, styles.image, !desired && {opacity: 0.3}]}
+                          disabled={!desired}>
+          <View>
+            { desired[index] ? 
+            <>
+              <Image accessibilityLabel={item} 
+                    style={[
+                  CardGridStyles.image, 
+                  {width: 67.5}
+                ]} 
+              source={CARD_IMAGE_MAP_116x162[String(item)]}/>
+            </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
+            }
+          </View>
+        </TouchableOpacity>
+      </View>
+    </View>
+  ), [desired]);
 
   const goBack = useCallback(async (): Promise<void> => {
     SoundService.play('AUDIO_MENU_CLOSE');
@@ -278,28 +309,36 @@ export default function CreateTradeScreen() {
           </ThemedView>
         </ThemedView>
         <ThemedView style={styles.item}>
-          <ThemedText type="defaultSemiBold">{i18n.t('trade_select_desired')}</ThemedText>
-          <TouchableOpacity onPress={handleDesired}
-                style={[CardGridStyles.image, styles.desiredImage]}>
-            <View>
-              { desired ? 
-              <>
-                <Image accessibilityLabel={desired} 
-                      style={[
-                    CardGridStyles.image, 
-                    {width: 100}
-                  ]} 
-                source={CARD_IMAGE_MAP_116x162[String(desired)]}/>        
-              </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
-              }
-            </View>
-          </TouchableOpacity>
+          <ThemedView style={{flexDirection: 'row', gap: 16}}>
+            <ThemedView style={[tradeCollageStyles.like, {position: 'relative', width: 30, height: 30, top: 4, right: 0, marginRight: 2}]}>
+              <MaterialIcons name={"favorite-outline"} style={{color: 'white', fontSize: 24, top: 1}}></MaterialIcons>
+            </ThemedView>
+            <ThemedView>
+              <ThemedText type="defaultSemiBold">{i18n.t('trade_select_desired')}</ThemedText>
+              <ThemedText type="default" style={{fontSize: 12}}>{i18n.t('trade_search_to')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+
+          <FlatList data={desired}
+                    renderItem={renderDesired}
+                    numColumns={5}
+                    contentContainerStyle={{width: '100%', marginTop: 12}}
+                    style={{width: '100%', borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
         </ThemedView>
         <ThemedView style={styles.item}>
-          <ThemedText type="defaultSemiBold">{i18n.t('trade_select_offer')}</ThemedText>
-          <ThemedText type="default" style={{fontSize: 12}}>{i18n.t('trade_up_to')}</ThemedText>
+          <ThemedView style={{flexDirection: 'row', gap: 16}}>
+            <ThemedView style={{position: 'relative', top: -3, right: 4 }}>
+              <Image source={SALE_CARD} style={{width: 42, height: 42}}/>
+            </ThemedView>
+            <ThemedView style={{left: -7}}>
+              <ThemedText type="defaultSemiBold">{i18n.t('trade_select_offer')}</ThemedText>
+              <ThemedText type="default" style={{fontSize: 12}}>{i18n.t('trade_up_to')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
           <FlatList data={offers}
-                    renderItem={renderItem}
+                    renderItem={renderOffered}
                     numColumns={5}
                     contentContainerStyle={{width: '100%', marginTop: 12}}
                     style={{width: '100%', borderRadius: 8}}

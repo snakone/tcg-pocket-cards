@@ -53,9 +53,11 @@ export default function RootLayout() {
       } else {
         const settings = await Storage.loadSettings();
         if (settings !== null) {
-          if (settings.trades == undefined) {
+          if (!settings.trades) {
             settings.trades = [];
+            Storage.setSettings({...settings});
           }
+
           dispatch({type: 'SET_SETTINGS', value: {...settings, version: APP_VERSION}});
           SoundService.setEnabled(settings.sound)
           setLocale(settings.language);

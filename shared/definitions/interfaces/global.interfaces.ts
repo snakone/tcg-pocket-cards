@@ -59,7 +59,7 @@ export interface TradeItem {
   title: string;
   tcg: string[];
   discord: string;
-  desired: number;
+  desired: (number | null)[];
   offers: (number | null)[];
   created: number;
   valid: boolean;

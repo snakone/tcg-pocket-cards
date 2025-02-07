@@ -75,8 +75,8 @@ export const SvgTradeSymbol = (props: SvgProps) => (
 export const SvgTradePassSymbol = (props: any) => {
   return (
     <Svg
-      width={props.width || 100}
-      height={props.height || 100}
+      width={props.width || 80}
+      height={props.height || 80}
       viewBox="0 0 512 512"
       scale={0.5}
       {...props}

@@ -70,7 +70,7 @@ export default function ShareScreen() {
   }, [decks]);
 
   const renderTrade = useCallback(({item}: {item: TradeItem}) => {
-    const rarity = state.cardState.cards.find(card => card.id === item?.desired)?.rarity;
+    const rarity = state.cardState.cards.find(card => item?.desired.includes(card.id))?.rarity;
     return (
       <TouchableOpacity style={{paddingHorizontal: 16}} onPress={() => openTrade(item)}>
         <TradeUserItem item={item} rarity={rarity}/>

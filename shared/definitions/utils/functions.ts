@@ -246,9 +246,9 @@ export const getDynamicHeight = (length: number, type: 'deck' | 'trade'): number
   const maxHeight = 2229;
   const minHeight = 1225;
   const midHeight = 1633;
-  const tradeHeight = 1290;
+  const tradeHeight = 1250;
 
-  if (type === 'trade') { return tradeHeight; }
+  if (type === 'trade') { return minHeight; }
 
   if (length <= 10) {
     return minHeight;

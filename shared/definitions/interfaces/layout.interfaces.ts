@@ -19,8 +19,12 @@ export interface TabMenu {
   animatedStyle: any;
 }
 
+export interface TabDesiredMenu extends TabMenu {
+  desired: (number | null)[];
+}
+
 export interface TabOffersMenu extends TabMenu {
-  desired: number;
+  desired: (number | null)[];
   offers: (number | null)[];
 }
 

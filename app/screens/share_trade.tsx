@@ -13,7 +13,6 @@ import { ThemedView } from "@/components/ThemedView";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AppContext } from "../_layout";
-import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import Storage from '@/core/storage/storage.service';
 import ShareService from "@/core/services/share.service";
 import { AvatarIcon, TradeItem, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
@@ -25,14 +24,15 @@ import SoundService from "@/core/services/sounds.service";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import PickBackgroundMenu from "@/components/dedicated/share/PickCBackgroundMenu";
 import TradeUserItem from "@/components/dedicated/trade/TradeUserItem";
-import TradeCollage from "@/components/dedicated/trade/TradeCollage";
+import TradeCollage from "@/components/dedicated/share/TradeCollage";
+import { CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 
 export default function ShareTradeScreen() {
   const {i18n} = useI18n();
   const { trade_id } = useLocalSearchParams<{ trade_id: string }>();
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
+  const { state } = context;
   const [trade, setTrade] = useState<TradeItem>();
   const [loading, setLoading] = useState(false);
   const shareService = useMemo(() => new ShareService(), []);
@@ -40,7 +40,7 @@ export default function ShareTradeScreen() {
   const [isBackgroundVisible, setIsBackgroundVisible] = useState(false);
   const [background, setBackground] = useState<AvatarIcon>();
   const [quality, setQuality] = useState<number>(0.8);
-  const [desired, setDesired] = useState<Card>();
+  const [rarity, setRarity] = useState<CardRarityENUM>();
 
   const [profile, setProfile] = useState<UserProfile>(
     {name: '', avatar: 'eevee', coin: 'eevee', best: null}
@@ -60,7 +60,8 @@ export default function ShareTradeScreen() {
   }, [state.settingsState.trades]);
 
   useEffect(() => {
-    setDesired(state.cardState.cards.find(card => card.id === trade?.desired));
+    const cards = state.cardState.cards.filter(card => trade?.desired.includes(card.id));
+    setRarity(cards[0] && cards[0].rarity);
   }, [state.cardState.cards, trade]);
 
   useEffect(() => {
@@ -127,24 +128,23 @@ export default function ShareTradeScreen() {
               <TradeCollage trade={trade} 
                             background={background} 
                             profile={profile}
-                            rarity={desired?.rarity}>
+                            rarity={rarity}>
               </TradeCollage>
             </View> :
             <ViewShot ref={ref} style={{width: 'auto'}}>
               <TradeCollage trade={trade} 
                             background={background} 
                             profile={profile}
-                            rarity={desired?.rarity}>
+                            rarity={rarity}>
               </TradeCollage>
             </ViewShot>
           }
         </ThemedView>
         {
-          trade && <TradeUserItem item={trade} rarity={desired?.rarity} styles={styles.tradeItem}/>
+          trade && <TradeUserItem item={trade} rarity={rarity} styles={styles.tradeItem}/>
         }
         <ThemedView style={styles.options}>
           <ThemedText style={filterStyles.header}>{i18n.t('export')}</ThemedText>
-
           <ThemedView style={[settingsStyles.container, {height: 52}]}>
             <Pressable onPress={handleBackground} style={{flex: 1}} >
               <ThemedView style={settingsStyles.row}>
@@ -192,12 +192,22 @@ export default function ShareTradeScreen() {
           </ThemedView>
 
           <ThemedView style={{width: '100%'}}>
-            <TouchableOpacity style={[homeScreenStyles.ctaButton, {marginBlock: 45}]} 
-                              onPress={handleShare}>
+            <TouchableOpacity style={[
+                                homeScreenStyles.ctaButton, {marginBlock: 45},
+                                !trade?.valid && {opacity: 0.6}
+                              ]} 
+                              onPress={handleShare}
+                              disabled={!trade?.valid}>
               <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>
                 {i18n.t('download')}
               </ThemedText>
             </TouchableOpacity>
+            {
+              !trade?.valid && 
+                <ThemedText style={{color: 'crimson', fontSize: 12, paddingLeft: 4, top: -36}}>
+                  {i18n.t('invalid_cant_share')}
+                </ThemedText>
+            }
           </ThemedView>
         </ThemedView>
       </SharedScreen>

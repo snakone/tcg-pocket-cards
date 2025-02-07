@@ -14,7 +14,6 @@ import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
-import Storage from "@/core/storage/storage.service";
 import { AppContext } from "@/app/_layout";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { CARD_IMAGE_MAP_116x162, CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";
@@ -25,7 +24,7 @@ import StateButton from "@/components/ui/StateButton";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { filterCards } from "@/shared/definitions/utils/functions";
 import { createDeckStyles } from "@/app/screens/create_deck";
-import { CardExpansionTypeENUM } from "@/shared/definitions/enums/card.enums";
+import { CardExpansionTypeENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 
 export default function PickOffersMenu({
   isVisible,
@@ -45,7 +44,6 @@ export default function PickOffersMenu({
   const [searchQuery, setSearchQuery] = useState('');
   const filterObj = useRef<FilterSearch>(getFilterSearch());
   const [current, setCurrent] = useState<(number | null)[]>(offers);
-  const [filterDisabled, setFilterDisabled] = useState<boolean>(false);
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
@@ -94,12 +92,13 @@ export default function PickOffersMenu({
   }, [current])
 
   useEffect(() => {
-    const desiredCard = state.cardState.cards.find(card => card.id === desired);
+    const desiredCard = state.cardState.cards.find(card => desired.includes(card.id));
 
     if (desiredCard) {
       const filter = state.cardState.cards
                       .filter(card => card?.rarity === desiredCard.rarity && 
-                                      card.series !== CardExpansionTypeENUM.A2);
+                                      card.series !== CardExpansionTypeENUM.A2 &&
+                                      !desired.includes(card.id));
       setCards(filter);
       setFiltered(filter);
 
@@ -110,16 +109,8 @@ export default function PickOffersMenu({
       );
 
       (filterObj.current.rarity as any)[desiredCard.rarity] = true;
-      setFilterDisabled(true);
-      return;
     }
-
-    const filter = state.cardState.cards
-                    .filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && 
-                                    card.series !== CardExpansionTypeENUM.A2);
-    setCards(filter);
-    setFiltered(filter);
-  }, [state.cardState.cards]);
+  }, [state.cardState.cards, desired]);
 
   const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
     <View style={{margin: 1, backgroundColor: Colors.light.skeleton, borderRadius: 8}}>
@@ -181,7 +172,12 @@ export default function PickOffersMenu({
     const tradeable = cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity));
     const filtered = filterCards(filter, tradeable, []);
     setFiltered(filtered)
-  }, [filterObj.current])
+  }, [filterObj.current]);
+
+  const shouldFilterDisabled = (key: CardRarityENUM) =>  (
+    Object.values(filterObj.current.rarity).some(Boolean) && 
+    !(filterObj.current.rarity as any)[key]
+  );
 
   const renderRarityGrid = useCallback(() => {
     return (
@@ -200,12 +196,13 @@ export default function PickOffersMenu({
             onClick={() => manageFilter(key)}
             key={index}
             filterObj={filterObj}
-            disabled={filterDisabled}
+            disabled={true}
             style={[
               { overflow: 'hidden' },
               filterStyles.button,
               filterStyles.imageContainer,
               { width: ICON_WIDTH + (amount - 1) * 20 },
+              shouldFilterDisabled(key) && {opacity: 0.5}
             ]}>
             {Array.from({ length: amount }).map((_, i) => (
               <Image
@@ -219,7 +216,7 @@ export default function PickOffersMenu({
       })}
     </ThemedView>
     )
-  }, [filterDisabled]);
+  }, []);
 
   return (
     <>
@@ -290,7 +287,7 @@ export default function PickOffersMenu({
   );
 }
 
-const offersStyles = StyleSheet.create({
+export const offersStyles = StyleSheet.create({
   input: {
     boxShadow: '5px 4px 12px rgba(0, 0, 0, 0.2)', 
     width: '100%', 

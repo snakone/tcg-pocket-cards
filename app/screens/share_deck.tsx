@@ -46,6 +46,7 @@ export default function ShareDeckScreen() {
   const [background, setBackground] = useState<AvatarIcon>();
   const [quality, setQuality] = useState<number>(0.8);
   const [duplicated, setDuplicated] = useState<boolean>(true);
+  const [valid, setValid] = useState<boolean>(true);
 
   const [profile, setProfile] = useState<UserProfile>(
     {name: '', avatar: 'eevee', coin: 'eevee', best: null}
@@ -72,6 +73,7 @@ export default function ShareDeckScreen() {
           const deck = selected.cards.map(card => state.cardState.cards.find(c => c.id === card) || null);
           setDeck(deck);
           setDeckName(selected.name);
+          setValid(selected.valid);
           Object.keys(element).forEach((key: any) => {
             if (selected.energies?.includes(key)) {
               (element as any)[key] = true;
@@ -296,11 +298,18 @@ export default function ShareDeckScreen() {
 
           <ThemedView style={{width: '100%'}}>
             <TouchableOpacity style={[homeScreenStyles.ctaButton, {marginBlock: 45}]} 
-                              onPress={handleShare}>
+                              onPress={handleShare}
+                              disabled={!valid}>
               <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>
                 {i18n.t('download')}
               </ThemedText>
             </TouchableOpacity>
+            {
+              !valid && 
+                <ThemedText style={{color: 'crimson', fontSize: 12, paddingLeft: 4, top: -36}}>
+                  {i18n.t('invalid_cant_share')}
+                </ThemedText>
+            }
           </ThemedView>
         </ThemedView>
       </SharedScreen>
