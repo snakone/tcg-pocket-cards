@@ -9,19 +9,48 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 1,
     number: 1,
     pokedex: 1,
-    name: 'Bulbasaur',
+    name: {
+      es: 'Bulbasaur',
+      en: 'Bulbasaur',
+      ja: 'フシギダネ'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Semilla',
+        en: 'Seed Pokémon',
+        ja: 'たねポケモン'
+      },
+      height: {
+        es: '0,7',
+        en: '2\'04"',
+        ja: '0,7'
+      },
+      weight: {
+        es: '6,9',
+        en: '15.2',
+        ja: '6,9'
+      }
+    },
     artist: 'Narumi Sato',
     attacks: [
       {
-        name: 'Vine Whip',
+        name: {
+          es: 'Látigo Cepa',
+          en: 'Vine Whip',
+          ja: 'つるのムチ'
+        },
         damage: 40,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
       }
     ],
-    evolve: 'Ivysaur',
+    evolve: [2],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
-    flavor: 'There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.',
+    flavor: {
+      es: 'Este Pokémon nace con una semilla en el lomo, que brota con el paso del tiempo.',
+      en: 'There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.',
+      ja: '生まれたときから 背中に 植物の タネが あって 少しずつ 大きく 育つ。'
+    },
     health: 70,
     rarity: CardRarityENUM.COMMON,
     retreat: 1,
@@ -33,26 +62,55 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
-    related: [2, 3, 4, 227, 251, 395, 390],
+    related: [2, 3, 4, 227, 251, 602, 597],
   },
   {
     id: 2,
     order: 2,
     number: 2,
     pokedex: 2,
-    name: 'Ivysaur',
+    name: {
+      es: 'Ivysaur',
+      en: 'Ivysaur',
+      ja: 'フシギソウ'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Semilla',
+        en: 'Seed Pokémon',
+        ja: 'たねポケモン'
+      },
+      height: {
+        es: '1,0',
+        en: '3\'03"',
+        ja: '1,0'
+      },
+      weight: {
+        es: '13,0',
+        en: '28,7',
+        ja: '13,0'
+      }
+    },
     artist: 'Kurata So',
     attacks: [
       {
-        name: 'Razor Leaf',
+        name: {
+          es: 'Hoja Afilada',
+          en: 'Razor Leaf',
+          ja: 'はっぱカッター'
+        },
         damage: 60,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
       }
     ],
-    evolve: 'Venusaur',
+    evolve: [3],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
-    flavor: 'When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.',
+    flavor: {
+      es: 'Cuando le crece bastante el bulbo del lomo, pierde la capacidad de erguirse sobre las patas traseras.',
+      en: 'When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.',
+      ja: '背中の つぼみが 大きく 育ってくると 2本脚で 立つことが できなくなるらしい。'
+    },
     health: 90,
     rarity: CardRarityENUM.UNCOMMON,
     retreat: 2,
@@ -64,27 +122,60 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
-    related: [1, 3, 4, 227, 251, 395, 390]
+    related: [1, 3, 4, 227, 251, 602, 597]
   },
   {
     id: 3,
     order: 3,
     number: 3,
     pokedex: 3,
-    name: 'Venusaur',
+    name: {
+      es: 'Venusaur',
+      en: 'Venusaur',
+      ja: 'フシギバナ'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Semilla',
+        en: 'Seed Pokémon',
+        ja: 'たねポケモン'
+      },
+      height: {
+        es: '2,0',
+        en: '6\'07"',
+        ja: '2,0'
+      },
+      weight: {
+        es: '100,0',
+        en: '220,5',
+        ja: '100,0'
+      }
+    },
     artist: 'Ryota Murayama',
     attacks: [
       {
-        name: 'Mega Rain',
+        name: {
+          es: 'Megaagotar',
+          en: 'Mega Drain',
+          ja: 'メガドレイン'
+        },
         damage: 80,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
-        description: 'Heal 30 damage from this Pokémon.'
+        description: {
+          es: 'Cura 30 puntos de daño a este Pokémon.',
+          en: 'Heal 30 damage from this Pokémon.',
+          ja: 'このポケモンのHPを30回復。'
+        }
       }
     ],
-    evolve: null,
+    evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
-    flavor: 'Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.',
+    flavor: {
+      es: 'La planta florece cuando absorbe energía solar, lo cual le obliga a buscar siempre la luz del sol.',
+      en: 'Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.',
+      ja: '太陽エネルギーを 栄養にして 大きな花が 開く。 日なたに 引き寄せられるように 移動する。'
+    },
     health: 160,
     rarity: CardRarityENUM.RARE,
     retreat: 3,
@@ -98,13 +189,30 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
-    related: [1, 2, 227, 395, 390]
+    related: [1, 2, 227, 602, 597]
   },
   {
     id: 4,
     order: 4,
     number: 4,
     pokedex: 3,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Venusaur EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -137,13 +245,30 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
-    related: [1, 2, 227, 251, 395]
+    related: [1, 2, 227, 251, 602]
   },
   {
     id: 5,
     order: 5,
     number: 5,
     pokedex: 10,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Caterpie',
     artist: 'Miki Tanaka',
     attacks: [
@@ -176,6 +301,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 6,
     number: 6,
     pokedex: 11,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Metapod',
     artist: 'Yuka Morii',
     attacks: [
@@ -207,6 +349,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 7,
     number: 7,
     pokedex: 12,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Butterfree',
     artist: 'Shin Nagasawa',
     attacks: [
@@ -244,6 +403,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 8,
     number: 8,
     pokedex: 13,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Weedle',
     artist: 'Hajime Kusajima',
     attacks: [
@@ -275,6 +451,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 9,
     number: 9,
     pokedex: 12,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Kakuna',
     artist: 'miki kudo',
     attacks: [
@@ -306,6 +499,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 10,
     number: 10,
     pokedex: 15,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Beedrill',
     artist: 'You Iribi',
     attacks: [
@@ -337,6 +547,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 11,
     number: 11,
     pokedex: 43,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Oddish',
     artist: 'HYOGONOSUKE',
     attacks: [
@@ -368,6 +595,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 12,
     number: 12,
     pokedex: 44,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gloom',
     artist: 'Anesaki Dynamic',
     attacks: [
@@ -399,6 +643,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 13,
     number: 13,
     pokedex: 45,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Vileplume',
     artist: 'Kyoko Umemoto',
     attacks: [
@@ -433,6 +694,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 14,
     number: 14,
     pokedex: 46,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Paras',
     artist: 'Naoyo Kimura',
     attacks: [
@@ -464,6 +742,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 15,
     number: 15,
     pokedex: 47,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Parasect',
     artist: 'Eri Yamaki',
     attacks: [
@@ -495,6 +790,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 16,
     number: 16,
     pokedex: 48,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Venonat',
     artist: 'HYOGONOSUKE',
     attacks: [
@@ -526,6 +838,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 17,
     number: 17,
     pokedex: 49,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Venomoth',
     artist: 'Mina Nakai',
     attacks: [
@@ -560,6 +889,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 18,
     number: 18,
     pokedex: 69,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Bellsprout',
     artist: 'HYOGONOSUKE',
     attacks: [
@@ -591,6 +937,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 19,
     number: 19,
     pokedex: 70,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Weepinbell',
     artist: 'Miki Tanaka',
     attacks: [
@@ -622,6 +985,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 20,
     number: 20,
     pokedex: 71,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Victreebel',
     artist: 'Sumiyoshi Kizuki',
     attacks: [
@@ -657,6 +1037,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 21,
     number: 21,
     pokedex: 102,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Exeggcute',
     artist: 'kawayoo',
     attacks: [
@@ -688,6 +1085,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 22,
     number: 22,
     pokedex: 103,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Exeggutor',
     artist: 'Yukiko Baba',
     attacks: [
@@ -723,6 +1137,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 23,
     number: 23,
     pokedex: 103,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Exeggutor EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -758,6 +1189,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 24,
     number: 24,
     pokedex: 114,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Tangela',
     artist: 'Midori Harada',
     attacks: [
@@ -790,6 +1238,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 25,
     number: 25,
     pokedex: 123,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Scyther',
     artist: 'Hasuno',
     attacks: [
@@ -820,6 +1285,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 26,
     number: 26,
     pokedex: 127,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pinsir',
     artist: 'Eri Yamaki',
     attacks: [
@@ -857,6 +1339,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 27,
     number: 27,
     pokedex: 546,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Cottonee',
     artist: 'Kanako Eo',
     attacks: [
@@ -890,6 +1389,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 28,
     number: 28,
     pokedex: 547,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Whimsicott',
     artist: 'Atsuko Nishida',
     attacks: [
@@ -923,6 +1439,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 29,
     number: 29,
     pokedex: 548,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Petilil',
     artist: 'Naoyo Kimura',
     attacks: [
@@ -957,6 +1490,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 30,
     number: 30,
     pokedex: 549,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Lilligant',
     artist: 'You Iribi',
     attacks: [
@@ -991,6 +1541,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 31,
     number: 31,
     pokedex: 672,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Skiddo',
     artist: 'Naoki Saito',
     attacks: [
@@ -1026,6 +1593,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 32,
     number: 32,
     pokedex: 673,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gogoat',
     artist: 'You Iribi',
     attacks: [
@@ -1057,6 +1641,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 33,
     number: 33,
     pokedex: 4,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Charmander',
     artist: 'Teeziro',
     attacks: [
@@ -1089,6 +1690,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 34,
     number: 34,
     pokedex: 5,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Charmeleon',
     artist: 'kantaro',
     attacks: [
@@ -1120,6 +1738,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 35,
     number: 35,
     pokedex: 6,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Charizard',
     artist: 'takuyoa',
     attacks: [
@@ -1152,6 +1787,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 36,
     number: 36,
     pokedex: 6,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Charizard EX',
     artist: 'PLANETA Mochizuki',
     attacks: [
@@ -1189,6 +1841,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 37,
     number: 37,
     pokedex: 37,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Vulpix',
     artist: 'Toshinao Aoki',
     attacks: [
@@ -1224,6 +1893,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 38,
     number: 38,
     pokedex: 38,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Ninetales',
     artist: 'You Iribi',
     attacks: [
@@ -1256,6 +1942,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 39,
     number: 39,
     pokedex: 58,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Growlithe',
     artist: 'Mizue',
     attacks: [
@@ -1287,6 +1990,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 40,
     number: 40,
     pokedex: 59,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Arcanine',
     artist: 'kodama',
     attacks: [
@@ -1319,6 +2039,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 41,
     number: 41,
     pokedex: 59,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Arcanine EX',
     artist: 'PLANETA Saito',
     attacks: [
@@ -1351,6 +2088,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 42,
     number: 42,
     pokedex: 77,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Ponyta',
     artist: 'Uta',
     attacks: [
@@ -1384,6 +2138,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 43,
     number: 43,
     pokedex: 78,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Rapidash',
     artist: 'Misa Tsutsui',
     attacks: [
@@ -1417,6 +2188,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 44,
     number: 44,
     pokedex: 126,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Magmar',
     artist: 'Ryuta Fuse',
     attacks: [
@@ -1448,6 +2236,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 45,
     number: 45,
     pokedex: 136,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Flareon',
     artist: 'sui',
     attacks: [
@@ -1480,6 +2285,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 46,
     number: 46,
     pokedex: 145,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Moltres',
     artist: 'Hitoshi Ariga',
     attacks: [
@@ -1514,6 +2336,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 47,
     number: 47,
     pokedex: 145,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Moltres EX',
     artist: 'PLANETA Tsuji',
     attacks: [
@@ -1554,6 +2393,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 48,
     number: 48,
     pokedex: 531,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Heatmor',
     artist: 'Suwama Chiaki',
     attacks: [
@@ -1586,6 +2442,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 49,
     number: 49,
     pokedex: 757,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Salandit',
     artist: 'Kyoko Umemoto',
     attacks: [
@@ -1617,6 +2490,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 50,
     number: 50,
     pokedex: 758,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Salazzle',
     artist: 'hatachu',
     attacks: [
@@ -1648,6 +2538,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 51,
     number: 51,
     pokedex: 850,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Sizzlipede',
     artist: 'Teeziro',
     attacks: [
@@ -1681,6 +2588,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 52,
     number: 52,
     pokedex: 851,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Centiskorch',
     artist: 'GOSSAN',
     attacks: [
@@ -1715,6 +2639,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 53,
     number: 53,
     pokedex: 7,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Squirtle',
     artist: 'Mizue',
     attacks: [
@@ -1746,6 +2687,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 54,
     number: 54,
     pokedex: 8,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Wartortle',
     artist: 'Nelnal',
     attacks: [
@@ -1777,6 +2735,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 55,
     number: 55,
     pokedex: 9,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Blastoise',
     artist: 'Nurikabe',
     attacks: [
@@ -1809,6 +2784,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 56,
     number: 56,
     pokedex: 9,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Blastoise EX',
     artist: 'PLANETA Tsuji',
     attacks: [
@@ -1846,6 +2838,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 57,
     number: 57,
     pokedex: 54,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Psyduck',
     artist: 'Shibuzoh',
     attacks: [
@@ -1880,6 +2889,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 58,
     number: 58,
     pokedex: 55,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Golduck',
     artist: 'Naoki Saito',
     attacks: [
@@ -1913,6 +2939,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 59,
     number: 59,
     pokedex: 60,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Poliwag',
     artist: 'Shibuzoh.',
     attacks: [
@@ -1944,6 +2987,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 60,
     number: 60,
     pokedex: 61,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Poliwhirl',
     artist: 'Yuka Morii',
     attacks: [
@@ -1975,6 +3035,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 61,
     number: 61,
     pokedex: 62,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Poliwrath',
     artist: 'Akira Komayama',
     attacks: [
@@ -2010,6 +3087,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 62,
     number: 62,
     pokedex: 72,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Tentacool',
     artist: 'Shinya Komatsu',
     attacks: [
@@ -2041,6 +3135,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 63,
     number: 63,
     pokedex: 73,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Tentacruel',
     artist: 'kodama',
     attacks: [
@@ -2073,6 +3184,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 64,
     number: 64,
     pokedex: 86,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Seel',
     artist: 'Masako Yamashita',
     attacks: [
@@ -2104,6 +3232,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 65,
     number: 65,
     pokedex: 87,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dewgong',
     artist: 'Kanako Eo',
     attacks: [
@@ -2135,6 +3280,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 66,
     number: 66,
     pokedex: 90,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Shellder',
     artist: 'Sumiyoshi Kizuki',
     attacks: [
@@ -2166,6 +3328,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 67,
     number: 67,
     pokedex: 91,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Cloyster',
     artist: 'Saya Tsuruta',
     attacks: [
@@ -2201,6 +3380,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 68,
     number: 68,
     pokedex: 98,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Krabby',
     artist: 'Tomokazu Komiya',
     attacks: [
@@ -2232,6 +3428,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 69,
     number: 69,
     pokedex: 99,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Kingler',
     artist: 'Shigenori Negishi',
     attacks: [
@@ -2267,6 +3480,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 70,
     number: 70,
     pokedex: 116,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Horsea',
     artist: 'Saya Tsuruta',
     attacks: [
@@ -2298,6 +3528,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 71,
     number: 71,
     pokedex: 117,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Seadra',
     artist: 'Sanosuke Sakuma',
     attacks: [
@@ -2330,6 +3577,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 72,
     number: 72,
     pokedex: 118,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Goldeen',
     artist: 'Kyoko Umemoto',
     attacks: [
@@ -2361,6 +3625,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 73,
     number: 73,
     pokedex: 119,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Seaking',
     artist: 'Kyoko Umemoto',
     attacks: [
@@ -2395,6 +3676,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 74,
     number: 74,
     pokedex: 120,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Staryu',
     artist: 'Hiroki Asanuma',
     attacks: [
@@ -2426,6 +3724,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 75,
     number: 75,
     pokedex: 121,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Starmie',
     artist: 'Yukiko Baba',
     attacks: [
@@ -2457,6 +3772,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 76,
     number: 76,
     pokedex: 121,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Starmie EX',
     artist: 'PLANETA Igarashi',
     attacks: [
@@ -2488,6 +3820,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 77,
     number: 77,
     pokedex: 129,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Magikarp',
     artist: 'Sekio',
     attacks: [
@@ -2519,6 +3868,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 78,
     number: 78,
     pokedex: 130,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gyarados',
     artist: 'Mitsuhiro Arita',
     attacks: [
@@ -2551,6 +3917,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 79,
     number: 79,
     pokedex: 131,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Lapras',
     artist: 'Sekio',
     attacks: [
@@ -2583,6 +3966,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 80,
     number: 80,
     pokedex: 134,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Vaporeon',
     artist: 'Kagemaru Himeno',
     attacks: [
@@ -2615,6 +4015,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 81,
     number: 81,
     pokedex: 138,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Omanyte',
     artist: 'Suwama Chiaki',
     attacks: [
@@ -2646,6 +4063,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 82,
     number: 82,
     pokedex: 139,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Omastar',
     artist: 'kirisAki',
     attacks: [
@@ -2678,6 +4112,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 83,
     number: 83,
     pokedex: 144,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Articuno',
     artist: 'Hitoshi Ariga',
     attacks: [
@@ -2712,6 +4163,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 84,
     number: 84,
     pokedex: 144,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Articuno EX',
     artist: 'PLANETA Saito',
     attacks: [
@@ -2749,6 +4217,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 85,
     number: 85,
     pokedex: 580,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Ducklett',
     artist: 'Yumi',
     attacks: [
@@ -2780,6 +4265,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 86,
     number: 86,
     pokedex: 581,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Swanna',
     artist: 'sui',
     attacks: [
@@ -2811,6 +4313,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 87,
     number: 87,
     pokedex: 656,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Froakie',
     artist: 'Aya Kusube',
     attacks: [
@@ -2842,6 +4361,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 88,
     number: 88,
     pokedex: 657,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Frogadier',
     artist: 'Akira Komayama',
     attacks: [
@@ -2873,6 +4409,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 89,
     number: 89,
     pokedex: 658,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Greninja',
     artist: '5ban Graphics',
     attacks: [
@@ -2908,6 +4461,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 90,
     number: 90,
     pokedex: 771,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pyukumuku',
     artist: 'OOYAMA',
     attacks: [
@@ -2938,6 +4508,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 91,
     number: 91,
     pokedex: 779,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Bruxish',
     artist: 'Mizue',
     attacks: [
@@ -2971,6 +4558,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 92,
     number: 92,
     pokedex: 872,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Snom',
     artist: 'ryoma uratsuka',
     attacks: [
@@ -3004,6 +4608,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 93,
     number: 93,
     pokedex: 873,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Frosmoth',
     artist: 'aoki',
     attacks: [
@@ -3038,6 +4659,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 94,
     number: 94,
     pokedex: 25,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pikachu',
     artist: 'Mitsuhiro Arita',
     attacks: [
@@ -3069,6 +4707,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 95,
     number: 95,
     pokedex: 26,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Raichu',
     artist: 'AKIRA EGAWA',
     attacks: [
@@ -3101,6 +4756,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 96,
     number: 96,
     pokedex: 25,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pikachu EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -3133,6 +4805,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 97,
     number: 97,
     pokedex: 81,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Magnemite',
     artist: 'sowsow',
     attacks: [
@@ -3164,6 +4853,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 98,
     number: 98,
     pokedex: 82,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Magneton',
     artist: 'kirisAki',
     attacks: [
@@ -3199,6 +4905,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 99,
     number: 99,
     pokedex: 100,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Voltorb',
     artist: 'SATOSHI NAKAI',
     attacks: [
@@ -3230,6 +4953,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 100,
     number: 100,
     pokedex: 101,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Electrode',
     artist: 'Asako Ito',
     attacks: [
@@ -3261,6 +5001,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 101,
     number: 101,
     pokedex: 125,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Electabuzz',
     artist: 'Ryuta Fuse',
     attacks: [
@@ -3296,6 +5053,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 102,
     number: 102,
     pokedex: 135,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Jolteon',
     artist: 'Kouki Saitou',
     attacks: [
@@ -3331,6 +5105,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 103,
     number: 103,
     pokedex: 145,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Zapdos',
     artist: 'Hitoshi Ariga',
     attacks: [
@@ -3365,6 +5156,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 104,
     number: 104,
     pokedex: 145,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Zapdos EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -3405,6 +5213,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 105,
     number: 105,
     pokedex: 522,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Blitzle',
     artist: 'Shin Nagasawa',
     attacks: [
@@ -3438,6 +5263,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 106,
     number: 106,
     pokedex: 523,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Zebstrika',
     artist: 'Misa Tsutsui',
     attacks: [
@@ -3472,6 +5314,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 107,
     number: 107,
     pokedex: 602,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Tynamo',
     artist: 'Asako Ito',
     attacks: [
@@ -3503,6 +5362,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 108,
     number: 108,
     pokedex: 603,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Eelektrik',
     artist: 'Midori Harada',
     attacks: [
@@ -3534,6 +5410,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 109,
     number: 109,
     pokedex: 604,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Eelektross',
     artist: 'hatachu',
     attacks: [
@@ -3569,6 +5462,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 110,
     number: 110,
     pokedex: 694,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Helioptile',
     artist: '5ban Graphics',
     attacks: [
@@ -3602,6 +5512,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 111,
     number: 111,
     pokedex: 695,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Heliolisk',
     artist: 'otumami',
     attacks: [
@@ -3639,6 +5566,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 112,
     number: 112,
     pokedex: 871,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pincurchin',
     artist: 'Tika Matsuno',
     attacks: [
@@ -3675,6 +5619,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 113,
     number: 113,
     pokedex: 35,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Clefairy',
     artist: 'kirisAki',
     attacks: [
@@ -3706,6 +5667,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 114,
     number: 114,
     pokedex: 36,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Clefable',
     artist: 'Sanosuke Sakuma',
     attacks: [
@@ -3737,6 +5715,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 115,
     number: 115,
     pokedex: 63,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Abra',
     artist: 'Aya Kusube',
     attacks: [
@@ -3769,6 +5764,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 116,
     number: 116,
     pokedex: 64,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Kadabra',
     artist: 'Ken Sugimori',
     attacks: [
@@ -3800,6 +5812,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 117,
     number: 117,
     pokedex: 65,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Alakazam',
     artist: 'Kouki Saitou',
     attacks: [
@@ -3832,6 +5861,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 118,
     number: 118,
     pokedex: 79,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Slowpoke',
     artist: 'Miki Tanaka',
     attacks: [
@@ -3865,6 +5911,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 119,
     number: 119,
     pokedex: 80,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Slowbro',
     artist: 'Kagemaru Himeno',
     attacks: [
@@ -3898,6 +5961,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 120,
     number: 120,
     pokedex: 92,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gastly',
     artist: 'Masako Yamashita',
     attacks: [
@@ -3929,6 +6009,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 121,
     number: 121,
     pokedex: 93,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Haunter',
     artist: 'Nisota Niso',
     attacks: [
@@ -3960,6 +6057,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 122,
     number: 122,
     pokedex: 94,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gengar',
     artist: 'Naoyo Kimura',
     attacks: [
@@ -3992,6 +6106,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 123,
     number: 123,
     pokedex: 94,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gengar EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -4027,6 +6158,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 124,
     number: 124,
     pokedex: 96,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Drowzee',
     artist: 'Yukiko Baba',
     attacks: [
@@ -4058,6 +6206,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 125,
     number: 125,
     pokedex: 97,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Hypno',
     artist: 'Shigenori Negishi',
     attacks: [
@@ -4096,6 +6261,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 126,
     number: 126,
     pokedex: 122,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mr.Mime',
     artist: 'Kagemaru Himeno',
     attacks: [
@@ -4127,6 +6309,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 127,
     number: 127,
     pokedex: 124,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Jynx',
     artist: 'Oswaldo KATO',
     attacks: [
@@ -4158,6 +6357,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 128,
     number: 128,
     pokedex: 150,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mewtwo',
     artist: 'kawayoo',
     attacks: [
@@ -4190,6 +6406,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 129,
     number: 129,
     pokedex: 150,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mewtwo EX',
     artist: 'PLANETA Mochizuki',
     attacks: [
@@ -4227,6 +6460,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 130,
     number: 130,
     pokedex: 280,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Ralts',
     artist: 'Yuka Morii',
     attacks: [
@@ -4258,6 +6508,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 131,
     number: 131,
     pokedex: 281,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Kirlia',
     artist: 'sowsow',
     attacks: [
@@ -4289,6 +6556,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 132,
     number: 132,
     pokedex: 282,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gardevoir',
     artist: 'Yuu Nishida',
     attacks: [
@@ -4324,6 +6608,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 133,
     number: 133,
     pokedex: 527,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Woobat',
     artist: 'MAHOU',
     attacks: [
@@ -4357,6 +6658,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 134,
     number: 134,
     pokedex: 528,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Swoobat',
     artist: 'Masakazu Fukuda',
     attacks: [
@@ -4390,6 +6708,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 135,
     number: 135,
     pokedex: 622,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Golett',
     artist: 'Kyoko Umemoto',
     attacks: [
@@ -4423,6 +6758,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 136,
     number: 136,
     pokedex: 623,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Golurk',
     artist: 'match',
     attacks: [
@@ -4459,6 +6811,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 137,
     number: 137,
     pokedex: 27,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Sandhrew',
     artist: 'Miki Tanaka',
     attacks: [
@@ -4492,6 +6861,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 138,
     number: 138,
     pokedex: 28,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Sandslash',
     artist: 'Miki Tanaka',
     attacks: [
@@ -4525,6 +6911,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 139,
     number: 139,
     pokedex: 50,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Diglett',
     artist: 'Masako Yamashita',
     attacks: [
@@ -4556,6 +6959,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 140,
     number: 140,
     pokedex: 51,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dugtrio',
     artist: 'Akira Komayama',
     attacks: [
@@ -4588,6 +7008,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 141,
     number: 141,
     pokedex: 56,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mankey',
     artist: 'Kanako Eo',
     attacks: [
@@ -4619,6 +7056,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 142,
     number: 142,
     pokedex: 57,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Primeape',
     artist: 'Kagemaru Himeno',
     attacks: [
@@ -4651,6 +7105,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 143,
     number: 143,
     pokedex: 66,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Machop',
     artist: 'Kyoko Umemoto',
     attacks: [
@@ -4682,6 +7153,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 144,
     number: 144,
     pokedex: 67,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Machoke',
     artist: 'match',
     attacks: [
@@ -4713,6 +7201,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 145,
     number: 145,
     pokedex: 68,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Machamp',
     artist: 'Hitoshi Ariga',
     attacks: [
@@ -4744,6 +7249,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 146,
     number: 146,
     pokedex: 68,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Machamp EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -4775,6 +7297,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 147,
     number: 147,
     pokedex: 74,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Geodude',
     artist: 'Kouki Saitou',
     attacks: [
@@ -4806,6 +7345,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 148,
     number: 148,
     pokedex: 75,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Graveler',
     artist: 'Naoyo Kimura',
     attacks: [
@@ -4837,6 +7393,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 149,
     number: 149,
     pokedex: 76,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Golem',
     artist: 'Sumiyoshi Kizuki',
     attacks: [
@@ -4869,6 +7442,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 150,
     number: 150,
     pokedex: 95,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Onix',
     artist: 'otumami',
     attacks: [
@@ -4900,6 +7490,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 151,
     number: 151,
     pokedex: 104,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Cubone',
     artist: 'sowsow',
     attacks: [
@@ -4932,6 +7539,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 152,
     number: 152,
     pokedex: 105,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Marowak',
     artist: 'Shin Nagasawa',
     attacks: [
@@ -4963,6 +7587,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 153,
     number: 153,
     pokedex: 105,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Marowak EX',
     artist: 'PLANETA Mochizuki',
     attacks: [
@@ -4998,6 +7639,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 154,
     number: 154,
     pokedex: 106,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Hitmonlee',
     artist: 'Yukiko Baba',
     attacks: [
@@ -5029,6 +7687,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 155,
     number: 155,
     pokedex: 107,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Hitmonchan',
     artist: 'Ken Sugimori',
     attacks: [
@@ -5059,6 +7734,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 156,
     number: 156,
     pokedex: 111,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Rhyhorn',
     artist: 'Midori Harada',
     attacks: [
@@ -5090,6 +7782,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 157,
     number: 157,
     pokedex: 112,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Rhydon',
     artist: 'Masakazu Fukuda',
     attacks: [
@@ -5121,6 +7830,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 158,
     number: 158,
     pokedex: 140,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Kabuto',
     artist: 'sui',
     attacks: [
@@ -5152,6 +7878,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 159,
     number: 159,
     pokedex: 141,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Kabutops',
     artist: 'Shin Nagasawa',
     attacks: [
@@ -5184,6 +7927,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 160,
     number: 160,
     pokedex: 619,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mienfoo',
     artist: 'match',
     attacks: [
@@ -5215,6 +7975,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 161,
     number: 161,
     pokedex: 620,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mienshao',
     artist: 'Atsuko Nishida',
     attacks: [
@@ -5246,6 +8023,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 162,
     number: 162,
     pokedex: 852,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Clobbopues',
     artist: 'Yuu Nishida',
     attacks: [
@@ -5279,6 +8073,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 163,
     number: 163,
     pokedex: 853,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Grapploct',
     artist: 'kurumitsu',
     attacks: [
@@ -5313,6 +8124,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 164,
     number: 164,
     pokedex: 23,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Ekans',
     artist: 'MAHOU',
     attacks: [
@@ -5346,6 +8174,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 165,
     number: 165,
     pokedex: 24,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Arbok',
     artist: 'Naoki Saito',
     attacks: [
@@ -5379,6 +8224,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 166,
     number: 166,
     pokedex: 29,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Nidoran♀',
     artist: 'Miki Tanaka',
     attacks: [
@@ -5411,6 +8273,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 167,
     number: 167,
     pokedex: 30,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Nidorina',
     artist: 'Kagemaru Himeno',
     attacks: [
@@ -5442,6 +8321,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 168,
     number: 168,
     pokedex: 31,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Nidoqueen',
     artist: 'nagimiso',
     attacks: [
@@ -5474,6 +8370,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 169,
     number: 169,
     pokedex: 32,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Nidoran♂',
     artist: 'Naoyo Kimura',
     attacks: [
@@ -5505,6 +8418,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 170,
     number: 170,
     pokedex: 33,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Nidorino',
     artist: 'Kouki Saitou',
     attacks: [
@@ -5536,6 +8466,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 171,
     number: 171,
     pokedex: 34,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Nidoking',
     artist: 'kawayoo',
     attacks: [
@@ -5568,6 +8515,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 172,
     number: 172,
     pokedex: 41,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Zubat',
     artist: 'match',
     attacks: [
@@ -5599,6 +8563,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 173,
     number: 173,
     pokedex: 42,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Golbat',
     artist: 'Masakazu Fukuda',
     attacks: [
@@ -5630,6 +8611,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 174,
     number: 174,
     pokedex: 88,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Grimer',
     artist: 'Pani Kobayashi',
     attacks: [
@@ -5662,6 +8660,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 175,
     number: 175,
     pokedex: 89,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Muk',
     artist: 'Hajime Kusajima',
     attacks: [
@@ -5694,6 +8709,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 176,
     number: 176,
     pokedex: 109,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Koffing',
     artist: 'Saya Tsuruta',
     attacks: [
@@ -5725,6 +8757,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 177,
     number: 177,
     pokedex: 110,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Weezing',
     artist: 'OOYAMA',
     attacks: [
@@ -5760,6 +8809,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 178,
     number: 178,
     pokedex: 303,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mawile',
     artist: 'Kagemaru Himeno',
     attacks: [
@@ -5794,6 +8860,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 179,
     number: 179,
     pokedex: 624,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pawniard',
     artist: 'Kouki Saitou',
     attacks: [
@@ -5827,6 +8910,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 180,
     number: 180,
     pokedex: 625,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Bisharp',
     artist: 'Anesaki Dynamic',
     attacks: [
@@ -5860,6 +8960,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 181,
     number: 181,
     pokedex: 808,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Meltan',
     artist: 'Shin Nagasawa',
     attacks: [
@@ -5892,6 +9009,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 182,
     number: 182,
     pokedex: 809,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Melmetal',
     artist: 'Kouki Saitou',
     attacks: [
@@ -5927,6 +9061,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 183,
     number: 183,
     pokedex: 147,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dratini',
     artist: 'Ayaka Yoshida',
     attacks: [
@@ -5958,6 +9109,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 184,
     number: 184,
     pokedex: 148,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dragonair',
     artist: 'kirisAki',
     attacks: [
@@ -5989,6 +9157,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 185,
     number: 185,
     pokedex: 149,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dragonite',
     artist: 'Hiroyuki Yamamoto',
     attacks: [
@@ -6021,6 +9206,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 186,
     number: 186,
     pokedex: 16,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pidgey',
     artist: 'Scav',
     attacks: [
@@ -6052,6 +9254,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 187,
     number: 187,
     pokedex: 17,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pidgeotto',
     artist: 'Scav',
     attacks: [
@@ -6083,6 +9302,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 188,
     number: 188,
     pokedex: 18,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pidgeot',
     artist: 'Scav',
     attacks: [
@@ -6118,6 +9354,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 189,
     number: 189,
     pokedex: 19,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Rattata',
     artist: 'Atsushi Furusawa',
     attacks: [
@@ -6151,6 +9404,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 190,
     number: 190,
     pokedex: 20,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Raticate',
     artist: 'Shigenori Negishi',
     attacks: [
@@ -6184,6 +9454,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 191,
     number: 191,
     pokedex: 21,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Spearow',
     artist: 'Shiburingaru',
     attacks: [
@@ -6215,6 +9502,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 192,
     number: 192,
     pokedex: 22,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Fearow',
     artist: 'Satoshi Shirai',
     attacks: [
@@ -6250,6 +9554,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 193,
     number: 193,
     pokedex: 39,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Jigglypuff',
     artist: 'Mizue',
     attacks: [
@@ -6281,6 +9602,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 194,
     number: 194,
     pokedex: 40,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Wigglytuff',
     artist: 'Atsuko Nishida',
     attacks: [
@@ -6312,6 +9650,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 195,
     number: 195,
     pokedex: 40,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Wigglytuff EX',
     artist: 'PLANETA Igarashi',
     attacks: [
@@ -6344,6 +9699,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 196,
     number: 196,
     pokedex: 52,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Meowth',
     artist: 'Mitsuhiro Arita',
     attacks: [
@@ -6376,6 +9748,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 197,
     number: 197,
     pokedex: 53,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Persian',
     artist: 'nagimiso',
     attacks: [
@@ -6408,6 +9797,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 198,
     number: 198,
     pokedex: 83,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Farfetch\'d',
     artist: 'Miki Tanaka',
     attacks: [
@@ -6440,6 +9846,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 199,
     number: 199,
     pokedex: 84,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Doduo',
     artist: 'Yuya Oka',
     attacks: [
@@ -6473,6 +9896,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 200,
     number: 200,
     pokedex: 85,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dodrio',
     artist: 'Miki Tanaka',
     attacks: [
@@ -6506,6 +9946,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 201,
     number: 201,
     pokedex: 108,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Lickitung',
     artist: 'Kagemaru Himeno',
     attacks: [
@@ -6540,6 +9997,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 202,
     number: 202,
     pokedex: 113,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Chansey',
     artist: 'MAHOU',
     attacks: [
@@ -6571,6 +10045,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 203,
     number: 203,
     pokedex: 115,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Kangaskhan',
     artist: 'Ken Sugimori',
     attacks: [
@@ -6604,6 +10095,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 204,
     number: 204,
     pokedex: 128,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Tauros',
     artist: 'kodama',
     attacks: [
@@ -6635,6 +10143,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 205,
     number: 205,
     pokedex: 132,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Ditto',
     artist: 'Miki Tanaka',
     attacks: [
@@ -6667,6 +10192,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 206,
     number: 206,
     pokedex: 133,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Eevee',
     artist: 'Atsuko Nishida',
     attacks: [
@@ -6698,6 +10240,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 207,
     number: 207,
     pokedex: 133,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Eevee',
     artist: 'Hasuno',
     attacks: [
@@ -6729,6 +10288,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 208,
     number: 208,
     pokedex: 133,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Eevee',
     artist: 'Sekio',
     attacks: [
@@ -6760,6 +10336,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 209,
     number: 209,
     pokedex: 137,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Porygon',
     artist: 'Ayaka Yoshida',
     attacks: [
@@ -6795,6 +10388,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 210,
     number: 210,
     pokedex: 142,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Aerodactyl',
     artist: 'Naoyo Kimura',
     attacks: [
@@ -6827,6 +10437,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 211,
     number: 211,
     pokedex: 143,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Snorlax',
     artist: 'Naoki Saito',
     attacks: [
@@ -6858,6 +10485,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 212,
     number: 212,
     pokedex: 572,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Minccino',
     artist: 'sui',
     attacks: [
@@ -6891,6 +10535,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 213,
     number: 213,
     pokedex: 573,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Cinccino',
     artist: '0313',
     attacks: [
@@ -6925,6 +10586,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 214,
     number: 214,
     pokedex: 831,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Wooloo',
     artist: 'Yoriyuki Ikegami',
     attacks: [
@@ -6958,6 +10636,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 215,
     number: 215,
     pokedex: 832,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dubwool',
     artist: 'saino misaki',
     attacks: [
@@ -7244,6 +10939,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 227,
     number: 227,
     pokedex: 1,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Bulbasaur',
     artist: 'Ryota Murayama',
     attacks: [
@@ -7275,6 +10987,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 228,
     number: 228,
     pokedex: 44,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gloom',
     artist: 'OKACHEKE',
     attacks: [
@@ -7306,6 +11035,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 229,
     number: 229,
     pokedex: 127,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pinsir',
     artist: 'Scav',
     attacks: [
@@ -7341,6 +11087,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 230,
     number: 230,
     pokedex: 4,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Charmander',
     artist: 'GIDORA',
     attacks: [
@@ -7373,6 +11136,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 231,
     number: 231,
     pokedex: 78,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Rapidash',
     artist: 'Taira Akitsu',
     attacks: [
@@ -7404,6 +11184,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 232,
     number: 232,
     pokedex: 7,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Squirtle',
     artist: 'Taira Akitsu',
     attacks: [
@@ -7435,6 +11232,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 233,
     number: 233,
     pokedex: 130,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gyarados',
     artist: 'Nurikabe',
     attacks: [
@@ -7467,6 +11281,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 234,
     number: 234,
     pokedex: 131,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Lapras',
     artist: 'Haru Akasaka',
     attacks: [
@@ -7499,6 +11330,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 235,
     number: 235,
     pokedex: 101,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Electrode',
     artist: 'DOM',
     attacks: [
@@ -7530,6 +11378,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 236,
     number: 236,
     pokedex: 65,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Alakazam',
     artist: 'AKIRA EGAWA',
     attacks: [
@@ -7562,6 +11427,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 237,
     number: 237,
     pokedex: 79,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Slowpoke',
     artist: 'Miki Tanaka',
     attacks: [
@@ -7593,6 +11475,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 238,
     number: 238,
     pokedex: 50,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Diglett',
     artist: 'Shinya Komatsu',
     attacks: [
@@ -7624,6 +11523,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 239,
     number: 239,
     pokedex: 104,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Cubone',
     artist: 'Teeziro',
     attacks: [
@@ -7656,6 +11572,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 240,
     number: 240,
     pokedex: 31,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Nidoqueen',
     artist: 'aoki',
     attacks: [
@@ -7688,6 +11621,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 241,
     number: 241,
     pokedex: 34,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Nidoking',
     artist: 'nagimiso',
     attacks: [
@@ -7720,6 +11670,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 242,
     number: 242,
     pokedex: 42,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Golbat',
     artist: 'Tomokazu Komiya',
     attacks: [
@@ -7751,6 +11718,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 243,
     number: 243,
     pokedex: 110,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Weezing',
     artist: 'KEIICHIRO ITO',
     attacks: [
@@ -7786,6 +11770,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 244,
     number: 244,
     pokedex: 149,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dragonite',
     artist: 'Gemi',
     attacks: [
@@ -7818,6 +11819,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 245,
     number: 245,
     pokedex: 18,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pidgeot',
     artist: 'Anesaki Dynamic',
     attacks: [
@@ -7853,6 +11871,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 246,
     number: 246,
     pokedex: 52,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Meowth',
     artist: 'Mina Nakai',
     attacks: [
@@ -7885,6 +11920,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 247,
     number: 247,
     pokedex: 132,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Ditto',
     artist: 'Jerky',
     attacks: [
@@ -7917,6 +11969,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 248,
     number: 248,
     pokedex: 133,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Eevee',
     artist: 'sowsow',
     attacks: [
@@ -7948,6 +12017,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 249,
     number: 249,
     pokedex: 137,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Porygon',
     artist: 'Akira Komayama',
     attacks: [
@@ -7983,6 +12069,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 250,
     number: 250,
     pokedex: 143,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Snorlax',
     artist: 'HYOGONOSUKE',
     attacks: [
@@ -8014,6 +12117,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 251,
     number: 251,
     pokedex: 3,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Venusaur EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -8051,6 +12171,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 252,
     number: 252,
     pokedex: 103,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Exeggutor EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -8086,6 +12223,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 253,
     number: 253,
     pokedex: 6,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Charizard EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -8123,6 +12277,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 254,
     number: 254,
     pokedex: 59,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Arcanine EX',
     artist: 'PLANETA Saito',
     attacks: [
@@ -8155,6 +12326,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 255,
     number: 255,
     pokedex: 145,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Moltres EX',
     artist: 'PLANETA Saito',
     attacks: [
@@ -8195,6 +12383,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 256,
     number: 256,
     pokedex: 9,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Blastoise EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -8232,6 +12437,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 257,
     number: 257,
     pokedex: 121,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Starmie EX',
     artist: 'PLANETA Igarashi',
     attacks: [
@@ -8263,6 +12485,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 258,
     number: 258,
     pokedex: 144,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Articuno EX',
     artist: 'PLANETA Saito',
     attacks: [
@@ -8300,6 +12539,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 259,
     number: 259,
     pokedex: 25,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pikachu EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -8332,6 +12588,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 260,
     number: 260,
     pokedex: 145,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Zapdos EX',
     artist: 'PLANETA Saito',
     attacks: [
@@ -8372,6 +12645,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 261,
     number: 261,
     pokedex: 94,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gengar EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -8407,6 +12697,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 262,
     number: 262,
     pokedex: 150,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mewtwo EX',
     artist: 'PLANETA Mochizuki',
     attacks: [
@@ -8444,6 +12751,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 263,
     number: 263,
     pokedex: 68,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Machamp EX',
     artist: 'PLANETA Igarashi',
     attacks: [
@@ -8475,6 +12799,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 264,
     number: 264,
     pokedex: 105,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Marowak EX',
     artist: 'PLANETA Mochizuki',
     attacks: [
@@ -8510,6 +12851,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 265,
     number: 265,
     pokedex: 40,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Wigglytuff EX',
     artist: 'PLANETA Igarashi',
     attacks: [
@@ -8727,6 +13085,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 274,
     number: 274,
     pokedex: 145,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Moltres EX',
     artist: 'hncl',
     attacks: [
@@ -8767,6 +13142,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 275,
     number: 275,
     pokedex: 144,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Articuno EX',
     artist: 'kodama',
     attacks: [
@@ -8804,6 +13196,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 276,
     number: 276,
     pokedex: 145,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Zapdos EX',
     artist: 'GOSSAN',
     attacks: [
@@ -8844,6 +13253,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 277,
     number: 277,
     pokedex: 94,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gengar EX',
     artist: 'NC Empire',
     attacks: [
@@ -8879,6 +13305,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 278,
     number: 278,
     pokedex: 68,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Machamp EX',
     artist: 'AKIRA EGAWA',
     attacks: [
@@ -8910,6 +13353,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 279,
     number: 279,
     pokedex: 40,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Wigglytuff EX',
     artist: 'Shibuzoh.',
     attacks: [
@@ -8942,6 +13402,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 280,
     number: 280,
     pokedex: 6,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Charizard EX',
     artist: 'kantaro',
     attacks: [
@@ -8979,6 +13456,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 281,
     number: 281,
     pokedex: 25,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pikachu EX',
     artist: 'Ryota Murayama',
     attacks: [
@@ -9011,6 +13505,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 282,
     number: 282,
     pokedex: 150,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mewtwo EX',
     artist: 'Nurikabe',
     attacks: [
@@ -9048,6 +13559,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 283,
     number: 283,
     pokedex: 151,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mew',
     artist: 'Amelicart',
     attacks: [
@@ -9081,6 +13609,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 284,
     number: 284,
     pokedex: 6,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Charizard EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -9120,6 +13665,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 285,
     number: 285,
     pokedex: 25,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pikachu EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -9154,6 +13716,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 286,
     number: 286,
     pokedex: 150,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mewtwo EX',
     artist: 'PLANETA Mochizuki',
     attacks: [
@@ -9193,6 +13772,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 287,
     number: 1,
     pokedex: 102,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Exeggcute',
     artist: 'Yuka Morii',
     attacks: [
@@ -9225,6 +13821,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 288,
     number: 2,
     pokedex: 103,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Exeggutor',
     artist: 'Masakazu Fukuda',
     attacks: [
@@ -9257,6 +13870,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 289,
     number: 3,
     pokedex: 251,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Celebi EX',
     artist: 'Planeta CG Works',
     attacks: [
@@ -9292,6 +13922,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 290,
     number: 4,
     pokedex: 495,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Snivy',
     artist: 'Kagemaru Himeno',
     attacks: [
@@ -9323,6 +13970,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 291,
     number: 5,
     pokedex: 496,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Servine',
     artist: 'Shigenori Nagishi',
     attacks: [
@@ -9354,6 +14018,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 292,
     number: 6,
     pokedex: 497,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Serperior',
     artist: 'Yoshioka',
     attacks: [
@@ -9389,6 +14070,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 293,
     number: 7,
     pokedex: 755,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Morelull',
     artist: 'Saya Tsuruta',
     attacks: [
@@ -9420,6 +14118,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 294,
     number: 8,
     pokedex: 756,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Shiinotic',
     artist: 'Mizue',
     attacks: [
@@ -9452,6 +14167,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 295,
     number: 9,
     pokedex: 781,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dhelmise',
     artist: 'Hasuno',
     attacks: [
@@ -9484,6 +14216,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 296,
     number: 10,
     pokedex: 77,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Ponyta',
     artist: 'Tomokazu Kamiya',
     attacks: [
@@ -9519,6 +14268,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 297,
     number: 11,
     pokedex: 78,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Rapidash',
     artist: 'AKIRA EGAWA',
     attacks: [
@@ -9554,6 +14320,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 298,
     number: 12,
     pokedex: 126,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Magmar',
     artist: 'sui',
     attacks: [
@@ -9586,6 +14369,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 299,
     number: 13,
     pokedex: 636,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Larvesta',
     artist: 'kawayoo',
     attacks: [
@@ -9617,6 +14417,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 300,
     number: 14,
     pokedex: 637,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Volcarona',
     artist: 'DOM',
     attacks: [
@@ -9652,6 +14469,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 301,
     number: 15,
     pokedex: 757,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Salandit',
     artist: 'Naoki Saito',
     attacks: [
@@ -9684,6 +14518,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 302,
     number: 16,
     pokedex: 758,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Salazzle',
     artist: 'Mitsuhiro Arita',
     attacks: [
@@ -9716,6 +14567,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 303,
     number: 17,
     pokedex: 129,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Magikarp',
     artist: 'Mitsuhiro Arita',
     attacks: [
@@ -9748,6 +14616,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 304,
     number: 18,
     pokedex: 130,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gyarados EX',
     artist: 'Planeta CG Works',
     attacks: [
@@ -9780,6 +14665,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 305,
     number: 19,
     pokedex: 134,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Vaporeon',
     artist: 'LINNE',
     attacks: [
@@ -9815,6 +14717,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 306,
     number: 20,
     pokedex: 456,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Finneon',
     artist: 'Sekio',
     attacks: [
@@ -9846,6 +14765,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 307,
     number: 21,
     pokedex: 457,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Lumineon',
     artist: 'Sekio',
     attacks: [
@@ -9878,6 +14814,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 308,
     number: 22,
     pokedex: 833,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Chewtle',
     artist: 'Taiga Kamiya',
     attacks: [
@@ -9909,6 +14862,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 309,
     number: 23,
     pokedex: 834,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Drednaw',
     artist: 'nisimono',
     attacks: [
@@ -9944,6 +14914,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 310,
     number: 24,
     pokedex: 845,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Cramorant',
     artist: 'Jerky',
     attacks: [
@@ -9979,6 +14966,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 311,
     number: 25,
     pokedex: 25,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pikachu',
     artist: 'Naoya Kimura',
     attacks: [
@@ -10011,6 +15015,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 312,
     number: 26,
     pokedex: 26,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Raichu',
     artist: 'hncl',
     attacks: [
@@ -10043,6 +15064,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 313,
     number: 27,
     pokedex: 125,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Electabuzz',
     artist: 'Ken Sugimori',
     attacks: [
@@ -10075,6 +15113,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 314,
     number: 28,
     pokedex: 595,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Joltik',
     artist: 'MINAMINAMI Take',
     attacks: [
@@ -10106,6 +15161,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 315,
     number: 29,
     pokedex: 596,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Galvantula',
     artist: 'Mitsuhiro Arita',
     attacks: [
@@ -10138,6 +15210,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 316,
     number: 30,
     pokedex: 702,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dedenne',
     artist: 'Taiga Kamiya',
     attacks: [
@@ -10173,6 +15262,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 317,
     number: 31,
     pokedex: 151,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mew',
     artist: 'Saya Tsuruta',
     attacks: [
@@ -10205,6 +15311,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 318,
     number: 32,
     pokedex: 151,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mew EX',
     artist: 'Planeta CG Works',
     attacks: [
@@ -10242,6 +15365,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 319,
     number: 33,
     pokedex: 561,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Sigilyph',
     artist: 'Shigenori Nagishi',
     attacks: [
@@ -10274,6 +15414,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 320,
     number: 34,
     pokedex: 605,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Elgyem',
     artist: 'Kouki Saitou',
     attacks: [
@@ -10305,6 +15462,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 321,
     number: 35,
     pokedex: 606,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Beheeyem',
     artist: 'sowsow',
     attacks: [
@@ -10337,6 +15511,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 322,
     number: 36,
     pokedex: 669,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Flabébé',
     artist: 'Cona Nitanda',
     attacks: [
@@ -10369,6 +15560,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 323,
     number: 37,
     pokedex: 670,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Floette',
     artist: 'Cona Nitanda',
     attacks: [
@@ -10401,6 +15609,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 324,
     number: 38,
     pokedex: 671,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Florges',
     artist: 'Cona Nitanda',
     attacks: [
@@ -10433,6 +15658,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 325,
     number: 39,
     pokedex: 684,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Swirlix',
     artist: '5ban Graphics',
     attacks: [
@@ -10464,6 +15706,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 326,
     number: 40,
     pokedex: 685,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Slurpuff',
     artist: 'Kagemaru Himeno',
     attacks: [
@@ -10495,6 +15754,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 327,
     number: 41,
     pokedex: 56,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mankey',
     artist: 'Akira Komayama',
     attacks: [
@@ -10530,6 +15806,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 328,
     number: 42,
     pokedex: 57,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Primeape',
     artist: 'Taiga Kamiya',
     attacks: [
@@ -10561,6 +15854,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 329,
     number: 43,
     pokedex: 74,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Geodude',
     artist: 'GOSSAN',
     attacks: [
@@ -10592,6 +15902,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 330,
     number: 44,
     pokedex: 75,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Graveler',
     artist: 'Ayaka Yoshida',
     attacks: [
@@ -10623,6 +15950,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 331,
     number: 45,
     pokedex: 76,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Golem',
     artist: 'Masakazu Fukuda',
     attacks: [
@@ -10655,6 +15999,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 332,
     number: 46,
     pokedex: 142,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Aerodactyl EX',
     artist: 'Planeta CG Works',
     attacks: [
@@ -10690,6 +16051,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 333,
     number: 47,
     pokedex: 802,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Marshadow',
     artist: 'kantaro',
     attacks: [
@@ -10722,6 +16100,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 334,
     number: 48,
     pokedex: 874,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Stonjourner',
     artist: 'Teeziro',
     attacks: [
@@ -10753,6 +16148,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 335,
     number: 49,
     pokedex: 109,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Koffing',
     artist: 'Naoyo Kimura',
     attacks: [
@@ -10785,6 +16197,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 336,
     number: 50,
     pokedex: 110,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Weezing',
     artist: 'Mousho',
     attacks: [
@@ -10817,6 +16246,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 337,
     number: 51,
     pokedex: 509,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Purrloin',
     artist: 'Kagemaru Himeno',
     attacks: [
@@ -10848,6 +16294,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 338,
     number: 52,
     pokedex: 510,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Liepard',
     artist: 'GIDORA',
     attacks: [
@@ -10879,6 +16342,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 339,
     number: 53,
     pokedex: 543,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Venipede',
     artist: '	Yukiko Baba',
     attacks: [
@@ -10910,6 +16390,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 340,
     number: 54,
     pokedex: 544,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Whirlipede',
     artist: 'Shin Nagasawa',
     attacks: [
@@ -10942,6 +16439,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 341,
     number: 55,
     pokedex: 545,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Scolipede',
     artist: '5ban Graphics',
     attacks: [
@@ -10974,6 +16488,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 342,
     number: 56,
     pokedex: 621,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Druddigon',
     artist: 'Ryota Murayama',
     attacks: [
@@ -11009,6 +16540,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 343,
     number: 57,
     pokedex: 16,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pidgey',
     artist: 'Shigenori Negishi',
     attacks: [
@@ -11040,6 +16588,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 344,
     number: 58,
     pokedex: 17,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pidgeotto',
     artist: 'Taiga Kayama',
     attacks: [
@@ -11071,6 +16636,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 345,
     number: 59,
     pokedex: 18,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pidgeot EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -11103,6 +16685,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 346,
     number: 60,
     pokedex: 128,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Tauros',
     artist: 'KEIICHIRO ITO',
     attacks: [
@@ -11135,6 +16734,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 347,
     number: 61,
     pokedex: 133,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Eevee',
     artist: 'Hitoshi Ariga',
     attacks: [
@@ -11170,6 +16786,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 348,
     number: 62,
     pokedex: 441,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Chatot',
     artist: 'Masako Tomii',
     attacks: [
@@ -11340,6 +16973,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 355,
     number: 69,
     pokedex: 103,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Exeggutor',
     artist: 'Gapao',
     attacks: [
@@ -11372,6 +17022,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 356,
     number: 70,
     pokedex: 497,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Serperior',
     artist: 'rika',
     attacks: [
@@ -11407,6 +17074,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 357,
     number: 71,
     pokedex: 757,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Salandit',
     artist: 'Nurikabe',
     attacks: [
@@ -11439,6 +17123,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 358,
     number: 72,
     pokedex: 134,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Vaporeon',
     artist: 'aspara',
     attacks: [
@@ -11474,6 +17175,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 359,
     number: 73,
     pokedex: 702,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dedenne',
     artist: 'Yuu Nishida',
     attacks: [
@@ -11509,6 +17227,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 360,
     number: 74,
     pokedex: 802,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Marshadow',
     artist: 'OKACHEKE',
     attacks: [
@@ -11541,6 +17276,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 361,
     number: 75,
     pokedex: 251,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Celebi EX',
     artist: 'Planeta CG Works',
     attacks: [
@@ -11576,6 +17328,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 362,
     number: 76,
     pokedex: 130,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gyarados EX',
     artist: 'Planeta CG Works',
     attacks: [
@@ -11608,6 +17377,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 363,
     number: 77,
     pokedex: 151,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mew EX',
     artist: 'Planeta CG Works',
     attacks: [
@@ -11645,6 +17431,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 364,
     number: 78,
     pokedex: 142,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Aerodactyl EX',
     artist: 'Planeta CG Works',
     attacks: [
@@ -11680,6 +17483,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 365,
     number: 79,
     pokedex: 18,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pidgeot EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -11781,6 +17601,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 369,
     number: 83,
     pokedex: 151,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mew EX',
     artist: 'HYOGONOSUKE',
     attacks: [
@@ -11818,6 +17655,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 370,
     number: 84,
     pokedex: 142,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Aerodactyl EX',
     artist: 'danciao',
     attacks: [
@@ -11853,6 +17707,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 371,
     number: 85,
     pokedex: 251,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Celebi EX',
     artist: 'kantaro',
     attacks: [
@@ -11888,6 +17759,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 372,
     number: 86,
     pokedex: 151,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mew EX',
     artist: 'Planeta CG Works',
     attacks: [
@@ -11925,6 +17813,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 373,
     number: 1,
     pokedex: 43,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Oddish',
     artist: 'Asako Ito',
     attacks: [
@@ -11958,6 +17863,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 374,
     number: 2,
     pokedex: 44,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gloom',
     artist: 'Shibuzah',
     attacks: [
@@ -11990,6 +17912,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 375,
     number: 3,
     pokedex: 182,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Bellossom',
     artist: 'Naoyo Kimura',
     attacks: [
@@ -12022,6 +17961,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 376,
     number: 4,
     pokedex: 114,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Tangela',
     artist: 'Narumi Sato',
     attacks: [
@@ -12053,6 +18009,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 377,
     number: 5,
     pokedex: 465,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Tangrowth',
     artist: 'kodama',
     attacks: [
@@ -12085,6 +18058,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 378,
     number: 6,
     pokedex: 193,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Yanma',
     artist: 'Eri Yamaki',
     attacks: [
@@ -12116,6 +18106,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 379,
     number: 7,
     pokedex: 469,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Yanmega EX',
     artist: 'PLANETA Tsuji',
     attacks: [
@@ -12148,6 +18155,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 380,
     number: 8,
     pokedex: 315,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Roselia',
     artist: 'kirisAki',
     attacks: [
@@ -12180,6 +18204,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 381,
     number: 9,
     pokedex: 407,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Roserade',
     artist: 'Masakazu Fukuda',
     attacks: [
@@ -12213,6 +18254,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 382,
     number: 10,
     pokedex: 387,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Turtwig',
     artist: 'OOYAMA',
     attacks: [
@@ -12244,6 +18302,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 383,
     number: 11,
     pokedex: 388,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Grotle',
     artist: 'Sumiyoshi Kizuki',
     attacks: [
@@ -12275,6 +18350,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 384,
     number: 12,
     pokedex: 389,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Torterra',
     artist: 'kawayoo',
     attacks: [
@@ -12307,6 +18399,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 385,
     number: 13,
     pokedex: 401,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Kricketot',
     artist: 'Shigenori Negishi',
     attacks: [
@@ -12338,6 +18447,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 386,
     number: 14,
     pokedex: 402,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Kricketune',
     artist: 'Naoyo Kimura',
     attacks: [
@@ -12370,6 +18496,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 387,
     number: 15,
     pokedex: 412,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Burmy',
     artist: 'Mugi Hamada',
     attacks: [
@@ -12402,6 +18545,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 388,
     number: 16,
     pokedex: 413,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Wormadam',
     artist: 'Kouki Saitou',
     attacks: [
@@ -12438,6 +18598,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 389,
     number: 17,
     pokedex: 415,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Combee',
     artist: 'Yukiko Baba',
     attacks: [
@@ -12470,6 +18647,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 390,
     number: 18,
     pokedex: 416,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Vespiquen',
     artist: 'chibi',
     attacks: [
@@ -12501,6 +18695,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 391,
     number: 19,
     pokedex: 455,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Carnivine',
     artist: 'Anesaki Dynamic',
     attacks: [
@@ -12536,6 +18747,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 392,
     number: 20,
     pokedex: 470,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Leafeon',
     artist: 'Kouki Saitou',
     attacks: [
@@ -12568,6 +18796,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 393,
     number: 21,
     pokedex: 479,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mow Rotom',
     artist: 'kawayoo',
     attacks: [
@@ -12604,6 +18849,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 394,
     number: 22,
     pokedex: 492,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Shaymin',
     artist: 'Narumi Sato',
     attacks: [
@@ -12639,6 +18901,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 395,
     number: 23,
     pokedex: 126,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Magmar',
     artist: 'Hiroki Asanuma',
     attacks: [
@@ -12671,6 +18950,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 396,
     number: 24,
     pokedex: 467,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Magmortar',
     artist: 'KEIICHIRO ITO',
     attacks: [
@@ -12703,6 +18999,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 397,
     number: 25,
     pokedex: 218,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Slugma',
     artist: 'Naoyo Kimura',
     attacks: [
@@ -12735,6 +19048,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 398,
     number: 26,
     pokedex: 219,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Magcargo',
     artist: 'Oswaldo KATO',
     attacks: [
@@ -12768,6 +19098,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 399,
     number: 27,
     pokedex: 390,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Chimchar',
     artist: 'Kagemaru Himeno',
     attacks: [
@@ -12799,6 +19146,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 400,
     number: 28,
     pokedex: 391,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Monferno',
     artist: 'Masakazu Fukuda',
     attacks: [
@@ -12830,6 +19194,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 401,
     number: 29,
     pokedex: 392,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Infernape EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -12862,6 +19243,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 402,
     number: 30,
     pokedex: 479,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Heat Rotom',
     artist: 'Kedamahadaitai Yawarakai',
     attacks: [
@@ -12898,6 +19296,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 403,
     number: 31,
     pokedex: 220,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Swinub',
     artist: 'Eri Yamaki',
     attacks: [
@@ -12929,6 +19344,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 404,
     number: 32,
     pokedex: 221,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Piloswine',
     artist: 'Suwama Chiaki',
     attacks: [
@@ -12964,6 +19396,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 405,
     number: 33,
     pokedex: 473,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mamoswine',
     artist: 'match',
     attacks: [
@@ -12999,6 +19448,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 406,
     number: 34,
     pokedex: 378,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Regice',
     artist: 'Tomokazu Komiya',
     attacks: [
@@ -13034,6 +19500,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 407,
     number: 35,
     pokedex: 393,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Piplup',
     artist: 'Hajime Kusajima',
     attacks: [
@@ -13066,6 +19549,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 408,
     number: 36,
     pokedex: 394,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Prinplup',
     artist: 'Mizue',
     attacks: [
@@ -13097,6 +19597,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 409,
     number: 37,
     pokedex: 395,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Empoleon',
     artist: 'Satoshi Shirai',
     attacks: [
@@ -13129,6 +19646,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 410,
     number: 38,
     pokedex: 418,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Buizel',
     artist: 'OKUBO',
     attacks: [
@@ -13161,6 +19695,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 411,
     number: 39,
     pokedex: 419,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Floatzel',
     artist: 'Kanako Eo',
     attacks: [
@@ -13194,6 +19745,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 412,
     number: 40,
     pokedex: 422,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Shellos',
     artist: 'Teeziro',
     attacks: [
@@ -13225,6 +19793,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 413,
     number: 41,
     pokedex: 423,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gastrodon',
     artist: 'Aya Kusube',
     attacks: [
@@ -13256,6 +19841,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 414,
     number: 42,
     pokedex: 456,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Finneon',
     artist: 'Shigenori Negishi',
     attacks: [
@@ -13292,6 +19894,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 415,
     number: 43,
     pokedex: 457,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Lumineon',
     artist: 'rika',
     attacks: [
@@ -13324,6 +19943,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 416,
     number: 44,
     pokedex: 459,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Snover',
     artist: 'match',
     attacks: [
@@ -13357,6 +19993,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 417,
     number: 45,
     pokedex: 460,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Abomasnow',
     artist: 'Shin Nagasawa',
     attacks: [
@@ -13389,6 +20042,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 418,
     number: 46,
     pokedex: 471,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Glaceon',
     artist: 'Naoyo Kimura',
     attacks: [
@@ -13424,6 +20094,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 419,
     number: 47,
     pokedex: 479,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Wash Rotom',
     artist: 'Saboteri',
     attacks: [
@@ -13456,6 +20143,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 420,
     number: 48,
     pokedex: 479,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Frost Rotom',
     artist: 'MAHOU',
     attacks: [
@@ -13489,6 +20193,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 421,
     number: 49,
     pokedex: 484,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Palkia EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -13529,6 +20250,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 422,
     number: 50,
     pokedex: 490,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Manaphy',
     artist: 'MINAMINAMI Take',
     attacks: [
@@ -13561,6 +20299,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 423,
     number: 51,
     pokedex: 81,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Magnemite',
     artist: 'MAHOU',
     attacks: [
@@ -13593,6 +20348,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 424,
     number: 52,
     pokedex: 82,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Magneton',
     artist: 'Yumi',
     attacks: [
@@ -13625,6 +20397,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 425,
     number: 53,
     pokedex: 462,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Magnezone',
     artist: 'Yoshinobu Saito',
     attacks: [
@@ -13658,6 +20447,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 426,
     number: 54,
     pokedex: 100,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Voltorb',
     artist: 'Midori Harada',
     attacks: [
@@ -13691,6 +20497,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 427,
     number: 55,
     pokedex: 101,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Electrode',
     artist: 'Anesaki Dynamic',
     attacks: [
@@ -13723,6 +20546,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 428,
     number: 56,
     pokedex: 125,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Electabuzz',
     artist: 'Shin Nagasawa',
     attacks: [
@@ -13755,6 +20595,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 429,
     number: 57,
     pokedex: 466,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Electivire',
     artist: 'Sumiyoshi Kizuki',
     attacks: [
@@ -13787,6 +20644,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 430,
     number: 58,
     pokedex: 403,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Shinx',
     artist: 'Shibuzoh.',
     attacks: [
@@ -13822,6 +20696,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 431,
     number: 59,
     pokedex: 404,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Luxio',
     artist: 'Naoki Saito',
     attacks: [
@@ -13853,6 +20744,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 432,
     number: 60,
     pokedex: 405,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Luxray',
     artist: 'Hitoshi Ariga',
     attacks: [
@@ -13888,6 +20796,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 433,
     number: 61,
     pokedex: 417,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pachirisu EX',
     artist: 'PLANETA Tsuji',
     attacks: [
@@ -13920,6 +20845,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 434,
     number: 62,
     pokedex: 479,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Rotom',
     artist: 'Krgc',
     attacks: [
@@ -13952,6 +20894,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 435,
     number: 63,
     pokedex: 175,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Togepi',
     artist: 'Narumi Sato',
     attacks: [
@@ -13984,6 +20943,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 436,
     number: 64,
     pokedex: 176,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Togetic',
     artist: 'Kanako Eo',
     attacks: [
@@ -14016,6 +20992,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 437,
     number: 65,
     pokedex: 468,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Togekiss',
     artist: 'kawayoo',
     attacks: [
@@ -14049,6 +21042,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 438,
     number: 66,
     pokedex: 200,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Misdreavus',
     artist: 'Sumiyoshi Kizuki',
     attacks: [
@@ -14080,6 +21090,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 439,
     number: 67,
     pokedex: 429,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mismagius EX',
     artist: 'PLANETA Igarashi',
     attacks: [
@@ -14112,6 +21139,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 440,
     number: 68,
     pokedex: 280,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Ralts',
     artist: 'Miki Tanaka',
     attacks: [
@@ -14144,6 +21188,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 441,
     number: 69,
     pokedex: 281,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Kirlia',
     artist: 'Yukiko Baba',
     attacks: [
@@ -14175,6 +21236,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 442,
     number: 70,
     pokedex: 355,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Duskull',
     artist: 'ryoma uratsuka',
     attacks: [
@@ -14206,6 +21284,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 443,
     number: 71,
     pokedex: 356,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dusclops',
     artist: 'Sumiyoshi Kizuki',
     attacks: [
@@ -14237,6 +21332,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 444,
     number: 72,
     pokedex: 477,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dusknoir',
     artist: 'Suwama Chiaki',
     attacks: [
@@ -14272,6 +21384,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 445,
     number: 73,
     pokedex: 425,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Drifloon',
     artist: 'Atsuko Nishida',
     attacks: [
@@ -14304,6 +21433,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 446,
     number: 74,
     pokedex: 426,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Drifblim',
     artist: 'Miki Tanaka',
     attacks: [
@@ -14335,6 +21481,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 447,
     number: 75,
     pokedex: 480,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Uxie',
     artist: 'AKIRA EGAWA',
     attacks: [
@@ -14368,6 +21531,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 448,
     number: 76,
     pokedex: 481,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mesprit',
     artist: 'AKIRA EGAWA',
     attacks: [
@@ -14401,6 +21581,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 449,
     number: 77,
     pokedex: 482,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Azelf',
     artist: 'AKIRA EGAWA',
     attacks: [
@@ -14434,6 +21631,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 450,
     number: 78,
     pokedex: 487,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Giratina',
     artist: 'AKIRA EGAWA',
     attacks: [
@@ -14469,6 +21683,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 451,
     number: 79,
     pokedex: 488,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Cresselia',
     artist: 'Masako Tomii',
     attacks: [
@@ -14501,6 +21732,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 452,
     number: 80,
     pokedex: 111,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Rhyhorn',
     artist: 'otumami',
     attacks: [
@@ -14532,6 +21780,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 453,
     number: 81,
     pokedex: 112,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Rhydon',
     artist: 'Oswaldo KATO',
     attacks: [
@@ -14563,6 +21828,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 454,
     number: 82,
     pokedex: 464,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Rhyperior',
     artist: 'Naoki Saito',
     attacks: [
@@ -14595,6 +21877,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 455,
     number: 83,
     pokedex: 207,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gligar',
     artist: 'Sanosuke Sakuma',
     attacks: [
@@ -14626,6 +21925,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 456,
     number: 84,
     pokedex: 472,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gliscor',
     artist: 'Mizue',
     attacks: [
@@ -14661,6 +21977,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 457,
     number: 85,
     pokedex: 237,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Hitmontop',
     artist: 'sowsow',
     attacks: [
@@ -14692,6 +22025,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 458,
     number: 86,
     pokedex: 299,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Nosepass',
     artist: 'Midori Harada',
     attacks: [
@@ -14724,6 +22074,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 459,
     number: 87,
     pokedex: 377,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Regirock',
     artist: 'Tomokazu Komiya',
     attacks: [
@@ -14760,6 +22127,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 460,
     number: 88,
     pokedex: 408,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Cranidos',
     artist: 'Kouki Saitou',
     attacks: [
@@ -14791,6 +22175,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 461,
     number: 89,
     pokedex: 409,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Rampardos',
     artist: 'Yoshinobu Saito',
     attacks: [
@@ -14823,6 +22224,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 462,
     number: 90,
     pokedex: 413,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Wormadam',
     artist: 'Hajime Kusajima',
     attacks: [
@@ -14854,6 +22272,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 463,
     number: 91,
     pokedex: 447,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Riolu',
     artist: 'AKIRA EGAWA',
     attacks: [
@@ -14885,6 +22320,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 464,
     number: 92,
     pokedex: 448,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Lucario',
     artist: 'nagimiso',
     attacks: [
@@ -14920,6 +22372,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 465,
     number: 93,
     pokedex: 449,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Hippopotas',
     artist: 'Akira Komayama',
     attacks: [
@@ -14951,6 +22420,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 466,
     number: 94,
     pokedex: 450,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Hippowdon',
     artist: 'KEIICHIRO ITO',
     attacks: [
@@ -14982,6 +22468,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 467,
     number: 95,
     pokedex: 475,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gallade EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -15014,6 +22517,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 468,
     number: 96,
     pokedex: 198,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Murkrow',
     artist: 'Yukiko Baba',
     attacks: [
@@ -15045,6 +22565,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 469,
     number: 97,
     pokedex: 430,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Honchkrow',
     artist: 'Hideki Ishikawa',
     attacks: [
@@ -15077,6 +22614,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 470,
     number: 98,
     pokedex: 215,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Sneasel',
     artist: 'Hasuno',
     attacks: [
@@ -15112,6 +22666,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 471,
     number: 99,
     pokedex: 461,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Weavile EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -15144,6 +22715,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 472,
     number: 100,
     pokedex: 261,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Poochyena',
     artist: 'Midori Harada',
     attacks: [
@@ -15176,6 +22764,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 473,
     number: 101,
     pokedex: 262,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mightyena',
     artist: 'Kouki Saitou',
     attacks: [
@@ -15208,6 +22813,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 474,
     number: 102,
     pokedex: 434,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Stunky',
     artist: 'Kyoko Umemoto',
     attacks: [
@@ -15239,6 +22861,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 475,
     number: 103,
     pokedex: 435,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Skuntank',
     artist: 'kirisAki',
     attacks: [
@@ -15271,6 +22910,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 476,
     number: 104,
     pokedex: 442,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Spiritomb',
     artist: 'HYOGONOSUKE',
     attacks: [
@@ -15303,6 +22959,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 477,
     number: 105,
     pokedex: 451,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Skorupi',
     artist: 'Naoki Saito',
     attacks: [
@@ -15335,6 +23008,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 478,
     number: 106,
     pokedex: 452,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Drapion',
     artist: 'Naoki Saito',
     attacks: [
@@ -15372,6 +23062,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 479,
     number: 107,
     pokedex: 453,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Croagunk',
     artist: 'Masakazu Fukuda',
     attacks: [
@@ -15407,6 +23114,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 480,
     number: 108,
     pokedex: 454,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Toxicroak',
     artist: 'Hajime Kusajima',
     attacks: [
@@ -15442,6 +23166,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 481,
     number: 109,
     pokedex: 491,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Darkrai',
     artist: 'Masako Tomii',
     attacks: [
@@ -15474,6 +23215,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 482,
     number: 110,
     pokedex: 491,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Darkrai EX',
     artist: 'PLANETA Yamashita',
     attacks: [
@@ -15509,6 +23267,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 483,
     number: 111,
     pokedex: 227,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Skarmory',
     artist: 'Oswaldo KATO',
     attacks: [
@@ -15542,6 +23317,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 484,
     number: 112,
     pokedex: 379,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Registeel',
     artist: 'Tomokazu Komiya',
     attacks: [
@@ -15574,6 +23366,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 485,
     number: 113,
     pokedex: 410,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Shieldon',
     artist: 'Kouki Saitou',
     attacks: [
@@ -15605,6 +23414,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 486,
     number: 114,
     pokedex: 411,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Bastiodon',
     artist: 'Kagemaru Himeno',
     attacks: [
@@ -15640,6 +23466,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 487,
     number: 115,
     pokedex: 413,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Wormadam',
     artist: 'Kyoko Umemoto',
     attacks: [
@@ -15675,6 +23518,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 488,
     number: 116,
     pokedex: 436,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Bronzor',
     artist: 'Miki Tanaka',
     attacks: [
@@ -15706,6 +23566,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 489,
     number: 117,
     pokedex: 437,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Bronzong',
     artist: 'Yuka Morii',
     attacks: [
@@ -15738,6 +23615,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 490,
     number: 118,
     pokedex: 476,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Probopass',
     artist: 'MAHOU',
     attacks: [
@@ -15774,6 +23668,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 491,
     number: 119,
     pokedex: 483,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dialga EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -15811,6 +23722,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 492,
     number: 120,
     pokedex: 485,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Heatran',
     artist: 'Oswaldo KATO',
     attacks: [
@@ -15843,6 +23771,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 493,
     number: 121,
     pokedex: 443,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gible',
     artist: 'Naoyo Kimura',
     attacks: [
@@ -15874,6 +23819,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 494,
     number: 122,
     pokedex: 444,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gabite',
     artist: 'Shigenori Negishi',
     attacks: [
@@ -15905,6 +23867,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 495,
     number: 123,
     pokedex: 445,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Garchomp',
     artist: 'Atsushi Furusawa',
     attacks: [
@@ -15940,6 +23919,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 496,
     number: 124,
     pokedex: 108,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Lickitung',
     artist: 'Yukiko Baba',
     attacks: [
@@ -15971,6 +23967,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 497,
     number: 125,
     pokedex: 463,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Lickilicky EX',
     artist: 'PLANETA Igarashi',
     attacks: [
@@ -16006,6 +24019,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 498,
     number: 126,
     pokedex: 133,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Eevee',
     artist: 'Shibuzoh.',
     attacks: [
@@ -16042,6 +24072,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 499,
     number: 127,
     pokedex: 137,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Porygon',
     artist: 'Shin Nagasawa.',
     attacks: [
@@ -16073,6 +24120,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 500,
     number: 128,
     pokedex: 233,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Porygon2',
     artist: 'sowsow',
     attacks: [
@@ -16104,6 +24168,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 501,
     number: 129,
     pokedex: 474,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Porygon-Z',
     artist: 'Shin Nagasawa',
     attacks: [
@@ -16136,6 +24217,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 502,
     number: 130,
     pokedex: 190,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Aipom',
     artist: 'Miki Tanaka',
     attacks: [
@@ -16168,6 +24266,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 503,
     number: 131,
     pokedex: 191,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Ambipom',
     artist: 'Naoyo Kimura',
     attacks: [
@@ -16204,6 +24319,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 504,
     number: 132,
     pokedex: 396,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Starly',
     artist: 'Atsuko Nishida',
     attacks: [
@@ -16236,6 +24368,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 505,
     number: 133,
     pokedex: 397,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Staravia',
     artist: 'REND',
     attacks: [
@@ -16267,6 +24416,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 506,
     number: 134,
     pokedex: 398,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Staraptor',
     artist: 'Sekio',
     attacks: [
@@ -16299,6 +24465,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 507,
     number: 135,
     pokedex: 399,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Bidoof',
     artist: 'Kagemaru Himeno',
     attacks: [
@@ -16331,6 +24514,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 508,
     number: 136,
     pokedex: 400,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Bibarel',
     artist: 'kirisAki',
     attacks: [
@@ -16362,6 +24562,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 509,
     number: 137,
     pokedex: 427,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Buneary',
     artist: 'Narumi Sato',
     attacks: [
@@ -16393,6 +24610,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 510,
     number: 138,
     pokedex: 428,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Lopunny',
     artist: 'Sanosuke Sakuma',
     attacks: [
@@ -16425,6 +24659,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 511,
     number: 139,
     pokedex: 431,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Glameow',
     artist: 'sowsow',
     attacks: [
@@ -16460,6 +24711,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 512,
     number: 140,
     pokedex: 432,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Purugly',
     artist: 'Kagemaru Himeno',
     attacks: [
@@ -16492,6 +24760,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 513,
     number: 141,
     pokedex: 441,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Chatot',
     artist: 'HYOGONOSUKE',
     attacks: [
@@ -16527,6 +24812,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 514,
     number: 142,
     pokedex: 479,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Rotom',
     artist: 'Masakazu Fukuda',
     attacks: [
@@ -16560,6 +24862,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 515,
     number: 143,
     pokedex: 486,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Regigigas',
     artist: 'Tomokazu Komiya',
     attacks: [
@@ -16865,6 +25184,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 528,
     number: 156,
     pokedex: 465,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Tangrowth',
     artist: 'Saboteri',
     attacks: [
@@ -16897,6 +25233,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 529,
     number: 157,
     pokedex: 415,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Combee',
     artist: 'Shibuzoh.',
     attacks: [
@@ -16929,6 +25282,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 530,
     number: 158,
     pokedex: 455,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Carnivine',
     artist: 'Yoriyuki Ikegami',
     attacks: [
@@ -16964,6 +25334,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 531,
     number: 159,
     pokedex: 492,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Shaymin',
     artist: 'REND',
     attacks: [
@@ -16999,6 +25386,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 532,
     number: 160,
     pokedex: 473,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mamoswine',
     artist: 'OKACHEKE',
     attacks: [
@@ -17034,6 +25438,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 533,
     number: 161,
     pokedex: 423,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gastrodon',
     artist: 'takashi shiraishi',
     attacks: [
@@ -17065,6 +25486,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 534,
     number: 162,
     pokedex: 490,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Manaphy',
     artist: 'miki kudo',
     attacks: [
@@ -17097,6 +25535,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 535,
     number: 163,
     pokedex: 403,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Shinx',
     artist: 'Yuu Nishida',
     attacks: [
@@ -17132,6 +25587,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 536,
     number: 164,
     pokedex: 479,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Rotom',
     artist: 'Shimaris Yukichi',
     attacks: [
@@ -17164,6 +25636,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 537,
     number: 165,
     pokedex: 425,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Drifloon',
     artist: 'Orca',
     attacks: [
@@ -17196,6 +25685,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 538,
     number: 166,
     pokedex: 481,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mesprit',
     artist: 'Orca',
     attacks: [
@@ -17228,6 +25734,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 539,
     number: 167,
     pokedex: 487,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Giratina',
     artist: 'Rond',
     attacks: [
@@ -17263,6 +25786,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 540,
     number: 168,
     pokedex: 488,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Cresselia',
     artist: 'rika',
     attacks: [
@@ -17295,6 +25835,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 541,
     number: 169,
     pokedex: 464,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Rhyperior',
     artist: 'Taiga Kayama',
     attacks: [
@@ -17327,6 +25884,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 542,
     number: 170,
     pokedex: 448,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Lucario',
     artist: 'Akira Komayama',
     attacks: [
@@ -17362,6 +25936,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 543,
     number: 171,
     pokedex: 449,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Hippopotas',
     artist: 'Teeziro',
     attacks: [
@@ -17393,6 +25984,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 544,
     number: 172,
     pokedex: 442,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Spiritomb',
     artist: 'Shinji Kanda',
     attacks: [
@@ -17425,6 +26033,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 545,
     number: 173,
     pokedex: 453,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Croagunk',
     artist: 'GOSSAN',
     attacks: [
@@ -17460,6 +26085,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 546,
     number: 174,
     pokedex: 485,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Heatran',
     artist: 'OKUBO',
     attacks: [
@@ -17492,6 +26134,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 547,
     number: 175,
     pokedex: 445,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Garchomp',
     artist: 'MINAMINAMI Take',
     attacks: [
@@ -17527,6 +26186,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 548,
     number: 176,
     pokedex: 398,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Staraptor',
     artist: 'Ryota Murayama',
     attacks: [
@@ -17559,6 +26235,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 549,
     number: 177,
     pokedex: 399,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Bidoof',
     artist: 'Shinya Komatsu',
     attacks: [
@@ -17591,6 +26284,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 550,
     number: 178,
     pokedex: 431,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Glameow',
     artist: 'matazo',
     attacks: [
@@ -17626,6 +26336,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 551,
     number: 179,
     pokedex: 486,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Regigigas',
     artist: 'Tetsu Kayama',
     attacks: [
@@ -17658,6 +26385,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 552,
     number: 180,
     pokedex: 469,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Yanmega EX',
     artist: 'PLANETA Tsuji',
     attacks: [
@@ -17690,6 +26434,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 553,
     number: 181,
     pokedex: 392,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Infernape EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -17722,6 +26483,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 554,
     number: 182,
     pokedex: 484,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Palkia EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -17762,6 +26540,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 555,
     number: 183,
     pokedex: 417,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pachirisu EX',
     artist: 'PLANETA Tsuji',
     attacks: [
@@ -17794,6 +26589,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 556,
     number: 184,
     pokedex: 429,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mismagius EX',
     artist: 'PLANETA Tsuji',
     attacks: [
@@ -17826,6 +26638,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 557,
     number: 185,
     pokedex: 475,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gallade EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -17858,6 +26687,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 558,
     number: 186,
     pokedex: 461,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Weavile EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -17890,6 +26736,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 559,
     number: 187,
     pokedex: 491,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Darkrai EX',
     artist: 'PLANETA Yamashita',
     attacks: [
@@ -17925,6 +26788,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 560,
     number: 188,
     pokedex: 483,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dialga EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -17962,6 +26842,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 561,
     number: 189,
     pokedex: 463,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Lickilicky EX',
     artist: 'PLANETA Tsuji',
     attacks: [
@@ -18135,6 +27032,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 568,
     number: 196,
     pokedex: 469,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Yanmega EX',
     artist: 'Mina Nakai',
     attacks: [
@@ -18167,6 +27081,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 569,
     number: 197,
     pokedex: 392,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Infernape EX',
     artist: 'nagimiso',
     attacks: [
@@ -18199,6 +27130,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 570,
     number: 198,
     pokedex: 417,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pachirisu EX',
     artist: 'Nurikabe',
     attacks: [
@@ -18231,6 +27179,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 571,
     number: 199,
     pokedex: 429,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mismagius EX',
     artist: 'Kuroimori',
     attacks: [
@@ -18263,6 +27228,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 572,
     number: 200,
     pokedex: 475,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Gallade EX',
     artist: 'Takumi Wada',
     attacks: [
@@ -18295,6 +27277,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 573,
     number: 201,
     pokedex: 461,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Weavile EX',
     artist: 'hncl',
     attacks: [
@@ -18327,6 +27326,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 574,
     number: 202,
     pokedex: 491,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Darkrai EX',
     artist: 'Oswaldo KATO',
     attacks: [
@@ -18362,6 +27378,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 575,
     number: 203,
     pokedex: 463,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Lickilicky EX',
     artist: 'Jerky',
     attacks: [
@@ -18397,6 +27430,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 576,
     number: 204,
     pokedex: 484,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Palkia EX',
     artist: 'N-DESIGN Inc.',
     attacks: [
@@ -18437,6 +27487,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 577,
     number: 205,
     pokedex: 483,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dialga EX',
     artist: 'N-DESIGN Inc.',
     attacks: [
@@ -18474,6 +27541,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 578,
     number: 206,
     pokedex: 484,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Palkia EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -18515,6 +27599,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 579,
     number: 207,
     pokedex: 483,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Dialga EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -18713,6 +27814,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 588,
     number: 9,
     pokedex: 25,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pikachu',
     artist: 'Atsushi Furusawa',
     attacks: [
@@ -18745,6 +27863,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 589,
     number: 10,
     pokedex: 150,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mewtwo',
     artist: 'Krgc',
     attacks: [
@@ -18778,6 +27913,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 590,
     number: 11,
     pokedex: 113,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Chansey',
     artist: 'sowsow',
     attacks: [
@@ -18810,6 +27962,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 591,
     number: 12,
     pokedex: 52,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Meowth',
     artist: 'Shigenori Negishi',
     attacks: [
@@ -18843,6 +28012,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 592,
     number: 13,
     pokedex: 12,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Butterfree',
     artist: 'Shin Nagasawa',
     attacks: [
@@ -18879,6 +28065,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 593,
     number: 14,
     pokedex: 131,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Lapras EX',
     artist: 'PLANETA CG Works',
     attacks: [
@@ -18911,6 +28114,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 594,
     number: 15,
     pokedex: 25,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pikachu',
     artist: 'Kouki Saitou',
     attacks: [
@@ -18943,6 +28163,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 595,
     number: 16,
     pokedex: 35,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Clefairy',
     artist: 'Shibuzoh.',
     attacks: [
@@ -18975,6 +28212,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 596,
     number: 17,
     pokedex: 56,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Mankey',
     artist: 'Souichirou Gunjima',
     attacks: [
@@ -19008,6 +28262,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 597,
     number: 18,
     pokedex: 3,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Venusaur',
     artist: 'Kuroimori',
     attacks: [
@@ -19041,6 +28312,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 598,
     number: 19,
     pokedex: 658,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Greninja',
     artist: 'Sanosuke Sakuma',
     attacks: [
@@ -19077,6 +28365,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 599,
     number: 20,
     pokedex: 93,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Haunter',
     artist: 'Mékayu',
     attacks: [
@@ -19113,6 +28418,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 600,
     number: 21,
     pokedex: 95,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Onix',
     artist: 'Tomokazu Komiya',
     attacks: [
@@ -19145,6 +28467,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 601,
     number: 22,
     pokedex: 39,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Jigglypuff',
     artist: 'Kurata So',
     attacks: [
@@ -19178,6 +28517,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 602,
     number: 23,
     pokedex: 1,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Bulbasaur',
     artist: 'Kouki Saitou',
     attacks: [
@@ -19210,6 +28566,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 603,
     number: 24,
     pokedex: 81,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Magnemite',
     artist: 'Miki Tanaka',
     attacks: [
@@ -19242,6 +28615,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 604,
     number: 25,
     pokedex: 145,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Moltres EX',
     artist: 'PLANETA Igarashi',
     attacks: [
@@ -19283,6 +28673,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 605,
     number: 26,
     pokedex: 25,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Pikachu',
     artist: 'Kouki Saifou',
     attacks: [
@@ -19315,6 +28722,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 606,
     number: 27,
     pokedex: 495,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Snivy',
     artist: 'Yoriyuki ikegami',
     attacks: [
@@ -19347,6 +28771,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 607,
     number: 28,
     pokedex: 637,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Volcarona',
     artist: 'Shin Nagasawa',
     attacks: [
@@ -19383,6 +28824,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 608,
     number: 29,
     pokedex: 9,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Blastoise',
     artist: 'danciao',
     attacks: [
@@ -19416,6 +28874,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 609,
     number: 30,
     pokedex: 133,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Eevee',
     artist: 'En Morikura',
     attacks: [
@@ -19449,6 +28924,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 610,
     number: 31,
     pokedex: 573,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Cinccino',
     artist: 'MAHOU',
     attacks: [
@@ -19482,6 +28974,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 611,
     number: 32,
     pokedex: 4,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Charmander',
     artist: 'Naoyo Kimura',
     attacks: [
@@ -19515,6 +29024,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 612,
     number: 33,
     pokedex: 7,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Squirtle',
     artist: 'Kanako Eo',
     attacks: [
@@ -19547,6 +29073,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 613,
     number: 34,
     pokedex: 393,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Piplup',
     artist: 'Kariya',
     attacks: [
@@ -19579,6 +29122,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 614,
     number: 35,
     pokedex: 387,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Turtwig',
     artist: 'Atsuko Nishida',
     attacks: [
@@ -19610,6 +29170,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 615,
     number: 36,
     pokedex: 466,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Electivire',
     artist: 'Sumiyoshi Kizuki',
     attacks: [
@@ -19642,6 +29219,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 616,
     number: 37,
     pokedex: 488,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Cresselia EX',
     artist: 'PLANETA Mochizuki',
     attacks: [
@@ -19677,6 +29271,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 617,
     number: 38,
     pokedex: 200,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Misdreavus',
     artist: 'Miki Tanaka',
     attacks: [
@@ -19709,6 +29320,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 618,
     number: 39,
     pokedex: 227,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Skarmory',
     artist: 'Anesaki Dynamic',
     attacks: [
@@ -19741,6 +29369,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 619,
     number: 40,
     pokedex: 390,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Chimchar',
     artist: 'sui',
     attacks: [
@@ -19772,6 +29417,23 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 620,
     number: 41,
     pokedex: 175,
+    info: {
+      type: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      height: {
+        es: '',
+        en: '',
+        ja: ''
+      },
+      weight: {
+        es: '',
+        en: '',
+        ja: ''
+      }
+    },
     name: 'Togepi',
     artist: 'Naoyo Kimura',
     attacks: [

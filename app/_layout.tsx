@@ -7,7 +7,6 @@ import { Platform } from 'react-native';
 import { Provider } from 'react-native-paper';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as NavigationBar from "expo-navigation-bar";
-import { Subscription } from 'rxjs';
 
 import { rootReducer, initialRootState, AppState } from '@/hooks/root.reducer';
 import BackgroundMusic from '@/components/shared/BackgroundMusic';
@@ -24,7 +23,6 @@ import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import { SplashScreenMemo } from '@/components/ui/SplashScreen';
 import { ConfirmationProvider } from '@/core/providers/ConfirmationProvider';
 import CardsService from '@/core/services/cards.service';
-import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 
 export const AppContext = createContext<{ state: AppState; dispatch: React.Dispatch<any> } | undefined>(undefined);
 SplashScreen.preventAutoHideAsync();

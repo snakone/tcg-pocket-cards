@@ -29,7 +29,8 @@ export default function HomeScreen() {
       <ThemedView style={styles.container}>
         <Image
           source={HERO_IMAGE}
-          style={styles.heroImage}/>
+          style={styles.heroImage}
+          alt='Hero'/>
         <ThemedText style={[styles.title, {paddingTop: 2}]}>{i18n.t('hero_title')}</ThemedText>
         <ThemedText style={styles.subtitle}>
           {i18n.t('hero_discover')} <ThemedText style={{fontWeight: 'bold'}}>{i18n.t('pocket')}</ThemedText>. {i18n.t('hero_create')}
