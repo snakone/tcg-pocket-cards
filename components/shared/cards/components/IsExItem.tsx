@@ -21,7 +21,7 @@ export const IsExButtonList = memo(({ filterObj }: { filterObj: MutableRefObject
         style={[
           filterStyles.flexContainer,
           filterStyles.buttonContainer,
-          { marginBottom: Platform.OS === 'web' ? 40 : 60 },
+          { marginBottom: Platform.OS === 'web' ? 48 : 60 },
         ]}
       >
         {['not_ex', 'is_ex'].map((k, i) => (

@@ -9,15 +9,14 @@ import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { CardStageENUM } from "@/shared/definitions/enums/card.enums";
 
 interface StageItemProps {
-  stage: { [key in CardStageENUM] : boolean | null},
   filterObj: MutableRefObject<FilterSearch>,
   stageSelectAll$: Subject<boolean>
 }
 
-export const StageItem = memo(({ stage, filterObj, stageSelectAll$ }: StageItemProps) => {
+export const StageItem = memo(({ filterObj, stageSelectAll$ }: StageItemProps) => {
   return (
     <ThemedView style={[filterStyles.flexContainer, filterStyles.buttonContainer, { marginBottom: 48 }]}>
-      {Object.keys(stage).map((key, i) => {
+      {Object.keys(filterObj.current.stage).map((key, i) => {
         const label = (STAGE_MAP as any)[key]?.label;
 
         return (

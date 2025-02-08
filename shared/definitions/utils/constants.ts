@@ -99,7 +99,7 @@ import {
 
 import { FilterSearch } from "../classes/filter.class";
 import { EXPANSION } from "../enums/packs.enums";
-import { CardExpansionENUM, CardRarityENUM, CardStageENUM } from "../enums/card.enums";
+import { CardExpansionENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { AvatarIcon } from "../interfaces/global.interfaces";
 
@@ -206,6 +206,56 @@ export const EXPANSION_MAP: Record<CardExpansionENUM, CardPackTag> = {
   [CardExpansionENUM.MYTHICAL_ISLAND]: { label: 'A', tag: 'A1a', color: 'white', background: 'black', promo_amount: 'P-A' },
   [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: { label: 'A', tag: 'A2', color: 'white', background: 'black', promo_amount: 'P-A' }
 }
+
+export const CONDITION_MAP: Record<CardSpecialConditionENUM, {label: string}> = {
+  [CardSpecialConditionENUM.ATTACK_BENCH]: { label: 'condition_attack_bench' },
+  [CardSpecialConditionENUM.HEAL]: { label: 'condition_heal' },
+  [CardSpecialConditionENUM.RECOIL]: { label: 'condition_recoil' },
+  [CardSpecialConditionENUM.POISON]: { label: 'condition_poison' },
+  [CardSpecialConditionENUM.PARALYZE]: { label: 'condition_paralyze' },
+  [CardSpecialConditionENUM.SLEEP]: { label: 'condition_sleep' },
+  [CardSpecialConditionENUM.CONFUSION]: { label: 'condition_confusion' },
+  [CardSpecialConditionENUM.BURNED]: { label: 'condition_burned' },
+  [CardSpecialConditionENUM.FLIP]: { label: 'condition_flip' },
+  [CardSpecialConditionENUM.NOTHING]: { label: 'condition_nothing' },
+  [CardSpecialConditionENUM.DISCARD]: { label: 'condition_discard' },
+  [CardSpecialConditionENUM.ADD]: { label: 'condition_add' },
+  [CardSpecialConditionENUM.EXTRA_DAMAGE]: { label: 'condition_extra_damage' },
+  [CardSpecialConditionENUM.RESIST]: { label: 'condition_resist' },
+  [CardSpecialConditionENUM.CORNER]: { label: 'condition_corner' },
+  [CardSpecialConditionENUM.WITHDRAW_CARD]: { label: 'condition_withdraw' },
+  [CardSpecialConditionENUM.RETIRE]: { label: 'condition_retire' },
+  [CardSpecialConditionENUM.CALL]: { label: 'condition_call' },
+  [CardSpecialConditionENUM.INACTIVE]: { label: 'condition_inactive' }
+}
+
+export const CONDITION_ATTACK = [
+  CardSpecialConditionENUM.ATTACK_BENCH,
+  CardSpecialConditionENUM.RECOIL,
+  CardSpecialConditionENUM.EXTRA_DAMAGE,
+  CardSpecialConditionENUM.RESIST
+];
+
+export const CONDITION_STATUS = [
+  CardSpecialConditionENUM.HEAL,
+  CardSpecialConditionENUM.POISON,
+  CardSpecialConditionENUM.PARALYZE,
+  CardSpecialConditionENUM.SLEEP,
+  CardSpecialConditionENUM.CONFUSION,
+  CardSpecialConditionENUM.BURNED
+];
+
+export const CONDITION_OTHERS = [
+  CardSpecialConditionENUM.FLIP,
+  CardSpecialConditionENUM.NOTHING,
+  CardSpecialConditionENUM.DISCARD,
+  CardSpecialConditionENUM.ADD,
+  CardSpecialConditionENUM.CORNER,
+  CardSpecialConditionENUM.WITHDRAW_CARD,
+  CardSpecialConditionENUM.RETIRE,
+  CardSpecialConditionENUM.CALL,
+  CardSpecialConditionENUM.INACTIVE
+];
 
 export const EXPANSION_POINTS_RARITY: Record<CardRarityENUM, number> = {
   [CardRarityENUM.COMMON]: 35,

@@ -62,7 +62,6 @@ export default function SelectInput({
             filterStyles.gridButton, {width}, 
             {...(selected && {backgroundColor: '#444444'})},
             !shadow && {boxShadow: 'none'},
-            {paddingVertical: 0}
           ]}>
             <ThemedText style={[filterStyles.buttonText, {...(selected && {color: 'white'})}, textStyle]}>
              {(selected && item) ? item : (!selected && item) ? i18n.t(item) : i18n.t(label)}

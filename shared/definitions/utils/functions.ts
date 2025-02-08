@@ -147,6 +147,12 @@ export function filterCards(filter: FilterSearch, data: Card[], favorites: numbe
       filter.ex.not_ex != filter.ex.is_ex
     ) return false;
 
+    const conditions = Object.keys(filter.condition).filter(key => Boolean((filter.condition as any)[key]));
+
+    if(conditions.length > 0 && !card.condition?.some(condition => conditions?.includes(String(condition)))) {
+      return false;
+    }
+
     return true;
   });
 }

@@ -37,6 +37,7 @@ import InvertButton from "@/components/ui/InvertButton";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { AppContext } from "@/app/_layout";
 import SoundService from "@/core/services/sounds.service";
+import { SpecialItem } from "./components/SpecialItem";
 
 export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabMenu) {
   const context = useContext(AppContext);
@@ -137,8 +138,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                 <ThemedText style={filterStyles.header}>{i18n.t('rarity')}</ThemedText>
                 <InvertButton onClick={() => onNext('rarity$')} styles={{top: 8}}></InvertButton>
               </ThemedView>
-              <RarityItem rarity={filterObj.current.rarity} 
-                          filterObj={filterObj} 
+              <RarityItem filterObj={filterObj} 
                           raritySelectAll$={nextValues.rarity$}>
               </RarityItem>
             </>
@@ -153,8 +153,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
                 <ThemedText style={filterStyles.header}>{i18n.t('trainer_card')}</ThemedText>
                 <InvertButton onClick={() => onNext('stage$')} styles={{top: 9}}></InvertButton>
               </ThemedView>
-              <StageItem stage={filterObj.current.stage} 
-                         filterObj={filterObj} 
+              <StageItem filterObj={filterObj} 
                          stageSelectAll$={nextValues.stage$}>
                </StageItem>
             </>
@@ -170,11 +169,16 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
               <ThemedView style={filterStyles.row}>
                 <ThemedText style={filterStyles.header}>{i18n.t('miscellania')}</ThemedText>
               </ThemedView>
-              <MiscellaniaItem weak={filterObj.current.weak} 
-                               filterObj={filterObj} 
+              <MiscellaniaItem filterObj={filterObj} 
                                miscellaniaSelectAll$={nextValues.miscellania$} 
                                onMiscellaniaSelectAll={() => onNext('miscellania$')}>
               </MiscellaniaItem>
+            </>
+            <>
+              <ThemedView style={filterStyles.row}>
+                <ThemedText style={filterStyles.header}>{i18n.t('special')}</ThemedText>
+              </ThemedView>
+              <SpecialItem filterObj={filterObj}></SpecialItem>
             </>
           </ScrollView>
 

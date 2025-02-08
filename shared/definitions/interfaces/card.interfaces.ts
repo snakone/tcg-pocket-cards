@@ -1,5 +1,5 @@
 import { PACKS_TYPE } from "../enums/packs.enums";
-import { CardExpansionENUM, CardExpansionTypeENUM, CardRarityENUM, CardStageENUM } from "../enums/card.enums";
+import { CardExpansionENUM, CardExpansionTypeENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 
 interface BaseCard {
@@ -28,6 +28,7 @@ export interface Card extends BaseCard {
   related?: number[];
   isEX?: boolean;
   extra?: string;
+  condition: CardSpecialConditionENUM[];
 }
 
 interface Attack {

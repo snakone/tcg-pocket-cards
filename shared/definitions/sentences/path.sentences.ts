@@ -50,8 +50,9 @@ export const CREATE_DELETE = require('@/assets/images/creation/delete.png');
 
 export const SHARE_LIST = require('@/assets/images/share/deck_list.png');
 export const SHARE_OPTIONS = require('@/assets/images/share/export.png');
+export const SHARE_OPTIONS_TRADE = require('@/assets/images/share/export_trade.png');
 export const SHARE_CHARIZARD = require('@/assets/images/share/Charizard.jpeg');
-export const SHARE_IMAGE = require('@/assets/images/share/share_image.png');
+export const SHARE_BLASTOISE = require('@/assets/images/share/Blastoise.jpeg');
 
 export const TRADE_POINTS = require('@/assets/images/trade_token.png');
 export const SALE_CARD = require('@/assets/images/Discount-512.png');
