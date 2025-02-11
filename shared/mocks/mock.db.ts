@@ -1345,7 +1345,7 @@ export const MOCK_DB_CARDS: Card[] = [
     info: {
       type: {
         es: 'Pokémon Coco',
-        en: '	Coconut Pokémon',
+        en: 'Coconut Pokémon',
         ja: 'やしのみポケモン'
       },
       height: {
@@ -1413,7 +1413,7 @@ export const MOCK_DB_CARDS: Card[] = [
     info: {
       type: {
         es: 'Pokémon Coco',
-        en: '	Coconut Pokémon',
+        en: 'Coconut Pokémon',
         ja: 'やしのみポケモン'
       },
       height: {
@@ -8150,7 +8150,7 @@ export const MOCK_DB_CARDS: Card[] = [
     info: {
       type: {
         es: 'Pokémon Genético',
-        en: '	Genetic Pokémon',
+        en: 'Genetic Pokémon',
         ja: 'いでんしポケモン'
       },
       height: {
@@ -8215,7 +8215,7 @@ export const MOCK_DB_CARDS: Card[] = [
     info: {
       type: {
         es: 'Pokémon Genético',
-        en: '	Genetic Pokémon',
+        en: 'Genetic Pokémon',
         ja: 'いでんしポケモン'
       },
       height: {
@@ -13692,18 +13692,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 216,
     number: 216,
     name: {
-      es: '',
+      es: 'Fósil Hélix',
       en: 'Helix Fossil',
-      ja: '' 
+      ja: 'かいの化石' 
     },
     artist: 'Toyste Beach',
     evolve: [81],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Juega esta carta como si fuera un Pokémon  Básico de 40 PS. En cualquier momento durante tu turno, puedes descartar esta carta del juego. Esta carta no puede retirarse.',
       en: 'Play this card as if it were a 40-HP Basic Colorless Pokémon. At any time during your turn, you may discard this card from play. This card can’t retreat.',
-      ja: '' 
+      ja: 'このカードは、HP40の無色タイプのたねポケモンとして、場に出すことができる。自分の番の中でなら、場に出ているこのカードをトラッシュしてよい。このカードはにげるができない。' 
     },
     health: 40,
     rarity: CardRarityENUM.COMMON,
@@ -13723,18 +13723,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 217,
     number: 217,
     name: {
-      es: '',
+      es: 'Fósil Domo',
       en: 'Dome Fossil',
-      ja: '' 
+      ja: 'こうらの化石' 
     },
     artist: 'Toyste Beach',
     evolve: [158],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Juega esta carta como si fuera un Pokémon  Básico de 40 PS. En cualquier momento durante tu turno, puedes descartar esta carta del juego. Esta carta no puede retirarse.',
       en: 'Play this card as if it were a 40-HP Basic Colorless Pokémon. At any time during your turn, you may discard this card from play. This card can’t retreat.',
-      ja: '' 
+      ja: 'このカードは、HP40の無色タイプのたねポケモンとして、場に出すことができる。自分の番の中でなら、場に出ているこのカードをトラッシュしてよい。このカードはにげるができない。' 
     },
     health: 40,
     rarity: CardRarityENUM.COMMON,
@@ -13754,18 +13754,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 218,
     number: 218,
     name: {
-      es: '',
+      es: 'Ámbar Viejo',
       en: 'Old Amber',
-      ja: '' 
+      ja: 'ひみつのコハク' 
     },
     artist: 'Toyste Beach',
     evolve: [210],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Juega esta carta como si fuera un Pokémon  Básico de 40 PS. En cualquier momento durante tu turno, puedes descartar esta carta del juego. Esta carta no puede retirarse.',
       en: 'Play this card as if it were a 40-HP Basic Colorless Pokémon. At any time during your turn, you may discard this card from play. This card can’t retreat.',
-      ja: '' 
+      ja: 'このカードは、HP40の無色タイプのたねポケモンとして、場に出すことができる。自分の番の中でなら、場に出ているこのカードをトラッシュしてよい。このカードはにげるができない。' 
     },
     health: 40,
     rarity: CardRarityENUM.COMMON,
@@ -13785,18 +13785,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 219,
     number: 219,
     name: {
-      es: '',
+      es: 'Erika',
       en: 'Erika',
-      ja: '' 
+      ja: 'エリカ' 
     },
     artist: 'kirisAki',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cura 50 puntos de daño a 1 de tus Pokémon Planta.',
       en: 'Heal 50 damage from 1 of your Grass Pokémon.',
-      ja: '' 
+      ja: '自分の草ポケモン1匹のHPを50回復。' 
     },
     health: 0,
     rarity: CardRarityENUM.UNCOMMON,
@@ -13817,18 +13817,18 @@ export const MOCK_DB_CARDS: Card[] = [
     number: 220,
     pokedex: -1,
     name: {
-      es: '',
+      es: 'Misty',
       en: 'Misty',
-      ja: '' 
+      ja: 'カスミ' 
     },
     artist: 'Sanosuke Sakuma',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Elige 1 de tus Pokémon Agua, y luego lanza 1 moneda hasta que salga cruz. Por cada cara, une 1 Energía Agua de tu área de Energía a ese Pokémon.',
       en: 'Choose 1 of your Water Pokémon, and flip a coin until you get tails. For each heads, take a Water Energy from your Energy Zone and attach it to that Pokémon.',
-      ja: '' 
+      ja: '自分の水ポケモンを1匹選ぶ。ウラが出るまでコインを投げ、オモテの数ぶんの水エネルギーを自分のエネルギーゾーンから出し、そのポケモンにつける。' 
     },
     health: 0,
     rarity: CardRarityENUM.UNCOMMON,
@@ -13847,18 +13847,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 221,
     number: 221,
     name: {
-      es: '',
+      es: 'Blaine',
       en: 'Blaine',
-      ja: '' 
+      ja: 'カツラ' 
     },
     artist: 'GOSSAN',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Durante este turno, los ataques de tu Ninetales, tu Rapidash o tu Magmar hacen +30 puntos de daño al Pokémon Activo de tu rival.',
       en: 'During this turn, attacks used by your Ninetales, Rapidash, or Magmar do +30 damage to your opponent’s Active Pokémon.',
-      ja: '' 
+      ja: 'この番、自分の「キュウコン」「ギャロップ」「ブーバー」が使うワザの、相手のバトルポケモンへのダメージを+30する' 
     },
     health: 0,
     rarity: CardRarityENUM.UNCOMMON,
@@ -13878,18 +13878,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 222,
     number: 222,
     name: {
-      es: '',
+      es: 'Koga',
       en: 'Koga',
-      ja: '' 
+      ja: 'キョウ' 
     },
     artist: 'Souichirou Gunjima',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Pon a tu Muk o a tu Weezing que esté en el Puesto Activo en tu mano.',
       en: 'Put your Muk or Weezing in the Active Spot into your hand.',
-      ja: '' 
+      ja: '自分のバトル場の「ベトベトン」「マタドガス」を手札にもどす。' 
     },
     health: 0,
     rarity: CardRarityENUM.UNCOMMON,
@@ -13909,18 +13909,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 223,
     number: 223,
     name: {
-      es: '',
+      es: 'Giovanni',
       en: 'Giovanni',
-      ja: '' 
+      ja: 'サカキ' 
     },
     artist: 'Hideki Ishikawa',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Durante este turno, los ataques de tus Pokémon hacen +10 puntos de daño al Pokémon Activo de tu rival.',
       en: 'During this turn, attacks used by your Pokémon do +10 damage to your opponent’s Active Pokémon.',
-      ja: '' 
+      ja: 'この番、自分のポケモンが使うワザの、相手のバトルポケモンへのダメージを+10する。' 
     },
     health: 0,
     rarity: CardRarityENUM.UNCOMMON,
@@ -13940,18 +13940,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 224,
     number: 224,
     name: {
-      es: '',
+      es: 'Brock',
       en: 'Brock',
-      ja: '' 
+      ja: 'タケシ' 
     },
     artist: 'Taira Akitsu',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Une 1 Energía de tu área de Energía a tu Golem o a tu Onix.',
       en: 'Take 1 Fighting Energy from your Energy Zone and attach it to Golem or Onix.',
-      ja: '' 
+      ja: '自分のエネルギーゾーンから闘エネルギーを1個出し、「ゴローニャ」または「イワーク」につける。' 
     },
     health: 0,
     rarity: CardRarityENUM.UNCOMMON,
@@ -13971,18 +13971,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 225,
     number: 225,
     name: {
-      es: '',
+      es: 'Sabrina',
       en: 'Sabrina',
-      ja: '' 
+      ja: 'ナツメ' 
     },
     artist: 'Yuu Nishida',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Mueve el Pokémon Activo de tu rival a la Banca. (Tu rival elige el nuevo Pokémon Activo).',
       en: 'Switch out your opponent’s Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon)',
-      ja: '' 
+      ja: '相手のバトルポケモンをベンチポケモンと入れ替える。［バトル場に出すポケモンは相手が選ぶ。］'
     },
     health: 0,
     rarity: CardRarityENUM.UNCOMMON,
@@ -14002,18 +14002,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 226,
     number: 226,
     name: {
-      es: '',
+      es: 'Teniente Surge',
       en: 'Lt. Surge',
-      ja: '' 
+      ja: 'マチス' 
     },
     artist: 'nagimiso',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Mueve todas las Energías Eléctricas de tus Pokémon en Banca a tu Raichu, tu Electrode o tu Electabuzz en el Puesto Activo.',
       en: 'Move all Lightning Energy from your Benched Pokémon to your Raichu, Electrode, or Electabuzz in the Active Spot.',
-      ja: '' 
+      ja: '自分のバトル場の「ライチュウ」「マルマイン」「エレブー」に、ベンチポケモン全員から雷エネルギーをすべてつけ替える。' 
     },
     health: 0,
     rarity: CardRarityENUM.UNCOMMON,
@@ -14033,47 +14033,47 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 227,
     number: 227,
     pokedex: 1,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Bulbasaur',
       en: 'Bulbasaur',
-      ja: '' 
+      ja: 'フシギダネ'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Semilla',
+        en: 'Seed Pokémon',
+        ja: 'たねポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'04"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '6.9',
+        en: '15.2',
+        ja: '6.9'
+      }
     },
     artist: 'Ryota Murayama',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Látigo Cepa',
           en: 'Vine Whip',
-          ja: '' 
+          ja: 'つるのムチ'
         },
-        damage: 80,
-        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
-      },
+        damage: 40,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
+      }
     ],
     evolve: [2],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Este Pokémon nace con una semilla en el lomo, que brota con el paso del tiempo.',
       en: 'There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.',
-      ja: '' 
+      ja: '生まれたときから 背中に 植物の タネが あって 少しずつ 大きく 育つ。'
     },
     health: 70,
     rarity: CardRarityENUM.ART,
@@ -14093,35 +14093,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 228,
     number: 228,
     pokedex: 44,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Gloom',
       en: 'Gloom',
-      ja: '' 
+      ja: 'クサイハナ'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Hierbajo',
+        en: 'Weed Pokémon',
+        ja: 'ざっそうポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '8.6',
+        en: '19',
+        ja: '8.6'
+      }
     },
     artist: 'OKACHEKE',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Babeo',
           en: 'Drool',
-          ja: '' 
+          ja: 'よだれ'
         },
         damage: 40,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
@@ -14131,9 +14131,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Libera un fétido olor por los pistilos. El fuerte hedor hace perder el conocimiento a cualquiera que se encuentre en un radio de 2 km.',
       en: 'Its pistils exude an incredibly foul odor. The horrid stench can cause fainting at a distance of 1.25 miles.',
-      ja: '' 
+      ja: 'めしべが　放つ　とてつもなく 臭い　においは　２キロ先まで とどき　気を　失わせる｡'
     },
     health: 80,
     rarity: CardRarityENUM.ART,
@@ -14153,42 +14153,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 229,
     number: 229,
     pokedex: 127,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Pinsir',
       en: 'Pinsir',
-      ja: '' 
+      ja: 'カイロス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Escarabajo',
+        en: 'Stag Beetle Pokémon',
+        ja: 'くわがたポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '55.0',
+        en: '121.3',
+        ja: '55.0'
+      }
     },
     artist: 'Scav',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Cornada Doble',
           en: 'Double Horn',
-          ja: '' 
+          ja: 'ダブルホーン' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
         description: {
-          es: '',
+          es: 'Lanza 2 monedas. Este ataque hace 50 puntos de daño por cada cara.',
           en: 'Flip 2 coins. This attack does 50 damage for each heads.',
-          ja: '' 
+          ja: 'コインを2回投げて、オモテの数×50ダメージ。' 
         }
       }
     ],
@@ -14196,9 +14196,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Los Pinsir se juzgan entre ellos por la robustez de la cornamenta. Cuanto más imponente sea, más agradará a sus congéneres del sexo puesto.',
       en: 'These Pokémon judge one another based on pincers. Thicker, more impressive pincers make for more popularity with the opposite gender.',
-      ja: '' 
+      ja: 'ツノで　互いを　格付けする｡ 太く　立派な　ツノを　持つ カイロスほど　異性に　人気｡' 
     },
     health: 90,
     rarity: CardRarityENUM.ART,
@@ -14221,42 +14221,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 230,
     number: 230,
     pokedex: 4,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Charmander',
       en: 'Charmander',
-      ja: '' 
+      ja: 'ヒトカゲ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Lagartija',
+        en: 'Lizard Pokémon',
+        ja: 'とかげポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '8.5',
+        en: '18.7',
+        ja: '8.5'
+      }
     },
     artist: 'GIDORA',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Ascuas',
           en: 'Ember',
-          ja: '' 
+          ja: 'ひのこ' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.FIRE],
         description: {
-          es: '',
+          es: 'Descarta 1 Energía Fuego de este Pokémon.',
           en: 'Discard 1 Fire Energy from this Pokémon.',
-          ja: '' 
+          ja: 'このポケモンから炎エネルギーを1個トラッシュ。' 
         }
       }
     ],
@@ -14264,9 +14264,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Prefiere las cosas calientes. Dicen que cuando llueve le sale vapor de la punta de la cola.',
       en: 'It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail.',
-      ja: '' 
+      ja: '熱いものを　好む　性格｡ 雨に濡れると　しっぽの　先から 煙が　出るという｡' 
     },
     health: 60,
     rarity: CardRarityENUM.ART,
@@ -14286,47 +14286,47 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 231,
     number: 231,
     pokedex: 78,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Rapidash',
       en: 'Rapidash',
-      ja: '' 
+      ja: 'ギャロップ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Caballo Fuego',
+        en: 'Fire Horse Pokémon',
+        ja: 'ひのうまポケモン'
+      },
+      height: {
+        es: '1.7',
+        en: '5\'7"',
+        ja: '1.7'
+      },
+      weight: {
+        es: '95.0',
+        en: '209.4',
+        ja: '95.0'
+      }
     },
     artist: 'Taira Akitsu',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Crin de Fuego',
           en: 'Fire Mane',
-          ja: '' 
+          ja: 'ほのおのたてがみ' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.FIRE],
       }
     ],
-    evolve: [43],
+    evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Su ardiente crin ondea al viento mientras atraviesa extensas praderas a una velocidad de 240 km/h.',
       en: 'This Pokémon can be seen galloping through fields at speeds of up to 150 mph, its fiery mane fluttering in the wind.',
-      ja: '' 
+      ja: '燃える　たてがみを　はためかせ 時速　２４０キロの　速度で 大草原を　駆けぬけるのだ｡' 
     },
     health: 100,
     rarity: CardRarityENUM.ART,
@@ -14346,35 +14346,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 232,
     number: 232,
     pokedex: 7,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Squirtle',
       en: 'Squirtle',
-      ja: '' 
+      ja: 'ゼニガメ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Tortuguita',
+        en: 'Tiny Turtle Pokémon',
+        ja: 'かめのこポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '9.0',
+        en: '19.8',
+        ja: '9.0'
+      }
     },
     artist: 'Taira Akitsu',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Pistola Agua',
           en: 'Water Gun',
-          ja: '' 
+          ja: 'みずでっぽう' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.WATER],
@@ -14384,9 +14384,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cuando retrae su largo cuello en el caparazón, dispara agua a una presión increíble.',
       en: 'When it retracts its long neck into its shell, it squirts out water with vigorous force.',
-      ja: '' 
+      ja: '長い　首を　甲羅のなかに 引っこめるとき　勢いよく 水鉄砲を　発射する｡' 
     },
     health: 60,
     rarity: CardRarityENUM.ART,
@@ -14406,52 +14406,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 233,
     number: 233,
     pokedex: 130,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Gyarados',
       en: 'Gyarados',
-      ja: '' 
+      ja: 'ギャラドス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Atrocidad',
+        en: 'Atrocious Pokémon',
+        ja: 'きょうあくポケモン'
+      },
+      height: {
+        es: '6.5',
+        en: '21\'4"',
+        ja: '6.5'
+      },
+      weight: {
+        es: '235.0',
+        en: '518.1',
+        ja: '235.0'
+      }
     },
     artist: 'Nurikabe',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Hiperrayo',
           en: 'Hyper Beam',
-          ja: '' 
+          ja: 'はかいこうせん' 
         },
         damage: 100,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
         description: {
-       es: '',
-       en: 'Discard 1 random Energy from your opponent’s Active Pokémon.',
-       ja: '' 
-     }
+          es: 'Descarta 1 Energía aleatoria del Pokémon Activo de tu rival.',
+          en: 'Discard 1 random Energy from your opponent’s Active Pokémon.',
+          ja: '相手のバトルポケモンからエネルギーをランダムに1個トラッシュ。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cuando aparece, monta en cólera. No deja de estar furioso hasta que lo destruye todo.',
       en: 'Once it appears, it goes on a rampage. It remains enraged until it demolishes everything around it.',
-      ja: '' 
+      ja: '一度　姿を　現すと まわりを　すべて　焼き尽くさないと 怒りが　鎮まらない　という｡' 
     },
     health: 150,
     rarity: CardRarityENUM.ART,
@@ -14471,52 +14471,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 234,
     number: 234,
     pokedex: 131,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Lapras',
       en: 'Lapras',
-      ja: '' 
+      ja: 'ラプラス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Transporte',
+        en: 'Transport Pokémon',
+        ja: 'のりものポケモン'
+      },
+      height: {
+        es: '2.5',
+        en: '8\'2"',
+        ja: '2.5'
+      },
+      weight: {
+        es: '220.0',
+        en: '485',
+        ja: '220.0'
+      }
     },
     artist: 'Haru Akasaka',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Hidrobomba',
           en: 'Hydro Pump',
-          ja: '' 
+          ja: 'ハイドロポンプ' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.WATER],
         description: {
-       es: '',
-       en: 'If this Pokémon has at least 3 extra Water Energy attached, this attack does 70 more damage.',
-       ja: '' 
-     }
+          es: 'Si este Pokémon tiene por lo menos 3 Energías Agua adicionales unidas a él, este ataque hace 70 puntos de daño más.',
+          en: 'If this Pokémon has at least 3 extra Water Energy attached, this attack does 70 more damage.',
+          ja: '追加で水エネルギーが3個ついているなら、70ダメージ追加。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Este Pokémon posee una notable inteligencia y un corazón de oro. Entona un canto melodioso mientras surca el mar.',
       en: 'A smart and kindhearted Pokémon, it glides across the surface of the sea while its beautiful song echoes around it.',
-      ja: '' 
+      ja: '賢く　心優しい　ポケモン｡ きれいな　歌声を　響かせながら 海の上を　泳いで　いく｡' 
     },
     health: 100,
     rarity: CardRarityENUM.ART,
@@ -14536,35 +14536,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 235,
     number: 235,
     pokedex: 101,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Electrode',
       en: 'Electrode',
-      ja: '' 
+      ja: 'マルマイン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Bola',
+        en: 'Sphere Pokémon',
+        ja: 'きゅうたいポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '66.6',
+        en: '146.8',
+        ja: '66.6'
+      }
     },
     artist: 'DOM',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Bola Voltio',
           en: 'Electro Ball',
-          ja: '' 
+          ja: 'エレキボール' 
         },
         damage: 70,
         energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
@@ -14574,9 +14574,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cuanta más energía almacena, mayor velocidad alcanza, aunque aumenta también el riesgo de que explote.',
       en: 'The more energy it charges up, the faster it gets. But this also makes it more likely to explode.',
-      ja: '' 
+      ja: '電気エネルギーを　溜めこむほど 高速で　動けるようになるが そのぶん　爆発　しやすい｡' 
     },
     health: 80,
     rarity: CardRarityENUM.ART,
@@ -14596,52 +14596,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 236,
     number: 236,
     pokedex: 65,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Alakazam',
       en: 'Alakazam',
-      ja: '' 
+      ja: 'フーディン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Psi',
+        en: 'Psi Pokémon',
+        ja: 'ねんりきポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '48.0',
+        en: '105.8',
+        ja: '48.0'
+      }
     },
     artist: 'AKIRA EGAWA',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Psíquico',
           en: 'Psychic',
-          ja: '' 
+          ja: 'サイコキネシス' 
         },
         damage: 60,
         energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'This attack does 30 more damage for each Energy attached to your opponent’s Active Pokémon.',
-       ja: '' 
-     }
+          es: 'Este ataque hace 30 puntos de daño más por cada Energía unida al Pokémon Activo de tu rival.',
+          en: 'This attack does 30 more damage for each Energy attached to your opponent’s Active Pokémon.',
+          ja: '相手のバトルポケモンのエネルギーの数×30ダメージ追加。' 
+        }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Posee una capacidad intelectual fuera de lo común que le permite recordar todo lo sucedido desde el instante de su nacimiento.',
       en: 'It has an incredibly high level of intelligence. Some say that Alakazam remembers everything that ever happens to it, from birth till death.',
-      ja: '' 
+      ja: '非常に　高い　知能を　持つ｡ 生まれてから　死ぬまでの　できごとを すべて　覚えている　という｡' 
     },
     health: 130,
     rarity: CardRarityENUM.ART,
@@ -14661,35 +14661,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 237,
     number: 237,
     pokedex: 79,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Slowpoke',
       en: 'Slowpoke',
-      ja: '' 
+      ja: 'ヤドン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Atontado',
+        en: 'Dopey Pokémon',
+        ja: 'まぬけポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '36.0',
+        en: '79.4',
+        ja: '36.0'
+      }
     },
     artist: 'Miki Tanaka',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Coletón',
           en: 'Tail Whap',
-          ja: '' 
+          ja: 'しっぽではたく' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL],
@@ -14699,9 +14699,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Increíblemente lento y torpe. Tarda cinco segundos en sentir dolor si lo atacan.',
       en: 'It is incredibly slow and dopey. It takes five seconds for it to feel pain when under attack.',
-      ja: '' 
+      ja: '動きが　のろく　間抜け｡ 叩かれても　５秒　たってから 痛さを　感じるほどだ｡' 
     },
     health: 70,
     rarity: CardRarityENUM.ART,
@@ -14721,35 +14721,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 238,
     number: 238,
     pokedex: 50,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Diglett',
       en: 'Diglett',
-      ja: '' 
+      ja: 'ディグダ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Topo',
+        en: 'Mole Pokémon',
+        ja: 'もぐらポケモン'
+      },
+      height: {
+        es: '0.2',
+        en: '0\'8"',
+        ja: '0.2'
+      },
+      weight: {
+        es: '0.8',
+        en: '1.8',
+        ja: '0.8'
+      }
     },
     artist: 'Shinya Komatsu',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Bofetón Lodo',
           en: 'Mud-Slap',
-          ja: '' 
+          ja: 'どろかけ' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.FIGHT],
@@ -14759,9 +14759,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Vive 1 m por debajo del suelo, donde se alimenta de raíces. A veces también aparece en la superficie.',
       en: 'It lives about one yard underground, where it feeds on plant roots. It sometimes appears aboveground.',
-      ja: '' 
+      ja: '地下１メートルくらいを　掘りすすみ 木の根っこなどを　かじって　生きる｡ たまに　地上に　顔を出す｡' 
     },
     health: 50,
     rarity: CardRarityENUM.ART,
@@ -14781,52 +14781,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 239,
     number: 239,
     pokedex: 104,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Cubone',
       en: 'Cubone',
-      ja: '' 
+      ja: 'カラカラ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Solitario',
+        en: 'Lonely Pokémon',
+        ja: 'こどくポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '6.5',
+        en: '14.3',
+        ja: '6.5'
+      }
     },
     artist: 'Teeziro',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Gruñido',
           en: 'Growl',
-          ja: '' 
+          ja: 'なきごえ' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'During your opponent’s next turn, attacks used by the Defending Pokémon do −20 damage.',
-       ja: '' 
-     }
+          es: 'Durante el próximo turno de tu rival, los ataques del Pokémon Defensor hacen -20 puntos de daño.',
+          en: 'During your opponent’s next turn, attacks used by the Defending Pokémon do −20 damage.',
+          ja: '次の相手の番、このワザを受けたポケモンが使うワザのダメージを-20する。' 
+        }
       },
     ],
     evolve: [152],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cuando llora al acordarse de su madre fallecida, su llanto resuena en el cráneo que lleva en la cabeza.',
       en: 'When the memory of its departed mother brings it to tears, its cries echo mournfully within the skull it wears on its head.',
-      ja: '' 
+      ja: '死に別れた　母親を　思い出し 泣くと　頭に　被った　骨の　中で 物悲しく　響くのだ｡' 
     },
     health: 60,
     rarity: CardRarityENUM.ART,
@@ -14846,52 +14846,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 240,
     number: 240,
     pokedex: 31,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Nidoqueen',
       en: 'Nidoqueen',
-      ja: '' 
+      ja: 'ニドクイン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Taladro',
+        en: 'Drill Pokémon',
+        ja: 'ドリルポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '4\'3"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '60.0',
+        en: '132.3',
+        ja: '60.0'
+      }
     },
     artist: 'aoki',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Flechazo',
           en: 'Lovestrike',
-          ja: '' 
+          ja: 'ラブラブアタック' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'This attack does 50 more damage for each of your Benched Nidoking.',
-       ja: '' 
-     }
+          es: 'Este ataque hace 50 puntos de daño más por cada uno de tus Nidoking en Banca.',
+          en: 'This attack does 50 more damage for each of your Benched Nidoking.',
+          ja: '自分のベンチの「ニドキング」の数×50ダメージ追加' 
+        }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Su defensa destaca sobre la capacidad ofensiva. Usa las escamas del cuerpo como una coraza para proteger a su prole de cualquier ataque.',
       en: 'Nidoqueen is better at defense than offense. With scales like armor, this Pokémon will shield its children from any kind of attack.',
-      ja: '' 
+      ja: '攻めるよりも　守るほうが　得意｡ 鎧のような　ウロコで　いかなる 攻撃からも　子どもを　守る｡' 
     },
     health: 140,
     rarity: CardRarityENUM.ART,
@@ -14911,52 +14911,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 241,
     number: 241,
     pokedex: 34,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Nidoking',
       en: 'Nidoking',
-      ja: '' 
+      ja: 'ニドキング' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Taladro',
+        en: 'Drill Pokémon',
+        ja: 'ドリルポケモン'
+      },
+      height: {
+        es: '1.4',
+        en: '4\'7"',
+        ja: '1.4'
+      },
+      weight: {
+        es: '62.0',
+        en: '136.7',
+        ja: '62.0'
+      }
     },
     artist: 'nagimiso',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Cuerno Veneno',
           en: 'Poison Horn',
-          ja: '' 
+          ja: 'どくのつの' 
         },
         damage: 90,
         energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Your opponent’s Active Pokémon is now Poisoned.',
-       ja: '' 
-     }
+          es: 'El Pokémon Activo de tu rival pasa a estar Envenenado.',
+          en: 'Your opponent’s Active Pokémon is now Poisoned.',
+          ja: '相手のバトルポケモンをどくにする。' 
+        }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Una vez que se desboca, no hay quien lo pare. Solo se calma ante Nidoqueen, su compañera de toda la vida.',
       en: 'When it goes on a rampage, it’s impossible to control. But in the presence of a Nidoqueen it’s lived with for a long time, Nidoking calms down.',
-      ja: '' 
+      ja: '暴れると　手が　つけられなくなるが 長年　連れ添った　ニドクインの 前では　穏やかな　顔に　なる｡' 
     },
     health: 150,
     rarity: CardRarityENUM.ART,
@@ -14976,35 +14976,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 242,
     number: 242,
     pokedex: 42,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Golbat',
       en: 'Golbat',
-      ja: '' 
+      ja: 'ゴルバット' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Murciélago',
+        en: 'Bat Pokémon',
+        ja: 'こうもりポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '55.0',
+        en: '121.3',
+        ja: '55.0'
+      }
     },
     artist: 'Tomokazu Komiya',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Ataque Ala',
           en: 'Wing Attack',
-          ja: '' 
+          ja: 'つばさでうつ' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.NORMAL],
@@ -15014,9 +15014,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Le encanta chuparles la sangre a los seres vivos. En ocasiones comparte la preciada colecta con otros congéneres hambrientos.',
       en: 'It loves to drink other creatures’ blood. It’s said that if it finds others of its kind going hungry, it sometimes shares the blood it’s gathered.',
-      ja: '' 
+      ja: '生き物の　血液が　好物｡ 腹ペコの　仲間に　吸った　血を 分け与えることも　あるという｡' 
     },
     health: 70,
     rarity: CardRarityENUM.ART,
@@ -15036,35 +15036,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 243,
     number: 243,
     pokedex: 110,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Weezing',
       en: 'Weezing',
-      ja: '' 
+      ja: 'マタドガス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gas Venenoso',
+        en: 'Poison Gas Pokémon',
+        ja: 'どくガスポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '9.5',
+        en: '20.9',
+        ja: '9.5'
+      }
     },
     artist: 'KEIICHIRO ITO',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Placaje',
           en: 'Tackle',
-          ja: '' 
+          ja: 'たいあたり' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.DARK],
@@ -15072,23 +15072,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
+          es: 'Escape de Gas',
           en: 'Gas Leak',
-          ja: '' 
+          ja: 'もれだすガス' 
         },
       description: {
-       es: '',
+       es: 'Una vez durante tu turno, si este Pokémon está en el Puesto Activo, puedes dejar al Pokémon Activo de tu rival Envenenado.',
        en: 'Once during your turn, if this Pokémon is in the Active Spot, you may make your opponent’s Active Pokémon Poisoned',
-       ja: '' 
+       ja: 'このポケモンがバトル場にいるなら、自分の番に1回使える。相手のバトルポケモンをどくにする。' 
      }
     },
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Si uno de los gemelos Koffing se infla, el otro se desinfla. Mezclan constantemente sus venenosos gases.',
       en: 'If one of the twin Koffing inflates, the other one deflates. It constantly mixes its poisonous gases.',
-      ja: '' 
+      ja: 'どちらかが　ふくらむと　片方は しぼむ　双子の　ドガース｡　いつも 体内の　毒ガスを　混ぜている｡' 
     },
     health: 110,
     rarity: CardRarityENUM.ART,
@@ -15108,52 +15108,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 244,
     number: 244,
     pokedex: 149,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Dragonite',
       en: 'Dragonite',
-      ja: '' 
+      ja: 'カイリュー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Dragón',
+        en: 'Dragon Pokémon',
+        ja: 'ドラゴンポケモン'
+      },
+      height: {
+        es: '2.2',
+        en: '7\'3"',
+        ja: '2.2'
+      },
+      weight: {
+        es: '210.0',
+        en: '463',
+        ja: '210.0'
+      }
     },
     artist: 'Gemi',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Cometa Draco',
           en: 'Draco Meteor',
-          ja: '' 
+          ja: 'りゅうせいぐん' 
         },
         damage: 200,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: '1 of your opponent’s Pokémon is chosen at random 4 times. For each time a Pokémon was chosen, do 50 damage to it.',
-       ja: '' 
-     }
+          es: 'Se elige 4 veces a un Pokémon aleatorio de tu rival. Haz a cada uno 50 puntos de daño por cada vez que haya resultado elegido.',
+          en: '1 of your opponent’s Pokémon is chosen at random 4 times. For each time a Pokémon was chosen, do 50 damage to it.',
+          ja: '相手のポケモンがランダムに選ばれ、選ばれたポケモン全員に、選ばれた回数×50ダメージ。' 
+        }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Dicen que viven en una isla en algún lugar del océano que solo ellos habitan.',
       en: 'It is said that somewhere in the ocean lies an island where these gather. Only they live there.',
-      ja: '' 
+      ja: '広い　海の　どこかには カイリューだけが　集まって　暮らす 島が　あるらしい｡' 
     },
     health: 160,
     rarity: CardRarityENUM.ART,
@@ -15173,35 +15173,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 245,
     number: 245,
     pokedex: 18,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Pidgeot',
       en: 'Pidgeot',
-      ja: '' 
+      ja: 'ピジョット' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pájaro',
+        en: 'Bird Pokémon',
+        ja: 'とりポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '39.5',
+        en: '87.1',
+        ja: '39.5'
+      }
     },
     artist: 'Anesaki Dynamic',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Ataque Ala',
           en: 'Wing Attack',
-          ja: '' 
+          ja: 'つばさでうつ' 
         },
         damage: 70,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
@@ -15209,23 +15209,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
+          es: 'Ahuyentar',
           en: 'Drive Off',
-          ja: '' 
+          ja: 'おいはらう' 
         },
       description: {
-       es: '',
+       es: 'Una vez durante tu turno, puedes mover el Pokémon Activo de tu rival a la Banca. (Tu rival elige el nuevo Pokémon Activo).',
        en: 'Once during your turn, you may switch out your opponent’s Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon)',
-       ja: '' 
+       ja: '自分の番に1回使える。相手のバトルポケモンをベンチポケモンと入れ替える。（バトル場に出すポケモンは相手が選ぶ。）' 
      }
     },
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cuando caza, vuela muy deprisa a ras del agua y sorprende a inocentes presas como Magikarp.',
       en: 'When hunting, it skims the surface of water at high speed to pick off unwary prey such as Magikarp.',
-      ja: '' 
+      ja: 'エサを　探すとき　水面　すれすれを 滑るように　飛んで コイキングなどを　わしづかみにする｡' 
     },
     health: 130,
     rarity: CardRarityENUM.ART,
@@ -15245,52 +15245,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 246,
     number: 246,
     pokedex: 52,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Meowth',
       en: 'Meowth',
-      ja: '' 
+      ja: 'ニャース' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gato Araña',
+        en: '	Scratch Cat Pokémon',
+        ja: 'ばけねこポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '4.2',
+        en: '9.3',
+        ja: '4.2'
+      }
     },
     artist: 'Mina Nakai',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Día de Pago',
           en: 'Pay Day',
-          ja: '' 
+          ja: 'ネコにこばん' 
         },
         damage: 10,
         energy: [PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Draw a card.',
-       ja: '' 
-     }
+          es: 'Roba 1 carta.',
+          en: 'Draw a card.',
+          ja: '自分の山札を1枚引く。' 
+        }
       },
     ],
     evolve: [197],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Durante el día, se dedica a dormir. De noche, vigila su territorio con un brillo en los ojos.',
       en: 'All it does is sleep during the daytime. At night, it patrols its territory with its eyes aglow.',
-      ja: '' 
+      ja: '昼間は　寝てばかりいる｡ 夜になると　目が　輝き 縄張りを　歩きまわる｡' 
     },
     health: 60,
     rarity: CardRarityENUM.ART,
@@ -15310,52 +15310,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 247,
     number: 247,
     pokedex: 132,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Ditto',
       en: 'Ditto',
-      ja: '' 
+      ja: 'メタモン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Transformación',
+        en: 'Transform Pokémon',
+        ja: 'へんしんポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '4.0',
+        en: '8.8',
+        ja: '4.0'
+      }
     },
     artist: 'Jerky',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Copietear',
           en: 'Copy Anything',
-          ja: '' 
+          ja: 'どこでもコピー' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Choose 1 of your opponent’s Pokémon’s attacks and use it as this attack. If this Pokémon doesn’t have the necessary Energy to use that attack, this attack does nothing.',
-       ja: '' 
-     }
+          es: 'Elige 1 de los ataques de los Pokémon de tu rival y úsalo para este ataque. Si este Pokémon no tiene la Energía necesaria para usar ese ataque, este ataque no hace nada.',
+          en: 'Choose 1 of your opponent’s Pokémon’s attacks and use it as this attack. If this Pokémon doesn’t have the necessary Energy to use that attack, this attack does nothing.',
+          ja: '相手の場のポケモンが持ってるワザを1つ選び、このワザとして使う。選んだワザに必要なエネルギーがこのポケモンについていなければ、このワザは失敗。' 
+        }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Su habilidad para transformarse es perfecta, pero, si se le hace reír, perderá la fuerza y no podrá mantenerse transformado.',
       en: 'Its transformation ability is perfect. However, if made to laugh, it can’t maintain its disguise.',
-      ja: '' 
+      ja: '変身は　完璧なのだが 笑わされて　力が　抜けると 変身は　解けてしまう｡' 
     },
     health: 70,
     rarity: CardRarityENUM.ART,
@@ -15375,35 +15375,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 248,
     number: 248,
     pokedex: 133,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Eevee',
       en: 'Eevee',
-      ja: '' 
+      ja: 'イーブイ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Evolución',
+        en: 'Evolution Pokémon',
+        ja: 'しんかポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '6.5',
+        en: '14.3',
+        ja: '6.5'
+      }
     },
     artist: 'sowsow',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Placaje',
           en: 'Tackle',
-          ja: '' 
+          ja: 'たいあたり' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.NORMAL],
@@ -15413,9 +15413,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Es capaz de evolucionar de muchas maneras para adaptarse sin problemas a cualquier medio.',
       en: 'Its ability to evolve into many forms allows it to adapt smoothly and perfectly to any environment.',
-      ja: '' 
+      ja: '環境の　変化に　すぐさま 合わせられるよう　いくつもの 進化の　可能性を　秘めている｡' 
     },
     health: 60,
     rarity: CardRarityENUM.ART,
@@ -15435,35 +15435,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 249,
     number: 249,
     pokedex: 137,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Porygon',
       en: 'Porygon',
-      ja: '' 
+      ja: 'ポリゴン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Virtual',
+        en: 'Virtual Pokémon',
+        ja: 'バーチャルポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '36.5',
+        en: '80.5',
+        ja: '36.5'
+      }
     },
     artist: 'Akira Komayama',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Afilar',
           en: 'Sharpen',
-          ja: '' 
+          ja: 'かくばる' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.NORMAL],
@@ -15471,23 +15471,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
+          es: 'Escaneo de Datos',
           en: 'Data Scan',
-          ja: '' 
+          ja: 'データスキャン' 
         },
       description: {
-       es: '',
+       es: 'Una vez durante tu turno, puedes mirar la primera carta de tu baraja.',
        en: 'Once during your turn, you may look at the top card of your deck.',
-       ja: '' 
+       ja: '自分の番に1回使える。自分の山札を上から1枚見て、元に戻す。' 
      }
     },
-    evolve: [],
+    evolve: [500],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Se trata del primer Pokémon del mundo creado a partir de códigos de programación gracias al uso de tecnología de vanguardia.',
       en: 'State-of-the-art technology was used to create Porygon. It was the first artificial Pokémon to be created via computer programming.',
-      ja: '' 
+      ja: '最高の　科学力を　使い 世界で　はじめて　プログラムにより 作られた　人工の　ポケモン｡' 
     },
     health: 50,
     rarity: CardRarityENUM.ART,
@@ -15507,35 +15507,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 250,
     number: 250,
     pokedex: 143,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Snorlax',
       en: 'Snorlax',
-      ja: '' 
+      ja: 'カビゴン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Dormir',
+        en: 'Sleeping Pokémon',
+        ja: 'いねむりポケモン'
+      },
+      height: {
+        es: '2.1',
+        en: '6\'11"',
+        ja: '2.1'
+      },
+      weight: {
+        es: '460.0',
+        en: '1014.1',
+        ja: '460.0'
+      }
     },
     artist: 'HYOGONOSUKE',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Rodar',
           en: 'Rollout',
-          ja: '' 
+          ja: 'ころがる' 
         },
         damage: 70,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
@@ -15545,9 +15545,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'No se encuentra satisfecho hasta haber ingerido 400 kg de comida cada día. Cuando acaba de comer, se queda dormido.',
       en: 'It is not satisfied unless it eats over 880 pounds of food every day. When it is done eating, it goes promptly to sleep.',
-      ja: '' 
+      ja: '１日に　食べ物を　４００キロ 食べないと　気がすまない｡ 食べ終わると　眠ってしまう｡' 
     },
     health: 150,
     rarity: CardRarityENUM.ART,
@@ -15567,61 +15567,61 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 251,
     number: 251,
     pokedex: 3,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Venusaur EX',
       en: 'Venusaur EX',
-      ja: '' 
+      ja: 'フシギバナEX'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Semilla',
+        en: 'Seed Pokémon',
+        ja: 'たねポケモン'
+      },
+      height: {
+        es: '2.0',
+        en: '6\'07"',
+        ja: '2.0'
+      },
+      weight: {
+        es: '100.0',
+        en: '220,5',
+        ja: '100.0'
+      }
     },
     artist: 'PLANETA CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Hoja Afilada',
           en: 'Razor Leaf',
-          ja: '' 
+          ja: 'はっぱカッター'
         },
         damage: 60,
-        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
       },
       {
         name: {
-          es: '',
+          es: 'Floración Gigante',
           en: 'Giant Bloom',
-          ja: '' 
+          ja: 'ジャイアントブルーム'
         },
         damage: 100,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Heal 30 damage from this Pokémon.',
-       ja: '' 
-     }
+          es: 'Cura 30 puntos de daño a este Pokémon.',
+          en: 'Heal 30 damage from this Pokémon.',
+          ja: 'このポケモンのHPを30回復。'
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'La planta florece cuando absorbe energía solar, lo cual le obliga a buscar siempre la luz del sol.',
+      en: 'Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.',
+      ja: '太陽エネルギーを 栄養にして 大きな花が 開く。 日なたに 引き寄せられるように 移動する。'
     },
     health: 190,
     rarity: CardRarityENUM.SUPER,
@@ -15641,52 +15641,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 252,
     number: 252,
     pokedex: 103,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Exeggutor EX',
       en: 'Exeggutor EX',
-      ja: '' 
+      ja: 'ナッシー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Coco',
+        en: 'Coconut Pokémon',
+        ja: 'やしのみポケモン'
+      },
+      height: {
+        es: '2',
+        en: '6\'7"',
+        ja: '2'
+      },
+      weight: {
+        es: '120',
+        en: '264.6',
+        ja: '120'
+      }
     },
     artist: 'PLANETA CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Golpe Tropical',
           en: 'Tropical Swing',
-          ja: '' 
+          ja: 'トロピカルスイング' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.GRASS],
         description: {
-       es: '',
-       en: 'Flip a coin. If heads, this attack does 40 more damage.',
-       ja: '' 
-     }
+          es: 'Lanza 1 moneda. Si sale cara, este ataque hace 40 puntos de daño más.',
+          en: 'Flip a coin. If heads, this attack does 40 more damage.',
+          ja: 'コインを1回投げてオモテなら、40ダメージ追加。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Cada una de las tres cabezas piensa de forma independiente y apenas muestra interés por el resto.',
+      en: 'Each of Exeggutor’s three heads is thinking different thoughts. The three don’t seem to be very interested in one another.',
+      ja: '３つの　頭は　べつのことを 考えている｡　自分以外は あまり　興味がない　ようだ｡' 
     },
     health: 160,
     rarity: CardRarityENUM.SUPER,
@@ -15709,61 +15709,61 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 253,
     number: 253,
     pokedex: 6,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Charizard EX',
       en: 'Charizard EX',
-      ja: '' 
+      ja: 'リザードン EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Llama',
+        en: 'Flame Pokémon',
+        ja: 'かえんポケモン'
+      },
+      height: {
+        es: '1.7',
+        en: '5\'7"',
+        ja: '1.7'
+      },
+      weight: {
+        es: '90.5',
+        en: '199.5',
+        ja: '90.5'
+      }
     },
     artist: 'PLANETA CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Cuchillada',
           en: 'Slash',
-          ja: '' 
+          ja: 'きりさく' 
         },
         damage: 60,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
       },
       {
         name: {
-          es: '',
+          es: 'Tormenta Carmesí',
           en: 'Crimson Storm',
-          ja: '' 
+          ja: 'ぐれんのあらし' 
         },
         damage: 200,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Discard 2 Fire Energy from this Pokémon.',
-       ja: '' 
-     }
+          es: 'Descarta 2 Energías Fuego de este Pokémon.',
+          en: 'Discard 2 Fire Energy from this Pokémon.',
+          ja: 'このポケモンから炎エネルギーを2個トラッシュ。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Escupe un fuego tan caliente que funde las rocas. Causa incendios forestales sin querer.',
+      en: 'It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames.',
+      ja: '岩石も　焼けるような 灼熱の　炎を　吐いて 山火事を　起こすことが　ある｡' 
     },
     health: 180,
     rarity: CardRarityENUM.SUPER,
@@ -15783,52 +15783,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 254,
     number: 254,
     pokedex: 59,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Arcanine EX',
       en: 'Arcanine EX',
-      ja: '' 
+      ja: 'ウインディ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Leyenda',
+        en: 'Legendary Pokémon',
+        ja: 'でんせつポケモン'
+      },
+      height: {
+        es: '1.9',
+        en: '6\'3"',
+        ja: '1.9'
+      },
+      weight: {
+        es: '155.0',
+        en: '341.7',
+        ja: '155.0'
+      }
     },
     artist: 'PLANETA Saito',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Infierno Desatado',
           en: 'Inferno Onrush',
-          ja: '' 
+          ja: 'もうかのとっしん' 
         },
         damage: 120,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'This Pokémon also does 20 damage to itself.',
-       ja: '' 
-     }
+          es: 'Este Pokémon también se hace 20 puntos de daño a sí mismo.',
+          en: 'This Pokémon also does 20 damage to itself.',
+          ja: 'このポケモンにも20ダメージ。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Cuenta un antiguo pergamino que la gente se quedaba fascinada al verlo correr por las praderas.',
+      en: 'An ancient picture scroll shows that people were captivated by its movement as it ran through prairies.',
+      ja: '草原を　駆け抜ける　様子は 人々の　心を　虜にしたと 昔の　絵巻に　記されていた｡' 
     },
     health: 150,
     rarity: CardRarityENUM.SUPER,
@@ -15848,49 +15848,49 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 255,
     number: 255,
     pokedex: 145,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Moltres EX',
       en: 'Moltres EX',
-      ja: '' 
+      ja: 'ファイヤー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Llama',
+        en: 'Flame Pokémon',
+        ja: 'かえんポケモン'
+      },
+      height: {
+        es: '2',
+        en: '6\'7"',
+        ja: '2'
+      },
+      weight: {
+        es: '60.0',
+        en: '132.3',
+        ja: '60.0'
+      }
     },
     artist: 'PLANETA Saito',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Danza Infernal',
           en: 'Inferno Dance',
-          ja: '' 
+          ja: 'れっかのまい' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.FIRE],
         description: {
-       es: '',
-       en: 'Flip 3 coins. Take an amount of Fire Energy from your Energy Zone equal to the number of heads and attach it to your Benched Fire Pokémon in any way you like.',
-       ja: '' 
-     }
+          es: 'Lanza 3 monedas. Une a tus Pokémon Fuego en Banca, de la manera que desees, tantas Energías Fuego de tu área de Energía como caras hayan salido.',
+          en: 'Flip 3 coins. Take an amount of Fire Energy from your Energy Zone equal to the number of heads and attach it to your Benched Fire Pokémon in any way you like.',
+          ja: 'コインを3回投げ、オモテの数ぶんの炎エネルギーを自分のエネルギーゾーンから出し、ベンチの炎ポケモンに好きなようにつける。' 
+        }
       },
       {
         name: {
-          es: '',
+          es: 'Explosión de Calor',
           en: 'Heat Blast',
-          ja: '' 
+          ja: 'ヒートブラスト' 
         },
         damage: 70,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
@@ -15900,9 +15900,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Una de las aves legendarias. Al batir las alas, las llamas que las envuelven emiten un hermoso fulgor rojo.',
+      en: 'It’s one of the legendary bird Pokémon. When Moltres flaps its flaming wings, they glimmer with a dazzling red glow.',
+      ja: '羽ばたくと　翼の　炎が 赤く　美しく　きらめく 伝説の　鳥ポケモンの　１匹｡' 
     },
     health: 140,
     rarity: CardRarityENUM.SUPER,
@@ -15925,61 +15925,61 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 256,
     number: 256,
     pokedex: 9,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Blastoise EX',
       en: 'Blastoise EX',
-      ja: '' 
+      ja: 'カメックス EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Armazón',
+        en: 'Shellfish Pokémon',
+        ja: 'こうらポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '85.5',
+        en: '188.5',
+        ja: '85.5'
+      }
     },
     artist: 'PLANETA CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Surf',
           en: 'Surf',
-          ja: '' 
+          ja: 'なみのり' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL]
       },
       {
         name: {
-          es: '',
+          es: 'Hidrobazuca',
           en: 'Hydro Bazooka',
-          ja: '' 
+          ja: 'ハイドロバズーカ' 
         },
         damage: 100,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'If this Pokémon has at least 2 extra Water Energy attached, this attack does 60 more damage.',
-       ja: '' 
-     }
+          es: 'Si este Pokémon tiene por lo menos 2 Energías Agua adicionales unidas a él, este ataque hace 60 puntos de daño más.',
+          en: 'If this Pokémon has at least 2 extra Water Energy attached, this attack does 60 more damage.',
+          ja: '追加で水エネルギーが2個ついているなら、60ダメージ追加。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Para acabar con su enemigo, lo aplasta con el peso de su cuerpo. En momentos de apuro, se esconde en el caparazón.',
+      en: 'It crushes its foe under its heavy body to cause fainting. In a pinch, it will withdraw inside its shell.',
+      ja: '体が　重たく　のしかかって 相手を　気絶させる｡ ピンチの　ときは　殻に　隠れる｡' 
     },
     health: 180,
     rarity: CardRarityENUM.SUPER,
@@ -15999,35 +15999,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 257,
     number: 257,
     pokedex: 121,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Starmie EX',
       en: 'Starmie EX',
-      ja: '' 
+      ja: 'スターミー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Misterioso',
+        en: 'Mysterious Pokémon',
+        ja: 'なぞのポケモン'
+      },
+      height: {
+        es: '1.1',
+        en: '3\'7"',
+        ja: '1.1'
+      },
+      weight: {
+        es: '80.0',
+        en: '176.4',
+        ja: '80.0'
+      }
     },
     artist: 'PLANETA Igarashi',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Hidroestallido',
           en: 'Hydro Splash',
-          ja: '' 
+          ja: 'ハイドロスプラッシュ' 
         },
         damage: 90,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
@@ -16037,9 +16037,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Su órgano central, conocido como núcleo, brilla con los colores del arcoíris cuando se dispone a liberar sus potentes poderes psíquicos.',
+      en: 'This Pokémon has an organ known as its core. The organ glows in seven colors when Starmie is unleashing its potent psychic powers.',
+      ja: '強烈な　サイコパワーを　放つとき コアと　呼ばれる　器官が 七色に　きらめく｡' 
     },
     health: 130,
     rarity: CardRarityENUM.SUPER,
@@ -16059,61 +16059,61 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 258,
     number: 258,
     pokedex: 144,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Articuno EX',
       en: 'Articuno EX',
-      ja: '' 
+      ja: 'フリーザー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Congelar',
+        en: 'Freeze Pokémon',
+        ja: '	れいとうポケモン'
+      },
+      height: {
+        es: '1.7',
+        en: '5\'7"',
+        ja: '1.7'
+      },
+      weight: {
+        es: '55.4',
+        en: '122.1',
+        ja: '55.4'
+      }
     },
     artist: 'PLANETA Saito',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Ala Gélida',
           en: 'Ice Wing',
-          ja: '' 
+          ja: 'アイスウイング' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
       },
       {
         name: {
-          es: '',
+          es: 'Ventisca',
           en: 'Blizzard',
-          ja: '' 
+          ja: 'ふぶき' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
         description: {
-       es: '',
-       en: 'This attack also does 10 damage to each of your opponent’s Benched Pokémon.',
-       ja: '' 
-     }
+          es: 'Este ataque también hace 10 puntos de daño a cada uno de los Pokémon en Banca de tu rival.',
+          en: 'This attack also does 10 damage to each of your opponent’s Benched Pokémon.',
+          ja: '相手のベンチポケモン全員にも10ダメージ。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Se dice que sus bellas alas azules se componen de hielo. Vuela en torno a las montañas nevadas con su larga cola al viento.',
+      en: 'It’s said that this Pokémon’s beautiful blue wings are made of ice. Articuno flies over snowy mountains, its long tail fluttering along behind it.',
+      ja: '青く　美しい　羽根は　氷で できていると　言われている｡　長い 尾を　たなびかせ　雪山を　飛ぶ｡' 
     },
     health: 140,
     rarity: CardRarityENUM.SUPER,
@@ -16133,52 +16133,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 259,
     number: 259,
     pokedex: 25,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Pikachu EX',
       en: 'Pikachu EX',
-      ja: '' 
+      ja: 'ピカチュウ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '6.0',
+        en: '13.2',
+        ja: '6.0'
+      }
     },
     artist: 'PLANETA CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Circuito Circular',
           en: 'Circle Circuit',
-          ja: '' 
+          ja: 'エレキサークル' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
         description: {
-       es: '',
-       en: 'This attack does 30 damage for each of your Benched Lightning Pokémon.',
-       ja: '' 
-     }
+          es: 'Este ataque hace 30 puntos de daño por cada uno de tus Pokémon Eléctricos en Banca.',
+          en: 'This attack does 30 damage for each of your Benched Lightning Pokémon.',
+          ja: '自分のベンチの雷ポケモンの数×30ダメージ。' 
+        }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Cuando se enfada, este Pokémon descarga la energía que almacena en el interior de las bolsas de las mejillas.',
+      en: 'When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.',
+      ja: '両頬には　電気を　溜めこむ 袋がある｡　怒ると　溜めこんだ 電気を　一気に　放ってくる｡' 
     },
     health: 120,
     rarity: CardRarityENUM.SUPER,
@@ -16198,61 +16198,61 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 260,
     number: 260,
     pokedex: 145,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Zapdos EX',
       en: 'Zapdos EX',
-      ja: '' 
+      ja: 'サンダー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Eléctrico',
+        en: 'Electric Pokémon',
+        ja: 'でんげきポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '52.6',
+        en: '116',
+        ja: '52.6'
+      }
     },
     artist: 'PLANETA Saito',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Picotazo',
           en: 'Peck',
-          ja: '' 
+          ja: 'つつく' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.ELECTRIC],
       },
       {
         name: {
-          es: '',
+          es: 'Huracán Atronador',
           en: 'Thundering Hurricane',
-          ja: '' 
+          ja: 'ハリケーンサンダー' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
         description: {
-       es: '',
-       en: 'Flip 4 coins. This attack does 50 damage for each heads.',
-       ja: '' 
-     }
+        es: 'Lanza 4 monedas. Este ataque hace 50 puntos de daño por cada cara.',
+        en: 'Flip 4 coins. This attack does 50 damage for each heads.',
+        ja: '	コインを4回投げ、オモテの数×50ダメージ。' 
+      }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Posee el poder de controlar la electricidad a su antojo. Según la creencia popular, anida oculto en oscuros nubarrones de tormenta.',
+      en: 'This Pokémon has complete control over electricity. There are tales of Zapdos nesting in the dark depths of pitch-black thunderclouds.',
+      ja: '電気を　自在に　操る｡ 真っ黒な　雷雲の　中に 巣があると　言い伝えられている｡' 
     },
     health: 130,
     rarity: CardRarityENUM.SUPER,
@@ -16275,35 +16275,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 261,
     number: 261,
     pokedex: 94,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Gengar EX',
       en: 'Gengar EX',
-      ja: '' 
+      ja: 'ゲンガー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Sombra',
+        en: 'Shadow Pokémon',
+        ja: 'シャドーポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '40.5',
+        en: '89.3',
+        ja: '40.5'
+      }
     },
     artist: 'PLANETA CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Disparo Embrujado',
           en: 'Spooky Shot',
-          ja: '' 
+          ja: 'ホロウショット' 
         },
         damage: 100,
         energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC],
@@ -16311,23 +16311,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
+          es: 'Hechizo Sombrío',
           en: 'Shadowy Spellbind',
-          ja: '' 
+          ja: 'かげのじゅばく' 
         },
       description: {
-       es: '',
+       es: 'Mientras este Pokémon esté en el Puesto Activo, tu rival no puede jugar ninguna carta de Partidario de su mano.',
        en: 'As long as this Pokémon is in the Active Spot, your opponent can’t use any Supporter cards from their hand.',
-       ja: '' 
+       ja: 'このポケモンがバトル場にいるかぎり、相手は手札からサポートカードを出して使えない。' 
      }
     },
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Para quitarle la vida a su presa, se desliza en su sombra y espera su oportunidad en silencio.',
+      en: 'To steal the life of its target, it slips into the prey’s shadow and silently waits for an opportunity.',
+      ja: '命を　奪おうと　決めた 獲物の　影に　潜り込み じっと　チャンスを　狙ってる｡' 
     },
     health: 170,
     rarity: CardRarityENUM.SUPER,
@@ -16347,61 +16347,61 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 262,
     number: 262,
     pokedex: 150,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Mewtwo EX',
       en: 'Mewtwo EX',
-      ja: '' 
+      ja: 'ミュウツー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Genético',
+        en: 'Genetic Pokémon',
+        ja: 'いでんしポケモン'
+      },
+      height: {
+        es: '2',
+        en: '6\'7"',
+        ja: '2'
+      },
+      weight: {
+        es: '122.0',
+        en: '269',
+        ja: '122.0'
+      }
     },
     artist: 'PLANETA Mochizuki',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Esfera Psíquica',
           en: 'Psychic Sphere',
-          ja: '' 
+          ja: 'ねんどうだん' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL],
       },
       {
         name: {
-          es: '',
+          es: 'Guía Psi',
           en: 'Psydrive',
-          ja: '' 
+          ja: 'サイコドライブ' 
         },
         damage: 150,
         energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Discard 2 Psychic Energy from this Pokémon.',
-       ja: '' 
-     }
+          es: 'Descarta 2 Energías Psíquica de este Pokémon.',
+          en: 'Discard 2 Psychic Energy from this Pokémon.',
+          ja: 'このポケモンから超エネルギーを2個トラッシュ。' 
+        }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Fue creado por un científico tras años de horribles experimentos de ingeniería genética.',
+      en: 'It was created by a scientist after years of horrific gene-splicing and DNA-engineering experiments.',
+      ja: '１人の　科学者が　何年も 恐ろしい　遺伝子　研究を 続けた　結果　誕生した｡' 
     },
     health: 150,
     rarity: CardRarityENUM.SUPER,
@@ -16421,35 +16421,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 263,
     number: 263,
     pokedex: 68,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Machamp EX',
       en: 'Machamp EX',
-      ja: '' 
+      ja: 'カイリキー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Superpoder',
+        en: 'Superpower Pokémon',
+        ja: 'かいりきポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '130.0',
+        en: '286.6',
+        ja: '130.0'
+      }
     },
     artist: 'PLANETA Igarashi',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Megapuño',
           en: 'Mega Punch',
-          ja: '' 
+          ja: 'メガトンパンチ' 
         },
         damage: 120,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
@@ -16459,9 +16459,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Mueve rápidamente sus cuatro brazos para asestar incesantes golpes y puñetazos desde todos los ángulos.',
+      en: 'It quickly swings its four arms to rock its opponents with ceaseless punches and chops from all angles.',
+      ja: '４本の腕を　すばやく　動かし あらゆる　角度から　休むことなく パンチや　チョップを　叩きこむ｡' 
     },
     health: 180,
     rarity: CardRarityENUM.SUPER,
@@ -16481,52 +16481,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 264,
     number: 264,
     pokedex: 105,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Marowak EX',
       en: 'Marowak EX',
-      ja: '' 
+      ja: 'ガラガラ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Apilahueso',
+        en: 'Bone Keeper Pokémon',
+        ja: 'ほねずきポケモン'
+      },
+      height: {
+        es: '1',
+        en: '3\'3"',
+        ja: '1'
+      },
+      weight: {
+        es: '45.0',
+        en: '99.2',
+        ja: '45.0'
+      }
     },
     artist: 'PLANETA Mochizuki',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Huesomerang',
           en: 'Bonemerang',
-          ja: '' 
+          ja: 'ホネブーメラン' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
         description: {
-       es: '',
-       en: 'Flip 2 coins. This attack does 80 damage for each heads.',
-       ja: '' 
-     }
+          es: 'Lanza 2 monedas. Este ataque hace 80 puntos de daño por cada cara.',
+          en: 'Flip 2 coins. This attack does 80 damage for each heads.',
+          ja: 'コインを2回投げ、オモテの数×80ダメージ。' 
+        }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Ha evolucionado tras fortalecerse y superar su pena. Ahora lucha con arrojo blandiendo su hueso a modo de arma.',
+      en: 'This Pokémon overcame its sorrow to evolve a sturdy new body. Marowak faces its opponents bravely, using a bone as a weapon.',
+      ja: '悲しみを　乗りこえて　たくましく 進化した｡　骨を　武器にして 勇敢に　敵と　渡り合う｡' 
     },
     health: 140,
     rarity: CardRarityENUM.SUPER,
@@ -16549,42 +16549,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 265,
     number: 265,
     pokedex: 40,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Wigglytuff EX',
       en: 'Wigglytuff EX',
-      ja: '' 
+      ja: 'プクリン EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Globo',
+        en: 'Balloon Pokémon',
+        ja: 'ふうせんポケモン'
+      },
+      height: {
+        es: '1',
+        en: '3\'3',
+        ja: '1'
+      },
+      weight: {
+        es: '12.0',
+        en: '26.5',
+        ja: '12.0'
+      }
     },
     artist: 'PLANETA Igarashi',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Canción Adormecedora',
           en: 'Sleepy Song',
-          ja: '' 
+          ja: 'スリーピーソング' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'El Pokémon Activo de tu rival pasa a estar Dormido.',
           en: 'Your opponent\'s Active Pokémon is now Asleep.',
-          ja: '' 
+          ja: '相手のバトルポケモンをねむりにする。' 
         }
       },
     ],
@@ -16592,9 +16592,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Tiene un pelaje muy fino. Se recomienda no enfadarlo, o se inflará y golpeará con todo su cuerpo.',
+      en: 'It has a very fine fur. Take care not to make it angry, or it may inflate steadily and hit with a body slam.',
+      ja: 'キメ細やかな　毛皮の　持ち主｡ 怒らせると　どんどん　ふくらみ のしかかってくるので　注意｡' 
     },
     health: 140,
     rarity: CardRarityENUM.SUPER,
@@ -16614,18 +16614,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 266,
     number: 266,
     name: {
-          es: '',
-          en: 'Erika',
-          ja: '' 
-        },
+      es: 'Erika',
+      en: 'Erika',
+      ja: 'エリカ' 
+    },
     artist: 'saino misaki',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cura 50 puntos de daño a 1 de tus Pokémon Planta.',
       en: 'Heal 50 damage from 1 of your Grass Pokémon.',
-      ja: '' 
+      ja: '自分の草ポケモン1匹のHPを50回復。' 
     },
     health: 0,
     rarity: CardRarityENUM.SUPER,
@@ -16645,18 +16645,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 267,
     number: 267,
     name: {
-          es: '',
-          en: 'Misty',
-          ja: '' 
-        },
+      es: 'Misty',
+      en: 'Misty',
+      ja: 'カスミ' 
+    },
     artist: 'Sanosuke Sakuma',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Elige 1 de tus Pokémon Agua, y luego lanza 1 moneda hasta que salga cruz. Por cada cara, une 1 Energía Agua de tu área de Energía a ese Pokémon.',
       en: 'Choose 1 of your Water Pokémon, and flip a coin until you get tails. For each heads, take a Water Energy from your Energy Zone and attach it to that Pokémon.',
-      ja: '' 
+      ja: '自分の水ポケモンを1匹選ぶ。ウラが出るまでコインを投げ、オモテの数ぶんの水エネルギーを自分のエネルギーゾーンから出し、そのポケモンにつける。' 
     },
     health: 0,
     rarity: CardRarityENUM.SUPER,
@@ -16676,18 +16676,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 268,
     number: 268,
     name: {
-          es: '',
-          en: 'Blaine',
-          ja: '' 
-        },
+      es: 'Blaine',
+      en: 'Blaine',
+      ja: 'カツラ' 
+    },
     artist: 'GOSSAN',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Durante este turno, los ataques de tu Ninetales, tu Rapidash o tu Magmar hacen +30 puntos de daño al Pokémon Activo de tu rival.',
       en: 'During this turn, attacks used by your Ninetales, Rapidash, or Magmar do +30 damage to your opponent’s Active Pokémon.',
-      ja: '' 
+      ja: 'この番、自分の「キュウコン」「ギャロップ」「ブーバー」が使うワザの、相手のバトルポケモンへのダメージを+30する' 
     },
     health: 0,
     rarity: CardRarityENUM.SUPER,
@@ -16707,18 +16707,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 269,
     number: 269,
     name: {
-          es: '',
-          en: 'Koga',
-          ja: '' 
-        },
+      es: 'Koga',
+      en: 'Koga',
+      ja: 'キョウ' 
+    },
     artist: 'Souichirou Gunjima',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Pon a tu Muk o a tu Weezing que esté en el Puesto Activo en tu mano.',
       en: 'Put your Muk or Weezing in the Active Spot into your hand.',
-      ja: '' 
+      ja: '自分のバトル場の「ベトベトン」「マタドガス」を手札にもどす。' 
     },
     health: 0,
     rarity: CardRarityENUM.SUPER,
@@ -16737,20 +16737,19 @@ export const MOCK_DB_CARDS: Card[] = [
     id: 270,
     order: 270,
     number: 270,
-
     name: {
-          es: '',
-          en: 'Giovanni',
-          ja: '' 
-        },
+      es: 'Giovanni',
+      en: 'Giovanni',
+      ja: 'サカキ' 
+    },
     artist: 'Hideki Ishikawa',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Durante este turno, los ataques de tus Pokémon hacen +10 puntos de daño al Pokémon Activo de tu rival.',
       en: 'During this turn, attacks used by your Pokémon do +10 damage to your opponent’s Active Pokémon.',
-      ja: '' 
+      ja: 'この番、自分のポケモンが使うワザの、相手のバトルポケモンへのダメージを+10する。' 
     },
     health: 0,
     rarity: CardRarityENUM.SUPER,
@@ -16770,18 +16769,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 271,
     number: 271,
     name: {
-          es: '',
-          en: 'Brock',
-          ja: '' 
-        },
+      es: 'Brock',
+      en: 'Brock',
+      ja: 'タケシ' 
+    },
     artist: 'Ryuta Fuse',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Une 1 Energía de tu área de Energía a tu Golem o a tu Onix.',
       en: 'Take 1 Fighting Energy from your Energy Zone and attach it to Golem or Onix.',
-      ja: '' 
+      ja: '自分のエネルギーゾーンから闘エネルギーを1個出し、「ゴローニャ」または「イワーク」につける。' 
     },
     health: 0,
     rarity: CardRarityENUM.SUPER,
@@ -16801,18 +16800,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 272,
     number: 272,
     name: {
-          es: '',
-          en: 'Sabrina',
-          ja: '' 
-        },
+      es: 'Sabrina',
+      en: 'Sabrina',
+      ja: 'ナツメ' 
+    },
     artist: 'GIDORA',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Mueve el Pokémon Activo de tu rival a la Banca. (Tu rival elige el nuevo Pokémon Activo).',
       en: 'Switch out your opponent’s Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon)',
-      ja: '' 
+      ja: '相手のバトルポケモンをベンチポケモンと入れ替える。［バトル場に出すポケモンは相手が選ぶ。］'
     },
     health: 0,
     rarity: CardRarityENUM.SUPER,
@@ -16832,18 +16831,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 273,
     number: 273,
     name: {
-          es: '',
-          en: 'Lt. Surge',
-          ja: '' 
-        },
+      es: 'Teniente Surge',
+      en: 'Lt. Surge',
+      ja: 'マチス' 
+    },
     artist: 'nagimiso',
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Mueve todas las Energías Eléctricas de tus Pokémon en Banca a tu Raichu, tu Electrode o tu Electabuzz en el Puesto Activo.',
       en: 'Move all Lightning Energy from your Benched Pokémon to your Raichu, Electrode, or Electabuzz in the Active Spot.',
-      ja: '' 
+      ja: '自分のバトル場の「ライチュウ」「マルマイン」「エレブー」に、ベンチポケモン全員から雷エネルギーをすべてつけ替える。' 
     },
     health: 0,
     rarity: CardRarityENUM.SUPER,
@@ -16863,49 +16862,49 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 274,
     number: 274,
     pokedex: 145,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Moltres EX',
       en: 'Moltres EX',
-      ja: '' 
+      ja: 'ファイヤー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Llama',
+        en: 'Flame Pokémon',
+        ja: 'かえんポケモン'
+      },
+      height: {
+        es: '2',
+        en: '6\'7"',
+        ja: '2'
+      },
+      weight: {
+        es: '60.0',
+        en: '132.3',
+        ja: '60.0'
+      }
     },
     artist: 'hncl',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Danza Infernal',
           en: 'Inferno Dance',
-          ja: '' 
+          ja: 'れっかのまい' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.FIRE],
         description: {
-       es: '',
-       en: 'Flip 3 coins. Take an amount of Fire Energy from your Energy Zone equal to the number of heads and attach it to your Benched Fire Pokémon in any way you like.',
-       ja: '' 
-     }
+          es: 'Lanza 3 monedas. Une a tus Pokémon Fuego en Banca, de la manera que desees, tantas Energías Fuego de tu área de Energía como caras hayan salido.',
+          en: 'Flip 3 coins. Take an amount of Fire Energy from your Energy Zone equal to the number of heads and attach it to your Benched Fire Pokémon in any way you like.',
+          ja: 'コインを3回投げ、オモテの数ぶんの炎エネルギーを自分のエネルギーゾーンから出し、ベンチの炎ポケモンに好きなようにつける。' 
+        }
       },
       {
         name: {
-          es: '',
+          es: 'Explosión de Calor',
           en: 'Heat Blast',
-          ja: '' 
+          ja: 'ヒートブラスト' 
         },
         damage: 70,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
@@ -16915,9 +16914,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Una de las aves legendarias. Al batir las alas, las llamas que las envuelven emiten un hermoso fulgor rojo.',
+      en: 'It’s one of the legendary bird Pokémon. When Moltres flaps its flaming wings, they glimmer with a dazzling red glow.',
+      ja: '羽ばたくと　翼の　炎が 赤く　美しく　きらめく 伝説の　鳥ポケモンの　１匹｡' 
     },
     health: 140,
     rarity: CardRarityENUM.SUPER,
@@ -16940,61 +16939,61 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 275,
     number: 275,
     pokedex: 144,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Articuno EX',
       en: 'Articuno EX',
-      ja: '' 
+      ja: 'フリーザー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Congelar',
+        en: 'Freeze Pokémon',
+        ja: '	れいとうポケモン'
+      },
+      height: {
+        es: '1.7',
+        en: '5\'7"',
+        ja: '1.7'
+      },
+      weight: {
+        es: '55.4',
+        en: '122.1',
+        ja: '55.4'
+      }
     },
     artist: 'kodama',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Ala Gélida',
           en: 'Ice Wing',
-          ja: '' 
+          ja: 'アイスウイング' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
       },
       {
         name: {
-          es: '',
+          es: 'Ventisca',
           en: 'Blizzard',
-          ja: '' 
+          ja: 'ふぶき' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
         description: {
-       es: '',
-       en: 'This attack also does 10 damage to each of your opponent’s Benched Pokémon.',
-       ja: '' 
-     }
+          es: 'Este ataque también hace 10 puntos de daño a cada uno de los Pokémon en Banca de tu rival.',
+          en: 'This attack also does 10 damage to each of your opponent’s Benched Pokémon.',
+          ja: '相手のベンチポケモン全員にも10ダメージ。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Se dice que sus bellas alas azules se componen de hielo. Vuela en torno a las montañas nevadas con su larga cola al viento.',
+      en: 'It’s said that this Pokémon’s beautiful blue wings are made of ice. Articuno flies over snowy mountains, its long tail fluttering along behind it.',
+      ja: '青く　美しい　羽根は　氷で できていると　言われている｡　長い 尾を　たなびかせ　雪山を　飛ぶ｡' 
     },
     health: 140,
     rarity: CardRarityENUM.SUPER,
@@ -17014,61 +17013,61 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 276,
     number: 276,
     pokedex: 145,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Zapdos EX',
       en: 'Zapdos EX',
-      ja: '' 
+      ja: 'サンダー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Eléctrico',
+        en: 'Electric Pokémon',
+        ja: 'でんげきポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '52.6',
+        en: '116',
+        ja: '52.6'
+      }
     },
     artist: 'GOSSAN',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Picotazo',
           en: 'Peck',
-          ja: '' 
+          ja: 'つつく' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.ELECTRIC],
       },
       {
         name: {
-          es: '',
+          es: 'Huracán Atronador',
           en: 'Thundering Hurricane',
-          ja: '' 
+          ja: 'ハリケーンサンダー' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
         description: {
-       es: '',
-       en: 'Flip 4 coins. This attack does 50 damage for each heads.',
-       ja: '' 
-     }
+        es: 'Lanza 4 monedas. Este ataque hace 50 puntos de daño por cada cara.',
+        en: 'Flip 4 coins. This attack does 50 damage for each heads.',
+        ja: '	コインを4回投げ、オモテの数×50ダメージ。' 
+      }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Posee el poder de controlar la electricidad a su antojo. Según la creencia popular, anida oculto en oscuros nubarrones de tormenta.',
+      en: 'This Pokémon has complete control over electricity. There are tales of Zapdos nesting in the dark depths of pitch-black thunderclouds.',
+      ja: '電気を　自在に　操る｡ 真っ黒な　雷雲の　中に 巣があると　言い伝えられている｡' 
     },
     health: 130,
     rarity: CardRarityENUM.SUPER,
@@ -17091,35 +17090,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 277,
     number: 277,
     pokedex: 94,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Gengar EX',
       en: 'Gengar EX',
-      ja: '' 
+      ja: 'ゲンガー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Sombra',
+        en: 'Shadow Pokémon',
+        ja: 'シャドーポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '40.5',
+        en: '89.3',
+        ja: '40.5'
+      }
     },
     artist: 'NC Empire',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Disparo Embrujado',
           en: 'Spooky Shot',
-          ja: '' 
+          ja: 'ホロウショット' 
         },
         damage: 100,
         energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC],
@@ -17127,23 +17126,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
+          es: 'Hechizo Sombrío',
           en: 'Shadowy Spellbind',
-          ja: '' 
+          ja: 'かげのじゅばく' 
         },
       description: {
-       es: '',
+       es: 'Mientras este Pokémon esté en el Puesto Activo, tu rival no puede jugar ninguna carta de Partidario de su mano.',
        en: 'As long as this Pokémon is in the Active Spot, your opponent can’t use any Supporter cards from their hand.',
-       ja: '' 
+       ja: 'このポケモンがバトル場にいるかぎり、相手は手札からサポートカードを出して使えない。' 
      }
     },
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Para quitarle la vida a su presa, se desliza en su sombra y espera su oportunidad en silencio.',
+      en: 'To steal the life of its target, it slips into the prey’s shadow and silently waits for an opportunity.',
+      ja: '命を　奪おうと　決めた 獲物の　影に　潜り込み じっと　チャンスを　狙ってる｡' 
     },
     health: 170,
     rarity: CardRarityENUM.SUPER,
@@ -17163,35 +17162,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 278,
     number: 278,
     pokedex: 68,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Machamp EX',
       en: 'Machamp EX',
-      ja: '' 
+      ja: 'カイリキー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Superpoder',
+        en: 'Superpower Pokémon',
+        ja: 'かいりきポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '130.0',
+        en: '286.6',
+        ja: '130.0'
+      }
     },
     artist: 'AKIRA EGAWA',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Megapuño',
           en: 'Mega Punch',
-          ja: '' 
+          ja: 'メガトンパンチ' 
         },
         damage: 120,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
@@ -17201,9 +17200,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Mueve rápidamente sus cuatro brazos para asestar incesantes golpes y puñetazos desde todos los ángulos.',
+      en: 'It quickly swings its four arms to rock its opponents with ceaseless punches and chops from all angles.',
+      ja: '４本の腕を　すばやく　動かし あらゆる　角度から　休むことなく パンチや　チョップを　叩きこむ｡' 
     },
     health: 180,
     rarity: CardRarityENUM.SUPER,
@@ -17223,42 +17222,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 279,
     number: 279,
     pokedex: 40,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Wigglytuff EX',
       en: 'Wigglytuff EX',
-      ja: '' 
+      ja: 'プクリン EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Globo',
+        en: 'Balloon Pokémon',
+        ja: 'ふうせんポケモン'
+      },
+      height: {
+        es: '1',
+        en: '3\'3',
+        ja: '1'
+      },
+      weight: {
+        es: '12.0',
+        en: '26.5',
+        ja: '12.0'
+      }
     },
     artist: 'Shibuzoh.',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Canción Adormecedora',
           en: 'Sleepy Song',
-          ja: '' 
+          ja: 'スリーピーソング' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'El Pokémon Activo de tu rival pasa a estar Dormido.',
           en: 'Your opponent\'s Active Pokémon is now Asleep.',
-          ja: '' 
+          ja: '相手のバトルポケモンをねむりにする。' 
         }
       },
     ],
@@ -17266,9 +17265,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Tiene un pelaje muy fino. Se recomienda no enfadarlo, o se inflará y golpeará con todo su cuerpo.',
+      en: 'It has a very fine fur. Take care not to make it angry, or it may inflate steadily and hit with a body slam.',
+      ja: 'キメ細やかな　毛皮の　持ち主｡ 怒らせると　どんどん　ふくらみ のしかかってくるので　注意｡' 
     },
     health: 140,
     rarity: CardRarityENUM.SUPER,
@@ -17288,61 +17287,61 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 280,
     number: 280,
     pokedex: 6,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Charizard EX',
       en: 'Charizard EX',
-      ja: '' 
+      ja: 'リザードン EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Llama',
+        en: 'Flame Pokémon',
+        ja: 'かえんポケモン'
+      },
+      height: {
+        es: '1.7',
+        en: '5\'7"',
+        ja: '1.7'
+      },
+      weight: {
+        es: '90.5',
+        en: '199.5',
+        ja: '90.5'
+      }
     },
     artist: 'kantaro',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Cuchillada',
           en: 'Slash',
-          ja: '' 
+          ja: 'きりさく' 
         },
         damage: 60,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
       },
       {
         name: {
-          es: '',
+          es: 'Tormenta Carmesí',
           en: 'Crimson Storm',
-          ja: '' 
+          ja: 'ぐれんのあらし' 
         },
         damage: 200,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Discard 2 Fire Energy from this Pokémon.',
-       ja: '' 
-     }
+          es: 'Descarta 2 Energías Fuego de este Pokémon.',
+          en: 'Discard 2 Fire Energy from this Pokémon.',
+          ja: 'このポケモンから炎エネルギーを2個トラッシュ。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Escupe un fuego tan caliente que funde las rocas. Causa incendios forestales sin querer.',
+      en: 'It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames.',
+      ja: '岩石も　焼けるような 灼熱の　炎を　吐いて 山火事を　起こすことが　ある｡' 
     },
     health: 180,
     rarity: CardRarityENUM.INMERSIVE,
@@ -17362,52 +17361,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 281,
     number: 281,
     pokedex: 25,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Pikachu EX',
       en: 'Pikachu EX',
-      ja: '' 
+      ja: 'ピカチュウ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '6.0',
+        en: '13.2',
+        ja: '6.0'
+      }
     },
     artist: 'Ryota Murayama',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Circuito Circular',
           en: 'Circle Circuit',
-          ja: '' 
+          ja: 'エレキサークル' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
         description: {
-       es: '',
-       en: 'This attack does 30 damage for each of your Benched Lightning Pokémon.',
-       ja: '' 
-     }
+          es: 'Este ataque hace 30 puntos de daño por cada uno de tus Pokémon Eléctricos en Banca.',
+          en: 'This attack does 30 damage for each of your Benched Lightning Pokémon.',
+          ja: '自分のベンチの雷ポケモンの数×30ダメージ。' 
+        }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Cuando se enfada, este Pokémon descarga la energía que almacena en el interior de las bolsas de las mejillas.',
+      en: 'When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.',
+      ja: '両頬には　電気を　溜めこむ 袋がある｡　怒ると　溜めこんだ 電気を　一気に　放ってくる｡' 
     },
     health: 120,
     rarity: CardRarityENUM.INMERSIVE,
@@ -17427,61 +17426,61 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 282,
     number: 282,
     pokedex: 150,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Mewtwo EX',
       en: 'Mewtwo EX',
-      ja: '' 
+      ja: 'ミュウツー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Genético',
+        en: 'Genetic Pokémon',
+        ja: 'いでんしポケモン'
+      },
+      height: {
+        es: '2',
+        en: '6\'7"',
+        ja: '2'
+      },
+      weight: {
+        es: '122.0',
+        en: '269',
+        ja: '122.0'
+      }
     },
     artist: 'Nurikabe',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Esfera Psíquica',
           en: 'Psychic Sphere',
-          ja: '' 
+          ja: 'ねんどうだん' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL],
       },
       {
         name: {
-          es: '',
+          es: 'Guía Psi',
           en: 'Psydrive',
-          ja: '' 
+          ja: 'サイコドライブ' 
         },
         damage: 150,
         energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Discard 2 Psychic Energy from this Pokémon.',
-       ja: '' 
-     }
+          es: 'Descarta 2 Energías Psíquica de este Pokémon.',
+          en: 'Discard 2 Psychic Energy from this Pokémon.',
+          ja: 'このポケモンから超エネルギーを2個トラッシュ。' 
+        }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Fue creado por un científico tras años de horribles experimentos de ingeniería genética.',
+      en: 'It was created by a scientist after years of horrific gene-splicing and DNA-engineering experiments.',
+      ja: '１人の　科学者が　何年も 恐ろしい　遺伝子　研究を 続けた　結果　誕生した｡' 
     },
     health: 150,
     rarity: CardRarityENUM.INMERSIVE,
@@ -17501,52 +17500,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 283,
     number: 283,
     pokedex: 151,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Mew',
       en: 'Mew',
-      ja: '' 
+      ja: 'ミュウ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Nueva Especie',
+        en: 'New Species Pokémon',
+        ja: 'しんしゅポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '4.0',
+        en: '8.8',
+        ja: '4.0'
+      }
     },
     artist: 'Amelicart',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Psicoinforme',
           en: 'Psy Report',
-          ja: '' 
+          ja: 'サイコリポート' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.PSYCHIC],
         description: {
-       es: '',
-       en: 'Your opponent reveals their hand.',
-       ja: '' 
-     }
+          es: 'Tu rival enseña las cartas de su mano.',
+          en: 'Your opponent reveals their hand.',
+          ja: '相手の手札のオモテをすべて見る。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Varios científicos lo consideran el antecesor de los Pokémon porque usa todo tipo de movimientos.',
       en: 'Because it can use all kinds of moves, many scientists believe Mew to be the ancestor of Pokémon.',
-      ja: '' 
+      ja: 'あらゆる　技を　使うため ポケモンの　先祖と　考える 学者が　たくさん　いる｡' 
     },
     health: 60,
     rarity: CardRarityENUM.INMERSIVE,
@@ -17560,9 +17559,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.SPECIAL_MISSION
     ],
     extra: {
-      es: 'Special Mission',
+      es: 'Misión Especial',
       en: 'Special Mission',
-      ja: '' 
+      ja: '特別任務' 
     },
     related: [317]
   },
@@ -17571,61 +17570,61 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 284,
     number: 284,
     pokedex: 6,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Charizard EX',
       en: 'Charizard EX',
-      ja: '' 
+      ja: 'リザードン EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Llama',
+        en: 'Flame Pokémon',
+        ja: 'かえんポケモン'
+      },
+      height: {
+        es: '1.7',
+        en: '5\'7"',
+        ja: '1.7'
+      },
+      weight: {
+        es: '90.5',
+        en: '199.5',
+        ja: '90.5'
+      }
     },
     artist: 'PLANETA CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Cuchillada',
           en: 'Slash',
-          ja: '' 
+          ja: 'きりさく' 
         },
         damage: 60,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
       },
       {
         name: {
-          es: '',
+          es: 'Tormenta Carmesí',
           en: 'Crimson Storm',
-          ja: '' 
+          ja: 'ぐれんのあらし' 
         },
         damage: 200,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Discard 2 Fire Energy from this Pokémon.',
-       ja: '' 
-     }
+          es: 'Descarta 2 Energías Fuego de este Pokémon.',
+          en: 'Discard 2 Fire Energy from this Pokémon.',
+          ja: 'このポケモンから炎エネルギーを2個トラッシュ。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Escupe un fuego tan caliente que funde las rocas. Causa incendios forestales sin querer.',
+      en: 'It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames.',
+      ja: '岩石も　焼けるような 灼熱の　炎を　吐いて 山火事を　起こすことが　ある｡' 
     },
     health: 180,
     rarity: CardRarityENUM.CROWN,
@@ -17647,52 +17646,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 285,
     number: 285,
     pokedex: 25,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Pikachu EX',
       en: 'Pikachu EX',
-      ja: '' 
+      ja: 'ピカチュウ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '6.0',
+        en: '13.2',
+        ja: '6.0'
+      }
     },
     artist: 'PLANETA CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Circuito Circular',
           en: 'Circle Circuit',
-          ja: '' 
+          ja: 'エレキサークル' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
         description: {
-       es: '',
-       en: 'This attack does 30 damage for each of your Benched Lightning Pokémon.',
-       ja: '' 
-     }
+          es: 'Este ataque hace 30 puntos de daño por cada uno de tus Pokémon Eléctricos en Banca.',
+          en: 'This attack does 30 damage for each of your Benched Lightning Pokémon.',
+          ja: '自分のベンチの雷ポケモンの数×30ダメージ。' 
+        }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Cuando se enfada, este Pokémon descarga la energía que almacena en el interior de las bolsas de las mejillas.',
+      en: 'When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.',
+      ja: '両頬には　電気を　溜めこむ 袋がある｡　怒ると　溜めこんだ 電気を　一気に　放ってくる｡' 
     },
     health: 120,
     rarity: CardRarityENUM.CROWN,
@@ -17714,61 +17713,61 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 286,
     number: 286,
     pokedex: 150,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Mewtwo EX',
       en: 'Mewtwo EX',
-      ja: '' 
+      ja: 'ミュウツー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Genético',
+        en: 'Genetic Pokémon',
+        ja: 'いでんしポケモン'
+      },
+      height: {
+        es: '2',
+        en: '6\'7"',
+        ja: '2'
+      },
+      weight: {
+        es: '122.0',
+        en: '269',
+        ja: '122.0'
+      }
     },
     artist: 'PLANETA Mochizuki',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Esfera Psíquica',
           en: 'Psychic Sphere',
-          ja: '' 
+          ja: 'ねんどうだん' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL],
       },
       {
         name: {
-          es: '',
+          es: 'Guía Psi',
           en: 'Psydrive',
-          ja: '' 
+          ja: 'サイコドライブ' 
         },
         damage: 150,
         energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Discard 2 Psychic Energy from this Pokémon.',
-       ja: '' 
-     }
+          es: 'Descarta 2 Energías Psíquica de este Pokémon.',
+          en: 'Discard 2 Psychic Energy from this Pokémon.',
+          ja: 'このポケモンから超エネルギーを2個トラッシュ。' 
+        }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.GENETIC_APEX,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Fue creado por un científico tras años de horribles experimentos de ingeniería genética.',
+      en: 'It was created by a scientist after years of horrific gene-splicing and DNA-engineering experiments.',
+      ja: '１人の　科学者が　何年も 恐ろしい　遺伝子　研究を 続けた　結果　誕生した｡' 
     },
     health: 150,
     rarity: CardRarityENUM.CROWN,
@@ -17790,52 +17789,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 287,
     number: 1,
     pokedex: 102,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Exeggcute',
       en: 'Exeggcute',
-      ja: '' 
+      ja: 'タマタマ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Huevo',
+        en: 'Egg Pokémon',
+        ja: 'たまごポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '2.5',
+        en: '5.5',
+        ja: '2.5'
+      }
     },
     artist: 'Yuka Morii',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Crecimiento Repentino',
           en: 'Growth Spurt',
-          ja: '' 
+          ja: 'ちょっとせいちょう' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Take a Grass Energy from your Energy Zone and attach it to this Pokémon.',
-       ja: '' 
-     }
+          es: 'Une 1 Energía Planta de tu área de Energía a este Pokémon.',
+          en: 'Take a Grass Energy from your Energy Zone and attach it to this Pokémon.',
+          ja: '自分のエネルギーゾーンから草エネルギーを1個出し、このポケモンにつける。' 
+        }
       }
     ],
     evolve: [288],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Pese a su aspecto de mera piña de huevos, se trata de un Pokémon. Al parecer, sus cabezas se comunican entre sí por telepatía.',
       en: 'Though it may look like it’s just a bunch of eggs, it’s a proper Pokémon. Exeggcute communicates with others of its kind via telepathy, apparently.',
-      ja: '' 
+      ja: 'タマゴのように　見えるが　立派な ポケモン｡　テレパシーで　仲間と 交信している　らしいぞ｡' 
     },
     health: 50,
     rarity: CardRarityENUM.COMMON,
@@ -17855,42 +17854,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 288,
     number: 2,
     pokedex: 103,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Exeggutor',
       en: 'Exeggutor',
-      ja: '' 
+      ja: 'ナッシー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Coco',
+        en: 'Coconut Pokémon',
+        ja: 'やしのみポケモン'
+      },
+      height: {
+        es: '2',
+        en: '6\'7"',
+        ja: '2'
+      },
+      weight: {
+        es: '120',
+        en: '264.6',
+        ja: '120'
+      }
     },
     artist: 'Masakazu Fukuda',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Psíquico',
           en: 'Psychic',
-          ja: '' 
+          ja: 'サイコキネシス' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Este ataque hace 20 puntos de daño más por cada Energía unida al Pokémon Activo de tu rival.',
           en: 'This attack does 20 damage for each Energy attached to your opponent\'s Active Pokémon.',
-          ja: '' 
+          ja: '相手のバトルポケモンのエネルギーの数×20ダメージ追加。' 
         }
       }
     ],
@@ -17898,9 +17897,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cada una de las tres cabezas piensa de forma independiente y apenas muestra interés por el resto.',
       en: 'Each of Exeggutor’s three heads is thinking different thoughts. The three don’t seem to be very interested in one another.',
-      ja: '' 
+      ja: '３つの　頭は　べつのことを 考えている｡　自分以外は あまり　興味がない　ようだ｡' 
     },
     health: 130,
     rarity: CardRarityENUM.UNCOMMON,
@@ -17920,52 +17919,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 289,
     number: 3,
     pokedex: 251,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Celebi EX',
       en: 'Celebi EX',
-      ja: '' 
+      ja: 'セレビィ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Viajetiempo',
+        en: 'Time Travel Pokémon',
+        ja: 'ときわたりポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '5.0',
+        en: '11',
+        ja: '5.0'
+      }
     },
     artist: 'Planeta CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Floración Potente',
           en: 'Powerful Bloom',
-          ja: '' 
+          ja: 'パワフルブルーム' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Flip a coin for each Energy attached to this Pokémon. This attack does 50 damage for each heads.',
-       ja: '' 
-     }
+          es: 'Lanza 1 moneda por cada Energía unida a este Pokémon. Este ataque hace 50 puntos de daño por cada cara.',
+          en: 'Flip a coin for each Energy attached to this Pokémon. This attack does 50 damage for each heads.',
+          ja: 'このポケモンのエネルギーの数ぶんコインを投げ、表の数×50ダメージ。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Vino del futuro haciendo un viaje en el tiempo. Hay quien piensa que, mientras Celebi siga apareciendo, el futuro será brillante y esperanzador.',
+      en: 'This Pokémon came from the future by crossing over time. It is thought that so long as Celebi appears, a bright and shining future awaits us.',
+      ja: 'もりのかみさま として まつられる。きれいな もりが あるところ そこに セレビィは あらわれる。' 
     },
     health: 130,
     rarity: CardRarityENUM.DOUBLE,
@@ -17988,35 +17987,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 290,
     number: 4,
     pokedex: 495,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Snivy',
       en: 'Snivy',
-      ja: '' 
+      ja: 'ツタージャ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Serpiente',
+        en: 'Grass Snake Pokémon',
+        ja: 'くさへびポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '8.1',
+        en: '17.9',
+        ja: '8.1'
+      }
     },
     artist: 'Kagemaru Himeno',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Látigo Cepa',
           en: 'Vine Whip',
-          ja: '' 
+          ja: 'つるのムチ' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
@@ -18026,9 +18025,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Cuando recibe los rayos de sol, se mueve mucho más rápido que de costumbre. Usa mejor sus lianas que sus manos.',
       en: 'Being exposed to sunlight makes its movements swiftier. It uses vines more adeptly than its hands.',
-      ja: '' 
+      ja: '太陽の 光を 浴びると いつもよりも 素早く 動ける。 手よりも ツルを うまく使う。' 
     },
     health: 70,
     rarity: CardRarityENUM.COMMON,
@@ -18048,35 +18047,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 291,
     number: 5,
     pokedex: 496,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Servine',
       en: 'Servine',
-      ja: '' 
+      ja: 'ジャノビー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Serpiente',
+        en: 'Grass Snake Pokémon',
+        ja: 'くさへびポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '16.0',
+        en: '35.3',
+        ja: '16.0'
+      }
     },
     artist: 'Shigenori Nagishi',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Látigo Cepa',
           en: 'Vine Whip',
-          ja: '' 
+          ja: 'つるのムチ' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
@@ -18086,9 +18085,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Parece que se desliza al correr. Engaña a sus rivales con su velocidad y los fustiga con su látigo.',
       en: 'It moves along the ground as if sliding. Its swift movements befuddle its foes, and it then attacks with a vine whip.',
-      ja: '' 
+      ja: '地面を　滑るように　走る｡ 素早い　動きで　敵を　まどわせ つるのムチで　しとめるのだ｡' 
     },
     health: 80,
     rarity: CardRarityENUM.UNCOMMON,
@@ -18108,35 +18107,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 292,
     number: 6,
     pokedex: 497,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Serperior',
       en: 'Serperior',
-      ja: '' 
+      ja: 'ジャローダ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Realeza',
+        en: 'Regal Pokémon',
+        ja: 'ロイヤルポケモン'
+      },
+      height: {
+        es: '3.3',
+        en: '10\'10"',
+        ja: '3.3'
+      },
+      weight: {
+        es: '63.0',
+        en: '138.9',
+        ja: '63.0'
+      }
     },
     artist: 'Yoshioka',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Rayo Solar',
           en: 'Solar Beam',
-          ja: '' 
+          ja: 'ソーラービーム' 
         },
         damage: 70,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
@@ -18144,23 +18143,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-        es: '',
+        es: 'Dominio de la Selva',
         en: 'Jungle Totem',
-        ja: '' 
+        ja: 'みつりんのぬし' 
       },
       description: {
-        es: '',
+        es: 'Cada Energía Planta unida a tus Pokémon Planta proporciona 2 Energías Planta. Este efecto no se acumula.',
         en: 'Each Grass Energy attached to your Grass Pokémon provides 2 Grass Energy. This effect doesn\'t stack.',
-        ja: '' 
+        ja: 'このポケモンがいるかぎり、自分の場の草ポケモンについているすべての草エネルギーは、それぞれ草エネルギー2個ぶんとしてはたらく。この特性は重ならない。' 
       }
     },
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Tan solo muestra su verdadero poder a quienes no se amedrentan ante su noble pero inquisitoria mirada.',
       en: "It only gives its all against strong opponents who are not fazed by the glare from Serperior's noble eyes.",
-      ja: ''
+      ja: 'ジャローダの　けだかい　ひとみで　いすくめられても　へいきな　つよい　あいてにだけ　ほんきを　だす。'
     },
     health: 110,
     rarity: CardRarityENUM.RARE,
@@ -18169,7 +18168,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
-    condition: [],
+    condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
@@ -18180,35 +18179,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 293,
     number: 7,
     pokedex: 755,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Morelull',
       en: 'Morelull',
-      ja: '' 
+      ja: 'ネマシュ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Luminiscente',
+        en: 'Illuminating Pokémon',
+        ja: 'はっこうポケモン'
+      },
+      height: {
+        es: '0.2',
+        en: '0\'8"',
+        ja: '0.2'
+      },
+      weight: {
+        es: '1.5',
+        en: '3.3',
+        ja: '1.5'
+      }
     },
     artist: 'Saya Tsuruta',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Apisonar',
           en: 'Ram',
-          ja: '' 
+          ja: 'ぶつかる' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.GRASS]
@@ -18218,9 +18217,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Sus sombrerillos tienen un sabor delicioso. Aunque los Pokémon del bosque se los coman, les vuelven a crecer al día siguiente.',
       en: 'Pokémon living in the forest eat the delicious caps on Morelull\'s head. The caps regrow overnight.',
-      ja: ''
+      ja: '頭の 傘は とても 美味しい。 森の ポケモンたちに 食べられるが 一晩で 再生する。'
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -18240,42 +18239,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 294,
     number: 8,
     pokedex: 756,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Shiinotic',
       en: 'Shiinotic',
-      ja: '' 
+      ja: 'マシェード' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Luminiscente',
+        en: 'Illuminating Pokémon',
+        ja: 'はっこうポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '11.5',
+        en: '25.4',
+        ja: '11.5'
+      }
     },
     artist: 'Mizue',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Esporas Parpadeantes',
           en: 'Flickering Spores',
-          ja: '' 
+          ja: 'ゆれるほうし' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
         description: {
-          es: '',
+          es: 'El Pokémon Activo de tu rival pasa a estar Dormido.',
           en: 'Your opponent\'s Active Pokémon is now Asleep.',
-          ja: '' 
+          ja: '相手のバトルポケモンをねむりにする。' 
         }
       }
     ],
@@ -18283,9 +18282,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Atrae y duerme a su presa con la luz parpadeante de sus esporas y luego le absorbe la energía vital con la punta de los dedos.',
       en: 'Its flickering spores lure in prey and put them to sleep. Once this Pokémon has its prey snoozing, it drains their vitality with its fingertips.',
-      ja: '' 
+      ja: '点滅する 胞子の 光りで 獲物を おびき寄せて 眠らせる。 指先から 生気を 吸い取る。' 
     },
     health: 90,
     rarity: CardRarityENUM.UNCOMMON,
@@ -18305,42 +18304,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 295,
     number: 9,
     pokedex: 781,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Dhelmise',
       en: 'Dhelmise',
-      ja: '' 
+      ja: 'ダダリン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Alga Ancla',
+        en: 'Sea Creeper Pokémon',
+        ja: 'もくずポケモン'
+      },
+      height: {
+        es: '3.9',
+        en: '102\'10"',
+        ja: '3.9'
+      },
+      weight: {
+        es: '210',
+        en: '463',
+        ja: '210'
+      }
     },
     artist: 'Hasuno',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Látigo Energético',
           en: 'Energy Whip',
-          ja: '' 
+          ja: 'エナジーウィップ' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.GRASS],
         description: {
-         es: '',
+         es: 'Si este Pokémon tiene por lo menos 3 Energías Planta adicionales unidas a él, este ataque hace 70 puntos de daño más.',
          en: 'If this Pokémon has at least 3 extra Grass Energy attached, this attack does 70 more damage.',
-         ja: '' 
+         ja: '追加で草エネルギーが3個ついているなら、70ダメージ追加。' 
        }
       }
     ],
@@ -18348,9 +18347,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Este Pokémon de tipo Fantasma no es sino la reencarnación de las algas que flotan a la deriva y arrastran consigo vestigios de barcos hundidos.',
       en: 'After a piece of seaweed merged with debris from a sunken ship, it was reborn as this ghost Pokémon.',
-      ja: '' 
+      ja: '海底を 漂う 藻屑が 沈没船の 部品を 取りこんで ゴーストポケモンに 生まれ変わった。' 
     },
     health: 100,
     rarity: CardRarityENUM.UNCOMMON,
@@ -18370,42 +18369,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 296,
     number: 10,
     pokedex: 77,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Ponyta',
       en: 'Ponyta',
-      ja: '' 
+      ja: 'ポニータ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Caballo Fuego',
+        en: 'Fire Horse Pokémon',
+        ja: 'ひのうまポケモン'
+      },
+      height: {
+        es: '1',
+        en: '3\'3"',
+        ja: '1'
+      },
+      weight: {
+        es: '30.0',
+        en: '66.1',
+        ja: '30.0'
+      }
     },
     artist: 'Tomokazu Kamiya',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Pisotón',
           en: 'Stomp',
-          ja: '' 
+          ja: 'ふみつけ' 
         },
         damage: 10,
         energy: [PokemonTypeENUM.FIRE],
         description: {
-         es: '',
+         es: 'Lanza 1 moneda. Si sale cara, este ataque hace 30 puntos de daño más.',
          en: 'Flip a coin if heads, this attack does 30 more damage.',
-         ja: '' 
+         ja: 'コインを1回投げオモテなら、30ダメージ追加。' 
        }
       }
     ],
@@ -18413,9 +18412,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Al nacer es un poco lento, pero va fortaleciendo las patas paulatinamente al disputar carreras con sus congéneres.',
       en: 'It can’t run properly when it’s newly born. As it races around with others of its kind, its legs grow stronger.',
-      ja: '' 
+      ja: '生まれたばかりは　走るのが　へた｡ 仲間と　かけっこを　するうちに 足腰が　強く　育っていく｡' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -18438,42 +18437,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 297,
     number: 11,
     pokedex: 78,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Rapidash',
       en: 'Rapidash',
-      ja: '' 
+      ja: 'ギャロップ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Caballo Fuego',
+        en: 'Fire Horse Pokémon',
+        ja: 'ひのうまポケモン'
+      },
+      height: {
+        es: '1.7',
+        en: '5\'7"',
+        ja: '1.7'
+      },
+      weight: {
+        es: '95.0',
+        en: '209.4',
+        ja: '95.0'
+      }
     },
     artist: 'AKIRA EGAWA',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Embestida Ascendente',
           en: 'Rising Lunge',
-          ja: '' 
+          ja: 'つきあげる' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
         description: {
-         es: '',
+         es: 'Lanza 1 moneda. Si sale cara, este ataque hace 60 puntos de daño más.',
          en: 'Flip a coin. If heads, this attack does 60 more damage.',
-         ja: '' 
+         ja: 'コインを1回投げオモテなら、60ダメージ追加。' 
        }
       }
     ],
@@ -18481,9 +18480,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Su ardiente crin ondea al viento mientras atraviesa extensas praderas a una velocidad de 240 km/h.',
       en: 'This Pokémon can be seen galloping through fields at speeds of up to 150 mph, its fiery mane fluttering in the wind.',
-      ja: '' 
+      ja: '燃える　たてがみを　はためかせ 時速　２４０キロの　速度で 大草原を　駆けぬけるのだ｡' 
     },
     health: 100,
     rarity: CardRarityENUM.UNCOMMON,
@@ -18506,42 +18505,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 298,
     number: 12,
     pokedex: 126,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Magmar',
       en: 'Magmar',
-      ja: '' 
+      ja: 'ブーバー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Escupefuego',
+        en: 'Spitfire Pokémon',
+        ja: 'ひふきポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '4\'3"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '44.5',
+        en: '98.1',
+        ja: '44.5'
+      }
     },
     artist: 'sui',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Llamarada',
           en: 'Fire Blast',
-          ja: '' 
+          ja: 'だいもんじ' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE],
         description: {
-         es: '',
+         es: 'Descarta 2 Energías Fuego de este Pokémon.',
          en: 'Discard 2 Fire Energy from this Pokémon.',
-         ja: '' 
+         ja: 'このポケモンから炎エネルギーを2個トラッシュ。' 
        }
       }
     ],
@@ -18549,9 +18548,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Abate a sus presas con las llamas que genera y con frecuencia acaba reduciéndolas a carbonilla por accidente.',
       en: 'Magmar dispatches its prey with fire. But it regrets this habit once it realizes that it has burned its intended prey to a charred crisp.',
-      ja: '' 
+      ja: '炎で　獲物を　しとめる｡ ついつい　焼きすぎて 黒コゲに　してしまい　後悔する｡' 
     },
     health: 80,
     rarity: CardRarityENUM.UNCOMMON,
@@ -18571,35 +18570,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 299,
     number: 13,
     pokedex: 636,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Larvesta',
       en: 'Larvesta',
-      ja: '' 
+      ja: 'メラルバ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Antorcha',
+        en: 'Torch Pokémon',
+        ja: 'たいまつポケモン'
+      },
+      height: {
+        es: '1.1',
+        en: '3\'7"',
+        ja: '1.1'
+      },
+      weight: {
+        es: '28.8',
+        en: '63.5',
+        ja: '28.8'
+      }
     },
     artist: 'kawayoo',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Combustión',
           en: 'Combustion',
-          ja: '' 
+          ja: 'かえん' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL]
@@ -18609,9 +18608,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Antaño lo llamaron la Larva que Hurtó el Sol. Las llamas que brotan de sus cuernos pueden fundir sin problema una plancha de acero.',
       en: 'This Pokémon was called the Larve That Stole the Sun. The fire Larvesta spouts from its horns can cut right through a sheet of iron.',
-      ja: '' 
+      ja: '太陽を 盗んだ 幼虫と 呼ばれていた。 ツノから 噴き出す 炎は 鉄板も 焼き切る。' 
     },
     health: 80,
     rarity: CardRarityENUM.COMMON,
@@ -18633,40 +18632,40 @@ export const MOCK_DB_CARDS: Card[] = [
     pokedex: 637,
     info: {
       type: {
-        es: '',
-        en: '',
-        ja: ''
+        es: 'Pokémon Sol',
+        en: 'Sun Pokémon',
+        ja: 'たいようポケモン'
       },
       height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
       },
       weight: {
-        es: '',
-        en: '',
-        ja: ''
+        es: '46.0',
+        en: '101.4',
+        ja: '46.0'
       }
     },
     name: {
       es: 'Volcarona',
       en: 'Volcarona',
-      ja: '' 
+      ja: 'ウルガモス' 
     },
     artist: 'DOM',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Ceniza Volcánica',
           en: 'Volcanic Ash',
-          ja: '' 
+          ja: 'かさいりゅう' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Descarta 2 Energías Fuego de este Pokémon. Este ataque hace 80 puntos de daño a 1 de los Pokémon de tu rival.',
           en: 'Discard 2 Fire Energy from this Pokémon. This attack does 80 damage to 1 of your opponent\'s Pokémon.',
-          ja: '' 
+          ja: 'このポケモンから炎エネルギーを2個トラッシュし、相手のポケモン1匹に80ダメージ。' 
         }
       }
     ],
@@ -18674,9 +18673,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'El calor que irradia le granjea pocas simpatías en tierras cálidas. Por el contrario, en las regiones más frías lo veneran como encarnación del sol.',
       en: 'Its burning body causes it to be unpopular in hot parts of the world, but in cold ones, Volcarona is revered as an embodiment of the sun.',
-      ja: '' 
+      ja: '暑い 土地では 燃える 体は 嫌がられるが 寒い 土地では 太陽の化身 と 崇められる。' 
     },
     health: 120,
     rarity: CardRarityENUM.RARE,
@@ -18699,42 +18698,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 301,
     number: 15,
     pokedex: 757,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Salandit',
       en: 'Salandit',
-      ja: '' 
+      ja: 'ヤトウモリ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Lagartoxina',
+        en: 'Toxic Lizard Pokémon',
+        ja: 'どくトカゲポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '4.8',
+        en: '10.6',
+        ja: '4.8'
+      }
     },
     artist: 'Naoki Saito',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Carga Tóxica',
           en: 'Venoshock',
-          ja: '' 
+          ja: 'ベノムショック' 
         },
         damage: 10,
         energy: [PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Si el Pokémon Activo de tu rival está Envenenado, este ataque hace 40 puntos de daño más.',
           en: 'If your opponent\'s Active Pokémon is Poisoned, this attack does 40 more damage.',
-          ja: '' 
+          ja: '相手のバトルポケモンがどくなら、40ダメージ追加。' 
         }
       }
     ],
@@ -18742,9 +18741,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Provoca a sus presas para conducirlas a zonas rocosas y estrechas, donde las aturde con un gas venenoso antes de acabar con ellas.',
       en: 'It taunts its prey and lures them into narrow, rocky areas where it then sprays them with toxic gas to make them dizzy and take them down.',
-      ja: '' 
+      ja: '獲物を　挑発して　狭い 岩場に　誘い込み　フラフラになる 毒ガスを　吹きかけ　仕留めるのだ｡' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -18764,42 +18763,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 302,
     number: 16,
     pokedex: 758,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Salazzle',
       en: 'Salazzle',
-      ja: '' 
+      ja: 'エンニュート' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Lagartoxina',
+        en: 'Toxic Lizard Pokémon',
+        ja: 'どくトカゲポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '22.2',
+        en: '48.9',
+        ja: '22.2'
+      }
     },
     artist: 'Mitsuhiro Arita',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Garras Venenosas',
           en: 'Poison Claws',
-          ja: '' 
+          ja: 'どくのツメ' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.FIRE],
         description: {
-          es: '',
+          es: 'El Pokémon Activo de tu rival pasa a estar Envenenado.',
           en: 'Your opponent\'s Active Pokémon is now Poisoned.',
-          ja: '' 
+          ja: '相手のバトルポケモンをどくにする。' 
         }
       }
     ],
@@ -18807,9 +18806,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Convierte a sus rivales en devotos súbditos tras marearlos con su gas venenoso y seducirlos con los cautivadores movimientos de su cuerpo.',
       en: 'Salazzle makes its opponents light-headed with poisonous gas, then captivates them with alluring movements to turn them into loyal servants.',
-      ja: '' 
+      ja: '毒ガスで　クラクラにした　相手を 妖艶な　身のこなしで　誘惑し 忠実な　しもべに　してしまう｡' 
     },
     health: 80,
     rarity: CardRarityENUM.COMMON,
@@ -18829,52 +18828,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 303,
     number: 17,
     pokedex: 129,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Magikarp',
       en: 'Magikarp',
-      ja: '' 
+      ja: 'コイキング' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pez',
+        en: 'Fish Pokémon',
+        ja: 'さかなポケモン'
+      },
+      height: {
+        es: '0.9',
+        en: '2\'11"',
+        ja: '0.9'
+      },
+      weight: {
+        es: '10.0',
+        en: '22',
+        ja: '10.0'
+      }
     },
     artist: 'Mitsuhiro Arita',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Saltar del Agua',
           en: 'Leap Out',
-          ja: '' 
+          ja: 'はねにげ' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.WATER],
         description: {
-       es: '',
-       en: 'Switch this Pokémon with 1 of your Benched Pokémon.',
-       ja: '' 
-     }
+          es: 'Cambia este Pokémon por 1 de tus Pokémon en Banca.',
+          en: 'Switch this Pokémon with 1 of your Benched Pokémon.',
+          ja: 'このポケモンをベンチポケモンと入れ替える。' 
+        }
       }
     ],
     evolve: [78],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
-      en: 'An underpowered, pathetic Pokémon. It may jump high on rare occasions, but usually not more than seven feet.',
-      ja: '' 
+      es: 'Un Pokémon desvalido y patético. A veces es capaz de saltar alto, pero rara vez más de 2 m.',
+      en: 'An underpowered, pathetic Pokémon. It may jump high on rare occasions but never more than seven feet.',
+      ja: '力のない　情けない　ポケモン｡ たまに　高く　飛び跳ねても ２メートルを　超すのが　やっとだ｡' 
     },
     health: 30,
     rarity: CardRarityENUM.COMMON,
@@ -18894,42 +18893,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 304,
     number: 18,
     pokedex: 130,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Gyarados EX',
       en: 'Gyarados EX',
-      ja: '' 
+      ja: 'ギャラドス EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Atrocidad',
+        en: 'Atrocious Pokémon',
+        ja: 'きょうあくポケモン'
+      },
+      height: {
+        es: '6.5',
+        en: '21\'4"',
+        ja: '6.5'
+      },
+      weight: {
+        es: '235.0',
+        en: '518.1',
+        ja: '235.0'
+      }
     },
     artist: 'Planeta CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Torbellino Furioso',
           en: 'Rampaging Whirlpool',
-          ja: '' 
+          ja: 'あばれうずしお' 
         },
         damage: 140,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Descarta 1 Energía aleatoria de entre las Energías unidas a todos los Pokémon (tanto tuyos como de tu rival).',
           en: 'Discard a random Energy from among the Energy attached to all Pokémon (both yours and your opponent\'s',
-          ja: '' 
+          ja: 'おたがいのポケモン全員についているエネルギーからランダムに1個トラッシュ。' 
         }
       }
     ],
@@ -18937,9 +18936,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Cuando aparece, monta en cólera. No deja de estar furioso hasta que lo destruye todo.',
       en: 'Once it appears, it goes on a rampage. It remains enraged until it demolishes everything around it.',
-      ja: '' 
+      ja: '一度　姿を　現すと まわりを　すべて　焼き尽くさないと 怒りが　鎮まらない　という｡' 
     },
     health: 180,
     rarity: CardRarityENUM.DOUBLE,
@@ -18959,35 +18958,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 305,
     number: 19,
     pokedex: 134,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Vaporeon',
       en: 'Vaporeon',
-      ja: '' 
+      ja: 'シャワーズ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Burbuja',
+        en: 'Bubble Jet Pokémon',
+        ja: 'あわはきポケモン'
+      },
+      height: {
+        es: '1',
+        en: '3\'3"',
+        ja: '1'
+      },
+      weight: {
+        es: '29.0',
+        en: '63.9',
+        ja: '29.0'
+      }
     },
     artist: 'LINNE',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Chapoteo Ondulante',
           en: 'Wave Splash',
-          ja: '' 
+          ja: 'スプラッシュ' 
         },
         damage: 60,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
@@ -18995,23 +18994,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
+          es: 'Hacer Limpieza',
           en: 'Wash Out',
-          ja: '' 
+          ja: 'おしながす' 
         },
       description: {
-       es: '',
+       es: 'Todas las veces que quieras durante tu turno, puedes mover 1 Energía Agua de 1 de tus Pokémon Agua en Banca a tu Pokémon Agua Activo.',
        en: 'As often as you like during your turn, you may move a Water Energy from 1 of your Benched Water Pokémon to your Active Water Pokémon.',
-       ja: '' 
+       ja: '自分の番に何回でも使える。自分のベンチの水ポケモンから水エネルギーを1個、バトル場の水ポケモンにつけ替える。' 
      }
     },
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Vive cerca del agua. Su cola termina en una aleta parecida a la de un pez, por lo que hay gente que lo confunde con una sirena.',
       en: 'It lives close to water. Its long tail is ridged with a fin, which is often mistaken for a mermaid’s.',
-      ja: '' 
+      ja: '水辺に　棲むが　尻尾には 魚のような　ひれが　残っていて 人魚と　間違う　人もいる｡' 
     },
     health: 120,
     rarity: CardRarityENUM.RARE,
@@ -19031,35 +19030,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 306,
     number: 20,
     pokedex: 456,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Finneon',
       en: 'Finneon',
-      ja: '' 
+      ja: 'ケイコウオ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pez Ala',
+        en: 'Wing Fish Pokémon',
+        ja: 'はねうおポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '7.0',
+        en: '15.4',
+        ja: '7.0'
+      }
     },
     artist: 'Sekio',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Pistola Agua',
           en: 'Water Gun',
-          ja: '' 
+          ja: 'みずでっぽう' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.WATER]
@@ -19069,9 +19068,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'La línea que le recorre el costado puede almacenar luz solar. Brilla con mucha fuerza por la noche.',
       en: 'The line running down its side can store sunlight. It shines vividly at night.',
-      ja: '' 
+      ja: '体の 横側にある ラインは 太陽の光を 溜めておける。 夜になると 鮮やかに 輝く。' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -19091,42 +19090,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 307,
     number: 21,
     pokedex: 457,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Lumineon',
       en: 'Lumineon',
-      ja: '' 
+      ja: 'ネオラント' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Neón',
+        en: 'Neon Pokémon',
+        ja: 'ネオンポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '24.0',
+        en: '52.9',
+        ja: '24.0'
+      }
     },
     artist: 'Sekio',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Agua en Tromba',
           en: 'Aqua Liner',
-          ja: '' 
+          ja: 'アクアライナー' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
         description: {
-          es: '',
+          es: 'Este ataque hace 50 puntos de daño a 1 de los Pokémon en Banca de tu rival.',
           en: 'This attack does 50 damage to 1 of your opponent\'s Benched Pokémon.',
-          ja: '' 
+          ja: '相手のベンチポケモン1匹に50ダメージ。' 
         }
       }
     ],
@@ -19134,9 +19133,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Atrae a sus presas con el destello que emite, aunque eso también llama la atención de sus feroces depredadores marinos.',
       en: 'With its shining light, it lures its prey close. However, the light also happens to attract ferocious fish Pokémon—its natural predators.',
-      ja: '' 
+      ja: '光で 獲物を おびき寄せるが 天敵である 獰猛な 魚ポケモンまで 寄ってくるのだ。' 
     },
     health: 80,
     rarity: CardRarityENUM.UNCOMMON,
@@ -19156,35 +19155,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 308,
     number: 22,
     pokedex: 833,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Chewtle',
       en: 'Chewtle',
-      ja: '' 
+      ja: 'カムカメ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mordedura',
+        en: 'Snapping Pokémon',
+        ja: 'くいつきポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '8.5',
+        en: '18.7',
+        ja: '8.5'
+      }
     },
     artist: 'Taiga Kamiya',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Mordisco',
           en: 'Bite',
-          ja: '' 
+          ja: 'かみつく' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL]
@@ -19194,9 +19193,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Su gran incisivo no le ha terminado de salir. Cuando le molesta, juguetea con uno de sus compañeros mordisqueándole el cuerno.',
       en: 'Its large front tooth is still growing in. When the tooth itches, this Pokémon will bite another Chewtle’s horn, and the two Pokémon will tussle.',
-      ja: '' 
+      ja: '大きな 前歯は まだ 生えかけ。 歯が かゆいときは 仲間の ツノに パクリと 噛みつき じゃれあう。' 
     },
     health: 80,
     rarity: CardRarityENUM.COMMON,
@@ -19216,42 +19215,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 309,
     number: 23,
     pokedex: 834,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Drednaw',
       en: 'Drednaw',
-      ja: '' 
+      ja: 'カジリガメ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mordisco',
+        en: 'Bite Pokémon',
+        ja: 'かみつきポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '115.5',
+        en: '254.6',
+        ja: '115.5'
+      }
     },
     artist: 'nisimono',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Triturar',
           en: 'Crunch',
-          ja: '' 
+          ja: 'かみくだく' 
         },
         damage: 70,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
         description: {
-          es: '',
+          es: 'Lanza 1 moneda. Si sale cara, descarta 1 Energía aleatoria del Pokémon Activo de tu rival.',
           en: 'Flip a coin. If heads, discard a random Energy from your opponent\'s Active Pokémon.',
-          ja: '' 
+          ja: 'コインを1回投げオモテなら、相手のバトルポケモンからエネルギーをランダムに1個トラッシュ' 
         }
       }
     ],
@@ -19259,9 +19258,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Con sus fuertes mandíbulas serradas es capaz de destrozar rocas de un mordisco. Tiene un temperamento extremadamente violento.',
       en: 'Its massive, jagged teeth can crush a boulder in a single bite. This Pokémon has an extremely vicious disposition.',
-      ja: '' 
+      ja: 'とても 大きな ギザギザの 口は ひと噛みで 岩石を 砕く。 非常に 凶暴な 性質。' 
     },
     health: 130,
     rarity: CardRarityENUM.UNCOMMON,
@@ -19284,42 +19283,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 310,
     number: 24,
     pokedex: 845,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Cramorant',
       en: 'Cramorant',
-      ja: '' 
+      ja: 'ウッウ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Tragón',
+        en: 'Gulp Pokémon',
+        ja: 'うのみポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '18.0',
+        en: '39.7',
+        ja: '18.0'
+      }
     },
     artist: 'Jerky',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Buceo',
           en: 'Dive',
-          ja: '' 
+          ja: 'ダイビング' 
         },
         damage: 60,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Lanza 1 moneda. Si sale cara, durante el próximo turno de tu rival, evita todo el daño y todos los efectos de los ataques infligidos a este Pokémon.',
           en: 'Flip a coin. If heads, during your opponent\'s next turn, prevent all damage from—and effects of—attacks done to this Pokémon.',
-          ja: '' 
+          ja: 'コインを1回投げオモテなら、次の相手の番、このポケモンは技のダメージや効果を受けない。' 
         }
       }
     ],
@@ -19327,9 +19326,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Su colosal potencia le permite machacar al rival de un solo golpe, aunque su carácter despistado lo lleva a olvidarse de su presencia.',
       en: 'It’s so strong that it can knock out some opponents in a single hit, but it also may forget what it’s battling midfight.',
-      ja: '' 
+      ja: '相手を 一撃で 打ち負かすほど パワフルだが 忘れっぽいので 戦っている 相手を 忘れる。' 
     },
     health: 80,
     rarity: CardRarityENUM.COMMON,
@@ -19352,42 +19351,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 311,
     number: 25,
     pokedex: 25,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Pikachu',
       en: 'Pikachu',
-      ja: '' 
+      ja: 'ピカチュウ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '6.0',
+        en: '13.2',
+        ja: '6.0'
+      }
     },
     artist: 'Naoya Kimura',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Circuito Circular',
           en: 'Circle Circuit',
-          ja: '' 
+          ja: 'エレキサークル' 
         },
         damage: 10,
         energy: [PokemonTypeENUM.ELECTRIC],
         description: {
-         es: '',
+         es: 'Este ataque hace 10 puntos de daño por cada uno de tus Pokémon Eléctricos en Banca.',
          en: 'This attack does 10 damage for each of your Benched Lightning Pokémon.',
-         ja: '' 
+         ja: '自分のベンチの雷ポケモンの数×10ダメージ。' 
        }
       }
     ],
@@ -19395,9 +19394,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Cuando se enfada, este Pokémon descarga la energía que almacena en el interior de las bolsas de las mejillas.',
       en: 'When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.',
-      ja: '' 
+      ja: '両頬には　電気を　溜めこむ 袋がある｡　怒ると　溜めこんだ 電気を　一気に　放ってくる｡' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -19417,42 +19416,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 312,
     number: 26,
     pokedex: 26,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Raichu',
       en: 'Raichu',
-      ja: '' 
+      ja: 'ライチュウ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '30.0',
+        en: '66.1',
+        ja: '30.0'
+      }
     },
     artist: 'hncl',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Gigasacudida',
           en: 'Gigashock',
-          ja: '' 
+          ja: 'ギガスパーク' 
         },
         damage: 60,
         energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
         description: {
-          es: '',
+          es: 'Este ataque también hace 20 puntos de daño a cada uno de los Pokémon en Banca de tu rival.',
           en: 'This attack does 20 damage to each of your opponent\'s Benched Pokémon.',
-          ja: '' 
+          ja: '相手のベンチポケモン全員にも20ダメージ。' 
         }
       }
     ],
@@ -19460,9 +19459,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Su cola actúa como toma de tierra y descarga electricidad al suelo, lo que le protege de los calambrazos.',
       en: 'Its tail discharges electricity into the ground, protecting it from getting shocked.',
-      ja: '' 
+      ja: '尻尾が　アースの　役目をはたして 電気を　地面に　逃がすので 自分自身は　しびれたりしない｡' 
     },
     health: 120,
     rarity: CardRarityENUM.RARE,
@@ -19482,42 +19481,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 313,
     number: 27,
     pokedex: 125,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Electabuzz',
       en: 'Electabuzz',
-      ja: '' 
+      ja: 'エレブー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Eléctrico',
+        en: 'Electric Pokémon',
+        ja: 'でんげきポケモン'
+      },
+      height: {
+        es: '1.1',
+        en: '3\'7"',
+        ja: '1.1'
+      },
+      weight: {
+        es: '30.0',
+        en: '66.1',
+        ja: '30.0'
+      }
     },
     artist: 'Ken Sugimori',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Lanza del Trueno',
           en: 'Thunder Spear',
-          ja: '' 
+          ja: 'サンダーアロー' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
         description: {
-          es: '',
+          es: 'Este ataque hace 40 puntos de daño a 1 de los Pokémon de tu rival.',
           en: 'This attack does 40 damage to 1 of your opponent\'s Pokémon.',
-          ja: '' 
+          ja: '相手のポケモン1匹に40ダメージ。' 
         }
       }
     ],
@@ -19525,9 +19524,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Es habitual que las centrales eléctricas cuenten con Pokémon de tipo Tierra para hacer frente a los Electabuzz ávidos de electricidad.',
       en: 'Many power plants keep Ground-type Pokémon around as a defense against Electabuzz that come seeking electricity.',
-      ja: '' 
+      ja: '電気を　狙う　エレブーの　対策に じめんポケモンを　置く 発電所は　多い｡' 
     },
     health: 70,
     rarity: CardRarityENUM.UNCOMMON,
@@ -19547,35 +19546,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 314,
     number: 28,
     pokedex: 595,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Joltik',
       en: 'Joltik',
-      ja: '' 
+      ja: 'バチュル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Lapa',
+        en: 'Attaching Pokémon',
+        ja: 'くっつきポケモン'
+      },
+      height: {
+        es: '0.1',
+        en: '4\'',
+        ja: '0.1'
+      },
+      weight: {
+        es: '0.6',
+        en: '1.3',
+        ja: '0.6'
+      }
     },
     artist: 'MINAMINAMI Take',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Picadura',
           en: 'Bug Bite',
-          ja: '' 
+          ja: 'むしくい' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.ELECTRIC]
@@ -19585,9 +19584,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'No puede generar electricidad por si misma, así que se encarama a otros Pokémon y absorbe su energía estática.',
       en: 'Joltik can be found clinging to other Pokémon. It’s soaking up static electricity because it can’t produce a charge on its own.',
-      ja: '' 
+      ja: 'ポケモンの 体に くっついて 静電気を 吸い取る。 自分では 電気を つくることが できない。' 
     },
     health: 40,
     rarity: CardRarityENUM.COMMON,
@@ -19609,40 +19608,40 @@ export const MOCK_DB_CARDS: Card[] = [
     pokedex: 596,
     info: {
       type: {
-        es: '',
-        en: '',
-        ja: ''
+        es: 'Pokémon Electroaraña',
+        en: 'EleSpider Pokémon',
+        ja: 'でんきグモポケモン'
       },
       height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
       },
       weight: {
-        es: '',
-        en: '',
-        ja: ''
+        es: '14.3',
+        en: '31.5',
+        ja: '14.3'
       }
     },
     name: {
       es: 'Galvantula',
       en: 'Galvantula',
-      ja: '' 
+      ja: 'デンチュラ' 
     },
     artist: 'Mitsuhiro Arita',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Electrotela',
           en: 'Electroweb',
-          ja: '' 
+          ja: 'エレキネット' 
         },
         damage: 70,
         energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
         description: {
-          es: '',
+          es: 'Durante el próximo turno de tu rival, el Pokémon Defensor no puede retirarse.',
           en: 'During your opponent\'s next turn, the Defending Pokémon can\'t retreat.',
-          ja: '' 
+          ja: '次の相手の番、このワザを受けたポケモンはにげるができない。' 
         }
       }
     ],
@@ -19650,9 +19649,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Ataca lanzando hilos electrificados por el abdomen, que inmovilizan por completo al enemigo durante tres días y tres noches.',
       en: 'It launches electrified fur from its abdomen as its means of attack. Opponents hit by the fur could be in for three full days and nights of paralysis.',
-      ja: '' 
+      ja: '電気を 帯びた お腹の 毛を 飛ばして 攻撃。 毛が 刺さると 三日三晩 全身が 痺れる。' 
     },
     health: 80,
     rarity: CardRarityENUM.UNCOMMON,
@@ -19672,42 +19671,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 316,
     number: 30,
     pokedex: 702,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Dedenne',
       en: 'Dedenne',
-      ja: '' 
+      ja: 'デデンネ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Antenas',
+        en: 'Antenna Pokémon',
+        ja: 'アンテナポケモン'
+      },
+      height: {
+        es: '0.2',
+        en: '0\'8"',
+        ja: '0.2'
+      },
+      weight: {
+        es: '2.2',
+        en: '4.9',
+        ja: '2.2'
+      }
     },
     artist: 'Taiga Kamiya',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Impactrueno',
           en: 'Thunder Shock',
-          ja: '' 
+          ja: 'でんきショック' 
         },
         damage: 10,
         energy: [PokemonTypeENUM.ELECTRIC],
         description: {
-          es: '',
+          es: 'Lanza 1 moneda. Si sale cara, el Pokémon Activo de tu rival pasa a estar Paralizado.',
           en: 'Flip a coin. If heads, your opponent\'s Active Pokémon is now Paralyzed.',
-          ja: '' 
+          ja: 'コインを1回投げオモテなら、相手のバトルポケモンをマヒにする。' 
         }
       }
     ],
@@ -19715,9 +19714,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Como es menudo y su órgano electrógeno está poco desarrollado, absorbe electricidad de las casas con la cola para recargar sus reservas.',
       en: 'It’s small and its electricity-generating organ is not fully developed, so it uses its tail to absorb electricity from people’s homes and charge itself.',
-      ja: '' 
+      ja: '体が 小さく 発電器官が 未熟なので 人家の 電気を 尻尾で 吸い取り 充電する。' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -19740,52 +19739,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 317,
     number: 31,
     pokedex: 151,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Mew',
       en: 'Mew',
-      ja: '' 
+      ja: 'ミュウ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Nueva Especie',
+        en: 'New Species Pokémon',
+        ja: 'しんしゅポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '4.0',
+        en: '8.8',
+        ja: '4.0'
+      }
     },
     artist: 'Saya Tsuruta',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Psicoinforme',
           en: 'Psy Report',
-          ja: '' 
+          ja: 'サイコリポート' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.PSYCHIC],
         description: {
-         es: '',
-         en: 'Your opponent reveals their hand.',
-         ja: '' 
-       }
+          es: 'Tu rival enseña las cartas de su mano.',
+          en: 'Your opponent reveals their hand.',
+          ja: '相手の手札のオモテをすべて見る。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Varios científicos lo consideran el antecesor de los Pokémon porque usa todo tipo de movimientos.',
       en: 'Because it can use all kinds of moves, many scientists believe Mew to be the ancestor of Pokémon.',
-      ja: '' 
+      ja: 'あらゆる　技を　使うため ポケモンの　先祖と　考える 学者が　たくさん　いる｡' 
     },
     health: 60,
     rarity: CardRarityENUM.RARE,
@@ -19805,51 +19804,51 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 318,
     number: 32,
     pokedex: 151,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Mew EX',
       en: 'Mew EX',
-      ja: '' 
+      ja: 'ミュウ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Nueva Especie',
+        en: 'New Species Pokémon',
+        ja: 'しんしゅポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '4.0',
+        en: '8.8',
+        ja: '4.0'
+      }
     },
     artist: 'Planeta CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Disparo Psi',
           en: 'Psyshot',
-          ja: '' 
+          ja: 'サイコショット' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.PSYCHIC]
       },
       {
         name: {
-          es: '',
+          es: 'Hackeo Genoma',
           en: 'Genome Hacking',
-          ja: '' 
+          ja: 'ゲノムハック' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Elige 1 de los ataques del Pokémon Activo de tu rival y úsalo para este ataque.',
           en: 'Choose 1 of your opponent\'s Active Pokémon\'s attacks and use it as this attack.',
-          ja: '' 
+          ja: '相手のバトルポケモンが持っているワザを1つ選び、このワザとして使う。' 
         }
       }
     ],
@@ -19857,9 +19856,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Varios científicos lo consideran el antecesor de los Pokémon porque usa todo tipo de movimientos.',
       en: 'Because it can use all kinds of moves, many scientists believe Mew to be the ancestor of Pokémon.',
-      ja: '' 
+      ja: 'あらゆる　技を　使うため ポケモンの　先祖と　考える 学者が　たくさん　いる｡' 
     },
     health: 130,
     rarity: CardRarityENUM.DOUBLE,
@@ -19881,50 +19880,50 @@ export const MOCK_DB_CARDS: Card[] = [
     pokedex: 561,
     info: {
       type: {
-        es: '',
-        en: '',
-        ja: ''
+        es: 'Pokémon Pseudopájaro',
+        en: 'Avianoid Pokémon',
+        ja: 'とりもどきポケモン'
       },
       height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
+        es: '1.4',
+        en: '4\'7"',
+        ja: '1.4'
       },
       weight: {
-        es: '',
-        en: '',
-        ja: ''
+        es: '14.0',
+        en: '30.9',
+        ja: '14.0'
       }
     },
     name: {
       es: 'Sigilyph',
       en: 'Sigilyph',
-      ja: '' 
+      ja: 'シンボラー' 
     },
     artist: 'Shigenori Nagishi',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Robo Pico',
           en: 'Spike Draw',
-          ja: '' 
+          ja: 'スパイクドロー' 
         },
         damage: 10,
         energy: [PokemonTypeENUM.PSYCHIC],
         description: {
-       es: '',
-       en: 'Draw a card.',
-       ja: '' 
-     }
+          es: 'Roba 1 carta.',
+          en: 'Draw a card.',
+          ja: '自分の山札を1枚引く。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Vuela gracias a su poderes psíquicos. Dicen que había sido la deidad protectora de una antigua ciudad, si bien otros creen que era su mensajero.',
       en: 'Psychic power allows these Pokémon to fly. Some say they were the guardians of an ancient city. Others say they were the guardians emissaries.',
-      ja: '' 
+      ja: 'サイコパワーで 空を 飛ぶ。 古代都市の 守り神 とも その遣いとも いわれている。' 
     },
     health: 80,
     rarity: CardRarityENUM.UNCOMMON,
@@ -19944,35 +19943,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 320,
     number: 34,
     pokedex: 605,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Elgyem',
       en: 'Elgyem',
-      ja: '' 
+      ja: 'リグレー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cerebro',
+        en: 'Cerebral Pokémon',
+        ja: 'ブレインポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '9.0',
+        en: '19.8',
+        ja: '9.0'
+      }
     },
     artist: 'Kouki Saitou',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Golpe Cabeza',
           en: 'Headbutt',
-          ja: '' 
+          ja: 'ずつき' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.PSYCHIC],
@@ -19982,9 +19981,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Cuando se halla junto a un televisor, la pantalla muestra imágenes de extraños paisajes. Se cree que corresponden a su lugar de origen.',
       en: 'If this Pokémon stands near a TV, strange scenery will appear on the screen. That scenery is said to be from its home.',
-      ja: '' 
+      ja: 'テレビのそばに いると モニターに 奇妙な 景色が 映る。 リグレーの 故郷だと いわれる。' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -20004,42 +20003,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 321,
     number: 35,
     pokedex: 606,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Beheeyem',
       en: 'Beheeyem',
-      ja: '' 
+      ja: 'オーベム' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cerebro',
+        en: 'Cerebral Pokémon',
+        ja: 'ブレインポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '34.5',
+        en: '76.1',
+        ja: '34.5'
+      }
     },
     artist: 'sowsow',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Levantamente',
           en: 'Mind Jack',
-          ja: '' 
+          ja: 'マインドジャック' 
         },
         damage: 10,
         energy: [PokemonTypeENUM.PSYCHIC],
         description: {
-          es: '',
+          es: 'Este ataque hace 20 puntos de daño más por cada uno de los Pokémon en Banca de tu rival.',
           en: 'This attack does 20 more damage for each of your opponent\'s Benched Pokémon.',
-          ja: '' 
+          ja: '相手のベンチポケモンの数×20ダメージ追加。' 
         }
       }
     ],
@@ -20047,9 +20046,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Por algún extraño motivo, siempre que se avista un Beheeyem en una granja desaparece un Dubwool.',
       en: 'Whenever a Beheeyem visits a farm, a Dubwool mysteriously disappears.',
-      ja: '' 
+      ja: 'オーベムが 現れた 牧場 からは いつの間にか バイウールーが 1匹 姿を 消してしまう。' 
     },
     health: 90,
     rarity: CardRarityENUM.UNCOMMON,
@@ -20069,42 +20068,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 322,
     number: 36,
     pokedex: 669,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Flabébé',
       en: 'Flabébé',
-      ja: '' 
+      ja: 'フラベベ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Monoflor',
+        en: 'Single Bloom Pokémon',
+        ja: 'いちりんポケモン'
+      },
+      height: {
+        es: '0.1',
+        en: '0\'4"',
+        ja: '0.1'
+      },
+      weight: {
+        es: '0.1',
+        en: '0.2',
+        ja: '0.1'
+      }
     },
     artist: 'Cona Nitanda',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Mirada Hipnótica',
           en: 'Hypnotic Gaze',
-          ja: '' 
+          ja: 'みつめる' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.PSYCHIC],
         description: {
-          es: '',
+          es: 'El Pokémon Activo de tu rival pasa a estar dormido.',
           en: 'Your opponent\'s Active Pokémon is now Asleep.',
-          ja: '' 
+          ja: '相手のバトルポケモンをねむりにする。' 
         }
       }
     ],
@@ -20112,9 +20111,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Posee el don de extraer el poder oculto de las flores silvestres. Siente una predilección especial por las flores rojas.',
       en: 'This Pokémon can draw forth the power hidden within blooming wild flowers. It is particularly fond of red flowers.',
-      ja: '' 
+      ja: '野に咲く　花の　秘めた　力を 引き出す　能力を　持っている｡ とくに　赤い花が　好き｡' 
     },
     health: 40,
     rarity: CardRarityENUM.COMMON,
@@ -20134,42 +20133,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 323,
     number: 37,
     pokedex: 670,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Floette',
       en: 'Floette',
-      ja: '' 
+      ja: 'フラエッテ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Monoflor',
+        en: 'Single Bloom Pokémon',
+        ja: 'いちりんポケモン'
+      },
+      height: {
+        es: '0.2',
+        en: '0\'8"',
+        ja: '0.2'
+      },
+      weight: {
+        es: '0.9',
+        en: '2',
+        ja: '0.9'
+      }
     },
     artist: 'Cona Nitanda',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Hoja Drenante',
           en: 'Leaf Drain',
-          ja: '' 
+          ja: 'リーフドレイン' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.PSYCHIC],
         description: {
-         es: '',
+         es: 'Cura 10 puntos de daño a este Pokémon.',
          en: 'Heal 10 damage from this Pokémon.',
-         ja: '' 
+         ja: 'このポケモンのHPを10回復。' 
        }
       }
     ],
@@ -20177,9 +20176,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Puede extraer la fuerza que les resta a las flores marchitas para reanimarlas. Lleva consigo una flor de color rojo.',
       en: 'This Pokémon draws forth what power is left in withered flowers to make them healthy again. It holds a red flower.',
-      ja: '' 
+      ja: '枯れた　花に　残った　力を 引き出して　元気にしてあげる｡ 赤い花を　抱えた　フラエッテ｡' 
     },
     health: 70,
     rarity: CardRarityENUM.COMMON,
@@ -20199,42 +20198,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 324,
     number: 38,
     pokedex: 671,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Florges',
       en: 'Florges',
-      ja: '' 
+      ja: 'フラージェス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Jardín',
+        en: 'Garden Pokémon',
+        ja: 'ガーデンポケモン'
+      },
+      height: {
+        es: '1.1',
+        en: '3\'7"',
+        ja: '1.1'
+      },
+      weight: {
+        es: '10.0',
+        en: '22',
+        ja: '10.0'
+      }
     },
     artist: 'Cona Nitanda',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Resplandeflor',
           en: 'Bloomshine',
-          ja: '' 
+          ja: 'ブルームシャイン' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC],
         description: {
-         es: '',
+         es: 'Cura 20 puntos de daño a cada uno de tus Pokémon.',
          en: 'Heal 20 damage from each of your Pokémon.',
-         ja: '' 
+         ja: '自分のポケモン全員のHPを20回復。' 
        }
       }
     ],
@@ -20242,9 +20241,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Hace de su territorio un jardín esplendoroso. Extrae su poder de las flores rojas que lleva en torno al cuello.',
       en: 'This Pokémon creates an impressive flower garden in its territory. It draws forth the power of the red flowers around its neck.',
-      ja: '' 
+      ja: '自分の　テリトリーに　見事な 花園を　作る｡　首まわりの 赤い花の　パワーを　引き出す｡' 
     },
     health: 120,
     rarity: CardRarityENUM.UNCOMMON,
@@ -20264,35 +20263,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 325,
     number: 39,
     pokedex: 684,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Swirlix',
       en: 'Swirlix',
-      ja: '' 
+      ja: 'ペロッパフ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Chuchería',
+        en: 'Cotton Candy Pokémon',
+        ja: 'わたあめポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '3.5',
+        en: '7.7',
+        ja: '3.5'
+      }
     },
     artist: '5ban Graphics',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Viento Feérico',
           en: 'Fairy Wind',
-          ja: '' 
+          ja: 'ようせいのかぜ' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.PSYCHIC]
@@ -20302,9 +20301,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Ingiere diariamente una cantidad de azúcar equivalente a tu peso corporal. De lo contrario, se pone de muy mal humor.',
       en: 'It eats its own weight in sugar every day. If it doesn’t get enough sugar, it becomes incredibly grumpy.',
-      ja: '' 
+      ja: '１日に 食べる 砂糖は 自分の 体重と 同じ。 糖分が 足りないと ひどく 不機嫌になる。' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -20324,35 +20323,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 326,
     number: 40,
     pokedex: 685,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Slurpuff',
       en: 'Slurpuff',
-      ja: '' 
+      ja: 'ペロリーム' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Nata',
+        en: 'Meringue Pokémon',
+        ja: 'ホイップポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '5.0',
+        en: '11',
+        ja: '5.0'
+      }
     },
     artist: 'Kagemaru Himeno',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Disparo Mágico',
           en: 'Magical Shot',
-          ja: '' 
+          ja: 'マジカルショット' 
         },
         damage: 60,
         energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL]
@@ -20362,9 +20361,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Puede percibir el estado físico y mental de alguien solo con olerlo, lo que podría tener aplicaciones útiles en el campo de la medicina.',
       en: 'By taking in a person’s scent, it can sniff out their mental and physical condition. It’s hoped that this skill will have many medical applications.',
-      ja: '' 
+      ja: '体臭から 心と 体の 調子を 嗅ぎとる。 医療への 応用が 期待されている。' 
     },
     health: 100,
     rarity: CardRarityENUM.COMMON,
@@ -20384,42 +20383,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 327,
     number: 41,
     pokedex: 56,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Mankey',
       en: 'Mankey',
-      ja: '' 
+      ja: 'マンキー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mono Cerdo',
+        en: 'Pig Monkey Pokémon',
+        ja: 'ぶたざるポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '28.8',
+        en: '61.7',
+        ja: '28.8'
+      }
     },
     artist: 'Akira Komayama',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Puño Infalible',
           en: 'Focus Fist',
-          ja: '' 
+          ja: 'きあいづき' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.FIGHT],
         description: {
-         es: '',
+         es: 'Lanza 1 moneda. Si sale cruz, este ataque no hace nada.',
          en: 'Flip a coin. If tails, this attack does nothing.',
-         ja: '' 
+         ja: 'コインを1回投げウラなら、このワザは失敗。' 
        }
       }
     ],
@@ -20427,9 +20426,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Vive en grupos en las copas de los árboles. Si pierde de vista a su manada, se siente solo y se enfada.',
       en: 'It lives in groups in the treetops. If it loses sight of its group, it becomes infuriated by its loneliness.',
-      ja: '' 
+      ja: '木の上で　群れをつくって　暮らす｡ 群れから　はぐれた　マンキーは 寂しくて　すぐに　怒りだす｡' 
     },
     health: 50,
     rarity: CardRarityENUM.COMMON,
@@ -20452,35 +20451,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 328,
     number: 42,
     pokedex: 57,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Primeape',
       en: 'Primeape',
-      ja: '' 
+      ja: 'オコリザル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mono Cerdo',
+        en: 'Pig Monkey Pokémon',
+        ja: 'ぶたざるポケモン'
+      },
+      height: {
+        es: '1',
+        en: '3\'3"',
+        ja: '1'
+      },
+      weight: {
+        es: '32.0',
+        en: '70.5',
+        ja: '32.0'
+      }
     },
     artist: 'Taiga Kamiya',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Puño',
           en: 'Punch',
-          ja: '' 
+          ja: 'パンチ' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.FIGHT]
@@ -20490,9 +20489,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Se pone furioso si nota que alguien lo está mirando. Persigue a cualquiera que establezca contacto visual con él.',
       en: 'It becomes wildly furious if it even senses someone looking at it. It chases anyone that meets its glare.',
-      ja: '' 
+      ja: 'だれかの　視線を　感じただけで 猛烈に　怒りだす｡　そして 目が合った　ものを　追いかけるのだ｡' 
     },
     health: 80,
     rarity: CardRarityENUM.COMMON,
@@ -20512,35 +20511,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 329,
     number: 43,
     pokedex: 74,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Geodude',
       en: 'Geodude',
-      ja: '' 
+      ja: 'イシツブテ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Roca',
+        en: 'Rock Pokémon',
+        ja: 'がんせきポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '20.0',
+        en: '44.1',
+        ja: '20.0'
+      }
     },
     artist: 'GOSSAN',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Puño Ligero',
           en: 'Light Punch',
-          ja: '' 
+          ja: 'なぐる' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL]
@@ -20550,9 +20549,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Con la edad, su temperamento se amansa y su cuerpo se va alisando hasta adquirir una forma completamente redonda.',
       en: 'Geodude that have lived a long life have had all their edges smoothed out until they’re totally round. They also have a calm, quiet disposition.',
-      ja: '' 
+      ja: '長く　生きた　イシツブテは　角が とれて　まんまる｡　性格も　とても 落ち着いていて　穏やか　なのだ｡' 
     },
     health: 70,
     rarity: CardRarityENUM.COMMON,
@@ -20572,35 +20571,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 330,
     number: 44,
     pokedex: 75,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Graveler',
       en: 'Graveler',
-      ja: '' 
+      ja: 'ゴローン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Roca',
+        en: 'Rock Pokémon',
+        ja: 'がんせきポケモン'
+      },
+      height: {
+        es: '1',
+        en: '3\'3"',
+        ja: '1'
+      },
+      weight: {
+        es: '105.0',
+        en: '231.5',
+        ja: '105.0'
+      }
     },
     artist: 'Ayaka Yoshida',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Arremeter',
           en: 'Lunge Out',
-          ja: '' 
+          ja: 'つきたおし' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL]
@@ -20610,9 +20609,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Escala los riscos de las montañas y, una vez alcanzada la cima, desciende rodando por los senderos.',
       en: 'It climbs up cliffs as it heads toward the peak of a mountain. As soon as it reaches the summit, it rolls back down the way it came.',
-      ja: '' 
+      ja: '崖を　登り　山頂を　目指す｡ てっぺんに　着くなり　すぐに　来た 山道を　転がり　落ちていく｡' 
     },
     health: 100,
     rarity: CardRarityENUM.UNCOMMON,
@@ -20632,42 +20631,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 331,
     number: 45,
     pokedex: 76,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Golem',
       en: 'Golem',
-      ja: '' 
+      ja: 'ゴローニャ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Megatón',
+        en: 'Megaton Pokémon',
+        ja: 'メガトンポケモン'
+      },
+      height: {
+        es: '1.4',
+        en: '4\'7"',
+        ja: '1.4'
+      },
+      weight: {
+        es: '300.0',
+        en: '661.4',
+        ja: '300.0'
+      }
     },
     artist: 'Masakazu Fukuda',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Presión de Guardia',
           en: 'Guard Press',
-          ja: '' 
+          ja: 'ガードプレス' 
         },
         damage: 120,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Durante el próximo turo de tu rival, los ataques hacen -30 puntos de daño a este Pokémon.',
           en: 'During your opponent\'s next turn, this Pokémon takes -30 damage from attacks.',
-          ja: '' 
+          ja: '次の相手の番、このポケモンが受けるワザのダメージを-30する。' 
         }
       }
     ],
@@ -20675,9 +20674,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'A medida que envejece, pierde la facultad de mudar la piel. Se han observado ejemplares de edad avanzada totalmente cubiertos de musgo.',
       en: 'When Golem grow old, they stop shedding their shells. Those that have lived a long, long time have shells green with moss.',
-      ja: '' 
+      ja: '年老いると　脱皮　しなくなる｡ 長く長く　生きた　ゴローニャの カラは　苔むしていて　緑だ｡' 
     },
     health: 160,
     rarity: CardRarityENUM.RARE,
@@ -20697,35 +20696,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 332,
     number: 46,
     pokedex: 142,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Aerodactyl EX',
       en: 'Aerodactyl EX',
-      ja: '' 
+      ja: 'プテラ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Fósil',
+        en: 'Fossil Pokémon',
+        ja: 'かせきポケモン'
+      },
+      height: {
+        es: '1.8',
+        en: '5\'11"',
+        ja: '1.8'
+      },
+      weight: {
+        es: '59.0',
+        en: '130.1',
+        ja: '59.0'
+      }
     },
     artist: 'Planeta CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Aterrizaje',
           en: 'Land Crush',
-          ja: '' 
+          ja: 'ランドクラッシュ' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL]
@@ -20733,23 +20732,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
+          es: 'Ley Primitiva',
           en: 'Primeval Law',
-          ja: '' 
+          ja: 'げんしのさだめ' 
         },
       description: {
-          es: '',
+          es: 'Tu rival no puede jugar ningún Pokémon de su mano para hacer evolucionar al Pokémon Activo.',
           en: 'Your opponent can\'t play any Pokémon from their hand to evolve their Active Pokémon.',
-          ja: '' 
+          ja: 'このポケモンがいるかぎり、相手は手札からポケモンを出して、バトルポケモンを進化させられない。' 
         }
     },
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Un feroz Pokémon de la época prehistórica al que no bastan todos los avances tecnológicos actuales para regenerar a la perfección.',
       en: 'This is a ferocious Pokémon from ancient times. Apparently even modern technology is incapable of producing a perfectly restored specimen.',
-      ja: '' 
+      ja: '古代の　獰猛な　ポケモン｡ 完璧な　復元は いまの　科学でも　不可能らしい｡' 
     },
     health: 140,
     rarity: CardRarityENUM.DOUBLE,
@@ -20769,42 +20768,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 333,
     number: 47,
     pokedex: 802,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Marshadow',
       en: 'Marshadow',
-      ja: '' 
+      ja: 'マーシャドー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Morasombra',
+        en: 'Gloomdweller Pokémon',
+        ja: 'かげすみポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '22.2',
+        en: '48.9',
+        ja: '22.2'
+      }
     },
     artist: 'kantaro',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Desquite',
           en: 'Revenge',
-          ja: '' 
+          ja: 'リベンジ' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Si alguno de tus Pokémon quedó Fuera de Combate por el daño de un ataque durante el último turno de tu rival, este ataque hace 60 puntos de daño más.',
           en: 'If any of your Pokémon were Knocked Out by damage from an attack during your opponent\'s last turn, this attack does 60 more damage.',
-          ja: '' 
+          ja: '前の相手の番、ワザのダメージで、自分のポケモンがきぜつしていたなら、60ダメージ追加。' 
         }
       }
     ],
@@ -20812,9 +20811,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Se oculta en la sombra de su oponente y copia sus movimientos y su fuerza. Su imitación resulta más poderosa que el original.',
       en: 'It slips into the shadows of others and mimics their powers and movements. As it improves, it becomes stronger than those it’s imitating.',
-      ja: '' 
+      ja: '相手の 影に 潜って 動きや 力を 真似る。 真似ているうちに 本物 よりも 強くなるぞ。' 
     },
     health: 80,
     rarity: CardRarityENUM.RARE,
@@ -20834,35 +20833,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 334,
     number: 48,
     pokedex: 874,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Stonjourner',
       en: 'Stonjourner',
-      ja: '' 
+      ja: 'イシヘンジン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Megalito',
+        en: 'Big Rock Pokémon',
+        ja: 'きょせきポケモン'
+      },
+      height: {
+        es: '2.5',
+        en: '8\'2"',
+        ja: '2.5'
+      },
+      weight: {
+        es: '520.0',
+        en: '1146.4',
+        ja: '520.0'
+      }
     },
     artist: 'Teeziro',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Megapatada',
           en: 'Mega Kick',
-          ja: '' 
+          ja: 'メガトンキック' 
         },
         damage: 90,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT]
@@ -20872,9 +20871,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Los elementos que componen las rocas de su cuerpo se han encontrado en lechos de roca muy alejados de su hábitat.',
       en: 'The elemental composition of the rocks that form its body were found to match the bedrock of a land far away from this Pokémon’s habitat.',
-      ja: '' 
+      ja: '体の 岩石の 成分は 生息地から 遠く 離れた 土地の 岩盤と 一致した。' 
     },
     health: 120,
     rarity: CardRarityENUM.UNCOMMON,
@@ -20894,52 +20893,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 335,
     number: 49,
     pokedex: 109,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Koffing',
       en: 'Koffing',
-      ja: '' 
+      ja: 'ドガース' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gas Venenoso',
+        en: 'Poison Gas Pokémon',
+        ja: 'どくガスポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '1.0',
+        en: '2.2',
+        ja: '1.0'
+      }
     },
     artist: 'Naoyo Kimura',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'División',
           en: 'Division',
-          ja: '' 
+          ja: 'ぶんれつ' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.DARK],
         description: {
-       es: '',
-       en: 'Put 1 random Koffing from your deck onto your Bench.',
-       ja: '' 
-     }
+          es: 'Pon 1 Koffing aleatorio de tu baraja en tu Banca.',
+          en: 'Put 1 random Koffing from your deck onto your Bench.',
+          ja: '自分の山札から「ドガース」をランダムに1枚、ベンチに出す。' 
+        }
       }
     ],
     evolve: [336],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Su cuerpo está lleno a rebosar de gas venenoso. Acude a los vertederos atraídos por el putrefacto olor que emana de los desperdicios.',
       en: 'Its body is full of poisonous gas. It floats into garbage dumps, seeking out the fumes of raw, rotting trash.',
-      ja: '' 
+      ja: '毒ガスで　パンパンの　体｡ 生ゴミの　腐った　においを 求め　ゴミ捨て場に　やってくる｡' 
     },
     health: 70,
     rarity: CardRarityENUM.COMMON,
@@ -20959,42 +20958,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 336,
     number: 50,
     pokedex: 110,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Weezing',
       en: 'Weezing',
-      ja: '' 
+      ja: 'マタドガス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gas Venenoso',
+        en: 'Poison Gas Pokémon',
+        ja: 'どくガスポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '9.5',
+        en: '20.9',
+        ja: '9.5'
+      }
     },
     artist: 'Mousho',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Pantalla de Humo',
           en: 'Smokescreen',
-          ja: '' 
+          ja: 'えんまく' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK],
         description: {
-          es: '',
+          es: 'Durante el próximo turno de tu rival, si el Pokémon Defensor intenta usar un ataque, tu rival lanza 1 moneda. Si sale cruz, ese ataque no se lleva a cabo.',
           en: 'During your opponent\'s next turn, if the Defending Pokémon tries to use an attack, your opponent flips a coin. If tails, that attack doesn\'t happen.',
-          ja: '' 
+          ja: '次の相手の番、このワザを受けたポケモンがワザを使うとき、相手はコインを1回投げる。ウラならそのワザは失敗。' 
         }
       }
     ],
@@ -21002,9 +21001,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Si uno de los gemelos Koffing se infla, el otro se desinfla. Mezclan constantemente sus venenosos gases.',
       en: 'If one of the twin Koffing inflates, the other one deflates. It constantly mixes its poisonous gases.',
-      ja: '' 
+      ja: 'どちらかが　ふくらむと　片方は しぼむ　双子の　ドガース｡　いつも 体内の　毒ガスを　混ぜている｡' 
     },
     health: 110,
     rarity: CardRarityENUM.UNCOMMON,
@@ -21024,35 +21023,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 337,
     number: 51,
     pokedex: 509,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Purrloin',
       en: 'Purrloin',
-      ja: '' 
+      ja: 'チョロネコ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Malicioso',
+        en: 'Devious Pokémon',
+        ja: 'しょうわるポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '10.1',
+        en: '22.3',
+        ja: '10.1'
+      }
     },
     artist: 'Kagemaru Himeno',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Arañazo',
           en: 'Scratch',
-          ja: '' 
+          ja: 'ひっかく' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.DARK]
@@ -21062,9 +21061,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Sustrae las pertenencias de las personas solo para verlas pasar apuros. Es un rival encarnizado de Nickit.',
       en: 'It steals things from people just to amuse itself with their frustration. A rivalry exists between this Pokémon and Nickit.',
-      ja: '' 
+      ja: '困った 姿を 見るために ひとの ものを 盗み出す。 クスネとは ライバルなのだ。' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -21084,35 +21083,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 338,
     number: 52,
     pokedex: 510,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Liepard',
       en: 'Liepard',
-      ja: '' 
+      ja: 'レパルダス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Calculador',
+        en: 'Cruel Pokémon',
+        ja: 'れいこくポケモン'
+      },
+      height: {
+        es: '1.1',
+        en: '3\'7"',
+        ja: '1.1.'
+      },
+      weight: {
+        es: '37.5',
+        en: '82.7',
+        ja: '37.5'
+      }
     },
     artist: 'GIDORA',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Cuchillada',
           en: 'Slash',
-          ja: '' 
+          ja: 'きりさく' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.DARK]
@@ -21122,9 +21121,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Bajo su hermoso pelaje y cautivador estilo, que puede llevar fácilmente a engaño, se oculta un carácter imprevisible y agresivo.',
       en: 'Don’t be fooled by its gorgeous fur and elegant figure. This is a moody and vicious Pokémon.',
-      ja: '' 
+      ja: '美しい 毛並みと スタイルに 惑わされがちだが 気まぐれで 狂暴な ポケモンなのだ。' 
     },
     health: 90,
     rarity: CardRarityENUM.COMMON,
@@ -21144,35 +21143,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 339,
     number: 53,
     pokedex: 543,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Venipede',
       en: 'Venipede',
-      ja: '' 
+      ja: 'フシデ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ciempiés',
+        en: 'Centipede Pokémon',
+        ja: 'ムカデポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '5.3',
+        en: '11.7',
+        ja: '5.3'
+      }
     },
     artist: '	Yukiko Baba',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Apisonar',
           en: 'Ram',
-          ja: '' 
+          ja: 'ぶつかる' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.DARK]
@@ -21182,9 +21181,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Aunque se trata de una especie emparentada con los Sizzlipede, si se encuentran ejemplares de ambas, entablarán una lucha encarnizada.',
       en: 'Venipede and Sizzlipede are similar species, but when the two meet, a huge fight ensues.',
-      ja: '' 
+      ja: 'ヤクデは 種類の 近い 仲間だが おたがいが 出会うと 大げんかに なるぞ。' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -21204,42 +21203,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 340,
     number: 54,
     pokedex: 544,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Whirlipede',
       en: 'Whirlipede',
-      ja: '' 
+      ja: 'ホイーガ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pupaciempiés',
+        en: 'Curlipede Pokémon',
+        ja: 'まゆムカデポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '58.5',
+        en: '129',
+        ja: '58.5'
+      }
     },
     artist: 'Shin Nagasawa',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Picotazo Veneno',
           en: 'Poison Sting',
-          ja: '' 
+          ja: 'どくばり' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.DARK],
         description: {
-          es: '',
+          es: 'El Pokémon Activo de tu rival pasa a estar Envenenado.',
           en: 'Your opponent\'s Active Pokémon is now Poisoned.',
-          ja: '' 
+          ja: '相手のバトルポケモンをどくにする。' 
         }
       }
     ],
@@ -21247,9 +21246,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Gira a gran velocidad y carga contra sus rivales. Puede alcanzar los 100 km/h.',
       en: 'This Pokémon spins itself rapidly and charges into its opponents. Its top speed is just over 60 mph.',
-      ja: '' 
+      ja: '高速で 回転し 相手に 突撃。 最高時速は およそ 100キロに 達する。' 
     },
     health: 90,
     rarity: CardRarityENUM.COMMON,
@@ -21269,42 +21268,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 341,
     number: 55,
     pokedex: 545,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Scolipede',
       en: 'Scolipede',
-      ja: '' 
+      ja: 'ペンドラー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Megaciempiés',
+        en: 'Megapede Pokémon',
+        ja: 'メガムカデポケモン'
+      },
+      height: {
+        es: '2.5',
+        en: '8\'2"',
+        ja: '2.5'
+      },
+      weight: {
+        es: '200.5',
+        en: '442',
+        ja: '200.5'
+      }
     },
     artist: '5ban Graphics',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Carga Tóxica',
           en: 'Venoshock',
-          ja: '' 
+          ja: 'ベノムショック' 
         },
         damage: 70,
         energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Si el Pokémon Activo de tu rival está Envenenado, este ataque hace 50 puntos de daño más.',
           en: 'If your opponent\'s Active Pokémon is Poisoned, this attack does 50 more damage.',
-          ja: '' 
+          ja: '相手のバトルポケモンがどくなら、50ダメージ追加。' 
         }
       }
     ],
@@ -21312,9 +21311,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
-      en: '	Scolipede latches on to its prey with the claws on its neck before slamming them into the ground and jabbing them with its claws’ toxic spikes.',
-      ja: '' 
+      es: 'Usa las garras que le sobresalen del cuello para atrapar a su presa, golpearla contra el suelo y rematarla inoculando un potente veneno.',
+      en: 'Scolipede latches on to its prey with the claws on its neck before slamming them into the ground and jabbing them with its claws’ toxic spikes.',
+      ja: '首のツメで 獲物を つかむと そのまま 地面に 叩きつけ 毒のトゲを 突きたてるぞ。' 
     },
     health: 140,
     rarity: CardRarityENUM.UNCOMMON,
@@ -21334,35 +21333,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 342,
     number: 56,
     pokedex: 621,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Druddigon',
       en: 'Druddigon',
-      ja: '' 
+      ja: 'クリムガン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cueva',
+        en: 'Cave Pokémon',
+        ja: 'ほらあなポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '139.0',
+        en: '306.4',
+        ja: '139.0'
+      }
     },
     artist: 'Ryota Murayama',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Garra Dragón',
           en: 'Dragon Claw',
-          ja: '' 
+          ja: 'ドラゴンクロー' 
         },
         damage: 90,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL]
@@ -21370,23 +21369,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
+          es: 'Piel Tosca',
           en: 'Rough Skin',
-          ja: '' 
+          ja: 'さめはだ' 
         },
       description: {
-          es: '',
+          es: 'Si este Pokémon está en el Puesto Activo y resulta dañado por un ataque de los Pokémon de tu rival, el Pokémon Atacante sufre 20 puntos de daño.',
           en: 'If this Pokémon is in the Active Spot and is damaged by an attack from your opponent\'s Pokémon, do 20 damage to the Attacking Pokémon.',
-          ja: '' 
+          ja: 'このポケモンが、バトル場で相手のポケモンからワザのダメージを受けたとき、ワザを使ったポケモンに20ダメージ。' 
         }
     },
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Habita en túneles. Pierde la movilidad si baja su temperatura corporal, por lo que aprovecha la menor oportunidad para tomar el sol.',
       en: 'Druddigon lives in caves, but it never skips sunbathing—it won’t be able to move if its body gets too cold.',
-      ja: '' 
+      ja: 'あなぐらに　棲む｡　体が　冷えると　動けなくなるので　日光浴は　欠かさない｡' 
     },
     health: 100,
     rarity: CardRarityENUM.UNCOMMON,
@@ -21406,35 +21405,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 343,
     number: 57,
     pokedex: 16,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Pidgey',
       en: 'Pidgey',
-      ja: '' 
+      ja: 'ポッポ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pajarito',
+        en: 'Tiny Bird Pokémon',
+        ja: 'ことりポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '1.8',
+        en: '4',
+        ja: '1.8'
+      }
     },
     artist: 'Shigenori Negishi',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Aleteo',
           en: 'Flap',
-          ja: '' 
+          ja: 'はばたく' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.NORMAL]
@@ -21444,9 +21443,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Muy común en bosques y selvas. Aletea al nivel del suelo para levantar la gravilla.',
       en: 'A common sight in forests and woods. It flaps its wings at ground level to kick up blinding sand.',
-      ja: '' 
+      ja: '森や　林に　多く　分布｡ 地上でも　激しく　はばたいて 砂を　かけたりする｡' 
     },
     health: 50,
     rarity: CardRarityENUM.COMMON,
@@ -21466,35 +21465,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 344,
     number: 58,
     pokedex: 17,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Pidgeotto',
       en: 'Pidgeotto',
-      ja: '' 
+      ja: 'ピジョン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pájaro',
+        en: 'Bird Pokémon',
+        ja: 'とりポケモン'
+      },
+      height: {
+        es: '1.1',
+        en: '3\'7"',
+        ja: '1.1'
+      },
+      weight: {
+        es: '30.0',
+        en: '66.1',
+        ja: '30.0'
+      }
     },
     artist: 'Taiga Kayama',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Ataque Ala',
           en: 'Wing Attack',
-          ja: '' 
+          ja: 'つばさでうつ' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
@@ -21504,9 +21503,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Tiene unas garras desarrolladas. Puede atrapar un Exeggcute y transportarlo desde una distancia de casi 100 km.',
       en: 'The claws on its feet are well developed. It can carry prey such as an Exeggcute to its nest over 60 miles away.',
-      ja: '' 
+      ja: '足の　ツメが　発達している｡ エサの　タマタマを　つかんで １００キロ先の　巣まで　運ぶ｡' 
     },
     health: 90,
     rarity: CardRarityENUM.COMMON,
@@ -21526,42 +21525,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 345,
     number: 59,
     pokedex: 18,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Pidgeot EX',
       en: 'Pidgeot EX',
-      ja: '' 
+      ja: 'ピジョット' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pájaro',
+        en: 'Bird Pokémon',
+        ja: 'とりポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '39.5',
+        en: '87.1',
+        ja: '39.5'
+      }
     },
     artist: 'PLANETA CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Ciclón Fragmentado',
           en: 'Scattering Cyclone',
-          ja: '' 
+          ja: 'けちらしサイクロン' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Este ataque hace 20 puntos de daño más por cada uno de los Pokémon en Banca de tu rival.',
           en: 'This attack does 20 more damage for each of your opponent\'s Benched Pokémon.',
-          ja: '' 
+          ja: '相手のベンチポケモンの数×20ダメージ追加。' 
         }
       }
     ],
@@ -21569,9 +21568,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Cuando caza, vuela muy deprisa a ras del agua y sorprende a inocentes presas como Magikarp.',
+      en: 'When hunting, it skims the surface of water at high speed to pick off unwary prey such as Magikarp.',
+      ja: 'エサを　探すとき　水面　すれすれを 滑るように　飛んで コイキングなどを　わしづかみにする｡' 
     },
     health: 170,
     rarity: CardRarityENUM.DOUBLE,
@@ -21591,42 +21590,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 346,
     number: 60,
     pokedex: 128,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Tauros',
       en: 'Tauros',
-      ja: '' 
+      ja: 'ケンタロス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Toro Bravo',
+        en: 'Wild Bull Pokémon',
+        ja: 'あばれうしポケモン'
+      },
+      height: {
+        es: '1.4',
+        en: '4\'7"',
+        ja: '1.4'
+      },
+      weight: {
+        es: '88.4',
+        en: '194.9',
+        ja: '88.4'
+      }
     },
     artist: 'KEIICHIRO ITO',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Placaje Lucha',
           en: 'Fighting Tackle',
-          ja: '' 
+          ja: 'とうしのタックル' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Si el Pokémon activo de tu rival es un Pokémon ex, este ataque hace 80 puntos de daño más.',
           en: 'If your opponent\'s Active Pokémon is a Pokémon ex, this attack does 80 more damage.',
-          ja: '' 
+          ja: '相手のバトルポケモンが「ポケモンex」なら、80ダメージ追加。' 
         }
       }
     ],
@@ -21634,9 +21633,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Conviene tener cuidado si empieza a fustigarse con las colas, pues es señal de que va a cargar a máxima velocidad.',
       en: 'When Tauros begins whipping itself with its tails, it’s a warning that the Pokémon is about to charge with astounding speed.',
-      ja: '' 
+      ja: 'しっぽで　自分の　体を 叩きだしたら　危険だぞ｡ 猛スピードで　突っ込んでくる｡' 
     },
     health: 100,
     rarity: CardRarityENUM.RARE,
@@ -21656,42 +21655,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 347,
     number: 61,
     pokedex: 133,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Eevee',
       en: 'Eevee',
-      ja: '' 
+      ja: 'イーブイ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Evolución',
+        en: 'Evolution Pokémon',
+        ja: 'しんかポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '6.5',
+        en: '14.3',
+        ja: '6.5'
+      }
     },
     artist: 'Hitoshi Ariga',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Pasos Incesantes',
           en: 'Continuous Steps',
-          ja: '' 
+          ja: 'れんぞくステップ' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.NORMAL],
         description: {
-         es: '',
+         es: 'Lanza 1 moneda hasta que salga cruz. Este ataque hace 20 puntos de daño por cada cara.',
          en: 'Flip a coin until you get tails. This attack does 20 more damage for each heads.',
-         ja: '' 
+         ja: 'ウラが出るまでコインを投げ、オモテの数×20ダメージ。' 
        }
       }
     ],
@@ -21699,9 +21698,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Es capaz de evolucionar de muchas maneras para adaptarse sin problemas a cualquier medio.',
       en: 'Its ability to evolve into many forms allows it to adapt smoothly and perfectly to any environment.',
-      ja: '' 
+      ja: '環境の　変化に　すぐさま 合わせられるよう　いくつもの 進化の　可能性を　秘めている｡' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -21724,42 +21723,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 348,
     number: 62,
     pokedex: 441,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Chatot',
       en: 'Chatot',
-      ja: '' 
+      ja: 'ペラップ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Corchea',
+        en: 'Music Note Pokémon',
+        ja: 'おんぷポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '1.9',
+        en: '4.2',
+        ja: '1.9'
+      }
     },
     artist: 'Masako Tomii',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Mimético',
           en: 'Mimic',
-          ja: '' 
+          ja: 'ものまね' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Pon las cartas de tu mano en tu baraja y barájalas todas. Roba 1 carta por cada carta en la mano de tu rival.',
           en: 'Shuffle your hand into your deck. Draw a card for each card in your opponent\'s hand.',
-          ja: '' 
+          ja: '自分の手札をすべて山札にもどす。相手の手札の枚数ぶん、自分の山札を引く。' 
         }
       }
     ],
@@ -21767,9 +21766,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Imita los sonidos de sus rivales, haciéndoles creer que son amigos e impidiendo que le ataquen.',
       en: 'It mimics the cries of other Pokémon to trick them into thinking it’s one of them. This way they won’t attack it.',
-      ja: '' 
+      ja: '相手と　同じ　鳴き声を　出す　ことで　仲間と　思いこませて　襲われないように　しているのだ｡' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -21789,18 +21788,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 349,
     number: 63,
     name: {
-          es: '',
-          en: 'Old Amber',
-          ja: '' 
-        },
+      es: 'Ámbar Viejo',
+      en: 'Old Amber',
+      ja: 'ひみつのコハク' 
+    },
     artist: 'Toyste Beach',
     evolve: [210],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Juega esta carta como si fuera un Pokémon  Básico de 40 PS. En cualquier momento durante tu turno, puedes descartar esta carta del juego. Esta carta no puede retirarse.',
       en: 'Play this card as if it were a 40-HP Basic Colorless Pokémon. At any time during your turn, you may discard this card from play. This card can’t retreat.',
-      ja: '' 
+      ja: 'このカードは、HP40の無色タイプのたねポケモンとして、場に出すことができる。自分の番の中でなら、場に出ているこのカードをトラッシュしてよい。このカードはにげるができない。' 
     },
     health: 40,
     rarity: CardRarityENUM.COMMON,
@@ -21820,18 +21819,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 350,
     number: 64,
     name: {
-          es: '',
-          en: 'Pokémon Flute',
-          ja: '' 
-        },
+      es: 'Pokéflauta',
+      en: 'Pokémon Flute',
+      ja: 'ポケモンの笛' 
+    },
     artist: 'Toyste Beach',
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Pon 1 Pokémon Básico de la pila de descartes de tu rival en su Banca.',
       en: 'Put a Basic Pokémon from your opponent’s discard pile onto their Bench.',
-      ja: '' 
+      ja: '相手のトラッシュからたねポケモンを1枚選び、相手のベンチに出す。' 
     },
     health: 0,
     rarity: CardRarityENUM.UNCOMMON,
@@ -21851,18 +21850,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 351,
     number: 65,
     name: {
-          es: '',
-          en: 'Mythical Slab',
-          ja: '' 
-        },
+      es: 'Losa Singular',
+      en: 'Mythical Slab',
+      ja: '幻の石板' 
+    },
     artist: 'AYUMI ODASHIMA',
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Mira la primera carta de tu baraja. Si es un Pokémon Psíquico, ponla en tu mano. Si no es un Pokémon Psíquico, ponla en la parte inferior de tu baraja.',
       en: 'Look at the top card of your deck. If that card is a Psychic Pokémon, put it into your hand. If it is not a Psychic Pokémon, put it on the bottom of your deck.',
-      ja: '' 
+      ja: '自分の山札を上から1枚見て、そのカードが超ポケモンなら、手札に加える。超ポケモンでないなら、山札の下にもどす。' 
     },
     health: 0,
     rarity: CardRarityENUM.UNCOMMON,
@@ -21882,18 +21881,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 352,
     number: 66,
     name: {
-          es: '',
-          en: 'Budding Expeditioner',
-          ja: '' 
-        },
+      es: 'Explorador Novel',
+      en: 'Budding Expeditioner',
+      ja: 'かけだし調査員' 
+    },
     artist: 'Yuu Nishida',
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Pon a tu Mew ex que esté en el Puesto Activo en tu mano.',
       en: 'Put your Mew EX in the Active Spot into your hand.',
-      ja: '' 
+      ja: '自分のバトル場の「ミュウex」を手札にもどす。' 
     },
     health: 0,
     rarity: CardRarityENUM.UNCOMMON,
@@ -21913,18 +21912,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 353,
     number: 67,
     name: {
-          es: '',
-          en: 'Blue',
-          ja: '' 
-        },
+      es: 'Azul',
+      en: 'Blue',
+      ja: 'グリーン' 
+    },
     artist: 'Ryuta Fuse',
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Durante el próximo turno de tu rival, los ataques de los Pokémon de tu rival hacen -10 puntos de daño a todos tus Pokémon.',
       en: 'During your opponent’s next turn, all of your Pokémon take −10 damage from attacks from your opponent’s Pokémon.',
-      ja: '' 
+      ja: '次の相手の番、自分のポケモン全員が、相手のポケモンから受けるダメージを-10する。' 
     },
     health: 0,
     rarity: CardRarityENUM.UNCOMMON,
@@ -21944,18 +21943,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 354,
     number: 68,
     name: {
-          es: '',
-          en: 'Leaf',
-          ja: '' 
-        },
+      es: 'Hoja',
+      en: 'Leaf',
+      ja: 'リーフ' 
+    },
     artist: 'En Morikura',
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
-      en: '	During this turn, the Retreat Cost of your Active Pokémon is 2 less.',
-      ja: '' 
+      es: 'Durante este turno, el Coste de Retirada de tu Pokémon Activo es de 2 menos.',
+      en: 'During this turn, the Retreat Cost of your Active Pokémon is 2 less.',
+      ja: 'この番、自分のバトルポケモンのにげるためのエネルギーを、2個少なくする。' 
     },
     health: 0,
     rarity: CardRarityENUM.UNCOMMON,
@@ -21975,42 +21974,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 355,
     number: 69,
     pokedex: 103,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Exeggutor',
       en: 'Exeggutor',
-      ja: '' 
+      ja: 'ナッシー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Coco',
+        en: 'Coconut Pokémon',
+        ja: 'やしのみポケモン'
+      },
+      height: {
+        es: '2',
+        en: '6\'7"',
+        ja: '2'
+      },
+      weight: {
+        es: '120',
+        en: '264.6',
+        ja: '120'
+      }
     },
     artist: 'Gapao',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Psíquico',
           en: 'Psychic',
-          ja: '' 
+          ja: 'サイコキネシス' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Este ataque hace 20 puntos de daño más por cada Energía unida al Pokémon Activo de tu rival.',
           en: 'This attack does 20 damage for each Energy attached to your opponent\'s Active Pokémon.',
-          ja: '' 
+          ja: '相手のバトルポケモンのエネルギーの数×20ダメージ追加。' 
         }
       }
     ],
@@ -22018,9 +22017,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cada una de las tres cabezas piensa de forma independiente y apenas muestra interés por el resto.',
       en: 'Each of Exeggutor’s three heads is thinking different thoughts. The three don’t seem to be very interested in one another.',
-      ja: '' 
+      ja: '３つの　頭は　べつのことを 考えている｡　自分以外は あまり　興味がない　ようだ｡' 
     },
     health: 130,
     rarity: CardRarityENUM.ART,
@@ -22040,35 +22039,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 356,
     number: 70,
     pokedex: 497,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Serperior',
       en: 'Serperior',
-      ja: '' 
+      ja: 'ジャローダ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Realeza',
+        en: 'Regal Pokémon',
+        ja: 'ロイヤルポケモン'
+      },
+      height: {
+        es: '3.3',
+        en: '10\'10"',
+        ja: '3.3'
+      },
+      weight: {
+        es: '63.0',
+        en: '138.9',
+        ja: '63.0'
+      }
     },
     artist: 'rika',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Rayo Solar',
           en: 'Solar Beam',
-          ja: '' 
+          ja: 'ソーラービーム' 
         },
         damage: 70,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
@@ -22076,23 +22075,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-        es: '',
+        es: 'Dominio de la Selva',
         en: 'Jungle Totem',
-        ja: '' 
+        ja: 'みつりんのぬし' 
       },
       description: {
-        es: '',
+        es: 'Cada Energía Planta unida a tus Pokémon Planta proporciona 2 Energías Planta. Este efecto no se acumula.',
         en: 'Each Grass Energy attached to your Grass Pokémon provides 2 Grass Energy. This effect doesn\'t stack.',
-        ja: '' 
+        ja: 'このポケモンがいるかぎり、自分の場の草ポケモンについているすべての草エネルギーは、それぞれ草エネルギー2個ぶんとしてはたらく。この特性は重ならない。' 
       }
     },
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Tan solo muestra su verdadero poder a quienes no se amedrentan ante su noble pero inquisitoria mirada.',
       en: "It only gives its all against strong opponents who are not fazed by the glare from Serperior's noble eyes.",
-      ja: ''
+      ja: 'ジャローダの　けだかい　ひとみで　いすくめられても　へいきな　つよい　あいてにだけ　ほんきを　だす。'
     },
     health: 110,
     rarity: CardRarityENUM.ART,
@@ -22112,42 +22111,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 357,
     number: 71,
     pokedex: 757,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Salandit',
       en: 'Salandit',
-      ja: '' 
+      ja: 'ヤトウモリ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Lagartoxina',
+        en: 'Toxic Lizard Pokémon',
+        ja: 'どくトカゲポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '4.8',
+        en: '10.6',
+        ja: '4.8'
+      }
     },
     artist: 'Nurikabe',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Carga Tóxica',
           en: 'Venoshock',
-          ja: '' 
+          ja: 'ベノムショック' 
         },
         damage: 10,
         energy: [PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Si el Pokémon Activo de tu rival está Envenenado, este ataque hace 40 puntos de daño más.',
           en: 'If your opponent\'s Active Pokémon is Poisoned, this attack does 40 more damage.',
-          ja: '' 
+          ja: '相手のバトルポケモンがどくなら、40ダメージ追加。' 
         }
       }
     ],
@@ -22155,9 +22154,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Provoca a sus presas para conducirlas a zonas rocosas y estrechas, donde las aturde con un gas venenoso antes de acabar con ellas.',
       en: 'It taunts its prey and lures them into narrow, rocky areas where it then sprays them with toxic gas to make them dizzy and take them down.',
-      ja: '' 
+      ja: '獲物を　挑発して　狭い 岩場に　誘い込み　フラフラになる 毒ガスを　吹きかけ　仕留めるのだ｡' 
     },
     health: 60,
     rarity: CardRarityENUM.ART,
@@ -22177,35 +22176,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 358,
     number: 72,
     pokedex: 134,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Vaporeon',
       en: 'Vaporeon',
-      ja: '' 
+      ja: 'シャワーズ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Burbuja',
+        en: 'Bubble Jet Pokémon',
+        ja: 'あわはきポケモン'
+      },
+      height: {
+        es: '1',
+        en: '3\'3"',
+        ja: '1'
+      },
+      weight: {
+        es: '29.0',
+        en: '63.9',
+        ja: '29.0'
+      }
     },
     artist: 'aspara',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Chapoteo Ondulante',
           en: 'Wave Splash',
-          ja: '' 
+          ja: 'スプラッシュ' 
         },
         damage: 60,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
@@ -22213,23 +22212,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
+          es: 'Hacer Limpieza',
           en: 'Wash Out',
-          ja: '' 
+          ja: 'おしながす' 
         },
       description: {
-       es: '',
+       es: 'Todas las veces que quieras durante tu turno, puedes mover 1 Energía Agua de 1 de tus Pokémon Agua en Banca a tu Pokémon Agua Activo.',
        en: 'As often as you like during your turn, you may move a Water Energy from 1 of your Benched Water Pokémon to your Active Water Pokémon.',
-       ja: '' 
+       ja: '自分の番に何回でも使える。自分のベンチの水ポケモンから水エネルギーを1個、バトル場の水ポケモンにつけ替える。' 
      }
     },
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Vive cerca del agua. Su cola termina en una aleta parecida a la de un pez, por lo que hay gente que lo confunde con una sirena.',
       en: 'It lives close to water. Its long tail is ridged with a fin, which is often mistaken for a mermaid’s.',
-      ja: '' 
+      ja: '水辺に　棲むが　尻尾には 魚のような　ひれが　残っていて 人魚と　間違う　人もいる｡' 
     },
     health: 120,
     rarity: CardRarityENUM.ART,
@@ -22249,42 +22248,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 359,
     number: 73,
     pokedex: 702,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Dedenne',
       en: 'Dedenne',
-      ja: '' 
+      ja: 'デデンネ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Antenas',
+        en: 'Antenna Pokémon',
+        ja: 'アンテナポケモン'
+      },
+      height: {
+        es: '0.2',
+        en: '0\'8"',
+        ja: '0.2'
+      },
+      weight: {
+        es: '2.2',
+        en: '4.9',
+        ja: '2.2'
+      }
     },
     artist: 'Yuu Nishida',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Impactrueno',
           en: 'Thunder Shock',
-          ja: '' 
+          ja: 'でんきショック' 
         },
         damage: 10,
         energy: [PokemonTypeENUM.ELECTRIC],
         description: {
-          es: '',
+          es: 'Lanza 1 moneda. Si sale cara, el Pokémon Activo de tu rival pasa a estar Paralizado.',
           en: 'Flip a coin. If heads, your opponent\'s Active Pokémon is now Paralyzed.',
-          ja: '' 
+          ja: 'コインを1回投げオモテなら、相手のバトルポケモンをマヒにする。' 
         }
       }
     ],
@@ -22292,9 +22291,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Como es menudo y su órgano electrógeno está poco desarrollado, absorbe electricidad de las casas con la cola para recargar sus reservas.',
       en: 'It’s small and its electricity-generating organ is not fully developed, so it uses its tail to absorb electricity from people’s homes and charge itself.',
-      ja: '' 
+      ja: '体が 小さく 発電器官が 未熟なので 人家の 電気を 尻尾で 吸い取り 充電する。' 
     },
     health: 60,
     rarity: CardRarityENUM.ART,
@@ -22317,42 +22316,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 360,
     number: 74,
     pokedex: 802,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Marshadow',
       en: 'Marshadow',
-      ja: '' 
+      ja: 'マーシャドー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Morasombra',
+        en: 'Gloomdweller Pokémon',
+        ja: 'かげすみポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '22.2',
+        en: '48.9',
+        ja: '22.2'
+      }
     },
     artist: 'OKACHEKE',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Desquite',
           en: 'Revenge',
-          ja: '' 
+          ja: 'リベンジ' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Si alguno de tus Pokémon quedó Fuera de Combate por el daño de un ataque durante el último turno de tu rival, este ataque hace 60 puntos de daño más.',
           en: 'If any of your Pokémon were Knocked Out by damage from an attack during your opponent\'s last turn, this attack does 60 more damage.',
-          ja: '' 
+          ja: '前の相手の番、ワザのダメージで、自分のポケモンがきぜつしていたなら、60ダメージ追加。' 
         }
       }
     ],
@@ -22360,9 +22359,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Se oculta en la sombra de su oponente y copia sus movimientos y su fuerza. Su imitación resulta más poderosa que el original.',
       en: 'It slips into the shadows of others and mimics their powers and movements. As it improves, it becomes stronger than those it’s imitating.',
-      ja: '' 
+      ja: '相手の 影に 潜って 動きや 力を 真似る。 真似ているうちに 本物 よりも 強くなるぞ。' 
     },
     health: 80,
     rarity: CardRarityENUM.ART,
@@ -22382,52 +22381,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 361,
     number: 75,
     pokedex: 251,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Celebi EX',
       en: 'Celebi EX',
-      ja: '' 
+      ja: 'セレビィ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Viajetiempo',
+        en: 'Time Travel Pokémon',
+        ja: 'ときわたりポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '5.0',
+        en: '11',
+        ja: '5.0'
+      }
     },
     artist: 'Planeta CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Floración Potente',
           en: 'Powerful Bloom',
-          ja: '' 
+          ja: 'パワフルブルーム' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Flip a coin for each Energy attached to this Pokémon. This attack does 50 damage for each heads.',
-       ja: '' 
-     }
+          es: 'Lanza 1 moneda por cada Energía unida a este Pokémon. Este ataque hace 50 puntos de daño por cada cara.',
+          en: 'Flip a coin for each Energy attached to this Pokémon. This attack does 50 damage for each heads.',
+          ja: 'このポケモンのエネルギーの数ぶんコインを投げ、表の数×50ダメージ。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Vino del futuro haciendo un viaje en el tiempo. Hay quien piensa que, mientras Celebi siga apareciendo, el futuro será brillante y esperanzador.',
+      en: 'This Pokémon came from the future by crossing over time. It is thought that so long as Celebi appears, a bright and shining future awaits us.',
+      ja: 'もりのかみさま として まつられる。きれいな もりが あるところ そこに セレビィは あらわれる。' 
     },
     health: 130,
     rarity: CardRarityENUM.SUPER,
@@ -22450,42 +22449,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 362,
     number: 76,
     pokedex: 130,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Gyarados EX',
       en: 'Gyarados EX',
-      ja: '' 
+      ja: 'ギャラドス EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Atrocidad',
+        en: 'Atrocious Pokémon',
+        ja: 'きょうあくポケモン'
+      },
+      height: {
+        es: '6.5',
+        en: '21\'4"',
+        ja: '6.5'
+      },
+      weight: {
+        es: '235.0',
+        en: '518.1',
+        ja: '235.0'
+      }
     },
     artist: 'Planeta CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Torbellino Furioso',
           en: 'Rampaging Whirlpool',
-          ja: '' 
+          ja: 'あばれうずしお' 
         },
         damage: 140,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Descarta 1 Energía aleatoria de entre las Energías unidas a todos los Pokémon (tanto tuyos como de tu rival).',
           en: 'Discard a random Energy from among the Energy attached to all Pokémon (both yours and your opponent\'s',
-          ja: '' 
+          ja: 'おたがいのポケモン全員についているエネルギーからランダムに1個トラッシュ。' 
         }
       }
     ],
@@ -22493,9 +22492,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Cuando aparece, monta en cólera. No deja de estar furioso hasta que lo destruye todo.',
       en: 'Once it appears, it goes on a rampage. It remains enraged until it demolishes everything around it.',
-      ja: '' 
+      ja: '一度　姿を　現すと まわりを　すべて　焼き尽くさないと 怒りが　鎮まらない　という｡' 
     },
     health: 180,
     rarity: CardRarityENUM.SUPER,
@@ -22515,51 +22514,51 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 363,
     number: 77,
     pokedex: 151,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Mew EX',
       en: 'Mew EX',
-      ja: '' 
+      ja: 'ミュウ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Nueva Especie',
+        en: 'New Species Pokémon',
+        ja: 'しんしゅポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '4.0',
+        en: '8.8',
+        ja: '4.0'
+      }
     },
     artist: 'Planeta CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Disparo Psi',
           en: 'Psyshot',
-          ja: '' 
+          ja: 'サイコショット' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.PSYCHIC]
       },
       {
         name: {
-          es: '',
+          es: 'Hackeo Genoma',
           en: 'Genome Hacking',
-          ja: '' 
+          ja: 'ゲノムハック' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Elige 1 de los ataques del Pokémon Activo de tu rival y úsalo para este ataque.',
           en: 'Choose 1 of your opponent\'s Active Pokémon\'s attacks and use it as this attack.',
-          ja: '' 
+          ja: '相手のバトルポケモンが持っているワザを1つ選び、このワザとして使う。' 
         }
       }
     ],
@@ -22567,9 +22566,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Varios científicos lo consideran el antecesor de los Pokémon porque usa todo tipo de movimientos.',
       en: 'Because it can use all kinds of moves, many scientists believe Mew to be the ancestor of Pokémon.',
-      ja: '' 
+      ja: 'あらゆる　技を　使うため ポケモンの　先祖と　考える 学者が　たくさん　いる｡' 
     },
     health: 130,
     rarity: CardRarityENUM.SUPER,
@@ -22589,35 +22588,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 364,
     number: 78,
     pokedex: 142,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Aerodactyl EX',
       en: 'Aerodactyl EX',
-      ja: '' 
+      ja: 'プテラ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Fósil',
+        en: 'Fossil Pokémon',
+        ja: 'かせきポケモン'
+      },
+      height: {
+        es: '1.8',
+        en: '5\'11"',
+        ja: '1.8'
+      },
+      weight: {
+        es: '59.0',
+        en: '130.1',
+        ja: '59.0'
+      }
     },
     artist: 'Planeta CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Aterrizaje',
           en: 'Land Crush',
-          ja: '' 
+          ja: 'ランドクラッシュ' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL]
@@ -22625,23 +22624,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
+          es: 'Ley Primitiva',
           en: 'Primeval Law',
-          ja: '' 
+          ja: 'げんしのさだめ' 
         },
       description: {
-        es: '',
-        en: 'Your opponent can\'t play any Pokémon from their hand to evolve their Active Pokémon.',
-        ja: '' 
-      }
+          es: 'Tu rival no puede jugar ningún Pokémon de su mano para hacer evolucionar al Pokémon Activo.',
+          en: 'Your opponent can\'t play any Pokémon from their hand to evolve their Active Pokémon.',
+          ja: 'このポケモンがいるかぎり、相手は手札からポケモンを出して、バトルポケモンを進化させられない。' 
+        }
     },
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Un feroz Pokémon de la época prehistórica al que no bastan todos los avances tecnológicos actuales para regenerar a la perfección.',
       en: 'This is a ferocious Pokémon from ancient times. Apparently even modern technology is incapable of producing a perfectly restored specimen.',
-      ja: '' 
+      ja: '古代の　獰猛な　ポケモン｡ 完璧な　復元は いまの　科学でも　不可能らしい｡' 
     },
     health: 140,
     rarity: CardRarityENUM.SUPER,
@@ -22661,42 +22660,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 365,
     number: 79,
     pokedex: 18,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Pidgeot EX',
       en: 'Pidgeot EX',
-      ja: '' 
+      ja: 'ピジョット' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pájaro',
+        en: 'Bird Pokémon',
+        ja: 'とりポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '39.5',
+        en: '87.1',
+        ja: '39.5'
+      }
     },
     artist: 'PLANETA CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Ciclón Fragmentado',
           en: 'Scattering Cyclone',
-          ja: '' 
+          ja: 'けちらしサイクロン' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Este ataque hace 20 puntos de daño más por cada uno de los Pokémon en Banca de tu rival.',
           en: 'This attack does 20 more damage for each of your opponent\'s Benched Pokémon.',
-          ja: '' 
+          ja: '相手のベンチポケモンの数×20ダメージ追加。' 
         }
       }
     ],
@@ -22704,9 +22703,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Cuando caza, vuela muy deprisa a ras del agua y sorprende a inocentes presas como Magikarp.',
+      en: 'When hunting, it skims the surface of water at high speed to pick off unwary prey such as Magikarp.',
+      ja: 'エサを　探すとき　水面　すれすれを 滑るように　飛んで コイキングなどを　わしづかみにする｡' 
     },
     health: 170,
     rarity: CardRarityENUM.SUPER,
@@ -22726,18 +22725,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 366,
     number: 80,
     name: {
-          es: '',
-          en: 'Budding Expeditioner',
-          ja: '' 
-        },
+      es: 'Explorador Novel',
+      en: 'Budding Expeditioner',
+      ja: 'かけだし調査員' 
+    },
     artist: 'Yuu Nishida',
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
-      en: 'Put your Mew ex in the Active Spot into your hand.',
-      ja: '' 
+      es: 'Pon a tu Mew ex que esté en el Puesto Activo en tu mano.',
+      en: 'Put your Mew EX in the Active Spot into your hand.',
+      ja: '自分のバトル場の「ミュウex」を手札にもどす。' 
     },
     health: 0,
     rarity: CardRarityENUM.SUPER,
@@ -22757,18 +22756,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 367,
     number: 81,
     name: {
-          es: '',
-          en: 'Blue',
-          ja: '' 
-        },
+      es: 'Azul',
+      en: 'Blue',
+      ja: 'グリーン' 
+    },
     artist: 'Ryuta Fuse',
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Durante el próximo turno de tu rival, los ataques de los Pokémon de tu rival hacen -10 puntos de daño a todos tus Pokémon.',
       en: 'During your opponent’s next turn, all of your Pokémon take −10 damage from attacks from your opponent’s Pokémon.',
-      ja: '' 
+      ja: '次の相手の番、自分のポケモン全員が、相手のポケモンから受けるダメージを-10する。' 
     },
     health: 0,
     rarity: CardRarityENUM.SUPER,
@@ -22788,18 +22787,18 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 368,
     number: 82,
     name: {
-          es: '',
-          en: 'Leaf',
-          ja: '' 
-        },
+      es: 'Hoja',
+      en: 'Leaf',
+      ja: 'リーフ' 
+    },
     artist: 'En Morikura',
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
-      en: '	During this turn, the Retreat Cost of your Active Pokémon is 2 less.',
-      ja: '' 
+      es: 'Durante este turno, el Coste de Retirada de tu Pokémon Activo es de 2 menos.',
+      en: 'During this turn, the Retreat Cost of your Active Pokémon is 2 less.',
+      ja: 'この番、自分のバトルポケモンのにげるためのエネルギーを、2個少なくする。' 
     },
     health: 0,
     rarity: CardRarityENUM.SUPER,
@@ -22819,51 +22818,51 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 369,
     number: 83,
     pokedex: 151,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Mew EX',
       en: 'Mew EX',
-      ja: '' 
+      ja: 'ミュウ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Nueva Especie',
+        en: 'New Species Pokémon',
+        ja: 'しんしゅポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '4.0',
+        en: '8.8',
+        ja: '4.0'
+      }
     },
     artist: 'HYOGONOSUKE',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Disparo Psi',
           en: 'Psyshot',
-          ja: '' 
+          ja: 'サイコショット' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.PSYCHIC]
       },
       {
         name: {
-          es: '',
+          es: 'Hackeo Genoma',
           en: 'Genome Hacking',
-          ja: '' 
+          ja: 'ゲノムハック' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Elige 1 de los ataques del Pokémon Activo de tu rival y úsalo para este ataque.',
           en: 'Choose 1 of your opponent\'s Active Pokémon\'s attacks and use it as this attack.',
-          ja: '' 
+          ja: '相手のバトルポケモンが持っているワザを1つ選び、このワザとして使う。' 
         }
       }
     ],
@@ -22871,9 +22870,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Varios científicos lo consideran el antecesor de los Pokémon porque usa todo tipo de movimientos.',
       en: 'Because it can use all kinds of moves, many scientists believe Mew to be the ancestor of Pokémon.',
-      ja: '' 
+      ja: 'あらゆる　技を　使うため ポケモンの　先祖と　考える 学者が　たくさん　いる｡' 
     },
     health: 130,
     rarity: CardRarityENUM.SUPER,
@@ -22893,35 +22892,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 370,
     number: 84,
     pokedex: 142,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Aerodactyl EX',
       en: 'Aerodactyl EX',
-      ja: '' 
+      ja: 'プテラ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Fósil',
+        en: 'Fossil Pokémon',
+        ja: 'かせきポケモン'
+      },
+      height: {
+        es: '1.8',
+        en: '5\'11"',
+        ja: '1.8'
+      },
+      weight: {
+        es: '59.0',
+        en: '130.1',
+        ja: '59.0'
+      }
     },
     artist: 'danciao',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Aterrizaje',
           en: 'Land Crush',
-          ja: '' 
+          ja: 'ランドクラッシュ' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL]
@@ -22929,23 +22928,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
+          es: 'Ley Primitiva',
           en: 'Primeval Law',
-          ja: '' 
+          ja: 'げんしのさだめ' 
         },
       description: {
-          es: '',
+          es: 'Tu rival no puede jugar ningún Pokémon de su mano para hacer evolucionar al Pokémon Activo.',
           en: 'Your opponent can\'t play any Pokémon from their hand to evolve their Active Pokémon.',
-          ja: '' 
+          ja: 'このポケモンがいるかぎり、相手は手札からポケモンを出して、バトルポケモンを進化させられない。' 
         }
     },
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Un feroz Pokémon de la época prehistórica al que no bastan todos los avances tecnológicos actuales para regenerar a la perfección.',
       en: 'This is a ferocious Pokémon from ancient times. Apparently even modern technology is incapable of producing a perfectly restored specimen.',
-      ja: '' 
+      ja: '古代の　獰猛な　ポケモン｡ 完璧な　復元は いまの　科学でも　不可能らしい｡' 
     },
     health: 140,
     rarity: CardRarityENUM.SUPER,
@@ -22965,52 +22964,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 371,
     number: 85,
     pokedex: 251,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Celebi EX',
       en: 'Celebi EX',
-      ja: '' 
+      ja: 'セレビィ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Viajetiempo',
+        en: 'Time Travel Pokémon',
+        ja: 'ときわたりポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '5.0',
+        en: '11',
+        ja: '5.0'
+      }
     },
     artist: 'kantaro',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Floración Potente',
           en: 'Powerful Bloom',
-          ja: '' 
+          ja: 'パワフルブルーム' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Flip a coin for each Energy attached to this Pokémon. This attack does 50 damage for each heads.',
-       ja: '' 
-     }
+          es: 'Lanza 1 moneda por cada Energía unida a este Pokémon. Este ataque hace 50 puntos de daño por cada cara.',
+          en: 'Flip a coin for each Energy attached to this Pokémon. This attack does 50 damage for each heads.',
+          ja: 'このポケモンのエネルギーの数ぶんコインを投げ、表の数×50ダメージ。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Vino del futuro haciendo un viaje en el tiempo. Hay quien piensa que, mientras Celebi siga apareciendo, el futuro será brillante y esperanzador.',
+      en: 'This Pokémon came from the future by crossing over time. It is thought that so long as Celebi appears, a bright and shining future awaits us.',
+      ja: 'もりのかみさま として まつられる。きれいな もりが あるところ そこに セレビィは あらわれる。' 
     },
     health: 130,
     rarity: CardRarityENUM.INMERSIVE,
@@ -23033,51 +23032,51 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 372,
     number: 86,
     pokedex: 151,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Mew EX',
       en: 'Mew EX',
-      ja: '' 
+      ja: 'ミュウ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Nueva Especie',
+        en: 'New Species Pokémon',
+        ja: 'しんしゅポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '4.0',
+        en: '8.8',
+        ja: '4.0'
+      }
     },
     artist: 'Planeta CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Disparo Psi',
           en: 'Psyshot',
-          ja: '' 
+          ja: 'サイコショット' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.PSYCHIC]
       },
       {
         name: {
-          es: '',
+          es: 'Hackeo Genoma',
           en: 'Genome Hacking',
-          ja: '' 
+          ja: 'ゲノムハック' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Elige 1 de los ataques del Pokémon Activo de tu rival y úsalo para este ataque.',
           en: 'Choose 1 of your opponent\'s Active Pokémon\'s attacks and use it as this attack.',
-          ja: '' 
+          ja: '相手のバトルポケモンが持っているワザを1つ選び、このワザとして使う。' 
         }
       }
     ],
@@ -23085,9 +23084,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.MYTHICAL_ISLAND,
     series: CardExpansionTypeENUM.A1A,
     flavor: {
-      es: '',
+      es: 'Varios científicos lo consideran el antecesor de los Pokémon porque usa todo tipo de movimientos.',
       en: 'Because it can use all kinds of moves, many scientists believe Mew to be the ancestor of Pokémon.',
-      ja: '' 
+      ja: 'あらゆる　技を　使うため ポケモンの　先祖と　考える 学者が　たくさん　いる｡' 
     },
     health: 130,
     rarity: CardRarityENUM.CROWN,
@@ -24511,27 +24510,27 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 395,
     number: 23,
     pokedex: 126,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Magmar',
       en: 'Magmar',
-      ja: '' 
+      ja: 'ブーバー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Escupefuego',
+        en: 'Spitfire Pokémon',
+        ja: 'ひふきポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '4\'3"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '44.5',
+        en: '98.1',
+        ja: '44.5'
+      }
     },
     artist: 'Hiroki Asanuma',
     attacks: [
@@ -26644,27 +26643,27 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 428,
     number: 56,
     pokedex: 125,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Electabuzz',
       en: 'Electabuzz',
-      ja: '' 
+      ja: 'エレブー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Eléctrico',
+        en: 'Electric Pokémon',
+        ja: 'でんげきポケモン'
+      },
+      height: {
+        es: '1.1',
+        en: '3\'7"',
+        ja: '1.1'
+      },
+      weight: {
+        es: '30.0',
+        en: '66.1',
+        ja: '30.0'
+      }
     },
     artist: 'Shin Nagasawa',
     attacks: [
@@ -26677,19 +26676,19 @@ export const MOCK_DB_CARDS: Card[] = [
         damage: 0,
         energy: [PokemonTypeENUM.ELECTRIC],
         description: {
-       es: '',
-       en: 'Take a Electric Energy from your Energy Zone and attach it to this Pokémon.',
-       ja: '' 
-     }
+          es: '',
+          en: 'Take a Electric Energy from your Energy Zone and attach it to this Pokémon.',
+          ja: '' 
+        }
       }
     ],
     evolve: [429],
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Es habitual que las centrales eléctricas cuenten con Pokémon de tipo Tierra para hacer frente a los Electabuzz ávidos de electricidad.',
       en: 'Many power plants keep Ground-type Pokémon around as a defense against Electabuzz that come seeking electricity.',
-      ja: '' 
+      ja: '電気を　狙う　エレブーの　対策に じめんポケモンを　置く 発電所は　多い｡' 
     },
     health: 80,
     rarity: CardRarityENUM.COMMON,
@@ -31153,27 +31152,27 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 498,
     number: 126,
     pokedex: 133,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Eevee',
       en: 'Eevee',
-      ja: '' 
+      ja: 'イーブイ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Evolución',
+        en: 'Evolution Pokémon',
+        ja: 'しんかポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '6.5',
+        en: '14.3',
+        ja: '6.5'
+      }
     },
     artist: 'Shibuzoh.',
     attacks: [
@@ -31196,9 +31195,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Es capaz de evolucionar de muchas maneras para adaptarse sin problemas a cualquier medio.',
       en: 'Its ability to evolve into many forms allows it to adapt smoothly and perfectly to any environment.',
-      ja: '' 
+      ja: '環境の　変化に　すぐさま 合わせられるよう　いくつもの 進化の　可能性を　秘めている｡' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -36232,35 +36231,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 588,
     number: 9,
     pokedex: 25,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Pikachu',
       en: 'Pikachu',
-      ja: '' 
+      ja: 'ピカチュウ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '6.0',
+        en: '13.2',
+        ja: '6.0'
+      }
     },
     artist: 'Atsushi Furusawa',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Roer',
           en: 'Gnaw',
-          ja: '' 
+          ja: 'かじる' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.ELECTRIC],
@@ -36270,9 +36269,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cuando se enfada, este Pokémon descarga la energía que almacena en el interior de las bolsas de las mejillas.',
       en: 'When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.',
-      ja: '' 
+      ja: '両頬には　電気を　溜めこむ 袋がある｡　怒ると　溜めこんだ 電気を　一気に　放ってくる｡' 
     },
     health: 60,
     rarity: CardRarityENUM.PROMO,
@@ -36286,7 +36285,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PREMIUM
     ],
     extra: {
-      es: 'Premium Pass',
+      es: 'Pase Premium',
       en: 'Premium Pass',
       ja: '' 
     },
@@ -36648,35 +36647,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 594,
     number: 15,
     pokedex: 25,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Pikachu',
       en: 'Pikachu',
-      ja: '' 
+      ja: 'ピカチュウ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '6.0',
+        en: '13.2',
+        ja: '6.0'
+      }
     },
     artist: 'Kouki Saitou',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Roer',
           en: 'Gnaw',
-          ja: '' 
+          ja: 'かじる' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.ELECTRIC],
@@ -36686,9 +36685,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cuando se enfada, este Pokémon descarga la energía que almacena en el interior de las bolsas de las mejillas.',
       en: 'When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.',
-      ja: '' 
+      ja: '両頬には　電気を　溜めこむ 袋がある｡　怒ると　溜めこんだ 電気を　一気に　放ってくる｡' 
     },
     health: 60,
     rarity: CardRarityENUM.PROMO,
@@ -36702,7 +36701,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PROMO_A1,
     ],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
       ja: '' 
     },
@@ -36778,27 +36777,27 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 596,
     number: 17,
     pokedex: 56,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Mankey',
       en: 'Mankey',
-      ja: '' 
+      ja: 'マンキー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mono Cerdo',
+        en: 'Pig Monkey Pokémon',
+        ja: 'ぶたざるポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '28.8',
+        en: '61.7',
+        ja: '28.8'
+      }
     },
     artist: 'Souichirou Gunjima',
     attacks: [
@@ -36811,19 +36810,19 @@ export const MOCK_DB_CARDS: Card[] = [
         damage: 30,
         energy: [PokemonTypeENUM.FIGHT],
         description: {
-       es: '',
-       en: 'This Pokémon also does 10 damage to itself.',
-       ja: '' 
-     }
+          es: '',
+          en: 'This Pokémon also does 10 damage to itself.',
+          ja: '' 
+        }
       },
     ],
     evolve: [142],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Vive en grupos en las copas de los árboles. Si pierde de vista a su manada, se siente solo y se enfada.',
       en: 'It lives in groups in the treetops. If it loses sight of its group, it becomes infuriated by its loneliness.',
-      ja: '' 
+      ja: '木の上で　群れをつくって　暮らす｡ 群れから　はぐれた　マンキーは 寂しくて　すぐに　怒りだす｡' 
     },
     health: 60,
     rarity: CardRarityENUM.PROMO,
@@ -37257,7 +37256,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.WONDER_PICK
     ],
     extra: {
-      es: 'Wonder Pick',
+      es: 'Elección Mágica',
       en: 'Wonder Pick',
       ja: '' 
     },
@@ -37333,49 +37332,49 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 604,
     number: 25,
     pokedex: 145,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Moltres EX',
       en: 'Moltres EX',
-      ja: '' 
+      ja: 'ファイヤー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Llama',
+        en: 'Flame Pokémon',
+        ja: 'かえんポケモン'
+      },
+      height: {
+        es: '2',
+        en: '6\'7"',
+        ja: '2'
+      },
+      weight: {
+        es: '60.0',
+        en: '132.3',
+        ja: '60.0'
+      }
     },
     artist: 'PLANETA Igarashi',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Danza Infernal',
           en: 'Inferno Dance',
-          ja: '' 
+          ja: 'れっかのまい' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.FIRE],
         description: {
-       es: '',
-       en: 'Flip 3 coins. Take an amount of Fire Energy from your Energy Zone equal to the number of heads and attach it to your Benched Fire Pokémon in any way you like.',
-       ja: '' 
-     }
+          es: 'Lanza 3 monedas. Une a tus Pokémon Fuego en Banca, de la manera que desees, tantas Energías Fuego de tu área de Energía como caras hayan salido.',
+          en: 'Flip 3 coins. Take an amount of Fire Energy from your Energy Zone equal to the number of heads and attach it to your Benched Fire Pokémon in any way you like.',
+          ja: 'コインを3回投げ、オモテの数ぶんの炎エネルギーを自分のエネルギーゾーンから出し、ベンチの炎ポケモンに好きなようにつける。' 
+        }
       },
       {
         name: {
-          es: '',
+          es: 'Explosión de Calor',
           en: 'Heat Blast',
-          ja: '' 
+          ja: 'ヒートブラスト' 
         },
         damage: 70,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
@@ -37385,9 +37384,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
-      en: '',
-      ja: '' 
+      es: 'Una de las aves legendarias. Al batir las alas, las llamas que las envuelven emiten un hermoso fulgor rojo.',
+      en: 'It’s one of the legendary bird Pokémon. When Moltres flaps its flaming wings, they glimmer with a dazzling red glow.',
+      ja: '羽ばたくと　翼の　炎が 赤く　美しく　きらめく 伝説の　鳥ポケモンの　１匹｡' 
     },
     health: 140,
     rarity: CardRarityENUM.PROMO,
@@ -37405,9 +37404,9 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     related: [47, 255, 274],
     extra: {
-      es: 'Premium Pass',
+      es: 'Pase Premium',
       en: 'Premium Pass',
-      ja: '' 
+      ja: 'プレミアムパス' 
     },
   },
   {
@@ -37415,35 +37414,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 605,
     number: 26,
     pokedex: 25,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Pikachu',
       en: 'Pikachu',
-      ja: '' 
+      ja: 'ピカチュウ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '6.0',
+        en: '13.2',
+        ja: '6.0'
+      }
     },
     artist: 'Kouki Saifou',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Roer',
           en: 'Gnaw',
-          ja: '' 
+          ja: 'かじる' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.ELECTRIC],
@@ -37453,9 +37452,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cuando se enfada, este Pokémon descarga la energía que almacena en el interior de las bolsas de las mejillas.',
       en: 'When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.',
-      ja: '' 
+      ja: '両頬には　電気を　溜めこむ 袋がある｡　怒ると　溜めこんだ 電気を　一気に　放ってくる｡' 
     },
     health: 60,
     rarity: CardRarityENUM.PROMO,
@@ -37469,7 +37468,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.SPECIAL_MISSION,
     ],
     extra: {
-      es: 'Special Event',
+      es: 'Evento Especial',
       en: 'Special Event',
       ja: '' 
     },
@@ -37688,27 +37687,27 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 609,
     number: 30,
     pokedex: 133,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Eevee',
       en: 'Eevee',
-      ja: '' 
+      ja: 'イーブイ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Evolución',
+        en: 'Evolution Pokémon',
+        ja: 'しんかポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '6.5',
+        en: '14.3',
+        ja: '6.5'
+      }
     },
     artist: 'En Morikura',
     attacks: [
@@ -37731,9 +37730,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Es capaz de evolucionar de muchas maneras para adaptarse sin problemas a cualquier medio.',
       en: 'Its ability to evolve into many forms allows it to adapt smoothly and perfectly to any environment.',
-      ja: '' 
+      ja: '環境の　変化に　すぐさま 合わせられるよう　いくつもの 進化の　可能性を　秘めている｡' 
     },
     health: 60,
     rarity: CardRarityENUM.PROMO,
