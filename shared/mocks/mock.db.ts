@@ -18630,6 +18630,11 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 300,
     number: 14,
     pokedex: 637,
+    name: {
+      es: 'Volcarona',
+      en: 'Volcarona',
+      ja: 'ウルガモス' 
+    },
     info: {
       type: {
         es: 'Pokémon Sol',
@@ -18646,11 +18651,6 @@ export const MOCK_DB_CARDS: Card[] = [
         en: '101.4',
         ja: '46.0'
       }
-    },
-    name: {
-      es: 'Volcarona',
-      en: 'Volcarona',
-      ja: 'ウルガモス' 
     },
     artist: 'DOM',
     attacks: [
@@ -35975,24 +35975,24 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 580,
     number: 1,
     name: {
-      es: '',
+      es: 'Poción',
       en: 'Potion',
-      ja: '' 
+      ja: 'きずぐすり' 
     },
     artist: '5ban Graphics',
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cura 20 puntos de daño a 1 de tus Pokémon.',
       en: 'Heal 20 damage from 1 of your Pokémon.',
-      ja: '' 
+      ja: '自分のポケモン1匹のHPを20回復。' 
     },
     rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: {
-      es: 'Obtained from the shop',
+      es: 'En la tienda',
       en: 'Obtained from the shop',
-      ja: '' 
+      ja: '店から取得した' 
     },
     element: -1,
     pokedex: -1,
@@ -36007,24 +36007,24 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 581,
     number: 2,
     name: {
-      es: '',
+      es: 'Velocidad X',
       en: 'X Speed',
-      ja: '' 
+      ja: 'スピーダー' 
     },
     artist: 'Toyste Beach',
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Durante este turno, el Coste de Retirada de tu Pokémon Activo es de 1 menos.',
       en: 'During this turn, the Retreat Cost of your Active Pokémon is 1 less.',
-      ja: '' 
+      ja: 'この番、自分のバトルポケモンのにげるためのエネルギーを、1個少なくする。' 
     },
     rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: {
-      es: 'Obtained from the shop',
+      es: 'En la tienda',
       en: 'Obtained from the shop',
-      ja: '' 
+      ja: '店から取得した' 
     },
     element: -1,
     pokedex: -1,
@@ -36039,24 +36039,24 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 582,
     number: 3,
     name: {
-      es: '',
+      es: 'Periscopio',
       en: 'Hand Scope',
-      ja: '' 
+      ja: 'ハンドスコープ' 
     },
     artist: 'Toyste Beach',
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Tu rival enseña las cartas de su mano.',
       en: 'Your opponent reveals their hand.',
-      ja: '' 
+      ja: '相手の手札のオモテをすべて見る。' 
     },
     rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: {
-      es: 'Obtained from the shop',
+      es: 'En la tienda',
       en: 'Obtained from the shop',
-      ja: '' 
+      ja: '店から取得した' 
     },
     element: -1,
     pokedex: -1,
@@ -36071,24 +36071,24 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 583,
     number: 4,
     name: {
-      es: '',
+      es: 'Pokédex',
       en: 'Pokédex',
-      ja: '' 
+      ja: 'ポケモン図鑑' 
     },
     artist: 'Ryo Ueda',
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Mira las 3 primeras cartas de tu baraja.',
       en: 'Look at the top 3 cards of your deck.',
-      ja: '' 
+      ja: '自分の山札を上から3枚見て、もとにもどす。' 
     },
     rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: {
-      es: 'Obtained from the shop',
+      es: 'En la tienda',
       en: 'Obtained from the shop',
-      ja: '' 
+      ja: '店から取得した' 
     },
     element: -1,
     pokedex: -1,
@@ -36103,24 +36103,24 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 584,
     number: 5,
     name: {
-      es: '',
+      es: 'Poké Ball',
       en: 'Poké Ball',
-      ja: '' 
+      ja: 'モンスターボール' 
     },
     artist: 'Ryo Ueda',
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Pon 1 Pokémon Básico aleatorio de tu baraja en tu mano.',
       en: 'Put 1 random Basic Pokémon from your deck into your hand.',
-      ja: '' 
+      ja: '自分の山札からたねポケモンをランダムに1枚、手札に加える。' 
     },
     rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: {
-      es: 'Obtained from the shop',
+      es: 'En la tienda',
       en: 'Obtained from the shop',
-      ja: '' 
+      ja: '店から取得した' 
     },
     element: -1,
     pokedex: -1,
@@ -36135,24 +36135,24 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 585,
     number: 6,
     name: {
-      es: '',
+      es: 'Tarjeta Roja',
       en: 'Red Card',
-      ja: '' 
+      ja: 'レッドカード' 
     },
     artist: '5ban Graphics',
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Tu rival pone las cartas de su mano en su baraja, las baraja todas y roba 3 cartas.',
       en: 'Your opponent shuffles their hand into their deck and draws 3 cards.',
-      ja: '' 
+      ja: '相手の手札をすべて山札にもどす。相手は山札を3枚引く。' 
     },
     rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: {
-      es: 'Obtained from the shop',
+      es: 'En la tienda',
       en: 'Obtained from the shop',
-      ja: '' 
+      ja: '店から取得した' 
     },
     element: -1,
     pokedex: -1,
@@ -36167,24 +36167,24 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 586,
     number: 7,
     name: {
-      es: '',
+      es: 'Investigación de Profesores',
       en: 'Professor\'s Research',
-      ja: '' 
+      ja: '博士の研究' 
     },
     artist: 'Naoki Saito',
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Roba 2 cartas.',
       en: 'Draw 2 cards.',
-      ja: '' 
+      ja: '自分の山札を2枚引く。' 
     },
     rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.ITEM,
     extra: {
-      es: 'Obtained from the shop',
+      es: 'En la tienda',
       en: 'Obtained from the shop',
-      ja: '' 
+      ja: '店から取得した' 
     },
     element: -1,
     pokedex: -1,
@@ -36199,24 +36199,24 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 587,
     number: 8,
     name: {
-      es: '',
+      es: 'Pokédex',
       en: 'Pokédex',
-      ja: '' 
+      ja: 'ポケモン図鑑' 
     },
     artist: 'Yuu Nishida',
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Mira las 3 primeras cartas de tu baraja.',
       en: 'Look at the top 3 cards of your deck.',
-      ja: '' 
+      ja: '自分の山札を上から3枚見て、もとにもどす。' 
     },
     rarity: CardRarityENUM.PROMO,
     stage: CardStageENUM.SUPPORTER,
     extra: {
-      es: 'Special Event',
+      es: 'Evento Especial',
       en: 'Special Event',
-      ja: '' 
+      ja: '特別イベント' 
     },
     element: -1,
     pokedex: -1,
@@ -36287,7 +36287,7 @@ export const MOCK_DB_CARDS: Card[] = [
     extra: {
       es: 'Pase Premium',
       en: 'Premium Pass',
-      ja: '' 
+      ja: 'プレミアムパス' 
     },
     related: [94, 95, 311, 312, 398, 387]
   },
@@ -36296,52 +36296,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 589,
     number: 10,
     pokedex: 150,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Mewtwo',
       en: 'Mewtwo',
-      ja: '' 
+      ja: 'ミュウツー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Genético',
+        en: 'Genetic Pokémon',
+        ja: 'いでんしポケモン'
+      },
+      height: {
+        es: '2',
+        en: '6\'7"',
+        ja: '2'
+      },
+      weight: {
+        es: '122.0',
+        en: '269',
+        ja: '122.0'
+      }
     },
     artist: 'Krgc',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Estallido Vigoroso',
           en: 'Power Blast',
-          ja: '' 
+          ja: 'パワーブラスト' 
         },
         damage: 120,
         energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Discard 2 Psychic Energy from this Pokémon.',
-       ja: '' 
-     }
+          es: 'Descarta 2 Energías Psíquica de este Pokémon.',
+          en: 'Discard 2 Psychic Energy from this Pokémon.',
+          ja: 'このポケモンから超エネルギーを2個トラッシュ' 
+        }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Fue creado por un científico tras años de horribles experimentos de ingeniería genética.',
       en: 'It was created by a scientist after years of horrific gene-splicing and DNA-engineering experiments.',
-      ja: '' 
+      ja: '１人の　科学者が　何年も 恐ろしい　遺伝子　研究を 続けた　結果　誕生した｡' 
     },
     health: 120,
     rarity: CardRarityENUM.PROMO,
@@ -36355,9 +36355,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PREMIUM
     ],
     extra: {
-      es: 'Premium Pass',
+      es: 'Pase Premium',
       en: 'Premium Pass',
-      ja: '' 
+      ja: 'プレミアムパス' 
     },
     related: [128]
   },
@@ -36366,35 +36366,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 590,
     number: 11,
     pokedex: 113,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Chansey',
       en: 'Chansey',
-      ja: '' 
+      ja: 'ラッキー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Huevo',
+        en: 'Egg Pokémon',
+        ja: 'たまごポケモン'
+      },
+      height: {
+        es: '1.1',
+        en: '3\'7"',
+        ja: '1.1'
+      },
+      weight: {
+        es: '34.6',
+        en: '76.3',
+        ja: '34.6'
+      }
     },
     artist: 'sowsow',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Bofetada Gentil',
           en: 'Gentle Slap',
-          ja: '' 
+          ja: 'ひっぱたく' 
         },
         damage: 60,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
@@ -36404,9 +36404,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Un generoso Pokémon que pone huevos muy nutritivos y se los da a personas o Pokémon heridos.',
       en: 'This kindly Pokémon lays highly nutritious eggs and shares them with injured Pokémon or people.',
-      ja: '' 
+      ja: '傷ついた　ポケモンや　人がいると 栄養満点の　タマゴを産み 分け与える　優しい　ポケモン｡' 
     },
     health: 120,
     rarity: CardRarityENUM.PROMO,
@@ -36420,9 +36420,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.WONDER_PICK
     ],
     extra: {
-      es: 'Wonder Pick',
+      es: 'Elección Mágica',
       en: 'Wonder Pick',
-      ja: '' 
+      ja: 'ワンダーピック' 
     },
     related: [202]
   },
@@ -36431,52 +36431,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 591,
     number: 12,
     pokedex: 52,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Meowth',
       en: 'Meowth',
-      ja: '' 
+      ja: 'ニャース' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gato Araña',
+        en: '	Scratch Cat Pokémon',
+        ja: 'ばけねこポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '4.2',
+        en: '9.3',
+        ja: '4.2'
+      }
     },
     artist: 'Shigenori Negishi',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Día de Pago',
           en: 'Pay Day',
-          ja: '' 
+          ja: 'ネコにこばん' 
         },
         damage: 10,
         energy: [PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Draw a card.',
-       ja: '' 
-     }
+          es: 'Roba 1 carta.',
+          en: 'Draw a card.',
+          ja: '自分の山札を1枚引く。' 
+        }
       },
     ],
     evolve: [197],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Durante el día, se dedica a dormir. De noche, vigila su territorio con un brillo en los ojos.',
       en: 'All it does is sleep during the daytime. At night, it patrols its territory with its eyes aglow.',
-      ja: '' 
+      ja: '昼間は　寝てばかりいる｡ 夜になると　目が　輝き 縄張りを　歩きまわる｡' 
     },
     health: 60,
     rarity: CardRarityENUM.PROMO,
@@ -36490,9 +36490,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.WONDER_PICK
     ],
     extra: {
-      es: 'Wonder Pick',
+      es: 'Elección Mágica',
       en: 'Wonder Pick',
-      ja: '' 
+      ja: 'ワンダーピック' 
     },
     related: [196, 197, 246]
   },
@@ -36501,35 +36501,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 592,
     number: 13,
     pokedex: 12,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Butterfree',
       en: 'Butterfree',
-      ja: '' 
+      ja: 'バタフリー'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mariposa',
+        en: 'Butterfly Pokémon',
+        ja: 'ちょうちょポケモン'
+      },
+      height: {
+        es: '1.1',
+        en: '2\'04"',
+        ja: '1.1'
+      },
+      weight: {
+        es: '32.0',
+        en: '70.5',
+        ja: '32.0'
+      }
     },
     artist: 'Shin Nagasawa',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Tornado',
           en: 'Gust',
-          ja: '' 
+          ja: 'かぜおこし'
         },
         damage: 60,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
@@ -36537,23 +36537,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
-          en: 'Powder Heal',
-          ja: '' 
-        },
+        es: 'Polvo Sanador',
+        en: 'Powder Heal',
+        ja: 'パウダーヒール'
+      },
       description: {
-       es: '',
-       en: 'Once during your turn, you may heal 20 damage from each of your Pokémon.',
-       ja: '' 
-     }
+        es: 'Una vez durante tu turno, puedes curar 20 puntos de daño a cada uno de tus Pokémon.',
+        en: 'Once during your turn, you may heal 20 damage from each of your Pokémon.',
+        ja: '自分の番に1回使える。自分のポケモン全員のHPを20回復。'
+      }
     },
     evolve: [],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Aletea a gran velocidad para lanzar al aire sus escamas extremadamente tóxicas.',
       en: 'In battle, it flaps its wings at great speed to release highly toxic dust into the air.',
-      ja: '' 
+      ja: 'こまかく 速く 羽ばたいたら 猛毒の りんぷんが 風に のって 飛んでくるぞ｡'
     },
     health: 120,
     rarity: CardRarityENUM.PROMO,
@@ -36567,9 +36567,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PROMO_A1
     ],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
     related: [5, 6, 7]
   },
@@ -36578,52 +36578,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 593,
     number: 14,
     pokedex: 131,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Lapras EX',
       en: 'Lapras EX',
-      ja: '' 
+      ja: 'ラプラス EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Transporte',
+        en: 'Transport Pokémon',
+        ja: 'のりものポケモン'
+      },
+      height: {
+        es: '2.5',
+        en: '8\'2"',
+        ja: '2.5'
+      },
+      weight: {
+        es: '220.0',
+        en: '485',
+        ja: '220.0'
+      }
     },
     artist: 'PLANETA CG Works',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Drenaje Burbujas',
           en: 'Bubble Drain',
-          ja: '' 
+          ja: 'バブルドレイン' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Heal 20 damage from this Pokémon.',
-       ja: '' 
-     }
+          es: 'Cura 20 puntos de daño a este Pokémon.',
+          en: 'Heal 20 damage from this Pokémon.',
+          ja: 'このポケモンのHPを20回復。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Este Pokémon posee una notable inteligencia y un corazón de oro. Entona un canto melodioso mientras surca el mar.',
       en: 'A smart and kindhearted Pokémon, it glides across the surface of the sea while its beautiful song echoes around it.',
-      ja: '' 
+      ja: '賢く　心優しい　ポケモン｡ きれいな　歌声を　響かせながら 海の上を　泳いで　いく｡' 
     },
     health: 140,
     rarity: CardRarityENUM.PROMO,
@@ -36637,9 +36637,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PROMO_A1
     ],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
   },
   {
@@ -36703,7 +36703,7 @@ export const MOCK_DB_CARDS: Card[] = [
     extra: {
       es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
     related: [94, 95, 311, 312, 398, 381]
   },
@@ -36712,35 +36712,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 595,
     number: 16,
     pokedex: 35,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Clefairy',
       en: 'Clefairy',
-      ja: '' 
+      ja: 'ピッピ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Hada',
+        en: 'Fairy Pokémon',
+        ja: 'ようせいポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '7.5',
+        en: '16.5',
+        ja: '7.5'
+      }
     },
     artist: 'Shibuzoh.',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Bofetón',
           en: 'Slap',
-          ja: '' 
+          ja: 'ビンタ' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.PSYCHIC],
@@ -36750,9 +36750,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Se dice que la felicidad llegará a quien vea un grupo de Clefairy bailando a la luz de la luna llena.',
       en: 'It is said that happiness will come to those who see a gathering of Clefairy dancing under a full moon.',
-      ja: '' 
+      ja: '満月の夜　ピッピが　集まって ダンスを　踊るようすを　見ると しあわせに　なれると　言われている｡' 
     },
     health: 60,
     rarity: CardRarityENUM.PROMO,
@@ -36766,9 +36766,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PROMO_A1,
     ],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
     related: [113, 114]
   },
@@ -36803,16 +36803,16 @@ export const MOCK_DB_CARDS: Card[] = [
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Carga Descuidada',
           en: 'Reckless Charge',
-          ja: '' 
+          ja: 'とつげき' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.FIGHT],
         description: {
-          es: '',
+          es: 'Este Pokémon también se hace 10 puntos de daño a sí mismo.',
           en: 'This Pokémon also does 10 damage to itself.',
-          ja: '' 
+          ja: 'このポケモンにも10ダメージ。' 
         }
       },
     ],
@@ -36836,9 +36836,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PROMO_A1,
     ],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
     related: [141, 142, 327, 328]
   },
@@ -36847,52 +36847,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 597,
     number: 18,
     pokedex: 3,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Venusaur',
       en: 'Venusaur',
-      ja: '' 
+      ja: 'フシギバナ'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Semilla',
+        en: 'Seed Pokémon',
+        ja: 'たねポケモン'
+      },
+      height: {
+        es: '2.0',
+        en: '6\'07"',
+        ja: '2.0'
+      },
+      weight: {
+        es: '100.0',
+        en: '220,5',
+        ja: '100.0'
+      }
     },
     artist: 'Kuroimori',
     attacks: [
       {
         name: {
-          es: '',
-          en: 'Mega Rain',
-          ja: '' 
+          es: 'Megaagotar',
+          en: 'Mega Drain',
+          ja: 'メガドレイン'
         },
         damage: 80,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Heal 30 damage from this Pokémon.',
-       ja: '' 
-     }
+          es: 'Cura 30 puntos de daño a este Pokémon.',
+          en: 'Heal 30 damage from this Pokémon.',
+          ja: 'このポケモンのHPを30回復。'
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'La planta florece cuando absorbe energía solar, lo cual le obliga a buscar siempre la luz del sol.',
       en: 'Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.',
-      ja: '' 
+      ja: '太陽エネルギーを 栄養にして 大きな花が 開く。 日なたに 引き寄せられるように 移動する。'
     },
     health: 160,
     rarity: CardRarityENUM.PROMO,
@@ -36906,9 +36906,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PROMO_A2
     ],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
     related: [1, 2, 3, 227, 395]
   },
@@ -36917,35 +36917,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 598,
     number: 19,
     pokedex: 658,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Greninja',
       en: 'Greninja',
-      ja: '' 
+      ja: 'ゲッコウガ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ninja',
+        en: 'Ninja Pokémon',
+        ja: 'しのびポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '40.0',
+        en: '88.2',
+        ja: '40.0'
+      }
     },
     artist: 'Sanosuke Sakuma',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Golpe Niebla',
           en: 'Mist Slash',
-          ja: '' 
+          ja: 'かすみぎり' 
         },
         damage: 60,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
@@ -36953,23 +36953,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
+          es: 'Shuriken de Agua',
           en: 'Water Shuriken',
-          ja: '' 
+          ja: 'みずしゅりけん' 
         },
       description: {
-       es: '',
-       en: 'Once during your turn, you may do 20 damage to 1 of your opponent’s Pokémon.',
-       ja: '' 
-     }
+          es: 'Una vez durante tu turno, puedes hacer 20 puntos de daño a 1 de los Pokémon de tu rival.',
+          en: 'Once during your turn, you may do 20 damage to 1 of your opponent’s Pokémon.',
+          ja: '自分の番に1回使える。相手のポケモン1匹に20ダメージ。' 
+        }
     },
     evolve: [],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Comprime el agua y crea estrellas ninja con las que ataca al enemigo. Cuando las hace girar a gran velocidad cortan en dos hasta el metal.',
       en: 'It creates throwing stars out of compressed water. When it spins them and throws them at high speed, these stars can split metal in two.',
-      ja: '' 
+      ja: '水を　圧縮して　手裏剣を　作り出す｡ 高速回転させて　飛ばすと 金属も　真っ二つ｡' 
     },
     health: 120,
     rarity: CardRarityENUM.PROMO,
@@ -36983,9 +36983,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PROMO_A2
     ],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
     related: [87, 88, 89]
   },
@@ -36994,52 +36994,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 599,
     number: 20,
     pokedex: 93,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Haunter',
       en: 'Haunter',
-      ja: '' 
+      ja: 'ゴースト' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gas',
+        en: 'Gas Pokémon',
+        ja: 'ガスじょうポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '0.1',
+        en: '0.2',
+        ja: '0.1'
+      }
     },
     artist: 'Mékayu',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Ataque Sorpresa',
           en: 'Surprise Attack',
-          ja: '' 
+          ja: 'ふいをつく' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.PSYCHIC],
         description: {
-       es: '',
-       en: 'Flip a coin. If tails, this attack does nothing.',
-       ja: '' 
-     }
+          es: 'Lanza 1 moneda. Si sale cruz, este ataque no hace nada.',
+          en: 'Flip a coin. If tails, this attack does nothing.',
+          ja: 'コインを1回投げウラなら、このワザは失敗。' 
+        }
       },
     ],
     evolve: [122],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Le gusta acechar en la oscuridad y tocarles el hombro a sus víctimas con su mano gaseosa. Estas se quedan temblando para siempre.',
       en: 'It likes to lurk in the dark and tap shoulders with a gaseous hand. Its touch causes endless shuddering.',
-      ja: '' 
+      ja: '暗闇にまぎれ　ガスの手を　伸ばし 人の肩を　叩くのが　好き｡ 触られると　震えが　止まらない｡' 
     },
     health: 80,
     rarity: CardRarityENUM.PROMO,
@@ -37056,9 +37056,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PROMO_A2,
     ],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
     related: [120, 121, 122, 123, 261, 277]
   },
@@ -37067,35 +37067,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 600,
     number: 21,
     pokedex: 95,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Onix',
       en: 'Onix',
-      ja: '' 
+      ja: 'イワーク' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Serpiente Roca',
+        en: 'Rock Snake Pokémon',
+        ja: 'いわへびポケモン'
+      },
+      height: {
+        es: '8.8',
+        en: '28\'10"',
+        ja: '8.8'
+      },
+      weight: {
+        es: '210.0',
+        en: '463',
+        ja: '210.0'
+      }
     },
     artist: 'Tomokazu Komiya',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Aterrizaje',
           en: 'Land Crush',
-          ja: '' 
+          ja: 'ランドクラッシュ' 
         },
         damage: 70,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
@@ -37105,9 +37105,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Al abrirse paso bajo tierra, va absorbiendo todo lo que encuentra. Eso hace que su cuerpo sea así de sólido.',
       en: 'As it digs through the ground, it absorbs many hard objects. This is what makes its body so solid.',
-      ja: '' 
+      ja: '地中を　掘り進みながら いろんな　硬いものを　取り込み 頑丈な　体をつくる｡' 
     },
     health: 110,
     rarity: CardRarityENUM.PROMO,
@@ -37121,9 +37121,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PROMO_A2,
     ],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
     related: [150]
   },
@@ -37132,52 +37132,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 601,
     number: 22,
     pokedex: 39,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Jigglypuff',
       en: 'Jigglypuff',
-      ja: '' 
+      ja: 'プリン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Globo',
+        en: 'Balloon Pokémon',
+        ja: 'ふうせんポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8',
+        ja: '0.5'
+      },
+      weight: {
+        es: '5.5',
+        en: '12.1',
+        ja: '5.5'
+      }
     },
     artist: 'Kurata So',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Canto',
           en: 'Sing',
-          ja: '' 
+          ja: 'うたう' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Your opponent’s Active Pokémon is now Asleep.',
-       ja: '' 
-     }
+          es: 'El Pokémon Activo de tu rival pasa a estar Dormido.',
+          en: 'Your opponent’s Active Pokémon is now Asleep.',
+          ja: '相手のバトルポケモンをねむりにする。' 
+        }
       },
     ],
     evolve: [194],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cuando le tiemblan sus redondos y adorables ojos, entona una melodía agradable y misteriosa con la que duerme a sus enemigos.',
       en: 'When its huge eyes waver, it sings a mysteriously soothing melody that lulls its enemies to sleep.',
-      ja: '' 
+      ja: 'つぶらな　瞳が　揺れるとき 眠たくなるような　不思議で 気持ちのいい　歌を　歌う｡' 
     },
     health: 60,
     rarity: CardRarityENUM.PROMO,
@@ -37191,9 +37191,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PROMO_A2
     ],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
     related: [193, 194, 195, 265, 279]
   },
@@ -37202,35 +37202,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 602,
     number: 23,
     pokedex: 1,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Bulbasaur',
       en: 'Bulbasaur',
-      ja: '' 
+      ja: 'フシギダネ'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Semilla',
+        en: 'Seed Pokémon',
+        ja: 'たねポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'04"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '6.9',
+        en: '15.2',
+        ja: '6.9'
+      }
     },
     artist: 'Kouki Saitou',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Látigo Cepa',
           en: 'Vine Whip',
-          ja: '' 
+          ja: 'つるのムチ'
         },
         damage: 40,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
@@ -37240,9 +37240,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Este Pokémon nace con una semilla en el lomo, que brota con el paso del tiempo.',
       en: 'There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.',
-      ja: '' 
+      ja: '生まれたときから 背中に 植物の タネが あって 少しずつ 大きく 育つ。'
     },
     health: 70,
     rarity: CardRarityENUM.PROMO,
@@ -37258,7 +37258,7 @@ export const MOCK_DB_CARDS: Card[] = [
     extra: {
       es: 'Elección Mágica',
       en: 'Wonder Pick',
-      ja: '' 
+      ja: 'ワンダーピック' 
     },
     related: [1, 2, 3, 4, 227, 251, 390],
   },
@@ -37293,9 +37293,9 @@ export const MOCK_DB_CARDS: Card[] = [
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Bola Relámpago',
           en: 'Lighting Ball',
-          ja: '' 
+          ja: 'ピッカリだま' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.ELECTRIC],
@@ -37321,9 +37321,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.WONDER_PICK,
     ],
     extra: {
-      es: 'Wonder Pick',
+      es: 'Elección Mágica',
       en: 'Wonder Pick',
-      ja: '' 
+      ja: 'ワンダーピック' 
     },
     related: [97, 98]
   },
@@ -37470,7 +37470,7 @@ export const MOCK_DB_CARDS: Card[] = [
     extra: {
       es: 'Evento Especial',
       en: 'Special Event',
-      ja: '' 
+      ja: '特別イベント' 
     },
     related: [94, 95, 311, 312, 387, 381]
   },
@@ -37479,47 +37479,47 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 606,
     number: 27,
     pokedex: 495,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Snivy',
       en: 'Snivy',
-      ja: '' 
+      ja: 'ツタージャ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Serpiente',
+        en: 'Grass Snake Pokémon',
+        ja: 'くさへびポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '8.1',
+        en: '17.9',
+        ja: '8.1'
+      }
     },
     artist: 'Yoriyuki ikegami',
     attacks: [
       {
         name: {
-          es: '',
-          en: 'Tackle',
-          ja: '' 
+          es: 'Látigo Cepa',
+          en: 'Vine Whip',
+          ja: 'つるのムチ' 
         },
-        damage: 20,
-        energy: [PokemonTypeENUM.GRASS]
+        damage: 40,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
       }
     ],
     evolve: [291],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cuando recibe los rayos de sol, se mueve mucho más rápido que de costumbre. Usa mejor sus lianas que sus manos.',
       en: 'Being exposed to sunlight makes its movements swiftier. It uses vines more adeptly than its hands.',
-      ja: '' 
+      ja: '太陽の 光を 浴びると いつもよりも 素早く 動ける。 手よりも ツルを うまく使う。' 
     },
     health: 70,
     rarity: CardRarityENUM.PROMO,
@@ -37534,9 +37534,9 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     related: [290, 291, 292, 356],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
   },
   {
@@ -37544,52 +37544,51 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 607,
     number: 28,
     pokedex: 637,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Volcarona',
       en: 'Volcarona',
-      ja: '' 
+      ja: 'ウルガモス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Sol',
+        en: 'Sun Pokémon',
+        ja: 'たいようポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '46.0',
+        en: '101.4',
+        ja: '46.0'
+      }
     },
     artist: 'Shin Nagasawa',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Ceniza Volcánica',
           en: 'Volcanic Ash',
-          ja: '' 
+          ja: 'かさいりゅう' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Descarta 2 Energías Fuego de este Pokémon. Este ataque hace 80 puntos de daño a 1 de los Pokémon de tu rival.',
           en: 'Discard 2 Fire Energy from this Pokémon. This attack does 80 damage to 1 of your opponent\'s Pokémon.',
-          ja: '' 
+          ja: 'このポケモンから炎エネルギーを2個トラッシュし、相手のポケモン1匹に80ダメージ。' 
         }
       }
     ],
     evolve: [299],
     expansion: CardExpansionENUM.PROMO_A,
-    series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'El calor que irradia le granjea pocas simpatías en tierras cálidas. Por el contrario, en las regiones más frías lo veneran como encarnación del sol.',
       en: 'Its burning body causes it to be unpopular in hot parts of the world, but in cold ones, Volcarona is revered as an embodiment of the sun.',
-      ja: '' 
+      ja: '暑い 土地では 燃える 体は 嫌がられるが 寒い 土地では 太陽の化身 と 崇められる。' 
     },
     health: 120,
     rarity: CardRarityENUM.PROMO,
@@ -37607,9 +37606,9 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     related: [299, 300],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
   },
   {
@@ -37617,52 +37616,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 608,
     number: 29,
     pokedex: 9,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Blastoise',
       en: 'Blastoise',
-      ja: '' 
+      ja: 'カメックス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Armazón',
+        en: 'Shellfish Pokémon',
+        ja: 'こうらポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '85.5',
+        en: '188.5',
+        ja: '85.5'
+      }
     },
     artist: 'danciao',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Hidrobomba',
           en: 'Hydro Pump',
-          ja: '' 
+          ja: 'ハイドロポンプ' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'If this Pokémon has at least 2 extra Water Energy attached, this attack does 60 more damage.',
-       ja: '' 
-     }
+          es: 'Si este Pokémon tiene por lo menos 2 Energías Agua adicionales unidas a él, este ataque hace 60 puntos de daño más.',
+          en: 'If this Pokémon has at least 2 extra Water Energy attached, this attack does 60 more damage.',
+          ja: '追加で水エネルギーが2個ついているなら、60ダメージ追加。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Para acabar con su enemigo, lo aplasta con el peso de su cuerpo. En momentos de apuro, se esconde en el caparazón.',
       en: 'It crushes its foe under its heavy body to cause fainting. In a pinch, it will withdraw inside its shell.',
-      ja: '' 
+      ja: '体が　重たく　のしかかって 相手を　気絶させる｡ ピンチの　ときは　殻に　隠れる｡' 
     },
     health: 150,
     rarity: CardRarityENUM.PROMO,
@@ -37676,9 +37675,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PROMO_A3,
     ],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
     related: [53, 54, 55, 232, 405]
   },
@@ -37713,17 +37712,17 @@ export const MOCK_DB_CARDS: Card[] = [
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Gruñido',
           en: 'Growl',
-          ja: '' 
+          ja: 'なきごえ' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'During your opponent’s next turn, attacks used by the Defending Pokémon do −20 damage.',
-       ja: '' 
-     }
+          es: 'Durante el próximo turno de tu rival, los ataques del Pokémon Defensor hacen -20 puntos de daño.',
+          en: 'During your opponent’s next turn, attacks used by the Defending Pokémon do −20 damage.',
+          ja: '次の相手の番、このワザを受けたポケモンが使うワザのダメージを-20する。' 
+        }
       },
     ],
     evolve: [45, 80, 102, 392, 418],
@@ -37746,9 +37745,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PROMO_A3,
     ],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
     related: [45, 80, 102, 206, 207, 208, 305, 347, 392, 418, 498, 248, 358]
   },
@@ -37757,52 +37756,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 610,
     number: 31,
     pokedex: 573,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Cinccino',
       en: 'Cinccino',
-      ja: '' 
+      ja: 'チラチーノ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Estola',
+        en: 'Scarf Pokémon',
+        ja: 'スカーフポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '7.5',
+        en: '16.5',
+        ja: '7.5'
+      }
     },
     artist: 'MAHOU',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Hacer la Ola',
           en: 'Do the Wave',
-          ja: '' 
+          ja: 'ともだちのわ' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'This attack does 30 damage for each of your Benched Pokémon.',
-       ja: '' 
-     }
+          es: 'Este ataque hace 30 puntos de daño por cada uno de tus Pokémon en Banca.',
+          en: 'This attack does 30 damage for each of your Benched Pokémon.',
+          ja: '自分のベンチポケモンの数×30ダメージ。' 
+        }
       },
     ],
     evolve: [],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Es tan sumamente pulcro que no puede ver ni una mota de polvo. La grasa que exuda por el cuerpo le sirve de película protectora.',
       en: 'Its body secretes oil that this Pokémon spreads over its nest as a coating to protect it from dust. Cinccino won’t tolerate even a speck of the stuff.',
-      ja: '' 
+      ja: '塵ひとつ　許せない　潔癖｡ 体から　染み出る　油を 巣に　塗りつけ　コーティングする｡' 
     },
     health: 90,
     rarity: CardRarityENUM.PROMO,
@@ -37816,9 +37815,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PROMO_A3
     ],
     extra: {
-      es: 'Promo Pack',
+      es: 'Promoción',
       en: 'Promo Pack',
-      ja: '' 
+      ja: '昇進' 
     },
     related: [212, 213]
   },
@@ -37827,52 +37826,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 611,
     number: 32,
     pokedex: 4,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Charmander',
       en: 'Charmander',
-      ja: '' 
+      ja: 'ヒトカゲ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Lagartija',
+        en: 'Lizard Pokémon',
+        ja: 'とかげポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '8.5',
+        en: '18.7',
+        ja: '8.5'
+      }
     },
     artist: 'Naoyo Kimura',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Ascuas',
           en: 'Ember',
-          ja: '' 
+          ja: 'ひのこ' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.FIRE],
         description: {
-       es: '',
-       en: 'Discard 1 Fire Energy from this Pokémon.',
-       ja: '' 
-     }
+          es: 'Descarta 1 Energía Fuego de este Pokémon.',
+          en: 'Discard 1 Fire Energy from this Pokémon.',
+          ja: 'このポケモンから炎エネルギーを1個トラッシュ。' 
+        }
       }
     ],
     evolve: [34],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Prefiere las cosas calientes. Dicen que cuando llueve le sale vapor de la punta de la cola.',
       en: 'It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail.',
-      ja: '' 
+      ja: '熱いものを　好む　性格｡ 雨に濡れると　しっぽの　先から 煙が　出るという｡' 
     },
     health: 60,
     rarity: CardRarityENUM.PROMO,
@@ -37887,9 +37886,9 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     related: [33, 34, 35, 36, 230, 253, 280, 284],
     extra: {
-      es: 'Wonder Pick',
+      es: 'Elección Mágica',
       en: 'Wonder Pick',
-      ja: '' 
+      ja: 'ワンダーピック' 
     },
   },
   {
@@ -37897,35 +37896,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 612,
     number: 33,
     pokedex: 7,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Squirtle',
       en: 'Squirtle',
-      ja: '' 
+      ja: 'ゼニガメ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Tortuguita',
+        en: 'Tiny Turtle Pokémon',
+        ja: 'かめのこポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '9.0',
+        en: '19.8',
+        ja: '9.0'
+      }
     },
     artist: 'Kanako Eo',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Pistola Agua',
           en: 'Water Gun',
-          ja: '' 
+          ja: 'みずでっぽう' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.WATER],
@@ -37935,9 +37934,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A1,
     flavor: {
-      es: '',
+      es: 'Cuando retrae su largo cuello en el caparazón, dispara agua a una presión increíble.',
       en: 'When it retracts its long neck into its shell, it squirts out water with vigorous force.',
-      ja: '' 
+      ja: '長い　首を　甲羅のなかに 引っこめるとき　勢いよく 水鉄砲を　発射する｡' 
     },
     health: 60,
     rarity: CardRarityENUM.PROMO,
@@ -37951,9 +37950,9 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.WONDER_PICK,
     ],
     extra: {
-      es: 'Wonder Pick',
+      es: 'Elección Mágica',
       en: 'Wonder Pick',
-      ja: '' 
+      ja: 'ワンダーピック' 
     },
     related: [53, 54, 55, 56, 232, 256, 401]
   },
@@ -37962,52 +37961,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 613,
     number: 34,
     pokedex: 393,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Piplup',
       en: 'Piplup',
-      ja: '' 
+      ja: 'ポッチャマ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pingüino',
+        en: 'Penguin Pokémon',
+        ja: 'ペンギンポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '5.2',
+        en: '11.5',
+        ja: '5.2'
+      }
     },
     artist: 'Kariya',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Siesta',
           en: 'Nap',
-          ja: '' 
+          ja: 'ひとやすみ' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.WATER],
         description: {
-       es: '',
-       en: 'Heal 20 damage from this Pokémon.',
-       ja: '' 
-     }
+          es: 'Cura 20 puntos de daño a este Pokémon.',
+          en: 'Heal 20 damage from this Pokémon.',
+          ja: 'このポケモンのHPを20回復。' 
+        }
       }
     ],
     evolve: [408],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'No le gusta que lo cuiden. Como no aprecia el apoyo de su Entrenador, le cuesta coger confianza con él.',
       en: 'It doesn’t like to be taken care of. It’s difficult to bond with since it won’t listen to its Trainer.',
-      ja: '' 
+      ja: '世話を 焼かれる ことが 大嫌い。 トレーナーの 指示を 聞かないので 仲良くなるのが 難しい。' 
     },
     health: 60,
     rarity: CardRarityENUM.PROMO,
@@ -38020,42 +38019,47 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PREMIUM
     ],
-    related: []
+    related: [],
+    extra: {
+      es: 'Pase Premium',
+      en: 'Premium Pass',
+      ja: 'プレミアムパス' 
+    },
   },
   {
     id: 614,
     order: 614,
     number: 35,
     pokedex: 387,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Turtwig',
       en: 'Turtwig',
-      ja: '' 
+      ja: 'ナエトル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Hojita',
+        en: 'Tiny Leaf Pokémon',
+        ja: 'わかばポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '10.2',
+        en: '22.5',
+        ja: '10.2'
+      }
     },
     artist: 'Atsuko Nishida',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Mordisco',
           en: 'Bite',
-          ja: '' 
+          ja: 'かみつく' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
@@ -38065,9 +38069,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Al bañarlo los rayos de sol, realiza la fotosíntesis con todo el cuerpo. Su caparazón está formado por tierra endurecida.',
       en: 'It uses its whole body to photosynthesize when exposed to sunlight. Its shell is made from hardened soil.',
-      ja: '' 
+      ja: '太陽の 光を 浴びて 全身で 光合成を する。 甲羅は 土が 硬くなったもの。' 
     },
     health: 80,
     rarity: CardRarityENUM.PROMO,
@@ -38080,59 +38084,65 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A4
     ],
-    related: []
+    related: [],
+    extra: {
+      es: 'Promoción',
+      en: 'Promo Pack',
+      ja: '昇進' 
+    },
+    
   },
   {
     id: 615,
     order: 615,
     number: 36,
     pokedex: 466,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Electivire',
       en: 'Electivire',
-      ja: '' 
+      ja: 'エレキブル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Rayo',
+        en: 'Thunderbolt Pokémon',
+        ja: 'らいでんポケモン'
+      },
+      height: {
+        es: '1.8',
+        en: '5\'11"',
+        ja: '1.8'
+      },
+      weight: {
+        es: '138.6',
+        en: '305.6',
+        ja: '138.6'
+      }
     },
     artist: 'Sumiyoshi Kizuki',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Voltaje Exaltado',
           en: 'Exciting Voltage',
-          ja: '' 
+          ja: 'エキサイトボルト' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
         description: {
-       es: '',
-       en: 'If this Pokémon has at least 2 extra Electric Energy attached, this attack does 80 more damage.',
-       ja: '' 
-     }
+        es: 'Si este Pokémon tiene por lo menos 2 Energías Eléctricas adicionales unidas a él, este ataque hace 80 puntos de daño más.',
+        en: 'If this Pokémon has at least 2 extra Electric Energy attached, this attack does 80 more damage.',
+        ja: '追加で雷エネルギーが2個ついているなら、80ダメージ追加。' 
+      }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'La cantidad de electricidad que genera es proporcional a su pulso. Al enzarzarse en combate, su voltaje aumenta drásticamente.',
       en: 'The amount of electrical energy this Pokémon produces is proportional to the rate of its pulse. The voltage jumps while Electivire is battling.',
-      ja: '' 
+      ja: '発電量は 心拍数と 比例する。 戦いになると 一気に ボルテージが 上がるのだ。' 
     },
     health: 120,
     rarity: CardRarityENUM.PROMO,
@@ -38145,7 +38155,12 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A4
     ],
-    related: []
+    related: [],
+    extra: {
+      es: 'Promoción',
+      en: 'Promo Pack',
+      ja: '昇進' 
+    },
   },
   {
     id: 616,
@@ -38178,9 +38193,9 @@ export const MOCK_DB_CARDS: Card[] = [
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Destello Psíquico',
           en: 'Psychic Flash',
-          ja: '' 
+          ja: 'サイコフラッシュ' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL]
@@ -38188,14 +38203,14 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
+          es: 'Plumaje Lunar',
           en: 'Lunar Plumage',
-          ja: '' 
+          ja: 'みかづきのはごろも' 
         },
       description: {
-       es: '',
+       es: 'Cada vez que unas una Energía Psíquica de tu área de Energía a este Pokémon, cúrale 20 puntos de daño.',
        en: 'Whenever you attach a Psychic Energy from your Energy Zone to this Pokémon, heal 20 damage from this Pokémon.',
-       ja: '' 
+       ja: '自分のエネルギーゾーンからこのポケモンに超エネルギーをつけるたび、このポケモンのHPを20回復。' 
      }
     },
     evolve: [],
@@ -38217,59 +38232,64 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A4
     ],
-    related: []
+    related: [],
+    extra: {
+      es: 'Promoción',
+      en: 'Promo Pack',
+      ja: '昇進' 
+    },
   },
   {
     id: 617,
     order: 617,
     number: 38,
     pokedex: 200,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Misdreavus',
       en: 'Misdreavus',
-      ja: '' 
+      ja: 'ムウマ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Chirrido',
+        en: 'Screech Pokémon',
+        ja: 'よなきポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '1.0',
+        en: '2.2',
+        ja: '1.0'
+      }
     },
     artist: 'Miki Tanaka',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Rayo Confuso',
           en: 'Confuse Ray',
-          ja: '' 
+          ja: '	あやしいひかり' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.PSYCHIC],
         description: {
-       es: '',
-       en: 'Your opponent’s Active Pokémon is now Confused.',
-       ja: '' 
-     }
+          es: 'El Pokémon Activo de tu rival pasa a estar Confundido. ',
+          en: 'Your opponent’s Active Pokémon is now Confused.',
+          ja: '相手のバトルポケモンをこんらんにする。' 
+        }
       }
     ],
     evolve: [439],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Sorprende a la gente en mitad de la noche y acumula su miedo como energía.',
       en: 'This Pokémon startles people in the middle of the night. It gathers fear as its energy.',
-      ja: '' 
+      ja: '真夜中 人を 驚かせては 怖がる心を 集めて 自分の エネルギーに している ポケモン。' 
     },
     health: 60,
     rarity: CardRarityENUM.PROMO,
@@ -38282,59 +38302,64 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A4
     ],
-    related: []
+    related: [],
+    extra: {
+      es: 'Promoción',
+      en: 'Promo Pack',
+      ja: '昇進' 
+    },
   },
   {
     id: 618,
     order: 618,
     number: 39,
     pokedex: 227,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Skarmory',
       en: 'Skarmory',
-      ja: '' 
+      ja: 'エアームド' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Coraza Ave',
+        en: 'Armor Bird Pokémon',
+        ja: 'よろいどりポケモン'
+      },
+      height: {
+        es: '1.7',
+        en: '5\'7"',
+        ja: '1.7'
+      },
+      weight: {
+        es: '50.5',
+        en: '111.3',
+        ja: '50.5'
+      }
     },
     artist: 'Anesaki Dynamic',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Extremidades Metálicas',
           en: 'Metal Arms',
-          ja: '' 
+          ja: 'メタルアームズ' 
         },
-        damage: 30,
+        damage: 20,
         energy: [PokemonTypeENUM.STEEL],
         description: {
-       es: '',
-       en: 'If this Pokémon has a Pokémon Tool attached, this attack does 30 more damage.',
-       ja: '' 
-     }
+          es: 'Si este Pokémon tiene 1 Herramienta Pokémon unida a él, este ataque hace 30 puntos de daño más.',
+          en: 'If this Pokémon has a Pokémon Tool attached, this attack does 30 more damage.',
+          ja: 'このポケモンに「ポケモンのどうぐ」がついているなら、30ダメージ追加。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Aparece a menudo en escudos heráldicos, pues se pueden forjar espadas a partir de las plumas que pierde.',
       en: 'People fashion swords from Skarmory’s shed feathers, so this Pokémon is a popular element in heraldic designs.',
-      ja: '' 
+      ja: '抜け落ちた 羽根から 剣が 作られることから 紋章の 図案として 人気が 高い。' 
     },
     health: 80,
     rarity: CardRarityENUM.PROMO,
@@ -38347,42 +38372,47 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A4
     ],
-    related: []
+    related: [],
+    extra: {
+      es: 'Promoción',
+      en: 'Promo Pack',
+      ja: '昇進' 
+    },
   },
   {
     id: 619,
     order: 619,
     number: 40,
     pokedex: 390,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Chimchar',
       en: 'Chimchar',
-      ja: '' 
+      ja: 'ヒコザル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Chimpancé',
+        en: 'Chimp Pokémon',
+        ja: 'こざるポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '6.2',
+        en: '13.7',
+        ja: '6.2'
+      }
     },
     artist: 'sui',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Arañazo',
           en: 'Scratch',
-          ja: '' 
+          ja: 'ひっかく' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.FIRE]
@@ -38392,9 +38422,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Los gases de su estómago alimentan el fuego de su trasero, que ni la lluvia puede extinguir.',
       en: 'Its fiery rear end is fueled by gas made in its belly. Even rain can’t extinguish the fire.',
-      ja: '' 
+      ja: 'おしりの ほのおは おなかで つくられた ガスが ねんりょう。あめに ぬれても きえない。' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -38407,6 +38437,11 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK
     ],
+    extra: {
+      es: 'Elección Mágica',
+      en: 'Wonder Pick',
+      ja: 'ワンダーピック' 
+    },
     related: []
   },
   {
@@ -38414,35 +38449,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 620,
     number: 41,
     pokedex: 175,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Togepi',
       en: 'Togepi',
-      ja: '' 
+      ja: 'トゲピー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Bolapicuda',
+        en: 'Spike Ball Pokémon',
+        ja: 'はりたまポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '1.5',
+        en: '3.3',
+        ja: '1.5'
+      }
     },
     artist: 'Naoyo Kimura',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Destructor',
           en: 'Pound',
-          ja: '' 
+          ja: 'はたく' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.PSYCHIC]
@@ -38452,9 +38487,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.PROMO_A,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'El cascarón parece estar lleno de alegría. Dicen que trae buena suerte si se le trata con cariño.',
       en: 'The shell seems to be filled with joy. It is said that it will share good luck when treated kindly.',
-      ja: '' 
+      ja: '殻の中に 幸せが たくさん つまっているらしく 優しくされると 幸運を 分け与える という。' 
     },
     health: 50,
     rarity: CardRarityENUM.COMMON,
@@ -38467,6 +38502,11 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK
     ],
+    extra: {
+      es: 'Elección Mágica',
+      en: 'Wonder Pick',
+      ja: 'ワンダーピック' 
+    },
     related: []
   }
 ];
