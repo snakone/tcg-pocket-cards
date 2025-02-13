@@ -27,7 +27,7 @@ import { detailScrollStyles } from "@/components/dedicated/detail/detail.scroll"
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 import { SORT_FIELD_MAP, TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { AppContext } from "../_layout";
-import { CARD_IMAGE_MAP_116x162, CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";
+import { CARD_IMAGE_MAP_116x162_EN, CARD_IMAGE_MAP_69x96_EN } from "@/shared/definitions/utils/card.images";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import Storage from '@/core/storage/storage.service';
@@ -129,7 +129,7 @@ export default function CreateDeckScreen() {
                   CardGridStyles.image, 
                   {width: CARD_IMAGE_WIDTH_3}
                 ]} 
-              source={CARD_IMAGE_MAP_116x162[String(item?.id)]}/>        
+              source={CARD_IMAGE_MAP_116x162_EN[String(item?.id)]}/>        
               { state.settingsState.favorites?.includes(item.id) && 
                 <ThemedView style={[CardGridStyles.triangle]}></ThemedView>
               }
@@ -486,7 +486,7 @@ export default function CreateDeckScreen() {
             }]}></ThemedView>
           }
           <Image accessibilityLabel={item.name}
-                 source={CARD_IMAGE_MAP_69x96[String(item.id)]}
+                 source={CARD_IMAGE_MAP_69x96_EN[String(item.id)]}
                  style={[
                   CardGridStyles.image, 
                   {width: Platform.OS === 'web' ? 57.6 : 58}

@@ -46,7 +46,7 @@ import { useI18n } from '@/core/providers/LanguageProvider';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { filterCards, sortCards } from '@/shared/definitions/utils/functions';
 import { AppContext } from '@/app/_layout';
-import { CARD_IMAGE_MAP_116x162, CARD_IMAGE_MAP_69x96 } from '@/shared/definitions/utils/card.images';
+import { CARD_IMAGE_MAP_116x162_EN, CARD_IMAGE_MAP_69x96_EN } from '@/shared/definitions/utils/card.images';
 import SoundService from '@/core/services/sounds.service';
 
 interface GridCardProps {
@@ -222,8 +222,8 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
             CardGridStyles.image, 
             {width: isGrid5 ? CARD_IMAGE_WIDTH_5 : CARD_IMAGE_WIDTH_3}
           ]} 
-          source={isGrid5 ? CARD_IMAGE_MAP_69x96[String(item.id)] : 
-                            CARD_IMAGE_MAP_116x162[String(item.id)]}/>
+          source={isGrid5 ? CARD_IMAGE_MAP_69x96_EN[String(item.id)] : 
+                            CARD_IMAGE_MAP_116x162_EN[String(item.id)]}/>
       </Pressable>
     </View>
   ), [isGrid5, state.cardState.navigating, state.settingsState.favorites]);

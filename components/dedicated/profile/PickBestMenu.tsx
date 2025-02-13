@@ -16,7 +16,7 @@ import SoundService from "@/core/services/sounds.service";
 import Storage from "@/core/storage/storage.service";
 import { AppContext } from "@/app/_layout";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";
+import { CARD_IMAGE_MAP_69x96_EN } from "@/shared/definitions/utils/card.images";
 import { Colors } from "@/shared/definitions/utils/colors";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 
@@ -73,7 +73,7 @@ export default function PickBestMenu({
             style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
         <View>
           <Image accessibilityLabel={item.name}
-                  source={CARD_IMAGE_MAP_69x96[String(item.id)]}
+                  source={CARD_IMAGE_MAP_69x96_EN[String(item.id)]}
                   style={[
                   CardGridStyles.image, 
                   {width: Platform.OS === 'web' ? 57.6 : 58}

@@ -15,7 +15,7 @@ import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
 import { AppContext } from "@/app/_layout";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { CARD_IMAGE_MAP_116x162, CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";
+import { CARD_IMAGE_MAP_116x162_EN, CARD_IMAGE_MAP_69x96_EN } from "@/shared/definitions/utils/card.images";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { getFilterSearch, ICON_WIDTH, RARITY_CAN_TRADE, RARITY_MAP } from "@/shared/definitions/utils/constants";
 import SkeletonCardGrid from "@/components/skeletons/SkeletonCardGrid";
@@ -170,7 +170,7 @@ export default function PickDesiredMenu({
               </ThemedView>
           }
           <Image accessibilityLabel={item.name}
-                  source={CARD_IMAGE_MAP_69x96[String(item.id)]}
+                  source={CARD_IMAGE_MAP_69x96_EN[String(item.id)]}
                   style={[
                   CardGridStyles.image, 
                   {width: Platform.OS === 'web' ? 57.6 : 58}
@@ -206,7 +206,7 @@ export default function PickDesiredMenu({
                     CardGridStyles.image, 
                     {width: 67.5}
                   ]} 
-                source={CARD_IMAGE_MAP_116x162[String(current[index])]}/>
+                source={CARD_IMAGE_MAP_116x162_EN[String(current[index])]}/>
               </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
               }
             </View>

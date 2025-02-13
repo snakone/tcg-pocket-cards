@@ -15,7 +15,7 @@ import { ThemedView } from "@/components/ThemedView";
 import { AppContext } from "../_layout";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { ThemedText } from "@/components/ThemedText";
-import { CARD_IMAGE_MAP_116x162 } from "@/shared/definitions/utils/card.images";
+import { CARD_IMAGE_MAP_116x162_EN } from "@/shared/definitions/utils/card.images";
 import { createDeckStyles } from "./create_deck";
 import PickDesiredMenu from "@/components/dedicated/trade/PickDesiredMenu";
 import PickOffersMenu from "@/components/dedicated/trade/PickOffersMenu";
@@ -192,7 +192,7 @@ export default function CreateTradeScreen() {
                   CardGridStyles.image, 
                   {width: 67.5}
                 ]} 
-              source={CARD_IMAGE_MAP_116x162[String(item)]}/>
+              source={CARD_IMAGE_MAP_116x162_EN[String(item)]}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
             }
           </View>
@@ -215,7 +215,7 @@ export default function CreateTradeScreen() {
                   CardGridStyles.image, 
                   {width: 67.5}
                 ]} 
-              source={CARD_IMAGE_MAP_116x162[String(item)]}/>
+              source={CARD_IMAGE_MAP_116x162_EN[String(item)]}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
             }
           </View>

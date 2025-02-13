@@ -10,7 +10,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { CardGridStyles, TabsMenuStyles } from "@/shared/styles/component.styles";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { CARD_IMAGE_MAP } from "@/shared/definitions/utils/card.images";
+import { CARD_IMAGE_MAP_EN } from "@/shared/definitions/utils/card.images";
 import { COIN_MAP, DECK_BACKGROUND_MAP, FRONTEND_URL, TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { AvatarIcon, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { filterUniqueItems } from "@/shared/definitions/utils/functions";
@@ -95,7 +95,7 @@ export default function DeckCollage({
                 CardGridStyles.image, 
                 {width: 354}
               ]} 
-            source={CARD_IMAGE_MAP[String(item?.id)]}/>        
+            source={CARD_IMAGE_MAP_EN[String(item?.id)]}/>        
           </>
           }
           {ids.includes(item?.id) && 

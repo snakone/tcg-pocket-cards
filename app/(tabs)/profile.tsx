@@ -17,7 +17,7 @@ import { NO_CONTEXT, USER_LABEL } from '@/shared/definitions/sentences/global.se
 import { AppContext } from '../_layout';
 import { CardGridStyles, TabsMenuStyles } from '@/shared/styles/component.styles';
 import { createDeckStyles } from '../screens/create_deck';
-import { CARD_IMAGE_MAP } from '@/shared/definitions/utils/card.images';
+import { CARD_IMAGE_MAP_EN } from '@/shared/definitions/utils/card.images';
 
 export default function ProfileScreen() {
   const {i18n} = useI18n();
@@ -135,7 +135,7 @@ export default function ProfileScreen() {
                             CardGridStyles.image, 
                             {width: 240}
                           ]} 
-                        source={CARD_IMAGE_MAP[String(profile.best)]}/>        
+                        source={CARD_IMAGE_MAP_EN[String(profile.best)]}/>        
                       </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
                     }
                   </TouchableOpacity>

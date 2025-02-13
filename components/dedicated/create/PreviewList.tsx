@@ -8,7 +8,7 @@ import { ThemedView } from "@/components/ThemedView";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
-import { CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";
+import { CARD_IMAGE_MAP_69x96_EN } from "@/shared/definitions/utils/card.images";
 import { CardGridStyles } from "@/shared/styles/component.styles";
 import { SoundService } from "@/core/services/sounds.service";
 import { AppState } from "@/hooks/root.reducer";
@@ -109,7 +109,7 @@ export default function PreviewList({
               CardGridStyles.image, 
               {width: Platform.OS === 'web' ? 31.8 : 49.4, height: 46, borderRadius: 4}
             ]} 
-            source={CARD_IMAGE_MAP_69x96[String(item?.id)]}/>
+            source={CARD_IMAGE_MAP_69x96_EN[String(item?.id)]}/>
             { state.settingsState.favorites?.includes(item.id) && 
               <ThemedView style={[CardGridStyles.triangle, {
                 borderRightWidth: 8,

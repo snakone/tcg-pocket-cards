@@ -22,7 +22,7 @@ import { AvatarIcon, UserProfile } from "@/shared/definitions/interfaces/global.
 import { TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { CardGridStyles, CreateScreenStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
 import { Colors } from "@/shared/definitions/utils/colors";
-import { CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";
+import { CARD_IMAGE_MAP_69x96_EN } from "@/shared/definitions/utils/card.images";
 import { createDeckStyles } from "./create_deck";
 import { settingsStyles } from "./settings";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -133,7 +133,7 @@ export default function ShareDeckScreen() {
               CardGridStyles.image, 
               {width: Platform.OS === 'web' ? 29.1 : 49.4, height: 46, borderRadius: 4}
             ]} 
-            source={CARD_IMAGE_MAP_69x96[String(item?.id)]}/>
+            source={CARD_IMAGE_MAP_69x96_EN[String(item?.id)]}/>
             { state.settingsState.favorites?.includes(item.id) && 
               <ThemedView style={[CardGridStyles.triangle, {
                 borderRightWidth: 8,

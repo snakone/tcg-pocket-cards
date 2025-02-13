@@ -4,7 +4,7 @@ import { TouchableOpacity } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
-import { CARD_IMAGE_MAP, CARD_IMAGE_MAP_116x162 } from "@/shared/definitions/utils/card.images";
+import { CARD_IMAGE_MAP_EN, CARD_IMAGE_MAP_116x162_EN } from "@/shared/definitions/utils/card.images";
 import { TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { CardGridStyles, CreateScreenStyles } from "@/shared/styles/component.styles";
 
@@ -31,9 +31,9 @@ import { CardGridStyles, CreateScreenStyles } from "@/shared/styles/component.st
                       transform: [{rotate: `${10 + (i * 8)}deg`}],
                       left: i * 25, 
                       zIndex: (1 / (i + 1) * 100),
-                    }, CARD_IMAGE_MAP[String(item.popular[i])] && {opacity: 1}
+                    }, CARD_IMAGE_MAP_EN[String(item.popular[i])] && {opacity: 1}
                   ]} 
-                  source={CARD_IMAGE_MAP_116x162[String(item.popular[i])]}
+                  source={CARD_IMAGE_MAP_116x162_EN[String(item.popular[i])]}
                   key={i}/> :
                   <ThemedView style={[
                     CardGridStyles.image,

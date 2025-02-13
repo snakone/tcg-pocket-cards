@@ -5,7 +5,7 @@ import { LanguageType } from "../types/global.types";
 
 interface BaseCard {
   id: number,
-  name: {[key in LanguageType]: string};
+  name: Record<LanguageType, string>;
   rarity: CardRarityENUM,
   expansion: CardExpansionENUM,
   stage: CardStageENUM,
@@ -20,7 +20,7 @@ export interface Card extends BaseCard {
   element: PokemonTypeENUM | -1;
   weak?: PokemonTypeENUM | null,
   evolve?: number[];
-  flavor: {[key in LanguageType]: string};
+  flavor: Record<LanguageType, string>;
   attacks?: Attack[],
   ability?: Ability;
   found?: PACKS_TYPE[];
@@ -28,27 +28,27 @@ export interface Card extends BaseCard {
   series?: CardExpansionTypeENUM;
   related?: number[];
   isEX?: boolean;
-  extra?: {[key in LanguageType]: string};
+  extra?: Record<LanguageType, string>;
   condition: CardSpecialConditionENUM[];
   info?: PokedexInfo;
 }
 
 interface Attack {
-  name: {[key in LanguageType]: string};
+  name: Record<LanguageType, string>;
   damage: number;
   energy: PokemonTypeENUM[];
-  description?: {[key in LanguageType]: string};
+  description?: Record<LanguageType, string>;
 }
 
 interface Ability {
-  name: {[key in LanguageType]: string};
-  description: {[key in LanguageType]: string};
+  name: Record<LanguageType, string>;
+  description: Record<LanguageType, string>;
 }
 
 interface PokedexInfo {
-  type: {[key in LanguageType]: string};
-  height: {[key in LanguageType]: string};
-  weight: {[key in LanguageType]: string};
+  type: Record<LanguageType, string>;
+  height: Record<LanguageType, string>;
+  weight: Record<LanguageType, string>;
 }
 
 export interface CardPackTag {

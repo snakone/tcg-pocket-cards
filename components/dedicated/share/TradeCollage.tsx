@@ -8,7 +8,7 @@ import { StyleSheet } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { CardGridStyles, TabsMenuStyles } from "@/shared/styles/component.styles";
-import { CARD_IMAGE_MAP } from "@/shared/definitions/utils/card.images";
+import { CARD_IMAGE_MAP_EN } from "@/shared/definitions/utils/card.images";
 import { COIN_MAP, DECK_BACKGROUND_MAP, FRONTEND_URL, TRADE_COST_MAP } from "@/shared/definitions/utils/constants";
 import { AvatarIcon, TradeItem, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { DISCORD_LOGO, SALE_CARD, TRADE_POINTS } from "@/shared/definitions/sentences/path.sentences";
@@ -55,7 +55,7 @@ export default function TradeCollage({
                 CardGridStyles.image, 
                 {width: 354}
               ]} 
-            source={CARD_IMAGE_MAP[String(item)]}/>        
+            source={CARD_IMAGE_MAP_EN[String(item)]}/>        
           </>
           }
           <ThemedView style={{position: 'absolute', top: -24, right: -24}}>
@@ -77,7 +77,7 @@ export default function TradeCollage({
                 CardGridStyles.image, 
                 {width: 354}
               ]} 
-            source={CARD_IMAGE_MAP[String(item)]}/>        
+            source={CARD_IMAGE_MAP_EN[String(item)]}/>        
           </>
           }
           <ThemedView style={tradeCollageStyles.like}>

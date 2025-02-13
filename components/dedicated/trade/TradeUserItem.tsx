@@ -4,7 +4,7 @@ import { Image } from 'expo-image';
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
-import { CARD_IMAGE_MAP, CARD_IMAGE_MAP_116x162 } from '@/shared/definitions/utils/card.images';
+import { CARD_IMAGE_MAP_EN, CARD_IMAGE_MAP_116x162_EN } from '@/shared/definitions/utils/card.images';
 import { CardGridStyles, CreateScreenStyles } from '@/shared/styles/component.styles';
 import { SvgTradePassSymbol } from '@/components/ui/IconSymbol';
 import { TRADE_POINTS } from '@/shared/definitions/sentences/path.sentences';
@@ -46,7 +46,7 @@ export default function TradeUserItem({item, rarity, styles}: TradeUserItemProps
                     zIndex: Math.round((1 / (i + 1) * 100)),
                   }
                 ]} 
-                source={CARD_IMAGE_MAP_116x162[String(item)]}
+                source={CARD_IMAGE_MAP_116x162_EN[String(item)]}
                 key={i}/> : <ThemedView style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
@@ -76,7 +76,7 @@ export default function TradeUserItem({item, rarity, styles}: TradeUserItemProps
                     zIndex: Math.round((1 / (i + 1) * 100)),
                   }
                 ]} 
-                source={CARD_IMAGE_MAP_116x162[String(offer)]}
+                source={CARD_IMAGE_MAP_116x162_EN[String(offer)]}
                 key={i}/> : <ThemedView style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
