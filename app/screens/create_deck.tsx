@@ -347,7 +347,7 @@ export default function CreateDeckScreen() {
     if(isFilterVisible) { return; }
     const sorted = filterOrSortCards('filter', state.cardState.cards);
     setFiltered(sorted);
-  }, [state.filterState.filter]);
+  }, [state.filterState.filter, lang]);
 
   useEffect(() => {
     if (!isEnergyVisible && isElementWithEnergy(element)) {
@@ -394,7 +394,7 @@ export default function CreateDeckScreen() {
       return data;
     }
   
-    return sortCards(sortField, data, sort);
+    return sortCards(sortField, data, sort, lang);
   }
 
   const fixFilterIcon = useCallback(() => {

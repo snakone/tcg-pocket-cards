@@ -159,7 +159,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
       return data;
     }
   
-    return sortCards(sortField, data, sort);
+    return sortCards(sortField, data, sort, lang);
   }
 
   function manageFilter(data: Card[]): Card[] {

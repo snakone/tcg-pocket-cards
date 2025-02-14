@@ -26,10 +26,18 @@ import {
   CARD_IMAGE_MAP_JAP
 } from "./card.images";
 
-export function sortCards(field: keyof Card, data: Card[], sort: SortItem): Card[] {
+export function sortCards(field: keyof Card | string, data: Card[], sort: SortItem, lang: LanguageType): Card[] {
   return [...data].sort((a, b) => {
-    const aValue = a[field] ?? '';
-    const bValue = b[field] ?? '';
+    let aValue: any = '';
+    let bValue: any = '';
+
+    if (field === 'height' || field === 'weight') {
+      aValue = ((a?.info as any) && Number((a?.info as any)[field][lang])) ?? '';
+      bValue = ((b?.info as any) && Number((b?.info as any)[field][lang])) ?? '';
+    } else {
+      aValue = (a as any)[field] ?? '';
+      bValue = (b as any)[field] ?? '';
+    }
 
     if (aValue === -1 && bValue !== -1) return 1;
     if (bValue === -1 && aValue !== -1) return -1;
@@ -203,7 +211,7 @@ export function getCardPackFrom(card: Card): {image: any, width: number, height:
     if (card.found?.length === 2) {
       return {image: SMACK_DOWN, width: 74, height: 36};
     } else if (card.found !== undefined) {
-      return {image: PACK_MAP[card.found[0]], width: 77, height: 38};
+      return {image: PACK_MAP[card.found[0]], width: 81, height: 40};
     }
   }
 }
@@ -443,4 +451,25 @@ const IMAGE_LANGUAGE_MAP_116x162 = {
 
 export function getImageLanguage116x162(lang: LanguageType, id: number): any {
   return IMAGE_LANGUAGE_MAP_116x162[lang][id];
+}
+
+export function fillWithZeros(value: number): string {
+  return String(value).padStart(4, '0');
+}
+
+const METRICS_MAP: any = {
+  height: {
+    es: 'm',
+    en: '',
+    ja: 'm'
+  },
+  weight: {
+    es: 'Kg',
+    en: 'lbs.',
+    ja: 'Kg'
+  }
+}
+
+export function getMetrics(type: 'height' | 'weight', lang: LanguageType): string {
+  return METRICS_MAP[type][lang];
 }

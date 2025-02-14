@@ -103,7 +103,7 @@ import { CardExpansionENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageE
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { AvatarIcon } from "../interfaces/global.interfaces";
 
-export const APP_VERSION = '1.0.8';
+export const APP_VERSION = '1.1.0';
 export const MENU_WIDTH = 250;
 export const MENU_HEIGHT = 405;
 export const PAGE_TITLE = 'TCG Pocket Cards';
@@ -117,7 +117,7 @@ export const FILTER_CARDS_HEIGHT = 350;
 export const MIN_MODAL_HEIGHT = 96;
 export const DEFAULT_MODAL_HEIGHT = 236;
 export const LARGE_MODAL_HEIGHT = 508;
-export const SORT_MODAL_HEIGHT = 527;
+export const SORT_MODAL_HEIGHT = 626;
 export const SELECT_ENERGY_HEIGHT = 590;
 export const BACKUP_HEIGHT = 516;
 
@@ -139,14 +139,16 @@ export const HELP: ItemWithRoute[] = [
   { label: 'config', icon: 'washer.circle', route: 'settings' },
 ];
 
-export const SORT_FIELD_MAP: Record<string, keyof Card> = {
+export const SORT_FIELD_MAP: Record<string, keyof Card | 'height' | 'weight'> = {
   order_by_id: 'id',
   order_by_element: 'element',
   order_by_rarity: 'rarity',
   order_by_pokedex: 'pokedex',
   order_by_retreat: 'retreat',
   order_by_hp: 'health',
-  order_by_stage: 'stage'
+  order_by_stage: 'stage',
+  order_by_height: 'height',
+  order_by_weight: 'weight',
 };
 
 export function getFilterSearch(): FilterSearch {
@@ -161,6 +163,8 @@ export const INITIAL_SORT_DATA: SortItem[] = [
   { id: 5, label: 'order_by_retreat', icon: 'grass', active: false, order: 'desc' },
   { id: 6, label: 'order_by_hp', icon: 'favorite-outline', active: false, order: 'desc' },
   { id: 7, label: 'order_by_stage', icon: 'pets', active: false, order: 'desc' },
+  { id: 8, label: 'order_by_height', icon: 'height', active: false, order: 'desc' },
+  { id: 9, label: 'order_by_weight', icon: 'scale', active: false, order: 'desc' },
 ];
 
 export const RARITY_MAP: Record<CardRarityENUM, {image: any, amount: number}> = {

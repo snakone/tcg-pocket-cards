@@ -9,7 +9,7 @@ import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { cardDetailStyles } from "@/shared/styles/component.styles";
 import { RARITY_MAP, TYPE_MAP, STAGE_MAP, EXPANSION_MAP, PACK_AMOUNT_MAP } from "@/shared/definitions/utils/constants";
-import { getCardPackFrom, isCardPromo, isCardPromoAndBattle, isCardPromoAndNoBattle, isNotBattleCard } from '@/shared/definitions/utils/functions';
+import { fillWithZeros, getCardPackFrom, getMetrics, isCardPromo, isCardPromoAndBattle, isCardPromoAndNoBattle, isNotBattleCard } from '@/shared/definitions/utils/functions';
 import DetailRelatedCards from './detail.related.cards';
 import { AppState } from '@/hooks/root.reducer';
 import ScrollService from '@/core/services/scroll.service';
@@ -61,6 +61,31 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             </ThemedView> :
             <ThemedView style={{height: 20}}></ThemedView>
         }
+
+      { !!card.info && 
+        <ThemedView style={[
+            cardDetailStyles.itemInfo, 
+            { marginBottom: 4, 
+              paddingVertical: 5, 
+              flexDirection: 'row', 
+              gap: 12, 
+              justifyContent: 'center', 
+              marginInline: 'auto'}
+          ]}>
+          <ThemedText style={[detailScrollStyles.text, {fontSize: 10}]}>
+            {i18n.t('number')} {fillWithZeros(card.pokedex)}
+          </ThemedText>
+          <ThemedText style={[detailScrollStyles.text, {fontSize: 10}]}>
+            {card.info.type[lang]}
+          </ThemedText>
+          <ThemedText style={[detailScrollStyles.text, {fontSize: 10}]}>
+            {i18n.t('height')}: {card.info.height[lang]} {getMetrics('height', lang)}
+          </ThemedText>
+          <ThemedText style={[detailScrollStyles.text, {fontSize: 10}]}>
+            {i18n.t('weight')}: {card.info.weight[lang]} {getMetrics('weight', lang)}
+          </ThemedText>
+        </ThemedView>
+      }
       
       { !!card.flavor && 
         <ThemedView style={cardDetailStyles.itemInfo}>

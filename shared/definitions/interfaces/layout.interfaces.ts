@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import { RarityWithoutSpecial } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { PACKS_TYPE } from "../enums/packs.enums";
-import { Card } from "./card.interfaces";
 
 export interface HeaderWithCustomModalProps {
   title: string;
@@ -53,18 +52,4 @@ export interface SortItem {
   icon: string,
   active: boolean,
   order: 'desc' | 'asc'
-}
-
-export interface DataSection {
-  title: string;
-  data: (
-    | { included: boolean | null, not_favorite: boolean | null }
-    | { [key in RarityWithoutSpecial]: boolean | null }
-    | { [key in PokemonTypeENUM]: boolean | null }
-    | { min: number | null, max: number | null }
-    | { min: number | null, max: number | null } 
-    | { with: boolean | null, without: boolean | null }
-    | { object: boolean | null, tool: boolean | null, fossil: boolean | null, supporter: boolean | null }
-    | { pack: PACKS_TYPE | null }
-  )[];
 }
