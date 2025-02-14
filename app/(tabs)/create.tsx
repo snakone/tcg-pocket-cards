@@ -127,7 +127,7 @@ export default function CreateDeckScreen() {
             <FlatList data={filtered.sort((a, b) => a?.id > b?.id ? -1 : 1)}
                       numColumns={1}
                       contentContainerStyle={[{width: '100%', marginTop: 4, paddingBottom: 0}]}
-                      renderItem={({item, index}) => renderDeckItem({item, index, onPress: () => openDeck(item)})}
+                      renderItem={({item}) => renderDeckItem({item, state, onPress: () => openDeck(item)})}
                       keyExtractor={(item, index) => index + 1 + ''}
                       showsVerticalScrollIndicator={false}
                       ListEmptyComponent={renderEmpty}/>

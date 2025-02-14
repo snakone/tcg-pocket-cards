@@ -4,13 +4,15 @@ import { TouchableOpacity } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
-import { CARD_IMAGE_MAP_EN, CARD_IMAGE_MAP_116x162_EN } from "@/shared/definitions/utils/card.images";
 import { TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { CardGridStyles, CreateScreenStyles } from "@/shared/styles/component.styles";
+import { AppState } from '@/hooks/root.reducer';
+import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
 
   export const renderDeckItem = (
-    {item, index, onPress}: {item: StorageDeck, index: number, onPress: any}
+    {item, state, onPress}: {item: StorageDeck, state: AppState, onPress: any}
   ) => {
+    
     return (
       <ThemedView style={[CreateScreenStyles.deckItem, 
                           {
@@ -31,9 +33,9 @@ import { CardGridStyles, CreateScreenStyles } from "@/shared/styles/component.st
                       transform: [{rotate: `${10 + (i * 8)}deg`}],
                       left: i * 25, 
                       zIndex: (1 / (i + 1) * 100),
-                    }, CARD_IMAGE_MAP_EN[String(item.popular[i])] && {opacity: 1}
+                    }
                   ]} 
-                  source={CARD_IMAGE_MAP_116x162_EN[String(item.popular[i])]}
+                  source={getImageLanguage116x162(state.settingsState.language, item.popular[i])}
                   key={i}/> :
                   <ThemedView style={[
                     CardGridStyles.image,

@@ -67,7 +67,7 @@ export function ShareScreenModal() {
           <Image source={SHARE_CHARIZARD} style={{width: '100%', height: 352}}></Image>
         </ThemedView>
 
-        <ThemedText style={styles.title}>{i18n.t('trades')}</ThemedText>
+        <ThemedText style={[styles.title, {marginTop: 12}]}>{i18n.t('trades')}</ThemedText>
 
         <ThemedText style={styles.text}>{i18n.t('share_click_trade')}</ThemedText>
         <ThemedText style={styles.text}>- {i18n.t('share_info_trade')}</ThemedText>

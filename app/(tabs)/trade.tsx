@@ -60,10 +60,10 @@ export default function TradeScreen() {
     const rarity = state.cardState.cards.find(card => item.desired.includes(card.id))?.rarity;
     return (
       <TouchableOpacity onPress={() => handleClick(item)} style={{paddingHorizontal: 16}}>
-        <TradeUserItem item={item} rarity={rarity}/>
+        <TradeUserItem item={item} rarity={rarity} state={state}/>
       </TouchableOpacity>
     )
-  }, [state.cardState.cards]);
+  }, [state.cardState.cards, state.settingsState.language]);
 
   const renderEmpty = useCallback(() => {
     return <ThemedText style={{ paddingVertical: 6, paddingHorizontal: 22}}>

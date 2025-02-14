@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
-import { StyleSheet, View } from 'react-native';
-import React, { useRef, useState } from 'react';
+import { StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -13,6 +13,7 @@ import { getCardPackFrom, isCardPromo, isCardPromoAndBattle, isCardPromoAndNoBat
 import DetailRelatedCards from './detail.related.cards';
 import { AppState } from '@/hooks/root.reducer';
 import ScrollService from '@/core/services/scroll.service';
+import { LanguageType } from '@/shared/definitions/types/global.types';
 
 interface CardDetailScroll {
   card: Card,
@@ -22,6 +23,11 @@ interface CardDetailScroll {
 
 export default function DetailCardScroll({card, state, scrollService}: CardDetailScroll) {
   const {i18n} = useI18n();
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   const expansionImage = (card: Card) => {
     const data = getCardPackFrom(card);
@@ -40,7 +46,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
 
   return (
     <ThemedView style={{padding: 20, marginBottom: 65, width: '100%'}}>
-      <ThemedText style={detailScrollStyles.name}>{card.name}</ThemedText>
+      <ThemedText style={detailScrollStyles.name}>{card.name[lang]}</ThemedText>
       
         {
           RARITY_MAP[card.rarity]?.amount !== 0 ?
@@ -58,7 +64,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
       
       { !!card.flavor && 
         <ThemedView style={cardDetailStyles.itemInfo}>
-          <ThemedText style={detailScrollStyles.text}>{card.flavor}</ThemedText>
+          <ThemedText style={detailScrollStyles.text}>{card.flavor[lang]}</ThemedText>
         </ThemedView>
       }
 
@@ -99,13 +105,13 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
           </ThemedView>
         }
         {
-          (Boolean(card.extra) || (card.name === 'Mew' && card.id === 283)) &&
+          (Boolean(card.extra) || (card.name.en === 'Mew' && card.id === 283)) &&
           <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info]}>
             <ThemedView style={detailScrollStyles.infoTitle}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t('how_to_obtain')}</ThemedText>
             </ThemedView>
             <ThemedView style={detailScrollStyles.infoValue}>
-              <ThemedText style={detailScrollStyles.text}>{card.extra}</ThemedText>
+              <ThemedText style={detailScrollStyles.text}>{card.extra && card.extra[lang]}</ThemedText>
             </ThemedView>
           </ThemedView> 
         }
@@ -127,10 +133,10 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             <ThemedText style={detailScrollStyles.text}>{i18n.t('ability')}</ThemedText>
           </ThemedView>
           <ThemedView style={[detailScrollStyles.infoValue, {boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}]}>
-            <ThemedText style={[detailScrollStyles.attackName, detailScrollStyles.abilityName]}>{card.ability.name}</ThemedText>
+            <ThemedText style={[detailScrollStyles.attackName, detailScrollStyles.abilityName]}>{card.ability.name[lang]}</ThemedText>
           </ThemedView>
           <ThemedView style={[detailScrollStyles.attackContainer, {width: '100%', padding: 16, justifyContent: 'center'}]}>
-            <ThemedText style={detailScrollStyles.text}>{card.ability.description}</ThemedText>
+            <ThemedText style={detailScrollStyles.text}>{card.ability.description[lang]}</ThemedText>
           </ThemedView>
         </ThemedView>
       }
@@ -156,14 +162,14 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
                         ))
                       }
                     </ThemedView>
-                    <ThemedText style={detailScrollStyles.attackName}>{att.name}</ThemedText>
+                    <ThemedText style={detailScrollStyles.attackName}>{att.name[lang]}</ThemedText>
                   </ThemedView>
 
                   { att.damage > 0 && <ThemedText style={detailScrollStyles.attackDamage}>{att.damage}</ThemedText>}
 
                   { att.description && 
                     <ThemedView style={{width: '100%', marginTop: 16}}>
-                      <ThemedText style={{fontSize: 12}}>{att.description}</ThemedText>
+                      <ThemedText style={{fontSize: 12}}>{att.description[lang]}</ThemedText>
                     </ThemedView>
                   }
                 </ThemedView>
@@ -396,7 +402,8 @@ export const detailScrollStyles = StyleSheet.create({
     textAlign: 'center',
     color: 'rgb(165, 7, 17)',
     fontWeight: '600',
-    top: -1
+    top: -1,
+    fontSize: 15
   },
   points: {
     width: 14,

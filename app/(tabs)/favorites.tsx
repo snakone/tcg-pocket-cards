@@ -14,10 +14,10 @@ export default function FavoritesScreen() {
   return (
     <>
       <ImageGridWithSearch state={state} 
-                            modal={FavoritesModal()}
-                            title="favorites"
-                            modalTitle="favorites_modal_title"
-                            type="favorites"/>
+                           modal={FavoritesModal()}
+                           title="favorites"
+                           modalTitle="favorites_modal_title"
+                           type="favorites"/>
     </>
   );
 }

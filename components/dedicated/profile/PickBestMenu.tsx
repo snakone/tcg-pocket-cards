@@ -16,9 +16,9 @@ import SoundService from "@/core/services/sounds.service";
 import Storage from "@/core/storage/storage.service";
 import { AppContext } from "@/app/_layout";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { CARD_IMAGE_MAP_69x96_EN } from "@/shared/definitions/utils/card.images";
 import { Colors } from "@/shared/definitions/utils/colors";
-import LoadingOverlay from "@/components/ui/LoadingOverlay";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
 
 export default function PickBestMenu({
   isVisible,
@@ -33,6 +33,11 @@ export default function PickBestMenu({
   const { state, dispatch } = context;
   const [cards, setCards] = useState<Card[]>([]);
   const [selected, setSelected] = useState(-1);
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
@@ -72,8 +77,8 @@ export default function PickBestMenu({
             onPress={() => handleClick(item.id)}
             style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
         <View>
-          <Image accessibilityLabel={item.name}
-                  source={CARD_IMAGE_MAP_69x96_EN[String(item.id)]}
+          <Image accessibilityLabel={item.name[lang]}
+                  source={getImageLanguage69x96(lang, item.id)}
                   style={[
                   CardGridStyles.image, 
                   {width: Platform.OS === 'web' ? 57.6 : 58}

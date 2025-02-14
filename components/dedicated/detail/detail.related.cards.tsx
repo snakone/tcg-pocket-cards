@@ -9,10 +9,11 @@ import SoundService from "@/core/services/sounds.service";
 import { AppState } from "@/hooks/root.reducer";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
-import { CARD_IMAGE_MAP_116x162_EN } from "@/shared/definitions/utils/card.images";
 import { CardGridStyles, CARD_IMAGE_WIDTH_3 } from "@/shared/styles/component.styles";
 import ScrollService from "@/core/services/scroll.service";
 import React from "react";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { getImageLanguage116x162 } from "@/shared/definitions/utils/functions";
 
 interface DetailRelatedProps {
   card: Card,
@@ -24,10 +25,15 @@ export default function DetailRelatedCards({card, state, scrollService}: DetailR
 
   const [relatedCards, setRelatedCards] = useState<Card[]>([]);
   const flatListRef = useRef(null);
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
 
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { dispatch } = context;
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   useEffect(() => {
     const related = card.related?.map(id => state.cardState.cards.find(c => c.id === id)).filter(Boolean);
@@ -35,7 +41,7 @@ export default function DetailRelatedCards({card, state, scrollService}: DetailR
       setRelatedCards((related as Card[]));
     }
   }, []);
-
+  
   const playSound = async () => {
     SoundService.play('PICK_CARD_SOUND');
   };
@@ -65,9 +71,9 @@ export default function DetailRelatedCards({card, state, scrollService}: DetailR
           { state.settingsState.favorites?.includes(item.id) && 
             <ThemedView style={CardGridStyles.triangle}></ThemedView>
           }
-          <Image accessibilityLabel={item.name} 
+          <Image accessibilityLabel={item.name[lang]} 
                  style={[CardGridStyles.image, {width: CARD_IMAGE_WIDTH_3}]} 
-                 source={CARD_IMAGE_MAP_116x162_EN[String(item.id)]}/>
+                 source={getImageLanguage116x162(lang, item.id)}/>
       </Pressable>
     </Animated.View>
   ), []);

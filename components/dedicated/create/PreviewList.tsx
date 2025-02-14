@@ -8,12 +8,13 @@ import { ThemedView } from "@/components/ThemedView";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
-import { CARD_IMAGE_MAP_69x96_EN } from "@/shared/definitions/utils/card.images";
 import { CardGridStyles } from "@/shared/styles/component.styles";
 import { SoundService } from "@/core/services/sounds.service";
 import { AppState } from "@/hooks/root.reducer";
 import { Colors } from "@/shared/definitions/utils/colors";
 import CreateService from "@/core/services/create.service";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
 
 interface PreviewListProps {
   handleSearch: (value: string) => void,
@@ -34,6 +35,11 @@ export default function PreviewList({
 }: PreviewListProps) {
   const {i18n} = useI18n();
   const [deck, setDeck] = useState<any[]>(previousDeck);
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   useEffect(() => {
     const sub = service.addNumber$.subscribe(res => manageAddDeck(res));
@@ -104,12 +110,12 @@ export default function PreviewList({
         <View>
           { item ? 
           <ThemedView style={{backgroundColor: Colors.light.background}}>
-            <Image accessibilityLabel={item?.name} 
+            <Image accessibilityLabel={item?.name[lang]} 
                     style={[
               CardGridStyles.image, 
               {width: Platform.OS === 'web' ? 31.8 : 49.4, height: 46, borderRadius: 4}
             ]} 
-            source={CARD_IMAGE_MAP_69x96_EN[String(item?.id)]}/>
+            source={getImageLanguage69x96(lang, item?.id)}/>
             { state.settingsState.favorites?.includes(item.id) && 
               <ThemedView style={[CardGridStyles.triangle, {
                 borderRightWidth: 8,

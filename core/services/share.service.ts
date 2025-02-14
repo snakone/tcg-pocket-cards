@@ -40,7 +40,7 @@ export default class ShareService {
       if (Platform.OS === 'web') {
         const link = document.createElement('a');
         link.href = await convertBase64ToJpeg(localUri, quality);
-        link.download = name || 'deck';
+        link.download = name.endsWith('.jpeg') ? name : `${name}.jpeg` || 'deck.jpeg';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

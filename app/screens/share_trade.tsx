@@ -128,20 +128,22 @@ export default function ShareTradeScreen() {
               <TradeCollage trade={trade} 
                             background={background} 
                             profile={profile}
-                            rarity={rarity}>
+                            rarity={rarity}
+                            state={state}>
               </TradeCollage>
             </View> :
             <ViewShot ref={ref} style={{width: 'auto'}}>
               <TradeCollage trade={trade} 
                             background={background} 
                             profile={profile}
-                            rarity={rarity}>
+                            rarity={rarity}
+                            state={state}>
               </TradeCollage>
             </ViewShot>
           }
         </ThemedView>
         {
-          trade && <TradeUserItem item={trade} rarity={rarity} styles={styles.tradeItem}/>
+          trade && <TradeUserItem item={trade} rarity={rarity} styles={styles.tradeItem} state={state}/>
         }
         <ThemedView style={styles.options}>
           <ThemedText style={filterStyles.header}>{i18n.t('export')}</ThemedText>

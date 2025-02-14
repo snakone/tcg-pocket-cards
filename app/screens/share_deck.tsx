@@ -22,14 +22,14 @@ import { AvatarIcon, UserProfile } from "@/shared/definitions/interfaces/global.
 import { TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { CardGridStyles, CreateScreenStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
 import { Colors } from "@/shared/definitions/utils/colors";
-import { CARD_IMAGE_MAP_69x96_EN } from "@/shared/definitions/utils/card.images";
 import { createDeckStyles } from "./create_deck";
 import { settingsStyles } from "./settings";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import SoundService from "@/core/services/sounds.service";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import PickBackgroundMenu from "@/components/dedicated/share/PickCBackgroundMenu";
-import { filterUniqueItems } from "@/shared/definitions/utils/functions";
+import { filterUniqueItems, getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
+import { LanguageType } from "@/shared/definitions/types/global.types";
 
 export default function ShareDeckScreen() {
   const {i18n} = useI18n();
@@ -47,6 +47,11 @@ export default function ShareDeckScreen() {
   const [quality, setQuality] = useState<number>(0.8);
   const [duplicated, setDuplicated] = useState<boolean>(true);
   const [valid, setValid] = useState<boolean>(true);
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   const [profile, setProfile] = useState<UserProfile>(
     {name: '', avatar: 'eevee', coin: 'eevee', best: null}
@@ -128,12 +133,12 @@ export default function ShareDeckScreen() {
         <View style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
           { item ? 
           <ThemedView style={{backgroundColor: Colors.light.background}}>
-            <Image accessibilityLabel={item?.name} 
+            <Image accessibilityLabel={item?.name[lang]} 
                     style={[
               CardGridStyles.image, 
               {width: Platform.OS === 'web' ? 29.1 : 49.4, height: 46, borderRadius: 4}
             ]} 
-            source={CARD_IMAGE_MAP_69x96_EN[String(item?.id)]}/>
+            source={getImageLanguage69x96(lang, item?.id)}/>
             { state.settingsState.favorites?.includes(item.id) && 
               <ThemedView style={[CardGridStyles.triangle, {
                 borderRightWidth: 8,

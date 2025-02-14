@@ -4,21 +4,23 @@ import { Image } from 'expo-image';
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
-import { CARD_IMAGE_MAP_EN, CARD_IMAGE_MAP_116x162_EN } from '@/shared/definitions/utils/card.images';
 import { CardGridStyles, CreateScreenStyles } from '@/shared/styles/component.styles';
 import { SvgTradePassSymbol } from '@/components/ui/IconSymbol';
 import { TRADE_POINTS } from '@/shared/definitions/sentences/path.sentences';
 import { TRADE_COST_MAP } from '@/shared/definitions/utils/constants';
 import { CardRarityENUM } from '@/shared/definitions/enums/card.enums';
 import { useI18n } from '@/core/providers/LanguageProvider';
+import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
+import { AppState } from '@/hooks/root.reducer';
 
 interface TradeUserItemProps {
   item: TradeItem,
   rarity: CardRarityENUM | undefined,
-  styles?: any
+  styles?: any,
+  state: AppState
 }
 
-export default function TradeUserItem({item, rarity, styles}: TradeUserItemProps) {
+export default function TradeUserItem({item, rarity, styles, state}: TradeUserItemProps) {
   const {i18n} = useI18n();
 
   if (!item) { return; }
@@ -46,7 +48,7 @@ export default function TradeUserItem({item, rarity, styles}: TradeUserItemProps
                     zIndex: Math.round((1 / (i + 1) * 100)),
                   }
                 ]} 
-                source={CARD_IMAGE_MAP_116x162_EN[String(item)]}
+                source={getImageLanguage116x162(state?.settingsState.language, item)}
                 key={i}/> : <ThemedView style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
@@ -76,7 +78,7 @@ export default function TradeUserItem({item, rarity, styles}: TradeUserItemProps
                     zIndex: Math.round((1 / (i + 1) * 100)),
                   }
                 ]} 
-                source={CARD_IMAGE_MAP_116x162_EN[String(offer)]}
+                source={getImageLanguage116x162(state?.settingsState.language, offer)}
                 key={i}/> : <ThemedView style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {

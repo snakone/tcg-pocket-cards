@@ -14,6 +14,18 @@ import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SMACK_DOWN } from
 import { PACK_MAP } from "./constants";
 import { LanguageType } from "../types/global.types";
 
+import { 
+  CARD_IMAGE_MAP_116x162_EN, 
+  CARD_IMAGE_MAP_116x162_ES, 
+  CARD_IMAGE_MAP_116x162_JAP, 
+  CARD_IMAGE_MAP_69x96_EN, 
+  CARD_IMAGE_MAP_69x96_ES, 
+  CARD_IMAGE_MAP_69x96_JAP, 
+  CARD_IMAGE_MAP_EN, 
+  CARD_IMAGE_MAP_ES, 
+  CARD_IMAGE_MAP_JAP
+} from "./card.images";
+
 export function sortCards(field: keyof Card, data: Card[], sort: SortItem): Card[] {
   return [...data].sort((a, b) => {
     const aValue = a[field] ?? '';
@@ -178,7 +190,7 @@ export function forceShowSplash(
 
 export function getCardPackFrom(card: Card): {image: any, width: number, height: number} | undefined {
   if (card.expansion === CardExpansionENUM.GENETIC_APEX) {
-    if (card.found?.length === 3 || (card.name === 'Mew' && card.id === 283)) {
+    if (card.found?.length === 3 || (card.name.en === 'Mew' && card.id === 283)) {
       return {image: GENETIC_APEX, width: 68, height: 30};
     } else if (card.found !== undefined) {
       return {image: PACK_MAP[card.found[0]], width: 60, height: 45};
@@ -401,4 +413,34 @@ export function isObjectSettings(obj: any): boolean {
   if (!(obj as Object).hasOwnProperty('language')) { return false; }
 
   return true;
+}
+
+const IMAGE_LANGUAGE_MAP = {
+  es: CARD_IMAGE_MAP_ES,
+  en: CARD_IMAGE_MAP_EN,
+  ja: CARD_IMAGE_MAP_JAP
+}
+
+export function getImageLanguage(lang: LanguageType, id: number): any {
+  return IMAGE_LANGUAGE_MAP[lang][id];
+}
+
+const IMAGE_LANGUAGE_MAP_69x96 = {
+  es: CARD_IMAGE_MAP_69x96_ES,
+  en: CARD_IMAGE_MAP_69x96_EN,
+  ja: CARD_IMAGE_MAP_69x96_JAP
+}
+
+export function getImageLanguage69x96(lang: LanguageType, id: number): any {
+  return IMAGE_LANGUAGE_MAP_69x96[lang][id];
+}
+
+const IMAGE_LANGUAGE_MAP_116x162 = {
+  es: CARD_IMAGE_MAP_116x162_ES,
+  en: CARD_IMAGE_MAP_116x162_EN,
+  ja: CARD_IMAGE_MAP_116x162_JAP
+}
+
+export function getImageLanguage116x162(lang: LanguageType, id: number): any {
+  return IMAGE_LANGUAGE_MAP_116x162[lang][id];
 }

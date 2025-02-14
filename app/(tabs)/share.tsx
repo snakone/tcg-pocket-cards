@@ -70,10 +70,10 @@ export default function ShareScreen() {
     const rarity = state.cardState.cards.find(card => item?.desired.includes(card.id))?.rarity;
     return (
       <TouchableOpacity style={{paddingHorizontal: 16}} onPress={() => openTrade(item)}>
-        <TradeUserItem item={item} rarity={rarity}/>
+        <TradeUserItem item={item} rarity={rarity} state={state}/>
       </TouchableOpacity>
     )
-  }, [state.settingsState.trades]);
+  }, [state.settingsState.trades, state.settingsState.language]);
 
   const renderEmpty = useCallback(() => {
     if (searchQuery.length > 0) {
@@ -148,7 +148,7 @@ export default function ShareScreen() {
                        renderItem={({item, section, index}) => 
                           section.key === 'decks' ? (
                             <ThemedView style={{paddingHorizontal: 16}}>
-                              {renderDeckItem({item, index, onPress: () => openDeck(item)})}
+                              {renderDeckItem({item, state, onPress: () => openDeck(item)})}
                             </ThemedView>
                           ) : 
                           section.key === 'trades' ? renderTrade({item}) : null 

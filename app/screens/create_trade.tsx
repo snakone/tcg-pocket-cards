@@ -8,14 +8,13 @@ import { Portal, Provider } from "react-native-paper";
 
 import SharedScreen from "@/components/shared/SharedScreen";
 import { NO_CONTEXT, SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
-import { CARD_IMAGE_WIDTH_3, CardGridStyles, homeScreenStyles } from "@/shared/styles/component.styles";
+import { CardGridStyles, homeScreenStyles } from "@/shared/styles/component.styles";
 import SoundService from "@/core/services/sounds.service";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { ThemedView } from "@/components/ThemedView";
 import { AppContext } from "../_layout";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { ThemedText } from "@/components/ThemedText";
-import { CARD_IMAGE_MAP_116x162_EN } from "@/shared/definitions/utils/card.images";
 import { createDeckStyles } from "./create_deck";
 import PickDesiredMenu from "@/components/dedicated/trade/PickDesiredMenu";
 import PickOffersMenu from "@/components/dedicated/trade/PickOffersMenu";
@@ -25,6 +24,8 @@ import { useConfirmation } from "@/core/providers/ConfirmationProvider";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import { tradeCollageStyles } from "@/components/dedicated/share/TradeCollage";
 import { SALE_CARD } from "@/shared/definitions/sentences/path.sentences";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { getImageLanguage116x162 } from "@/shared/definitions/utils/functions";
 
 export default function CreateTradeScreen() {
   const {i18n} = useI18n();
@@ -44,6 +45,11 @@ export default function CreateTradeScreen() {
   const [loading, setLoading] = useState(false);
   const [notSaved, setNotSaved] = useState(false);
   const { trade_id } = useLocalSearchParams<{ trade_id: string }>();
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   useEffect(() => {
     const checkTrade = async () => {
@@ -192,7 +198,7 @@ export default function CreateTradeScreen() {
                   CardGridStyles.image, 
                   {width: 67.5}
                 ]} 
-              source={CARD_IMAGE_MAP_116x162_EN[String(item)]}/>
+              source={getImageLanguage116x162(lang, item)}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
             }
           </View>
@@ -215,7 +221,7 @@ export default function CreateTradeScreen() {
                   CardGridStyles.image, 
                   {width: 67.5}
                 ]} 
-              source={CARD_IMAGE_MAP_116x162_EN[String(item)]}/>
+              source={getImageLanguage116x162(lang, item)}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
             }
           </View>

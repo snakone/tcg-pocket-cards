@@ -33,13 +33,13 @@ import { ThemedView } from "@/components/ThemedView";
 import { BACK_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { AppContext } from "../_layout";
-import { CARD_IMAGE_MAP_EN } from "@/shared/definitions/utils/card.images";
 import SoundService from "@/core/services/sounds.service";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import DetailCardScroll from "@/components/dedicated/detail/detail.scroll";
 import Storage from "@/core/storage/storage.service";
-import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import ScrollService from "@/core/services/scroll.service";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { getImageLanguage } from "@/shared/definitions/utils/functions";
 
 const INITIAL_INFO_HEIGHT = 100;
 const MAX_HEIGHT = 450;
@@ -70,6 +70,11 @@ export default function DetailScreen() {
   const scrollRef = useRef<Animated.ScrollView>(null);
   const scrollYAndroid = useSharedValue(0);
   const [card, setCard] = useState<Card>();
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   useEffect(() => {
     if (Platform.OS !== 'web' || !state.cardState.loaded) return;
@@ -407,7 +412,7 @@ export default function DetailScreen() {
           Platform.OS === 'web' ? (
             <Animated.View style={[opacityStyle, cardAnimatedStyle]}>
               <Image style={[styles.image, cardDetailStyles.card]}
-                     source={CARD_IMAGE_MAP_EN[id]}
+                     source={getImageLanguage(lang, Number(id))}
                       />
             </Animated.View>
           ) : (<>
@@ -419,7 +424,7 @@ export default function DetailScreen() {
                 cardAndroidAnimatedStyle
               ]}>
                 <Image style={[styles.image]}
-                      source={CARD_IMAGE_MAP_EN[id]}
+                      source={getImageLanguage(lang, Number(id))}
                       contentFit={'fill'} />
               </Animated.View>
             </GestureDetector>

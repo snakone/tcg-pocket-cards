@@ -27,14 +27,13 @@ import { detailScrollStyles } from "@/components/dedicated/detail/detail.scroll"
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 import { SORT_FIELD_MAP, TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { AppContext } from "../_layout";
-import { CARD_IMAGE_MAP_116x162_EN, CARD_IMAGE_MAP_69x96_EN } from "@/shared/definitions/utils/card.images";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import Storage from '@/core/storage/storage.service';
 import FilterCardMenu from "@/components/shared/cards/FilterCardMenu";
 import SortCardMenu from "@/components/shared/cards/SortCardMenu";
 import { SortItem } from "@/shared/definitions/interfaces/layout.interfaces";
-import { filterCards, sortCards } from "@/shared/definitions/utils/functions";
+import { filterCards, getImageLanguage116x162, getImageLanguage69x96, sortCards } from "@/shared/definitions/utils/functions";
 import { cardStyles } from "../(tabs)/cards";
 
 import { useConfirmation } from "@/core/providers/ConfirmationProvider";
@@ -48,6 +47,7 @@ import { StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
 import { CardStageENUM } from "@/shared/definitions/enums/card.enums";
 import PreviewList from "@/components/dedicated/create/PreviewList";
 import CreateService from "@/core/services/create.service";
+import { LanguageType } from "@/shared/definitions/types/global.types";
 
 export default function CreateDeckScreen() {
   const {i18n} = useI18n();
@@ -70,6 +70,11 @@ export default function CreateDeckScreen() {
   const { confirm } = useConfirmation();
   const { deck_id } = useLocalSearchParams<{ deck_id: string }>();
   const createService = useMemo(() => new CreateService(), []);
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   const [element, setElement] = useState({
     [PokemonTypeENUM.GRASS]: null, 
@@ -124,12 +129,12 @@ export default function CreateDeckScreen() {
           <View>
             { item ? 
             <>
-              <Image accessibilityLabel={item?.name} 
+              <Image accessibilityLabel={item?.name[lang]} 
                     style={[
                   CardGridStyles.image, 
                   {width: CARD_IMAGE_WIDTH_3}
                 ]} 
-              source={CARD_IMAGE_MAP_116x162_EN[String(item?.id)]}/>        
+              source={getImageLanguage116x162(lang, item?.id)}/>        
               { state.settingsState.favorites?.includes(item.id) && 
                 <ThemedView style={[CardGridStyles.triangle]}></ThemedView>
               }
@@ -206,9 +211,9 @@ export default function CreateDeckScreen() {
     setFiltered(prev => {
       if(state.cardState.cards.length === 0) { return prev; }
       return state.cardState.cards.filter(card =>
-        card.name.toLowerCase()?.includes(text.toLowerCase()));
+        card.name[lang].toLowerCase()?.includes(text.toLowerCase()));
     })
-  }, [state.cardState.cards]);
+  }, [state.cardState.cards, lang]);
 
   async function handleSave(): Promise<void> {
     playSound();
@@ -485,8 +490,8 @@ export default function CreateDeckScreen() {
               borderBottomWidth: 10
             }]}></ThemedView>
           }
-          <Image accessibilityLabel={item.name}
-                 source={CARD_IMAGE_MAP_69x96_EN[String(item.id)]}
+          <Image accessibilityLabel={item.name[lang]}
+                 source={getImageLanguage69x96(lang, item.id)}
                  style={[
                   CardGridStyles.image, 
                   {width: Platform.OS === 'web' ? 57.6 : 58}

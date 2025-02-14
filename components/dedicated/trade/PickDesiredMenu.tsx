@@ -15,17 +15,17 @@ import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
 import { AppContext } from "@/app/_layout";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { CARD_IMAGE_MAP_116x162_EN, CARD_IMAGE_MAP_69x96_EN } from "@/shared/definitions/utils/card.images";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { getFilterSearch, ICON_WIDTH, RARITY_CAN_TRADE, RARITY_MAP } from "@/shared/definitions/utils/constants";
 import SkeletonCardGrid from "@/components/skeletons/SkeletonCardGrid";
 import StateButton from "@/components/ui/StateButton";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
-import { filterCards } from "@/shared/definitions/utils/functions";
+import { filterCards, getImageLanguage116x162, getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
 import { CardExpansionTypeENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 import { createDeckStyles } from "@/app/screens/create_deck";
 import { MaterialIcons } from "@expo/vector-icons";
 import { offersStyles } from "./PickOffersMenu";
+import { LanguageType } from "@/shared/definitions/types/global.types";
 
 export default function PickDesiredMenu({
   isVisible,
@@ -48,12 +48,17 @@ export default function PickDesiredMenu({
   const [filterDisabled, setFilterDisabled] = useState<boolean>(false);
   const [forceRender, setForceRender] = useState(0);
   const triggerRender = () => setForceRender(prev => prev + 1);
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
     setFiltered(cardsWithFilter.filter(card =>
-      card.name.toLowerCase()?.includes(text.toLowerCase())
-  ))}, [cardsWithFilter]);
+      card.name[lang].toLowerCase()?.includes(text.toLowerCase())
+  ))}, [cardsWithFilter, lang]);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
@@ -169,8 +174,8 @@ export default function PickDesiredMenu({
                 </MaterialIcons>
               </ThemedView>
           }
-          <Image accessibilityLabel={item.name}
-                  source={CARD_IMAGE_MAP_69x96_EN[String(item.id)]}
+          <Image accessibilityLabel={item.name[lang]}
+                  source={getImageLanguage69x96(lang, item.id)}
                   style={[
                   CardGridStyles.image, 
                   {width: Platform.OS === 'web' ? 57.6 : 58}
@@ -206,7 +211,7 @@ export default function PickDesiredMenu({
                     CardGridStyles.image, 
                     {width: 67.5}
                   ]} 
-                source={CARD_IMAGE_MAP_116x162_EN[String(current[index])]}/>
+                source={getImageLanguage116x162(lang, current[index])}/>
               </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
               }
             </View>

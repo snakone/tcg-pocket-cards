@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import * as MediaLibrary from 'expo-media-library';
 import { FlatList, View } from "react-native";
 import React from "react";
@@ -10,10 +10,12 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { CardGridStyles, TabsMenuStyles } from "@/shared/styles/component.styles";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { CARD_IMAGE_MAP_EN } from "@/shared/definitions/utils/card.images";
 import { COIN_MAP, DECK_BACKGROUND_MAP, FRONTEND_URL, TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { AvatarIcon, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
-import { filterUniqueItems } from "@/shared/definitions/utils/functions";
+import { filterUniqueItems, getImageLanguage } from "@/shared/definitions/utils/functions";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { AppContext } from "@/app/_layout";
+import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 
 const COLLAGE_WIDTH = 1920;
 
@@ -37,6 +39,14 @@ export default function DeckCollage({
   const [status, requestPermission] = MediaLibrary.usePermissions();
   const [data, setData] = useState<Card[]>(deck);
   const [ids, setIds] = useState<number[]>([]);
+  const context = useContext(AppContext);
+  if (!context) { throw new Error(NO_CONTEXT); }
+  const { state, dispatch } = context;
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   if (status === null) {
     requestPermission();
@@ -90,12 +100,12 @@ export default function DeckCollage({
         <View>
           { item && 
           <>
-            <Image accessibilityLabel={item?.name} 
+            <Image accessibilityLabel={item?.name[lang]} 
                   style={[
                 CardGridStyles.image, 
                 {width: 354}
               ]} 
-            source={CARD_IMAGE_MAP_EN[String(item?.id)]}/>        
+            source={getImageLanguage(lang, (item?.id))}/>        
           </>
           }
           {ids.includes(item?.id) && 

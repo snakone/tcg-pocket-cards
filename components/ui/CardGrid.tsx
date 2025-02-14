@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useEffect, useRef, useContext } from 'react';
-import { MaterialIcons } from '@expo/vector-icons';
 
 import { 
   FlatList, 
@@ -44,10 +43,10 @@ import { AppState } from '@/hooks/root.reducer';
 import { LARGE_MODAL_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/constants';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
-import { filterCards, sortCards } from '@/shared/definitions/utils/functions';
+import { filterCards, getImageLanguage116x162, getImageLanguage69x96, sortCards } from '@/shared/definitions/utils/functions';
 import { AppContext } from '@/app/_layout';
-import { CARD_IMAGE_MAP_116x162_EN, CARD_IMAGE_MAP_69x96_EN } from '@/shared/definitions/utils/card.images';
 import SoundService from '@/core/services/sounds.service';
+import { LanguageType } from '@/shared/definitions/types/global.types';
 
 interface GridCardProps {
   state: AppState,
@@ -73,6 +72,11 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { dispatch } = context;
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   const { 
     animatedHeaderStyle, 
@@ -127,8 +131,8 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
     setFiltered((type === 'favorites' ? favorites : state.cardState.cards).filter(card =>
-      card.name.toLowerCase()?.includes(text.toLowerCase())
-  ))}, [(type === 'favorites' ? favorites : state.cardState.cards)]);
+      card.name[lang].toLowerCase()?.includes(text.toLowerCase())
+  ))}, [(type === 'favorites' ? favorites : state.cardState.cards), lang]);
 
   function filterOrSortCards(
     type: 'sort' | 'filter', 
@@ -217,16 +221,16 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
           { state.settingsState.favorites?.includes(item.id) && 
             <ThemedView style={CardGridStyles.triangle}></ThemedView>
           }
-          <Image accessibilityLabel={item.name} 
+          <Image accessibilityLabel={item.name[lang]} 
                  style={[
             CardGridStyles.image, 
             {width: isGrid5 ? CARD_IMAGE_WIDTH_5 : CARD_IMAGE_WIDTH_3}
           ]} 
-          source={isGrid5 ? CARD_IMAGE_MAP_69x96_EN[String(item.id)] : 
-                            CARD_IMAGE_MAP_116x162_EN[String(item.id)]}/>
+          source={isGrid5 ? getImageLanguage69x96(lang, item.id) : 
+                            getImageLanguage116x162(lang, item.id)}/>
       </Pressable>
     </View>
-  ), [isGrid5, state.cardState.navigating, state.settingsState.favorites]);
+  ), [isGrid5, state.cardState.navigating, state.settingsState.favorites, lang]);
 
   const playSound = async (isSwitch: boolean = false) => {
     if (isSwitch) { 

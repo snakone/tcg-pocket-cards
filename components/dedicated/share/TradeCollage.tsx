@@ -8,7 +8,6 @@ import { StyleSheet } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { CardGridStyles, TabsMenuStyles } from "@/shared/styles/component.styles";
-import { CARD_IMAGE_MAP_EN } from "@/shared/definitions/utils/card.images";
 import { COIN_MAP, DECK_BACKGROUND_MAP, FRONTEND_URL, TRADE_COST_MAP } from "@/shared/definitions/utils/constants";
 import { AvatarIcon, TradeItem, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { DISCORD_LOGO, SALE_CARD, TRADE_POINTS } from "@/shared/definitions/sentences/path.sentences";
@@ -16,6 +15,9 @@ import { CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { Colors } from "@/shared/definitions/utils/colors";
+import { AppState } from "@/hooks/root.reducer";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { getImageLanguage } from "@/shared/definitions/utils/functions";
 
 const COLLAGE_WIDTH = 1920;
 
@@ -23,18 +25,25 @@ interface TradeCollageProps {
   trade: TradeItem | undefined,
   profile: UserProfile,
   background: AvatarIcon | undefined,
-  rarity?: CardRarityENUM | undefined
+  rarity?: CardRarityENUM | undefined,
+  state: AppState
 }
 
 export default function TradeCollage({
   trade,
   profile, 
   background,
-  rarity
+  rarity,
+  state
 }: TradeCollageProps) {
   const [status, requestPermission] = MediaLibrary.usePermissions();
   const [data, setData] = useState<TradeItem | undefined>(trade);
   const {i18n} = useI18n();
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   if (status === null) {
     requestPermission();
@@ -55,7 +64,7 @@ export default function TradeCollage({
                 CardGridStyles.image, 
                 {width: 354}
               ]} 
-            source={CARD_IMAGE_MAP_EN[String(item)]}/>        
+            source={getImageLanguage(lang, item)}/>        
           </>
           }
           <ThemedView style={{position: 'absolute', top: -24, right: -24}}>
@@ -77,7 +86,7 @@ export default function TradeCollage({
                 CardGridStyles.image, 
                 {width: 354}
               ]} 
-            source={CARD_IMAGE_MAP_EN[String(item)]}/>        
+            source={getImageLanguage(lang, item)}/>        
           </>
           }
           <ThemedView style={tradeCollageStyles.like}>
@@ -117,7 +126,7 @@ export default function TradeCollage({
             <ThemedView style={{position: 'relative', top: 0, right: 0}}>
               <Image source={SALE_CARD} style={{width: 32, height: 32}}/>
             </ThemedView>
-            <ThemedText style={[tradeCollageStyles.text, {marginLeft: 6, top: -2, fontSize: 18, width: 87, textAlign: 'center'}]}>
+            <ThemedText style={[tradeCollageStyles.text, {marginLeft: 6, top: -2, fontSize: 18, width: 106, textAlign: 'center'}]}>
               {i18n.t('i_offer')}
             </ThemedText>
           </ThemedView>
