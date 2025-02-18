@@ -1,4 +1,4 @@
-import { FlatList, TextInput, TouchableOpacity, View, StyleSheet } from "react-native";
+import { FlatList, TextInput, TouchableOpacity, View, StyleSheet, Platform } from "react-native";
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React from "react";
@@ -193,8 +193,7 @@ export default function CreateTradeScreen() {
           <View>
             { offers[index] ? 
             <>
-              <Image accessibilityLabel={item} 
-                    style={[
+              <Image style={[
                   CardGridStyles.image, 
                   {width: 67.5}
                 ]} 
@@ -209,15 +208,14 @@ export default function CreateTradeScreen() {
 
   const renderDesired = useCallback(({item, index}: {item: any, index: number}) => (
     <View style={[CardGridStyles.imageContainer]}>
-      <View style={{flex: 1, backgroundColor: 'white', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)'}}>
+      <View style={{ backgroundColor: 'white', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)'}}>
         <TouchableOpacity onPress={() => handleDesired()}
                           style={[CardGridStyles.image, styles.image, !desired && {opacity: 0.3}]}
                           disabled={!desired}>
           <View>
             { desired[index] ? 
             <>
-              <Image accessibilityLabel={item} 
-                    style={[
+              <Image style={[
                   CardGridStyles.image, 
                   {width: 67.5}
                 ]} 
@@ -262,7 +260,7 @@ export default function CreateTradeScreen() {
     <Provider>
       { loading && <LoadingOverlay/> }
       <SharedScreen title={trade_id ? 'edit_trade' : 'create_trade'} 
-                    styles={{paddingHorizontal: 16, marginTop: 0}} customClose={goBack}>
+                    styles={{paddingInline: 16, marginTop: 0}} customClose={goBack}>
         <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between'}}>
           <TextInput style={[CardGridStyles.searchInput, {width: trade_id ? '87%' : '100%'}]}
                     placeholder={i18n.t('trade_name')}
@@ -297,7 +295,7 @@ export default function CreateTradeScreen() {
           <ThemedView style={{flexDirection: 'row', gap: 8, marginTop: 8}}>
             {
               [1, 2, 3, 4].map((item, index) => (
-                <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
+                <TextInput style={[CardGridStyles.searchInput, {width: Platform.OS !== 'web' ? 83.5 : '100%'}]}
                           placeholder={'0000'}
                           value={tcg[index]}
                           onChangeText={(text) => handleTCG(text, index)}
@@ -314,10 +312,14 @@ export default function CreateTradeScreen() {
             }
           </ThemedView>
         </ThemedView>
-        <ThemedView style={styles.item}>
+        <ThemedView style={[styles.item, Platform.OS !== 'web' && {height: 142}]}>
           <ThemedView style={{flexDirection: 'row', gap: 16}}>
             <ThemedView style={[tradeCollageStyles.like, {position: 'relative', width: 30, height: 30, top: 4, right: 0, marginRight: 2}]}>
-              <MaterialIcons name={"favorite-outline"} style={{color: 'white', fontSize: 24, top: 1}}></MaterialIcons>
+              <MaterialIcons name={"favorite-outline"} 
+                             style={[
+                              {color: 'white', fontSize: 24, top: 1},
+                              Platform.OS !== 'web' && {fontSize: 19, top: 0, left: 0}
+                              ]}></MaterialIcons>
             </ThemedView>
             <ThemedView>
               <ThemedText type="defaultSemiBold">{i18n.t('trade_select_desired')}</ThemedText>
@@ -333,7 +335,7 @@ export default function CreateTradeScreen() {
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
         </ThemedView>
-        <ThemedView style={styles.item}>
+        <ThemedView style={[styles.item, Platform.OS !== 'web' && {height: 160}]}>
           <ThemedView style={{flexDirection: 'row', gap: 16}}>
             <ThemedView style={{position: 'relative', top: -3, right: 4 }}>
               <Image source={SALE_CARD} style={{width: 42, height: 42}}/>
@@ -356,7 +358,7 @@ export default function CreateTradeScreen() {
         <ThemedView style={{width: '100%', marginTop: 8}}>
           <TouchableOpacity style={[
             homeScreenStyles.ctaButton,
-            {marginBottom: 10, marginTop: 6, flex: 1, backgroundColor: 'skyblue'}
+            {marginBottom: 10, marginTop: 6, backgroundColor: 'skyblue'}
           ]} 
                             onPress={() => createTrade()}>
             <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>

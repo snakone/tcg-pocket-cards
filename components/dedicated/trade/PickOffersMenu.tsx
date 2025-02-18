@@ -147,7 +147,7 @@ export default function PickOffersMenu({
 
   const renderOffered = useCallback(({item, index}: {item: any, index: number}) => (
     <View style={[CardGridStyles.imageContainer, {boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.2)'}]}>
-      <View style={{flex: 1, backgroundColor: 'white'}}>
+      <View style={{backgroundColor: 'white'}}>
         <TouchableOpacity onPress={() => handleClick(item, 'remove')}
           style={[CardGridStyles.image, {
             justifyContent: 'center',

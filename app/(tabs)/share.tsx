@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Animated from 'react-native-reanimated';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedView } from '@/components/ThemedView';
@@ -69,7 +69,7 @@ export default function ShareScreen() {
   const renderTrade = useCallback(({item}: {item: TradeItem}) => {
     const rarity = state.cardState.cards.find(card => item?.desired.includes(card.id))?.rarity;
     return (
-      <TouchableOpacity style={{paddingHorizontal: 16}} onPress={() => openTrade(item)}>
+      <TouchableOpacity style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}} onPress={() => openTrade(item)}>
         <TradeUserItem item={item} rarity={rarity} state={state}/>
       </TouchableOpacity>
     )
@@ -110,7 +110,7 @@ export default function ShareScreen() {
                         styles={{gap: 0, paddingHorizontal: 0}}>
       <ThemedView style={{ 
           paddingVertical: 20,
-          paddingHorizontal: 16,
+          paddingHorizontal: Platform.OS !== 'web' ? 0 : 16,
           marginTop: -20,
           width: '100%',
         }}>
@@ -129,7 +129,7 @@ export default function ShareScreen() {
         </KeyboardAvoidingView>
       </ThemedView>
 
-      <ThemedView style={[CreateScreenStyles.decksContainer, {flex: 1, padding: 0}]}>
+      <ThemedView style={[CreateScreenStyles.decksContainer, { padding: 0}]}>
         <ThemedView style={{flex: 1}}>
           <SectionList stickySectionHeadersEnabled
                        showsVerticalScrollIndicator={false}
@@ -147,14 +147,14 @@ export default function ShareScreen() {
                        ]}
                        renderItem={({item, section, index}) => 
                           section.key === 'decks' ? (
-                            <ThemedView style={{paddingHorizontal: 16}}>
+                            <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}}>
                               {renderDeckItem({item, state, onPress: () => openDeck(item)})}
                             </ThemedView>
                           ) : 
                           section.key === 'trades' ? renderTrade({item}) : null 
                        }
                        renderSectionHeader={({section}) => (
-                        <ThemedView style={[styles.sectionHeader]}>
+                        <ThemedView style={[styles.sectionHeader, Platform.OS !== 'web' && {marginInline: 0}]}>
                           <ThemedText type='subtitle' style={styles.title}>{section.title}</ThemedText>
                           <ThemedText style={{marginBottom: 0, fontWeight: 'bold', color: 'black'}}>
                             {
@@ -166,7 +166,7 @@ export default function ShareScreen() {
                        )}
                        keyExtractor={(item, index) => `${index}`}
                        ListEmptyComponent={renderEmpty}
-                       contentContainerStyle={[{width: '100%', paddingBottom: 0}]}
+                       contentContainerStyle={[{width: '100%', paddingBottom: Platform.OS !== 'web' ? 60 : 0}]}
             />
         </ThemedView>
       </ThemedView>             

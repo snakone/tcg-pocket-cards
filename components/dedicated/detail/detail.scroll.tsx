@@ -93,7 +93,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
         </ThemedView>
       }
 
-      <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.artistContainer]}>
+      <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.artistContainer, {backgroundColor: 'white'}]}>
         <ThemedView style={cardDetailStyles.expansionContainer}>
           {expansionImage(card)}
         </ThemedView>
@@ -124,7 +124,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             <ThemedView style={detailScrollStyles.infoTitle}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t('promo')}</ThemedText>
             </ThemedView>
-            <ThemedView style={detailScrollStyles.infoValue}>
+            <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
               <ThemedText style={detailScrollStyles.text}>{EXPANSION_MAP[card.expansion].tag}</ThemedText>
             </ThemedView>
           </ThemedView>
@@ -135,7 +135,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             <ThemedView style={detailScrollStyles.infoTitle}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t('how_to_obtain')}</ThemedText>
             </ThemedView>
-            <ThemedView style={detailScrollStyles.infoValue}>
+            <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
               <ThemedText style={detailScrollStyles.text}>{card.extra && card.extra[lang]}</ThemedText>
             </ThemedView>
           </ThemedView> 
@@ -147,7 +147,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
         <ThemedView style={detailScrollStyles.infoTitle}>
           <ThemedText style={detailScrollStyles.text}>{i18n.t('illustration')}</ThemedText>
         </ThemedView>
-        <ThemedView style={detailScrollStyles.infoValue}>
+        <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
           <ThemedText style={detailScrollStyles.text}>{card.artist}</ThemedText>
         </ThemedView>
       </ThemedView>
@@ -161,7 +161,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             <ThemedText style={[detailScrollStyles.attackName, detailScrollStyles.abilityName]}>{card.ability.name[lang]}</ThemedText>
           </ThemedView>
           <ThemedView style={[detailScrollStyles.attackContainer, {width: '100%', padding: 16, justifyContent: 'center'}]}>
-            <ThemedText style={detailScrollStyles.text}>{card.ability.description[lang]}</ThemedText>
+            <ThemedText style={[detailScrollStyles.text, {textAlign: 'left'}]}>{card.ability.description[lang]}</ThemedText>
           </ThemedView>
         </ThemedView>
       }
@@ -207,19 +207,19 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
       { !isNotBattleCard(card) ? 
         <> 
           <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info]}>
-                <ThemedView style={detailScrollStyles.infoTitle}>
-                  <ThemedText style={detailScrollStyles.text}>{i18n.t('pokemon')}</ThemedText>
-                </ThemedView>
-                <ThemedView style={detailScrollStyles.infoValue}>
-                  <ThemedText style={detailScrollStyles.text}>{i18n.t(STAGE_MAP[card.stage].label)}</ThemedText>
-                </ThemedView>
+            <ThemedView style={detailScrollStyles.infoTitle}>
+              <ThemedText style={detailScrollStyles.text}>{i18n.t('pokemon')}</ThemedText>
+            </ThemedView>
+            <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
+              <ThemedText style={detailScrollStyles.text}>{i18n.t(STAGE_MAP[card.stage].label)}</ThemedText>
+            </ThemedView>
           </ThemedView>
 
           <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info]}>
             <ThemedView style={detailScrollStyles.infoTitle}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t('type')}</ThemedText>
             </ThemedView>
-            <ThemedView style={[detailScrollStyles.infoValue, {justifyContent: 'center', alignItems: 'center'}]}>
+            <ThemedView style={[detailScrollStyles.infoValue, {justifyContent: 'center', alignItems: 'flex-start'}]}>
               <Image source={TYPE_MAP[card.element].image} style={detailScrollStyles.element}></Image>
             </ThemedView>
           </ThemedView>
@@ -228,7 +228,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             <ThemedView style={detailScrollStyles.infoTitle}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t('PS')}</ThemedText>
             </ThemedView>
-            <ThemedView style={detailScrollStyles.infoValue}>
+            <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
               <ThemedText style={detailScrollStyles.text}>{card.health}</ThemedText>
             </ThemedView>
           </ThemedView>
@@ -237,7 +237,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             <ThemedView style={detailScrollStyles.infoTitle}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t('weak')}</ThemedText>
             </ThemedView>
-            <ThemedView style={[detailScrollStyles.infoValue, {justifyContent: 'center', alignItems: 'center'}]}>
+            <ThemedView style={[detailScrollStyles.infoValue, {justifyContent: 'center', alignItems: 'flex-start'}]}>
               <ThemedView style={{flexDirection: 'row', gap: 2, position: 'relative'}}>
                 <Image source={card.weak !== null && card.weak !== undefined && TYPE_MAP[card.weak].image} style={detailScrollStyles.element}></Image>
                 <ThemedText style={[detailScrollStyles.text, {top: 1, position: 'absolute', left: 25}]}>+20</ThemedText>
@@ -263,7 +263,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
               <ThemedView style={detailScrollStyles.infoTitle}>
                 <ThemedText style={detailScrollStyles.text}>{i18n.t('promo')}</ThemedText>
               </ThemedView>
-              <ThemedView style={detailScrollStyles.infoValue}>
+              <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
                 <ThemedText style={detailScrollStyles.text}>{EXPANSION_MAP[card.expansion].tag}</ThemedText>
               </ThemedView>
             </ThemedView>
@@ -272,7 +272,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             <ThemedView style={detailScrollStyles.infoTitle}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t('sub_type')}</ThemedText>
             </ThemedView>
-            <ThemedView style={detailScrollStyles.infoValue}>
+            <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t(STAGE_MAP[card.stage].label)}</ThemedText>
             </ThemedView>
           </ThemedView>
@@ -283,7 +283,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
         <ThemedView style={detailScrollStyles.infoTitle}>
           <ThemedText style={detailScrollStyles.text}>{i18n.t('serie')}</ThemedText>
         </ThemedView>
-        <ThemedView style={detailScrollStyles.infoValue}>
+        <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
           <ThemedText style={detailScrollStyles.text}>
             {card.series !== undefined && EXPANSION_MAP[card.series].label}
           </ThemedText>
@@ -353,7 +353,8 @@ export const detailScrollStyles = StyleSheet.create({
     fontSize: 13,
     backgroundColor: 'white',
     paddingTop: 4,
-    paddingBottom: 5
+    paddingBottom: 5,
+    color: Colors.light.bold
   },
   attackContainer: {
     flexDirection: 'row', 
@@ -369,7 +370,7 @@ export const detailScrollStyles = StyleSheet.create({
   attackEnergy: {
     flexDirection: 'row',
     alignItems: 'center',
-    minWidth: 94
+    maxWidth: 94
   },
   energy: {
     width: 18, 
@@ -380,7 +381,8 @@ export const detailScrollStyles = StyleSheet.create({
   attackName: {
     fontSize: 16,
     marginLeft: 16,
-    color: Colors.light.bold
+    color: Colors.light.bold,
+    fontWeight: 'bold'
   },
   attackDamage: {
     fontSize: 16,
@@ -418,7 +420,7 @@ export const detailScrollStyles = StyleSheet.create({
     width: '60%', 
     paddingVertical: 6, 
     paddingHorizontal: 20, 
-    justifyContent: 'center', 
+    justifyContent: 'flex-start', 
     alignItems: 'center', 
     flexDirection: 'row', 
     gap: 6

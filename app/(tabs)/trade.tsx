@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Animated from 'react-native-reanimated';
-import { FlatList, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native';
+import { FlatList, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity } from 'react-native';
 
 import { TradeScreenModal } from '@/components/modals';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -31,7 +31,7 @@ export default function TradeScreen() {
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={[CardGridStyles.clearInput, {left: 340}]}
+                      style={[CardGridStyles.clearInput, {left: Platform.OS !== 'web' ? 330 : 340}]}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
@@ -57,16 +57,16 @@ export default function TradeScreen() {
   }
 
   const renderItem = useCallback(({item}: {item: TradeItem}) => {
-    const rarity = state.cardState.cards.find(card => item.desired.includes(card.id))?.rarity;
+    const rarity = state.cardState.cards.find(card => item.desired && item.desired.includes(card.id))?.rarity;
     return (
-      <TouchableOpacity onPress={() => handleClick(item)} style={{paddingHorizontal: 16}}>
+      <TouchableOpacity onPress={() => handleClick(item)} style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}}>
         <TradeUserItem item={item} rarity={rarity} state={state}/>
       </TouchableOpacity>
     )
   }, [state.cardState.cards, state.settingsState.language]);
 
   const renderEmpty = useCallback(() => {
-    return <ThemedText style={{ paddingVertical: 6, paddingHorizontal: 22}}>
+    return <ThemedText style={{ paddingVertical: 6, paddingHorizontal: Platform.OS !== 'web' ? 6 : 22}}>
         {i18n.t('no_trades_found')}
       </ThemedText>
   }, []);
@@ -78,10 +78,11 @@ export default function TradeScreen() {
 
   const renderFooter = useCallback(() => {
     return (
-      <ThemedView style={{paddingHorizontal: 16, paddingTop: 16}}>
+      <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16, paddingTop: 16}}>
         <TouchableOpacity style={[
           homeScreenStyles.ctaButton,
-          {marginBottom: 10, marginTop: 6, flex: 1, backgroundColor: 'mediumaquamarine'}
+          {marginBottom: 10, marginTop: 6, backgroundColor: 'mediumaquamarine'},
+          Platform.OS !== 'web' && {marginBottom: 16}
         ]} 
                           onPress={() => handleTrade()}>
           <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>
@@ -110,8 +111,8 @@ export default function TradeScreen() {
           ListEmptyComponent={renderEmpty}
           ListHeaderComponent={
             <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
-              <Animated.View style={[CardGridStyles.inputContainer, {paddingHorizontal: 16}]}>
-                <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
+              <Animated.View style={[CardGridStyles.inputContainer, {paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}]}>
+                <TextInput style={[CardGridStyles.searchInput, {width: '100%'}, Platform.OS !== 'web' && {}]}
                             placeholder={i18n.t('search_trade')}
                             value={searchQuery}
                             onChangeText={handleSearch}

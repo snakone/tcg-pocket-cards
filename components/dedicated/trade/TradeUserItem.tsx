@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Image } from 'expo-image';
 
 import { ThemedText } from "@/components/ThemedText";
@@ -42,8 +42,8 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
                 item ? <Image style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
-                    left: i * 17,
-                    width: 56,
+                    left: i * 16,
+                    width: 55,
                     opacity: 1 - 0.10 * i,
                     zIndex: Math.round((1 / (i + 1) * 100)),
                   }
@@ -52,8 +52,8 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
                 key={i}/> : <ThemedView style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
-                    left: i * 17,
-                    width: 56,
+                    left: i * 16,
+                    width: 55,
                     opacity: 1 - 0.10 * i,
                     zIndex: Math.round((1 / (i + 1) * 100)),
                   }
@@ -61,9 +61,9 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
               ))
             }
           </ThemedView>
-          <ThemedView style={{width: '24%', top: 4}}>
+          <ThemedView style={[{width: '24%', top: 4}, Platform.OS !== 'web' && {left: 15}]}>
             {
-              SvgTradePassSymbol({})
+              SvgTradePassSymbol(Platform.OS !== 'web' ? {width: 45} : {})
             }
           </ThemedView>
           <ThemedView style={{width: '38%'}}>
@@ -72,8 +72,8 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
                 offer ? <Image style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
-                    left: i * 17,
-                    width: 56,
+                    left: i * 16,
+                    width: 55,
                     opacity: 1 - 0.10 * i,
                     zIndex: Math.round((1 / (i + 1) * 100)),
                   }
@@ -82,8 +82,8 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
                 key={i}/> : <ThemedView style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
-                    left: i * 17,
-                    width: 56,
+                    left: i * 16,
+                    width: 55,
                     opacity: 1 - 0.10 * i,
                     zIndex: Math.round((1 / (i + 1) * 100)),
                   }
@@ -123,7 +123,7 @@ const tradeItemStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgb(241 241 241)',
-    left: '37%',
+    left: Platform.OS !== 'web' ? '41.5%' : '39%',
     flexDirection: 'row',
     gap: 6
   }

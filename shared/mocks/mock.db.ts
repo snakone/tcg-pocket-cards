@@ -2882,7 +2882,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [206, 207, 208, 347, 248, 498]
+    related: [206, 207, 208, 347, 498, 248, 609]
   },
   {
     id: 46,
@@ -3026,7 +3026,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [255, 274, 397]
+    related: [255, 274, 604]
   },
   {
     id: 48,
@@ -7872,7 +7872,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    related: [120, 121, 261, 277, 392]
+    related: [120, 121, 261, 277, 599]
   },
   {
     id: 124,
@@ -8200,7 +8200,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    related: [382]
+    related: [589]
   },
   {
     id: 129,
@@ -13809,7 +13809,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 220,
@@ -13840,7 +13840,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.PIKACHU,
     ],
     element: -1,
-    related: [219, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 221,
@@ -13871,7 +13871,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 222,
@@ -13902,7 +13902,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 223,
@@ -13933,7 +13933,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 224,
@@ -13964,7 +13964,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 225,
@@ -13995,7 +13995,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 226,
@@ -14026,7 +14026,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 227,
@@ -14086,7 +14086,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    related: [1, 2, 3, 4, 251, 395, 390],
+    related: [1, 2, 3, 4, 251, 602, 597],
   },
   {
     id: 228,
@@ -14279,7 +14279,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [33, 34, 35, 36, 253, 280, 284, 404]
+    related: [33, 34, 35, 36, 253, 280, 284, 611]
   },
   {
     id: 231,
@@ -14399,7 +14399,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    related: [53, 54, 55, 56, 256, 405, 401]
+    related: [53, 54, 55, 56, 256, 612, 608]
   },
   {
     id: 233,
@@ -14589,7 +14589,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    related: [99, 100]
+    related: [99, 100, 426, 427]
   },
   {
     id: 236,
@@ -15500,7 +15500,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    related: [209]
+    related: [209, 499, 500, 501]
   },
   {
     id: 250,
@@ -15634,7 +15634,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO
     ],
-    related: [1, 2, 4, 227, 395]
+    related: [1, 2, 4, 227, 602]
   },
   {
     id: 252,
@@ -15776,7 +15776,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [33, 34, 36, 230, 280, 284, 404]
+    related: [33, 34, 36, 230, 280, 284, 611]
   },  
   {
     id: 254,
@@ -15918,7 +15918,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [47, 274, 397]
+    related: [47, 274, 604]
   },
   {
     id: 256,
@@ -15992,7 +15992,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    related: [53, 54, 56, 232, 405]
+    related: [53, 54, 56, 232, 612]
   },
   {
     id: 257,
@@ -16340,7 +16340,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    related: [120, 121, 123, 277, 392]
+    related: [120, 121, 123, 277, 599]
   },
   {
     id: 262,
@@ -16607,7 +16607,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
-    related: [193, 195, 279, 394]
+    related: [193, 195, 279, 601]
   },
   {
     id: 266,
@@ -16638,7 +16638,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 267,
@@ -16669,7 +16669,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 268,
@@ -16700,7 +16700,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 269,
@@ -16731,7 +16731,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 270,
@@ -16762,7 +16762,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 271,
@@ -16793,7 +16793,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 272,
@@ -16824,7 +16824,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 273,
@@ -16855,7 +16855,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 274,
@@ -16932,7 +16932,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [47, 255, 397]
+    related: [47, 255, 604]
   },
   {
     id: 275,
@@ -17155,7 +17155,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    related: [120, 121, 123, 261, 392]
+    related: [120, 121, 123, 261, 599]
   },
   {
     id: 278,
@@ -17280,7 +17280,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
-    related: [193, 195, 265, 394]
+    related: [193, 195, 265, 601]
   },
   {
     id: 280,
@@ -17354,7 +17354,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [33, 34, 36, 230, 253, 284, 404]
+    related: [33, 34, 36, 230, 253, 284, 611]
   },
   {
     id: 281,
@@ -17639,7 +17639,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.MEWTWO,
       EXPANSION.CHARIZARD,
     ],
-    related: [33, 34, 36, 230, 253, 280, 404]
+    related: [33, 34, 36, 230, 253, 280, 611]
   },
   {
     id: 285,
@@ -18040,7 +18040,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [291, 292, 356, 399]
+    related: [291, 292, 356, 606]
   },
   {
     id: 291,
@@ -18100,7 +18100,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [290, 292, 356, 399]
+    related: [290, 292, 356, 606]
   },  
   {
     id: 292,
@@ -18172,7 +18172,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [290, 291, 356, 399]
+    related: [290, 291, 356, 606]
   },
   {
     id: 293,
@@ -18563,7 +18563,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [44]
+    related: [44, 395, 396]
   },
   {
     id: 299,
@@ -18623,7 +18623,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [300, 400] 
+    related: [300, 607] 
   },
   {
     id: 300,
@@ -18691,7 +18691,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [299, 400]
+    related: [299, 607]
   },
   {
     id: 301,
@@ -19023,7 +19023,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [80, 206, 207, 208, 347, 248, 358, 402]
+    related: [80, 206, 207, 208, 347, 498, 248, 358, 609]
   },
   {
     id: 306,
@@ -19083,7 +19083,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [307]
+    related: [307, 414, 415]
   },
   {
     id: 307,
@@ -19148,7 +19148,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [306]
+    related: [306, 414, 415]
   },
   {
     id: 308,
@@ -19409,7 +19409,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [94, 95, 312, 398, 387, 381]
+    related: [94, 95, 312, 605, 594, 588]
   },
   {
     id: 312,
@@ -19474,7 +19474,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [94, 95, 311, 398, 387, 381]
+    related: [94, 95, 311, 605, 594, 588]
   },
   {
     id: 313,
@@ -19539,7 +19539,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [101]
+    related: [101, 428, 429, 615]
   },
   {
     id: 314,
@@ -19559,7 +19559,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       height: {
         es: '0.1',
-        en: '4\'',
+        en: '4\"',
         ja: '0.1'
       },
       weight: {
@@ -20444,7 +20444,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [141, 142, 328, 389]
+    related: [141, 142, 328, 596]
   },
   {
     id: 328,
@@ -20504,7 +20504,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [141, 142, 327, 389]
+    related: [141, 142, 327, 596]
   },
   {
     id: 329,
@@ -21781,7 +21781,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: []
+    related: [513]
   },
   {
     id: 349,
@@ -21843,7 +21843,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [351, 373, 374, 377, 375, 376, 380, 378]
+    related: [351, 318, 580, 581, 584, 582, 583, 587, 585]
   },
   {
     id: 351,
@@ -21868,13 +21868,15 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.ITEM,
     isEX: false,
-    condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
+    condition: [
+      CardSpecialConditionENUM.CALL
+    ],
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
     element: -1,
     pokedex: -1,
-    related: [350, 373, 374, 377, 375, 376, 380, 378]
+    related: [350, 318, 580, 581, 584, 582, 583, 587, 585]
   },
   {
     id: 352,
@@ -21905,7 +21907,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 353,
@@ -21936,7 +21938,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 354,
@@ -21967,7 +21969,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 355,
@@ -22104,7 +22106,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [290, 291, 292, 399]
+    related: [290, 291, 292, 606]
   },
   {
     id: 357,
@@ -22241,7 +22243,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [80, 206, 207, 208, 305, 347, 248, 402]
+    related: [80, 206, 207, 208, 305, 347, 498, 248, 609]
   },
   {
     id: 359,
@@ -22749,7 +22751,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 367,
@@ -22780,7 +22782,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 368,
@@ -22811,7 +22813,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 369,
@@ -23165,7 +23167,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [11, 12, 13, 374, 375, 228]
   },
   {
     id: 374,
@@ -23226,7 +23228,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [406]
+    related: [11, 12, 13, 373, 375, 228]
   },
   {
     id: 375,
@@ -23287,7 +23289,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [407]
+    related: [11, 12, 373, 374, 228]
   },
   {
     id: 376,
@@ -23347,7 +23349,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [24, 377, 528]
   },
   {
     id: 377,
@@ -23412,7 +23414,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [409]
+    related: [24, 376, 528]
   },
   {
     id: 378,
@@ -23472,7 +23474,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [379, 552, 568]
   },
   {
     id: 379,
@@ -23537,7 +23539,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [411]
+    related: [378, 552, 568]
   },
   {
     id: 380,
@@ -23598,7 +23600,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [381]
   },
   {
     id: 381,
@@ -23724,7 +23726,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [383, 384]
+    related: [383, 384, 614]
   },
   {
     id: 383,
@@ -23784,7 +23786,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [382, 384]
+    related: [382, 384, 614]
   },
   {
     id: 384,
@@ -23849,7 +23851,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [383, 384]
+    related: [383, 384, 614]
   },
   {
     id: 385,
@@ -24035,7 +24037,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [388, 462, 487]
   },
   {
     id: 388,
@@ -24104,7 +24106,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [387]
+    related: [387, 462, 487]
   },
   {
     id: 389,
@@ -24169,7 +24171,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: []
+    related: [390, 529]
   },
   {
     id: 390,
@@ -24229,7 +24231,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: [389]
+    related: [389, 529]
   },
   {
     id: 391,
@@ -24297,7 +24299,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [530]
   },
   {
     id: 392,
@@ -24362,7 +24364,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: []
+    related: [206, 207, 208, 347, 498, 248, 609]
   },
   {
     id: 393,
@@ -24503,7 +24505,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: []
+    related: [531]
   },
   {
     id: 395,
@@ -24568,7 +24570,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [44, 298, 396]
   },
   {
     id: 396,
@@ -24633,7 +24635,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [395]
+    related: [44, 298, 395]
   },
   {
     id: 397,
@@ -24820,7 +24822,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [400, 401, 553, 569, 619]
   },
   {
     id: 400,
@@ -24880,7 +24882,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [399]
+    related: [399, 401, 553, 569, 619]
   },
   {
     id: 401,
@@ -24945,7 +24947,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [400]
+    related: [399, 400, 553, 569, 619]
   },
   {
     id: 402,
@@ -25074,7 +25076,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [404, 405, 532]
   },
   {
     id: 404,
@@ -25146,7 +25148,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [403]
+    related: [403, 405, 532]
   },
   {
     id: 405,
@@ -25218,7 +25220,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [404]
+    related: [403, 404, 532]
   },
   {
     id: 406,
@@ -25355,7 +25357,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [408, 409, 613]
   },
   {
     id: 408,
@@ -25415,7 +25417,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [407]
+    related: [407, 409, 613]
   },
   {
     id: 409,
@@ -25480,7 +25482,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [408]
+    related: [407, 408, 613]
   },
   {
     id: 410,
@@ -25541,7 +25543,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [411]
   },
   {
     id: 411,
@@ -25667,7 +25669,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [413]
+    related: [413, 533]
   },
   {
     id: 413,
@@ -25727,7 +25729,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [412]
+    related: [412, 533]
   },
   {
     id: 414,
@@ -25796,7 +25798,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [306, 307, 415]
   },
   {
     id: 415,
@@ -25857,7 +25859,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [414]
+    related: [306, 307, 414]
   },
   {
     id: 416,
@@ -26052,7 +26054,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [206, 207, 208, 347, 498, 248, 609]
   },
   {
     id: 419,
@@ -26256,7 +26258,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [554, 576, 578]
   },
   {
     id: 422,
@@ -26321,7 +26323,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [534]
   },
   {
     id: 423,
@@ -26382,7 +26384,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [97, 98, 424, 425, 603]
   },
   {
     id: 424,
@@ -26443,7 +26445,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [423]
+    related: [97, 98, 423, 425, 603]
   },
   {
     id: 425,
@@ -26509,7 +26511,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [424]
+    related: [97, 98, 423, 424, 603]
   },
   {
     id: 426,
@@ -26575,7 +26577,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [99, 100, 427, 235]
   },
   {
     id: 427,
@@ -26636,7 +26638,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [426]
+    related: [99, 100, 426, 235]
   },
   {
     id: 428,
@@ -26701,7 +26703,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [101, 313, 429, 615]
   },
   {
     id: 429,
@@ -26766,7 +26768,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [428]
+    related: [101, 313, 428, 615]
   },
   {
     id: 430,
@@ -26834,7 +26836,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [431]
+    related: [431, 432, 535]
   },
   {
     id: 431,
@@ -26894,7 +26896,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [430]
+    related: [430, 432, 535]
   },
   {
     id: 432,
@@ -26962,7 +26964,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [431]
+    related: [430, 431, 535]
   },
   {
     id: 433,
@@ -27027,7 +27029,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [555, 570]
   },
   {
     id: 434,
@@ -27092,7 +27094,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [536]
   },
   {
     id: 435,
@@ -27340,7 +27342,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [439]
   },
   { 
     id: 439,
@@ -28242,7 +28244,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [453]
   },
   {
     id: 453,
@@ -28316,19 +28318,19 @@ export const MOCK_DB_CARDS: Card[] = [
     },
     info: {
       type: {
-        es: '',
+        es: 'Pokémon Taladro',
         en: 'Drill Pokémon',
         ja: 'ドリルポケモン'
       },
       height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
+        es: '2.4',
+        en: '7\'1"',
+        ja: '2.4'
       },
       weight: {
-        es: '',
-        en: '',
-        ja: ''
+        es: '282.8',
+        en: '623.5',
+        ja: '282.8'
       }
     },
     artist: 'Naoki Saito',
@@ -28352,9 +28354,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Introduce rocas o Roggenrola en las cavidades de las manos y los dispara con fuerza. Es capaz de cargar hasta tres proyectiles en cada brazo.',
       en: 'It can load up to three projectiles per arm into the holes in its hands. What launches out of those holes could be either rocks or Roggenrola.',
-      ja: '' 
+      ja: '手の 穴に 岩や ダンゴロを 詰めて 発射。 装填できる 数は 片腕に つき ３つ。' 
     },
     health: 160,
     rarity: CardRarityENUM.RARE,
@@ -28565,7 +28567,7 @@ export const MOCK_DB_CARDS: Card[] = [
     name: {
       es: 'Nosepass',
       en: 'Nosepass',
-      ja: '' 
+      ja: 'ノズパス' 
     },
     info: {
       type: {
@@ -28575,12 +28577,12 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       height: {
         es: '1.0',
-        en: '3\'3"',
+        en: '3\'03"',
         ja: '1.0'
       },
       weight: {
         es: '97.0',
-        en: '',
+        en: '213.8',
         ja: '97.0'
       }
     },
@@ -28600,9 +28602,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Solo se desplaza un centímetro al año, pero, si se siente amenazado, gira sobre sí mismo y se hunde bajo tierra en un abrir y cerrar de ojos.',
       en: 'It moves less than an inch a year, but when it’s in a jam, it will spin and drill down into the ground in a split second.',
-      ja: '' 
+      ja: '１年に １センチしか 動かないが ピンチに 陥ると 回転し 一瞬で 地中に 潜る。' 
     },
     health: 70,
     rarity: CardRarityENUM.COMMON,
@@ -28696,35 +28698,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 460,
     number: 88,
     pokedex: 408,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Cranidos',
       en: 'Cranidos',
-      ja: '' 
+      ja: 'ズガイドス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cabezazo',
+        en: 'Head Butt Pokémon',
+        ja: 'ずつきポケモン'
+      },
+      height: {
+        es: '0.9',
+        en: '2\'11"',
+        ja: '0.9'
+      },
+      weight: {
+        es: '31.5',
+        en: '69.4',
+        ja: '31.5'
+      }
     },
     artist: 'Kouki Saitou',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Golpe Cabeza',
           en: 'Headbutt',
-          ja: '' 
+          ja: 'ずつき' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.FIGHT]
@@ -28734,9 +28736,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Este Pokémon arcaico cuenta con un cráneo sólido y resistente, pero su cerebro no está a la par.',
       en: 'A primeval Pokémon, it possesses a hard and sturdy skull, lacking any intelligence within.',
-      ja: '' 
+      ja: '太古の ポケモン。 硬くて 丈夫な 頭蓋骨を 持つが 頭は 相当に 悪かった。' 
     },
     health: 90,
     rarity: CardRarityENUM.UNCOMMON,
@@ -28749,49 +28751,49 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [461]
   },
   {
     id: 461,
     order: 461,
     number: 89,
     pokedex: 409,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Rampardos',
       en: 'Rampardos',
-      ja: '' 
+      ja: 'ラムパルド' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cabezazo',
+        en: 'Head Butt Pokémon',
+        ja: 'ずつきポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '102.5',
+        en: '226',
+        ja: '102.5'
+      }
     },
     artist: 'Yoshinobu Saito',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Testarazo',
           en: 'Head Smash',
-          ja: '' 
+          ja: 'もろはのずつき' 
         },
         damage: 130,
         energy: [PokemonTypeENUM.FIGHT],
         description: {
-          es: '',
+          es: 'Si el Pokémon de tu rival queda Fuera de Combate por el daño de este ataque, este Pokémon también se hace 50 puntos de daño a sí mismo.',
           en: 'If your opponent’s Pokémon is Knocked Out by damage from this attack, this Pokémon also does 50 damage to itself.',
-          ja: '' 
+          ja: 'このワザのダメージで、相手のバトルポケモンがきぜつしたなら、このポケモンにも50ダメージ。' 
         }
       }
     ],
@@ -28799,9 +28801,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Los hombres de antaño que encontraban restos fosilizados de Rampardos usaban su cráneo, más duro que el metal, para fabricar cascos.',
       en: 'In ancient times, people would dig up fossils of this Pokémon and use its skull, which is harder than steel, to make helmets.',
-      ja: '' 
+      ja: '大昔の 人は 化石を 掘り出し 鋼鉄 よりも 硬い 頭蓋骨で 兜を 作っていた。' 
     },
     health: 150,
     rarity: CardRarityENUM.RARE,
@@ -29073,35 +29075,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 466,
     number: 94,
     pokedex: 450,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Hippowdon',
       en: 'Hippowdon',
-      ja: '' 
+      ja: 'カバルドン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Peso Pesado',
+        en: 'Heavyweight Pokémon',
+        ja: 'じゅうりょうポケモン'
+      },
+      height: {
+        es: '2.0',
+        en: '6\'7"',
+        ja: '2.0'
+      },
+      weight: {
+        es: '300.0',
+        en: '661.4',
+        ja: '300.0'
+      }
     },
     artist: 'KEIICHIRO ITO',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Presión Terrestre',
           en: 'Earthen Press',
-          ja: '' 
+          ja: 'グラウンドプレス' 
         },
         damage: 120,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL]
@@ -29111,9 +29113,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Mantiene la boca abierta para mostrar su fuerza. Se enfada con sorprendente rapidez.',
       en: 'It is surprisingly quick to anger. It holds its mouth agape as a display of its strength.',
-      ja: '' 
+      ja: '意外と 怒りっぽい ポケモンで 口を 大きく 開けることで まわりに 強さを アピールする。' 
     },
     health: 140,
     rarity: CardRarityENUM.UNCOMMON,
@@ -29768,35 +29770,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 477,
     number: 105,
     pokedex: 451,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Skorupi',
       en: 'Skorupi',
-      ja: '' 
+      ja: 'スコルピ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Escorpión',
+        en: 'Scorpion Pokémon',
+        ja: 'さそりポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '12.0',
+        en: '26.5',
+        ja: '12.0'
+      }
     },
     artist: 'Naoki Saito',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Perforar',
           en: 'Pierce',
-          ja: '' 
+          ja: 'つきさす' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.NORMAL]
@@ -29806,9 +29808,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Se entierra en la arena y aguarda inmóvil a sus presas. Sus antepasados están relacionados con los de Sizzlipede.',
       en: 'After burrowing into the sand, it waits patiently for prey to come near. This Pokémon and Sizzlipede share common descent.',
-      ja: '' 
+      ja: '砂に 体を 埋め じっと 獲物を 待ち続けている。 ヤクデと 祖先が 近い。' 
     },
     health: 70,
     rarity: CardRarityENUM.COMMON,
@@ -29829,42 +29831,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 478,
     number: 106,
     pokedex: 452,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Drapion',
       en: 'Drapion',
-      ja: '' 
+      ja: 'ドラピオン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Escorpiogro',
+        en: 'Ogre Scorpion Pokémon',
+        ja: 'ばけさそりポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '4\'3"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '61.5',
+        en: '135.6',
+        ja: '61.5'
+      }
     },
     artist: 'Naoki Saito',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Veneno X',
           en: 'Cross Poison',
-          ja: '' 
+          ja: 'クロスポイズン' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK, PokemonTypeENUM.DARK],
         description: {
-          es: '',
+          es: 'Lanza 4 monedas. Este ataque hace 40 puntos de daño por cada cara. Si sale cara en por lo menos 2 de ellas, el Pokémon Activo de tu rival pasa a estar Envenenado.',
           en: 'Flip 4 coins. This attack does 40 damage for each heads. If at least 2 of them are heads, your opponent’s Active Pokémon is now Poisoned.',
-          ja: '' 
+          ja: 'コインを4回投げ、オモテの数×40ダメージ。オモテが2回以上なら、相手のバトルポケモンをどくにする。' 
         }
       }
     ],
@@ -29872,9 +29874,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Posee un veneno muy potente, pero que usa muy poco. Con la extraordinaria fuerza que concentra al enfurecerse podría hacer añicos un coche.',
       en: 'Its poison is potent, but it rarely sees use. This Pokémon prefers to use physical force instead, going on rampages with its car-crushing strength.',
-      ja: '' 
+      ja: '猛毒を もつが 使うことは まれ。 車も 叩きつぶす 怪力で 暴れまわる。' 
     },
     health: 120,
     rarity: CardRarityENUM.UNCOMMON,
@@ -30231,7 +30233,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [618]
   },
   {
     id: 484,
@@ -30299,35 +30301,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 485,
     number: 113,
     pokedex: 410,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Shieldon',
       en: 'Shieldon',
-      ja: '' 
+      ja: 'タテトプス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Escudo',
+        en: 'Shield Pokémon',
+        ja: 'シールドポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '57.0',
+        en: '125.7',
+        ja: '57.0'
+      }
     },
     artist: 'Kouki Saitou',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Golpe Cabeza',
           en: 'Headbutt',
-          ja: '' 
+          ja: 'ずつき' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL]
@@ -30337,9 +30339,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Un Pokémon herbívoro de carácter afable. Con su dura protección facial podía desenterrar las raíces de los árboles para comérselas.',
       en: 'A mild-mannered, herbivorous Pokémon, it used its face to dig up tree roots to eat. The skin on its face was plenty tough.',
-      ja: '' 
+      ja: '草食の おとなしい ポケモン。 丈夫な 顔の 皮膚で 地面を 掘り 木の根っこなども 食っていた。' 
     },
     health: 100,
     rarity: CardRarityENUM.UNCOMMON,
@@ -30359,35 +30361,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 486,
     number: 114,
     pokedex: 411,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Bastiodon',
       en: 'Bastiodon',
-      ja: '' 
+      ja: 'トリデプス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Escudo',
+        en: 'Shield Pokémon',
+        ja: 'シールドポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '4\'3"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '149.5',
+        en: '329.6',
+        ja: '149.5'
+      }
     },
     artist: 'Kagemaru Himeno',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Cabecear',
           en: 'Headbang',
-          ja: '' 
+          ja: 'ヘッドバング' 
         },
         damage: 80,
         energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL]
@@ -30395,23 +30397,23 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     ability: {
       name: {
-          es: '',
+          es: 'Protector Facial',
           en: 'Guarded Grill',
-          ja: '' 
+          ja: 'がんめんガード' 
         },
       description: {
-       es: '',
+       es: 'Si se inflige cualquier daño a este Pokémon por ataques, lanza 1 moneda. Si sale cara, dicho ataque hace -100 puntos de daño.',
        en: 'If any damage is done to this Pokémon by attacks, flip a coin. If heads, this Pokémon takes −100 damage from that attack.',
-       ja: '' 
+       ja: 'このポケモンがワザのダメージを受けるとき、自分はコインを1回投げる。オモテなら、このポケモンが受けるワザのダメージを-100する。' 
      }
     },
     evolve: [],
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Hasta que no se regeneró por completo a este Pokémon, se pensaba que los grandes y recios huesos de su rostro eran su columna vertebral.',
       en: 'The bones of its face are huge and hard, so they were mistaken for its spine until after this Pokémon was successfully restored.',
-      ja: '' 
+      ja: '顔の骨が でかくて 硬いので 復元が 成功するまで 背骨と 勘違い されていた。' 
     },
     health: 160,
     rarity: CardRarityENUM.RARE,
@@ -30499,35 +30501,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 488,
     number: 116,
     pokedex: 436,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Bronzor',
       en: 'Bronzor',
-      ja: '' 
+      ja: 'ドーミラー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Bronce',
+        en: 'Bronze Pokémon',
+        ja: 'せいどうポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '2\'04"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '60.5',
+        en: '133.4',
+        ja: '60.5'
+      }
     },
     artist: 'Miki Tanaka',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Placaje',
           en: 'Tackle',
-          ja: '' 
+          ja: 'たいあたり' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
@@ -30537,9 +30539,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Antaño se creía que en el dibujo de su parte posterior residía una fuerza misteriosa.',
       en: 'Ancient people believed that the pattern on Bronzor’s back contained a mysterious power.',
-      ja: '' 
+      ja: 'ドーミラーの 背中の 模様には 神秘的な 力が 宿ると 昔の 人たちは 信じていた。' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -30559,52 +30561,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 489,
     number: 117,
     pokedex: 437,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Bronzong',
       en: 'Bronzong',
-      ja: '' 
+      ja: 'ドータクン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Campana Bronce',
+        en: 'Bronze Bell Pokémon',
+        ja: 'どうたくポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '2\'04"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '187.0',
+        en: '412.3',
+        ja: '187.0'
+      }
     },
     artist: 'Yuka Morii',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Presión de Guardia',
           en: 'Guard Press',
-          ja: '' 
+          ja: 'ガードプレス' 
         },
         damage: 60,
         energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'During your opponent’s next turn, this Pokémon takes −20 damage from attacks.',
-       ja: '' 
-     }
+          es: 'Durante el próximo turno de tu rival, los ataques hacen -20 puntos de daño a este Pokémon.',
+          en: 'During your opponent’s next turn, this Pokémon takes −20 damage from attacks.',
+          ja: '次の相手の番、このポケモンが受けるワザのダメージを-20する。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Antaño se adoraba a este Pokémon para que propiciara lluvias abundantes. A veces, puede encontrarse enterrado bajo tierra.',
       en: 'In ages past, this Pokémon was revered as a bringer of rain. It was found buried in the ground.',
-      ja: '' 
+      ja: '雨雲を 呼べる ポケモンとして 大昔から 祀られていた。 ときどき 地面に 埋められている。' 
     },
     health: 60,
     rarity: CardRarityENUM.UNCOMMON,
@@ -30624,42 +30626,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 490,
     number: 118,
     pokedex: 476,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Probopass',
       en: 'Probopass',
-      ja: '' 
+      ja: 'ダイノーズ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Brújula',
+        en: 'Compass Pokémon',
+        ja: 'コンパスポケモン'
+      },
+      height: {
+        es: '1.4',
+        en: '4\'7"',
+        ja: '1.4'
+      },
+      weight: {
+        es: '340.0',
+        en: '749.6',
+        ja: '340.0'
+      }
     },
     artist: 'MAHOU',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Nariz Triple',
           en: 'Triple Nose',
-          ja: '' 
+          ja: 'トリプルノーズ' 
         },
         damage: 30,
         energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Lanza 3 monedas. Este ataque hace 50 puntos de daño más por cada cara.',
           en: 'Flip 3 coins. This attack does 50 more damage for each heads.',
-          ja: '' 
+          ja: 'コインを3回投げ、オモテの数×50ダメージ追加。' 
         }
       }
     ],
@@ -30667,9 +30669,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Manipula unas pequeñas unidades conocidas como mininarices, aunque estas a veces se pierden y no saben cómo regresar a Probopass.',
       en: 'Although it can control its units known as Mini-Noses, they sometimes get lost and don’t come back.',
-      ja: '' 
+      ja: 'チビノーズと 呼ばれる ユニットを 操るが たまに 迷子に なって 帰ってこないことも あるらしい。' 
     },
     health: 130,
     rarity: CardRarityENUM.UNCOMMON,
@@ -31050,9 +31052,9 @@ export const MOCK_DB_CARDS: Card[] = [
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Bofetón Lengua',
           en: 'Tongue Slap',
-          ja: '' 
+          ja: 'ベロではたく' 
         },
         damage: 50,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
@@ -31406,35 +31408,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 502,
     number: 130,
     pokedex: 190,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Aipom',
       en: 'Aipom',
-      ja: '' 
+      ja: 'エイパム' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cola Larga',
+        en: 'Long Tail Pokémon',
+        ja: 'おながポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'07"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '11.5',
+        en: '25.4',
+        ja: '11.5'
+      }
     },
     artist: 'Miki Tanaka',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Puya Cola',
           en: 'Tail Jab',
-          ja: '' 
+          ja: 'しっぽパンチ' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.NORMAL]
@@ -31444,9 +31446,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'De tanto utilizar la cola, esta se ha vuelto más hábil que sus dedos. Construye sus nidos en las copas de los árboles.',
       en: 'As it did more and more with its tail, its hands became clumsy. It makes its nest high in the treetops.',
-      ja: '' 
+      ja: 'シッポで いろんなことを していたら 手先は 不器用に なってしまった。 高い 木の上に 巣を 作る。' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -31467,42 +31469,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 503,
     number: 131,
     pokedex: 191,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Ambipom',
       en: 'Ambipom',
-      ja: '' 
+      ja: 'エテボース' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cola Larga',
+        en: 'Long Tail Pokémon',
+        ja: 'おながポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '20.3',
+        en: '44.8',
+        ja: '20.3'
+      }
     },
     artist: 'Naoyo Kimura',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Doble Golpe',
           en: 'Double Hit',
-          ja: '' 
+          ja: 'ダブルアタック' 
         },
         damage: 40,
         energy: [PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Lanza 2 monedas. Este ataque hace 40 puntos de daño por cada cara.',
           en: 'Flip 2 coins. This attack does 40 damage for each heads.',
-          ja: '' 
+          ja: 'コインを2回投げ、オモテの数×40ダメージ。' 
         }
       },
     ],
@@ -31510,9 +31512,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Utiliza las dos colas para todo. Cuando abraza a alguien con ellas significa que esa persona se ha ganado por completo su confianza.',
       en: 'It uses its tails for everything. If it wraps both of its tails around you and gives you a squeeze, that’s proof it really likes you.',
-      ja: '' 
+      ja: 'なにを するにも シッポを 使う。 2本の シッポで 抱きしめられたら 本当に 懐かれた 証。' 
     },
     health: 90,
     rarity: CardRarityENUM.COMMON,
@@ -31791,35 +31793,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 508,
     number: 136,
     pokedex: 400,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Bibarel',
       en: 'Bibarel',
-      ja: '' 
+      ja: 'ビーダル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Castor',
+        en: 'Beaver Pokémon',
+        ja: 'ビーバーポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '31.5',
+        en: '69.4',
+        ja: '31.5'
+      }
     },
     artist: 'kirisAki',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Placaje Giro',
           en: 'Rolling Tackle',
-          ja: '' 
+          ja: 'ころがりタックル' 
         },
         damage: 60,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
@@ -31829,9 +31831,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Con sus incisivos roe ramas y raíces y las apila para construir sus madrigueras junto al río.',
       en: 'It busily makes its nest with stacks of branches and roots it has cut up with its sharp incisors.',
-      ja: '' 
+      ja: '鋭い 前歯で 削り取った 木の枝や 根っこを 積み上げて 水辺に せっせと 巣を 作る。' 
     },
     health: 110,
     rarity: CardRarityENUM.COMMON,
@@ -31851,35 +31853,35 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 509,
     number: 137,
     pokedex: 427,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Buneary',
       en: 'Buneary',
-      ja: '' 
+      ja: 'ミミロル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Conejo',
+        en: 'Rabbit Pokémon',
+        ja: 'うさぎポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '5.5',
+        en: '12.1',
+        ja: '5.5'
+      }
     },
     artist: 'Narumi Sato',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Salpicadura',
           en: 'Splash',
-          ja: '' 
+          ja: 'はねる' 
         },
         damage: 10,
         energy: [PokemonTypeENUM.NORMAL]
@@ -31889,9 +31891,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Cuando enrolla ambas orejas, es señal de que tiene algún tipo de malestar físico o emocional y necesita cuidados.',
       en: 'If both of Buneary’s ears are rolled up, something is wrong with its body or mind. It’s a sure sign the Pokémon is in need of care.',
-      ja: '' 
+      ja: '左右の 耳を 丸めているときは 体や 心の 不調が 原因なので ケアが 必要。' 
     },
     health: 60,
     rarity: CardRarityENUM.COMMON,
@@ -31911,42 +31913,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 510,
     number: 138,
     pokedex: 428,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Lopunny',
       en: 'Lopunny',
-      ja: '' 
+      ja: 'ミミロップ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Conejo',
+        en: 'Rabbit Pokémon',
+        ja: 'うさぎポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '33.3',
+        en: '73.4',
+        ja: '33.3'
+      }
     },
     artist: 'Sanosuke Sakuma',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Patada Salto',
           en: 'Jump Kick',
-          ja: '' 
+          ja: 'とびげり' 
         },
         damage: 20,
         energy: [PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Este ataque también hace 20 puntos de daño a 1 de los Pokémon en Banca de tu rival.',
           en: 'This attack also does 20 damage to 1 of your opponent’s Benched Pokémon.',
-          ja: '' 
+          ja: '相手のベンチポケモン1匹にも20ダメージ。' 
         }
       },
     ],
@@ -31954,9 +31956,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Está siempre atento a lo que ocurre a su alrededor. Si advierte peligro, se defenderá con patadas de potencia devastadora.',
       en: 'Lopunny is constantly monitoring its surroundings. If danger approaches, this Pokémon responds with superdestructive kicks.',
-      ja: '' 
+      ja: 'まわりの 様子を つねに 気にして 危険が およぶと 破壊力 抜群の キックを おみまいする。' 
     },
     health: 90,
     rarity: CardRarityENUM.COMMON,
@@ -32044,42 +32046,42 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 512,
     number: 140,
     pokedex: 432,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Purugly',
       en: 'Purugly',
-      ja: '' 
+      ja: 'ブニャット' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Tigre Gato',
+        en: 'Tiger Cat Pokémon',
+        ja: 'とらねこポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '43.8',
+        en: '96.6',
+        ja: '43.8'
+      }
     },
     artist: 'Kagemaru Himeno',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Interrupción',
           en: 'Interrupt',
-          ja: '' 
+          ja: 'じゃまする' 
         },
         damage: 60,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-          es: '',
+          es: 'Tu rival enseña las cartas de su mano. Elige 1 carta que encuentres entre ellas, ponlas en su baraja y barájalas todas.',
           en: 'Your opponent reveals their hand. Choose a card you find there and shuffle it into your opponent’s deck.',
-          ja: '' 
+          ja: '相手の手札のオモテをすべて見て、その中からカードを1枚選び、山札にもどす。' 
         }
       },
     ],
@@ -32087,9 +32089,9 @@ export const MOCK_DB_CARDS: Card[] = [
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Si se siente a gusto, no tiene ningún reparo apropiarse de las moradas de otros Pokémon.',
       en: 'It would claim another Pokémon’s nest as its own if it finds a nest sufficiently comfortable.',
-      ja: '' 
+      ja: 'ほかの ポケモンの 住処でも 居心地が 良ければ 居座って 自分の 住処に してしまう。' 
     },
     health: 110,
     rarity: CardRarityENUM.UNCOMMON,
@@ -32170,7 +32172,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [348]
   },
   {
     id: 514,
@@ -32390,7 +32392,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
-    condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
+    condition: [CardSpecialConditionENUM.CALL],
     found: [
       EXPANSION.DIALGA
     ],
@@ -32515,7 +32517,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 523,
@@ -32546,7 +32548,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 524,
@@ -32577,7 +32579,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 525,
@@ -32608,7 +32610,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 526,
@@ -32639,7 +32641,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 527,
@@ -32670,7 +32672,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 528,
@@ -32868,7 +32870,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [391]
   },
   {
     id: 531,
@@ -32940,7 +32942,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: []
+    related: [394]
   },
   {
     id: 532,
@@ -33137,7 +33139,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [422]
   },
   {
     id: 535,
@@ -33270,7 +33272,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [434]
   },
   {
     id: 537,
@@ -33544,52 +33546,52 @@ export const MOCK_DB_CARDS: Card[] = [
     order: 541,
     number: 169,
     pokedex: 464,
-    info: {
-      type: {
-        es: '',
-        en: '',
-        ja: ''
-      },
-      height: {
-        es: '',
-        en: '2\'04"',
-        ja: ''
-      },
-      weight: {
-        es: '',
-        en: '',
-        ja: ''
-      }
-    },
     name: {
       es: 'Rhyperior',
       en: 'Rhyperior',
-      ja: '' 
+      ja: 'ドサイドン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Taladro',
+        en: 'Drill Pokémon',
+        ja: 'ドリルポケモン'
+      },
+      height: {
+        es: '2.4',
+        en: '7\'1"',
+        ja: '2.4'
+      },
+      weight: {
+        es: '282.8',
+        en: '623.5',
+        ja: '282.8'
+      }
     },
     artist: 'Taiga Kayama',
     attacks: [
       {
         name: {
-          es: '',
+          es: 'Embestida Montaña',
           en: 'Mountain Swing',
-          ja: '' 
+          ja: 'マウンテンスイング' 
         },
         damage: 150,
         energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL],
         description: {
-       es: '',
-       en: 'Discard the top 3 cards of your deck.',
-       ja: '' 
-     }
+          es: 'Descarta las 3 primeras cartas de tu baraja',
+          en: 'Discard the top 3 cards of your deck.',
+          ja: '自分の山札の上から3枚トラッシュ。' 
+        }
       }
     ],
     evolve: [],
     expansion: CardExpansionENUM.SPACE_TIME_SMACKDOWN,
     series: CardExpansionTypeENUM.A2,
     flavor: {
-      es: '',
+      es: 'Introduce rocas o Roggenrola en las cavidades de las manos y los dispara con fuerza. Es capaz de cargar hasta tres proyectiles en cada brazo.',
       en: 'It can load up to three projectiles per arm into the holes in its hands. What launches out of those holes could be either rocks or Roggenrola.',
-      ja: '' 
+      ja: '手の 穴に 岩や ダンゴロを 詰めて 発射。 装填できる 数は 片腕に つき ３つ。' 
     },
     health: 160,
     rarity: CardRarityENUM.ART,
@@ -34979,7 +34981,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 563,
@@ -35010,7 +35012,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 564, 565, 566, 567, 586]
   },
   {
     id: 564,
@@ -35041,7 +35043,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 565, 566, 567, 586]
   },
   {
     id: 565,
@@ -35072,7 +35074,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 566, 567, 586]
   },
   {
     id: 566,
@@ -35103,7 +35105,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 567, 586]
   },
   {
     id: 567,
@@ -35134,7 +35136,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 379]
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 586]
   },
   {
     id: 568,
@@ -36000,7 +36002,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [CardSpecialConditionENUM.HEAL],
-    related: [351, 350, 374, 377, 375, 376, 380, 378]
+    related: [351, 350, 318, 581, 584, 582, 583, 587, 585]
   },
   {
     id: 581,
@@ -36032,7 +36034,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [CardSpecialConditionENUM.RETIRE],
-    related: [351, 350, 373, 377, 375, 376, 380, 378]
+    related: [351, 350, 318, 580, 584, 582, 583, 587, 585]
   },
   {
     id: 582,
@@ -36064,7 +36066,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [],
-    related: [351, 350, 373, 374, 377, 376, 380, 378]
+    related: [351, 350, 318, 580, 581, 584, 583, 587, 585]
   },
   {
     id: 583,
@@ -36096,7 +36098,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [],
-    related: [351, 350, 373, 374, 377, 375, 380, 378]
+    related: [351, 350, 318, 580, 581, 584, 582, 587, 585]
   },
   {
     id: 584,
@@ -36128,7 +36130,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [CardSpecialConditionENUM.CALL],
-    related: [351, 350, 373, 374, 375, 376, 380, 378]
+    related: [351, 350, 318, 580, 581, 582, 583, 587, 585]
   },
   {
     id: 585,
@@ -36160,7 +36162,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [],
-    related: [351, 350, 373, 374, 377, 375, 376, 380]
+    related: [351, 350, 318, 580, 581, 584, 582, 583, 587]
   },
   {
     id: 586,
@@ -36180,7 +36182,7 @@ export const MOCK_DB_CARDS: Card[] = [
       ja: '自分の山札を2枚引く。' 
     },
     rarity: CardRarityENUM.PROMO,
-    stage: CardStageENUM.ITEM,
+    stage: CardStageENUM.SUPPORTER,
     extra: {
       es: 'En la tienda',
       en: 'Obtained from the shop',
@@ -36191,8 +36193,8 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
-    condition: [CardSpecialConditionENUM.CALL],
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368]
+    condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
+    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
   {
     id: 587,
@@ -36212,7 +36214,7 @@ export const MOCK_DB_CARDS: Card[] = [
       ja: '自分の山札を上から3枚見て、もとにもどす。' 
     },
     rarity: CardRarityENUM.PROMO,
-    stage: CardStageENUM.SUPPORTER,
+    stage: CardStageENUM.ITEM,
     extra: {
       es: 'Evento Especial',
       en: 'Special Event',
@@ -36224,7 +36226,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [],
-    related: [351, 350, 373, 374, 377, 375, 376, 378]
+    related: [351, 350, 318, 580, 581, 584, 582, 583, 585]
   },
   {
     id: 588,
@@ -36289,7 +36291,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Premium Pass',
       ja: 'プレミアムパス' 
     },
-    related: [94, 95, 311, 312, 398, 387]
+    related: [94, 95, 311, 312, 605, 594]
   },
   {
     id: 589,
@@ -36705,7 +36707,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Promo Pack',
       ja: '昇進' 
     },
-    related: [94, 95, 311, 312, 398, 381]
+    related: [94, 95, 311, 312, 605, 588]
   },
   {
     id: 595,
@@ -36910,7 +36912,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Promo Pack',
       ja: '昇進' 
     },
-    related: [1, 2, 3, 227, 395]
+    related: [1, 2, 3, 227, 602]
   },
   {
     id: 598,
@@ -37260,7 +37262,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Wonder Pick',
       ja: 'ワンダーピック' 
     },
-    related: [1, 2, 3, 4, 227, 251, 390],
+    related: [1, 2, 3, 4, 227, 251, 597],
   },
   {
     id: 603,
@@ -37325,7 +37327,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Wonder Pick',
       ja: 'ワンダーピック' 
     },
-    related: [97, 98]
+    related: [97, 98, 423, 424, 425]
   },
   {
     id: 604,
@@ -37472,7 +37474,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Special Event',
       ja: '特別イベント' 
     },
-    related: [94, 95, 311, 312, 387, 381]
+    related: [94, 95, 311, 312, 594, 588]
   },
   {
     id: 606,
@@ -37679,7 +37681,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Promo Pack',
       ja: '昇進' 
     },
-    related: [53, 54, 55, 232, 405]
+    related: [53, 54, 55, 232, 612]
   },
   {
     id: 609,
@@ -37954,7 +37956,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Wonder Pick',
       ja: 'ワンダーピック' 
     },
-    related: [53, 54, 55, 56, 232, 256, 401]
+    related: [53, 54, 55, 56, 232, 256, 608]
   },
   {
     id: 613,
@@ -38019,7 +38021,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PREMIUM
     ],
-    related: [],
+    related: [407, 408, 409],
     extra: {
       es: 'Pase Premium',
       en: 'Premium Pass',
@@ -38084,7 +38086,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A4
     ],
-    related: [],
+    related: [382, 383, 384],
     extra: {
       es: 'Promoción',
       en: 'Promo Pack',
@@ -38155,7 +38157,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A4
     ],
-    related: [],
+    related: [101, 313, 428, 429],
     extra: {
       es: 'Promoción',
       en: 'Promo Pack',
@@ -38302,7 +38304,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A4
     ],
-    related: [],
+    related: [438, 439, 556, 571],
     extra: {
       es: 'Promoción',
       en: 'Promo Pack',
@@ -38372,7 +38374,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A4
     ],
-    related: [],
+    related: [483],
     extra: {
       es: 'Promoción',
       en: 'Promo Pack',
@@ -38427,7 +38429,7 @@ export const MOCK_DB_CARDS: Card[] = [
       ja: 'おしりの ほのおは おなかで つくられた ガスが ねんりょう。あめに ぬれても きえない。' 
     },
     health: 60,
-    rarity: CardRarityENUM.COMMON,
+    rarity: CardRarityENUM.PROMO,
     retreat: 1,
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.FIRE,
@@ -38442,7 +38444,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Wonder Pick',
       ja: 'ワンダーピック' 
     },
-    related: []
+    related: [399, 400, 401, 553, 569]
   },
   {
     id: 620,
@@ -38492,7 +38494,7 @@ export const MOCK_DB_CARDS: Card[] = [
       ja: '殻の中に 幸せが たくさん つまっているらしく 優しくされると 幸運を 分け与える という。' 
     },
     health: 50,
-    rarity: CardRarityENUM.COMMON,
+    rarity: CardRarityENUM.PROMO,
     retreat: 1,
     stage: CardStageENUM.BASIC,
     element: PokemonTypeENUM.PSYCHIC,
@@ -38507,7 +38509,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Wonder Pick',
       ja: 'ワンダーピック' 
     },
-    related: []
+    related: [435, 436, 437]
   }
 ];
 

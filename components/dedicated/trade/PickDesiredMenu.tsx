@@ -196,7 +196,7 @@ export default function PickDesiredMenu({
 
   const renderDesired = useCallback(({item, index}: {item: any, index: number}) => (
       <View style={[CardGridStyles.imageContainer, {boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.2)'}]}>
-        <View style={{flex: 1, backgroundColor: 'white'}}>
+        <View style={{backgroundColor: 'white'}}>
           <TouchableOpacity onPress={() => handleClick(item, 'remove')}
             style={[CardGridStyles.image, {
               justifyContent: 'center',
@@ -206,8 +206,7 @@ export default function PickDesiredMenu({
             <View>
               { current[index] ? 
               <>
-                <Image accessibilityLabel={item?.name} 
-                       style={[
+                <Image style={[
                     CardGridStyles.image, 
                     {width: 67.5}
                   ]} 
@@ -302,16 +301,16 @@ export default function PickDesiredMenu({
                                       {boxShadow: '5px 4px 12px rgba(0, 0, 0, 0.2)', width: 357.56, marginTop: 16, marginBottom: 6}
                                     ]}
                                   />
-                                  <View key={forceRender}>
-                                    {renderRarityGrid()}
-                                  </View>
-                                <FlatList data={current}
-                                          renderItem={renderDesired}
-                                          numColumns={5}
-                                          contentContainerStyle={{width: '100%', marginTop: 12}}
-                                          style={{width: '100%', borderRadius: 8}}
-                                          showsVerticalScrollIndicator={false}
-                                          keyExtractor={(item, index) => index + ''}/>
+                          <View key={forceRender}>
+                            {renderRarityGrid()}
+                          </View>
+                          <FlatList data={current}
+                                    renderItem={renderDesired}
+                                    numColumns={5}
+                                    contentContainerStyle={{width: '100%', marginTop: 12}}
+                                    style={{width: '100%', borderRadius: 8}}
+                                    showsVerticalScrollIndicator={false}
+                                    keyExtractor={(item, index) => index + ''}/>
                         </ThemedView>
                         
                       }
