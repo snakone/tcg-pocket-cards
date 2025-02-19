@@ -54,7 +54,7 @@ export default function PreviewList({
       await SoundService.play('PICK_CARD_SOUND');
       setNotSaved(true);
       addNumberToList(card);
-    };
+    }
   }
 
   function canAddToDeck(card: Card): boolean {
@@ -133,7 +133,7 @@ export default function PreviewList({
     <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
       <FlatList data={deck}
                 numColumns={10}
-                contentContainerStyle={{width: '100%', padding: 16, paddingTop: 20, paddingBottom: 12}}
+                contentContainerStyle={{width: '100%', padding: 16, paddingTop: 20, paddingBottom: 14}}
                 renderItem={renderPreviewItem}
                 keyExtractor={(item, index) => index + 1 + ''}
       />

@@ -137,7 +137,7 @@ export default function ShareScreen() {
                        sections={[
                         { title: i18n.t('decks'), 
                           data: filtered.sort((a, b) => a?.id > b?.id ? -1 : 1), 
-                          key: 'decks'
+                          key: 'decks',
                         },
                         {
                           title: i18n.t('trades'),
@@ -167,6 +167,19 @@ export default function ShareScreen() {
                        keyExtractor={(item, index) => `${index}`}
                        ListEmptyComponent={renderEmpty}
                        contentContainerStyle={[{width: '100%', paddingBottom: Platform.OS !== 'web' ? 60 : 0}]}
+                       renderSectionFooter={({section}) => (
+                        <>
+                          {
+                            searchQuery.length > 0 && section.title === i18n.t('decks') && filtered.length === 0 && 
+                              <ThemedText style={styles.noFound}>{i18n.t('no_decks_found')}</ThemedText>
+                          }
+                          {
+                            searchQuery.length > 0 && section.title === i18n.t('trades') && filteredTrades.length === 0 && 
+                              <ThemedText style={styles.noFound}>{i18n.t('no_trades_found')}</ThemedText>
+                          }
+                          
+                        </>
+                      )}
             />
         </ThemedView>
       </ThemedView>             
@@ -184,7 +197,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingHorizontal: 12,
     borderRadius: 6,
-    backgroundColor: 'white',
+    backgroundColor: 'rgb(225, 225, 225)',
     marginInline: 16,
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
     flexDirection: 'row', 
@@ -209,5 +222,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: Colors.light.text,
     fontWeight: 'normal'
+  },
+  noFound: {
+    paddingHorizontal: 22,
+    paddingTop: 4,
+    paddingBottom: 20
   }
 });

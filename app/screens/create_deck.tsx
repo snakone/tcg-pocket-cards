@@ -48,6 +48,7 @@ import { CardStageENUM } from "@/shared/definitions/enums/card.enums";
 import PreviewList from "@/components/dedicated/create/PreviewList";
 import CreateService from "@/core/services/create.service";
 import { LanguageType } from "@/shared/definitions/types/global.types";
+import { offersStyles } from "@/components/dedicated/trade/PickOffersMenu";
 
 export default function CreateDeckScreen() {
   const {i18n} = useI18n();
@@ -484,11 +485,8 @@ export default function CreateDeckScreen() {
             onPress={() => createService.onAddNumber(item)}
             style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
         <View>
-          { state.settingsState.favorites?.includes(item.id) && 
-            <ThemedView style={[CardGridStyles.triangle, {
-              borderRightWidth: 10,
-              borderBottomWidth: 10
-            }]}></ThemedView>
+          { deck.filter(card => card?.id === item.id).length === 2 && 
+             <ThemedView style={[CardGridStyles.image, offersStyles.included]}></ThemedView>
           }
           <Image accessibilityLabel={item.name[lang]}
                  source={getImageLanguage69x96(lang, item.id)}
@@ -499,7 +497,7 @@ export default function CreateDeckScreen() {
         </View>
       </TouchableOpacity>
     </View>
-  ), []);
+  ), [deck]);
 
   const cardListGrid = useCallback(() => (
     <View style={{height: Platform.OS === 'web' ? 518 : 525}}>
@@ -517,7 +515,7 @@ export default function CreateDeckScreen() {
                 ListFooterComponent={<ThemedView style={{height: 132}}></ThemedView>}
       />
     </View>
-), [searchCard, filtered]);
+), [searchCard, filtered, deck]);
   
   const memoizedGridMenu = useMemo(() => {
     return (
@@ -545,30 +543,30 @@ export default function CreateDeckScreen() {
             <ThemedView style={{marginBottom: 20 }}></ThemedView>
             {cardListGrid()}
 
-            { loading ? null : state.cardState.cards?.length > 0 ? (
-        <>
-        <TouchableOpacity onPress={() => (setIsSortVisible(true), SoundService.play('AUDIO_MENU_OPEN'))} 
-                          style={cardStyles.container}>
-          <ThemedView>
-            <MaterialIcons name={(sort?.icon as any) || 'content-paste-search'} 
-                           color={'skyblue'} 
-                           style={fixFilterIcon() as StyleProp<TextStyle>}> 
-            </MaterialIcons>
-            <MaterialIcons name={getOrderIcon()} style={cardStyles.sortIcon}></MaterialIcons>
-          </ThemedView>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => (setIsFilterVisible(true), SoundService.play('AUDIO_MENU_OPEN'))} 
-                          style={[cardStyles.container, {bottom: 88}]}>
-          <ThemedView>
-            <IconSymbol name="cat.circle" 
-                        color={'mediumaquamarine'} 
-                        style={{fontSize: 32}}>
-            </IconSymbol>
-            <MaterialIcons name={getFilterOrderIcon()} style={cardStyles.sortIcon}></MaterialIcons>
-          </ThemedView>
-        </TouchableOpacity>       
-      </>
-      ) : null}
+            { loading ? null : state.cardState.cards?.length > 0 && (
+              <>
+                <TouchableOpacity onPress={() => (setIsSortVisible(true), SoundService.play('AUDIO_MENU_OPEN'))} 
+                                  style={cardStyles.container}>
+                  <ThemedView>
+                    <MaterialIcons name={(sort?.icon as any) || 'content-paste-search'} 
+                                  color={'skyblue'} 
+                                  style={fixFilterIcon() as StyleProp<TextStyle>}> 
+                    </MaterialIcons>
+                    <MaterialIcons name={getOrderIcon()} style={cardStyles.sortIcon}></MaterialIcons>
+                  </ThemedView>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => (setIsFilterVisible(true), SoundService.play('AUDIO_MENU_OPEN'))} 
+                                  style={[cardStyles.container, {bottom: 88}]}>
+                  <ThemedView>
+                    <IconSymbol name="cat.circle" 
+                                color={'mediumaquamarine'} 
+                                style={{fontSize: 32}}>
+                    </IconSymbol>
+                    <MaterialIcons name={getFilterOrderIcon()} style={cardStyles.sortIcon}></MaterialIcons>
+                  </ThemedView>
+                </TouchableOpacity>       
+              </>
+            )}
             <View style={ScreenStyles.bottomContent}>
               <Pressable style={ButtonStyles.button} 
                                 onPress={() => handleGridModal(false)} 
@@ -581,14 +579,14 @@ export default function CreateDeckScreen() {
           </Animated.View>
       </>
     )
-  }, [isGridVisible, filtered]);
+  }, [isGridVisible, filtered, deck]);
 
   return (
     <Provider>
       { loading && <LoadingOverlay/> }
       <SharedScreen title={deck_id ? 'edit_deck' : 'create_new_deck'} 
                     styles={{paddingInline: 16, marginTop: 0, paddingBottom: 16}} customClose={goBack}>
-        <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between'}}>
+        <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 6}}>
           <TextInput style={[CardGridStyles.searchInput, {width: '76%'}]}
                      placeholder={i18n.t('new_deck_placeholder')}
                      value={deckName}

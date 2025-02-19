@@ -18,6 +18,7 @@ import TradeUserItem from '@/components/dedicated/trade/TradeUserItem';
 import { ThemedView } from '@/components/ThemedView';
 import { AppContext } from '../_layout';
 import { TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function TradeScreen() {
   const {i18n} = useI18n();
@@ -31,7 +32,7 @@ export default function TradeScreen() {
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={[CardGridStyles.clearInput, {left: Platform.OS !== 'web' ? 330 : 340}]}
+                      style={[CardGridStyles.clearInput, {left: Platform.OS !== 'web' ? 252 : 262}]}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
@@ -56,10 +57,14 @@ export default function TradeScreen() {
     router.push(`/screens/create_trade?trade_id=${encodeURIComponent(item.id)}`);
   }
 
-  const renderItem = useCallback(({item}: {item: TradeItem}) => {
+  const renderItem = useCallback(({item, index}: {item: TradeItem, index: number}) => {
     const rarity = state.cardState.cards.find(card => item.desired && item.desired.includes(card.id))?.rarity;
     return (
-      <TouchableOpacity onPress={() => handleClick(item)} style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}}>
+      <TouchableOpacity onPress={() => handleClick(item)} 
+                        style={[
+                            {paddingHorizontal: Platform.OS !== 'web' ? 0 : 16},
+                            index === 0 && {paddingTop: 12}
+                          ]}>
         <TradeUserItem item={item} rarity={rarity} state={state}/>
       </TouchableOpacity>
     )
@@ -111,8 +116,11 @@ export default function TradeScreen() {
           ListEmptyComponent={renderEmpty}
           ListHeaderComponent={
             <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
-              <Animated.View style={[CardGridStyles.inputContainer, {paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}]}>
-                <TextInput style={[CardGridStyles.searchInput, {width: '100%'}, Platform.OS !== 'web' && {}]}
+              <Animated.View style={[
+                  CardGridStyles.inputContainer, 
+                  {paddingHorizontal: Platform.OS !== 'web' ? 0 : 16, paddingBottom: 9}
+                ]}>
+                <TextInput style={[CardGridStyles.searchInput, {width: '78%'}, Platform.OS !== 'web' && {}]}
                             placeholder={i18n.t('search_trade')}
                             value={searchQuery}
                             onChangeText={handleSearch}
@@ -121,6 +129,15 @@ export default function TradeScreen() {
                             inputMode='text'
                           />
                   {searchQuery.length > 0 && <ResetFilterButton/>}
+                <Animated.View style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && 
+                                    {marginRight: 2}, {justifyContent: 'flex-end'}
+                                  ]}>
+                  <MaterialIcons name="sync" 
+                                 style={{fontSize: 21, marginLeft: 16, top: 1}} 
+                                 color={Colors.light.skeleton}>
+                  </MaterialIcons>
+                  <ThemedText style={[CardGridStyles.totalCards]}>{trades?.length}/30</ThemedText>                    
+                </Animated.View>
               </Animated.View>
             </KeyboardAvoidingView>
           }

@@ -26,13 +26,7 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
   if (!item) { return; }
   
   return (
-    <ThemedView style={[tradeItemStyles.item, {
-      borderColor: !item?.valid ? 'goldenrod' : 'transparent', 
-      borderWidth: 1, 
-      borderLeftWidth: 0, 
-      borderTopWidth: 0, 
-      borderBottomWidth: 0
-    }, styles]}>
+    <ThemedView style={[tradeItemStyles.item, styles]}>
       <ThemedView style={{flex: 1}}>
         <ThemedText style={{marginBottom: 12}}>{item?.title || i18n.t('trade') + ' ' + (item.id)}</ThemedText>
         <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
@@ -94,8 +88,11 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
         </ThemedView>
       </ThemedView>
 
-      <ThemedView style={tradeItemStyles.token}>
-        <Image source={TRADE_POINTS} style={{width: 25, height: 25, left: 8, position: 'absolute', top: 2}}/>
+      <ThemedView style={[tradeItemStyles.token, {
+          borderColor: !item?.valid ? 'goldenrod' : 'transparent', 
+          borderWidth: !item.valid  ? 1 : 0, 
+        }]}>
+        <Image source={TRADE_POINTS} style={{width: 24, height: 24, left: 8, position: 'absolute', top: 2}}/>
         <ThemedText style={{top: -1, left: 12}}>{rarity !== undefined && (TRADE_COST_MAP as any)[rarity] || 0}</ThemedText>
       </ThemedView>
     </ThemedView> 
@@ -107,14 +104,15 @@ const tradeItemStyles = StyleSheet.create({
     paddingVertical: 12, 
     paddingHorizontal: 16, 
     paddingBottom: 20,
-    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 4px 12px', 
+    boxShadow: 'rgba(0, 0, 0, 0.3) 0px 4px 12px', 
     borderRadius: 8,
-    marginBottom: 50,
-    minHeight: 174,
-    width: '100%'
+    marginBottom: 45,
+    minHeight: 166,
+    width: '100%',
+    backgroundColor: 'white'
   },
   token: {
-    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 10px 12px',
+    boxShadow: 'rgba(0, 0, 0, 0.3) 0px 4px 16px',
     position: 'absolute',
     width: 80,
     height: 30,

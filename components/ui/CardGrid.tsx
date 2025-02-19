@@ -57,7 +57,8 @@ interface GridCardProps {
 }
 
 export default function ImageGridWithSearch({ state, title, modal, modalTitle, type = 'default' }: GridCardProps) {
-  const [searchQuery, setSearchQuery] = useState('');
+  const searchQuery = useRef('');
+  const inputRef = useRef<TextInput>(null);
   const [filtered, setFiltered] = useState<Card[]>([]);
   const [favorites, setFavorites] = useState<Card[]>(
     state.cardState.cards.filter(c => state.settingsState.favorites?.includes(c.id))
@@ -129,10 +130,14 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
   }, [state.settingsState.favorites]);
 
   const handleSearch = useCallback((text: string) => {
-    setSearchQuery(text);
+    searchQuery.current = text;
     setFiltered((type === 'favorites' ? favorites : state.cardState.cards).filter(card =>
-      card.name[lang].toLowerCase()?.includes(text.toLowerCase())
-  ))}, [(type === 'favorites' ? favorites : state.cardState.cards), lang]);
+    card.name[lang].toLowerCase()?.includes(text.toLowerCase())));
+  
+    setTimeout(() => {
+      inputRef.current && inputRef.current.focus();
+    }, 200);
+  }, [(type === 'favorites' ? favorites : state.cardState.cards), lang]);
 
   function filterOrSortCards(
     type: 'sort' | 'filter', 
@@ -169,7 +174,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
 
   const RenderFooter = () => {
     const renderFooter = useCallback(() => {
-      if (!!searchQuery || !footerVisible || filtered.length < 46) {
+      if (!!searchQuery.current || !footerVisible || filtered.length < 34) {
         return <ThemedView style={{ height: 20 }}></ThemedView>;
       }
   
@@ -193,7 +198,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
           </TouchableOpacity>
         </View>
       );
-    }, [searchQuery, footerVisible, filtered.length]);
+    }, [searchQuery.current, footerVisible, filtered.length]);
   
     return renderFooter();
   };
@@ -304,33 +309,29 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                 scrollEventThrottle={16}
                 ListFooterComponent={RenderFooter}
                 ListHeaderComponent={
-                  <>
-                    <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
-                      <Animated.View style={[CardGridStyles.inputContainer]}>
-                        <TextInput style={[CardGridStyles.searchInput, {boxShadow: '5px 4px 12px rgba(0, 0, 0, 0.2)', width: '71%'}]}
-                                   placeholder={i18n.t('search_card_placeholder')}
-                                   value={searchQuery}
-                                   onChangeText={handleSearch}
-                                   placeholderTextColor={Colors.light.text}
-                                   accessibilityLabel={SEARCH_LABEL}
-                                   editable={state.cardState.loaded}
-                                   inputMode='text'
-                                  />
-                              {searchQuery.length > 0 && <ResetFilterButton/>}
-                        <ThemedView style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && {marginRight: 2}]}>
-                          <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
-                                  color={'white'}
-                                  onValueChange={toggleSwitch}
-                                  value={isGrid5}
-                                  style={CardGridStyles.switch}
-                                  disabled={filtered.length <= 4}
-                          />
-                          <ThemedText style={[CardGridStyles.totalCards]}>{filtered.length}</ThemedText>                    
-                        </ThemedView>
-
-                      </Animated.View>
-                    </KeyboardAvoidingView>
-                  </>
+                  <Animated.View style={[CardGridStyles.inputContainer]}>
+                    <TextInput style={[CardGridStyles.searchInput, {boxShadow: '5px 4px 12px rgba(0, 0, 0, 0.2)', width: '71%'}]}
+                                placeholder={i18n.t('search_card_placeholder')}
+                                value={searchQuery.current}
+                                onChangeText={handleSearch}
+                                placeholderTextColor={Colors.light.text}
+                                accessibilityLabel={SEARCH_LABEL}
+                                editable={state.cardState.loaded}
+                                inputMode='text'
+                                ref={inputRef}
+                              />
+                          {searchQuery.current.length > 0 && <ResetFilterButton/>}
+                    <ThemedView style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && {marginRight: 2}]}>
+                      <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
+                              color={'white'}
+                              onValueChange={toggleSwitch}
+                              value={isGrid5}
+                              style={CardGridStyles.switch}
+                              disabled={filtered.length <= 4}
+                      />
+                      <ThemedText style={[CardGridStyles.totalCards]}>{filtered.length}</ThemedText>                    
+                    </ThemedView>
+                  </Animated.View>
                 }
               />               
             </KeyboardAvoidingView>

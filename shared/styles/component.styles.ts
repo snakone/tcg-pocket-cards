@@ -922,7 +922,7 @@ export const CreateScreenStyles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 8,
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.2)',
-    paddingVertical: 10,
+    paddingVertical: 6,
     paddingHorizontal: 6,
     marginBottom: 10,
     overflow: 'hidden'
@@ -951,11 +951,11 @@ export const CreateScreenStyles = StyleSheet.create({
     width: 55, 
     borderRadius: 4, 
     position: 'absolute', 
-    backgroundColor: Colors.light.skeleton,
+    backgroundColor: 'rgb(225, 225, 225)',
     shadowColor: 'black',
     shadowRadius: 4,
-    shadowOffset: {height: 2, width: 2},
-    shadowOpacity: 0.2,
+    shadowOffset: {height: 1, width: 2},
+    shadowOpacity: 0.1,
     top: 4,
   }
 });

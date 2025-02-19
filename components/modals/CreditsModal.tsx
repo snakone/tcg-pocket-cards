@@ -101,7 +101,8 @@ export function CreditsModal() {
         <ThemedText style={styles.text}>Expo</ThemedText>
         <ThemedText style={styles.text}>Google Android</ThemedText>
         <ThemedText style={styles.text}>Microsoft Edge</ThemedText>
-        <ThemedText style={styles.text}>Tiny PNG ({i18n.t('image_compress')}) </ThemedText>
+        <ThemedText style={styles.text}>Wikidex.net</ThemedText>
+        <ThemedText style={styles.text}>Tiny PNG ({i18n.t('image_compress')})</ThemedText>
         <ThemedText style={styles.text}>{i18n.t('thanks_users')}</ThemedText>
         
       </ScrollView>

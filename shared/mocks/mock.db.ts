@@ -901,7 +901,7 @@ export const MOCK_DB_CARDS: Card[] = [
     name: {
       es: 'Parasect',
       en: 'Parasect',
-      ja: 'パラセクト' 
+      ja: 'パラセクト'
     },
     info: {
       type: {
@@ -926,7 +926,7 @@ export const MOCK_DB_CARDS: Card[] = [
         name: {
           es: 'Cuchillada',
           en: 'Slash',
-          ja: 'きりさく' 
+          ja: 'きりさく'
         },
         damage: 80,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
@@ -1233,7 +1233,7 @@ export const MOCK_DB_CARDS: Card[] = [
         name: {
           es: 'Látigo Cepa',
           en: 'Vine Whip',
-          ja: 'つるのムチ' 
+          ja: 'つるのムチ'
         },
         damage: 60,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
@@ -1243,12 +1243,12 @@ export const MOCK_DB_CARDS: Card[] = [
       name: {
         es: 'Trampa Fragancia',
         en: 'Fragrance Trap',
-        ja: 'かおりのわな' 
+        ja: 'かおりのわな'
       },
       description: {
        es: 'Una vez durante tu turno, si este Pokémon está en el Puesto Activo, puedes cambiar 1 de los Pokémon Básicos en Banca de tu rival por su Pokémon Activo.',
        en: 'If this Pokémon is in the Active Spot, once during your turn, you may switch in 1 of your opponent’s Benched Basic Pokémon to the Active Spot.',
-       ja: 'このポケモンがバトル場にいるなら、自分の番に1回使える。相手のベンチのたねポケモンを1匹選び、バトルポケモンと入れ替える。' 
+       ja: 'このポケモンがバトル場にいるなら、自分の番に1回使える。相手のベンチのたねポケモンを1匹選び、バトルポケモンと入れ替える。'
      }
     },
     evolve: [],
@@ -1257,7 +1257,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: {
       es: 'Dicen que vive en grandes colonias en el interior de las junglas, aunque nadie ha podido verificarlo.',
       en: 'Said to live in huge colonies deep in jungles, although no one has ever returned from there.',
-      ja: 'ジャングルの　奥地に　ウツボット ばかり　いる　地帯が　あって 行ったら　２度と　帰ってこれない｡' 
+      ja: 'ジャングルの　奥地に　ウツボット ばかり　いる　地帯が　あって 行ったら　２度と　帰ってこれない｡'
     },
     health: 140,
     rarity: CardRarityENUM.RARE,
@@ -1305,7 +1305,7 @@ export const MOCK_DB_CARDS: Card[] = [
         name: {
           es: 'Bomba Germen',
           en: 'Seed Bomb',
-          ja: 'タネばくだん' 
+          ja: 'タネばくだん'
         },
         damage: 20,
         energy: [PokemonTypeENUM.GRASS],
@@ -1317,7 +1317,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: {
       es: 'Pese a su aspecto de mera piña de huevos, se trata de un Pokémon. Al parecer, sus cabezas se comunican entre sí por telepatía.',
       en: 'Though it may look like it’s just a bunch of eggs, it’s a proper Pokémon. Exeggcute communicates with others of its kind via telepathy, apparently.',
-      ja: 'タマゴのように　見えるが　立派な ポケモン｡　テレパシーで　仲間と 交信している　らしいぞ｡' 
+      ja: 'タマゴのように　見えるが　立派な ポケモン｡　テレパシーで　仲間と 交信している　らしいぞ｡'
     },
     health: 50,
     rarity: CardRarityENUM.COMMON,
@@ -1340,7 +1340,7 @@ export const MOCK_DB_CARDS: Card[] = [
     name: {
       es: 'Exeggutor',
       en: 'Exeggutor',
-      ja: 'ナッシー' 
+      ja: 'ナッシー'
     },
     info: {
       type: {
@@ -1365,14 +1365,14 @@ export const MOCK_DB_CARDS: Card[] = [
         name: {
           es: 'Pisotón',
           en: 'Stomp',
-          ja: 'ふみつけ' 
+          ja: 'ふみつけ'
         },
         damage: 30,
         energy: [PokemonTypeENUM.GRASS],
         description: {
           es: 'Lanza 1 moneda. Si sale cara, este ataque hace 30 puntos de daño más.',
           en: 'Flip a coin. If heads, this attack does 30 more damage.',
-          ja: 'コインを1回投げてオモテなら、30ダメージ追加。' 
+          ja: 'コインを1回投げてオモテなら、30ダメージ追加。'
         }
       }
     ],
@@ -1382,7 +1382,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: {
       es: 'Cada una de las tres cabezas piensa de forma independiente y apenas muestra interés por el resto.',
       en: 'Each of Exeggutor’s three heads is thinking different thoughts. The three don’t seem to be very interested in one another.',
-      ja: '３つの　頭は　べつのことを 考えている｡　自分以外は あまり　興味がない　ようだ｡' 
+      ja: '３つの　頭は　べつのことを 考えている｡　自分以外は あまり　興味がない　ようだ｡'
     },
     health: 130,
     rarity: CardRarityENUM.RARE,
@@ -1408,7 +1408,7 @@ export const MOCK_DB_CARDS: Card[] = [
     name: {
       es: 'Exeggutor EX',
       en: 'Exeggutor EX',
-      ja: 'ナッシー EX' 
+      ja: 'ナッシー EX'
     },
     info: {
       type: {
@@ -1433,14 +1433,14 @@ export const MOCK_DB_CARDS: Card[] = [
         name: {
           es: 'Golpe Tropical',
           en: 'Tropical Swing',
-          ja: 'トロピカルスイング' 
+          ja: 'トロピカルスイング'
         },
         damage: 40,
         energy: [PokemonTypeENUM.GRASS],
         description: {
           es: 'Lanza 1 moneda. Si sale cara, este ataque hace 40 puntos de daño más.',
           en: 'Flip a coin. If heads, this attack does 40 more damage.',
-          ja: 'コインを1回投げてオモテなら、40ダメージ追加。' 
+          ja: 'コインを1回投げてオモテなら、40ダメージ追加。'
         }
       }
     ],
@@ -1450,7 +1450,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: {
       es: 'Cada una de las tres cabezas piensa de forma independiente y apenas muestra interés por el resto.',
       en: 'Each of Exeggutor’s three heads is thinking different thoughts. The three don’t seem to be very interested in one another.',
-      ja: '３つの　頭は　べつのことを 考えている｡　自分以外は あまり　興味がない　ようだ｡' 
+      ja: '３つの　頭は　べつのことを 考えている｡　自分以外は あまり　興味がない　ようだ｡'
     },
     health: 160,
     rarity: CardRarityENUM.DOUBLE,
@@ -1476,7 +1476,7 @@ export const MOCK_DB_CARDS: Card[] = [
     name: {
       es: 'Tangela',
       en: 'Tangela',
-      ja: 'モンジャラ' 
+      ja: 'モンジャラ'
     },
     info: {
       type: {
@@ -1501,14 +1501,14 @@ export const MOCK_DB_CARDS: Card[] = [
         name: {
           es: 'Absorber',
           en: 'Absorb',
-          ja: 'すいとる' 
+          ja: 'すいとる'
         },
         damage: 40,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
         description: {
           es: 'Cura 10 puntos de daño a este Pokémon.',
           en: 'Heal 10 damage from this Pokémon.',
-          ja: 'このポケモンのHPを10回復。' 
+          ja: 'このポケモンのHPを10回復。'
         }
       }
     ],
@@ -1518,7 +1518,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: {
       es: 'Sus lianas no dejan de crecer aunqeu se le desprendan. Aún se desconoce qué aspecto tiene sin ellas.',
       en: 'Hidden beneath a tangle of vines that grows nonstop even if the vines are torn off, this Pokémon’s true appearance remains a mystery.',
-      ja: 'ちぎれても　無限に　伸びる ツルの　奥の　正体は いまだ　解明されていない｡' 
+      ja: 'ちぎれても　無限に　伸びる ツルの　奥の　正体は いまだ　解明されていない｡'
     },
     health: 80,
     rarity: CardRarityENUM.COMMON,
@@ -1541,7 +1541,7 @@ export const MOCK_DB_CARDS: Card[] = [
     name: {
       es: 'Scyther',
       en: 'Scyther',
-      ja: 'ストライク' 
+      ja: 'ストライク'
     },
     info: {
       type: {
@@ -1566,7 +1566,7 @@ export const MOCK_DB_CARDS: Card[] = [
         name: {
           es: 'Guadaña Afilada',
           en: 'Sharp Scythe',
-          ja: 'するどいカマ' 
+          ja: 'するどいカマ'
         },
         damage: 30,
         energy: [PokemonTypeENUM.GRASS],
@@ -1578,7 +1578,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: {
       es: 'Avanza por la hierba con sus afiladas guadañas, más rápido de lo que el ojo humano puede percibir.',
       en: 'It slashes through grass with its sharp scythes, moving too fast for the human eye to track.',
-      ja: '切れ味　鋭い　カマを　使って 草むらを　切り進む｡　あまりに 速い　動きで　目が　追いつかない｡' 
+      ja: '切れ味　鋭い　カマを　使って 草むらを　切り進む｡　あまりに 速い　動きで　目が　追いつかない｡'
     },
     health: 70,
     rarity: CardRarityENUM.COMMON,
@@ -1600,7 +1600,7 @@ export const MOCK_DB_CARDS: Card[] = [
     name: {
       es: 'Pinsir',
       en: 'Pinsir',
-      ja: 'カイロス' 
+      ja: 'カイロス'
     },
     info: {
       type: {
@@ -1625,14 +1625,14 @@ export const MOCK_DB_CARDS: Card[] = [
         name: {
           es: 'Cornada Doble',
           en: 'Double Horn',
-          ja: 'ダブルホーン' 
+          ja: 'ダブルホーン'
         },
         damage: 50,
         energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
         description: {
           es: 'Lanza 2 monedas. Este ataque hace 50 puntos de daño por cada cara.',
           en: 'Flip 2 coins. This attack does 50 damage for each heads.',
-          ja: 'コインを2回投げて、オモテの数×50ダメージ。' 
+          ja: 'コインを2回投げて、オモテの数×50ダメージ。'
         }
       }
     ],
@@ -1642,7 +1642,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: {
       es: 'Los Pinsir se juzgan entre ellos por la robustez de la cornamenta. Cuanto más imponente sea, más agradará a sus congéneres del sexo puesto.',
       en: 'These Pokémon judge one another based on pincers. Thicker, more impressive pincers make for more popularity with the opposite gender.',
-      ja: 'ツノで　互いを　格付けする｡ 太く　立派な　ツノを　持つ カイロスほど　異性に　人気｡' 
+      ja: 'ツノで　互いを　格付けする｡ 太く　立派な　ツノを　持つ カイロスほど　異性に　人気｡'
     },
     health: 90,
     rarity: CardRarityENUM.UNCOMMON,
@@ -1670,7 +1670,7 @@ export const MOCK_DB_CARDS: Card[] = [
     name: {
       es: 'Cottonee',
       en: 'Cottonee',
-      ja: 'モンメン' 
+      ja: 'モンメン'
     },
     info: {
       type: {
@@ -1695,7 +1695,7 @@ export const MOCK_DB_CARDS: Card[] = [
         name: {
           es: 'Pegarse',
           en: 'Attach',
-          ja: 'くっつく' 
+          ja: 'くっつく'
         },
         damage: 10,
         energy: [PokemonTypeENUM.NORMAL],
@@ -1707,7 +1707,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: {
       es: 'Lanza bolas de algodón para defenderse. A veces, la fuerza de un tifón llega a arrastrarlo hasta el otro extremo del mundo.',
       en: 'It shoots cotton from its body to protect itself. If it gets caught up in hurricane-strength winds, it can get sent to the other side of the Earth.',
-      ja: '綿を　飛ばして　身を　守る｡ 台風の　風に　流され 地球の　裏側に　いくことも｡' 
+      ja: '綿を　飛ばして　身を　守る｡ 台風の　風に　流され 地球の　裏側に　いくことも｡'
     },
     health: 50,
     rarity: CardRarityENUM.COMMON,
@@ -1732,7 +1732,7 @@ export const MOCK_DB_CARDS: Card[] = [
     name: {
       es: 'Whimsicott',
       en: 'Whimsicott',
-      ja: 'エルフーン' 
+      ja: 'エルフーン'
     },
     info: {
       type: {
@@ -21843,7 +21843,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [351, 318, 580, 581, 584, 582, 583, 587, 585]
+    related: [351, 518, 580, 581, 584, 582, 583, 587, 585]
   },
   {
     id: 351,
@@ -21876,7 +21876,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [350, 318, 580, 581, 584, 582, 583, 587, 585]
+    related: [350, 518, 580, 581, 584, 582, 583, 587, 585]
   },
   {
     id: 352,
@@ -27155,7 +27155,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [436, 437, 620]
   },
   {
     id: 436,
@@ -27216,7 +27216,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [435]
+    related: [435, 437, 620]
   },
   {
     id: 437,
@@ -27282,7 +27282,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [436]
+    related: [435, 436, 620]
   },
   {
     id: 438,
@@ -27342,7 +27342,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [439]
+    related: [439, 556, 571, 617]
   },
   { 
     id: 439,
@@ -27407,7 +27407,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [438]
+    related: [438, 556, 571, 617]
   },
   {
     id: 440,
@@ -27472,7 +27472,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: []
+    related: [130, 131, 132, 441, 467, 557, 572]
   },
   {
     id: 441,
@@ -27532,7 +27532,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [440]
+    related: [130, 131, 132, 440, 467, 557, 572]
   },
   {
     id: 442,
@@ -27592,7 +27592,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [443, 444]
   },
   {
     id: 443,
@@ -27652,7 +27652,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [442]
+    related: [442, 444]
   },
   {
     id: 444,
@@ -27724,7 +27724,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [443]
+    related: [442, 443]
   },
   {
     id: 445,
@@ -27789,7 +27789,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [446, 537]
   },
   {
     id: 446,
@@ -27849,7 +27849,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [445]
+    related: [445, 537]
   },
   {
     id: 447,
@@ -27981,7 +27981,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [538]
   },
   {
     id: 449,
@@ -28119,7 +28119,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [539]
   },
   {
     id: 451,
@@ -28184,7 +28184,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [540]
   },
   {
     id: 452,
@@ -28244,7 +28244,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [453]
+    related: [156, 157, 453, 454, 541]
   },
   {
     id: 453,
@@ -28304,7 +28304,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [452]
+    related: [156, 157, 452, 454, 541]
   },
   {
     id: 454,
@@ -28369,7 +28369,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [453]
+    related: [156, 157, 452, 453, 541]
   },
   {
     id: 455,
@@ -28429,7 +28429,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [456]
   },
   {
     id: 456,
@@ -28618,7 +28618,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [490]
   },
   {
     id: 459,
@@ -28751,7 +28751,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [461]
+    related: [461, 516]
   },
   {
     id: 461,
@@ -28816,7 +28816,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [460]
+    related: [460, 516]
   },
   {
     id: 462,
@@ -28876,7 +28876,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [387, 388, 487]
   },
   {
     id: 463,
@@ -28936,7 +28936,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [464, 542]
   },
   {
     id: 464,
@@ -29008,7 +29008,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [463]
+    related: [463, 542]
   },
   {
     id: 465,
@@ -29068,7 +29068,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [466, 543]
   },
   {
     id: 466,
@@ -29128,7 +29128,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [465]
+    related: [465, 543]
   },
   {
     id: 467,
@@ -29193,7 +29193,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [130, 131, 440, 441, 557, 572]
   },
   {
     id: 468,
@@ -29253,7 +29253,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [469]
   },
   {
     id: 469,
@@ -29386,7 +29386,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [471, 558, 573]
   },
   {
     id: 471,
@@ -29451,7 +29451,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [470]
+    related: [470, 558, 573]
   },
   {
     id: 472,
@@ -29512,7 +29512,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [473]
   },
   {
     id: 473,
@@ -29633,7 +29633,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [475]
   },
   {
     id: 475,
@@ -29763,7 +29763,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [544]
   },
   {
     id: 477,
@@ -29824,7 +29824,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [478]
   },
   {
     id: 478,
@@ -29962,7 +29962,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [480, 545]
   },
   {
     id: 480,
@@ -30030,7 +30030,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: [479]
+    related: [479, 545]
   },
   {
     id: 481,
@@ -30167,7 +30167,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [559, 574]
   },
   {
     id: 483,
@@ -30354,7 +30354,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [486, 517]
   },
   {
     id: 486,
@@ -30426,7 +30426,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [485, 517]
   },
   {
     id: 487,
@@ -30494,7 +30494,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [387]
+    related: [387, 388, 462]
   },
   {
     id: 488,
@@ -30554,7 +30554,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: []
+    related: [489]
   },
   {
     id: 489,
@@ -30688,7 +30688,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [458]
   },
   {
     id: 491,
@@ -30762,7 +30762,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [560, 577, 579]
   },
   {
     id: 492,
@@ -30827,7 +30827,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [546]
   },
   {
     id: 493,
@@ -30887,7 +30887,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [494, 495, 547]
   },
   {
     id: 494,
@@ -30947,7 +30947,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [493, 495, 547]
   },
   {
     id: 495,
@@ -31019,7 +31019,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [493, 494, 547]
   },
   {
     id: 496,
@@ -31079,7 +31079,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [201, 497, 561, 575]
   },
   {
     id: 497,
@@ -31147,7 +31147,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [201, 496, 561, 575]
   },
   {
     id: 498,
@@ -31276,7 +31276,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [209, 500, 501, 249]
   },
   {
     id: 500,
@@ -31336,7 +31336,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [209, 499, 501, 249]
   },
   {
     id: 501,
@@ -31401,7 +31401,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [209, 499, 500, 249]
   },
   {
     id: 502,
@@ -31462,7 +31462,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [503]
   },
   {
     id: 503,
@@ -31531,7 +31531,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [502]
   },
   {
     id: 504,
@@ -31596,7 +31596,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [505, 506, 548]
   },
   {
     id: 505,
@@ -31656,7 +31656,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [504, 506, 548]
   },
   {
     id: 506,
@@ -31721,7 +31721,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [504, 505, 548]
   },
   {
     id: 507,
@@ -31786,7 +31786,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [508, 549]
   },
   {
     id: 508,
@@ -31846,7 +31846,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [507, 549]
   },
   {
     id: 509,
@@ -31906,7 +31906,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [510]
   },
   {
     id: 510,
@@ -31971,7 +31971,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [509]
   },
   {
     id: 511,
@@ -32039,7 +32039,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [512, 550]
   },
   {
     id: 512,
@@ -32104,7 +32104,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [511, 550]
   },
   {
     id: 513,
@@ -32304,7 +32304,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [551]
   },
   {
     id: 516,
@@ -32335,7 +32335,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: []
+    related: [460, 461]
   },
   {
     id: 517,
@@ -32366,7 +32366,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: []
+    related: [485, 486]
   },
   {
     id: 518,
@@ -32396,7 +32396,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: [351, 350, 374, 377, 375, 376, 380, 378]
+    related: [351, 350, 580, 581, 584, 582, 583, 587, 585]
   },
   {
     id: 519,
@@ -32423,7 +32423,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [],
-    related: [351, 350, 374, 377, 375, 376, 380, 378],
+    related: [520, 521],
     found: [
       EXPANSION.DIALGA
     ]
@@ -32453,7 +32453,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [CardSpecialConditionENUM.RECOIL],
-    related: [351, 350, 374, 377, 375, 376, 380, 378],
+    related: [519, 521],
     found: [
       EXPANSION.PALKIA
     ]
@@ -32483,7 +32483,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [],
-    related: [351, 350, 374, 377, 375, 376, 380, 378],
+    related: [519, 520],
     found: [
       EXPANSION.PALKIA
     ]
@@ -32737,7 +32737,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [24, 376, 377]
   },
   {
     id: 529,
@@ -32802,7 +32802,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: []
+    related: [389, 390]
   },
   {
     id: 530,
@@ -33014,7 +33014,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [404]
+    related: [403, 404, 405]
   },
   {
     id: 533,
@@ -33074,7 +33074,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [412]
+    related: [412, 413]
   },
   {
     id: 534,
@@ -33207,7 +33207,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [430, 431, 432]
   },
   {
     id: 536,
@@ -33337,7 +33337,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [445, 446]
   },
   {
     id: 538,
@@ -33402,7 +33402,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [448]
   },
   {
     id: 539,
@@ -33474,7 +33474,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [450]
   },
   {
     id: 540,
@@ -33539,7 +33539,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [451]
   },
   {
     id: 541,
@@ -33604,7 +33604,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [453]
+    related: [156, 157, 452, 453, 454]
   },
   {
     id: 542,
@@ -33676,7 +33676,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [463]
+    related: [463, 464]
   },
   {
     id: 543,
@@ -33736,7 +33736,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [465, 466]
   },
   {
     id: 544,
@@ -33801,7 +33801,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [476]
   },
   {
     id: 545,
@@ -33869,7 +33869,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [479, 480]
   },
   {
     id: 546,
@@ -33934,7 +33934,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [492]
   },
   {
     id: 547,
@@ -34006,7 +34006,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [493, 494, 495]
   },
   {
     id: 548,
@@ -34071,7 +34071,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [504, 505, 506]
   },
   {
     id: 549,
@@ -34136,7 +34136,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [507, 508]
   },
   {
     id: 550,
@@ -34204,7 +34204,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [511, 512]
   },
   {
     id: 551,
@@ -34269,7 +34269,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [515]
   },
   {
     id: 552,
@@ -34334,7 +34334,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [411]
+    related: [378, 379, 568]
   },
   {
     id: 553,
@@ -34399,7 +34399,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [400]
+    related: [399, 400, 401, 569, 619]
   },
   {
     id: 554,
@@ -34476,7 +34476,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [421, 576, 578]
   },
   {
     id: 555,
@@ -34541,7 +34541,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [433, 570]
   },
   {
     id: 556,
@@ -34606,7 +34606,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [438]
+    related: [438, 439, 571, 617]
   },
   {
     id: 557,
@@ -34671,7 +34671,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [130, 131, 440, 441, 467, 572]
   },
   {
     id: 558,
@@ -34736,7 +34736,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [470]
+    related: [470, 471, 573]
   },
   {
     id: 559,
@@ -34808,7 +34808,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [482, 574]
   },
   {
     id: 560,
@@ -34882,7 +34882,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [491, 577, 579]
   },
   {
     id: 561,
@@ -34950,7 +34950,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [201, 496, 497, 575]
   },
   {
     id: 562,
@@ -35201,7 +35201,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [411]
+    related: [378, 379, 552]
   },
   {
     id: 569,
@@ -35266,7 +35266,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [400]
+    related: [399, 400, 401, 553, 619]
   },
   {
     id: 570,
@@ -35331,7 +35331,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [433, 555]
   },
   {
     id: 571,
@@ -35396,7 +35396,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [438]
+    related: [438, 439, 556, 617]
   },
   {
     id: 572,
@@ -35461,7 +35461,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [130, 131, 440, 441, 467, 557]
   },
   {
     id: 573,
@@ -35526,7 +35526,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [470]
+    related: [470, 471, 558]
   },
   {
     id: 574,
@@ -35598,7 +35598,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [482, 559]
   },
   {
     id: 575,
@@ -35666,7 +35666,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: []
+    related: [201, 496, 497, 561]
   },
   {
     id: 576,
@@ -35743,7 +35743,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [421, 554, 578]
   },
   {
     id: 577,
@@ -35817,7 +35817,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: []
+    related: [491, 560, 579]
   },
   {
     id: 578,
@@ -35895,7 +35895,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [421, 554, 576]
   },
   {
     id: 579,
@@ -35970,7 +35970,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: []
+    related: [491, 560, 577]
   },
   {
     id: 580,
@@ -36002,7 +36002,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [CardSpecialConditionENUM.HEAL],
-    related: [351, 350, 318, 581, 584, 582, 583, 587, 585]
+    related: [351, 350, 518, 581, 584, 582, 583, 587, 585]
   },
   {
     id: 581,
@@ -36034,7 +36034,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [CardSpecialConditionENUM.RETIRE],
-    related: [351, 350, 318, 580, 584, 582, 583, 587, 585]
+    related: [351, 350, 518, 580, 584, 582, 583, 587, 585]
   },
   {
     id: 582,
@@ -36066,7 +36066,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [],
-    related: [351, 350, 318, 580, 581, 584, 583, 587, 585]
+    related: [351, 350, 518, 580, 581, 584, 583, 587, 585]
   },
   {
     id: 583,
@@ -36098,7 +36098,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [],
-    related: [351, 350, 318, 580, 581, 584, 582, 587, 585]
+    related: [351, 350, 518, 580, 581, 584, 582, 587, 585]
   },
   {
     id: 584,
@@ -36130,7 +36130,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [CardSpecialConditionENUM.CALL],
-    related: [351, 350, 318, 580, 581, 582, 583, 587, 585]
+    related: [351, 350, 518, 580, 581, 582, 583, 587, 585]
   },
   {
     id: 585,
@@ -36162,7 +36162,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [],
-    related: [351, 350, 318, 580, 581, 584, 582, 583, 587]
+    related: [351, 350, 518, 580, 581, 584, 582, 583, 587]
   },
   {
     id: 586,
@@ -36226,7 +36226,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: -1,
     isEX: false,
     condition: [],
-    related: [351, 350, 318, 580, 581, 584, 582, 583, 585]
+    related: [351, 350, 518, 580, 581, 584, 582, 583, 585]
   },
   {
     id: 588,
@@ -38304,12 +38304,12 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A4
     ],
-    related: [438, 439, 556, 571],
     extra: {
       es: 'Promoción',
       en: 'Promo Pack',
       ja: '昇進' 
     },
+    related: [438, 439, 556, 571]
   },
   {
     id: 618,
@@ -38374,12 +38374,12 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A4
     ],
-    related: [483],
     extra: {
       es: 'Promoción',
       en: 'Promo Pack',
-      ja: '昇進' 
+      ja: '昇進'
     },
+    related: [483],
   },
   {
     id: 619,
@@ -38389,7 +38389,7 @@ export const MOCK_DB_CARDS: Card[] = [
     name: {
       es: 'Chimchar',
       en: 'Chimchar',
-      ja: 'ヒコザル' 
+      ja: 'ヒコザル'
     },
     info: {
       type: {
@@ -38414,7 +38414,7 @@ export const MOCK_DB_CARDS: Card[] = [
         name: {
           es: 'Arañazo',
           en: 'Scratch',
-          ja: 'ひっかく' 
+          ja: 'ひっかく'
         },
         damage: 20,
         energy: [PokemonTypeENUM.FIRE]
@@ -38426,7 +38426,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: {
       es: 'Los gases de su estómago alimentan el fuego de su trasero, que ni la lluvia puede extinguir.',
       en: 'Its fiery rear end is fueled by gas made in its belly. Even rain can’t extinguish the fire.',
-      ja: 'おしりの ほのおは おなかで つくられた ガスが ねんりょう。あめに ぬれても きえない。' 
+      ja: 'おしりの ほのおは おなかで つくられた ガスが ねんりょう。あめに ぬれても きえない。'
     },
     health: 60,
     rarity: CardRarityENUM.PROMO,
@@ -38442,7 +38442,7 @@ export const MOCK_DB_CARDS: Card[] = [
     extra: {
       es: 'Elección Mágica',
       en: 'Wonder Pick',
-      ja: 'ワンダーピック' 
+      ja: 'ワンダーピック'
     },
     related: [399, 400, 401, 553, 569]
   },
@@ -38454,7 +38454,7 @@ export const MOCK_DB_CARDS: Card[] = [
     name: {
       es: 'Togepi',
       en: 'Togepi',
-      ja: 'トゲピー' 
+      ja: 'トゲピー'
     },
     info: {
       type: {
@@ -38479,7 +38479,7 @@ export const MOCK_DB_CARDS: Card[] = [
         name: {
           es: 'Destructor',
           en: 'Pound',
-          ja: 'はたく' 
+          ja: 'はたく'
         },
         damage: 20,
         energy: [PokemonTypeENUM.PSYCHIC]
@@ -38491,7 +38491,7 @@ export const MOCK_DB_CARDS: Card[] = [
     flavor: {
       es: 'El cascarón parece estar lleno de alegría. Dicen que trae buena suerte si se le trata con cariño.',
       en: 'The shell seems to be filled with joy. It is said that it will share good luck when treated kindly.',
-      ja: '殻の中に 幸せが たくさん つまっているらしく 優しくされると 幸運を 分け与える という。' 
+      ja: '殻の中に 幸せが たくさん つまっているらしく 優しくされると 幸運を 分け与える という。'
     },
     health: 50,
     rarity: CardRarityENUM.PROMO,
@@ -38507,7 +38507,7 @@ export const MOCK_DB_CARDS: Card[] = [
     extra: {
       es: 'Elección Mágica',
       en: 'Wonder Pick',
-      ja: 'ワンダーピック' 
+      ja: 'ワンダーピック'
     },
     related: [435, 436, 437]
   }

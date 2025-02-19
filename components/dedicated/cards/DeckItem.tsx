@@ -17,10 +17,7 @@ import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
       <ThemedView style={[CreateScreenStyles.deckItem, 
                           {
                             borderColor: !item.valid  ? 'goldenrod' : 'transparent', 
-                            borderWidth: 1, 
-                            borderLeftWidth: 0, 
-                            borderTopWidth: 0, 
-                            borderBottomWidth: 0
+                            borderWidth: !item.valid  ? 1 : 0
                           }]}>
         <TouchableOpacity style={{flex: 1}} onPress={onPress}>
           <ThemedView style={{flexDirection: 'row'}}>
@@ -51,7 +48,7 @@ import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
               }
             </ThemedView>
             <ThemedView style={[CreateScreenStyles.deckName, {justifyContent: 'space-between', width: '67%'}]}>
-              <ThemedText style={{left: 0, top: 1}}>{item.name}</ThemedText>
+              <ThemedText style={[{left: 0}, item.valid && {top: 1}]}>{item.name}</ThemedText>
               <ThemedView style={{position: 'absolute', right: 2, marginTop: 2}}>
                 {
                   item && item.energies?.length > 0 && 

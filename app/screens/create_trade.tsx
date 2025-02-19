@@ -261,7 +261,7 @@ export default function CreateTradeScreen() {
       { loading && <LoadingOverlay/> }
       <SharedScreen title={trade_id ? 'edit_trade' : 'create_trade'} 
                     styles={{paddingInline: 16, marginTop: 0}} customClose={goBack}>
-        <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between'}}>
+        <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 12}}>
           <TextInput style={[CardGridStyles.searchInput, {width: trade_id ? '87%' : '100%'}]}
                     placeholder={i18n.t('trade_name')}
                     value={title}
