@@ -60,10 +60,11 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
   const searchQuery = useRef('');
   const inputRef = useRef<TextInput>(null);
   const [filtered, setFiltered] = useState<Card[]>([]);
+
   const [favorites, setFavorites] = useState<Card[]>(
     state.cardState.cards.filter(c => state.settingsState.favorites?.includes(c.id))
   );
-  const [footerVisible, setFooterVisible] = useState<boolean>(false);
+
   const flatListRef = useRef<FlatList<Card> | null>(null);
   const router = useRouter();
   const {i18n} = useI18n();
@@ -172,36 +173,33 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
     return filterCards(filter, data, state.settingsState.favorites);
   }
 
-  const RenderFooter = () => {
-    const renderFooter = useCallback(() => {
-      if (!!searchQuery.current || !footerVisible || filtered.length < 34) {
-        return <ThemedView style={{ height: 20 }}></ThemedView>;
-      }
-  
-      return (
-        <View
-          style={[
-            ModalStyles.modalFooter,
-            { marginBlock: 34, boxShadow: 'none', paddingTop: 20 },
-          ]}
+
+  const renderFooter = useCallback(() => {
+    if (filtered.length < 34) {
+      return <ThemedView style={{ height: 20 }}></ThemedView>;
+    }
+
+    return (
+      <View
+        style={[
+          ModalStyles.modalFooter,
+          { marginBlock: 34, boxShadow: 'none', paddingTop: 20 },
+        ]}
+      >
+        <TouchableOpacity
+          style={ButtonStyles.button}
+          onPress={goUp}
+          accessibilityLabel={GO_UP}
+          accessibilityRole="button"
+          accessible={true}
         >
-          <TouchableOpacity
-            style={ButtonStyles.button}
-            onPress={goUp}
-            accessibilityLabel={GO_UP}
-            accessibilityRole="button"
-            accessible={true}
-          >
-            <View style={ButtonStyles.insetBorder}>
-              <ThemedText>{i18n.t('go_up')}</ThemedText>
-            </View>
-          </TouchableOpacity>
-        </View>
-      );
-    }, [searchQuery.current, footerVisible, filtered.length]);
-  
-    return renderFooter();
-  };
+          <View style={ButtonStyles.insetBorder}>
+            <ThemedText>{i18n.t('go_up')}</ThemedText>
+          </View>
+        </TouchableOpacity>
+      </View>
+    )
+  }, [searchQuery.current, filtered.length]);
 
   const RenderEmpty = () => {
     const renderCardState = useCallback(() => {
@@ -292,9 +290,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                 keyExtractor={keyExtractor}
                 key={numColumns}
                 numColumns={numColumns}
-                onStartReached={() => setFooterVisible(false)}
                 onStartReachedThreshold={1}
-                onEndReached={() => setFooterVisible(true)}
                 onEndReachedThreshold={0.6}
                 scrollEnabled={state.cardState.loaded}
                 initialNumToRender={25}
@@ -307,7 +303,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                 stickyHeaderIndices={[0]}
                 ListEmptyComponent={RenderEmpty}
                 scrollEventThrottle={16}
-                ListFooterComponent={RenderFooter}
+                ListFooterComponent={renderFooter}
                 ListHeaderComponent={
                   <Animated.View style={[CardGridStyles.inputContainer]}>
                     <TextInput style={[CardGridStyles.searchInput, {boxShadow: '5px 4px 12px rgba(0, 0, 0, 0.2)', width: '71%'}]}

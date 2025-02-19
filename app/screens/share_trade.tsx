@@ -238,7 +238,5 @@ const styles = StyleSheet.create({
     width: '107%',
     marginLeft: -12, 
     boxShadow: 'none',
-    paddingTop: 0,
-    minHeight: 170
   }
 });
