@@ -2,7 +2,7 @@ import { useFonts } from 'expo-font';
 import { Stack, useNavigation } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { createContext, useEffect, useMemo, useReducer, useState } from 'react';
+import { createContext, useCallback, useEffect, useMemo, useReducer, useState } from 'react';
 import { Platform } from 'react-native';
 import { Provider } from 'react-native-paper';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -22,6 +22,7 @@ import { ThemedView } from '@/components/ThemedView';
 import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import { SplashScreenMemo } from '@/components/ui/SplashScreen';
 import { ConfirmationProvider } from '@/core/providers/ConfirmationProvider';
+import CardsService from '@/core/services/cards.service';
 
 export const AppContext = createContext<{ state: AppState; dispatch: React.Dispatch<any> } | undefined>(undefined);
 SplashScreen.preventAutoHideAsync();
@@ -34,8 +35,69 @@ export default function RootLayout() {
   const [waiting, setWaiting] = useState(true);
   const contextValue = useMemo(() => ({ state, dispatch }), [state, dispatch]);
   const { setLocale }  = useI18n();
-  const {i18n} = useI18n();
   const navigation = useNavigation();
+  const cardsService = new CardsService();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const checkStorage = async () => {
+      const version = await Storage.get('version');
+      if (version === null) {
+        const settings = {...state.settingsState, version: APP_VERSION};
+        dispatch({type: 'SET_SETTINGS', value: settings});
+        setLocale(settings.language);
+        Storage.setSettings(settings);
+        loadCards();
+      } else {
+        const settings = await Storage.loadSettings();
+        if (settings !== null) {
+          if (!settings.trades) {
+            settings.trades = [];
+            Storage.setSettings({...settings});
+          }
+
+          dispatch({type: 'SET_SETTINGS', value: {...settings, version: APP_VERSION}});
+          SoundService.setEnabled(settings.sound)
+          setLocale(settings.language);
+          setShowStartScreen(settings.show_intro);
+
+          if (version !== APP_VERSION || settings.cards.length === 0) {
+            Storage.set('version', APP_VERSION);
+            Storage.set('cards', []);
+            dispatch({type: 'RESET_CARDS'});
+            loadCards();
+          } 
+
+          if (settings.cards.length !== 0) {
+            dispatch({ type: 'SET_CARDS', value: settings.cards });
+            setLoading(false);
+          }
+        }
+      }
+      setTimeout(() => setWaiting(false), 1500);
+    }
+
+    checkStorage();
+  }, []);
+  
+  const loadCards = useCallback(() => {
+    const sub = cardsService
+      .getCards()
+      .subscribe({
+        next: (res) => {
+          dispatch({ type: 'SET_CARDS', value: res });
+          Storage.set('cards', res);
+          setLoading(false);
+        },
+        error: (err) => {
+          console.log(err);
+          Storage.set('cards', []);
+          setLoading(false);
+        }
+      });
+
+      return sub;
+  }, []);
 
   useEffect(() => {
     if (loaded) SplashScreen.hideAsync();
@@ -64,35 +126,6 @@ export default function RootLayout() {
   }, []);
 
   useEffect(() => {
-    const checkStorage = async () => {
-      const version = await Storage.get('version');
-      if (version === null) {
-        const settings = {...state.settingsState, version: APP_VERSION};
-        dispatch({type: 'SET_SETTINGS', value: settings});
-        setLocale(settings.language);
-        Storage.setSettings(settings);
-      } else {
-        const settings = await Storage.loadSettings();
-        if (settings !== null) {
-          dispatch({type: 'SET_SETTINGS', value: {...settings, version: APP_VERSION}});
-          SoundService.setEnabled(settings.sound)
-          setLocale(settings.language);
-          setShowStartScreen(settings.show_intro);
-
-          if (version !== APP_VERSION) {
-            Storage.set('version', APP_VERSION);
-            Storage.set('cards', []);
-            dispatch({type: 'RESET_CARDS'});
-          }
-        }
-      }
-      setTimeout(() => setWaiting(false), 1500);
-    }
-
-    checkStorage();
-  }, []);
-
-  useEffect(() => {
     SoundService.preloadAllSounds();
   }, []);
 
@@ -103,7 +136,7 @@ export default function RootLayout() {
     SoundService.play('CHANGE_VIEW');
   }
 
-  if (!loaded || waiting) { 
+  if (!loaded || waiting || loading) { 
     return (
       <LoadingOverlay></LoadingOverlay>
     )

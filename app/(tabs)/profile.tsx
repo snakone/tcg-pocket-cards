@@ -17,7 +17,8 @@ import { NO_CONTEXT, USER_LABEL } from '@/shared/definitions/sentences/global.se
 import { AppContext } from '../_layout';
 import { CardGridStyles, TabsMenuStyles } from '@/shared/styles/component.styles';
 import { createDeckStyles } from '../screens/create_deck';
-import { CARD_IMAGE_MAP } from '@/shared/definitions/utils/card.images';
+import { LanguageType } from '@/shared/definitions/types/global.types';
+import { getImageLanguage } from '@/shared/definitions/utils/functions';
 
 export default function ProfileScreen() {
   const {i18n} = useI18n();
@@ -25,6 +26,11 @@ export default function ProfileScreen() {
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
   const [userName, setUserName] = useState('');
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   const [profile, setProfile] = useState<UserProfile>(
     {name: '', avatar: 'eevee', coin: 'eevee', best: null}
@@ -135,7 +141,7 @@ export default function ProfileScreen() {
                             CardGridStyles.image, 
                             {width: 240}
                           ]} 
-                        source={CARD_IMAGE_MAP[String(profile.best)]}/>        
+                        source={getImageLanguage(lang, profile.best)}/>        
                       </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
                     }
                   </TouchableOpacity>

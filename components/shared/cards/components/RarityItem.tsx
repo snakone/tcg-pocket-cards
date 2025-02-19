@@ -10,15 +10,14 @@ import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { RarityWithoutSpecial } from "@/shared/definitions/enums/card.enums";
 
 interface RarityItemProps {
-  rarity: { [key in RarityWithoutSpecial]: boolean | null },
   filterObj: MutableRefObject<FilterSearch>,
   raritySelectAll$: Subject<boolean>
 }
 
-export const RarityItem = memo(({ rarity, filterObj, raritySelectAll$ }: RarityItemProps) => {
+export const RarityItem = memo(({ filterObj, raritySelectAll$ }: RarityItemProps) => {
   return (
     <ThemedView style={[filterStyles.flexContainer, { flexWrap: 'wrap', marginBottom: 48 }]}>
-      {Object.keys(rarity).filter(key => key !== '0').map((key, index) => {
+      {Object.keys(filterObj.current.rarity).filter(key => key !== '0').map((key, index) => {
         const image = (RARITY_MAP as any)[key]?.image;
         const amount = (RARITY_MAP as any)[key]?.amount;
 

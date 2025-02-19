@@ -1,18 +1,20 @@
+import { FlatList, Animated, TextInput, Platform, TouchableOpacity, View } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import React, { useCallback, useEffect, useState } from "react";
+import { Image } from 'expo-image';
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
-import { CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";
 import { CardGridStyles } from "@/shared/styles/component.styles";
-import { MaterialIcons } from "@expo/vector-icons";
-import React, { useCallback, useEffect, useState } from "react";
-import { FlatList, Animated, TextInput, Platform, TouchableOpacity, View } from "react-native";
-import { Image } from 'expo-image';
 import { SoundService } from "@/core/services/sounds.service";
 import { AppState } from "@/hooks/root.reducer";
 import { Colors } from "@/shared/definitions/utils/colors";
 import CreateService from "@/core/services/create.service";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
 
 interface PreviewListProps {
   handleSearch: (value: string) => void,
@@ -33,6 +35,11 @@ export default function PreviewList({
 }: PreviewListProps) {
   const {i18n} = useI18n();
   const [deck, setDeck] = useState<any[]>(previousDeck);
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   useEffect(() => {
     const sub = service.addNumber$.subscribe(res => manageAddDeck(res));
@@ -47,7 +54,7 @@ export default function PreviewList({
       await SoundService.play('PICK_CARD_SOUND');
       setNotSaved(true);
       addNumberToList(card);
-    };
+    }
   }
 
   function canAddToDeck(card: Card): boolean {
@@ -103,12 +110,12 @@ export default function PreviewList({
         <View>
           { item ? 
           <ThemedView style={{backgroundColor: Colors.light.background}}>
-            <Image accessibilityLabel={item?.name} 
+            <Image accessibilityLabel={item?.name[lang]} 
                     style={[
               CardGridStyles.image, 
               {width: Platform.OS === 'web' ? 31.8 : 49.4, height: 46, borderRadius: 4}
             ]} 
-            source={CARD_IMAGE_MAP_69x96[String(item?.id)]}/>
+            source={getImageLanguage69x96(lang, item?.id)}/>
             { state.settingsState.favorites?.includes(item.id) && 
               <ThemedView style={[CardGridStyles.triangle, {
                 borderRightWidth: 8,
@@ -126,7 +133,7 @@ export default function PreviewList({
     <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
       <FlatList data={deck}
                 numColumns={10}
-                contentContainerStyle={{width: '100%', padding: 16, paddingTop: 20, paddingBottom: 12}}
+                contentContainerStyle={{width: '100%', padding: 16, paddingTop: 20, paddingBottom: 14}}
                 renderItem={renderPreviewItem}
                 keyExtractor={(item, index) => index + 1 + ''}
       />

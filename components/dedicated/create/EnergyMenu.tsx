@@ -9,6 +9,7 @@ import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
 import { SELECT_ENERGY_HEIGHT, TYPE_MAP } from "@/shared/definitions/utils/constants";
+import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 
 import { 
   LayoutStyles,
@@ -18,7 +19,6 @@ import {
   ScreenStyles, 
   ButtonStyles
 } from "@/shared/styles/component.styles";
-import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 
 interface EnergyMenuProps {
   element: any,

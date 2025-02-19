@@ -1,4 +1,4 @@
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, useWindowDimensions } from 'react-native';
 
 import { 
   DEFAULT_MODAL_HEIGHT,
@@ -17,6 +17,7 @@ export const CARD_IMAGE_WIDTH_3 = 116.5;
 export const CARD_IMAGE_WIDTH_5 = 69.1;
 export const CREATE_GRID_HEIGHT = 520;
 export const CREATE_GRID_MAX_HEIGHT = CREATE_GRID_HEIGHT + 60;
+export const MAX_WEB_HEIGHT = 844;
 
 export const ThemeTextStyles = StyleSheet.create({
   default: {
@@ -353,6 +354,7 @@ export const TabButtonStyles = StyleSheet.create({
     top: 2,
     position: 'relative',
     fontSize: 24,
+    left: 2
   },
   stacks: {
     marginTop: 7,
@@ -364,6 +366,10 @@ export const TabButtonStyles = StyleSheet.create({
     marginTop: 7,
     fontSize: 15,
     top: Platform.OS === 'web' ? 3 : 2,
+    position: 'relative'
+  },
+  trade: {
+    top: Platform.OS === 'web' ? 6 : 4,
     position: 'relative'
   },
   menu: {
@@ -395,13 +401,14 @@ export const LayoutStyles = StyleSheet.create({
 export const WebStyles = StyleSheet.create({
   view: {
     width: 390, 
-    height: 844,
+    height: MAX_WEB_HEIGHT,
     minWidth: 390,
-    minHeight: 844,
+    minHeight: MAX_WEB_HEIGHT,
     maxWidth: 390,
-    maxHeight: 844,
+    maxHeight: MAX_WEB_HEIGHT,
     alignSelf: 'center',
-    boxShadow: '0px 0px 25px 10px rgba(0, 0, 0, .8)'
+    justifyContent: 'center',
+    boxShadow: '0px 0px 25px 10px rgba(0, 0, 0, .8)',
   }
 });
 
@@ -478,7 +485,7 @@ export const ScreenStyles = StyleSheet.create({
   },
   bottomContent: {
     position: 'absolute',
-    bottom: 30,
+    bottom: 16,
     alignSelf: 'center'
   }
 });
@@ -644,7 +651,7 @@ export const filterStyles = StyleSheet.create({
   },
   packImage: {
     width: 58, 
-    height: 110
+    height: 114
   }
 });
 
@@ -915,7 +922,7 @@ export const CreateScreenStyles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 8,
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.2)',
-    paddingVertical: 10,
+    paddingVertical: 6,
     paddingHorizontal: 6,
     marginBottom: 10,
     overflow: 'hidden'
@@ -944,11 +951,11 @@ export const CreateScreenStyles = StyleSheet.create({
     width: 55, 
     borderRadius: 4, 
     position: 'absolute', 
-    backgroundColor: Colors.light.skeleton,
+    backgroundColor: 'rgb(225, 225, 225)',
     shadowColor: 'black',
     shadowRadius: 4,
-    shadowOffset: {height: 2, width: 2},
-    shadowOpacity: 0.2,
+    shadowOffset: {height: 1, width: 2},
+    shadowOpacity: 0.1,
     top: 4,
   }
 });

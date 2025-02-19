@@ -11,7 +11,7 @@ import
   withTiming 
 } from "react-native-reanimated";
 
-import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLocalSearchParams, useRouter } from 'expo-router/build/hooks';
 import { Image } from 'expo-image';
 import { Platform, Pressable, TouchableOpacity, View } from "react-native";
@@ -33,18 +33,13 @@ import { ThemedView } from "@/components/ThemedView";
 import { BACK_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { AppContext } from "../_layout";
-import { CARD_IMAGE_MAP } from "@/shared/definitions/utils/card.images";
 import SoundService from "@/core/services/sounds.service";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import DetailCardScroll from "@/components/dedicated/detail/detail.scroll";
 import Storage from "@/core/storage/storage.service";
-import CardsService from "@/core/services/cards.service";
-import { useError } from "@/core/providers/ErrorProvider";
-import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import ScrollService from "@/core/services/scroll.service";
-import { CardExpansionENUM, CardExpansionTypeENUM, CardRarityENUM, CardStageENUM } from "@/shared/definitions/enums/card.enums";
-import { EXPANSION } from "@/shared/definitions/enums/packs.enums";
-import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { getImageLanguage } from "@/shared/definitions/utils/functions";
 
 const INITIAL_INFO_HEIGHT = 100;
 const MAX_HEIGHT = 450;
@@ -55,7 +50,6 @@ export default function DetailScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
-  const cardsService = useMemo(() => new CardsService(), []);
   const scrollService = useMemo(() => new ScrollService(), []);
   const styles = DetailStyles;
   const router = useRouter();
@@ -76,47 +70,11 @@ export default function DetailScreen() {
   const scrollRef = useRef<Animated.ScrollView>(null);
   const scrollYAndroid = useSharedValue(0);
   const [card, setCard] = useState<Card>();
-  const [loading, setLoading] = useState(true);
-  const { show: showError } = useError();
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
 
-  const loadCards = useCallback(() => {
-    const sub = cardsService
-      .getCards()
-      .subscribe({
-        next: (res) => {
-          dispatch({ type: 'SET_CARDS', value: res });
-          Storage.set('cards', res);
-          setLoading(false);
-        },
-        error: (err) => {
-          console.log(err);
-          showError("error_get_cards");
-          Storage.set('cards', []);
-          setLoading(false);
-        }
-      });
-
-      return sub;
-  }, [dispatch]);
-  
   useEffect(() => {
-    const cards: Card[] = state.settingsState.cards;
-
-    if (cards && cards.length !== 0 && !state.cardState.loaded) {
-      dispatch({ type: 'SET_CARDS', value: cards });
-      setLoading(false);
-      return;
-    }
-    
-    let sub: Subscription;
-    !state.cardState.loaded ? sub = loadCards() : setLoading(false);
-
-    return () => {
-      if (sub) {
-        sub.unsubscribe();
-      }
-    };
-  }, []);
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   useEffect(() => {
     if (Platform.OS !== 'web' || !state.cardState.loaded) return;
@@ -291,7 +249,7 @@ export default function DetailScreen() {
         height.value = Math.max(height.value + deltaY, INITIAL_INFO_HEIGHT);
       } else {
         if (scrollRef.current) {
-          scrollY.value = Math.min(scrollY.value + deltaY, 840); 
+          scrollY.value = Math.min(scrollY.value + deltaY, 800); 
           // Change depending on the Scroll content height
           scrollRef.current.scrollTo({ y: scrollY.value, animated: false });
         }
@@ -442,7 +400,6 @@ export default function DetailScreen() {
 
   return (
     <Animated.View style={styles.container}>
-       { loading && <LoadingOverlay/> }
       { showContent && <RenderFavoriteToggle></RenderFavoriteToggle>}
       { isSwiping && <ThemedView style={cardDetailStyles.overlay}>
                       <Pressable style={{flex: 1, width: '100%'}} 
@@ -455,7 +412,7 @@ export default function DetailScreen() {
           Platform.OS === 'web' ? (
             <Animated.View style={[opacityStyle, cardAnimatedStyle]}>
               <Image style={[styles.image, cardDetailStyles.card]}
-                     source={CARD_IMAGE_MAP[id]}
+                     source={getImageLanguage(lang, Number(id))}
                       />
             </Animated.View>
           ) : (<>
@@ -467,7 +424,7 @@ export default function DetailScreen() {
                 cardAndroidAnimatedStyle
               ]}>
                 <Image style={[styles.image]}
-                      source={CARD_IMAGE_MAP[id]}
+                      source={getImageLanguage(lang, Number(id))}
                       contentFit={'fill'} />
               </Animated.View>
             </GestureDetector>

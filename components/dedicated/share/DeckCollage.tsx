@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import * as MediaLibrary from 'expo-media-library';
 import { FlatList, View } from "react-native";
 import React from "react";
@@ -10,10 +10,12 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { CardGridStyles, TabsMenuStyles } from "@/shared/styles/component.styles";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { CARD_IMAGE_MAP } from "@/shared/definitions/utils/card.images";
 import { COIN_MAP, DECK_BACKGROUND_MAP, FRONTEND_URL, TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { AvatarIcon, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
-import { filterUniqueItems } from "@/shared/definitions/utils/functions";
+import { filterUniqueItems, getImageLanguage } from "@/shared/definitions/utils/functions";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { AppContext } from "@/app/_layout";
+import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 
 const COLLAGE_WIDTH = 1920;
 
@@ -37,6 +39,14 @@ export default function DeckCollage({
   const [status, requestPermission] = MediaLibrary.usePermissions();
   const [data, setData] = useState<Card[]>(deck);
   const [ids, setIds] = useState<number[]>([]);
+  const context = useContext(AppContext);
+  if (!context) { throw new Error(NO_CONTEXT); }
+  const { state, dispatch } = context;
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   if (status === null) {
     requestPermission();
@@ -85,17 +95,17 @@ export default function DeckCollage({
   };
 
   const renderItem = useCallback(({item, index}: {item: Card, index: number}) => (
-    <View style={[CardGridStyles.imageContainer]}>
+    <View style={[CardGridStyles.imageContainer, {marginHorizontal: 11}]}>
       <View style={{flex: 1, backgroundColor: 'white'}}>
         <View>
           { item && 
           <>
-            <Image accessibilityLabel={item?.name} 
+            <Image accessibilityLabel={item?.name[lang]} 
                   style={[
                 CardGridStyles.image, 
-                {width: 356}
+                {width: 354}
               ]} 
-            source={CARD_IMAGE_MAP[String(item?.id)]}/>        
+            source={getImageLanguage(lang, (item?.id))}/>        
           </>
           }
           {ids.includes(item?.id) && 
@@ -113,7 +123,7 @@ export default function DeckCollage({
       <View style={{width: COLLAGE_WIDTH}}>
         <ImageBackground source={background && DECK_BACKGROUND_MAP[background.value]} 
                          contentFit="cover" 
-                         style={{padding: 60, paddingBottom: 20}}>
+                         style={{padding: 20}}>
           <FlatList data={data}
             renderItem={renderItem}
             numColumns={5}
@@ -134,8 +144,8 @@ export default function DeckCollage({
                               key={key}
                               source={image}
                               style={{
-                                width: 26,
-                                height: 26,
+                                width: 40,
+                                height: 40,
                                 position: 'relative',
                                 top: 1
                               }}
@@ -147,7 +157,7 @@ export default function DeckCollage({
                   <ThemedText style={[styles.footerText, {fontWeight: 'bold'}]}>{name}</ThemedText>
                 </ThemedView>
                 <Image source={COIN_MAP[profile.coin]} 
-                      style={[TabsMenuStyles.avatar, {width: 40, height: 40, marginRight: 20, top: 1}]}>
+                       style={[TabsMenuStyles.avatar, {width: 40, height: 40, marginRight: 16, top: 1}]}>
                 </Image>
                 <ThemedText style={styles.footerText}>
                   {profile.name || 'Username'} - TCG Pocket Cards - {FRONTEND_URL}
@@ -160,20 +170,7 @@ export default function DeckCollage({
   );
 }
 
-export const styles = StyleSheet.create({
-  header: {
-    width: 'auto',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 60,
-    padding: 20,
-    paddingInline: 50,
-    paddingBottom: 26,
-    backgroundColor: 'white',
-    opacity: 0.8,
-    borderRadius: 25,
-    marginHorizontal: 'auto'
-  },
+const styles = StyleSheet.create({
   title: {
     fontSize: 54, 
     fontWeight: 'bold',
@@ -186,14 +183,14 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 10,
     borderRadius: 40,
-    marginRight: 20, 
+    marginRight: 16, 
     padding: 0, 
     backgroundColor: 'transparent', 
-    top: 2
+    top: 1
   },
   footer: {
     marginTop: 20,
-    width: 1800,
+    width: 1920 - 40,
     backgroundColor: 'white',
     opacity: 0.8,
     borderRadius: 15,
@@ -203,18 +200,19 @@ export const styles = StyleSheet.create({
     paddingVertical: 4,
     paddingHorizontal: 24,
     flexDirection: 'row',
-    borderWidth: 2
   },
   footerContent: {
     top: -1,
-    marginRight: 75,
+    marginRight: 100,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'
   },
   footerText: {
     textAlign: 'right', 
-    fontSize: 24, 
-    color: 'black'
+    fontSize: 32, 
+    color: 'black',
+    marginLeft: 20,
+    top: -1
   }
 });

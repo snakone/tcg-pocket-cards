@@ -11,11 +11,13 @@ import { Colors } from '@/shared/definitions/utils/colors';
 import SoundService from '@/core/services/sounds.service';
 
 interface InvertButtonProps {
-  onClick: () => void
+  onClick: () => void,
+  styles?: any
 }
 
 const InvertButton = ({
-  onClick
+  onClick,
+  styles = {}
 }: InvertButtonProps) => {
   const {i18n} = useI18n();
 
@@ -41,7 +43,7 @@ const InvertButton = ({
 
   return (
     <Pressable
-      style={{height: 20}}
+      style={[{height: 20}, styles]}
       onPress={handlePress}
     >
       <ThemedView style={{flexDirection: 'row', left: -16}}>

@@ -1,6 +1,6 @@
 import { PocketNews } from '@/shared/definitions/interfaces/global.interfaces';
 import React from 'react';
-import { StyleSheet, TouchableOpacity, } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Image } from 'expo-image';
 import { I18n } from 'i18n-js';
 

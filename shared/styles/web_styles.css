@@ -2,7 +2,18 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-image: url('https://wallpapercave.com/wp/wp2711094.jpg');
+  background-image: url('https://i0.wp.com/kojiki-samurai.com/wp-content/uploads/2021/11/pokemon.jpeg?ssl=1');
   overflow-y: auto;
   touch-action: none;
+  user-select: none;
+}
+
+@media screen and (max-height: 844px) {
+  html, body {
+    height: auto;
+    min-height: 100%;
+    display: grid;
+    place-items: center;
+    overflow-y: auto;
+  }
 }

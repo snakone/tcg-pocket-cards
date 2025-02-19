@@ -1,10 +1,9 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import React from "react";
 import { Image } from "expo-image";
-import { Subscription } from "rxjs";
 
 import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, CardGridStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
@@ -17,11 +16,9 @@ import SoundService from "@/core/services/sounds.service";
 import Storage from "@/core/storage/storage.service";
 import { AppContext } from "@/app/_layout";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";
 import { Colors } from "@/shared/definitions/utils/colors";
-import CardsService from "@/core/services/cards.service";
-import { useError } from "@/core/providers/ErrorProvider";
-import LoadingOverlay from "@/components/ui/LoadingOverlay";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
 
 export default function PickBestMenu({
   isVisible,
@@ -36,56 +33,18 @@ export default function PickBestMenu({
   const { state, dispatch } = context;
   const [cards, setCards] = useState<Card[]>([]);
   const [selected, setSelected] = useState(-1);
-  const [loading, setLoading] = useState(true);
-  const cardsService = useMemo(() => new CardsService(), []);
-  const { show: showError } = useError();
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
 
-  const loadCards = useCallback(() => {
-    const sub = cardsService
-      .getCards()
-      .subscribe({
-        next: (res) => {
-          dispatch({ type: 'SET_CARDS', value: res });
-          Storage.set('cards', res);
-          setLoading(false);
-        },
-        error: (err) => {
-          console.log(err);
-          showError("error_get_cards");
-          Storage.set('cards', []);
-          setLoading(false);
-        }
-      });
-
-      return sub;
-  }, [dispatch]);
-  
   useEffect(() => {
-    const cards: Card[] = state.settingsState.cards;
-
-    if (cards && cards.length !== 0 && !state.cardState.loaded) {
-      dispatch({ type: 'SET_CARDS', value: cards });
-      setLoading(false);
-      return;
-    }
-
-    let sub: Subscription;
-
-    !state.cardState.loaded ? sub = loadCards() : setLoading(false);
-
-    return () => {
-      if (sub) {
-        sub.unsubscribe();
-      }
-    };
-  }, []);
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
   }, []);
 
-  async function closeMenu(): Promise<void> {
-    await playSound();
+  async function closeMenu(sound = true): Promise<void> {
+    if (sound) { await playSound(); }
     onClose();
   }
 
@@ -105,7 +64,7 @@ export default function PickBestMenu({
     Storage.set('best', value);
     const settings = {...state.settingsState, best: value};
     dispatch({type: 'SET_SETTINGS', value: settings});
-    closeMenu();
+    closeMenu(false);
   }
 
   useEffect(() => {
@@ -118,8 +77,8 @@ export default function PickBestMenu({
             onPress={() => handleClick(item.id)}
             style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
         <View>
-          <Image accessibilityLabel={item.name}
-                  source={CARD_IMAGE_MAP_69x96[String(item.id)]}
+          <Image accessibilityLabel={item.name[lang]}
+                  source={getImageLanguage69x96(lang, item.id)}
                   style={[
                   CardGridStyles.image, 
                   {width: Platform.OS === 'web' ? 57.6 : 58}
@@ -139,7 +98,6 @@ export default function PickBestMenu({
                  onPress={() => closeMenu()}>
       </Pressable>
       <Animated.View style={[animatedStyle, sortStyles.container, {height: 605}]}>
-        { loading && <LoadingOverlay/> }
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_a_card')}</ThemedText>
         </View>

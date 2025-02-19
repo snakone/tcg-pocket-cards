@@ -5,7 +5,7 @@ import { Platform, Pressable } from 'react-native';
 import { Portal, Provider } from 'react-native-paper';
 
 import { AppContext } from '../_layout';
-import { IconSymbol, SvgStackSymbol, SvgStylusSymbol } from '@/components/ui/IconSymbol';
+import { IconSymbol, SvgStackSymbol, SvgStylusSymbol, SvgTradeSymbol } from '@/components/ui/IconSymbol';
 import { FILTER_CARDS_HEIGHT, MENU_WIDTH, RIPPLE_CONFIG } from '@/shared/definitions/utils/constants';
 import { CustomTabButtonStyles, TabButtonStyles } from '@/shared/styles/component.styles';
 import TabsMenu from '@/components/shared/TabsMenu';
@@ -206,6 +206,16 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
+          name="trade"
+          options={{
+            tabBarIcon: ({ color }) =>
+              <SvgTradeSymbol color={color}
+                              style={[TabButtonStyles.trade, emulatorStyle() && {top: 1, left: 3}, Platform.OS !== 'web' && {top: 5}]} />,
+            animation: 'shift',
+            title: i18n.t('trade')
+          }}
+        />
+        <Tabs.Screen
           name="menu"
           options={{
             animation: 'shift',
@@ -220,6 +230,7 @@ export default function TabLayout() {
             ),
           }}
         />
+        {/* MENU LINKS */}
         <Tabs.Screen
           name="profile"
           options={{

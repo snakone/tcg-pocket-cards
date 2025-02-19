@@ -89,7 +89,7 @@ export function CreateScreenModal() {
         <ThemedText style={styles.text}>{i18n.t('create_selection_intro')}</ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={CREATE_CARD_SELECTION} style={{width: '100%', height: 426}}></Image>
+          <Image source={CREATE_CARD_SELECTION} style={{width: '100%', height: 406}}></Image>
         </ThemedView> 
 
         <ThemedText style={styles.text}>{i18n.t('create_selection_upper')}</ThemedText>

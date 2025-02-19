@@ -14,7 +14,9 @@ import {
   GENETIC_APEX,
   GENETIC_APEX_PACKS,
   MYTHICAL_ISLAND_MEW_ICON,
-  MYTHICAL_ISLAND_PACKS 
+  MYTHICAL_ISLAND_PACKS, 
+  SMACK_DOWN,
+  SMACK_DOWN_PACKS
 } from "@/shared/definitions/sentences/path.sentences";
 
 interface ExpansionMenuProps {
@@ -63,7 +65,31 @@ export const ExpansionsMenu = React.memo(({filterObj, handleExpansion }: Expansi
                 keyFilter={8 + index}
                 filterObj={filterObj}
               >
-                <Image source={icon} style={[filterStyles.packImage, {height: 112}]} />
+                <Image source={icon} style={filterStyles.packImage} />
+              </StateButton>
+            ))}
+          </ThemedView>
+          <View
+            style={[
+              TabsMenuStyles.separator,
+              { width: '100%', height: 2, marginTop: 4 },
+            ]}
+          ></View>
+        </ThemedView>
+
+        <ThemedView style={filterStyles.expansionContainer}>
+          <Image source={SMACK_DOWN} style={{ width: 118, height: 52 }}></Image>
+          <ThemedView style={{ flexDirection: 'row', marginBlock: 30, gap: 10 }}>
+            {SMACK_DOWN_PACKS.map((icon: any, index: number) => (
+              <StateButton
+                key={index}
+                isImage={true}
+                color=""
+                propFilter="expansion"
+                keyFilter={10 + index}
+                filterObj={filterObj}
+              >
+                <Image source={icon} style={[filterStyles.packImage, {height: 118}]} />
               </StateButton>
             ))}
           </ThemedView>

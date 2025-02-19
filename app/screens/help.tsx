@@ -1,5 +1,5 @@
 import { Platform, Pressable, View } from "react-native";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Modal as PaperModal, Portal } from "react-native-paper";
 import { useRouter } from "expo-router";
 import React from "react";
@@ -32,6 +32,7 @@ import {
   TermsModal,
   UserDataModal
 } from '@/components/modals/index';
+import CardsService from "@/core/services/cards.service";
 
 export default function HelpScreen() {
   const styles = HelpItemStyles;
@@ -41,6 +42,7 @@ export default function HelpScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
+  const cardsService = new CardsService();
 
   useEffect(() => {
     // NO CONTEXT ON SHARED SCREEN
@@ -57,13 +59,31 @@ export default function HelpScreen() {
     const subDelete = ShareService.deleteSettings$.subscribe(_ => {
         dispatch({type: 'RESET_SETTINGS'});
         dispatch({type: 'RESET_CARDS'});
+        loadCards();
     });
 
     return () => {
       subImport.unsubscribe();
       subDelete.unsubscribe();
     }
-  }, [])
+  }, []);
+
+  const loadCards = useCallback(() => {
+    const sub = cardsService
+      .getCards()
+      .subscribe({
+        next: (res) => {
+          dispatch({ type: 'SET_CARDS', value: res });
+          Storage.set('cards', res);
+        },
+        error: (err) => {
+          console.log(err);
+          Storage.set('cards', []);
+        }
+      });
+
+      return sub;
+  }, []);
 
   const items: IconItemWithModal[] = [
     { 
@@ -161,10 +181,10 @@ export default function HelpScreen() {
                   onDismiss={close}
                   key={item.modal}
                   dismissable={false}
-                  contentContainerStyle={{height: Platform.OS === 'web' ? '100%' : '110%'}}>
+                  contentContainerStyle={{height: Platform.OS === 'web' ? '100%' : '110%', justifyContent: 'flex-start'}}>
                   <View style={[
                     ModalStyles.centeredView, Platform.OS === 'web' ? 
-                    {...WebStyles.view, top: -60} : {flex: 1, top: 0}]}>
+                    {...WebStyles.view} : {flex: 1, top: 0}]}>
                     <View style={ModalStyles.modalView}>
                       <View style={ModalStyles.modalHeader}>
                         <ThemedText style={[ModalStyles.modalHeaderTitle, {marginTop: 4}]}>

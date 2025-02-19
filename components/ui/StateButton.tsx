@@ -19,7 +19,9 @@ interface StateButtonProps {
   isImage?: boolean,
   propFilter: string,
   keyFilter: string | number,
-  filterObj?: React.MutableRefObject<FilterSearch>
+  onClick?: () => void,
+  filterObj?: React.MutableRefObject<FilterSearch>,
+  disabled?: boolean
 }
 
 const StateButton = ({
@@ -33,13 +35,16 @@ const StateButton = ({
   isImage = false,
   propFilter,
   keyFilter,
-  filterObj
+  filterObj,
+  onClick,
+  disabled = false
 }: StateButtonProps) => {
   const [pressed, setPressed] = useState(false);
   const {i18n} = useI18n();
 
   const handlePress = () => {
     SoundService.play('POP_PICK');
+    if(onClick !== undefined) onClick();
     setPressed((prevPressed) => !prevPressed);
     if(filterObj?.current) {
       (filterObj.current as any)[propFilter][keyFilter] = !pressed;
@@ -70,6 +75,7 @@ const StateButton = ({
         (pressed || (filterObj?.current as any)[propFilter][keyFilter]) && isImage && { opacity: 1}
       ]}
       onPress={handlePress}
+      disabled={disabled} 
     >
       {children}
       {

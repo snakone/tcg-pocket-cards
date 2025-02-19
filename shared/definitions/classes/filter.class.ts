@@ -1,4 +1,4 @@
-import { CardRarityENUM, CardStageENUM, RarityWithoutSpecial } from "../enums/card.enums"
+import { CardRarityENUM, CardSpecialConditionENUM, CardStageENUM, RarityWithoutSpecial } from "../enums/card.enums"
 import { EXPANSION } from "../enums/packs.enums"
 import { PokemonTypeENUM } from "../enums/pokemon.enums"
 
@@ -13,6 +13,7 @@ export class FilterSearch {
   public expansion: { [key in EXPANSION]: boolean | null }
   public ex: { is_ex: boolean | null, not_ex: boolean | null }
   public weak: { [key in PokemonTypeENUM]: boolean | null }
+  public condition: { [key in CardSpecialConditionENUM]: boolean | null }
 
   constructor() {
     this.ability = {with_ability: null, without_ability: null};
@@ -41,7 +42,10 @@ export class FilterSearch {
       [EXPANSION.WONDER_PICK]: null,
       [EXPANSION.SPECIAL_MISSION]: null,
       [EXPANSION.MYTHICAL_ISLAND]: null,
-      [EXPANSION.PROMO_A3]: null
+      [EXPANSION.PROMO_A3]: null,
+      [EXPANSION.DIALGA]: null,
+      [EXPANSION.PALKIA]: null,
+      [EXPANSION.PROMO_A4]: null
     };
 
     this.favorite = {included: null, not_favorite: null};
@@ -86,6 +90,28 @@ export class FilterSearch {
       [PokemonTypeENUM.DRAGON]: null,
       [PokemonTypeENUM.NORMAL]: null
     }
+
+    this.condition = {
+      [CardSpecialConditionENUM.ATTACK_BENCH]: null,
+      [CardSpecialConditionENUM.HEAL]: null,
+      [CardSpecialConditionENUM.RECOIL]: null,
+      [CardSpecialConditionENUM.POISON]: null,
+      [CardSpecialConditionENUM.PARALYZE]: null,
+      [CardSpecialConditionENUM.SLEEP]: null,
+      [CardSpecialConditionENUM.CONFUSION]: null,
+      [CardSpecialConditionENUM.BURNED]: null,
+      [CardSpecialConditionENUM.FLIP]: null,
+      [CardSpecialConditionENUM.NOTHING]: null,
+      [CardSpecialConditionENUM.DISCARD]: null,
+      [CardSpecialConditionENUM.ADD]: null,
+      [CardSpecialConditionENUM.EXTRA_DAMAGE]: null,
+      [CardSpecialConditionENUM.RESIST]: null,
+      [CardSpecialConditionENUM.CORNER]: null,
+      [CardSpecialConditionENUM.WITHDRAW_CARD]: null,
+      [CardSpecialConditionENUM.RETIRE]: null,
+      [CardSpecialConditionENUM.CALL]: null,
+      [CardSpecialConditionENUM.INACTIVE]: null
+    };
   }
 
   public resetExpansion(): void {
@@ -99,7 +125,10 @@ export class FilterSearch {
       [EXPANSION.WONDER_PICK]: null,
       [EXPANSION.SPECIAL_MISSION]: null,
       [EXPANSION.MYTHICAL_ISLAND]: null,
-      [EXPANSION.PROMO_A3]: null
+      [EXPANSION.PROMO_A3]: null,
+      [EXPANSION.DIALGA]: null,
+      [EXPANSION.PALKIA]: null,
+      [EXPANSION.PROMO_A4]: null
     };
   }
 

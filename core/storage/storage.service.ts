@@ -1,5 +1,5 @@
 import { SettingsState } from '@/hooks/settings.reducer';
-import { StorageDeck, UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
+import { StorageDeck, TradeItem, UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default class Storage {
@@ -16,7 +16,8 @@ export default class Storage {
     'show_intro',
     'favorites',
     'cards',
-    'decks'
+    'decks',
+    'trades'
   ];
 
   static profileKeys = [
@@ -118,6 +119,47 @@ export default class Storage {
       if (decks !== null) {
         const value = decks.filter(deck => deck.id !== id);
         this.set('decks', value);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  public static async addTrade(data: TradeItem): Promise<any | null> {
+    try {
+      const trades: TradeItem[] = await this.get('trades');
+      if (trades !== null) {
+        const index = trades.findIndex(d => d.id === data.id);
+        let value: TradeItem[];
+        if (index !== -1) {
+          trades[index] = data;
+          value = trades;
+        } else {
+          value = [...trades, data];
+        }
+
+        this.set('trades', value);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  public static async getTrades(): Promise<any | null> {
+    try {
+      const trades: TradeItem[] = await this.get('trades');
+      return trades || null;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  public static async removeTrade(id: number): Promise<any | null> {
+    try {
+      const trades: TradeItem[] = await this.get('trades');
+      if (trades !== null) {
+        const value = trades.filter(trade => trade.id !== id);
+        this.set('trades', value);
       }
     } catch (e) {
       console.log(e);

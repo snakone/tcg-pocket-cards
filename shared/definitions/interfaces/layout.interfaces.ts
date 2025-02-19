@@ -18,6 +18,15 @@ export interface TabMenu {
   animatedStyle: any;
 }
 
+export interface TabDesiredMenu extends TabMenu {
+  desired: (number | null)[];
+}
+
+export interface TabOffersMenu extends TabMenu {
+  desired: (number | null)[];
+  offers: (number | null)[];
+}
+
 export interface RouteItem {
   onClick: () => void;
   children: React.ReactNode;
@@ -43,18 +52,4 @@ export interface SortItem {
   icon: string,
   active: boolean,
   order: 'desc' | 'asc'
-}
-
-export interface DataSection {
-  title: string;
-  data: (
-    | { included: boolean | null, not_favorite: boolean | null }
-    | { [key in RarityWithoutSpecial]: boolean | null }
-    | { [key in PokemonTypeENUM]: boolean | null }
-    | { min: number | null, max: number | null }
-    | { min: number | null, max: number | null } 
-    | { with: boolean | null, without: boolean | null }
-    | { object: boolean | null, tool: boolean | null, fossil: boolean | null, supporter: boolean | null }
-    | { pack: PACKS_TYPE | null }
-  )[];
 }

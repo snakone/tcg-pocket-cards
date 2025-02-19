@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
-import { StyleSheet, View } from 'react-native';
-import React, { useRef, useState } from 'react';
+import { StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -8,12 +8,12 @@ import { useI18n } from "@/core/providers/LanguageProvider";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { cardDetailStyles } from "@/shared/styles/component.styles";
-import { RARITY_MAP, TYPE_MAP, STAGE_MAP, EXPANSION_MAP, PACK_AMOUNT_MAP, EXPANSION_POINTS_RARITY } from "@/shared/definitions/utils/constants";
-import { getCardPackFrom, isCardPromo, isCardPromoAndBattle, isCardPromoAndNoBattle, isNotBattleCard } from '@/shared/definitions/utils/functions';
+import { RARITY_MAP, TYPE_MAP, STAGE_MAP, EXPANSION_MAP, PACK_AMOUNT_MAP } from "@/shared/definitions/utils/constants";
+import { fillWithZeros, getCardPackFrom, getMetrics, isCardPromo, isCardPromoAndBattle, isCardPromoAndNoBattle, isNotBattleCard } from '@/shared/definitions/utils/functions';
 import DetailRelatedCards from './detail.related.cards';
 import { AppState } from '@/hooks/root.reducer';
 import ScrollService from '@/core/services/scroll.service';
-import { PACK_POINTS } from '@/shared/definitions/sentences/path.sentences';
+import { LanguageType } from '@/shared/definitions/types/global.types';
 
 interface CardDetailScroll {
   card: Card,
@@ -23,6 +23,11 @@ interface CardDetailScroll {
 
 export default function DetailCardScroll({card, state, scrollService}: CardDetailScroll) {
   const {i18n} = useI18n();
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   const expansionImage = (card: Card) => {
     const data = getCardPackFrom(card);
@@ -41,7 +46,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
 
   return (
     <ThemedView style={{padding: 20, marginBottom: 65, width: '100%'}}>
-      <ThemedText style={detailScrollStyles.name}>{card.name}</ThemedText>
+      <ThemedText style={detailScrollStyles.name}>{card.name[lang]}</ThemedText>
       
         {
           RARITY_MAP[card.rarity]?.amount !== 0 ?
@@ -56,14 +61,39 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             </ThemedView> :
             <ThemedView style={{height: 20}}></ThemedView>
         }
+
+      { !!card.info && 
+        <ThemedView style={[
+            cardDetailStyles.itemInfo, 
+            { marginBottom: 4, 
+              paddingVertical: 5, 
+              flexDirection: 'row', 
+              gap: 12, 
+              justifyContent: 'center', 
+              marginInline: 'auto'}
+          ]}>
+          <ThemedText style={[detailScrollStyles.text, {fontSize: 10}]}>
+            {i18n.t('number')} {fillWithZeros(card.pokedex)}
+          </ThemedText>
+          <ThemedText style={[detailScrollStyles.text, {fontSize: 10}]}>
+            {card.info.type[lang]}
+          </ThemedText>
+          <ThemedText style={[detailScrollStyles.text, {fontSize: 10}]}>
+            {i18n.t('height')}: {card.info.height[lang]} {getMetrics('height', lang)}
+          </ThemedText>
+          <ThemedText style={[detailScrollStyles.text, {fontSize: 10}]}>
+            {i18n.t('weight')}: {card.info.weight[lang]} {getMetrics('weight', lang)}
+          </ThemedText>
+        </ThemedView>
+      }
       
       { !!card.flavor && 
         <ThemedView style={cardDetailStyles.itemInfo}>
-          <ThemedText style={detailScrollStyles.text}>{card.flavor}</ThemedText>
+          <ThemedText style={detailScrollStyles.text}>{card.flavor[lang]}</ThemedText>
         </ThemedView>
       }
 
-      <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.artistContainer]}>
+      <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.artistContainer, {backgroundColor: 'white'}]}>
         <ThemedView style={cardDetailStyles.expansionContainer}>
           {expansionImage(card)}
         </ThemedView>
@@ -94,19 +124,19 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             <ThemedView style={detailScrollStyles.infoTitle}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t('promo')}</ThemedText>
             </ThemedView>
-            <ThemedView style={detailScrollStyles.infoValue}>
+            <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
               <ThemedText style={detailScrollStyles.text}>{EXPANSION_MAP[card.expansion].tag}</ThemedText>
             </ThemedView>
           </ThemedView>
         }
         {
-          (Boolean(card.extra) || (card.name === 'Mew' && card.id === 283)) &&
+          (Boolean(card.extra) || (card.name.en === 'Mew' && card.id === 283)) &&
           <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info]}>
             <ThemedView style={detailScrollStyles.infoTitle}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t('how_to_obtain')}</ThemedText>
             </ThemedView>
-            <ThemedView style={detailScrollStyles.infoValue}>
-              <ThemedText style={detailScrollStyles.text}>{card.extra}</ThemedText>
+            <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
+              <ThemedText style={detailScrollStyles.text}>{card.extra && card.extra[lang]}</ThemedText>
             </ThemedView>
           </ThemedView> 
         }
@@ -117,7 +147,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
         <ThemedView style={detailScrollStyles.infoTitle}>
           <ThemedText style={detailScrollStyles.text}>{i18n.t('illustration')}</ThemedText>
         </ThemedView>
-        <ThemedView style={detailScrollStyles.infoValue}>
+        <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
           <ThemedText style={detailScrollStyles.text}>{card.artist}</ThemedText>
         </ThemedView>
       </ThemedView>
@@ -128,10 +158,10 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             <ThemedText style={detailScrollStyles.text}>{i18n.t('ability')}</ThemedText>
           </ThemedView>
           <ThemedView style={[detailScrollStyles.infoValue, {boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}]}>
-            <ThemedText style={[detailScrollStyles.attackName, detailScrollStyles.abilityName]}>{card.ability.name}</ThemedText>
+            <ThemedText style={[detailScrollStyles.attackName, detailScrollStyles.abilityName]}>{card.ability.name[lang]}</ThemedText>
           </ThemedView>
           <ThemedView style={[detailScrollStyles.attackContainer, {width: '100%', padding: 16, justifyContent: 'center'}]}>
-            <ThemedText style={detailScrollStyles.text}>{card.ability.description}</ThemedText>
+            <ThemedText style={[detailScrollStyles.text, {textAlign: 'left'}]}>{card.ability.description[lang]}</ThemedText>
           </ThemedView>
         </ThemedView>
       }
@@ -157,14 +187,14 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
                         ))
                       }
                     </ThemedView>
-                    <ThemedText style={detailScrollStyles.attackName}>{att.name}</ThemedText>
+                    <ThemedText style={detailScrollStyles.attackName}>{att.name[lang]}</ThemedText>
                   </ThemedView>
 
                   { att.damage > 0 && <ThemedText style={detailScrollStyles.attackDamage}>{att.damage}</ThemedText>}
 
                   { att.description && 
                     <ThemedView style={{width: '100%', marginTop: 16}}>
-                      <ThemedText style={{fontSize: 12}}>{att.description}</ThemedText>
+                      <ThemedText style={{fontSize: 12}}>{att.description[lang]}</ThemedText>
                     </ThemedView>
                   }
                 </ThemedView>
@@ -177,19 +207,19 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
       { !isNotBattleCard(card) ? 
         <> 
           <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info]}>
-                <ThemedView style={detailScrollStyles.infoTitle}>
-                  <ThemedText style={detailScrollStyles.text}>{i18n.t('pokemon')}</ThemedText>
-                </ThemedView>
-                <ThemedView style={detailScrollStyles.infoValue}>
-                  <ThemedText style={detailScrollStyles.text}>{i18n.t(STAGE_MAP[card.stage].label)}</ThemedText>
-                </ThemedView>
+            <ThemedView style={detailScrollStyles.infoTitle}>
+              <ThemedText style={detailScrollStyles.text}>{i18n.t('pokemon')}</ThemedText>
+            </ThemedView>
+            <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
+              <ThemedText style={detailScrollStyles.text}>{i18n.t(STAGE_MAP[card.stage].label)}</ThemedText>
+            </ThemedView>
           </ThemedView>
 
           <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info]}>
             <ThemedView style={detailScrollStyles.infoTitle}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t('type')}</ThemedText>
             </ThemedView>
-            <ThemedView style={[detailScrollStyles.infoValue, {justifyContent: 'center', alignItems: 'center'}]}>
+            <ThemedView style={[detailScrollStyles.infoValue, {justifyContent: 'center', alignItems: 'flex-start'}]}>
               <Image source={TYPE_MAP[card.element].image} style={detailScrollStyles.element}></Image>
             </ThemedView>
           </ThemedView>
@@ -198,7 +228,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             <ThemedView style={detailScrollStyles.infoTitle}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t('PS')}</ThemedText>
             </ThemedView>
-            <ThemedView style={detailScrollStyles.infoValue}>
+            <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
               <ThemedText style={detailScrollStyles.text}>{card.health}</ThemedText>
             </ThemedView>
           </ThemedView>
@@ -207,7 +237,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             <ThemedView style={detailScrollStyles.infoTitle}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t('weak')}</ThemedText>
             </ThemedView>
-            <ThemedView style={[detailScrollStyles.infoValue, {justifyContent: 'center', alignItems: 'center'}]}>
+            <ThemedView style={[detailScrollStyles.infoValue, {justifyContent: 'center', alignItems: 'flex-start'}]}>
               <ThemedView style={{flexDirection: 'row', gap: 2, position: 'relative'}}>
                 <Image source={card.weak !== null && card.weak !== undefined && TYPE_MAP[card.weak].image} style={detailScrollStyles.element}></Image>
                 <ThemedText style={[detailScrollStyles.text, {top: 1, position: 'absolute', left: 25}]}>+20</ThemedText>
@@ -233,7 +263,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
               <ThemedView style={detailScrollStyles.infoTitle}>
                 <ThemedText style={detailScrollStyles.text}>{i18n.t('promo')}</ThemedText>
               </ThemedView>
-              <ThemedView style={detailScrollStyles.infoValue}>
+              <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
                 <ThemedText style={detailScrollStyles.text}>{EXPANSION_MAP[card.expansion].tag}</ThemedText>
               </ThemedView>
             </ThemedView>
@@ -242,40 +272,23 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             <ThemedView style={detailScrollStyles.infoTitle}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t('sub_type')}</ThemedText>
             </ThemedView>
-            <ThemedView style={detailScrollStyles.infoValue}>
+            <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
               <ThemedText style={detailScrollStyles.text}>{i18n.t(STAGE_MAP[card.stage].label)}</ThemedText>
             </ThemedView>
           </ThemedView>
         </>
       }
 
-      <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info]}>
+      <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info, {marginBottom: 30}]}>
         <ThemedView style={detailScrollStyles.infoTitle}>
           <ThemedText style={detailScrollStyles.text}>{i18n.t('serie')}</ThemedText>
         </ThemedView>
-        <ThemedView style={detailScrollStyles.infoValue}>
+        <ThemedView style={[detailScrollStyles.infoValue, {alignItems: 'flex-start'}]}>
           <ThemedText style={detailScrollStyles.text}>
             {card.series !== undefined && EXPANSION_MAP[card.series].label}
           </ThemedText>
         </ThemedView>
       </ThemedView>
-
-      {
-        EXPANSION_POINTS_RARITY[card.rarity] > 0 && 
-        <ThemedView style={[cardDetailStyles.itemInfo, detailScrollStyles.info, {marginBottom: 30}]}>
-          <ThemedView style={detailScrollStyles.infoTitle}>
-            <ThemedText style={detailScrollStyles.text}>{i18n.t('points')}</ThemedText>
-          </ThemedView>
-          <ThemedView style={[detailScrollStyles.infoValue, {justifyContent: 'center', alignItems: 'center'}]}>
-            <ThemedView style={{flexDirection: 'row', gap: 2, position: 'relative'}}>
-              <Image source={PACK_POINTS} style={[detailScrollStyles.element, detailScrollStyles.points]}></Image>
-              <ThemedText style={detailScrollStyles.text}>
-                {EXPANSION_POINTS_RARITY[card.rarity]}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-        </ThemedView>
-      }
 
       { card.related && card.related?.length > 0 &&
         <ThemedView style={[cardDetailStyles.itemInfo, {padding: 0, overflow: 'hidden'}]}>
@@ -340,7 +353,8 @@ export const detailScrollStyles = StyleSheet.create({
     fontSize: 13,
     backgroundColor: 'white',
     paddingTop: 4,
-    paddingBottom: 5
+    paddingBottom: 5,
+    color: Colors.light.bold
   },
   attackContainer: {
     flexDirection: 'row', 
@@ -356,7 +370,7 @@ export const detailScrollStyles = StyleSheet.create({
   attackEnergy: {
     flexDirection: 'row',
     alignItems: 'center',
-    minWidth: 94
+    maxWidth: 94
   },
   energy: {
     width: 18, 
@@ -367,7 +381,8 @@ export const detailScrollStyles = StyleSheet.create({
   attackName: {
     fontSize: 16,
     marginLeft: 16,
-    color: Colors.light.bold
+    color: Colors.light.bold,
+    fontWeight: 'bold'
   },
   attackDamage: {
     fontSize: 16,
@@ -405,7 +420,7 @@ export const detailScrollStyles = StyleSheet.create({
     width: '60%', 
     paddingVertical: 6, 
     paddingHorizontal: 20, 
-    justifyContent: 'center', 
+    justifyContent: 'flex-start', 
     alignItems: 'center', 
     flexDirection: 'row', 
     gap: 6
@@ -414,7 +429,8 @@ export const detailScrollStyles = StyleSheet.create({
     textAlign: 'center',
     color: 'rgb(165, 7, 17)',
     fontWeight: '600',
-    top: -1
+    top: -1,
+    fontSize: 15
   },
   points: {
     width: 14,

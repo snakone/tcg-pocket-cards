@@ -100,6 +100,7 @@ export default function PickAvatarMenu({
                       numColumns={3}
                       keyExtractor={(item, index) => index + ''}
                       showsVerticalScrollIndicator={false}
+                      contentContainerStyle={{paddingBottom: 96}}
                     />
             <ThemedView style={{alignItems: 'center', position: 'absolute', bottom: 30}}>
               <TouchableOpacity onPress={() => handleSave()}

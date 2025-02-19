@@ -1,15 +1,17 @@
 import { PACKS_TYPE } from "../enums/packs.enums";
-import { CardExpansionENUM, CardExpansionTypeENUM, CardRarityENUM, CardStageENUM } from "../enums/card.enums";
+import { CardExpansionENUM, CardExpansionTypeENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
+import { LanguageType } from "../types/global.types";
 
 interface BaseCard {
   id: number,
-  name: string;
+  name: Record<LanguageType, string>;
   rarity: CardRarityENUM,
   expansion: CardExpansionENUM,
   stage: CardStageENUM,
   artist: string;
   number: number;
+  order: number;
 }
 
 export interface Card extends BaseCard {
@@ -17,8 +19,8 @@ export interface Card extends BaseCard {
   retreat: number | -1;
   element: PokemonTypeENUM | -1;
   weak?: PokemonTypeENUM | null,
-  evolve?: string | null;
-  flavor: string;
+  evolve?: number[];
+  flavor: Record<LanguageType, string>;
   attacks?: Attack[],
   ability?: Ability;
   found?: PACKS_TYPE[];
@@ -26,19 +28,27 @@ export interface Card extends BaseCard {
   series?: CardExpansionTypeENUM;
   related?: number[];
   isEX?: boolean;
-  extra?: string;
+  extra?: Record<LanguageType, string>;
+  condition: CardSpecialConditionENUM[];
+  info?: PokedexInfo;
 }
 
 interface Attack {
-  name: string;
+  name: Record<LanguageType, string>;
   damage: number;
   energy: PokemonTypeENUM[];
-  description?: string;
+  description?: Record<LanguageType, string>;
 }
 
 interface Ability {
-  name: string;
-  description: string;
+  name: Record<LanguageType, string>;
+  description: Record<LanguageType, string>;
+}
+
+interface PokedexInfo {
+  type: Record<LanguageType, string>;
+  height: Record<LanguageType, string>;
+  weight: Record<LanguageType, string>;
 }
 
 export interface CardPackTag {

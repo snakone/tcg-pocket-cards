@@ -53,3 +53,14 @@ export type NewsContent =
   | { type: 'title'; value: string; style?: StyleProp<TextStyle> }
   | { type: 'text'; value: string; style?: StyleProp<TextStyle> }
   | { type: 'image'; value: string; style?: StyleProp<ImageStyle> };
+
+export interface TradeItem {
+  id: number;
+  title: string;
+  tcg: string[];
+  discord: string;
+  desired: (number | null)[];
+  offers: (number | null)[];
+  created: number;
+  valid: boolean;
+}

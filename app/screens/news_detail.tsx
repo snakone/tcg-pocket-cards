@@ -37,7 +37,6 @@ export default function NewsDetailScreen() {
   const [pocketNew, setPocketNew] = useState<PocketNews | undefined>(undefined);
   const newsService = useMemo(() => new PocketNewsService(), []);
   const { show: showError } = useError();
-  const scrollY = useSharedValue(0);
 
   const loadPocketNews = useCallback(() => {
     const sub = newsService
@@ -55,7 +54,7 @@ export default function NewsDetailScreen() {
       });
 
       return sub;
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     let sub: Subscription;
@@ -109,23 +108,6 @@ export default function NewsDetailScreen() {
       }
   }, []);
 
-  const derivedHeight = useDerivedValue(() => interpolate(
-    scrollY.value,
-    [0, 200],
-    [200, 0],
-    Extrapolation.CLAMP
-  ));
-
-  const animatedImageStyle = useAnimatedStyle(() => ({
-    height: derivedHeight.value
-  }));
-
-  const scrollHandler = useAnimatedScrollHandler({
-    onScroll: (event) => {
-      scrollY.value = Math.max(0, Math.round(event.contentOffset.y));
-    },
-  });
-
   return (
     <>
       { loading && <LoadingOverlay/> }
@@ -134,12 +116,11 @@ export default function NewsDetailScreen() {
           pocketNew && 
           <>
             <ThemedView style={[pocketNewsStyles.item, styles.content]}>
-              <Animated.View style={Platform.OS === 'web' && animatedImageStyle}>
+              <Animated.View>
                 <Animated.Image source={{uri: pocketNew.image}} 
                                 style={[
                                   pocketNewsStyles.image, 
-                                  styles.animatedImage, 
-                                  Platform.OS === 'web' && animatedImageStyle]} />
+                                  styles.animatedImage]} />
               </Animated.View>
               <ThemedView style={[pocketNewsStyles.info, styles.time]}>
                 <ThemedView style={pocketNewsStyles.date}>
@@ -159,7 +140,6 @@ export default function NewsDetailScreen() {
                 keyExtractor={(item, index) => `${item.type}-${index}`}
                 contentContainerStyle={{paddingHorizontal: 20}}
                 showsVerticalScrollIndicator={false}
-                onScroll={Platform.OS === 'web' ? scrollHandler : undefined}
                 scrollEventThrottle={24}
                 ListFooterComponent={
                   <ThemedView style={{height: 75}}></ThemedView>
@@ -186,7 +166,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%', 
-    height: 200, 
+    height: 250, 
     objectFit: 'cover'
   },
   screen: {

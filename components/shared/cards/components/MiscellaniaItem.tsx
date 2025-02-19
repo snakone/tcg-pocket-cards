@@ -16,14 +16,13 @@ import { IsExButtonList } from "./IsExItem";
 import React from "react";
 
 interface MiscellaniaItemProps {
-  weak: { [key in PokemonTypeENUM]: boolean | null },
   filterObj: MutableRefObject<FilterSearch>,
   miscellaniaSelectAll$: Subject<boolean>,
   onMiscellaniaSelectAll: () => void
 }
 
 export const MiscellaniaItem = memo(({ 
-  weak, filterObj, 
+  filterObj, 
   miscellaniaSelectAll$, 
   onMiscellaniaSelectAll 
 }: MiscellaniaItemProps) => {
@@ -35,11 +34,11 @@ export const MiscellaniaItem = memo(({
         <ThemedText type="defaultSemiBold" style={{ marginBottom: 12 }}>
           {i18n.t('weak')}
         </ThemedText>
-        <InvertButton onClick={() => onMiscellaniaSelectAll()} />
+        <InvertButton onClick={() => onMiscellaniaSelectAll()} styles={{top: 1}} />
       </ThemedView>
 
       <ThemedView style={[filterStyles.flexContainer, styles.container]}>
-        {Object.keys(weak).map((key, i) => {
+        {Object.keys(filterObj.current.weak).map((key, i) => {
           const image = (TYPE_MAP as any)[key]?.image;
           const label = (TYPE_MAP as any)[key]?.label;
 

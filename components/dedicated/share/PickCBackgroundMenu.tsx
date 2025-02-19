@@ -85,7 +85,7 @@ export default function PickBackgroundMenu({
                       numColumns={3}
                       showsVerticalScrollIndicator={false}
                       keyExtractor={(item, index) => index + ''}
-                      ListFooterComponent={<ThemedView style={{height: 110}}></ThemedView>}
+                      contentContainerStyle={{paddingBottom: 96}}
                     />
             <ThemedView style={{alignItems: 'center', position: 'absolute', bottom: 30}}>
               <TouchableOpacity onPress={() => handleSave()}

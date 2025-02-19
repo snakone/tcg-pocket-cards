@@ -10,14 +10,34 @@ import { FilterSearch } from "../classes/filter.class";
 import { Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
 import { CardExpansionENUM } from "../enums/card.enums";
-import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON } from "../sentences/path.sentences";
+import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SMACK_DOWN } from "../sentences/path.sentences";
 import { PACK_MAP } from "./constants";
 import { LanguageType } from "../types/global.types";
 
-export function sortCards(field: keyof Card, data: Card[], sort: SortItem): Card[] {
+import { 
+  CARD_IMAGE_MAP_116x162_EN, 
+  CARD_IMAGE_MAP_116x162_ES, 
+  CARD_IMAGE_MAP_116x162_JAP, 
+  CARD_IMAGE_MAP_69x96_EN, 
+  CARD_IMAGE_MAP_69x96_ES, 
+  CARD_IMAGE_MAP_69x96_JAP, 
+  CARD_IMAGE_MAP_EN, 
+  CARD_IMAGE_MAP_ES, 
+  CARD_IMAGE_MAP_JAP
+} from "./card.images";
+
+export function sortCards(field: keyof Card | string, data: Card[], sort: SortItem, lang: LanguageType): Card[] {
   return [...data].sort((a, b) => {
-    const aValue = a[field] ?? '';
-    const bValue = b[field] ?? '';
+    let aValue: any = '';
+    let bValue: any = '';
+
+    if (field === 'height' || field === 'weight') {
+      aValue = ((a?.info as any) && Number((a?.info as any)[field][lang])) ?? '';
+      bValue = ((b?.info as any) && Number((b?.info as any)[field][lang])) ?? '';
+    } else {
+      aValue = (a as any)[field] ?? '';
+      bValue = (b as any)[field] ?? '';
+    }
 
     if (aValue === -1 && bValue !== -1) return 1;
     if (bValue === -1 && aValue !== -1) return -1;
@@ -147,6 +167,12 @@ export function filterCards(filter: FilterSearch, data: Card[], favorites: numbe
       filter.ex.not_ex != filter.ex.is_ex
     ) return false;
 
+    const conditions = Object.keys(filter.condition).filter(key => Boolean((filter.condition as any)[key]));
+
+    if(conditions.length > 0 && !card.condition?.some(condition => conditions?.includes(String(condition)))) {
+      return false;
+    }
+
     return true;
   });
 }
@@ -172,7 +198,7 @@ export function forceShowSplash(
 
 export function getCardPackFrom(card: Card): {image: any, width: number, height: number} | undefined {
   if (card.expansion === CardExpansionENUM.GENETIC_APEX) {
-    if (card.found?.length === 3 || (card.name === 'Mew' && card.id === 283)) {
+    if (card.found?.length === 3 || (card.name.en === 'Mew' && card.id === 283)) {
       return {image: GENETIC_APEX, width: 68, height: 30};
     } else if (card.found !== undefined) {
       return {image: PACK_MAP[card.found[0]], width: 60, height: 45};
@@ -181,6 +207,12 @@ export function getCardPackFrom(card: Card): {image: any, width: number, height:
     return {image: PROMO_A_ICON, width: 74, height: 40};
   } else if (card.expansion === CardExpansionENUM.MYTHICAL_ISLAND) {
     return {image: MYTHICAL_ISLAND_MEW_ICON, width: 74, height: 36};
+  } else if (card.expansion === CardExpansionENUM.SPACE_TIME_SMACKDOWN) {
+    if (card.found?.length === 2) {
+      return {image: SMACK_DOWN, width: 74, height: 36};
+    } else if (card.found !== undefined) {
+      return {image: PACK_MAP[card.found[0]], width: 81, height: 40};
+    }
   }
 }
 
@@ -236,10 +268,13 @@ export const filterUniqueItems = (array: Card[]): { items: Card[]; ids: number[]
   };
 };
 
-export const getDynamicheight = (length: number): number => {
+export const getDynamicHeight = (length: number, type: 'deck' | 'trade'): number => {
   const maxHeight = 2229;
   const minHeight = 1225;
   const midHeight = 1633;
+  const tradeHeight = 1250;
+
+  if (type === 'trade') { return minHeight; }
 
   if (length <= 10) {
     return minHeight;
@@ -386,4 +421,55 @@ export function isObjectSettings(obj: any): boolean {
   if (!(obj as Object).hasOwnProperty('language')) { return false; }
 
   return true;
+}
+
+const IMAGE_LANGUAGE_MAP = {
+  es: CARD_IMAGE_MAP_ES,
+  en: CARD_IMAGE_MAP_EN,
+  ja: CARD_IMAGE_MAP_JAP
+}
+
+export function getImageLanguage(lang: LanguageType, id: number): any {
+  return IMAGE_LANGUAGE_MAP[lang][id];
+}
+
+const IMAGE_LANGUAGE_MAP_69x96 = {
+  es: CARD_IMAGE_MAP_69x96_ES,
+  en: CARD_IMAGE_MAP_69x96_EN,
+  ja: CARD_IMAGE_MAP_69x96_JAP
+}
+
+export function getImageLanguage69x96(lang: LanguageType, id: number): any {
+  return IMAGE_LANGUAGE_MAP_69x96[lang][id];
+}
+
+const IMAGE_LANGUAGE_MAP_116x162 = {
+  es: CARD_IMAGE_MAP_116x162_ES,
+  en: CARD_IMAGE_MAP_116x162_EN,
+  ja: CARD_IMAGE_MAP_116x162_JAP
+}
+
+export function getImageLanguage116x162(lang: LanguageType, id: number): any {
+  return IMAGE_LANGUAGE_MAP_116x162[lang][id];
+}
+
+export function fillWithZeros(value: number): string {
+  return String(value).padStart(4, '0');
+}
+
+const METRICS_MAP: any = {
+  height: {
+    es: 'm',
+    en: '',
+    ja: 'm'
+  },
+  weight: {
+    es: 'Kg',
+    en: 'lbs.',
+    ja: 'Kg'
+  }
+}
+
+export function getMetrics(type: 'height' | 'weight', lang: LanguageType): string {
+  return METRICS_MAP[type][lang];
 }

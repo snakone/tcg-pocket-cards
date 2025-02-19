@@ -3,7 +3,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { SymbolWeight } from 'expo-symbols';
 import React from 'react';
 import { OpaqueColorValue, StyleProp, TextStyle } from 'react-native';
-import Svg, { Path, SvgProps } from 'react-native-svg';
+import Svg, { G, Path, Polygon, SvgProps } from 'react-native-svg';
 
 export function IconSymbol({
   name,
@@ -40,7 +40,7 @@ export const SvgStylusSymbol = (props: SvgProps) => (
     width={28}
     height={21}
     viewBox="0 -960 960 960"
-    style={[props.style, ]}
+    style={[props.style]}
     {...props}
   >
     <Path d="m 504.98951,-238.98152 440.60472,-428.23736 -68.39239,-66.47268 -440.60469,428.23736 z m 
@@ -55,3 +55,48 @@ export const SvgStylusSymbol = (props: SvgProps) => (
             -22.35904,5.113289 -39.45712,-11.50487 -17.09811,-16.618177 -11.83714,-38.349617 l 43.40283,-203.25296 217.01424,210.92288 z" />
   </Svg>
 )
+
+export const SvgTradeSymbol = (props: SvgProps) => (
+  <Svg
+    {...props}
+    fill={props.color}
+    width={28}
+    height={28}
+    viewBox="0 -960 960 960"
+    style={[props.style]}
+  >
+    <Path d="M480-629 354-755l126-126 126 126-126 126ZM40-160v-160q0-29 20.5-49.5T110-390h141q17 0 
+    32.5 8.5T310-358q29 42 74 65t96 23q51 0 96-23t75-65q11-15 26-23.5t32-8.5h141q29 0 49.5 20.5T920-320v160H660v-119q-36 
+    33-82.5 51T480-210q-51 0-97-18t-83-51v119H40Zm120-300q-45 0-77.5-32.5T50-570q0-46 32.5-78t77.5-32q46 0 78 
+    32t32 78q0 45-32 77.5T160-460Zm640 0q-45 0-77.5-32.5T690-570q0-46 32.5-78t77.5-32q46 0 78 32t32 78q0 45-32 77.5T800-460Z"/>
+  </Svg>
+)
+
+export const SvgTradePassSymbol = (props: any) => {
+  return (
+    <Svg
+      width={props.width || 80}
+      height={props.height || 80}
+      viewBox="0 0 512 512"
+      scale={0.5}
+      {...props}
+    >
+      <Polygon
+        fill="#4FBA6F"
+        points="512,256 317.793,114.759 317.793,211.862 211.862,211.862 211.862,300.138 317.793,300.138 317.793,397.241"
+      />
+      <Path
+        fill="#4FBA6F"
+        d="M158.897,211.862c-9.71,0-17.655,7.945-17.655,17.655v52.966c0,9.71,7.945,17.655,17.655,17.655 c9.71,0,17.655-7.945,17.655-17.655v-52.966C176.552,219.807,168.607,211.862,158.897,211.862"
+      />
+      <Path
+        fill="#4FBA6F"
+        d="M88.276,211.862c-9.71,0-17.655,7.945-17.655,17.655v52.966c0,9.71,7.945,17.655,17.655,17.655 s17.655-7.945,17.655-17.655v-52.966C105.931,219.807,97.986,211.862,88.276,211.862"
+      />
+      <Path
+        fill="#4FBA6F"
+        d="M17.655,211.862C7.945,211.862,0,219.807,0,229.517v52.966c0,9.71,7.945,17.655,17.655,17.655 s17.655-7.945,17.655-17.655v-52.966C35.31,219.807,27.366,211.862,17.655,211.862"
+      />
+    </Svg>
+  );
+};

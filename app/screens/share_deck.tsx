@@ -1,5 +1,4 @@
 import { useLocalSearchParams } from "expo-router";
-import { Subscription } from "rxjs";
 import { FlatList, Platform, Pressable, View, StyleSheet, TouchableOpacity } from "react-native";
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -17,22 +16,20 @@ import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AppContext } from "../_layout";
 import DeckCollage from "@/components/dedicated/share/DeckCollage";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import CardsService from "@/core/services/cards.service";
 import Storage from '@/core/storage/storage.service';
-import { useError } from "@/core/providers/ErrorProvider";
 import ShareService from "@/core/services/share.service";
 import { AvatarIcon, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { CardGridStyles, CreateScreenStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
 import { Colors } from "@/shared/definitions/utils/colors";
-import { CARD_IMAGE_MAP_69x96 } from "@/shared/definitions/utils/card.images";
 import { createDeckStyles } from "./create_deck";
 import { settingsStyles } from "./settings";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import SoundService from "@/core/services/sounds.service";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import PickBackgroundMenu from "@/components/dedicated/share/PickCBackgroundMenu";
-import { filterUniqueItems } from "@/shared/definitions/utils/functions";
+import { filterUniqueItems, getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
+import { LanguageType } from "@/shared/definitions/types/global.types";
 
 export default function ShareDeckScreen() {
   const {i18n} = useI18n();
@@ -42,15 +39,19 @@ export default function ShareDeckScreen() {
   const { state, dispatch } = context;
   const [deck, setDeck] = useState<any[]>(Array.from({ length: 20 }, (_, i) => (null)));
   const [deckName, setDeckName] = useState('');
-  const [loading, setLoading] = useState(true);
-  const cardsService = useMemo(() => new CardsService(), []);
+  const [loading, setLoading] = useState(false);
   const shareService = useMemo(() => new ShareService(), []);
-  const { show: showError } = useError();
   const ref = useRef<any>(null);
   const [isBackgroundVisible, setIsBackgroundVisible] = useState(false);
   const [background, setBackground] = useState<AvatarIcon>();
   const [quality, setQuality] = useState<number>(0.8);
   const [duplicated, setDuplicated] = useState<boolean>(true);
+  const [valid, setValid] = useState<boolean>(true);
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   const [profile, setProfile] = useState<UserProfile>(
     {name: '', avatar: 'eevee', coin: 'eevee', best: null}
@@ -70,45 +71,6 @@ export default function ShareDeckScreen() {
   });
 
   useEffect(() => {
-    const cards: Card[] = state.settingsState.cards;
-
-    if (cards && cards.length !== 0 && !state.cardState.loaded) {
-      dispatch({ type: 'SET_CARDS', value: cards });
-      setLoading(false);
-      return;
-    }
-
-    let sub: Subscription;
-    !state.cardState.loaded ? sub = loadCards() : setLoading(false);
-
-    return () => {
-      if (sub) {
-        sub.unsubscribe();
-      }
-    };
-  }, []);
-
-  const loadCards = useCallback(() => {
-    const sub = cardsService
-      .getCards()
-      .subscribe({
-        next: (res) => {
-          dispatch({ type: 'SET_CARDS', value: res });
-          Storage.set('cards', res);
-          setLoading(false);
-        },
-        error: (err) => {
-          console.log(err);
-          showError("error_get_cards");
-          Storage.set('cards', []);
-          setLoading(false);
-        }
-      });
-
-      return sub;
-  }, [dispatch]);
-
-  useEffect(() => {
     const checkDeck = async () => {
       if (deck_id !== undefined) {
         const selected = state.settingsState.decks.find(deck => deck.id === Number(deck_id));
@@ -116,6 +78,7 @@ export default function ShareDeckScreen() {
           const deck = selected.cards.map(card => state.cardState.cards.find(c => c.id === card) || null);
           setDeck(deck);
           setDeckName(selected.name);
+          setValid(selected.valid);
           Object.keys(element).forEach((key: any) => {
             if (selected.energies?.includes(key)) {
               (element as any)[key] = true;
@@ -141,7 +104,7 @@ export default function ShareDeckScreen() {
     SoundService.play('POP_PICK');
     setLoading(true);
     const length = getFilteredLength();
-    shareService.makeScreenShot(ref, deckName, quality, length).then(_ => setLoading(false));
+    shareService.makeScreenShot(ref, deckName, quality, length, 'deck').then(_ => setLoading(false));
   }
 
   function getFilteredLength(): number {
@@ -170,12 +133,12 @@ export default function ShareDeckScreen() {
         <View style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
           { item ? 
           <ThemedView style={{backgroundColor: Colors.light.background}}>
-            <Image accessibilityLabel={item?.name} 
+            <Image accessibilityLabel={item?.name[lang]} 
                     style={[
               CardGridStyles.image, 
               {width: Platform.OS === 'web' ? 29.1 : 49.4, height: 46, borderRadius: 4}
             ]} 
-            source={CARD_IMAGE_MAP_69x96[String(item?.id)]}/>
+            source={getImageLanguage69x96(lang, item?.id)}/>
             { state.settingsState.favorites?.includes(item.id) && 
               <ThemedView style={[CardGridStyles.triangle, {
                 borderRightWidth: 8,
@@ -340,11 +303,18 @@ export default function ShareDeckScreen() {
 
           <ThemedView style={{width: '100%'}}>
             <TouchableOpacity style={[homeScreenStyles.ctaButton, {marginBlock: 45}]} 
-                              onPress={handleShare}>
+                              onPress={handleShare}
+                              disabled={!valid}>
               <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>
                 {i18n.t('download')}
               </ThemedText>
             </TouchableOpacity>
+            {
+              !valid && 
+                <ThemedText style={{color: 'crimson', fontSize: 12, paddingLeft: 4, top: -36}}>
+                  {i18n.t('invalid_cant_share')}
+                </ThemedText>
+            }
           </ThemedView>
         </ThemedView>
       </SharedScreen>
