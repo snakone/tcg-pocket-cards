@@ -32,8 +32,8 @@ export function sortCards(field: keyof Card | string, data: Card[], sort: SortIt
     let bValue: any = '';
 
     if (field === 'height' || field === 'weight') {
-      aValue = ((a?.info as any) && Number((a?.info as any)[field][lang])) ?? '';
-      bValue = ((b?.info as any) && Number((b?.info as any)[field][lang])) ?? '';
+      aValue = ((a?.info as any) && Number((a?.info as any)[field]['es'])) ?? '';
+      bValue = ((b?.info as any) && Number((b?.info as any)[field]['es'])) ?? '';
     } else {
       aValue = (a as any)[field] ?? '';
       bValue = (b as any)[field] ?? '';

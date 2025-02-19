@@ -1,3 +1,122 @@
+
+## TCG Pocket Cards Official Github
+
+Welcome to the official TCG Pocket Cards Github. Discover the fastest and most fluid way to search, filter and manage cards in TCG Pocket. Create and share custom collections and optimize your experience like never before.
+
+TCG Pocket Cards is an app developed with trading card enthusiasts in mind.
+
+Our main goal is to provide you with a powerful, accessible and free tool that not only manages your collections, but also elevates your experience as a collector or player.
+
+Designed to cover both Android mobile devices and web browsers, TCG Pocket Cards is adaptable, efficient and optimized for each platform, always guaranteeing the best user experience.
+
+## What is TCG Pocket Cards?
+
+This app is inspired by the official Pokémon TCG platform, ©2024 Pokémon, and seeks to go beyond by offering features not available in the original software.
+
+While the original app is a great tool, TCG Pocket Cards adds new features that transform the way you browse, organize, and manage cards, including:
+
+* **Advanced Filters**: Find exactly what you need by searching by rarity, type, expansion, or any card attribute.
+* **Sorting Options**: Organize your cards however you like, using new layout and customization options.
+* **Custom Collections**: Create unique groups with your favorite cards, allowing you to organize and manage your collection your way.
+
+Plus, TCG Pocket Cards focuses on making the process of browsing and playing more intuitive, streamlined, and fun.
+
+## Our Mission
+
+The world of collectible cards is fascinating, and our mission is to make it possible for you to explore and enjoy it to the fullest.
+
+We want TCG Pocket Cards to be your ultimate tool for managing your collections, discovering new cards, and improving your experience as a player and collector.
+
+Thank you for trusting us and for being part of this community. We hope you enjoy TCG Pocket Cards as much as we enjoyed creating it!
+
+## Gallery
+
+Here are some of the key sections of the app, but there are many more. Feel free to discover them.
+
+![alt text](https://i.postimg.cc/D0bQL6BH/home-en.png "Home Screen")
+
+![alt text](https://i.postimg.cc/Jz3qpTMW/cards-en.png "Cards")
+
+![alt text](https://i.postimg.cc/LXWBJwBj/decks-en.png "Decks")
+
+![alt text](https://i.postimg.cc/dV1VNDVF/settings-en.png "Decks")
+
+You can also **download your decks in image format**. Preview:
+
+![alt text](https://i.postimg.cc/s260Jn4g/Venusaur-Deck.jpg "Collage")
+
+## Access and Download
+
+* Web: [TCG Pocket Cards Official Page](https://tcg-pocket-cards.netlify.app/)
+* APK: [Android Signed APK Bundle](https://mega.nz/file/M5YhHQzT#4ZU3RhNKZxIMJbvZg_QPkBPPbw9AHKF1E83P3C0B_Y4)
+
+### Web Analysis
+
+![alt text](https://i.ibb.co/tzhjZFn/web-check.png "Web Check")
+
+More info: [Web Analysis](https://www.virustotal.com/gui/url/7dbec75ed10d580e843567a8072592281a032205d731654e04f38d0c4b7e196d/detection)
+
+### APK Analysis
+
+![alt text](https://i.ibb.co/dDzDHQ2/apk-check.png "APK Check")
+
+More info: [APK Analysis](https://www.virustotal.com/gui/file/2d161d586c52b8768a88e15271b9b7f2640b079b67f47b3596054137331526f1/details)
+
+## Installation
+
+To install the app locally, follow these steps:
+
+Download the necessary software...
+
+* [Nodejs](https://nodejs.org/)
+* [Android Studio](https://developer.android.com/)
+* [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) (Optional)
+
+Clone or download the repository from the **master** branch to a folder on your computer with a short *path*, within C:/ would be ideal, since to do the Android build, certain plugins give an error if the *path* to the file is too long. (250 characters maximum)
+
+At the root of the project execute:
+
+```bash
+npm install
+npm start
+```
+
+If you want to review the web version, visit: [Localhost](http://localhost:8081)
+
+To view a "light" version of the app on a mobile device, download Expo GO and follow its instructions.
+
+### Generate APK
+
+At the root of the project execute:
+
+```bash
+npm run pre
+```
+
+This will create a folder called "android" in the same root. We open this folder with Android Studio.
+
+If you are having problems with Android Studio, visit its official website to find out how to set it up correctly [Configure Android Studio](https://developer.android.com/studio/intro/studio-config).
+
+First of all, make sure you have the corresponding versions of Android Studio dependencies. We use:
+
+* Android gradle plugin: 8.6.0
+* Gradle: 8.10.2
+* Java SDK 20
+* Compile SDK 35
+* Target SDK 34
+
+Once the project is loaded, open the **Build variants** menu and select the **release** option as seen in the image:
+
+![alt text](https://i.ibb.co/WnnhGyX/android-build.png "Build variants")
+
+Once everything is configured, you can generate the APK file in the way you prefer.
+
+![alt text](https://i.ibb.co/zJKcNYJ/android-apk.png "Build APK")
+
+<br>
+
+# Español
+
 ## TCG Pocket Cards Github Oficial
 
 Bienvenido/a al Gihutb oficial de TCG Pocket Cards. Descubre la forma más rápida y fluida de buscar, filtrar y gestionar cartas en TCG Pocket. Crea y comparte colecciones personalizadas y optimiza tu experiencia como nunca antes.
@@ -111,124 +230,6 @@ Una vez cargado el proyecto, abre el menú de **Build variants** y selecciona la
 ![alt text](https://i.ibb.co/WnnhGyX/android-build.png "Build variants")
 
 Una vez con todo configurado ya se puede generar el archivo APK de la manera que prefieras.
-
-![alt text](https://i.ibb.co/zJKcNYJ/android-apk.png "Build APK")
-
-<br>
-
-# English
-
-## TCG Pocket Cards Official Github
-
-Welcome to the official TCG Pocket Cards Github. Discover the fastest and most fluid way to search, filter and manage cards in TCG Pocket. Create and share custom collections and optimize your experience like never before.
-
-TCG Pocket Cards is an app developed with trading card enthusiasts in mind.
-
-Our main goal is to provide you with a powerful, accessible and free tool that not only manages your collections, but also elevates your experience as a collector or player.
-
-Designed to cover both Android mobile devices and web browsers, TCG Pocket Cards is adaptable, efficient and optimized for each platform, always guaranteeing the best user experience.
-
-## What is TCG Pocket Cards?
-
-This app is inspired by the official Pokémon TCG platform, ©2024 Pokémon, and seeks to go beyond by offering features not available in the original software.
-
-While the original app is a great tool, TCG Pocket Cards adds new features that transform the way you browse, organize, and manage cards, including:
-
-* **Advanced Filters**: Find exactly what you need by searching by rarity, type, expansion, or any card attribute.
-* **Sorting Options**: Organize your cards however you like, using new layout and customization options.
-* **Custom Collections**: Create unique groups with your favorite cards, allowing you to organize and manage your collection your way.
-
-Plus, TCG Pocket Cards focuses on making the process of browsing and playing more intuitive, streamlined, and fun.
-
-## Our Mission
-
-The world of collectible cards is fascinating, and our mission is to make it possible for you to explore and enjoy it to the fullest.
-
-We want TCG Pocket Cards to be your ultimate tool for managing your collections, discovering new cards, and improving your experience as a player and collector.
-
-Thank you for trusting us and for being part of this community. We hope you enjoy TCG Pocket Cards as much as we enjoyed creating it!
-
-## Gallery
-
-Here are some of the key sections of the app, but there are many more. Feel free to discover them.
-
-![alt text](https://i.postimg.cc/D0bQL6BH/home-en.png "Home Screen")
-
-![alt text](https://i.postimg.cc/Jz3qpTMW/cards-en.png "Cards")
-
-![alt text](https://i.postimg.cc/LXWBJwBj/decks-en.png "Decks")
-
-![alt text](https://i.postimg.cc/dV1VNDVF/settings-en.png "Decks")
-
-You can also **download your decks in image format**. Preview:
-
-![alt text](https://i.postimg.cc/s260Jn4g/Venusaur-Deck.jpg "Collage")
-
-## Access and Download
-
-* Web: [TCG Pocket Cards Official Page](https://tcg-pocket-cards.netlify.app/)
-* APK: [Android Signed APK Bundle](https://mega.nz/file/M5YhHQzT#4ZU3RhNKZxIMJbvZg_QPkBPPbw9AHKF1E83P3C0B_Y4)
-
-### Web Analysis
-
-![alt text](https://i.ibb.co/tzhjZFn/web-check.png "Web Check")
-
-More info: [Web Analysis](https://www.virustotal.com/gui/url/7dbec75ed10d580e843567a8072592281a032205d731654e04f38d0c4b7e196d/detection)
-
-### APK Analysis
-
-![alt text](https://i.ibb.co/dDzDHQ2/apk-check.png "APK Check")
-
-More info: [APK Analysis](https://www.virustotal.com/gui/file/2d161d586c52b8768a88e15271b9b7f2640b079b67f47b3596054137331526f1/details)
-
-## Installation
-
-To install the app locally, follow these steps:
-
-Download the necessary software...
-
-* [Nodejs](https://nodejs.org/)
-* [Android Studio](https://developer.android.com/)
-* [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) (Optional)
-
-Clone or download the repository from the **master** branch to a folder on your computer with a short *path*, within C:/ would be ideal, since to do the Android build, certain plugins give an error if the *path* to the file is too long. (250 characters maximum)
-
-At the root of the project execute:
-
-```bash
-npm install
-npm start
-```
-
-If you want to review the web version, visit: [Localhost](http://localhost:8081)
-
-To view a "light" version of the app on a mobile device, download Expo GO and follow its instructions.
-
-### Generate APK
-
-At the root of the project execute:
-
-```bash
-npm run pre
-```
-
-This will create a folder called "android" in the same root. We open this folder with Android Studio.
-
-If you are having problems with Android Studio, visit its official website to find out how to set it up correctly [Configure Android Studio](https://developer.android.com/studio/intro/studio-config).
-
-First of all, make sure you have the corresponding versions of Android Studio dependencies. We use:
-
-* Android gradle plugin: 8.6.0
-* Gradle: 8.10.2
-* Java SDK 20
-* Compile SDK 35
-* Target SDK 34
-
-Once the project is loaded, open the **Build variants** menu and select the **release** option as seen in the image:
-
-![alt text](https://i.ibb.co/WnnhGyX/android-build.png "Build variants")
-
-Once everything is configured, you can generate the APK file in the way you prefer.
 
 ![alt text](https://i.ibb.co/zJKcNYJ/android-apk.png "Build APK")
 

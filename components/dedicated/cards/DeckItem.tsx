@@ -48,7 +48,7 @@ import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
               }
             </ThemedView>
             <ThemedView style={[CreateScreenStyles.deckName, {justifyContent: 'space-between', width: '67%'}]}>
-              <ThemedText style={[{left: 0}, item.valid && {top: 1}]}>{item.name}</ThemedText>
+              <ThemedText style={[{left: 0, color: 'none'}, item.valid && {top: 1}]}>{item.name}</ThemedText>
               <ThemedView style={{position: 'absolute', right: 2, marginTop: 2}}>
                 {
                   item && item.energies?.length > 0 && 

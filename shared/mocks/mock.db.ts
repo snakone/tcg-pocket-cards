@@ -82,7 +82,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       height: {
         es: '1.0',
-        en: '3\'03"',
+        en: '3\'3"',
         ja: '1.0'
       },
       weight: {
@@ -142,7 +142,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       height: {
         es: '2.0',
-        en: '6\'07"',
+        en: '6\'7"',
         ja: '2.0'
       },
       weight: {
@@ -209,7 +209,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       height: {
         es: '2.0',
-        en: '6\'07"',
+        en: '6\'7"',
         ja: '2.0'
       },
       weight: {
@@ -350,7 +350,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       height: {
         es: '0.7',
-        en: '2\'04"',
+        en: '2\'4"',
         ja: '0.7'
       },
       weight: {
@@ -410,7 +410,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       height: {
         es: '1.1',
-        en: '2\'04"',
+        en: '3\'7"',
         ja: '1.1'
       },
       weight: {
@@ -603,9 +603,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'どくばちポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '29.5',
@@ -910,9 +910,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'きのこポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '29.5',
@@ -970,9 +970,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'こんちゅうポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '30',
@@ -1157,9 +1157,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ハエとりポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '6.4',
@@ -1349,9 +1349,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'やしのみポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '120',
@@ -1417,9 +1417,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'やしのみポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '120',
@@ -1485,9 +1485,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ツルじょうポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '35.0',
@@ -1824,10 +1824,10 @@ export const MOCK_DB_CARDS: Card[] = [
         damage: 10,
         energy: [PokemonTypeENUM.GRASS],
         description: {
-       es: 'Cura 10 puntos de daño a este Pokémon.',
-       en: 'Heal 10 damage from this Pokémon.',
-       ja: 'このポケモンのHPを10回復。' 
-     }
+          es: 'Cura 10 puntos de daño a este Pokémon.',
+          en: 'Heal 10 damage from this Pokémon.',
+          ja: 'このポケモンのHPを10回復。' 
+        }
       }
     ],
     evolve: [30],
@@ -2652,9 +2652,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ひのうまポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '30.0',
@@ -2901,9 +2901,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'かえんポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '60.0',
@@ -2968,9 +2968,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'かえんポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '60.0',
@@ -3288,9 +3288,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'はつねつポケモン'
       },
       height: {
-        es: '3',
+        es: '3.0',
         en: '9\'10"',
-        ja: '3'
+        ja: '3.0'
       },
       weight: {
         es: '120.0',
@@ -3415,9 +3415,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'かめポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '22.5',
@@ -3803,9 +3803,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'おたまポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '20.0',
@@ -5063,9 +5063,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'あわはきポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '29.0',
@@ -5188,9 +5188,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'うずまきポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '35.0',
@@ -6210,9 +6210,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'じしゃくポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '60.0',
@@ -7061,9 +7061,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'はつでんポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '21.0',
@@ -7891,9 +7891,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'さいみんポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '32.4',
@@ -8154,9 +8154,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'いでんしポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '122.0',
@@ -8219,9 +8219,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'いでんしポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '122.0',
@@ -8609,9 +8609,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ゴーレムポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '92.0',
@@ -8803,9 +8803,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ねずみポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '29.5',
@@ -9050,9 +9050,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ぶたざるポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '32.0',
@@ -9415,9 +9415,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'がんせきポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '105.0',
@@ -9665,9 +9665,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ほねずきポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '45.0',
@@ -9725,9 +9725,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ほねずきポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '45.0',
@@ -9916,9 +9916,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'とげとげポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '115.0',
@@ -10410,9 +10410,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'へびポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '6.9',
@@ -11684,9 +11684,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ドラゴンポケモン'
       },
       height: {
-        es: '4',
+        es: '4.0',
         en: '13\'1"',
-        ja: '4'
+        ja: '4.0'
       },
       weight: {
         es: '16.5',
@@ -11815,7 +11815,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       weight: {
         es: '1.8',
-        en: '4',
+        en: '4.0',
         ja: '1.8'
       }
     },
@@ -12313,9 +12313,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ふうせんポケモン'
       },
       height: {
-        es: '1',
-        en: '3\'3',
-        ja: '1'
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
       },
       weight: {
         es: '12.0',
@@ -12373,9 +12373,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ふうせんポケモン'
       },
       height: {
-        es: '1',
-        en: '3\'3',
-        ja: '1'
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
       },
       weight: {
         es: '12.0',
@@ -12503,9 +12503,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'シャムネコポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '32.0',
@@ -15653,9 +15653,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'やしのみポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '120',
@@ -15860,9 +15860,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'かえんポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '60.0',
@@ -16359,9 +16359,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'いでんしポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '122.0',
@@ -16493,9 +16493,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ほねずきポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '45.0',
@@ -16561,9 +16561,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ふうせんポケモン'
       },
       height: {
-        es: '1',
-        en: '3\'3',
-        ja: '1'
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
       },
       weight: {
         es: '12.0',
@@ -16874,9 +16874,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'かえんポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '60.0',
@@ -17234,9 +17234,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ふうせんポケモン'
       },
       height: {
-        es: '1',
-        en: '3\'3',
-        ja: '1'
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
       },
       weight: {
         es: '12.0',
@@ -17438,9 +17438,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'いでんしポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '122.0',
@@ -17725,9 +17725,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'いでんしポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '122.0',
@@ -17866,9 +17866,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'やしのみポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '120',
@@ -18317,7 +18317,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       height: {
         es: '3.9',
-        en: '102\'10"',
+        en: '12\'10"',
         ja: '3.9'
       },
       weight: {
@@ -18381,9 +18381,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ひのうまポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '30.0',
@@ -18970,9 +18970,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'あわはきポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '29.0',
@@ -20151,7 +20151,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       weight: {
         es: '0.9',
-        en: '2',
+        en: '2.0',
         ja: '0.9'
       }
     },
@@ -20463,9 +20463,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ぶたざるポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '32.0',
@@ -20583,9 +20583,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'がんせきポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '105.0',
@@ -21423,7 +21423,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       weight: {
         es: '1.8',
-        en: '4',
+        en: '4.0',
         ja: '1.8'
       }
     },
@@ -21988,9 +21988,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'やしのみポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '120',
@@ -22102,7 +22102,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
-    condition: [],
+    condition: [
+      CardSpecialConditionENUM.ADD
+    ],
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
@@ -22190,9 +22192,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'あわはきポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '29.0',
@@ -23308,9 +23310,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'ツルじょうポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '35.0',
@@ -26403,9 +26405,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'じしゃくポケモン'
       },
       height: {
-        es: '1',
+        es: '1.0',
         en: '3\'3"',
-        ja: '1'
+        ja: '1.0'
       },
       weight: {
         es: '60.0',
@@ -28448,9 +28450,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'キバさそりポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '42.5',
@@ -36310,9 +36312,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'いでんしポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '122.0',
@@ -37346,9 +37348,9 @@ export const MOCK_DB_CARDS: Card[] = [
         ja: 'かえんポケモン'
       },
       height: {
-        es: '2',
+        es: '2.0',
         en: '6\'7"',
-        ja: '2'
+        ja: '2.0'
       },
       weight: {
         es: '60.0',

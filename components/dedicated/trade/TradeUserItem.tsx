@@ -28,7 +28,7 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
   return (
     <ThemedView style={[tradeItemStyles.item, styles]}>
       <ThemedView style={{flex: 1}}>
-        <ThemedText style={{marginBottom: 12}}>{item?.title || i18n.t('trade') + ' ' + (item.id)}</ThemedText>
+        <ThemedText style={{marginBottom: 12, color: 'none'}}>{item?.title || i18n.t('trade') + ' ' + (item.id)}</ThemedText>
         <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
           <ThemedView style={{width: '38%'}}>
             {

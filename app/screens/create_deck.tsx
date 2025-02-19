@@ -512,7 +512,7 @@ export default function CreateDeckScreen() {
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={RenderEmpty}
                 renderItem={renderCard}
-                ListFooterComponent={<ThemedView style={{height: 132}}></ThemedView>}
+                ListFooterComponent={<ThemedView style={{height: 95}}></ThemedView>}
       />
     </View>
 ), [searchCard, filtered, deck]);
