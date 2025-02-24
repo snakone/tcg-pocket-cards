@@ -24,10 +24,8 @@ import {
   CHAMPION_ICON, 
   CROWN_RARITY, 
   DARK_ICON, 
-  DIAMOND_ICON, 
   DRAGON_ICON, 
   ELECTRIC_ICON, 
-  ELEMENT_ICON, 
   FIGHT_ICON, 
   FIRE_ICON, 
   GENETIC_APEX, 
@@ -35,7 +33,6 @@ import {
   GENETIC_APEX_MEWTWO_ICON, 
   GENETIC_APEX_PIKACHU_ICON, 
   GRASS_ICON, 
-  MISCELLANIA_ICON, 
   MYTHICAL_ISLAND_MEW_ICON, 
   NORMAL_ICON, 
   NORMAL_RARITY, 
@@ -47,11 +44,28 @@ import {
   WATER_ICON
 } from "@/shared/definitions/sentences/path.sentences";
 
-
 const numColumns = 20;
 const collageWith = 1240;
 
-export function GraphicCollage() {
+interface GraphicCollageProps {
+  showExpansion: boolean,
+  showGrades: boolean,
+  showTypes: boolean,
+  showMiscellania: boolean,
+  showWeak: boolean,
+  showTop: boolean,
+  showConditions: boolean
+}
+
+export function GraphicCollage({
+  showExpansion,
+  showGrades,
+  showTypes,
+  showMiscellania,
+  showWeak,
+  showTop,
+  showConditions,
+}: GraphicCollageProps) {
   const {i18n} = useI18n();
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
@@ -146,17 +160,20 @@ export function GraphicCollage() {
       icon: 'retreat'
     }
 
-    const cards = state.cardState.cards.sort((b, a) => b.id > a.id ? 1 : -1)
+    const cards = structuredClone(state.cardState.cards);
+
+    const filtered = cards.sort((b, a) => b.id > a.id ? 1 : -1)
                     .filter((card, index, self) => index === self.findIndex((t) => t.name.en === card.name.en));
 
-    const sorted = sortCards('retreat', cards, sortItem)
+    const sorted = sortCards('retreat', filtered, sortItem)
                   .filter(card => card.pokedex !== -1)
     sorted.length = 20;
     return sorted;
   }, [state.cardState.cards]);
 
   const getAttackTop20 = useCallback(() => {
-    return state.cardState.cards
+    const cards = structuredClone(state.cardState.cards);
+    return cards
       .sort((a, b) => {
         const maxDamageA = a.attacks !== undefined ? Math.max(...a.attacks.map(attack => attack.damage)) : -1;
         const maxDamageB = b.attacks !== undefined ? Math.max(...b.attacks.map(attack => attack.damage)) : -1;
@@ -832,1231 +849,1265 @@ export function GraphicCollage() {
         </ThemedView>
       </ThemedView>
 
-      <ThemedText style={styles.subTitlte}>{i18n.t('expansions')}</ThemedText>
-      
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={GENETIC_APEX} style={styles.expansionImage}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('genetic_apex')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardsExpansion(CardExpansionENUM.GENETIC_APEX).length}</ThemedText>
-      </ThemedView>
-      <ThemedText style={[styles.textMargin, {marginBottom: 36}]}>{i18n.t('genetic_apex_description')}</ThemedText>
+      {
+        showExpansion &&
+        <>
+          <ThemedText style={styles.subTitlte}>{i18n.t('expansions')}</ThemedText>
+          
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={GENETIC_APEX} style={styles.expansionImage}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('genetic_apex')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardsExpansion(CardExpansionENUM.GENETIC_APEX).length}</ThemedText>
+          </ThemedView>
+          <ThemedText style={[styles.textMargin, {marginBottom: 36}]}>{i18n.t('genetic_apex_description')}</ThemedText>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={GENETIC_APEX_PIKACHU_ICON} style={[styles.expansionImage, { width: 92, height: 64}]}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('pikachu')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.PIKACHU).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCards(EXPANSION.PIKACHU)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={GENETIC_APEX_PIKACHU_ICON} style={[styles.expansionImage, { width: 92, height: 64}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('pikachu')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.PIKACHU).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCards(EXPANSION.PIKACHU)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
 
-      <RainbowDivider></RainbowDivider>
+          <RainbowDivider></RainbowDivider>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={GENETIC_APEX_MEWTWO_ICON} style={[styles.expansionImage, { width: 92, height: 64}]}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('mewtwo')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.MEWTWO).length}</ThemedText>
-      </ThemedView>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={GENETIC_APEX_MEWTWO_ICON} style={[styles.expansionImage, { width: 92, height: 64}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('mewtwo')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.MEWTWO).length}</ThemedText>
+          </ThemedView>
 
-      <FlatList data={getCards(EXPANSION.MEWTWO)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
+          <FlatList data={getCards(EXPANSION.MEWTWO)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
 
-      <RainbowDivider></RainbowDivider>
+          <RainbowDivider></RainbowDivider>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={GENETIC_APEX_CHARIZARD_ICON} style={[styles.expansionImage, { width: 92, height: 64}]}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('charizard')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.CHARIZARD).length}</ThemedText>
-      </ThemedView>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={GENETIC_APEX_CHARIZARD_ICON} style={[styles.expansionImage, { width: 92, height: 64}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('charizard')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.CHARIZARD).length}</ThemedText>
+          </ThemedView>
 
-      <FlatList data={getCards(EXPANSION.CHARIZARD)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
+          <FlatList data={getCards(EXPANSION.CHARIZARD)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
 
-      <RainbowDivider></RainbowDivider>
+          <RainbowDivider></RainbowDivider>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={GENETIC_APEX} style={styles.expansionImage}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('shareds')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getSharedCards(CardExpansionENUM.GENETIC_APEX).length}</ThemedText>
-      </ThemedView>
-      <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('shareds_description')}</ThemedText>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={GENETIC_APEX} style={styles.expansionImage}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('shareds')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getSharedCards(CardExpansionENUM.GENETIC_APEX).length}</ThemedText>
+          </ThemedView>
+          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('shareds_description')}</ThemedText>
 
-      <FlatList data={getSharedCards(CardExpansionENUM.GENETIC_APEX)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
+          <FlatList data={getSharedCards(CardExpansionENUM.GENETIC_APEX)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
 
-      <RainbowDivider></RainbowDivider>
+          <RainbowDivider></RainbowDivider>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={MYTHICAL_ISLAND_MEW_ICON} style={[styles.expansionImage, {height: 48}]}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('mythical_island')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardsExpansion(CardExpansionENUM.MYTHICAL_ISLAND).length}</ThemedText>
-      </ThemedView>
-      <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('mythical_island_description')}</ThemedText>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={MYTHICAL_ISLAND_MEW_ICON} style={[styles.expansionImage, {height: 48}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('mythical_island')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardsExpansion(CardExpansionENUM.MYTHICAL_ISLAND).length}</ThemedText>
+          </ThemedView>
+          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('mythical_island_description')}</ThemedText>
 
-      <FlatList data={getCards(EXPANSION.MYTHICAL_ISLAND)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
+          <FlatList data={getCards(EXPANSION.MYTHICAL_ISLAND)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
 
-      <RainbowDivider></RainbowDivider>
+          <RainbowDivider></RainbowDivider>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={SMACK_DOWN} style={[styles.expansionImage, {height: 44}]}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('smack_down')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardsExpansion(CardExpansionENUM.SPACE_TIME_SMACKDOWN).length}</ThemedText>
-      </ThemedView>
-      <ThemedText style={styles.textMargin}>{i18n.t('smack_down_description')}</ThemedText>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={SMACK_DOWN} style={[styles.expansionImage, {height: 44}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('smack_down')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardsExpansion(CardExpansionENUM.SPACE_TIME_SMACKDOWN).length}</ThemedText>
+          </ThemedView>
+          <ThemedText style={styles.textMargin}>{i18n.t('smack_down_description')}</ThemedText>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={SMACK_DOWN_DIALGA_ICON} style={[styles.expansionImage, { width: 92, height: 46}]}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('dialga')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.DIALGA).length}</ThemedText>
-      </ThemedView>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={SMACK_DOWN_DIALGA_ICON} style={[styles.expansionImage, { width: 92, height: 46}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('dialga')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.DIALGA).length}</ThemedText>
+          </ThemedView>
 
-      <FlatList data={getCards(EXPANSION.DIALGA)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
+          <FlatList data={getCards(EXPANSION.DIALGA)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
 
-      <RainbowDivider></RainbowDivider>
+          <RainbowDivider></RainbowDivider>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={SMACK_DOWN_PALKIA_ICON} style={[styles.expansionImage, { width: 92, height: 46}]}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('palkia')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.PALKIA).length}</ThemedText>
-      </ThemedView>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={SMACK_DOWN_PALKIA_ICON} style={[styles.expansionImage, { width: 92, height: 46}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('palkia')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.PALKIA).length}</ThemedText>
+          </ThemedView>
 
-      <FlatList data={getCards(EXPANSION.PALKIA)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
+          <FlatList data={getCards(EXPANSION.PALKIA)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
 
-      <RainbowDivider></RainbowDivider>
+          <RainbowDivider></RainbowDivider>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={SMACK_DOWN} style={styles.expansionImage}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('shareds')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getSharedCards(CardExpansionENUM.SPACE_TIME_SMACKDOWN).length}</ThemedText>
-      </ThemedView>
-      <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('shareds_description')}</ThemedText>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={SMACK_DOWN} style={styles.expansionImage}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('shareds')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getSharedCards(CardExpansionENUM.SPACE_TIME_SMACKDOWN).length}</ThemedText>
+          </ThemedView>
+          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('shareds_description')}</ThemedText>
 
-      <FlatList data={getSharedCards(CardExpansionENUM.SPACE_TIME_SMACKDOWN)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
+          <FlatList data={getSharedCards(CardExpansionENUM.SPACE_TIME_SMACKDOWN)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
 
-      <RainbowDivider></RainbowDivider>
+          <RainbowDivider></RainbowDivider>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('promo_a')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardsExpansion(CardExpansionENUM.PROMO_A).length}</ThemedText>
-      </ThemedView>
-      <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('promo_description')}</ThemedText>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('promo_a')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardsExpansion(CardExpansionENUM.PROMO_A).length}</ThemedText>
+          </ThemedView>
+          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('promo_description')}</ThemedText>
 
-      <FlatList data={getPromo()}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
+          <FlatList data={getPromo()}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
 
-      <RainbowDivider></RainbowDivider>
+          <RainbowDivider></RainbowDivider>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('series')}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-      <ThemedText style={[styles.text, {marginBottom: 10}]}>{i18n.t('series_description')}</ThemedText>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('series')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+          <ThemedText style={[styles.text, {marginBottom: 10}]}>{i18n.t('series_description')}</ThemedText>
 
-      <ThemedView style={{flexDirection: "row", gap: 20}}>
-        <ThemedView>
-          <ThemedText style={styles.subTitlte}>A1</ThemedText>
-          <FlatList data={getCards(EXPANSION.PROMO_A1)}
+          <ThemedView style={{flexDirection: "row", gap: 20}}>
+            <ThemedView>
+              <ThemedText style={styles.subTitlte}>A1</ThemedText>
+              <FlatList data={getCards(EXPANSION.PROMO_A1)}
+                        renderItem={renderItem}
+                        numColumns={numColumns}
+                        contentContainerStyle={[styles.list, {width: 'auto'}]}
+                        style={{borderRadius: 8}}
+                        showsVerticalScrollIndicator={false}
+                        keyExtractor={(item, index) => index + ''}/>
+            </ThemedView>
+            <ThemedView>
+              <ThemedText style={styles.subTitlte}>A2</ThemedText>
+              <FlatList data={getCards(EXPANSION.PROMO_A2)}
+                        renderItem={renderItem}
+                        numColumns={numColumns}
+                        contentContainerStyle={[styles.list, {width: 'auto'}]}
+                        style={{borderRadius: 8}}
+                        showsVerticalScrollIndicator={false}
+                        keyExtractor={(item, index) => index + ''}/>
+            </ThemedView>
+            <ThemedView>
+              <ThemedText style={styles.subTitlte}>A3</ThemedText>
+              <FlatList data={getCards(EXPANSION.PROMO_A3)}
+                        renderItem={renderItem}
+                        numColumns={numColumns}
+                        contentContainerStyle={[styles.list, {width: 'auto'}]}
+                        style={{borderRadius: 8}}
+                        showsVerticalScrollIndicator={false}
+                        keyExtractor={(item, index) => index + ''}/>
+            </ThemedView>
+          </ThemedView>
+
+          <ThemedView style={{flexDirection: "row", gap: 20, width: '32.4%'}}>
+            <ThemedView>
+              <ThemedText style={[styles.subTitlte, {marginTop: 10}]}>A4</ThemedText>
+              <FlatList data={getCards(EXPANSION.PROMO_A4)}
+                        renderItem={renderItem}
+                        numColumns={numColumns}
+                        contentContainerStyle={[styles.list, {width: 'auto'}]}
+                        style={{borderRadius: 8}}
+                        showsVerticalScrollIndicator={false}
+                        keyExtractor={(item, index) => index + ''}/>
+            </ThemedView>
+          </ThemedView>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('premium')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.PREMIUM).length}</ThemedText>
+          </ThemedView>
+          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('premium_description')}</ThemedText>
+          
+          <FlatList data={getCards(EXPANSION.PREMIUM)}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {width: 'auto'}]}
-                    style={{borderRadius: 8}}
+                    style={{borderRadius: 8, width: getItemWidth(getCards(EXPANSION.PREMIUM).length)}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
-        </ThemedView>
-        <ThemedView>
-          <ThemedText style={styles.subTitlte}>A2</ThemedText>
-          <FlatList data={getCards(EXPANSION.PROMO_A2)}
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('mission')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.SPECIAL_MISSION).length}</ThemedText>
+          </ThemedView>
+          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('mission_description')}</ThemedText>
+
+          <FlatList data={getCards(EXPANSION.SPECIAL_MISSION)}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {width: 'auto'}]}
-                    style={{borderRadius: 8}}
+                    contentContainerStyle={styles.list}
+                    style={{width: getItemWidth(getCards(EXPANSION.SPECIAL_MISSION).length), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
-        </ThemedView>
-        <ThemedView>
-          <ThemedText style={styles.subTitlte}>A3</ThemedText>
-          <FlatList data={getCards(EXPANSION.PROMO_A3)}
+
+          <RainbowDivider></RainbowDivider> 
+        </>
+      }
+
+      {
+        showGrades && 
+        <>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('grade')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('grade_description')}</ThemedText>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 8}}>
+              {Array.from({ length: 3 }).map((_, i) => (
+                <Image
+                  key={(i + 1)}
+                  source={NORMAL_RARITY}
+                  style={{
+                    width: 26,
+                    height: 27,
+                    top: 2
+                  }}
+                />
+              ))}
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.RARE).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCardRarity(CardRarityENUM.RARE)}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {width: 'auto'}]}
-                    style={{borderRadius: 8}}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
-        </ThemedView>
-      </ThemedView>
 
-      <ThemedView style={{flexDirection: "row", gap: 20, width: '32.4%'}}>
-        <ThemedView>
-          <ThemedText style={[styles.subTitlte, {marginTop: 10}]}>A4</ThemedText>
-          <FlatList data={getCards(EXPANSION.PROMO_A4)}
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 8}}>
+              {Array.from({ length: 4 }).map((_, i) => (
+                <Image
+                  key={(i + 1)}
+                  source={NORMAL_RARITY}
+                  style={{
+                    width: 26,
+                    height: 27,
+                    top: 2
+                  }}
+                />
+              ))}
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.DOUBLE).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCardRarity(CardRarityENUM.DOUBLE)}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {width: 'auto'}]}
-                    style={{borderRadius: 8}}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
-        </ThemedView>
-      </ThemedView>
 
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('premium')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.PREMIUM).length}</ThemedText>
-      </ThemedView>
-      <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('premium_description')}</ThemedText>
-      
-      <FlatList data={getCards(EXPANSION.PREMIUM)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {width: 'auto'}]}
-                style={{borderRadius: 8, width: getItemWidth(getCards(EXPANSION.PREMIUM).length)}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('mission')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.SPECIAL_MISSION).length}</ThemedText>
-      </ThemedView>
-      <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('mission_description')}</ThemedText>
-
-      <FlatList data={getCards(EXPANSION.SPECIAL_MISSION)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: getItemWidth(getCards(EXPANSION.SPECIAL_MISSION).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('grade')}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-      <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('grade_description')}</ThemedText>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 8}}>
-          {Array.from({ length: 3 }).map((_, i) => (
-            <Image
-              key={(i + 1)}
-              source={NORMAL_RARITY}
-              style={{
-                width: 26,
-                height: 27,
-                top: 2
-              }}
-            />
-          ))}
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.RARE).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCardRarity(CardRarityENUM.RARE)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 8}}>
-          {Array.from({ length: 4 }).map((_, i) => (
-            <Image
-              key={(i + 1)}
-              source={NORMAL_RARITY}
-              style={{
-                width: 26,
-                height: 27,
-                top: 2
-              }}
-            />
-          ))}
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.DOUBLE).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCardRarity(CardRarityENUM.DOUBLE)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 8}}>
-            {Array.from({ length: 1 }).map((_, i) => (
-              <Image
-                key={(i + 1)}
-                source={STAR_RARITY}
-                style={{
-                  width: 28,
-                  height: 29,
-                  top: 2
-                }}
-              />
-            ))}
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 8}}>
+                {Array.from({ length: 1 }).map((_, i) => (
+                  <Image
+                    key={(i + 1)}
+                    source={STAR_RARITY}
+                    style={{
+                      width: 28,
+                      height: 29,
+                      top: 2
+                    }}
+                  />
+                ))}
+              </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.ART).length}</ThemedText>
           </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.ART).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCardRarity(CardRarityENUM.ART)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
+          
+          <FlatList data={getCardRarity(CardRarityENUM.ART)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 12, marginLeft: 8}}>
-            {Array.from({ length: 2 }).map((_, i) => (
-              <Image
-                key={(i + 1)}
-                source={STAR_RARITY}
-                style={{
-                  width: 28,
-                  height: 29,
-                  top: 2
-                }}
-              />
-            ))}
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 12, marginLeft: 8}}>
+                {Array.from({ length: 2 }).map((_, i) => (
+                  <Image
+                    key={(i + 1)}
+                    source={STAR_RARITY}
+                    style={{
+                      width: 28,
+                      height: 29,
+                      top: 2
+                    }}
+                  />
+                ))}
+              </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.SUPER).length}</ThemedText>
           </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.SUPER).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCardRarity(CardRarityENUM.SUPER)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
+          
+          <FlatList data={getCardRarity(CardRarityENUM.SUPER)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 12, marginLeft: 8}}>
-            {Array.from({ length: 3}).map((_, i) => (
-              <Image
-                key={(i + 1)}
-                source={STAR_RARITY}
-                style={{
-                  width: 28,
-                  height: 29,
-                  top: 2
-                }}
-              />
-            ))}
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 12, marginLeft: 8}}>
+                {Array.from({ length: 3}).map((_, i) => (
+                  <Image
+                    key={(i + 1)}
+                    source={STAR_RARITY}
+                    style={{
+                      width: 28,
+                      height: 29,
+                      top: 2
+                    }}
+                  />
+                ))}
+              </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.INMERSIVE).length}</ThemedText>
           </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.INMERSIVE).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCardRarity(CardRarityENUM.INMERSIVE)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: getItemWidth(getCardRarity(CardRarityENUM.INMERSIVE).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
+          
+          <FlatList data={getCardRarity(CardRarityENUM.INMERSIVE)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: getItemWidth(getCardRarity(CardRarityENUM.INMERSIVE).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 12, marginLeft: 8}}>
-            {Array.from({ length: 1}).map((_, i) => (
-              <Image
-                key={(i + 1)}
-                source={CROWN_RARITY}
-                style={{
-                  width: 49,
-                  height: 32,
-                  top: 2
-                }}
-              />
-            ))}
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 12, marginLeft: 8}}>
+                {Array.from({ length: 1}).map((_, i) => (
+                  <Image
+                    key={(i + 1)}
+                    source={CROWN_RARITY}
+                    style={{
+                      width: 49,
+                      height: 32,
+                      top: 2
+                    }}
+                  />
+                ))}
+              </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.CROWN).length}</ThemedText>
           </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.CROWN).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCardRarity(CardRarityENUM.CROWN)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: getItemWidth(getCardRarity(CardRarityENUM.CROWN).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>         
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 28}}>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('types')}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-      <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('types_description')}</ThemedText>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-          <Image source={GRASS_ICON} style={styles.energy}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('grass')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.GRASS).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardByType(PokemonTypeENUM.GRASS)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/> 
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-          <Image source={FIRE_ICON} style={styles.energy}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('fire')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.FIRE).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardByType(PokemonTypeENUM.FIRE)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-          <Image source={WATER_ICON} style={styles.energy}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('water')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.WATER).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardByType(PokemonTypeENUM.WATER)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-                
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-          <Image source={ELECTRIC_ICON} style={styles.energy}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('electric')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.ELECTRIC).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardByType(PokemonTypeENUM.ELECTRIC)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-          <Image source={PSYCHIC_ICON} style={styles.energy}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('psychic')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.PSYCHIC).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardByType(PokemonTypeENUM.PSYCHIC)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-                
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-          <Image source={FIGHT_ICON} style={styles.energy}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('fight')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.FIGHT).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardByType(PokemonTypeENUM.FIGHT)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-          <Image source={DARK_ICON} style={styles.energy}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('dark')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.DARK).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardByType(PokemonTypeENUM.DARK)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-          <Image source={STEEL_ICON} style={[styles.energy, {top: -4}]}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('steel')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.STEEL).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardByType(PokemonTypeENUM.STEEL)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-          <Image source={DRAGON_ICON} style={styles.energy}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('dragon')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.DRAGON).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardByType(PokemonTypeENUM.DRAGON)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: getItemWidth(getCardByType(PokemonTypeENUM.DRAGON).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-    <RainbowDivider></RainbowDivider>
-
-    <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-          <Image source={NORMAL_ICON} style={[styles.energy, {top: -4}]}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('normal')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.NORMAL).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardByType(PokemonTypeENUM.NORMAL)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-                
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 28}}>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('miscellania')}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-      <ThemedText style={[styles.textMargin, {marginBottom: 30}]}>{i18n.t('miscellania_description')}</ThemedText>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('abilities')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getWithAbility().length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getWithAbility()}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-      
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('items')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getStage(CardStageENUM.ITEM).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getStage(CardStageENUM.ITEM)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: getItemWidth(getStage(CardStageENUM.ITEM).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('tools')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getStage(CardStageENUM.TOOL).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getStage(CardStageENUM.TOOL)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: getItemWidth(getStage(CardStageENUM.TOOL).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('fossils')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getStage(CardStageENUM.FOSSIL).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getStage(CardStageENUM.FOSSIL)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: getItemWidth(getStage(CardStageENUM.FOSSIL).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('supporter')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getStage(CardStageENUM.SUPPORTER).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getStage(CardStageENUM.SUPPORTER)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={styles.list}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 28}}>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('weakness')}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-      <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('weakness_description')}</ThemedText>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-          <Image source={GRASS_ICON} style={styles.energy}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('grass')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.GRASS).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardWeak(PokemonTypeENUM.GRASS)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-          <Image source={FIRE_ICON} style={styles.energy}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('fire')}</ThemedText>
-        </ThemedView>
-        <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.FIRE).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardWeak(PokemonTypeENUM.FIRE)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('water')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.WATER).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardWeak(PokemonTypeENUM.WATER)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-                
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('electric')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.ELECTRIC).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardWeak(PokemonTypeENUM.ELECTRIC)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('psychic')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.PSYCHIC).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardWeak(PokemonTypeENUM.PSYCHIC)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-                
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('fight')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.FIGHT).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardWeak(PokemonTypeENUM.FIGHT)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('dark')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.DARK).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardWeak(PokemonTypeENUM.DARK)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('steel')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.STEEL).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCardWeak(PokemonTypeENUM.STEEL)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginTop: 4, marginLeft: 9}}>
-          <Image source={CHAMPION_ICON} style={[styles.expansionImage, {width: 58, height: 46, top: -6, marginRight: 24}]}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('top_20')}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-      <ThemedText style={[styles.textMargin, {marginBottom: 28}]}>{i18n.t('top_20_description')}</ThemedText>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-            <MaterialIcons name="diamond" style={[styles.stageIcon, {color: 'skyblue'}]}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('rarity')}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-
-      <FlatList data={getTop20('rarity')}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-        
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-            <MaterialIcons name="grass" style={[styles.stageIcon, {top: -5}]}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('retire_cost')}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-
-      <FlatList data={getRetreatTop20()}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-            <MaterialIcons name="favorite-outline" style={[styles.stageIcon, {color: 'skyblue'}]}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('health_points')}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-
-      <FlatList data={getTop20('health')}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-            <MaterialIcons name="height" style={[styles.stageIcon]}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('height')}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-
-      <FlatList data={getTop20('height')}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-            <MaterialIcons name="scale" style={[styles.stageIcon, {color: 'skyblue'}]}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('weight')}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-
-      <FlatList data={getTop20('weight')}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-            <MaterialIcons name="bolt" style={[styles.stageIcon]}/>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('attack')}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-
-      <FlatList data={getAttackTop20()}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedText style={styles.subTitlte}>{i18n.t('conditions')}</ThemedText>
-      <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('conditions_description')}</ThemedText>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_attack_bench')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.ATTACK_BENCH).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.ATTACK_BENCH)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_recoil')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.RECOIL).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.RECOIL)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.RECOIL).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>                
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_extra_damage')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.EXTRA_DAMAGE).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCondition(CardSpecialConditionENUM.EXTRA_DAMAGE)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-      <ThemedText style={styles.subTitlte}>{i18n.t('condition_resist')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.RESIST).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.RESIST)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_heal')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.HEAL).length}</ThemedText>
-      </ThemedView>
- 
-      <FlatList data={getCondition(CardSpecialConditionENUM.HEAL)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_poison')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.POISON).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCondition(CardSpecialConditionENUM.POISON)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.POISON).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_paralyze')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.PARALYZE).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.PARALYZE)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.PARALYZE).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_sleep')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.SLEEP).length}</ThemedText>
-      </ThemedView>
-
-      <FlatList data={getCondition(CardSpecialConditionENUM.SLEEP)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.SLEEP).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_confusion')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.CONFUSION).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.CONFUSION)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.CONFUSION).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_burned')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.BURNED).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.BURNED)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.BURNED).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_flip')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.FLIP).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.FLIP)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_nothing')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.NOTHING).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.NOTHING)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.NOTHING).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_discard')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.DISCARD).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.DISCARD)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_add')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.ADD).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.ADD)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: collageWith, borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_corner')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.CORNER).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.CORNER)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.CORNER).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_withdraw')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.WITHDRAW_CARD).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.WITHDRAW_CARD)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.WITHDRAW_CARD).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_retire')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.RETIRE).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.RETIRE)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.RETIRE).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_call')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.CALL).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.CALL)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.CALL).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
-
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedText style={styles.subTitlte}>{i18n.t('condition_inactive')}</ThemedText>
-        <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.INACTIVE).length}</ThemedText>
-      </ThemedView>
-      
-      <FlatList data={getCondition(CardSpecialConditionENUM.INACTIVE)}
-                renderItem={renderItem}
-                numColumns={numColumns}
-                contentContainerStyle={[styles.list, {marginTop: 0}]}
-                style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.INACTIVE).length), borderRadius: 8}}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={(item, index) => index + ''}/>
-
-      <RainbowDivider></RainbowDivider>
+          
+          <FlatList data={getCardRarity(CardRarityENUM.CROWN)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: getItemWidth(getCardRarity(CardRarityENUM.CROWN).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>        
+        </>
+      }
+
+      {
+        showTypes && 
+        <>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 28}}>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('types')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('types_description')}</ThemedText>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={GRASS_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('grass')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.GRASS).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardByType(PokemonTypeENUM.GRASS)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/> 
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={FIRE_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('fire')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.FIRE).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardByType(PokemonTypeENUM.FIRE)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={WATER_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('water')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.WATER).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardByType(PokemonTypeENUM.WATER)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+                    
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={ELECTRIC_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('electric')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.ELECTRIC).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardByType(PokemonTypeENUM.ELECTRIC)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={PSYCHIC_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('psychic')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.PSYCHIC).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardByType(PokemonTypeENUM.PSYCHIC)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+                    
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={FIGHT_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('fight')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.FIGHT).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardByType(PokemonTypeENUM.FIGHT)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={DARK_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('dark')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.DARK).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardByType(PokemonTypeENUM.DARK)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={STEEL_ICON} style={[styles.energy, {top: -4}]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('steel')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.STEEL).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardByType(PokemonTypeENUM.STEEL)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={DRAGON_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('dragon')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.DRAGON).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardByType(PokemonTypeENUM.DRAGON)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: getItemWidth(getCardByType(PokemonTypeENUM.DRAGON).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={NORMAL_ICON} style={[styles.energy, {top: -4}]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('normal')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.NORMAL).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardByType(PokemonTypeENUM.NORMAL)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>      
+        </>
+      }
+
+      {
+        showMiscellania &&
+        <>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 28}}>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('miscellania')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+          <ThemedText style={[styles.textMargin, {marginBottom: 30}]}>{i18n.t('miscellania_description')}</ThemedText>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('abilities')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getWithAbility().length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getWithAbility()}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+          
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('items')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getStage(CardStageENUM.ITEM).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getStage(CardStageENUM.ITEM)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: getItemWidth(getStage(CardStageENUM.ITEM).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('tools')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getStage(CardStageENUM.TOOL).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getStage(CardStageENUM.TOOL)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: getItemWidth(getStage(CardStageENUM.TOOL).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('fossils')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getStage(CardStageENUM.FOSSIL).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getStage(CardStageENUM.FOSSIL)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: getItemWidth(getStage(CardStageENUM.FOSSIL).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('supporter')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getStage(CardStageENUM.SUPPORTER).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getStage(CardStageENUM.SUPPORTER)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>        
+        </>
+      }
+
+      {
+        showWeak && 
+        <>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 28}}>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('weakness')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('weakness_description')}</ThemedText>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={GRASS_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('grass')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.GRASS).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardWeak(PokemonTypeENUM.GRASS)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={FIRE_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('fire')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.FIRE).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardWeak(PokemonTypeENUM.FIRE)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('water')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.WATER).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardWeak(PokemonTypeENUM.WATER)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+                    
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('electric')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.ELECTRIC).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardWeak(PokemonTypeENUM.ELECTRIC)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('psychic')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.PSYCHIC).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardWeak(PokemonTypeENUM.PSYCHIC)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+                    
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('fight')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.FIGHT).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardWeak(PokemonTypeENUM.FIGHT)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('dark')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.DARK).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardWeak(PokemonTypeENUM.DARK)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('steel')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.STEEL).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCardWeak(PokemonTypeENUM.STEEL)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>        
+        </>
+      }
+
+      {
+        showTop &&
+        <>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginTop: 4, marginLeft: 9}}>
+              <Image source={CHAMPION_ICON} style={[styles.expansionImage, {width: 58, height: 46, top: -6, marginRight: 24}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('top_20')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+          <ThemedText style={[styles.textMargin, {marginBottom: 28}]}>{i18n.t('top_20_description')}</ThemedText>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
+                <MaterialIcons name="diamond" style={[styles.stageIcon, {color: 'skyblue'}]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('rarity')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+
+          <FlatList data={getTop20('rarity')}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+            
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
+                <MaterialIcons name="grass" style={[styles.stageIcon, {top: -5}]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('retire_cost')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+
+          <FlatList data={getRetreatTop20()}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
+                <MaterialIcons name="favorite-outline" style={[styles.stageIcon, {color: 'skyblue'}]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('health_points')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+
+          <FlatList data={getTop20('health')}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
+                <MaterialIcons name="height" style={[styles.stageIcon]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('height')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+
+          <FlatList data={getTop20('height')}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
+                <MaterialIcons name="scale" style={[styles.stageIcon, {color: 'skyblue'}]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('weight')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+
+          <FlatList data={getTop20('weight')}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
+                <MaterialIcons name="bolt" style={[styles.stageIcon]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('attack')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+
+          <FlatList data={getAttackTop20()}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>       
+        </>
+      }
+      {
+        showConditions &&
+        <>
+          <ThemedText style={styles.subTitlte}>{i18n.t('conditions')}</ThemedText>
+          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('conditions_description')}</ThemedText>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_attack_bench')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.ATTACK_BENCH).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.ATTACK_BENCH)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_recoil')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.RECOIL).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.RECOIL)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.RECOIL).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>                
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_extra_damage')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.EXTRA_DAMAGE).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCondition(CardSpecialConditionENUM.EXTRA_DAMAGE)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <ThemedText style={styles.subTitlte}>{i18n.t('condition_resist')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.RESIST).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.RESIST)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_heal')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.HEAL).length}</ThemedText>
+          </ThemedView>
+    
+          <FlatList data={getCondition(CardSpecialConditionENUM.HEAL)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_poison')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.POISON).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCondition(CardSpecialConditionENUM.POISON)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.POISON).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_paralyze')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.PARALYZE).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.PARALYZE)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.PARALYZE).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_sleep')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.SLEEP).length}</ThemedText>
+          </ThemedView>
+
+          <FlatList data={getCondition(CardSpecialConditionENUM.SLEEP)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.SLEEP).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_confusion')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.CONFUSION).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.CONFUSION)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.CONFUSION).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_burned')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.BURNED).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.BURNED)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.BURNED).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_flip')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.FLIP).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.FLIP)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_nothing')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.NOTHING).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.NOTHING)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.NOTHING).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_discard')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.DISCARD).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.DISCARD)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_add')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.ADD).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.ADD)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_corner')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.CORNER).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.CORNER)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.CORNER).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_withdraw')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.WITHDRAW_CARD).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.WITHDRAW_CARD)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.WITHDRAW_CARD).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_retire')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.RETIRE).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.RETIRE)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.RETIRE).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_call')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.CALL).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.CALL)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.CALL).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={styles.subTitlte}>{i18n.t('condition_inactive')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.INACTIVE).length}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={getCondition(CardSpecialConditionENUM.INACTIVE)}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.INACTIVE).length), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider></RainbowDivider>       
+        </>
+      }
 
       <ThemedView style={{height: 20}}></ThemedView>
       <ThemedView style={[styles.summary, {marginHorizontal: 0, marginTop: 0, padding: 16}]}>
         <ThemedText style={[styles.text, {textAlign: 'center', fontWeight: 'bold'}]}>
-          {i18n.t('infrographics_footer')}
+          {i18n.t('infographics_footer')}
         </ThemedText>
       </ThemedView>
     </ThemedView>
