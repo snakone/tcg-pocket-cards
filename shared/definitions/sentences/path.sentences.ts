@@ -213,3 +213,9 @@ export const SPLASH = [
   SUMMER_SPLASH,
   FALL_SPLASH,
 ];
+
+// INFOGRAPHICS
+export const CHAMPION_ICON = require("@/assets/images/infographics/champion.png");
+export const DIAMOND_ICON = require("@/assets/images/infographics/diamond.png");
+export const ELEMENT_ICON = require("@/assets/images/infographics/types.png");
+export const MISCELLANIA_ICON = require("@/assets/images/infographics/miscellania.png");

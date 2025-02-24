@@ -2,7 +2,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'expo-router';
 import Animated from 'react-native-reanimated';
-import { FlatList, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { FlatList, KeyboardAvoidingView, Platform, SafeAreaView, TextInput, TouchableOpacity, View } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -41,7 +41,7 @@ export default function CreateDeckScreen() {
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={[CardGridStyles.clearInput, {left: 324}]}
+                      style={[CardGridStyles.clearInput, {left: 326}]}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
@@ -88,15 +88,18 @@ export default function CreateDeckScreen() {
           }}>
           <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
               <Animated.View style={[CardGridStyles.inputContainer]}>
-                <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
-                           placeholder={i18n.t('search_decks_placeholder')}
-                           value={searchQuery}
-                           onChangeText={handleSearch}
-                           placeholderTextColor={Colors.light.text}
-                           accessibilityLabel={SEARCH_LABEL}
-                           inputMode='text'
-                          />
-                  {searchQuery.length > 0 && <ResetFilterButton/>}
+                <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '100%', borderRadius: 8}}>
+                  <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
+                            placeholder={i18n.t('search_decks_placeholder')}
+                            value={searchQuery}
+                            onChangeText={handleSearch}
+                            placeholderTextColor={Colors.light.text}
+                            accessibilityLabel={SEARCH_LABEL}
+                            inputMode='text'
+                            />
+                    {searchQuery.length > 0 && <ResetFilterButton/>}
+                </ThemedView>
+
               </Animated.View>
           </KeyboardAvoidingView>
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>

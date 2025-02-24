@@ -105,7 +105,7 @@ import { AvatarIcon } from "../interfaces/global.interfaces";
 
 export const APP_VERSION = '1.2.0';
 export const MENU_WIDTH = 250;
-export const MENU_HEIGHT = 405;
+export const MENU_HEIGHT = 450;
 export const PAGE_TITLE = 'TCG Pocket Cards';
 export const LOCAL_HOST = 'http://192.168.1.71:3000';
 export const SERVER_URL = 'https://tcg-pocket-cards.onrender.com';
@@ -132,6 +132,7 @@ export const LIST: ItemWithRoute[] = [
   { label: 'share', icon: 'note', route: 'share' },
   { label: 'favorites', icon: 'star', route: 'favorites' },
   { label: 'news', icon: 'newspaper', route: 'news' },
+  { label: 'infographics', icon: 'info.bubble', route: 'infographics' },
 ];
 
 export const HELP: ItemWithRoute[] = [
@@ -449,4 +450,11 @@ export const TRADE_COST_MAP = {
   [CardRarityENUM.RARE]: 120,
   [CardRarityENUM.DOUBLE]: 500,
   [CardRarityENUM.ART]: 400
+}
+
+export const PACK_PER_EXPANSION_MAP = {
+  [CardExpansionENUM.GENETIC_APEX]: 3,
+  [CardExpansionENUM.MYTHICAL_ISLAND]: 1,
+  [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 2,
+  [CardExpansionENUM.PROMO_A]: null
 }

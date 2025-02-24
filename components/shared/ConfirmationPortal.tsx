@@ -50,7 +50,7 @@ const ConfirmationPortal = ({ visible, title, message, type = "info", handleConf
               </MaterialIcons>
             </View>
             <ScrollView style={[styles.modalScrollView, {minHeight: 'auto'}]}>
-              <ThemedText style={{textAlign: 'center', marginBlock: 6, marginBottom: 9}}>{i18n.t(message)}</ThemedText>
+              <ThemedText style={{textAlign: 'center', marginBlock: 6, marginBottom: 9, top: -1}}>{i18n.t(message)}</ThemedText>
             </ScrollView>
             <View style={[styles.modalFooter, {flexDirection: 'row', gap: 16, justifyContent: 'center', height: 82}]}>
               <TouchableOpacity style={[

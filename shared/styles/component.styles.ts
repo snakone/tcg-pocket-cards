@@ -104,12 +104,11 @@ export const CardGridStyles = StyleSheet.create({
     height: 36,
     borderWidth: 1,
     padding: Platform.OS === 'web' ? 10 : 8,
-    paddingInline: 16,
+    paddingHorizontal: 16,
     borderRadius: 8,
     backgroundColor: 'white',
     color: 'Colors.light.text',
     borderColor: 'skyblue',
-    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'
   },
   gridContainer: {
     flexWrap: 'nowrap',
@@ -458,7 +457,7 @@ export const TabsMenuStyles = StyleSheet.create({
     marginLeft: 16
   },
   separator: {
-    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)',
+    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)',
     height: 1
   },
   itemSmall: {
@@ -957,5 +956,24 @@ export const CreateScreenStyles = StyleSheet.create({
     shadowOffset: {height: 1, width: 2},
     shadowOpacity: 0.1,
     top: 4,
+  }
+});
+
+export const offersStyles = StyleSheet.create({
+  input: {
+    boxShadow: '5px 4px 12px rgba(0, 0, 0, 0.2)', 
+    width: '100%', 
+    marginTop: 16, 
+    marginBottom: 6
+  },
+  included: {
+    width: Platform.OS === 'web' ? 57.6 : 58, 
+    position: 'absolute', 
+    zIndex: 10, 
+    opacity: 0.7, 
+    backgroundColor: 'rgba(0, 0, 0, 0.7)', 
+    borderRadius: 4,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

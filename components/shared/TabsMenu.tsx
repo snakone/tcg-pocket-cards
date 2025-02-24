@@ -56,6 +56,8 @@ export default function TabsMenu({
         break;
       case 'share': router.push('/share');
         break;
+      case 'infographics': router.push('/infographics');
+        break;
       case 'help': router.push('/screens/help');
         break;
       case 'settings': router.push('/screens/settings');

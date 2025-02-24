@@ -14,6 +14,7 @@ import {
   CardGridStyles,
   homeScreenStyles,
   LayoutStyles, 
+  offersStyles, 
   ParallaxStyles, 
   ScreenStyles, 
   sortStyles 
@@ -48,7 +49,6 @@ import { CardStageENUM } from "@/shared/definitions/enums/card.enums";
 import PreviewList from "@/components/dedicated/create/PreviewList";
 import CreateService from "@/core/services/create.service";
 import { LanguageType } from "@/shared/definitions/types/global.types";
-import { offersStyles } from "@/components/dedicated/trade/PickOffersMenu";
 
 export default function CreateDeckScreen() {
   const {i18n} = useI18n();
@@ -395,7 +395,7 @@ export default function CreateDeckScreen() {
       return data;
     }
   
-    return sortCards(sortField, data, sort, lang);
+    return sortCards(sortField, data, sort);
   }
 
   const fixFilterIcon = useCallback(() => {
@@ -587,16 +587,19 @@ export default function CreateDeckScreen() {
       <SharedScreen title={deck_id ? 'edit_deck' : 'create_new_deck'} 
                     styles={{paddingInline: 16, marginTop: 0, paddingBottom: 16}} customClose={goBack}>
         <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 6}}>
-          <TextInput style={[CardGridStyles.searchInput, {width: '76%'}]}
-                     placeholder={i18n.t('new_deck_placeholder')}
-                     value={deckName}
-                     onChangeText={(text) => (setDeckName(text), setNotSaved(true))}
-                     placeholderTextColor={Colors.light.text}
-                     accessibilityLabel={SEARCH_LABEL}
-                     inputMode='text'
-                     maxLength={21}
-                  />
-            {deckName.length > 0 && <ResetFilterButton style={{left: 242}}/>}
+          <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '76%', borderRadius: 8}}>
+            <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
+                      placeholder={i18n.t('new_deck_placeholder')}
+                      value={deckName}
+                      onChangeText={(text) => (setDeckName(text), setNotSaved(true))}
+                      placeholderTextColor={Colors.light.text}
+                      accessibilityLabel={SEARCH_LABEL}
+                      inputMode='text'
+                      maxLength={21}
+                    />
+              {deckName.length > 0 && <ResetFilterButton style={{left: 242}}/>}
+          </ThemedView>
+
 
           <ThemedView style={{flexDirection: 'row', gap: 8}}>
             <TouchableOpacity onPress={handleReset}>

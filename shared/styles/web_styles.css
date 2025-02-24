@@ -6,6 +6,7 @@ body {
   overflow-y: auto;
   touch-action: none;
   user-select: none;
+  overflow: visible !important;
 }
 
 @media screen and (max-height: 844px) {
@@ -16,4 +17,8 @@ body {
     place-items: center;
     overflow-y: auto;
   }
+}
+
+.r-overflow-1udh08x {
+  overflow: visible !important;
 }

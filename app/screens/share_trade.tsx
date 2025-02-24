@@ -234,9 +234,9 @@ const styles = StyleSheet.create({
     right: 41
   },
   tradeItem: {
-    marginBottom: 32,
-    width: '107%',
-    marginLeft: -12, 
+    marginBottom: 28,
+    width: '105%',
+    marginLeft: -8, 
     boxShadow: 'none',
   }
 });

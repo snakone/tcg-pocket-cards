@@ -87,7 +87,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       weight: {
         es: '13.0',
-        en: '28,7',
+        en: '28.7',
         ja: '13.0'
       }
     },
@@ -147,7 +147,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       weight: {
         es: '100.0',
-        en: '220,5',
+        en: '220.5',
         ja: '100.0'
       }
     },
@@ -214,7 +214,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       weight: {
         es: '100.0',
-        en: '220,5',
+        en: '220.5',
         ja: '100.0'
       }
     },
@@ -290,7 +290,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       weight: {
         es: '2.9',
-        en: '6,4',
+        en: '6.4',
         ja: '2.9'
       }
     },
@@ -355,7 +355,7 @@ export const MOCK_DB_CARDS: Card[] = [
       },
       weight: {
         es: '9.9',
-        en: '21,8',
+        en: '21.8',
         ja: '9.9'
       }
     },

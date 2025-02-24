@@ -275,7 +275,19 @@ export default function TabLayout() {
             title: i18n.t('favorites')
           }}
         />
+        <Tabs.Screen
+          name="infographics"
+          options={{
+            animation: 'shift',
+            tabBarItemStyle: {
+              display: 'none'
+            },
+            tabBarButton: () => null,
+            title: i18n.t('infographics')
+          }}
+        />
       </Tabs>
+
       <Portal>{isMenuVisible && memoizedMenu}</Portal>
       <Portal>{isSortVisible && memoizedSort}</Portal>
       <Portal>{isFilterVisible && memoizedFilter}</Portal>

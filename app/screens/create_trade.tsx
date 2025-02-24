@@ -163,8 +163,13 @@ export default function CreateTradeScreen() {
   }
 
   function isTradeValid(item: TradeItem): boolean {
-    const desiredRarity = desired.filter(Boolean).map(id => state.cardState.cards.find(card => card.id === id))[0]?.rarity;
-    const offeredCards = offers.filter(Boolean).map(id => state.cardState.cards.find(card => card.id === id));
+    const desiredRarity = desired.filter(Boolean)
+                                .map(id => state.cardState.cards
+                                  .find(card => card.id === id))[0]?.rarity;
+
+    const offeredCards = offers.filter(Boolean)
+                               .map(id => state.cardState.cards
+                                .find(card => card.id === id));
     if (
       (!desired || !title) ||
       !tcg.every(num => num && num.length === 4) ||
@@ -185,10 +190,13 @@ export default function CreateTradeScreen() {
   }
 
   const renderOffered = useCallback(({item, index}: {item: any, index: number}) => (
-    <View style={[CardGridStyles.imageContainer]}>
-      <View style={{flex: 1, backgroundColor: 'white', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)'}}>
+    <View style={[CardGridStyles.imageContainer, {boxShadow: '4px 4px 6px rgba(0, 0, 0, 0.1)'}]}>
+      <View style={{flex: 1, backgroundColor: 'white'}}>
         <TouchableOpacity onPress={() => handleOffer()}
-                          style={[CardGridStyles.image, styles.image, desired.filter(Boolean).length === 0 && {opacity: 0.3}]}
+                          style={[
+                            CardGridStyles.image, 
+                            styles.image, desired.filter(Boolean).length === 0 && {opacity: 0.3}
+                          ]}
                           disabled={desired.filter(Boolean).length === 0}>
           <View>
             { offers[index] ? 
@@ -207,8 +215,8 @@ export default function CreateTradeScreen() {
   ), [offers, desired]);
 
   const renderDesired = useCallback(({item, index}: {item: any, index: number}) => (
-    <View style={[CardGridStyles.imageContainer]}>
-      <View style={{ backgroundColor: 'white', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)'}}>
+    <View style={[CardGridStyles.imageContainer, {boxShadow: '4px 4px 5px rgba(0, 0, 0, 0.1)'}]}>
+      <View style={{ backgroundColor: 'white'}}>
         <TouchableOpacity onPress={() => handleDesired()}
                           style={[CardGridStyles.image, styles.image, !desired && {opacity: 0.3}]}
                           disabled={!desired}>
@@ -262,15 +270,18 @@ export default function CreateTradeScreen() {
       <SharedScreen title={trade_id ? 'edit_trade' : 'create_trade'} 
                     styles={{paddingInline: 16, marginTop: 0}} customClose={goBack}>
         <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 12}}>
-          <TextInput style={[CardGridStyles.searchInput, {width: trade_id ? '87%' : '100%'}]}
-                    placeholder={i18n.t('trade_name')}
-                    value={title}
-                    onChangeText={(text) => (setTitle(text), setNotSaved(true))}
-                    placeholderTextColor={Colors.light.text}
-                    accessibilityLabel={SEARCH_LABEL}
-                    inputMode='text'
-                    maxLength={40}
-                  />
+          <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: trade_id ? '87%' : '100%', borderRadius: 8}}>
+            <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
+                      placeholder={i18n.t('trade_name')}
+                      value={title}
+                      onChangeText={(text) => (setTitle(text), setNotSaved(true))}
+                      placeholderTextColor={Colors.light.text}
+                      accessibilityLabel={SEARCH_LABEL}
+                      inputMode='text'
+                      maxLength={40}
+                    />
+          </ThemedView>
+
           { Boolean(trade_id) && 
             <TouchableOpacity onPress={handleDelete}>
               <MaterialIcons name="delete-outline" 
@@ -281,38 +292,47 @@ export default function CreateTradeScreen() {
           }
         </ThemedView>
 
-        <TextInput style={[CardGridStyles.searchInput, {width: '100%'}, styles.item]}
-                   placeholder={i18n.t('trade_discord_name')}
-                   value={discord}
-                   onChangeText={(text) => (setDiscord(text), setNotSaved(true))}
-                   placeholderTextColor={Colors.light.text}
-                   accessibilityLabel={SEARCH_LABEL}
-                   inputMode='text'
-                   maxLength={25}
-                />
-        <ThemedView style={styles.item}>
+        <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '100%', borderRadius: 8}}>
+          <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
+                    placeholder={i18n.t('trade_discord_name')}
+                    value={discord}
+                    onChangeText={(text) => (setDiscord(text), setNotSaved(true))}
+                    placeholderTextColor={Colors.light.text}
+                    accessibilityLabel={SEARCH_LABEL}
+                    inputMode='text'
+                    maxLength={25}
+                  />
+        </ThemedView>
+
+        <ThemedView style={[styles.item, {marginTop: 18 }]}>
           <ThemedText type="defaultSemiBold">{i18n.t('trade_friend_ID')}</ThemedText>
           <ThemedView style={{flexDirection: 'row', gap: 8, marginTop: 8}}>
             {
               [1, 2, 3, 4].map((item, index) => (
-                <TextInput style={[CardGridStyles.searchInput, {width: Platform.OS !== 'web' ? 83.5 : '100%'}]}
-                          placeholder={'0000'}
-                          value={tcg[index]}
-                          onChangeText={(text) => handleTCG(text, index)}
-                          placeholderTextColor={Colors.light.text}
-                          accessibilityLabel={SEARCH_LABEL}
-                          inputMode='numeric'
-                          key={index.toString()}
-                          maxLength={4}
-                          keyboardType="numeric"
-                          ref={(el) => el && (inputRefs.current[index] = el)}
-                          onKeyPress={(event) => handleKeyPress(event, index)}
-                />
+                <ThemedView style={{
+                    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', 
+                    width: Platform.OS !== 'web' ? '23.27%' : '100%', 
+                    borderRadius: 8
+                  }} key={index.toString()}>
+                  <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
+                            placeholder={'0000'}
+                            value={tcg[index]}
+                            onChangeText={(text) => handleTCG(text, index)}
+                            placeholderTextColor={Colors.light.text}
+                            accessibilityLabel={SEARCH_LABEL}
+                            inputMode='numeric'
+                            
+                            maxLength={4}
+                            keyboardType="numeric"
+                            ref={(el) => el && (inputRefs.current[index] = el)}
+                            onKeyPress={(event) => handleKeyPress(event, index)}
+                  />
+                </ThemedView>
               ))
             }
           </ThemedView>
         </ThemedView>
-        <ThemedView style={[styles.item, Platform.OS !== 'web' && {height: 142}]}>
+        <ThemedView style={[styles.item, Platform.OS !== 'web' && {height: 152, marginBottom: 10}]}>
           <ThemedView style={{flexDirection: 'row', gap: 16}}>
             <ThemedView style={[tradeCollageStyles.like, {position: 'relative', width: 30, height: 30, top: 4, right: 0, marginRight: 2}]}>
               <MaterialIcons name={"favorite-outline"} 

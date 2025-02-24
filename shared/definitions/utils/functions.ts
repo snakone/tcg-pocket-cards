@@ -26,7 +26,7 @@ import {
   CARD_IMAGE_MAP_JAP
 } from "./card.images";
 
-export function sortCards(field: keyof Card | string, data: Card[], sort: SortItem, lang: LanguageType): Card[] {
+export function sortCards(field: keyof Card | string, data: Card[], sort: SortItem): Card[] {
   return [...data].sort((a, b) => {
     let aValue: any = '';
     let bValue: any = '';
@@ -272,7 +272,6 @@ export const getDynamicHeight = (length: number, type: 'deck' | 'trade'): number
   const maxHeight = 2229;
   const minHeight = 1225;
   const midHeight = 1633;
-  const tradeHeight = 1250;
 
   if (type === 'trade') { return minHeight; }
 
