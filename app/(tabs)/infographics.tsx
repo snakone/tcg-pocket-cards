@@ -58,7 +58,7 @@ export default function InfoGraphicScreen() {
   const MyInfoGraphic = () => (
     <>
       {
-        Platform.OS === 'web' ?
+        Platform.OS === 'web' &&
         <View ref={ref} style={styles.container}>
           <GraphicCollage showExpansion={showExpansion}
                           showGrades={showGrades}
@@ -67,16 +67,7 @@ export default function InfoGraphicScreen() {
                           showWeak={showWeak}
                           showTop={showTop}
                           showConditions={showConditions}/>
-        </View> :
-        <ViewShot ref={ref} style={styles.container}>
-          <GraphicCollage showExpansion={showExpansion}
-                showGrades={showGrades}
-                showTypes={showTypes}
-                showMiscellania={showMiscellania}
-                showWeak={showWeak}
-                showTop={showTop}
-                showConditions={showConditions}/>
-        </ViewShot>
+        </View>
       }
     </>
   );
@@ -122,9 +113,9 @@ export default function InfoGraphicScreen() {
     setLoading(true);
     setTimeout(() => setIsVisible(true), 666);
     setTimeout(() => {
-      shareService.makeInfoGraphic(ref, 'test', quality)
+      shareService.makeInfoGraphic(ref, 'infographic-tcg-pocket-cards', quality)
        .then(_ => (setLoading(false), setIsVisible(false)));
-    }, 3666);
+    }, 4000);
   }
 
   function handleAll(): void {

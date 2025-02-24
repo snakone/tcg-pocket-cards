@@ -4,6 +4,7 @@ import {
   DEFAULT_MODAL_HEIGHT,
   ICON_WIDTH,
   MENU_HEIGHT,
+  MENU_HEIGHT_ANDROID,
   MENU_WIDTH,
   MIN_MODAL_HEIGHT,
   SORT_MODAL_HEIGHT
@@ -323,7 +324,7 @@ export const MenuStyles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     width: MENU_WIDTH,
-    height: MENU_HEIGHT,
+    height: Platform.OS === 'web' ? MENU_HEIGHT : MENU_HEIGHT_ANDROID,
     borderBottomLeftRadius: 50,
     borderTopLeftRadius: 50,
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',

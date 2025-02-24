@@ -1,12 +1,14 @@
 import { ScrollView } from "react-native";
 import { useState } from "react";
 import { useSharedValue } from "react-native-reanimated";
+import { Image } from 'expo-image';
 
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { sharedModalStyles } from "@/shared/styles/component.styles";
 import { ThemedText } from "../ThemedText";
 import { ThemedView } from "../ThemedView";
 import ScrollIndicator from "../ui/ScrollIndicator";
+import { EXPORT_GRAPHIC, EXPORT_GRAPHIC_QUALITY } from "@/shared/definitions/sentences/path.sentences";
 
 export function GraphicsScreenModal() {
   const scrollY = useSharedValue(0);
@@ -40,7 +42,21 @@ export function GraphicsScreenModal() {
                   scrollEventThrottle={16}
                   onContentSizeChange={handleContentSizeChange}
                   onLayout={handleLayout}>
-        <ThemedText style={[styles.subTitle, {marginTop: 4}]}>{i18n.t('director')}</ThemedText>
+        <ThemedText style={[styles.text, {marginTop: 4}]}>{i18n.t('infographics_start')}</ThemedText>
+
+        <ThemedText style={styles.title}>{i18n.t('infographics_customize')}</ThemedText>
+
+        <ThemedText style={styles.text}>{i18n.t('infographics_customize_intro')}</ThemedText>
+
+        <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
+          <Image source={EXPORT_GRAPHIC} style={{width: '100%', height: 219}}></Image>
+        </ThemedView>
+
+        <ThemedText style={styles.text}>{i18n.t('infographics_select')}</ThemedText>
+
+        <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
+          <Image source={EXPORT_GRAPHIC_QUALITY} style={{width: '100%', height: 164}}></Image>
+        </ThemedView>
       </ScrollView>
     </ThemedView>
   )

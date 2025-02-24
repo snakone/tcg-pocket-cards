@@ -160,7 +160,7 @@ export function GraphicCollage({
       icon: 'retreat'
     }
 
-    const cards = structuredClone(state.cardState.cards);
+    const cards = [...state.cardState.cards];
 
     const filtered = cards.sort((b, a) => b.id > a.id ? 1 : -1)
                     .filter((card, index, self) => index === self.findIndex((t) => t.name.en === card.name.en));
@@ -172,7 +172,7 @@ export function GraphicCollage({
   }, [state.cardState.cards]);
 
   const getAttackTop20 = useCallback(() => {
-    const cards = structuredClone(state.cardState.cards);
+    const cards = [...state.cardState.cards];
     return cards
       .sort((a, b) => {
         const maxDamageA = a.attacks !== undefined ? Math.max(...a.attacks.map(attack => attack.damage)) : -1;

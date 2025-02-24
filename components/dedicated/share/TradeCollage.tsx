@@ -59,8 +59,7 @@ export default function TradeCollage({
         <View>
           { item && 
           <>
-            <Image accessibilityLabel={item} 
-                  style={[
+            <Image style={[
                 CardGridStyles.image, 
                 {width: 354}
               ]} 

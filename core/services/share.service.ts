@@ -63,7 +63,7 @@ export default class ShareService {
         quality,
         format: 'jpg',
         fileName: name || 'infographic-tcg-pocket-cards',
-        width: 1280
+        width: 1280,
       });
 
       if (Platform.OS === 'web') {

@@ -67,6 +67,8 @@ export const SHARE_BLASTOISE = require('@/assets/images/share/Blastoise.jpeg');
 export const TRADE_POINTS = require('@/assets/images/trade_token.png');
 export const SALE_CARD = require('@/assets/images/Discount-512.png');
 export const DISCORD_LOGO = require('@/assets/images/Discord-Nouveau-Logo.png');
+export const EXPORT_GRAPHIC = require('@/assets/images/infographics/export.png');
+export const EXPORT_GRAPHIC_QUALITY = require('@/assets/images/infographics/quality.png');
 
 // SPLASH
 export const WINTER_SPLASH = require('@/assets/images/splash/winter.webp');

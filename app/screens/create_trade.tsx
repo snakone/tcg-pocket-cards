@@ -68,10 +68,6 @@ export default function CreateTradeScreen() {
     checkTrade();
   }, [state.settingsState.trades]);
 
-  const playSound = async () => {
-    SoundService.play('AUDIO_MENU_CLOSE');
-  }
-
   const memoizedPickDesired = useMemo(() => {
     return <PickDesiredMenu isVisible={isDesiredVisible} 
                             animatedStyle={{}} 
