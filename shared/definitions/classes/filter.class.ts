@@ -45,7 +45,8 @@ export class FilterSearch {
       [EXPANSION.PROMO_A3]: null,
       [EXPANSION.DIALGA]: null,
       [EXPANSION.PALKIA]: null,
-      [EXPANSION.PROMO_A4]: null
+      [EXPANSION.PROMO_A4]: null,
+      [EXPANSION.ARCEUS]: null,
     };
 
     this.favorite = {included: null, not_favorite: null};
@@ -110,7 +111,8 @@ export class FilterSearch {
       [CardSpecialConditionENUM.WITHDRAW_CARD]: null,
       [CardSpecialConditionENUM.RETIRE]: null,
       [CardSpecialConditionENUM.CALL]: null,
-      [CardSpecialConditionENUM.INACTIVE]: null
+      [CardSpecialConditionENUM.INACTIVE]: null,
+      [CardSpecialConditionENUM.ARCEUS_LINK]: null
     };
   }
 
@@ -128,7 +130,8 @@ export class FilterSearch {
       [EXPANSION.PROMO_A3]: null,
       [EXPANSION.DIALGA]: null,
       [EXPANSION.PALKIA]: null,
-      [EXPANSION.PROMO_A4]: null
+      [EXPANSION.PROMO_A4]: null,
+      [EXPANSION.ARCEUS]: null
     };
   }
 

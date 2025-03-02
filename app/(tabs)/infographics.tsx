@@ -273,7 +273,7 @@ export default function InfoGraphicScreen() {
         </TouchableOpacity>
       </ParallaxScrollView>
       { isVisible && 
-        <ThemedView style={{position: 'absolute', left: 9999}}>
+        <ThemedView style={{position: 'absolute', left: -9999}}>
           {graphic}
         </ThemedView>
       }

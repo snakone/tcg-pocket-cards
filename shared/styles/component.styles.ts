@@ -402,10 +402,6 @@ export const WebStyles = StyleSheet.create({
   view: {
     width: 390, 
     height: MAX_WEB_HEIGHT,
-    minWidth: 390,
-    minHeight: MAX_WEB_HEIGHT,
-    maxWidth: 390,
-    maxHeight: MAX_WEB_HEIGHT,
     alignSelf: 'center',
     justifyContent: 'center',
     boxShadow: '0px 0px 25px 10px rgba(0, 0, 0, .8)',

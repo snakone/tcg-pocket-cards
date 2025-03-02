@@ -16,7 +16,9 @@ import {
   MYTHICAL_ISLAND_MEW_ICON,
   MYTHICAL_ISLAND_PACKS, 
   SMACK_DOWN,
-  SMACK_DOWN_PACKS
+  SMACK_DOWN_PACKS,
+  TRIUMPH_LIGHT_ARCEUS_ICON,
+  TRIUMPH_LIGHT_PACKS
 } from "@/shared/definitions/sentences/path.sentences";
 
 interface ExpansionMenuProps {
@@ -87,6 +89,30 @@ export const ExpansionsMenu = React.memo(({filterObj, handleExpansion }: Expansi
                 color=""
                 propFilter="expansion"
                 keyFilter={10 + index}
+                filterObj={filterObj}
+              >
+                <Image source={icon} style={[filterStyles.packImage, {height: 118}]} />
+              </StateButton>
+            ))}
+          </ThemedView>
+          <View
+            style={[
+              TabsMenuStyles.separator,
+              { width: '100%', height: 2, marginTop: 4 },
+            ]}
+          ></View>
+        </ThemedView>
+
+        <ThemedView style={filterStyles.expansionContainer}>
+          <Image source={TRIUMPH_LIGHT_ARCEUS_ICON} style={{ width: 124, height: 53 }}></Image>
+          <ThemedView style={{ flexDirection: 'row', marginBlock: 30, gap: 10 }}>
+            {TRIUMPH_LIGHT_PACKS.map((icon: any, index: number) => (
+              <StateButton
+                key={index}
+                isImage={true}
+                color=""
+                propFilter="expansion"
+                keyFilter={13 + index}
                 filterObj={filterObj}
               >
                 <Image source={icon} style={[filterStyles.packImage, {height: 118}]} />

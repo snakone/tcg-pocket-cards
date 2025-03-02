@@ -94,7 +94,8 @@ import {
   DECK_BG_DIALGA_70x70,
   DECK_BG_PALKIA_70x70,
   SMACK_DOWN_DIALGA_ICON,
-  SMACK_DOWN_PALKIA_ICON
+  SMACK_DOWN_PALKIA_ICON,
+  TRIUMPH_LIGHT_ARCEUS_ICON
 } from "../sentences/path.sentences";
 
 import { FilterSearch } from "../classes/filter.class";
@@ -103,7 +104,7 @@ import { CardExpansionENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageE
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { AvatarIcon } from "../interfaces/global.interfaces";
 
-export const APP_VERSION = '1.2.1';
+export const APP_VERSION = '1.2.2';
 export const MENU_WIDTH = 250;
 export const MENU_HEIGHT = 450;
 export const MENU_HEIGHT_ANDROID = 405;
@@ -209,7 +210,8 @@ export const EXPANSION_MAP: Record<CardExpansionENUM, CardPackTag> = {
   [CardExpansionENUM.GENETIC_APEX]: { label: 'A', tag: 'A1', color: 'white', background: 'black', promo_amount: 'P-A' },
   [CardExpansionENUM.PROMO_A]: { label: 'A', tag: 'PROMO-A', color: 'white', background: 'black', promo_amount: 'P-A' },
   [CardExpansionENUM.MYTHICAL_ISLAND]: { label: 'A', tag: 'A1a', color: 'white', background: 'black', promo_amount: 'P-A' },
-  [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: { label: 'A', tag: 'A2', color: 'white', background: 'black', promo_amount: 'P-A' }
+  [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: { label: 'A', tag: 'A2', color: 'white', background: 'black', promo_amount: 'P-A' },
+  [CardExpansionENUM.TRIUMPH_LIGHT]: { label: 'A', tag: 'A2a', color: 'white', background: 'black', promo_amount: 'P-A' }
 }
 
 export const CONDITION_MAP: Record<CardSpecialConditionENUM, {label: string}> = {
@@ -231,7 +233,8 @@ export const CONDITION_MAP: Record<CardSpecialConditionENUM, {label: string}> = 
   [CardSpecialConditionENUM.WITHDRAW_CARD]: { label: 'condition_withdraw' },
   [CardSpecialConditionENUM.RETIRE]: { label: 'condition_retire' },
   [CardSpecialConditionENUM.CALL]: { label: 'condition_call' },
-  [CardSpecialConditionENUM.INACTIVE]: { label: 'condition_inactive' }
+  [CardSpecialConditionENUM.INACTIVE]: { label: 'condition_inactive' },
+  [CardSpecialConditionENUM.ARCEUS_LINK]: { label: 'condition_arceus' }
 }
 
 export const CONDITION_ATTACK = [
@@ -262,6 +265,10 @@ export const CONDITION_OTHERS = [
   CardSpecialConditionENUM.INACTIVE
 ];
 
+export const CONDITION_LINKS = [
+  CardSpecialConditionENUM.ARCEUS_LINK,
+];
+
 export const EXPANSION_POINTS_RARITY: Record<CardRarityENUM, number> = {
   [CardRarityENUM.COMMON]: 35,
   [CardRarityENUM.UNCOMMON]: 70,
@@ -289,13 +296,15 @@ export const PACK_MAP: Record<EXPANSION, any> = {
   [EXPANSION.DIALGA]: SMACK_DOWN_DIALGA_ICON,
   [EXPANSION.PALKIA]: SMACK_DOWN_PALKIA_ICON,
   [EXPANSION.PROMO_A4]: PROMO_A_ICON,
+  [EXPANSION.ARCEUS]: TRIUMPH_LIGHT_ARCEUS_ICON,
 }
 
 export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.GENETIC_APEX]: 286,
   [CardExpansionENUM.PROMO_A]: 41,
   [CardExpansionENUM.MYTHICAL_ISLAND]: 86,
-  [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 207
+  [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 207,
+  [CardExpansionENUM.TRIUMPH_LIGHT]: 96,
 }
 
 export const COIN_MAP: Record<string, any> = {
@@ -452,9 +461,10 @@ export const TRADE_COST_MAP = {
   [CardRarityENUM.ART]: 400
 }
 
-export const PACK_PER_EXPANSION_MAP = {
+export const PACK_PER_EXPANSION_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.GENETIC_APEX]: 3,
   [CardExpansionENUM.MYTHICAL_ISLAND]: 1,
   [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 2,
-  [CardExpansionENUM.PROMO_A]: null
+  [CardExpansionENUM.PROMO_A]: 0,
+  [CardExpansionENUM.TRIUMPH_LIGHT]: 1,
 }

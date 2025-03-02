@@ -105,7 +105,7 @@ export default function TradeScreen() {
                           modalHeight={LARGE_MODAL_HEIGHT}
                           styles={{paddingHorizontal: 0, gap: 0}}>
         <FlatList
-          data={filtered.sort((b, a) => b.id > a.id ? -1 : 1)}
+          data={filtered.sort((b, a) => a?.id - b?.id)}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
           showsVerticalScrollIndicator={false}

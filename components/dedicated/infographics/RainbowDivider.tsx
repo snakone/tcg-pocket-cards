@@ -2,9 +2,9 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Svg, { Rect, LinearGradient, Stop } from 'react-native-svg';
 
-const RainbowDivider = ({width, height}: {width?: any, height?: number} = {width: '100%', height: 5}) => {
+const RainbowDivider = ({width, height, style}: {width?: any, height?: number, style?: any} = {width: '100%', height: 2}) => {
   return (
-    <View style={[styles.container, {width, height}]}>
+    <View style={[styles.container, {width, height}, style]}>
       <Svg height="100%" width="100%" style={{borderRadius: 8}}>
         <LinearGradient id="rainbowGradient" x1="0" y1="0" x2="1" y2="0">
           <Stop offset="0%" stopColor="#FF0000" />
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   container: {
     overflow: 'hidden',
     borderRadius: 8,
-    height: 5, 
+    height: 2, 
     width: '100%', 
     margin: 'auto',
     marginBlock: 20,

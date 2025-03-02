@@ -61,7 +61,7 @@ export default function PreviewList({
     const maxRepeats: number = 2;
 
     const sameNameCards = deck.filter(
-      (c) => Boolean(c) && c.name === card.name
+      (c) => Boolean(c) && c.name.es === card.name.es
     ) as Card[];
 
     if (sameNameCards.length < maxRepeats) {
@@ -88,7 +88,7 @@ export default function PreviewList({
     if (!card) { return; }
     setDeck(prev => {
       const newDeck = [...prev];
-      const index = prev.findIndex(c => c?.name === card.name);
+      const index = prev.findIndex(c => c.name.es === card.name.es);
       if (index !== -1) {
         newDeck[index] = null;
         setNotSaved(true);

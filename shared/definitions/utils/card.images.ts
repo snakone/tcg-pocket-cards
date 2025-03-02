@@ -619,6 +619,7 @@ export const CARD_IMAGE_MAP_EN: any = {
   '618': require("@/assets/cards/en/Promo/A/cPK_90_003920_00_AIRMD_C.png"),
   '619': require("@/assets/cards/en/Promo/A/cPK_90_003080_00_HIKOZARU_R.png"),
   '620': require("@/assets/cards/en/Promo/A/cPK_90_003440_00_TOGEPY_R.png"),
+  '621': require("@/assets/cards/en/Triumph Light/HeracrossTriumphantLight1.png"),
 };
 
 export const CARD_IMAGE_MAP_69x96_EN: any = {
@@ -1242,6 +1243,7 @@ export const CARD_IMAGE_MAP_69x96_EN: any = {
   '618': require("@/assets/cards/en/Promo/A/thumbs/69x96/cPK_90_003920_00_AIRMD_C.png"),
   '619': require("@/assets/cards/en/Promo/A/thumbs/69x96/cPK_90_003080_00_HIKOZARU_R.png"),
   '620': require("@/assets/cards/en/Promo/A/thumbs/69x96/cPK_90_003440_00_TOGEPY_R.png"),
+  '621': require("@/assets/cards/en/Triumph Light/thumbs/69x96/HeracrossTriumphantLight1.png"),
 };
 
 export const CARD_IMAGE_MAP_116x162_EN: any = {
@@ -1865,6 +1867,7 @@ export const CARD_IMAGE_MAP_116x162_EN: any = {
   '618': require("@/assets/cards/en/Promo/A/thumbs/116x162/cPK_90_003920_00_AIRMD_C.png"),
   '619': require("@/assets/cards/en/Promo/A/thumbs/116x162/cPK_90_003080_00_HIKOZARU_R.png"),
   '620': require("@/assets/cards/en/Promo/A/thumbs/116x162/cPK_90_003440_00_TOGEPY_R.png"),
+  '621': require("@/assets/cards/en/Triumph Light/thumbs/116x162/HeracrossTriumphantLight1.png"),
 };
 
 export const CARD_IMAGE_MAP_ES: any = {
@@ -2488,6 +2491,7 @@ export const CARD_IMAGE_MAP_ES: any = {
   '618': require("@/assets/cards/es/Promo/A/Skarmory_(Promo-A_39_TCG_Pocket).png"),
   '619': require("@/assets/cards/es/Promo/A/Chimchar_(Promo-A_40_TCG_Pocket).png"),
   '620': require("@/assets/cards/es/Promo/A/Togepi_(Promo-A_41_TCG_Pocket).png"),
+  '621': require("@/assets/cards/es/Triumph Light/Heracross_(Luz_Triunfal_TCG_Pocket).png"),
 };
 
 export const CARD_IMAGE_MAP_69x96_ES: any = {
@@ -3111,6 +3115,7 @@ export const CARD_IMAGE_MAP_69x96_ES: any = {
   '618': require("@/assets/cards/es/Promo/A/thumbs/69x96/Skarmory_(Promo-A_39_TCG_Pocket).png"),
   '619': require("@/assets/cards/es/Promo/A/thumbs/69x96/Chimchar_(Promo-A_40_TCG_Pocket).png"),
   '620': require("@/assets/cards/es/Promo/A/thumbs/69x96/Togepi_(Promo-A_41_TCG_Pocket).png"),
+  '621': require("@/assets/cards/es/Triumph Light/thumbs/69x96/Heracross_(Luz_Triunfal_TCG_Pocket).png"),
 };
 
 export const CARD_IMAGE_MAP_116x162_ES: any = {
@@ -3734,6 +3739,7 @@ export const CARD_IMAGE_MAP_116x162_ES: any = {
   '618': require("@/assets/cards/es/Promo/A/thumbs/116x162/Skarmory_(Promo-A_39_TCG_Pocket).png"),
   '619': require("@/assets/cards/es/Promo/A/thumbs/116x162/Chimchar_(Promo-A_40_TCG_Pocket).png"),
   '620': require("@/assets/cards/es/Promo/A/thumbs/116x162/Togepi_(Promo-A_41_TCG_Pocket).png"),
+  '621': require("@/assets/cards/es/Triumph Light/thumbs/116x162/Heracross_(Luz_Triunfal_TCG_Pocket).png"),
 };
 
 export const CARD_IMAGE_MAP_JAP: any = {
@@ -4357,6 +4363,7 @@ export const CARD_IMAGE_MAP_JAP: any = {
   '618': require("@/assets/cards/ja/Promo/A/l422.png"),
   '619': require("@/assets/cards/ja/Promo/A/l423.png"),
   '620': require("@/assets/cards/ja/Promo/A/l424.png"),
+  '621': require("@/assets/cards/ja/Triumph Light/l636.png"),
 };
 
 export const CARD_IMAGE_MAP_69x96_JAP: any = {
@@ -4980,6 +4987,7 @@ export const CARD_IMAGE_MAP_69x96_JAP: any = {
   '618': require("@/assets/cards/ja/Promo/A/thumbs/69x96/l422.png"),
   '619': require("@/assets/cards/ja/Promo/A/thumbs/69x96/l423.png"),
   '620': require("@/assets/cards/ja/Promo/A/thumbs/69x96/l424.png"),
+  '621': require("@/assets/cards/ja/Triumph Light/thumbs/69x96/l636.png"),
 };
 
 export const CARD_IMAGE_MAP_116x162_JAP: any = {
@@ -5603,4 +5611,5 @@ export const CARD_IMAGE_MAP_116x162_JAP: any = {
   '618': require("@/assets/cards/ja/Promo/A/thumbs/116x162/l422.png"),
   '619': require("@/assets/cards/ja/Promo/A/thumbs/116x162/l423.png"),
   '620': require("@/assets/cards/ja/Promo/A/thumbs/116x162/l424.png"),
+  '621': require("@/assets/cards/ja/Triumph Light/thumbs/116x162/l636.png"),
 };

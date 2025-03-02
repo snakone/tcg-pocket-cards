@@ -258,7 +258,6 @@ export default function CreateDeckScreen() {
     const energies = Object.keys(element).filter(key => Boolean((element as any)[key]))
                                          .map(key => (key as unknown as PokemonTypeENUM));
 
-    
     const data: StorageDeck = {
       id: Number(deck_id) ? Number(deck_id) : 
             (state.settingsState.decks.filter(d => Boolean(d))
@@ -485,7 +484,7 @@ export default function CreateDeckScreen() {
             onPress={() => createService.onAddNumber(item)}
             style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
         <View>
-          { deck.filter(card => card?.id === item.id).length === 2 && 
+          { deck.filter(card => card?.name.es === item.name.es).length === 2 && 
              <ThemedView style={[CardGridStyles.image, offersStyles.included]}></ThemedView>
           }
           <Image accessibilityLabel={item.name[lang]}

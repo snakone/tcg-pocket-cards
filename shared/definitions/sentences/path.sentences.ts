@@ -104,6 +104,9 @@ export const PALKIA_ICON = require('@/assets/images/packs/palkia.png');
 export const SMACK_DOWN_DIALGA_ICON = require('@/assets/images/packs/smackdown-dialga.png');
 export const SMACK_DOWN_PALKIA_ICON = require('@/assets/images/packs/smackdown-palkia.png');
 
+export const ARCEUS_ICON = require('@/assets/images/packs/arceus.png');
+export const TRIUMPH_LIGHT_ARCEUS_ICON = require('@/assets/images/packs/triumphlight.png');
+
 // COINS
 export const EEVEE_COIN = require("@/assets/images/coins/eevee.png");
 export const ERIKA_GREEN_COIN = require("@/assets/images/coins/erika_green.png");
@@ -200,12 +203,17 @@ export const SMACK_DOWN_PACKS = [
   DIALGA_ICON,
   PALKIA_ICON,
   PROMO_A4
-]
+];
+
+export const TRIUMPH_LIGHT_PACKS = [
+  ARCEUS_ICON,
+];
 
 export const ALL_PACKS = [
   ...GENETIC_APEX_PACKS,
   ...MYTHICAL_ISLAND_PACKS,
-  ...SMACK_DOWN_PACKS
+  ...SMACK_DOWN_PACKS,
+  ...TRIUMPH_LIGHT_PACKS
 ];
 
 export const SPLASH = [

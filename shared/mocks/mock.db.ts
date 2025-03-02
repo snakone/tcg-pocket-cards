@@ -35976,7 +35976,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 580,
-    order: 580,
+    order: 676,
     number: 1,
     name: {
       es: 'Poción',
@@ -38512,6 +38512,74 @@ export const MOCK_DB_CARDS: Card[] = [
       ja: 'ワンダーピック'
     },
     related: [435, 436, 437]
+  },
+  {
+    id: 621,
+    order: 580,
+    number: 1,
+    pokedex: 214,
+    name: {
+      es: 'Heracross',
+      en: 'Heracross',
+      ja: 'ヘラクロス'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cuerno',
+        en: 'Horn Pokémon',
+        ja: 'はりたまポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '54.0',
+        en: '119',
+        ja: '54.0'
+      }
+    },
+    artist: 'Satoshi Shirai',
+    attacks: [
+      {
+        name: {
+          es: 'Lanzamiento Cuerno',
+          en: 'Single-Horn Throw',
+          ja: 'いっぽんなげ'
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.PSYCHIC],
+        description: {
+          es: 'Lanza 2 monedas. Si en las dos sale cara, este ataque hace 70 puntos de daño más.',
+          en: 'Flip 2 coins. If both of them are heads, this attack does 70 more damage.',
+          ja: 'コインを2回投げ、すべてオモテなら、70ダメージ追加。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Le encanta la savia dulce y usa su cuerno para lanzar por los aires a cualquiera que se acerque a ella.',
+      en: 'It loves sweet nectar. To keep all the nectar to itself, it hurls rivals away with its prized horn.',
+      ja: '甘いミツが 大好きで 独り占め するため 自慢のツノを 使って 相手を ぶん投げる。'
+    },
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.EXTRA_DAMAGE,
+      CardSpecialConditionENUM.FLIP
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
   }
 ];
 

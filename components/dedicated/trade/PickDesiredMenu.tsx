@@ -74,7 +74,7 @@ export default function PickDesiredMenu({
     if (desiredCard) {
       const filter = state.cardState.cards
                       .filter(card => card?.rarity === desiredCard.rarity && 
-                                      card.series !== CardExpansionTypeENUM.A2);
+                                      card.series !== CardExpansionTypeENUM.A2A);
       setCards(filter);
       setFiltered(filter);
       setCardsWithFilter(filter);
@@ -92,7 +92,7 @@ export default function PickDesiredMenu({
 
     const filter = state.cardState.cards
                     .filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && 
-                                    card.series !== CardExpansionTypeENUM.A2);
+                                    card.series !== CardExpansionTypeENUM.A2A);
     setCards(filter);
     setFiltered(filter);
     setCardsWithFilter(filter);
@@ -153,7 +153,7 @@ export default function PickDesiredMenu({
   }, [current, filterObj.current.rarity]);
 
   function resetCardsAndFilter(value: number): void {
-    setFiltered(state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2));
+    setFiltered(state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2A));
   }
 
   const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
@@ -187,7 +187,7 @@ export default function PickDesiredMenu({
   const manageFilter = useCallback((index: number) => {
     const filter = filterObj.current;
     (filter.rarity as any)[index] = !(filter.rarity as any)[index];
-    const tradeable = state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2);
+    const tradeable = state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2A);
     const filtered = filterCards(filter, tradeable, []);
     setFiltered(filtered);
     setCardsWithFilter(filtered);

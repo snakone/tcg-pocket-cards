@@ -10,7 +10,7 @@ import { FilterSearch } from "../classes/filter.class";
 import { Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
 import { CardExpansionENUM } from "../enums/card.enums";
-import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SMACK_DOWN } from "../sentences/path.sentences";
+import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SMACK_DOWN, TRIUMPH_LIGHT_ARCEUS_ICON } from "../sentences/path.sentences";
 import { PACK_MAP } from "./constants";
 import { LanguageType } from "../types/global.types";
 
@@ -50,8 +50,8 @@ export function sortCards(field: keyof Card | string, data: Card[], sort: SortIt
     if (aValue <= bValue) return sort.order === 'asc' ? -1 : 1;
     if (aValue >= bValue) return sort.order === 'asc' ? 1 : -1;
 
-    const numberA = a.id ?? 0;
-    const numberB = b.id ?? 0;
+    const numberA = a.order ?? 0;
+    const numberB = b.order ?? 0;
     if (numberA <= numberB) return -1;
     if (numberA >= numberB) return 1;
 
@@ -213,6 +213,8 @@ export function getCardPackFrom(card: Card): {image: any, width: number, height:
     } else if (card.found !== undefined) {
       return {image: PACK_MAP[card.found[0]], width: 81, height: 40};
     }
+  } else if (card.expansion === CardExpansionENUM.TRIUMPH_LIGHT) {
+    return {image: TRIUMPH_LIGHT_ARCEUS_ICON, width: 95, height: 39};
   }
 }
 

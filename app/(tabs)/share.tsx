@@ -55,8 +55,8 @@ export default function ShareScreen() {
     setSearchQuery(text);
     setFiltered(prev => {
       if(decks.length === 0) { return prev; }
-      return decks.filter(card =>
-        card.name.toLowerCase()?.includes(text.toLowerCase()));
+      return decks.filter(deck =>
+        deck.name.toLowerCase()?.includes(text.toLowerCase()));
     });
 
     setFilteredTrades(prev => {
@@ -138,12 +138,12 @@ export default function ShareScreen() {
                        SectionSeparatorComponent={(section) => <ThemedView style={{height: 16}}></ThemedView>}
                        sections={[
                         { title: i18n.t('decks'), 
-                          data: filtered.sort((a, b) => a?.id > b?.id ? -1 : 1), 
+                          data: filtered.sort((a, b) => a?.id - b?.id), 
                           key: 'decks',
                         },
                         {
                           title: i18n.t('trades'),
-                          data: filteredTrades.sort((b, a) => b.id > a.id ? -1 : 1),
+                          data: filteredTrades.sort((b, a) => a?.id - b?.id),
                           key: 'trades'
                          },
                        ]}

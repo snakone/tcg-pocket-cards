@@ -22,3 +22,15 @@ body {
 /* .r-overflow-1udh08x {
   overflow: visible !important;
 } */
+
+@media screen and (max-width: 390px) {
+  .r-width-pwrm9v {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .css-view-175oi2r.r-overflow-1udh08x.r-bottom-1p0dtai {
+    width: 100% !important;
+    height: 100vh !important;
+  }
+}

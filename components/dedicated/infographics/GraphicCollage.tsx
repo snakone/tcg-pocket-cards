@@ -36,12 +36,15 @@ import {
   MYTHICAL_ISLAND_MEW_ICON, 
   NORMAL_ICON, 
   NORMAL_RARITY, 
-  PROMO_A_ICON, PSYCHIC_ICON, SMACK_DOWN, 
+  PROMO_A_ICON, 
+  PSYCHIC_ICON, 
+  SMACK_DOWN, 
   SMACK_DOWN_DIALGA_ICON, 
   SMACK_DOWN_PALKIA_ICON,
   STAR_RARITY,
   STEEL_ICON,
-  WATER_ICON
+  WATER_ICON,
+  TRIUMPH_LIGHT_ARCEUS_ICON
 } from "@/shared/definitions/sentences/path.sentences";
 
 const numColumns = 20;
@@ -72,67 +75,52 @@ export function GraphicCollage({
   const { state } = context;
   const [lang] = useState<LanguageType>(state.settingsState.language);
 
-  const getCards = useCallback((pack: EXPANSION) => {
-    return state.cardState.cards.filter(
-      card => card.found && card.found.includes(pack))
-                                      .sort((b, a) => b.id > a.id ? 1 : -1);
-  }, [state.cardState.cards]);
-
-  const getPromo = useCallback(() => {
-    return state.cardState.cards.filter(
-      card => card.expansion && card.expansion === CardExpansionENUM.PROMO_A)
-                                .sort((b, a) => b.id > a.id ? 1 : -1);
-  }, [state.cardState.cards]);
-
-  const getWithAbility = useCallback(() => {
-    return state.cardState.cards.filter(
-      card => Boolean(card.ability) && Boolean(card.ability?.name))
-                                .sort((b, a) => b.id > a.id ? 1 : -1);
-  }, [state.cardState.cards]);
-
+  const filterAndSort = (filterFn: (card: Card) => boolean) => {
+    const filtered = state.cardState.cards.filter(filterFn).sort((a, b) => a.order - b.order);
+    return { data: filtered, length: filtered.length };
+  };
+  
+  const getCards = useCallback((pack: EXPANSION) => 
+    filterAndSort(card => card.found && card.found.includes(pack) || false)
+  , [state.cardState.cards]);
+  
+  const getWithAbility = useCallback(() => 
+    filterAndSort(card => Boolean(card.ability?.name))
+  , [state.cardState.cards]);
+  
   const getStage = useCallback((stage: CardStageENUM) => {
-    return state.cardState.cards.filter((card) => card.stage && card.stage === stage)
-                                .sort((b, a) => b.id > a.id ? 1 : -1)
-                                .filter((card, index, self) => card.stage !== CardStageENUM.FOSSIL || 
-                                  index === self.findIndex((t) => t.name.en === card.name.en));
+    const result = filterAndSort(card => card.stage === stage);
+    const filtered = result.data.filter((card, index, self) => 
+      card.stage !== CardStageENUM.FOSSIL || 
+      index === self.findIndex(t => t.name.en === card.name.en)
+    );
+    return { data: filtered, length: filtered.length };
   }, [state.cardState.cards]);
 
-  const getCondition = useCallback((condition: CardSpecialConditionENUM) => {
-    return state.cardState.cards.filter(
-      card => card.condition && card.condition.some(c => c === condition))
-                                .sort((b, a) => b.id > a.id ? 1 : -1);
-  }, [state.cardState.cards]);
-
-  const getCardByType = useCallback((type: PokemonTypeENUM) => {
-    return state.cardState.cards.filter(
-      card => card.element !== undefined && card.element === type)
-                                .sort((b, a) => b.id > a.id ? 1 : -1);
-  }, [state.cardState.cards]);
-
-  const getCardWeak = useCallback((type: PokemonTypeENUM) => {
-    return state.cardState.cards.filter(
-      card => card.weak !== undefined && card.weak === type)
-                                .sort((b, a) => b.id > a.id ? 1 : -1);
-  }, [state.cardState.cards]);
-
+  const getCondition = useCallback((condition: CardSpecialConditionENUM) => 
+    filterAndSort(card => card.condition?.some(c => c === condition))
+  , [state.cardState.cards]);
+  
+  const getCardByType = useCallback((type: PokemonTypeENUM) => 
+    filterAndSort(card => card.element === type)
+  , [state.cardState.cards]);
+  
+  const getCardWeak = useCallback((type: PokemonTypeENUM) => 
+    filterAndSort(card => card.weak === type)
+  , [state.cardState.cards]);
+  
   const getSharedCards = useCallback((expansion: CardExpansionENUM) => {
-    const filtered = state.cardState.cards.filter(card => card.expansion === expansion);
     const amount = PACK_PER_EXPANSION_MAP[expansion];
-    return filtered.filter(
-      card => card.found && card.found.length === amount)
-                   .sort((b, a) => b.id > a.id ? 1 : -1);
+    return filterAndSort(card => card.expansion === expansion && card.found?.length === amount);
   }, [state.cardState.cards]);
-
-  const getCardsExpansion = useCallback((expansion: CardExpansionENUM) => {
-    const filtered = state.cardState.cards.filter(card => card.expansion === expansion);
-    return filtered.sort((b, a) => b.id > a.id ? 1 : -1);
-  }, [state.cardState.cards]);
-
-  const getCardRarity = useCallback((rarity: CardRarityENUM) => {
-    return state.cardState.cards.filter(
-      card => card.rarity && card.rarity === rarity)
-                                .sort((b, a) => b.id > a.id ? 1 : -1);
-  }, [state.cardState.cards]);
+  
+  const getCardsExpansion = useCallback((expansion: CardExpansionENUM) => 
+    filterAndSort(card => card.expansion === expansion)
+  , [state.cardState.cards]);
+  
+  const getCardRarity = useCallback((rarity: CardRarityENUM) => 
+    filterAndSort(card => card.rarity === rarity)
+  , [state.cardState.cards]);
 
   const getTop20 = useCallback((prop: string, order = 'desc') => {
     const sortItem: SortItem = {
@@ -162,7 +150,7 @@ export function GraphicCollage({
 
     const cards = [...state.cardState.cards];
 
-    const filtered = cards.sort((b, a) => b.id > a.id ? 1 : -1)
+    const filtered = cards.sort((b, a) => a?.order - b?.order)
                     .filter((card, index, self) => index === self.findIndex((t) => t.name.en === card.name.en));
 
     const sorted = sortCards('retreat', filtered, sortItem)
@@ -202,11 +190,89 @@ export function GraphicCollage({
       </ThemedView>
     )
   }, []);
-  
+
+  const { data: pikachuCards, length: pikachuCardsLength } = getCards(EXPANSION.PIKACHU);
+  const { data: mewtwoCards, length: mewtwoCardsLength } = getCards(EXPANSION.MEWTWO);
+  const { data: charizardCards, length: charizardCardsLength } = getCards(EXPANSION.CHARIZARD);
+  const { data: islandCards } = getCards(EXPANSION.MYTHICAL_ISLAND);
+  const { data: dialgaCards, length: dialgaCardsLength } = getCards(EXPANSION.DIALGA);
+  const { data: palkiaCards, length: palkiaCardsLength } = getCards(EXPANSION.PALKIA);
+  const { data: premiumCards, length: premiumCardsLength } = getCards(EXPANSION.PREMIUM);
+  const { data: promo1Cards } = getCards(EXPANSION.PROMO_A1);
+  const { data: promo2Cards } = getCards(EXPANSION.PROMO_A2);
+  const { data: promo3Cards } = getCards(EXPANSION.PROMO_A3);
+  const { data: promo4Cards } = getCards(EXPANSION.PROMO_A4);
+  const { data: specialCards, length: specialCardsLength } = getCards(EXPANSION.SPECIAL_MISSION);
+  const { data: triumphCards } = getCards(EXPANSION.ARCEUS);
+
+  const { length: geneticPackCardsLength } = getCardsExpansion(CardExpansionENUM.GENETIC_APEX);
+  const { length: islandPackCardsLength } = getCardsExpansion(CardExpansionENUM.MYTHICAL_ISLAND);
+  const { length: spacePackCardsLength } = getCardsExpansion(CardExpansionENUM.SPACE_TIME_SMACKDOWN);
+  const { length: triumphPackCardsLength } = getCardsExpansion(CardExpansionENUM.TRIUMPH_LIGHT);
+  const { data: promoAPackCards, length: promoAPackCardsLength } = getCardsExpansion(CardExpansionENUM.PROMO_A);
+
+  const { data: rareCards, length: rareCardsLength } = getCardRarity(CardRarityENUM.RARE);
+  const { data: doubleCards, length: doubleCardsLength } = getCardRarity(CardRarityENUM.DOUBLE);
+  const { data: artCards, length: artCardsLength } = getCardRarity(CardRarityENUM.ART);
+  const { data: superCards, length: superCardsLength } = getCardRarity(CardRarityENUM.SUPER);
+  const { data: inmersiveCards, length: inmersiveCardsLength } = getCardRarity(CardRarityENUM.INMERSIVE);
+  const { data: crownCards, length: crownCardsLength } = getCardRarity(CardRarityENUM.CROWN);
+
+  const { data: grassCards, length: grassCardsLength } = getCardByType(PokemonTypeENUM.GRASS);
+  const { data: darkCards, length: darkCardsLength } = getCardByType(PokemonTypeENUM.DARK);
+  const { data: dragonCards, length: dragonCardsLength } = getCardByType(PokemonTypeENUM.DRAGON);
+  const { data: electricCards, length: electricCardsLength } = getCardByType(PokemonTypeENUM.ELECTRIC);
+  const { data: fightCards, length: fightCardsLength } = getCardByType(PokemonTypeENUM.FIGHT);
+  const { data: fireCards, length: fireCardsLength } = getCardByType(PokemonTypeENUM.FIRE);
+  const { data: normalCards, length: normalCardsLength } = getCardByType(PokemonTypeENUM.NORMAL);
+  const { data: psychicCards, length: psychicCardsLength } = getCardByType(PokemonTypeENUM.PSYCHIC);
+  const { data: steelCards, length: steelCardsLength } = getCardByType(PokemonTypeENUM.STEEL);
+  const { data: waterCards, length: waterCardsLength } = getCardByType(PokemonTypeENUM.WATER);
+
+  const { data: withAbilityCards, length: withAbilityCardsLength } = getWithAbility();
+
+  const { data: itemCards, length: itemCardsLength } = getStage(CardStageENUM.ITEM);
+  const { data: fossilCards, length: fossilCardsLength } = getStage(CardStageENUM.FOSSIL);
+  const { data: supporterCards, length: supporterCardsLength } = getStage(CardStageENUM.SUPPORTER);
+  const { data: toolCards, length: toolCardsLength } = getStage(CardStageENUM.TOOL);
+
+  const { data: weakGrassCards, length: weakGrassCardsLength } = getCardWeak(PokemonTypeENUM.GRASS);
+  const { data: weakDarkCards, length: weakDarkCardsLength } = getCardWeak(PokemonTypeENUM.DARK);
+  const { data: weakElectricCards, length: weakElectricCardsLength } = getCardWeak(PokemonTypeENUM.ELECTRIC);
+  const { data: weakFightCards, length: weakFightCardsLength } = getCardWeak(PokemonTypeENUM.FIGHT);
+  const { data: weakFireCards, length: weakFireCardsLength } = getCardWeak(PokemonTypeENUM.FIRE);
+  const { data: weakPsychicCards, length: weakPsychicCardsLength } = getCardWeak(PokemonTypeENUM.PSYCHIC);
+  const { data: weakSteelCards, length: weakSteelCardsLength } = getCardWeak(PokemonTypeENUM.STEEL);
+  const { data: weakWaterCards, length: weakWaterCardsLength } = getCardWeak(PokemonTypeENUM.WATER);
+
+  const { data: sharedGenetic, length: sharedGeneticLength } = getSharedCards(CardExpansionENUM.GENETIC_APEX);
+  const { data: sharedSmack, length: sharedSmackLength } = getSharedCards(CardExpansionENUM.SPACE_TIME_SMACKDOWN);
+
+  const { data: benchCondition, length: benchConditionLength } = getCondition(CardSpecialConditionENUM.ATTACK_BENCH);
+  const { data: addCondition, length: addConditionLength } = getCondition(CardSpecialConditionENUM.ADD);
+  const { data: burnedCondition, length: burnedConditionLength } = getCondition(CardSpecialConditionENUM.BURNED);
+  const { data: callCondition, length: callConditionLength } = getCondition(CardSpecialConditionENUM.CALL);
+  const { data: confusionCondition, length: confusionConditionLength } = getCondition(CardSpecialConditionENUM.CONFUSION);
+  const { data: cornerCondition, length: cornerConditionLength } = getCondition(CardSpecialConditionENUM.CORNER);
+  const { data: discardCondition, length: discardConditionLength } = getCondition(CardSpecialConditionENUM.DISCARD);
+  const { data: extraCondition, length: extraConditionLength } = getCondition(CardSpecialConditionENUM.EXTRA_DAMAGE);
+  const { data: flipCondition, length: flipConditionLength } = getCondition(CardSpecialConditionENUM.FLIP);
+  const { data: healCondition, length: healConditionLength } = getCondition(CardSpecialConditionENUM.HEAL);
+  const { data: inactiveCondition, length: inactiveConditionLength } = getCondition(CardSpecialConditionENUM.INACTIVE);
+  const { data: nothingCondition, length: nothingConditionLength } = getCondition(CardSpecialConditionENUM.NOTHING);
+  const { data: paralizeCondition, length: paralizeConditionLength } = getCondition(CardSpecialConditionENUM.PARALYZE);
+  const { data: poisonCondition, length: poisonConditionLength } = getCondition(CardSpecialConditionENUM.POISON);
+  const { data: recoilCondition, length: recoilConditionLength } = getCondition(CardSpecialConditionENUM.RECOIL);
+  const { data: resistCondition, length: resistConditionLength } = getCondition(CardSpecialConditionENUM.RESIST);
+  const { data: retireCondition, length: retireConditionLength } = getCondition(CardSpecialConditionENUM.RETIRE);
+  const { data: sleepCondition, length: sleepConditionLength } = getCondition(CardSpecialConditionENUM.SLEEP);
+  const { data: withdrawCondition, length: withdrawConditionLength } = getCondition(CardSpecialConditionENUM.WITHDRAW_CARD);
+  const { data: arceusCondition, length: arceusConditionLength } = getCondition(CardSpecialConditionENUM.ARCEUS_LINK);
+
   return (
     <ThemedView>
       <ThemedText style={styles.mainTitle}>{i18n.t('graphic_title')}</ThemedText>
-      <ThemedView style={{marginBottom: 20}}>
+      <ThemedView style={{marginBottom: 10}}>
         <ThemedText style={styles.text}>{i18n.t('infographics_intro')}</ThemedText>
       </ThemedView>
       <ThemedText style={styles.subTitlte}>{i18n.t('summary')}</ThemedText>
@@ -215,7 +281,7 @@ export function GraphicCollage({
       </ThemedView>
 
       <ThemedView style={styles.summary}>
-        <ThemedView style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 36}}>
+        <ThemedView style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 20}}>
           <ThemedView style={{width: '23%'}}>
             <ThemedView style={styles.summaryRow}>
               <Image source={GENETIC_APEX} style={[styles.summaryImage, {width: 68, height: 30}]}></Image>
@@ -224,7 +290,7 @@ export function GraphicCollage({
                           ellipsizeMode="tail">{i18n.t('genetic_apex')}
               </ThemedText>
               <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {getCardsExpansion(CardExpansionENUM.GENETIC_APEX).length}
+                {geneticPackCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -236,7 +302,7 @@ export function GraphicCollage({
                           ellipsizeMode="tail">{i18n.t('mythical_island')}
               </ThemedText>
               <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {getCardsExpansion(CardExpansionENUM.MYTHICAL_ISLAND).length}
+                {islandPackCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -248,7 +314,7 @@ export function GraphicCollage({
                           ellipsizeMode="tail">{i18n.t('smack_down')}
               </ThemedText>
               <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {getCardsExpansion(CardExpansionENUM.SPACE_TIME_SMACKDOWN).length}
+                {spacePackCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -260,19 +326,19 @@ export function GraphicCollage({
                           ellipsizeMode="tail">{i18n.t('promo_a')}
               </ThemedText>
               <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {getCardsExpansion(CardExpansionENUM.PROMO_A).length}
+                {promoAPackCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
         </ThemedView>
 
-        <ThemedView style={{flexDirection: 'row', justifyContent: 'center'}}>
+        <ThemedView style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 22}}>
           <ThemedView style={{width: '20%'}}>
             <ThemedView style={styles.summaryRow}>
               <Image source={GENETIC_APEX_PIKACHU_ICON} style={[styles.summaryImage]}></Image>
               <ThemedText style={styles.summaryText}>{i18n.t('pikachu')}</ThemedText>
               <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {getCards(EXPANSION.PIKACHU).length}
+                {pikachuCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -281,7 +347,7 @@ export function GraphicCollage({
               <Image source={GENETIC_APEX_MEWTWO_ICON} style={[styles.summaryImage]}></Image>
               <ThemedText style={styles.summaryText}>{i18n.t('mewtwo')}</ThemedText>
               <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {getCards(EXPANSION.MEWTWO).length}
+                {mewtwoCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -290,7 +356,7 @@ export function GraphicCollage({
               <Image source={GENETIC_APEX_CHARIZARD_ICON} style={[styles.summaryImage]}></Image>
               <ThemedText style={styles.summaryText}>{i18n.t('charizard')}</ThemedText>
               <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {getCards(EXPANSION.CHARIZARD).length}
+                {charizardCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -299,7 +365,7 @@ export function GraphicCollage({
               <Image source={SMACK_DOWN_DIALGA_ICON} style={[styles.summaryImage, {width: 68, height: 34}]}></Image>
               <ThemedText style={styles.summaryText}>{i18n.t('dialga')}</ThemedText>
               <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {getCards(EXPANSION.DIALGA).length}
+                {dialgaCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -308,13 +374,25 @@ export function GraphicCollage({
               <Image source={SMACK_DOWN_PALKIA_ICON} style={[styles.summaryImage, {width: 68, height: 34}]}></Image>
               <ThemedText style={styles.summaryText}>{i18n.t('palkia')}</ThemedText>
               <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {getCards(EXPANSION.PALKIA).length}
+                {palkiaCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
         </ThemedView>
 
-        <ThemedView style={{marginTop: 14}}>
+        <ThemedView style={{flexDirection: 'row', justifyContent: 'center'}}>
+          <ThemedView style={{width: '20%'}}>
+            <ThemedView style={styles.summaryRow}>
+              <Image source={TRIUMPH_LIGHT_ARCEUS_ICON} style={[styles.summaryImage, {width: 80, height: 34}]}></Image>
+              <ThemedText style={styles.summaryText}>{i18n.t('triumphal_light')}</ThemedText>
+              <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
+                {triumphPackCardsLength}
+              </ThemedText>
+            </ThemedView>
+          </ThemedView>
+        </ThemedView>
+
+        <ThemedView style={{marginTop: 10}}>
           <RainbowDivider height={2}></RainbowDivider>
         </ThemedView>
 
@@ -334,7 +412,7 @@ export function GraphicCollage({
               ))}
             </ThemedView>
             <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-              {getCardRarity(CardRarityENUM.RARE).length}
+              {rareCardsLength}
             </ThemedText>
           </ThemedView>
           <ThemedView style={styles.rowGap}>
@@ -352,7 +430,7 @@ export function GraphicCollage({
               ))}
             </ThemedView>
             <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-              {getCardRarity(CardRarityENUM.DOUBLE).length}
+              {doubleCardsLength}
             </ThemedText>
           </ThemedView>
           <ThemedView style={styles.rowGap}>
@@ -370,7 +448,7 @@ export function GraphicCollage({
               ))}
             </ThemedView>
             <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-              {getCardRarity(CardRarityENUM.ART).length}
+              {artCardsLength}
             </ThemedText>
           </ThemedView>
           <ThemedView style={styles.rowGap}>
@@ -388,7 +466,7 @@ export function GraphicCollage({
               ))}
             </ThemedView>
             <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-              {getCardRarity(CardRarityENUM.SUPER).length}
+              {superCardsLength}
             </ThemedText>
           </ThemedView>
           <ThemedView style={styles.rowGap}>
@@ -406,7 +484,7 @@ export function GraphicCollage({
               ))}
             </ThemedView>
             <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-              {getCardRarity(CardRarityENUM.INMERSIVE).length}
+              {inmersiveCardsLength}
             </ThemedText>
           </ThemedView>
           <ThemedView style={styles.rowGap}>
@@ -424,7 +502,7 @@ export function GraphicCollage({
               ))}
             </ThemedView>
             <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-              {getCardRarity(CardRarityENUM.CROWN).length}
+              {crownCardsLength}
             </ThemedText>
           </ThemedView>
         </ThemedView>
@@ -439,7 +517,7 @@ export function GraphicCollage({
               <Image source={GRASS_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('grass')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardByType(PokemonTypeENUM.GRASS).length}
+                {grassCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -449,7 +527,7 @@ export function GraphicCollage({
               <Image source={FIRE_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('fire')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardByType(PokemonTypeENUM.FIRE).length}
+                {fireCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -459,7 +537,7 @@ export function GraphicCollage({
               <Image source={WATER_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('water')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardByType(PokemonTypeENUM.WATER).length}
+                {waterCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -469,7 +547,7 @@ export function GraphicCollage({
               <Image source={ELECTRIC_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('electric')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardByType(PokemonTypeENUM.ELECTRIC).length}
+                {electricCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -479,7 +557,7 @@ export function GraphicCollage({
               <Image source={PSYCHIC_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('psychic')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardByType(PokemonTypeENUM.PSYCHIC).length}
+                {psychicCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -489,18 +567,18 @@ export function GraphicCollage({
               <Image source={FIGHT_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('fight')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardByType(PokemonTypeENUM.FIGHT).length}
+                {fightCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
         </ThemedView>
-        <ThemedView style={{flexDirection: 'row', marginTop: 30, justifyContent: 'center', gap: 40}}>
+        <ThemedView style={{flexDirection: 'row', marginTop: 20, justifyContent: 'center', gap: 40}}>
           <ThemedView style={[styles.energyRow, {width: '16.6%'}]}>
             <ThemedView style={styles.flexRow}>
               <Image source={DARK_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('dark')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardByType(PokemonTypeENUM.DARK).length}
+                {darkCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -510,7 +588,7 @@ export function GraphicCollage({
               <Image source={STEEL_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('steel')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardByType(PokemonTypeENUM.STEEL).length}
+                {steelCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -520,7 +598,7 @@ export function GraphicCollage({
               <Image source={DRAGON_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('dragon')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardByType(PokemonTypeENUM.DRAGON).length}
+                {dragonCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -530,17 +608,17 @@ export function GraphicCollage({
               <Image source={NORMAL_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('normal')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardByType(PokemonTypeENUM.NORMAL).length}
+                {normalCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
         </ThemedView>
 
-        <ThemedView style={{marginTop: 10}}>
+        <ThemedView style={{marginTop: 8}}>
           <RainbowDivider height={2}></RainbowDivider>
         </ThemedView>
 
-        <ThemedView style={{flexDirection: 'row', marginTop: 8, justifyContent: 'center'}}>
+        <ThemedView style={{flexDirection: 'row', marginTop: 2, justifyContent: 'center'}}>
           <ThemedView style={[styles.energyRow, {width: '21%'}]}>
             <ThemedView>
               <ThemedText style={[styles.summaryText, {marginBottom: 20, fontWeight: 'bold'}]}>
@@ -549,35 +627,35 @@ export function GraphicCollage({
               <ThemedView style={styles.listItem}>
                 <ThemedText style={styles.summaryText}>-  {i18n.t('abilities')}</ThemedText>
                 <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                  {getWithAbility().length}
+                  {withAbilityCardsLength}
                 </ThemedText>
               </ThemedView>
 
               <ThemedView style={styles.listItem}>
                 <ThemedText style={styles.summaryText}>-  {i18n.t('items')}</ThemedText>
                 <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                  {getStage(CardStageENUM.ITEM).length}
+                  {itemCardsLength}
                 </ThemedText>
               </ThemedView>
 
               <ThemedView style={styles.listItem}>
                 <ThemedText style={styles.summaryText}>-  {i18n.t('tools')}</ThemedText>
                 <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                  {getStage(CardStageENUM.TOOL).length}
+                  {toolCardsLength}
                 </ThemedText>
               </ThemedView>
 
               <ThemedView style={styles.listItem}>
                 <ThemedText style={styles.summaryText}>-  {i18n.t('fossils')}</ThemedText>
                 <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                  {getStage(CardStageENUM.FOSSIL).length}
+                  {fossilCardsLength}
                 </ThemedText>
               </ThemedView>
 
               <ThemedView style={styles.listItem}>
                 <ThemedText style={styles.summaryText}>-  {i18n.t('supporter')}</ThemedText>
                 <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                  {getStage(CardStageENUM.SUPPORTER).length}
+                  {supporterCardsLength}
                 </ThemedText>
               </ThemedView>
             </ThemedView>
@@ -593,35 +671,35 @@ export function GraphicCollage({
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('condition_attack_bench')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {getCondition(CardSpecialConditionENUM.ATTACK_BENCH).length}
+                      {benchConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('status_recoil')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {getCondition(CardSpecialConditionENUM.RECOIL).length}
+                      {recoilConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('condition_extra_damage')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {getCondition(CardSpecialConditionENUM.EXTRA_DAMAGE).length}
+                      {extraConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('condition_resist')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {getCondition(CardSpecialConditionENUM.RESIST).length}
+                      {resistConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('condition_heal')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {getCondition(CardSpecialConditionENUM.HEAL).length}
+                      {healConditionLength}
                     </ThemedText>
                   </ThemedView>
                 </ThemedView>
@@ -630,35 +708,35 @@ export function GraphicCollage({
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('status_poison')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {getCondition(CardSpecialConditionENUM.POISON).length}
+                      {poisonConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('status_paralyze')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                     {getCondition(CardSpecialConditionENUM.PARALYZE).length}
+                     {paralizeConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('status_sleep')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {getCondition(CardSpecialConditionENUM.SLEEP).length}
+                      {sleepConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('status_confusion')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {getCondition(CardSpecialConditionENUM.CONFUSION).length}
+                      {confusionConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('status_burned')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {getCondition(CardSpecialConditionENUM.BURNED).length}
+                      {burnedConditionLength}
                     </ThemedText>
                   </ThemedView>
                 </ThemedView>
@@ -667,35 +745,35 @@ export function GraphicCollage({
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('condition_flip')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {getCondition(CardSpecialConditionENUM.FLIP).length}
+                      {flipConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('condition_nothing')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {getCondition(CardSpecialConditionENUM.NOTHING).length}
+                      {nothingConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('condition_discard')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {getCondition(CardSpecialConditionENUM.DISCARD).length}
+                      {discardConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('condition_add')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {getCondition(CardSpecialConditionENUM.ADD).length}
+                      {addConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('condition_corner')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {getCondition(CardSpecialConditionENUM.CORNER).length}
+                      {cornerConditionLength}
                     </ThemedText>
                   </ThemedView>
                 </ThemedView>
@@ -704,28 +782,28 @@ export function GraphicCollage({
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('condition_withdraw')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                    {getCondition(CardSpecialConditionENUM.WITHDRAW_CARD).length}
+                    {withdrawConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('condition_retire')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                    {getCondition(CardSpecialConditionENUM.RETIRE).length}
+                    {retireConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('status_call')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                    {getCondition(CardSpecialConditionENUM.CALL).length}
+                    {callConditionLength}
                     </ThemedText>
                   </ThemedView>
 
                   <ThemedView style={styles.listItem}>
                     <ThemedText style={styles.summaryText}>-  {i18n.t('condition_inactive')}</ThemedText>
                     <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                    {getCondition(CardSpecialConditionENUM.INACTIVE).length}
+                    {inactiveConditionLength}
                     </ThemedText>
                   </ThemedView>
 
@@ -736,21 +814,21 @@ export function GraphicCollage({
           </ThemedView>
         </ThemedView>
 
-        <ThemedView style={{marginTop: 10}}>
+        <ThemedView style={{marginTop: 0}}>
           <RainbowDivider height={2}></RainbowDivider>
         </ThemedView>
 
-        <ThemedText style={[styles.summaryText, {marginBottom: 20, fontWeight: 'bold', marginLeft: 20, marginTop: 8}]}>
+        <ThemedText style={[styles.summaryText, {marginBottom: 20, fontWeight: 'bold', marginLeft: 20, marginTop: 2}]}>
           {i18n.t('weakness')}
         </ThemedText>
 
-        <ThemedView style={{flexDirection: 'row', marginTop: 10, justifyContent: 'center', gap: 40}}>
+        <ThemedView style={{flexDirection: 'row', marginTop: 4, justifyContent: 'center', gap: 40}}>
           <ThemedView style={styles.energyRow}>
             <ThemedView style={styles.flexRow}>
               <Image source={GRASS_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('grass')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardWeak(PokemonTypeENUM.GRASS).length}
+                {weakGrassCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -760,7 +838,7 @@ export function GraphicCollage({
               <Image source={FIRE_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('fire')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardWeak(PokemonTypeENUM.FIRE).length}
+                {weakFireCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -770,7 +848,7 @@ export function GraphicCollage({
               <Image source={WATER_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('water')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardWeak(PokemonTypeENUM.WATER).length}
+                {weakWaterCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -780,7 +858,7 @@ export function GraphicCollage({
               <Image source={ELECTRIC_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('electric')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardWeak(PokemonTypeENUM.ELECTRIC).length}
+                {weakElectricCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -790,7 +868,7 @@ export function GraphicCollage({
               <Image source={PSYCHIC_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('psychic')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardWeak(PokemonTypeENUM.PSYCHIC).length}
+                {weakPsychicCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -800,18 +878,18 @@ export function GraphicCollage({
               <Image source={FIGHT_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('fight')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardWeak(PokemonTypeENUM.FIGHT).length}
+                {weakFightCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
         </ThemedView>
-        <ThemedView style={{flexDirection: 'row', marginTop: 30, justifyContent: 'center', gap: 40, marginBottom: 14}}>
+        <ThemedView style={{flexDirection: 'row', marginTop: 20, justifyContent: 'center', gap: 40, marginBottom: 8}}>
           <ThemedView style={[styles.energyRow, {width: '16.6%'}]}>
             <ThemedView style={styles.flexRow}>
               <Image source={DARK_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('dark')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardWeak(PokemonTypeENUM.DARK).length}
+                {weakDarkCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -821,7 +899,7 @@ export function GraphicCollage({
               <Image source={STEEL_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('steel')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardWeak(PokemonTypeENUM.STEEL).length}
+                {weakSteelCardsLength}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -831,7 +909,7 @@ export function GraphicCollage({
               <Image source={DRAGON_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('dragon')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardWeak(PokemonTypeENUM.DRAGON).length}
+                {0}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -841,7 +919,7 @@ export function GraphicCollage({
               <Image source={NORMAL_ICON} style={[styles.energy, styles.summaryEnergy]}/>
               <ThemedText style={[styles.summaryText]}>{i18n.t('normal')}</ThemedText>
               <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {getCardWeak(PokemonTypeENUM.NORMAL).length}
+                {0}
               </ThemedText>
             </ThemedView>
           </ThemedView>
@@ -857,21 +935,21 @@ export function GraphicCollage({
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
               <Image source={GENETIC_APEX} style={styles.expansionImage}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('genetic_apex')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('genetic_apex')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardsExpansion(CardExpansionENUM.GENETIC_APEX).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{geneticPackCardsLength}</ThemedText>
           </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 36}]}>{i18n.t('genetic_apex_description')}</ThemedText>
+          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('genetic_apex_description')}</ThemedText>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
               <Image source={GENETIC_APEX_PIKACHU_ICON} style={[styles.expansionImage, { width: 92, height: 64}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('pikachu')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('pikachu')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.PIKACHU).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{pikachuCardsLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCards(EXPANSION.PIKACHU)}
+          <FlatList data={pikachuCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={styles.list}
@@ -879,17 +957,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
               <Image source={GENETIC_APEX_MEWTWO_ICON} style={[styles.expansionImage, { width: 92, height: 64}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('mewtwo')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('mewtwo')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.MEWTWO).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{mewtwoCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCards(EXPANSION.MEWTWO)}
+          <FlatList data={mewtwoCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={styles.list}
@@ -897,17 +975,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
               <Image source={GENETIC_APEX_CHARIZARD_ICON} style={[styles.expansionImage, { width: 92, height: 64}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('charizard')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('charizard')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.CHARIZARD).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{charizardCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCards(EXPANSION.CHARIZARD)}
+          <FlatList data={charizardCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={styles.list}
@@ -915,18 +993,18 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
               <Image source={GENETIC_APEX} style={styles.expansionImage}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('shareds')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('shareds')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getSharedCards(CardExpansionENUM.GENETIC_APEX).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{sharedGeneticLength}</ThemedText>
           </ThemedView>
           <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('shareds_description')}</ThemedText>
 
-          <FlatList data={getSharedCards(CardExpansionENUM.GENETIC_APEX)}
+          <FlatList data={sharedGenetic}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={styles.list}
@@ -934,18 +1012,18 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
               <Image source={MYTHICAL_ISLAND_MEW_ICON} style={[styles.expansionImage, {height: 48}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('mythical_island')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('mythical_island')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardsExpansion(CardExpansionENUM.MYTHICAL_ISLAND).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{islandPackCardsLength}</ThemedText>
           </ThemedView>
           <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('mythical_island_description')}</ThemedText>
 
-          <FlatList data={getCards(EXPANSION.MYTHICAL_ISLAND)}
+          <FlatList data={islandCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={styles.list}
@@ -953,26 +1031,26 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
               <Image source={SMACK_DOWN} style={[styles.expansionImage, {height: 44}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('smack_down')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('smack_down')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardsExpansion(CardExpansionENUM.SPACE_TIME_SMACKDOWN).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{spacePackCardsLength}</ThemedText>
           </ThemedView>
-          <ThemedText style={styles.textMargin}>{i18n.t('smack_down_description')}</ThemedText>
+          <ThemedText style={[styles.textMargin, {marginBottom: 16}]}>{i18n.t('smack_down_description')}</ThemedText>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
               <Image source={SMACK_DOWN_DIALGA_ICON} style={[styles.expansionImage, { width: 92, height: 46}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('dialga')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('dialga')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.DIALGA).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{dialgaCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCards(EXPANSION.DIALGA)}
+          <FlatList data={dialgaCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={styles.list}
@@ -980,17 +1058,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
               <Image source={SMACK_DOWN_PALKIA_ICON} style={[styles.expansionImage, { width: 92, height: 46}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('palkia')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('palkia')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.PALKIA).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{palkiaCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCards(EXPANSION.PALKIA)}
+          <FlatList data={palkiaCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={styles.list}
@@ -998,18 +1076,18 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
               <Image source={SMACK_DOWN} style={styles.expansionImage}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('shareds')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('shareds')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getSharedCards(CardExpansionENUM.SPACE_TIME_SMACKDOWN).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{sharedSmackLength}</ThemedText>
           </ThemedView>
           <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('shareds_description')}</ThemedText>
 
-          <FlatList data={getSharedCards(CardExpansionENUM.SPACE_TIME_SMACKDOWN)}
+          <FlatList data={sharedSmack}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={styles.list}
@@ -1017,18 +1095,37 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
+
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={TRIUMPH_LIGHT_ARCEUS_ICON} style={[styles.expansionImage, { width: 92, height: 39}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('arceus')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{triumphPackCardsLength}</ThemedText>
+          </ThemedView>
+          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('triumph_description')}</ThemedText>
+
+          <FlatList data={triumphCards}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={styles.list}
+                    style={{width: collageWith, borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>
+
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
               <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('promo_a')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('promo_a')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardsExpansion(CardExpansionENUM.PROMO_A).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{promoAPackCardsLength}</ThemedText>
           </ThemedView>
           <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('promo_description')}</ThemedText>
 
-          <FlatList data={getPromo()}
+          <FlatList data={promoAPackCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={styles.list}
@@ -1036,20 +1133,20 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
               <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('series')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('series')}</ThemedText>
             </ThemedView>
           </ThemedView>
           <ThemedText style={[styles.text, {marginBottom: 10}]}>{i18n.t('series_description')}</ThemedText>
 
           <ThemedView style={{flexDirection: "row", gap: 20}}>
             <ThemedView>
-              <ThemedText style={styles.subTitlte}>A1</ThemedText>
-              <FlatList data={getCards(EXPANSION.PROMO_A1)}
+              <ThemedText style={[styles.subTitlte, {marginTop: 10, color: Colors.light.text}]}>A1</ThemedText>
+              <FlatList data={promo1Cards}
                         renderItem={renderItem}
                         numColumns={numColumns}
                         contentContainerStyle={[styles.list, {width: 'auto'}]}
@@ -1058,8 +1155,8 @@ export function GraphicCollage({
                         keyExtractor={(item, index) => index + ''}/>
             </ThemedView>
             <ThemedView>
-              <ThemedText style={styles.subTitlte}>A2</ThemedText>
-              <FlatList data={getCards(EXPANSION.PROMO_A2)}
+              <ThemedText style={[styles.subTitlte, {marginTop: 10, color: Colors.light.text}]}>A2</ThemedText>
+              <FlatList data={promo2Cards}
                         renderItem={renderItem}
                         numColumns={numColumns}
                         contentContainerStyle={[styles.list, {width: 'auto'}]}
@@ -1068,8 +1165,8 @@ export function GraphicCollage({
                         keyExtractor={(item, index) => index + ''}/>
             </ThemedView>
             <ThemedView>
-              <ThemedText style={styles.subTitlte}>A3</ThemedText>
-              <FlatList data={getCards(EXPANSION.PROMO_A3)}
+              <ThemedText style={[styles.subTitlte, {marginTop: 10, color: Colors.light.text}]}>A3</ThemedText>
+              <FlatList data={promo3Cards}
                         renderItem={renderItem}
                         numColumns={numColumns}
                         contentContainerStyle={[styles.list, {width: 'auto'}]}
@@ -1081,8 +1178,8 @@ export function GraphicCollage({
 
           <ThemedView style={{flexDirection: "row", gap: 20, width: '32.4%'}}>
             <ThemedView>
-              <ThemedText style={[styles.subTitlte, {marginTop: 10}]}>A4</ThemedText>
-              <FlatList data={getCards(EXPANSION.PROMO_A4)}
+              <ThemedText style={[styles.subTitlte, {marginTop: 0, color: Colors.light.text}]}>A4</ThemedText>
+              <FlatList data={promo4Cards}
                         renderItem={renderItem}
                         numColumns={numColumns}
                         contentContainerStyle={[styles.list, {width: 'auto'}]}
@@ -1092,45 +1189,45 @@ export function GraphicCollage({
             </ThemedView>
           </ThemedView>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
               <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('premium')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('premium')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.PREMIUM).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{premiumCardsLength}</ThemedText>
           </ThemedView>
           <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('premium_description')}</ThemedText>
           
-          <FlatList data={getCards(EXPANSION.PREMIUM)}
+          <FlatList data={premiumCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {width: 'auto'}]}
-                    style={{borderRadius: 8, width: getItemWidth(getCards(EXPANSION.PREMIUM).length)}}
+                    style={{borderRadius: 8, width: getItemWidth(premiumCardsLength)}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
               <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('mission')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('mission')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCards(EXPANSION.SPECIAL_MISSION).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{specialCardsLength}</ThemedText>
           </ThemedView>
           <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('mission_description')}</ThemedText>
 
-          <FlatList data={getCards(EXPANSION.SPECIAL_MISSION)}
+          <FlatList data={specialCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={styles.list}
-                    style={{width: getItemWidth(getCards(EXPANSION.SPECIAL_MISSION).length), borderRadius: 8}}
+                    style={{width: getItemWidth(specialCardsLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider> 
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider> 
         </>
       }
 
@@ -1139,10 +1236,10 @@ export function GraphicCollage({
         <>
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('grade')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('grade')}</ThemedText>
             </ThemedView>
           </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('grade_description')}</ThemedText>
+          <ThemedText style={[styles.textMargin, {marginBottom: 10}]}>{i18n.t('grade_description')}</ThemedText>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 8}}>
@@ -1158,13 +1255,13 @@ export function GraphicCollage({
                 />
               ))}
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.RARE).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{rareCardsLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCardRarity(CardRarityENUM.RARE)}
+          <FlatList data={rareCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={styles.list}
+                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
@@ -1183,13 +1280,13 @@ export function GraphicCollage({
                 />
               ))}
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.DOUBLE).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{doubleCardsLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCardRarity(CardRarityENUM.DOUBLE)}
+          <FlatList data={doubleCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={styles.list}
+                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
@@ -1208,13 +1305,13 @@ export function GraphicCollage({
                   />
                 ))}
               </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.ART).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{artCardsLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCardRarity(CardRarityENUM.ART)}
+          <FlatList data={artCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={styles.list}
+                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
@@ -1233,13 +1330,13 @@ export function GraphicCollage({
                   />
                 ))}
               </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.SUPER).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{superCardsLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCardRarity(CardRarityENUM.SUPER)}
+          <FlatList data={superCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={styles.list}
+                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
@@ -1258,14 +1355,14 @@ export function GraphicCollage({
                   />
                 ))}
               </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.INMERSIVE).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{inmersiveCardsLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCardRarity(CardRarityENUM.INMERSIVE)}
+          <FlatList data={inmersiveCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: getItemWidth(getCardRarity(CardRarityENUM.INMERSIVE).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
+                    style={{width: getItemWidth(inmersiveCardsLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
@@ -1283,18 +1380,18 @@ export function GraphicCollage({
                   />
                 ))}
               </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardRarity(CardRarityENUM.CROWN).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{crownCardsLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCardRarity(CardRarityENUM.CROWN)}
+          <FlatList data={crownCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: getItemWidth(getCardRarity(CardRarityENUM.CROWN).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
+                    style={{width: getItemWidth(crownCardsLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>        
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>        
         </>
       }
 
@@ -1303,20 +1400,20 @@ export function GraphicCollage({
         <>
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 28}}>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('types')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20}]}>{i18n.t('types')}</ThemedText>
             </ThemedView>
           </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('types_description')}</ThemedText>
+          <ThemedText style={[styles.textMargin, {marginBottom: 10}]}>{i18n.t('types_description')}</ThemedText>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
               <Image source={GRASS_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('grass')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('grass')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.GRASS).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{grassCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardByType(PokemonTypeENUM.GRASS)}
+          <FlatList data={grassCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1324,17 +1421,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/> 
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
               <Image source={FIRE_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('fire')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('fire')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.FIRE).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{fireCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardByType(PokemonTypeENUM.FIRE)}
+          <FlatList data={fireCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1342,17 +1439,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
               <Image source={WATER_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('water')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('water')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.WATER).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{waterCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardByType(PokemonTypeENUM.WATER)}
+          <FlatList data={waterCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1360,17 +1457,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
                     
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
               <Image source={ELECTRIC_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('electric')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('electric')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.ELECTRIC).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{electricCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardByType(PokemonTypeENUM.ELECTRIC)}
+          <FlatList data={electricCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1378,17 +1475,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
               <Image source={PSYCHIC_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('psychic')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('psychic')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.PSYCHIC).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{psychicCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardByType(PokemonTypeENUM.PSYCHIC)}
+          <FlatList data={psychicCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1396,17 +1493,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
                     
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
               <Image source={FIGHT_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('fight')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('fight')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.FIGHT).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{fightCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardByType(PokemonTypeENUM.FIGHT)}
+          <FlatList data={fightCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1414,17 +1511,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
               <Image source={DARK_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('dark')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('dark')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.DARK).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{darkCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardByType(PokemonTypeENUM.DARK)}
+          <FlatList data={darkCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1432,17 +1529,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={STEEL_ICON} style={[styles.energy, {top: -4}]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('steel')}</ThemedText>
+              <Image source={STEEL_ICON} style={[styles.energy]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('steel')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.STEEL).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{steelCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardByType(PokemonTypeENUM.STEEL)}
+          <FlatList data={steelCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1450,35 +1547,35 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
               <Image source={DRAGON_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('dragon')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('dragon')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.DRAGON).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{dragonCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardByType(PokemonTypeENUM.DRAGON)}
+          <FlatList data={dragonCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: getItemWidth(getCardByType(PokemonTypeENUM.DRAGON).length), borderRadius: 8}}
+                    style={{width: getItemWidth(dragonCardsLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={NORMAL_ICON} style={[styles.energy, {top: -4}]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('normal')}</ThemedText>
+              <Image source={NORMAL_ICON} style={[styles.energy]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('normal')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardByType(PokemonTypeENUM.NORMAL).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{normalCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardByType(PokemonTypeENUM.NORMAL)}
+          <FlatList data={normalCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1486,7 +1583,7 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>      
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>      
         </>
       }
 
@@ -1495,77 +1592,77 @@ export function GraphicCollage({
         <>
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 28}}>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('miscellania')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20}]}>{i18n.t('miscellania')}</ThemedText>
             </ThemedView>
           </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 30}]}>{i18n.t('miscellania_description')}</ThemedText>
+          <ThemedText style={[styles.textMargin, {marginBottom: 10}]}>{i18n.t('miscellania_description')}</ThemedText>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('abilities')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getWithAbility().length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('abilities')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{withAbilityCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getWithAbility()}
+          <FlatList data={withAbilityCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={styles.list}
+                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
           
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('items')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getStage(CardStageENUM.ITEM).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('items')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{itemCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getStage(CardStageENUM.ITEM)}
+          <FlatList data={itemCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: getItemWidth(getStage(CardStageENUM.ITEM).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
+                    style={{width: getItemWidth(itemCardsLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('tools')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getStage(CardStageENUM.TOOL).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('tools')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{toolCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getStage(CardStageENUM.TOOL)}
+          <FlatList data={toolCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: getItemWidth(getStage(CardStageENUM.TOOL).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
+                    style={{width: getItemWidth(toolCardsLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('fossils')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getStage(CardStageENUM.FOSSIL).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('fossils')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{fossilCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getStage(CardStageENUM.FOSSIL)}
+          <FlatList data={fossilCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: getItemWidth(getStage(CardStageENUM.FOSSIL).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
+                    style={{width: getItemWidth(fossilCardsLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('supporter')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getStage(CardStageENUM.SUPPORTER).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('supporter')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{supporterCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getStage(CardStageENUM.SUPPORTER)}
+          <FlatList data={supporterCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={styles.list}
+                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>        
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>        
         </>
       }
 
@@ -1574,20 +1671,20 @@ export function GraphicCollage({
         <>
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 28}}>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('weakness')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20}]}>{i18n.t('weakness')}</ThemedText>
             </ThemedView>
           </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('weakness_description')}</ThemedText>
+          <ThemedText style={[styles.textMargin, {marginBottom: 10}]}>{i18n.t('weakness_description')}</ThemedText>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
               <Image source={GRASS_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('grass')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('grass')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.GRASS).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{weakGrassCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardWeak(PokemonTypeENUM.GRASS)}
+          <FlatList data={weakGrassCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1595,17 +1692,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
               <Image source={FIRE_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('fire')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('fire')}</ThemedText>
             </ThemedView>
-            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.FIRE).length}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{weakFireCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardWeak(PokemonTypeENUM.FIRE)}
+          <FlatList data={weakFireCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1613,14 +1710,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('water')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.WATER).length}</ThemedText>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={WATER_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('water')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{weakWaterCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardWeak(PokemonTypeENUM.WATER)}
+          <FlatList data={weakWaterCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1628,14 +1728,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
                     
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('electric')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.ELECTRIC).length}</ThemedText>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={ELECTRIC_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('electric')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{weakElectricCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardWeak(PokemonTypeENUM.ELECTRIC)}
+          <FlatList data={weakElectricCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1643,14 +1746,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('psychic')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.PSYCHIC).length}</ThemedText>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={PSYCHIC_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('psychic')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{weakPsychicCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardWeak(PokemonTypeENUM.PSYCHIC)}
+          <FlatList data={weakPsychicCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1658,14 +1764,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
                     
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('fight')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.FIGHT).length}</ThemedText>
+          <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={FIGHT_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('fight')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{weakFightCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardWeak(PokemonTypeENUM.FIGHT)}
+          <FlatList data={weakFightCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1673,14 +1782,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('dark')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.DARK).length}</ThemedText>
+          <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={DARK_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('dark')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{weakDarkCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardWeak(PokemonTypeENUM.DARK)}
+          <FlatList data={weakDarkCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1688,14 +1800,17 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('steel')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCardWeak(PokemonTypeENUM.STEEL).length}</ThemedText>
+          <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
+              <Image source={STEEL_ICON} style={styles.energy}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('steel')}</ThemedText>
+            </ThemedView>
+            <ThemedText style={styles.subTitlte}>{weakSteelCardsLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCardWeak(PokemonTypeENUM.STEEL)}
+          <FlatList data={weakSteelCards}
                     renderItem={renderItem}
                     numColumns={numColumns}
                     contentContainerStyle={[styles.list, {marginTop: 0}]}
@@ -1703,7 +1818,7 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>        
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>        
         </>
       }
 
@@ -1711,84 +1826,84 @@ export function GraphicCollage({
         showTop &&
         <>
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginTop: 4, marginLeft: 9}}>
-              <Image source={CHAMPION_ICON} style={[styles.expansionImage, {width: 58, height: 46, top: -6, marginRight: 24}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 36}]}>{i18n.t('top_20')}</ThemedText>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginTop: 4}}>
+              <Image source={CHAMPION_ICON} style={[styles.expansionImage, {width: 58, height: 46, top: -4, marginRight: 0}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 30}]}>{i18n.t('top_20')}</ThemedText>
             </ThemedView>
           </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 28}]}>{i18n.t('top_20_description')}</ThemedText>
+          <ThemedText style={[styles.textMargin, {marginBottom: 14}]}>{i18n.t('top_20_description')}</ThemedText>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-                <MaterialIcons name="diamond" style={[styles.stageIcon, {color: 'skyblue'}]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('rarity')}</ThemedText>
+              <MaterialIcons name="diamond" style={[styles.stageIcon, {color: 'skyblue'}]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('rarity')}</ThemedText>
             </ThemedView>
           </ThemedView>
 
           <FlatList data={getTop20('rarity')}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 0}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
             
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-                <MaterialIcons name="grass" style={[styles.stageIcon, {top: -5}]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('retire_cost')}</ThemedText>
+              <MaterialIcons name="grass" style={[styles.stageIcon, {top: 3}]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('retire_cost')}</ThemedText>
             </ThemedView>
           </ThemedView>
 
           <FlatList data={getRetreatTop20()}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 0}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-                <MaterialIcons name="favorite-outline" style={[styles.stageIcon, {color: 'skyblue'}]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('health_points')}</ThemedText>
+              <MaterialIcons name="favorite-outline" style={[styles.stageIcon, {color: 'skyblue', top: 6}]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('health_points')}</ThemedText>
             </ThemedView>
           </ThemedView>
 
           <FlatList data={getTop20('health')}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 0}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-                <MaterialIcons name="height" style={[styles.stageIcon]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('height')}</ThemedText>
+              <MaterialIcons name="height" style={[styles.stageIcon, {top: 6}]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('height')}</ThemedText>
             </ThemedView>
           </ThemedView>
 
           <FlatList data={getTop20('height')}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 0}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-                <MaterialIcons name="scale" style={[styles.stageIcon, {color: 'skyblue'}]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('weight')}</ThemedText>
+              <MaterialIcons name="scale" style={[styles.stageIcon, {color: 'skyblue', fontSize: 34, left: 13, top: 11}]}/>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('weight')}</ThemedText>
             </ThemedView>
           </ThemedView>
 
           <FlatList data={getTop20('weight')}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 0}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
@@ -1796,7 +1911,7 @@ export function GraphicCollage({
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
                 <MaterialIcons name="bolt" style={[styles.stageIcon]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40}]}>{i18n.t('attack')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('attack')}</ThemedText>
             </ThemedView>
           </ThemedView>
 
@@ -1808,304 +1923,281 @@ export function GraphicCollage({
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>       
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>       
         </>
       }
       {
         showConditions &&
         <>
           <ThemedText style={styles.subTitlte}>{i18n.t('conditions')}</ThemedText>
-          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('conditions_description')}</ThemedText>
+          <ThemedText style={[styles.textMargin, {marginBottom: 10}]}>{i18n.t('conditions_description')}</ThemedText>
 
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_attack_bench')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.ATTACK_BENCH).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_attack_bench')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{benchConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.ATTACK_BENCH)}
+          <FlatList data={benchCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_recoil')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.RECOIL).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_recoil')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{recoilConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.RECOIL)}
+          <FlatList data={recoilCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.RECOIL).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
+                    style={{width: getItemWidth(recoilConditionLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>                
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_extra_damage')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.EXTRA_DAMAGE).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_extra_damage')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{extraConditionLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCondition(CardSpecialConditionENUM.EXTRA_DAMAGE)}
+          <FlatList data={extraCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <ThemedText style={styles.subTitlte}>{i18n.t('condition_resist')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.RESIST).length}</ThemedText>
+          <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_resist')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{resistConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.RESIST)}
+          <FlatList data={resistCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_heal')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.HEAL).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_heal')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{healConditionLength}</ThemedText>
           </ThemedView>
     
-          <FlatList data={getCondition(CardSpecialConditionENUM.HEAL)}
+          <FlatList data={healCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_poison')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.POISON).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_poison')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{poisonConditionLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCondition(CardSpecialConditionENUM.POISON)}
+          <FlatList data={poisonCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.POISON).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
+                    style={{width: getItemWidth(poisonConditionLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_paralyze')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.PARALYZE).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_paralyze')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{paralizeConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.PARALYZE)}
+          <FlatList data={paralizeCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.PARALYZE).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
+                    style={{width: getItemWidth(paralizeConditionLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_sleep')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.SLEEP).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_sleep')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{sleepConditionLength}</ThemedText>
           </ThemedView>
 
-          <FlatList data={getCondition(CardSpecialConditionENUM.SLEEP)}
+          <FlatList data={sleepCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.SLEEP).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
+                    style={{width: getItemWidth(sleepConditionLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_confusion')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.CONFUSION).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_confusion')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{confusionConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.CONFUSION)}
+          <FlatList data={confusionCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.CONFUSION).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
+                    style={{width: getItemWidth(confusionConditionLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_burned')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.BURNED).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_burned')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{burnedConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.BURNED)}
+          <FlatList data={burnedCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.BURNED).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
+                    style={{width: getItemWidth(burnedConditionLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_flip')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.FLIP).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_flip')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{flipConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.FLIP)}
+          <FlatList data={flipCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_nothing')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.NOTHING).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_nothing')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{nothingConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.NOTHING)}
+          <FlatList data={nothingCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.NOTHING).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
+                    style={{width: getItemWidth(nothingConditionLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_discard')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.DISCARD).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_discard')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{discardConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.DISCARD)}
+          <FlatList data={discardCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_add')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.ADD).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_add')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{addConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.ADD)}
+          <FlatList data={addCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
                     style={{width: collageWith, borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_corner')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.CORNER).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_corner')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{cornerConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.CORNER)}
+          <FlatList data={cornerCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.CORNER).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
+                    style={{width: getItemWidth(cornerConditionLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_withdraw')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.WITHDRAW_CARD).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_withdraw')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{withdrawConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.WITHDRAW_CARD)}
+          <FlatList data={withdrawCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.WITHDRAW_CARD).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
+                    style={{width: getItemWidth(withdrawConditionLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_retire')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.RETIRE).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_retire')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{retireConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.RETIRE)}
+          <FlatList data={retireCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.RETIRE).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
+                    style={{width: getItemWidth(retireConditionLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_call')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.CALL).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_call')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{callConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.CALL)}
+          <FlatList data={callCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.CALL).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
+                    style={{width: getItemWidth(callConditionLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>
-
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={styles.subTitlte}>{i18n.t('condition_inactive')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{getCondition(CardSpecialConditionENUM.INACTIVE).length}</ThemedText>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_inactive')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{inactiveConditionLength}</ThemedText>
           </ThemedView>
           
-          <FlatList data={getCondition(CardSpecialConditionENUM.INACTIVE)}
+          <FlatList data={inactiveCondition}
                     renderItem={renderItem}
                     numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: getItemWidth(getCondition(CardSpecialConditionENUM.INACTIVE).length), borderRadius: 8}}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
+                    style={{width: getItemWidth(inactiveConditionLength), borderRadius: 8}}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(item, index) => index + ''}/>
 
-          <RainbowDivider></RainbowDivider>       
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('arceus_link')}</ThemedText>
+            <ThemedText style={styles.subTitlte}>{arceusConditionLength}</ThemedText>
+          </ThemedView>
+          
+          <FlatList data={arceusCondition}
+                    renderItem={renderItem}
+                    numColumns={numColumns}
+                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
+                    style={{width: getItemWidth(arceusConditionLength), borderRadius: 8}}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={(item, index) => index + ''}/>                    
+
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>       
         </>
       }
 
-      <ThemedView style={{height: 20}}></ThemedView>
-      <ThemedView style={[styles.summary, {marginHorizontal: 0, marginTop: 0, padding: 16}]}>
+      <ThemedView style={{height: 16}}></ThemedView>
+      <ThemedView style={[styles.summary, {marginHorizontal: 16, marginTop: 0, padding: 16, marginBottom: 0}]}>
         <ThemedText style={[styles.text, {textAlign: 'center', fontWeight: 'bold'}]}>
           {i18n.t('infographics_footer')}
         </ThemedText>
@@ -2118,7 +2210,7 @@ const styles = StyleSheet.create({
   mainTitle: {
     fontSize: 36,
     fontWeight: 'bold',
-    marginBottom: 40,
+    marginBottom: 30,
     color: 'black',
     paddingHorizontal: 20
   },
@@ -2126,13 +2218,13 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'semibold',
     marginTop: 20,
-    marginBottom: 20,
+    marginBottom: 16,
     color: 'black',
     paddingHorizontal: 20
   },
   list: {
     width: 'auto', 
-    marginTop: 12, 
+    marginTop: 0, 
     padding: 20,
     backgroundColor: 'rgb(245, 245, 245)',
     marginBottom: 20,
@@ -2152,7 +2244,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     width: 96,
     height: 45,
-    left: 20,
+    left: 4,
     top: -2
   },
   summary: {
@@ -2163,18 +2255,18 @@ const styles = StyleSheet.create({
     marginHorizontal: 20
   },
   stageIcon: {
-    width: 94,
+    width: 58,
     height: 50,
     fontSize: 44,
-    top: -3,
-    left: 32,
+    top: 8,
+    left: 10,
     color: 'mediumaquamarine'
   },
   energy: {
     width: 36,
     height: 36,
     marginRight: 12,
-    top: -3
+    top: 2
   },
   summaryImage: {
     overflow: 'hidden',

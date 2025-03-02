@@ -60,8 +60,8 @@ export default function CreateDeckScreen() {
     setSearchQuery(text);
     setFiltered(prev => {
       if(decks.length === 0) { return prev; }
-      return decks.filter(card =>
-        card.name.toLowerCase()?.includes(text.toLowerCase()));
+      return decks.filter(deck =>
+        deck.name.toLowerCase()?.includes(text.toLowerCase()));
     })
   }, [decks]);
 
