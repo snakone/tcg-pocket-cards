@@ -11,6 +11,7 @@ import { homeScreenStyles } from '@/shared/styles/component.styles';
 import { HERO_IMAGE } from '@/shared/definitions/sentences/path.sentences';
 import SoundService from '@/core/services/sounds.service';
 import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
+import { ScrollView } from 'react-native';
 
 export default function HomeScreen() {
   const {i18n} = useI18n();
@@ -31,24 +32,29 @@ export default function HomeScreen() {
           source={HERO_IMAGE}
           style={styles.heroImage}
           alt='Hero'/>
-        <ThemedText style={[styles.title, {paddingTop: 2}]}>{i18n.t('hero_title')}</ThemedText>
-        <ThemedText style={styles.subtitle}>
-          {i18n.t('hero_discover')} <ThemedText style={{fontWeight: 'bold'}}>{i18n.t('pocket')}</ThemedText>. {i18n.t('hero_create')}
-        </ThemedText>
 
-        <TouchableOpacity style={styles.ctaButton} onPress={() => (playSound(), router.push('/screens/help'))}>
-          <ThemedText style={styles.ctaText}>{i18n.t('discover_more')}</ThemedText>
-        </TouchableOpacity>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <ThemedText style={[styles.title, {paddingTop: 2}]}>{i18n.t('hero_title')}</ThemedText>
+          <ThemedText style={styles.subtitle}>
+            {i18n.t('hero_discover')} <ThemedText style={{fontWeight: 'bold'}}>{i18n.t('pocket')}</ThemedText>. {i18n.t('hero_create')}
+          </ThemedText>
 
-        <ThemedView style={styles.infoSection}>
-          <ThemedText style={styles.infoText}>
-            {i18n.t('hero_sub')} <ThemedText style={[styles.infoText, {fontWeight: 'bold'}]}>
-            {i18n.t('hero_lucre')}</ThemedText> {i18n.t('hero_seek')}
-          </ThemedText>
-          <ThemedText style={styles.infoText}>
-            {i18n.t('hero_join')}
-          </ThemedText>
-        </ThemedView>
+          <TouchableOpacity style={[styles.ctaButton, {width: 204, marginHorizontal: 'auto', marginBlock: 50, paddingHorizontal: 10}]} 
+                            onPress={() => (playSound(), router.push('/screens/help'))}>
+            <ThemedText style={[styles.ctaText, {textAlign: 'center', width: 184}]}>{i18n.t('discover_more')}</ThemedText>
+          </TouchableOpacity>
+
+          <ThemedView style={styles.infoSection}>
+            <ThemedText style={styles.infoText}>
+              {i18n.t('hero_sub')} <ThemedText style={[styles.infoText, {fontWeight: 'bold'}]}>
+              {i18n.t('hero_lucre')}</ThemedText> {i18n.t('hero_seek')}
+            </ThemedText>
+            <ThemedText style={styles.infoText}>
+              {i18n.t('hero_join')}
+            </ThemedText>
+          </ThemedView>        
+        </ScrollView>
+        
       </ThemedView>
     </ParallaxScrollView>
   );

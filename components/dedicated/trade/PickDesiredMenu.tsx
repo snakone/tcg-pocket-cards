@@ -167,10 +167,6 @@ export default function PickDesiredMenu({
               CardGridStyles.image, 
               offersStyles.included,
             ]}>
-                <MaterialIcons name="remove-circle-outline" 
-                              size={24} 
-                              style={{width: 24, height: 24, color: 'red'}}>
-                </MaterialIcons>
               </ThemedView>
           }
           <Image accessibilityLabel={item.name[lang]}
@@ -271,7 +267,7 @@ export default function PickDesiredMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu(true)}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: 765}]}>
+      <Animated.View style={[animatedStyle, sortStyles.container, {height: Platform.OS === 'web' && window.innerWidth < 550 ? 627 : 765}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_a_desired')}</ThemedText>
         </View>

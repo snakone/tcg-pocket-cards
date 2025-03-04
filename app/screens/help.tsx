@@ -180,7 +180,7 @@ export default function HelpScreen() {
                   visible={currentModal === item.modal}
                   onDismiss={close}
                   key={item.modal}
-                  dismissable={false}
+                  dismissableBackButton={true}
                   contentContainerStyle={{height: Platform.OS === 'web' ? '100%' : '110%', justifyContent: 'flex-start'}}>
                   <View style={[
                     ModalStyles.centeredView, Platform.OS === 'web' ? 

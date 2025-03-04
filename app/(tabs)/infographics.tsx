@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import React from "react";
 import ViewShot from "react-native-view-shot";
-import { TouchableOpacity, View, StyleSheet, Platform } from "react-native";
+import { TouchableOpacity, View, StyleSheet, Platform, ScrollView } from "react-native";
 
 import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AppContext } from "../_layout";
@@ -136,142 +136,144 @@ export default function InfoGraphicScreen() {
         <ParallaxScrollView title={"infographics"} 
                             modalTitle='infographics'
                             modalContent={GraphicsScreenModal()}
-                            styles={{paddingInline: 28}}
+                            styles={{paddingInline: 14}}
                             modalHeight={BACKUP_HEIGHT}>
-          <ThemedView style={{gap: 8}}>
-            <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-              <ThemedText style={[filterStyles.header, {marginBottom: 24}]}>{i18n.t('export')}</ThemedText>
-              <TouchableOpacity onPress={handleAll}>
-                <MaterialIcons name="sync" 
-                               style={{fontSize: 26, left: -4, top: -7, opacity: 0.5}} 
-                               color={Colors.light.icon}>
-                </MaterialIcons>
-              </TouchableOpacity>
-            </ThemedView>
+          <ScrollView showsVerticalScrollIndicator={false} style={{paddingInline: 14}}>
+            <ThemedView style={{gap: 8}}>
+              <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                <ThemedText style={[filterStyles.header, {marginBottom: 24}]}>{i18n.t('export')}</ThemedText>
+                <TouchableOpacity onPress={handleAll}>
+                  <MaterialIcons name="sync" 
+                                style={{fontSize: 26, left: -4, top: -7, opacity: 0.5}} 
+                                color={Colors.light.icon}>
+                  </MaterialIcons>
+                </TouchableOpacity>
+              </ThemedView>
 
-            <ThemedView style={[settingsStyles.container, styles.item]}>
-              <ThemedView style={settingsStyles.row}>
-                <ThemedText>{i18n.t('expansions')}</ThemedText>
-                <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
-                  <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
-                                      color={'white'}
-                                      onValueChange={(value) => handleChange('expansion', value)}
-                                      style={CardGridStyles.switch}
-                                      value={showExpansion}/>
+              <ThemedView style={[settingsStyles.container, styles.item]}>
+                <ThemedView style={settingsStyles.row}>
+                  <ThemedText>{i18n.t('expansions')}</ThemedText>
+                  <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
+                    <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
+                                        color={'white'}
+                                        onValueChange={(value) => handleChange('expansion', value)}
+                                        style={CardGridStyles.switch}
+                                        value={showExpansion}/>
+                  </ThemedView>
                 </ThemedView>
               </ThemedView>
-            </ThemedView>
 
-            <ThemedView style={[settingsStyles.container, styles.item]}>
-              <ThemedView style={settingsStyles.row}>
-                <ThemedText>{i18n.t('grade')}</ThemedText>
-                <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
-                  <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
-                                      color={'white'}
-                                      onValueChange={(value) => handleChange('grades', value)}
-                                      style={CardGridStyles.switch}
-                                      value={showGrades}/>
+              <ThemedView style={[settingsStyles.container, styles.item]}>
+                <ThemedView style={settingsStyles.row}>
+                  <ThemedText>{i18n.t('grade')}</ThemedText>
+                  <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
+                    <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
+                                        color={'white'}
+                                        onValueChange={(value) => handleChange('grades', value)}
+                                        style={CardGridStyles.switch}
+                                        value={showGrades}/>
+                  </ThemedView>
                 </ThemedView>
               </ThemedView>
-            </ThemedView>
 
-            <ThemedView style={[settingsStyles.container, styles.item]}>
-              <ThemedView style={settingsStyles.row}>
-                <ThemedText>{i18n.t('types')}</ThemedText>
-                <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
-                  <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
-                                      color={'white'}
-                                      onValueChange={(value) => handleChange('types', value)}
-                                      style={CardGridStyles.switch}
-                                      value={showTypes}/>
+              <ThemedView style={[settingsStyles.container, styles.item]}>
+                <ThemedView style={settingsStyles.row}>
+                  <ThemedText>{i18n.t('types')}</ThemedText>
+                  <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
+                    <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
+                                        color={'white'}
+                                        onValueChange={(value) => handleChange('types', value)}
+                                        style={CardGridStyles.switch}
+                                        value={showTypes}/>
+                  </ThemedView>
                 </ThemedView>
               </ThemedView>
-            </ThemedView>
 
-            <ThemedView style={[settingsStyles.container, styles.item]}>
-              <ThemedView style={settingsStyles.row}>
-                <ThemedText>{i18n.t('miscellania')}</ThemedText>
-                <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
-                  <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
-                                      color={'white'}
-                                      onValueChange={(value) => handleChange('miscellania', value)}
-                                      style={CardGridStyles.switch}
-                                      value={showMiscellania}/>
+              <ThemedView style={[settingsStyles.container, styles.item]}>
+                <ThemedView style={settingsStyles.row}>
+                  <ThemedText>{i18n.t('miscellania')}</ThemedText>
+                  <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
+                    <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
+                                        color={'white'}
+                                        onValueChange={(value) => handleChange('miscellania', value)}
+                                        style={CardGridStyles.switch}
+                                        value={showMiscellania}/>
+                  </ThemedView>
                 </ThemedView>
               </ThemedView>
-            </ThemedView>
 
-            <ThemedView style={[settingsStyles.container, styles.item]}>
-              <ThemedView style={settingsStyles.row}>
-                <ThemedText>{i18n.t('weakness')}</ThemedText>
-                <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
-                  <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
-                                      color={'white'}
-                                      onValueChange={(value) => handleChange('weak', value)}
-                                      style={CardGridStyles.switch}
-                                      value={showWeak}/>
+              <ThemedView style={[settingsStyles.container, styles.item]}>
+                <ThemedView style={settingsStyles.row}>
+                  <ThemedText>{i18n.t('weakness')}</ThemedText>
+                  <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
+                    <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
+                                        color={'white'}
+                                        onValueChange={(value) => handleChange('weak', value)}
+                                        style={CardGridStyles.switch}
+                                        value={showWeak}/>
+                  </ThemedView>
                 </ThemedView>
               </ThemedView>
-            </ThemedView>
 
-            <ThemedView style={[settingsStyles.container, styles.item]}>
-              <ThemedView style={settingsStyles.row}>
-                <ThemedText>{i18n.t('top_20')}</ThemedText>
-                <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
-                  <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
-                                      color={'white'}
-                                      onValueChange={(value) => handleChange('top', value)}
-                                      style={CardGridStyles.switch}
-                                      value={showTop}/>
+              <ThemedView style={[settingsStyles.container, styles.item]}>
+                <ThemedView style={settingsStyles.row}>
+                  <ThemedText>{i18n.t('top_20')}</ThemedText>
+                  <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
+                    <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
+                                        color={'white'}
+                                        onValueChange={(value) => handleChange('top', value)}
+                                        style={CardGridStyles.switch}
+                                        value={showTop}/>
+                  </ThemedView>
                 </ThemedView>
               </ThemedView>
-            </ThemedView>
 
-            <ThemedView style={[settingsStyles.container, styles.item]}>
-              <ThemedView style={settingsStyles.row}>
-                <ThemedText>{i18n.t('conditions')}</ThemedText>
-                <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
-                  <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
-                                      color={'white'}
-                                      onValueChange={(value) => handleChange('conditions', value)}
-                                      style={CardGridStyles.switch}
-                                      value={showConditions}/>
+              <ThemedView style={[settingsStyles.container, styles.item]}>
+                <ThemedView style={settingsStyles.row}>
+                  <ThemedText>{i18n.t('conditions')}</ThemedText>
+                  <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
+                    <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
+                                        color={'white'}
+                                        onValueChange={(value) => handleChange('conditions', value)}
+                                        style={CardGridStyles.switch}
+                                        value={showConditions}/>
+                  </ThemedView>
                 </ThemedView>
               </ThemedView>
-            </ThemedView>
 
-            <ThemedView style={[settingsStyles.container, {marginTop: 10}]}>
-              <ThemedView style={settingsStyles.row}>
-                <ThemedText>{i18n.t('quality')}</ThemedText>
-                <ThemedView style={[settingsStyles.rightContainer, {width: 25}]}>
-                  <IconSymbol name={'q.circle'} 
-                              style={[settingsStyles.icon]} 
-                              color={Colors.light.text}>
-                  </IconSymbol>
+              <ThemedView style={[settingsStyles.container, {marginTop: 10}]}>
+                <ThemedView style={settingsStyles.row}>
+                  <ThemedText>{i18n.t('quality')}</ThemedText>
+                  <ThemedView style={[settingsStyles.rightContainer, {width: 25}]}>
+                    <IconSymbol name={'q.circle'} 
+                                style={[settingsStyles.icon]} 
+                                color={Colors.light.text}>
+                    </IconSymbol>
+                  </ThemedView>
                 </ThemedView>
+                <Slider maximumValue={10} 
+                        minimumValue={0} 
+                        step={1} 
+                        containerStyle={settingsStyles.slider}
+                        maximumTrackTintColor={Colors.light.skeleton}
+                        minimumTrackTintColor="mediumaquamarine" 
+                        animateTransitions={true} 
+                        animationType={'timing'}
+                        thumbStyle={settingsStyles.thumb}
+                        trackStyle={settingsStyles.track}
+                        trackClickable={true}
+                        value={quality * 10}
+                        onSlidingComplete={handleQualityChange}
+                        trackMarks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                        renderTrackMarkComponent={(index) => <TrackItem index={index}></TrackItem>}/>
               </ThemedView>
-              <Slider maximumValue={10} 
-                      minimumValue={0} 
-                      step={1} 
-                      containerStyle={settingsStyles.slider}
-                      maximumTrackTintColor={Colors.light.skeleton}
-                      minimumTrackTintColor="mediumaquamarine" 
-                      animateTransitions={true} 
-                      animationType={'timing'}
-                      thumbStyle={settingsStyles.thumb}
-                      trackStyle={settingsStyles.track}
-                      trackClickable={true}
-                      value={quality * 10}
-                      onSlidingComplete={handleQualityChange}
-                      trackMarks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-                      renderTrackMarkComponent={(index) => <TrackItem index={index}></TrackItem>}/>
             </ThemedView>
-          </ThemedView>
+          </ScrollView> 
 
-        <TouchableOpacity onPress={download} style={[homeScreenStyles.ctaButton, {marginTop: 12}]}>
-          <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>{i18n.t('download')}</ThemedText>
-        </TouchableOpacity>
-      </ParallaxScrollView>
+          <TouchableOpacity onPress={download} style={[homeScreenStyles.ctaButton, {marginTop: 0, marginBottom: 24, marginHorizontal: 14}]}>
+            <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>{i18n.t('download')}</ThemedText>
+          </TouchableOpacity>
+        </ParallaxScrollView>
       { isVisible && 
         <ThemedView style={{position: 'absolute', left: -9999}}>
           {graphic}

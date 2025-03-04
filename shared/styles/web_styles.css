@@ -9,28 +9,51 @@ body {
   /* overflow: visible !important; */
 }
 
-@media screen and (max-height: 844px) {
-  html, body {
-    height: auto;
-    min-height: 100%;
-    display: grid;
-    place-items: center;
-    overflow-y: auto;
-  }
-}
-
 /* .r-overflow-1udh08x {
   overflow: visible !important;
 } */
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 550px) {
   .r-width-pwrm9v {
-    width: 100% !important;
-    height: 100% !important;
+    width: 100dvw !important;
+    height: 100dvh !important;
+    min-width: 100dvw !important;
+    min-height: 100dvh !important;
+  }
+  
+  .r-pwrm9v {
+    width: 100dvw !important;
+    min-width: 100dvw !important;
+  }
+
+  .r-10hiizc {
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+  }
+
+  .r-maxHeight-1u07xil,
+  .r-1u07xil,
+  .r-maxHeight-f5xsdw,
+  .r-f5xsdw {
+    max-height: 70% !important;
   }
 
   .css-view-175oi2r.r-overflow-1udh08x.r-bottom-1p0dtai {
-    width: 100% !important;
-    height: 100vh !important;
+    width: 100dvw !important;
+    min-width: 100dvw !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+  }
+
+  .css-175oi2r.r-1udh08x.r-1p0dtai {
+    width: 100dvw !important;
+    min-width: 100dvw !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+  }
+
+  .css-view-175oi2r.r-alignItems-1awozwy.r-backgroundColor-drfeu3.r-flex-9c3h7m {
+    height: 100dvh !important;
+    min-height: 100dvh !important;
   }
 }

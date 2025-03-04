@@ -37,7 +37,7 @@ export interface IconItemWithModal {
   modal: string;
   icon: string;
   content?: React.ReactNode;
-  height: number;
+  height: number | 'auto';
 }
 
 export interface ItemWithRoute {

@@ -213,7 +213,7 @@ export const ModalStyles = StyleSheet.create({
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
     elevation: 5,
     width: '90%',
-    maxHeight: '79%',
+    maxHeight: '78%',
     minHeight: DEFAULT_MODAL_HEIGHT,
     overflow: 'hidden',
     top: -10,
@@ -234,7 +234,7 @@ export const ModalStyles = StyleSheet.create({
     color: Colors.light.bold
   },
   modalScrollView: {
-    maxHeight: '79%',
+    maxHeight: '78%',
     padding: Platform.OS === 'web' ? 24 : 20,
     backgroundColor: 'white',
     minHeight: MIN_MODAL_HEIGHT,
@@ -402,6 +402,10 @@ export const WebStyles = StyleSheet.create({
   view: {
     width: 390, 
     height: MAX_WEB_HEIGHT,
+    minWidth: 390,
+    minHeight: MAX_WEB_HEIGHT,
+    maxWidth: 390,
+    maxHeight: MAX_WEB_HEIGHT,
     alignSelf: 'center',
     justifyContent: 'center',
     boxShadow: '0px 0px 25px 10px rgba(0, 0, 0, .8)',
@@ -676,7 +680,7 @@ export const homeScreenStyles = StyleSheet.create({
     paddingInline: 12
   },
   infoSection: {
-    marginBottom: 30,
+    marginBottom: 0,
     paddingHorizontal: 20,
   },
   infoText: {

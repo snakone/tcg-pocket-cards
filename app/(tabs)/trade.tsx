@@ -31,7 +31,7 @@ export default function TradeScreen() {
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={[CardGridStyles.clearInput, {left: Platform.OS !== 'web' ? 252 : 262}]}
+                      style={[CardGridStyles.clearInput, {left: 248}]}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>

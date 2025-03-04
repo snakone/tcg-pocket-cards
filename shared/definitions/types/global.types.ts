@@ -12,7 +12,7 @@ export type ParallaxProps = PropsWithChildren<{
   title: string,
   modalContent?: ReactNode,
   modalTitle: string,
-  modalHeight?: number,
+  modalHeight?: number | 'auto',
   styles?: StyleProp<ViewStyle>,
   showHeader?: boolean,
 }>;

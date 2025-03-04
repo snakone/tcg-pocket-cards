@@ -499,7 +499,7 @@ export default function CreateDeckScreen() {
   ), [deck]);
 
   const cardListGrid = useCallback(() => (
-    <View style={{height: Platform.OS === 'web' ? 518 : 525}}>
+    <View style={{height: (Platform.OS === 'web' && window.innerWidth < 550) ? 329 : Platform.OS === 'web' ? 518 : 525}}>
       <FlatList data={filtered}
                 numColumns={6}
                 contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0,}]}

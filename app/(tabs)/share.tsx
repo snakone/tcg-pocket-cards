@@ -179,10 +179,10 @@ export default function ShareScreen() {
                             searchQuery.length > 0 && section.title === i18n.t('trades') && filteredTrades.length === 0 && 
                               <ThemedText style={styles.noFound}>{i18n.t('no_trades_found')}</ThemedText>
                           }
-                          
                         </>
                       )}
             />
+            <ThemedView style={{height: 32}}></ThemedView>
         </ThemedView>
       </ThemedView>             
     </ParallaxScrollView>

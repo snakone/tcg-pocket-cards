@@ -1236,7 +1236,7 @@ export function GraphicCollage({
         <>
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('grade')}</ThemedText>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 20}]}>{i18n.t('grade')}</ThemedText>
             </ThemedView>
           </ThemedView>
           <ThemedText style={[styles.textMargin, {marginBottom: 10}]}>{i18n.t('grade_description')}</ThemedText>

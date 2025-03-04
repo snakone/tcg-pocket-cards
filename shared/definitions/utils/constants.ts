@@ -1,4 +1,4 @@
-import { PressableAndroidRippleConfig } from "react-native";
+import { Platform, PressableAndroidRippleConfig } from "react-native";
 import { ItemWithRoute, SortItem } from "../interfaces/layout.interfaces";
 import { Card, CardPackTag } from "../interfaces/card.interfaces";
 
@@ -118,7 +118,7 @@ export const FILTER_CARDS_HEIGHT = 350;
 // MODALS
 export const MIN_MODAL_HEIGHT = 96;
 export const DEFAULT_MODAL_HEIGHT = 236;
-export const LARGE_MODAL_HEIGHT = 508;
+export const LARGE_MODAL_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 508;
 export const SORT_MODAL_HEIGHT = 626;
 export const SELECT_ENERGY_HEIGHT = 590;
 export const BACKUP_HEIGHT = 516;
