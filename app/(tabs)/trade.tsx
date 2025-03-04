@@ -1,10 +1,11 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Animated from 'react-native-reanimated';
 import { FlatList, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 import { TradeScreenModal } from '@/components/modals';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
 import { NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
 import { CardGridStyles, homeScreenStyles } from '@/shared/styles/component.styles';
@@ -13,12 +14,10 @@ import { useI18n } from '@/core/providers/LanguageProvider';
 import { Colors } from '@/shared/definitions/utils/colors';
 import { ThemedText } from '@/components/ThemedText';
 import { SoundService } from '@/core/services/sounds.service';
-import { useRouter } from 'expo-router';
 import TradeUserItem from '@/components/dedicated/trade/TradeUserItem';
 import { ThemedView } from '@/components/ThemedView';
 import { AppContext } from '../_layout';
 import { TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
-import { MaterialIcons } from '@expo/vector-icons';
 
 export default function TradeScreen() {
   const {i18n} = useI18n();
@@ -32,7 +31,7 @@ export default function TradeScreen() {
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={[CardGridStyles.clearInput, {left: Platform.OS !== 'web' ? 252 : 262}]}
+                      style={[CardGridStyles.clearInput, {left: 248}]}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
@@ -106,7 +105,7 @@ export default function TradeScreen() {
                           modalHeight={LARGE_MODAL_HEIGHT}
                           styles={{paddingHorizontal: 0, gap: 0}}>
         <FlatList
-          data={filtered.sort((b, a) => b.id > a.id ? -1 : 1)}
+          data={filtered.sort((b, a) => a?.id - b?.id)}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
           showsVerticalScrollIndicator={false}
@@ -120,15 +119,18 @@ export default function TradeScreen() {
                   CardGridStyles.inputContainer, 
                   {paddingHorizontal: Platform.OS !== 'web' ? 0 : 16, paddingBottom: 9}
                 ]}>
-                <TextInput style={[CardGridStyles.searchInput, {width: '78%'}, Platform.OS !== 'web' && {}]}
-                            placeholder={i18n.t('search_trade')}
-                            value={searchQuery}
-                            onChangeText={handleSearch}
-                            placeholderTextColor={Colors.light.text}
-                            accessibilityLabel={SEARCH_LABEL}
-                            inputMode='text'
-                          />
-                  {searchQuery.length > 0 && <ResetFilterButton/>}
+                  <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '78%', borderRadius: 8}}>
+                    <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
+                              placeholder={i18n.t('search_trade')}
+                              value={searchQuery}
+                              onChangeText={handleSearch}
+                              placeholderTextColor={Colors.light.text}
+                              accessibilityLabel={SEARCH_LABEL}
+                              inputMode='text'
+                            />
+                    {searchQuery.length > 0 && <ResetFilterButton/>}
+                  </ThemedView>
+
                 <Animated.View style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && 
                                     {marginRight: 2}, {justifyContent: 'flex-end'}
                                   ]}>

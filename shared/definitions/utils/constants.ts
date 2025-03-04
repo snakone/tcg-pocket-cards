@@ -1,4 +1,4 @@
-import { PressableAndroidRippleConfig } from "react-native";
+import { Platform, PressableAndroidRippleConfig } from "react-native";
 import { ItemWithRoute, SortItem } from "../interfaces/layout.interfaces";
 import { Card, CardPackTag } from "../interfaces/card.interfaces";
 
@@ -94,7 +94,8 @@ import {
   DECK_BG_DIALGA_70x70,
   DECK_BG_PALKIA_70x70,
   SMACK_DOWN_DIALGA_ICON,
-  SMACK_DOWN_PALKIA_ICON
+  SMACK_DOWN_PALKIA_ICON,
+  TRIUMPH_LIGHT_ARCEUS_ICON
 } from "../sentences/path.sentences";
 
 import { FilterSearch } from "../classes/filter.class";
@@ -103,9 +104,10 @@ import { CardExpansionENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageE
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { AvatarIcon } from "../interfaces/global.interfaces";
 
-export const APP_VERSION = '1.2.0';
+export const APP_VERSION = '1.2.3';
 export const MENU_WIDTH = 250;
-export const MENU_HEIGHT = 405;
+export const MENU_HEIGHT = 450;
+export const MENU_HEIGHT_ANDROID = 405;
 export const PAGE_TITLE = 'TCG Pocket Cards';
 export const LOCAL_HOST = 'http://192.168.1.71:3000';
 export const SERVER_URL = 'https://tcg-pocket-cards.onrender.com';
@@ -116,10 +118,10 @@ export const FILTER_CARDS_HEIGHT = 350;
 // MODALS
 export const MIN_MODAL_HEIGHT = 96;
 export const DEFAULT_MODAL_HEIGHT = 236;
-export const LARGE_MODAL_HEIGHT = 508;
-export const SORT_MODAL_HEIGHT = 626;
-export const SELECT_ENERGY_HEIGHT = 590;
-export const BACKUP_HEIGHT = 516;
+export const LARGE_MODAL_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 508;
+export const SORT_MODAL_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 626;
+export const SELECT_ENERGY_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 590;
+export const BACKUP_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 516;
 
 export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
   color: 'rgba(0, 0, 0, .32)', 
@@ -208,7 +210,8 @@ export const EXPANSION_MAP: Record<CardExpansionENUM, CardPackTag> = {
   [CardExpansionENUM.GENETIC_APEX]: { label: 'A', tag: 'A1', color: 'white', background: 'black', promo_amount: 'P-A' },
   [CardExpansionENUM.PROMO_A]: { label: 'A', tag: 'PROMO-A', color: 'white', background: 'black', promo_amount: 'P-A' },
   [CardExpansionENUM.MYTHICAL_ISLAND]: { label: 'A', tag: 'A1a', color: 'white', background: 'black', promo_amount: 'P-A' },
-  [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: { label: 'A', tag: 'A2', color: 'white', background: 'black', promo_amount: 'P-A' }
+  [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: { label: 'A', tag: 'A2', color: 'white', background: 'black', promo_amount: 'P-A' },
+  [CardExpansionENUM.TRIUMPH_LIGHT]: { label: 'A', tag: 'A2a', color: 'white', background: 'black', promo_amount: 'P-A' }
 }
 
 export const CONDITION_MAP: Record<CardSpecialConditionENUM, {label: string}> = {
@@ -230,7 +233,8 @@ export const CONDITION_MAP: Record<CardSpecialConditionENUM, {label: string}> = 
   [CardSpecialConditionENUM.WITHDRAW_CARD]: { label: 'condition_withdraw' },
   [CardSpecialConditionENUM.RETIRE]: { label: 'condition_retire' },
   [CardSpecialConditionENUM.CALL]: { label: 'condition_call' },
-  [CardSpecialConditionENUM.INACTIVE]: { label: 'condition_inactive' }
+  [CardSpecialConditionENUM.INACTIVE]: { label: 'condition_inactive' },
+  [CardSpecialConditionENUM.ARCEUS_LINK]: { label: 'condition_arceus' }
 }
 
 export const CONDITION_ATTACK = [
@@ -261,6 +265,10 @@ export const CONDITION_OTHERS = [
   CardSpecialConditionENUM.INACTIVE
 ];
 
+export const CONDITION_LINKS = [
+  CardSpecialConditionENUM.ARCEUS_LINK,
+];
+
 export const EXPANSION_POINTS_RARITY: Record<CardRarityENUM, number> = {
   [CardRarityENUM.COMMON]: 35,
   [CardRarityENUM.UNCOMMON]: 70,
@@ -288,13 +296,15 @@ export const PACK_MAP: Record<EXPANSION, any> = {
   [EXPANSION.DIALGA]: SMACK_DOWN_DIALGA_ICON,
   [EXPANSION.PALKIA]: SMACK_DOWN_PALKIA_ICON,
   [EXPANSION.PROMO_A4]: PROMO_A_ICON,
+  [EXPANSION.ARCEUS]: TRIUMPH_LIGHT_ARCEUS_ICON,
 }
 
 export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.GENETIC_APEX]: 286,
   [CardExpansionENUM.PROMO_A]: 41,
   [CardExpansionENUM.MYTHICAL_ISLAND]: 86,
-  [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 207
+  [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 207,
+  [CardExpansionENUM.TRIUMPH_LIGHT]: 96,
 }
 
 export const COIN_MAP: Record<string, any> = {
@@ -449,4 +459,12 @@ export const TRADE_COST_MAP = {
   [CardRarityENUM.RARE]: 120,
   [CardRarityENUM.DOUBLE]: 500,
   [CardRarityENUM.ART]: 400
+}
+
+export const PACK_PER_EXPANSION_MAP: Record<CardExpansionENUM, number> = {
+  [CardExpansionENUM.GENETIC_APEX]: 3,
+  [CardExpansionENUM.MYTHICAL_ISLAND]: 1,
+  [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 2,
+  [CardExpansionENUM.PROMO_A]: 0,
+  [CardExpansionENUM.TRIUMPH_LIGHT]: 1,
 }

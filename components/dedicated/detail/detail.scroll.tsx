@@ -103,7 +103,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
               card.expansion !== undefined &&
               <>
                 <ThemedView style={[{backgroundColor: EXPANSION_MAP[card.expansion].background}, cardDetailStyles.expansionTag]}>
-                  <ThemedText style={{color: EXPANSION_MAP[card.expansion].color, fontWeight: 'bold'}}>
+                  <ThemedText style={{color: EXPANSION_MAP[card.expansion].color, fontWeight: 'bold', top: -1}}>
                     { card.series !== undefined && EXPANSION_MAP[card.expansion].tag}
                   </ThemedText>
                 </ThemedView> 

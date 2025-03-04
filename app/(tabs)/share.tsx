@@ -45,7 +45,7 @@ export default function ShareScreen() {
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={[CardGridStyles.clearInput, {left: 324}]}
+                      style={[CardGridStyles.clearInput, {left: 326}]}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
@@ -55,8 +55,8 @@ export default function ShareScreen() {
     setSearchQuery(text);
     setFiltered(prev => {
       if(decks.length === 0) { return prev; }
-      return decks.filter(card =>
-        card.name.toLowerCase()?.includes(text.toLowerCase()));
+      return decks.filter(deck =>
+        deck.name.toLowerCase()?.includes(text.toLowerCase()));
     });
 
     setFilteredTrades(prev => {
@@ -116,15 +116,17 @@ export default function ShareScreen() {
         }}>
         <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
             <Animated.View style={[CardGridStyles.inputContainer, {paddingBottom: 0}]}>
-              <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
-                          placeholder={i18n.t('search')}
-                          value={searchQuery}
-                          onChangeText={handleSearch}
-                          placeholderTextColor={Colors.light.text}
-                          accessibilityLabel={SEARCH_LABEL}
-                          inputMode='text'
-                        />
-                {searchQuery.length > 0 && <ResetFilterButton/>}
+              <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '100%', borderRadius: 8}}>
+                <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
+                            placeholder={i18n.t('search')}
+                            value={searchQuery}
+                            onChangeText={handleSearch}
+                            placeholderTextColor={Colors.light.text}
+                            accessibilityLabel={SEARCH_LABEL}
+                            inputMode='text'
+                          />
+                  {searchQuery.length > 0 && <ResetFilterButton/>}
+              </ThemedView>
             </Animated.View>
         </KeyboardAvoidingView>
       </ThemedView>
@@ -136,12 +138,12 @@ export default function ShareScreen() {
                        SectionSeparatorComponent={(section) => <ThemedView style={{height: 16}}></ThemedView>}
                        sections={[
                         { title: i18n.t('decks'), 
-                          data: filtered.sort((a, b) => a?.id > b?.id ? -1 : 1), 
+                          data: filtered.sort((a, b) => a?.id - b?.id), 
                           key: 'decks',
                         },
                         {
                           title: i18n.t('trades'),
-                          data: filteredTrades.sort((b, a) => b.id > a.id ? -1 : 1),
+                          data: filteredTrades.sort((b, a) => a?.id - b?.id),
                           key: 'trades'
                          },
                        ]}
@@ -177,10 +179,10 @@ export default function ShareScreen() {
                             searchQuery.length > 0 && section.title === i18n.t('trades') && filteredTrades.length === 0 && 
                               <ThemedText style={styles.noFound}>{i18n.t('no_trades_found')}</ThemedText>
                           }
-                          
                         </>
                       )}
             />
+            <ThemedView style={{height: 32}}></ThemedView>
         </ThemedView>
       </ThemedView>             
     </ParallaxScrollView>
@@ -197,7 +199,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingHorizontal: 12,
     borderRadius: 6,
-    backgroundColor: 'rgb(225, 225, 225)',
+    backgroundColor: 'rgb(250, 250, 241)',
     marginInline: 16,
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
     flexDirection: 'row', 

@@ -1,7 +1,7 @@
 {
   "name": "tcg-pocket-cards",
   "main": "expo-router/entry",
-  "version": "1.2.0",
+  "version": "1.2.3",
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
@@ -28,6 +28,7 @@
     "expo-av": "~15.0.1",
     "expo-blur": "~14.0.1",
     "expo-dev-client": "~5.0.5",
+    "expo-document-picker": "~13.0.1",
     "expo-file-system": "~18.0.6",
     "expo-font": "~13.0.1",
     "expo-haptics": "~14.0.0",
@@ -59,8 +60,7 @@
     "react-native-view-shot": "~4.0.3",
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.2",
-    "rxjs": "^7.8.1",
-    "expo-document-picker": "~13.0.1"
+    "rxjs": "^7.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

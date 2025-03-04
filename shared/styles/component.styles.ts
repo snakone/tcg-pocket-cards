@@ -4,6 +4,7 @@ import {
   DEFAULT_MODAL_HEIGHT,
   ICON_WIDTH,
   MENU_HEIGHT,
+  MENU_HEIGHT_ANDROID,
   MENU_WIDTH,
   MIN_MODAL_HEIGHT,
   SORT_MODAL_HEIGHT
@@ -104,12 +105,11 @@ export const CardGridStyles = StyleSheet.create({
     height: 36,
     borderWidth: 1,
     padding: Platform.OS === 'web' ? 10 : 8,
-    paddingInline: 16,
+    paddingHorizontal: 16,
     borderRadius: 8,
     backgroundColor: 'white',
     color: 'Colors.light.text',
     borderColor: 'skyblue',
-    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'
   },
   gridContainer: {
     flexWrap: 'nowrap',
@@ -213,7 +213,7 @@ export const ModalStyles = StyleSheet.create({
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
     elevation: 5,
     width: '90%',
-    maxHeight: '79%',
+    maxHeight: '78%',
     minHeight: DEFAULT_MODAL_HEIGHT,
     overflow: 'hidden',
     top: -10,
@@ -234,7 +234,7 @@ export const ModalStyles = StyleSheet.create({
     color: Colors.light.bold
   },
   modalScrollView: {
-    maxHeight: '79%',
+    maxHeight: '78%',
     padding: Platform.OS === 'web' ? 24 : 20,
     backgroundColor: 'white',
     minHeight: MIN_MODAL_HEIGHT,
@@ -324,7 +324,7 @@ export const MenuStyles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     width: MENU_WIDTH,
-    height: MENU_HEIGHT,
+    height: Platform.OS === 'web' ? MENU_HEIGHT : MENU_HEIGHT_ANDROID,
     borderBottomLeftRadius: 50,
     borderTopLeftRadius: 50,
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
@@ -458,7 +458,7 @@ export const TabsMenuStyles = StyleSheet.create({
     marginLeft: 16
   },
   separator: {
-    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)',
+    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.5)',
     height: 1
   },
   itemSmall: {
@@ -680,7 +680,7 @@ export const homeScreenStyles = StyleSheet.create({
     paddingInline: 12
   },
   infoSection: {
-    marginBottom: 30,
+    marginBottom: 0,
     paddingHorizontal: 20,
   },
   infoText: {
@@ -957,5 +957,24 @@ export const CreateScreenStyles = StyleSheet.create({
     shadowOffset: {height: 1, width: 2},
     shadowOpacity: 0.1,
     top: 4,
+  }
+});
+
+export const offersStyles = StyleSheet.create({
+  input: {
+    boxShadow: '5px 4px 12px rgba(0, 0, 0, 0.2)', 
+    width: '100%', 
+    marginTop: 16, 
+    marginBottom: 6
+  },
+  included: {
+    width: Platform.OS === 'web' ? 57.6 : 58, 
+    position: 'absolute', 
+    zIndex: 10, 
+    opacity: 0.7, 
+    backgroundColor: 'rgba(0, 0, 0, 0.7)', 
+    borderRadius: 4,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

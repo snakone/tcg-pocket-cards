@@ -14,6 +14,7 @@ import {
   CardGridStyles,
   homeScreenStyles,
   LayoutStyles, 
+  offersStyles, 
   ParallaxStyles, 
   ScreenStyles, 
   sortStyles 
@@ -48,7 +49,6 @@ import { CardStageENUM } from "@/shared/definitions/enums/card.enums";
 import PreviewList from "@/components/dedicated/create/PreviewList";
 import CreateService from "@/core/services/create.service";
 import { LanguageType } from "@/shared/definitions/types/global.types";
-import { offersStyles } from "@/components/dedicated/trade/PickOffersMenu";
 
 export default function CreateDeckScreen() {
   const {i18n} = useI18n();
@@ -258,7 +258,6 @@ export default function CreateDeckScreen() {
     const energies = Object.keys(element).filter(key => Boolean((element as any)[key]))
                                          .map(key => (key as unknown as PokemonTypeENUM));
 
-    
     const data: StorageDeck = {
       id: Number(deck_id) ? Number(deck_id) : 
             (state.settingsState.decks.filter(d => Boolean(d))
@@ -395,7 +394,7 @@ export default function CreateDeckScreen() {
       return data;
     }
   
-    return sortCards(sortField, data, sort, lang);
+    return sortCards(sortField, data, sort);
   }
 
   const fixFilterIcon = useCallback(() => {
@@ -485,7 +484,7 @@ export default function CreateDeckScreen() {
             onPress={() => createService.onAddNumber(item)}
             style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
         <View>
-          { deck.filter(card => card?.id === item.id).length === 2 && 
+          { deck.filter(card => card?.name.es === item.name.es).length === 2 && 
              <ThemedView style={[CardGridStyles.image, offersStyles.included]}></ThemedView>
           }
           <Image accessibilityLabel={item.name[lang]}
@@ -500,7 +499,7 @@ export default function CreateDeckScreen() {
   ), [deck]);
 
   const cardListGrid = useCallback(() => (
-    <View style={{height: Platform.OS === 'web' ? 518 : 525}}>
+    <View style={{height: (Platform.OS === 'web' && window.innerWidth < 550) ? 329 : Platform.OS === 'web' ? 518 : 525}}>
       <FlatList data={filtered}
                 numColumns={6}
                 contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0,}]}
@@ -587,16 +586,19 @@ export default function CreateDeckScreen() {
       <SharedScreen title={deck_id ? 'edit_deck' : 'create_new_deck'} 
                     styles={{paddingInline: 16, marginTop: 0, paddingBottom: 16}} customClose={goBack}>
         <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 6}}>
-          <TextInput style={[CardGridStyles.searchInput, {width: '76%'}]}
-                     placeholder={i18n.t('new_deck_placeholder')}
-                     value={deckName}
-                     onChangeText={(text) => (setDeckName(text), setNotSaved(true))}
-                     placeholderTextColor={Colors.light.text}
-                     accessibilityLabel={SEARCH_LABEL}
-                     inputMode='text'
-                     maxLength={21}
-                  />
-            {deckName.length > 0 && <ResetFilterButton style={{left: 242}}/>}
+          <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '76%', borderRadius: 8}}>
+            <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
+                      placeholder={i18n.t('new_deck_placeholder')}
+                      value={deckName}
+                      onChangeText={(text) => (setDeckName(text), setNotSaved(true))}
+                      placeholderTextColor={Colors.light.text}
+                      accessibilityLabel={SEARCH_LABEL}
+                      inputMode='text'
+                      maxLength={21}
+                    />
+              {deckName.length > 0 && <ResetFilterButton style={{left: 242}}/>}
+          </ThemedView>
+
 
           <ThemedView style={{flexDirection: 'row', gap: 8}}>
             <TouchableOpacity onPress={handleReset}>

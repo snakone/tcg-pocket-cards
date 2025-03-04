@@ -37,7 +37,7 @@ export default function ProfileScreen() {
   );
 
   function handleText(text: string): void {
-    if (text.length > 15 || text.length === 0) return;
+    if (text.length > 15) return;
     setUserName(text);
     Storage.set('name', text);
   }

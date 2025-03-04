@@ -4,9 +4,10 @@ import Animated from 'react-native-reanimated'
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import React from "react";
 import { Image } from "expo-image";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import { TabDesiredMenu } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, CardGridStyles, filterStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
+import { ButtonStyles, CardGridStyles, filterStyles, LayoutStyles, ModalStyles, offersStyles, sortStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE, NO_CONTEXT, SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -23,8 +24,6 @@ import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { filterCards, getImageLanguage116x162, getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
 import { CardExpansionTypeENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 import { createDeckStyles } from "@/app/screens/create_deck";
-import { MaterialIcons } from "@expo/vector-icons";
-import { offersStyles } from "./PickOffersMenu";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 
 export default function PickDesiredMenu({
@@ -75,7 +74,7 @@ export default function PickDesiredMenu({
     if (desiredCard) {
       const filter = state.cardState.cards
                       .filter(card => card?.rarity === desiredCard.rarity && 
-                                      card.series !== CardExpansionTypeENUM.A2);
+                                      card.series !== CardExpansionTypeENUM.A2A);
       setCards(filter);
       setFiltered(filter);
       setCardsWithFilter(filter);
@@ -93,7 +92,7 @@ export default function PickDesiredMenu({
 
     const filter = state.cardState.cards
                     .filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && 
-                                    card.series !== CardExpansionTypeENUM.A2);
+                                    card.series !== CardExpansionTypeENUM.A2A);
     setCards(filter);
     setFiltered(filter);
     setCardsWithFilter(filter);
@@ -154,7 +153,7 @@ export default function PickDesiredMenu({
   }, [current, filterObj.current.rarity]);
 
   function resetCardsAndFilter(value: number): void {
-    setFiltered(state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2));
+    setFiltered(state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2A));
   }
 
   const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
@@ -168,10 +167,6 @@ export default function PickDesiredMenu({
               CardGridStyles.image, 
               offersStyles.included,
             ]}>
-                <MaterialIcons name="remove-circle-outline" 
-                              size={24} 
-                              style={{width: 24, height: 24, color: 'red'}}>
-                </MaterialIcons>
               </ThemedView>
           }
           <Image accessibilityLabel={item.name[lang]}
@@ -188,7 +183,7 @@ export default function PickDesiredMenu({
   const manageFilter = useCallback((index: number) => {
     const filter = filterObj.current;
     (filter.rarity as any)[index] = !(filter.rarity as any)[index];
-    const tradeable = state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2);
+    const tradeable = state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2A);
     const filtered = filterCards(filter, tradeable, []);
     setFiltered(filtered);
     setCardsWithFilter(filtered);
@@ -272,7 +267,7 @@ export default function PickDesiredMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu(true)}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: 765}]}>
+      <Animated.View style={[animatedStyle, sortStyles.container, {height: Platform.OS === 'web' && window.innerWidth < 550 ? 627 : 765}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_a_desired')}</ThemedText>
         </View>
@@ -285,22 +280,31 @@ export default function PickDesiredMenu({
                       maxToRenderPerBatch={24}
                       initialNumToRender={6}
                       windowSize={12}
-                      contentContainerStyle={{width: '100%', padding: 16, paddingTop: 0}}
+                      contentContainerStyle={{width: 389, padding: 16, paddingTop: 0}}
                       keyExtractor={(item, index) => index + ''}
                       ListHeaderComponent={
                         <ThemedView style={{height: 236, backgroundColor: 'white'}}>
-                          <TextInput placeholder={i18n.t('search')}
-                                     value={searchQuery}
-                                     onChangeText={handleSearch}
-                                     placeholderTextColor={Colors.light.text}
-                                     accessibilityLabel={SEARCH_LABEL}
-                                     editable={state.cardState.loaded}
-                                     inputMode='text'
-                                     style={[
-                                      CardGridStyles.searchInput, 
-                                      {boxShadow: '5px 4px 12px rgba(0, 0, 0, 0.2)', width: 357.56, marginTop: 16, marginBottom: 6}
-                                    ]}
-                                  />
+                          <ThemedView style={{
+                              boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', 
+                              width: '100%', 
+                              borderRadius: 8, 
+                              marginBottom: 10, 
+                              marginTop: 16
+                            }}>
+                            <TextInput placeholder={i18n.t('search')}
+                                      value={searchQuery}
+                                      onChangeText={handleSearch}
+                                      placeholderTextColor={Colors.light.text}
+                                      accessibilityLabel={SEARCH_LABEL}
+                                      editable={state.cardState.loaded}
+                                      inputMode='text'
+                                      style={[
+                                        CardGridStyles.searchInput,
+                                        {width: '100%'}
+                                      ]}
+                                    />
+                          </ThemedView>
+
                           <View key={forceRender}>
                             {renderRarityGrid()}
                           </View>

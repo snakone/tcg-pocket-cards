@@ -67,6 +67,8 @@ export const SHARE_BLASTOISE = require('@/assets/images/share/Blastoise.jpeg');
 export const TRADE_POINTS = require('@/assets/images/trade_token.png');
 export const SALE_CARD = require('@/assets/images/Discount-512.png');
 export const DISCORD_LOGO = require('@/assets/images/Discord-Nouveau-Logo.png');
+export const EXPORT_GRAPHIC = require('@/assets/images/infographics/export.png');
+export const EXPORT_GRAPHIC_QUALITY = require('@/assets/images/infographics/quality.png');
 
 // SPLASH
 export const WINTER_SPLASH = require('@/assets/images/splash/winter.webp');
@@ -101,6 +103,9 @@ export const DIALGA_ICON = require('@/assets/images/packs/dialga.png');
 export const PALKIA_ICON = require('@/assets/images/packs/palkia.png');
 export const SMACK_DOWN_DIALGA_ICON = require('@/assets/images/packs/smackdown-dialga.png');
 export const SMACK_DOWN_PALKIA_ICON = require('@/assets/images/packs/smackdown-palkia.png');
+
+export const ARCEUS_ICON = require('@/assets/images/packs/arceus.png');
+export const TRIUMPH_LIGHT_ARCEUS_ICON = require('@/assets/images/packs/triumphlight.png');
 
 // COINS
 export const EEVEE_COIN = require("@/assets/images/coins/eevee.png");
@@ -198,12 +203,17 @@ export const SMACK_DOWN_PACKS = [
   DIALGA_ICON,
   PALKIA_ICON,
   PROMO_A4
-]
+];
+
+export const TRIUMPH_LIGHT_PACKS = [
+  ARCEUS_ICON,
+];
 
 export const ALL_PACKS = [
   ...GENETIC_APEX_PACKS,
   ...MYTHICAL_ISLAND_PACKS,
-  ...SMACK_DOWN_PACKS
+  ...SMACK_DOWN_PACKS,
+  ...TRIUMPH_LIGHT_PACKS
 ];
 
 export const SPLASH = [
@@ -213,3 +223,9 @@ export const SPLASH = [
   SUMMER_SPLASH,
   FALL_SPLASH,
 ];
+
+// INFOGRAPHICS
+export const CHAMPION_ICON = require("@/assets/images/infographics/champion.png");
+export const DIAMOND_ICON = require("@/assets/images/infographics/diamond.png");
+export const ELEMENT_ICON = require("@/assets/images/infographics/types.png");
+export const MISCELLANIA_ICON = require("@/assets/images/infographics/miscellania.png");

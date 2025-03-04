@@ -7,7 +7,7 @@ import StateButton from "@/components/ui/StateButton";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { filterStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
-import { CONDITION_ATTACK, CONDITION_MAP, CONDITION_OTHERS, CONDITION_STATUS } from "@/shared/definitions/utils/constants";
+import { CONDITION_ATTACK, CONDITION_LINKS, CONDITION_MAP, CONDITION_OTHERS, CONDITION_STATUS } from "@/shared/definitions/utils/constants";
 import { ThemedText } from "@/components/ThemedText";
 
 interface SpecialItemProps {
@@ -84,6 +84,33 @@ export const SpecialItem = memo(({ filterObj }: SpecialItemProps) => {
         ]}
       >
         {CONDITION_OTHERS.map((key, i) => {
+          const label = (CONDITION_MAP as any)[key]?.label;
+
+          return (
+            <StateButton
+              key={i}
+              label={label}
+              showLabel={true}
+              propFilter="condition"
+              keyFilter={key}
+              filterObj={filterObj}
+              style={[filterStyles.button, filterStyles.gridButton]}>
+            </StateButton>
+          );
+        })}
+      </ThemedView>
+
+      <ThemedText type="defaultSemiBold" style={{ marginBottom: 12 }}>
+        {i18n.t('links')}
+      </ThemedText>
+      <ThemedView
+        style={[
+          filterStyles.flexContainer,
+          filterStyles.buttonContainer,
+          { marginBottom: Platform.OS === 'web' ? 48 : 60 },
+        ]}
+      >
+        {CONDITION_LINKS.map((key, i) => {
           const label = (CONDITION_MAP as any)[key]?.label;
 
           return (

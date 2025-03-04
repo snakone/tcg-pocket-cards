@@ -61,7 +61,7 @@ export default function PreviewList({
     const maxRepeats: number = 2;
 
     const sameNameCards = deck.filter(
-      (c) => Boolean(c) && c.name === card.name
+      (c) => Boolean(c) && c.name.es === card.name.es
     ) as Card[];
 
     if (sameNameCards.length < maxRepeats) {
@@ -88,7 +88,7 @@ export default function PreviewList({
     if (!card) { return; }
     setDeck(prev => {
       const newDeck = [...prev];
-      const index = prev.findIndex(c => c?.name === card.name);
+      const index = prev.findIndex(c => c.name.es === card.name.es);
       if (index !== -1) {
         newDeck[index] = null;
         setNotSaved(true);
@@ -139,12 +139,15 @@ export default function PreviewList({
       />
       <ThemedView style={{padding: 16, paddingTop: 0, paddingBottom: 18}}>
         <Animated.View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-          <TextInput style={[CardGridStyles.searchInput, {width: '78%'}]} 
-                      placeholder={i18n.t('search_card_placeholder')}
-                      placeholderTextColor={Colors.light.text}
-                      accessibilityLabel={SEARCH_LABEL}
-                      inputMode='text'
-                      onChangeText={handleSearch}/>
+          <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '78%', borderRadius: 8}}>
+            <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]} 
+                        placeholder={i18n.t('search_card_placeholder')}
+                        placeholderTextColor={Colors.light.text}
+                        accessibilityLabel={SEARCH_LABEL}
+                        inputMode='text'
+                        onChangeText={handleSearch}/>
+          </ThemedView>
+
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', left: -2}}>
             <MaterialIcons name={'image'} style={{fontSize: 18, top: 1, color: Colors.light.skeleton}}></MaterialIcons>
             <ThemedText style={{fontSize: 13, width: 40, right: -6}}>{deck.filter(d => Boolean(d)).length}/20</ThemedText>

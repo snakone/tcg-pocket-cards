@@ -52,5 +52,34 @@ export default class ShareService {
       console.log(e);
     }
   };
+
+  public async makeInfoGraphic(
+    ref: React.MutableRefObject<any>, 
+    name: string, 
+    quality: number = 1
+  ): Promise<void> {
+    try {
+      const localUri = await captureRef(ref, {
+        quality,
+        format: 'jpg',
+        fileName: name || 'infographic-tcg-pocket-cards',
+        width: 1280,
+      });
+
+      if (Platform.OS === 'web') {
+        const link = document.createElement('a');
+        link.href = await convertBase64ToJpeg(localUri, quality);
+        link.download = name.endsWith('.jpeg') ? name : `${name}.jpeg` || 'infographic-tcg-pocket-cards.jpeg';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        return;
+      } else {
+        await MediaLibrary.saveToLibraryAsync(localUri);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
   
 }

@@ -165,7 +165,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
       return data;
     }
   
-    return sortCards(sortField, data, sort, lang);
+    return sortCards(sortField, data, sort);
   }
 
   function manageFilter(data: Card[]): Card[] {
@@ -306,17 +306,20 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                 ListFooterComponent={renderFooter}
                 ListHeaderComponent={
                   <Animated.View style={[CardGridStyles.inputContainer]}>
-                    <TextInput style={[CardGridStyles.searchInput, {boxShadow: '5px 4px 12px rgba(0, 0, 0, 0.2)', width: '71%'}]}
-                                placeholder={i18n.t('search_card_placeholder')}
-                                value={searchQuery.current}
-                                onChangeText={handleSearch}
-                                placeholderTextColor={Colors.light.text}
-                                accessibilityLabel={SEARCH_LABEL}
-                                editable={state.cardState.loaded}
-                                inputMode='text'
-                                ref={inputRef}
-                              />
-                          {searchQuery.current.length > 0 && <ResetFilterButton/>}
+                    <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '71%', borderRadius: 8,}}>
+                      <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
+                                  placeholder={i18n.t('search_card_placeholder')}
+                                  value={searchQuery.current}
+                                  onChangeText={handleSearch}
+                                  placeholderTextColor={Colors.light.text}
+                                  accessibilityLabel={SEARCH_LABEL}
+                                  editable={state.cardState.loaded}
+                                  inputMode='text'
+                                  ref={inputRef}
+                                />
+                            {searchQuery.current.length > 0 && <ResetFilterButton/>}
+                    </ThemedView>
+
                     <ThemedView style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && {marginRight: 2}]}>
                       <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
                               color={'white'}

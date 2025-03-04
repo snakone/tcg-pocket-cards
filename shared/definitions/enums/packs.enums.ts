@@ -12,6 +12,7 @@ export enum EXPANSION {
   DIALGA,
   PALKIA,
   PROMO_A4,
+  ARCEUS
 }
 
 export type PACKS_TYPE = 

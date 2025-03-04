@@ -104,7 +104,7 @@ const tradeItemStyles = StyleSheet.create({
     paddingVertical: 12, 
     paddingHorizontal: 16, 
     paddingBottom: 20,
-    boxShadow: 'rgba(0, 0, 0, 0.3) 0px 4px 12px', 
+    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 4px 6px', 
     borderRadius: 8,
     marginBottom: 45,
     minHeight: 166,

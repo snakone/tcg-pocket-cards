@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import { Platform, Pressable, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Platform, Pressable, View, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Image } from 'expo-image';
@@ -120,7 +120,7 @@ export default function ShareTradeScreen() {
   return (
     <Provider>
       { loading && <LoadingOverlay/> }
-      <SharedScreen title={'share_trade'} styles={{marginTop: 0}}>
+      <SharedScreen title={'share_trade'} styles={{marginTop: 0, alignItems: 'inherit'}}>
         <ThemedView style={{position: 'absolute', left: -9999}}  >
           {
             Platform.OS === 'web' ?
@@ -145,73 +145,76 @@ export default function ShareTradeScreen() {
         {
           trade && <TradeUserItem item={trade} rarity={rarity} styles={styles.tradeItem} state={state}/>
         }
-        <ThemedView style={styles.options}>
-          <ThemedText style={filterStyles.header}>{i18n.t('export')}</ThemedText>
-          <ThemedView style={[settingsStyles.container, {height: 52}]}>
-            <Pressable onPress={handleBackground} style={{flex: 1}} >
+        <ScrollView showsVerticalScrollIndicator={false} style={{paddingHorizontal: 14, marginLeft: -14, marginRight: -14}}>
+          <ThemedView style={styles.options}>
+            <ThemedText style={filterStyles.header}>{i18n.t('export')}</ThemedText>
+            <ThemedView style={[settingsStyles.container, {height: 52}]}>
+              <Pressable onPress={handleBackground} style={{flex: 1}} >
+                <ThemedView style={settingsStyles.row}>
+                  <ThemedText>{i18n.t('background_image')}</ThemedText>
+                  {
+                    Boolean(background) && 
+                      <Image source={background?.icon} style={styles.coin}/>
+                  }
+                  <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
+                    <MaterialIcons name={'chevron-right'} 
+                                  style={[
+                                    {fontSize: 28, left: 8, color: Colors.light.icon, position: 'absolute'}, 
+                                    Platform.OS !== 'web' && {top: -14}
+                                  ]}/>
+                  </ThemedView>
+                </ThemedView>
+              </Pressable>
+            </ThemedView>
+
+            <ThemedView style={settingsStyles.container}>
               <ThemedView style={settingsStyles.row}>
-                <ThemedText>{i18n.t('background_image')}</ThemedText>
-                {
-                  Boolean(background) && 
-                    <Image source={background?.icon} style={styles.coin}/>
-                }
-                <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
-                  <MaterialIcons name={'chevron-right'} 
-                                 style={[
-                                  {fontSize: 28, left: 8, color: Colors.light.icon, position: 'absolute'}, 
-                                  Platform.OS !== 'web' && {top: -14}
-                                ]}/>
+                <ThemedText>{i18n.t('quality')}</ThemedText>
+                <ThemedView style={[settingsStyles.rightContainer, {width: 25}]}>
+                  <IconSymbol name={'q.circle'} 
+                              style={[settingsStyles.icon]} 
+                              color={Colors.light.text}>
+                  </IconSymbol>
                 </ThemedView>
               </ThemedView>
-            </Pressable>
-          </ThemedView>
-
-          <ThemedView style={settingsStyles.container}>
-            <ThemedView style={settingsStyles.row}>
-              <ThemedText>{i18n.t('quality')}</ThemedText>
-              <ThemedView style={[settingsStyles.rightContainer, {width: 25}]}>
-                <IconSymbol name={'q.circle'} 
-                            style={[settingsStyles.icon]} 
-                            color={Colors.light.text}>
-                </IconSymbol>
-              </ThemedView>
+              <Slider maximumValue={10} 
+                      minimumValue={0} 
+                      step={1} 
+                      containerStyle={settingsStyles.slider}
+                      maximumTrackTintColor={Colors.light.skeleton}
+                      minimumTrackTintColor="mediumaquamarine" 
+                      animateTransitions={true} 
+                      animationType={'timing'}
+                      thumbStyle={settingsStyles.thumb}
+                      trackStyle={settingsStyles.track}
+                      trackClickable={true}
+                      value={quality * 10}
+                      onSlidingComplete={handleQualityChange}
+                      trackMarks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                      renderTrackMarkComponent={(index) => <TrackItem index={index}></TrackItem>}/>
             </ThemedView>
-            <Slider maximumValue={10} 
-                    minimumValue={0} 
-                    step={1} 
-                    containerStyle={settingsStyles.slider}
-                    maximumTrackTintColor={Colors.light.skeleton}
-                    minimumTrackTintColor="mediumaquamarine" 
-                    animateTransitions={true} 
-                    animationType={'timing'}
-                    thumbStyle={settingsStyles.thumb}
-                    trackStyle={settingsStyles.track}
-                    trackClickable={true}
-                    value={quality * 10}
-                    onSlidingComplete={handleQualityChange}
-                    trackMarks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-                    renderTrackMarkComponent={(index) => <TrackItem index={index}></TrackItem>}/>
-          </ThemedView>
 
-          <ThemedView style={{width: '100%'}}>
-            <TouchableOpacity style={[
-                                homeScreenStyles.ctaButton, {marginBlock: 45},
-                                !trade?.valid && {opacity: 0.6}
-                              ]} 
-                              onPress={handleShare}
-                              disabled={!trade?.valid}>
-              <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>
-                {i18n.t('download')}
-              </ThemedText>
-            </TouchableOpacity>
-            {
-              !trade?.valid && 
-                <ThemedText style={{color: 'crimson', fontSize: 12, paddingLeft: 4, top: -36}}>
-                  {i18n.t('invalid_cant_share')}
+            <ThemedView style={{width: '100%'}}>
+              <TouchableOpacity style={[
+                                  homeScreenStyles.ctaButton, {marginBlock: 45, marginBottom: 80},
+                                  !trade?.valid && {opacity: 0.6}
+                                ]} 
+                                onPress={handleShare}
+                                disabled={!trade?.valid}>
+                <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>
+                  {i18n.t('download')}
                 </ThemedText>
-            }
+              </TouchableOpacity>
+              {
+                !trade?.valid && 
+                  <ThemedText style={{color: 'crimson', fontSize: 12, paddingLeft: 4, top: -36}}>
+                    {i18n.t('invalid_cant_share')}
+                  </ThemedText>
+              }
+            </ThemedView>
           </ThemedView>
-        </ThemedView>
+        </ScrollView>
+
       </SharedScreen>
       <Portal>{isBackgroundVisible && memoizedPickBackground}</Portal>
     </Provider>
@@ -234,9 +237,9 @@ const styles = StyleSheet.create({
     right: 41
   },
   tradeItem: {
-    marginBottom: 32,
-    width: '107%',
-    marginLeft: -12, 
+    marginBottom: 28,
+    width: '105%',
+    marginLeft: -8, 
     boxShadow: 'none',
   }
 });

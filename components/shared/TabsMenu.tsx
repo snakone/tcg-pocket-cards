@@ -27,6 +27,7 @@ export default function TabsMenu({
   const [progress, setProgress] = useState(false);
   const fillProgress = useSharedValue(0.26);
   const {i18n} = useI18n();
+  const [list, setList] = useState(LIST);
   const [profile, setProfile] = useState<UserProfile>(
     {name: '', avatar: 'eevee', coin: 'eevee', best: null}
   );
@@ -56,6 +57,8 @@ export default function TabsMenu({
         break;
       case 'share': router.push('/share');
         break;
+      case 'infographics': router.push('/infographics');
+        break;
       case 'help': router.push('/screens/help');
         break;
       case 'settings': router.push('/screens/settings');
@@ -68,6 +71,12 @@ export default function TabsMenu({
       width: `${fillProgress.value * 100}%`,
     };
   });
+
+  useEffect(() => {
+    if (Platform.OS === 'web') {
+      setList(prev => ([...prev, { label: 'infographics', icon: 'info.bubble', route: 'infographics' }]));
+    }
+  }, []);
 
   useEffect(() => {
     if(progress) {
@@ -120,7 +129,7 @@ export default function TabsMenu({
           </View>
         </Pressable>
         <View>
-          <FlatList data={LIST}
+          <FlatList data={list}
                     style={{paddingBlock: 24, paddingInline: 10}}
                     renderItem={({item}) => 
             <View style={TabsMenuStyles.listItem}>
@@ -129,7 +138,8 @@ export default function TabsMenu({
               <TouchableOpacity style={{width: '100%'}} onPress={() => handleRoute(item.route)}>
                 <ThemedText style={TabsMenuStyles.listLabel}>{i18n.t(item.label)}</ThemedText>
               </TouchableOpacity>
-            </View>}>
+            </View>
+          }>
           </FlatList>
 
           <View style={TabsMenuStyles.separator}></View>

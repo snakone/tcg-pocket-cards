@@ -6,8 +6,8 @@ import React from "react";
 import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { TabMenu, TabOffersMenu } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, CardGridStyles, filterStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
+import { TabOffersMenu } from "@/shared/definitions/interfaces/layout.interfaces";
+import { ButtonStyles, CardGridStyles, filterStyles, LayoutStyles, ModalStyles, offersStyles, sortStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE, NO_CONTEXT, SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -102,7 +102,7 @@ export default function PickOffersMenu({
     if (desiredCard) {
       const filter = state.cardState.cards
                       .filter(card => card?.rarity === desiredCard.rarity && 
-                                      card.series !== CardExpansionTypeENUM.A2 &&
+                                      card.series !== CardExpansionTypeENUM.A2A &&
                                       !desired.includes(card.id));
       setCards(filter);
       setFiltered(filter);
@@ -128,10 +128,6 @@ export default function PickOffersMenu({
               CardGridStyles.image, 
               offersStyles.included,
             ]}>
-               <MaterialIcons name="remove-circle-outline" 
-                              size={24} 
-                              style={{width: 24, height: 24, color: 'red'}}>
-                </MaterialIcons>
              </ThemedView>
           }
           <Image accessibilityLabel={item.name[lang]}
@@ -232,7 +228,7 @@ export default function PickOffersMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: 765}]}>
+      <Animated.View style={[animatedStyle, sortStyles.container, {height: Platform.OS === 'web' && window.innerWidth < 550 ? 627 : 765}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_offers')}</ThemedText>
         </View>
@@ -245,22 +241,28 @@ export default function PickOffersMenu({
                       maxToRenderPerBatch={24}
                       initialNumToRender={6}
                       windowSize={12}
-                      contentContainerStyle={{width: '100%', padding: 16, paddingTop: 0}}
+                      contentContainerStyle={{width: 389, padding: 16, paddingTop: 0}}
                       keyExtractor={(item, index) => index + ''}
                       ListHeaderComponent={
                         <ThemedView style={{height: 236, backgroundColor: 'white'}}>
-                          <TextInput placeholder={i18n.t('search')}
-                                     value={searchQuery}
-                                     onChangeText={handleSearch}
-                                     placeholderTextColor={Colors.light.text}
-                                     accessibilityLabel={SEARCH_LABEL}
-                                     editable={state.cardState.loaded}
-                                     inputMode='text'
-                                     style={[
-                                      CardGridStyles.searchInput, 
-                                      offersStyles.input
-                                    ]}
-                                  />
+                          <ThemedView style={{
+                              boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', 
+                              width: '100%', 
+                              borderRadius: 8, 
+                              marginBottom: 10, 
+                              marginTop: 16
+                            }}>
+                            <TextInput placeholder={i18n.t('search')}
+                                      value={searchQuery}
+                                      onChangeText={handleSearch}
+                                      placeholderTextColor={Colors.light.text}
+                                      accessibilityLabel={SEARCH_LABEL}
+                                      editable={state.cardState.loaded}
+                                      inputMode='text'
+                                      style={[CardGridStyles.searchInput, {width: '100%'}]}
+                                    />
+                          </ThemedView>
+
                                   {renderRarityGrid()}
                                   <FlatList data={current}
                                             renderItem={renderOffered}
@@ -291,22 +293,3 @@ export default function PickOffersMenu({
     </>
   );
 }
-
-export const offersStyles = StyleSheet.create({
-  input: {
-    boxShadow: '5px 4px 12px rgba(0, 0, 0, 0.2)', 
-    width: '100%', 
-    marginTop: 16, 
-    marginBottom: 6
-  },
-  included: {
-    width: Platform.OS === 'web' ? 57.6 : 58, 
-    position: 'absolute', 
-    zIndex: 10, 
-    opacity: 0.7, 
-    backgroundColor: 'rgba(0, 0, 0, 0.7)', 
-    borderRadius: 4,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-});

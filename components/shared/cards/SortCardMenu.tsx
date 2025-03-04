@@ -106,7 +106,6 @@ export default function SortCardMenu({
           <FlatList data={data}
                     keyExtractor={(item: any) => item.id}
                     renderItem={renderItem}
-                    scrollEnabled={false}
                     contentContainerStyle={{marginRight: 30}}
                     showsVerticalScrollIndicator={false}
           />
