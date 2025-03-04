@@ -104,7 +104,7 @@ import { CardExpansionENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageE
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { AvatarIcon } from "../interfaces/global.interfaces";
 
-export const APP_VERSION = '1.2.2';
+export const APP_VERSION = '1.2.3';
 export const MENU_WIDTH = 250;
 export const MENU_HEIGHT = 450;
 export const MENU_HEIGHT_ANDROID = 405;
@@ -119,9 +119,9 @@ export const FILTER_CARDS_HEIGHT = 350;
 export const MIN_MODAL_HEIGHT = 96;
 export const DEFAULT_MODAL_HEIGHT = 236;
 export const LARGE_MODAL_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 508;
-export const SORT_MODAL_HEIGHT = 626;
-export const SELECT_ENERGY_HEIGHT = 590;
-export const BACKUP_HEIGHT = 516;
+export const SORT_MODAL_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 626;
+export const SELECT_ENERGY_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 590;
+export const BACKUP_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 516;
 
 export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
   color: 'rgba(0, 0, 0, .32)', 

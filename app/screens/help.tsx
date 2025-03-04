@@ -126,7 +126,7 @@ export default function HelpScreen() {
       icon: 'u.square',
       modal: 'make_backup',
       content: <BackupModal></BackupModal>,
-      height: Platform.OS === 'web' ? BACKUP_HEIGHT : (BACKUP_HEIGHT - 20)
+      height: BACKUP_HEIGHT
     },
     {
       icon: 'door.garage.open',

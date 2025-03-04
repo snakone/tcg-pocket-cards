@@ -138,7 +138,7 @@ export default function InfoGraphicScreen() {
                             modalContent={GraphicsScreenModal()}
                             styles={{paddingInline: 14}}
                             modalHeight={BACKUP_HEIGHT}>
-          <ScrollView showsVerticalScrollIndicator={false} style={{paddingInline: 14}}>
+          <ScrollView showsVerticalScrollIndicator={false} style={{paddingInline: 14, paddingBottom: 14}}>
             <ThemedView style={{gap: 8}}>
               <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                 <ThemedText style={[filterStyles.header, {marginBottom: 24}]}>{i18n.t('export')}</ThemedText>
