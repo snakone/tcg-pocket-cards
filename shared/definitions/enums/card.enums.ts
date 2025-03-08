@@ -34,6 +34,7 @@ export enum CardSpecialConditionENUM {
   RETIRE,
   CALL,
   INACTIVE,
+  FORCE_SWITCH,
   ARCEUS_LINK
 }
 

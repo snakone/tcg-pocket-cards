@@ -499,10 +499,10 @@ export default function CreateDeckScreen() {
   ), [deck]);
 
   const cardListGrid = useCallback(() => (
-    <View style={{height: (Platform.OS === 'web' && window.innerWidth < 550) ? 329 : Platform.OS === 'web' ? 518 : 525}}>
+    <View style={{width: '100%', flex: 1, paddingBottom: 16}}>
       <FlatList data={filtered}
                 numColumns={6}
-                contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0,}]}
+                contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0}]}
                 keyExtractor={keyExtractor}
                 initialNumToRender={25}
                 maxToRenderPerBatch={35}
@@ -596,9 +596,8 @@ export default function CreateDeckScreen() {
                       inputMode='text'
                       maxLength={21}
                     />
-              {deckName.length > 0 && <ResetFilterButton style={{left: 242}}/>}
+              {deckName.length > 0 && <ResetFilterButton style={{left: 246}}/>}
           </ThemedView>
-
 
           <ThemedView style={{flexDirection: 'row', gap: 8}}>
             <TouchableOpacity onPress={handleReset}>

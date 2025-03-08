@@ -1266,7 +1266,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
-    condition: [],
+    condition: [
+      CardSpecialConditionENUM.FORCE_SWITCH
+    ],
     found: [
       EXPANSION.CHARIZARD
     ],
@@ -10385,7 +10387,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
-    condition: [],
+    condition: [
+      CardSpecialConditionENUM.FORCE_SWITCH
+    ],
     found: [
       EXPANSION.PIKACHU,
       EXPANSION.MEWTWO,
@@ -11978,7 +11982,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
-    condition: [],
+    condition: [
+      CardSpecialConditionENUM.FORCE_SWITCH
+    ],
     found: [
       EXPANSION.MEWTWO,
     ],
@@ -13368,7 +13374,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
-    condition: [CardSpecialConditionENUM.FLIP],
+    condition: [
+      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FORCE_SWITCH
+    ],
     found: [
       EXPANSION.MEWTWO,
     ],
@@ -13989,7 +13998,9 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [],
+    condition: [
+      CardSpecialConditionENUM.FORCE_SWITCH
+    ],
     found: [
       EXPANSION.CHARIZARD,
     ],
@@ -15234,7 +15245,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
-    condition: [],
+    condition: [
+      CardSpecialConditionENUM.FORCE_SWITCH
+    ],
     found: [
       EXPANSION.MEWTWO,
     ],
@@ -16818,7 +16831,9 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [],
+    condition: [
+      CardSpecialConditionENUM.FORCE_SWITCH
+    ],
     found: [
       EXPANSION.CHARIZARD,
     ],
@@ -25709,7 +25724,12 @@ export const MOCK_DB_CARDS: Card[] = [
           ja: 'だくりゅう' 
         },
         damage: 60,
-        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este ataque también hace 20 puntos de daño a 1 de los Pokémon en Banca de tu rival.',
+          en: "This attack also does 20 damage to 1 of your opponent\'s Benched Pokémon.",
+          ja: '相手のベンチポケモン1匹にも20ダメージ。'
+        }
       }
     ],
     evolve: [],
@@ -32235,7 +32255,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
-    condition: [CardSpecialConditionENUM.FLIP],
+    condition: [
+      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FORCE_SWITCH
+    ],
     found: [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA,
@@ -32513,7 +32536,9 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [],
+    condition: [
+      CardSpecialConditionENUM.FORCE_SWITCH
+    ],
     found: [
       EXPANSION.PALKIA,
     ],
@@ -33054,7 +33079,12 @@ export const MOCK_DB_CARDS: Card[] = [
           ja: 'だくりゅう' 
         },
         damage: 60,
-        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este ataque también hace 20 puntos de daño a 1 de los Pokémon en Banca de tu rival.',
+          en: "This attack also does 20 damage to 1 of your opponent\'s Benched Pokémon.",
+          ja: '相手のベンチポケモン1匹にも20ダメージ。'
+        }
       }
     ],
     evolve: [],
@@ -34977,7 +35007,9 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [],
+    condition: [
+      CardSpecialConditionENUM.FORCE_SWITCH
+    ],
     found: [
       EXPANSION.PALKIA,
     ],
@@ -37509,12 +37541,12 @@ export const MOCK_DB_CARDS: Card[] = [
     attacks: [
       {
         name: {
-          es: 'Látigo Cepa',
-          en: 'Vine Whip',
-          ja: 'つるのムチ' 
+          es: 'Placaje',
+          en: 'Tackle',
+          ja: 'たいあたり'
         },
-        damage: 40,
-        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL]
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS]
       }
     ],
     evolve: [291],

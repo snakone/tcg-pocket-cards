@@ -58,7 +58,6 @@ interface GridCardProps {
 
 export default function ImageGridWithSearch({ state, title, modal, modalTitle, type = 'default' }: GridCardProps) {
   const searchQuery = useRef('');
-  const inputRef = useRef<TextInput>(null);
   const [filtered, setFiltered] = useState<Card[]>([]);
 
   const [favorites, setFavorites] = useState<Card[]>(
@@ -104,10 +103,11 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
 
   useEffect(() => {
     if (!filtered || filtered.length === 0) { return; }
+    if(state.modalState.sort_opened) { return; }
     const sorted = filterOrSortCards('sort', filtered, state.filterState.sort.find(s => s.active));
     setFiltered(sorted);
     setTimeout(() => goUp(null, false), 100);
-  }, [state.filterState.sort]);
+  }, [state.modalState.sort_opened]);
 
   useEffect(() => {
     if (!filtered) { return; }
@@ -134,10 +134,6 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
     searchQuery.current = text;
     setFiltered((type === 'favorites' ? favorites : state.cardState.cards).filter(card =>
     card.name[lang].toLowerCase()?.includes(text.toLowerCase())));
-  
-    setTimeout(() => {
-      inputRef.current && inputRef.current.focus();
-    }, 200);
   }, [(type === 'favorites' ? favorites : state.cardState.cards), lang]);
 
   function filterOrSortCards(
@@ -172,7 +168,6 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
     const filter = state.filterState.filter;
     return filterCards(filter, data, state.settingsState.favorites);
   }
-
 
   const renderFooter = useCallback(() => {
     if (filtered.length < 34) {
@@ -274,7 +269,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                                  modalTitle={modalTitle} 
                                  animatedStyle={animatedTitleStyle}
                                  animatedIconStyle={animatedIconStyle}
-                                 modalHeight={LARGE_MODAL_HEIGHT}/>
+                                 modalHeight={LARGE_MODAL_HEIGHT as number}/>
         </Animated.View>
         <Animated.View style={[ParallaxStyles.content]}>
           <SafeAreaView style={CardGridStyles.container}>
@@ -297,7 +292,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                 maxToRenderPerBatch={35}
                 windowSize={15}
                 keyboardDismissMode={'on-drag'}
-                contentContainerStyle={CardGridStyles.gridContainer}
+                contentContainerStyle={[CardGridStyles.gridContainer]}
                 keyboardShouldPersistTaps={'never'}
                 showsVerticalScrollIndicator={false}
                 stickyHeaderIndices={[0]}
@@ -315,7 +310,6 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                                   accessibilityLabel={SEARCH_LABEL}
                                   editable={state.cardState.loaded}
                                   inputMode='text'
-                                  ref={inputRef}
                                 />
                             {searchQuery.current.length > 0 && <ResetFilterButton/>}
                     </ThemedView>

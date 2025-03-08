@@ -7,7 +7,7 @@ import * as Sharing from 'expo-sharing';
 import * as DocumentPicker from 'expo-document-picker';
 
 import { FilterSearch } from "../classes/filter.class";
-import { Card } from "../interfaces/card.interfaces";
+import { Attack, Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
 import { CardExpansionENUM } from "../enums/card.enums";
 import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SMACK_DOWN, TRIUMPH_LIGHT_ARCEUS_ICON } from "../sentences/path.sentences";
@@ -25,6 +25,7 @@ import {
   CARD_IMAGE_MAP_ES, 
   CARD_IMAGE_MAP_JAP
 } from "./card.images";
+import { FilterAttackSearch } from "../classes/filter_attack.class";
 
 export function sortCards(field: keyof Card | string, data: Card[], sort: SortItem): Card[] {
   return [...data].sort((a, b) => {
@@ -47,12 +48,44 @@ export function sortCards(field: keyof Card | string, data: Card[], sort: SortIt
       if (bValue === 0 && aValue !== 0) return -1;
     }
 
-    if (aValue <= bValue) return sort.order === 'asc' ? -1 : 1;
-    if (aValue >= bValue) return sort.order === 'asc' ? 1 : -1;
+    if (aValue < bValue) return sort.order === 'asc' ? -1 : 1;
+    if (aValue > bValue) return sort.order === 'asc' ? 1 : -1;
 
     const numberA = a.order ?? 0;
     const numberB = b.order ?? 0;
-    if (numberA <= numberB) return -1;
+    if (numberA < numberB) return -1;
+    if (numberA >= numberB) return 1;
+
+    return 0;
+  });
+}
+
+export function sortAttacks(field: keyof Attack | string, data: Attack[], sort: SortItem, lang: LanguageType): Attack[] {
+  return [...data].sort((a, b) => {
+    let aValue: any = '';
+    let bValue: any = '';
+
+    if (field === 'name') {
+      aValue = (a as any)[field][lang] ?? '';
+      bValue = (b as any)[field][lang] ?? '';
+    } else if (field === 'number_energy') {
+      aValue = a.energy.length ?? '';
+      bValue = b.energy.length ?? '';
+    } else {
+      aValue = (a as any)[field] ?? '';
+      bValue = (b as any)[field] ?? '';
+    }
+
+    if (aValue === -1 && bValue !== -1) return 1;
+    if (bValue === -1 && aValue !== -1) return -1;
+
+    if (aValue < bValue) return sort.order === 'asc' ? -1 : 1;
+    if (aValue > bValue) return sort.order === 'asc' ? 1 : -1;
+
+    const numberA = a.id ?? 0;
+    const numberB = b.id ?? 0;
+
+    if (numberA < numberB) return -1;
     if (numberA >= numberB) return 1;
 
     return 0;
@@ -171,6 +204,44 @@ export function filterCards(filter: FilterSearch, data: Card[], favorites: numbe
 
     if(conditions.length > 0 && !card.condition?.some(condition => conditions?.includes(String(condition)))) {
       return false;
+    }
+
+    return true;
+  });
+}
+
+export function filterAttacks(filter: FilterAttackSearch, data: Attack[]): Attack[] {
+  return data.filter(attack => {
+    const energy = Object.keys(filter.energy).filter(key => Boolean((filter.energy as any)[key])).map(key => Number(key));
+
+    if (filter.exclusive) {
+      if (!(energy.every(item => attack.energy.includes(item)) && attack.energy.every(item => energy.includes(item)))) {
+        return false;
+      }
+    } else {
+      if(energy.length > 0 && !energy.every(en => attack.energy.includes(en))) {
+        return false;
+      }
+    }
+    
+    if(
+      filter.damage.max !== null && 
+      filter.damage.max > 0 ||
+      filter.damage.min !== null && 
+      filter.damage.min > 0
+    ) {
+
+      if (attack.damage === 0) {
+        return false;
+      }
+
+      if (filter.damage.min && (attack.damage < filter.damage.min)) {
+        return false;
+      }
+
+      if (filter.damage.max && (attack.damage > filter.damage.max)) {
+        return false;
+      }
     }
 
     return true;

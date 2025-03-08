@@ -228,12 +228,15 @@ export default function PickOffersMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: Platform.OS === 'web' && window.innerWidth < 550 ? 627 : 765}]}>
+       <Animated.View style={[animatedStyle, sortStyles.container, 
+              {
+                width: '100%', flex: 1, height: (Platform.OS === 'web' && window.innerWidth < 550) ? 600 : 765
+              }]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_offers')}</ThemedText>
         </View>
-        <ThemedView style={[styles.modalScrollView, {flex: 1, padding: 0, maxHeight: '81%'}]}>
-          <ThemedView style={{flex: 1, alignItems: 'center'}}>
+        <ThemedView style={[styles.modalScrollView, {flex: 1, padding: 0, maxHeight: '100%'}]}>
+          <ThemedView style={{flex: 1, alignItems: 'center', paddingBottom: 16}}>
             <FlatList data={filtered}
                       renderItem={renderCard}
                       numColumns={6}
@@ -241,7 +244,7 @@ export default function PickOffersMenu({
                       maxToRenderPerBatch={24}
                       initialNumToRender={6}
                       windowSize={12}
-                      contentContainerStyle={{width: 389, padding: 16, paddingTop: 0}}
+                      contentContainerStyle={{padding: 16, paddingTop: 0, paddingBottom: 54}}
                       keyExtractor={(item, index) => index + ''}
                       ListHeaderComponent={
                         <ThemedView style={{height: 236, backgroundColor: 'white'}}>
@@ -280,7 +283,15 @@ export default function PickOffersMenu({
                     />
           </ThemedView>
         </ThemedView>
-        <View style={styles.modalFooter}>
+        <View style={[styles.modalFooter, 
+                  {
+                    position: 'absolute', 
+                    bottom: 0, 
+                    marginInline: 'auto', 
+                    backgroundColor: 'none', 
+                    boxShadow: 'none',
+                    width: '100%'
+                  }]}>
           <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
                             accessibilityLabel={CLOSE_SENTENCE}>

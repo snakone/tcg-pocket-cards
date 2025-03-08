@@ -46,11 +46,11 @@ export default function CardsScreen() {
   const getOrderIcon = useCallback(() => {
     return !sort?.order ? 'arrow-upward' : 
             sort.order === 'asc' ? 'arrow-upward' : 'arrow-downward'
-  }, [sort])
+  }, [sort]);
 
   const getFilterOrderIcon = useCallback(() => {
     return state.filterState.filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
-  }, [state.filterState.filter])
+  }, [state.filterState.filter]);
 
   return (
     <>

@@ -1,6 +1,6 @@
 import { Platform, PressableAndroidRippleConfig } from "react-native";
 import { ItemWithRoute, SortItem } from "../interfaces/layout.interfaces";
-import { Card, CardPackTag } from "../interfaces/card.interfaces";
+import { Attack, Card, CardPackTag } from "../interfaces/card.interfaces";
 
 import { 
   NORMAL_RARITY,
@@ -103,11 +103,12 @@ import { EXPANSION } from "../enums/packs.enums";
 import { CardExpansionENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { AvatarIcon } from "../interfaces/global.interfaces";
+import { FilterAttackSearch } from "../classes/filter_attack.class";
 
 export const APP_VERSION = '1.2.3';
 export const MENU_WIDTH = 250;
-export const MENU_HEIGHT = 450;
-export const MENU_HEIGHT_ANDROID = 405;
+export const MENU_HEIGHT = 495;
+export const MENU_HEIGHT_ANDROID = 450;
 export const PAGE_TITLE = 'TCG Pocket Cards';
 export const LOCAL_HOST = 'http://192.168.1.71:3000';
 export const SERVER_URL = 'https://tcg-pocket-cards.onrender.com';
@@ -133,15 +134,16 @@ export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
 export const LIST: ItemWithRoute[] = [
   { label: 'share', icon: 'note', route: 'share' },
   { label: 'favorites', icon: 'star', route: 'favorites' },
-  { label: 'news', icon: 'newspaper', route: 'news' },
+  { label: 'attacks', icon: 'snowboard', route: 'attacks' },
 ];
 
 export const HELP: ItemWithRoute[] = [
+  { label: 'news', icon: 'newspaper', route: 'news' },
   { label: 'help', icon: 'questionmark.app.fill', route: 'help' },
   { label: 'config', icon: 'washer.circle', route: 'settings' },
 ];
 
-export const SORT_FIELD_MAP: Record<string, keyof Card | 'height' | 'weight'> = {
+export const SORT_FIELD_MAP: Record<string, keyof Card | 'height' | 'weight' | keyof Attack | 'number_energy'> = {
   order_by_id: 'id',
   order_by_element: 'element',
   order_by_rarity: 'rarity',
@@ -151,10 +153,18 @@ export const SORT_FIELD_MAP: Record<string, keyof Card | 'height' | 'weight'> = 
   order_by_stage: 'stage',
   order_by_height: 'height',
   order_by_weight: 'weight',
+  order_by_name: 'name',
+  order_by_energy: 'energy',
+  order_by_damage: 'damage',
+  order_by_number_energy: 'number_energy',
 };
 
 export function getFilterSearch(): FilterSearch {
   return new FilterSearch();
+}
+
+export function getFilterAttackSearch(): FilterAttackSearch {
+  return new FilterAttackSearch();
 }
 
 export const INITIAL_SORT_DATA: SortItem[] = [
@@ -167,6 +177,14 @@ export const INITIAL_SORT_DATA: SortItem[] = [
   { id: 7, label: 'order_by_stage', icon: 'pets', active: false, order: 'desc' },
   { id: 8, label: 'order_by_height', icon: 'height', active: false, order: 'desc' },
   { id: 9, label: 'order_by_weight', icon: 'scale', active: false, order: 'desc' },
+];
+
+export const INITIAL_ATTACK_SORT_DATA: SortItem[] = [
+  { id: 1, label: 'order_by_id', icon: 'content-paste-search', active: true, order: 'asc' },
+  { id: 2, label: 'order_by_name', icon: 'badge', active: false, order: 'desc' },
+  { id: 3, label: 'order_by_energy', icon: 'bolt', active: false, order: 'desc' },
+  { id: 4, label: 'order_by_damage', icon: 'warning', active: false, order: 'desc' },
+  { id: 5, label: 'order_by_number_energy', icon: 'pin', active: false, order: 'desc' },
 ];
 
 export const RARITY_MAP: Record<CardRarityENUM, {image: any, amount: number}> = {
@@ -234,6 +252,7 @@ export const CONDITION_MAP: Record<CardSpecialConditionENUM, {label: string}> = 
   [CardSpecialConditionENUM.RETIRE]: { label: 'condition_retire' },
   [CardSpecialConditionENUM.CALL]: { label: 'condition_call' },
   [CardSpecialConditionENUM.INACTIVE]: { label: 'condition_inactive' },
+  [CardSpecialConditionENUM.FORCE_SWITCH]: { label: 'force_switch' },
   [CardSpecialConditionENUM.ARCEUS_LINK]: { label: 'condition_arceus' }
 }
 
@@ -262,7 +281,8 @@ export const CONDITION_OTHERS = [
   CardSpecialConditionENUM.WITHDRAW_CARD,
   CardSpecialConditionENUM.RETIRE,
   CardSpecialConditionENUM.CALL,
-  CardSpecialConditionENUM.INACTIVE
+  CardSpecialConditionENUM.INACTIVE,
+  CardSpecialConditionENUM.FORCE_SWITCH
 ];
 
 export const CONDITION_LINKS = [
@@ -426,6 +446,7 @@ export const DECK_BACKGROUNDS_70x70: AvatarIcon[] = [
 ];
 
 export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);
+export const ATTACK_DAMAGES = Array.from({ length: 20 }, (_, index) => (index + 1) * 10);
 
 export const ICON_WIDTH = 36;
 

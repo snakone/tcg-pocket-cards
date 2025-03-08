@@ -134,53 +134,53 @@ export default function ShareScreen() {
       <ThemedView style={[CreateScreenStyles.decksContainer, { padding: 0}]}>
         <ThemedView style={{flex: 1}}>
           <SectionList stickySectionHeadersEnabled
-                       showsVerticalScrollIndicator={false}
-                       SectionSeparatorComponent={(section) => <ThemedView style={{height: 16}}></ThemedView>}
-                       sections={[
-                        { title: i18n.t('decks'), 
-                          data: filtered.sort((a, b) => a?.id - b?.id), 
-                          key: 'decks',
-                        },
-                        {
-                          title: i18n.t('trades'),
-                          data: filteredTrades.sort((b, a) => a?.id - b?.id),
-                          key: 'trades'
-                         },
-                       ]}
-                       renderItem={({item, section, index}) => 
-                          section.key === 'decks' ? (
-                            <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}}>
-                              {renderDeckItem({item, state, onPress: () => openDeck(item)})}
-                            </ThemedView>
-                          ) : 
-                          section.key === 'trades' ? renderTrade({item}) : null 
-                       }
-                       renderSectionHeader={({section}) => (
-                        <ThemedView style={[styles.sectionHeader, Platform.OS !== 'web' && {marginInline: 0}]}>
-                          <ThemedText type='subtitle' style={styles.title}>{section.title}</ThemedText>
-                          <ThemedText style={{marginBottom: 0, fontWeight: 'bold', color: 'black'}}>
-                            {
-                              section.key === 'decks' ? `${filtered.length}/${decks.length}` :
-                              section.key === 'trades' ? `${filteredTrades.length}/${trades.length}` : null
-                            }
-                          </ThemedText>
-                        </ThemedView>
-                       )}
-                       keyExtractor={(item, index) => `${index}`}
-                       ListEmptyComponent={renderEmpty}
-                       contentContainerStyle={[{width: '100%', paddingBottom: Platform.OS !== 'web' ? 60 : 0}]}
-                       renderSectionFooter={({section}) => (
-                        <>
-                          {
-                            searchQuery.length > 0 && section.title === i18n.t('decks') && filtered.length === 0 && 
-                              <ThemedText style={styles.noFound}>{i18n.t('no_decks_found')}</ThemedText>
-                          }
-                          {
-                            searchQuery.length > 0 && section.title === i18n.t('trades') && filteredTrades.length === 0 && 
-                              <ThemedText style={styles.noFound}>{i18n.t('no_trades_found')}</ThemedText>
-                          }
-                        </>
-                      )}
+              showsVerticalScrollIndicator={false}
+              SectionSeparatorComponent={(section) => <ThemedView style={{height: 16}}></ThemedView>}
+              sections={[
+              { title: i18n.t('decks'), 
+                data: filtered.sort((a, b) => a?.id - b?.id), 
+                key: 'decks',
+              },
+              {
+                title: i18n.t('trades'),
+                data: filteredTrades.sort((b, a) => a?.id - b?.id),
+                key: 'trades'
+                },
+              ]}
+              renderItem={({item, section, index}) => 
+                section.key === 'decks' ? (
+                  <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}}>
+                    {renderDeckItem({item, state, onPress: () => openDeck(item)})}
+                  </ThemedView>
+                ) : 
+                section.key === 'trades' ? renderTrade({item}) : null 
+              }
+              renderSectionHeader={({section}) => (
+              <ThemedView style={[styles.sectionHeader, Platform.OS !== 'web' && {marginInline: 0}]}>
+                <ThemedText type='subtitle' style={styles.title}>{section.title}</ThemedText>
+                <ThemedText style={{marginBottom: 0, fontWeight: 'bold', color: 'black'}}>
+                  {
+                    section.key === 'decks' ? `${filtered.length}/${decks.length}` :
+                    section.key === 'trades' ? `${filteredTrades.length}/${trades.length}` : null
+                  }
+                </ThemedText>
+              </ThemedView>
+              )}
+              keyExtractor={(item, index) => `${index}`}
+              ListEmptyComponent={renderEmpty}
+              contentContainerStyle={[{width: '100%', paddingBottom: Platform.OS !== 'web' ? 60 : 0}]}
+              renderSectionFooter={({section}) => (
+                <>
+                  {
+                    section.title === i18n.t('decks') && filtered.length === 0 && 
+                      <ThemedText style={styles.noFound}>{i18n.t('no_decks_found')}</ThemedText>
+                  }
+                  {
+                    section.title === i18n.t('trades') && filteredTrades.length === 0 && 
+                      <ThemedText style={styles.noFound}>{i18n.t('no_trades_found')}</ThemedText>
+                  }
+                </>
+              )}
             />
             <ThemedView style={{height: 32}}></ThemedView>
         </ThemedView>

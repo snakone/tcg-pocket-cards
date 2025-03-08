@@ -71,6 +71,7 @@ export default function DetailScreen() {
   const scrollYAndroid = useSharedValue(0);
   const [card, setCard] = useState<Card>();
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const [canScroll, setCanScroll] = useState<boolean>(false);
 
   useEffect(() => {
     setLang(state.settingsState.language);
@@ -275,6 +276,8 @@ export default function DetailScreen() {
             heightAndroid.value + deltaY, 
             ANDROID_INFO_HEIGHT
           );
+
+          runOnJS(setCanScroll)(false);
         }
       } else {
         heightAndroid.value = Math.min(
@@ -284,6 +287,7 @@ export default function DetailScreen() {
         if (heightAndroid.value >= MAX_HEIGHT) {
           isAtMaxHeight.value = true;
           heightAndroid.value = MAX_HEIGHT;
+          runOnJS(setCanScroll)(true);
         }
       }
     }
@@ -452,6 +456,7 @@ export default function DetailScreen() {
             <Animated.ScrollView 
               showsVerticalScrollIndicator={false}
               scrollEventThrottle={69}
+              scrollEnabled={canScroll}
               bounces={false}
               contentContainerStyle={{alignItems: 'center', justifyContent: 'center'}}
               style={[scrollAndroidAnimatedStyle]}>

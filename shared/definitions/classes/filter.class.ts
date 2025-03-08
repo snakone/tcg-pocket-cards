@@ -112,7 +112,8 @@ export class FilterSearch {
       [CardSpecialConditionENUM.RETIRE]: null,
       [CardSpecialConditionENUM.CALL]: null,
       [CardSpecialConditionENUM.INACTIVE]: null,
-      [CardSpecialConditionENUM.ARCEUS_LINK]: null
+      [CardSpecialConditionENUM.ARCEUS_LINK]: null,
+      [CardSpecialConditionENUM.FORCE_SWITCH]: null
     };
   }
 

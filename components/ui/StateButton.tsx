@@ -7,6 +7,7 @@ import { filterStyles } from '@/shared/styles/component.styles';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import SoundService from '@/core/services/sounds.service';
 import { FilterSearch } from '@/shared/definitions/classes/filter.class';
+import { FilterAttackSearch } from '@/shared/definitions/classes/filter_attack.class';
 
 interface StateButtonProps {
   children?: ReactNode,
@@ -20,7 +21,7 @@ interface StateButtonProps {
   propFilter: string,
   keyFilter: string | number,
   onClick?: () => void,
-  filterObj?: React.MutableRefObject<FilterSearch>,
+  filterObj?: React.MutableRefObject<FilterSearch | FilterAttackSearch>,
   disabled?: boolean
 }
 

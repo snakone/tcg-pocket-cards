@@ -17,12 +17,16 @@ import { useI18n } from '@/core/providers/LanguageProvider';
 import PickAvatarMenu from '@/components/dedicated/profile/PickAvatarMenu';
 import PickCoinMenu from '@/components/dedicated/profile/PickCoinMenu';
 import PickBestMenu from '@/components/dedicated/profile/PickBestMenu';
+import FilterAttackMenu from '@/components/shared/attacks/FilterAttackMenu';
+import SortAttackMenu from '@/components/shared/attacks/SortAttackMenu';
 
 export default function TabLayout() {
   const distanceFromBottom = useSharedValue(FILTER_CARDS_HEIGHT);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isSortVisible, setIsSortVisible] = useState(false);
   const [isFilterVisible, setIsFilterVisible] = useState(false);
+  const [isAttackSortVisible, setIsAttackSortVisible] = useState(false);
+  const [isAttackFilterVisible, setIsAttackFilterVisible] = useState(false);
   const [isAvatarVisible, setIsAvatarVisible] = useState(false);
   const [isCoinVisible, setIsCoinVisible] = useState(false);
   const [isBestVisible, setIsBestVisible] = useState(false);
@@ -71,7 +75,9 @@ export default function TabLayout() {
            isFilterVisible || 
            isAvatarVisible || 
            isCoinVisible || 
-           isBestVisible;
+           isBestVisible ||
+           isAttackSortVisible ||
+           isAttackFilterVisible;
   }
 
   useEffect(() => {
@@ -91,6 +97,18 @@ export default function TabLayout() {
                            animatedStyle={{}} 
                            onClose={onClose}/>
   }, [isFilterVisible]);
+
+  const memoizedAttackSort = useMemo(() => {
+    return <SortAttackMenu isVisible={isAttackSortVisible} 
+                           animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
+                           onClose={onClose}/>
+  }, [isAttackSortVisible]);
+
+  const memoizedAttackFilter = useMemo(() => {
+    return <FilterAttackMenu isVisible={isAttackFilterVisible} 
+                             animatedStyle={{}} 
+                             onClose={onClose}/>
+  }, [isAttackFilterVisible]);
 
   const memoizedPickAvatar = useMemo(() => {
     return <PickAvatarMenu isVisible={isAvatarVisible} 
@@ -119,6 +137,14 @@ export default function TabLayout() {
   }, [state.modalState.filter_opened]);
 
   useEffect(() => {
+    setIsAttackSortVisible(state.modalState.sort_attack_opened);
+  }, [state.modalState.sort_attack_opened]);
+
+  useEffect(() => {
+    setIsAttackFilterVisible(state.modalState.filter_attack_opened);
+  }, [state.modalState.filter_attack_opened]);
+
+  useEffect(() => {
     setIsAvatarVisible(state.modalState.avatar_opened);
   }, [state.modalState.avatar_opened]);
 
@@ -145,6 +171,8 @@ export default function TabLayout() {
     setIsAvatarVisible(false);
     setIsCoinVisible(false);
     setIsBestVisible(false);
+    setIsAttackSortVisible(false);
+    setIsAttackFilterVisible(false);
     dispatch({type: 'CLOSE_MODALS'});
   }
 
@@ -286,6 +314,17 @@ export default function TabLayout() {
             title: i18n.t('infographics')
           }}
         />
+        <Tabs.Screen
+          name="attacks"
+          options={{
+            animation: 'shift',
+            tabBarItemStyle: {
+              display: 'none'
+            },
+            tabBarButton: () => null,
+            title: i18n.t('attacks')
+          }}
+        />
       </Tabs>
 
       <Portal>{isMenuVisible && memoizedMenu}</Portal>
@@ -294,6 +333,9 @@ export default function TabLayout() {
       <Portal>{isAvatarVisible && memoizedPickAvatar}</Portal>
       <Portal>{isCoinVisible && memoizedPickCoin}</Portal>
       <Portal>{isBestVisible && memoizedPickBest}</Portal>
+
+      <Portal>{isAttackSortVisible && memoizedAttackSort}</Portal>
+      <Portal>{isAttackFilterVisible && memoizedAttackFilter}</Portal>
     </Provider>
   );
 }
