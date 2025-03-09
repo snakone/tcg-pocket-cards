@@ -21792,7 +21792,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
-    condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
+    condition: [
+      CardSpecialConditionENUM.WITHDRAW_CARD, 
+      CardSpecialConditionENUM.PLAY_CARDS
+    ],
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
@@ -24054,7 +24057,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [388, 462, 487]
+    related: [388, 462, 487, 622, 623]
   },
   {
     id: 388,
@@ -24123,7 +24126,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [387, 462, 487]
+    related: [387, 462, 487, 622]
   },
   {
     id: 389,
@@ -24188,7 +24191,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: [390, 529]
+    related: [390, 624, 625, 529]
   },
   {
     id: 390,
@@ -24248,7 +24251,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: [389, 529]
+    related: [389, 624, 625, 529]
   },
   {
     id: 391,
@@ -26481,7 +26484,7 @@ export const MOCK_DB_CARDS: Card[] = [
     },
     info: {
       type: {
-        es: '	Pokémon Magnético',
+        es: 'Pokémon Magnético',
         en: 'Magnet Area Pokémon',
         ja: 'じばポケモン'
       },
@@ -28898,7 +28901,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [387, 388, 487]
+    related: [387, 388, 487, 622]
   },
   {
     id: 463,
@@ -30516,7 +30519,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [387, 388, 462]
+    related: [387, 388, 462, 622]
   },
   {
     id: 488,
@@ -30630,7 +30633,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'In ages past, this Pokémon was revered as a bringer of rain. It was found buried in the ground.',
       ja: '雨雲を 呼べる ポケモンとして 大昔から 祀られていた。 ときどき 地面に 埋められている。' 
     },
-    health: 60,
+    health: 120,
     rarity: CardRarityENUM.UNCOMMON,
     retreat: 3,
     stage: CardStageENUM.ONE,
@@ -32122,7 +32125,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
-    condition: [],
+    condition: [CardSpecialConditionENUM.PLAY_CARDS],
     found: [
       EXPANSION.PALKIA,
     ],
@@ -32693,7 +32696,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [],
+    condition: [CardSpecialConditionENUM.PLAY_CARDS],
     found: [
       EXPANSION.PALKIA,
     ],
@@ -32829,7 +32832,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: [389, 390]
+    related: [389, 390, 624, 625]
   },
   {
     id: 530,
@@ -34078,10 +34081,10 @@ export const MOCK_DB_CARDS: Card[] = [
         damage: 80,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-        es: 'Durante el próximo turno de tu rival, el Pokémon Defensor no puede retirarse.',
-        en: 'During your opponent’s next turn, the Defending Pokémon can’t retreat.',
-        ja: '次の相手の番、このワザを受けたポケモンはにげるができない。' 
-      }
+          es: 'Durante el próximo turno de tu rival, el Pokémon Defensor no puede retirarse.',
+          en: 'During your opponent’s next turn, the Defending Pokémon can’t retreat.',
+          ja: '次の相手の番、このワザを受けたポケモンはにげるができない。' 
+        }
       },
     ],
     evolve: [],
@@ -35164,7 +35167,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [],
+    condition: [CardSpecialConditionENUM.PLAY_CARDS],
     found: [
       EXPANSION.PALKIA,
     ],
@@ -36040,7 +36043,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 581,
-    order: 581,
+    order: 677,
     number: 2,
     name: {
       es: 'Velocidad X',
@@ -36072,7 +36075,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 582,
-    order: 582,
+    order: 678,
     number: 3,
     name: {
       es: 'Periscopio',
@@ -36104,7 +36107,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 583,
-    order: 583,
+    order: 679,
     number: 4,
     name: {
       es: 'Pokédex',
@@ -36136,7 +36139,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 584,
-    order: 584,
+    order: 680,
     number: 5,
     name: {
       es: 'Poké Ball',
@@ -36168,7 +36171,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 585,
-    order: 585,
+    order: 681,
     number: 6,
     name: {
       es: 'Tarjeta Roja',
@@ -36195,12 +36198,12 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
-    condition: [],
+    condition: [CardSpecialConditionENUM.PLAY_CARDS],
     related: [351, 350, 518, 580, 581, 584, 582, 583, 587]
   },
   {
     id: 586,
-    order: 586,
+    order: 682,
     number: 7,
     name: {
       es: 'Investigación de Profesores',
@@ -36232,7 +36235,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 587,
-    order: 587,
+    order: 683,
     number: 8,
     name: {
       es: 'Pokédex',
@@ -36264,7 +36267,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 588,
-    order: 588,
+    order: 684,
     number: 9,
     pokedex: 25,
     name: {
@@ -36329,7 +36332,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 589,
-    order: 589,
+    order: 685,
     number: 10,
     pokedex: 150,
     name: {
@@ -36399,7 +36402,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 590,
-    order: 590,
+    order: 686,
     number: 11,
     pokedex: 113,
     name: {
@@ -36464,7 +36467,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 591,
-    order: 591,
+    order: 687,
     number: 12,
     pokedex: 52,
     name: {
@@ -36534,7 +36537,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 592,
-    order: 592,
+    order: 688,
     number: 13,
     pokedex: 12,
     name: {
@@ -36611,7 +36614,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 593,
-    order: 593,
+    order: 689,
     number: 14,
     pokedex: 131,
     name: {
@@ -36680,7 +36683,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 594,
-    order: 594,
+    order: 690,
     number: 15,
     pokedex: 25,
     name: {
@@ -36745,7 +36748,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 595,
-    order: 595,
+    order: 691,
     number: 16,
     pokedex: 35,
     name: {
@@ -36810,7 +36813,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 596,
-    order: 596,
+    order: 692,
     number: 17,
     pokedex: 56,
     name: {
@@ -36880,7 +36883,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 597,
-    order: 597,
+    order: 693,
     number: 18,
     pokedex: 3,
     name: {
@@ -36950,7 +36953,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 598,
-    order: 598,
+    order: 694,
     number: 19,
     pokedex: 658,
     name: {
@@ -37027,7 +37030,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 599,
-    order: 599,
+    order: 695,
     number: 20,
     pokedex: 93,
     name: {
@@ -37100,7 +37103,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 600,
-    order: 600,
+    order: 696,
     number: 21,
     pokedex: 95,
     name: {
@@ -37165,7 +37168,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 601,
-    order: 601,
+    order: 697,
     number: 22,
     pokedex: 39,
     name: {
@@ -37235,7 +37238,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 602,
-    order: 602,
+    order: 698,
     number: 23,
     pokedex: 1,
     name: {
@@ -37300,7 +37303,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 603,
-    order: 603,
+    order: 699,
     number: 24,
     pokedex: 81,
     name: {
@@ -37365,7 +37368,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 604,
-    order: 604,
+    order: 700,
     number: 25,
     pokedex: 145,
     name: {
@@ -37447,7 +37450,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 605,
-    order: 605,
+    order: 701,
     number: 26,
     pokedex: 25,
     name: {
@@ -37512,7 +37515,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 606,
-    order: 606,
+    order: 702,
     number: 27,
     pokedex: 495,
     name: {
@@ -37577,7 +37580,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 607,
-    order: 607,
+    order: 703,
     number: 28,
     pokedex: 637,
     name: {
@@ -37649,7 +37652,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 608,
-    order: 608,
+    order: 704,
     number: 29,
     pokedex: 9,
     name: {
@@ -37719,7 +37722,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 609,
-    order: 609,
+    order: 705,
     number: 30,
     pokedex: 133,
     name: {
@@ -37789,7 +37792,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 610,
-    order: 610,
+    order: 706,
     number: 31,
     pokedex: 573,
     name: {
@@ -37859,7 +37862,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 611,
-    order: 611,
+    order: 707,
     number: 32,
     pokedex: 4,
     name: {
@@ -37929,7 +37932,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 612,
-    order: 612,
+    order: 708,
     number: 33,
     pokedex: 7,
     name: {
@@ -37994,7 +37997,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 613,
-    order: 613,
+    order: 709,
     number: 34,
     pokedex: 393,
     name: {
@@ -38064,7 +38067,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 614,
-    order: 614,
+    order: 710,
     number: 35,
     pokedex: 387,
     name: {
@@ -38130,7 +38133,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 615,
-    order: 615,
+    order: 711,
     number: 36,
     pokedex: 466,
     name: {
@@ -38200,7 +38203,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 616,
-    order: 616,
+    order: 712,
     number: 37,
     pokedex: 488,
     name: {
@@ -38277,7 +38280,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 617,
-    order: 617,
+    order: 713,
     number: 38,
     pokedex: 200,
     name: {
@@ -38308,7 +38311,7 @@ export const MOCK_DB_CARDS: Card[] = [
         name: {
           es: 'Rayo Confuso',
           en: 'Confuse Ray',
-          ja: '	あやしいひかり' 
+          ja: 'あやしいひかり' 
         },
         damage: 0,
         energy: [PokemonTypeENUM.PSYCHIC],
@@ -38347,7 +38350,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 618,
-    order: 618,
+    order: 714,
     number: 39,
     pokedex: 227,
     name: {
@@ -38417,7 +38420,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 619,
-    order: 619,
+    order: 715,
     number: 40,
     pokedex: 390,
     name: {
@@ -38482,7 +38485,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 620,
-    order: 620,
+    order: 716,
     number: 41,
     pokedex: 175,
     name: {
@@ -38612,7 +38615,6608 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.ARCEUS
     ],
     related: []
-  }
+  },
+  {
+    id: 622,
+    order: 581,
+    number: 2,
+    pokedex: 412,
+    name: {
+      es: 'Burmy',
+      en: 'Burmy',
+      ja: 'ミノムッチ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Larva',
+        en: 'Bagworm Pokémon',
+        ja: 'みのむしポケモン'
+      },
+      height: {
+        es: '0.2',
+        en: '0\'8"',
+        ja: '0.2'
+      },
+      weight: {
+        es: '3.4',
+        en: '7.5',
+        ja: '3.4'
+      }
+    },
+    artist: 'miki kudo',
+    attacks: [
+      {
+        name: {
+          es: 'Apisonar',
+          en: 'Ram',
+          ja: 'ぶつかる'
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS],
+      }
+    ],
+    evolve: [623],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Para protegerse de los vientos fríos invernales, se cubre con un caparazón de ramas y hojas.',
+      en: 'To shelter itself from cold, wintry winds, it covers itself with a cloak made of twigs and leaves.',
+      ja: 'つめたい こがらしを ふせぐため こえだや おちばを ざいりょうに ミノを つくり からだを おおう。'
+    },
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [387, 388, 462, 487, 623]
+  },
+  {
+    id: 623,
+    order: 582,
+    number: 3,
+    pokedex: 414,
+    name: {
+      es: 'Mothin',
+      en: 'Mothin',
+      ja: 'ガーメイル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Polilla',
+        en: 'Moth Pokémon',
+        ja: 'ミノガポケモン'
+      },
+      height: {
+        es: '0.9',
+        en: '2\'11"',
+        ja: '0.9'
+      },
+      weight: {
+        es: '23.3',
+        en: '51.4',
+        ja: '23.3'
+      }
+    },
+    artist: 'MAHOU',
+    attacks: [
+      {
+        name: {
+          es: 'Tornado',
+          en: 'Gust',
+          ja: 'かぜおこし'
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Le encanta la miel de las flores y roba la que recoge Combee.',
+      en: 'It loves the honey of flowers and steals honey collected by Combee.',
+      ja: 'はなの ミツが だいすき。 ミツハニーの あつめた ミツを よこどりして たべてしまう。'
+    },
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 0,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [387, 622]
+  },
+  {
+    id: 624,
+    order: 583,
+    number: 4,
+    pokedex: 415,
+    name: {
+      es: 'Combee',
+      en: 'Combee',
+      ja: 'ミツハニー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Abejita',
+        en: 'Tiny Bee Pokémon',
+        ja: 'はちのこポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '5.5',
+        en: '12.1',
+        ja: '5.5'
+      }
+    },
+    artist: 'Akira Komayama',
+    attacks: [
+      {
+        name: {
+          es: 'Picadura',
+          en: 'Bug Bite',
+          ja: 'むしくい'
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS],
+      }
+    ],
+    evolve: [625],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Cuando llega la noche, se juntan unos cien Combee y duermen formando una gran colmena.',
+      en: 'At night, Combee sleep in a group of about a hundred, packed closely together in a lump.',
+      ja: '夜に なると １００匹 ほどの ミツハニーが 寄り添い合って 大きな かたまりで 眠る。' 
+    },
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [389, 390, 625, 529]
+  },
+  {
+    id: 625,
+    order: 584,
+    number: 5,
+    pokedex: 416,
+    name: {
+      es: 'Vespiquen',
+      en: 'Vespiquen',
+      ja: 'ビークイン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Colmena',
+        en: 'Beehive Pokémon',
+        ja: 'はちのすポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '38.5',
+        en: '84.9',
+        ja: '38.5'
+      }
+    },
+    artist: 'kawayoo',
+    attacks: [
+      {
+        name: {
+          es: 'Carga Descuidada',
+          en: 'Reckless Charge',
+          ja: 'とつげき'
+        },
+        damage: 120,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Este Pokémon también se hace 30 puntos de daño a si mismo.',
+          en: 'This Pokémon also does 30 damage to itself.',
+          ja: 'このポケモンにも30ダメージ。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Cría larvas en los panales de su cuerpo y segrega diversas feromonas para controlarlas.',
+      en: 'It houses its colony in cells in its body and releases various pheromones to make those grubs do its bidding.',
+      ja: '胴体は 子どもたちの 巣穴。 いろんな フェロモンを 出して 子どもたちを 自由に 操る。' 
+    },
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.RECOIL
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [389, 390, 624, 529]
+  },
+  {
+    id: 626,
+    order: 585,
+    number: 6,
+    pokedex: 420,
+    name: {
+      es: 'Cherubi',
+      en: 'Cherubi',
+      ja: 'チェリンボ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cereza',
+        en: 'Cherry Pokémon',
+        ja: 'さくらんぼポケモン'
+      },
+      height: {
+        es: '1.4',
+        en: '0\'4"',
+        ja: '1.4'
+      },
+      weight: {
+        es: '3.3',
+        en: '7.3',
+        ja: '3.3'
+      }
+    },
+    artist: 'Atsuka Nishida',
+    attacks: [
+      {
+        name: {
+          es: 'Follaje',
+          en: 'Leafage',
+          ja: 'このは'
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS],
+      }
+    ],
+    evolve: [627],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Se ve obligado a huir constantemente de los Pokémon pájaro, pues su pequeña esfera repleta de nutrientes es manjar predilecto.',
+      en: 'It nimbly dashes about to avoid getting pecked by bird Pokémon that would love to make off with its small, nutrient-rich storage ball.',
+      ja: '栄養の 詰まった 玉は 鳥ポケモンの 大好物。 ついばまれないよう 逃げまわる。' 
+    },
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 627,
+    order: 586,
+    number: 7,
+    pokedex: 421,
+    name: {
+      es: 'Cherrim',
+      en: 'Cherrim',
+      ja: 'チェリム' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Floración',
+        en: 'Blossom Pokémon',
+        ja: 'サクラポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '9.3',
+        en: '20.5',
+        ja: '9.3'
+      }
+    },
+    artist: 'Midori Harada',
+    attacks: [
+      {
+        name: {
+          es: 'Abatidoras',
+          en: 'Worry Seed',
+          ja: 'なやみのタネ'
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.GRASS],
+        description: {
+          es: 'El Pokémon Activo de tu rival pasa a estar Confundido.',
+          en: 'Your opponent\'s Active Pokémon is now Confused.',
+          ja: '相手のバトルポケモンをこんらんにする。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Permanece casi inmóvil cerrado en un capullo a la espera de que lo bañen los rayos del sol.',
+      en: 'As a bud, it barely moves. It sits still, placidly waiting for sunlight to appear.',
+      ja: 'つぼみの あいだは おとなしく ほぼ 動かない。 日の光が 出るのを じっと 待っている。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.CONFUSION
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 628,
+    order: 587,
+    number: 8,
+    pokedex: 421,
+    name: {
+      es: 'Cherrim',
+      en: 'Cherrim',
+      ja: 'チェリム' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Floración',
+        en: 'Blossom Pokémon',
+        ja: 'サクラポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '9.3',
+        en: '20.5',
+        ja: '9.3'
+      }
+    },
+    artist: 'Kagemaru Himeno',
+    attacks: [
+      {
+        name: {
+          es: 'Drenadoras',
+          en: 'Leech Seed',
+          ja: 'やどりぎのタネ'
+        },
+        damage: 60,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Cura 20 puntos de daño a este Pokémon.',
+          en: 'Heal 20 damage from this Pokémon.',
+          ja: 'このポケモンのHPを20回復。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Adopta esta forma cuando lo bañan los rayos del sol. Siempre está rebosante de energía y se mantiene activo hasta el ocaso.',
+      en: 'After absorbing plenty of sunlight, Cherrim takes this form. It\'s full of energy while it\'s like this, and its liveliness will go on until sundown.',
+      ja: '太陽の 光を 浴びて 元気いっぱいの 姿。 日暮れまでは 活発だ。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.HEAL
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 629,
+    order: 588,
+    number: 9,
+    pokedex: 455,
+    name: {
+      es: 'Carnivine',
+      en: 'Carnivine',
+      ja: 'マスキッパ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cazabichos',
+        en: 'Bug Catcher Pokémon',
+        ja: 'むしとりポケモン'
+      },
+      height: {
+        es: '1.4',
+        en: '4\'7"',
+        ja: '1.4'
+      },
+      weight: {
+        es: '27.0',
+        en: '59.5',
+        ja: '27.0'
+      }
+    },
+    artist: 'Shiburingaru',
+    attacks: [
+      {
+        name: {
+          es: 'Látigo Cepa',
+          en: 'Vine Whip',
+          ja: 'つるのムチ'
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS],
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Vínculo Poderoso',
+        en: 'Power Link',
+        ja: 'パワーリンク'
+      },
+      description: {
+        es: 'Si tienes a Arceus o Arceus EX en juego, los ataques de este Pokémon hacen +30 puntos de daño al Pokémon Activo de tu rival.',
+        en: 'If you have Arceus or Arceus ex in play, attacks used by this Pokémon do +30 damage to your opponent\'s Active Pokémon.',
+        ja: '自分の場に「アルセウス」または「アルセウスex」がいるなら、このポケモンが使うワザの相手のバトルポケモンへのダメージを+30する。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Atrae a sus presas con saliva de olor dulce y las mastica. Tarda todo un día en comérselas.',
+      en: 'It attracts prey with its sweet-smelling saliva, then chomps down. It takes a whole day to eat prey.',
+      ja: '甘い においの だえきで 獲物を おびき寄せ おおあごで がぶり。 １日 かけて 獲物を 食べる。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.ARCEUS_LINK,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [530]
+  },
+  {
+    id: 630,
+    order: 589,
+    number: 10,
+    pokedex: 470,
+    name: {
+      es: 'Leafeon EX',
+      en: 'Leafeon EX',
+      ja: 'リーフィア EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Verdor',
+        en: 'Verdant Pokémon',
+        ja: 'しんりょくポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '25.5',
+        en: '56.2',
+        ja: '25.5'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Rayo Solar',
+          en: 'Solar Beam',
+          ja: 'ソーラービーム' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Aliento del Bosque',
+        en: 'Forest Breath',
+        ja: 'もりのいぶき'
+      },
+      description: {
+        es: 'Una vez durante tu turno, si este Pokémon está en el Puesto Activo, puedes unir 1 Energía Planta de tu área de Energía a uno de tus Pokémon Planta.',
+        en: 'Once during your turn, if this Pokémon is in the Active Spot, you may take a Grass Energy from your Energy Zone and attach it to 1 of your Grass Pokémon.',
+        ja: 'このポケモンがバトル場にいるなら、自分の番に1回使える。自分のエネルギーゾーンから草エネルギーを1個出し、草ポケモンにつける。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'En días soleados, duerme y hace la fotosíntesis, con la que emite aire puro a su alrededor.',
+      en: 'When you see Leafeon asleep in a patch of sunshine, you’ll know it is using photosynthesis to produce clean air.',
+      ja: '晴れた 日に 寝ている リーフィアは 光合成をして きれいな 空気を 作り出しているのだ。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    condition: [CardSpecialConditionENUM.ADD],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [206, 207, 208, 347, 498, 248, 609]
+  },
+  {
+    id: 631,
+    order: 590,
+    number: 11,
+    pokedex: 228,
+    name: {
+      es: 'Houndour',
+      en: 'Houndour',
+      ja: 'デルビル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Siniestro',
+        en: 'Dark Pokémon',
+        ja: 'ダークポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '10.8',
+        en: '23.8',
+        ja: '10.8'
+      }
+    },
+    artist: 'Kouki Saitou',
+    attacks: [
+      {
+        name: {
+          es: 'Llama',
+          en: 'Flare',
+          ja: 'ほのお' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.FIRE],
+      }
+    ],
+    evolve: [632],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Tiene suficiente inteligencia para cazar en manada. Se comunica con los demás a través de diversos aullidos.',
+      en: 'It is smart enough to hunt in packs. It uses a variety of cries for communicating with others.',
+      ja: '様々な 鳴き声を 使い分け 仲間と コミュニケーションしながら 狩りを おこなう 賢さを持つ。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 632,
+    order: 591,
+    number: 12,
+    pokedex: 229,
+    name: {
+      es: 'Houndoom',
+      en: 'Houndoom',
+      ja: 'ヘルガー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Siniestro',
+        en: 'Dark Pokémon',
+        ja: 'ダークポケモン'
+      },
+      height: {
+        es: '1.4',
+        en: '4\'7',
+        ja: '1.4'
+      },
+      weight: {
+        es: '35.0',
+        en: '77.2',
+        ja: '35.0'
+      }
+    },
+    artist: 'Hajime Kusajima',
+    attacks: [
+      {
+        name: {
+          es: 'Arrinconar',
+          en: 'Corner',
+          ja: 'おいつめる' 
+        },
+        damage: 60,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Durante el próximo turno de tu rival, el Pokémon Defensor no puede retirarse.',
+          en: 'During your opponent\'s next turn, the Defending Pokémon can\'t retreat.',
+          ja: '次の相手の番、このワザを受けたポケモンはにげるができない。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Si alguien se quema con las llamas que lanza por la boca, el dolor no desaparecerá nunca.',
+      en: 'If you are burned by the flames it shoots from its mouth, the pain will never go away.',
+      ja: '口から 吹き出す 炎で 火傷すると いつまでたっても 傷口が うずいてしまう。' 
+    },
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.CORNER
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 633,
+    order: 592,
+    number: 13,
+    pokedex: 485,
+    name: {
+      es: 'Heatran',
+      en: 'Heatran',
+      ja: 'ヒードラン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Domo Lava',
+        en: 'Lava Dome Pokémon',
+        ja: 'かこうポケモン'
+      },
+      height: {
+        es: '1.7',
+        en: '5\'7"',
+        ja: '1.7'
+      },
+      weight: {
+        es: '430.0',
+        en: '948',
+        ja: '430.0'
+      }
+    },
+    artist: 'Kazumasa Yasukuni',
+    attacks: [
+      {
+        name: {
+          es: 'Golpe Furibundo',
+          en: 'Ragin\' Mad Strike',
+          ja: 'ぶちぎれボンバー' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE],
+        description: {
+          es: 'Si este Pokémon ya tiene daño, este ataque hace 40 puntos de daño más.',
+          en: 'If this Pokémon has damage on it, this attack does 40 more damage.',
+          ja: 'このポケモンがダメージを受けているなら、40ダメージ追加。' 
+        }
+      },
+    ],
+    ability: {
+      name: {
+        es: 'Vínculo Veloz',
+        en: 'Speed Link',
+        ja: 'スピードリンク'
+      },
+      description: {
+        es: 'Si tienes a Arceus o Arceus EX en juego, este Pokémon no tiene ningún Coste de Retirada.',
+        en: 'If you have Arceus or Arceus ex in play, this Pokémon has no Retreat Cost.',
+        ja: '自分の場に「アルセウス」または「アルセウスex」がいるなら、このポケモンがにげるためのエネルギーを、すべてなくす。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Habita cuevas volcánicas. Cava con sus pies en forma de cruz para trepar por techos y paredes.',
+      en: 'It dwells in volcanic caves. It digs in with its cross-shaped feet to crawl on ceilings and walls.',
+      ja: '火山の 洞穴に 生息。十字の ツメを 食いこませて 壁や 天井を はい回る。' 
+    },
+    health: 110,
+    rarity: CardRarityENUM.RARE,
+    retreat: 3,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.RETIRE,
+      CardSpecialConditionENUM.ARCEUS_LINK,
+    ],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [546]
+  },
+  {
+    id: 634,
+    order: 593,
+    number: 14,
+    pokedex: 183,
+    name: {
+      es: 'Marill',
+      en: 'Marill',
+      ja: 'マリル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón Agua',
+        en: 'Aqua Mouse Pokémon',
+        ja: 'みずねずみポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '8.5',
+        en: '18.7',
+        ja: '8.5'
+      }
+    },
+    artist: 'Tika Matsuno',
+    attacks: [
+      {
+        name: {
+          es: 'Pistola Agua',
+          en: 'Water Gun',
+          ja: 'みずでっぽう' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Tiene un pelaje que repele el agua, por lo que está seco incluso después de bañarse.',
+      en: 'The fur on its body naturally repels water. It can stay dry even when it plays in the water.',
+      ja: '全身の 体毛は 水を 弾く 性質を 持ち 水浴び しても 乾いている。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: []
+  },
+  {
+    id: 635,
+    order: 594,
+    number: 15,
+    pokedex: 184,
+    name: {
+      es: 'Azumarill',
+      en: 'Azumarill',
+      ja: 'マリルリ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Conejo Agua',
+        en: 'Aqua Rabbit Pokémon',
+        ja: 'みずうさぎポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '28.5',
+        en: '62.8',
+        ja: '28.5'
+      }
+    },
+    artist: 'miki kudo',
+    attacks: [
+      {
+        name: {
+          es: 'Cascada',
+          en: 'Waterfall',
+          ja: 'たきのぼり' 
+        },
+        damage: 60,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Sus largas orejas son unos sensores excepcionales que le permiten diferenciar e identificar lo que oye dentro del agua.',
+      en: 'Its long ears are superb sensors. It can distinguish the movements of things in water and tell what they are.',
+      ja: '長い 耳は 優れた センサー。 水の中の 音を 聞き分けて なにが 動いているのか わかる。' 
+    },
+    health: 100,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: []
+  },
+  {
+    id: 636,
+    order: 595,
+    number: 16,
+    pokedex: 339,
+    name: {
+      es: 'Barboach',
+      en: 'Barboach',
+      ja: 'ドジョッチ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Bigotudo',
+        en: 'Whiskers Pokémon',
+        ja: 'ひげうおポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '1.9',
+        en: '4.2',
+        ja: '1.9'
+      }
+    },
+    artist: 'sui',
+    attacks: [
+      {
+        name: {
+          es: 'Bofetón Lodo',
+          en: 'Mud-Slap',
+          ja: 'どろかけ' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [637],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Sus bigotes son muy sensibles y le sirven de radar. Puede detectar la posición de su presa incluso en el agua turbia de los lodazales.',
+      en: 'Its two whiskers provide a sensitive radar. Even in muddy waters, it can detect its prey\'s location.',
+      ja: '２本のヒゲは 敏感なレーダー。 泥で 濁った 水の 中でも 獲物の 位置を 察知するぞ。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: []
+  },
+  {
+    id: 637,
+    order: 596,
+    number: 17,
+    pokedex: 340,
+    name: {
+      es: 'Whiscash',
+      en: 'Whiscash',
+      ja: 'ナマズン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Bigotudo',
+        en: 'Whiskers Pokémon',
+        ja: 'ひげうおポケモン'
+      },
+      height: {
+        es: '0.9',
+        en: '2\'11"',
+        ja: '0.9'
+      },
+      weight: {
+        es: '23.6',
+        en: '52',
+        ja: '23.6'
+      }
+    },
+    artist: 'Shinya Komatsu',
+    attacks: [
+      {
+        name: {
+          es: 'Saña',
+          en: 'Thrash',
+          ja: 'あばれる' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, este ataque hace 60 puntos de daño más. Si sale cruz, este Pokémon también se hace 20 puntos de daño a sí mismo.',
+          en: 'Flip a coin. If heads, this attack does 60 more damage. If tails, this Pokémon also does 20 damage to itself.',
+          ja: 'コインを1回投げてオモテなら、60ダメージ追加。ウラなら、このポケモンにも20ダメージ。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Protege su territorio por encima de todo. Si se acerca un enemigo, lo ataca con violentos temblores de tierra.',
+      en: 'It is extremely protective of its territory. If any foe approaches, it attacks using vicious tremors.',
+      ja: '縄張り意識が とても 強く 外敵が 近づくと 激しく 地面を 揺らして 襲いかかる。' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.EXTRA_DAMAGE,
+      CardSpecialConditionENUM.RECOIL
+    ],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: []
+  },
+  {
+    id: 638,
+    order: 597,
+    number: 18,
+    pokedex: 361,
+    name: {
+      es: 'Snorunt',
+      en: 'Snorunt',
+      ja: 'ユキワラシ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gorro Nieve',
+        en: 'Snow Hat Pokémon',
+        ja: 'ゆきかさポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '16.8',
+        en: '37',
+        ja: '16.8'
+      }
+    },
+    artist: 'sowsow',
+    attacks: [
+      {
+        name: {
+          es: 'Témpano',
+          en: 'Icicle',
+          ja: 'つらら' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: [639],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Se dice que se reúnen en grupos bajo hojas gigantescas y viven allí en total armonía.',
+      en: 'It is said that several Snorunt gather under giant leaves and live together in harmony.',
+      ja: '大きな 葉っぱの 下に 数匹の ユキワラシが 集まり 仲良く 暮らしているという。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: []
+  },
+  {
+    id: 639,
+    order: 598,
+    number: 19,
+    pokedex: 478,
+    name: {
+      es: 'Froslass',
+      en: 'Froslass',
+      ja: 'ユキメノコ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Tierra Fría',
+        en: 'Snow Land Pokémon',
+        ja: 'ゆきぐにポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '4\'3"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '26.6',
+        en: '58.6',
+        ja: '26.6'
+      }
+    },
+    artist: 'Mizue',
+    attacks: [
+      {
+        name: {
+          es: 'Ventisca',
+          en: 'Blizzard',
+          ja: 'ふぶき' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este ataque también hace 10 puntos de daño a cada uno de los Pokémon en Banca de tu rival.',
+          en: 'This attack also does 10 damage to each of your opponent’s Benched Pokémon.',
+          ja: '相手のベンチポケモン全員にも10ダメージ。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Con su gélido aliento congela a todo Pokémon o humano que le llame la atención y se lo lleva a su guarida para usarlo como objeto decorativo.',
+      en: 'When it finds humans or Pokémon it likes, it freezes them and takes them to its chilly den, where they become decorations.',
+      ja: '気に入った 人間や ポケモンを 冷気で 凍らせる。 巣穴に 持って帰って 飾るのだ。' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH
+    ],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: []
+  },
+  {
+    id: 640,
+    order: 599,
+    number: 20,
+    pokedex: 459,
+    name: {
+      es: 'Snover',
+      en: 'Snover',
+      ja: 'ユキカブリ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Árbol Nieve',
+        en: 'Frost Tree Pokémon',
+        ja: 'じゅひょうポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '50.5',
+        en: '111.3',
+        ja: '50.5'
+      }
+    },
+    artist: 'otumami',
+    attacks: [
+      {
+        name: {
+          es: 'Puño Tirabuzón',
+          en: 'Corkscrew Punch',
+          ja: 'どつく' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [641],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'En las estaciones frías baja al pie de la montaña, pero regresa a las cimas nevadas en primavera.',
+      en: 'During cold seasons, it migrates to the mountain\'s lower reaches. It returns to the snow-covered summit in the spring.',
+      ja: '寒い 季節は 山の ふもとまで 降りてくるが 春に なると 雪が 残る 山頂に 戻っていく。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: []
+  },
+  {
+    id: 641,
+    order: 600,
+    number: 21,
+    pokedex: 460,
+    name: {
+      es: 'Abomasnow',
+      en: 'Abomasnow',
+      ja: 'ユキノオー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Árbol Nieve',
+        en: 'Frost Tree Pokémon',
+        ja: 'じゅひょうポケモン'
+      },
+      height: {
+        es: '2.2',
+        en: '7\'3"',
+        ja: '2.2'
+      },
+      weight: {
+        es: '135.5',
+        en: '298.7',
+        ja: '135.5'
+      }
+    },
+    artist: 'nagimiso',
+    attacks: [
+      {
+        name: {
+          es: 'Megapuño',
+          en: 'Mega Punch',
+          ja: 'メガトンパンチ' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Vínculo Apremiante',
+        en: 'Vigor Link',
+        ja: 'ハッスルリンク'
+      },
+      description: {
+        es: 'Si tienes Arceus o Arceus EX en juego, los ataques de este Pokémon cuestan 1 Energía Incolora menos.',
+        en: 'If you have Arceus or Arceus ex in play, attacks used by this Pokémon cost 1 less Colorless Energy.',
+        ja: '自分の場に「アルセウス」または「アルセウスex」がいるなら、このポケモンがワザを使うためのエネルギーを無色エネルギー1個ぶん少なくする。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Vive en paz en cordilleras de nieves eternas. Genera ventiscas para ocultarse.',
+      en: 'It lives a quiet life on mountains that are perpetually covered in snow. It hides itself by whipping up blizzards.',
+      ja: '万年雪が 積もる 山脈で 静かに 暮らす。 ブリザードを 発生させて 姿を 隠す。' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.RARE,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.ARCEUS_LINK],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: []
+  },
+  {
+    id: 642,
+    order: 601,
+    number: 22,
+    pokedex: 471,
+    name: {
+      es: 'Glaceon EX',
+      en: 'Glaceon EX',
+      ja: 'グレイシア EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Nieve Fresca',
+        en: 'Fresh Snow Pokémon',
+        ja: 'しんせつポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '25.9',
+        en: '57.1',
+        ja: '25.9'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Viento Gélido',
+          en: 'Freezing Wind',
+          ja: 'フリーズウインド' 
+        },
+        damage: 90,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Campo Níveo',
+        en: 'Snowy Terrain',
+        ja: 'スノーフィールド'
+      },
+      description: {
+        es: 'Durante el Chequeo Pokémon, si este Pokémon está en el Puesto Activo, inflige 10 puntos de daño al Pokémon Activo de tu rival.',
+        en: 'During Pokémon Checkup, if this Pokémon is in the Active Spot, do 10 damage to your opponent\'s Active Pokémon.',
+        ja: 'このポケモンがバトル場にいるかぎり、ポケモンチェックのたび、相手のバトルポケモンに10ダメージ。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Controla a su antojo la temperatura corporal y congela las partículas de agua que flotan en el aire para provocar ráfagas de nieve en polvo.',
+      en: 'It can control its body temperature at will. This enables it to freeze the moisture in the atmosphere, creating flurries of diamond dust.',
+      ja: '体温を 自在に コントロールし 大気の 水分を 凍らせて ダイヤモンドダストを 巻き起こす。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: true,
+    condition: [
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [206, 207, 208, 347, 498, 248, 609]
+  },
+  {
+    id: 643,
+    order: 602,
+    number: 23,
+    pokedex: 484,
+    name: {
+      es: 'Palkia Origen',
+      en: 'Origin Forme Palkia',
+      ja: 'オリジンパルキア' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Espacial',
+        en: 'Spatial Pokémon',
+        ja: 'くうかんポケモン'
+      },
+      height: {
+        es: '6.3',
+        en: '20\'8"',
+        ja: '6.3'
+      },
+      weight: {
+        es: '660.0',
+        en: '1455.1',
+        ja: '660.0'
+      }
+    },
+    artist: 'toriyufu',
+    attacks: [
+      {
+        name: {
+          es: 'Zona Demoledora',
+          en: 'Zone Smash',
+          ja: 'ゾーンブレイク' 
+        },
+        damage: 60,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, este ataque hace 60 puntos de daño más.',
+          en: 'Flip a coin. If heads, this attack does 60 more damage.',
+          ja: 'コインを1回投げオモテなら、60ダメージ追加。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Esta forma que surca el cielo me hace pensar en el creador de todo lo existente. Quizá adopte dicha forma para hacerse con su poder.',
+      en: 'It soars across the sky in a form that greatly resembles the creator of all things. Perhaps this imitation of appearance is Palkia\'s strategy for gaining Arceus\'s powers.',
+      ja: '天翔ける姿 万物を 創りし 存在を 想起す。 姿を 模すこと すなわち その力を 我がものとする術と 推察。' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 644,
+    order: 603,
+    number: 24,
+    pokedex: 489,
+    name: {
+      es: 'Phione',
+      en: 'Phione',
+      ja: 'オリジンパルキア' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Marino',
+        en: 'Sea Drifter Pokémon',
+        ja: 'かいようポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '3.1',
+        en: '6.8',
+        ja: '3.1'
+      }
+    },
+    artist: 'AKIRA EGAWA',
+    attacks: [
+      {
+        name: {
+          es: 'Hidropulso',
+          en: 'Water Pulse',
+          ja: 'みずのはどう' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+        description: {
+          es: 'El Pokémon Activo de tu rival pasa a estar Dormido.',
+          en: "Your opponent\'s Active Pokémon is now Asleep.",
+          ja: '相手のバトルポケモンをねむりにする。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Si sube la temperatura del mar, infla el flotador de su cabeza y flota en grupo en la superficie.',
+      en: 'When the water warms, they inflate the flotation sac on their heads and drift languidly on the sea in packs.',
+      ja: '海の 温度が 高くなると 頭の 浮き袋を ふくらませて 海面を 集団で 漂う。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.SLEEP,
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 645,
+    order: 604,
+    number: 25,
+    pokedex: 25,
+    name: {
+      es: 'Pikachu',
+      en: 'Pikachu',
+      ja: 'ピカチュウ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '6.0',
+        en: '13.2',
+        ja: '6.0'
+      }
+    },
+    artist: 'MAHOU',
+    attacks: [
+      {
+        name: {
+          es: 'Chispa',
+          en: 'Spark',
+          ja: 'スパーク' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.ELECTRIC],
+        description: {
+          es: 'Este ataque también hace 10 puntos de daño a 1 de los Pokémon en Banca de tu rival.',
+          en: "This attack also does 10 damage to 1 of your opponent\'s Benched Pokémon.",
+          ja: '相手のベンチポケモン1匹にも10ダメージ。'
+        }
+      }
+    ],
+    evolve: [646],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Cuando se enfada, este Pokémon descarga la energía que almacena en el interior de las bolsas de las mejillas.',
+      en: 'When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.',
+      ja: '両頬には　電気を　溜めこむ 袋がある｡　怒ると　溜めこんだ 電気を　一気に　放ってくる｡' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH,
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 646,
+    order: 605,
+    number: 26,
+    pokedex: 26,
+    name: {
+      es: 'Raichu',
+      en: 'Raichu',
+      ja: 'ライチュウ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '30.0',
+        en: '66.1',
+        ja: '30.0'
+      }
+    },
+    artist: 'Nisota Niso',
+    attacks: [
+      {
+        name: {
+          es: 'Chispa',
+          en: 'Spark',
+          ja: 'スパーク' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.ELECTRIC],
+        description: {
+          es: 'Este ataque también hace 20 puntos de daño a 1 de los Pokémon en Banca de tu rival.',
+          en: "This attack also does 20 damage to 1 of your opponent\'s Benched Pokémon.",
+          ja: '相手のベンチポケモン1匹にも20ダメージ。'
+        }
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Vínculo Protector',
+        en: 'Resilience Link',
+        ja: 'ガードリンク'
+      },
+      description: {
+        es: 'Si tienes a Arceus o Arceus EX en juego, los ataques hacen -30 puntos de daño a este Pokémon.',
+        en: 'If you have Arceus or Arceus ex in play, this Pokémon takes −30 damage from attacks.',
+        ja: '自分の場に「アルセウス」または「アルセウスex」がいるなら、このポケモンが受けるワザのダメージを-30する。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Su cola actúa como toma de tierra y descarga electricidad al suelo, lo que le protege de los calambrazos.',
+      en: 'Its tail discharges electricity into the ground, protecting it from getting shocked.',
+      ja: '尻尾が　アースの　役目をはたして 電気を　地面に　逃がすので 自分自身は　しびれたりしない｡' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.RESIST,
+      CardSpecialConditionENUM.ARCEUS_LINK
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 647,
+    order: 606,
+    number: 27,
+    pokedex: 309,
+    name: {
+      es: 'Electrike',
+      en: 'Electrike',
+      ja: 'ライチュウ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Calambre',
+        en: 'Lightning Pokémon',
+        ja: 'いなずまポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '15.2',
+        en: '33.5',
+        ja: '15.2'
+      }
+    },
+    artist: 'Shin Nagasawa',
+    attacks: [
+      {
+        name: {
+          es: 'Electropatada',
+          en: 'Zap Kick',
+          ja: 'エレキック' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.ELECTRIC],
+      }
+    ],
+    evolve: [648],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Acumula electricidad estática en el pejae para lanzar descargas. Cuando va a haber tormenta, suelta chispas por todo el cuerpo.',
+      en: 'It stores static electricity in its fur for discharging. It gives off sparks if a storm approaches.',
+      ja: '静電気を 体毛に たくわえて 放電する。 嵐が 近づくと 全身から 火花を 散らす。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 648,
+    order: 607,
+    number: 28,
+    pokedex: 310,
+    name: {
+      es: 'Manectric',
+      en: 'Manectric',
+      ja: 'ライボルト' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Descarga',
+        en: 'Discharge Pokémon',
+        ja: 'ほうでんポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11',
+        ja: '1.5'
+      },
+      weight: {
+        es: '40.2',
+        en: '88.6',
+        ja: '40.2'
+      }
+    },
+    artist: 'match',
+    attacks: [
+      {
+        name: {
+          es: 'Destello',
+          en: 'Flash',
+          ja: 'フラッシュ' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.ELECTRIC],
+        description: {
+          es: 'Durante el próximo turno de tu rival, si el Pokémon Defensor intenta usar un ataque, tu rival lanza 1 moneda. Si Sale cruz, ese ataque no se lleva a cabo.',
+          en: 'During your opponent\'s next turn, if the Defending Pokémon tries to use an attack, your opponent flips a coin. If tails, that attack doesn\'t happen.',
+          ja: '次の相手の番、このワザを受けたポケモンがワザを使う時、相手はコインを1回投げる。ウラなら、そのワザは失敗。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'La electricidad estimula su musculatura para que pueda moverse a gran velocidad y le ayuda a recuperarse del dolor muscular rápidamente.',
+      en: 'It stimulates its own muscles with electricity, so it can move quickly. It eases its soreness with electricity, too, so it can recover quickly as well.',
+      ja: '電気で 筋肉を 刺激するので 素早く 動ける。 筋肉痛も 電気で ほぐすので すぐ 治る。' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 649,
+    order: 608,
+    number: 29,
+    pokedex: 35,
+    name: {
+      es: 'Clefairy',
+      en: 'Clefairy',
+      ja: 'ピッピ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Hada',
+        en: 'Fairy Pokémon',
+        ja: 'ようせいポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '7.5',
+        en: '16.5',
+        ja: '7.5'
+      }
+    },
+    artist: 'rika',
+    attacks: [
+      {
+        name: {
+          es: 'Palmetazo',
+          en: 'Smack',
+          ja: 'ひらてうち' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [650],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Se dice que la felicidad llegará a quien vea un grupo de Clefairy bailando a la luz de la luna llena.',
+      en: 'It is said that happiness will come to those who see a gathering of Clefairy dancing under a full moon.',
+      ja: '満月の夜　ピッピが　集まって ダンスを　踊るようすを　見ると しあわせに　なれると　言われている｡' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [114, 595]
+  },
+  {
+    id: 650,
+    order: 609,
+    number: 30,
+    pokedex: 36,
+    name: {
+      es: 'Clefable',
+      en: 'Clefable',
+      ja: 'ピクシー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Hada',
+        en: 'Fairy Pokémon',
+        ja: 'ようせいポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '4\'3"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '40.0',
+        en: '88.2',
+        ja: '40.0'
+      }
+    },
+    artist: 'sui',
+    attacks: [
+      {
+        name: {
+          es: 'Fuerza Lunar',
+          en: 'Moonblast',
+          ja: 'ムーンフォース' 
+        },
+        damage: 60,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Durante el próximo turno de tu rival, los ataques del Pokémon Defensor hacen -30 puntos de daño.',
+          en: 'During your opponent\'s next turn, attacks used by the Defending Pokémon do −30 damage.',
+          ja: '次の番、このワザを受けたポケモンが使うワザのダメージを-30する。'
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Este Pokémon de aspecto feérico, raramente visto por los humanos, corre a esconderse en cuanto detecta que hay alguien cerca.',
+      en: 'A timid fairy Pokémon that is rarely seen, it will run and hide the moment it senses people.',
+      ja: '妖精の　仲間で　めったに 人前に　出てこない｡　気配を 感じて　すぐに　逃げてしまうようだ｡' 
+    },
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.RESIST],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [113, 595]
+  },
+  {
+    id: 651,
+    order: 610,
+    number: 31,
+    pokedex: 92,
+    name: {
+      es: 'Gastly',
+      en: 'Gastly',
+      ja: 'ゴース' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gas',
+        en: 'Gas Pokémon',
+        ja: 'ガスじょうポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '4\'3"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '0.1',
+        en: '0.2',
+        ja: '0.1'
+      }
+    },
+    artist: 'Yuu Nishida',
+    attacks: [
+      {
+        name: {
+          es: 'Impresionar',
+          en: 'Astonish',
+          ja: 'おどろかす' 
+        },
+        damage: 0,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, tu rival enseña 1 carta aleatoria de su mano, la pone de nuevo en su baraja y las baraja todas.',
+          en: 'Flip a coin. If heads, your opponent reveals a random card from their hand a shuffles it into their deck.',
+          ja: 'コインを1回投げオモテなら、相手の手札をランダムに1枚、オモテを見て、相手の山札にもどす。'
+        }
+      },
+    ],
+    evolve: [652],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Su estrategia consiste en envolver al rival con su cuerpo gaseoso y envenenarlo a través de la piel.',
+      en: 'It wraps its opponent in its gas-like body, slowly weakening its prey by poisoning it through the skin.',
+      ja: 'ガス状の　体で　まとわりつき 獲物の　皮膚から　少しずつ 毒を　送り込んで　弱らせる｡' 
+    },
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.PLAY_CARDS
+    ],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [121, 122, 123, 261, 277, 599]
+  },
+  {
+    id: 652,
+    order: 611,
+    number: 32,
+    pokedex: 93,
+    name: {
+      es: 'Haunter',
+      en: 'Haunter',
+      ja: 'ゴースト' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gas',
+        en: 'Gas Pokémon',
+        ja: 'ガスじょうポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '0.1',
+        en: '0.2',
+        ja: '0.1'
+      }
+    },
+    artist: 'Eri Yamaki',
+    attacks: [
+      {
+        name: {
+          es: 'Fafullar',
+          en: 'Mumble',
+          ja: 'つぶやく' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC],
+      },
+    ],
+    evolve: [653],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Le gusta acechar en la oscuridad y tocarles el hombro a sus víctimas con su mano gaseosa. Estas se quedan temblando para siempre.',
+      en: 'It likes to lurk in the dark and tap shoulders with a gaseous hand. Its touch causes endless shuddering.',
+      ja: '暗闇にまぎれ　ガスの手を　伸ばし 人の肩を　叩くのが　好き｡ 触られると　震えが　止まらない｡' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [120, 122, 123, 261, 277, 599]
+  },
+  {
+    id: 653,
+    order: 612,
+    number: 33,
+    pokedex: 94,
+    name: {
+      es: 'Gengar',
+      en: 'Gengar',
+      ja: 'ゲンガー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Sombra',
+        en: 'Shadow Pokémon',
+        ja: 'シャドーポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '40.5',
+        en: '89.3',
+        ja: '40.5'
+      }
+    },
+    artist: 'Midori Harada',
+    attacks: [
+      {
+        name: {
+          es: 'Hipnorrayo',
+          en: 'Hypnoblast',
+          ja: 'さいみんはどう' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC],
+        description: {
+          es: 'El Pokémon Activo de tu rival pasa a estar Dormido.',
+          en: "Your opponent\'s Active Pokémon is now Asleep.",
+          ja: '相手のバトルポケモンをねむりにする。'
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Para quitarle la vida a su presa, se desliza en su sombra y espera su oportunidad en silencio.',
+      en: 'To steal the life of its target, it slips into the prey’s shadow and silently waits for an opportunity.',
+      ja: '命を　奪おうと　決めた 獲物の　影に　潜り込み じっと　チャンスを　狙ってる｡' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.SLEEP
+    ],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [120, 121, 599]
+  },
+  {
+    id: 654,
+    order: 613,
+    number: 34,
+    pokedex: 201,
+    name: {
+      es: 'Unown',
+      en: 'Unown',
+      ja: 'アンノーン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Símbolo',
+        en: 'Symbol Pokémon',
+        ja: 'シンボルポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '5.0',
+        en: '11',
+        ja: '5.0'
+      }
+    },
+    artist: 'Tetsu Kayama',
+    attacks: [
+      {
+        name: {
+          es: 'Poder Oculto',
+          en: 'Hidden Power',
+          ja: 'めざめるパワー' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL],
+      },
+    ],
+    ability: {
+      name: {
+        es: 'COMPROBACIÓN',
+        en: 'CHECK',
+        ja: '[チェック]'
+      },
+      description: {
+        es: 'Una vez durante tu turno, puedes elegir a cualquier jugador. Mira la primera carta de la baraja de ese jugador.',
+        en: 'Once during your turn, you may choose either player. Look at the top card of that player\'s deck.',
+        ja: '自分の番に1回使える。自分または相手のどちらかを選び、選ばれたプレイヤーの山札の上から1枚見て、もとにもどす。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Su cuerpo fino y plano aparece siempre en los muros. Su forma parece tener algún significado.',
+      en: 'Its flat, thin body is always stuck on walls. Its shape appears to have some meaning.',
+      ja: '体自体は 薄っぺらく いつも 壁に 張りついている。 形に なにか 意味があるらしい。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.PLAY_CARDS
+    ],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: []
+  },
+  {
+    id: 655,
+    order: 614,
+    number: 35,
+    pokedex: 479,
+    name: {
+      es: 'Rotom',
+      en: 'Rotom',
+      ja: 'ロトム' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Plasma',
+        en: 'Plasma Pokémon',
+        ja: 'プラズマポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '0.3',
+        en: '0.7',
+        ja: '0.3'
+      }
+    },
+    artist: 'Anesaki Dynamic',
+    attacks: [
+      {
+        name: {
+          es: 'Ataque Carrera',
+          en: 'Dash Attack',
+          ja: 'とびだしアタック' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este ataque hace 20 puntos de daño a 1 de los Pokémon en Banca de tu rival',
+          en: 'This attack does 20 damage to 1 of your opponent\'s Benched Pokémon.',
+          ja: '相手のベンチポケモン1匹に20ダメージ。' 
+        }
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Vínculo Veloz',
+        en: 'Speed Link',
+        ja: 'スピードリンク'
+      },
+      description: {
+        es: 'Si tienes a Arceus o Arceus EX en juego, este Pokémon no tiene ningún Coste de Retirada.',
+        en: 'If you have Arceus or Arceus ex in play, this Pokémon has no Retreat Cost.',
+        ja: '自分の場に「アルセウス」または「アルセウスex」がいるなら、このポケモンがにげるためのエネルギーを、すべてなくす。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Con su cuerpo eléctrico puede infiltrarse en algunos aparatos para controlarlos y hacer travesuras.',
+      en: 'Its electricity-like body can enter some kinds of machines and take control in order to make mischief.',
+      ja: '電気のような 体は 一部の 機械に 入り込むことが できる。そして その体で いたずらする。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.ARCEUS_LINK,
+      CardSpecialConditionENUM.ATTACK_BENCH,
+      CardSpecialConditionENUM.RETIRE
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [536]
+  },
+  {
+    id: 656,
+    order: 615,
+    number: 36,
+    pokedex: 185,
+    name: {
+      es: 'Sudowoodo',
+      en: 'Sudowoodo',
+      ja: 'ウソッキー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Imitación',
+        en: 'Imitation Pokémon',
+        ja: 'まねポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '38.0',
+        en: '83.8',
+        ja: '38.0'
+      }
+    },
+    artist: 'Tomokazu Komiya',
+    attacks: [
+      {
+        name: {
+          es: 'Cabezazo Lucha',
+          en: 'Fighting Headbutt',
+          ja: 'とうしのずつき' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.FIGHT],
+        description: {
+          es: 'Si el Pokémon Activo de tu rival es un Pokémon EX, este ataque hace 30 puntos de daño más.',
+          en: 'If your opponent\'s Active Pokémon is a Pokémon ex, this attack does 30 more damage.',
+          ja: '相手のバトルポケモンが「ポケモンex」なら、30ダメージ追加。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Aunque pretende ser un árbol, en su composición se parece más a una roca que a una planta.',
+      en: 'Although it always pretends to be a tree, its composition appears more similar to rock than to vegetation.',
+      ja: 'いつも 木のふりを している。 体の つくりは 植物より 石や 岩などに 近いようだ。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 657,
+    order: 616,
+    number: 37,
+    pokedex: 231,
+    name: {
+      es: 'Phanpy',
+      en: 'Phanpy',
+      ja: 'ゴマゾウ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Narizotas',
+        en: 'Long Nose Pokémon',
+        ja: 'ながはなポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '33.5',
+        en: '73.9',
+        ja: '33.5'
+      }
+    },
+    artist: 'Asako Ito',
+    attacks: [
+      {
+        name: {
+          es: 'Rodar',
+          en: 'Rollout',
+          ja: 'ころがる' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.FIGHT],
+      }
+    ],
+    evolve: [658],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Vive en hoyos que cava en la ribera de los ríos. Tras retozar en el lodo, no se queda tranquilo hasta haberse lavado bien el cuerpo.',
+      en: 'This Pokémon lives and nests on a riverbank. After playing in the mud, it won\'t be able to settle down unless it washes its body.',
+      ja: '川辺に 巣穴を 作り 暮らす。 泥遊びをしたあとは 体を 洗わないと 落ち着かないのだ。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 658,
+    order: 617,
+    number: 38,
+    pokedex: 232,
+    name: {
+      es: 'Donphan',
+      en: 'Donphan',
+      ja: 'ドンファン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Coraza',
+        en: 'Armor Pokémon',
+        ja: 'よろいポケモン'
+      },
+      height: {
+        es: '2.0',
+        en: '6\'7"',
+        ja: '2.0'
+      },
+      weight: {
+        es: '42.5',
+        en: '93.7',
+        ja: '42.5'
+      }
+    },
+    artist: 'Shin Nagasawa',
+    attacks: [
+      {
+        name: {
+          es: 'Giro Ondulante',
+          en: 'Rolling Spin',
+          ja: 'ローリングスピン' 
+        },
+        damage: 60,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
+        description: {
+          es: 'Durante tu próximo turno, el ataque Giro Ondulante de este Pokémon hace +60 puntos de daño.',
+          en: 'During your next turn, this Pokémon\'s Rolling Spin attack does +60 damage.',
+          ja: '次の自分の番、このポケモンの「ローリングスピン」のダメージを+60する。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Su dura piel podría resistir el choque contra un coche sin sufrir un rasguño. La lluvia, sin embargo, es su punto débil.',
+      en: 'Donphan is covered in tough hide, so even being hit by a car won\'t faze this Pokémon. However, it is extremely susceptible to rain.',
+      ja: '硬い 皮膚に 覆われているので 車と ぶつかっても へっちゃら。 ただし 雨には めっぽう 弱い。' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 659,
+    order: 618,
+    number: 39,
+    pokedex: 246,
+    name: {
+      es: 'Larvitar',
+      en: 'Larvitar',
+      ja: 'ヨーギラス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Piel Roca',
+        en: 'Rock Skin Pokémon',
+        ja: 'いわはだポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '72.0',
+        en: '158.7',
+        ja: '72.0'
+      }
+    },
+    artist: 'Yukiko Baba',
+    attacks: [
+      {
+        name: {
+          es: 'Puño Tirabuzón',
+          en: 'Corkscrew Punch',
+          ja: 'どつく' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [660],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Nacido en las profundidades subterráneas, este Pokémon se convierte en pupa al comer la cantidad de tierra equivalente a una montaña.',
+      en: 'Born deep underground, this Pokémon becomes a pupa after eating enough dirt to make a mountain.',
+      ja: '地面 深くで 生まれ 山ほどの 土を 食べ終わると 体を つくるため サナギになる。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 660,
+    order: 619,
+    number: 40,
+    pokedex: 247,
+    name: {
+      es: 'Pupitar',
+      en: 'Pupitar',
+      ja: 'サナギラス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Caparazón',
+        en: 'Hard Shell Pokémon',
+        ja: 'だんがんポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '152.0',
+        en: '335.1',
+        ja: '152.0'
+      }
+    },
+    artist: 'match',
+    attacks: [
+      {
+        name: {
+          es: 'Ataque Fugaz',
+          en: 'Speed Attack',
+          ja: 'スピードアタック' 
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [661],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Su caparazón es duro como una piedra y muy resistente. Sus golpes pueden derribar montañas.',
+      en: 'Its shell is as hard as bedrock, and it is also very strong. Its thrashing can topple a mountain.',
+      ja: '岩盤のような 硬い 殻に 覆われているが 力は 強く 暴れると 山も 崩れてしまう。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 661,
+    order: 620,
+    number: 41,
+    pokedex: 248,
+    name: {
+      es: 'Tyranitar',
+      en: 'Tyranitar',
+      ja: 'バンギラス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Coraza',
+        en: 'Armor Pokémon',
+        ja: 'よろいポケモン'
+      },
+      height: {
+        es: '2.0',
+        en: '6\'7"',
+        ja: '2.0'
+      },
+      weight: {
+        es: '202.0',
+        en: '445.3',
+        ja: '202.0'
+      }
+    },
+    artist: 'kawayoo',
+    attacks: [
+      {
+        name: {
+          es: 'Aterrizaje',
+          en: 'Land Crush',
+          ja: 'ランドクラッシュ' 
+        },
+        damage: 130,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Vínculo Poderoso',
+        en: 'Power Link',
+        ja: 'パワーリンク'
+      },
+      description: {
+        es: 'Si tienes a Arceus o Arceus EX en juego, los ataques de este Pokémon hacen +30 puntos de daño al Pokémon Activo de tu rival.',
+        en: 'If you have Arceus or Arceus ex in play, attacks used by this Pokémon do +30 damage to your opponent\'s Active Pokémon.',
+        ja: '自分の場に「アルセウス」または「アルセウスex」がいるなら、このポケモンが使うワザの相手のバトルポケモンへのダメージを+30する。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Tiene tanta fuerza que puede cambiar el paisaje. Su naturaleza insolente le hace ser muy egoísta.',
+      en: 'Extremely strong, it can change the landscape. It is so insolent that it doesn\'t care about others.',
+      ja: 'あたりの 地形を 変えるぐらい 朝飯前の 力持ち。 まわりを 気にしない ふてぶてしさ。' 
+    },
+    health: 160,
+    rarity: CardRarityENUM.RARE,
+    retreat: 4,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.ARCEUS_LINK,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 662,
+    order: 621,
+    number: 42,
+    pokedex: 299,
+    name: {
+      es: 'Nosepass',
+      en: 'Nosepass',
+      ja: 'ノズパス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Brújula',
+        en: 'Compass Pokémon',
+        ja: 'コンパスポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '97.0',
+        en: '213.8',
+        ja: '97.0'
+      }
+    },
+    artist: 'Satoshi Shirai',
+    attacks: [
+      {
+        name: {
+          es: 'Placaje',
+          en: 'Tackle',
+          ja: 'たいあたり' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Solo se desplaza un centímetro al año, pero, si se siente amenazado, gira sobre si mismo y se hunde bajo tierra en un abrir y cerrar de ojos.',
+      en: 'It moves less than an inch a year, but when it\'s in a jam, it will spin and drill down into the ground in a split second.',
+      ja: '１年に １センチしか 動かないが ピンチに 陥ると 回転し 一瞬で 地中に 潜る。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 3,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 663,
+    order: 622,
+    number: 43,
+    pokedex: 307,
+    name: {
+      es: 'Meditite',
+      en: 'Meditite',
+      ja: 'アサナン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Meditador',
+        en: 'Meditate Pokémon',
+        ja: 'めいそうポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '11.2',
+        en: '24.7',
+        ja: '11.2'
+      }
+    },
+    artist: 'Mina Nakai',
+    attacks: [
+      {
+        name: {
+          es: 'Patada',
+          en: 'Kick',
+          ja: 'キック' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.FIGHT],
+      }
+    ],
+    evolve: [664],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Practica yoga a diario y no se pierde ni una sesión. Mediante la meditación, aumenta su fuerza interior.',
+      en: 'It never skips its daily yoga training. It heightens its inner strength through meditation.',
+      ja: '毎日 ヨガの 修行を 欠かさない。 瞑想を することで 精神力を 高めている。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 664,
+    order: 623,
+    number: 44,
+    pokedex: 308,
+    name: {
+      es: 'Medicham',
+      en: 'Medicham',
+      ja: 'チャーレム' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Meditador',
+        en: 'Meditate Pokémon',
+        ja: 'めいそうポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '4\'3"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '31.5',
+        en: '69.4',
+        ja: '31.5'
+      }
+    },
+    artist: 'Tetsu Kayama',
+    attacks: [
+      {
+        name: {
+          es: 'Disparo Patada',
+          en: 'Kick Shot',
+          ja: 'いっぱつげり' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.FIGHT],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cruz, este ataque no hace nada.',
+          en: 'Flip a coin. If tails, this attack does nothing.',
+          ja: 'コインを1回投げウラなら、このワザは失敗。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Puede prever los movimientos de su rival usando sus poderes psíquicos, fortalecidos por el yoga.',
+      en: 'Through yoga training, it gained the psychic power to predict its foe\'s next move.',
+      ja: 'ヨガの 修行で 鍛えられた サイコパワーで 相手の 動きを 予測する ことが できるのだ。' 
+    },
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.NOTHING
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 665,
+    order: 624,
+    number: 45,
+    pokedex: 443,
+    name: {
+      es: 'Gible',
+      en: 'Gible',
+      ja: 'フカマル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Terrascualo',
+        en: 'Land Shark Pokémon',
+        ja: 'りくザメポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '20.5',
+        en: '45.2',
+        ja: '20.5'
+      }
+    },
+    artist: 'Kyoko Umemoto',
+    attacks: [
+      {
+        name: {
+          es: 'Placaje',
+          en: 'Tackle',
+          ja: 'たいあたり' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.FIGHT],
+      }
+    ],
+    evolve: [666],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Permanece oculto en cuevas y, cuando pasa una presa, se abalanza sobre ella y la muerde con tanta fuerza que hasta se le rompen los dientes.',
+      en: 'It skulks in caves, and when prey or an enemy passes by, it leaps out and chomps them. The force of its attack sometimes chips its teeth.',
+      ja: '穴倉に 潜み 獲物や 敵が 横切ると 飛びだして 噛みつく。 勢い余り 歯が 欠けることも。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 666,
+    order: 625,
+    number: 46,
+    pokedex: 444,
+    name: {
+      es: 'Gabite',
+      en: 'Gabite',
+      ja: 'ガバイト' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cueva',
+        en: 'Cave Pokémon',
+        ja: 'ほらあなポケモン'
+      },
+      height: {
+        es: '1.4',
+        en: '4\'7"',
+        ja: '1.4'
+      },
+      weight: {
+        es: '56.0',
+        en: '123.5',
+        ja: '56.0'
+      }
+    },
+    artist: 'Sumiyoshi Kizuki',
+    attacks: [
+      {
+        name: {
+          es: 'Guadaña Afilada',
+          en: 'Sharp Scythe',
+          ja: 'するどいカマ' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.FIGHT],
+      }
+    ],
+    evolve: [667],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Muy ocasionalmente puede mudar la piel y perder las escamas. Las medicinas que las usan como ingrediente son muy reconstituyentes.',
+      en: 'In rare cases, it molts and sheds its scales. Medicine containing its scales as an ingredient will make a weary body feel invigorated.',
+      ja: 'まれに 脱皮し ウロコが 剥げる。 その成分が 含まれる 薬は 疲れた 体を ギンギンにする。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 667,
+    order: 626,
+    number: 47,
+    pokedex: 445,
+    name: {
+      es: 'Garchomp EX',
+      en: 'Garchomp EX',
+      ja: 'ガブリアス EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mach',
+        en: 'Mach Pokémon',
+        ja: 'マッハポケモン'
+      },
+      height: {
+        es: '1.9',
+        en: '6\'3"',
+        ja: '1.9'
+      },
+      weight: {
+        es: '95.0',
+        en: '209.4',
+        ja: '95.0'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Ataque Lineal',
+          en: 'Linear Attack',
+          ja: 'ちょくげきだん' 
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.FIGHT],
+        description: {
+          es: 'Este ataque hace 50 puntos de daño a 1 de los Pokémon de tu rival.',
+          en: 'This attack does 50 damage to 1 of your opponent\'s Pokémon.',
+          ja: '相手のポケモン1匹に50ダメージ。'
+        }
+      },
+      {
+        name: {
+          es: 'Garra Dragón',
+          en: 'Dragon Claw',
+          ja: 'ドラゴンクロー' 
+        },
+        damage: 100,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Se dice que, cuando va a velocidad máxima sus alas crean cuchillas de viento que talan cualquier árbol.',
+      en: 'It is said that when one runs at high speed, its wings create blades of wind that can fell nearby trees.',
+      ja: 'こうそくで　かけぬけると　つばさは　くうきの　やいばを　うみだし　まわりのきは　せつだん　されている。' 
+    },
+    health: 170,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: true,
+    condition: [CardSpecialConditionENUM.ATTACK_BENCH],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [493, 494, 547]
+  },
+  {
+    id: 668,
+    order: 627,
+    number: 48,
+    pokedex: 41,
+    name: {
+      es: 'Zubat',
+      en: 'Zubat',
+      ja: 'ズバット' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Murciélago',
+        en: 'Bat Pokémon',
+        ja: 'こうもりポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '7.5',
+        en: '16.5',
+        ja: '7.5'
+      }
+    },
+    artist: 'Sekio',
+    attacks: [
+      {
+        name: {
+          es: 'Mordisco',
+          en: 'Bite',
+          ja: 'かみつく' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.DARK],
+      },
+    ],
+    evolve: [669],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Emite ondas ultrasónicas por la boca para escrutar el entorno, lo que le permite volar con pericia por cuevas angostas.',
+      en: 'It emits ultrasonic waves from its mouth to check its surroundings. Even in tight caves, Zubat flies around with skill.',
+      ja: '口から　出す　超音波で まわりの　様子を　探る｡ 狭い　洞窟も　器用に　飛びまわる｡' 
+    },
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [173, 242]
+  },
+  {
+    id: 669,
+    order: 628,
+    number: 49,
+    pokedex: 42,
+    name: {
+      es: 'Golbat',
+      en: 'Golbat',
+      ja: 'ゴルバット' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Murciélago',
+        en: 'Bat Pokémon',
+        ja: 'こうもりポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '55.0',
+        en: '121.3',
+        ja: '55.0'
+      }
+    },
+    artist: 'Kyoko Umemoto',
+    attacks: [
+      {
+        name: {
+          es: 'Mordisco',
+          en: 'Bite',
+          ja: 'かみつく' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.DARK],
+      },
+    ],
+    evolve: [670],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Le encanta chuparles la sangre a los seres vivos. En ocasiones comparte la preciada colecta con otros congéneres hambrientos.',
+      en: 'It loves to drink other creatures’ blood. It’s said that if it finds others of its kind going hungry, it sometimes shares the blood it’s gathered.',
+      ja: '生き物の　血液が　好物｡ 腹ペコの　仲間に　吸った　血を 分け与えることも　あるという｡' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [172, 242]
+  },
+  {
+    id: 670,
+    order: 629,
+    number: 50,
+    pokedex: 169,
+    name: {
+      es: 'Crobat',
+      en: 'Crobat',
+      ja: 'クロバット' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Murciélago',
+        en: 'Bat Pokémon',
+        ja: 'こうもりポケモン'
+      },
+      height: {
+        es: '1.8',
+        en: '5\'11"',
+        ja: '1.8'
+      },
+      weight: {
+        es: '75.0',
+        en: '165.3',
+        ja: '75.0'
+      }
+    },
+    artist: 'AKIRA EGAWA',
+    attacks: [
+      {
+        name: {
+          es: 'Colmillo de Oscuridad',
+          en: 'Darkness Fang',
+          ja: 'やみのキバ' 
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.DARK],
+      },
+    ],
+    ability: {
+      name: {
+        es: 'Vínculo Astuto',
+        en: 'Cunning Link',
+        ja: 'トリックリンク'
+      },
+      description: {
+        es: 'Una vez durante tu turno, si tienes a Arceus o Arceus EX en juego, puedes hacer 30 puntos de daño al Pokémon Activo de tu rival.',
+        en: 'Once during your turn, if you have Arceus or Arceus ex in play, you may do 30 damage to your opponent\'s Active Pokémon.',
+        ja: '自分の場に「アルセウス」または「アルセウスex」がいるなら、自分の番に1回つかえる。相手のバトルポケモンに30ダメージ。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Su patas se han convertido en alas. Se lanza sobre su presa en un vuelo silencioso a alta velocidad y le clava los colimllos en la nuca.',
+      en: 'Both of its legs have turned into wings. Without a sound, Crobat flies swiftly toward its prey and sinks its fangs into the nape of its target\'s neck.',
+      ja: '両足が 羽に 変化。 音を たてずに 高速で 飛び 獲物の うなじに キバを たてる。' 
+    },
+    health: 110,
+    rarity: CardRarityENUM.RARE,
+    retreat: 0,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.ARCEUS_LINK,
+      CardSpecialConditionENUM.ATTACK_BENCH,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [172, 242]
+  },
+  {
+    id: 671,
+    order: 630,
+    number: 51,
+    pokedex: 453,
+    name: {
+      es: 'Croagunk',
+      en: 'Croagunk',
+      ja: 'グレッグル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Boca Tóxica',
+        en: 'Toxic Mouth Pokémon',
+        ja: 'どくづきポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '23.0',
+        en: '50.7',
+        ja: '23.0'
+      }
+    },
+    artist: 'SATOSHI NAKAI',
+    attacks: [
+      {
+        name: {
+          es: 'Toque',
+          en: 'Beat',
+          ja: 'たたく' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK],
+      }
+    ],
+    evolve: [672],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Infla sus bolsas venenosas para emitir un sonido macabro a su alrededor y envenena al rival en cuanto se amedrenta.',
+      en: 'Inflating its poison sacs, it fills the area with an odd sound and hits flinching opponents with a poison jab.',
+      ja: '毒袋を ふくらませて 鳴らし 辺りに 不気味な 音を 響かせ 相手が ひるむと どくづきをする。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [480, 545]
+  },
+  {
+    id: 672,
+    order: 631,
+    number: 52,
+    pokedex: 454,
+    name: {
+      es: 'Toxicroak',
+      en: 'Toxicroak',
+      ja: 'ドクロッグ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Boca Tóxica',
+        en: 'Toxic Mouth Pokémon',
+        ja: 'どくづきポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '4\'3"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '44.4',
+        en: '97.9',
+        ja: '44.4'
+      }
+    },
+    artist: 'Souichirou Gunjima',
+    attacks: [
+      {
+        name: {
+          es: 'Tóxico',
+          en: 'Toxic',
+          ja: 'どくどく' 
+        },
+        damage: 0,
+        energy: [PokemonTypeENUM.DARK],
+        description: {
+          es: 'El Pokémon Activo de tu rival pasa a estar Evenenado. Ese Pokémon sufre 20 puntos de daño en vez de la cantidad habitual por esta Condición Especial.',
+          en: 'Your opponent\'s Active Pokémon is now Poisoned. Do 20 damage to this Pokémon instead of the usual amount for this Special Condition.',
+          ja: '相手のバトルポケモンをどくにする。このどくのダメージは20になる。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Esquiva ágilmente los ataques de sus enemigos mientras va acortando distancias para contraatacar con sus garras venenosas.',
+      en: 'Swaying and dodging the attacks of its foes, it weaves its flexible body in close, then lunges out with its poisonous claws.',
+      ja: '柔らかい 体で 相手の 攻撃を かわしながら ふところに 飛び込み 毒の トゲを 突き刺す。' 
+    },
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.POISON,
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [479, 545]
+  },
+  {
+    id: 673,
+    order: 632,
+    number: 53,
+    pokedex: 81,
+    name: {
+      es: 'Magnemite',
+      en: 'Magnemite',
+      ja: 'コイル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Imán',
+        en: 'Magnet Pokémon',
+        ja: 'じしゃくポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '6.0',
+        en: '13.2',
+        ja: '6.0'
+      }
+    },
+    artist: 'OKACHEKE',
+    attacks: [
+      {
+        name: {
+          es: 'Placaje',
+          en: 'Tackle',
+          ja: 'たいあたり' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.STEEL],
+      },
+    ],
+    evolve: [674],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Las unidades laterales crean ondas electromagnéticas que contrarrestan la gravedad y le permiten flotar.',
+      en: 'The electromagnetic waves emitted by the units at the sides of its head expel antigravity, which allows it to float.',
+      ja: '左右にある　ユニットから　だす 電磁波で　重力を さえぎって　空に　浮かぶのだ｡' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [98, 423, 424, 425, 603]
+  },
+  {
+    id: 674,
+    order: 633,
+    number: 54,
+    pokedex: 82,
+    name: {
+      es: 'Magneton',
+      en: 'Magneton',
+      ja: 'レアコイル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Imán',
+        en: 'Magnet Pokémon',
+        ja: 'じしゃくポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '60.0',
+        en: '132.3',
+        ja: '60.0'
+      }
+    },
+    artist: 'Souichirou Gunjima',
+    attacks: [
+      {
+        name: {
+          es: 'Ataque Giro',
+          en: 'Rolling Attack',
+          ja: 'ボールアタック' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [675],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Tres Magnemite se enlazan mediante una intensa fuerza magnética. Provoca un fuerte pitido en los oídos a quien se le acerque.',
+      en: 'Three Magnemite are linked by a strong magnetic force. Earaches will occur if you get too close.',
+      ja: '３つのコイルは　強い　磁力で 結びついている｡　そばに寄ると 強い　耳鳴りに　襲われる｡' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [97, 423, 424, 425, 603]
+  },
+  {
+    id: 675,
+    order: 634,
+    number: 55,
+    pokedex: 462,
+    name: {
+      es: 'Magnezone',
+      en: 'Magnezone',
+      ja: 'ジバコイル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Magnético',
+        en: 'Magnet Area Pokémon',
+        ja: 'じばポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '180.0',
+        en: '396.8',
+        ja: '180.0'
+      }
+    },
+    artist: 'toriyufu',
+    attacks: [
+      {
+        name: {
+          es: 'Rayo de Luz Poderoso',
+          en: 'Power Beam',
+          ja: 'パワービーム' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Vínculo Protector',
+        en: 'Resilience Link',
+        ja: 'ガードリンク'
+      },
+      description: {
+        es: 'Si tienes a Arceus o Arceus EX en juego, los ataques hacen -30 puntos de daño a este Pokémon.',
+        en: 'If you have Arceus or Arceus ex in play, this Pokémon takes −30 damage from attacks.',
+        ja: '自分の場に「アルセウス」または「アルセウスex」がいるなら、このポケモンが受けるワザのダメージを-30する。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Se dice que mientras vuela emite unas ondas eléctricas misteriosas, a la vez que recibe otras ondas desconocidas.',
+      en: 'As it zooms through the sky, this Pokémon seems to be receiving signals of unknown origin while transmitting signals of unknown purpose.',
+      ja: '怪電波を 発信しながら 空を 飛びまわり 未知の 電波を 受信 しているという。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.ARCEUS_LINK,
+      CardSpecialConditionENUM.RESIST
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [97, 98, 423, 424, 603]
+  },
+  {
+    id: 676,
+    order: 635,
+    number: 56,
+    pokedex: 303,
+    name: {
+      es: 'Mawile',
+      en: 'Mawile',
+      ja: 'クチート' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Tramposo',
+        en: 'Deceiver Pokémon',
+        ja: 'あざむきポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '11.5',
+        en: '25.4',
+        ja: '11.5'
+      }
+    },
+    artist: 'tetsuya koizumi',
+    attacks: [
+      {
+        name: {
+          es: 'Acerañicos',
+          en: 'Iron Beam Breaker',
+          ja: 'てっこつくだき' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.STEEL],
+        description: {
+          es: 'Si el Pokémon Activo de tu rival es un Pokémon Metal, este ataque hace 30 puntos de daño más.',
+          en: 'If your opponent\'s Active Pokémon is a Metal Pokémon, this attack does 30 more damage.',
+          ja: '相手のバトルポケモンが鋼ポケモンなら、30ダメージ追加。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Con su cara inocente hace que el rival se confíe y, al bajar la guardia, le da un mordisco con sus enormes fauces del que no se puede liberar.',
+      en: 'It uses its docile-looking face to lull foes into complacency, then bites with its huge, relentless jaws.',
+      ja: 'おとなしい　顔で　相手を　油断 させてから　おおあごで　がぶり｡ 噛みつくと　絶対に　放さない｡' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+  },
+  {
+    id: 677,
+    order: 636,
+    number: 57,
+    pokedex: 476,
+    name: {
+      es: 'Probopass EX',
+      en: 'Probopass EX',
+      ja: 'ダイノーズ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Brújula',
+        en: 'Compass Pokémon',
+        ja: 'コンパスポケモン'
+      },
+      height: {
+        es: '1.4',
+        en: '4\'7"',
+        ja: '1.4'
+      },
+      weight: {
+        es: '340.0',
+        en: '749.6',
+        ja: '340.0'
+      }
+    },
+    artist: 'PLANETA Tsuji',
+    attacks: [
+      {
+        name: {
+          es: 'Unidad Protectora',
+          en: 'Defensive Unit',
+          ja: 'プロテクトユニット' 
+        },
+        damage: 90,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Durante el próximo turno de tu rival, los ataques hacen -20 puntos de daño a este Pokémon.',
+          en: 'During your opponent\'s next turn, this Pokémon takes −20 damage from attacks.',
+          ja: '次の相手の番、このポケモンが受けるワザのダメージを-20する。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Manipula unas pequeñas unidades conocidas como mininarices, aunque estas a veces se pierden y no saben cómo regresar a Probopass.',
+      en: 'Although it can control its units known as Mini-Noses, they sometimes get lost and don’t come back.',
+      ja: 'チビノーズと 呼ばれる ユニットを 操るが たまに 迷子に なって 帰ってこないことも あるらしい。' 
+    },
+    health: 160,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    condition: [
+      CardSpecialConditionENUM.RESIST,
+    ],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [458]
+  },
+  {
+    id: 678,
+    order: 637,
+    number: 58,
+    pokedex: 436,
+    name: {
+      es: 'Bronzor',
+      en: 'Bronzor',
+      ja: 'ドーミラー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Bronce',
+        en: 'Bronze Pokémon',
+        ja: 'せいどうポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '2\'04"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '60.5',
+        en: '133.4',
+        ja: '60.5'
+      }
+    },
+    artist: 'Miki Tanaka',
+    attacks: [
+      {
+        name: {
+          es: 'Apisonar',
+          en: 'Ram',
+          ja: 'ぶつかる'
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [679],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Antaño se creía que en el dibujo de su parte posterior residía una fuerza misteriosa.',
+      en: 'Ancient people believed that the pattern on Bronzor’s back contained a mysterious power.',
+      ja: 'ドーミラーの 背中の 模様には 神秘的な 力が 宿ると 昔の 人たちは 信じていた。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [489]
+  },
+  {
+    id: 679,
+    order: 638,
+    number: 59,
+    pokedex: 437,
+    name: {
+      es: 'Bronzong',
+      en: 'Bronzong',
+      ja: 'ドータクン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Campana Bronce',
+        en: 'Bronze Bell Pokémon',
+        ja: 'どうたくポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '2\'04"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '187.0',
+        en: '412.3',
+        ja: '187.0'
+      }
+    },
+    artist: 'Naoki Saito',
+    attacks: [
+      {
+        name: {
+          es: 'Psíquico',
+          en: 'Psychic',
+          ja: 'サイコキネシス' 
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este ataque hace 20 puntos de daño más por cada Energía unida al Pokémon Activo de tu rival.',
+          en: 'This attack does 20 more damage for each Energy attached to your opponent’s Active Pokémon.',
+          ja: '相手のバトルポケモンのエネルギーの数×20ダメージ' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Antaño se adoraba a este Pokémon para que propiciara lluvias abundantes. A veces, puede encontrarse enterrado bajo tierra.',
+      en: 'In ages past, this Pokémon was revered as a bringer of rain. It was found buried in the ground.',
+      ja: '雨雲を 呼べる ポケモンとして 大昔から 祀られていた。 ときどき 地面に 埋められている。' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [488]
+  },
+  {
+    id: 680,
+    order: 639,
+    number: 60,
+    pokedex: 483,
+    name: {
+      es: 'Dialga Origen',
+      en: 'Origin Forme Dialga',
+      ja: 'オリジンディアルガ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Temporal',
+        en: 'Temporal Pokémon',
+        ja: 'じかんポケモン'
+      },
+      height: {
+        es: '7.0',
+        en: '22\'11"',
+        ja: '7.0'
+      },
+      weight: {
+        es: '850.0',
+        en: '1873.9',
+        ja: '850.0'
+      }
+    },
+    artist: 'akagi',
+    attacks: [
+      {
+        name: {
+          es: 'Espacio Ácrono',
+          en: 'Time Mash',
+          ja: 'タイムクラッシュ' 
+        },
+        damage: 100,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cruz, este Pokémon no puede atacar durante tu próximo turno.',
+          en: 'Flip a coin. If tails, during your next turn, this Pokémon can\'t attack.',
+          ja: 'コインを1回投げウラなら、次の自分の番、このポケモンはワザが使えない。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'La luz desencadena el cambio a esta forma, que recuerda al creador de todo lo existente. La colosal fuerza de la que hace gala nos sugiere que se trata de su verdadera forma.',
+      en: 'Radiant light caused Dialga to take on a form bearing a striking resemblance to the creator Pokémon. Dialga now wields such colossal strength that one must conclude this is its true form.',
+      ja: '光明 フォルムチェンジの 引き金。 創造神に 酷似する姿こそ 真なりと 思わざるを得ぬほどの 剛力 発揮す。' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.INACTIVE
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 681,
+    order: 640,
+    number: 61,
+    pokedex: 487,
+    name: {
+      es: 'Giratina',
+      en: 'Giratina',
+      ja: 'ギラティナ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Renegado',
+        en: 'Renegade Pokémon',
+        ja: 'はんこつポケモン'
+      },
+      height: {
+        es: '6.9',
+        en: '22\'8"',
+        ja: '6.9'
+      },
+      weight: {
+        es: '650.0',
+        en: '1433',
+        ja: '650.0'
+      }
+    },
+    artist: 'Shin Nagasawa',
+    attacks: [
+      {
+        name: {
+          es: 'Crisis en Picado',
+          en: 'Crisis Dive',
+          ja: 'クライシスダイブ' 
+        },
+        damage: 120,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Descarta 2 Energías aleatorias de este Pokémon.',
+          en: 'Discard 2 random Energy from this Pokémon.',
+          ja: 'このポケモンからエネルギーをランダムに2個トラッシュ。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Vive en el Mundo Distorsión, un mundo opuesto al nuestro y cuyas leyes desafían el sentido común.',
+      en: 'This Pokémon is said to live in a world on the reverse side of ours, where common knowledge is distorted and strange.',
+      ja: '常識の 通用しない この世の 裏側にあると 言われる 破れた世界に 生息する。' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.RARE,
+    retreat: 3,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DRAGON,
+    weak: null,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.DISCARD],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [539]
+  },
+  {
+    id: 682,
+    order: 641,
+    number: 62,
+    pokedex: 133,
+    name: {
+      es: 'Eevee',
+      en: 'Eevee',
+      ja: 'イーブイ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Evolución',
+        en: 'Evolution Pokémon',
+        ja: 'しんかポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '6.5',
+        en: '14.3',
+        ja: '6.5'
+      }
+    },
+    artist: 'Naoyo Kimura',
+    attacks: [
+      {
+        name: {
+          es: 'Coletón',
+          en: 'Tail Whap',
+          ja: 'しっぽではたく' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [45, 80, 102, 392, 418],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Es capaz de evolucionar de muchas maneras para adaptarse sin problemas a cualquier medio.',
+      en: 'Its ability to evolve into many forms allows it to adapt smoothly and perfectly to any environment.',
+      ja: '環境の　変化に　すぐさま 合わせられるよう　いくつもの 進化の　可能性を　秘めている｡' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [45, 80, 102, 207, 208, 305, 347, 392, 418, 498, 248, 358, 609]
+  },
+  {
+    id: 683,
+    order: 642,
+    number: 63,
+    pokedex: 143,
+    name: {
+      es: 'Snorlax',
+      en: 'Snorlax',
+      ja: 'カビゴン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Dormir',
+        en: 'Sleeping Pokémon',
+        ja: 'いねむりポケモン'
+      },
+      height: {
+        es: '2.1',
+        en: '6\'11"',
+        ja: '2.1'
+      },
+      weight: {
+        es: '460.0',
+        en: '1014.1',
+        ja: '460.0'
+      }
+    },
+    artist: 'burari',
+    attacks: [
+      {
+        name: {
+          es: 'Colapso',
+          en: 'Collapse',
+          ja: 'たおれこむ' 
+        },
+        damage: 100,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este Pokémon pasa a estar Dormido.',
+          en: 'This Pokémon is now Asleep.',
+          ja: 'このポケモンをねむりにする。'
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'No se encuentra satisfecho hasta haber ingerido 400 kg de comida cada día. Cuando acaba de comer, se queda dormido.',
+      en: 'It is not satisfied unless it eats over 880 pounds of food every day. When it is done eating, it goes promptly to sleep.',
+      ja: '１日に　食べ物を　４００キロ 食べないと　気がすまない｡ 食べ終わると　眠ってしまう｡' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 4,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.SLEEP],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [250]
+  },
+  {
+    id: 684,
+    order: 643,
+    number: 64,
+    pokedex: 163,
+    name: {
+      es: 'Hoothoot',
+      en: 'Hoothoot',
+      ja: 'ホーホー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Búho',
+        en: 'Owl Pokémon',
+        ja: 'ふくろうポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '21.2',
+        en: '46.7',
+        ja: '21.2'
+      }
+    },
+    artist: 'Sumiyoshi Kizuki',
+    attacks: [
+      {
+        name: {
+          es: 'Picotazo',
+          en: 'Peck',
+          ja: 'つつく' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [685],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Se apoya en una sola pata y, cuando cambia de una a otra, se mueve tan rápido que apenas se percibe.',
+      en: 'It always stands on one foot. It changes feet so fast, the movement can rarely be seen.',
+      ja: 'いつも 一本足で 立っている。 脚を 入れ替える 瞬間は 素早くて なかなか 見られない。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: []
+  },
+  {
+    id: 685,
+    order: 644,
+    number: 65,
+    pokedex: 164,
+    name: {
+      es: 'Noctowl',
+      en: 'Noctowl',
+      ja: 'ヨルノズク' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Búho',
+        en: 'Owl Pokémon',
+        ja: 'ふくろうポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '40.8',
+        en: '89.9',
+        ja: '40.8'
+      }
+    },
+    artist: 'DOM',
+    attacks: [
+      {
+        name: {
+          es: 'Ala Silenciosa',
+          en: 'Silent Wing',
+          ja: 'サイレントウイング' 
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Tu rival enseña las cartas de su mano.',
+          en: 'Your opponent reveals their hand.',
+          ja: '相手の手札のオモテをすべて見る。'
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Tiene los ojos muy desarrollados y puede ver con increíble claridad en la oscuridad más absoluta.',
+      en: 'Its eyes are specially developed to enable it to see clearly even in murky darkness and minimal light.',
+      ja: '特殊な つくりの 両目は わずかな 光さえ あれば 暗闇でも 昼のように 見える。' 
+    },
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.PLAY_CARDS
+    ],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: []
+  },
+  {
+    id: 686,
+    order: 645,
+    number: 66,
+    pokedex: 396,
+    name: {
+      es: 'Starly',
+      en: 'Starly',
+      ja: 'ムックル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Estornino',
+        en: 'Starling Pokémon',
+        ja: 'むくどりポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '2.0',
+        en: '4.4',
+        ja: '2.0'
+      }
+    },
+    artist: 'Apios',
+    attacks: [
+      {
+        name: {
+          es: 'Planeo',
+          en: 'Glide',
+          ja: 'かっくう' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [687],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Sobrevuela los campos en bandada buscando Pokémon de tipo Bicho. Chilla de forma muy estridente.',
+      en: 'They flock around mountains and fields, chasing after bug Pokémon. Their singing is noisy and annoying.',
+      ja: '虫ポケモンを 狙って 野山を 大勢の 群れで 飛びまわる。 鳴き声が とても やかましい。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [505, 506, 548]
+  },
+  {
+    id: 687,
+    order: 646,
+    number: 67,
+    pokedex: 397,
+    name: {
+      es: 'Staravia',
+      en: 'Staravia',
+      ja: 'ムクバード' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Estornino',
+        en: 'Starling Pokémon',
+        ja: 'むくどりポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '15.5',
+        en: '34.2',
+        ja: '15.5'
+      }
+    },
+    artist: 'Masakazu Fukuda',
+    attacks: [
+      {
+        name: {
+          es: 'Ataque Ala',
+          en: 'Wing Attack',
+          ja: 'つばさでうつ' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.NORMAL]
+      },
+    ],
+    evolve: [688],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Son conscientes de su debilidad, así que siempre viven en grupo. Si se encuentran solos, lloran a gritos.',
+      en: 'Recognizing their own weakness, they always live in a group. When alone, a Staravia cries noisily.',
+      ja: '自分の 弱さを わきまえており いつも 群れで 暮らしている。 １匹になると やかましく 鳴く。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [504, 506, 548]
+  },
+  {
+    id: 688,
+    order: 647,
+    number: 68,
+    pokedex: 398,
+    name: {
+      es: 'Staraptor',
+      en: 'Staraptor',
+      ja: 'ムクホーク' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Depredador',
+        en: 'Predator Pokémon',
+        ja: 'もうきんポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '24.9',
+        en: '54.9',
+        ja: '24.9'
+      }
+    },
+    artist: 'Minahamu',
+    attacks: [
+      {
+        name: {
+          es: 'Pájaro Osado',
+          en: 'Brave Bird',
+          ja: 'ブレイブバード' 
+        },
+        damage: 130,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este Pokémon también se hace 20 puntos de daño a sí mismo.',
+          en: 'This Pokémon also does 20 damage to itself.',
+          ja: 'このポケモンにも20ダメージ。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Al evolucionar a Staraptor deja su bandada y pasa a vivir en soledad. Sus alas son inmensas.',
+      en: 'When Staravia evolve into Staraptor, they leave the flock to live alone. They have sturdy wings.',
+      ja: 'ムクホークになると 群れから 離れて １匹で 生きていく。 強靭な 翼を 持っている。' 
+    },
+    health: 150,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.RECOIL],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [504, 505, 548]
+  },
+  {
+    id: 689,
+    order: 648,
+    number: 69,
+    pokedex: 492,
+    name: {
+      es: 'Shaymin',
+      en: 'Shaymin',
+      ja: 'シェイミ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gratitud',
+        en: 'Gratitude Pokémon',
+        ja: 'かんしゃポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '5.2',
+        en: '11.5',
+        ja: '5.2'
+      }
+    },
+    artist: 'Mizue',
+    attacks: [
+      {
+        name: {
+          es: 'Aleteo',
+          en: 'Flap',
+          ja: 'はばたく' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: {
+          es: 'Apoyo Aéreo',
+          en: 'Sky Support',
+          ja: 'スカイサポート' 
+        },
+      description: {
+       es: 'Mientras este Pokémon esté en tu Banca, el Coste de Retirada de tu Pokémon Básico Activo es de 1 menos.',
+       en: 'As long as this Pokémon is on your Bench, your Active Basic Pokémon\'s Retreat Cost is 1 less.',
+       ja: 'このポケモンがベンチにいるかぎり、自分のバトル場のたねポケモンのにげるためのエネルギーを、1個少なくする' 
+     }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Puede disolver las toxinas del aire para transformar tierra yerma en campos de flores.',
+      en: 'It can dissolve toxins in the air to instantly transform ruined land into a lush field of flowers.',
+      ja: '大気の 毒素を 分解して 荒れた 大地を 一瞬のうちに 花畑にする 力を 持つ。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.RETIRE],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [531]
+  },
+  {
+    id: 690,
+    order: 649,
+    number: 70,
+    pokedex: 493,
+    name: {
+      es: 'Arceus',
+      en: 'Arceus',
+      ja: 'アルセウス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Alfa',
+        en: 'Alpha Pokémon',
+        ja: 'そうぞうポケモン'
+      },
+      height: {
+        es: '3.2',
+        en: '10\'6"',
+        ja: '3.2'
+      },
+      weight: {
+        es: '320.0',
+        en: '705.5',
+        ja: '320.0'
+      }
+    },
+    artist: 'Nurikabe',
+    attacks: [
+      {
+        name: {
+          es: 'Estallido Vigoroso',
+          en: 'Power Blast',
+          ja: 'パワーブラスト' 
+        },
+        damage: 100,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Descarta 1 Energía aleatoria de este Pokémon.',
+          en: 'Discard a random Energy from this Pokémon.',
+          ja: 'このポケモンからエネルギーをランダムに1個トラッシュ。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo.',
+      en: 'According to the legends of Sinnoh, this Pokémon emerged from an egg and shaped all there is in this world.',
+      ja: 'タマゴから 姿を 現して 世界の すべてを 生み出したと シンオウ神話に 語られている。' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.DISCARD],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 691,
+    order: 650,
+    number: 71,
+    pokedex: 493,
+    name: {
+      es: 'Arceus EX',
+      en: 'Arceus EX',
+      ja: 'アルセウス EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Alfa',
+        en: 'Alpha Pokémon',
+        ja: 'そうぞうポケモン'
+      },
+      height: {
+        es: '3.2',
+        en: '10\'6"',
+        ja: '3.2'
+      },
+      weight: {
+        es: '320.0',
+        en: '705.5',
+        ja: '320.0'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Fuerza Definitiva',
+          en: 'Ultimate Force',
+          ja: 'アルティメットフォース' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este ataque hace 20 puntos de daño más por cada uno de tus Pokémon en Banca.',
+          en: 'This attack does 20 more damage for each of your Benched Pokémon.',
+          ja: '自分のベンチのポケモンの数×20ダメージ追加。'
+        }
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Lustre Mítico',
+        en: 'Fabled Luster',
+        ja: 'しんわのかがやき'
+      },
+      description: {
+        es: 'Este Pokémon no puede verse afectado por ninguna Condición Especial.',
+        en: 'This Pokémon can\'t be affected by any Special Conditions.',
+        ja: 'このポケモンは特殊状態にならない。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo.',
+      en: 'According to the legends of Sinnoh, this Pokémon emerged from an egg and shaped all there is in this world.',
+      ja: 'タマゴから 姿を 現して 世界の すべてを 生み出したと シンオウ神話に 語られている。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 692,
+    order: 651,
+    number: 72,
+    name: {
+      es: 'Nákara',
+      en: 'Irida',
+      ja: 'カイ' 
+    },
+    artist: 'Atsushi Furusawa',
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Cura 40 puntos de daño a cada uno de tus Pokémon que tenga alguna Energía Agua unida a él.',
+      en: 'Heal 40 damage from each of your Pokémon that has any Water Energy attached.',
+      ja: '水エネルギーがついている自分のポケモン全員のHPを40回復。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.HEAL],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+  },
+  {
+    id: 693,
+    order: 652,
+    number: 73,
+    name: {
+      es: 'Anciana del Pueblo Caelestis',
+      en: 'Celestic Town Elder',
+      ja: 'カンナギタウンの長老' 
+    },
+    artist: 'Yuu Nishida',
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Pon 1 Pokémon Básico aleatorio de tu pila de descartes en tu mano.',
+      en: 'Put 1 random Basic Pokémon from your discard pile into your hand.',
+      ja: '自分のトラッシュからたねポケモンをランダムに1枚、手札に加える。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.CALL],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+  },
+  {
+    id: 694,
+    order: 653,
+    number: 74,
+    name: {
+      es: 'Israel',
+      en: 'Barry',
+      ja: 'ジュン' 
+    },
+    artist: 'Hideki Ishikawa',
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Durante este turno, los ataques de tu Snorlax, tu Heracross o tu Staraptor cuestan 2 Energías Incolora menos.',
+      en: 'During this turn, attacks used by your Snorlax, Heracross, and Staraptor cost 2 less Colorless Energy.',
+      ja: 'この番、自分の「カビゴン」「ヘラクロス」「ムクホーク」がワザを使うためのエネルギーを、無色エネルギー2個ぶん少なくする。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.ADD],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+  },
+  {
+    id: 695,
+    order: 654,
+    number: 75,
+    name: {
+      es: 'Adamas',
+      en: 'Adaman',
+      ja: 'セキ' 
+    },
+    artist: 'akagi',
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Durante el próximo turno de tu rival, los ataques de los Pokémon de tu rival hacen -20 puntos de daño a todos tus Pokémon Metal.',
+      en: 'During your opponent\'s next turn, all of your Metal Pokémon take −20 damage from attacks from your opponent\'s Pokémon.',
+      ja: '次の相手の番、自分の鋼ポケモン全員が相手のポケモンから受けるワザのダメージを-20する。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.RESIST],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+  },
+  {
+    id: 696,
+    order: 655,
+    number: 76,
+    pokedex: 229,
+    name: {
+      es: 'Houndoom',
+      en: 'Houndoom',
+      ja: 'ヘルガー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Siniestro',
+        en: 'Dark Pokémon',
+        ja: 'ダークポケモン'
+      },
+      height: {
+        es: '1.4',
+        en: '4\'7',
+        ja: '1.4'
+      },
+      weight: {
+        es: '35.0',
+        en: '77.2',
+        ja: '35.0'
+      }
+    },
+    artist: 'matazo',
+    attacks: [
+      {
+        name: {
+          es: 'Arrinconar',
+          en: 'Corner',
+          ja: 'おいつめる' 
+        },
+        damage: 60,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Durante el próximo turno de tu rival, el Pokémon Defensor no puede retirarse.',
+          en: 'During your opponent\'s next turn, the Defending Pokémon can\'t retreat.',
+          ja: '次の相手の番、このワザを受けたポケモンはにげるができない。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Si alguien se quema con las llamas que lanza por la boca, el dolor no desaparecerá nunca.',
+      en: 'If you are burned by the flames it shoots from its mouth, the pain will never go away.',
+      ja: '口から 吹き出す 炎で 火傷すると いつまでたっても 傷口が うずいてしまう。' 
+    },
+    health: 100,
+    rarity: CardRarityENUM.ART,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.CORNER
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 697,
+    order: 656,
+    number: 77,
+    pokedex: 183,
+    name: {
+      es: 'Marill',
+      en: 'Marill',
+      ja: 'マリル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón Agua',
+        en: 'Aqua Mouse Pokémon',
+        ja: 'みずねずみポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '8.5',
+        en: '18.7',
+        ja: '8.5'
+      }
+    },
+    artist: 'Taiga Kayama',
+    attacks: [
+      {
+        name: {
+          es: 'Pistola Agua',
+          en: 'Water Gun',
+          ja: 'みずでっぽう' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Tiene un pelaje que repele el agua, por lo que está seco incluso después de bañarse.',
+      en: 'The fur on its body naturally repels water. It can stay dry even when it plays in the water.',
+      ja: '全身の 体毛は 水を 弾く 性質を 持ち 水浴び しても 乾いている。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: []
+  },
+  {
+    id: 698,
+    order: 657,
+    number: 78,
+    pokedex: 201,
+    name: {
+      es: 'Unown',
+      en: 'Unown',
+      ja: 'アンノーン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Símbolo',
+        en: 'Symbol Pokémon',
+        ja: 'シンボルポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '5.0',
+        en: '11',
+        ja: '5.0'
+      }
+    },
+    artist: 'IKEDA Saki',
+    attacks: [
+      {
+        name: {
+          es: 'Poder Oculto',
+          en: 'Hidden Power',
+          ja: 'めざめるパワー' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL],
+      },
+    ],
+    ability: {
+      name: {
+        es: 'COMPROBACIÓN',
+        en: 'CHECK',
+        ja: '[チェック]'
+      },
+      description: {
+        es: 'Una vez durante tu turno, puedes elegir a cualquier jugador. Mira la primera carta de la baraja de ese jugador.',
+        en: 'Once during your turn, you may choose either player. Look at the top card of that player\'s deck.',
+        ja: '自分の番に1回使える。自分または相手のどちらかを選び、選ばれたプレイヤーの山札の上から1枚見て、もとにもどす。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Su cuerpo fino y plano aparece siempre en los muros. Su forma parece tener algún significado.',
+      en: 'Its flat, thin body is always stuck on walls. Its shape appears to have some meaning.',
+      ja: '体自体は 薄っぺらく いつも 壁に 張りついている。 形に なにか 意味があるらしい。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.PLAY_CARDS
+    ],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: []
+  },
+  {
+    id: 699,
+    order: 658,
+    number: 79,
+    pokedex: 185,
+    name: {
+      es: 'Sudowoodo',
+      en: 'Sudowoodo',
+      ja: 'ウソッキー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Imitación',
+        en: 'Imitation Pokémon',
+        ja: 'まねポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '38.0',
+        en: '83.8',
+        ja: '38.0'
+      }
+    },
+    artist: 'Yuriko Akase',
+    attacks: [
+      {
+        name: {
+          es: 'Cabezazo Lucha',
+          en: 'Fighting Headbutt',
+          ja: 'とうしのずつき' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.FIGHT],
+        description: {
+          es: 'Si el Pokémon Activo de tu rival es un Pokémon EX, este ataque hace 30 puntos de daño más.',
+          en: 'If your opponent\'s Active Pokémon is a Pokémon ex, this attack does 30 more damage.',
+          ja: '相手のバトルポケモンが「ポケモンex」なら、30ダメージ追加。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Aunque pretende ser un árbol, en su composición se parece más a una roca que a una planta.',
+      en: 'Although it always pretends to be a tree, its composition appears more similar to rock than to vegetation.',
+      ja: 'いつも 木のふりを している。 体の つくりは 植物より 石や 岩などに 近いようだ。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.ART,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 700,
+    order: 659,
+    number: 80,
+    pokedex: 81,
+    name: {
+      es: 'Magnemite',
+      en: 'Magnemite',
+      ja: 'コイル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Imán',
+        en: 'Magnet Pokémon',
+        ja: 'じしゃくポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '6.0',
+        en: '13.2',
+        ja: '6.0'
+      }
+    },
+    artist: 'Yukihiro Tada',
+    attacks: [
+      {
+        name: {
+          es: 'Placaje',
+          en: 'Tackle',
+          ja: 'たいあたり' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.STEEL],
+      },
+    ],
+    evolve: [674],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Las unidades laterales crean ondas electromagnéticas que contrarrestan la gravedad y le permiten flotar.',
+      en: 'The electromagnetic waves emitted by the units at the sides of its head expel antigravity, which allows it to float.',
+      ja: '左右にある　ユニットから　だす 電磁波で　重力を さえぎって　空に　浮かぶのだ｡' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [98, 423, 424, 425, 603]
+  },
+  {
+    id: 701,
+    order: 660,
+    number: 81,
+    pokedex: 492,
+    name: {
+      es: 'Shaymin',
+      en: 'Shaymin',
+      ja: 'シェイミ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gratitud',
+        en: 'Gratitude Pokémon',
+        ja: 'かんしゃポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '5.2',
+        en: '11.5',
+        ja: '5.2'
+      }
+    },
+    artist: 'MINAMINAMI Take',
+    attacks: [
+      {
+        name: {
+          es: 'Aleteo',
+          en: 'Flap',
+          ja: 'はばたく' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: {
+          es: 'Apoyo Aéreo',
+          en: 'Sky Support',
+          ja: 'スカイサポート' 
+        },
+      description: {
+       es: 'Mientras este Pokémon esté en tu Banca, el Coste de Retirada de tu Pokémon Básico Activo es de 1 menos.',
+       en: 'As long as this Pokémon is on your Bench, your Active Basic Pokémon\'s Retreat Cost is 1 less.',
+       ja: 'このポケモンがベンチにいるかぎり、自分のバトル場のたねポケモンのにげるためのエネルギーを、1個少なくする' 
+     }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Puede disolver las toxinas del aire para transformar tierra yerma en campos de flores.',
+      en: 'It can dissolve toxins in the air to instantly transform ruined land into a lush field of flowers.',
+      ja: '大気の 毒素を 分解して 荒れた 大地を 一瞬のうちに 花畑にする 力を 持つ。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.RETIRE],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [531]
+  },
+  {
+    id: 702,
+    order: 661,
+    number: 82,
+    pokedex: 470,
+    name: {
+      es: 'Leafeon EX',
+      en: 'Leafeon EX',
+      ja: 'リーフィア EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Verdor',
+        en: 'Verdant Pokémon',
+        ja: 'しんりょくポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '25.5',
+        en: '56.2',
+        ja: '25.5'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Rayo Solar',
+          en: 'Solar Beam',
+          ja: 'ソーラービーム' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Aliento del Bosque',
+        en: 'Forest Breath',
+        ja: 'もりのいぶき'
+      },
+      description: {
+        es: 'Una vez durante tu turno, si este Pokémon está en el Puesto Activo, puedes unir 1 Energía Planta de tu área de Energía a uno de tus Pokémon Planta.',
+        en: 'Once during your turn, if this Pokémon is in the Active Spot, you may take a Grass Energy from your Energy Zone and attach it to 1 of your Grass Pokémon.',
+        ja: 'このポケモンがバトル場にいるなら、自分の番に1回使える。自分のエネルギーゾーンから草エネルギーを1個出し、草ポケモンにつける。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'En días soleados, duerme y hace la fotosíntesis, con la que emite aire puro a su alrededor.',
+      en: 'When you see Leafeon asleep in a patch of sunshine, you’ll know it is using photosynthesis to produce clean air.',
+      ja: '晴れた 日に 寝ている リーフィアは 光合成をして きれいな 空気を 作り出しているのだ。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    condition: [CardSpecialConditionENUM.ADD],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [206, 207, 208, 347, 498, 248, 609]
+  },
+  {
+    id: 703,
+    order: 662,
+    number: 83,
+    pokedex: 471,
+    name: {
+      es: 'Glaceon EX',
+      en: 'Glaceon EX',
+      ja: 'グレイシア EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Nieve Fresca',
+        en: 'Fresh Snow Pokémon',
+        ja: 'しんせつポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '25.9',
+        en: '57.1',
+        ja: '25.9'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Viento Gélido',
+          en: 'Freezing Wind',
+          ja: 'フリーズウインド' 
+        },
+        damage: 90,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Campo Níveo',
+        en: 'Snowy Terrain',
+        ja: 'スノーフィールド'
+      },
+      description: {
+        es: 'Durante el Chequeo Pokémon, si este Pokémon está en el Puesto Activo, inflige 10 puntos de daño al Pokémon Activo de tu rival.',
+        en: 'During Pokémon Checkup, if this Pokémon is in the Active Spot, do 10 damage to your opponent\'s Active Pokémon.',
+        ja: 'このポケモンがバトル場にいるかぎり、ポケモンチェックのたび、相手のバトルポケモンに10ダメージ。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Controla a su antojo la temperatura corporal y congela las partículas de agua que flotan en el aire para provocar ráfagas de nieve en polvo.',
+      en: 'It can control its body temperature at will. This enables it to freeze the moisture in the atmosphere, creating flurries of diamond dust.',
+      ja: '体温を 自在に コントロールし 大気の 水分を 凍らせて ダイヤモンドダストを 巻き起こす。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: true,
+    condition: [
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [206, 207, 208, 347, 498, 248, 609]
+  },
+  {
+    id: 704,
+    order: 663,
+    number: 84,
+    pokedex: 445,
+    name: {
+      es: 'Garchomp EX',
+      en: 'Garchomp EX',
+      ja: 'ガブリアス EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mach',
+        en: 'Mach Pokémon',
+        ja: 'マッハポケモン'
+      },
+      height: {
+        es: '1.9',
+        en: '6\'3"',
+        ja: '1.9'
+      },
+      weight: {
+        es: '95.0',
+        en: '209.4',
+        ja: '95.0'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Ataque Lineal',
+          en: 'Linear Attack',
+          ja: 'ちょくげきだん' 
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.FIGHT],
+        description: {
+          es: 'Este ataque hace 50 puntos de daño a 1 de los Pokémon de tu rival.',
+          en: 'This attack does 50 damage to 1 of your opponent\'s Pokémon.',
+          ja: '相手のポケモン1匹に50ダメージ。'
+        }
+      },
+      {
+        name: {
+          es: 'Garra Dragón',
+          en: 'Dragon Claw',
+          ja: 'ドラゴンクロー' 
+        },
+        damage: 100,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Se dice que, cuando va a velocidad máxima sus alas crean cuchillas de viento que talan cualquier árbol.',
+      en: 'It is said that when one runs at high speed, its wings create blades of wind that can fell nearby trees.',
+      ja: 'こうそくで　かけぬけると　つばさは　くうきの　やいばを　うみだし　まわりのきは　せつだん　されている。' 
+    },
+    health: 170,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: true,
+    condition: [CardSpecialConditionENUM.ATTACK_BENCH],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [493, 494, 547]
+  },
+  {
+    id: 705,
+    order: 664,
+    number: 85,
+    pokedex: 476,
+    name: {
+      es: 'Probopass EX',
+      en: 'Probopass EX',
+      ja: 'ダイノーズ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Brújula',
+        en: 'Compass Pokémon',
+        ja: 'コンパスポケモン'
+      },
+      height: {
+        es: '1.4',
+        en: '4\'7"',
+        ja: '1.4'
+      },
+      weight: {
+        es: '340.0',
+        en: '749.6',
+        ja: '340.0'
+      }
+    },
+    artist: 'PLANETA Tsuji',
+    attacks: [
+      {
+        name: {
+          es: 'Unidad Protectora',
+          en: 'Defensive Unit',
+          ja: 'プロテクトユニット' 
+        },
+        damage: 90,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Durante el próximo turno de tu rival, los ataques hacen -20 puntos de daño a este Pokémon.',
+          en: 'During your opponent\'s next turn, this Pokémon takes −20 damage from attacks.',
+          ja: '次の相手の番、このポケモンが受けるワザのダメージを-20する。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Manipula unas pequeñas unidades conocidas como mininarices, aunque estas a veces se pierden y no saben cómo regresar a Probopass.',
+      en: 'Although it can control its units known as Mini-Noses, they sometimes get lost and don’t come back.',
+      ja: 'チビノーズと 呼ばれる ユニットを 操るが たまに 迷子に なって 帰ってこないことも あるらしい。' 
+    },
+    health: 160,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    condition: [
+      CardSpecialConditionENUM.RESIST,
+    ],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [458]
+  },
+  {
+    id: 706,
+    order: 665,
+    number: 86,
+    pokedex: 493,
+    name: {
+      es: 'Arceus EX',
+      en: 'Arceus EX',
+      ja: 'アルセウス EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Alfa',
+        en: 'Alpha Pokémon',
+        ja: 'そうぞうポケモン'
+      },
+      height: {
+        es: '3.2',
+        en: '10\'6"',
+        ja: '3.2'
+      },
+      weight: {
+        es: '320.0',
+        en: '705.5',
+        ja: '320.0'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Fuerza Definitiva',
+          en: 'Ultimate Force',
+          ja: 'アルティメットフォース' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este ataque hace 20 puntos de daño más por cada uno de tus Pokémon en Banca.',
+          en: 'This attack does 20 more damage for each of your Benched Pokémon.',
+          ja: '自分のベンチのポケモンの数×20ダメージ追加。'
+        }
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Lustre Mítico',
+        en: 'Fabled Luster',
+        ja: 'しんわのかがやき'
+      },
+      description: {
+        es: 'Este Pokémon no puede verse afectado por ninguna Condición Especial.',
+        en: 'This Pokémon can\'t be affected by any Special Conditions.',
+        ja: 'このポケモンは特殊状態にならない。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo.',
+      en: 'According to the legends of Sinnoh, this Pokémon emerged from an egg and shaped all there is in this world.',
+      ja: 'タマゴから 姿を 現して 世界の すべてを 生み出したと シンオウ神話に 語られている。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 707,
+    order: 666,
+    number: 87,
+    name: {
+      es: 'Nákara',
+      en: 'Irida',
+      ja: 'カイ' 
+    },
+    artist: 'Atsushi Furusawa',
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Cura 40 puntos de daño a cada uno de tus Pokémon que tenga alguna Energía Agua unida a él.',
+      en: 'Heal 40 damage from each of your Pokémon that has any Water Energy attached.',
+      ja: '水エネルギーがついている自分のポケモン全員のHPを40回復。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.HEAL],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+  },
+  {
+    id: 708,
+    order: 667,
+    number: 88,
+    name: {
+      es: 'Anciana del Pueblo Caelestis',
+      en: 'Celestic Town Elder',
+      ja: 'カンナギタウンの長老' 
+    },
+    artist: 'Yuu Nishida',
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Pon 1 Pokémon Básico aleatorio de tu pila de descartes en tu mano.',
+      en: 'Put 1 random Basic Pokémon from your discard pile into your hand.',
+      ja: '自分のトラッシュからたねポケモンをランダムに1枚、手札に加える。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.CALL],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+  },
+  {
+    id: 709,
+    order: 668,
+    number: 89,
+    name: {
+      es: 'Israel',
+      en: 'Barry',
+      ja: 'ジュン' 
+    },
+    artist: 'Hideki Ishikawa',
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Durante este turno, los ataques de tu Snorlax, tu Heracross o tu Staraptor cuestan 2 Energías Incolora menos.',
+      en: 'During this turn, attacks used by your Snorlax, Heracross, and Staraptor cost 2 less Colorless Energy.',
+      ja: 'この番、自分の「カビゴン」「ヘラクロス」「ムクホーク」がワザを使うためのエネルギーを、無色エネルギー2個ぶん少なくする。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.ADD],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+  },
+  {
+    id: 710,
+    order: 669,
+    number: 90,
+    name: {
+      es: 'Adamas',
+      en: 'Adaman',
+      ja: 'セキ' 
+    },
+    artist: 'akagi',
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Durante el próximo turno de tu rival, los ataques de los Pokémon de tu rival hacen -20 puntos de daño a todos tus Pokémon Metal.',
+      en: 'During your opponent\'s next turn, all of your Metal Pokémon take −20 damage from attacks from your opponent\'s Pokémon.',
+      ja: '次の相手の番、自分の鋼ポケモン全員が相手のポケモンから受けるワザのダメージを-20する。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.RESIST],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+  },
+  {
+    id: 711,
+    order: 670,
+    number: 91,
+    pokedex: 470,
+    name: {
+      es: 'Leafeon EX',
+      en: 'Leafeon EX',
+      ja: 'リーフィア EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Verdor',
+        en: 'Verdant Pokémon',
+        ja: 'しんりょくポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '25.5',
+        en: '56.2',
+        ja: '25.5'
+      }
+    },
+    artist: 'saino misaki',
+    attacks: [
+      {
+        name: {
+          es: 'Rayo Solar',
+          en: 'Solar Beam',
+          ja: 'ソーラービーム' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Aliento del Bosque',
+        en: 'Forest Breath',
+        ja: 'もりのいぶき'
+      },
+      description: {
+        es: 'Una vez durante tu turno, si este Pokémon está en el Puesto Activo, puedes unir 1 Energía Planta de tu área de Energía a uno de tus Pokémon Planta.',
+        en: 'Once during your turn, if this Pokémon is in the Active Spot, you may take a Grass Energy from your Energy Zone and attach it to 1 of your Grass Pokémon.',
+        ja: 'このポケモンがバトル場にいるなら、自分の番に1回使える。自分のエネルギーゾーンから草エネルギーを1個出し、草ポケモンにつける。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'En días soleados, duerme y hace la fotosíntesis, con la que emite aire puro a su alrededor.',
+      en: 'When you see Leafeon asleep in a patch of sunshine, you’ll know it is using photosynthesis to produce clean air.',
+      ja: '晴れた 日に 寝ている リーフィアは 光合成をして きれいな 空気を 作り出しているのだ。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    condition: [CardSpecialConditionENUM.ADD],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [206, 207, 208, 347, 498, 248, 609]
+  },
+  {
+    id: 712,
+    order: 671,
+    number: 92,
+    pokedex: 471,
+    name: {
+      es: 'Glaceon EX',
+      en: 'Glaceon EX',
+      ja: 'グレイシア EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Nieve Fresca',
+        en: 'Fresh Snow Pokémon',
+        ja: 'しんせつポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '25.9',
+        en: '57.1',
+        ja: '25.9'
+      }
+    },
+    artist: 'rika',
+    attacks: [
+      {
+        name: {
+          es: 'Viento Gélido',
+          en: 'Freezing Wind',
+          ja: 'フリーズウインド' 
+        },
+        damage: 90,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Campo Níveo',
+        en: 'Snowy Terrain',
+        ja: 'スノーフィールド'
+      },
+      description: {
+        es: 'Durante el Chequeo Pokémon, si este Pokémon está en el Puesto Activo, inflige 10 puntos de daño al Pokémon Activo de tu rival.',
+        en: 'During Pokémon Checkup, if this Pokémon is in the Active Spot, do 10 damage to your opponent\'s Active Pokémon.',
+        ja: 'このポケモンがバトル場にいるかぎり、ポケモンチェックのたび、相手のバトルポケモンに10ダメージ。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Controla a su antojo la temperatura corporal y congela las partículas de agua que flotan en el aire para provocar ráfagas de nieve en polvo.',
+      en: 'It can control its body temperature at will. This enables it to freeze the moisture in the atmosphere, creating flurries of diamond dust.',
+      ja: '体温を 自在に コントロールし 大気の 水分を 凍らせて ダイヤモンドダストを 巻き起こす。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.STEEL,
+    isEX: true,
+    condition: [
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: [206, 207, 208, 347, 498, 248, 609]
+  },
+  {
+    id: 713,
+    order: 672,
+    number: 93,
+    pokedex: 445,
+    name: {
+      es: 'Garchomp EX',
+      en: 'Garchomp EX',
+      ja: 'ガブリアス EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mach',
+        en: 'Mach Pokémon',
+        ja: 'マッハポケモン'
+      },
+      height: {
+        es: '1.9',
+        en: '6\'3"',
+        ja: '1.9'
+      },
+      weight: {
+        es: '95.0',
+        en: '209.4',
+        ja: '95.0'
+      }
+    },
+    artist: 'toriyufu',
+    attacks: [
+      {
+        name: {
+          es: 'Ataque Lineal',
+          en: 'Linear Attack',
+          ja: 'ちょくげきだん' 
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.FIGHT],
+        description: {
+          es: 'Este ataque hace 50 puntos de daño a 1 de los Pokémon de tu rival.',
+          en: 'This attack does 50 damage to 1 of your opponent\'s Pokémon.',
+          ja: '相手のポケモン1匹に50ダメージ。'
+        }
+      },
+      {
+        name: {
+          es: 'Garra Dragón',
+          en: 'Dragon Claw',
+          ja: 'ドラゴンクロー' 
+        },
+        damage: 100,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Se dice que, cuando va a velocidad máxima sus alas crean cuchillas de viento que talan cualquier árbol.',
+      en: 'It is said that when one runs at high speed, its wings create blades of wind that can fell nearby trees.',
+      ja: 'こうそくで　かけぬけると　つばさは　くうきの　やいばを　うみだし　まわりのきは　せつだん　されている。' 
+    },
+    health: 170,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: true,
+    condition: [CardSpecialConditionENUM.ATTACK_BENCH],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [493, 494, 547]
+  },
+  {
+    id: 714,
+    order: 673,
+    number: 94,
+    pokedex: 476,
+    name: {
+      es: 'Probopass EX',
+      en: 'Probopass EX',
+      ja: 'ダイノーズ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Brújula',
+        en: 'Compass Pokémon',
+        ja: 'コンパスポケモン'
+      },
+      height: {
+        es: '1.4',
+        en: '4\'7"',
+        ja: '1.4'
+      },
+      weight: {
+        es: '340.0',
+        en: '749.6',
+        ja: '340.0'
+      }
+    },
+    artist: 'Masa',
+    attacks: [
+      {
+        name: {
+          es: 'Unidad Protectora',
+          en: 'Defensive Unit',
+          ja: 'プロテクトユニット' 
+        },
+        damage: 90,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Durante el próximo turno de tu rival, los ataques hacen -20 puntos de daño a este Pokémon.',
+          en: 'During your opponent\'s next turn, this Pokémon takes −20 damage from attacks.',
+          ja: '次の相手の番、このポケモンが受けるワザのダメージを-20する。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Manipula unas pequeñas unidades conocidas como mininarices, aunque estas a veces se pierden y no saben cómo regresar a Probopass.',
+      en: 'Although it can control its units known as Mini-Noses, they sometimes get lost and don’t come back.',
+      ja: 'チビノーズと 呼ばれる ユニットを 操るが たまに 迷子に なって 帰ってこないことも あるらしい。' 
+    },
+    health: 160,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    condition: [
+      CardSpecialConditionENUM.RESIST,
+    ],
+    found: [
+      EXPANSION.ARCEUS,
+    ],
+    related: [458]
+  },
+  {
+    id: 715,
+    order: 674,
+    number: 95,
+    pokedex: 493,
+    name: {
+      es: 'Arceus EX',
+      en: 'Arceus EX',
+      ja: 'アルセウス EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Alfa',
+        en: 'Alpha Pokémon',
+        ja: 'そうぞうポケモン'
+      },
+      height: {
+        es: '3.2',
+        en: '10\'6"',
+        ja: '3.2'
+      },
+      weight: {
+        es: '320.0',
+        en: '705.5',
+        ja: '320.0'
+      }
+    },
+    artist: 'Takumi Wada',
+    attacks: [
+      {
+        name: {
+          es: 'Fuerza Definitiva',
+          en: 'Ultimate Force',
+          ja: 'アルティメットフォース' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este ataque hace 20 puntos de daño más por cada uno de tus Pokémon en Banca.',
+          en: 'This attack does 20 more damage for each of your Benched Pokémon.',
+          ja: '自分のベンチのポケモンの数×20ダメージ追加。'
+        }
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Lustre Mítico',
+        en: 'Fabled Luster',
+        ja: 'しんわのかがやき'
+      },
+      description: {
+        es: 'Este Pokémon no puede verse afectado por ninguna Condición Especial.',
+        en: 'This Pokémon can\'t be affected by any Special Conditions.',
+        ja: 'このポケモンは特殊状態にならない。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo.',
+      en: 'According to the legends of Sinnoh, this Pokémon emerged from an egg and shaped all there is in this world.',
+      ja: 'タマゴから 姿を 現して 世界の すべてを 生み出したと シンオウ神話に 語られている。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.INMERSIVE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 716,
+    order: 675,
+    number: 96,
+    pokedex: 493,
+    name: {
+      es: 'Arceus EX',
+      en: 'Arceus EX',
+      ja: 'アルセウス EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Alfa',
+        en: 'Alpha Pokémon',
+        ja: 'そうぞうポケモン'
+      },
+      height: {
+        es: '3.2',
+        en: '10\'6"',
+        ja: '3.2'
+      },
+      weight: {
+        es: '320.0',
+        en: '705.5',
+        ja: '320.0'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Fuerza Definitiva',
+          en: 'Ultimate Force',
+          ja: 'アルティメットフォース' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este ataque hace 20 puntos de daño más por cada uno de tus Pokémon en Banca.',
+          en: 'This attack does 20 more damage for each of your Benched Pokémon.',
+          ja: '自分のベンチのポケモンの数×20ダメージ追加。'
+        }
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Lustre Mítico',
+        en: 'Fabled Luster',
+        ja: 'しんわのかがやき'
+      },
+      description: {
+        es: 'Este Pokémon no puede verse afectado por ninguna Condición Especial.',
+        en: 'This Pokémon can\'t be affected by any Special Conditions.',
+        ja: 'このポケモンは特殊状態にならない。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.TRIUMPH_LIGHT,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Según la mitología de Sinnoh, Arceus surgió de un huevo y después creó todo el mundo.',
+      en: 'According to the legends of Sinnoh, this Pokémon emerged from an egg and shaped all there is in this world.',
+      ja: 'タマゴから 姿を 現して 世界の すべてを 生み出したと シンオウ神話に 語られている。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.CROWN,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    found: [
+      EXPANSION.ARCEUS
+    ],
+    related: []
+  },
+  {
+    id: 717,
+    order: 717,
+    number: 42,
+    pokedex: 491,
+    name: {
+      es: 'Darkrai EX',
+      en: 'Darkrai EX',
+      ja: 'ダークライ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Oscuridad',
+        en: 'Pitch-Black Pokémon',
+        ja: 'あんこくポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '50.5',
+        en: '111.3',
+        ja: '50.5'
+      }
+    },
+    artist: 'PLANETA Mochizuki',
+    attacks: [
+      {
+        name: {
+          es: 'Prisma Oscuro',
+          en: 'Dark Prism',
+          ja: 'ダークプリズム' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK, PokemonTypeENUM.NORMAL]
+      }
+    ],
+    ability: {
+      name: {
+          es: 'Aura Pesadilla',
+          en: 'Nightmare Aura',
+          ja: 'ナイトメアオーラ' 
+        },
+      description: {
+       es: 'Cada vez que unas una Energía Oscura de tu área de Energía a este Pokémon, haz 20 puntos de daño al Pokémon Activo de tu rival.',
+       en: 'Whenever you attach a Dark Energy from your Energy Zone to this Pokémon, do 20 damage to your opponent’s Active Pokémon.',
+       ja: '自分のエネルギーゾーンからこのポケモンに悪エネルギーをつけるたび、相手のバトルポケモンに20ダメージ。' 
+     }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2,
+    flavor: {
+      es: 'Defiende su territorio de personas y Pokémon haciéndoles dormir y provocándoles pesadillas.',
+      en: 'It chases people and Pokémon from its territory by causing them to experience deep, nightmarish slumbers.',
+      ja: '深い 眠りに 誘う 力で 人や ポケモンに 悪夢を 見せて 自分の 縄張りから 追い出す。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: true,
+    condition: [],
+    found: [
+      EXPANSION.PREMIUM,
+    ],
+    related: [559, 574]
+  },
+  {
+    id: 718,
+    order: 718,
+    number: 43,
+    pokedex: 421,
+    name: {
+      es: 'Cherrim',
+      en: 'Cherrim',
+      ja: 'チェリム' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Floración',
+        en: 'Blossom Pokémon',
+        ja: 'サクラポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '9.3',
+        en: '20.5',
+        ja: '9.3'
+      }
+    },
+    artist: 'MAHOU',
+    attacks: [
+      {
+        name: {
+          es: 'Drenadoras',
+          en: 'Leech Seed',
+          ja: 'やどりぎのタネ'
+        },
+        damage: 60,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Cura 20 puntos de daño a este Pokémon.',
+          en: 'Heal 20 damage from this Pokémon.',
+          ja: 'このポケモンのHPを20回復。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Adopta esta forma cuando lo bañan los rayos del sol. Siempre está rebosante de energía y se mantiene activo hasta el ocaso.',
+      en: 'After absorbing plenty of sunlight, Cherrim takes this form. It\'s full of energy while it\'s like this, and its liveliness will go on until sundown.',
+      ja: '太陽の 光を 浴びて 元気いっぱいの 姿。 日暮れまでは 活発だ。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.HEAL
+    ],
+    found: [
+      EXPANSION.PROMO_A5
+    ],
+    related: []
+  },
+  {
+    id: 719,
+    order: 719,
+    number: 44,
+    pokedex: 26,
+    name: {
+      es: 'Raichu',
+      en: 'Raichu',
+      ja: 'ライチュウ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '30.0',
+        en: '66.1',
+        ja: '30.0'
+      }
+    },
+    artist: 'Kazumasa Yasukuni',
+    attacks: [
+      {
+        name: {
+          es: 'Chispa',
+          en: 'Spark',
+          ja: 'スパーク' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.ELECTRIC],
+        description: {
+          es: 'Este ataque también hace 20 puntos de daño a 1 de los Pokémon en Banca de tu rival.',
+          en: "This attack also does 20 damage to 1 of your opponent\'s Benched Pokémon.",
+          ja: '相手のベンチポケモン1匹にも20ダメージ。'
+        }
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Vínculo Protector',
+        en: 'Resilience Link',
+        ja: 'ガードリンク'
+      },
+      description: {
+        es: 'Si tienes a Arceus o Arceus EX en juego, los ataques hacen -30 puntos de daño a este Pokémon.',
+        en: 'If you have Arceus or Arceus ex in play, this Pokémon takes −30 damage from attacks.',
+        ja: '自分の場に「アルセウス」または「アルセウスex」がいるなら、このポケモンが受けるワザのダメージを-30する。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Su cola actúa como toma de tierra y descarga electricidad al suelo, lo que le protege de los calambrazos.',
+      en: 'Its tail discharges electricity into the ground, protecting it from getting shocked.',
+      ja: '尻尾が　アースの　役目をはたして 電気を　地面に　逃がすので 自分自身は　しびれたりしない｡' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    condition: [
+      CardSpecialConditionENUM.RESIST,
+      CardSpecialConditionENUM.ARCEUS_LINK
+    ],
+    found: [
+      EXPANSION.PROMO_A5
+    ],
+    related: []
+  },
+  {
+    id: 720,
+    order: 720,
+    number: 45,
+    pokedex: 299,
+    name: {
+      es: 'Nosepass',
+      en: 'Nosepass',
+      ja: 'ノズパス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Brújula',
+        en: 'Compass Pokémon',
+        ja: 'コンパスポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '97.0',
+        en: '213.8',
+        ja: '97.0'
+      }
+    },
+    artist: 'Tomokazu Komiya',
+    attacks: [
+      {
+        name: {
+          es: 'Defensa Férrea',
+          en: 'Iron Defense',
+          ja: 'てっぺき' 
+        },
+        damage: 0,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, durante el próximo turno de tu rival, se evita todo el daño infligido a este Pokémon por ataques.',
+          en: 'Flip a coin. If heads, during your opponent\'s next turn, prevent all damage done to this Pokémon by attacks.',
+          ja: 'コインを1回投げオモテなら、次の相手の番、このポケモンはワザのダメージを受けない。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Solo se desplaza un centímetro al año, pero, si se siente amenazado, gira sobre si mismo y se hunde bajo tierra en un abrir y cerrar de ojos.',
+      en: 'It moves less than an inch a year, but when it\'s in a jam, it will spin and drill down into the ground in a split second.',
+      ja: '１年に １センチしか 動かないが ピンチに 陥ると 回転し 一瞬で 地中に 潜る。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 3,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.PROMO_A5
+    ],
+    related: []
+  },
+  {
+    id: 721,
+    order: 721,
+    number: 46,
+    pokedex: 443,
+    name: {
+      es: 'Gible',
+      en: 'Gible',
+      ja: 'フカマル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Terrascualo',
+        en: 'Land Shark Pokémon',
+        ja: 'りくザメポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '20.5',
+        en: '45.2',
+        ja: '20.5'
+      }
+    },
+    artist: 'Uninori',
+    attacks: [
+      {
+        name: {
+          es: 'Placaje',
+          en: 'Tackle',
+          ja: 'たいあたり' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.FIGHT],
+      }
+    ],
+    evolve: [666],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Permanece oculto en cuevas y, cuando pasa una presa, se abalanza sobre ella y la muerde con tanta fuerza que hasta se le rompen los dientes.',
+      en: 'It skulks in caves, and when prey or an enemy passes by, it leaps out and chomps them. The force of its attack sometimes chips its teeth.',
+      ja: '穴倉に 潜み 獲物や 敵が 横切ると 飛びだして 噛みつく。 勢い余り 歯が 欠けることも。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    condition: [],
+    found: [
+      EXPANSION.PROMO_A5
+    ],
+    related: []
+  },
+  {
+    id: 722,
+    order: 722,
+    number: 47,
+    pokedex: 398,
+    name: {
+      es: 'Staraptor',
+      en: 'Staraptor',
+      ja: 'ムクホーク' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Depredador',
+        en: 'Predator Pokémon',
+        ja: 'もうきんポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '24.9',
+        en: '54.9',
+        ja: '24.9'
+      }
+    },
+    artist: 'Hasuno',
+    attacks: [
+      {
+        name: {
+          es: 'Ataque Ala',
+          en: 'Wing Attack',
+          ja: 'つばさでうつ' 
+        },
+        damage: 140,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    ability: {
+      name: {
+        es: 'Ciclón Defensivo',
+        en: 'Defensive Whirlwind',
+        ja: 'せんぷうガード'
+      },
+      description: {
+        es: 'Los ataques de Pokémon Lucha hacen -30 puntos de daño a este Pokémon.',
+        en: 'This Pokémon takes −30 damage from attacks from Fighting Pokémon.',
+        ja: 'このポケモンが闘ポケモンから受けるワザのダメージを-30する。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Al evolucionar a Staraptor deja su bandada y pasa a vivir en soledad. Sus alas son inmensas.',
+      en: 'When Staravia evolve into Staraptor, they leave the flock to live alone. They have sturdy wings.',
+      ja: 'ムクホークになると 群れから 離れて １匹で 生きていく。 強靭な 翼を 持っている。' 
+    },
+    health: 150,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.RECOIL],
+    found: [
+      EXPANSION.PROMO_A5,
+    ],
+    related: [504, 505, 548]
+  },
+  {
+    id: 723,
+    order: 723,
+    number: 48,
+    pokedex: 490,
+    name: {
+      es: 'Manaphy',
+      en: 'Manaphy',
+      ja: 'マナフィ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Náutico',
+        en: 'Seafaring Pokémon',
+        ja: 'かいゆうポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '1.4',
+        en: '3.1',
+        ja: '1.4'
+      }
+    },
+    artist: 'sui',
+    attacks: [
+      {
+        name: {
+          es: 'Regalo Oceánico',
+          en: 'Oceanic Gift',
+          ja: 'うみのおくりもの' 
+        },
+        damage: 0,
+        energy: [PokemonTypeENUM.WATER],
+        description: {
+          es: 'Elige 2 de tus Pokémon en Banca. Para cada uno de ellos, une 1 Energía Agua de tu área de Energía a ese Pokémon.',
+          en: 'Choose 2 of your Benched Pokémon. For each of those Pokémon, take a Water Energy from your Energy Zone and attach it to that Pokémon.',
+          ja: '自分のベンチポケモンを2匹選び、エネルギーゾーンから水エネルギーを出し、1個ずつつける。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'Nace con un maravilloso poder que le permite establecer vínculos con cualquier tipo de Pokémon.',
+      en: 'It is born with a wondrous power that lets it bond with any kind of Pokémon.',
+      ja: '生まれたときから 備わっている 不思議な 力を 使うと どんな ポケモンとも 心が 通い合う。' 
+    },
+    health: 50,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.ADD],
+    found: [
+      EXPANSION.WONDER_PICK
+    ],
+    related: [534],
+    extra: {
+      es: 'Elección Mágica',
+      en: 'Wonder Pick',
+      ja: 'ワンダーピック' 
+    },
+  },
+  {
+    id: 724,
+    order: 724,
+    number: 49,
+    pokedex: 143,
+    name: {
+      es: 'Snorlax',
+      en: 'Snorlax',
+      ja: 'カビゴン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Dormir',
+        en: 'Sleeping Pokémon',
+        ja: 'いねむりポケモン'
+      },
+      height: {
+        es: '2.1',
+        en: '6\'11"',
+        ja: '2.1'
+      },
+      weight: {
+        es: '460.0',
+        en: '1014.1',
+        ja: '460.0'
+      }
+    },
+    artist: 'okayamatakatoshi',
+    attacks: [
+      {
+        name: {
+          es: 'Colapso',
+          en: 'Collapse',
+          ja: 'たおれこむ' 
+        },
+        damage: 100,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este Pokémon pasa a estar Dormido.',
+          en: 'This Pokémon is now Asleep.',
+          ja: 'このポケモンをねむりにする。'
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2A,
+    flavor: {
+      es: 'No se encuentra satisfecho hasta haber ingerido 400 kg de comida cada día. Cuando acaba de comer, se queda dormido.',
+      en: 'It is not satisfied unless it eats over 880 pounds of food every day. When it is done eating, it goes promptly to sleep.',
+      ja: '１日に　食べ物を　４００キロ 食べないと　気がすまない｡ 食べ終わると　眠ってしまう｡' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 4,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    condition: [CardSpecialConditionENUM.SLEEP],
+    found: [
+      EXPANSION.WONDER_PICK,
+    ],
+    related: [250],
+    extra: {
+      es: 'Elección Mágica',
+      en: 'Wonder Pick',
+      ja: 'ワンダーピック' 
+    },
+  },
 ];
 
 export default MOCK_DB_CARDS;

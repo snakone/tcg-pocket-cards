@@ -252,8 +252,9 @@ export const CONDITION_MAP: Record<CardSpecialConditionENUM, {label: string}> = 
   [CardSpecialConditionENUM.RETIRE]: { label: 'condition_retire' },
   [CardSpecialConditionENUM.CALL]: { label: 'condition_call' },
   [CardSpecialConditionENUM.INACTIVE]: { label: 'condition_inactive' },
-  [CardSpecialConditionENUM.FORCE_SWITCH]: { label: 'force_switch' },
-  [CardSpecialConditionENUM.ARCEUS_LINK]: { label: 'condition_arceus' }
+  [CardSpecialConditionENUM.FORCE_SWITCH]: { label: 'condition_force_switch' },
+  [CardSpecialConditionENUM.ARCEUS_LINK]: { label: 'condition_arceus' },
+  [CardSpecialConditionENUM.PLAY_CARDS]: { label: 'condition_play_cards' }
 }
 
 export const CONDITION_ATTACK = [
@@ -282,7 +283,8 @@ export const CONDITION_OTHERS = [
   CardSpecialConditionENUM.RETIRE,
   CardSpecialConditionENUM.CALL,
   CardSpecialConditionENUM.INACTIVE,
-  CardSpecialConditionENUM.FORCE_SWITCH
+  CardSpecialConditionENUM.FORCE_SWITCH,
+  CardSpecialConditionENUM.PLAY_CARDS
 ];
 
 export const CONDITION_LINKS = [
@@ -317,6 +319,7 @@ export const PACK_MAP: Record<EXPANSION, any> = {
   [EXPANSION.PALKIA]: SMACK_DOWN_PALKIA_ICON,
   [EXPANSION.PROMO_A4]: PROMO_A_ICON,
   [EXPANSION.ARCEUS]: TRIUMPH_LIGHT_ARCEUS_ICON,
+  [EXPANSION.PROMO_A5]: PROMO_A_ICON,
 }
 
 export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {

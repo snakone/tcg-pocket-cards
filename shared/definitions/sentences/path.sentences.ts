@@ -38,6 +38,12 @@ export const GRID_OPTION = require('@/assets/images/grid/filter_open.png');
 export const GRID_SORT = require('@/assets/images/grid/sort_open.png');
 export const GRID_SORT_ICON = require('@/assets/images/grid/sort_icon.png');
 
+export const ATTACK_SEARCH = require('@/assets/images/attacks/attack_search.png');
+export const ATTACK_FILTER = require('@/assets/images/attacks/filter_icon.png');
+export const ATTACK_OPTION = require('@/assets/images/attacks/filter_open.png');
+export const ATTACK_SORT = require('@/assets/images/attacks/sort_open.png');
+export const ATTACK_SORT_ICON = require('@/assets/images/attacks/sort_icon.png');
+
 export const CREATE_ADD_NEW = require('@/assets/images/creation/add_new.png');
 export const CREATE_HOME_NEW = require('@/assets/images/creation/create_new.png');
 export const CREATE_SELECT_ENERGY = require('@/assets/images/creation/select_energy.png');
@@ -84,6 +90,7 @@ export const PROMO_A1 = require('@/assets/images/packs/promoA1.png');
 export const PROMO_A2 = require('@/assets/images/packs/promoA2.png');
 export const PROMO_A3 = require('@/assets/images/packs/promoA3.png');
 export const PROMO_A4 = require('@/assets/images/packs/promoA4.png');
+export const PROMO_A5 = require('@/assets/images/packs/promoA5.png');
 
 // PACKS
 export const GENETIC_APEX = require('@/assets/images/packs/geneticapex.png');
@@ -207,6 +214,7 @@ export const SMACK_DOWN_PACKS = [
 
 export const TRIUMPH_LIGHT_PACKS = [
   ARCEUS_ICON,
+  PROMO_A5
 ];
 
 export const ALL_PACKS = [

@@ -215,7 +215,7 @@ export default function AttacksScreen() {
 
   return (
     <>
-      <ParallaxScrollView title={"attacks"} 
+      <ParallaxScrollView title={"attack_list"} 
                           modalTitle='attacks'
                           modalContent={AttacksScreenModal()}
                           modalHeight={BACKUP_HEIGHT}>
