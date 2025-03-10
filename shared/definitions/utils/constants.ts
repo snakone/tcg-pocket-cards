@@ -144,7 +144,7 @@ export const HELP: ItemWithRoute[] = [
 ];
 
 export const SORT_FIELD_MAP: Record<string, keyof Card | 'height' | 'weight' | keyof Attack | 'number_energy'> = {
-  order_by_id: 'id',
+  order_by_id: 'order',
   order_by_element: 'element',
   order_by_rarity: 'rarity',
   order_by_pokedex: 'pokedex',

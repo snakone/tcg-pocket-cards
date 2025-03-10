@@ -157,7 +157,9 @@ export default function ShareScreen() {
               }
               renderSectionHeader={({section}) => (
               <ThemedView style={[styles.sectionHeader, Platform.OS !== 'web' && {marginInline: 0}]}>
-                <ThemedText type='subtitle' style={styles.title}>{section.title}</ThemedText>
+                <ThemedText style={{fontSize: 16,
+                                    fontWeight: 'bold',}}>{section.title}
+                </ThemedText>
                 <ThemedText style={{marginBottom: 0, fontWeight: 'bold', color: 'black'}}>
                   {
                     section.key === 'decks' ? `${filtered.length}/${decks.length}` :

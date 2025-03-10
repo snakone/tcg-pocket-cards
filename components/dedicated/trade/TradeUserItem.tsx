@@ -17,10 +17,11 @@ interface TradeUserItemProps {
   item: TradeItem,
   rarity: CardRarityENUM | undefined,
   styles?: any,
-  state: AppState
+  state: AppState,
+  fullHeight?: boolean
 }
 
-export default function TradeUserItem({item, rarity, styles, state}: TradeUserItemProps) {
+export default function TradeUserItem({item, rarity, styles, state, fullHeight}: TradeUserItemProps) {
   const {i18n} = useI18n();
 
   if (!item) { return; }
@@ -28,11 +29,11 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
   return (
     <ThemedView style={[tradeItemStyles.item, styles, {
       borderColor: !item?.valid ? 'goldenrod' : 'transparent', 
-      borderWidth: !item.valid  ? 1 : 0, 
-    }]}>
+      borderWidth: !item.valid  ? 1 : 0,
+    }, fullHeight && {minHeight: 152}]}>
       <ThemedView style={{flex: 1, height: 52}}>
         <ThemedText style={{marginBottom: 8, color: 'none'}}>{item?.title || i18n.t('trade') + ' ' + (item.id)}</ThemedText>
-        <ThemedView style={tradeItemStyles.container}>
+        <ThemedView style={[tradeItemStyles.container, fullHeight && {height: 96}]}>
           <ThemedView style={{width: '38%'}}>
             {
               item.desired.map((item, i) => (
@@ -60,7 +61,10 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
           </ThemedView>
           <ThemedView style={[{width: '25%', top: 4}, Platform.OS !== 'web' && {left: 15}]}>
             {
-              SvgTradePassSymbol(Platform.OS !== 'web' ? {width: 45} : {})
+              SvgTradePassSymbol(Platform.OS !== 'web' ? !fullHeight ? 
+                                  {width: 45, height: 52, transform: [{scale: 0.6}]} : 
+                                    {width: 45, transform: [{scale: 0.8}]} : 
+                                      fullHeight ? {transform: [{scale: 0.8}]} : {})
             }
           </ThemedView>
           <ThemedView style={{width: '38%', borderBottomLeftRadius: 4}}>
@@ -107,7 +111,7 @@ const tradeItemStyles = StyleSheet.create({
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 4px 6px', 
     borderRadius: 8,
     marginBottom: 40,
-    minHeight: 122,
+    minHeight: 124,
     width: '100%',
     backgroundColor: 'white'
   },
@@ -121,7 +125,7 @@ const tradeItemStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgb(241 241 241)',
-    left: Platform.OS !== 'web' ? '41.5%' : '39%',
+    left: Platform.OS !== 'web' ? '43.3%' : '39.5%',
     flexDirection: 'row',
     gap: 6,
     opacity: 0.9

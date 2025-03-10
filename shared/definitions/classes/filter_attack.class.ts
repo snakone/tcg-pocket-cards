@@ -32,7 +32,7 @@ export class FilterAttackSearch {
         }
         return Object.values(obj).every(value => isAllNull(value));
       }
-      return obj === null;
+      return obj === null || obj === false;
     };
 
     return Object.values(this).every(isAllNull);

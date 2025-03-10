@@ -84,7 +84,7 @@ export default function TabLayout() {
     distanceFromBottom.value = isAnyModalVisible() ? 
                                 withTiming(0, { duration: 150 }) : 
                                 withTiming(FILTER_CARDS_HEIGHT, { duration: 0 });
-  }, [isSortVisible, isFilterVisible, isAvatarVisible, isCoinVisible, isBestVisible]);
+  }, [isSortVisible, isAvatarVisible, isCoinVisible]);
 
   const memoizedSort = useMemo(() => {
     return <SortCardMenu isVisible={isSortVisible} 
@@ -100,7 +100,7 @@ export default function TabLayout() {
 
   const memoizedAttackSort = useMemo(() => {
     return <SortAttackMenu isVisible={isAttackSortVisible} 
-                           animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
+                           animatedStyle={{}} 
                            onClose={onClose}/>
   }, [isAttackSortVisible]);
 

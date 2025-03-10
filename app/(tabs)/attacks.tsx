@@ -110,7 +110,7 @@ export default function AttacksScreen() {
     if (!filtered || filtered.length === 0) { return; }
     if(state.modalState.sort_attack_opened) { return; }
 
-    const sorted = filterOrSortCards('sort', filtered, lang, state.filterState.attack_sort.find(s => s.active));
+    const sorted = filterOrSortAttacks('sort', filtered, lang, state.filterState.attack_sort.find(s => s.active));
     setFiltered(sorted);
     setTimeout(() => goUp(null, false), 100);
   }, [state.modalState.sort_attack_opened, lang]);
@@ -119,14 +119,14 @@ export default function AttacksScreen() {
     if (!filtered) { return; }
     if(state.modalState.filter_attack_opened) { return; }
   
-    const filterCards = filterOrSortCards('filter', attacks, lang);
-    const sorted = filterOrSortCards('sort', filterCards, lang, state.filterState.attack_sort.find(s => s.active));
+    const filterCards = filterOrSortAttacks('filter', attacks, lang);
+    const sorted = filterOrSortAttacks('sort', filterCards, lang, state.filterState.attack_sort.find(s => s.active));
 
     setFiltered(sorted);
     setTimeout(() => goUp(null, false), 100);
   }, [state.modalState.filter_attack_opened, attacks]);
 
-  function filterOrSortCards(
+  function filterOrSortAttacks(
     type: 'sort' | 'filter', 
     data: Attack[], 
     lang: LanguageType,
@@ -178,8 +178,8 @@ export default function AttacksScreen() {
   }, [sort]);
 
   const getFilterOrderIcon = useCallback(() => {
-    return state.filterState.filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
-  }, [state.filterState.filter]);
+    return state.filterState.attack_filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
+  }, [state.filterState.attack_filter]);
 
   async function goUp(_: GestureResponderEvent | null, sound = true): Promise<void> {
     if (sound) SoundService.play('PICK_CARD_SOUND');

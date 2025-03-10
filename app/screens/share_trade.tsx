@@ -143,7 +143,11 @@ export default function ShareTradeScreen() {
           }
         </ThemedView>
         {
-          trade && <TradeUserItem item={trade} rarity={rarity} styles={styles.tradeItem} state={state}/>
+          trade && <TradeUserItem item={trade} 
+                                  rarity={rarity} 
+                                  styles={styles.tradeItem} 
+                                  state={state}
+                                  fullHeight={true}/>
         }
         <ScrollView showsVerticalScrollIndicator={false} style={{paddingHorizontal: 14, marginLeft: -14, marginRight: -14}}>
           <ThemedView style={styles.options}>
