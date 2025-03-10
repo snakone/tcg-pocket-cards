@@ -105,7 +105,7 @@ import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { AvatarIcon } from "../interfaces/global.interfaces";
 import { FilterAttackSearch } from "../classes/filter_attack.class";
 
-export const APP_VERSION = '1.2.3';
+export const APP_VERSION = '1.3.0';
 export const MENU_WIDTH = 250;
 export const MENU_HEIGHT = 495;
 export const MENU_HEIGHT_ANDROID = 450;

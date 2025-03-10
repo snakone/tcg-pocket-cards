@@ -2884,7 +2884,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD
     ],
-    related: [206, 207, 208, 347, 498, 248, 609]
+    related: [206, 207, 208, 347, 498, 682, 248, 609]
   },
   {
     id: 46,
@@ -5111,7 +5111,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU
     ],
-    related: [206, 207, 208, 305, 347, 498, 248, 358, 609]
+    related: [206, 207, 208, 305, 347, 498, 682, 248, 358, 609]
   },
   {
     id: 81,
@@ -6003,7 +6003,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    related: [95, 311, 312, 605, 594, 588]
+    related: [95, 311, 312, 645, 646, 605, 594, 588, 719]
   },
   {
     id: 95,
@@ -6068,7 +6068,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    related: [94, 311, 312, 605, 594, 588]
+    related: [94, 311, 312, 645, 646, 605, 594, 588, 719]
   },
   {
     id: 96,
@@ -6193,7 +6193,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    related: [98, 423, 424, 425, 603]
+    related: [98, 423, 424, 425, 673, 674, 675, 700, 603]
   },
   {
     id: 98,
@@ -6265,7 +6265,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    related: [97, 423, 424, 425, 603]
+    related: [97, 423, 424, 425, 673, 674, 675, 700, 603]
   },
   {
     id: 99,
@@ -6521,7 +6521,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    related: [206, 207, 208, 347, 498, 248, 609]
+    related: [206, 207, 208, 347, 498, 682, 248, 609]
   },
   {
     id: 103,
@@ -7243,7 +7243,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    related: [114, 595]
+    related: [114, 649, 650, 595]
   },
   {
     id: 114,
@@ -7303,7 +7303,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    related: [113, 595]
+    related: [113, 649, 650, 595]
   },
   {
     id: 115,
@@ -10959,7 +10959,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    related: [173, 242]
+    related: [173, 668, 669, 670, 242]
   },
   {
     id: 173,
@@ -11019,7 +11019,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    related: [172, 242]
+    related: [172, 668, 669, 670, 242]
   },
   {
     id: 174,
@@ -11349,6 +11349,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: [676]
   },
   {
     id: 179,
@@ -13121,7 +13122,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.CHARIZARD,
     ],
-    related: [45, 80, 102, 207, 208, 305, 347, 392, 418, 498, 248, 358, 609]
+    related: [45, 80, 102, 207, 208, 305, 347, 392, 418, 498, 630, 642, 682, 248, 358, 702, 711, 703, 712, 609]
   },
   {
     id: 207,
@@ -13181,7 +13182,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    related: [45, 80, 102, 206, 208, 305, 347, 392, 418, 498, 248, 358, 609]
+    related: [45, 80, 102, 206, 208, 305, 347, 392, 418, 498, 630, 642, 682, 248, 358, 702, 711, 703, 712, 609]
   },
   {
     id: 208,
@@ -13241,7 +13242,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    related: [45, 80, 102, 206, 207, 305, 347, 392, 418, 498, 248, 358, 609]
+    related: [45, 80, 102, 206, 207, 305, 347, 392, 418, 498, 630, 642, 682, 248, 358, 702, 711, 703, 712, 609]
   },
   {
     id: 209,
@@ -13441,7 +13442,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    related: [250]
+    related: [683, 250, 724]
   },
   {
     id: 212,
@@ -15040,7 +15041,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MEWTWO,
     ],
-    related: [172, 173]
+    related: [172, 173, 668, 669, 670]
   },
   {
     id: 243,
@@ -15441,7 +15442,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    related: [45, 80, 102, 206, 207, 208, 305, 347, 392, 418, 498, 358, 609]
+    related: [45, 80, 102, 206, 207, 208, 305, 347, 392, 418, 498, 630, 642, 682, 358, 702, 711, 703, 712, 609]
   },
   {
     id: 249,
@@ -15573,7 +15574,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PIKACHU,
     ],
-    related: [211]
+    related: [211, 683, 724]
   },
   {
     id: 251,
@@ -19038,7 +19039,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [80, 206, 207, 208, 347, 498, 248, 358, 609]
+    related: [80, 206, 207, 208, 347, 498, 682, 248, 358, 609]
   },
   {
     id: 306,
@@ -19424,7 +19425,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [94, 95, 312, 605, 594, 588]
+    related: [94, 95, 312, 645, 646, 605, 594, 588, 719]
   },
   {
     id: 312,
@@ -19489,7 +19490,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [94, 95, 311, 605, 594, 588]
+    related: [94, 95, 311, 645, 646, 605, 594, 588, 719]
   },
   {
     id: 313,
@@ -21731,7 +21732,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [45, 80, 102, 206, 207, 208, 305, 392, 418, 498, 248, 358, 609]
+    related: [45, 80, 102, 206, 207, 208, 305, 392, 418, 498, 630, 642, 682, 248, 358, 702, 711, 703, 712, 609]
   },
   {
     id: 348,
@@ -22263,7 +22264,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.MYTHICAL_ISLAND
     ],
-    related: [80, 206, 207, 208, 305, 347, 498, 248, 609]
+    related: [80, 206, 207, 208, 305, 347, 498, 682, 248, 609]
   },
   {
     id: 359,
@@ -24319,7 +24320,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [530]
+    related: [629, 530]
   },
   {
     id: 392,
@@ -24384,7 +24385,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: [206, 207, 208, 347, 498, 248, 609]
+    related: [206, 207, 208, 347, 498, 682, 248, 609]
   },
   {
     id: 393,
@@ -24525,7 +24526,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: [531]
+    related: [689, 531, 701]
   },
   {
     id: 395,
@@ -25950,7 +25951,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [417]
+    related: [417, 640, 641]
   },
   {
     id: 417,
@@ -26011,7 +26012,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [416]
+    related: [416, 640, 641]
   },
   {
     id: 418,
@@ -26079,7 +26080,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [206, 207, 208, 347, 498, 248, 609]
+    related: [206, 207, 208, 347, 498, 682, 248, 609]
   },
   {
     id: 419,
@@ -26348,7 +26349,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [534]
+    related: [534, 723]
   },
   {
     id: 423,
@@ -26409,7 +26410,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [97, 98, 424, 425, 603]
+    related: [97, 98, 424, 425, 673, 674, 675, 700, 603]
   },
   {
     id: 424,
@@ -26470,7 +26471,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [97, 98, 423, 425, 603]
+    related: [97, 98, 423, 425, 673, 674, 675, 700, 603]
   },
   {
     id: 425,
@@ -26536,7 +26537,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [97, 98, 423, 424, 603]
+    related: [97, 98, 423, 424, 673, 674, 675, 700, 603]
   },
   {
     id: 426,
@@ -27119,7 +27120,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [536]
+    related: [655, 536]
   },
   {
     id: 435,
@@ -28144,7 +28145,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [539]
+    related: [681, 539]
   },
   {
     id: 451,
@@ -28643,7 +28644,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [490]
+    related: [490, 662, 677, 705, 714, 720]
   },
   {
     id: 459,
@@ -29987,7 +29988,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [480, 545]
+    related: [480, 671, 672, 545]
   },
   {
     id: 480,
@@ -30055,7 +30056,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: [479, 545]
+    related: [479, 671, 672, 545]
   },
   {
     id: 481,
@@ -30192,7 +30193,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [559, 574]
+    related: [559, 574, 717]
   },
   {
     id: 483,
@@ -30579,7 +30580,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: [489]
+    related: [489, 678, 679]
   },
   {
     id: 489,
@@ -30644,7 +30645,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: [488]
+    related: [488, 678, 679]
   },
   {
     id: 490,
@@ -30713,7 +30714,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
     ],
-    related: [458]
+    related: [458, 662, 720]
   },
   {
     id: 491,
@@ -30852,7 +30853,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [546]
+    related: [633, 546]
   },
   {
     id: 493,
@@ -30912,7 +30913,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: [494, 495, 547]
+    related: [494, 495, 665, 666, 667, 547, 704, 713, 721]
   },
   {
     id: 494,
@@ -30972,7 +30973,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: [493, 495, 547]
+    related: [493, 495, 665, 666, 667, 547, 704, 713, 721]
   },
   {
     id: 495,
@@ -31044,7 +31045,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: [493, 494, 547]
+    related: [494, 495, 665, 666, 547, 721]
   },
   {
     id: 496,
@@ -31241,7 +31242,7 @@ export const MOCK_DB_CARDS: Card[] = [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA,
     ],
-    related: [45, 80, 102, 206, 207, 208, 305, 347, 392, 418, 248, 358, 609]
+    related: [45, 80, 102, 206, 207, 208, 305, 347, 392, 418, 630, 642, 682, 248, 358, 702, 711, 703, 712, 609]
   },
   {
     id: 499,
@@ -31621,7 +31622,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: [505, 506, 548]
+    related: [505, 506, 686, 687, 688, 548, 722]
   },
   {
     id: 505,
@@ -31681,7 +31682,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: [504, 506, 548]
+    related: [504, 506, 686, 687, 688, 548, 722]
   },
   {
     id: 506,
@@ -31746,7 +31747,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: [504, 505, 548]
+    related: [504, 505, 686, 687, 688, 548, 722]
   },
   {
     id: 507,
@@ -32900,7 +32901,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [391]
+    related: [391, 629]
   },
   {
     id: 531,
@@ -32972,7 +32973,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA
     ],
-    related: [394]
+    related: [394, 689, 701]
   },
   {
     id: 532,
@@ -33174,7 +33175,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [422]
+    related: [422, 723]
   },
   {
     id: 535,
@@ -33307,7 +33308,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [434]
+    related: [434, 655]
   },
   {
     id: 537,
@@ -33509,7 +33510,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA
     ],
-    related: [450]
+    related: [450, 681]
   },
   {
     id: 540,
@@ -33904,7 +33905,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [479, 480]
+    related: [479, 480, 671, 672]
   },
   {
     id: 546,
@@ -33969,7 +33970,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [492]
+    related: [492, 633]
   },
   {
     id: 547,
@@ -34106,7 +34107,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PALKIA,
     ],
-    related: [504, 505, 506]
+    related: [504, 505, 506, 686, 687, 688, 722]
   },
   {
     id: 549,
@@ -34843,7 +34844,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [482, 574]
+    related: [482, 574, 717]
   },
   {
     id: 560,
@@ -35635,7 +35636,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.DIALGA,
     ],
-    related: [482, 559]
+    related: [482, 559, 717]
   },
   {
     id: 575,
@@ -36328,7 +36329,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Premium Pass',
       ja: 'プレミアムパス' 
     },
-    related: [94, 95, 311, 312, 605, 594]
+    related: [94, 95, 311, 312, 645, 646, 605, 594, 719]
   },
   {
     id: 589,
@@ -36744,7 +36745,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Promo Pack',
       ja: '昇進' 
     },
-    related: [94, 95, 311, 312, 605, 588]
+    related: [94, 95, 311, 312, 645, 646, 605, 588, 719]
   },
   {
     id: 595,
@@ -36809,7 +36810,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Promo Pack',
       ja: '昇進' 
     },
-    related: [113, 114]
+    related: [113, 114, 649, 650]
   },
   {
     id: 596,
@@ -37364,7 +37365,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Wonder Pick',
       ja: 'ワンダーピック' 
     },
-    related: [97, 98, 423, 424, 425]
+    related: [97, 98, 423, 424, 425, 673, 674, 675, 700]
   },
   {
     id: 604,
@@ -37511,7 +37512,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Special Event',
       ja: '特別イベント' 
     },
-    related: [94, 95, 311, 312, 594, 588]
+    related: [94, 95, 311, 312, 645, 646, 594, 588, 719]
   },
   {
     id: 606,
@@ -37788,7 +37789,7 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Promo Pack',
       ja: '昇進' 
     },
-    related: [45, 80, 102, 206, 207, 208, 305, 347, 392, 418, 498, 248, 358]
+    related: [45, 80, 102, 206, 207, 208, 305, 347, 392, 418, 498, 630, 642, 682, 248, 358, 702, 711, 703, 712]
   },
   {
     id: 610,
@@ -38921,7 +38922,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [627, 628, 718]
   },
   {
     id: 627,
@@ -38988,7 +38989,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [626, 628, 718]
   },
   {
     id: 628,
@@ -39055,7 +39056,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [626, 627, 718]
   },
   {
     id: 629,
@@ -39130,7 +39131,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [530]
+    related: [391, 530]
   },
   {
     id: 630,
@@ -39202,7 +39203,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [206, 207, 208, 347, 498, 248, 609]
+    related: [206, 207, 208, 347, 498, 682, 248, 702, 711, 609]
   },
   {
     id: 631,
@@ -39262,7 +39263,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [632, 696]
   },
   {
     id: 632,
@@ -39329,7 +39330,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [631, 696]
   },
   {
     id: 633,
@@ -39409,7 +39410,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [546]
+    related: [492, 546]
   },
   {
     id: 634,
@@ -39469,7 +39470,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: []
+    related: [635, 697]
   },
   {
     id: 635,
@@ -39529,7 +39530,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: []
+    related: [634, 697]
   },
   {
     id: 636,
@@ -39589,7 +39590,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: []
+    related: [637]
   },
   {
     id: 637,
@@ -39658,7 +39659,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: []
+    related: [636]
   },
   {
     id: 638,
@@ -39718,7 +39719,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: []
+    related: [639]
   },
   {
     id: 639,
@@ -39785,7 +39786,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: []
+    related: [638]
   },
   {
     id: 640,
@@ -39845,7 +39846,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: []
+    related: [416, 417, 641]
   },
   {
     id: 641,
@@ -39917,7 +39918,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: []
+    related: [416, 417, 640]
   },
   {
     id: 642,
@@ -39991,7 +39992,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [206, 207, 208, 347, 498, 248, 609]
+    related: [206, 207, 208, 347, 498, 682, 248, 703, 712, 609]
   },
   {
     id: 643,
@@ -40193,7 +40194,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [94, 95, 311, 312, 646, 605, 594, 588, 719]
   },
   {
     id: 646,
@@ -40273,7 +40274,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [94, 95, 311, 312, 645, 605, 594, 588, 719]
   },
   {
     id: 647,
@@ -40333,7 +40334,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [648]
   },
   {
     id: 648,
@@ -40400,7 +40401,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [647]
   },
   {
     id: 649,
@@ -40460,7 +40461,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [114, 595]
+    related: [113, 114, 650, 595]
   },
   {
     id: 650,
@@ -40525,7 +40526,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [113, 595]
+    related: [113, 114, 649, 595]
   },
   {
     id: 651,
@@ -40593,7 +40594,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [121, 122, 123, 261, 277, 599]
+    related: [120, 121, 122, 123, 652, 653, 261, 277, 599]
   },
   {
     id: 652,
@@ -40653,7 +40654,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [120, 122, 123, 261, 277, 599]
+    related: [120, 121, 122, 123, 651, 653, 261, 277, 599]
   },
   {
     id: 653,
@@ -40720,7 +40721,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [120, 121, 599]
+    related: [120, 121, 122, 651, 652, 599]
   },
   {
     id: 654,
@@ -40794,7 +40795,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: []
+    related: [698]
   },
   {
     id: 655,
@@ -40875,7 +40876,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [536]
+    related: [434, 536]
   },
   {
     id: 656,
@@ -40942,7 +40943,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [699]
   },
   {
     id: 657,
@@ -41002,7 +41003,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [658]
   },
   {
     id: 658,
@@ -41069,7 +41070,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [657]
   },
   {
     id: 659,
@@ -41129,7 +41130,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [660, 661]
   },
   {
     id: 660,
@@ -41189,7 +41190,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [659, 661]
   },
   {
     id: 661,
@@ -41264,7 +41265,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [659, 660]
   },
   {
     id: 662,
@@ -41324,7 +41325,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [458, 490, 677, 705, 714, 720]
   },
   {
     id: 663,
@@ -41384,7 +41385,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [664]
   },
   {
     id: 664,
@@ -41452,7 +41453,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [663]
   },
   {
     id: 665,
@@ -41512,7 +41513,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [493, 494, 495, 666, 667, 547, 704, 713, 721]
   },
   {
     id: 666,
@@ -41572,7 +41573,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [493, 494, 495, 665, 667, 547, 704, 713, 721]
   },
   {
     id: 667,
@@ -41646,7 +41647,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [493, 494, 547]
+    related: [493, 494, 665, 666, 704, 713, 721]
   },
   {
     id: 668,
@@ -41706,7 +41707,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [173, 242]
+    related: [173, 668, 669, 670, 242]
   },
   {
     id: 669,
@@ -41766,7 +41767,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [172, 242]
+    related: [172, 173, 668, 670, 242]
   },
   {
     id: 670,
@@ -41842,7 +41843,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [172, 242]
+    related: [172, 173, 668, 669, 242]
   },
   {
     id: 671,
@@ -41902,7 +41903,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [480, 545]
+    related: [479, 480, 672, 545]
   },
   {
     id: 672,
@@ -41969,7 +41970,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [479, 545]
+    related: [479, 480, 671, 545]
   },
   {
     id: 673,
@@ -42029,7 +42030,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [98, 423, 424, 425, 603]
+    related: [97, 98, 423, 424, 425, 674, 675, 700, 603]
   },
   {
     id: 674,
@@ -42089,7 +42090,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [97, 423, 424, 425, 603]
+    related: [97, 98, 423, 424, 425, 673, 675, 700, 603]
   },
   {
     id: 675,
@@ -42164,7 +42165,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [97, 98, 423, 424, 603]
+    related: [97, 98, 423, 424, 425, 673, 674, 700, 603]
   },
   {
     id: 676,
@@ -42231,6 +42232,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
+    related: [178]
   },
   {
     id: 677,
@@ -42297,7 +42299,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [458]
+    related: [458, 662, 705, 714, 720]
   },
   {
     id: 678,
@@ -42357,7 +42359,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [489]
+    related: [488, 489, 679]
   },
   {
     id: 679,
@@ -42422,7 +42424,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [488]
+    related: [488, 489, 678]
   },
   {
     id: 680,
@@ -42555,7 +42557,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [539]
+    related: [450, 539]
   },
   {
     id: 682,
@@ -42615,7 +42617,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [45, 80, 102, 207, 208, 305, 347, 392, 418, 498, 248, 358, 609]
+    related: [45, 80, 102, 206, 207, 208, 305, 347, 392, 418, 498, 630, 642, 248, 358, 702, 711, 703, 712, 609]
   },
   {
     id: 683,
@@ -42680,7 +42682,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [250]
+    related: [211, 250, 724]
   },
   {
     id: 684,
@@ -42740,7 +42742,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: []
+    related: [685]
   },
   {
     id: 685,
@@ -42807,7 +42809,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: []
+    related: [684]
   },
   {
     id: 686,
@@ -42867,7 +42869,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [505, 506, 548]
+    related: [504, 505, 506, 687, 688, 548, 722]
   },
   {
     id: 687,
@@ -42927,7 +42929,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [504, 506, 548]
+    related: [504, 505, 506, 686, 688, 548, 722]
   },
   {
     id: 688,
@@ -42992,7 +42994,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [504, 505, 548]
+    related: [504, 505, 506, 686, 687, 548, 722]
   },
   {
     id: 689,
@@ -43064,7 +43066,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [531]
+    related: [394, 531, 701]
   },
   {
     id: 690,
@@ -43206,7 +43208,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [706, 715, 716]
   },
   {
     id: 692,
@@ -43237,7 +43239,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 693, 694, 695, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 707, 708, 709, 710, 586]
   },
   {
     id: 693,
@@ -43268,7 +43270,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 694, 695, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 707, 708, 709, 710, 586]
   },
   {
     id: 694,
@@ -43299,7 +43301,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 695, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 707, 708, 709, 710, 586]
   },
   {
     id: 695,
@@ -43330,7 +43332,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 707, 708, 709, 710, 586]
   },
   {
     id: 696,
@@ -43397,7 +43399,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [631, 632]
   },
   {
     id: 697,
@@ -43457,7 +43459,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: []
+    related: [634, 635]
   },
   {
     id: 698,
@@ -43531,7 +43533,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: []
+    related: [654]
   },
   {
     id: 699,
@@ -43598,7 +43600,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [656]
   },
   {
     id: 700,
@@ -43658,7 +43660,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [98, 423, 424, 425, 603]
+    related: [97, 98, 423, 424, 425, 673, 674, 675, 603]
   },
   {
     id: 701,
@@ -43730,7 +43732,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [531]
+    related: [394, 689, 531]
   },
   {
     id: 702,
@@ -43802,7 +43804,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [206, 207, 208, 347, 498, 248, 609]
+    related: [206, 207, 208, 347, 498, 630, 682, 248, 711, 609]
   },
   {
     id: 703,
@@ -43876,7 +43878,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [206, 207, 208, 347, 498, 248, 609]
+    related: [206, 207, 208, 347, 498, 642, 682, 248, 712, 609]
   },
   {
     id: 704,
@@ -43950,7 +43952,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [493, 494, 547]
+    related: [493, 494, 665, 666, 667, 713, 721]
   },
   {
     id: 705,
@@ -44017,7 +44019,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [458]
+    related: [458, 662, 677, 714, 720]
   },
   {
     id: 706,
@@ -44094,7 +44096,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [691, 715, 716]
   },
   {
     id: 707,
@@ -44125,7 +44127,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 695, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 708, 709, 710, 586]
   },
   {
     id: 708,
@@ -44156,7 +44158,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 695, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 707, 709, 710, 586]
   },
   {
     id: 709,
@@ -44187,7 +44189,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 695, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 707, 708, 710, 586]
   },
   {
     id: 710,
@@ -44218,7 +44220,7 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 695, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 707, 708, 709, 586]
   },
   {
     id: 711,
@@ -44290,7 +44292,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [206, 207, 208, 347, 498, 248, 609]
+    related: [206, 207, 208, 347, 498, 630, 682, 248, 702, 609]
   },
   {
     id: 712,
@@ -44364,7 +44366,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: [206, 207, 208, 347, 498, 248, 609]
+    related: [206, 207, 208, 347, 498, 642, 682, 248, 703, 609]
   },
   {
     id: 713,
@@ -44438,7 +44440,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [493, 494, 547]
+    related: [493, 494, 665, 666, 667, 704, 721]
   },
   {
     id: 714,
@@ -44505,7 +44507,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS,
     ],
-    related: [458]
+    related: [458, 662, 677, 705, 720]
   },
   {
     id: 715,
@@ -44582,7 +44584,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [691, 706, 716]
   },
   {
     id: 716,
@@ -44659,7 +44661,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.ARCEUS
     ],
-    related: []
+    related: [691, 706, 715]
   },
   {
     id: 717,
@@ -44731,7 +44733,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PREMIUM,
     ],
-    related: [559, 574]
+    related: [482, 559, 574]
   },
   {
     id: 718,
@@ -44798,7 +44800,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A5
     ],
-    related: []
+    related: [626, 627, 628]
   },
   {
     id: 719,
@@ -44878,7 +44880,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A5
     ],
-    related: []
+    related: [94, 95, 311, 312, 645, 646, 605, 594, 588]
   },
   {
     id: 720,
@@ -44943,7 +44945,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A5
     ],
-    related: []
+    related: [458, 490, 662, 677, 705, 714]
   },
   {
     id: 721,
@@ -45003,7 +45005,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A5
     ],
-    related: []
+    related: [493, 494, 495, 665, 666, 667, 547, 704, 713]
   },
   {
     id: 722,
@@ -45075,7 +45077,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.PROMO_A5,
     ],
-    related: [504, 505, 548]
+    related: [504, 505, 506, 686, 687, 688, 548]
   },
   {
     id: 723,
@@ -45140,7 +45142,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK
     ],
-    related: [534],
+    related: [422, 534],
     extra: {
       es: 'Elección Mágica',
       en: 'Wonder Pick',
@@ -45210,7 +45212,7 @@ export const MOCK_DB_CARDS: Card[] = [
     found: [
       EXPANSION.WONDER_PICK,
     ],
-    related: [250],
+    related: [211, 683, 250],
     extra: {
       es: 'Elección Mágica',
       en: 'Wonder Pick',
