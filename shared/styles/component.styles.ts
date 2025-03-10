@@ -96,7 +96,7 @@ export const CardGridStyles = StyleSheet.create({
     alignItems: 'center', 
     paddingBottom: 20, 
     justifyContent: 'space-between',
-    backgroundColor: '#F2F2F2',
+    backgroundColor: Colors.light.background,
     position: 'relative',
     zIndex: 100
   },
@@ -219,7 +219,7 @@ export const ModalStyles = StyleSheet.create({
     top: -10,
   },
   modalHeader: {
-    backgroundColor: '#F2F2F2',
+    backgroundColor: Colors.light.background,
     padding: 16,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -240,7 +240,7 @@ export const ModalStyles = StyleSheet.create({
     minHeight: MIN_MODAL_HEIGHT,
   },
   modalFooter: {
-    backgroundColor: '#F2F2F2',
+    backgroundColor: Colors.light.background,
     paddingTop: 14,
     paddingInline: 14,
     paddingBottom: 16,

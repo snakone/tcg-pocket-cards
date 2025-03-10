@@ -12,9 +12,8 @@ import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
   export const renderDeckItem = (
     {item, state, onPress}: {item: StorageDeck, state: AppState, onPress: any}
   ) => {
-    
     return (
-      <ThemedView style={[CreateScreenStyles.deckItem, 
+      <ThemedView style={[CreateScreenStyles.deckItem,
                           {
                             borderColor: !item.valid  ? 'goldenrod' : 'transparent', 
                             borderWidth: !item.valid  ? 1 : 0

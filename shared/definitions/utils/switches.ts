@@ -33,7 +33,8 @@ export const ICONS_MAPPING = {
   'cabinet': 'dynamic-feed',
   'q.circle': 'image-aspect-ratio',
   'u.square': 'verified-user',
-  'info.bubble': 'leaderboard'
+  'info.bubble': 'leaderboard',
+  'snowboard': 'pest-control'
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

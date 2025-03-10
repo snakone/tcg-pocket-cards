@@ -33,7 +33,8 @@ export interface Card extends BaseCard {
   info?: PokedexInfo;
 }
 
-interface Attack {
+export interface Attack {
+  id?: number;
   name: Record<LanguageType, string>;
   damage: number;
   energy: PokemonTypeENUM[];

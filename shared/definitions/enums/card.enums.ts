@@ -34,7 +34,9 @@ export enum CardSpecialConditionENUM {
   RETIRE,
   CALL,
   INACTIVE,
-  ARCEUS_LINK
+  FORCE_SWITCH,
+  ARCEUS_LINK,
+  PLAY_CARDS
 }
 
 export type RarityWithoutSpecial = Exclude<CardRarityENUM, CardRarityENUM.SPECIAL>;

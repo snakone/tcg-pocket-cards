@@ -31,7 +31,7 @@ export default function TradeScreen() {
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={[CardGridStyles.clearInput, {left: 248}]}
+                      style={[CardGridStyles.clearInput, {left: 246}]}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
@@ -70,7 +70,7 @@ export default function TradeScreen() {
   }, [state.cardState.cards, state.settingsState.language]);
 
   const renderEmpty = useCallback(() => {
-    return <ThemedText style={{ paddingVertical: 6, paddingHorizontal: Platform.OS !== 'web' ? 6 : 22}}>
+    return <ThemedText style={{ paddingVertical: 12, paddingHorizontal: Platform.OS !== 'web' ? 6 : 22}}>
         {i18n.t('no_trades_found')}
       </ThemedText>
   }, []);
@@ -82,7 +82,7 @@ export default function TradeScreen() {
 
   const renderFooter = useCallback(() => {
     return (
-      <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16, paddingTop: 16}}>
+      <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16, paddingTop: 8}}>
         <TouchableOpacity style={[
           homeScreenStyles.ctaButton,
           {marginBottom: 10, marginTop: 6, backgroundColor: 'mediumaquamarine'},
@@ -144,7 +144,7 @@ export default function TradeScreen() {
             </KeyboardAvoidingView>
           }
         />
-        { renderFooter()}
+        {renderFooter()}
       </ParallaxScrollView>
     </>
   );

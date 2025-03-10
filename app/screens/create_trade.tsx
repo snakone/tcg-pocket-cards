@@ -371,10 +371,10 @@ export default function CreateTradeScreen() {
                       keyExtractor={(item, index) => index + ''}/>
           </ThemedView>
 
-          <ThemedView style={{width: '100%', marginTop: 8, marginBottom: 60}}>
+          <ThemedView style={{width: '100%', marginTop: 16, marginBottom: 60}}>
             <TouchableOpacity style={[
               homeScreenStyles.ctaButton,
-              {marginBottom: 10, marginTop: 6, backgroundColor: 'skyblue'}
+              {marginBottom: 10, marginTop: 6, backgroundColor: 'mediumaquamarine'}
             ]} 
                               onPress={() => createTrade()}>
               <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>

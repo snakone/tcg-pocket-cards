@@ -63,6 +63,8 @@ export default function TabsMenu({
         break;
       case 'settings': router.push('/screens/settings');
         break;
+      case 'attacks': router.push('/attacks');
+        break;
     }
   }
 

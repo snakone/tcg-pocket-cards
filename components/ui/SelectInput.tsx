@@ -8,12 +8,13 @@ import { ThemedText } from "../ThemedText";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { filterStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import { FilterAttackSearch } from "@/shared/definitions/classes/filter_attack.class";
 
 interface SelectInputProps {
   options: any[], 
   label: string, 
   onSelect: (value: any, index: number) => void,
-  filterObj?: React.MutableRefObject<FilterSearch>,
+  filterObj?: React.MutableRefObject<FilterSearch | FilterAttackSearch>,
   propFilter?: string,
   keyFilter?: string | number,
   dropDownStyle?: StyleProp<ViewStyle>,
