@@ -260,5 +260,10 @@ export const settingsStyles = StyleSheet.create({
   track: {
     height: 16,
     borderRadius: 16
+  },
+  trackCard: {
+    boxShadow: Platform.OS === 'web' ? '0px 2px 8px rgba(0, 0, 0, 0.2)' : 'none',
+    height: 16,
+    borderRadius: 16
   }
 });

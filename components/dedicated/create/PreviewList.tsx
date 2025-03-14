@@ -80,7 +80,7 @@ export default function PreviewList({
     const emptyIndex = deck.indexOf(null);
     const newDeck: Card[] = [...deck];
     newDeck[emptyIndex] = card;
-    const sortedDeck = newDeck.sort((a, b) => a?.order - b?.order);
+    const sortedDeck = newDeck.sort(sortFunction);
     setDeck(sortedDeck);
     service.setCurrentDeck(sortedDeck);
   }
@@ -98,11 +98,19 @@ export default function PreviewList({
       const nonNullItems = newDeck.filter(item => item !== null);
       const nullItems = newDeck.filter(item => item === null);
       const deck = [...nonNullItems, ...nullItems];
-      const sortedDeck = deck.sort((a, b) => a?.order - b?.order);
+      const sortedDeck = deck.sort(sortFunction);
       service.setCurrentDeck(sortedDeck);
       return sortedDeck;  
     });
   }
+
+  function sortFunction(a: Card | null, b: Card | null): number {
+    if (a === null) return 1;
+    if (b === null) return -1;
+    if (a.pokedex === -1 && b.pokedex !== -1) return 1;
+    if (a.pokedex !== -1 && b.pokedex === -1) return -1;
+    return a.order - b.order;
+  } 
 
   const renderPreviewItem = useCallback(({item}: {item: Card}) => (
     <View style={[styles.previewItem, !item && {opacity: 0.8}]}>
