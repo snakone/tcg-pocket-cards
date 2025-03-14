@@ -34,7 +34,8 @@ export const ICONS_MAPPING = {
   'q.circle': 'image-aspect-ratio',
   'u.square': 'verified-user',
   'info.bubble': 'leaderboard',
-  'snowboard': 'pest-control'
+  'snowboard': 'pest-control',
+  'poweroutlet.type.j.fill': 'gamepad'
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

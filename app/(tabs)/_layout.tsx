@@ -177,6 +177,7 @@ export default function TabLayout() {
   }
 
   const emulatorStyle = () => Platform.OS === 'web' && !isMobileEmulator;
+  const emulatorStyleNot = () => Platform.OS === 'web' && window.innerWidth < 1500;
 
   return (
     <Provider>
@@ -208,7 +209,9 @@ export default function TabLayout() {
             tabBarIcon: ({ color }) => 
             <IconSymbol name="house.fill" 
                         color={color}
-                        style={[TabButtonStyles.icon, emulatorStyle() && {top: -5}]} />,
+                        style={[
+                          TabButtonStyles.icon, 
+                          emulatorStyleNot() ? {top: 0} : emulatorStyle() && {top: -5}]} />,
             animation: 'shift',
             title: i18n.t('home')
           }}
@@ -219,7 +222,9 @@ export default function TabLayout() {
             title: i18n.t('cards'),
             tabBarIcon: ({ color }) => 
               <SvgStackSymbol color={color} 
-                              style={[TabButtonStyles.stacks, emulatorStyle() && {top: -3, left: 4}]} />,
+                              style={[
+                                TabButtonStyles.stacks, 
+                                emulatorStyleNot() ? {top: 2} : emulatorStyle() && {top: -3, left: 4}]} />,
             animation: 'shift',
           }}
         />
@@ -228,7 +233,9 @@ export default function TabLayout() {
           options={{
             tabBarIcon: ({ color }) => 
               <SvgStylusSymbol color={color}
-                               style={[TabButtonStyles.stylus, emulatorStyle() && {top: -3, left: 4}]} />,
+                               style={[
+                                TabButtonStyles.stylus, 
+                                emulatorStyleNot() ? {top: 2} : emulatorStyle() && {top: -3, left: 4}]} />,
             animation: 'shift',
             title: i18n.t('create')
           }}
@@ -238,7 +245,10 @@ export default function TabLayout() {
           options={{
             tabBarIcon: ({ color }) =>
               <SvgTradeSymbol color={color}
-                              style={[TabButtonStyles.trade, emulatorStyle() && {top: 1, left: 3}, Platform.OS !== 'web' && {top: 5}]} />,
+                              style={[
+                                TabButtonStyles.trade, 
+                                emulatorStyleNot() ? {top: 5} : emulatorStyle() && {top: 1, left: 3}, 
+                                Platform.OS !== 'web' && {top: 5}]} />,
             animation: 'shift',
             title: i18n.t('trade')
           }}
@@ -323,6 +333,17 @@ export default function TabLayout() {
             },
             tabBarButton: () => null,
             title: i18n.t('attacks')
+          }}
+        />
+        <Tabs.Screen
+          name="games"
+          options={{
+            animation: 'shift',
+            tabBarItemStyle: {
+              display: 'none'
+            },
+            tabBarButton: () => null,
+            title: i18n.t('games')
           }}
         />
       </Tabs>

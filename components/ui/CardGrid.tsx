@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef, useContext } from 'react';
+import React, { useState, useCallback, useEffect, useRef, useContext, LegacyRef } from 'react';
 
 import { 
   FlatList, 
@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 
 import { Image } from 'expo-image';
-import { useRouter } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
 import { Switch } from 'react-native-paper';
 
 import Animated, { 
@@ -74,6 +74,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
   if (!context) { throw new Error(NO_CONTEXT); }
   const { dispatch } = context;
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const searchInputRef = useRef<any>();
 
   useEffect(() => {
     setLang(state.settingsState.language);
@@ -100,6 +101,10 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
   useEffect(() => {
     setFiltered(state.cardState.cards);
   }, [state.cardState.cards]);
+
+  useFocusEffect(useCallback(() => {
+    goUp(null, false);
+  }, []));
 
   useEffect(() => {
     if (!filtered || filtered.length === 0) { return; }
@@ -134,6 +139,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
     searchQuery.current = text;
     setFiltered((type === 'favorites' ? favorites : state.cardState.cards).filter(card =>
     card.name[lang].toLowerCase()?.includes(text.toLowerCase())));
+    setTimeout(() => searchInputRef.current.focus(), 250);
   }, [(type === 'favorites' ? favorites : state.cardState.cards), lang]);
 
   function filterOrSortCards(
@@ -310,6 +316,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
                                   accessibilityLabel={SEARCH_LABEL}
                                   editable={state.cardState.loaded}
                                   inputMode='text'
+                                  ref={searchInputRef}
                                 />
                             {searchQuery.current.length > 0 && <ResetFilterButton/>}
                     </ThemedView>

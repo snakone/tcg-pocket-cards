@@ -78,10 +78,11 @@ export default function PreviewList({
   async function addNumberToList(card: Card): Promise<void> {
     if (deck.filter(card => Boolean(card)).length === 20) { return; }
     const emptyIndex = deck.indexOf(null);
-    const newDeck = [...deck];
+    const newDeck: Card[] = [...deck];
     newDeck[emptyIndex] = card;
-    setDeck(newDeck);
-    service.setCurrentDeck(newDeck);
+    const sortedDeck = newDeck.sort((a, b) => a?.order - b?.order);
+    setDeck(sortedDeck);
+    service.setCurrentDeck(sortedDeck);
   }
 
   function previewPress(card: Card): void {
@@ -97,8 +98,9 @@ export default function PreviewList({
       const nonNullItems = newDeck.filter(item => item !== null);
       const nullItems = newDeck.filter(item => item === null);
       const deck = [...nonNullItems, ...nullItems];
-      service.setCurrentDeck(deck);
-      return deck;  
+      const sortedDeck = deck.sort((a, b) => a?.order - b?.order);
+      service.setCurrentDeck(sortedDeck);
+      return sortedDeck;  
     });
   }
 

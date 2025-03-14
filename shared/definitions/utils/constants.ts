@@ -105,10 +105,23 @@ import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { AvatarIcon } from "../interfaces/global.interfaces";
 import { FilterAttackSearch } from "../classes/filter_attack.class";
 
+export const MENU_LIST: ItemWithRoute[] = [
+  { label: 'share', icon: 'note', route: 'share' },
+  { label: 'favorites', icon: 'star', route: 'favorites' },
+  { label: 'attacks', icon: 'snowboard', route: 'attacks' },
+  // { label: 'games', icon: 'poweroutlet.type.j.fill', route: 'games' },
+];
+
+export const MENU_HELP: ItemWithRoute[] = [
+  { label: 'news', icon: 'newspaper', route: 'news' },
+  { label: 'help', icon: 'questionmark.app.fill', route: 'help' },
+  { label: 'config', icon: 'washer.circle', route: 'settings' },
+];
+
 export const APP_VERSION = '1.3.0';
 export const MENU_WIDTH = 250;
-export const MENU_HEIGHT = 495;
-export const MENU_HEIGHT_ANDROID = 450;
+export const MENU_HEIGHT = 225 + (45 * [...MENU_LIST, ...MENU_HELP].length);
+export const MENU_HEIGHT_ANDROID = 180 + (45 * [...MENU_LIST, ...MENU_HELP].length);
 export const PAGE_TITLE = 'TCG Pocket Cards';
 export const LOCAL_HOST = 'http://192.168.1.71:3000';
 export const SERVER_URL = 'https://tcg-pocket-cards.onrender.com';
@@ -130,18 +143,6 @@ export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
   foreground: false, 
   radius: 58
 }
-
-export const LIST: ItemWithRoute[] = [
-  { label: 'share', icon: 'note', route: 'share' },
-  { label: 'favorites', icon: 'star', route: 'favorites' },
-  { label: 'attacks', icon: 'snowboard', route: 'attacks' },
-];
-
-export const HELP: ItemWithRoute[] = [
-  { label: 'news', icon: 'newspaper', route: 'news' },
-  { label: 'help', icon: 'questionmark.app.fill', route: 'help' },
-  { label: 'config', icon: 'washer.circle', route: 'settings' },
-];
 
 export const SORT_FIELD_MAP: Record<string, keyof Card | 'height' | 'weight' | keyof Attack | 'number_energy'> = {
   order_by_id: 'order',

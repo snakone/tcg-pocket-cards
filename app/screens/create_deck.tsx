@@ -506,8 +506,8 @@ export default function CreateDeckScreen() {
                 keyExtractor={keyExtractor}
                 initialNumToRender={25}
                 maxToRenderPerBatch={35}
-                windowSize={15}
-                removeClippedSubviews={false}
+                windowSize={6}
+                removeClippedSubviews={true}
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={RenderEmpty}
                 renderItem={renderCard}

@@ -8,7 +8,7 @@ import { ThemedText } from "../ThemedText";
 import { sharedModalStyles } from "@/shared/styles/component.styles";
 import { ThemedView } from "../ThemedView";
 import ScrollIndicator from "../ui/ScrollIndicator";
-import { GRID_SEARCH, GRID_FILTER, GRID_OPTION, GRID_SORT_ICON, GRID_SORT, ATTACK_SEARCH, ATTACK_FILTER, ATTACK_SORT_ICON, ATTACK_SORT, ATTACK_OPTION } from "@/shared/definitions/sentences/path.sentences";
+import { ATTACK_SEARCH, ATTACK_FILTER, ATTACK_SORT_ICON, ATTACK_SORT, ATTACK_OPTION } from "@/shared/definitions/sentences/path.sentences";
 
 export function AttacksScreenModal() {
   const scrollY = useSharedValue(0);
@@ -33,8 +33,8 @@ export function AttacksScreenModal() {
   return (
     <ThemedView style={{flex: 1}}>
       <ScrollIndicator contentHeight={contentHeight} 
-                        scrollViewHeight={scrollViewHeight} 
-                        scrollY={scrollY}>
+                       scrollViewHeight={scrollViewHeight} 
+                       scrollY={scrollY}>
       </ScrollIndicator>
       <ScrollView style={{flex: 1}} 
                   showsVerticalScrollIndicator={false} 

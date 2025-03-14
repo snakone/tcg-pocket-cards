@@ -13,7 +13,6 @@ import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { BACKUP_HEIGHT } from "@/shared/definitions/utils/constants";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { GraphicsScreenModal } from "@/components/modals/GraphicsScreenModal";
 import { CardGridStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
 import SoundService from "@/core/services/sounds.service";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -22,6 +21,7 @@ import { settingsStyles } from "../screens/settings";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { Switch } from "react-native-paper";
 import { MaterialIcons } from "@expo/vector-icons";
+import { GraphicsScreenModal } from "@/components/modals";
 
 export default function InfoGraphicScreen() {
   const {i18n} = useI18n();

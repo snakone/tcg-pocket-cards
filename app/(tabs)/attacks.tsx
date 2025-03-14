@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import React from 'react';
-import { useRouter } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Animated, FlatList, GestureResponderEvent, Platform, StyleProp, TextInput, TextStyle, TouchableOpacity, View } from 'react-native';
 
@@ -18,10 +18,10 @@ import { ButtonStyles, CardGridStyles, ModalStyles } from '@/shared/styles/compo
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { Colors } from '@/shared/definitions/utils/colors';
 import { renderAttackItem } from '@/components/dedicated/attacks/AttackItem';
-import { AttacksScreenModal } from '@/components/modals/AttacksScreenModal';
 import { cardStyles } from './cards';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { filterAttacks, sortAttacks } from '@/shared/definitions/utils/functions';
+import { AttacksScreenModal } from '@/components/modals';
 
 export default function AttacksScreen() {
   const {i18n} = useI18n();
@@ -69,6 +69,10 @@ export default function AttacksScreen() {
       dispatch({type: 'SET_ATTACK_LIST', value: unique});
     }
   }, [state.cardState.cards]);
+
+  useFocusEffect(useCallback(() => {
+    goUp(null, false);
+  }, []));
 
   const keyExtractor = useCallback((item: Attack, index: number) => String(item.name) + index, []);
 

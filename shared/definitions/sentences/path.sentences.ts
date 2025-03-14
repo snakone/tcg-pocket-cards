@@ -237,3 +237,6 @@ export const CHAMPION_ICON = require("@/assets/images/infographics/champion.png"
 export const DIAMOND_ICON = require("@/assets/images/infographics/diamond.png");
 export const ELEMENT_ICON = require("@/assets/images/infographics/types.png");
 export const MISCELLANIA_ICON = require("@/assets/images/infographics/miscellania.png");
+
+export const CHALLENGE_ICON = require("@/assets/images/challenge.png");
+export const QUIZ_ICON = require("@/assets/images/quiz.png");

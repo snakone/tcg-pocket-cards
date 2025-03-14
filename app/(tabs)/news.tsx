@@ -1,8 +1,8 @@
-import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { FlatList, RefreshControl, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Subscription } from 'rxjs';
-import { useRouter } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { useI18n } from '@/core/providers/LanguageProvider';
@@ -28,6 +28,7 @@ export default function NewsScreen() {
   const { show: showError } = useError();
   const [refreshing, setRefreshing] = React.useState(false);
   const router = useRouter();
+  const flatListRef = useRef<FlatList<PocketNews> | null>(null);
 
   const loadPocketNews = useCallback(() => {
     const sub = newsService
@@ -60,6 +61,14 @@ export default function NewsScreen() {
       }
     };
   }, []);
+
+  useFocusEffect(useCallback(() => {
+    goUp();
+  }, []));
+
+  async function goUp(): Promise<void> {
+    flatListRef.current?.scrollToOffset({offset: 0, animated: false});
+  }
 
   function handleClick(id: string): void {
     SoundService.play('CHANGE_VIEW');
@@ -96,6 +105,7 @@ export default function NewsScreen() {
           showsVerticalScrollIndicator={false}
           initialNumToRender={3}
           windowSize={12}
+          ref={flatListRef}
           refreshControl={
             <RefreshControl refreshing={refreshing} 
                             onRefresh={onRefresh} 

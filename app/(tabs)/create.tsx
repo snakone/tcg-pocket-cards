@@ -1,6 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { useRouter } from 'expo-router';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { useFocusEffect, useRouter } from 'expo-router';
 import Animated from 'react-native-reanimated';
 import { FlatList, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity } from 'react-native';
 
@@ -28,10 +28,19 @@ export default function CreateDeckScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state } = context;
+  const flatListRef = useRef<FlatList<StorageDeck> | null>(null);
 
   const createNewDeck = () => {
     SoundService.play('AUDIO_MENU_OPEN');
     router.push(`/screens/create_deck`);
+  }
+
+  useFocusEffect(useCallback(() => {
+    goUp();
+  }, []));
+
+  async function goUp(): Promise<void> {
+    flatListRef.current?.scrollToOffset({offset: 0, animated: false});
   }
 
   const openDeck = (deck: StorageDeck) => {
@@ -106,6 +115,7 @@ export default function CreateDeckScreen() {
                   showsVerticalScrollIndicator={false}
                   ListEmptyComponent={renderEmpty}
                   initialNumToRender={6}
+                  ref={flatListRef}
                   stickyHeaderIndices={[0]}
                   ListHeaderComponent={
                     <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>

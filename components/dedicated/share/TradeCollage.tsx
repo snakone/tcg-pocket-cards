@@ -103,10 +103,13 @@ export default function TradeCollage({
                          contentFit="cover" 
                          style={{padding: 20}}>
           {/* DISCORD */}
-          <ThemedView style={[tradeCollageStyles.footerContent, {position: 'absolute', left: 20, top: 20, height: 50}]}>
-            <Image source={DISCORD_LOGO} style={{width: 50, height: 28, left: -5, top: 1}}/>
-            <ThemedText style={[tradeCollageStyles.text, tradeCollageStyles.discordText]}>{trade?.discord}</ThemedText>
-          </ThemedView>
+          {
+            trade?.discord && 
+            <ThemedView style={[tradeCollageStyles.footerContent, {position: 'absolute', left: 20, top: 20, height: 50}]}>
+              <Image source={DISCORD_LOGO} style={{width: 50, height: 28, left: -5, top: 1}}/>
+              <ThemedText style={[tradeCollageStyles.text, tradeCollageStyles.discordText]}>{trade?.discord}</ThemedText>
+            </ThemedView>
+          }
           {/* FRIEND ID */}
           <ThemedView style={[tradeCollageStyles.container, {marginTop: 0, marginBottom: 40, width: '25%', marginInline: 'auto', height: 50}]}>
             <ThemedText style={[tradeCollageStyles.text, {fontWeight: 'bold', top: -2}]}>{trade?.tcg.join(' - ')}</ThemedText>

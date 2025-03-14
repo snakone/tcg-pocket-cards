@@ -146,11 +146,14 @@ export default function CreateTradeScreen() {
 
   function convertTrade(): TradeItem {
     const trades = state.settingsState.trades;
+    const lastTrade = trades[0];
+    const tradeID = trade_id ? Number(trade_id) : lastTrade ? lastTrade.id + 1 : trades.length + 1;
+
     return {
-        id: trade_id ? Number(trade_id) : trades.length + 1,
+        id: tradeID,
         created: new Date().getTime(),
         desired,
-        title,
+        title: title || i18n.t('trade') + ' ' + (tradeID),
         discord,
         offers,
         tcg,

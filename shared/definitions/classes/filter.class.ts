@@ -47,6 +47,7 @@ export class FilterSearch {
       [EXPANSION.PALKIA]: null,
       [EXPANSION.PROMO_A4]: null,
       [EXPANSION.ARCEUS]: null,
+      [EXPANSION.PROMO_A5]: null
     };
 
     this.favorite = {included: null, not_favorite: null};
@@ -113,7 +114,8 @@ export class FilterSearch {
       [CardSpecialConditionENUM.CALL]: null,
       [CardSpecialConditionENUM.INACTIVE]: null,
       [CardSpecialConditionENUM.ARCEUS_LINK]: null,
-      [CardSpecialConditionENUM.FORCE_SWITCH]: null
+      [CardSpecialConditionENUM.FORCE_SWITCH]: null,
+      [CardSpecialConditionENUM.PLAY_CARDS]: null
     };
   }
 
@@ -132,7 +134,8 @@ export class FilterSearch {
       [EXPANSION.DIALGA]: null,
       [EXPANSION.PALKIA]: null,
       [EXPANSION.PROMO_A4]: null,
-      [EXPANSION.ARCEUS]: null
+      [EXPANSION.ARCEUS]: null,
+      [EXPANSION.PROMO_A5]: null
     };
   }
 

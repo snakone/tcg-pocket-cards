@@ -10,7 +10,7 @@ import { TabMenu } from '@/shared/definitions/interfaces/layout.interfaces';
 import { IconSymbolName } from '@/shared/definitions/utils/switches';
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
-import { LIST, HELP, COIN_MAP } from '@/shared/definitions/utils/constants';
+import { MENU_LIST, MENU_HELP, COIN_MAP } from '@/shared/definitions/utils/constants';
 import { useI18n } from '../../core/providers/LanguageProvider';
 import SoundService from '@/core/services/sounds.service';
 import React from 'react';
@@ -27,7 +27,7 @@ export default function TabsMenu({
   const [progress, setProgress] = useState(false);
   const fillProgress = useSharedValue(0.26);
   const {i18n} = useI18n();
-  const [list, setList] = useState(LIST);
+  const [list, setList] = useState(MENU_LIST);
   const [profile, setProfile] = useState<UserProfile>(
     {name: '', avatar: 'eevee', coin: 'eevee', best: null}
   );
@@ -64,6 +64,8 @@ export default function TabsMenu({
       case 'settings': router.push('/screens/settings');
         break;
       case 'attacks': router.push('/attacks');
+        break;
+      case 'games': router.push('/games');
         break;
     }
   }
@@ -132,7 +134,7 @@ export default function TabsMenu({
         </Pressable>
         <View>
           <FlatList data={list}
-                    style={{paddingBlock: 24, paddingInline: 10}}
+                    style={[{paddingBlock: 22, paddingInline: 10}, Platform.OS !== 'web' && {paddingBottom: 20}]}
                     renderItem={({item}) => 
             <View style={TabsMenuStyles.listItem}>
               <IconSymbol name={item.icon as IconSymbolName} 
@@ -146,7 +148,7 @@ export default function TabsMenu({
 
           <View style={TabsMenuStyles.separator}></View>
 
-          <FlatList data={HELP}
+          <FlatList data={MENU_HELP}
                     style={{paddingBlock: 24, paddingInline: 10}}
                     renderItem={({item}) => 
             <View style={TabsMenuStyles.itemSmall}>

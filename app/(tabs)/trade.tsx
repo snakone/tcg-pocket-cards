@@ -1,8 +1,8 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import Animated from 'react-native-reanimated';
 import { FlatList, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
 
 import { TradeScreenModal } from '@/components/modals';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -28,6 +28,7 @@ export default function TradeScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
+  const flatListRef = useRef<FlatList<TradeItem> | null>(null);
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
@@ -36,6 +37,14 @@ export default function TradeScreen() {
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
   );
+
+  useFocusEffect(useCallback(() => {
+    goUp();
+  }, []));
+
+  async function goUp(): Promise<void> {
+    flatListRef.current?.scrollToOffset({offset: 0, animated: false});
+  }
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
@@ -112,6 +121,7 @@ export default function TradeScreen() {
           initialNumToRender={6}
           stickyHeaderIndices={[0]}
           windowSize={12}
+          ref={flatListRef}
           ListEmptyComponent={renderEmpty}
           ListHeaderComponent={
             <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>

@@ -17,11 +17,10 @@ interface TradeUserItemProps {
   item: TradeItem,
   rarity: CardRarityENUM | undefined,
   styles?: any,
-  state: AppState,
-  fullHeight?: boolean
+  state: AppState
 }
 
-export default function TradeUserItem({item, rarity, styles, state, fullHeight}: TradeUserItemProps) {
+export default function TradeUserItem({item, rarity, styles, state}: TradeUserItemProps) {
   const {i18n} = useI18n();
 
   if (!item) { return; }
@@ -29,11 +28,10 @@ export default function TradeUserItem({item, rarity, styles, state, fullHeight}:
   return (
     <ThemedView style={[tradeItemStyles.item, styles, {
       borderColor: !item?.valid ? 'goldenrod' : 'transparent', 
-      borderWidth: !item.valid  ? 1 : 0,
-    }, fullHeight && {minHeight: 152}]}>
+      borderWidth: !item.valid  ? 1 : 0}]}>
       <ThemedView style={{flex: 1, height: 52}}>
         <ThemedText style={{marginBottom: 8, color: 'none'}}>{item?.title || i18n.t('trade') + ' ' + (item.id)}</ThemedText>
-        <ThemedView style={[tradeItemStyles.container, fullHeight && {height: 96}]}>
+        <ThemedView style={[tradeItemStyles.container]}>
           <ThemedView style={{width: '38%'}}>
             {
               item.desired.map((item, i) => (
@@ -61,10 +59,10 @@ export default function TradeUserItem({item, rarity, styles, state, fullHeight}:
           </ThemedView>
           <ThemedView style={[{width: '25%', top: 4}, Platform.OS !== 'web' && {left: 15}]}>
             {
-              SvgTradePassSymbol(Platform.OS !== 'web' ? !fullHeight ? 
-                                  {width: 45, height: 52, transform: [{scale: 0.6}]} : 
-                                    {width: 45, transform: [{scale: 0.8}]} : 
-                                      fullHeight ? {transform: [{scale: 0.8}]} : {})
+              SvgTradePassSymbol(
+                Platform.OS !== 'web' ? 
+                {width: 45, height: 52, transform: [{scale: 0.8}], top: 10} : 
+                  {transform: [{scale: 0.8}]})
             }
           </ThemedView>
           <ThemedView style={{width: '38%', borderBottomLeftRadius: 4}}>
@@ -111,7 +109,7 @@ const tradeItemStyles = StyleSheet.create({
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 4px 6px', 
     borderRadius: 8,
     marginBottom: 40,
-    minHeight: 124,
+    minHeight: 152,
     width: '100%',
     backgroundColor: 'white'
   },
@@ -134,7 +132,7 @@ const tradeItemStyles = StyleSheet.create({
     flexDirection: 'row', 
     justifyContent: 'space-between', 
     width: '100%', 
-    height: 52, 
+    height: 96, 
     overflow: 'hidden', 
     borderBottomLeftRadius: 4
   }

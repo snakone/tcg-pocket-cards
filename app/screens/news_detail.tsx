@@ -70,9 +70,11 @@ export default function NewsDetailScreen() {
 
   useEffect(() => {
     if (id !== undefined) {
-      const data = state.pocketNewsState.news.find(pocketNew => pocketNew._id === id)
-      setPocketNew(data);
-      setLoading(false);
+      const data = state.pocketNewsState.news.find(pocketNew => pocketNew._id === id);
+      if (data) {
+        setPocketNew(data);
+        setLoading(false);
+      }
     }
   }, [state.pocketNewsState.news]);
 

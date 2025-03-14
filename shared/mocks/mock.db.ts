@@ -45042,7 +45042,7 @@ export const MOCK_DB_CARDS: Card[] = [
           en: 'Wing Attack',
           ja: 'つばさでうつ' 
         },
-        damage: 140,
+        damage: 90,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
       },
     ],

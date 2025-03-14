@@ -1,5 +1,5 @@
-import { router } from 'expo-router';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { router, useFocusEffect } from 'expo-router';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import Animated from 'react-native-reanimated';
 import { Platform, StyleSheet } from 'react-native';
 
@@ -30,6 +30,7 @@ export default function ShareScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state } = context;
+  const flatListRef = useRef<SectionList<any> | null>(null);
 
   useEffect(() => {
     const valid = state.settingsState.decks.filter(d => d.valid);
@@ -42,6 +43,14 @@ export default function ShareScreen() {
     setTrades(valid);
     setFilteredTrades(valid);
   }, [state.settingsState.trades]);
+
+  useFocusEffect(useCallback(() => {
+    goUp();
+  }, []));
+
+  async function goUp(): Promise<void> {
+    flatListRef.current?.scrollToLocation({viewPosition: 0, itemIndex: 0, sectionIndex: 0, animated: false});
+  }
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
@@ -135,15 +144,16 @@ export default function ShareScreen() {
         <ThemedView style={{flex: 1}}>
           <SectionList stickySectionHeadersEnabled
               showsVerticalScrollIndicator={false}
+              ref={flatListRef}
               SectionSeparatorComponent={(section) => <ThemedView style={{height: 16}}></ThemedView>}
               sections={[
               { title: i18n.t('decks'), 
-                data: filtered.sort((a, b) => a?.id - b?.id), 
+                data: filtered.sort((a, b) => b?.id - a?.id), 
                 key: 'decks',
               },
               {
                 title: i18n.t('trades'),
-                data: filteredTrades.sort((b, a) => a?.id - b?.id),
+                data: filteredTrades,
                 key: 'trades'
                 },
               ]}
