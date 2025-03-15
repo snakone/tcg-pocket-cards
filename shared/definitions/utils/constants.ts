@@ -104,6 +104,7 @@ import { CardExpansionENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageE
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { AvatarIcon } from "../interfaces/global.interfaces";
 import { FilterAttackSearch } from "../classes/filter_attack.class";
+import { CARD_IMAGE_WIDTH_3, CARD_IMAGE_WIDTH_5, CARD_IMAGE_WIDTH_7 } from "@/shared/styles/component.styles";
 
 export const MENU_LIST: ItemWithRoute[] = [
   { label: 'share', icon: 'note', route: 'share' },

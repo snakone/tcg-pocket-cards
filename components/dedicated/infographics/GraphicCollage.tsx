@@ -202,6 +202,7 @@ export function GraphicCollage({
   const { data: promo2Cards } = getCards(EXPANSION.PROMO_A2);
   const { data: promo3Cards } = getCards(EXPANSION.PROMO_A3);
   const { data: promo4Cards } = getCards(EXPANSION.PROMO_A4);
+  const { data: promo5Cards } = getCards(EXPANSION.PROMO_A5);
   const { data: specialCards, length: specialCardsLength } = getCards(EXPANSION.SPECIAL_MISSION);
   const { data: triumphCards } = getCards(EXPANSION.ARCEUS);
 
@@ -1176,10 +1177,20 @@ export function GraphicCollage({
             </ThemedView>
           </ThemedView>
 
-          <ThemedView style={{flexDirection: "row", gap: 20, width: '32.4%'}}>
+          <ThemedView style={{flexDirection: "row", gap: 20, width: '64.8%'}}>
             <ThemedView>
               <ThemedText style={[styles.subTitlte, {marginTop: 0, color: Colors.light.text}]}>A4</ThemedText>
               <FlatList data={promo4Cards}
+                        renderItem={renderItem}
+                        numColumns={numColumns}
+                        contentContainerStyle={[styles.list, {width: 'auto'}]}
+                        style={{borderRadius: 8}}
+                        showsVerticalScrollIndicator={false}
+                        keyExtractor={(item, index) => index + ''}/>
+            </ThemedView>
+            <ThemedView>
+              <ThemedText style={[styles.subTitlte, {marginTop: 0, color: Colors.light.text}]}>A5</ThemedText>
+              <FlatList data={promo5Cards}
                         renderItem={renderItem}
                         numColumns={numColumns}
                         contentContainerStyle={[styles.list, {width: 'auto'}]}

@@ -1,4 +1,4 @@
-import { Platform, StyleSheet, useWindowDimensions } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 import { 
   DEFAULT_MODAL_HEIGHT,
@@ -16,10 +16,22 @@ export const HEADER_HEIGHT = 100;
 export const HEADER_MIN_HEIGHT = 40;
 export const CARD_IMAGE_WIDTH_3 = 116.5;
 export const CARD_IMAGE_WIDTH_5 = 69.2;
-export const CARD_IMAGE_WIDTH_7 = 48.8;
+export const CARD_IMAGE_WIDTH_7 = 48.6;
 export const CREATE_GRID_HEIGHT = 520;
 export const CREATE_GRID_MAX_HEIGHT = CREATE_GRID_HEIGHT + 60;
 export const MAX_WEB_HEIGHT = 844;
+
+export const gridWidthMap: Record<0 | 1 | 2, number> = {
+  0: CARD_IMAGE_WIDTH_3,
+  1: CARD_IMAGE_WIDTH_5,
+  2: CARD_IMAGE_WIDTH_7
+}
+
+export const gridColumMap: Record<0 | 1 | 2, number> = {
+  0: 3,
+  1: 5,
+  2: 7
+}
 
 export const ThemeTextStyles = StyleSheet.create({
   default: {
@@ -486,7 +498,7 @@ export const ScreenStyles = StyleSheet.create({
   },
   bottomContent: {
     position: 'absolute',
-    bottom: 16,
+    bottom: 22,
     alignSelf: 'center'
   }
 });

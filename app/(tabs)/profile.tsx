@@ -19,6 +19,7 @@ import { CardGridStyles, TabsMenuStyles } from '@/shared/styles/component.styles
 import { createDeckStyles } from '../screens/create_deck';
 import { LanguageType } from '@/shared/definitions/types/global.types';
 import { getImageLanguage } from '@/shared/definitions/utils/functions';
+import { useRouter } from 'expo-router';
 
 export default function ProfileScreen() {
   const {i18n} = useI18n();
@@ -27,6 +28,7 @@ export default function ProfileScreen() {
   const { state, dispatch } = context;
   const [userName, setUserName] = useState('');
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const router = useRouter();
 
   useEffect(() => {
     setLang(state.settingsState.language);
@@ -35,6 +37,11 @@ export default function ProfileScreen() {
   const [profile, setProfile] = useState<UserProfile>(
     {name: '', avatar: 'eevee', coin: 'eevee', best: null}
   );
+
+  function goToCollection(): void {
+    SoundService.play('CHANGE_VIEW');
+    router.push('/screens/collection');
+  }
 
   function handleText(text: string): void {
     if (text.length > 15) return;
@@ -78,7 +85,7 @@ export default function ProfileScreen() {
                         modalTitle='profile'
                         showHeader={false}>
       <ThemedView style={{alignItems: 'center', flex: 1}}>
-        <ThemedView style={styles.header}>
+        <ThemedView style={[styles.header, {marginTop: 30}]}>
           <ThemedView style={styles.avatarContainer}>
             <Pressable onPress={() => handleActionMenu('OPEN_AVATAR')}>
               <Image source={AVATAR_MAP[profile.avatar]} style={styles.avatar}/>
@@ -105,7 +112,7 @@ export default function ProfileScreen() {
           </ThemedView>
           <ThemedView style={[TabsMenuStyles.user, {marginTop: 20, width: 275, gap: 0}]}>
             <Image source={COIN_MAP[profile.coin]} 
-                  style={TabsMenuStyles.avatar}>
+                   style={TabsMenuStyles.avatar}>
             </Image>
             <Pressable style={{flex: 1}} 
                        onPress={() => handleActionMenu('OPEN_COIN')}
@@ -123,13 +130,26 @@ export default function ProfileScreen() {
               </ThemedView>
             </Pressable>
           </ThemedView>
+
+          <ThemedView style={[styles.separator, {marginTop: 16}]}></ThemedView>
+
+          <TouchableOpacity onPress={goToCollection}>
+            <ThemedView style={[TabsMenuStyles.user, {marginTop: 16, width: 275}]}>
+              <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                <MaterialIcons name="style" style={[styles.editInput, {fontSize: 22, right: 'auto', left: 12, top: 8}]} />
+                <ThemedText style={[styles.input, {fontSize: 16, width: 235, paddingVertical: 8, left: 21}]}>{i18n.t('my_collection')}</ThemedText>
+                <ThemedText>124</ThemedText>
+              </ThemedView>
+            </ThemedView>
+          </TouchableOpacity>
+          
           <ThemedView style={[{width: '100%', flex: 1, marginTop: 40, alignItems: 'center'}]}>
             <ThemedText style={{fontSize: 13, height: 17}}>{i18n.t('best_card')}</ThemedText>
 
             <ThemedView style={styles.separator}></ThemedView>
               <ThemedView style={[
                   CardGridStyles.imageContainer, 
-                  {marginTop: 12, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)', height: 334},
+                  {marginTop: 12, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)', height: 279},
                   Boolean(!profile.best) && {opacity: 0.8} 
                 ]}>
                 <ThemedView style={{flex: 1, backgroundColor: 'white'}}>
@@ -139,7 +159,7 @@ export default function ProfileScreen() {
                       <>
                         <Image style={[
                             CardGridStyles.image, 
-                            {width: 240}
+                            {width: 200}
                           ]} 
                         source={getImageLanguage(lang, profile.best)}/>        
                       </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
@@ -223,7 +243,7 @@ const styles = StyleSheet.create({
     marginTop: 8
   },
   previewCard: {
-    width: 240, 
+    width: 200, 
     justifyContent: 'center', 
     alignItems: 'center', 
     aspectRatio: 367/512

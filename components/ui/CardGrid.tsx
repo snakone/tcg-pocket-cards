@@ -23,10 +23,9 @@ import Animated, {
 
 import { 
   ButtonStyles,
-  CARD_IMAGE_WIDTH_3,
-  CARD_IMAGE_WIDTH_5,
-  CARD_IMAGE_WIDTH_7,
   CardGridStyles,
+  gridColumMap,
+  gridWidthMap,
   ModalStyles,
   ParallaxStyles
 } from '@/shared/styles/component.styles';
@@ -48,7 +47,7 @@ import { filterCards, getImageLanguage116x162, getImageLanguage69x96, sortCards 
 import { AppContext } from '@/app/_layout';
 import SoundService from '@/core/services/sounds.service';
 import { LanguageType } from '@/shared/definitions/types/global.types';
-import settings, { settingsStyles } from '@/app/screens/settings';
+import { settingsStyles } from '@/app/screens/settings';
 import { Slider } from '@miblanchard/react-native-slider';
 
 interface GridCardProps {
@@ -78,18 +77,6 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
   const searchInputRef = useRef<any>();
   const gridNumber = useRef<0 | 1 | 2>(0);
-
-  const gridWidthMap: Record<0 | 1 | 2, number> = {
-    0: CARD_IMAGE_WIDTH_3,
-    1: CARD_IMAGE_WIDTH_5,
-    2: CARD_IMAGE_WIDTH_7
-  }
-
-  const gridColumMap: Record<0 | 1 | 2, number> = {
-    0: 3,
-    1: 5,
-    2: 7
-  }
 
   useEffect(() => {
     setLang(state.settingsState.language);

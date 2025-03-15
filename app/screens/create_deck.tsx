@@ -540,6 +540,7 @@ export default function CreateDeckScreen() {
                          service={createService}
                          previousDeck={deck}/>
             <ThemedView style={{marginBottom: 20 }}></ThemedView>
+
             {cardListGrid()}
 
             { loading ? null : state.cardState.cards?.length > 0 && (

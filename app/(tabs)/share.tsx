@@ -166,7 +166,7 @@ export default function ShareScreen() {
                 section.key === 'trades' ? renderTrade({item}) : null 
               }
               renderSectionHeader={({section}) => (
-              <ThemedView style={[styles.sectionHeader, Platform.OS !== 'web' && {marginInline: 0}]}>
+              <ThemedView style={[shareScreenStyles.sectionHeader, Platform.OS !== 'web' && {marginInline: 0}]}>
                 <ThemedText style={{fontSize: 16,
                                     fontWeight: 'bold',}}>{section.title}
                 </ThemedText>
@@ -185,11 +185,11 @@ export default function ShareScreen() {
                 <>
                   {
                     section.title === i18n.t('decks') && filtered.length === 0 && 
-                      <ThemedText style={styles.noFound}>{i18n.t('no_decks_found')}</ThemedText>
+                      <ThemedText style={shareScreenStyles.noFound}>{i18n.t('no_decks_found')}</ThemedText>
                   }
                   {
                     section.title === i18n.t('trades') && filteredTrades.length === 0 && 
-                      <ThemedText style={styles.noFound}>{i18n.t('no_trades_found')}</ThemedText>
+                      <ThemedText style={shareScreenStyles.noFound}>{i18n.t('no_trades_found')}</ThemedText>
                   }
                 </>
               )}
@@ -201,7 +201,7 @@ export default function ShareScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+export const shareScreenStyles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 22,
