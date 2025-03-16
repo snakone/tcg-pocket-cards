@@ -86,7 +86,7 @@ export default function ProfileScreen() {
                         showHeader={false}>
       <ThemedView style={{alignItems: 'center', flex: 1}}>
         <ThemedView style={[styles.header, {marginTop: 30}]}>
-          <ThemedView style={styles.avatarContainer}>
+          <ThemedView style={[styles.avatarContainer, {top: 10}]}>
             <Pressable onPress={() => handleActionMenu('OPEN_AVATAR')}>
               <Image source={AVATAR_MAP[profile.avatar]} style={styles.avatar}/>
             </Pressable>
@@ -143,7 +143,7 @@ export default function ProfileScreen() {
             </ThemedView>
           </TouchableOpacity>
           
-          <ThemedView style={[{width: '100%', flex: 1, marginTop: 40, alignItems: 'center'}]}>
+          <ThemedView style={[{width: '100%', flex: 1, marginTop: 32, alignItems: 'center'}]}>
             <ThemedText style={{fontSize: 13, height: 17}}>{i18n.t('best_card')}</ThemedText>
 
             <ThemedView style={styles.separator}></ThemedView>

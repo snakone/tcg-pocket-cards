@@ -2,6 +2,7 @@ import { StyleProp, TextStyle, ImageStyle } from "react-native";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { Card } from "./card.interfaces";
 import { LanguageType } from "../types/global.types";
+import { CardLanguageENUM } from "../enums/card.enums";
 
 interface ServerResponse {
   ok: boolean;
@@ -63,4 +64,9 @@ export interface TradeItem {
   offers: (number | null)[];
   created: number;
   valid: boolean;
+}
+
+export interface UserCollection {
+  id: number;
+  amount: Record<CardLanguageENUM, number>
 }

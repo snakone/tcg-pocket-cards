@@ -1,5 +1,8 @@
 import { SettingsState } from '@/hooks/settings.reducer';
-import { StorageDeck, TradeItem, UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
+import { CollectionUser } from '@/shared/definitions/classes/collection.class';
+import { CardLanguageENUM } from '@/shared/definitions/enums/card.enums';
+import { StorageDeck, TradeItem, UserCollection, UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
+import { areAllAmountsZero } from '@/shared/definitions/utils/functions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default class Storage {
@@ -17,7 +20,8 @@ export default class Storage {
     'favorites',
     'cards',
     'decks',
-    'trades'
+    'trades',
+    'collection'
   ];
 
   static profileKeys = [
@@ -104,15 +108,6 @@ export default class Storage {
     }
   }
 
-  public static async getDecks(): Promise<any | null> {
-    try {
-      const decks: StorageDeck[] = await this.get('decks');
-      return decks || null;
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   public static async removeDeck(id: number): Promise<any | null> {
     try {
       const decks: StorageDeck[] = await this.get('decks');
@@ -145,15 +140,6 @@ export default class Storage {
     }
   }
 
-  public static async getTrades(): Promise<any | null> {
-    try {
-      const trades: TradeItem[] = await this.get('trades');
-      return trades || null;
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   public static async removeTrade(id: number): Promise<any | null> {
     try {
       const trades: TradeItem[] = await this.get('trades');
@@ -174,6 +160,46 @@ export default class Storage {
     }
 
     return profile as UserProfile;
+  }
+
+  public static async addToCollection(id: number, lang: CardLanguageENUM): Promise<any | null> {
+    try {
+      let collection: UserCollection[] = await this.get('collection');
+      if (collection !== null) {
+        const item = collection.find(d => d.id === id);
+        
+        if (item) {
+          item.amount[lang]++;
+        } else {
+          collection = [...collection, new CollectionUser(id, lang)]
+        }
+
+        this.set('collection', collection);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  public static async removeFromCollection(id: number, lang: CardLanguageENUM): Promise<any | null> {
+    try {
+      let collection: UserCollection[] = await this.get('collection');
+      if (collection !== null) {
+        const item = collection.find(d => d.id === id);
+        
+        if (item) {
+          item.amount[lang]--;
+        }
+
+        if (item && areAllAmountsZero(item)) {
+          collection = collection.filter(coll => coll.id !== id);
+        }
+
+        this.set('collection', collection);
+      }
+    } catch (e) {
+      console.log(e);
+    }
   }
 
 }

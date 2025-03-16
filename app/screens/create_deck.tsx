@@ -75,6 +75,10 @@ export default function CreateDeckScreen() {
 
   useEffect(() => {
     setLang(state.settingsState.language);
+
+    return (() => {
+      dispatch({type: 'RESET_CARD_FILTERS'});
+    })
   }, [state.settingsState.language]);
 
   const [element, setElement] = useState({
@@ -332,9 +336,10 @@ export default function CreateDeckScreen() {
 
   useEffect(() => {
     if (!filtered || filtered.length === 0) { return; }
+    if(isSortVisible) { return; }
     const sorted = filterOrSortCards('sort', filtered, state.filterState.sort.find(s => s.active));
     setFiltered(sorted);
-  }, [state.filterState.sort]);
+  }, [isSortVisible]);
 
   useEffect(() => {
     if (!filtered) { return; }
@@ -347,7 +352,7 @@ export default function CreateDeckScreen() {
     if(isFilterVisible) { return; }
     const sorted = filterOrSortCards('filter', state.cardState.cards);
     setFiltered(sorted);
-  }, [state.filterState.filter, lang]);
+  }, [isFilterVisible, lang]);
 
   useEffect(() => {
     if (!isEnergyVisible && isElementWithEnergy(element)) {

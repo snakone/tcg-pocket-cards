@@ -39,5 +39,9 @@ export enum CardSpecialConditionENUM {
   PLAY_CARDS
 }
 
+export enum CardLanguageENUM {
+  ES, EN, JAP, FRA, ALE, ITA, BR, COR, CHI
+}
+
 export type RarityWithoutSpecial = Exclude<CardRarityENUM, CardRarityENUM.SPECIAL>;
 

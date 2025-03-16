@@ -14,7 +14,7 @@ import {
 
 import { Image } from 'expo-image';
 import { useFocusEffect, useRouter } from 'expo-router';
-import { Switch } from 'react-native-paper';
+import { Slider } from '@miblanchard/react-native-slider';
 
 import Animated, { 
   useAnimatedScrollHandler, 
@@ -48,7 +48,6 @@ import { AppContext } from '@/app/_layout';
 import SoundService from '@/core/services/sounds.service';
 import { LanguageType } from '@/shared/definitions/types/global.types';
 import { settingsStyles } from '@/app/screens/settings';
-import { Slider } from '@miblanchard/react-native-slider';
 
 interface GridCardProps {
   state: AppState,
@@ -100,6 +99,10 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
 
   useFocusEffect(useCallback(() => {
     goUp(null, false);
+
+    return (() => {
+      dispatch({type: 'RESET_CARD_FILTERS'});
+    })
   }, []));
 
   useEffect(() => {

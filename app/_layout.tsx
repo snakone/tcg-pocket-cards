@@ -56,6 +56,11 @@ export default function RootLayout() {
             Storage.setSettings({...settings});
           }
 
+          if (!settings.collection) {
+            settings.collection = [];
+            Storage.setSettings({...settings});
+          }
+
           dispatch({type: 'SET_SETTINGS', value: {...settings, version: APP_VERSION}});
           SoundService.setEnabled(settings.sound)
           setLocale(settings.language);

@@ -1,7 +1,5 @@
 import { ReactNode } from "react";
-import { RarityWithoutSpecial } from "../enums/card.enums";
-import { PokemonTypeENUM } from "../enums/pokemon.enums";
-import { PACKS_TYPE } from "../enums/packs.enums";
+import { CardLanguageENUM } from "../enums/card.enums";
 
 export interface HeaderWithCustomModalProps {
   title: string;
@@ -16,6 +14,10 @@ export interface TabMenu {
   isVisible: boolean;
   onClose: (value?: any) => void;
   animatedStyle: any;
+}
+
+export interface TabMenuCollection extends TabMenu {
+  selectedLanguage: CardLanguageENUM;
 }
 
 export interface TabDesiredMenu extends TabMenu {

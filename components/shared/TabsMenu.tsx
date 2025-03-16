@@ -34,7 +34,7 @@ export default function TabsMenu({
 
   const startAnimation = () => {
     fillProgress.value = withTiming(1, {
-      duration: 800,
+      duration: 500,
       easing: Easing.poly(1.2),
     }, function (isFinished) {
       if (isFinished !== undefined) {
@@ -119,6 +119,7 @@ export default function TabsMenu({
       </Pressable>
       <Animated.View style={[MenuStyles.container, animatedStyle]}>
         <Pressable onPressIn={startAnimation}
+                   onTouchStart={startAnimation}
                    onPressOut={resetAnimation}>
           <Animated.View style={[TabsMenuStyles.container, animatedFillStyle]} />
           <View style={TabsMenuStyles.user}>

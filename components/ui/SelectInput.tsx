@@ -24,6 +24,7 @@ interface SelectInputProps {
   textStyle?: StyleProp<TextStyle>,
   iconStyle?: StyleProp<TextStyle>,
   itemStyle?: StyleProp<ViewStyle>,
+  translate?: boolean
 }
 
 export default function SelectInput({
@@ -38,7 +39,8 @@ export default function SelectInput({
   shadow = true,
   textStyle = {},
   iconStyle = {},
-  itemStyle = {}
+  itemStyle = {},
+  translate = true
 }: SelectInputProps) {
   const {i18n} = useI18n();
 
@@ -65,7 +67,7 @@ export default function SelectInput({
             !shadow && {boxShadow: 'none'},
           ]}>
             <ThemedText style={[filterStyles.buttonText, {...(selected && {color: 'white'})}, textStyle]}>
-             {(selected && item) ? item : (!selected && item) ? i18n.t(item) : i18n.t(label)}
+             {(selected && item) ? item : (!selected && item) ? translate ? i18n.t(item) : item : translate ? i18n.t(label) : label}
             </ThemedText>
             <MaterialIcons name={isOpened ? 'keyboard-arrow-up' : 'keyboard-arrow-down'} 
                            style={[styles.icon, {color: selected ? 'white' : '#555'}, iconStyle]}/>
@@ -73,12 +75,11 @@ export default function SelectInput({
         );
       }}
       renderItem={(item, _, isSelected) => {
-        const selected = filterObj && item;
         return (
           <ThemedView style={[styles.item, itemStyle, {...(isSelected && {backgroundColor: '#444444'})}]}>
             <ThemedText style={[
                 filterStyles.buttonText, {...(isSelected && {color: 'white'})}
-              ]}>{!selected ? i18n.t(item) : item}
+              ]}>{translate ? i18n.t(item) : item}
             </ThemedText>
           </ThemedView>
         );

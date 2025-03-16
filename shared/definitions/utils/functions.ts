@@ -13,6 +13,8 @@ import { CardExpansionENUM } from "../enums/card.enums";
 import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SMACK_DOWN, TRIUMPH_LIGHT_ARCEUS_ICON } from "../sentences/path.sentences";
 import { PACK_MAP } from "./constants";
 import { LanguageType } from "../types/global.types";
+import { FilterAttackSearch } from "../classes/filter_attack.class";
+import { UserCollection } from "../interfaces/global.interfaces";
 
 import { 
   CARD_IMAGE_MAP_116x162_EN, 
@@ -25,7 +27,6 @@ import {
   CARD_IMAGE_MAP_ES, 
   CARD_IMAGE_MAP_JAP
 } from "./card.images";
-import { FilterAttackSearch } from "../classes/filter_attack.class";
 
 export function sortCards(field: keyof Card | string, data: Card[], sort: SortItem): Card[] {
   return [...data].sort((a, b) => {
@@ -177,8 +178,11 @@ export function filterCards(filter: FilterSearch, data: Card[], favorites: numbe
     }
 
     const expansion = Object.keys(filter.expansion).filter(key => Boolean((filter.expansion as any)[key]));
+
+    const isMewInmersive = card.id === 283 && card.name.es === 'Mew';
+    const allGenetic = ['0', '1', '2'].every(num => expansion.includes(num));
     
-    if(expansion.length > 0 && !card.found?.some(pack => expansion?.includes(String(pack)))) {
+    if((expansion.length > 0 && !card.found?.some(pack => expansion?.includes(String(pack)))) && !(isMewInmersive && allGenetic)) {
       return false;
     }
 
@@ -544,4 +548,8 @@ const METRICS_MAP: any = {
 
 export function getMetrics(type: 'height' | 'weight', lang: LanguageType): string {
   return METRICS_MAP[type][lang];
+}
+
+export function areAllAmountsZero(collection: UserCollection): boolean {
+  return Object.values(collection.amount).every(value => value === 0);
 }

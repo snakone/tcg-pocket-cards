@@ -100,11 +100,10 @@ import {
 
 import { FilterSearch } from "../classes/filter.class";
 import { EXPANSION } from "../enums/packs.enums";
-import { CardExpansionENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageENUM } from "../enums/card.enums";
+import { CardExpansionENUM, CardLanguageENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { AvatarIcon } from "../interfaces/global.interfaces";
 import { FilterAttackSearch } from "../classes/filter_attack.class";
-import { CARD_IMAGE_WIDTH_3, CARD_IMAGE_WIDTH_5, CARD_IMAGE_WIDTH_7 } from "@/shared/styles/component.styles";
 
 export const MENU_LIST: ItemWithRoute[] = [
   { label: 'share', icon: 'note', route: 'share' },
@@ -494,3 +493,39 @@ export const PACK_PER_EXPANSION_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.PROMO_A]: 0,
   [CardExpansionENUM.TRIUMPH_LIGHT]: 1,
 }
+
+export const COLLECTION_LANGUAGE_MAP: Record<CardLanguageENUM, string> = {
+  [CardLanguageENUM.ALE]: 'ALE',
+  [CardLanguageENUM.BR]: 'PT-BR',
+  [CardLanguageENUM.CHI]: 'CH-TR',
+  [CardLanguageENUM.COR]: 'COR',
+  [CardLanguageENUM.EN]: 'ING',
+  [CardLanguageENUM.ES]: 'ES',
+  [CardLanguageENUM.FRA]: 'FRA',
+  [CardLanguageENUM.ITA]: 'ITA',
+  [CardLanguageENUM.JAP]: 'JAP',
+}
+
+export const LANGUAGE_COLLECTION_MAP: Record<string, CardLanguageENUM> = {
+  'ALE': CardLanguageENUM.ALE,
+  'PT-BR': CardLanguageENUM.BR,
+  'CH-TR': CardLanguageENUM.CHI,
+  'COR': CardLanguageENUM.COR,
+  'ING': CardLanguageENUM.EN,
+  'ES': CardLanguageENUM.ES,
+  'FRA': CardLanguageENUM.FRA,
+  'ITA': CardLanguageENUM.ITA,
+  'JAP': CardLanguageENUM.JAP,
+}
+
+export const CollectionLanguageList = [
+  CardLanguageENUM.EN,
+  CardLanguageENUM.ES,
+  CardLanguageENUM.FRA,
+  CardLanguageENUM.ALE,
+  CardLanguageENUM.ITA,
+  CardLanguageENUM.BR,
+  CardLanguageENUM.JAP,
+  CardLanguageENUM.COR,
+  CardLanguageENUM.CHI
+];

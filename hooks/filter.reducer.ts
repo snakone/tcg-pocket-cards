@@ -19,6 +19,8 @@ export const filterReducer = (state: FilterState, action: FilterAction): FilterS
       return { ...state, attack_sort: action.value };
     case 'SET_ATTACK_FILTER':
       return { ...state, attack_filter: action.value };
+    case 'RESET_CARD_FILTERS':
+      return { ...state, sort: [], filter: new FilterSearch() };
     default:
       return state;
   }
@@ -36,3 +38,4 @@ export type FilterAction =
   | { type: 'SET_SORT', value: SortItem[] }
   | { type: 'SET_ATTACK_FILTER', value: FilterAttackSearch }
   | { type: 'SET_ATTACK_SORT', value: SortItem[] }
+  | { type: 'RESET_CARD_FILTERS' }

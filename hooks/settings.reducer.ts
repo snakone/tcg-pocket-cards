@@ -1,6 +1,9 @@
+import { CollectionUser } from "@/shared/definitions/classes/collection.class";
+import { CardLanguageENUM } from "@/shared/definitions/enums/card.enums";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { StorageDeck, TradeItem, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
+import { StorageDeck, TradeItem, UserCollection, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { LanguageType } from "@/shared/definitions/types/global.types";
+import { areAllAmountsZero } from "@/shared/definitions/utils/functions";
 
 export interface SettingsState extends UserProfile {
   music: boolean;
@@ -14,6 +17,7 @@ export interface SettingsState extends UserProfile {
   cards: Card[];
   decks: StorageDeck[];
   trades: TradeItem[];
+  collection: UserCollection[];
 }
 
 export const settingsInitialState: SettingsState = { 
@@ -31,7 +35,8 @@ export const settingsInitialState: SettingsState = {
   avatar: 'eevee',
   coin: 'eevee',
   best: null,
-  trades: []
+  trades: [],
+  collection: []
 };
 
 export const settingsReducer = (state: SettingsState, action: SettingsAction): SettingsState => {
@@ -76,8 +81,39 @@ export const settingsReducer = (state: SettingsState, action: SettingsAction): S
         }
         return { ...state, trades: value };
       }
+    case 'SET_COLLECTION':
+      return { ...state, collection: action.value };
+    case 'ADD_TO_COLLECTION': 
+      {
+        const item = state.collection.find(coll => coll.id === action.value.id);
+
+        if (item) {
+          item.amount[action.value.lang]++;
+        } else {
+          state.collection = [...state.collection, new CollectionUser(action.value.id, action.value.lang)];
+        }
+        return { ...state, collection: state.collection.slice() };
+      }
+    case 'REMOVE_FROM_COLLECTION': 
+      {
+        const item = state.collection.find(coll => coll.id === action.value.id);
+
+        if (item) {
+          item.amount[action.value.lang]--;
+        } 
+
+        if (item && areAllAmountsZero(item)) {
+          state.collection = state.collection.filter(coll => coll.id !== action.value.id);
+        }
+        return { ...state, collection: state.collection.slice() };
+      }   
     case 'REMOVE_TRADE':
         return { ...state, trades: state.trades.filter(d => d.id !== action.value) };
+    case 'RESET_COLLECTION': 
+    {
+      state.collection.forEach(coll => coll.amount[action.value] = 0);
+      return { ...state };
+    }
     case 'RESET_SETTINGS':
       return { ...settingsInitialState };
     default:
@@ -93,4 +129,8 @@ export type SettingsAction =
   | { type: 'REMOVE_DECK', value: number }
   | { type: 'ADD_TRADE', value: TradeItem }
   | { type: 'REMOVE_TRADE', value: number }
+  | { type: 'SET_COLLECTION', value: UserCollection[] }
+  | { type: 'ADD_TO_COLLECTION', value: {id: number, lang: CardLanguageENUM} }
+  | { type: 'REMOVE_FROM_COLLECTION', value: {id: number, lang: CardLanguageENUM} }
+  | { type: 'RESET_COLLECTION', value: CardLanguageENUM }
   | { type: 'RESET_SETTINGS' }
