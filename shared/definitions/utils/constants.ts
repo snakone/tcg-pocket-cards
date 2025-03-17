@@ -118,7 +118,7 @@ export const MENU_HELP: ItemWithRoute[] = [
   { label: 'config', icon: 'washer.circle', route: 'settings' },
 ];
 
-export const APP_VERSION = '1.3.0';
+export const APP_VERSION = '1.3.1';
 export const MENU_WIDTH = 250;
 export const MENU_HEIGHT = 225 + (45 * [...MENU_LIST, ...MENU_HELP].length);
 export const MENU_HEIGHT_ANDROID = 180 + (45 * [...MENU_LIST, ...MENU_HELP].length);
