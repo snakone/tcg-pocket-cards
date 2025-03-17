@@ -17,10 +17,11 @@ interface TradeUserItemProps {
   item: TradeItem,
   rarity: CardRarityENUM | undefined,
   styles?: any,
-  state: AppState
+  state: AppState,
+  share?: boolean
 }
 
-export default function TradeUserItem({item, rarity, styles, state}: TradeUserItemProps) {
+export default function TradeUserItem({item, rarity, styles, state, share}: TradeUserItemProps) {
   const {i18n} = useI18n();
 
   if (!item) { return; }
@@ -28,10 +29,10 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
   return (
     <ThemedView style={[tradeItemStyles.item, styles, {
       borderColor: !item?.valid ? 'goldenrod' : 'transparent', 
-      borderWidth: !item.valid  ? 1 : 0}]}>
-      <ThemedView style={{flex: 1, height: 52}}>
-        <ThemedText style={{marginBottom: 8, color: 'none'}}>{item?.title || i18n.t('trade') + ' ' + (item.id)}</ThemedText>
-        <ThemedView style={[tradeItemStyles.container]}>
+      borderWidth: !item.valid  ? 1 : 0}, {padding: 0, minHeight: 60, marginBottom: 20}]}>
+      <ThemedView style={{flex: 1, height: 52, overflow: 'hidden', padding: 0}}>
+        <ThemedText style={[tradeItemStyles.title, share && {marginBottom: 14}]}>{item?.title || i18n.t('trade') + ' ' + (item.id)}</ThemedText>
+        <ThemedView style={[tradeItemStyles.container, {height: share ? 101 : 46, paddingHorizontal: 22}]}>
           <ThemedView style={{width: '38%'}}>
             {
               item.desired.map((item, i) => (
@@ -39,9 +40,13 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
                     left: i * 16,
-                    width: 55,
+                    width: 50,
                     opacity: 1 - 0.10 * i,
                     zIndex: Math.round((1 / (i + 1) * 100)),
+                    transform: [
+                      { rotate: `${(i - 2) * 8}deg` },
+                    ],
+                    top: Math.abs(i - 2) * 4
                   }
                 ]} 
                 source={getImageLanguage116x162(state?.settingsState.language, item)}
@@ -49,20 +54,29 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
                     left: i * 16,
-                    width: 55,
-                    opacity: 1 - 0.2 * i,
+                    width: 50,
+                    opacity: 1 - 0.1 * i,
                     zIndex: Math.round((1 / (i + 1) * 100)),
+                    top: Math.abs(i - 2) * 4,
+                    transform: [
+                      { rotate: `${(i - 2) * 8}deg` },
+                    ],
                   }
                 ]} key={i}/>
               ))
             }
           </ThemedView>
-          <ThemedView style={[{width: '25%', top: 4}, Platform.OS !== 'web' && {left: 15}]}>
+          <ThemedView style={[{
+            width: '25%', top: 4, left: -4}, 
+            Platform.OS !== 'web' && {left: 15}, 
+            share && {transform: [{scale: 0.8}], left: -3}
+          ]}>
             {
               SvgTradePassSymbol(
-                Platform.OS !== 'web' ? 
-                {width: 45, height: 52, transform: [{scale: 0.8}], top: 10} : 
-                  {transform: [{scale: 0.8}]})
+                Platform.OS !== 'web' ?
+                {width: 45, height: 52, transform: [{scale: 0.9}], top: 10} : 
+                {transform: [{scale: 0.9}]},
+              )
             }
           </ThemedView>
           <ThemedView style={{width: '38%', borderBottomLeftRadius: 4}}>
@@ -72,9 +86,13 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
                     left: i * 16,
-                    width: 55,
+                    width: 50,
                     opacity: 1 - 0.10 * i,
                     zIndex: Math.round((1 / (i + 1) * 100)),
+                    transform: [
+                      { rotate: `${(i - 2) * 8}deg` },
+                    ],
+                    top: Math.abs(i - 2) * 4
                   }
                 ]} 
                 source={getImageLanguage116x162(state?.settingsState.language, offer)}
@@ -82,9 +100,13 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
                     left: i * 16,
-                    width: 55,
-                    opacity: 1 - 0.2 * i,
+                    width: 50,
+                    opacity: 1 - 0.1 * i,
                     zIndex: Math.round((1 / (i + 1) * 100)),
+                    top: Math.abs(i - 2) * 4,
+                    transform: [
+                      { rotate: `${(i - 2) * 8}deg` },
+                    ],
                   }
                 ]} key={i}/>
               ))
@@ -94,7 +116,7 @@ export default function TradeUserItem({item, rarity, styles, state}: TradeUserIt
       </ThemedView>
 
       <ThemedView style={[tradeItemStyles.token]}>
-        <Image source={TRADE_POINTS} style={{width: 22, height: 22, left: 8, position: 'absolute', top: 2}}/>
+        <Image source={TRADE_POINTS} style={{width: 20, height: 20, left: 0, position: 'absolute', top: 2}}/>
         <ThemedText style={{top: -1, left: 12, fontSize: 13}}>{rarity !== undefined && (TRADE_COST_MAP as any)[rarity] || 0}</ThemedText>
       </ThemedView>
     </ThemedView> 
@@ -114,19 +136,17 @@ const tradeItemStyles = StyleSheet.create({
     backgroundColor: 'white'
   },
   token: {
-    boxShadow: 'rgba(0, 0, 0, 0.3) 0px 4px 16px',
     position: 'absolute',
-    width: 74,
-    height: 30,
+    width: 50,
+    height: 25,
     borderRadius: 20,
-    bottom: -15,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgb(241 241 241)',
-    left: Platform.OS !== 'web' ? '43.3%' : '39.5%',
     flexDirection: 'row',
     gap: 6,
-    opacity: 0.9
+    opacity: 0.9,
+    top: 10,
+    right: 12
   },
   container: {
     flexDirection: 'row', 
@@ -135,5 +155,11 @@ const tradeItemStyles = StyleSheet.create({
     height: 96, 
     overflow: 'hidden', 
     borderBottomLeftRadius: 4
+  },
+  title: {
+    marginBottom: 8, 
+    color: 'none', 
+    paddingHorizontal: 16, 
+    paddingVertical: 12, 
   }
 });

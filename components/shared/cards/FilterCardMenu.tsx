@@ -28,7 +28,7 @@ import {
 
 import { getFilterSearch } from "@/shared/definitions/utils/constants";
 import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
-import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
+import { TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -38,8 +38,9 @@ import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { AppContext } from "@/app/_layout";
 import SoundService from "@/core/services/sounds.service";
 import { SpecialItem } from "./components/SpecialItem";
+import { CollectionItem } from "../collection/components/CollectionItem";
 
-export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabMenu) {
+export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCollection = false}: TabMenuCards) {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { dispatch } = context;
@@ -127,6 +128,15 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle}: TabM
         </View>
         <SafeAreaView style={[ModalStyles.modalScrollView, {paddingHorizontal: 20, paddingVertical: 0}]}>
           <ScrollView showsVerticalScrollIndicator={false} style={filterStyles.list}>
+            {
+              isCollection &&
+              <>
+                <ThemedView style={[filterStyles.row, {marginTop: 4}]}>
+                  <ThemedText style={filterStyles.header}>{i18n.t('collection')}</ThemedText>
+                </ThemedView>
+                <CollectionItem filterObj={filterObj}></CollectionItem>
+              </>
+            }
             <>
               <ThemedView style={[filterStyles.row, {marginTop: 4}]}>
                 <ThemedText style={filterStyles.header}>{i18n.t('favorites')}</ThemedText>

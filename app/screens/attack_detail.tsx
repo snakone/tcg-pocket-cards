@@ -185,7 +185,3 @@ export default function AttackDetailScreen() {
     </>
   )
 }
-
-const styles = StyleSheet.create({
-
-});

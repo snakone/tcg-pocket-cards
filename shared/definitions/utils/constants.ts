@@ -128,12 +128,13 @@ export const SERVER_URL = 'https://tcg-pocket-cards.onrender.com';
 export const FRONTEND_URL = 'https://tcg-pocket-cards.netlify.app/';
 export const DEFAULT_LANG = 'es';
 export const FILTER_CARDS_HEIGHT = 350;
+export const MAX_CONTENT = 30;
 
 // MODALS
 export const MIN_MODAL_HEIGHT = 96;
 export const DEFAULT_MODAL_HEIGHT = 236;
 export const LARGE_MODAL_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 508;
-export const SORT_MODAL_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 626;
+export const SORT_MODAL_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 640;
 export const SELECT_ENERGY_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 590;
 export const BACKUP_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 516;
 

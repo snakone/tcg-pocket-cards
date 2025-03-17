@@ -26,6 +26,7 @@ import { tradeCollageStyles } from "@/components/dedicated/share/TradeCollage";
 import { SALE_CARD } from "@/shared/definitions/sentences/path.sentences";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { getImageLanguage116x162 } from "@/shared/definitions/utils/functions";
+import { MAX_CONTENT } from "@/shared/definitions/utils/constants";
 
 export default function CreateTradeScreen() {
   const {i18n} = useI18n();
@@ -377,9 +378,11 @@ export default function CreateTradeScreen() {
           <ThemedView style={{width: '100%', marginTop: 16, marginBottom: 60}}>
             <TouchableOpacity style={[
               homeScreenStyles.ctaButton,
-              {marginBottom: 10, marginTop: 6, backgroundColor: 'mediumaquamarine'}
+              {marginBottom: 10, marginTop: 6, backgroundColor: 'mediumaquamarine'},
+              state.settingsState.trades.length >= MAX_CONTENT && {opacity: 0.5}
             ]} 
-                              onPress={() => createTrade()}>
+                onPress={() => createTrade()}
+                disabled={state.settingsState.trades.length >= MAX_CONTENT}>
               <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>
                 {i18n.t('save_a_trade')}
               </ThemedText>

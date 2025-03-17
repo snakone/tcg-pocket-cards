@@ -24,7 +24,8 @@ interface SelectInputProps {
   textStyle?: StyleProp<TextStyle>,
   iconStyle?: StyleProp<TextStyle>,
   itemStyle?: StyleProp<ViewStyle>,
-  translate?: boolean
+  translate?: boolean,
+  autoScroll?: boolean
 }
 
 export default function SelectInput({
@@ -40,7 +41,8 @@ export default function SelectInput({
   textStyle = {},
   iconStyle = {},
   itemStyle = {},
-  translate = true
+  translate = true,
+  autoScroll = false
 }: SelectInputProps) {
   const {i18n} = useI18n();
 
@@ -49,7 +51,7 @@ export default function SelectInput({
       data={options}
       onSelect={onSelect}
       statusBarTranslucent={true}
-      disableAutoScroll={true}
+      disableAutoScroll={!autoScroll}
       defaultValue={
         filterObj && propFilter && keyFilter && 
         ((filterObj.current as any)[propFilter][keyFilter] ?? keyFilter)

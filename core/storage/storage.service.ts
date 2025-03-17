@@ -1,4 +1,4 @@
-import { SettingsState } from '@/hooks/settings.reducer';
+import { settingsInitialState, SettingsState } from '@/hooks/settings.reducer';
 import { CollectionUser } from '@/shared/definitions/classes/collection.class';
 import { CardLanguageENUM } from '@/shared/definitions/enums/card.enums';
 import { StorageDeck, TradeItem, UserCollection, UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
@@ -50,6 +50,12 @@ export default class Storage {
 
   public static setSettings(settings: SettingsState): void {
     for (const key of Object.keys(settings)) {
+      this.set(key, (settings as any)[key]);
+    }
+  }
+
+  public static deleteSettings(settings: SettingsState = settingsInitialState): void {
+    for (const key of Object.keys(settings).filter(key => key !== 'cards')) {
       this.set(key, (settings as any)[key]);
     }
   }

@@ -28,6 +28,8 @@ export default function CardsScreen() {
     if (state.filterState.sort.length > 0) {
       const active = state.filterState.sort.find(s => s.active);
       setSort(active);
+    } else {
+      setSort({active: true, id: 1, icon: 'content-paste-search', label: 'order_by_id', order: 'asc'});
     }
   }, [state.filterState.sort]);
 

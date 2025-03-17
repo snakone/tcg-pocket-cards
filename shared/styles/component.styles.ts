@@ -254,9 +254,9 @@ export const ModalStyles = StyleSheet.create({
   },
   modalFooter: {
     backgroundColor: Colors.light.background,
-    paddingTop: 14,
+    paddingTop: 20,
     paddingInline: 14,
-    paddingBottom: 16,
+    paddingBottom: 22,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     alignItems: 'center',
@@ -560,7 +560,7 @@ export const LoadingStyles = StyleSheet.create({
 
 export const filterStyles = StyleSheet.create({
   container: {
-    height: '82.1%', 
+    height: '85.1%', 
     position: 'absolute', 
     width: '100%',
     bottom: 0,
@@ -568,6 +568,7 @@ export const filterStyles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopLeftRadius: 40, 
     borderTopRightRadius: 40,
+    overflow: 'hidden'
   },
   header: {
     fontSize: 20, 
@@ -988,6 +989,15 @@ export const offersStyles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.7)', 
     borderRadius: 4,
     justifyContent: 'center',
+    alignItems: 'center'
+  },
+  statsBtn: {
+    marginBottom: 10, 
+    marginTop: 40, 
+    backgroundColor: 'mediumaquamarine', 
+    flexDirection: 'row', 
+    justifyContent: 'center', 
+    gap: 10, 
     alignItems: 'center'
   }
 });

@@ -100,6 +100,10 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
   useFocusEffect(useCallback(() => {
     goUp(null, false);
 
+    if (state.filterState.filter.areAllPropertiesNull()) {
+      handleSearch('', false);
+    }
+     
     return (() => {
       dispatch({type: 'RESET_CARD_FILTERS'});
     })
@@ -134,11 +138,13 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
     setFavorites(favorites);
   }, [state.settingsState.favorites]);
 
-  const handleSearch = useCallback((text: string) => {
+  const handleSearch = useCallback((text: string, focus = true) => {
     searchQuery.current = text;
     setFiltered((type === 'favorites' ? favorites : state.cardState.cards).filter(card =>
     card.name[lang].toLowerCase()?.includes(text.toLowerCase())));
-    setTimeout(() => searchInputRef.current.focus(), 250);
+    if (focus) {
+      setTimeout(() => searchInputRef.current.focus(), 250);
+    } 
   }, [(type === 'favorites' ? favorites : state.cardState.cards), lang]);
 
   function filterOrSortCards(

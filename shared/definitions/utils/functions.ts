@@ -9,7 +9,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import { FilterSearch } from "../classes/filter.class";
 import { Attack, Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
-import { CardExpansionENUM } from "../enums/card.enums";
+import { CardExpansionENUM, CardLanguageENUM } from "../enums/card.enums";
 import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SMACK_DOWN, TRIUMPH_LIGHT_ARCEUS_ICON } from "../sentences/path.sentences";
 import { PACK_MAP } from "./constants";
 import { LanguageType } from "../types/global.types";
@@ -93,13 +93,38 @@ export function sortAttacks(field: keyof Attack | string, data: Attack[], sort: 
   });
 }
 
-export function filterCards(filter: FilterSearch, data: Card[], favorites: number[]): Card[] {
+export function filterCards(
+  filter: FilterSearch, 
+  data: Card[], 
+  favorites: number[], 
+  collection?: UserCollection[],
+  collectionLang?: CardLanguageENUM
+): Card[] {
   return data.filter(card => {
     if (
       filter.favorite.included !== null &&
       !favorites?.includes(card.id) &&
       filter.favorite.included != filter.favorite.not_favorite
     ) return false;
+
+    if (collection && collectionLang !== undefined) {
+      const item = collection.find(coll => coll.id === card.id);
+      if (
+        filter.collection.owned !== null &&
+        ((item && item.amount[collectionLang] <= 0) || !item) &&
+        filter.collection.owned != filter.collection.not_owned
+      ) {
+        return false;
+      }
+
+      if (
+        filter.collection.not_owned !== null &&
+        ((item && item.amount[collectionLang] > 0)) &&
+        filter.collection.not_owned != filter.collection.owned
+      ) {
+        return false;
+      }
+    }
 
     if (
       filter.favorite.not_favorite !== null &&
@@ -302,11 +327,11 @@ export function isCardPromo(card: Card): boolean {
 }
 
 export function isCardPromoAndNoBattle(card: Card): boolean {
-  return isNotBattleCard(card) && card.expansion === CardExpansionENUM.PROMO_A;
+  return isNotBattleCard(card) && isCardPromo(card);
 }
 
 export function isCardPromoAndBattle(card: Card): boolean {
-  return !isNotBattleCard(card) && card.expansion === CardExpansionENUM.PROMO_A;
+  return !isNotBattleCard(card) && isCardPromo(card);
 }
 
 export function convertBase64ToJpeg(base64Png: string, quality = 1): Promise<string> {
@@ -359,7 +384,7 @@ export const getDynamicHeight = (length: number, type: 'deck' | 'trade'): number
   } else if (length <= 20) {
     return maxHeight;
   } else {
-    throw new Error("El totalLength debe estar entre 1 y 20.");
+    throw new Error("TotalLength must be between 1 and 20.");
   }
 };
 

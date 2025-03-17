@@ -6,7 +6,7 @@ import { useFocusEffect, useRouter } from 'expo-router';
 
 import { TradeScreenModal } from '@/components/modals';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
+import { LARGE_MODAL_HEIGHT, MAX_CONTENT } from '@/shared/definitions/utils/constants';
 import { NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
 import { CardGridStyles, homeScreenStyles } from '@/shared/styles/component.styles';
 import { IconSymbol } from '@/components/ui/IconSymbol';
@@ -40,7 +40,11 @@ export default function TradeScreen() {
 
   useFocusEffect(useCallback(() => {
     goUp();
-  }, []));
+
+    return (() => {
+      handleSearch('');
+    })
+  }, [trades]));
 
   async function goUp(): Promise<void> {
     flatListRef.current?.scrollToOffset({offset: 0, animated: false});
@@ -95,16 +99,18 @@ export default function TradeScreen() {
         <TouchableOpacity style={[
           homeScreenStyles.ctaButton,
           {marginBottom: 10, marginTop: 6, backgroundColor: 'mediumaquamarine'},
-          Platform.OS !== 'web' && {marginBottom: 16}
+          Platform.OS !== 'web' && {marginBottom: 16},
+          trades.length >= MAX_CONTENT && {opacity: 0.5}
         ]} 
-                          onPress={() => handleTrade()}>
+            onPress={() => handleTrade()}
+            disabled={trades.length >= MAX_CONTENT}>
           <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>
             {i18n.t('make_a_trade')}
           </ThemedText>
         </TouchableOpacity>
       </ThemedView>
       )
-  }, []);
+  }, [trades]);
 
   return (
     <>

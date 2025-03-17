@@ -12,7 +12,7 @@ import { useI18n } from '@/core/providers/LanguageProvider';
 import { NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
 import { Colors } from '@/shared/definitions/utils/colors';
 import { CardGridStyles, homeScreenStyles } from '@/shared/styles/component.styles';
-import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
+import { LARGE_MODAL_HEIGHT, MAX_CONTENT } from '@/shared/definitions/utils/constants';
 import SoundService from '@/core/services/sounds.service';
 import { AppContext } from '../_layout';
 import { StorageDeck } from '@/shared/definitions/interfaces/global.interfaces';
@@ -48,6 +48,12 @@ export default function CreateDeckScreen() {
     router.push(`/screens/create_deck?deck_id=${encodeURIComponent(deck.id)}`);
   }
 
+  useFocusEffect(useCallback(() => {
+    return (() => {
+      handleSearch('');
+    })
+  }, [decks]));
+
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
                       style={[CardGridStyles.clearInput, {left: 250}]}
@@ -82,16 +88,18 @@ export default function CreateDeckScreen() {
         <TouchableOpacity style={[
           homeScreenStyles.ctaButton,
           {marginBottom: 10, marginTop: 6, backgroundColor: 'skyblue'},
-          Platform.OS !== 'web' && {marginBottom: 16}
+          Platform.OS !== 'web' && {marginBottom: 16},
+          decks.length >= MAX_CONTENT && {opacity: 0.5}
         ]} 
-                          onPress={() => createNewDeck()}>
+            onPress={() => createNewDeck()}
+            disabled={decks.length >= MAX_CONTENT}>
           <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>
             {i18n.t('add_new_deck')}
           </ThemedText>
         </TouchableOpacity>
       </ThemedView>
       )
-  }, []);
+  }, [decks]);
 
   useEffect(() => {
     setDecks(state.settingsState.decks);

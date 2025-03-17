@@ -72,7 +72,11 @@ export default function AttacksScreen() {
 
   useFocusEffect(useCallback(() => {
     goUp(null, false);
-  }, []));
+
+    return (() => {
+      handleSearch('');
+    })
+  }, [attacks]));
 
   const keyExtractor = useCallback((item: Attack, index: number) => String(item.name) + index, []);
 

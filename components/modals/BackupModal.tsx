@@ -63,7 +63,7 @@ export function BackupModal() {
           unsavedSettings = decryptDataAndroid(encrypted);
           setLoading(true);
         }
-  
+
         if (isObjectSettings(unsavedSettings)) {
           ShareService.onSettingsImport(unsavedSettings);
         }
@@ -95,7 +95,7 @@ export function BackupModal() {
     const userConfirmed = await confirm("delete_config", "delete_config_question", "delete");
     if (userConfirmed) {
       ShareService.onDeleteSettings();
-      Storage.setSettings(settingsInitialState);
+      Storage.deleteSettings();
       router.replace('/?show=true');
     }
   }

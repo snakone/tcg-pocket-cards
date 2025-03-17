@@ -4,6 +4,7 @@ import Animated, { Easing, runOnJS, useAnimatedStyle, useSharedValue, withTiming
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { useEffect, useState, useCallback } from 'react';
+import React from 'react';
 
 import { LayoutStyles, MenuStyles, TabsMenuStyles } from '@/shared/styles/component.styles';
 import { TabMenu } from '@/shared/definitions/interfaces/layout.interfaces';
@@ -13,7 +14,6 @@ import { IconSymbol } from '../ui/IconSymbol';
 import { MENU_LIST, MENU_HELP, COIN_MAP } from '@/shared/definitions/utils/constants';
 import { useI18n } from '../../core/providers/LanguageProvider';
 import SoundService from '@/core/services/sounds.service';
-import React from 'react';
 import Storage from '@/core/storage/storage.service';
 import { UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
 

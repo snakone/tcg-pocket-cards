@@ -28,11 +28,21 @@ export default function ProfileScreen() {
   const { state, dispatch } = context;
   const [userName, setUserName] = useState('');
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const [collection, setCollection] = useState<number>(0);
   const router = useRouter();
 
   useEffect(() => {
     setLang(state.settingsState.language);
   }, [state.settingsState.language]);
+
+  useEffect(() => {
+    const totalCollection = state.settingsState.collection.reduce((acc, curr) => {
+      const length = Object.values(curr.amount).reduce((acc, curr) => acc + curr, 0);
+      return length + acc;
+    }, 0);
+    
+    setCollection(totalCollection);
+  }, [state.settingsState.collection]);
 
   const [profile, setProfile] = useState<UserProfile>(
     {name: '', avatar: 'eevee', coin: 'eevee', best: null}
@@ -110,6 +120,19 @@ export default function ProfileScreen() {
               <MaterialIcons name="edit" style={styles.editInput} />
             </ThemedView>
           </ThemedView>
+          
+          <TouchableOpacity onPress={goToCollection}>
+            <ThemedView style={[TabsMenuStyles.user, {marginTop: 16, width: 275}]}>
+              <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                <MaterialIcons name="style" style={[styles.editInput, {fontSize: 22, right: 'auto', left: 12, top: 8}]} />
+                <ThemedText style={[styles.input, {fontSize: 16, width: 238, paddingVertical: 8, left: 14}]}>{i18n.t('my_collection')}</ThemedText>
+                <ThemedText style={{textAlign: 'center', minWidth: 24}}>{collection}</ThemedText>
+              </ThemedView>
+            </ThemedView>
+          </TouchableOpacity>
+
+          <ThemedView style={[styles.separator, {marginTop: 22}]}></ThemedView>
+
           <ThemedView style={[TabsMenuStyles.user, {marginTop: 20, width: 275, gap: 0}]}>
             <Image source={COIN_MAP[profile.coin]} 
                    style={TabsMenuStyles.avatar}>
@@ -130,18 +153,6 @@ export default function ProfileScreen() {
               </ThemedView>
             </Pressable>
           </ThemedView>
-
-          <ThemedView style={[styles.separator, {marginTop: 16}]}></ThemedView>
-
-          <TouchableOpacity onPress={goToCollection}>
-            <ThemedView style={[TabsMenuStyles.user, {marginTop: 16, width: 275}]}>
-              <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                <MaterialIcons name="style" style={[styles.editInput, {fontSize: 22, right: 'auto', left: 12, top: 8}]} />
-                <ThemedText style={[styles.input, {fontSize: 16, width: 235, paddingVertical: 8, left: 21}]}>{i18n.t('my_collection')}</ThemedText>
-                <ThemedText>124</ThemedText>
-              </ThemedView>
-            </ThemedView>
-          </TouchableOpacity>
           
           <ThemedView style={[{width: '100%', flex: 1, marginTop: 32, alignItems: 'center'}]}>
             <ThemedText style={{fontSize: 13, height: 17}}>{i18n.t('best_card')}</ThemedText>

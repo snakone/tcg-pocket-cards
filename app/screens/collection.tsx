@@ -5,6 +5,7 @@ import React from 'react';
 import { useRouter } from 'expo-router';
 import { Portal, Provider } from 'react-native-paper';
 import { Image } from 'expo-image';
+import { Platform } from 'react-native';
 
 import { AppContext } from '../_layout';
 import { CLOSE_SENTENCE, GO_UP, NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
@@ -23,11 +24,9 @@ import { ThemedText } from '@/components/ThemedText';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { LanguageType } from '@/shared/definitions/types/global.types';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { areAllAmountsZero, filterCards, getImageLanguage116x162, sortCards } from '@/shared/definitions/utils/functions';
+import { filterCards, getImageLanguage116x162, sortCards } from '@/shared/definitions/utils/functions';
 import SkeletonCardGrid from '@/components/skeletons/SkeletonCardGrid';
 import CollectionCardMenu from '@/components/shared/collection/CollectionCardMenu';
-import { FilterSearch } from '@/shared/definitions/classes/filter.class';
-import { Platform } from 'react-native';
 import Storage from '@/core/storage/storage.service';
 import { CardLanguageENUM } from '@/shared/definitions/enums/card.enums';
 import { CollectionUser } from '@/shared/definitions/classes/collection.class';
@@ -47,15 +46,15 @@ export default function CardsScreen() {
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
   const [filtered, setFiltered] = useState<Card[]>([]);
   const flatListRef = useRef<FlatList<Card> | null>(null);
-  const [selected, setSelected] = useState<UserCollection[]>([]);
-  const [collectionLanguage, setCollectionLanguage] = useState<CardLanguageENUM>(CardLanguageENUM.EN);
+  const [collection, setCollection] = useState<UserCollection[]>([]);
+  const [langCollection, setLangCollection] = useState<CardLanguageENUM>(CardLanguageENUM.EN);
 
   const memoizedMenu = useMemo(() => {
     return <CollectionCardMenu isVisible={isMenuVisible} 
                                onClose={onMenuClose}
                                animatedStyle={{}}
-                               selectedLanguage={collectionLanguage}/>
-  }, [isMenuVisible, collectionLanguage]);
+                               selectedLanguage={langCollection}/>
+  }, [isMenuVisible, langCollection]);
 
   const memoizedSort = useMemo(() => {
     return <SortCardMenu isVisible={isSortVisible} 
@@ -66,39 +65,47 @@ export default function CardsScreen() {
   const memoizedFilter = useMemo(() => {
     return <FilterCardMenu isVisible={isFilterVisible} 
                            animatedStyle={{}} 
-                           onClose={onClose}/>
+                           onClose={onClose}
+                           isCollection={true}/>
   }, [isFilterVisible]);
+
+  useEffect(() => {
+    if (state.filterState.sort.length > 0) {
+      const active = state.filterState.sort.find(s => s.active);
+      setSort(active);
+    }
+  }, [state.filterState.sort]);
 
   function onMenuClose({unmark, markAll, language}: any): void {
     setIsMenuVisible(false);
 
     if (markAll) {
       const allMarked = filtered.map(card => {
-        const item = selected.find(sel => sel.id === card.id);
-        if (item && item.amount[collectionLanguage] > 0) {
+        const item = collection.find(sel => sel.id === card.id);
+        if (item && item.amount[langCollection] > 0) {
           return item;
         } else {
-          return new CollectionUser(card.id, collectionLanguage) as UserCollection
+          return new CollectionUser(card.id, langCollection) as UserCollection
         }
       });
 
       dispatch({type: 'SET_COLLECTION', value: allMarked});
       Storage.set('collection', allMarked);
     } else if (unmark) {
-      dispatch({type: 'RESET_COLLECTION', value: collectionLanguage});
-      selected.forEach(sel => sel.amount[collectionLanguage] = 0);
-      Storage.set('collection', selected);
+      dispatch({type: 'RESET_COLLECTION', value: langCollection});
+      collection.forEach(sel => sel.amount[langCollection] = 0);
+      Storage.set('collection', collection);
     }
 
     if (language === undefined) {
       language = CardLanguageENUM.EN;
     }
 
-    setCollectionLanguage(language);
+    setLangCollection(language);
   }
 
   useEffect(() => {
-    setSelected(state.settingsState.collection);
+    setCollection(state.settingsState.collection);
   }, [state.settingsState.collection]);
   
   function onClose(): void {
@@ -186,7 +193,7 @@ export default function CardsScreen() {
 
   function manageFilter(data: Card[]): Card[] {
     const filter = state.filterState.filter;
-    return filterCards(filter, data, state.settingsState.favorites);
+    return filterCards(filter, data, state.settingsState.favorites, collection, langCollection);
   }
 
   const handleSearch = useCallback((text: string) => {
@@ -205,18 +212,18 @@ export default function CardsScreen() {
 
   const addToSelection = useCallback((item: Card) => {
     SoundService.play('PICK_CARD_SOUND');
-    Storage.addToCollection(item.id, collectionLanguage);
-    dispatch({type: 'ADD_TO_COLLECTION', value: {id: item.id, lang: collectionLanguage}});
-  }, [collectionLanguage]);
+    Storage.addToCollection(item.id, langCollection);
+    dispatch({type: 'ADD_TO_COLLECTION', value: {id: item.id, lang: langCollection}});
+  }, [langCollection]);
 
   const removeSelected = useCallback((item: Card) => {
     SoundService.play('DELETE_SOUND');
-    Storage.removeFromCollection(item.id, collectionLanguage);
-    dispatch({type: 'REMOVE_FROM_COLLECTION', value: {id: item.id, lang: collectionLanguage}});
-  }, [collectionLanguage]);
+    Storage.removeFromCollection(item.id, langCollection);
+    dispatch({type: 'REMOVE_FROM_COLLECTION', value: {id: item.id, lang: langCollection}});
+  }, [langCollection]);
 
   const renderItem = useCallback(({ item }: { item: Card }) => {
-    const selectedItem = selected.find(sel => sel.id === item.id)?.amount[collectionLanguage];
+    const selectedItem = collection.find(sel => sel.id === item.id)?.amount[langCollection];
     return (
     <View key={item.id} style={[
         CardGridStyles.imageContainer, 
@@ -233,7 +240,8 @@ export default function CardsScreen() {
             </ThemedView> :
             <>
               <TouchableOpacity onPressIn={(e) => (e.stopPropagation(), removeSelected(item))} 
-                                style={collectionStyles.remove}>
+                                style={collectionStyles.remove}
+                                hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
                   <ThemedText style={[
                     {color: 'crimson', fontSize: 36, top: -4}, 
                     Platform.OS !== 'web' && {fontSize: 29, top: -10}]}>-</ThemedText>
@@ -252,13 +260,13 @@ export default function CardsScreen() {
         source={getImageLanguage116x162(lang, item.id)}/>
       </TouchableOpacity>
     </View>
-  )}, [selected, lang, collectionLanguage]);
+  )}, [collection, lang, langCollection]);
 
   const keyExtractor = useCallback((item: Card) => String(item.id), []);
 
   const getAmountAll = useCallback(() => {
-    return selected.reduce((acc, curr) => acc + curr.amount[collectionLanguage], 0);
-  }, [selected, collectionLanguage]);
+    return collection.reduce((acc, curr) => acc + curr.amount[langCollection], 0);
+  }, [collection, langCollection]);
 
   const renderFooter = useCallback(() => {
     if (filtered.length < 34) {
@@ -326,7 +334,7 @@ export default function CardsScreen() {
           </ThemedView>
           <ThemedView style={{flexDirection: 'row', gap: 10, alignItems: 'center'}}>
             <MaterialIcons name='language' color={'#8E8E8F'} size={20} style={{width: 20, height: 20, top: 2}}></MaterialIcons>
-            <ThemedText style={{fontSize: 13, fontWeight: 'semibold', textAlign: 'right'}}>{COLLECTION_LANGUAGE_MAP[collectionLanguage]}</ThemedText>
+            <ThemedText style={{fontSize: 13, fontWeight: 'semibold', textAlign: 'right'}}>{COLLECTION_LANGUAGE_MAP[langCollection]}</ThemedText>
           </ThemedView>
           <ThemedView style={[{flexDirection: 'row', gap: 10, alignItems: 'center', left: -4}, Platform.OS !== 'web' && {left: -6}]}>
             <SvgStackSymbol color={'#8E8E8F'}
@@ -343,7 +351,7 @@ export default function CardsScreen() {
                   contentContainerStyle={[{width: '100%'}]}
                   keyExtractor={keyExtractor}
                   initialNumToRender={25}
-                  maxToRenderPerBatch={35}
+                  maxToRenderPerBatch={30}
                   windowSize={11}
                   removeClippedSubviews={true}
                   showsVerticalScrollIndicator={false}
@@ -471,7 +479,7 @@ export const collectionStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     opacity: 0.8
-  },
+  }
 });
 
 

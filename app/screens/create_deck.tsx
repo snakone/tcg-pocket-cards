@@ -26,7 +26,7 @@ import { IconSymbol } from "@/components/ui/IconSymbol";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { detailScrollStyles } from "@/components/dedicated/detail/detail.scroll";
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
-import { SORT_FIELD_MAP, TYPE_MAP } from "@/shared/definitions/utils/constants";
+import { MAX_CONTENT, SORT_FIELD_MAP, TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { AppContext } from "../_layout";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
@@ -190,6 +190,7 @@ export default function CreateDeckScreen() {
       SoundService.play('AUDIO_MENU_OPEN');
     } else {
       SoundService.play('AUDIO_MENU_CLOSE');
+      handleSearch('');
     }
     setIsGridVisible(value);
   }
@@ -602,7 +603,7 @@ export default function CreateDeckScreen() {
                       inputMode='text'
                       maxLength={21}
                     />
-              {deckName.length > 0 && <ResetFilterButton style={{left: 246}}/>}
+              {deckName.length > 0 && <ResetFilterButton style={{left: 240}}/>}
           </ThemedView>
 
           <ThemedView style={{flexDirection: 'row', gap: 8}}>
@@ -682,8 +683,12 @@ export default function CreateDeckScreen() {
                   keyExtractor={(item, index) => index + ''}
                   ListFooterComponent={
                     <ThemedView style={Platform.OS !== 'web' && {marginBottom: 55}}>
-                      <TouchableOpacity style={[homeScreenStyles.ctaButton, {marginBlock: 45, flex: 1}]} 
-                                        onPress={() => handleSave()}>
+                      <TouchableOpacity style={[
+                        homeScreenStyles.ctaButton, {marginTop: 45, marginBottom: 30},
+                        state.settingsState.decks.length >= MAX_CONTENT && {opacity: 0.5}
+                      ]} 
+                          onPress={() => handleSave()}
+                          disabled={state.settingsState.decks.length >= MAX_CONTENT}>
                         <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>{i18n.t('save_deck')}</ThemedText>
                       </TouchableOpacity>
                     </ThemedView>

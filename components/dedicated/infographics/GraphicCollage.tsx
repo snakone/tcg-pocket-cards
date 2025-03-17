@@ -808,6 +808,13 @@ export function GraphicCollage({
                     </ThemedText>
                   </ThemedView>
 
+                  <ThemedView style={styles.listItem}>
+                    <ThemedText style={styles.summaryText}>-  {i18n.t('arceus_link')}</ThemedText>
+                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
+                    {arceusConditionLength}
+                    </ThemedText>
+                  </ThemedView>
+
                 </ThemedView>
               </ThemedView>
               

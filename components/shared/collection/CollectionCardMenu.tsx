@@ -1,12 +1,14 @@
 import { BlurView } from "expo-blur";
-import { Platform, Pressable, StyleSheet, View } from "react-native";
+import { Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useEffect, useCallback, useState, useContext } from "react";
+import { useCallback, useState, useContext } from "react";
 import { Switch } from "react-native-paper";
 import React from "react";
+import { router, useRouter } from "expo-router";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import { TabMenuCollection } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, CardGridStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
+import { ButtonStyles, CardGridStyles, homeScreenStyles, LayoutStyles, ModalStyles, offersStyles, sortStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -36,6 +38,7 @@ export default function CollectionCardMenu({
   const [markAll, setMarkAll] = useState<boolean>(false);
   const [unmark, setUnmark] = useState<boolean>(false);
   const [language, setLanguage] = useState<CardLanguageENUM>(selectedLanguage);
+  const router = useRouter();
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE')
@@ -59,6 +62,11 @@ export default function CollectionCardMenu({
     }
   }
 
+  function goToStats(): void {
+    SoundService.play('CHANGE_VIEW'); 
+    router.push('/screens/collection_stats');
+  }
+
   return (
     <>
     <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
@@ -68,7 +76,7 @@ export default function CollectionCardMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container]}>
+      <Animated.View style={[animatedStyle, sortStyles.container, {height: 540}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('menu')}</ThemedText>
         </View>
@@ -87,37 +95,53 @@ export default function CollectionCardMenu({
                                  translate={false}
                                  textStyle={{left: 6}}
                                  iconStyle={{right: -2}}
-                                 itemStyle={{paddingBlock: 6}}>
-                    </SelectInput>
-                  </ThemedView>
+                                 itemStyle={{paddingBlock: 6}}
+                                 autoScroll={true}>
+                  </SelectInput>
                 </ThemedView>
               </ThemedView>
+            </ThemedView>
 
-              <ThemedView style={[settingsStyles.container, {marginBottom: 16}]}>
-                <ThemedView style={settingsStyles.row}>
-                  <ThemedText>{i18n.t('mark_all_collection')}</ThemedText>
-                  <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
-                    <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
-                                        color={'white'}
-                                        onValueChange={(value) => handleMark(value)}
-                                        style={CardGridStyles.switch}
-                                        value={markAll}/>
-                  </ThemedView>
+            <ThemedView style={[settingsStyles.container, {marginBottom: 16}]}>
+              <ThemedView style={settingsStyles.row}>
+                <ThemedText>{i18n.t('mark_all_collection') + ' *'}</ThemedText>
+                <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
+                  <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
+                                      color={'white'}
+                                      onValueChange={(value) => handleMark(value)}
+                                      style={CardGridStyles.switch}
+                                      value={markAll}/>
                 </ThemedView>
               </ThemedView>
-              <ThemedView style={[settingsStyles.container, {marginBottom: 16}]}>
-                <ThemedView style={settingsStyles.row}>
-                  <ThemedText>{i18n.t('unmark_collection')}</ThemedText>
-                  <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
-                    <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
-                                        color={'white'}
-                                        onValueChange={(value) => (SoundService.play('POP_PICK'), setUnmark(value))}
-                                        style={CardGridStyles.switch}
-                                        disabled={markAll}
-                                        value={unmark}/>
-                  </ThemedView>
+            </ThemedView>
+            <ThemedView style={[settingsStyles.container, {marginBottom: 16}]}>
+              <ThemedView style={settingsStyles.row}>
+                <ThemedText>{i18n.t('unmark_collection') + ' *'}</ThemedText>
+                <ThemedView style={[settingsStyles.rightContainer, {width: 'auto'}]}>
+                  <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
+                                      color={'white'}
+                                      onValueChange={(value) => (SoundService.play('POP_PICK'), setUnmark(value))}
+                                      style={CardGridStyles.switch}
+                                      disabled={markAll}
+                                      value={unmark}/>
                 </ThemedView>
               </ThemedView>
+            </ThemedView>
+
+            <ThemedText style={{paddingInline: 12, marginTop: 6, fontSize: 13}}>{'* ' + i18n.t('apply_to_language')}</ThemedText>
+
+            <TouchableOpacity style={[
+              homeScreenStyles.ctaButton,
+              offersStyles.statsBtn,
+              Platform.OS !== 'web' && {marginBottom: 16}
+            ]} 
+                              onPress={() => goToStats()}>
+              <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>
+                {i18n.t('view_stats')}
+              </ThemedText>
+              <MaterialIcons name={'bar-chart'} size={21} style={{color: 'white'}}></MaterialIcons>
+            </TouchableOpacity>
+
           </ThemedView>
         </ThemedView>
         <View style={styles.modalFooter}>

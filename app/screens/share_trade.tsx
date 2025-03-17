@@ -146,11 +146,12 @@ export default function ShareTradeScreen() {
           trade && <TradeUserItem item={trade} 
                                   rarity={rarity} 
                                   styles={styles.tradeItem} 
-                                  state={state}/>
+                                  state={state}
+                                  share={true}/>
         }
         <ScrollView showsVerticalScrollIndicator={false} style={{paddingHorizontal: 14, marginLeft: -14, marginRight: -14}}>
           <ThemedView style={styles.options}>
-            <ThemedText style={filterStyles.header}>{i18n.t('export')}</ThemedText>
+            <ThemedText style={[filterStyles.header]}>{i18n.t('export')}</ThemedText>
             <ThemedView style={[settingsStyles.container, {height: 52}]}>
               <Pressable onPress={handleBackground} style={{flex: 1}} >
                 <ThemedView style={settingsStyles.row}>
@@ -228,7 +229,7 @@ const styles = StyleSheet.create({
   options: {
     width: '100%',
     gap: 8,
-    marginTop: 16
+    marginTop: 8
   },
   coin: {
     width: 34, 
@@ -244,5 +245,6 @@ const styles = StyleSheet.create({
     width: '105%',
     marginLeft: -8, 
     boxShadow: 'none',
+    backgroundColor: 'transparent'
   }
 });

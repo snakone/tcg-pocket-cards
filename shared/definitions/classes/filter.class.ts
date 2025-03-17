@@ -14,6 +14,7 @@ export class FilterSearch {
   public ex: { is_ex: boolean | null, not_ex: boolean | null }
   public weak: { [key in PokemonTypeENUM]: boolean | null }
   public condition: { [key in CardSpecialConditionENUM]: boolean | null }
+  public collection: { owned: boolean | null, not_owned: boolean | null }
 
   constructor() {
     this.ability = {with_ability: null, without_ability: null};
@@ -52,6 +53,7 @@ export class FilterSearch {
 
     this.favorite = {included: null, not_favorite: null};
     this.health = {min: null, max: null};
+    this.collection = {owned: null, not_owned: null};
 
     this.rarity = {
       [CardRarityENUM.COMMON]: null,

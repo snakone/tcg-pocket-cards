@@ -16,6 +16,10 @@ export interface TabMenu {
   animatedStyle: any;
 }
 
+export interface TabMenuCards extends TabMenu {
+  isCollection?: boolean;
+}
+
 export interface TabMenuCollection extends TabMenu {
   selectedLanguage: CardLanguageENUM;
 }

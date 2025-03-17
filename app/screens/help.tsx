@@ -1,5 +1,5 @@
 import { Platform, Pressable, View } from "react-native";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Modal as PaperModal, Portal } from "react-native-paper";
 import { useRouter } from "expo-router";
 import React from "react";
@@ -32,7 +32,6 @@ import {
   TermsModal,
   UserDataModal
 } from '@/components/modals/index';
-import CardsService from "@/core/services/cards.service";
 
 export default function HelpScreen() {
   const styles = HelpItemStyles;
@@ -42,47 +41,24 @@ export default function HelpScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
-  const cardsService = new CardsService();
 
   useEffect(() => {
     // NO CONTEXT ON SHARED SCREEN
     const subImport = ShareService.importedSettings$.subscribe(res => {
       if (res !== null) {
-        if (state.cardState.cards.length > 0) {
-          res.cards = state.cardState.cards;
-        }
         dispatch({type: 'SET_SETTINGS', value: res});
         Storage.setSettings(res);
       }
     });
-
+    
     const subDelete = ShareService.deleteSettings$.subscribe(_ => {
-        dispatch({type: 'RESET_SETTINGS'});
-        dispatch({type: 'RESET_CARDS'});
-        loadCards();
+      dispatch({type: 'RESET_SETTINGS'});
     });
-
+    
     return () => {
       subImport.unsubscribe();
       subDelete.unsubscribe();
     }
-  }, []);
-
-  const loadCards = useCallback(() => {
-    const sub = cardsService
-      .getCards()
-      .subscribe({
-        next: (res) => {
-          dispatch({ type: 'SET_CARDS', value: res });
-          Storage.set('cards', res);
-        },
-        error: (err) => {
-          console.log(err);
-          Storage.set('cards', []);
-        }
-      });
-
-      return sub;
   }, []);
 
   const items: IconItemWithModal[] = [

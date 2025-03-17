@@ -112,10 +112,17 @@ export const settingsReducer = (state: SettingsState, action: SettingsAction): S
     case 'RESET_COLLECTION': 
     {
       state.collection.forEach(coll => coll.amount[action.value] = 0);
-      return { ...state };
+      return { ...state, collection: [...state.collection] };
     }
-    case 'RESET_SETTINGS':
-      return { ...settingsInitialState };
+    case 'RESET_SETTINGS': 
+    {
+      for (const key of Object.keys(settingsInitialState).filter(key => key !== 'cards')) {
+        (state as any)[key] = (settingsInitialState as any)[key]
+      }
+
+      return { ...state }
+    }
+      
     default:
       return state;
   }
