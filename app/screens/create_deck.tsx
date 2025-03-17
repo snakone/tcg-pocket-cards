@@ -511,8 +511,8 @@ export default function CreateDeckScreen() {
                 contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0}]}
                 keyExtractor={keyExtractor}
                 initialNumToRender={25}
-                maxToRenderPerBatch={35}
-                windowSize={6}
+                maxToRenderPerBatch={30}
+                windowSize={7}
                 removeClippedSubviews={true}
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={RenderEmpty}

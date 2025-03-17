@@ -95,7 +95,7 @@ export default function ProfileScreen() {
                         modalTitle='profile'
                         showHeader={false}>
       <ThemedView style={{alignItems: 'center', flex: 1}}>
-        <ThemedView style={[styles.header, {marginTop: 30}]}>
+        <ThemedView style={[styles.header, {marginTop: 42}]}>
           <ThemedView style={[styles.avatarContainer, {top: 10}]}>
             <Pressable onPress={() => handleActionMenu('OPEN_AVATAR')}>
               <Image source={AVATAR_MAP[profile.avatar]} style={styles.avatar}/>
@@ -124,7 +124,7 @@ export default function ProfileScreen() {
           <TouchableOpacity onPress={goToCollection}>
             <ThemedView style={[TabsMenuStyles.user, {marginTop: 16, width: 275}]}>
               <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                <MaterialIcons name="style" style={[styles.editInput, {fontSize: 22, right: 'auto', left: 12, top: 8}]} />
+                <MaterialIcons name="style" style={[styles.editInput, {fontSize: 23, right: 'auto', left: 12, top: 7}]} />
                 <ThemedText style={[styles.input, {fontSize: 16, width: 238, paddingVertical: 8, left: 14}]}>{i18n.t('my_collection')}</ThemedText>
                 <ThemedText style={{textAlign: 'center', minWidth: 24}}>{collection}</ThemedText>
               </ThemedView>

@@ -52,7 +52,7 @@ export default function NewsItem(
 
 export const pocketNewsStyles = StyleSheet.create({
   item: {
-    borderRadius: 20,
+    borderRadius: 8,
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)',
     marginBottom: 20
   },
@@ -66,8 +66,8 @@ export const pocketNewsStyles = StyleSheet.create({
   image: { 
     width: '100%', 
     height: 140,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
     objectFit: 'cover'
   },
   date: {

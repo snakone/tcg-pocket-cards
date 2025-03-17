@@ -269,7 +269,7 @@ export default function AttacksScreen() {
       </ParallaxScrollView>
       { attacks?.length > 0 ? (
         <>
-          <TouchableOpacity onPress={() => handleActionMenu('OPEN_ATTACK_SORT')} style={cardStyles.container}>
+          <TouchableOpacity onPress={() => handleActionMenu('OPEN_ATTACK_SORT')} style={[cardStyles.container, {right: 22}]}>
             <ThemedView>
               <MaterialIcons name={(sort?.icon as any) || 'content-paste-search'} 
                               color={'skyblue'} 
@@ -279,7 +279,7 @@ export default function AttacksScreen() {
             </ThemedView>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => (handleActionMenu('OPEN_ATTACK_FILTER'))} 
-                            style={[cardStyles.container, {bottom: 88}]}>
+                            style={[cardStyles.container, {bottom: 88, right: 22}]}>
             <ThemedView>
               <IconSymbol name="cat.circle" 
                           color={'mediumaquamarine'} 

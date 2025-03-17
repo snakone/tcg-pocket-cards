@@ -46,7 +46,11 @@ export default function ShareScreen() {
 
   useFocusEffect(useCallback(() => {
     goUp();
-  }, []));
+
+    return (() => {
+      handleSearch('');
+    })
+  }, [decks, trades]));
 
   async function goUp(): Promise<void> {
     flatListRef.current?.scrollToLocation({viewPosition: 0, itemIndex: 0, sectionIndex: 0, animated: false});

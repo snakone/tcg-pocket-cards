@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
   options: {
     width: '100%',
     gap: 8,
-    marginTop: 8
+    marginTop: 2
   },
   coin: {
     width: 34, 

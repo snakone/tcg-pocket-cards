@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
 import React, { MutableRefObject } from "react";
-import { View, TouchableOpacity, ScrollView } from "react-native";
+import { View, TouchableOpacity, ScrollView, Platform } from "react-native";
 import Animated from 'react-native-reanimated';
 
 import { ThemedView } from "@/components/ThemedView";
@@ -33,7 +33,7 @@ export const ExpansionsMenu = React.memo(({filterObj, handleExpansion }: Expansi
       <ScrollView style={{ flex: 1, position: 'relative' }} showsVerticalScrollIndicator={false}>
         <ThemedView style={filterStyles.expansionContainer}>
           <Image source={GENETIC_APEX} style={{ width: 106, height: 50 }}></Image>
-          <ThemedView style={{ flexDirection: 'row', marginBlock: 30, gap: 10 }}>
+          <ThemedView style={{ flexDirection: 'row', marginBlock: 24, gap: 10 }}>
             {GENETIC_APEX_PACKS.map((icon: any, index: number) => (
               <StateButton
                 key={index}
@@ -50,14 +50,15 @@ export const ExpansionsMenu = React.memo(({filterObj, handleExpansion }: Expansi
           <View
             style={[
               TabsMenuStyles.separator,
-              { width: '100%', height: 2, marginTop: 4 },
+              { width: '100%', height: 2, marginTop: 4, top: 2, marginBottom: -4 },
+              Platform.OS !== 'web' && {marginBottom: 16}
             ]}
           ></View>
         </ThemedView>
 
         <ThemedView style={filterStyles.expansionContainer}>
           <Image source={MYTHICAL_ISLAND_MEW_ICON} style={{ width: 106, height: 52 }}></Image>
-          <ThemedView style={{ flexDirection: 'row', marginBlock: 30, gap: 10 }}>
+          <ThemedView style={{ flexDirection: 'row', marginBlock: 24, gap: 10 }}>
             {MYTHICAL_ISLAND_PACKS.map((icon: any, index: number) => (
               <StateButton
                 key={index}
@@ -74,14 +75,14 @@ export const ExpansionsMenu = React.memo(({filterObj, handleExpansion }: Expansi
           <View
             style={[
               TabsMenuStyles.separator,
-              { width: '100%', height: 2, marginTop: 4 },
+              { width: '100%', height: 2, marginTop: 4, marginBottom: 20 },
             ]}
           ></View>
         </ThemedView>
 
         <ThemedView style={filterStyles.expansionContainer}>
           <Image source={SMACK_DOWN} style={{ width: 118, height: 52 }}></Image>
-          <ThemedView style={{ flexDirection: 'row', marginBlock: 30, gap: 10 }}>
+          <ThemedView style={{ flexDirection: 'row', marginBlock: 24, gap: 10 }}>
             {SMACK_DOWN_PACKS.map((icon: any, index: number) => (
               <StateButton
                 key={index}
@@ -98,14 +99,15 @@ export const ExpansionsMenu = React.memo(({filterObj, handleExpansion }: Expansi
           <View
             style={[
               TabsMenuStyles.separator,
-              { width: '100%', height: 2, marginTop: 4 },
+              { width: '100%', height: 2, marginTop: 4, marginBottom: 56 },
+              Platform.OS !== 'web' && {marginBottom: 16}
             ]}
           ></View>
         </ThemedView>
 
         <ThemedView style={filterStyles.expansionContainer}>
           <Image source={TRIUMPH_LIGHT_ARCEUS_ICON} style={{ width: 124, height: 53 }}></Image>
-          <ThemedView style={{ flexDirection: 'row', marginBlock: 30, gap: 10 }}>
+          <ThemedView style={{ flexDirection: 'row', marginBlock: 24, gap: 10 }}>
             {TRIUMPH_LIGHT_PACKS.map((icon: any, index: number) => (
               <StateButton
                 key={index}

@@ -28,10 +28,15 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
   
   return (
     <ThemedView style={[tradeItemStyles.item, styles, {
-      borderColor: !item?.valid ? 'goldenrod' : 'transparent', 
-      borderWidth: !item.valid  ? 1 : 0}, {padding: 0, minHeight: 60, marginBottom: 20}]}>
-      <ThemedView style={{flex: 1, height: 52, overflow: 'hidden', padding: 0}}>
-        <ThemedText style={[tradeItemStyles.title, share && {marginBottom: 14}]}>{item?.title || i18n.t('trade') + ' ' + (item.id)}</ThemedText>
+        borderColor: !item?.valid ? 'goldenrod' : 'transparent', 
+        borderWidth: !item.valid  ? 1 : 0}, 
+        {minHeight: 60, marginBottom: 20, paddingVertical: 0, paddingHorizontal: 0},
+        Platform.OS !== 'web' && {height: share ? 148 : 101, overflow: 'hidden'}
+      ]}>
+      <ThemedView style={{overflow: 'hidden', padding: 0}}>
+        <ThemedText style={[tradeItemStyles.title, share && {marginBottom: 14}, 
+          Platform.OS !== 'web' && {marginBottom: 12}]}>{item?.title || i18n.t('trade') + ' ' + (item.id)}
+        </ThemedText>
         <ThemedView style={[tradeItemStyles.container, {height: share ? 101 : 46, paddingHorizontal: 22}]}>
           <ThemedView style={{width: '38%'}}>
             {
@@ -61,21 +66,21 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
                     transform: [
                       { rotate: `${(i - 2) * 8}deg` },
                     ],
+                    boxShadow: '5px 4px 8px rgba(0, 0, 0, 0.2)'
                   }
                 ]} key={i}/>
               ))
             }
           </ThemedView>
           <ThemedView style={[{
-            width: '25%', top: 4, left: -4}, 
+            width: '25%', top: 4, left: -2}, 
             Platform.OS !== 'web' && {left: 15}, 
-            share && {transform: [{scale: 0.8}], left: -3}
+            share && {transform: [{scale: 0.7}]}
           ]}>
             {
               SvgTradePassSymbol(
-                Platform.OS !== 'web' ?
-                {width: 45, height: 52, transform: [{scale: 0.9}], top: 10} : 
-                {transform: [{scale: 0.9}]},
+                Platform.OS !== 'web' &&
+                {width: 45, height: 52, transform: [{scale: 0.6}], top: -4}
               )
             }
           </ThemedView>
@@ -107,6 +112,7 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
                     transform: [
                       { rotate: `${(i - 2) * 8}deg` },
                     ],
+                    boxShadow: '5px 4px 8px rgba(0, 0, 0, 0.2)'
                   }
                 ]} key={i}/>
               ))
@@ -158,7 +164,7 @@ const tradeItemStyles = StyleSheet.create({
   },
   title: {
     marginBottom: 8, 
-    color: 'none', 
+    color: 'black', 
     paddingHorizontal: 16, 
     paddingVertical: 12, 
   }

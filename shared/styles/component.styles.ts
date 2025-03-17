@@ -352,7 +352,7 @@ export const MenuStyles = StyleSheet.create({
   expansions: {
     backgroundColor: 'white',
     width: '100%',
-    height: '74.9%',
+    height: 656,
     position: 'absolute',
     right: 0,
     bottom: 0,
@@ -560,7 +560,6 @@ export const LoadingStyles = StyleSheet.create({
 
 export const filterStyles = StyleSheet.create({
   container: {
-    height: '85.1%', 
     position: 'absolute', 
     width: '100%',
     bottom: 0,
@@ -652,7 +651,7 @@ export const filterStyles = StyleSheet.create({
   },
   expansionContainer: {
     flex: 1, 
-    padding: 20, 
+    padding: 10, 
     justifyContent: 'flex-start', 
     alignItems: 'center', 
   },

@@ -97,7 +97,7 @@ export default function SortAttackMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container,{height: 434}]}>
+      <Animated.View style={[animatedStyle, sortStyles.container,{height: 446}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('order')}</ThemedText>
         </View>

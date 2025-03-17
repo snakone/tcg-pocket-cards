@@ -104,6 +104,16 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCol
     )
   }
 
+  const StagePokemonItem = ({element}: any) => {
+    return (
+      <>
+        <StageItem filterObj={filterObj}
+                   onlyPokemon={true}>
+        </StageItem>
+      </>
+    )
+  }
+
   const renderExpansionsMenu = () => (
     <>
       {expansionVisible && (
@@ -122,7 +132,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCol
                 tint="light" 
                 experimentalBlurMethod='dimezisBlurView'/>
       <Pressable style={[LayoutStyles.overlay]} onPress={() => closeMenu()}></Pressable>
-      <Animated.View style={[animatedStyle, filterStyles.container, i18n.locale === 'ja' && {height: '86.1%'}]}>
+      <Animated.View style={[animatedStyle, filterStyles.container, {height: 718}]}>
         <View style={[ModalStyles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('filter')}</ThemedText>
         </View>
@@ -166,6 +176,12 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCol
               <StageItem filterObj={filterObj} 
                          stageSelectAll$={nextValues.stage$}>
                </StageItem>
+            </>
+            <>
+              <ThemedView style={filterStyles.row}>
+                <ThemedText style={filterStyles.header}>{i18n.t('stage')}</ThemedText>
+              </ThemedView>
+              <StagePokemonItem element={filterObj.current.element}></StagePokemonItem>
             </>
             <>
               <ThemedView style={filterStyles.row}>

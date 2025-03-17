@@ -207,7 +207,7 @@ export default function ShareDeckScreen() {
         <ScrollView showsVerticalScrollIndicator={false} style={{paddingHorizontal: 14}}>
           <ThemedView style={{width: '100%', marginBottom: 8}}>
             <ThemedView style={[CreateScreenStyles.deckName, {justifyContent: 'space-between', width: '100%'}]}>
-              <ThemedText style={{fontSize: 15}}>{deckName}</ThemedText>
+              <ThemedText style={{color: 'black'}}>{deckName}</ThemedText>
                 <ThemedView style={[CreateScreenStyles.energies, {backgroundColor: 'white'}]}>
                   {
                     Object.keys(element).map((key, i) => {

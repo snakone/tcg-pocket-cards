@@ -10,13 +10,28 @@ import { CardStageENUM } from "@/shared/definitions/enums/card.enums";
 
 interface StageItemProps {
   filterObj: MutableRefObject<FilterSearch>,
-  stageSelectAll$: Subject<boolean>
+  stageSelectAll$?: Subject<boolean>,
+  onlyPokemon?: boolean
 }
 
-export const StageItem = memo(({ filterObj, stageSelectAll$ }: StageItemProps) => {
+const enumPokemon: CardStageENUM[] = [
+  CardStageENUM.BASIC,
+  CardStageENUM.ONE,
+  CardStageENUM.TWO
+];
+
+const enumTrainer: CardStageENUM[] = [
+  CardStageENUM.ITEM,
+  CardStageENUM.TOOL,
+  CardStageENUM.FOSSIL,
+  CardStageENUM.SUPPORTER
+];
+
+export const StageItem = memo(({ filterObj, stageSelectAll$, onlyPokemon }: StageItemProps) => {
+  const arr = onlyPokemon ? enumPokemon : enumTrainer;
   return (
     <ThemedView style={[filterStyles.flexContainer, filterStyles.buttonContainer, { marginBottom: 48 }]}>
-      {Object.keys(filterObj.current.stage).map((key, i) => {
+      {arr.map((key, i) => {
         const label = (STAGE_MAP as any)[key]?.label;
 
         return (

@@ -66,7 +66,7 @@ export default function FilterAttackMenu({isVisible, onClose, animatedStyle}: Ta
                 tint="light" 
                 experimentalBlurMethod='dimezisBlurView'/>
       <Pressable style={[LayoutStyles.overlay]} onPress={() => closeMenu()}></Pressable>
-      <Animated.View style={[animatedStyle, filterStyles.container, {height: '75.1%'}, i18n.locale === 'ja' && {height: '79.1%'}]}>
+      <Animated.View style={[animatedStyle, filterStyles.container, {height: 647}]}>
         <View style={[ModalStyles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('filter')}</ThemedText>
         </View>

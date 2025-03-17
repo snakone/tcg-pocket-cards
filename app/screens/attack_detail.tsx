@@ -161,7 +161,7 @@ export default function AttackDetailScreen() {
                       ListFooterComponent={<ThemedView style={{height: 16}}></ThemedView>}
             />
           </ThemedView>
-          <ThemedView style={{width: '100%', flex: 1}}>
+          <ThemedView style={{width: '100%', flex: 1, paddingBottom: 12}}>
             <ThemedText style={{fontSize: 16,
                           fontWeight: 'bold',
                           marginTop: 10,

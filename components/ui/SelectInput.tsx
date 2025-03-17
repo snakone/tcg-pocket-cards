@@ -45,6 +45,8 @@ export default function SelectInput({
   autoScroll = false
 }: SelectInputProps) {
   const {i18n} = useI18n();
+  const value = filterObj && propFilter && keyFilter && 
+    ((filterObj.current as any)[propFilter][keyFilter] ?? keyFilter);
 
   return (
     <SelectDropdown
@@ -52,10 +54,7 @@ export default function SelectInput({
       onSelect={onSelect}
       statusBarTranslucent={true}
       disableAutoScroll={!autoScroll}
-      defaultValue={
-        filterObj && propFilter && keyFilter && 
-        ((filterObj.current as any)[propFilter][keyFilter] ?? keyFilter)
-      }
+      defaultValue={value}
       dropdownOverlayColor="transparent"
       showsVerticalScrollIndicator={false}
       dropdownStyle={{...styles.dropDown, height}}
@@ -77,11 +76,12 @@ export default function SelectInput({
         );
       }}
       renderItem={(item, _, isSelected) => {
+        const selected = filterObj && item;
         return (
-          <ThemedView style={[styles.item, itemStyle, {...(isSelected && {backgroundColor: '#444444'})}]}>
+          <ThemedView style={[styles.item, itemStyle, (isSelected || label === item) && {backgroundColor: '#444444'}]}>
             <ThemedText style={[
-                filterStyles.buttonText, {...(isSelected && {color: 'white'})}
-              ]}>{translate ? i18n.t(item) : item}
+                filterStyles.buttonText, (isSelected || label === item) && {color: 'white'}
+              ]}>{!selected && translate ? i18n.t(item) : item}
             </ThemedText>
           </ThemedView>
         );

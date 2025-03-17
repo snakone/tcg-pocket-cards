@@ -1,5 +1,6 @@
 export const TRANSLATIONS = {
   en: {
+    stage: 'Stage',
     total_cards: 'Total cards',
     missing_cards: 'Missing cards',
     percentage_missing: 'Percentage cards missing',
@@ -657,6 +658,7 @@ export const TRANSLATIONS = {
     without_ability: "Without Ability"
   },
   es: {
+    stage: 'Etapa',
     total_cards: 'Total de cartas',
     missing_cards: 'Cartas restantes',
     percentage_missing: 'Porcentaje de cartas restantes',
@@ -1317,6 +1319,7 @@ export const TRANSLATIONS = {
     without_ability: "Sin habilidad"
   },
   ja: {
+    stage: 'ステージ',
     total_cards: '合計カード',
     missing_cards: '残りのカード',
     percentage_missing: '残りのカードの割合',
