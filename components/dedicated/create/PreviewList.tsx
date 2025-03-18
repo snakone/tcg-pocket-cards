@@ -15,6 +15,7 @@ import { Colors } from "@/shared/definitions/utils/colors";
 import CreateService from "@/core/services/create.service";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
+import { collectionStyles } from "@/app/screens/collection";
 
 interface PreviewListProps {
   handleSearch: (value: string) => void,
@@ -31,7 +32,7 @@ export default function PreviewList({
   setNotSaved, 
   styles,
   service,
-  previousDeck
+  previousDeck,
 }: PreviewListProps) {
   const {i18n} = useI18n();
   const [deck, setDeck] = useState<any[]>(previousDeck);
@@ -42,10 +43,12 @@ export default function PreviewList({
   }, [state.settingsState.language]);
 
   useEffect(() => {
-    const sub = service.addNumber$.subscribe(res => manageAddDeck(res));
+    const subAdd = service.addNumber$.subscribe(res => manageAddDeck(res));
+    const subRemove = service.removeNumber$.subscribe(res => previewPress(res));
 
     return () => {
-      sub.unsubscribe();
+      subAdd.unsubscribe();
+      subRemove.unsubscribe();
     }
   }, [deck]);
 
@@ -120,6 +123,11 @@ export default function PreviewList({
         <View>
           { item ? 
           <ThemedView style={{backgroundColor: Colors.light.background}}>
+            <ThemedView style={[collectionStyles.remove, {width: 13, height: 13}]}>
+                <ThemedText style={[
+                  {color: 'crimson', fontSize: 27, top: -4}, 
+                  Platform.OS !== 'web' && {fontSize: 20, top: -10}]}>-</ThemedText>
+            </ThemedView>
             <Image accessibilityLabel={item?.name[lang]} 
                     style={[
               CardGridStyles.image, 

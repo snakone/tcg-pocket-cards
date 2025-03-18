@@ -25,6 +25,7 @@ import { filterCards, getImageLanguage116x162, getImageLanguage69x96 } from "@/s
 import { CardExpansionTypeENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 import { createDeckStyles } from "@/app/screens/create_deck";
 import { LanguageType } from "@/shared/definitions/types/global.types";
+import { collectionStyles } from "@/app/screens/collection";
 
 export default function PickDesiredMenu({
   isVisible,
@@ -71,14 +72,15 @@ export default function PickDesiredMenu({
   useEffect(() => {
     const desiredCard = state.cardState.cards.find(card => desired.includes(card.id));
 
-    if (desiredCard) {
-      const filter = state.cardState.cards
-                      .filter(card => card?.rarity === desiredCard.rarity && 
-                                      card.series !== CardExpansionTypeENUM.A2A);
-      setCards(filter);
-      setFiltered(filter);
-      setCardsWithFilter(filter);
+    const filter = state.cardState.cards
+      .filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && 
+                      card.series !== CardExpansionTypeENUM.A2A);
 
+    setCards(filter);
+    setFiltered(filter);
+    setCardsWithFilter(filter);
+
+    if (desiredCard) {
       setCurrent(prev => 
         prev.map(p => (state.cardState.cards
             .find(card => card.id === p)?.rarity === desiredCard.rarity) ? p : null
@@ -90,12 +92,6 @@ export default function PickDesiredMenu({
       return;
     }
 
-    const filter = state.cardState.cards
-                    .filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && 
-                                    card.series !== CardExpansionTypeENUM.A2A);
-    setCards(filter);
-    setFiltered(filter);
-    setCardsWithFilter(filter);
   }, [state.cardState.cards]);
 
   const renderEmpty = () => {
@@ -115,6 +111,7 @@ export default function PickDesiredMenu({
     if (type === 'add' && current.filter(Boolean).length === 5 && !current.includes(id)) { return; }
     if (type === 'remove' && !value) { return; }
 
+    // NEW
     if (type === 'add' && current.filter(Boolean).length === 0) {
       if (!Object.values(filterObj.current.rarity).some(val => Boolean(val))) {
         manageFilter((value as Card).rarity);
@@ -122,9 +119,10 @@ export default function PickDesiredMenu({
       setFilterDisabled(true);
     }
 
+    // EMPTY
     if (type === 'remove' && current.filter(Boolean).length === 1) {
       setFilterDisabled(false);
-      resetCardsAndFilter(id);
+      resetCardsAndFilter();
       Object.keys(filterObj.current.rarity).forEach(key => (filterObj.current.rarity as any)[key] = false);
       triggerRender();
     }
@@ -132,10 +130,12 @@ export default function PickDesiredMenu({
     SoundService.play('POP_PICK');
     setCurrent((prev) => {
       if (prev.includes(id)) {
+
+        // EXIST
         const next = prev.map(desired => desired === id ? null : desired).sort((a, b) => b === null ? -1 : 1);
         if (type === 'add' && next.filter(Boolean).length === 0) {
           setFilterDisabled(false);
-          resetCardsAndFilter(id);
+          resetCardsAndFilter();
           Object.keys(filterObj.current.rarity).forEach(key => (filterObj.current.rarity as any)[key] = false);
           triggerRender();
         }
@@ -152,8 +152,11 @@ export default function PickDesiredMenu({
     });
   }, [current, filterObj.current.rarity]);
 
-  function resetCardsAndFilter(value: number): void {
-    setFiltered(state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2A));
+  function resetCardsAndFilter(): void {
+    setFiltered(state.cardState.cards
+      .filter(
+        card => RARITY_CAN_TRADE
+                  .includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2A));
   }
 
   const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
@@ -162,12 +165,19 @@ export default function PickDesiredMenu({
             onPress={() => handleClick(item, 'add')}
             style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
         <View>
-          { current.includes(item.id) && 
+          { current.includes(item.id) &&
+            <>
               <ThemedView style={[
-              CardGridStyles.image, 
-              offersStyles.included,
-            ]}>
+                  CardGridStyles.image, 
+                  offersStyles.included,
+                ]}>
               </ThemedView>
+              <ThemedView style={[collectionStyles.remove, {width: 18, height: 18}]}>
+                <ThemedText style={[
+                  {color: 'crimson', fontSize: 31, top: -4}, 
+                  Platform.OS !== 'web' && {fontSize: 25, top: -10}]}>-</ThemedText>
+              </ThemedView>
+            </>
           }
           <Image accessibilityLabel={item.name[lang]}
                   source={getImageLanguage69x96(lang, item.id)}
@@ -183,7 +193,12 @@ export default function PickDesiredMenu({
   const manageFilter = useCallback((index: number) => {
     const filter = filterObj.current;
     (filter.rarity as any)[index] = !(filter.rarity as any)[index];
-    const tradeable = state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2A);
+
+    const tradeable = state.cardState.cards
+                        .filter(
+                          card => RARITY_CAN_TRADE
+                                   .includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2A);
+
     const filtered = filterCards(filter, tradeable, []);
     setFiltered(filtered);
     setCardsWithFilter(filtered);
@@ -201,6 +216,11 @@ export default function PickDesiredMenu({
             <View>
               { current[index] ? 
               <>
+                <ThemedView style={[collectionStyles.remove, {width: 18, height: 18}]}>
+                  <ThemedText style={[
+                    {color: 'crimson', fontSize: 32, top: -4.5}, 
+                    Platform.OS !== 'web' && {fontSize: 25, top: -10}]}>-</ThemedText>
+                </ThemedView>
                 <Image style={[
                     CardGridStyles.image, 
                     {width: 67.5}
@@ -256,7 +276,7 @@ export default function PickDesiredMenu({
       })}
     </ThemedView>
     )
-  }, [filterDisabled, filterObj]);
+  }, [filterDisabled, filterObj, forceRender]);
 
   return (
     <>
@@ -307,10 +327,7 @@ export default function PickDesiredMenu({
                                       ]}
                                     />
                           </ThemedView>
-
-                          <View key={forceRender}>
                             {renderRarityGrid()}
-                          </View>
                           <FlatList data={current}
                                     renderItem={renderDesired}
                                     numColumns={5}
@@ -322,7 +339,7 @@ export default function PickDesiredMenu({
                         
                       }
                       stickyHeaderIndices={[0]}
-                      ListFooterComponent={<ThemedView style={{height: 12}}/>}
+                      ListFooterComponent={<ThemedView style={{height: 22}}/>}
                       ListEmptyComponent={renderEmpty}
                     />
           </ThemedView>

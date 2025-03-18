@@ -25,6 +25,7 @@ import { filterCards, getImageLanguage116x162, getImageLanguage69x96 } from "@/s
 import { createDeckStyles } from "@/app/screens/create_deck";
 import { CardExpansionTypeENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 import { LanguageType } from "@/shared/definitions/types/global.types";
+import { collectionStyles } from "@/app/screens/collection";
 
 export default function PickOffersMenu({
   isVisible,
@@ -123,12 +124,19 @@ export default function PickOffersMenu({
             onPress={() => handleClick(item.id, 'add')}
             style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
         <View>
-          { current.includes(item.id) && 
-             <ThemedView style={[
-              CardGridStyles.image, 
-              offersStyles.included,
-            ]}>
-             </ThemedView>
+          { current.includes(item.id) &&
+            <>
+              <ThemedView style={[
+                  CardGridStyles.image, 
+                  offersStyles.included,
+                ]}>
+              </ThemedView>
+              <ThemedView style={[collectionStyles.remove, {width: 18, height: 18}]}>
+                <ThemedText style={[
+                  {color: 'crimson', fontSize: 31, top: -4}, 
+                  Platform.OS !== 'web' && {fontSize: 25, top: -10}]}>-</ThemedText>
+              </ThemedView>
+            </>
           }
           <Image accessibilityLabel={item.name[lang]}
                   source={getImageLanguage69x96(lang, item.id)}
@@ -153,6 +161,11 @@ export default function PickOffersMenu({
           <View>
             { current[index] ? 
             <>
+              <ThemedView style={[collectionStyles.remove, {width: 18, height: 18}]}>
+                <ThemedText style={[
+                  {color: 'crimson', fontSize: 32, top: -4.5}, 
+                  Platform.OS !== 'web' && {fontSize: 25, top: -10}]}>-</ThemedText>
+              </ThemedView>
               <Image accessibilityLabel={item?.name} 
                      style={[
                   CardGridStyles.image, 
@@ -278,7 +291,7 @@ export default function PickOffersMenu({
                         
                       }
                       stickyHeaderIndices={[0]}
-                      ListFooterComponent={<ThemedView style={{height: 12}}/>}
+                      ListFooterComponent={<ThemedView style={{height: 22}}/>}
                       ListEmptyComponent={renderEmpty}
                     />
           </ThemedView>

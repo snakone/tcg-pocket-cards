@@ -49,6 +49,7 @@ import { CardStageENUM } from "@/shared/definitions/enums/card.enums";
 import PreviewList from "@/components/dedicated/create/PreviewList";
 import CreateService from "@/core/services/create.service";
 import { LanguageType } from "@/shared/definitions/types/global.types";
+import { collectionStyles } from "./collection";
 
 export default function CreateDeckScreen() {
   const {i18n} = useI18n();
@@ -484,14 +485,27 @@ export default function CreateDeckScreen() {
     setNotSaved(true);
   }, []);
 
-  const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
+  const renderCard = useCallback(({item, index}: {item: Card, index: number}) => {
+    const arr = deck.filter(card => card?.name.es === item.name.es);
+    const full = arr.length === 2;
+    const canRemove = arr.length >= 1;
+    return (
     <View style={{margin: 1, backgroundColor: Colors.light.skeleton, borderRadius: 8}}>
       <TouchableOpacity
             onPress={() => createService.onAddNumber(item)}
             style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
         <View>
-          { deck.filter(card => card?.name.es === item.name.es).length === 2 && 
-             <ThemedView style={[CardGridStyles.image, offersStyles.included]}></ThemedView>
+          { full &&
+            <ThemedView style={[CardGridStyles.image, offersStyles.included]}></ThemedView>
+          }
+          { canRemove &&
+            <TouchableOpacity onPressIn={(e) => (e.stopPropagation(), createService.onRemoveNumber(item))} 
+                              style={[collectionStyles.remove, {width: 18, height: 18}]}
+                              hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+                <ThemedText style={[
+                  {color: 'crimson', fontSize: 31, top: -4}, 
+                  Platform.OS !== 'web' && {fontSize: 25, top: -10}]}>-</ThemedText>
+            </TouchableOpacity>
           }
           <Image accessibilityLabel={item.name[lang]}
                  source={getImageLanguage69x96(lang, item.id)}
@@ -502,7 +516,7 @@ export default function CreateDeckScreen() {
         </View>
       </TouchableOpacity>
     </View>
-  ), [deck]);
+  )}, [deck]);
 
   const cardListGrid = useCallback(() => (
     <View style={{width: '100%', flex: 1, paddingBottom: 16}}>

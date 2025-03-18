@@ -80,21 +80,9 @@ export default function CardsScreen() {
     setIsMenuVisible(false);
 
     if (markAll) {
-      const allMarked = filtered.map(card => {
-        const item = collection.find(sel => sel.id === card.id);
-        if (item && item.amount[langCollection] > 0) {
-          return item;
-        } else {
-          return new CollectionUser(card.id, langCollection) as UserCollection
-        }
-      });
-
-      dispatch({type: 'SET_COLLECTION', value: allMarked});
-      Storage.set('collection', allMarked);
+      markAllCards();
     } else if (unmark) {
-      dispatch({type: 'RESET_COLLECTION', value: langCollection});
-      collection.forEach(sel => sel.amount[langCollection] = 0);
-      Storage.set('collection', collection);
+      unMarkAllCards();
     }
 
     if (language === undefined) {
@@ -102,6 +90,26 @@ export default function CardsScreen() {
     }
 
     setLangCollection(language);
+  }
+
+  function markAllCards(): void {
+    const allMarked = filtered.map(card => {
+      const item = collection.find(sel => sel.id === card.id);
+      if (item && item.amount[langCollection] > 0) {
+        return item;
+      } else {
+        return new CollectionUser(card.id, langCollection) as UserCollection
+      }
+    });
+
+    dispatch({type: 'SET_COLLECTION', value: allMarked});
+    Storage.set('collection', allMarked);
+  }
+
+  function unMarkAllCards(): void {
+    dispatch({type: 'RESET_COLLECTION', value: langCollection});
+    collection.forEach(sel => sel.amount[langCollection] = 0);
+    Storage.set('collection', collection);
   }
 
   useEffect(() => {
@@ -243,7 +251,7 @@ export default function CardsScreen() {
                                 style={collectionStyles.remove}
                                 hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
                   <ThemedText style={[
-                    {color: 'crimson', fontSize: 36, top: -4}, 
+                    {color: 'crimson', fontSize: 31, top: -4}, 
                     Platform.OS !== 'web' && {fontSize: 29, top: -10}]}>-</ThemedText>
               </TouchableOpacity>
 
@@ -371,7 +379,8 @@ export default function CardsScreen() {
         </View>
         { state.cardState.cards?.length > 0 ? (
           <>
-            <TouchableOpacity onPress={() => (setIsMenuVisible(true), SoundService.play('AUDIO_MENU_OPEN'))} style={[collectionStyles.container]}>
+            <TouchableOpacity onPress={() => (setIsMenuVisible(true), SoundService.play('AUDIO_MENU_OPEN'))} 
+                              style={[collectionStyles.container]}>
               <ThemedView>
                 <IconSymbol name="menubar.rectangle" 
                             color={'#8E8E8F'}

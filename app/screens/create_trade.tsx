@@ -276,7 +276,9 @@ export default function CreateTradeScreen() {
           renderItem={({ item }) => (
             <>
               <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 12}}>
-                <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: trade_id ? '87%' : '100%', borderRadius: 8}}>
+                <ThemedView style={{
+                  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', 
+                  width: trade_id ? '87%' : '100%', borderRadius: 8}}>
                   <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
                             placeholder={i18n.t('trade_name')}
                             value={title}
