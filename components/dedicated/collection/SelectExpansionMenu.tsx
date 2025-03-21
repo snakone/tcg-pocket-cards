@@ -2,37 +2,44 @@ import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
 import { useCallback, useContext, useEffect, useState } from "react";
+import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { Image } from "expo-image";
-import { MaterialIcons } from "@expo/vector-icons";
 
-import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
+import { ExpansionMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { AppContext } from "@/app/_layout";
 import SoundService from "@/core/services/sounds.service";
-import { AVATAR_LIST } from "@/shared/definitions/utils/constants";
-import { AvatarIcon } from "@/shared/definitions/interfaces/global.interfaces";
-import Storage from "@/core/storage/storage.service";
+import { EXPANSION_EMBLEM_LIST } from "@/shared/definitions/utils/constants";
+import { ExpansionEmblem } from "@/shared/definitions/interfaces/global.interfaces";
 import { splashStyles } from "@/components/ui/SplashScreen";
+import { AppContext } from "@/app/_layout";
 
-export default function PickAvatarMenu({
+export default function SelectExpansionMenu({
   isVisible,
   onClose,
   animatedStyle,
-}: TabMenu) {
+  current
+}: ExpansionMenu) {
   const {i18n} = useI18n();
   const styles = ModalStyles;
   if (!isVisible) return null;
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
-  const [selected, setSelected] = useState('');
-  const [original, setOriginal] = useState('');
+  const [selected, setSelected] = useState<ExpansionEmblem | null>();
+  const [original, setOriginal] = useState<ExpansionEmblem>();
+
+  useEffect(() => {
+    if (current && current.value !== undefined) {
+      setOriginal(current);
+      setSelected(current);
+    }
+  }, [current]);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
@@ -40,44 +47,27 @@ export default function PickAvatarMenu({
 
   async function closeMenu(): Promise<void> {
     await playSound();
-    onClose();
+    onClose(selected);
   }
 
-  const handleClick = useCallback((value: string) => {
+  const handleClick = useCallback((value: ExpansionEmblem) => {
     SoundService.play('POP_PICK');
     setSelected(value);
-    if (value === selected) {
-      setSelected('');
+    if (value.label === selected?.label) {
+      setSelected(null);
     }
   }, [selected]);
 
-  function handleSave(): void {
-    Storage.set('avatar', selected);
-    const settings = {...state.settingsState, avatar: selected};
-    dispatch({type: 'SET_SETTINGS', value: settings});
-    closeMenu();
-  }
-
-  useEffect(() => {
-    const getAvatar = async () => {
-      const avatar = await Storage.get('avatar');
-      setSelected(avatar);
-      setOriginal(avatar);
-    };
-
-    getAvatar();
-  }, []);
-
-  const renderItem = ({ item } : {item: AvatarIcon}) => (
-    <TouchableOpacity onPress={() => handleClick(item.value)}>
-      <ThemedView style={[pickAvatarStyles.avatarCircle, selected === item.value && {backgroundColor: 'slategray'}]}>
-        <Image source={item.icon} style={pickAvatarStyles.avatar}/>
+  const renderItem = ({ item } : {item: ExpansionEmblem}) => (
+    <TouchableOpacity onPress={() => handleClick(item)}>
+      <ThemedView style={[selectExpansionStyles.coinCircle, selected?.value === item.value && {backgroundColor: 'slategray'}]}>
+        <Image source={item.icon} style={[selectExpansionStyles.coin, {backgroundColor: 'transparent', width: 80, height: 80}]}/>
         {
-          selected === item.value && 
+          selected?.value === item.value && 
           <MaterialIcons name="check" 
                          size={16} 
                          color={'white'} 
-                         style={pickAvatarStyles.selectedIcon}/>
+                         style={selectExpansionStyles.selectedIcon}/>
         }
       </ThemedView>
     </TouchableOpacity>
@@ -92,25 +82,25 @@ export default function PickAvatarMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: 706}]}>
+      <Animated.View style={[animatedStyle, sortStyles.container, {height: 590}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
-          <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_avatar')}</ThemedText>
+          <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_expansion')}</ThemedText>
         </View>
         <ThemedView style={[styles.modalScrollView, {flex: 1, padding: 0}]}>
           <ThemedView style={{flex: 1, alignItems: 'center', marginTop: 12}}>
-            <FlatList data={AVATAR_LIST}
+            <FlatList data={EXPANSION_EMBLEM_LIST}
                       renderItem={renderItem}
                       numColumns={3}
-                      keyExtractor={(item, index) => index + ''}
                       showsVerticalScrollIndicator={false}
+                      keyExtractor={(item, index) => index + ''}
                       contentContainerStyle={{paddingBottom: 96}}
                     />
             <ThemedView style={{alignItems: 'center', position: 'absolute', bottom: 30}}>
-              <TouchableOpacity onPress={() => handleSave()}
-                                disabled={selected === original}  
+              <TouchableOpacity onPress={() => closeMenu()}
+                                disabled={selected?.value === original?.value}  
                                 style={[
                                   splashStyles.button,
-                                  selected === original && {backgroundColor: 'lightgray'}
+                                  selected?.value === original?.value && {backgroundColor: 'lightgray'}
                                 ]} >
                 <ThemedText style={[
                   {color: 'white', fontWeight: 600, fontSize: 15},
@@ -133,16 +123,17 @@ export default function PickAvatarMenu({
   );
 }
 
-const pickAvatarStyles = StyleSheet.create({
-  avatar: {
-    width: 80, 
-    height: 80, 
+const selectExpansionStyles = StyleSheet.create({
+  coin: {
+    width: 70, 
+    height: 70, 
     zIndex: 4, 
     backgroundColor: 'mediumaquamarine', 
     borderRadius: 100
   },
-  avatarCircle: {
+  coinCircle: {
     margin: 10,
+    marginInline: 14,
     padding: 4,
     backgroundColor: 'white',
     borderRadius: 100,

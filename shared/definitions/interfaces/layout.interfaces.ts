@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { CardLanguageENUM } from "../enums/card.enums";
+import { CollectionStat, ExpansionEmblem } from "./global.interfaces";
 
 export interface HeaderWithCustomModalProps {
   title: string;
@@ -31,6 +32,14 @@ export interface TabDesiredMenu extends TabMenu {
 export interface TabOffersMenu extends TabMenu {
   desired: (number | null)[];
   offers: (number | null)[];
+}
+
+export interface ExpansionMenu extends TabMenu {
+  current: ExpansionEmblem | undefined;
+}
+
+export interface CollectionListMenu extends TabMenu {
+  stats: CollectionStat[];
 }
 
 export interface RouteItem {

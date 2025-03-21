@@ -95,14 +95,29 @@ import {
   DECK_BG_PALKIA_70x70,
   SMACK_DOWN_DIALGA_ICON,
   SMACK_DOWN_PALKIA_ICON,
-  TRIUMPH_LIGHT_ARCEUS_ICON
+  TRIUMPH_LIGHT_ARCEUS_ICON,
+  CHARIZARD_EMBLEM,
+  PIKACHU_EMBLEM,
+  MEWTWO_EMBLEM,
+  MEW_EMBLEM,
+  DIALGA_EMBLEM,
+  PALKIA_EMBLEM,
+  ARCEUS_EMBLEM,
+  PROMO_A_EMBLEM,
+  CHARIZARD_ICON,
+  PIKACHU_ICON,
+  MEWTWO_ICON,
+  DIALGA_ICON,
+  MEW_ICON,
+  PALKIA_ICON,
+  ARCEUS_ICON
 } from "../sentences/path.sentences";
 
 import { FilterSearch } from "../classes/filter.class";
 import { EXPANSION } from "../enums/packs.enums";
 import { CardExpansionENUM, CardLanguageENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
-import { AvatarIcon } from "../interfaces/global.interfaces";
+import { AvatarIcon, ExpansionEmblem } from "../interfaces/global.interfaces";
 import { FilterAttackSearch } from "../classes/filter_attack.class";
 
 export const MENU_LIST: ItemWithRoute[] = [
@@ -315,7 +330,7 @@ export const PACK_MAP: Record<EXPANSION, any> = {
   [EXPANSION.PREMIUM]: null,
   [EXPANSION.WONDER_PICK]: null,
   [EXPANSION.SPECIAL_MISSION]: null,
-  [EXPANSION.MYTHICAL_ISLAND]: MYTHICAL_ISLAND_MEW_ICON,
+  [EXPANSION.MEW]: MYTHICAL_ISLAND_MEW_ICON,
   [EXPANSION.PROMO_A3]: PROMO_A_ICON,
   [EXPANSION.DIALGA]: SMACK_DOWN_DIALGA_ICON,
   [EXPANSION.PALKIA]: SMACK_DOWN_PALKIA_ICON,
@@ -530,3 +545,24 @@ export const CollectionLanguageList = [
   CardLanguageENUM.COR,
   CardLanguageENUM.CHI
 ];
+
+export const EXPANSION_EMBLEM_LIST: ExpansionEmblem[] = [
+  { label: 'expansion_charizard', value: EXPANSION.CHARIZARD, icon: CHARIZARD_EMBLEM },
+  { label: 'expansion_mewtwo', value: EXPANSION.MEWTWO, icon: MEWTWO_EMBLEM },
+  { label: 'expansion_pikachu', value: EXPANSION.PIKACHU, icon: PIKACHU_EMBLEM },
+  { label: 'expansion_mew', value: EXPANSION.MEW, icon: MEW_EMBLEM },
+  { label: 'expansion_dialga', value: EXPANSION.DIALGA, icon: DIALGA_EMBLEM },
+  { label: 'expansion_palkia', value: EXPANSION.PALKIA, icon: PALKIA_EMBLEM },
+  { label: 'expansion_arceus', value: EXPANSION.ARCEUS, icon: ARCEUS_EMBLEM },
+  { label: 'expansion_promo_a', value: 99, icon: PROMO_A_EMBLEM }
+];
+
+export const EXPANSION_PACK_MAP = {
+  expansion_charizard: CHARIZARD_ICON,
+  expansion_mewtwo: MEWTWO_ICON,
+  expansion_pikachu: PIKACHU_ICON,
+  expansion_mew: MEW_ICON,
+  expansion_dialga: DIALGA_ICON,
+  expansion_palkia: PALKIA_ICON,
+  expansion_arceus: ARCEUS_ICON
+}

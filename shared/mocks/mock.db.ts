@@ -17861,7 +17861,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [21, 22, 23, 288, 252, 355]
   },
@@ -17926,7 +17926,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [21, 22, 287, 355]
   },
@@ -17994,7 +17994,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [361, 371]
   },
@@ -18054,7 +18054,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [291, 292, 356, 606]
   },
@@ -18114,7 +18114,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [290, 292, 356, 606]
   },  
@@ -18186,7 +18186,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [290, 291, 356, 606]
   },
@@ -18246,7 +18246,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [294]
   },
@@ -18311,7 +18311,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [293]
   },
@@ -18376,7 +18376,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: []
   },
@@ -18444,7 +18444,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [42, 43, 297, 231]
   },
@@ -18512,7 +18512,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [42, 43, 296, 231]
   },
@@ -18577,7 +18577,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [44, 395, 396]
   },
@@ -18637,7 +18637,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [300, 607] 
   },
@@ -18705,7 +18705,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.ATTACK_BENCH
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [299, 607]
   },
@@ -18770,7 +18770,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [49, 50, 302, 357]
   },
@@ -18835,7 +18835,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [49, 50, 301, 357]
   },
@@ -18900,7 +18900,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [77, 78, 304, 233, 362]
   },
@@ -18965,7 +18965,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: true,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [77, 303, 362]
   },
@@ -19037,7 +19037,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [80, 206, 207, 208, 347, 498, 682, 248, 358, 609]
   },
@@ -19097,7 +19097,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [307, 414, 415]
   },
@@ -19162,7 +19162,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [306, 414, 415]
   },
@@ -19222,7 +19222,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [309]
   },
@@ -19290,7 +19290,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.DISCARD
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [308]
   },
@@ -19358,7 +19358,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.RESIST
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: []
   },
@@ -19423,7 +19423,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [94, 95, 312, 645, 646, 605, 594, 588, 719]
   },
@@ -19488,7 +19488,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [94, 95, 311, 645, 646, 605, 594, 588, 719]
   },
@@ -19553,7 +19553,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [101, 428, 429, 615]
   },
@@ -19613,7 +19613,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [315]
   },
@@ -19678,7 +19678,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.CORNER],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [314]
   },
@@ -19746,7 +19746,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.PARALYZE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [359]
   },
@@ -19811,7 +19811,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: []
   },
@@ -19885,7 +19885,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: true,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [363, 369, 372]
   },
@@ -19950,7 +19950,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: []
   },
@@ -20010,7 +20010,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [321]
   },
@@ -20075,7 +20075,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [320]
   },
@@ -20140,7 +20140,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [323, 324]
   },
@@ -20205,7 +20205,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [322, 324]
   },
@@ -20270,7 +20270,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [322, 323]
   },
@@ -20330,7 +20330,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [326]
   },
@@ -20390,7 +20390,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [325]
   },
@@ -20458,7 +20458,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.NOTHING
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [141, 142, 328, 596]
   },
@@ -20518,7 +20518,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [141, 142, 327, 596]
   },
@@ -20578,7 +20578,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [147, 148, 149, 330, 331]
   },
@@ -20638,7 +20638,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [147, 148, 149, 329, 331]
   },
@@ -20703,7 +20703,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [147, 148, 149, 329, 330]
   },
@@ -20775,7 +20775,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: true,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [364, 370, 349]
   },
@@ -20840,7 +20840,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [360]
   },
@@ -20900,7 +20900,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: []
   },
@@ -20965,7 +20965,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.CALL],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [176, 177, 336, 243]
   },
@@ -21030,7 +21030,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [176, 177, 335, 243]
   },
@@ -21090,7 +21090,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [338]
   },
@@ -21150,7 +21150,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [337]
   },
@@ -21210,7 +21210,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [340, 341]
   },
@@ -21275,7 +21275,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [339, 341]
   },
@@ -21340,7 +21340,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [339, 340]
   },
@@ -21412,7 +21412,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: []
   },
@@ -21472,7 +21472,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [186, 187, 188, 344, 345, 245, 365]
   },
@@ -21532,7 +21532,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [186, 187, 188, 343, 345, 245, 365]
   },
@@ -21597,7 +21597,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: true,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [186, 187, 343, 344, 365]
   },
@@ -21662,7 +21662,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [204]
   },
@@ -21730,7 +21730,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [45, 80, 102, 206, 207, 208, 305, 392, 418, 498, 630, 642, 682, 248, 358, 702, 711, 703, 712, 609]
   },
@@ -21798,7 +21798,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.PLAY_CARDS
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [513]
   },
@@ -21827,7 +21827,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     element: -1,
     pokedex: -1,
@@ -21858,7 +21858,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     element: -1,
     pokedex: -1,
@@ -21891,7 +21891,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.CALL
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     element: -1,
     pokedex: -1,
@@ -21922,7 +21922,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND,
+      EXPANSION.MEW,
     ],
     element: -1,
     pokedex: -1,
@@ -21953,7 +21953,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
-      EXPANSION.MYTHICAL_ISLAND,
+      EXPANSION.MEW,
     ],
     element: -1,
     pokedex: -1,
@@ -21984,7 +21984,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND,
+      EXPANSION.MEW,
     ],
     element: -1,
     pokedex: -1,
@@ -22051,7 +22051,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [21, 22, 287, 288]
   },
@@ -22125,7 +22125,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.ADD
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [290, 291, 292, 606]
   },
@@ -22190,7 +22190,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [49, 50, 301, 302]
   },
@@ -22262,7 +22262,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [80, 206, 207, 208, 305, 347, 498, 682, 248, 609]
   },
@@ -22330,7 +22330,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.PARALYZE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [316]
   },
@@ -22395,7 +22395,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [333]
   },
@@ -22463,7 +22463,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [289, 371]
   },
@@ -22528,7 +22528,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: true,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [77, 303, 304]
   },
@@ -22602,7 +22602,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: true,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [318, 369, 372]
   },
@@ -22674,7 +22674,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: true,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [332, 370, 349]
   },
@@ -22739,7 +22739,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: true,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [186, 187, 343, 344, 345]
   },
@@ -22768,7 +22768,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND,
+      EXPANSION.MEW,
     ],
     element: -1,
     pokedex: -1,
@@ -22799,7 +22799,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
-      EXPANSION.MYTHICAL_ISLAND,
+      EXPANSION.MEW,
     ],
     element: -1,
     pokedex: -1,
@@ -22830,7 +22830,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND,
+      EXPANSION.MEW,
     ],
     element: -1,
     pokedex: -1,
@@ -22906,7 +22906,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: true,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [318, 363, 372]
   },
@@ -22978,7 +22978,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: true,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [332, 364, 349]
   },
@@ -23046,7 +23046,7 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [289, 361]
   },
@@ -23120,7 +23120,7 @@ export const MOCK_DB_CARDS: Card[] = [
     isEX: true,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [318, 363, 369]
   },

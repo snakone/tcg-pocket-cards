@@ -433,6 +433,7 @@ export function saveEncryptedFileWeb(
 ): Promise<void> {
   return new Promise((res) => {
     if (Platform.OS !== 'web') { return ; }
+    delete data.cards;
     const encryptedData = encryptDataWeb(data);
     const blob = new Blob([encryptedData], { type: "text/plain" });
     const link = document.createElement("a");

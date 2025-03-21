@@ -30,6 +30,7 @@ import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import PickBackgroundMenu from "@/components/dedicated/share/PickCBackgroundMenu";
 import { filterUniqueItems, getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
 import { LanguageType } from "@/shared/definitions/types/global.types";
+import { shareTradeStyles } from "./share_trade";
 
 export default function ShareDeckScreen() {
   const {i18n} = useI18n();
@@ -261,7 +262,7 @@ export default function ShareDeckScreen() {
                   <ThemedText>{i18n.t('background_image')}</ThemedText>
                   {
                     Boolean(background) && 
-                      <Image source={background?.icon} style={styles.coin}/>
+                      <Image source={background?.icon} style={shareTradeStyles.coin}/>
                   }
                   <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
                     <MaterialIcons name={'chevron-right'} 
@@ -329,14 +330,5 @@ const styles = StyleSheet.create({
   options: {
     width: '100%',
     gap: 8
-  },
-  coin: {
-    width: 34, 
-    height: 34, 
-    zIndex: 4, 
-    backgroundColor: 'mediumaquamarine', 
-    borderRadius: 10,
-    position: 'absolute',
-    right: 41
   },
 });

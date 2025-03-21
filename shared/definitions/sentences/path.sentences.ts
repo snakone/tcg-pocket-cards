@@ -238,5 +238,12 @@ export const DIAMOND_ICON = require("@/assets/images/infographics/diamond.png");
 export const ELEMENT_ICON = require("@/assets/images/infographics/types.png");
 export const MISCELLANIA_ICON = require("@/assets/images/infographics/miscellania.png");
 
-export const CHALLENGE_ICON = require("@/assets/images/challenge.png");
-export const QUIZ_ICON = require("@/assets/images/quiz.png");
+// EMBLEMS
+export const ARCEUS_EMBLEM = require("@/assets/images/emblem/arceus.png");
+export const CHARIZARD_EMBLEM = require("@/assets/images/emblem/charizard.png");
+export const DIALGA_EMBLEM = require("@/assets/images/emblem/dialga.png");
+export const MEW_EMBLEM = require("@/assets/images/emblem/mew.png");
+export const MEWTWO_EMBLEM = require("@/assets/images/emblem/mewtwo.png");
+export const PALKIA_EMBLEM = require("@/assets/images/emblem/palkia.png");
+export const PIKACHU_EMBLEM = require("@/assets/images/emblem/pikachu.png");
+export const PROMO_A_EMBLEM = require("@/assets/images/emblem/promo_a.png");

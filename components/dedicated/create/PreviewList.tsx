@@ -154,6 +154,7 @@ export default function PreviewList({
                 contentContainerStyle={{width: '100%', padding: 16, paddingTop: 20, paddingBottom: 14}}
                 renderItem={renderPreviewItem}
                 keyExtractor={(item, index) => index + 1 + ''}
+                showsVerticalScrollIndicator={false}
       />
       <ThemedView style={{padding: 16, paddingTop: 0, paddingBottom: 18}}>
         <Animated.View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>

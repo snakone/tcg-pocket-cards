@@ -31,7 +31,7 @@ export default function PickCoinMenu({
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState<string>('');
   const [original, setOriginal] = useState('');
 
   const playSound = useCallback(async () => {
@@ -43,10 +43,13 @@ export default function PickCoinMenu({
     onClose();
   }
 
-  async function handleClick(value: string): Promise<void> {
-    await SoundService.play('POP_PICK');
+  const handleClick = useCallback((value: string) => {
+    SoundService.play('POP_PICK');
     setSelected(value);
-  }
+    if (value === selected) {
+      setSelected('');
+    }
+  }, [selected]);
 
   function handleSave(): void {
     Storage.set('coin', selected);
@@ -104,7 +107,7 @@ export default function PickCoinMenu({
                     />
             <ThemedView style={{alignItems: 'center', position: 'absolute', bottom: 30}}>
               <TouchableOpacity onPress={() => handleSave()}
-                                disabled={selected === original}  
+                                disabled={selected === original || selected === ''}  
                                 style={[
                                   splashStyles.button,
                                   selected === original && {backgroundColor: 'lightgray'}

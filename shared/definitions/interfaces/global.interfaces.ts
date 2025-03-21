@@ -2,7 +2,8 @@ import { StyleProp, TextStyle, ImageStyle } from "react-native";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { Card } from "./card.interfaces";
 import { LanguageType } from "../types/global.types";
-import { CardLanguageENUM } from "../enums/card.enums";
+import { CardLanguageENUM, CardRarityENUM } from "../enums/card.enums";
+import { EXPANSION } from "../enums/packs.enums";
 
 interface ServerResponse {
   ok: boolean;
@@ -41,6 +42,12 @@ export interface AvatarIcon {
   icon: any;
 }
 
+export interface ExpansionEmblem {
+  label: string;
+  value: EXPANSION | number;
+  icon: any;
+}
+
 export interface PocketNews {
   _id: string;
   title: Record<LanguageType, string>;
@@ -69,4 +76,31 @@ export interface TradeItem {
 export interface UserCollection {
   id: number;
   amount: Record<CardLanguageENUM, number>
+}
+
+export interface CollectionStat {
+  name: any;
+  label: string;
+  owned: number;
+  missing?: number;
+  perct_owned: string;
+  perct_missing?: string;
+  length: number;
+  emblem: any;
+  crown: number,
+  art: number
+}
+
+export interface CollectionElementStat {
+  owned: number;
+  length: number;
+  icon: any;
+}
+
+export interface CollectionRarityStat {
+  owned: number;
+  length: number;
+  icon: any;
+  amount: number;
+  value: CardRarityENUM
 }

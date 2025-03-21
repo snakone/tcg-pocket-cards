@@ -194,7 +194,7 @@ export function GraphicCollage({
   const { data: pikachuCards, length: pikachuCardsLength } = getCards(EXPANSION.PIKACHU);
   const { data: mewtwoCards, length: mewtwoCardsLength } = getCards(EXPANSION.MEWTWO);
   const { data: charizardCards, length: charizardCardsLength } = getCards(EXPANSION.CHARIZARD);
-  const { data: islandCards } = getCards(EXPANSION.MYTHICAL_ISLAND);
+  const { data: islandCards } = getCards(EXPANSION.MEW);
   const { data: dialgaCards, length: dialgaCardsLength } = getCards(EXPANSION.DIALGA);
   const { data: palkiaCards, length: palkiaCardsLength } = getCards(EXPANSION.PALKIA);
   const { data: premiumCards, length: premiumCardsLength } = getCards(EXPANSION.PREMIUM);
@@ -385,7 +385,7 @@ export function GraphicCollage({
           <ThemedView style={{width: '20%'}}>
             <ThemedView style={styles.summaryRow}>
               <Image source={TRIUMPH_LIGHT_ARCEUS_ICON} style={[styles.summaryImage, {width: 80, height: 34}]}></Image>
-              <ThemedText style={styles.summaryText}>{i18n.t('triumphal_light')}</ThemedText>
+              <ThemedText style={styles.summaryText}>{i18n.t('triumphant_light')}</ThemedText>
               <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
                 {triumphPackCardsLength}
               </ThemedText>

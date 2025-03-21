@@ -80,9 +80,9 @@ export default function CardsScreen() {
     setIsMenuVisible(false);
 
     if (markAll) {
-      markAllCards();
+      markAllCards(language);
     } else if (unmark) {
-      unMarkAllCards();
+      unMarkAllCards(language);
     }
 
     if (language === undefined) {
@@ -92,23 +92,27 @@ export default function CardsScreen() {
     setLangCollection(language);
   }
 
-  function markAllCards(): void {
+  function markAllCards(language: CardLanguageENUM): void {
     const allMarked = filtered.map(card => {
       const item = collection.find(sel => sel.id === card.id);
-      if (item && item.amount[langCollection] > 0) {
-        return item;
-      } else {
-        return new CollectionUser(card.id, langCollection) as UserCollection
+      if (!item) {
+        return new CollectionUser(card.id, language) as UserCollection;
       }
+
+      if (item && item.amount[language] === 0) {
+        item.amount[language]++;
+      }
+
+      return item;
     });
 
     dispatch({type: 'SET_COLLECTION', value: allMarked});
     Storage.set('collection', allMarked);
   }
 
-  function unMarkAllCards(): void {
-    dispatch({type: 'RESET_COLLECTION', value: langCollection});
-    collection.forEach(sel => sel.amount[langCollection] = 0);
+  function unMarkAllCards(language: CardLanguageENUM): void {
+    dispatch({type: 'RESET_COLLECTION', value: language});
+    collection.forEach(sel => sel.amount[language] = 0);
     Storage.set('collection', collection);
   }
 

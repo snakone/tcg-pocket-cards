@@ -145,12 +145,12 @@ export default function ShareTradeScreen() {
         {
           trade && <TradeUserItem item={trade} 
                                   rarity={rarity} 
-                                  styles={styles.tradeItem} 
+                                  styles={shareTradeStyles.tradeItem} 
                                   state={state}
                                   share={true}/>
         }
         <ScrollView showsVerticalScrollIndicator={false} style={{paddingHorizontal: 14, marginLeft: -14, marginRight: -14}}>
-          <ThemedView style={styles.options}>
+          <ThemedView style={shareTradeStyles.options}>
             <ThemedText style={[filterStyles.header]}>{i18n.t('export')}</ThemedText>
             <ThemedView style={[settingsStyles.container, {height: 52}]}>
               <Pressable onPress={handleBackground} style={{flex: 1}} >
@@ -158,7 +158,7 @@ export default function ShareTradeScreen() {
                   <ThemedText>{i18n.t('background_image')}</ThemedText>
                   {
                     Boolean(background) && 
-                      <Image source={background?.icon} style={styles.coin}/>
+                      <Image source={background?.icon} style={shareTradeStyles.coin}/>
                   }
                   <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
                     <MaterialIcons name={'chevron-right'} 
@@ -225,7 +225,7 @@ export default function ShareTradeScreen() {
   )
 }
 
-const styles = StyleSheet.create({
+export const shareTradeStyles = StyleSheet.create({
   options: {
     width: '100%',
     gap: 8,
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'mediumaquamarine', 
     borderRadius: 10,
     position: 'absolute',
-    right: 41
+    right: 37
   },
   tradeItem: {
     marginBottom: 28,
