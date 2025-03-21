@@ -47,7 +47,7 @@ export default function CardsScreen() {
   const [filtered, setFiltered] = useState<Card[]>([]);
   const flatListRef = useRef<FlatList<Card> | null>(null);
   const [collection, setCollection] = useState<UserCollection[]>([]);
-  const [langCollection, setLangCollection] = useState<CardLanguageENUM>(CardLanguageENUM.EN);
+  const [langCollection, setLangCollection] = useState<CardLanguageENUM>(state.settingsState.collectionLanguage);
 
   const memoizedMenu = useMemo(() => {
     return <CollectionCardMenu isVisible={isMenuVisible} 
@@ -118,6 +118,10 @@ export default function CardsScreen() {
 
   useEffect(() => {
     setCollection(state.settingsState.collection);
+
+    return (() => {
+      dispatch({type: 'SET_COLLECTION_LANGUAGE', value: CardLanguageENUM.EN});
+    });
   }, [state.settingsState.collection]);
   
   function onClose(): void {

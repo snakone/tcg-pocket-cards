@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "expo-router";
 import React from "react";
-import { FlatList, Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { FlatList, Platform, StyleSheet, TouchableOpacity } from 'react-native';
 import { Image } from 'expo-image';
 import { MaterialIcons } from "@expo/vector-icons";
 import { Portal, Provider } from "react-native-paper";
@@ -21,12 +21,13 @@ import { Colors } from "@/shared/definitions/utils/colors";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { EXPANSION } from "@/shared/definitions/enums/packs.enums";
 import CollectionStatsItem from "@/components/dedicated/collection/StatsItem";
-import { shareTradeStyles } from "./share_trade";
 import SelectExpansionMenu from "@/components/dedicated/collection/SelectExpansionMenu";
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
-import { TabsMenuStyles } from "@/shared/styles/component.styles";
 import ProgressBar from "@/components/dedicated/collection/ProgressBar";
 import { cardStyles } from "../(tabs)/cards";
+import ListMenu from "@/components/dedicated/collection/ListMenu";
+import { StatsGrid } from "@/components/dedicated/collection/StatsGrid";
+import { ExpansionGridStats } from "@/components/dedicated/collection/ExpansionGridStats";
 
 import { 
   ARCEUS_EMBLEM, 
@@ -51,7 +52,7 @@ import {
   STEEL_ICON, 
   WATER_ICON
 } from "@/shared/definitions/sentences/path.sentences";
-import ListMenu from "@/components/dedicated/collection/ListMenu";
+import { roundPercentage } from "@/shared/definitions/utils/functions";
 
 export default function CollectionStatsScreen() {
   const {i18n} = useI18n();
@@ -60,7 +61,7 @@ export default function CollectionStatsScreen() {
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
   const [collection, setCollection] = useState<UserCollection[]>([]);
-  const [langCollection, setLangCollection] = useState<CardLanguageENUM>(CardLanguageENUM.EN);
+  const [langCollection, setLangCollection] = useState<CardLanguageENUM>(state.settingsState.collectionLanguage || CardLanguageENUM.EN);
   const flatListRef = useRef<FlatList<CollectionStat> | any>(null);
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
   const [currentExpansion, setCurrentExpansion] = useState<ExpansionEmblem>();
@@ -136,8 +137,13 @@ export default function CollectionStatsScreen() {
 
   useEffect(() => {
     setCollection(state.settingsState.collection);
-    selectLanguage(CardLanguageENUM.EN, false);
   }, [state.settingsState.collection]);
+
+  useEffect(() => {
+    if (state.settingsState.collectionLanguage !== undefined) {
+      selectLanguage(state.settingsState.collectionLanguage, false);
+    }
+  }, [state.settingsState.collectionLanguage]);
 
   const filterAndSort = (filterFn: (card: Card) => boolean) => {
     const filtered = state.cardState.cards.filter(filterFn).sort((a, b) => a.order - b.order);
@@ -169,6 +175,17 @@ export default function CollectionStatsScreen() {
   const { data: triumphCards, length: triumphCardsLength } = getCards(EXPANSION.ARCEUS);
   const { data: promoAPackCards, length: promoAPackCardsLength } = getCardsExpansion(CardExpansionENUM.PROMO_A);
 
+  const { data: grassCards, length: grassCardsLength } = getCardByType(PokemonTypeENUM.GRASS);
+  const { data: darkCards, length: darkCardsLength } = getCardByType(PokemonTypeENUM.DARK);
+  const { data: dragonCards, length: dragonCardsLength } = getCardByType(PokemonTypeENUM.DRAGON);
+  const { data: electricCards, length: electricCardsLength } = getCardByType(PokemonTypeENUM.ELECTRIC);
+  const { data: fightCards, length: fightCardsLength } = getCardByType(PokemonTypeENUM.FIGHT);
+  const { data: fireCards, length: fireCardsLength } = getCardByType(PokemonTypeENUM.FIRE);
+  const { data: normalCards, length: normalCardsLength } = getCardByType(PokemonTypeENUM.NORMAL);
+  const { data: psychicCards, length: psychicCardsLength } = getCardByType(PokemonTypeENUM.PSYCHIC);
+  const { data: steelCards, length: steelCardsLength } = getCardByType(PokemonTypeENUM.STEEL);
+  const { data: waterCards, length: waterCardsLength } = getCardByType(PokemonTypeENUM.WATER);
+
   const { data: commonCards, length: commonCardsLength } = getCardRarity(CardRarityENUM.COMMON);
   const { data: unCommonCards, length: unCommonCardsLength } = getCardRarity(CardRarityENUM.UNCOMMON);
   const { data: rareCards, length: rareCardsLength } = getCardRarity(CardRarityENUM.RARE);
@@ -177,8 +194,6 @@ export default function CollectionStatsScreen() {
   const { data: superCards, length: superCardsLength } = getCardRarity(CardRarityENUM.SUPER);
   const { data: inmersiveCards, length: inmersiveCardsLength } = getCardRarity(CardRarityENUM.INMERSIVE);
   const { data: crownCards, length: crownCardsLength } = getCardRarity(CardRarityENUM.CROWN);
-
-  const pikachuRareCards = rareCards.filter(card => card.found?.includes(EXPANSION.PIKACHU));
 
   const charizardCrownCards = crownCards.filter(card => card.found?.includes(EXPANSION.CHARIZARD));
   const charizardArtCards = artCards.filter(card => card.found?.includes(EXPANSION.CHARIZARD));
@@ -195,16 +210,26 @@ export default function CollectionStatsScreen() {
   const arceusCrownCards = crownCards.filter(card => card.found?.includes(EXPANSION.ARCEUS));
   const arceusdArtCards = artCards.filter(card => card.found?.includes(EXPANSION.ARCEUS));
 
-  const { data: grassCards, length: grassCardsLength } = getCardByType(PokemonTypeENUM.GRASS);
-  const { data: darkCards, length: darkCardsLength } = getCardByType(PokemonTypeENUM.DARK);
-  const { data: dragonCards, length: dragonCardsLength } = getCardByType(PokemonTypeENUM.DRAGON);
-  const { data: electricCards, length: electricCardsLength } = getCardByType(PokemonTypeENUM.ELECTRIC);
-  const { data: fightCards, length: fightCardsLength } = getCardByType(PokemonTypeENUM.FIGHT);
-  const { data: fireCards, length: fireCardsLength } = getCardByType(PokemonTypeENUM.FIRE);
-  const { data: normalCards, length: normalCardsLength } = getCardByType(PokemonTypeENUM.NORMAL);
-  const { data: psychicCards, length: psychicCardsLength } = getCardByType(PokemonTypeENUM.PSYCHIC);
-  const { data: steelCards, length: steelCardsLength } = getCardByType(PokemonTypeENUM.STEEL);
-  const { data: waterCards, length: waterCardsLength } = getCardByType(PokemonTypeENUM.WATER);
+  const allCards = {
+    grass: grassCards,
+    dark: darkCards,
+    dragon: dragonCards,
+    electric: electricCards,
+    fight: fightCards,
+    fire: fireCards,
+    normal: normalCards,
+    psychic: psychicCards,
+    steel: steelCards,
+    water: waterCards,
+    common: commonCards,
+    uncommon: unCommonCards,
+    rare: rareCards,
+    double: doubleCards,
+    art: artCards,
+    super: superCards,
+    inmersive: inmersiveCards,
+    crown: crownCards
+  }
 
   const DATA = [
     {
@@ -422,8 +447,9 @@ export default function CollectionStatsScreen() {
     },
   ];
 
-
   const selectLanguage = useCallback((value: CardLanguageENUM, sound = true) => {
+    setLangCollection(value);
+
     if (sound) {
       SoundService.play('POP_PICK');
     }
@@ -433,11 +459,10 @@ export default function CollectionStatsScreen() {
         .filter(coll => coll.amount[value] > 0).map(coll => coll.id))
     );
 
-    setLangCollection(value);
+    dispatch({type: 'SET_COLLECTION_LANGUAGE', value});
     setData(collectionCards);
     setElementData(collectionCards);
     setRarityData(collectionCards);
-    
     goUp();
   }, []);
 
@@ -499,14 +524,6 @@ export default function CollectionStatsScreen() {
 
   }, []);
 
-  function roundPercentage(value: string): string {
-    const split = value.split('.');
-    if ((split[0] === '0' || split[0] === '100') && split[1] === '0') {
-      return split[0] + '%';
-    }
-    return value + '%';
-  }
-
   function getMostMissingPacks(): void {
     const missing = allStats.filter(stat => stat?.name !== 'PROMO')
                             .sort((a, b) => Number(b?.perct_missing) - Number(a?.perct_missing))
@@ -525,11 +542,7 @@ export default function CollectionStatsScreen() {
 
   function onClose(value: ExpansionEmblem): void {
     setExpansionVisible(false);
-    setListMenuVisible(false);
-
-    if (value) {
-      setCurrentExpansion(value);
-    }
+    setCurrentExpansion(value);
   }
 
   const memoizedExpansion = useMemo(() => {
@@ -542,7 +555,7 @@ export default function CollectionStatsScreen() {
   const memoizedListMenu = useMemo(() => {
     return <ListMenu isVisible={listMenuVisible} 
                                 animatedStyle={{}} 
-                                onClose={onClose}
+                                onClose={() => setListMenuVisible(false)}
                                 stats={allStats as CollectionStat[]}/>
   }, [listMenuVisible, allStats]);
 
@@ -582,23 +595,13 @@ export default function CollectionStatsScreen() {
           mainStats && <CollectionStatsItem stat={mainStats} round={roundPercentage}></CollectionStatsItem>
         }
 
-        <ThemedView style={[settingsStyles.container, {height: 48, padding: 10, borderRadius: 12, marginBottom: 20}]}>
+        <ThemedView style={[settingsStyles.container, {height: 48, padding: 10, borderRadius: 12, marginBottom: 18}]}>
           <TouchableOpacity onPress={openExpansion} style={{flex: 1, justifyContent: 'center'}} >
             <ThemedView style={settingsStyles.row}>
               {
                 currentExpansion && currentExpansion.label !== undefined ? 
                 <ThemedText style={{marginLeft: 6, fontWeight: 'semibold'}}>{i18n.t(currentExpansion.label.toLowerCase())}</ThemedText> :
                   <ThemedText style={{marginLeft: 6}}>{i18n.t('select_expansion')}</ThemedText>
-              }
-              
-              {
-                Boolean(currentExpansion && currentExpansion.value !== undefined) && 
-                  <Image source={currentExpansion?.icon} 
-                         style={[
-                          shareTradeStyles.coin, 
-                          {backgroundColor: 'transparent', height: 40, width: 40, top: -10},
-                          currentExpansion?.value === 99 && {height: 66, width: 66, top: -24, right: 34}
-                        ]}/>
               }
               <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
                 <MaterialIcons name={'chevron-right'} 
@@ -611,72 +614,52 @@ export default function CollectionStatsScreen() {
           </TouchableOpacity>
         </ThemedView>
 
-        <ThemedView style={{}}>
-          <ThemedView style={{flexDirection: 'row', gap: 8, flexWrap: 'wrap', marginBottom: 24}}>
-            {
-              allRarityStats.filter(data => data !== undefined).map((data, i) => {
-                return (
-                <ThemedView style={[collectionStatsStyles.chip, data.value === CardRarityENUM.CROWN && {width: 77}]} key={i.toString()}>
-                  <ThemedView style={{flexDirection: 'row', justifyContent: 'center'}}>
-                    {Array.from({ length: data.amount }).map((_, i) => (
-                      <Image source={data.icon}
-                              key={i.toString()}
-                              style={[
-                              collectionStatsStyles.energy, 
-                              {marginRight: 2}, 
-                              (data.value === CardRarityENUM.INMERSIVE || data.value === CardRarityENUM.SUPER) && {marginRight: 3},
-                              i > 2 && {marginRight: 4},
-                              data.value === CardRarityENUM.CROWN && {width: 21, height: 13}
-                            ]}/>
-                    ))}
-                  </ThemedView>
-                  <ThemedText style={[collectionStatsStyles.chipText, {minWidth: 43, textAlign: 'center'}]}>{data.owned}/{data.length}</ThemedText>
-                </ThemedView>
-                )
-              })
-            }
-          </ThemedView>
-          <ThemedView style={{flexDirection: 'row', gap: 8, flexWrap: 'wrap'}}>
-            {
-              allElementStats.filter(data => data !== undefined).map((data, i) => {
-                return (
-                <ThemedView style={[collectionStatsStyles.chip]} key={i.toString()}>
-                  <Image source={data.icon} style={collectionStatsStyles.energy}/>
-                  <ThemedText style={[collectionStatsStyles.chipText, {minWidth: 41, textAlign: 'center'}]}>{data.owned}/{data.length}</ThemedText>
-                </ThemedView>
-                )
-              })
-            }
-          </ThemedView>
-          <View style={[TabsMenuStyles.separator, {height: 1, marginTop: 28, marginBottom: 24, width: '100%'}]}></View>
-        </ThemedView>
-        <ThemedView style={{flexDirection: 'row', justifyContent: 'center', gap: 24, width: '100%'}}>
-            {
-              missingPacks.map((missed, i) => {
-                return (
-                  <ThemedView key={i.toString()}>
-                    <Image source={(EXPANSION_PACK_MAP as any)[missed?.label]} style={{width: 68, height: 131}}/>
-                    {
-                      missed && missed.perct_owned &&
-                        <ProgressBar percentage={missed.perct_owned}></ProgressBar>
-                    }
-                    {
-                      missed && missed.perct_owned &&
-                      <ThemedText style={{textAlign: 'center', fontSize: 12}}>{roundPercentage(missed.perct_owned)}</ThemedText>
-                    }
-                  </ThemedView>
-                )
-              })
-            }
-        </ThemedView>
-          <TouchableOpacity onPress={openListMenu} style={cardStyles.container}>
-            <ThemedView>
-              <MaterialIcons name={"list"} 
-                             color={Colors.light.icon} 
-                             style={{fontSize: 35, left: -1}}> 
-              </MaterialIcons>
+        {
+          currentExpansion === undefined &&
+          <>
+            <StatsGrid allRarity={allRarityStats as any} allElements={allElementStats as any}></StatsGrid>
+            <ThemedView style={{flexDirection: 'row', justifyContent: 'center', gap: 24, width: '100%'}}>
+                {
+                  missingPacks.map((missed, i) => {
+                    return (
+                      <ThemedView key={i.toString()}>
+                        <ThemedView style={{boxShadow: '0px 4px 14px rgba(0, 0, 0, 0.3)'}}>
+                          <Image source={(EXPANSION_PACK_MAP as any)[missed?.label]} style={{width: 68, height: 131}}/>
+                        </ThemedView>
+                        {
+                          missed && missed.perct_owned &&
+                            <ProgressBar percentage={missed.perct_owned}></ProgressBar>
+                        }
+                        {
+                          missed && missed.perct_owned &&
+                          <ThemedText style={{textAlign: 'center', fontSize: 12}}>{roundPercentage(missed.perct_owned)}</ThemedText>
+                        }
+                      </ThemedView>
+                    )
+                  })
+                }
             </ThemedView>
-          </TouchableOpacity>
+          </>
+        }
+
+        {
+          currentExpansion !== undefined &&
+          <ExpansionGridStats allCards={allCards} 
+                              language={langCollection} 
+                              collection={state.settingsState.collection} 
+                              currentExpansion={currentExpansion?.value}
+                              allStats={allStats as CollectionStat[]}>
+          </ExpansionGridStats>
+        }
+         
+        <TouchableOpacity onPress={openListMenu} style={cardStyles.container}>
+          <ThemedView>
+            <MaterialIcons name={"list"} 
+                            color={Colors.light.icon} 
+                            style={{fontSize: 35, left: -1}}> 
+            </MaterialIcons>
+          </ThemedView>
+        </TouchableOpacity>
       </SharedScreen>
       <Portal>{expansionVisible && memoizedExpansion}</Portal>
       <Portal>{listMenuVisible && memoizedListMenu}</Portal>

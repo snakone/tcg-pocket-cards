@@ -18,12 +18,13 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ percentage }) => {
 const styles = StyleSheet.create({
   container: {
     width: 68,
-    height: 10,
-    backgroundColor: '#e0e0e0',
+    height: 8,
+    backgroundColor: 'rgb(192, 192, 192)',
     borderRadius: 10,
     overflow: 'hidden',
     marginTop: 10,
-    marginBottom: 8
+    marginBottom: 8,
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'
   },
   progressBar: {
     height: '100%',

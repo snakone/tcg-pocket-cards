@@ -1,26 +1,35 @@
 import { BlurView } from "expo-blur";
 import { Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useState, useContext } from "react";
+import { useCallback, useState, useContext, useEffect } from "react";
 import { Switch } from "react-native-paper";
 import React from "react";
-import { router, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
 
+import { COLLECTION_LANGUAGE_MAP, CollectionLanguageList, LANGUAGE_COLLECTION_MAP } from "@/shared/definitions/utils/constants";
 import { TabMenuCollection } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, CardGridStyles, homeScreenStyles, LayoutStyles, ModalStyles, offersStyles, sortStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "../../../core/providers/LanguageProvider";
 import { AppContext } from "@/app/_layout";
-import { COLLECTION_LANGUAGE_MAP, CollectionLanguageList, INITIAL_SORT_DATA, LANGUAGE_COLLECTION_MAP } from "@/shared/definitions/utils/constants";
 import SoundService from "@/core/services/sounds.service";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { settingsStyles } from "@/app/screens/settings";
 import SelectInput from "@/components/ui/SelectInput";
 import { CardLanguageENUM } from "@/shared/definitions/enums/card.enums";
+
+import { 
+  ButtonStyles,
+  CardGridStyles, 
+  homeScreenStyles, 
+  LayoutStyles, 
+  ModalStyles, 
+  offersStyles, 
+  sortStyles 
+} from "@/shared/styles/component.styles";
 
 export default function CollectionCardMenu({
   isVisible,
@@ -28,7 +37,6 @@ export default function CollectionCardMenu({
   animatedStyle,
   selectedLanguage
 }: TabMenuCollection) {
-  const [data, setData] = useState(INITIAL_SORT_DATA);
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
@@ -52,6 +60,7 @@ export default function CollectionCardMenu({
   function handleLanguage(value: CardLanguageENUM): void {
     SoundService.play('POP_PICK')
     setLanguage(value);
+    dispatch({type: 'SET_COLLECTION_LANGUAGE', value});
   }
 
   function handleMark(value: boolean): void {
@@ -96,7 +105,8 @@ export default function CollectionCardMenu({
                                  textStyle={{left: 6}}
                                  iconStyle={{right: -2}}
                                  itemStyle={{paddingBlock: 6}}
-                                 autoScroll={true}>
+                                 autoScroll={true}
+                                 >
                   </SelectInput>
                 </ThemedView>
               </ThemedView>

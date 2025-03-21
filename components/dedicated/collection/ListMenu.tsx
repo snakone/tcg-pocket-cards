@@ -1,12 +1,11 @@
 import { BlurView } from "expo-blur";
-import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
+import { FlatList, Platform, Pressable, StyleSheet, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useContext, useEffect, useState } from "react";
-import { MaterialIcons } from "@expo/vector-icons";
+import { useCallback, useContext } from "react";
 import React from "react";
 import { Image } from "expo-image";
 
-import { CollectionListMenu, ExpansionMenu } from "@/shared/definitions/interfaces/layout.interfaces";
+import { CollectionListMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
@@ -14,12 +13,10 @@ import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
-import { EXPANSION_EMBLEM_LIST } from "@/shared/definitions/utils/constants";
-import { CollectionStat, ExpansionEmblem } from "@/shared/definitions/interfaces/global.interfaces";
-import { splashStyles } from "@/components/ui/SplashScreen";
+import { CollectionStat } from "@/shared/definitions/interfaces/global.interfaces";
 import { AppContext } from "@/app/_layout";
 import { CROWN_RARITY, STAR_RARITY } from "@/shared/definitions/sentences/path.sentences";
-import { collectionStatsStyles } from "@/app/screens/collection_stats";
+import { roundPercentage } from "@/shared/definitions/utils/functions";
 
 export default function ListMenu({
   isVisible,
@@ -42,14 +39,6 @@ export default function ListMenu({
     onClose();
   }
 
-  function roundPercentage(value: string): string {
-    const split = value.split('.');
-    if ((split[0] === '0' || split[0] === '100') && split[1] === '0') {
-      return split[0] + '%';
-    }
-    return value + '%';
-  }
-
   const renderItem = useCallback(({item}: {item: CollectionStat}) => {
     const isPromo = item.label === 'expansion_promo_a';
     return (
@@ -70,24 +59,24 @@ export default function ListMenu({
               <ThemedView style={{gap: 4}}>
                 {item.name && <ThemedText style={{fontWeight: 'bold'}}>{i18n.t(item.label)}</ThemedText>}
                 <ThemedView style={{flexDirection: 'row', gap: 8}}>
-                  <ThemedView style={collectionStatsStyles.chip}>
-                    <ThemedText style={collectionStatsStyles.chipText}>{item.owned}/{item.length}</ThemedText>
+                  <ThemedView style={listStyles.chip}>
+                    <ThemedText style={listStyles.chipText}>{item.owned}/{item.length}</ThemedText>
                   </ThemedView>
                   {
                     !isPromo && 
-                    <ThemedView style={collectionStatsStyles.chip}>
+                    <ThemedView style={listStyles.chip}>
                       <Image source={CROWN_RARITY} style={{width: 20, height: 13, marginRight: 6}}/>
-                      <ThemedText style={collectionStatsStyles.chipText}>{item.crown}</ThemedText>
+                      <ThemedText style={listStyles.chipText}>{item.crown}</ThemedText>
                     </ThemedView>
                   }
                   {
                     !isPromo &&
-                    <ThemedView style={collectionStatsStyles.chip}>
+                    <ThemedView style={listStyles.chip}>
                       <Image source={STAR_RARITY} style={{width: 16, height: 15, marginRight: 6}}/>
-                      <ThemedText style={collectionStatsStyles.chipText}>{item.art}</ThemedText>
+                      <ThemedText style={listStyles.chipText}>{item.art}</ThemedText>
                     </ThemedView>
                   }
-                  <ThemedText style={[collectionStatsStyles.chipText, {left: 2, top: 4}]}>{roundPercentage(item.perct_owned)}</ThemedText>
+                  <ThemedText style={[listStyles.chipText, {left: 2, top: 4}]}>{roundPercentage(item.perct_owned)}</ThemedText>
                 </ThemedView>
               </ThemedView>
             </ThemedView>
@@ -137,3 +126,32 @@ export default function ListMenu({
     </>
   );
 }
+
+const listStyles = StyleSheet.create({
+  lang: {
+   fontWeight: 'bold',
+   fontSize: 12,
+   paddingVertical: 12,
+   paddingHorizontal: 7,
+   textAlign: 'center',
+   borderRadius: 2
+  },
+  chip: {
+   backgroundColor: 'white',
+   boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+   paddingVertical: 4,
+   paddingHorizontal: 6,
+   justifyContent: 'center',
+   alignItems: 'center',
+   flexDirection: 'row',
+   borderRadius: 6,
+  },
+  chipText: {
+   fontSize: 12
+  },
+  energy: {
+   width: 16, 
+   height: 16, 
+   marginRight: 8
+  }
+ });

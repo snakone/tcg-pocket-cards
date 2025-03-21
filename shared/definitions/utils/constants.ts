@@ -557,7 +557,7 @@ export const EXPANSION_EMBLEM_LIST: ExpansionEmblem[] = [
   { label: 'expansion_promo_a', value: 99, icon: PROMO_A_EMBLEM }
 ];
 
-export const EXPANSION_PACK_MAP = {
+export const EXPANSION_PACK_MAP: any = {
   expansion_charizard: CHARIZARD_ICON,
   expansion_mewtwo: MEWTWO_ICON,
   expansion_pikachu: PIKACHU_ICON,
@@ -565,4 +565,15 @@ export const EXPANSION_PACK_MAP = {
   expansion_dialga: DIALGA_ICON,
   expansion_palkia: PALKIA_ICON,
   expansion_arceus: ARCEUS_ICON
+}
+
+export const STATS_EXPANSION_MAP: any = {
+  0: 2,
+  1: 1,
+  2: 0,
+  8: 3,
+  10: 4,
+  11: 5,
+  13: 6,
+  99: 7
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Platform, StyleProp, StyleSheet, TextStyle, ViewStyle } from 'react-native'
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -45,12 +45,21 @@ export default function SelectInput({
   autoScroll = false
 }: SelectInputProps) {
   const {i18n} = useI18n();
+  const dropdownRef = useRef<SelectDropdown>(null);
   const value = filterObj && propFilter && keyFilter && 
     ((filterObj.current as any)[propFilter][keyFilter] ?? keyFilter);
+
+  useEffect(() => {
+    const index = options.findIndex(x => x === label);
+    if (index !== -1) {
+      dropdownRef.current?.selectIndex(index);
+    }
+  }, [label]);
 
   return (
     <SelectDropdown
       data={options}
+      ref={dropdownRef}
       onSelect={onSelect}
       statusBarTranslucent={true}
       disableAutoScroll={!autoScroll}

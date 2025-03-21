@@ -579,3 +579,11 @@ export function getMetrics(type: 'height' | 'weight', lang: LanguageType): strin
 export function areAllAmountsZero(collection: UserCollection): boolean {
   return Object.values(collection.amount).every(value => value === 0);
 }
+
+export function roundPercentage(value: string): string {
+  const split = value.split('.');
+  if ((split[0] === '0' || split[0] === '100') && split[1] === '0') {
+    return split[0] + '%';
+  }
+  return value + '%';
+}

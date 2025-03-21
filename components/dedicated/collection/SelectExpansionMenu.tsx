@@ -28,10 +28,7 @@ export default function SelectExpansionMenu({
   const {i18n} = useI18n();
   const styles = ModalStyles;
   if (!isVisible) return null;
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
-  const [selected, setSelected] = useState<ExpansionEmblem | null>();
+  const [selected, setSelected] = useState<ExpansionEmblem | undefined>();
   const [original, setOriginal] = useState<ExpansionEmblem>();
 
   useEffect(() => {
@@ -54,7 +51,7 @@ export default function SelectExpansionMenu({
     SoundService.play('POP_PICK');
     setSelected(value);
     if (value.label === selected?.label) {
-      setSelected(null);
+      setSelected(undefined);
     }
   }, [selected]);
 
