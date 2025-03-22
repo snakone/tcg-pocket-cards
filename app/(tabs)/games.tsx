@@ -14,7 +14,6 @@ import SoundService from '@/core/services/sounds.service';
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
 import { CreateScreenStyles } from '@/shared/styles/component.styles';
-import { CHALLENGE_ICON, QUIZ_ICON } from '@/shared/definitions/sentences/path.sentences';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 
 export default function GamesScreen() {
@@ -66,7 +65,7 @@ export default function GamesScreen() {
         <TouchableOpacity onPress={() => handleClick()}>
           <ThemedView style={[CreateScreenStyles.deckItem, {paddingHorizontal: 14, paddingVertical: 14}]}>
             <ThemedView style={{flexDirection: 'row', gap: 24, alignItems: 'center'}}>
-              <Image source={CHALLENGE_ICON} style={{width: 50, height: 56, opacity: 0.8}}/>
+              
               <ThemedView>
                 <ThemedText type='subtitle' style={{fontSize: 18, marginBottom: 4}}>{i18n.t('random_deck_challenge')}</ThemedText>
                 <ThemedText>{i18n.t('game_challenge')}</ThemedText>    
@@ -78,7 +77,7 @@ export default function GamesScreen() {
         <TouchableOpacity>
           <ThemedView style={[CreateScreenStyles.deckItem, {paddingHorizontal: 14, paddingVertical: 14}]}>
             <ThemedView style={{flexDirection: 'row', gap: 24, alignItems: 'center'}}>
-              <Image source={QUIZ_ICON} style={styles.quizImage}/>
+              
               <ThemedView>
                 <ThemedText type='subtitle' style={{fontSize: 18, marginBottom: 4}}>{i18n.t('quiz_game')}</ThemedText>
                 <ThemedText>{i18n.t('quiz_game_desc')}</ThemedText>    

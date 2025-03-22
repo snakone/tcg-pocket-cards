@@ -1,5 +1,6 @@
 export const TRANSLATIONS = {
   en: {
+    condition_random_attack: 'Random damage',
     expansion_pikachu: 'Genetic Apex: Pikachu',
     expansion_charizard: 'Genetic Apex: Charizard',
     expansion_mewtwo: 'Genetic Apex: Mewtwo',
@@ -669,6 +670,7 @@ export const TRANSLATIONS = {
     without_ability: "Without Ability"
   },
   es: {
+    condition_random_attack: 'Daño aleatorio',
     expansion_pikachu: 'Genes Formidables: Pikachu',
     expansion_charizard: 'Genes Formidables: Charizard',
     expansion_mewtwo: 'Genes Formidables: Mewtwo',
@@ -1341,6 +1343,7 @@ export const TRANSLATIONS = {
     without_ability: "Sin habilidad"
   },
   ja: {
+    condition_random_attack: 'ランダムな損傷',
     expansion_pikachu: '最強の遺伝子: ピカチュウ',
     expansion_charizard: '最強の遺伝子: リザードン',
     expansion_mewtwo: '最強の遺伝子: ミュウツー',
@@ -1822,7 +1825,7 @@ export const TRANSLATIONS = {
     stage_one: "ステップ 1",
     stage_two: "ステップ 2",
     start_screen: "ホーム画面",
-    stats: '',
+    stats: '統計',
     status: '州',
     status_poison: '毒',
     status_paralyze: '麻痺',

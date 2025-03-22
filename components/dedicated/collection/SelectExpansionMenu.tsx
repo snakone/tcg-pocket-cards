@@ -42,9 +42,14 @@ export default function SelectExpansionMenu({
     await SoundService.play('AUDIO_MENU_CLOSE');
   }, []);
 
-  async function closeMenu(): Promise<void> {
+  async function handleSelect(): Promise<void> {
     await playSound();
     onClose(selected);
+  }
+
+  async function closeMenu(): Promise<void> {
+    await playSound();
+    onClose(null);
   }
 
   const handleClick = useCallback((value: ExpansionEmblem) => {
@@ -79,7 +84,7 @@ export default function SelectExpansionMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: 590}]}>
+      <Animated.View style={[animatedStyle, sortStyles.container, {height: 590}, i18n.locale === 'ja' && {height: 596}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_expansion')}</ThemedText>
         </View>
@@ -93,7 +98,7 @@ export default function SelectExpansionMenu({
                       contentContainerStyle={{paddingBottom: 96}}
                     />
             <ThemedView style={{alignItems: 'center', position: 'absolute', bottom: 30}}>
-              <TouchableOpacity onPress={() => closeMenu()}
+              <TouchableOpacity onPress={() => handleSelect()}
                                 disabled={selected?.value === original?.value}  
                                 style={[
                                   splashStyles.button,

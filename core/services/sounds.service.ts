@@ -3,7 +3,6 @@ import { Audio, AVPlaybackSource } from 'expo-av';
 import { 
   AUDIO_MENU_CLOSE,
   AUDIO_MENU_OPEN,
-  BACKGROUND_MUSIC,
   CHANGE_VIEW, 
   DELETE_SOUND, 
   PICK_CARD_SOUND, 
@@ -16,7 +15,6 @@ export const Sounds: {[key: string]: AVPlaybackSource} = {
   AUDIO_MENU_OPEN,
   AUDIO_MENU_CLOSE,
   PICK_CARD_SOUND,
-  BACKGROUND_MUSIC,
   CHANGE_VIEW,
   POP_PICK,
   SCALE,
@@ -82,7 +80,7 @@ export class SoundService {
 
   private static async setVolumeAllSounds(volume: number): Promise<void> {
     for (const key in Sounds) {
-      if (Sounds.hasOwnProperty(key) && this.sounds[key]) {
+      if (this.sounds[key]) {
         (this.sounds[key] as Audio.Sound).setVolumeAsync(volume);
       }
     }

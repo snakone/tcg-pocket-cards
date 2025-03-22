@@ -72,15 +72,16 @@ export default function PickDesiredMenu({
   useEffect(() => {
     const desiredCard = state.cardState.cards.find(card => desired.includes(card.id));
 
-    const filter = state.cardState.cards
-      .filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && 
-                      card.series !== CardExpansionTypeENUM.A2A);
-
-    setCards(filter);
-    setFiltered(filter);
-    setCardsWithFilter(filter);
-
     if (desiredCard) {
+      const filter = state.cardState.cards
+                      .filter(card => card?.rarity === desiredCard.rarity && 
+                                      card.series !== CardExpansionTypeENUM.A2A &&
+                                      !desired.includes(card.id));
+
+      setCards(filter);
+      setFiltered(filter);
+      setCardsWithFilter(filter);
+
       setCurrent(prev => 
         prev.map(p => (state.cardState.cards
             .find(card => card.id === p)?.rarity === desiredCard.rarity) ? p : null
@@ -89,10 +90,17 @@ export default function PickDesiredMenu({
 
       (filterObj.current.rarity as any)[desiredCard.rarity] = true;
       setFilterDisabled(true);
-      return;
+    } else {
+      const filter = state.cardState.cards
+              .filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && 
+                              card.series !== CardExpansionTypeENUM.A2A);
+
+      setCards(filter);
+      setFiltered(filter);
+      setCardsWithFilter(filter);
     }
 
-  }, [state.cardState.cards]);
+  }, [state.cardState.cards, desired]);
 
   const renderEmpty = () => {
     const renderCardState = useCallback(() => {

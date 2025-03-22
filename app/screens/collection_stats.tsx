@@ -16,7 +16,7 @@ import { AppContext } from "../_layout";
 import { CollectionElementStat, CollectionRarityStat, CollectionStat, ExpansionEmblem, UserCollection } from "@/shared/definitions/interfaces/global.interfaces";
 import { CardExpansionENUM, CardLanguageENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 import { settingsStyles } from "./settings";
-import { COLLECTION_LANGUAGE_MAP, CollectionLanguageList, EXPANSION_PACK_MAP } from "@/shared/definitions/utils/constants";
+import { COLLECTION_LANGUAGE_MAP, CollectionLanguageList, EXPANSION_PACK_MAP, LARGE_MODAL_HEIGHT } from "@/shared/definitions/utils/constants";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { EXPANSION } from "@/shared/definitions/enums/packs.enums";
@@ -28,9 +28,13 @@ import { cardStyles } from "../(tabs)/cards";
 import ListMenu from "@/components/dedicated/collection/ListMenu";
 import { StatsGrid } from "@/components/dedicated/collection/StatsGrid";
 import { ExpansionGridStats } from "@/components/dedicated/collection/ExpansionGridStats";
+import { roundPercentage } from "@/shared/definitions/utils/functions";
+import { AttacksScreenModal } from "@/components/modals";
+import HeaderWithCustomModal from "@/components/shared/HeaderModal";
 
 import { 
   ARCEUS_EMBLEM, 
+  BACKWARD_CARD, 
   CHARIZARD_EMBLEM, 
   CROWN_RARITY, 
   DARK_ICON, 
@@ -52,7 +56,9 @@ import {
   STEEL_ICON, 
   WATER_ICON
 } from "@/shared/definitions/sentences/path.sentences";
-import { roundPercentage } from "@/shared/definitions/utils/functions";
+import LoadingOverlay from "@/components/ui/LoadingOverlay";
+
+const WAIT_TIME = 888;
 
 export default function CollectionStatsScreen() {
   const {i18n} = useI18n();
@@ -65,6 +71,7 @@ export default function CollectionStatsScreen() {
   const flatListRef = useRef<FlatList<CollectionStat> | any>(null);
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
   const [currentExpansion, setCurrentExpansion] = useState<ExpansionEmblem>();
+  const [loading, setLoading] = useState(true);
 
   const [mainStats, setMainStats] = useState<CollectionStat>();
   const [pikachuStats, setPikachuStats] = useState<CollectionStat>();
@@ -134,6 +141,12 @@ export default function CollectionStatsScreen() {
     inmersiveStats,
     crownStats
   ];
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, WAIT_TIME);
+  }, [])
 
   useEffect(() => {
     setCollection(state.settingsState.collection);
@@ -448,15 +461,12 @@ export default function CollectionStatsScreen() {
   ];
 
   const selectLanguage = useCallback((value: CardLanguageENUM, sound = true) => {
-    setLangCollection(value);
-
     if (sound) {
       SoundService.play('POP_PICK');
     }
 
     const collectionCards = new Set(
-      Array.from(state.settingsState.collection
-        .filter(coll => coll.amount[value] > 0).map(coll => coll.id))
+      state.settingsState.collection.filter(coll => coll.amount[value] > 0).map(coll => coll.id)
     );
 
     dispatch({type: 'SET_COLLECTION_LANGUAGE', value});
@@ -464,6 +474,7 @@ export default function CollectionStatsScreen() {
     setElementData(collectionCards);
     setRarityData(collectionCards);
     goUp();
+    setLangCollection(value);
   }, []);
 
   useEffect(() => {
@@ -527,6 +538,7 @@ export default function CollectionStatsScreen() {
   function getMostMissingPacks(): void {
     const missing = allStats.filter(stat => stat?.name !== 'PROMO')
                             .sort((a, b) => Number(b?.perct_missing) - Number(a?.perct_missing))
+                            .filter(stat => stat?.missing !== 0)
                             .slice(0, 4);
 
     if (missing.every(k => k?.missing === 0)) {
@@ -542,6 +554,8 @@ export default function CollectionStatsScreen() {
 
   function onClose(value: ExpansionEmblem): void {
     setExpansionVisible(false);
+
+    if (value === null) { return; }
     setCurrentExpansion(value);
   }
 
@@ -571,92 +585,113 @@ export default function CollectionStatsScreen() {
 
   return (
     <Provider>
+      { loading && <LoadingOverlay/> }
+      <HeaderWithCustomModal title={'stats'} 
+                             modalContent={AttacksScreenModal()} 
+                             modalTitle={'stats'} 
+                             animatedStyle={{}}
+                             animatedIconStyle={{}}
+                             modalHeight={LARGE_MODAL_HEIGHT as number}
+                             showHeader={false}/>
       <SharedScreen title={'stats'} styles={{paddingInline: 16, marginTop: 0}}>
-        <ThemedView style={[settingsStyles.container, {marginBottom: 6, padding: 0, borderRadius: 12}]}>
-          <ThemedView style={[settingsStyles.row, {width: '100%', gap: 0}]}>
-            {
-              CollectionLanguageList.map((item, i) => {
-                return (
-                  <TouchableOpacity onPress={() => selectLanguage(item)} key={i.toString()}>
-                    <ThemedText style={[
-                      collectionStatsStyles.lang,
-                      i === 0 && {paddingLeft: 12, borderTopLeftRadius: 12, borderBottomLeftRadius: 12},
-                      i === CollectionLanguageList.length - 1 && {paddingRight: 12, borderTopRightRadius: 12, borderBottomRightRadius: 12},
-                      langCollection === item && {backgroundColor: Colors.light.icon, color: 'white'}
-                      ]}>{COLLECTION_LANGUAGE_MAP[item]}</ThemedText>
-                  </TouchableOpacity>
-                )
-              })
-            }
-          </ThemedView>
-        </ThemedView>
-        
         {
-          mainStats && <CollectionStatsItem stat={mainStats} round={roundPercentage}></CollectionStatsItem>
-        }
-
-        <ThemedView style={[settingsStyles.container, {height: 48, padding: 10, borderRadius: 12, marginBottom: 18}]}>
-          <TouchableOpacity onPress={openExpansion} style={{flex: 1, justifyContent: 'center'}} >
-            <ThemedView style={settingsStyles.row}>
-              {
-                currentExpansion && currentExpansion.label !== undefined ? 
-                <ThemedText style={{marginLeft: 6, fontWeight: 'semibold'}}>{i18n.t(currentExpansion.label.toLowerCase())}</ThemedText> :
-                  <ThemedText style={{marginLeft: 6}}>{i18n.t('select_expansion')}</ThemedText>
-              }
-              <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
-                <MaterialIcons name={'chevron-right'} 
-                              style={[
-                                {fontSize: 28, left: 8, color: Colors.light.icon, position: 'absolute'}, 
-                                Platform.OS !== 'web' && {top: -14}
-                              ]}/>
-              </ThemedView>
-            </ThemedView>
-          </TouchableOpacity>
-        </ThemedView>
-
-        {
-          currentExpansion === undefined &&
+          !loading && 
           <>
-            <StatsGrid allRarity={allRarityStats as any} allElements={allElementStats as any}></StatsGrid>
-            <ThemedView style={{flexDirection: 'row', justifyContent: 'center', gap: 24, width: '100%'}}>
+            <ThemedView style={[settingsStyles.container, {marginBottom: 6, padding: 0, borderRadius: 12}]}>
+              <ThemedView style={[settingsStyles.row, {width: '100%', gap: 0}]}>
                 {
-                  missingPacks.map((missed, i) => {
+                  CollectionLanguageList.map((item, i) => {
                     return (
-                      <ThemedView key={i.toString()}>
-                        <ThemedView style={{boxShadow: '0px 4px 14px rgba(0, 0, 0, 0.3)'}}>
-                          <Image source={(EXPANSION_PACK_MAP as any)[missed?.label]} style={{width: 68, height: 131}}/>
-                        </ThemedView>
-                        {
-                          missed && missed.perct_owned &&
-                            <ProgressBar percentage={missed.perct_owned}></ProgressBar>
-                        }
-                        {
-                          missed && missed.perct_owned &&
-                          <ThemedText style={{textAlign: 'center', fontSize: 12}}>{roundPercentage(missed.perct_owned)}</ThemedText>
-                        }
-                      </ThemedView>
+                      <TouchableOpacity onPress={() => selectLanguage(item)} key={i.toString()}>
+                        <ThemedText style={[
+                          collectionStatsStyles.lang,
+                          i === 0 && {paddingLeft: 12, borderTopLeftRadius: 12, borderBottomLeftRadius: 12},
+                          i === CollectionLanguageList.length - 1 && {paddingRight: 12, borderTopRightRadius: 12, borderBottomRightRadius: 12},
+                          langCollection === item && {backgroundColor: Colors.light.icon, color: 'white'}
+                          ]}>{COLLECTION_LANGUAGE_MAP[item]}</ThemedText>
+                      </TouchableOpacity>
                     )
                   })
                 }
+              </ThemedView>
             </ThemedView>
+            
+            {
+              mainStats && <CollectionStatsItem stat={mainStats} round={roundPercentage}></CollectionStatsItem>
+            }
+
+            <ThemedView style={[settingsStyles.container, {height: 48, padding: 10, borderRadius: 12, marginBottom: 18}]}>
+              <TouchableOpacity onPress={openExpansion} style={{flex: 1, justifyContent: 'center'}} >
+                <ThemedView style={settingsStyles.row}>
+                  {
+                    currentExpansion && currentExpansion.label !== undefined ? 
+                    <ThemedText style={{marginLeft: 6, fontWeight: 'semibold'}}>{i18n.t(currentExpansion.label.toLowerCase())}</ThemedText> :
+                      <ThemedText style={{marginLeft: 6}}>{i18n.t('select_expansion')}</ThemedText>
+                  }
+                  <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
+                    <MaterialIcons name={'chevron-right'} 
+                                  style={[
+                                    {fontSize: 28, left: 8, color: Colors.light.icon, position: 'absolute'}, 
+                                    Platform.OS !== 'web' && {top: -14}
+                                  ]}/>
+                  </ThemedView>
+                </ThemedView>
+              </TouchableOpacity>
+            </ThemedView>
+
+            {
+              currentExpansion === undefined &&
+              <>
+                <StatsGrid allRarity={allRarityStats as any} allElements={allElementStats as any}></StatsGrid>
+                <ThemedView style={[
+                    {flexDirection: 'row', justifyContent: 'center', gap: 26, width: '100%'},
+                    missingPacks.length === 0 && {top: -28}
+                  ]}>
+                    {
+                      [0, 1, 2, 3].map((_, i) => {
+                        const missed = missingPacks[i];
+                        return (
+                          <ThemedView key={i.toString()}>
+                            <ThemedView style={[{boxShadow: '0px 4px 14px rgba(0, 0, 0, 0.3)'}, !missed && {top: 25}]}>
+                              <Image style={{width: 68, height: missed ? 131 : 96}} 
+                                    source={missed ? 
+                                      (EXPANSION_PACK_MAP as any)[missed?.label] : BACKWARD_CARD} 
+                                  />
+                            </ThemedView>
+                            {
+                              missed && missed.perct_owned &&
+                                <ProgressBar percentage={missed.perct_owned}></ProgressBar>
+                            }
+                            {
+                              missed && missed.perct_owned &&
+                              <ThemedText style={{textAlign: 'center', fontSize: 12}}>{roundPercentage(missed.perct_owned)}</ThemedText>
+                            }
+                          </ThemedView>
+                        )
+                      })
+                    }
+                </ThemedView>
+              </>
+            }
+
+            {
+              currentExpansion !== undefined &&
+              <ExpansionGridStats allCards={allCards} 
+                                  language={langCollection} 
+                                  collection={state.settingsState.collection} 
+                                  currentExpansion={currentExpansion?.value}
+                                  allStats={allStats as CollectionStat[]}>
+              </ExpansionGridStats>
+            }         
           </>
         }
 
-        {
-          currentExpansion !== undefined &&
-          <ExpansionGridStats allCards={allCards} 
-                              language={langCollection} 
-                              collection={state.settingsState.collection} 
-                              currentExpansion={currentExpansion?.value}
-                              allStats={allStats as CollectionStat[]}>
-          </ExpansionGridStats>
-        }
          
         <TouchableOpacity onPress={openListMenu} style={cardStyles.container}>
           <ThemedView>
             <MaterialIcons name={"list"} 
                             color={Colors.light.icon} 
-                            style={{fontSize: 35, left: -1}}> 
+                            style={{fontSize: 35}}> 
             </MaterialIcons>
           </ThemedView>
         </TouchableOpacity>

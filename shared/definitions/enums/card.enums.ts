@@ -7,7 +7,7 @@ export enum CardRarityENUM {
 }
 
 export enum CardExpansionENUM {
-  GENETIC_APEX, PROMO_A, MYTHICAL_ISLAND, SPACE_TIME_SMACKDOWN, TRIUMPH_LIGHT
+  GENETIC_APEX, PROMO_A, MYTHICAL_ISLAND, SPACE_TIME_SMACKDOWN, TRIUMPH_LIGHT, RAINBOW_FESTIVAL
 }
 
 export enum CardExpansionTypeENUM {
@@ -36,7 +36,8 @@ export enum CardSpecialConditionENUM {
   INACTIVE,
   FORCE_SWITCH,
   ARCEUS_LINK,
-  PLAY_CARDS
+  PLAY_CARDS,
+  RANDOM_ATTACK
 }
 
 export enum CardLanguageENUM {

@@ -52,6 +52,10 @@ export default function CollectionCardMenu({
     await SoundService.play('AUDIO_MENU_CLOSE')
   }, []);
 
+  useEffect(() => {
+    setLanguage(state.settingsState.collectionLanguage);
+  }, [state.settingsState.collectionLanguage]);
+
   async function closeMenu(): Promise<void> {
     await playSound();
     onClose({markAll, unmark, language});

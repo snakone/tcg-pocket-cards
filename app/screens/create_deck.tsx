@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { FlatList, Platform, Pressable, StyleProp, TextInput, TextStyle, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -67,6 +67,7 @@ export default function CreateDeckScreen() {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [sort, setSort] = useState<SortItem>();
   const [notSaved, setNotSaved] = useState(false);
+  const flatListRef = useRef<FlatList<Card> | null>(null);
   const router = useRouter();
   const [deckName, setDeckName] = useState(i18n.t('new_deck_value'));
   const { confirm } = useConfirmation();
@@ -341,6 +342,7 @@ export default function CreateDeckScreen() {
     if(isSortVisible) { return; }
     const sorted = filterOrSortCards('sort', filtered, state.filterState.sort.find(s => s.active));
     setFiltered(sorted);
+    setTimeout(() => goUp(false), 100);
   }, [isSortVisible]);
 
   useEffect(() => {
@@ -354,6 +356,7 @@ export default function CreateDeckScreen() {
     if(isFilterVisible) { return; }
     const sorted = filterOrSortCards('filter', state.cardState.cards);
     setFiltered(sorted);
+    setTimeout(() => goUp(false), 100);
   }, [isFilterVisible, lang]);
 
   useEffect(() => {
@@ -424,6 +427,13 @@ export default function CreateDeckScreen() {
   function onClose(): void {
     setIsSortVisible(false);
     setIsFilterVisible(false);
+  }
+
+  async function goUp(sound = true): Promise<void> {
+    if (sound) {
+      SoundService.play('PICK_CARD_SOUND');
+    }
+    flatListRef.current?.scrollToOffset({offset: 0, animated: false});
   }
 
   const goBack = useCallback(async (): Promise<void> => {
@@ -522,6 +532,7 @@ export default function CreateDeckScreen() {
     <View style={{width: '100%', flex: 1, paddingBottom: 16}}>
       <FlatList data={filtered}
                 numColumns={6}
+                ref={flatListRef}
                 contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0}]}
                 keyExtractor={keyExtractor}
                 initialNumToRender={25}

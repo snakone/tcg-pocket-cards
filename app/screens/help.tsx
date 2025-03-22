@@ -22,6 +22,7 @@ import ShareService from "@/core/services/share.service";
 import { AppContext } from "../_layout";
 import { ErrorProvider } from "@/core/providers/ErrorProvider";
 import Storage from "@/core/storage/storage.service";
+import { settingsInitialState } from "@/hooks/settings.reducer";
 
 import {
   AboutModal,
@@ -35,7 +36,7 @@ import {
 
 export default function HelpScreen() {
   const styles = HelpItemStyles;
-  const {i18n} = useI18n();
+  const {i18n, setLocale } = useI18n();
   const router = useRouter();
   const [currentModal, setCurrentModal] = useState<string | null>(null);
   const context = useContext(AppContext);
@@ -53,6 +54,7 @@ export default function HelpScreen() {
     
     const subDelete = ShareService.deleteSettings$.subscribe(_ => {
       dispatch({type: 'RESET_SETTINGS'});
+      reloadSettings();
     });
     
     return () => {
@@ -60,6 +62,16 @@ export default function HelpScreen() {
       subDelete.unsubscribe();
     }
   }, []);
+
+  async function reloadSettings(): Promise<void> {
+    const settings = {...settingsInitialState};
+    if (settings !== null) {
+      SoundService.setEnabled(settings.sound);
+      setLocale(settings.language);
+      SoundService.setVolume(settings.sound_volume);
+    }
+  }
+  
 
   const items: IconItemWithModal[] = [
     { 

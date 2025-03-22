@@ -17,7 +17,8 @@ export default function HeaderWithCustomModal({
   modalContent,
   modalHeight,
   animatedStyle = {},
-  animatedIconStyle = {}
+  animatedIconStyle = {},
+  showHeader = true
 }: HeaderWithCustomModalProps) {
   const [visible, setVisible] = useState(false);
   const styles = ModalStyles;
@@ -32,7 +33,7 @@ export default function HeaderWithCustomModal({
   }, [visible]);
 
   const RenderModalToggle = () => (
-    <Animated.View style={[IconStyles.iconContainer, animatedIconStyle]}>
+    <Animated.View style={[IconStyles.iconContainer, animatedIconStyle, {zIndex: 10}]}>
       <TouchableOpacity onPress={toggleModal}
                         hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
                         accessibilityLabel={CLOSE_MODAL}
@@ -52,7 +53,9 @@ export default function HeaderWithCustomModal({
   return (
     <>
       <RenderModalToggle></RenderModalToggle>
-      <RenderHeader></RenderHeader>
+        {
+          showHeader && <RenderHeader></RenderHeader>
+        }
         {visible && (
           <Portal>
             <PaperModal visible={visible}

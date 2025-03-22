@@ -3,7 +3,9 @@ import { CardLanguageENUM } from "@/shared/definitions/enums/card.enums";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { StorageDeck, TradeItem, UserCollection, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { LanguageType } from "@/shared/definitions/types/global.types";
+import { DEFAULT_LANG } from "@/shared/definitions/utils/constants";
 import { areAllAmountsZero } from "@/shared/definitions/utils/functions";
+import { getLocales } from "expo-localization";
 
 export interface SettingsState extends UserProfile {
   music: boolean;
@@ -26,7 +28,7 @@ export const settingsInitialState: SettingsState = {
   sound: true,
   music_volume: 0.5,
   sound_volume: 0.5,
-  language: 'es',
+  language: (getLocales()[0]?.languageCode ?? DEFAULT_LANG) as LanguageType,
   version: null,
   show_intro: true,
   favorites: [],

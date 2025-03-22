@@ -125,7 +125,10 @@ export default function ProfileScreen() {
             <ThemedView style={[TabsMenuStyles.user, {marginTop: 16, width: 275}]}>
               <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                 <MaterialIcons name="style" style={[styles.editInput, {fontSize: 23, right: 'auto', left: 12, top: 7}]} />
-                <ThemedText style={[styles.input, {fontSize: 16, width: 207, paddingVertical: 8, left: 34}]}>{i18n.t('my_collection')}</ThemedText>
+                <ThemedText style={[
+                    styles.input, {fontSize: 16, width: 207, paddingVertical: 8, left: 34},
+                    i18n.locale === 'ja' && {top: 1}
+                  ]}>{i18n.t('my_collection')}</ThemedText>
                 <ThemedText style={{textAlign: 'right', minWidth: 50}}>{collection}</ThemedText>
               </ThemedView>
             </ThemedView>

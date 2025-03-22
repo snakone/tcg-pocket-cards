@@ -24,7 +24,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { LanguageType } from '@/shared/definitions/types/global.types';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { filterCards, getImageLanguage116x162, sortCards } from '@/shared/definitions/utils/functions';
+import { filterCards, getImageLanguage116x162, getImageLanguage69x96, sortCards } from '@/shared/definitions/utils/functions';
 import SkeletonCardGrid from '@/components/skeletons/SkeletonCardGrid';
 import CollectionCardMenu from '@/components/shared/collection/CollectionCardMenu';
 import Storage from '@/core/storage/storage.service';
@@ -164,6 +164,7 @@ export default function CardsScreen() {
     if(isSortVisible) { return; }
     const sorted = filterOrSortCards('sort', filtered, state.filterState.sort.find(s => s.active));
     setFiltered(sorted);
+    setTimeout(() => goUp(false), 100);
   }, [isSortVisible]);
 
   useEffect(() => {
@@ -177,6 +178,7 @@ export default function CardsScreen() {
     if(isFilterVisible) { return; }
     const sorted = filterOrSortCards('filter', state.cardState.cards);
     setFiltered(sorted);
+    setTimeout(() => goUp(false), 100);
   }, [isFilterVisible, lang]);
 
   function filterOrSortCards(
@@ -273,7 +275,7 @@ export default function CardsScreen() {
           CardGridStyles.image, 
           {width: CARD_IMAGE_WIDTH_5}
         ]} 
-        source={getImageLanguage116x162(lang, item.id)}/>
+        source={getImageLanguage69x96(lang, item.id)}/>
       </TouchableOpacity>
     </View>
   )}, [collection, lang, langCollection]);
@@ -298,7 +300,7 @@ export default function CardsScreen() {
       >
         <TouchableOpacity
           style={ButtonStyles.button}
-          onPress={goUp}
+          onPress={() => goUp()}
           accessibilityLabel={GO_UP}
           accessibilityRole="button"
           accessible={true}
@@ -311,8 +313,10 @@ export default function CardsScreen() {
     )
   }, [searchQuery, filtered.length]);
 
-  async function goUp(): Promise<void> {
-    SoundService.play('PICK_CARD_SOUND');
+  async function goUp(sound = true): Promise<void> {
+    if (sound) {
+      SoundService.play('PICK_CARD_SOUND');
+    }
     flatListRef.current?.scrollToOffset({offset: 0, animated: false});
   }
 
@@ -367,8 +371,8 @@ export default function CardsScreen() {
                   contentContainerStyle={[{width: '100%'}]}
                   keyExtractor={keyExtractor}
                   initialNumToRender={25}
-                  maxToRenderPerBatch={30}
-                  windowSize={11}
+                  maxToRenderPerBatch={25}
+                  windowSize={9}
                   removeClippedSubviews={true}
                   showsVerticalScrollIndicator={false}
                   ListEmptyComponent={RenderEmpty}

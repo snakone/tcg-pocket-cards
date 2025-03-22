@@ -51,7 +51,7 @@ export default function ListMenu({
                 item.emblem && 
                 <Image source={item.emblem} 
                   style={[
-                  {backgroundColor: 'transparent', height: 50, width: 50, marginRight: 13},
+                  {backgroundColor: 'transparent', height: 50, width: 50, marginRight: 13, top: 2},
                   isPromo && { width: 44, height: 44, marginRight: 19, left: 2}
                 ]}/>
               }

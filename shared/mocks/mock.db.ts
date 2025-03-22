@@ -11791,7 +11791,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ATTACK_BENCH],
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH,
+      CardSpecialConditionENUM.RANDOM_ATTACK
+    ],
     found: [
       EXPANSION.MEWTWO,
     ],
@@ -15174,7 +15177,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ATTACK_BENCH],
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH,
+      CardSpecialConditionENUM.RANDOM_ATTACK
+    ],
     found: [
       EXPANSION.MEWTWO,
     ],

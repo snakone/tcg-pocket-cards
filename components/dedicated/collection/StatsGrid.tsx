@@ -59,7 +59,7 @@ export const StatsGrid: React.FC<StatsGridProps> = ({ allRarity, allElements, ex
         }
       </ThemedView>
       {
-        !expansion && 
+        expansion === undefined && 
           <View style={[TabsMenuStyles.separator, {height: 1, marginTop: 28, marginBottom: 26, width: '100%'}]}></View>
       }
       

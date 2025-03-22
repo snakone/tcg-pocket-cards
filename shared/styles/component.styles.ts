@@ -985,7 +985,7 @@ export const offersStyles = StyleSheet.create({
     position: 'absolute', 
     zIndex: 10, 
     opacity: 0.7, 
-    backgroundColor: 'rgba(0, 0, 0, 0.7)', 
+    backgroundColor: 'rgba(0, 0, 0, 0.8)', 
     borderRadius: 4,
     justifyContent: 'center',
     alignItems: 'center'

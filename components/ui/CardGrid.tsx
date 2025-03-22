@@ -288,7 +288,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
     )
   }, []);
 
-  function handleMusicVolumeChange(ev: number[]): void {
+  function handleColumnChange(ev: number[]): void {
     playSound(true);
     const value = ev[0] as 0 | 1 | 2;
     gridNumber.current = value;
@@ -309,7 +309,7 @@ export default function ImageGridWithSearch({ state, title, modal, modalTitle, t
       trackStyle={settingsStyles.trackCard}
       trackClickable={true}
       value={gridNumber.current}
-      onSlidingComplete={handleMusicVolumeChange}
+      onSlidingComplete={handleColumnChange}
       trackMarks={[0, 1, 2]}
       renderTrackMarkComponent={(index) => <TrackItem index={index} />}
     />

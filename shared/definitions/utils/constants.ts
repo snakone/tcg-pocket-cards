@@ -110,7 +110,26 @@ import {
   DIALGA_ICON,
   MEW_ICON,
   PALKIA_ICON,
-  ARCEUS_ICON
+  ARCEUS_ICON,
+  DECK_BG_CYNTHIA_70x70,
+  DECK_BG_CHIMCHAR_70x70,
+  DECK_BG_DARKRAI_70x70,
+  DECK_BG_PIPLUP_70x70,
+  DECK_BG_ARCEUS_70x70,
+  DECK_BG_NAKARA_70x70,
+  DECK_BG_CYNTHIA,
+  DECK_BG_CHIMCHAR,
+  DECK_BG_DARKRAI,
+  DECK_BG_PIPLUP,
+  DECK_BG_ARCEUS,
+  DECK_BG_NAKARA,
+  LEKTRO_AVATAR,
+  MARIL_AVATAR,
+  ARCEUS_COIN,
+  DARKRAI_COIN,
+  GLACEON_COIN,
+  LEAFEON_COIN,
+  MANAPHY_COIN
 } from "../sentences/path.sentences";
 
 import { FilterSearch } from "../classes/filter.class";
@@ -246,7 +265,8 @@ export const EXPANSION_MAP: Record<CardExpansionENUM, CardPackTag> = {
   [CardExpansionENUM.PROMO_A]: { label: 'A', tag: 'PROMO-A', color: 'white', background: 'black', promo_amount: 'P-A' },
   [CardExpansionENUM.MYTHICAL_ISLAND]: { label: 'A', tag: 'A1a', color: 'white', background: 'black', promo_amount: 'P-A' },
   [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: { label: 'A', tag: 'A2', color: 'white', background: 'black', promo_amount: 'P-A' },
-  [CardExpansionENUM.TRIUMPH_LIGHT]: { label: 'A', tag: 'A2a', color: 'white', background: 'black', promo_amount: 'P-A' }
+  [CardExpansionENUM.TRIUMPH_LIGHT]: { label: 'A', tag: 'A2a', color: 'white', background: 'black', promo_amount: 'P-A' },
+  [CardExpansionENUM.RAINBOW_FESTIVAL]: { label: 'A', tag: 'A2b', color: 'white', background: 'black', promo_amount: 'P-A' },
 }
 
 export const CONDITION_MAP: Record<CardSpecialConditionENUM, {label: string}> = {
@@ -271,14 +291,16 @@ export const CONDITION_MAP: Record<CardSpecialConditionENUM, {label: string}> = 
   [CardSpecialConditionENUM.INACTIVE]: { label: 'condition_inactive' },
   [CardSpecialConditionENUM.FORCE_SWITCH]: { label: 'condition_force_switch' },
   [CardSpecialConditionENUM.ARCEUS_LINK]: { label: 'condition_arceus' },
-  [CardSpecialConditionENUM.PLAY_CARDS]: { label: 'condition_play_cards' }
+  [CardSpecialConditionENUM.PLAY_CARDS]: { label: 'condition_play_cards' },
+  [CardSpecialConditionENUM.RANDOM_ATTACK]: { label: 'condition_random_attack' }
 }
 
 export const CONDITION_ATTACK = [
   CardSpecialConditionENUM.ATTACK_BENCH,
   CardSpecialConditionENUM.RECOIL,
   CardSpecialConditionENUM.EXTRA_DAMAGE,
-  CardSpecialConditionENUM.RESIST
+  CardSpecialConditionENUM.RESIST,
+  CardSpecialConditionENUM.RANDOM_ATTACK
 ];
 
 export const CONDITION_STATUS = [
@@ -337,6 +359,7 @@ export const PACK_MAP: Record<EXPANSION, any> = {
   [EXPANSION.PROMO_A4]: PROMO_A_ICON,
   [EXPANSION.ARCEUS]: TRIUMPH_LIGHT_ARCEUS_ICON,
   [EXPANSION.PROMO_A5]: PROMO_A_ICON,
+  [EXPANSION.SHINY]: null
 }
 
 export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {
@@ -345,6 +368,7 @@ export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.MYTHICAL_ISLAND]: 86,
   [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 207,
   [CardExpansionENUM.TRIUMPH_LIGHT]: 96,
+  [CardExpansionENUM.RAINBOW_FESTIVAL]: 110
 }
 
 export const COIN_MAP: Record<string, any> = {
@@ -358,7 +382,12 @@ export const COIN_MAP: Record<string, any> = {
   special1: SPECIAL1_COIN,
   cynthia: CYNTHIA_COIN,
   charizard: CHARIZARD_COIN,
-  mew: MEW_COIN
+  mew: MEW_COIN,
+  arceus: ARCEUS_COIN,
+  darkrai: DARKRAI_COIN,
+  glaceon: GLACEON_COIN,
+  leafeon: LEAFEON_COIN,
+  manaphy: MANAPHY_COIN
 }
 
 export const AVATAR_MAP: Record<string, any> = {
@@ -378,7 +407,9 @@ export const AVATAR_MAP: Record<string, any> = {
   chimchar: CHIMCHAR_AVATAR,
   mew: MEW_AVATAR,
   piplup: PIPLUP_AVATAR,
-  turtwig: TURTWIG_AVATAR
+  turtwig: TURTWIG_AVATAR,
+  lektro: LEKTRO_AVATAR,
+  maril: MARIL_AVATAR
 }
 
 export const DECK_BACKGROUND_MAP: Record<string, any> = {
@@ -403,7 +434,13 @@ export const DECK_BACKGROUND_MAP: Record<string, any> = {
   special_1: DECK_BG_SPECIAL_1,
   venusaur: DECK_BG_VENUSAUR,
   dialga: DECK_BG_DIALGA,
-  palkia: DECK_BG_PALKIA
+  palkia: DECK_BG_PALKIA,
+  cynthia: DECK_BG_CYNTHIA,
+  chimchar: DECK_BG_CHIMCHAR,
+  darkrai: DECK_BG_DARKRAI,
+  piplup: DECK_BG_PIPLUP,
+  arceus: DECK_BG_ARCEUS,
+  nakara: DECK_BG_NAKARA
 }
 
 export const AVATAR_LIST: AvatarIcon[] = [
@@ -424,6 +461,8 @@ export const AVATAR_LIST: AvatarIcon[] = [
   { label: 'Mew', value: 'mew', icon: MEW_AVATAR },
   { label: 'Piplup', value: 'piplup', icon: PIPLUP_AVATAR },
   { label: 'Turtwig', value: 'turtwig', icon: TURTWIG_AVATAR },
+  { label: 'Lektro', value: 'lektro', icon: LEKTRO_AVATAR },
+  { label: 'Maril', value: 'maril', icon: MARIL_AVATAR },
 ];
 
 export const COIN_LIST: AvatarIcon[] = [
@@ -438,6 +477,11 @@ export const COIN_LIST: AvatarIcon[] = [
   { label: 'Charizard', value: 'charizard', icon: CHARIZARD_COIN },
   { label: 'Cynthia', value: 'cynthia', icon: CYNTHIA_COIN },
   { label: 'Mew', value: 'mew', icon: MEW_COIN },
+  { label: 'Arceus', value: 'arceus', icon: ARCEUS_COIN },
+  { label: 'Darkrai', value: 'darkrai', icon: DARKRAI_COIN },
+  { label: 'Glaceon', value: 'glaceon', icon: GLACEON_COIN },
+  { label: 'Leafeon', value: 'leafeon', icon: LEAFEON_COIN },
+  { label: 'Manaphy', value: 'manaphy', icon: MANAPHY_COIN },
 ];
 
 export const DECK_BACKGROUNDS_70x70: AvatarIcon[] = [
@@ -463,28 +507,18 @@ export const DECK_BACKGROUNDS_70x70: AvatarIcon[] = [
   {label: 'Venusaur', value: 'venusaur', icon: DECK_BG_VENUSAUR_70x70},
   {label: 'Dialga', value: 'dialga', icon: DECK_BG_DIALGA_70x70},
   {label: 'Palkia', value: 'palkia', icon: DECK_BG_PALKIA_70x70},
+  {label: 'Cynthia', value: 'cynthia', icon: DECK_BG_CYNTHIA_70x70},
+  {label: 'Chimchar', value: 'chimchar', icon: DECK_BG_CHIMCHAR_70x70},
+  {label: 'Darkrai', value: 'darkrai', icon: DECK_BG_DARKRAI_70x70},
+  {label: 'Piplup', value: 'piplup', icon: DECK_BG_PIPLUP_70x70},
+  {label: 'Arceus', value: 'arceus', icon: DECK_BG_ARCEUS_70x70},
+  {label: 'Nakara', value: 'nakara', icon: DECK_BG_NAKARA_70x70},
 ];
 
 export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);
 export const ATTACK_DAMAGES = Array.from({ length: 20 }, (_, index) => (index + 1) * 10);
 
 export const ICON_WIDTH = 36;
-
-export function getDaysRemaining(): { progress: number; remainingText: string } {
-  const target = new Date(2025, 0, 29); 
-  const start = new Date(2024, 10, 25);
-  const today = new Date();
-  const diff = target.getTime() - today.getTime();
-  const totalDiff = target.getTime() - start.getTime();
-  const remainingDays = Math.ceil(diff / (1000 * 3600 * 24));
-  const elapsedDiff = today.getTime() - start.getTime();
-  const elapsedDays = Math.ceil(elapsedDiff / (1000 * 3600 * 24));
-  const progress = (elapsedDays / (totalDiff / (1000 * 3600 * 24))) * 100;
-  const hours = Math.floor((diff % (1000 * 3600 * 24)) / (1000 * 3600));
-  const remainingText = `${remainingDays} d ${hours} h`;
-
-  return { progress, remainingText };
-}
 
 export const RARITY_CAN_TRADE = [
   CardRarityENUM.COMMON,
@@ -508,6 +542,7 @@ export const PACK_PER_EXPANSION_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 2,
   [CardExpansionENUM.PROMO_A]: 0,
   [CardExpansionENUM.TRIUMPH_LIGHT]: 1,
+  [CardExpansionENUM.RAINBOW_FESTIVAL]: 1
 }
 
 export const COLLECTION_LANGUAGE_MAP: Record<CardLanguageENUM, string> = {

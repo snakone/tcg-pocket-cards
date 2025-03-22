@@ -40,6 +40,10 @@ export default function RootLayout() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    SoundService.preloadAllSounds();
+  }, []);
+
+  useEffect(() => {
     const checkStorage = async () => {
       const version = await Storage.get('version');
       if (version === null) {
@@ -62,7 +66,8 @@ export default function RootLayout() {
           }
 
           dispatch({type: 'SET_SETTINGS', value: {...settings, version: APP_VERSION}});
-          SoundService.setEnabled(settings.sound)
+          SoundService.setEnabled(settings.sound);
+          
           setLocale(settings.language);
           setShowStartScreen(settings.show_intro);
 
@@ -77,6 +82,10 @@ export default function RootLayout() {
             dispatch({ type: 'SET_CARDS', value: settings.cards });
             setLoading(false);
           }
+
+          setTimeout(() => {
+            SoundService.setVolume(settings.sound_volume);
+          }, 333);
         }
       }
       setTimeout(() => setWaiting(false), 1500);
@@ -128,10 +137,6 @@ export default function RootLayout() {
         setShouldShowSplash(true);
       }
     });
-  }, []);
-
-  useEffect(() => {
-    SoundService.preloadAllSounds();
   }, []);
 
   function handleStart(): void {

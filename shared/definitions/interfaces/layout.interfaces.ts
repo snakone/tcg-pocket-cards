@@ -8,7 +8,8 @@ export interface HeaderWithCustomModalProps {
   modalContent: ReactNode;
   modalHeight?: number;
   animatedStyle?: any,
-  animatedIconStyle?: any
+  animatedIconStyle?: any,
+  showHeader?: boolean;
 }
 
 export interface TabMenu {

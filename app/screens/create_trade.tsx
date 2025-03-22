@@ -106,14 +106,20 @@ export default function CreateTradeScreen() {
 
   function onDesiredClose(data: number[]): void {
     if (JSON.stringify(data) !== JSON.stringify(offers)) { setNotSaved(true); }
+
     if (data !== null) {
       setDesired(data);
+
+      if (data.every(k => k === null)) {
+        setOffers([null, null, null, null, null]);
+      }
     }
     setIsDesiredVisible(false);
   }
 
   function onOffersClose(data: number[]): void {
     if (JSON.stringify(data) !== JSON.stringify(offers)) { setNotSaved(true); }
+    
     if (data !== null) {
       setOffers(data);
     }

@@ -149,7 +149,7 @@ export default function AttackDetailScreen() {
           <ThemedView>
             <FlatList data={related}
                       numColumns={5}
-                      contentContainerStyle={[{width: '100%'}]}
+                      contentContainerStyle={[{width: '100%', maxHeight: 294}]}
                       keyExtractor={keyExtractor}
                       initialNumToRender={25}
                       maxToRenderPerBatch={35}
