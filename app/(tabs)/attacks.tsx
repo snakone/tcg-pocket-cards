@@ -203,7 +203,8 @@ export default function AttacksScreen() {
       <View
         style={[
           ModalStyles.modalFooter,
-          { marginBlock: 34, boxShadow: 'none', paddingTop: 20 },
+          { marginBlock: 34, boxShadow: 'none' },
+          i18n.locale === 'ja' && {top: -2}
         ]}
       >
         <TouchableOpacity

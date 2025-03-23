@@ -15,3 +15,5 @@ export { ShareScreenModal } from '@/components/modals/ShareScreenModal';
 export { TermsModal } from "@/components/modals/TermsModal";
 export { TradeScreenModal } from "@/components/modals/TradeScreenModal";
 export { UserDataModal } from "@/components/modals/UserDataModal";
+export { CollectionScreenModal } from "@/components/modals/CollectionModal";
+export { StatsCollectionModal } from "@/components/modals/StatsCollectionModal";

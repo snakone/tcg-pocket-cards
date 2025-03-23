@@ -141,7 +141,7 @@ export default function InfoGraphicScreen() {
           <ScrollView showsVerticalScrollIndicator={false} style={{paddingInline: 14, paddingBottom: 14}}>
             <ThemedView style={{gap: 8}}>
               <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-                <ThemedText style={[filterStyles.header, {marginBottom: 24}]}>{i18n.t('export')}</ThemedText>
+                <ThemedText style={[filterStyles.header, {marginBottom: 24}, i18n.locale === 'ja' && {marginBottom: 20}]}>{i18n.t('export')}</ThemedText>
                 <TouchableOpacity onPress={handleAll}>
                   <MaterialIcons name="sync" 
                                 style={{fontSize: 26, left: -4, top: -7, opacity: 0.5}} 
@@ -270,7 +270,7 @@ export default function InfoGraphicScreen() {
             </ThemedView>
           </ScrollView> 
 
-          <TouchableOpacity onPress={download} style={[homeScreenStyles.ctaButton, {marginTop: 0, marginBottom: 24, marginHorizontal: 14}]}>
+          <TouchableOpacity onPress={download} style={[homeScreenStyles.ctaButton, {marginTop: 0, marginBottom: 18, marginHorizontal: 14}]}>
             <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>{i18n.t('download')}</ThemedText>
           </TouchableOpacity>
         </ParallaxScrollView>

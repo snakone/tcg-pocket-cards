@@ -134,7 +134,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCol
       <Pressable style={[LayoutStyles.overlay]} onPress={() => closeMenu()}></Pressable>
       <Animated.View style={[animatedStyle, filterStyles.container, {height: 718}]}>
         <View style={[ModalStyles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
-          <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('filter')}</ThemedText>
+          <ThemedText style={[ModalStyles.modalHeaderTitle, i18n.locale === 'ja' && {fontSize: 20}]}>{i18n.t('filter')}</ThemedText>
         </View>
         <SafeAreaView style={[ModalStyles.modalScrollView, {paddingHorizontal: 20, paddingVertical: 0}]}>
           <ScrollView showsVerticalScrollIndicator={false} style={filterStyles.list}>
@@ -209,7 +209,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCol
           </ScrollView>
 
         </SafeAreaView>
-        <View style={ModalStyles.modalFooter}>
+        <View style={[ModalStyles.modalFooter, i18n.locale === 'ja' && {top: -2}]}>
           <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
                             accessibilityLabel={CLOSE_SENTENCE}>

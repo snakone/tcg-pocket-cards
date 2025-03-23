@@ -64,10 +64,10 @@ export default function HeaderWithCustomModal({
               <View style={[styles.centeredView, {flex: 1}]}>
                 <View style={styles.modalView}>
                   <View style={styles.modalHeader}>
-                    <ThemedText style={styles.modalHeaderTitle}>{i18n.t(modalTitle)}</ThemedText>
+                    <ThemedText style={[styles.modalHeaderTitle, i18n.locale === 'ja' && {fontSize: 20}]}>{i18n.t(modalTitle)}</ThemedText>
                   </View>
                   <View style={[styles.modalScrollView, {minHeight: modalHeight}]}>{modalContent}</View>
-                  <View style={styles.modalFooter}>
+                  <View style={[styles.modalFooter, {paddingTop: 12}]}>
                     <Pressable style={ButtonStyles.button} 
                                               onPress={toggleModal} 
                                               accessibilityLabel={CLOSE_SENTENCE}

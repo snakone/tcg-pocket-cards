@@ -308,9 +308,9 @@ export default function PickDesiredMenu({
                       renderItem={renderCard}
                       numColumns={6}
                       showsVerticalScrollIndicator={false}
-                      maxToRenderPerBatch={24}
-                      initialNumToRender={6}
-                      windowSize={12}
+                      maxToRenderPerBatch={20}
+                      initialNumToRender={8}
+                      windowSize={10}
                       contentContainerStyle={{padding: 16, paddingTop: 0, paddingBottom: 54}}
                       keyExtractor={(item, index) => index + ''}
                       ListHeaderComponent={

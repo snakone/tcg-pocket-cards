@@ -16,7 +16,7 @@ import { Colors } from '@/shared/definitions/utils/colors';
 import SoundService from '@/core/services/sounds.service';
 import FilterCardMenu from '@/components/shared/cards/FilterCardMenu';
 import SortCardMenu from '@/components/shared/cards/SortCardMenu';
-import { GraphicsScreenModal } from '@/components/modals';
+import { CollectionScreenModal } from '@/components/modals';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { BACKUP_HEIGHT, COLLECTION_LANGUAGE_MAP, SORT_FIELD_MAP } from '@/shared/definitions/utils/constants';
 import { ScreenStyles, ButtonStyles, CardGridStyles, ModalStyles, offersStyles, CARD_IMAGE_WIDTH_5, TabButtonStyles } from '@/shared/styles/component.styles';
@@ -24,7 +24,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { LanguageType } from '@/shared/definitions/types/global.types';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { filterCards, getImageLanguage116x162, getImageLanguage69x96, sortCards } from '@/shared/definitions/utils/functions';
+import { filterCards, getImageLanguage69x96, sortCards } from '@/shared/definitions/utils/functions';
 import SkeletonCardGrid from '@/components/skeletons/SkeletonCardGrid';
 import CollectionCardMenu from '@/components/shared/collection/CollectionCardMenu';
 import Storage from '@/core/storage/storage.service';
@@ -335,8 +335,8 @@ export default function CardsScreen() {
   return (
     <Provider>
       <ParallaxScrollView title={"my_collection"} 
-                          modalTitle='infographics'
-                          modalContent={GraphicsScreenModal()}
+                          modalTitle='collection'
+                          modalContent={CollectionScreenModal()}
                           modalHeight={BACKUP_HEIGHT}
                           styles={{gap: 0}}>
 

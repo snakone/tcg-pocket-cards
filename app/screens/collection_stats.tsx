@@ -29,7 +29,7 @@ import ListMenu from "@/components/dedicated/collection/ListMenu";
 import { StatsGrid } from "@/components/dedicated/collection/StatsGrid";
 import { ExpansionGridStats } from "@/components/dedicated/collection/ExpansionGridStats";
 import { roundPercentage } from "@/shared/definitions/utils/functions";
-import { AttacksScreenModal } from "@/components/modals";
+import { StatsCollectionModal } from "@/components/modals";
 import HeaderWithCustomModal from "@/components/shared/HeaderModal";
 
 import { 
@@ -587,7 +587,7 @@ export default function CollectionStatsScreen() {
     <Provider>
       { loading && <LoadingOverlay/> }
       <HeaderWithCustomModal title={'stats'} 
-                             modalContent={AttacksScreenModal()} 
+                             modalContent={StatsCollectionModal()} 
                              modalTitle={'stats'} 
                              animatedStyle={{}}
                              animatedIconStyle={{}}

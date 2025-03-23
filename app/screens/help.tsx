@@ -173,7 +173,7 @@ export default function HelpScreen() {
                   <View style={[
                     ModalStyles.centeredView, Platform.OS === 'web' ? 
                     {...WebStyles.view} : {flex: 1, top: 0}]}>
-                    <View style={ModalStyles.modalView}>
+                    <View style={[ModalStyles.modalView, i18n.locale === 'ja' && {maxHeight: '79%'}]}>
                       <View style={ModalStyles.modalHeader}>
                         <ThemedText style={[ModalStyles.modalHeaderTitle, {marginTop: 4}]}>
                           {i18n.t(item.modal)}
@@ -182,7 +182,7 @@ export default function HelpScreen() {
                       <ThemedView style={[ModalStyles.modalScrollView, {height: item.height}]}>
                         {item.content}
                       </ThemedView>
-                      <View style={ModalStyles.modalFooter}>
+                      <View style={[ModalStyles.modalFooter, {paddingTop: 14}, i18n.locale === 'ja' && {paddingTop: 16}]}>
                         <Pressable style={ButtonStyles.button} 
                                           onPress={close} 
                                           accessibilityLabel={CLOSE_SENTENCE}>

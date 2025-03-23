@@ -106,9 +106,9 @@ export function BackupModal() {
         { loading && <LoadingOverlay/> }
         <ScrollView style={{flex: 1}} 
                     showsVerticalScrollIndicator={false} >
-          <ThemedText style={[styles.text, {marginTop: 4, marginBottom: Platform.OS !== 'web' ? 24 : 30}]}>{i18n.t('backup_intro')}</ThemedText>
+          <ThemedText style={[styles.text, {marginTop: 4, marginBottom: Platform.OS !== 'web' ? 24 : i18n.locale === 'ja' ? 20 : 28}]}>{i18n.t('backup_intro')}</ThemedText>
 
-          <ThemedText style={[filterStyles.header, {fontSize: 17}]}>{i18n.t('import')}</ThemedText>
+          <ThemedText style={[filterStyles.header, {fontSize: i18n.locale === 'ja' ? 16 : 17}]}>{i18n.t('import')}</ThemedText>
 
           <ThemedView style={[settingsStyles.container, {height: 52, boxShadow: 'rgba(0, 0, 0, 0.2) 0px 3px 3px'}]}>
             <TouchableOpacity onPress={handleImport} style={{flex: 1}} >
@@ -126,7 +126,10 @@ export function BackupModal() {
             <ThemedText style={backUpStyles.valid}>{i18n.t('valid_file')}</ThemedText>
           </ThemedView>
 
-          <ThemedText style={[filterStyles.header, {marginTop: 20, fontSize: 17}]}>{i18n.t('export')}</ThemedText>
+          <ThemedText style={[
+            filterStyles.header, 
+            {marginTop: 20, fontSize: i18n.locale === 'ja' ? 16 : 17}]}>{i18n.t('export')}
+          </ThemedText>
 
           <ThemedView style={[settingsStyles.container, {height: 52, boxShadow: 'rgba(0, 0, 0, 0.2) 0px 3px 3px'}]}>
             <TouchableOpacity onPress={handleExport} style={{flex: 1}} >
@@ -144,7 +147,11 @@ export function BackupModal() {
           </ThemedView>
 
           <ThemedView style={{opacity: 0.8}}>
-            <ThemedText style={[filterStyles.header, {marginTop: 20, fontSize: 17, color: 'crimson'}]}>{i18n.t('delete')}</ThemedText>
+            <ThemedText style={[
+                filterStyles.header, 
+                {marginTop: 20, fontSize: i18n.locale === 'ja' ? 16 : 17, color: 'crimson'}
+                ]}>{i18n.t('delete')}
+              </ThemedText>
 
             <ThemedView style={[
                 settingsStyles.container, 

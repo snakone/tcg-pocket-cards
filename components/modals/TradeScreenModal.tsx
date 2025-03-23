@@ -61,7 +61,7 @@ export function TradeScreenModal() {
         <ThemedText style={styles.text}>{i18n.t('trade_deck_management_intro')}</ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
-          <Image source={TRADE_ADD_NEW} style={{width: '100%', height: 307}}></Image>
+          <Image source={TRADE_ADD_NEW} style={{width: '100%', height: 282}}></Image>
         </ThemedView>
 
         <ThemedText style={styles.text}>{i18n.t('trade_add_new')}</ThemedText>
@@ -112,7 +112,7 @@ export function TradeScreenModal() {
         <ThemedText style={styles.text}>{i18n.t('trade_create_requisites')}</ThemedText>
 
         <ThemedText style={styles.title}>{i18n.t('trade_existent')}</ThemedText>
-        <ThemedText style={styles.text}>{i18n.t('create_deck_list_intro')}</ThemedText>
+        <ThemedText style={styles.text}>{i18n.t('trade_existent_intro')}</ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
           <Image source={TRADE_LIST} style={{width: '100%', height: 317}}></Image>

@@ -124,7 +124,7 @@ export default function ProfileScreen() {
           <TouchableOpacity onPress={goToCollection}>
             <ThemedView style={[TabsMenuStyles.user, {marginTop: 16, width: 275}]}>
               <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                <MaterialIcons name="style" style={[styles.editInput, {fontSize: 23, right: 'auto', left: 12, top: 7}]} />
+                <MaterialIcons name="style" style={[styles.editInput, {fontSize: 23, right: 'auto', left: 12, top: 7}, i18n.locale === 'ja' && {top: 9}]} />
                 <ThemedText style={[
                     styles.input, {fontSize: 16, width: 207, paddingVertical: 8, left: 34},
                     i18n.locale === 'ja' && {top: 1}
