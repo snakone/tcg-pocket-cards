@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { InteractionManager, StyleSheet, View } from "react-native";
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -24,6 +24,8 @@ import { GraphicMiscellania } from "./components/GraphicMiscellania";
 import { GraphicWeak } from "./components/GraphicWeak";
 import { GraphicTop } from "./components/GraphicTop";
 import { GraphicConditions } from "./components/GraphicConditions";
+import { GraphicHeader } from "./components/GraphicHeader";
+import { GraphicFooter } from "./components/GraphicFooter";
 
 interface GraphicCollageProps {
   showExpansion: boolean,
@@ -32,7 +34,9 @@ interface GraphicCollageProps {
   showMiscellania: boolean,
   showWeak: boolean,
   showTop: boolean,
-  showConditions: boolean
+  showConditions: boolean,
+  quality: number,
+  onFinish: () => void
 }
 
 export function GraphicCollage({
@@ -43,16 +47,76 @@ export function GraphicCollage({
   showWeak,
   showTop,
   showConditions,
+  quality,
+  onFinish
 }: GraphicCollageProps) {
   const {i18n} = useI18n();
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state } = context;
   const [lang] = useState<LanguageType>(state.settingsState.language);
+  const shareService = useMemo(() => new ShareService(), []);
+
+  const summaryRef = useRef<any>(null);
+  const expansionRef = useRef<any>(null);
+  const gradesRef = useRef<any>(null);
+  const typesRef = useRef<any>(null);
+  const miscellaniaRef = useRef<any>(null);
+  const weakRef = useRef<any>(null);
+  const topRef = useRef<any>(null);
+  const conditionsRef = useRef<any>(null);
+
+  const [innerShowExpansion, setInnerShowExpansion] = useState(false);
+  const [innerShowGrades, setInnerShowGrades] = useState(false);
+  const [innerShowTypes, setInnerShowTypes] = useState(false);
+  const [innerShowMiscellania, setInnerShowMiscellania] = useState(false);
+  const [innerShowWeak, setInnerShowWeak] = useState(false);
+  const [innerShowTop, setInnerShowTop] = useState(false);
+  const [innerShowCondition, setInnerShowCondition] = useState(false);
+  
+  const references = [
+    { value: summaryRef, label: i18n.t('summary') },
+    { value: expansionRef, label: i18n.t('expansions'), func: (value: boolean) => setInnerShowExpansion(value) },
+    { value: gradesRef, label: i18n.t('grade'), func: (value: boolean) => setInnerShowGrades(value) },
+    { value: typesRef, label: i18n.t('types'), func: (value: boolean) => setInnerShowTypes(value) },
+    { value: miscellaniaRef, label: i18n.t('miscellania'), func: (value: boolean) => setInnerShowMiscellania(value) },
+    { value: weakRef, label: i18n.t('weak'), func: (value: boolean) => setInnerShowWeak(value) },
+    { value: topRef, label: i18n.t('top_20'), func: (value: boolean) => setInnerShowTop(value) },
+    { value: conditionsRef, label: i18n.t('conditions'), func: (value: boolean) => setInnerShowCondition(value) },
+  ];
 
   useEffect(() => {
-    console.log('share')
+    const start = async () => {
+      await new Promise(resolve => 
+        InteractionManager.runAfterInteractions(() => resolve(null))
+      );
+
+      makeAllPictures();
+    }
+
+    start();
   }, []);
+
+  async function makeAllPictures(): Promise<void> {
+    for (const ref of references) {
+      if (ref && ref.func) {
+        ref.func(true);
+        await new Promise(resolve => 
+          InteractionManager.runAfterInteractions(() => resolve(null))
+        );
+      }
+
+      if (ref.value?.current) {
+        await shareService.makeInfoGraphic(ref.value, 'infographic-tcg-pocket-cards-' + ref.label.toLowerCase(), quality);
+      }
+
+      if (ref && ref.func) {
+        ref.func(false);
+      }
+
+    }
+    onFinish();
+  }
 
   const filterAndSort = (filterFn: (card: Card) => boolean) => {
     const filtered = state.cardState.cards.filter(filterFn).sort((a, b) => a.order - b.order);
@@ -305,57 +369,73 @@ export function GraphicCollage({
 
   return (
     <ThemedView>
-      <ThemedText style={styles.mainTitle}>{i18n.t('graphic_title')}</ThemedText>
-      <ThemedView style={{marginBottom: 10}}>
-        <ThemedText style={styles.text}>{i18n.t('infographics_intro')}</ThemedText>
-      </ThemedView>
-      <ThemedText style={styles.subTitlte}>{i18n.t('summary')}</ThemedText>
-      <ThemedView>
-        <ThemedText style={styles.text}>{i18n.t('infographics_summary')}</ThemedText>
-      </ThemedView>
-
-      <GraphicSummary data={SUMMARY_DATA} styles={styles}></GraphicSummary>
+      <View ref={summaryRef} style={styles.content}>
+        <GraphicHeader styles={styles} child={false}></GraphicHeader>
+        <GraphicSummary data={SUMMARY_DATA} styles={styles}></GraphicSummary>
+        <GraphicFooter styles={styles} child={false}></GraphicFooter>
+      </View>
 
       {
-        showExpansion &&
+        innerShowExpansion && showExpansion &&
+        <View ref={expansionRef} style={styles.content}>
+          <GraphicHeader styles={styles}></GraphicHeader>
           <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles}></GraphicExpansion>
+          <GraphicFooter styles={styles}></GraphicFooter>
+        </View>
       }
 
       {
-        showGrades && 
+        innerShowGrades && showGrades &&
+        <View ref={gradesRef} style={styles.content}>
+          <GraphicHeader styles={styles}></GraphicHeader>
           <GraphicGrades data={GRADES_DATA} language={lang} styles={styles}></GraphicGrades>
+          <GraphicFooter styles={styles}></GraphicFooter>
+        </View>
       }
 
       {
-        showTypes && 
+        innerShowTypes && showTypes &&
+        <View ref={typesRef} style={styles.content}>
+          <GraphicHeader styles={styles}></GraphicHeader>
           <GraphicTypes data={TYPES_DATA} language={lang} styles={styles}></GraphicTypes>
+          <GraphicFooter styles={styles}></GraphicFooter>
+        </View>
       }
 
       {
-        showMiscellania &&
-          <GraphicMiscellania data={MISCELLANIA_DATA} language={lang} styles={styles}></GraphicMiscellania>
+        innerShowMiscellania && showMiscellania &&
+         <View ref={miscellaniaRef} style={styles.content}>
+          <GraphicHeader styles={styles}></GraphicHeader>
+           <GraphicMiscellania data={MISCELLANIA_DATA} language={lang} styles={styles}></GraphicMiscellania>
+           <GraphicFooter styles={styles}></GraphicFooter>
+         </View>
       }
 
       {
-        showWeak && 
+        innerShowWeak && showWeak &&
+        <View ref={weakRef} style={styles.content}>
+          <GraphicHeader styles={styles}></GraphicHeader>
           <GraphicWeak data={WEAK_DATA} language={lang} styles={styles}></GraphicWeak>
+          <GraphicFooter styles={styles}></GraphicFooter>
+        </View>
       }
 
       {
-        showTop &&
+        innerShowTop && showTop &&
+        <View ref={topRef} style={styles.content}>
+          <GraphicHeader styles={styles}></GraphicHeader>
           <GraphicTop data={TOP_DATA} language={lang} styles={styles}></GraphicTop>
+          <GraphicFooter styles={styles}></GraphicFooter>
+        </View>
       }
       {
-        showConditions &&
+        innerShowCondition && showConditions &&
+        <View ref={conditionsRef} style={styles.content}>
+          <GraphicHeader styles={styles}></GraphicHeader>
           <GraphicConditions data={CONDITIONS_DATA} language={lang} styles={styles}></GraphicConditions>
+          <GraphicFooter styles={styles}></GraphicFooter>
+        </View>
       }
-
-      <ThemedView style={{height: 16}}></ThemedView>
-      <ThemedView style={[styles.summary, {marginHorizontal: 16, marginTop: 0, padding: 16, marginBottom: 0}]}>
-        <ThemedText style={[styles.text, {textAlign: 'center', fontWeight: 'bold'}]}>
-          {i18n.t('infographics_footer')}
-        </ThemedText>
-      </ThemedView>
     </ThemedView>
   );
 }
@@ -405,7 +485,8 @@ const styles = StyleSheet.create({
     padding: 20, 
     borderRadius: 8, 
     backgroundColor: 'rgb(240, 240, 240)',
-    marginBlock: 30,
+    marginTop: 30,
+    marginBottom: 20,
     marginHorizontal: 20
   },
   stageIcon: {
@@ -470,5 +551,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between', 
     gap: 50,
     marginBottom: 8
+  },
+  content: {
+    padding: 20
   }
 });

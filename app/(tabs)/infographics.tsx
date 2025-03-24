@@ -1,13 +1,12 @@
-import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import React from "react";
-import ViewShot from "react-native-view-shot";
 import { TouchableOpacity, View, StyleSheet, Platform, ScrollView } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Switch } from "react-native-paper";
+import { Slider } from "@miblanchard/react-native-slider";
 
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
-import { AppContext } from "../_layout";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
-import ShareService from "@/core/services/share.service";
 import { GraphicCollage } from "@/components/dedicated/infographics/GraphicCollage";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import { useI18n } from "@/core/providers/LanguageProvider";
@@ -16,20 +15,12 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { CardGridStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
 import SoundService from "@/core/services/sounds.service";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { Slider } from "@miblanchard/react-native-slider";
 import { settingsStyles } from "../screens/settings";
 import { Colors } from "@/shared/definitions/utils/colors";
-import { Switch } from "react-native-paper";
-import { MaterialIcons } from "@expo/vector-icons";
 import { GraphicsScreenModal } from "@/components/modals";
 
 export default function InfoGraphicScreen() {
   const {i18n} = useI18n();
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state } = context;
-  const ref = useRef<any>(null);
-  const shareService = useMemo(() => new ShareService(), []);
   const [loading, setLoading] = useState(false);
   const [quality, setQuality] = useState<number>(0.9);
 
@@ -59,14 +50,16 @@ export default function InfoGraphicScreen() {
     <>
       {
         Platform.OS === 'web' &&
-        <View ref={ref} style={styles.container}>
+        <View style={[styles.container, {padding: 0}]}>
           <GraphicCollage showExpansion={showExpansion}
                           showGrades={showGrades}
                           showTypes={showTypes}
                           showMiscellania={showMiscellania}
                           showWeak={showWeak}
                           showTop={showTop}
-                          showConditions={showConditions}/>
+                          showConditions={showConditions}
+                          quality={quality}
+                          onFinish={() => (setLoading(false), setIsVisible(false))}/>
         </View>
       }
     </>
@@ -111,11 +104,7 @@ export default function InfoGraphicScreen() {
   const download = async () => {
     SoundService.play('POP_PICK');
     setLoading(true);
-    setTimeout(() => setIsVisible(true), 666);
-    setTimeout(() => {
-      shareService.makeInfoGraphic(ref, 'infographic-tcg-pocket-cards', quality)
-       .then(_ => (setLoading(false), setIsVisible(false)));
-    }, 4000);
+    setTimeout(() => setIsVisible(true), 333);
   }
 
   function handleAll(): void {
