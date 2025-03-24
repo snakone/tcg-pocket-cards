@@ -1,5 +1,6 @@
 export const TRANSLATIONS = {
   en: {
+    horizontal: 'Horizontal',
     trade_existent_intro: 'Once created, the trade will appear in the general list. From here, you can search for it by name, review it, and edit it at any time.\n\n',
     condition_random_attack: 'Random damage',
     expansion_pikachu: 'Genetic Apex: Pikachu',
@@ -671,6 +672,7 @@ export const TRANSLATIONS = {
     without_ability: "Without Ability"
   },
   es: {
+    horizontal: 'Horizontal',
     trade_existent_intro: 'Una vez creado, el intercambio aparecerá en la lista general. Desde aquí, puedes buscarlo por nombre, revisarlo, y editarlo cuando quieras.\n\n',
     condition_random_attack: 'Daño aleatorio',
     expansion_pikachu: 'Genes Formidables: Pikachu',
@@ -982,8 +984,8 @@ export const TRANSLATIONS = {
     intro: "Introducción",
     invalid_cant_share: 'Contenido no válido. Descarga no disponible.',
     invert: "Invertir",
-    i_search: 'Busco',
-    i_offer: 'Ofrezco',
+    i_search: 'Buscar',
+    i_offer: 'Ofrecer',
     is_ex: "Es EX",
     items: 'Objetos',
     ivysaur: "Ivysaur",
@@ -1345,6 +1347,7 @@ export const TRANSLATIONS = {
     without_ability: "Sin habilidad"
   },
   ja: {
+    horizontal: '水平',
     trade_existent_intro: '作成が完了すると、交換は一般リストに表示されます。ここから、名前で検索し、確認し、いつでも編集できます。\n\n',
     condition_random_attack: 'ランダムな損傷',
     expansion_pikachu: '最強の遺伝子: ピカチュウ',

@@ -1,9 +1,11 @@
 import * as MediaLibrary from 'expo-media-library';
 import { Platform } from 'react-native';
 import { captureRef } from 'react-native-view-shot';
+import { Subject } from 'rxjs';
+
 import { convertBase64ToJpeg, getDynamicHeight } from '@/shared/definitions/utils/functions';
 import { SettingsState } from '@/hooks/settings.reducer';
-import { Subject } from 'rxjs';
+import { ShareContentProps } from '@/shared/definitions/interfaces/global.interfaces';
 
 export default class ShareService {
 
@@ -20,15 +22,16 @@ export default class ShareService {
     this.deleteSettings$.next();
   }
 
-  public async makeScreenShot(
-    ref: React.MutableRefObject<any>, 
-    name: string, 
-    quality: number = 1,
-    length: number,
-    type: 'deck' | 'trade'
-  ): Promise<void> {
+  public async makeScreenShot({
+    ref, 
+    name, 
+    quality,
+    length,
+    type,
+    horizontal
+  }: ShareContentProps): Promise<void> {
     try {
-      const height = getDynamicHeight(length, type);
+      const height = getDynamicHeight(length, type, horizontal);
       const localUri = await captureRef(ref, {
         quality,
         format: 'jpg',
@@ -39,7 +42,7 @@ export default class ShareService {
 
       if (Platform.OS === 'web') {
         const link = document.createElement('a');
-        link.href = await convertBase64ToJpeg(localUri, quality);
+        link.href = await convertBase64ToJpeg(localUri, quality || 1);
         link.download = name.endsWith('.jpeg') ? name : `${name}.jpeg` || 'deck.jpeg';
         document.body.appendChild(link);
         link.click();
@@ -74,9 +77,7 @@ export default class ShareService {
         link.click();
         document.body.removeChild(link);
         return;
-      } else {
-        await MediaLibrary.saveToLibraryAsync(localUri);
-      }
+      } 
     } catch (e) {
       console.log(e);
     }

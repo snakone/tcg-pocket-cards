@@ -25,7 +25,8 @@ interface DeckCollageProps {
   element: {[key: string]: boolean | null},
   profile: UserProfile,
   background: AvatarIcon | undefined,
-  duplicated: boolean
+  duplicated: boolean,
+  horizontal: boolean
 }
 
 export default function DeckCollage({
@@ -34,7 +35,8 @@ export default function DeckCollage({
   element, 
   profile, 
   background,
-  duplicated
+  duplicated,
+  horizontal
 }: DeckCollageProps) {
   const [status, requestPermission] = MediaLibrary.usePermissions();
   const [data, setData] = useState<Card[]>(deck);
@@ -96,14 +98,14 @@ export default function DeckCollage({
 
   const renderItem = useCallback(({item, index}: {item: Card, index: number}) => (
     <View style={[CardGridStyles.imageContainer, {marginHorizontal: 11}]}>
-      <View style={{flex: 1, backgroundColor: 'white'}}>
+      <View style={{flex: 1, backgroundColor: 'white', borderRadius: 12, overflow: 'hidden'}}>
         <View>
           { item && 
           <>
             <Image accessibilityLabel={item?.name[lang]} 
                   style={[
                 CardGridStyles.image, 
-                {width: 354}
+                {width: horizontal ? 167 : 354}
               ]} 
             source={getImageLanguage(lang, (item?.id))}/>        
           </>
@@ -116,7 +118,7 @@ export default function DeckCollage({
         </View>
       </View>
     </View>
-  ), [ids]);
+  ), [ids, horizontal]);
 
   return (
     <>
@@ -126,13 +128,14 @@ export default function DeckCollage({
                          style={{padding: 20}}>
           <FlatList data={data}
             renderItem={renderItem}
-            numColumns={5}
+            key={horizontal ? 'horizontal' : 'vertical'}
+            numColumns={horizontal ? 10 : 5}
             contentContainerStyle={{width: COLLAGE_WIDTH}}
             style={{width: COLLAGE_WIDTH, borderRadius: 8}}
             showsVerticalScrollIndicator={false}
             keyExtractor={(item, index) => index + ''}
             ListFooterComponent={
-              <ThemedView style={styles.footer}>
+              <ThemedView style={[styles.footer, horizontal && {height: 48}]}>
                 <ThemedView style={styles.footerContent}>
                   <ThemedView style={styles.energies}>
                     {
@@ -144,8 +147,8 @@ export default function DeckCollage({
                               key={key}
                               source={image}
                               style={{
-                                width: 40,
-                                height: 40,
+                                width: horizontal ? 28 : 40,
+                                height: horizontal ? 28 : 40,
                                 position: 'relative',
                                 top: 1
                               }}
@@ -154,12 +157,12 @@ export default function DeckCollage({
                       })
                     }
                   </ThemedView>
-                  <ThemedText style={[styles.footerText, {fontWeight: 'bold'}]}>{name}</ThemedText>
+                  <ThemedText style={[styles.footerText, {fontWeight: 'bold'}, horizontal && {fontSize: 20}]}>{name}</ThemedText>
                 </ThemedView>
                 <Image source={COIN_MAP[profile.coin]} 
-                       style={[TabsMenuStyles.avatar, {width: 40, height: 40, marginRight: 16, top: 1}]}>
+                       style={[TabsMenuStyles.avatar, {width: horizontal ? 28 : 40, height: horizontal ? 28 : 40, marginRight: 16, top: 1}]}>
                 </Image>
-                <ThemedText style={styles.footerText}>
+                <ThemedText style={[styles.footerText, horizontal && {fontSize: 20}]}>
                   {profile.name || 'Username'} - TCG Pocket Cards - {FRONTEND_URL}
                 </ThemedText>
               </ThemedView>

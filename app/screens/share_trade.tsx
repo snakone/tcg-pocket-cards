@@ -15,7 +15,7 @@ import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AppContext } from "../_layout";
 import Storage from '@/core/storage/storage.service';
 import ShareService from "@/core/services/share.service";
-import { AvatarIcon, TradeItem, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
+import { AvatarIcon, ShareContentProps, TradeItem, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { settingsStyles } from "./settings";
@@ -76,7 +76,11 @@ export default function ShareTradeScreen() {
   const handleShare = () => {
     SoundService.play('POP_PICK');
     setLoading(true);
-    shareService.makeScreenShot(ref, (trade?.title || 'Trade'), quality, 10, 'trade').then(_ => setLoading(false));
+
+    const payload: ShareContentProps = {
+      ref, name: (trade?.title || 'Trade'), quality, length: 10, type: 'deck'
+    }
+    shareService.makeScreenShot(payload).then(_ => setLoading(false));
   }
 
   function onClose(value: AvatarIcon): void {
@@ -121,7 +125,7 @@ export default function ShareTradeScreen() {
     <Provider>
       { loading && <LoadingOverlay/> }
       <SharedScreen title={'share_trade'} styles={{marginTop: 0, alignItems: 'inherit'}}>
-        <ThemedView style={{position: 'absolute', left: -9999}}  >
+        <ThemedView style={{position: 'absolute', left: -9999}} >
           {
             Platform.OS === 'web' ?
             <View ref={ref} style={{width: 'auto'}}>
@@ -151,7 +155,7 @@ export default function ShareTradeScreen() {
         }
         <ScrollView showsVerticalScrollIndicator={false} style={{paddingHorizontal: 14, marginLeft: -14, marginRight: -14}}>
           <ThemedView style={shareTradeStyles.options}>
-            <ThemedText style={[filterStyles.header]}>{i18n.t('export')}</ThemedText>
+            <ThemedText style={[filterStyles.header, {marginBottom: 16}]}>{i18n.t('export')}</ThemedText>
             <ThemedView style={[settingsStyles.container, {height: 52}]}>
               <Pressable onPress={handleBackground} style={{flex: 1}} >
                 <ThemedView style={settingsStyles.row}>
@@ -200,7 +204,7 @@ export default function ShareTradeScreen() {
 
             <ThemedView style={{width: '100%'}}>
               <TouchableOpacity style={[
-                                  homeScreenStyles.ctaButton, {marginBlock: 45, marginBottom: 80},
+                                  homeScreenStyles.ctaButton, {marginTop: 24},
                                   !trade?.valid && {opacity: 0.6}
                                 ]} 
                                 onPress={handleShare}

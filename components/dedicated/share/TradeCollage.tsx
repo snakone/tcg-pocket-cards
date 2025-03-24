@@ -105,7 +105,7 @@ export default function TradeCollage({
           {/* DISCORD */}
           {
             trade?.discord && 
-            <ThemedView style={[tradeCollageStyles.footerContent, {position: 'absolute', left: 20, top: 20, height: 50}]}>
+            <ThemedView style={[tradeCollageStyles.footerContent, {position: 'absolute', left: 25, top: 20, height: 50}]}>
               <Image source={DISCORD_LOGO} style={{width: 50, height: 28, left: -5, top: 1}}/>
               <ThemedText style={[tradeCollageStyles.text, tradeCollageStyles.discordText]}>{trade?.discord}</ThemedText>
             </ThemedView>
@@ -116,20 +116,20 @@ export default function TradeCollage({
           </ThemedView>
           {/* LEYEND */}
           <ThemedView style={[tradeCollageStyles.container, tradeCollageStyles.leyend]}>
-            <ThemedView style={[tradeCollageStyles.like, {position: 'relative', top: 0, left: -4, width: 25, height: 25, marginRight: 6}]}>
-              <MaterialIcons name={"favorite-outline"} style={{color: 'white', fontSize: 19, top: 0}}></MaterialIcons>
+            <ThemedView style={[tradeCollageStyles.like, {position: 'relative', top: 0, left: -4, width: 28, height: 28, marginRight: 6}]}>
+              <MaterialIcons name={"favorite-outline"} style={{color: 'white', fontSize: 22, top: 0,}}></MaterialIcons>
             </ThemedView>
             <ThemedText style={[tradeCollageStyles.text, {marginLeft: 2, top: -3, fontSize: 18, width: 75, textAlign: 'center'}]}>
-              {i18n.t('i_search')}
+              Search
             </ThemedText>
 
             <ThemedView style={tradeCollageStyles.separator}></ThemedView>
 
             <ThemedView style={{position: 'relative', top: 0, right: 0}}>
-              <Image source={SALE_CARD} style={{width: 32, height: 32}}/>
+              <Image source={SALE_CARD} style={{width: 36, height: 36}}/>
             </ThemedView>
             <ThemedText style={[tradeCollageStyles.text, {marginLeft: 6, top: -2, fontSize: 18, width: 106, textAlign: 'center'}]}>
-              {i18n.t('i_offer')}
+              Offer
             </ThemedText>
           </ThemedView>
           {/* TRADE POINTS */}
@@ -233,7 +233,7 @@ export const tradeCollageStyles = StyleSheet.create({
     marginBottom: 20, 
     width: 108, 
     position: 'absolute', 
-    right: 20, 
+    right: 25, 
     height: 50
   },
   leyend: {
@@ -241,7 +241,7 @@ export const tradeCollageStyles = StyleSheet.create({
     marginBottom: 20, 
     width: 240, 
     position: 'absolute', 
-    right: 152, 
+    right: 154, 
     height: 50
   },
   separator: {

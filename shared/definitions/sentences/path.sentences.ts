@@ -262,3 +262,5 @@ export const PIKACHU_EMBLEM = require("@/assets/images/emblem/pikachu.png");
 export const PROMO_A_EMBLEM = require("@/assets/images/emblem/promo_a.png");
 
 export const BACKWARD_CARD = require("@/assets/images/backward.png");
+
+export const CHAMPION_ICON = require("@/assets/images/infographics/champion.png");

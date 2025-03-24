@@ -370,21 +370,35 @@ export const filterUniqueItems = (array: Card[]): { items: Card[]; ids: number[]
   };
 };
 
-export const getDynamicHeight = (length: number, type: 'deck' | 'trade'): number => {
-  const maxHeight = 2229;
-  const minHeight = 1225;
+export const getDynamicHeight = (length: number, type: 'deck' | 'trade', horizontal?: boolean): number => {
+  const maxHeight = 2110;
+  const minHeight = 1105;
   const midHeight = 1633;
+  const minTradeHeight = 1300;
 
-  if (type === 'trade') { return minHeight; }
+  const maxHorizontalHeight = 560;
+  const minHorizontalHeight = 360;
 
-  if (length <= 10) {
-    return minHeight;
-  } else if (length <= 15) {
-    return midHeight;
-  } else if (length <= 20) {
-    return maxHeight;
+  if (type === 'trade') { return minTradeHeight; }
+
+  if (horizontal) {
+    if (length <= 10) {
+      return minHorizontalHeight;
+    } else if (length <= 20) {
+      return maxHorizontalHeight;
+    } else {
+      throw new Error("TotalLength must be between 1 and 20.");
+    }
   } else {
-    throw new Error("TotalLength must be between 1 and 20.");
+    if (length <= 10) {
+      return minHeight;
+    } else if (length <= 15) {
+      return midHeight;
+    } else if (length <= 20) {
+      return maxHeight;
+    } else {
+      throw new Error("TotalLength must be between 1 and 20.");
+    }
   }
 };
 

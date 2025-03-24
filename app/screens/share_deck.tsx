@@ -18,7 +18,7 @@ import DeckCollage from "@/components/dedicated/share/DeckCollage";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import Storage from '@/core/storage/storage.service';
 import ShareService from "@/core/services/share.service";
-import { AvatarIcon, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
+import { AvatarIcon, ShareContentProps, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { CardGridStyles, CreateScreenStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
 import { Colors } from "@/shared/definitions/utils/colors";
@@ -47,6 +47,7 @@ export default function ShareDeckScreen() {
   const [background, setBackground] = useState<AvatarIcon>();
   const [quality, setQuality] = useState<number>(0.8);
   const [duplicated, setDuplicated] = useState<boolean>(true);
+  const [horizontal, setHorizontal] = useState<boolean>(false);
   const [valid, setValid] = useState<boolean>(true);
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
 
@@ -105,7 +106,11 @@ export default function ShareDeckScreen() {
     SoundService.play('POP_PICK');
     setLoading(true);
     const length = getFilteredLength();
-    shareService.makeScreenShot(ref, deckName, quality, length, 'deck').then(_ => setLoading(false));
+
+    const payload: ShareContentProps = {
+      ref, name: deckName, quality, length, type: 'deck', horizontal
+    }
+    shareService.makeScreenShot(payload).then(_ => setLoading(false));
   }
 
   function getFilteredLength(): number {
@@ -180,6 +185,11 @@ export default function ShareDeckScreen() {
     setDuplicated(value);
   }
 
+  function handleHorizontalChange(value: boolean): void {
+    SoundService.play('CHANGE_VIEW');
+    setHorizontal(value);
+  }
+
   return (
     <Provider>
       { loading && <LoadingOverlay/> }
@@ -193,7 +203,8 @@ export default function ShareDeckScreen() {
                            name={deckName}
                            profile={profile}
                            background={background}
-                           duplicated={duplicated}/>
+                           duplicated={duplicated}
+                           horizontal={horizontal}/>
             </View> :
             <ViewShot ref={ref} style={{width: 'auto'}}>
               <DeckCollage deck={deck} 
@@ -201,7 +212,8 @@ export default function ShareDeckScreen() {
                            name={deckName}
                            profile={profile}
                            background={background}
-                           duplicated={duplicated}/>
+                           duplicated={duplicated}
+                           horizontal={horizontal}/>
             </ViewShot>
           }
         </ThemedView>
@@ -241,7 +253,7 @@ export default function ShareDeckScreen() {
           </ThemedView>
 
           <ThemedView style={styles.options}>
-            <ThemedText style={filterStyles.header}>{i18n.t('export')}</ThemedText>
+            <ThemedText style={[filterStyles.header, {marginBottom: 16}]}>{i18n.t('export')}</ThemedText>
 
             <ThemedView style={settingsStyles.container}>
               <ThemedView style={settingsStyles.row}>
@@ -252,6 +264,19 @@ export default function ShareDeckScreen() {
                                       onValueChange={handleDuplicatedChange}
                                       style={CardGridStyles.switch}
                                       value={duplicated}/>
+                </ThemedView>
+              </ThemedView>
+            </ThemedView>
+
+            <ThemedView style={settingsStyles.container}>
+              <ThemedView style={settingsStyles.row}>
+                <ThemedText>{i18n.t('horizontal')}</ThemedText>
+                <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
+                  <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
+                                      color={'white'}
+                                      onValueChange={handleHorizontalChange}
+                                      style={CardGridStyles.switch}
+                                      value={horizontal}/>
                 </ThemedView>
               </ThemedView>
             </ThemedView>
@@ -303,7 +328,7 @@ export default function ShareDeckScreen() {
             </ThemedView>
 
             <ThemedView style={{width: '100%'}}>
-              <TouchableOpacity style={[homeScreenStyles.ctaButton, {marginBlock: 45, marginBottom: 80}]} 
+              <TouchableOpacity style={[homeScreenStyles.ctaButton, {marginTop: 16}]} 
                                 onPress={handleShare}
                                 disabled={!valid}>
                 <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>

@@ -104,3 +104,12 @@ export interface CollectionRarityStat {
   amount: number;
   value: CardRarityENUM
 }
+
+export interface ShareContentProps {
+  ref: React.MutableRefObject<any>, 
+  name: string, 
+  quality: number,
+  length: number,
+  type: 'deck' | 'trade',
+  horizontal?: boolean
+}
