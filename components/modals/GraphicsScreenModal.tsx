@@ -57,6 +57,8 @@ export function GraphicsScreenModal() {
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
           <Image source={EXPORT_GRAPHIC_QUALITY} style={{width: '100%', height: 164}}></Image>
         </ThemedView>
+
+        <ThemedText style={styles.text}>{i18n.t('infographics_split_download')}</ThemedText>
       </ScrollView>
     </ThemedView>
   )

@@ -334,23 +334,6 @@ export function isCardPromoAndBattle(card: Card): boolean {
   return !isNotBattleCard(card) && isCardPromo(card);
 }
 
-export function convertBase64ToJpeg(base64Png: string, quality = 1): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx?.drawImage(img, 0, 0);
-      const jpegBase64 = canvas.toDataURL('image/jpeg', quality);
-      resolve(jpegBase64);
-    };
-    img.onerror = reject;
-    img.src = base64Png;
-  });
-}
-
 export const filterUniqueItems = (array: Card[]): { items: Card[]; ids: number[] } => {
   const uniqueMap = new Map<string, Card>();
   const filteredIdsSet = new Set<number>();
@@ -371,13 +354,13 @@ export const filterUniqueItems = (array: Card[]): { items: Card[]; ids: number[]
 };
 
 export const getDynamicHeight = (length: number, type: 'deck' | 'trade', horizontal?: boolean): number => {
-  const maxHeight = 2110;
-  const minHeight = 1105;
-  const midHeight = 1633;
-  const minTradeHeight = 1300;
+  const maxHeight = 2229;
+  const minHeight = 1182;
+  const midHeight = 1705;
+  const minTradeHeight = 1243;
 
-  const maxHorizontalHeight = 560;
-  const minHorizontalHeight = 360;
+  const maxHorizontalHeight = 581;
+  const minHorizontalHeight = 345;
 
   if (type === 'trade') { return minTradeHeight; }
 

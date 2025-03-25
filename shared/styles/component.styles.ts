@@ -650,7 +650,6 @@ export const filterStyles = StyleSheet.create({
     paddingRight: 16
   },
   expansionContainer: {
-    flex: 1, 
     padding: 10, 
     justifyContent: 'flex-start', 
     alignItems: 'center', 

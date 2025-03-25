@@ -28,7 +28,8 @@ import {
   DARK_ICON, 
   STEEL_ICON, 
   DRAGON_ICON, 
-  NORMAL_ICON
+  NORMAL_ICON,
+  SHINING_REVELRY_ICON
 } from "@/shared/definitions/sentences/path.sentences"
 
 interface GraphicSummaryProps {
@@ -42,7 +43,7 @@ export const GraphicSummary = ({data, styles}: GraphicSummaryProps) => {
   const firstRow: any[] = [
     { label: 'genetic_apex', image: GENETIC_APEX, width: 68, height: 30, value: data.geneticPackCardsLength },
     { label: 'mythical_island', image: MYTHICAL_ISLAND_MEW_ICON, width: 68, height: 34, value: data.islandPackCardsLength },
-    { label: 'smack_down', image: SMACK_DOWN, width: 70, height: 33, value: data.spacePackCardsLength },
+    { label: 'smack_down_short', image: SMACK_DOWN, width: 70, height: 33, value: data.spacePackCardsLength },
     { label: 'promo_a', image: PROMO_A_ICON, width: 69, height: 34, value: data.promoAPackCardsLength },
   ];
 
@@ -50,12 +51,13 @@ export const GraphicSummary = ({data, styles}: GraphicSummaryProps) => {
     { label: 'pikachu', image: GENETIC_APEX_PIKACHU_ICON, value: data.pikachuCardsLength },
     { label: 'mewtwo', image: GENETIC_APEX_MEWTWO_ICON, value: data.mewtwoCardsLength },
     { label: 'charizard', image: GENETIC_APEX_CHARIZARD_ICON, value: data.charizardCardsLength },
-    { label: 'dialga', image: SMACK_DOWN_DIALGA_ICON, value: data.dialgaCardsLength },
-    { label: 'palkia', image: SMACK_DOWN_PALKIA_ICON, value: data.palkiaCardsLength },
+    { label: 'dialga', image: SMACK_DOWN_DIALGA_ICON, value: data.dialgaCardsLength, width: 70, height: 35 },
+    { label: 'palkia', image: SMACK_DOWN_PALKIA_ICON, value: data.palkiaCardsLength, width: 70, height: 35 },
   ];
 
   const thirdRow: any[] = [
     { label: 'triumphant_light', image: TRIUMPH_LIGHT_ARCEUS_ICON,  width: 80, height: 34, value: data.triumphPackCardsLength },
+    { label: 'shining_revelry', image: SHINING_REVELRY_ICON,  width: 69, height: 34, value: data.shiningCardsLength },
   ];
 
   const gradeRow: any[] = [
@@ -145,10 +147,10 @@ export const GraphicSummary = ({data, styles}: GraphicSummaryProps) => {
         {
           firstRow.map((item, index) => {
             return (
-              <ThemedView style={{width: '23%'}} key={index.toString()}>
+              <ThemedView style={[{width: '25%'}, (index === firstRow.length - 1) && {width: '20%'}]} key={index.toString()}>
                 <ThemedView style={styles.summaryRow}>
                   <Image source={item.image} style={[styles.summaryImage, {width: item.width, height: item.height}]}></Image>
-                  <ThemedText style={[styles.summaryText, {width: 90, textOverflow: 'ellipsis', overflow: 'hidden'}]} 
+                  <ThemedText style={[styles.summaryText]} 
                               numberOfLines={1} 
                               ellipsizeMode="tail">{i18n.t(item.label)}
                   </ThemedText>
@@ -166,9 +168,9 @@ export const GraphicSummary = ({data, styles}: GraphicSummaryProps) => {
         {
           secondRow.map((item, index) => {
             return (
-              <ThemedView style={{width: '20%'}} key={index.toString()}>
+              <ThemedView style={{width: '21%'}} key={index.toString()}>
                 <ThemedView style={styles.summaryRow}>
-                  <Image source={item.image} style={[styles.summaryImage]}></Image>
+                  <Image source={item.image} style={[styles.summaryImage, item.width && {width: item.width}, item.height && {height: item.height}]}></Image>
                   <ThemedText style={styles.summaryText}>{i18n.t(item.label)}</ThemedText>
                   <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
                     {item.value}
@@ -184,7 +186,7 @@ export const GraphicSummary = ({data, styles}: GraphicSummaryProps) => {
         {
           thirdRow.map((item, index) => {
             return (
-              <ThemedView style={{width: '20%'}} key={index.toString()}>
+              <ThemedView style={{width: '23%'}} key={index.toString()}>
                 <ThemedView style={styles.summaryRow}>
                   <Image source={item.image} style={[styles.summaryImage, {width: item.width, height: item.height}]}></Image>
                   <ThemedText style={styles.summaryText}>{i18n.t(item.label)}</ThemedText>

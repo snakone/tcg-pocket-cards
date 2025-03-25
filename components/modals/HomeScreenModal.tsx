@@ -109,6 +109,7 @@ export function HomeScreenModal() {
         <ThemedText style={styles.text}>- {i18n.t('home_modal_filter_exclusive')}</ThemedText>
         <ThemedText style={styles.text}>- {i18n.t('home_modal_new_sort')}</ThemedText>
         <ThemedText style={styles.text}>- {i18n.t('home_modal_design')}</ThemedText>
+        <ThemedText style={styles.text}>- {i18n.t('home_modal_content')}</ThemedText>
         <ThemedText style={[styles.text, {marginBottom: 12}]}>{i18n.t('home_modal_want')} {i18n.t('home_modal_last')}</ThemedText>
       </ScrollView>
     </ThemedView>

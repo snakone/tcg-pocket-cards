@@ -61,7 +61,7 @@ export default function TradeCollage({
           <>
             <Image style={[
                 CardGridStyles.image, 
-                {width: 354}
+                {width: 355}
               ]} 
             source={getImageLanguage(lang, item)}/>        
           </>
@@ -83,7 +83,7 @@ export default function TradeCollage({
             <Image accessibilityLabel={'desired'} 
                   style={[
                 CardGridStyles.image, 
-                {width: 354}
+                {width: 355}
               ]} 
             source={getImageLanguage(lang, item)}/>        
           </>

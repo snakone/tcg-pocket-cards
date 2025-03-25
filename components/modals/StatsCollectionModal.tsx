@@ -1,11 +1,21 @@
+import { useState } from "react";
+import { ScrollView } from "react-native";
+import { useSharedValue } from "react-native-reanimated";
+import { Image } from 'expo-image';
+
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { sharedModalStyles } from "@/shared/styles/component.styles";
-import { useState } from "react";
-import { useSharedValue } from "react-native-reanimated";
 import { ThemedText } from "../ThemedText";
-import { ScrollView } from "react-native";
 import { ThemedView } from "../ThemedView";
 import ScrollIndicator from "../ui/ScrollIndicator";
+
+import { 
+  STATS_ACTION_BAR, 
+  STATS_EXPANSION_MENU, 
+  STATS_LIST, 
+  STATS_MAIN, 
+  STATS_SELECT_EXPANSION
+} from "@/shared/definitions/sentences/path.sentences";
 
 export function StatsCollectionModal() {
   const scrollY = useSharedValue(0);
@@ -39,7 +49,40 @@ export function StatsCollectionModal() {
                   scrollEventThrottle={16}
                   onContentSizeChange={handleContentSizeChange}
                   onLayout={handleLayout}>
-        <ThemedText style={[styles.title, {marginTop: 4}]}>{i18n.t('intro')}</ThemedText>
+        <ThemedText style={[styles.text, {marginTop: 4}]}>{i18n.t('stats_intro')}</ThemedText>
+        <ThemedText style={styles.title}>{i18n.t('intro')}</ThemedText>
+
+        <ThemedText style={styles.text}>{i18n.t('stats_action_bar')}</ThemedText>
+
+        <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
+          <Image source={STATS_ACTION_BAR} style={{width: '100%', height: 155}}></Image>
+        </ThemedView>
+
+        <ThemedText style={styles.text}>{i18n.t('stats_select_expansion')}</ThemedText>
+
+        <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
+          <Image source={STATS_SELECT_EXPANSION} style={{width: '100%', height: 48}}></Image>
+        </ThemedView>
+
+        <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
+          <Image source={STATS_EXPANSION_MENU} style={{width: '100%', height: 464}}></Image>
+        </ThemedView>
+
+
+        <ThemedText style={styles.text}>{i18n.t('stats_button_list')}</ThemedText>
+
+        <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
+          <Image source={STATS_LIST} style={{width: '100%', height: 470}}></Image>
+        </ThemedView>
+
+        <ThemedText style={styles.text}>{i18n.t('stats_main_info')}</ThemedText>
+
+        <ThemedView style={{alignItems: 'center', marginBottom: 30}}>
+          <Image source={STATS_MAIN} style={{width: '100%', height: 364}}></Image>
+        </ThemedView>
+
+        <ThemedText style={styles.text}>{i18n.t('stats_end_intro')}</ThemedText>
+        <ThemedText style={styles.text}>{i18n.t('stats_end_finish')}</ThemedText>
       </ScrollView>
     </ThemedView>
   )

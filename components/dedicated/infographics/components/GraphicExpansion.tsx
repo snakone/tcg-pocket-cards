@@ -22,7 +22,8 @@ import {
   SMACK_DOWN_DIALGA_ICON, 
   SMACK_DOWN_PALKIA_ICON, 
   TRIUMPH_LIGHT_ARCEUS_ICON, 
-  PROMO_A_ICON 
+  PROMO_A_ICON, 
+  SHINING_REVELRY_ICON
 } from '@/shared/definitions/sentences/path.sentences';
 
 interface GraphicExpansionProps {
@@ -181,6 +182,23 @@ export const GraphicExpansion = ({styles, data, language}: GraphicExpansionProps
       },
       main: {
         list: data.triumphCards,
+        divider: true
+      }
+    },
+    {
+      intro: {
+        image: {
+          href: SHINING_REVELRY_ICON,
+          width: 92,
+          height: 39,
+        },
+        label: 'shining_revelry',
+        value: data.shinyCardsLength,
+        description: 'shining_revelry_description',
+        bottom: 20
+      },
+      main: {
+        list: data.shinyCards,
         divider: true
       }
     },

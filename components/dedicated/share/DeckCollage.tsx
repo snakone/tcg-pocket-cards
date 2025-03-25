@@ -97,7 +97,7 @@ export default function DeckCollage({
   };
 
   const renderItem = useCallback(({item, index}: {item: Card, index: number}) => (
-    <View style={[CardGridStyles.imageContainer, {marginHorizontal: 11}]}>
+    <View style={[CardGridStyles.imageContainer]}>
       <View style={{flex: 1, backgroundColor: 'white', borderRadius: 12, overflow: 'hidden'}}>
         <View>
           { item && 
@@ -105,7 +105,7 @@ export default function DeckCollage({
             <Image accessibilityLabel={item?.name[lang]} 
                   style={[
                 CardGridStyles.image, 
-                {width: horizontal ? 167 : 354}
+                {width: horizontal ? 184.1 : 372.3}
               ]} 
             source={getImageLanguage(lang, (item?.id))}/>        
           </>
@@ -147,8 +147,8 @@ export default function DeckCollage({
                               key={key}
                               source={image}
                               style={{
-                                width: horizontal ? 28 : 40,
-                                height: horizontal ? 28 : 40,
+                                width: horizontal ? 26 : 40,
+                                height: horizontal ? 26 : 40,
                                 position: 'relative',
                                 top: 1
                               }}

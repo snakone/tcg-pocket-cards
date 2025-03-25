@@ -48,7 +48,8 @@ export class FilterSearch {
       [EXPANSION.PALKIA]: null,
       [EXPANSION.PROMO_A4]: null,
       [EXPANSION.ARCEUS]: null,
-      [EXPANSION.PROMO_A5]: null
+      [EXPANSION.PROMO_A5]: null,
+      [EXPANSION.SHINY]: null
     };
 
     this.favorite = {included: null, not_favorite: null};
@@ -62,6 +63,7 @@ export class FilterSearch {
       [CardRarityENUM.DOUBLE]: null,
       [CardRarityENUM.ART]: null,
       [CardRarityENUM.SUPER]: null,
+      // [CardRarityENUM.RAINBOW]: null,
       [CardRarityENUM.INMERSIVE]: null,
       [CardRarityENUM.CROWN]: null,
       [CardRarityENUM.PROMO]: null,
@@ -117,7 +119,9 @@ export class FilterSearch {
       [CardSpecialConditionENUM.INACTIVE]: null,
       [CardSpecialConditionENUM.ARCEUS_LINK]: null,
       [CardSpecialConditionENUM.FORCE_SWITCH]: null,
-      [CardSpecialConditionENUM.PLAY_CARDS]: null
+      [CardSpecialConditionENUM.PLAY_CARDS]: null,
+      [CardSpecialConditionENUM.END_TURN]: null,
+      [CardSpecialConditionENUM.RANDOM_ATTACK]: null
     };
   }
 
@@ -137,7 +141,8 @@ export class FilterSearch {
       [EXPANSION.PALKIA]: null,
       [EXPANSION.PROMO_A4]: null,
       [EXPANSION.ARCEUS]: null,
-      [EXPANSION.PROMO_A5]: null
+      [EXPANSION.PROMO_A5]: null,
+      [EXPANSION.SHINY]: null
     };
   }
 

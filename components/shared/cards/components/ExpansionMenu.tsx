@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
 import React, { MutableRefObject } from "react";
-import { View, TouchableOpacity, ScrollView, Platform } from "react-native";
+import { View, TouchableOpacity, ScrollView } from "react-native";
 import Animated from 'react-native-reanimated';
 
 import { ThemedView } from "@/components/ThemedView";
@@ -15,6 +15,8 @@ import {
   GENETIC_APEX_PACKS,
   MYTHICAL_ISLAND_MEW_ICON,
   MYTHICAL_ISLAND_PACKS, 
+  SHINING_PACKS, 
+  SHINING_REVELRY_ICON, 
   SMACK_DOWN,
   SMACK_DOWN_PACKS,
   TRIUMPH_LIGHT_ARCEUS_ICON,
@@ -50,8 +52,7 @@ export const ExpansionsMenu = React.memo(({filterObj, handleExpansion }: Expansi
           <View
             style={[
               TabsMenuStyles.separator,
-              { width: '100%', height: 2, marginTop: 4, top: 2, marginBottom: -4 },
-              Platform.OS !== 'web' && {marginBottom: 16}
+              { width: '100%', height: 2, marginTop: 4, marginBottom: 12 },
             ]}
           ></View>
         </ThemedView>
@@ -75,7 +76,7 @@ export const ExpansionsMenu = React.memo(({filterObj, handleExpansion }: Expansi
           <View
             style={[
               TabsMenuStyles.separator,
-              { width: '100%', height: 2, marginTop: 4, marginBottom: 20 },
+              { width: '100%', height: 2, marginTop: 4, marginBottom: 12 },
             ]}
           ></View>
         </ThemedView>
@@ -99,8 +100,7 @@ export const ExpansionsMenu = React.memo(({filterObj, handleExpansion }: Expansi
           <View
             style={[
               TabsMenuStyles.separator,
-              { width: '100%', height: 2, marginTop: 4, marginBottom: 56 },
-              Platform.OS !== 'web' && {marginBottom: 16}
+              { width: '100%', height: 2, marginTop: 4, marginBottom: 12 },
             ]}
           ></View>
         </ThemedView>
@@ -115,6 +115,30 @@ export const ExpansionsMenu = React.memo(({filterObj, handleExpansion }: Expansi
                 color=""
                 propFilter="expansion"
                 keyFilter={13 + index}
+                filterObj={filterObj}
+              >
+                <Image source={icon} style={[filterStyles.packImage, {height: 118}]} />
+              </StateButton>
+            ))}
+          </ThemedView>
+          <View
+            style={[
+              TabsMenuStyles.separator,
+              { width: '100%', height: 2, marginTop: 4, marginBottom: 12 },
+            ]}
+          ></View>
+        </ThemedView>
+
+        <ThemedView style={filterStyles.expansionContainer}>
+          <Image source={SHINING_REVELRY_ICON} style={{ width: 115, height: 57 }}></Image>
+          <ThemedView style={{ flexDirection: 'row', marginBlock: 24, gap: 10 }}>
+            {SHINING_PACKS.map((icon: any, index: number) => (
+              <StateButton
+                key={index}
+                isImage={true}
+                color=""
+                propFilter="expansion"
+                keyFilter={15 + index}
                 filterObj={filterObj}
               >
                 <Image source={icon} style={[filterStyles.packImage, {height: 118}]} />

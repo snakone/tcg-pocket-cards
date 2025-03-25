@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { captureRef } from 'react-native-view-shot';
 import { Subject } from 'rxjs';
 
-import { convertBase64ToJpeg, getDynamicHeight } from '@/shared/definitions/utils/functions';
+import { getDynamicHeight } from '@/shared/definitions/utils/functions';
 import { SettingsState } from '@/hooks/settings.reducer';
 import { ShareContentProps } from '@/shared/definitions/interfaces/global.interfaces';
 
@@ -42,7 +42,7 @@ export default class ShareService {
 
       if (Platform.OS === 'web') {
         const link = document.createElement('a');
-        link.href = await convertBase64ToJpeg(localUri, quality || 1);
+        link.href = localUri;
         link.download = name.endsWith('.jpeg') ? name : `${name}.jpeg` || 'deck.jpeg';
         document.body.appendChild(link);
         link.click();
@@ -71,7 +71,7 @@ export default class ShareService {
 
       if (Platform.OS === 'web') {
         const link = document.createElement('a');
-        link.href = await convertBase64ToJpeg(localUri, quality);
+        link.href = localUri;
         link.download = name.endsWith('.jpeg') ? name : `${name}.jpeg` || 'infographic-tcg-pocket-cards.jpeg';
         document.body.appendChild(link);
         link.click();

@@ -1,7 +1,6 @@
 import { InteractionManager, StyleSheet, View } from "react-native";
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 
-import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { AppContext } from "@/app/_layout";
@@ -86,16 +85,10 @@ export function GraphicCollage({
   ];
 
   useEffect(() => {
-    const start = async () => {
-      await new Promise(resolve => 
-        InteractionManager.runAfterInteractions(() => resolve(null))
-      );
-
-      makeAllPictures();
-    }
-
-    start();
+    setTimeout(() => makeAllPictures(), 2000);
   }, []);
+
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
   async function makeAllPictures(): Promise<void> {
     for (const ref of references) {
@@ -114,6 +107,7 @@ export function GraphicCollage({
         ref.func(false);
       }
 
+      await delay(250);
     }
     onFinish();
   }
@@ -227,11 +221,13 @@ export function GraphicCollage({
   const { data: promo5Cards } = getCards(EXPANSION.PROMO_A5);
   const { data: specialCards, length: specialCardsLength } = getCards(EXPANSION.SPECIAL_MISSION);
   const { data: triumphCards } = getCards(EXPANSION.ARCEUS);
+  const { data: shinyCards, length: shinyCardsLength } = getCards(EXPANSION.SHINY);
 
   const { length: geneticPackCardsLength } = getCardsExpansion(CardExpansionENUM.GENETIC_APEX);
   const { length: islandPackCardsLength } = getCardsExpansion(CardExpansionENUM.MYTHICAL_ISLAND);
   const { length: spacePackCardsLength } = getCardsExpansion(CardExpansionENUM.SPACE_TIME_SMACKDOWN);
   const { length: triumphPackCardsLength } = getCardsExpansion(CardExpansionENUM.TRIUMPH_LIGHT);
+  const { length: shiningCardsLength } = getCardsExpansion(CardExpansionENUM.SHINING_REVELRY);
   const { data: promoAPackCards, length: promoAPackCardsLength } = getCardsExpansion(CardExpansionENUM.PROMO_A);
 
   const { data: rareCards, length: rareCardsLength } = getCardRarity(CardRarityENUM.RARE);
@@ -240,6 +236,7 @@ export function GraphicCollage({
   const { data: superCards, length: superCardsLength } = getCardRarity(CardRarityENUM.SUPER);
   const { data: inmersiveCards, length: inmersiveCardsLength } = getCardRarity(CardRarityENUM.INMERSIVE);
   const { data: crownCards, length: crownCardsLength } = getCardRarity(CardRarityENUM.CROWN);
+  const { data: rainbowCards, length: rainbowCardsLength } = getCardRarity(CardRarityENUM.CROWN); // CHANGE
 
   const { data: grassCards, length: grassCardsLength } = getCardByType(PokemonTypeENUM.GRASS);
   const { data: darkCards, length: darkCardsLength } = getCardByType(PokemonTypeENUM.DARK);
@@ -293,6 +290,7 @@ export function GraphicCollage({
   const { data: arceusCondition, length: arceusConditionLength } = getCondition(CardSpecialConditionENUM.ARCEUS_LINK);
   const { data: playCardsCondition, length: playCardsConditionLength } = getCondition(CardSpecialConditionENUM.PLAY_CARDS);
   const { data: randomCondition, length: randomConditionLength } = getCondition(CardSpecialConditionENUM.RANDOM_ATTACK);
+  const { data: endTurnCondition, length: endTurnConditionLength } = getCondition(CardSpecialConditionENUM.END_TURN);
 
   const SUMMARY_DATA: any = {
     geneticPackCardsLength, islandPackCardsLength, spacePackCardsLength, promoAPackCardsLength,
@@ -306,7 +304,8 @@ export function GraphicCollage({
     flipConditionLength, nothingConditionLength, discardConditionLength, addConditionLength, cornerConditionLength,
     withdrawConditionLength, retireConditionLength, callConditionLength, inactiveConditionLength,
     arceusConditionLength, weakGrassCardsLength, weakFireCardsLength, weakWaterCardsLength, weakElectricCardsLength,
-    weakPsychicCardsLength, weakFightCardsLength, weakDarkCardsLength, weakSteelCardsLength
+    weakPsychicCardsLength, weakFightCardsLength, weakDarkCardsLength, weakSteelCardsLength, shiningCardsLength,
+    rainbowCardsLength
   };
 
   const EXPANSION_DATA: any = {
@@ -315,13 +314,13 @@ export function GraphicCollage({
     islandCards, spacePackCardsLength, dialgaCardsLength, dialgaCards, palkiaCardsLength, palkiaCards,
     sharedSmackLength, sharedSmack, triumphPackCardsLength, triumphCards, promoAPackCardsLength, promoAPackCards,
     promo1Cards, promo2Cards, promo3Cards, promo4Cards, promo5Cards, premiumCardsLength, 
-    specialCards, premiumCards, specialCardsLength
+    specialCards, premiumCards, specialCardsLength, shinyCardsLength, shinyCards
   };
 
   const GRADES_DATA: any = {
     rareCardsLength, rareCards, doubleCardsLength, doubleCards, artCardsLength, artCards,
     superCardsLength, superCards, inmersiveCardsLength, inmersiveCards,
-    crownCardsLength, crownCards
+    crownCardsLength, crownCards, rainbowCards, rainbowCardsLength
   };
 
   const TYPES_DATA: any = {
@@ -364,7 +363,7 @@ export function GraphicCollage({
     withdrawConditionLength, withdrawCondition, retireConditionLength, retireCondition,
     callConditionLength, callCondition, inactiveConditionLength, inactiveCondition,
     playCardsConditionLength, playCardsCondition, randomConditionLength, randomCondition,
-    arceusConditionLength, arceusCondition
+    arceusConditionLength, arceusCondition, endTurnConditionLength, endTurnCondition
   };
 
   return (

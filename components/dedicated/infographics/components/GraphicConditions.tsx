@@ -68,6 +68,7 @@ export const GraphicConditions = ({data, styles, language}: GraphicConditionsPro
     { label: 'condition_play_cards', value: data.playCardsConditionLength, list: data.playCardsCondition, getWidth: true },
     { label: 'condition_random_attack', value: data.randomConditionLength, list: data.randomCondition, getWidth: true },
     { label: 'arceus_link', value: data.arceusConditionLength, list: data.arceusCondition, getWidth: true },
+    { label: 'condition_end_turn', value: data.endTurnConditionLength, list: data.endTurnCondition, getWidth: true },
   ];
   
   return (

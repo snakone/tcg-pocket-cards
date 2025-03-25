@@ -129,7 +129,8 @@ import {
   DARKRAI_COIN,
   GLACEON_COIN,
   LEAFEON_COIN,
-  MANAPHY_COIN
+  MANAPHY_COIN,
+  RAINBOW_RARITY
 } from "../sentences/path.sentences";
 
 import { FilterSearch } from "../classes/filter.class";
@@ -152,7 +153,7 @@ export const MENU_HELP: ItemWithRoute[] = [
   { label: 'config', icon: 'washer.circle', route: 'settings' },
 ];
 
-export const APP_VERSION = '1.3.1';
+export const APP_VERSION = '1.4.0';
 export const MENU_WIDTH = 250;
 export const MENU_HEIGHT = 225 + (45 * [...MENU_LIST, ...MENU_HELP].length);
 export const MENU_HEIGHT_ANDROID = 180 + (45 * [...MENU_LIST, ...MENU_HELP].length);
@@ -223,13 +224,14 @@ export const INITIAL_ATTACK_SORT_DATA: SortItem[] = [
   { id: 5, label: 'order_by_number_energy', icon: 'pin', active: false, order: 'desc' },
 ];
 
-export const RARITY_MAP: Record<CardRarityENUM, {image: any, amount: number}> = {
+export const RARITY_MAP: Record<CardRarityENUM, {image: any, amount: number | null}> = {
   [CardRarityENUM.COMMON]: { image: NORMAL_RARITY, amount: 1 },
   [CardRarityENUM.UNCOMMON]: { image: NORMAL_RARITY, amount: 2 },
   [CardRarityENUM.RARE]: { image: NORMAL_RARITY, amount: 3 },
   [CardRarityENUM.DOUBLE]: { image: NORMAL_RARITY, amount: 4 },
   [CardRarityENUM.ART]: { image: STAR_RARITY, amount: 1 },
   [CardRarityENUM.SUPER]: { image: STAR_RARITY, amount: 2 },
+  // [CardRarityENUM.RAINBOW]: { image: RAINBOW_RARITY, amount: null },
   [CardRarityENUM.INMERSIVE]: { image: STAR_RARITY, amount: 3 },
   [CardRarityENUM.CROWN]: { image: CROWN_RARITY, amount: 1 },
   [CardRarityENUM.PROMO]: { image: null, amount: 0 },
@@ -266,7 +268,7 @@ export const EXPANSION_MAP: Record<CardExpansionENUM, CardPackTag> = {
   [CardExpansionENUM.MYTHICAL_ISLAND]: { label: 'A', tag: 'A1a', color: 'white', background: 'black', promo_amount: 'P-A' },
   [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: { label: 'A', tag: 'A2', color: 'white', background: 'black', promo_amount: 'P-A' },
   [CardExpansionENUM.TRIUMPH_LIGHT]: { label: 'A', tag: 'A2a', color: 'white', background: 'black', promo_amount: 'P-A' },
-  [CardExpansionENUM.RAINBOW_FESTIVAL]: { label: 'A', tag: 'A2b', color: 'white', background: 'black', promo_amount: 'P-A' },
+  [CardExpansionENUM.SHINING_REVELRY]: { label: 'A', tag: 'A2b', color: 'white', background: 'black', promo_amount: 'P-A' },
 }
 
 export const CONDITION_MAP: Record<CardSpecialConditionENUM, {label: string}> = {
@@ -292,7 +294,8 @@ export const CONDITION_MAP: Record<CardSpecialConditionENUM, {label: string}> = 
   [CardSpecialConditionENUM.FORCE_SWITCH]: { label: 'condition_force_switch' },
   [CardSpecialConditionENUM.ARCEUS_LINK]: { label: 'condition_arceus' },
   [CardSpecialConditionENUM.PLAY_CARDS]: { label: 'condition_play_cards' },
-  [CardSpecialConditionENUM.RANDOM_ATTACK]: { label: 'condition_random_attack' }
+  [CardSpecialConditionENUM.RANDOM_ATTACK]: { label: 'condition_random_attack' },
+  [CardSpecialConditionENUM.END_TURN]: { label: 'condition_end_turn' }
 }
 
 export const CONDITION_ATTACK = [
@@ -323,7 +326,8 @@ export const CONDITION_OTHERS = [
   CardSpecialConditionENUM.CALL,
   CardSpecialConditionENUM.INACTIVE,
   CardSpecialConditionENUM.FORCE_SWITCH,
-  CardSpecialConditionENUM.PLAY_CARDS
+  CardSpecialConditionENUM.PLAY_CARDS,
+  CardSpecialConditionENUM.END_TURN
 ];
 
 export const CONDITION_LINKS = [
@@ -337,6 +341,7 @@ export const EXPANSION_POINTS_RARITY: Record<CardRarityENUM, number> = {
   [CardRarityENUM.DOUBLE]: 500,
   [CardRarityENUM.ART]: 400,
   [CardRarityENUM.SUPER]: 1250,
+  // [CardRarityENUM.RAINBOW]: 1500,
   [CardRarityENUM.INMERSIVE]: 1500,
   [CardRarityENUM.CROWN]: 2500,
   [CardRarityENUM.PROMO]: 0,
@@ -368,7 +373,7 @@ export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.MYTHICAL_ISLAND]: 86,
   [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 207,
   [CardExpansionENUM.TRIUMPH_LIGHT]: 96,
-  [CardExpansionENUM.RAINBOW_FESTIVAL]: 110
+  [CardExpansionENUM.SHINING_REVELRY]: 110
 }
 
 export const COIN_MAP: Record<string, any> = {
@@ -542,7 +547,7 @@ export const PACK_PER_EXPANSION_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 2,
   [CardExpansionENUM.PROMO_A]: 0,
   [CardExpansionENUM.TRIUMPH_LIGHT]: 1,
-  [CardExpansionENUM.RAINBOW_FESTIVAL]: 1
+  [CardExpansionENUM.SHINING_REVELRY]: 1
 }
 
 export const COLLECTION_LANGUAGE_MAP: Record<CardLanguageENUM, string> = {
