@@ -126,7 +126,7 @@ export default function PreviewList({
             <ThemedView style={[collectionStyles.remove, {width: 13, height: 13}]}>
                 <ThemedText style={[
                   {color: 'crimson', fontSize: 27, top: -4}, 
-                  Platform.OS !== 'web' && {fontSize: 20, top: -10}]}>-</ThemedText>
+                  Platform.OS !== 'web' && {fontSize: 17, top: -9, transform: [{scale: 1.4}]}]}>-</ThemedText>
             </ThemedView>
             <Image accessibilityLabel={item?.name[lang]} 
                     style={[

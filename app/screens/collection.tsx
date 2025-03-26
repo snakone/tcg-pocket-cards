@@ -31,8 +31,9 @@ import Storage from '@/core/storage/storage.service';
 import { CardLanguageENUM } from '@/shared/definitions/enums/card.enums';
 import { CollectionUser } from '@/shared/definitions/classes/collection.class';
 import { UserCollection } from '@/shared/definitions/interfaces/global.interfaces';
+import { useConfirmation } from '@/core/providers/ConfirmationProvider';
 
-export default function CardsScreen() {
+export default function CollectionCardsScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const {i18n} = useI18n();
   const context = useContext(AppContext);
@@ -43,17 +44,20 @@ export default function CardsScreen() {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const router = useRouter();
-  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const [lang] = useState<LanguageType>(state.settingsState.language);
   const [filtered, setFiltered] = useState<Card[]>([]);
   const flatListRef = useRef<FlatList<Card> | null>(null);
-  const [collection, setCollection] = useState<UserCollection[]>([]);
   const [langCollection, setLangCollection] = useState<CardLanguageENUM>(state.settingsState.collectionLanguage);
+  const { confirm } = useConfirmation();
+
+  const collection = useMemo(() => state.settingsState.collection, [state.settingsState.collection]);
 
   const memoizedMenu = useMemo(() => {
     return <CollectionCardMenu isVisible={isMenuVisible} 
                                onClose={onMenuClose}
                                animatedStyle={{}}
-                               selectedLanguage={langCollection}/>
+                               selectedLanguage={langCollection}
+                               onViewStats={onViewStats}/>
   }, [isMenuVisible, langCollection]);
 
   const memoizedSort = useMemo(() => {
@@ -76,20 +80,37 @@ export default function CardsScreen() {
     }
   }, [state.filterState.sort]);
 
-  function onMenuClose({unmark, markAll, language}: any): void {
+  function onViewStats(language: CardLanguageENUM): void {
+    setIsMenuVisible(false);
+
+    setTimeout(() => {
+      SoundService.play('CHANGE_VIEW');
+      dispatch({type: 'SET_COLLECTION_LANGUAGE', value: language});
+      dispatch({type: 'SET_NAVIGATING', value: true});
+      router.push('/screens/collection_stats');
+    }, 100);
+
+  }
+
+  async function onMenuClose({unmark, markAll, language}: any): Promise<void> {
     setIsMenuVisible(false);
 
     if (markAll) {
       markAllCards(language);
     } else if (unmark) {
-      unMarkAllCards(language);
+      const userConfirmed = await confirm("unmark", "unmark_cards");
+      if (userConfirmed) {
+        unMarkAllCards(language);
+      }
     }
 
     if (language === undefined) {
       language = CardLanguageENUM.EN;
     }
 
-    setLangCollection(language);
+    if (langCollection !== language) {
+      setLangCollection(language);
+    }
   }
 
   function markAllCards(language: CardLanguageENUM): void {
@@ -117,12 +138,16 @@ export default function CardsScreen() {
   }
 
   useEffect(() => {
-    setCollection(state.settingsState.collection);
-
+    setTimeout(() => {
+      dispatch({type: 'SET_NAVIGATING', value: false});
+    }, 1000);
+    
     return (() => {
-      dispatch({type: 'SET_COLLECTION_LANGUAGE', value: CardLanguageENUM.EN});
+      dispatch({type: 'SET_NAVIGATING', value: false});
     });
-  }, [state.settingsState.collection]);
+
+
+  }, []);
   
   function onClose(): void {
     setIsSortVisible(false);
@@ -278,7 +303,7 @@ export default function CardsScreen() {
         source={getImageLanguage69x96(lang, item.id)}/>
       </TouchableOpacity>
     </View>
-  )}, [collection, lang, langCollection]);
+  )}, [lang, langCollection]);
 
   const keyExtractor = useCallback((item: Card) => String(item.id), []);
 

@@ -3,21 +3,18 @@ import { TouchableOpacity } from "react-native";
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
 import { TYPE_MAP } from "@/shared/definitions/utils/constants";
-import { CardGridStyles, CreateScreenStyles } from "@/shared/styles/component.styles";
-import { AppState } from '@/hooks/root.reducer';
-import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
+import { CreateScreenStyles } from "@/shared/styles/component.styles";
 import { Attack } from '@/shared/definitions/interfaces/card.interfaces';
 import { LanguageType } from '@/shared/definitions/types/global.types';
 
   export const renderAttackItem = (
-    {item, lang, onPress}: {item: Attack, lang: LanguageType, onPress: any}
+    {item, lang, onPress, disabled}: {item: Attack, lang: LanguageType, onPress: any, disabled: boolean}
   ) => {
 
     return (
       <ThemedView style={[CreateScreenStyles.deckItem]}>
-        <TouchableOpacity style={{flex: 1}} onPress={onPress}>
+        <TouchableOpacity style={{flex: 1}} onPress={onPress} disabled={disabled}>
           <ThemedView style={{flexDirection: 'row'}}>
             <ThemedView style={[CreateScreenStyles.deckName, {justifyContent: 'space-between', width: '100%', minHeight: 30}]}>
               <ThemedText style={[{left: 6, color: 'none'}]}>

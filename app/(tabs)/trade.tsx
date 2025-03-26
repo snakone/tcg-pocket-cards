@@ -66,13 +66,15 @@ export default function TradeScreen() {
 
   function handleClick(item: TradeItem): void {
     SoundService.play('CHANGE_VIEW');
+    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/create_trade?trade_id=${encodeURIComponent(item.id)}`);
   }
 
   const renderItem = useCallback(({item, index}: {item: TradeItem, index: number}) => {
     const rarity = state.cardState.cards.find(card => item.desired && item.desired.includes(card.id))?.rarity;
     return (
-      <TouchableOpacity onPress={() => handleClick(item)} 
+      <TouchableOpacity onPress={() => handleClick(item)}
+                        disabled={state.cardState.navigating}
                         style={[
                             {paddingHorizontal: Platform.OS !== 'web' ? 0 : 16},
                             index === 0 && {paddingTop: 12}
@@ -80,7 +82,7 @@ export default function TradeScreen() {
         <TradeUserItem item={item} rarity={rarity} state={state}/>
       </TouchableOpacity>
     )
-  }, [state.cardState.cards, state.settingsState.language]);
+  }, [state.cardState.cards, state.settingsState.language, state.cardState.navigating]);
 
   const renderEmpty = useCallback(() => {
     return <ThemedText style={{ paddingVertical: 12, paddingHorizontal: Platform.OS !== 'web' ? 6 : 22}}>
@@ -90,6 +92,7 @@ export default function TradeScreen() {
 
   function handleTrade(): void {
     SoundService.play('POP_PICK');
+    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/create_trade`);
   }
 
@@ -103,14 +106,14 @@ export default function TradeScreen() {
           trades.length >= MAX_CONTENT && {opacity: 0.5}
         ]} 
             onPress={() => handleTrade()}
-            disabled={trades.length >= MAX_CONTENT}>
+            disabled={trades.length >= MAX_CONTENT || state.cardState.navigating}>
           <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>
             {i18n.t('make_a_trade')}
           </ThemedText>
         </TouchableOpacity>
       </ThemedView>
       )
-  }, [trades]);
+  }, [trades, state.cardState.navigating]);
 
   return (
     <>

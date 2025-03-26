@@ -50,6 +50,7 @@ export default function ProfileScreen() {
 
   function goToCollection(): void {
     SoundService.play('CHANGE_VIEW');
+    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push('/screens/collection');
   }
 
@@ -121,13 +122,17 @@ export default function ProfileScreen() {
             </ThemedView>
           </ThemedView>
           
-          <TouchableOpacity onPress={goToCollection}>
+          <TouchableOpacity onPress={goToCollection} disabled={state.cardState.navigating}>
             <ThemedView style={[TabsMenuStyles.user, {marginTop: 16, width: 275}]}>
               <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                <MaterialIcons name="style" style={[styles.editInput, {fontSize: 23, right: 'auto', left: 12, top: 7}, i18n.locale === 'ja' && {top: 9}]} />
+                <MaterialIcons name="style" style={[
+                    styles.editInput, 
+                    {fontSize: 23, right: 'auto', left: 12, top: 7}, i18n.locale === 'ja' && {top: 9},
+                    Platform.OS === 'android' && {top: 5}
+                  ]} />
                 <ThemedText style={[
-                    styles.input, {fontSize: 16, width: 207, paddingVertical: 8, left: 34},
-                    i18n.locale === 'ja' && {top: 1}
+                    styles.input, {fontSize: 14, width: 207, paddingVertical: 8, left: 34},
+                    i18n.locale === 'ja' && {top: 1},
                   ]}>{i18n.t('my_collection')}</ThemedText>
                 <ThemedText style={{textAlign: 'right', minWidth: 50}}>{collection}</ThemedText>
               </ThemedView>
@@ -233,7 +238,7 @@ const styles = StyleSheet.create({
   input: {
     width: 275,
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 16,
     paddingVertical: 6,
     paddingInline: 18,
     borderRadius: 50,
@@ -245,7 +250,7 @@ const styles = StyleSheet.create({
   editInput: {
     position: 'absolute', 
     right: 12, 
-    top: 9, 
+    top: 7, 
     color: Colors.light.icon, 
     fontSize: 20, 
     opacity: 0.8

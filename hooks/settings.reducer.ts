@@ -96,7 +96,7 @@ export const settingsReducer = (state: SettingsState, action: SettingsAction): S
         } else {
           state.collection = [...state.collection, new CollectionUser(action.value.id, action.value.lang)];
         }
-        return { ...state, collection: state.collection.slice() };
+        return { ...state };
       }
     case 'REMOVE_FROM_COLLECTION': 
       {
@@ -109,14 +109,14 @@ export const settingsReducer = (state: SettingsState, action: SettingsAction): S
         if (item && areAllAmountsZero(item)) {
           state.collection = state.collection.filter(coll => coll.id !== action.value.id);
         }
-        return { ...state, collection: state.collection.slice() };
+        return { ...state };
       }   
     case 'REMOVE_TRADE':
         return { ...state, trades: state.trades.filter(d => d.id !== action.value) };
     case 'RESET_COLLECTION': 
     {
       state.collection.forEach(coll => coll.amount[action.value] = 0);
-      return { ...state, collection: [...state.collection] };
+      return { ...state };
     }
     case 'RESET_SETTINGS': 
     {

@@ -35,7 +35,8 @@ export default function CollectionCardMenu({
   isVisible,
   onClose,
   animatedStyle,
-  selectedLanguage
+  selectedLanguage,
+  onViewStats
 }: TabMenuCollection) {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
@@ -46,15 +47,10 @@ export default function CollectionCardMenu({
   const [markAll, setMarkAll] = useState<boolean>(false);
   const [unmark, setUnmark] = useState<boolean>(false);
   const [language, setLanguage] = useState<CardLanguageENUM>(selectedLanguage);
-  const router = useRouter();
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE')
   }, []);
-
-  useEffect(() => {
-    setLanguage(state.settingsState.collectionLanguage);
-  }, [state.settingsState.collectionLanguage]);
 
   async function closeMenu(): Promise<void> {
     await playSound();
@@ -64,7 +60,6 @@ export default function CollectionCardMenu({
   function handleLanguage(value: CardLanguageENUM): void {
     SoundService.play('POP_PICK')
     setLanguage(value);
-    dispatch({type: 'SET_COLLECTION_LANGUAGE', value});
   }
 
   function handleMark(value: boolean): void {
@@ -76,8 +71,7 @@ export default function CollectionCardMenu({
   }
 
   function goToStats(): void {
-    SoundService.play('CHANGE_VIEW'); 
-    router.push('/screens/collection_stats');
+    onViewStats(language);
   }
 
   return (
@@ -144,12 +138,13 @@ export default function CollectionCardMenu({
 
             <ThemedText style={{paddingInline: 12, marginTop: 6, fontSize: 13}}>{'* ' + i18n.t('apply_to_language')}</ThemedText>
 
-            <TouchableOpacity style={[
-              homeScreenStyles.ctaButton,
-              offersStyles.statsBtn,
-              Platform.OS !== 'web' && {marginBottom: 16}
-            ]} 
-                              onPress={() => goToStats()}>
+            <TouchableOpacity onPress={() => goToStats()}
+                              disabled={state.cardState.navigating}
+                              style={[
+                                homeScreenStyles.ctaButton,
+                                offersStyles.statsBtn,
+                                Platform.OS !== 'web' && {marginBottom: 16}
+                              ]}>
               <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>
                 {i18n.t('view_stats')}
               </ThemedText>

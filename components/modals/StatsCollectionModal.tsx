@@ -75,6 +75,7 @@ export function StatsCollectionModal() {
           <Image source={STATS_LIST} style={{width: '100%', height: 470}}></Image>
         </ThemedView>
 
+        <ThemedText style={styles.title}>{i18n.t('detail')}</ThemedText>
         <ThemedText style={styles.text}>{i18n.t('stats_main_info')}</ThemedText>
 
         <ThemedView style={{alignItems: 'center', marginBottom: 30}}>

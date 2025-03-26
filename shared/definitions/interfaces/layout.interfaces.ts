@@ -24,6 +24,7 @@ export interface TabMenuCards extends TabMenu {
 
 export interface TabMenuCollection extends TabMenu {
   selectedLanguage: CardLanguageENUM;
+  onViewStats: (language: CardLanguageENUM) => void
 }
 
 export interface TabDesiredMenu extends TabMenu {
@@ -47,6 +48,7 @@ export interface RouteItem {
   onClick: () => void;
   children: React.ReactNode;
   item: IconItemWithModal;
+  disabled: boolean;
 }
 
 export interface IconItemWithModal {

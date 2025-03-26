@@ -32,7 +32,7 @@ export default function ShareTradeScreen() {
   const { trade_id } = useLocalSearchParams<{ trade_id: string }>();
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
-  const { state } = context;
+  const { state, dispatch } = context;
   const [trade, setTrade] = useState<TradeItem>();
   const [loading, setLoading] = useState(false);
   const shareService = useMemo(() => new ShareService(), []);
@@ -63,6 +63,12 @@ export default function ShareTradeScreen() {
     const cards = state.cardState.cards.filter(card => trade?.desired.includes(card.id));
     setRarity(cards[0] && cards[0].rarity);
   }, [state.cardState.cards, trade]);
+
+  useEffect(() => {
+    return (() => {
+      dispatch({type: 'SET_NAVIGATING', value: false});
+    });
+  }, []);
 
   useEffect(() => {
     const getProfile = async () => {

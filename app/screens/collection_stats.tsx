@@ -31,6 +31,7 @@ import { ExpansionGridStats } from "@/components/dedicated/collection/ExpansionG
 import { roundPercentage } from "@/shared/definitions/utils/functions";
 import { StatsCollectionModal } from "@/components/modals";
 import HeaderWithCustomModal from "@/components/shared/HeaderModal";
+import LoadingOverlay from "@/components/ui/LoadingOverlay";
 
 import { 
   ARCEUS_EMBLEM, 
@@ -56,9 +57,8 @@ import {
   STEEL_ICON, 
   WATER_ICON
 } from "@/shared/definitions/sentences/path.sentences";
-import LoadingOverlay from "@/components/ui/LoadingOverlay";
 
-const WAIT_TIME = 888;
+const WAIT_TIME = 1200;
 
 export default function CollectionStatsScreen() {
   const {i18n} = useI18n();
@@ -66,12 +66,11 @@ export default function CollectionStatsScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
-  const [collection, setCollection] = useState<UserCollection[]>([]);
   const [langCollection, setLangCollection] = useState<CardLanguageENUM>(state.settingsState.collectionLanguage || CardLanguageENUM.EN);
   const flatListRef = useRef<FlatList<CollectionStat> | any>(null);
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
   const [currentExpansion, setCurrentExpansion] = useState<ExpansionEmblem>();
-  const [loading, setLoading] = useState(true);
+  const [loaded, setLoaded] = useState(false);
 
   const [mainStats, setMainStats] = useState<CollectionStat>();
   const [pikachuStats, setPikachuStats] = useState<CollectionStat>();
@@ -107,6 +106,103 @@ export default function CollectionStatsScreen() {
 
   const [listMenuVisible, setListMenuVisible] = useState<boolean>(false);
 
+  const collection = useMemo(() => state.settingsState.collection, [state.settingsState.collection]);
+
+  useEffect(() => {
+    if (state.settingsState.collectionLanguage !== undefined) {
+      selectLanguage(state.settingsState.collectionLanguage, false);
+    }
+  }, [state.settingsState.collectionLanguage]);
+
+  useEffect(() => {
+    setTimeout(() => dispatch({type: 'SET_NAVIGATING', value: false}), 1000);
+  }, []);
+
+  function delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  useEffect(() => {
+    const load = async () => {
+      await delay(WAIT_TIME);
+      setLoaded(true);
+    }
+
+    load();
+
+    return(() => {
+      dispatch({type: 'SET_NAVIGATING', value: false});
+    });
+  }, [])
+
+  const filterAndSort = (filterFn: (card: Card) => boolean) => {
+    const filtered = state.cardState.cards.filter(filterFn).sort((a, b) => a.order - b.order);
+    return { data: filtered, length: filtered.length };
+  };
+
+  const getCards = useCallback((pack: EXPANSION) => 
+    filterAndSort(card => card.found && card.found.includes(pack) || false)
+  , [state.cardState.cards]);
+
+  const getCardsExpansion = useCallback((expansion: CardExpansionENUM) => 
+    filterAndSort(card => card.expansion === expansion)
+  , [state.cardState.cards]);
+
+  const getCardRarity = useCallback((rarity: CardRarityENUM) => 
+    filterAndSort(card => card.rarity === rarity)
+  , [state.cardState.cards]);
+
+  const getCardByType = useCallback((type: PokemonTypeENUM) => 
+    filterAndSort(card => card.element === type)
+  , [state.cardState.cards]);
+
+  const { data: pikachuCards, length: pikachuCardsLength } = useMemo(() => getCards(EXPANSION.PIKACHU), [EXPANSION.PIKACHU]);
+  const { data: mewtwoCards, length: mewtwoCardsLength } = useMemo(() => getCards(EXPANSION.MEWTWO), [EXPANSION.MEWTWO]);
+  const { data: charizardCards, length: charizardCardsLength } = useMemo(() => getCards(EXPANSION.CHARIZARD), [EXPANSION.CHARIZARD]);
+  const { data: islandCards, length: islandCardsLength } = useMemo(() => getCards(EXPANSION.MEW), [EXPANSION.MEW]);
+  const { data: dialgaCards, length: dialgaCardsLength } = useMemo(() => getCards(EXPANSION.DIALGA), [EXPANSION.DIALGA]);
+  const { data: palkiaCards, length: palkiaCardsLength } = useMemo(() => getCards(EXPANSION.PALKIA), [EXPANSION.PALKIA]);
+  const { data: triumphCards, length: triumphCardsLength } = useMemo(() => getCards(EXPANSION.ARCEUS), [EXPANSION.ARCEUS]);
+  const { data: promoAPackCards, length: promoAPackCardsLength } = useMemo(() => getCardsExpansion(CardExpansionENUM.PROMO_A), [CardExpansionENUM.PROMO_A]);
+
+  const useCardsByType = (type: PokemonTypeENUM) => useMemo(() => getCardByType(type), [type]);
+  const useCardsByRarity = (rarity: CardRarityENUM) => useMemo(() => getCardRarity(rarity), [rarity]);
+
+  const { data: grassCards, length: grassCardsLength } = useCardsByType(PokemonTypeENUM.GRASS);
+  const { data: darkCards, length: darkCardsLength } = useCardsByType(PokemonTypeENUM.DARK);
+  const { data: dragonCards, length: dragonCardsLength } = useCardsByType(PokemonTypeENUM.DRAGON);
+  const { data: electricCards, length: electricCardsLength } = useCardsByType(PokemonTypeENUM.ELECTRIC);
+  const { data: fightCards, length: fightCardsLength } = useCardsByType(PokemonTypeENUM.FIGHT);
+  const { data: fireCards, length: fireCardsLength } = useCardsByType(PokemonTypeENUM.FIRE);
+  const { data: normalCards, length: normalCardsLength } = useCardsByType(PokemonTypeENUM.NORMAL);
+  const { data: psychicCards, length: psychicCardsLength } = useCardsByType(PokemonTypeENUM.PSYCHIC);
+  const { data: steelCards, length: steelCardsLength } = useCardsByType(PokemonTypeENUM.STEEL);
+  const { data: waterCards, length: waterCardsLength } = useCardsByType(PokemonTypeENUM.WATER);
+  
+  const { data: commonCards, length: commonCardsLength } = useCardsByRarity(CardRarityENUM.COMMON);
+  const { data: unCommonCards, length: unCommonCardsLength } = useCardsByRarity(CardRarityENUM.UNCOMMON);
+  const { data: rareCards, length: rareCardsLength } = useCardsByRarity(CardRarityENUM.RARE);
+  const { data: doubleCards, length: doubleCardsLength } = useCardsByRarity(CardRarityENUM.DOUBLE);
+  const { data: artCards, length: artCardsLength } = useCardsByRarity(CardRarityENUM.ART);
+  const { data: superCards, length: superCardsLength } = useCardsByRarity(CardRarityENUM.SUPER);
+  const { data: inmersiveCards, length: inmersiveCardsLength } = useCardsByRarity(CardRarityENUM.INMERSIVE);
+  const { data: crownCards, length: crownCardsLength } = useCardsByRarity(CardRarityENUM.CROWN);
+
+  const charizardCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.CHARIZARD)), [crownCards]);
+  const charizardArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.CHARIZARD)), [artCards]);
+  const pikachuCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.PIKACHU)), [crownCards]);
+  const pikachuArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.PIKACHU)), [artCards]);
+  const mewtwoCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.MEWTWO)), [crownCards]);
+  const mewtwoArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.MEWTWO)), [artCards]);
+  const mewCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.MEW)), [crownCards]);
+  const mewArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.MEW)), [artCards]);
+  const dialgaCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.DIALGA)), [crownCards]);
+  const dialgaArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.DIALGA)), [artCards]);
+  const palkiaCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.PALKIA)), [crownCards]);
+  const palkiaArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.PALKIA)), [artCards]);
+  const arceusCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.ARCEUS)), [crownCards]);
+  const arceusdArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.ARCEUS)), [artCards]);
+
   const allStats = [
     charizardStats,
     mewtwoStats,
@@ -141,87 +237,6 @@ export default function CollectionStatsScreen() {
     inmersiveStats,
     crownStats
   ];
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, WAIT_TIME);
-  }, [])
-
-  useEffect(() => {
-    setCollection(state.settingsState.collection);
-  }, [state.settingsState.collection]);
-
-  useEffect(() => {
-    if (state.settingsState.collectionLanguage !== undefined) {
-      selectLanguage(state.settingsState.collectionLanguage, false);
-    }
-  }, [state.settingsState.collectionLanguage]);
-
-  const filterAndSort = (filterFn: (card: Card) => boolean) => {
-    const filtered = state.cardState.cards.filter(filterFn).sort((a, b) => a.order - b.order);
-    return { data: filtered, length: filtered.length };
-  };
-
-  const getCards = useCallback((pack: EXPANSION) => 
-    filterAndSort(card => card.found && card.found.includes(pack) || false)
-  , [state.cardState.cards]);
-
-  const getCardsExpansion = useCallback((expansion: CardExpansionENUM) => 
-    filterAndSort(card => card.expansion === expansion)
-  , [state.cardState.cards]);
-
-  const getCardRarity = useCallback((rarity: CardRarityENUM) => 
-    filterAndSort(card => card.rarity === rarity)
-  , [state.cardState.cards]);
-
-  const getCardByType = useCallback((type: PokemonTypeENUM) => 
-    filterAndSort(card => card.element === type)
-  , [state.cardState.cards]);
-
-  const { data: pikachuCards, length: pikachuCardsLength } = getCards(EXPANSION.PIKACHU);
-  const { data: mewtwoCards, length: mewtwoCardsLength } = getCards(EXPANSION.MEWTWO);
-  const { data: charizardCards, length: charizardCardsLength } = getCards(EXPANSION.CHARIZARD);
-  const { data: islandCards, length: islandCardsLength } = getCards(EXPANSION.MEW);
-  const { data: dialgaCards, length: dialgaCardsLength } = getCards(EXPANSION.DIALGA);
-  const { data: palkiaCards, length: palkiaCardsLength } = getCards(EXPANSION.PALKIA);
-  const { data: triumphCards, length: triumphCardsLength } = getCards(EXPANSION.ARCEUS);
-  const { data: promoAPackCards, length: promoAPackCardsLength } = getCardsExpansion(CardExpansionENUM.PROMO_A);
-
-  const { data: grassCards, length: grassCardsLength } = getCardByType(PokemonTypeENUM.GRASS);
-  const { data: darkCards, length: darkCardsLength } = getCardByType(PokemonTypeENUM.DARK);
-  const { data: dragonCards, length: dragonCardsLength } = getCardByType(PokemonTypeENUM.DRAGON);
-  const { data: electricCards, length: electricCardsLength } = getCardByType(PokemonTypeENUM.ELECTRIC);
-  const { data: fightCards, length: fightCardsLength } = getCardByType(PokemonTypeENUM.FIGHT);
-  const { data: fireCards, length: fireCardsLength } = getCardByType(PokemonTypeENUM.FIRE);
-  const { data: normalCards, length: normalCardsLength } = getCardByType(PokemonTypeENUM.NORMAL);
-  const { data: psychicCards, length: psychicCardsLength } = getCardByType(PokemonTypeENUM.PSYCHIC);
-  const { data: steelCards, length: steelCardsLength } = getCardByType(PokemonTypeENUM.STEEL);
-  const { data: waterCards, length: waterCardsLength } = getCardByType(PokemonTypeENUM.WATER);
-
-  const { data: commonCards, length: commonCardsLength } = getCardRarity(CardRarityENUM.COMMON);
-  const { data: unCommonCards, length: unCommonCardsLength } = getCardRarity(CardRarityENUM.UNCOMMON);
-  const { data: rareCards, length: rareCardsLength } = getCardRarity(CardRarityENUM.RARE);
-  const { data: doubleCards, length: doubleCardsLength } = getCardRarity(CardRarityENUM.DOUBLE);
-  const { data: artCards, length: artCardsLength } = getCardRarity(CardRarityENUM.ART);
-  const { data: superCards, length: superCardsLength } = getCardRarity(CardRarityENUM.SUPER);
-  const { data: inmersiveCards, length: inmersiveCardsLength } = getCardRarity(CardRarityENUM.INMERSIVE);
-  const { data: crownCards, length: crownCardsLength } = getCardRarity(CardRarityENUM.CROWN);
-
-  const charizardCrownCards = crownCards.filter(card => card.found?.includes(EXPANSION.CHARIZARD));
-  const charizardArtCards = artCards.filter(card => card.found?.includes(EXPANSION.CHARIZARD));
-  const pikachuCrownCards = crownCards.filter(card => card.found?.includes(EXPANSION.PIKACHU));
-  const pikachuArtCards = artCards.filter(card => card.found?.includes(EXPANSION.PIKACHU));
-  const mewtwoCrownCards = crownCards.filter(card => card.found?.includes(EXPANSION.MEWTWO));
-  const mewtwoArtCards = artCards.filter(card => card.found?.includes(EXPANSION.MEWTWO));
-  const mewCrownCards = crownCards.filter(card => card.found?.includes(EXPANSION.MEW));
-  const mewArtCards = artCards.filter(card => card.found?.includes(EXPANSION.MEW));
-  const dialgaCrownCards = crownCards.filter(card => card.found?.includes(EXPANSION.DIALGA));
-  const dialgaArtCards = artCards.filter(card => card.found?.includes(EXPANSION.DIALGA));
-  const palkiaCrownCards = crownCards.filter(card => card.found?.includes(EXPANSION.PALKIA));
-  const palkiaArtCards = artCards.filter(card => card.found?.includes(EXPANSION.PALKIA));
-  const arceusCrownCards = crownCards.filter(card => card.found?.includes(EXPANSION.ARCEUS));
-  const arceusdArtCards = artCards.filter(card => card.found?.includes(EXPANSION.ARCEUS));
 
   const allCards = {
     grass: grassCards,
@@ -466,10 +481,9 @@ export default function CollectionStatsScreen() {
     }
 
     const collectionCards = new Set(
-      state.settingsState.collection.filter(coll => coll.amount[value] > 0).map(coll => coll.id)
+      collection.filter(coll => coll.amount[value] > 0).map(coll => coll.id)
     );
 
-    dispatch({type: 'SET_COLLECTION_LANGUAGE', value});
     setData(collectionCards);
     setElementData(collectionCards);
     setRarityData(collectionCards);
@@ -585,7 +599,7 @@ export default function CollectionStatsScreen() {
 
   return (
     <Provider>
-      { loading && <LoadingOverlay/> }
+      { !loaded && <LoadingOverlay/> }
       <HeaderWithCustomModal title={'stats'} 
                              modalContent={StatsCollectionModal()} 
                              modalTitle={'stats'} 
@@ -594,99 +608,93 @@ export default function CollectionStatsScreen() {
                              modalHeight={LARGE_MODAL_HEIGHT as number}
                              showHeader={false}/>
       <SharedScreen title={'stats'} styles={{paddingInline: 16, marginTop: 0}}>
+        <ThemedView style={[settingsStyles.container, {marginBottom: 6, padding: 0, borderRadius: 12}]}>
+          <ThemedView style={[settingsStyles.row, {width: '100%', gap: 0}]}>
+            {
+              CollectionLanguageList.map((item, i) => {
+                return (
+                  <TouchableOpacity onPress={() => selectLanguage(item)} key={i.toString()}>
+                    <ThemedText style={[
+                      collectionStatsStyles.lang,
+                      i === 0 && {paddingLeft: 12, borderTopLeftRadius: 12, borderBottomLeftRadius: 12},
+                      i === CollectionLanguageList.length - 1 && {paddingRight: 12, borderTopRightRadius: 12, borderBottomRightRadius: 12},
+                      langCollection === item && {backgroundColor: Colors.light.icon, color: 'white'}
+                      ]}>{COLLECTION_LANGUAGE_MAP[item]}</ThemedText>
+                  </TouchableOpacity>
+                )
+              })
+            }
+          </ThemedView>
+        </ThemedView>
+        
         {
-          !loading && 
+          mainStats && <CollectionStatsItem stat={mainStats} round={roundPercentage}></CollectionStatsItem>
+        }
+
+        <ThemedView style={[settingsStyles.container, {height: 48, padding: 10, borderRadius: 12, marginBottom: 18}]}>
+          <TouchableOpacity onPress={openExpansion} style={{flex: 1, justifyContent: 'center'}} >
+            <ThemedView style={settingsStyles.row}>
+              {
+                currentExpansion && currentExpansion.label !== undefined ? 
+                <ThemedText style={{marginLeft: 6, fontWeight: 'semibold'}}>{i18n.t(currentExpansion.label.toLowerCase())}</ThemedText> :
+                  <ThemedText style={{marginLeft: 6}}>{i18n.t('select_expansion')}</ThemedText>
+              }
+              <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
+                <MaterialIcons name={'chevron-right'} 
+                              style={[
+                                {fontSize: 28, left: 8, color: Colors.light.icon, position: 'absolute'}, 
+                                Platform.OS !== 'web' && {top: -14}
+                              ]}/>
+              </ThemedView>
+            </ThemedView>
+          </TouchableOpacity>
+        </ThemedView>
+
+        {
+          currentExpansion === undefined &&
           <>
-            <ThemedView style={[settingsStyles.container, {marginBottom: 6, padding: 0, borderRadius: 12}]}>
-              <ThemedView style={[settingsStyles.row, {width: '100%', gap: 0}]}>
+            <StatsGrid allRarity={allRarityStats as any} allElements={allElementStats as any}></StatsGrid>
+            <ThemedView style={[
+                {flexDirection: 'row', justifyContent: 'center', gap: 26, width: '100%'},
+                missingPacks.length === 0 && {top: -28}
+              ]}>
                 {
-                  CollectionLanguageList.map((item, i) => {
+                  [0, 1, 2, 3].map((_, i) => {
+                    const missed = missingPacks[i];
                     return (
-                      <TouchableOpacity onPress={() => selectLanguage(item)} key={i.toString()}>
-                        <ThemedText style={[
-                          collectionStatsStyles.lang,
-                          i === 0 && {paddingLeft: 12, borderTopLeftRadius: 12, borderBottomLeftRadius: 12},
-                          i === CollectionLanguageList.length - 1 && {paddingRight: 12, borderTopRightRadius: 12, borderBottomRightRadius: 12},
-                          langCollection === item && {backgroundColor: Colors.light.icon, color: 'white'}
-                          ]}>{COLLECTION_LANGUAGE_MAP[item]}</ThemedText>
-                      </TouchableOpacity>
+                      <ThemedView key={i.toString()}>
+                        <ThemedView style={[{boxShadow: '0px 4px 14px rgba(0, 0, 0, 0.3)'}, !missed && {top: 25}]}>
+                          <Image style={{width: 68, height: missed ? 131 : 96}} 
+                                source={missed ? 
+                                  (EXPANSION_PACK_MAP as any)[missed?.label] : BACKWARD_CARD} 
+                              />
+                        </ThemedView>
+                        {
+                          missed && missed.perct_owned &&
+                            <ProgressBar percentage={missed.perct_owned}></ProgressBar>
+                        }
+                        {
+                          missed && missed.perct_owned &&
+                          <ThemedText style={{textAlign: 'center', fontSize: 12}}>{roundPercentage(missed.perct_owned)}</ThemedText>
+                        }
+                      </ThemedView>
                     )
                   })
                 }
-              </ThemedView>
             </ThemedView>
-            
-            {
-              mainStats && <CollectionStatsItem stat={mainStats} round={roundPercentage}></CollectionStatsItem>
-            }
-
-            <ThemedView style={[settingsStyles.container, {height: 48, padding: 10, borderRadius: 12, marginBottom: 18}]}>
-              <TouchableOpacity onPress={openExpansion} style={{flex: 1, justifyContent: 'center'}} >
-                <ThemedView style={settingsStyles.row}>
-                  {
-                    currentExpansion && currentExpansion.label !== undefined ? 
-                    <ThemedText style={{marginLeft: 6, fontWeight: 'semibold'}}>{i18n.t(currentExpansion.label.toLowerCase())}</ThemedText> :
-                      <ThemedText style={{marginLeft: 6}}>{i18n.t('select_expansion')}</ThemedText>
-                  }
-                  <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
-                    <MaterialIcons name={'chevron-right'} 
-                                  style={[
-                                    {fontSize: 28, left: 8, color: Colors.light.icon, position: 'absolute'}, 
-                                    Platform.OS !== 'web' && {top: -14}
-                                  ]}/>
-                  </ThemedView>
-                </ThemedView>
-              </TouchableOpacity>
-            </ThemedView>
-
-            {
-              currentExpansion === undefined &&
-              <>
-                <StatsGrid allRarity={allRarityStats as any} allElements={allElementStats as any}></StatsGrid>
-                <ThemedView style={[
-                    {flexDirection: 'row', justifyContent: 'center', gap: 26, width: '100%'},
-                    missingPacks.length === 0 && {top: -28}
-                  ]}>
-                    {
-                      [0, 1, 2, 3].map((_, i) => {
-                        const missed = missingPacks[i];
-                        return (
-                          <ThemedView key={i.toString()}>
-                            <ThemedView style={[{boxShadow: '0px 4px 14px rgba(0, 0, 0, 0.3)'}, !missed && {top: 25}]}>
-                              <Image style={{width: 68, height: missed ? 131 : 96}} 
-                                    source={missed ? 
-                                      (EXPANSION_PACK_MAP as any)[missed?.label] : BACKWARD_CARD} 
-                                  />
-                            </ThemedView>
-                            {
-                              missed && missed.perct_owned &&
-                                <ProgressBar percentage={missed.perct_owned}></ProgressBar>
-                            }
-                            {
-                              missed && missed.perct_owned &&
-                              <ThemedText style={{textAlign: 'center', fontSize: 12}}>{roundPercentage(missed.perct_owned)}</ThemedText>
-                            }
-                          </ThemedView>
-                        )
-                      })
-                    }
-                </ThemedView>
-              </>
-            }
-
-            {
-              currentExpansion !== undefined &&
-              <ExpansionGridStats allCards={allCards} 
-                                  language={langCollection} 
-                                  collection={state.settingsState.collection} 
-                                  currentExpansion={currentExpansion?.value}
-                                  allStats={allStats as CollectionStat[]}>
-              </ExpansionGridStats>
-            }         
           </>
         }
 
-         
+        {
+          currentExpansion !== undefined &&
+          <ExpansionGridStats allCards={allCards} 
+                              language={langCollection} 
+                              collection={collection} 
+                              currentExpansion={currentExpansion?.value}
+                              allStats={allStats as CollectionStat[]}>
+          </ExpansionGridStats>
+        }        
+
         <TouchableOpacity onPress={openListMenu} style={cardStyles.container}>
           <ThemedView>
             <MaterialIcons name={"list"} 

@@ -29,7 +29,7 @@ export default function ShareScreen() {
   const [filteredTrades, setFilteredTrades] = useState<any[]>([]);
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
-  const { state } = context;
+  const { state, dispatch } = context;
   const flatListRef = useRef<SectionList<any> | null>(null);
 
   useEffect(() => {
@@ -82,11 +82,13 @@ export default function ShareScreen() {
   const renderTrade = useCallback(({item}: {item: TradeItem}) => {
     const rarity = state.cardState.cards.find(card => item?.desired.includes(card.id))?.rarity;
     return (
-      <TouchableOpacity style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}} onPress={() => openTrade(item)}>
+      <TouchableOpacity style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}} 
+                        onPress={() => openTrade(item)}
+                        disabled={state.cardState.navigating}>
         <TradeUserItem item={item} rarity={rarity} state={state}/>
       </TouchableOpacity>
     )
-  }, [state.settingsState.trades, state.settingsState.language]);
+  }, [state.settingsState.trades, state.settingsState.language, state.cardState.navigating]);
 
   const renderEmpty = useCallback(() => {
     if (searchQuery.length > 0) {
@@ -107,11 +109,13 @@ export default function ShareScreen() {
   
   const openDeck = (deck: StorageDeck) => {
     SoundService.play('AUDIO_MENU_OPEN');
+    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/share_deck?deck_id=${encodeURIComponent(deck.id)}`);
   }
 
   const openTrade = (trade: TradeItem) => {
     SoundService.play('AUDIO_MENU_OPEN');
+    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/share_trade?trade_id=${encodeURIComponent(trade.id)}`);
   }
   

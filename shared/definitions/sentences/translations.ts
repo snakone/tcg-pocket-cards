@@ -1,5 +1,8 @@
 export const TRANSLATIONS = {
   en: {
+    unmark: 'Unmark',
+    unmark_cards: 'Are you sure you want to unmark all the cards?\nThis action cannot be reverted.',
+    detail: 'Detail',
     stats_intro: 'Keeping a clear record of your stats is essential for effectively managing your collection. With this stats screen, you\'ll get a complete and detailed overview of your progress, helping you make better decisions when trading or opening packs.\n\n\n',
     stats_action_bar: 'In the top bar, you\'ll find a complete list of languages ​​for all cards. Simply tap a language to automatically filter your collection and view statistics for that language.\n\nDirectly below, you\'ll see a legend with your collection\'s overview. Key information such as your total cards, your owned cards, your missing cards, and the percentages of cards obtained and pending is displayed here. This overview will allow you to quickly assess your progress.\n\n',
     stats_select_expansion: 'If you want to analyze a particular expansion, you can use the expansion selection button to filter the statistics and focus on that specific collection.\n\n',
@@ -698,6 +701,9 @@ export const TRANSLATIONS = {
     without_ability: "Without Ability"
   },
   es: {
+    unmark: 'Desmarcar',
+    unmark_cards: '¿Quieres desmarcar todas las cartas?\nEsta acción no se puede revertir. ¿Está bien?',
+    detail: 'Detalle',
     languages: 'Idiomas',
     smack_down_short: 'Pugna Esp/Temp',
     condition_end_turn: 'Acaba turno',
@@ -1399,6 +1405,9 @@ export const TRANSLATIONS = {
     without_ability: "Sin habilidad"
   },
   ja: {
+    unmark: '選択解除',
+    unmark_cards: 'すべてのカードのチェックマークを外しますか？\nこの操作は元に戻せません。よろしいですか？',
+    detail: '詳細',
     stats_intro: 'コレクションを効果的に管理するには、統計情報を明確に記録しておくことが不可欠です。この統計画面では、進捗状況の完全かつ詳細なビューが得られ、取引やパックの開封時に適切な決定を下すのに役立ちます。\n\n\n',
     stats_action_bar: '上部のバーに、すべてのメニューの言語の完全なリストが表示されます。言語をタップするだけで、コレクションが自動的にフィルタリングされ、その言語の統計情報が表示されます。\n\n以下に、コレクションに関する一般的な情報が記載された凡例が表示されます。ここには、カードの総数、所有しているカード、不足しているカード、所有しているカードの割合などの重要な情報が表示されます。この概要により、進捗状況をすぐに評価できます。 \n\n',
     stats_select_expansion: '特定の拡張機能を分析する場合は、拡張機能選択ボタンを使用して統計をフィルタリングし、その特定のコレクションに焦点を当てます。 \n\n',

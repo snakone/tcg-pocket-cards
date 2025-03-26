@@ -51,7 +51,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
         {
           RARITY_MAP[card.rarity]?.amount !== 0 ?
             <ThemedView style={detailScrollStyles.rarityContainer}>
-              { Array.from({ length: RARITY_MAP[card.rarity]?.amount }).map((_, i) => (
+              { Array.from({ length: RARITY_MAP[card.rarity]?.amount as number }).map((_, i) => (
                 <Image
                   key={i}
                   source={RARITY_MAP[card.rarity]?.image}
@@ -66,11 +66,13 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
         <ThemedView style={[
             cardDetailStyles.itemInfo, 
             { marginBottom: 4, 
-              paddingVertical: 5, 
+              paddingVertical: 8, 
               flexDirection: 'row', 
               gap: 12, 
               justifyContent: 'center', 
-              marginInline: 'auto'}
+              marginInline: 'auto',
+              borderRadius: 12
+            }
           ]}>
           <ThemedText style={[detailScrollStyles.text, {fontSize: 10}]}>
             {i18n.t('number')} {fillWithZeros(card.pokedex)}

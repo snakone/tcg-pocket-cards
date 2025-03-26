@@ -55,6 +55,12 @@ export default function ShareDeckScreen() {
     setLang(state.settingsState.language);
   }, [state.settingsState.language]);
 
+  useEffect(() => {
+    return (() => {
+      dispatch({type: 'SET_NAVIGATING', value: false});
+    })
+  }, []);
+
   const [profile, setProfile] = useState<UserProfile>(
     {name: '', avatar: 'eevee', coin: 'eevee', best: null}
   );
@@ -193,7 +199,7 @@ export default function ShareDeckScreen() {
   return (
     <Provider>
       { loading && <LoadingOverlay/> }
-      <SharedScreen title={'share_deck'} styles={{marginTop: 0, alignItems: 'inherit', paddingInline: 14}}>
+      <SharedScreen title={'share_deck'} styles={{marginTop: 0, alignItems: 'inherit', paddingInline: 0}}>
         <ThemedView style={{position: 'absolute', left: -9999}}  >
           {
             Platform.OS === 'web' ?
@@ -217,8 +223,8 @@ export default function ShareDeckScreen() {
             </ViewShot>
           }
         </ThemedView>
-        <ScrollView showsVerticalScrollIndicator={false} style={{paddingHorizontal: 14}}>
-          <ThemedView style={{width: '100%', marginBottom: 8}}>
+        <ThemedView style={{paddingHorizontal: 14}}>
+          <ThemedView style={{width: '100%', marginBottom: 8, paddingInline: 14}}>
             <ThemedView style={[CreateScreenStyles.deckName, {justifyContent: 'space-between', width: '100%'}]}>
               <ThemedText style={{color: 'black'}}>{deckName}</ThemedText>
                 <ThemedView style={[CreateScreenStyles.energies, {backgroundColor: 'white'}]}>
@@ -252,6 +258,7 @@ export default function ShareDeckScreen() {
             </ThemedView>
           </ThemedView>
 
+          <ScrollView style={{width: '100%', paddingInline: 14}}>
           <ThemedView style={styles.options}>
             <ThemedText style={[filterStyles.header, {marginBottom: 16}]}>{i18n.t('export')}</ThemedText>
 
@@ -343,7 +350,9 @@ export default function ShareDeckScreen() {
               }
             </ThemedView>
           </ThemedView>
-        </ScrollView>
+          </ScrollView>
+
+        </ThemedView>
 
       </SharedScreen>
       <Portal>{isBackgroundVisible && memoizedPickBackground}</Portal>

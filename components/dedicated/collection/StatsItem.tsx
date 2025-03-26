@@ -1,6 +1,6 @@
 import { CollectionStat } from '@/shared/definitions/interfaces/global.interfaces';
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
   flexDirection: 'row',
   gap: 7,
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  top: Platform.OS === 'android' ? -1 : 0
  },
  text: {
   fontSize: 12,

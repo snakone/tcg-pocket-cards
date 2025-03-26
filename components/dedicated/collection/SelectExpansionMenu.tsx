@@ -84,7 +84,7 @@ export default function SelectExpansionMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: 590}, i18n.locale === 'ja' && {height: 596}]}>
+      <Animated.View style={[animatedStyle, sortStyles.container, {height: 592}, i18n.locale === 'ja' && {height: 596}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_expansion')}</ThemedText>
         </View>

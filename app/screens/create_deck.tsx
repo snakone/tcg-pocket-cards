@@ -121,6 +121,7 @@ export default function CreateDeckScreen() {
     const sub = createService.currentDeck$.subscribe(deck => setDeck(deck));
     return () => {
       sub.unsubscribe();
+      dispatch({type: 'SET_NAVIGATING', value: false});
     }
   }, []);
 
@@ -514,7 +515,7 @@ export default function CreateDeckScreen() {
                               hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
                 <ThemedText style={[
                   {color: 'crimson', fontSize: 31, top: -4}, 
-                  Platform.OS !== 'web' && {fontSize: 25, top: -10}]}>-</ThemedText>
+                  Platform.OS !== 'web' && {fontSize: 24, top: -17, transform: [{scaleX: 1.5}, {scaleY: 2}]}]}>-</ThemedText>
             </TouchableOpacity>
           }
           <Image accessibilityLabel={item.name[lang]}

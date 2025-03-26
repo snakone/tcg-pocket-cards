@@ -182,8 +182,8 @@ export default function PickDesiredMenu({
               </ThemedView>
               <ThemedView style={[collectionStyles.remove, {width: 18, height: 18}]}>
                 <ThemedText style={[
-                  {color: 'crimson', fontSize: 31, top: -4}, 
-                  Platform.OS !== 'web' && {fontSize: 25, top: -10}]}>-</ThemedText>
+                                 {color: 'crimson', fontSize: 31, top: -4}, 
+                                 Platform.OS !== 'web' && {fontSize: 24, top: -13, transform: [{scaleX: 1.5}, {scaleY: 1.5}]}]}>-</ThemedText>
               </ThemedView>
             </>
           }
@@ -224,10 +224,10 @@ export default function PickDesiredMenu({
             <View>
               { current[index] ? 
               <>
-                <ThemedView style={[collectionStyles.remove, {width: 18, height: 18}]}>
-                  <ThemedText style={[
-                    {color: 'crimson', fontSize: 32, top: -4.5}, 
-                    Platform.OS !== 'web' && {fontSize: 25, top: -10}]}>-</ThemedText>
+                <ThemedView style={[collectionStyles.remove, {width: 20, height: 20}]}>
+                <ThemedText style={[
+                  {color: 'crimson', fontSize: 31, top: -4}, 
+                  Platform.OS !== 'web' && {fontSize: 24, top: -10, transform: [{scaleX: 1.5}, {scaleY: 1.2}]}]}>-</ThemedText>
                 </ThemedView>
                 <Image style={[
                     CardGridStyles.image, 

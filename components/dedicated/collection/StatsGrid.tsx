@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Platform } from 'react-native';
 import React from 'react';
 import { Image } from 'expo-image';
 
@@ -8,6 +8,7 @@ import { CardRarityENUM } from '@/shared/definitions/enums/card.enums';
 import { CollectionElementStat, CollectionRarityStat } from '@/shared/definitions/interfaces/global.interfaces';
 import { TabsMenuStyles } from '@/shared/styles/component.styles';
 import { EXPANSION } from '@/shared/definitions/enums/packs.enums';
+import { SEPARATOR } from '@/shared/definitions/sentences/path.sentences';
 
 interface StatsGridProps {
   allRarity: CollectionRarityStat[],
@@ -17,7 +18,7 @@ interface StatsGridProps {
 
 export const StatsGrid: React.FC<StatsGridProps> = ({ allRarity, allElements, expansion }) => {
   return (
-    <ThemedView style={{}}>
+    <ThemedView style={{left: 1}}>
       {
         (!expansion || (expansion && Number(expansion) !== 99)) &&
         <ThemedView style={{flexDirection: 'row', gap: 8, flexWrap: 'wrap', marginBottom: 24}}>
@@ -59,8 +60,12 @@ export const StatsGrid: React.FC<StatsGridProps> = ({ allRarity, allElements, ex
         }
       </ThemedView>
       {
-        expansion === undefined && 
+        expansion === undefined && Platform.OS !== 'android' &&
           <View style={[TabsMenuStyles.separator, {height: 1, marginTop: 28, marginBottom: 26, width: '100%'}]}></View>
+      }
+      {
+        expansion === undefined && Platform.OS === 'android' &&
+          <Image source={SEPARATOR} style={{width: 390, height: 32, marginTop: 16, marginBottom: 10, left: -16}}/> 
       }
       
     </ThemedView>

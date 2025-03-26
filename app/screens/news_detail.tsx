@@ -65,6 +65,8 @@ export default function NewsDetailScreen() {
       if (sub) {
         sub.unsubscribe();
       }
+      
+      dispatch({type: 'SET_NAVIGATING', value: false});
     };
   }, []);
 

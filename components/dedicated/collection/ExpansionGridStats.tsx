@@ -231,7 +231,6 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
       const owned = cards.filter(card => collectionCards.has(card.id)).length || 0;
       data.setter({owned, length: cards.length, icon: data.icon});
     });
-
   }, []);
 
   const setRarityData = useCallback((collectionCards: Set<number>, expansion: EXPANSION) => {
@@ -260,6 +259,7 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
 
   function goToDetailScreen(id: number): void {
     SoundService.play('PICK_CARD_SOUND');
+    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
   }
 
@@ -339,7 +339,7 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
                 <ThemedView key={i.toString()}>
                   <TouchableOpacity onPress={() => goToDetailScreen(missingCards[i])}
                                     style={{boxShadow: '0px 4px 14px rgba(0, 0, 0, 0.3)'}}
-                                    disabled={!missingCards[i]}>
+                                    disabled={!missingCards[i] || state.cardState.navigating}>
                     <Image style={{width: 71, height: 99}}
                               source={missingCards[i] ? getImageLanguage116x162(lang, missingCards[i]) : BACKWARD_CARD}/>
                   </TouchableOpacity>

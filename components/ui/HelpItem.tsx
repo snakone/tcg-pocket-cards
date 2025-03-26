@@ -7,14 +7,14 @@ import { ThemedView } from "../ThemedView";
 import { IconSymbol } from './IconSymbol';
 import SoundService from '@/core/services/sounds.service';
 
-export default function HelpItem({ onClick, children, item }: RouteItem) {
+export default function HelpItem({ onClick, children, item, disabled }: RouteItem) {
   const handleClick = async () => {
     await SoundService.play('AUDIO_MENU_OPEN');
     onClick();
   };
 
   return (
-    <TouchableOpacity onPress={handleClick}>
+    <TouchableOpacity disabled={disabled} onPress={handleClick}>
       <ThemedView style={[
           HelpItemStyles.item, 
           item.modal === 'make_backup' && {borderWidth: 1, borderColor: 'mediumaquamarine'}]}>

@@ -72,18 +72,20 @@ export default function NewsScreen() {
 
   function handleClick(id: string): void {
     SoundService.play('CHANGE_VIEW');
+    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/news_detail?id=${encodeURIComponent(id)}`);
   }
 
   const renderItem = useCallback(({item}: {item: PocketNews}) => {
     return (
-      <TouchableOpacity onPress={() => handleClick(item._id)}>
+      <TouchableOpacity onPress={() => handleClick(item._id)}
+                        disabled={state.cardState.navigating}>
         <NewsItem pocketNew={item} 
                   language={i18n.locale as LanguageType} 
                   i18n={i18n}/>
       </TouchableOpacity>
     )
-  }, []);
+  }, [state.cardState.navigating]);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);

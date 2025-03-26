@@ -75,7 +75,7 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
           <ThemedView style={[{
             width: '25%', top: 4, left: -2}, 
             Platform.OS !== 'web' && {left: 15}, 
-            share && {transform: [{scale: 0.7}]}
+            share && {top: 10}
           ]}>
             {
               SvgTradePassSymbol(

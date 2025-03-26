@@ -27,11 +27,12 @@ export default function CreateDeckScreen() {
   const [filtered, setFiltered] = useState<any[]>([]);
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
-  const { state } = context;
+  const { state, dispatch } = context;
   const flatListRef = useRef<FlatList<StorageDeck> | null>(null);
 
   const createNewDeck = () => {
     SoundService.play('AUDIO_MENU_OPEN');
+    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/create_deck`);
   }
 
@@ -45,6 +46,7 @@ export default function CreateDeckScreen() {
 
   const openDeck = (deck: StorageDeck) => {
     SoundService.play('AUDIO_MENU_OPEN');
+    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/create_deck?deck_id=${encodeURIComponent(deck.id)}`);
   }
 
@@ -92,14 +94,14 @@ export default function CreateDeckScreen() {
           decks.length >= MAX_CONTENT && {opacity: 0.5}
         ]} 
             onPress={() => createNewDeck()}
-            disabled={decks.length >= MAX_CONTENT}>
+            disabled={decks.length >= MAX_CONTENT || state.cardState.navigating}>
           <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>
             {i18n.t('add_new_deck')}
           </ThemedText>
         </TouchableOpacity>
       </ThemedView>
       )
-  }, [decks]);
+  }, [decks, state.cardState.navigating]);
 
   useEffect(() => {
     setDecks(state.settingsState.decks);

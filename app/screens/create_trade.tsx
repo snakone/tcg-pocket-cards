@@ -47,10 +47,17 @@ export default function CreateTradeScreen() {
   const [notSaved, setNotSaved] = useState(false);
   const { trade_id } = useLocalSearchParams<{ trade_id: string }>();
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
     setLang(state.settingsState.language);
   }, [state.settingsState.language]);
+
+  useEffect(() => {
+    return (() => {
+      dispatch({type: 'SET_NAVIGATING', value: false});
+    })
+  }, [])
 
   useEffect(() => {
     const checkTrade = async () => {
@@ -115,6 +122,7 @@ export default function CreateTradeScreen() {
       }
     }
     setIsDesiredVisible(false);
+    setDisabled(false);
   }
 
   function onOffersClose(data: number[]): void {
@@ -124,6 +132,7 @@ export default function CreateTradeScreen() {
       setOffers(data);
     }
     setIsOffersVisible(false);
+    setDisabled(false);
   }
 
   async function createTrade(): Promise<void> {
@@ -186,11 +195,13 @@ export default function CreateTradeScreen() {
   }
 
   function handleDesired(): void {
+    setDisabled(true);
     SoundService.play('POP_PICK');
     setIsDesiredVisible(prev => !prev);
   }
 
   function handleOffer(): void {
+    setDisabled(true);
     SoundService.play('POP_PICK');
     setIsOffersVisible(prev => !prev);
   }
@@ -203,7 +214,7 @@ export default function CreateTradeScreen() {
                             CardGridStyles.image, 
                             styles.image, desired.filter(Boolean).length === 0 && {opacity: 0.3}
                           ]}
-                          disabled={desired.filter(Boolean).length === 0}>
+                          disabled={desired.filter(Boolean).length === 0 || disabled}>
           <View>
             { offers[index] ? 
             <>
@@ -218,14 +229,14 @@ export default function CreateTradeScreen() {
         </TouchableOpacity>
       </View>
     </View>
-  ), [offers, desired]);
+  ), [offers, desired, disabled]);
 
   const renderDesired = useCallback(({item, index}: {item: any, index: number}) => (
     <View style={[CardGridStyles.imageContainer, {boxShadow: '4px 4px 5px rgba(0, 0, 0, 0.1)'}]}>
       <View style={{backgroundColor: 'white'}}>
         <TouchableOpacity onPress={() => handleDesired()}
                           style={[CardGridStyles.image, styles.image, !desired && {opacity: 0.3}]}
-                          disabled={!desired}>
+                          disabled={!desired || disabled}>
           <View>
             { desired[index] ? 
             <>
@@ -240,7 +251,7 @@ export default function CreateTradeScreen() {
         </TouchableOpacity>
       </View>
     </View>
-  ), [desired]);
+  ), [desired, disabled]);
 
   const goBack = useCallback(async (): Promise<void> => {
     SoundService.play('AUDIO_MENU_CLOSE');

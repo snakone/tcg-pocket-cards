@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Image } from 'expo-image';
-import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
+import { FlatList, Platform, StyleSheet, TouchableOpacity, View } from "react-native";
 import { useRouter } from 'expo-router';
 
 import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
@@ -30,6 +30,10 @@ export default function AttackDetailScreen() {
   const [similar, setSimilar] = useState<Attack[]>([]);
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
   const router = useRouter();
+
+  useEffect(() => {
+    dispatch({type: 'SET_NAVIGATING', value: false});
+  }, []);
 
   useEffect(() => {
     if (state.attacksState.current) {
@@ -85,11 +89,13 @@ export default function AttackDetailScreen() {
   }, [state.attacksState.current, state.attacksState.attack_list]);
 
   const goToDetailScreen = async (id: number) => {
+    dispatch({type: 'SET_NAVIGATING', value: true});
     SoundService.play('PICK_CARD_SOUND');
     router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
   };
 
   const goToAttackDetail = (item: Attack) => {
+    dispatch({type: 'SET_NAVIGATING', value: true});
     SoundService.play('AUDIO_MENU_OPEN');
     dispatch({type: 'SET_CURRENT_ATTACK', value: item});
     router.replace(`/screens/attack_detail`);
@@ -116,8 +122,8 @@ export default function AttackDetailScreen() {
   const keyExtractorSimilar = useCallback((item: Attack, index: number) => String(item.name) + index, []);
 
   const renderItem = useCallback(({item}: {item: Attack}) => {
-    return renderAttackItem({ item, lang, onPress: () => goToAttackDetail(item) })
-  }, [lang]);
+    return renderAttackItem({ item, lang, onPress: () => goToAttackDetail(item), disabled: state.cardState.navigating })
+  }, [lang, state.cardState.navigating]);
 
   return (
     <>
@@ -125,7 +131,7 @@ export default function AttackDetailScreen() {
         <SharedScreen title={'attack_name'}>
           <ThemedView style={[
               detailScrollStyles.attackContainer, 
-              {width: '100%', alignItems: 'flex-start', marginBottom: 20}
+              {width: '100%', alignItems: 'flex-start', marginBottom: 16}
             ]}>
               <ThemedView style={detailScrollStyles.attackItem}>
                 <ThemedView style={detailScrollStyles.attackEnergy}>
@@ -141,15 +147,15 @@ export default function AttackDetailScreen() {
               { attack.damage > 0 && <ThemedText style={detailScrollStyles.attackDamage}>{attack.damage}</ThemedText>}
 
               { attack.description && 
-                <ThemedView style={{width: '100%', marginTop: 16}}>
+                <ThemedView style={[{width: '100%', marginTop: 16}, Platform.OS === 'android' && {top: 16}]}>
                   <ThemedText style={{fontSize: 12}}>{attack.description[lang]}</ThemedText>
                 </ThemedView>
               }
           </ThemedView>
-          <ThemedView>
+          <ThemedView style={Platform.OS === 'android' && {height: Math.ceil((related.length) / 5) * 94}}>
             <FlatList data={related}
                       numColumns={5}
-                      contentContainerStyle={[{width: '100%', maxHeight: 294}]}
+                      contentContainerStyle={[{width: '100%'}]}
                       keyExtractor={keyExtractor}
                       initialNumToRender={25}
                       maxToRenderPerBatch={35}
@@ -164,7 +170,7 @@ export default function AttackDetailScreen() {
           <ThemedView style={{width: '100%', flex: 1, paddingBottom: 12}}>
             <ThemedText style={{fontSize: 16,
                           fontWeight: 'bold',
-                          marginTop: 10,
+                          marginTop: Platform.OS === 'android' ? 20 : 10,
                           marginBottom: 20}}>{i18n.t('related_attacks')}
             </ThemedText>
             <FlatList data={similar}

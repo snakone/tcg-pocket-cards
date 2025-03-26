@@ -93,6 +93,7 @@ export default function AttacksScreen() {
   const goToAttackDetail = (item: Attack) => {
     SoundService.play('AUDIO_MENU_OPEN');
     dispatch({type: 'SET_CURRENT_ATTACK', value: item});
+    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/attack_detail`);
   }
 
@@ -169,8 +170,8 @@ export default function AttacksScreen() {
   }
 
   const renderItem = useCallback(({item}: {item: Attack}) => {
-    return renderAttackItem({ item, lang, onPress: () => goToAttackDetail(item) })
-  }, [lang]);
+    return renderAttackItem({ item, lang, onPress: () => goToAttackDetail(item), disabled: state.cardState.navigating })
+  }, [lang, state.cardState.navigating]);
 
   const fixFilterIcon = useCallback(() => {
     return [

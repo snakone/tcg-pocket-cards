@@ -42,6 +42,7 @@ export default function HelpScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   useEffect(() => {
     // NO CONTEXT ON SHARED SCREEN
@@ -56,10 +57,11 @@ export default function HelpScreen() {
       dispatch({type: 'RESET_SETTINGS'});
       reloadSettings();
     });
-    
+
     return () => {
       subImport.unsubscribe();
       subDelete.unsubscribe();
+      dispatch({type: 'SET_NAVIGATING', value: false});
     }
   }, []);
 
@@ -129,12 +131,14 @@ export default function HelpScreen() {
       return;
     }
 
+    setDisabled(true);
     setCurrentModal(modalName);
   };
 
   const close = async () => {
     await playSound();
     setCurrentModal(null);
+    setDisabled(false);
   };
 
   const playSound = async () => {
@@ -147,7 +151,7 @@ export default function HelpScreen() {
         <View style={styles.content}>
           {
             items.map(item => (
-            <HelpItem onClick={() => open(item.modal)} key={item.modal} item={item}>
+            <HelpItem onClick={() => open(item.modal)} key={item.modal} item={item} disabled={disabled}>
               <IconSymbol name={item.icon as IconSymbolName} 
                           style={[
                             styles.icon, 
@@ -182,7 +186,7 @@ export default function HelpScreen() {
                       <ThemedView style={[ModalStyles.modalScrollView, {height: item.height}]}>
                         {item.content}
                       </ThemedView>
-                      <View style={[ModalStyles.modalFooter, {paddingTop: 14}, i18n.locale === 'ja' && {paddingTop: 16}]}>
+                      <View style={[ModalStyles.modalFooter, {paddingTop: 14}, (i18n.locale === 'ja' || Platform.OS === 'android') && {paddingTop: 16}]}>
                         <Pressable style={ButtonStyles.button} 
                                           onPress={close} 
                                           accessibilityLabel={CLOSE_SENTENCE}>
