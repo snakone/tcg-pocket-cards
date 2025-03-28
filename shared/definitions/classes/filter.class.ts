@@ -12,6 +12,7 @@ export class FilterSearch {
   public stage: { [key in CardStageENUM] : boolean | null}
   public expansion: { [key in EXPANSION]: boolean | null }
   public ex: { is_ex: boolean | null, not_ex: boolean | null }
+  public shiny: { is_shiny: boolean | null, not_shiny: boolean | null }
   public weak: { [key in PokemonTypeENUM]: boolean | null }
   public condition: { [key in CardSpecialConditionENUM]: boolean | null }
   public collection: { owned: boolean | null, not_owned: boolean | null }
@@ -63,8 +64,9 @@ export class FilterSearch {
       [CardRarityENUM.DOUBLE]: null,
       [CardRarityENUM.ART]: null,
       [CardRarityENUM.SUPER]: null,
-      // [CardRarityENUM.RAINBOW]: null,
       [CardRarityENUM.INMERSIVE]: null,
+      [CardRarityENUM.RAINBOW]: null,
+      [CardRarityENUM.DOUBLE_RAINBOW]: null,
       [CardRarityENUM.CROWN]: null,
       [CardRarityENUM.PROMO]: null,
     };
@@ -83,6 +85,11 @@ export class FilterSearch {
       is_ex: null,
       not_ex: null
     };
+
+    this.shiny = {
+      is_shiny: null,
+      not_shiny: null
+    }
 
     this.weak = {
       [PokemonTypeENUM.GRASS]: null,
@@ -154,7 +161,7 @@ export class FilterSearch {
         }
         return Object.values(obj).every(value => isAllNull(value));
       }
-      return obj === null;
+      return (obj === null || obj === false);
     };
 
     return Object.values(this).every(isAllNull);

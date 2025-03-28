@@ -122,8 +122,14 @@ export default function AttackDetailScreen() {
   const keyExtractorSimilar = useCallback((item: Attack, index: number) => String(item.name) + index, []);
 
   const renderItem = useCallback(({item}: {item: Attack}) => {
-    return renderAttackItem({ item, lang, onPress: () => goToAttackDetail(item), disabled: state.cardState.navigating })
+    return renderAttackItem({ item, lang, focused: true, onPress: () => goToAttackDetail(item), disabled: state.cardState.navigating })
   }, [lang, state.cardState.navigating]);
+
+  const getItemLayout = useCallback((_: any, index: number) => ({
+    length: 52,
+    offset: 52 * index,
+    index, 
+  }), []);
 
   return (
     <>
@@ -177,6 +183,7 @@ export default function AttackDetailScreen() {
                       numColumns={1}
                       contentContainerStyle={[{width: '100%', paddingBottom: 68}]}
                       keyExtractor={keyExtractorSimilar}
+                      getItemLayout={getItemLayout}
                       initialNumToRender={25}
                       maxToRenderPerBatch={35}
                       windowSize={15}

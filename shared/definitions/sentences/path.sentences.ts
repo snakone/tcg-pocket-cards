@@ -278,6 +278,7 @@ export const MEW_EMBLEM = require("@/assets/images/emblem/mew.png");
 export const MEWTWO_EMBLEM = require("@/assets/images/emblem/mewtwo.png");
 export const PALKIA_EMBLEM = require("@/assets/images/emblem/palkia.png");
 export const PIKACHU_EMBLEM = require("@/assets/images/emblem/pikachu.png");
+export const GIRATINA_EMBLEM = require("@/assets/images/emblem/giratina.png");
 export const PROMO_A_EMBLEM = require("@/assets/images/emblem/promo_a.png");
 
 export const BACKWARD_CARD = require("@/assets/images/backward.png");

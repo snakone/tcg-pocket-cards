@@ -49,6 +49,11 @@ export function sortCards(field: keyof Card | string, data: Card[], sort: SortIt
       if (bValue === 0 && aValue !== 0) return -1;
     }
 
+    if (field === 'retreat') {
+      if (aValue === 0 && a?.pokedex === -1) return 1;
+      if (bValue === 0 && b?.pokedex === -1) return -1;
+    }
+
     if (aValue < bValue) return sort.order === 'asc' ? -1 : 1;
     if (aValue > bValue) return sort.order === 'asc' ? 1 : -1;
 
@@ -156,21 +161,24 @@ export function filterCards(
       return false;
     }
 
-    if (card.health && 
-      (filter.health.min !== null && 
-      filter.health.min > 0 &&
-      filter.health.min > card.health)
-    ) {
-      return false;
-    }
-
-    if (
-      card.health &&
+    if(
       filter.health.max !== null && 
-      filter.health.max > 0 &&
-      filter.health.max < card.health 
+      filter.health.max > 0 ||
+      filter.health.min !== null && 
+      filter.health.min > 0
     ) {
-      return false;
+
+      if (!card.health) {
+        return false;
+      }
+
+      if (filter.health.max && filter.health.max > card.health) {
+        return false;
+      }
+
+      if (filter.health.min && filter.health.min > card.health) {
+        return false;
+      }
     }
 
     if(
@@ -243,7 +251,7 @@ export function filterAttacks(filter: FilterAttackSearch, data: Attack[]): Attac
   return data.filter(attack => {
     const energy = Object.keys(filter.energy).filter(key => Boolean((filter.energy as any)[key])).map(key => Number(key));
 
-    if (filter.exclusive) {
+    if (filter.exclusive && energy.length > 0) {
       if (!(energy.every(item => attack.energy.includes(item)) && attack.energy.every(item => energy.includes(item)))) {
         return false;
       }

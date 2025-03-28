@@ -86,6 +86,12 @@ export default function ListMenu({
     )
   }, []);
 
+  const getItemLayout = useCallback((_: any, index: number) => ({
+    length: 68,
+    offset: 68 * index,
+    index, 
+  }), []);
+
   return (
     <>
     <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
@@ -109,7 +115,8 @@ export default function ListMenu({
                         renderItem={renderItem}
                         style={{width: '100%'}}
                         keyExtractor={(item, index) => index + 1 + ''}
-                        showsVerticalScrollIndicator={false}/>
+                        showsVerticalScrollIndicator={false}
+                        getItemLayout={getItemLayout}/>
             }
           </ThemedView>
         </ThemedView>

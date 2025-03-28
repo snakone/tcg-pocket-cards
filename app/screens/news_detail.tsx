@@ -1,17 +1,8 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { Subscription } from "rxjs";
-
-import Animated, { 
-  Extrapolation, 
-  interpolate, 
-  useAnimatedScrollHandler, 
-  useAnimatedStyle, 
-  useDerivedValue, 
-  useSharedValue 
-} from "react-native-reanimated";
 
 import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AppContext } from "../_layout";
@@ -96,7 +87,7 @@ export default function NewsDetailScreen() {
   const renderContent = useCallback(({item}: {item: NewsContent}) => {
       switch (item.type) {
         case 'title':
-          return <ThemedText style={[item.style, styles.item]}>
+          return <ThemedText style={[item.style, styles.item, {marginTop: 10}]}>
                     {item.value}
                   </ThemedText>;
         case 'text':
@@ -120,12 +111,12 @@ export default function NewsDetailScreen() {
           pocketNew && 
           <>
             <ThemedView style={[pocketNewsStyles.item, styles.content]}>
-              <Animated.View>
-                <Animated.Image source={{uri: pocketNew.image}} 
+              <View>
+                <Image source={{uri: pocketNew.image}} 
                                 style={[
                                   pocketNewsStyles.image, 
                                   styles.animatedImage]} />
-              </Animated.View>
+              </View>
               <ThemedView style={[pocketNewsStyles.info, styles.time]}>
                 <ThemedView style={pocketNewsStyles.date}>
                   {typeElement(pocketNew.type)}
@@ -138,7 +129,7 @@ export default function NewsDetailScreen() {
                 </ThemedText>
               </ThemedView>
 
-              <Animated.FlatList
+              <FlatList
                 data={(pocketNew.content as any)[i18n.locale]}
                 renderItem={renderContent}
                 keyExtractor={(item, index) => `${item.type}-${index}`}

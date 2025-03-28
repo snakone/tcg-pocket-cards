@@ -235,8 +235,9 @@ export function GraphicCollage({
   const { data: artCards, length: artCardsLength } = getCardRarity(CardRarityENUM.ART);
   const { data: superCards, length: superCardsLength } = getCardRarity(CardRarityENUM.SUPER);
   const { data: inmersiveCards, length: inmersiveCardsLength } = getCardRarity(CardRarityENUM.INMERSIVE);
+  const { data: rainbowCards, length: rainbowCardsLength } = getCardRarity(CardRarityENUM.RAINBOW);
+  const { data: doubleRainbowCards, length: doubleRainbowCardsLength } = getCardRarity(CardRarityENUM.DOUBLE_RAINBOW);
   const { data: crownCards, length: crownCardsLength } = getCardRarity(CardRarityENUM.CROWN);
-  const { data: rainbowCards, length: rainbowCardsLength } = getCardRarity(CardRarityENUM.CROWN); // CHANGE
 
   const { data: grassCards, length: grassCardsLength } = getCardByType(PokemonTypeENUM.GRASS);
   const { data: darkCards, length: darkCardsLength } = getCardByType(PokemonTypeENUM.DARK);
@@ -305,7 +306,7 @@ export function GraphicCollage({
     withdrawConditionLength, retireConditionLength, callConditionLength, inactiveConditionLength,
     arceusConditionLength, weakGrassCardsLength, weakFireCardsLength, weakWaterCardsLength, weakElectricCardsLength,
     weakPsychicCardsLength, weakFightCardsLength, weakDarkCardsLength, weakSteelCardsLength, shiningCardsLength,
-    rainbowCardsLength
+    rainbowCardsLength, doubleRainbowCardsLength
   };
 
   const EXPANSION_DATA: any = {
@@ -320,7 +321,7 @@ export function GraphicCollage({
   const GRADES_DATA: any = {
     rareCardsLength, rareCards, doubleCardsLength, doubleCards, artCardsLength, artCards,
     superCardsLength, superCards, inmersiveCardsLength, inmersiveCards,
-    crownCardsLength, crownCards, rainbowCards, rainbowCardsLength
+    crownCardsLength, crownCards, rainbowCards, rainbowCardsLength, doubleRainbowCards, doubleRainbowCardsLength
   };
 
   const TYPES_DATA: any = {

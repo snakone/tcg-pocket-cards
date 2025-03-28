@@ -48,15 +48,21 @@ const StateButton = ({
     if(onClick !== undefined) onClick();
     setPressed((prevPressed) => !prevPressed);
     if(filterObj?.current) {
-      (filterObj.current as any)[propFilter][keyFilter] = !pressed;
+      const value = !pressed || null;
+      (filterObj.current as any)[propFilter][keyFilter] = value;
     }
   };
 
   useEffect(() => {
+    if ((filterObj?.current as any)[propFilter][keyFilter] === true) {
+      setPressed(true);
+    }
+
     const sub: Subscription | undefined = onPress?.subscribe(() => {
       setPressed((prevPressed) => {
         if(filterObj?.current) {
-          (filterObj.current as any)[propFilter][keyFilter] = !prevPressed;
+          const value = !prevPressed || null;
+          (filterObj.current as any)[propFilter][keyFilter] = value;
         }
         return !prevPressed
       });
@@ -65,7 +71,7 @@ const StateButton = ({
     return () => {
       sub?.unsubscribe();
     }
-  }, [])
+  }, []);
 
   return (
     <TouchableOpacity

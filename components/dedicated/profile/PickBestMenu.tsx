@@ -6,7 +6,7 @@ import React from "react";
 import { Image } from "expo-image";
 
 import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, CardGridStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
+import { ButtonStyles, CardGridStyles, gridHeightMap, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -19,6 +19,8 @@ import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
+
+const numColumns = 6;
 
 export default function PickBestMenu({
   isVisible,
@@ -88,6 +90,12 @@ export default function PickBestMenu({
     </View>
   ), []);
 
+  const getItemLayout = useCallback((_: any, index: number) => ({
+    length: gridHeightMap[numColumns],
+    offset: gridHeightMap[numColumns] * index,
+    index, 
+  }), []);
+
   return (
     <>
     <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
@@ -105,11 +113,12 @@ export default function PickBestMenu({
           <ThemedView style={{flex: 1, alignItems: 'center', marginTop: 12}}>
             <FlatList data={cards}
                       renderItem={renderCard}
-                      numColumns={6}
+                      numColumns={numColumns}
+                      getItemLayout={getItemLayout}
                       showsVerticalScrollIndicator={false}
                       maxToRenderPerBatch={24}
-                      initialNumToRender={6}
-                      windowSize={12}
+                      initialNumToRender={20}
+                      windowSize={11}
                       keyExtractor={(item, index) => index + ''}
                       ListFooterComponent={<ThemedView style={{height: 12}}/>}
                     />

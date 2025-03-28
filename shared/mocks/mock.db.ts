@@ -58,6 +58,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -118,6 +119,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -183,6 +185,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.HEAL
     ],
@@ -259,6 +262,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.HEAL
     ],
@@ -326,6 +330,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CALL],
     found: [
       EXPANSION.PIKACHU
@@ -386,6 +391,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -458,6 +464,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.HEAL
     ],
@@ -520,6 +527,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -580,6 +588,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -640,6 +649,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -700,6 +710,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -760,6 +771,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -825,6 +837,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.SLEEP
     ],
@@ -887,6 +900,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -947,6 +961,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -1007,6 +1022,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -1072,6 +1088,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.POISON
     ],
@@ -1134,6 +1151,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -1194,6 +1212,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -1266,6 +1285,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -1328,6 +1348,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -1393,6 +1414,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -1461,6 +1483,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -1529,6 +1552,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.CHARIZARD
@@ -1589,6 +1613,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -1653,6 +1678,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -1718,6 +1744,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -1780,6 +1807,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -1847,6 +1875,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PIKACHU,
@@ -1914,6 +1943,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.PIKACHU,
@@ -1981,6 +2011,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.NOTHING
@@ -2044,6 +2075,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -2109,6 +2141,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -2169,6 +2202,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -2234,6 +2268,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -2308,6 +2343,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -2373,6 +2409,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.RESIST
@@ -2441,6 +2478,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -2501,6 +2539,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -2566,6 +2605,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.PIKACHU
@@ -2631,6 +2671,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.PIKACHU
@@ -2691,6 +2732,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -2753,6 +2795,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -2815,6 +2858,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -2880,6 +2924,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -2945,6 +2990,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.NOTHING
@@ -3021,6 +3067,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.ADD
@@ -3084,6 +3131,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -3145,6 +3193,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -3205,6 +3254,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -3265,6 +3315,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -3332,6 +3383,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PIKACHU,
@@ -3394,6 +3446,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -3454,6 +3507,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -3519,6 +3573,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -3593,6 +3648,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -3658,6 +3714,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -3720,6 +3777,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -3782,6 +3840,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -3842,6 +3901,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -3914,6 +3974,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.CHARIZARD
@@ -3974,6 +4035,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -4039,6 +4101,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.MEWTWO
@@ -4099,6 +4162,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -4159,6 +4223,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -4219,6 +4284,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -4291,6 +4357,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.MEWTWO
@@ -4351,6 +4418,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -4416,6 +4484,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -4479,6 +4548,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -4544,6 +4614,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.PIKACHU
@@ -4604,6 +4675,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -4669,6 +4741,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.NOTHING
@@ -4732,6 +4805,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -4792,6 +4866,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -4852,6 +4927,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -4912,6 +4988,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -4977,6 +5054,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PIKACHU
@@ -5042,6 +5120,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU
@@ -5107,6 +5186,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PIKACHU
@@ -5167,6 +5247,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -5232,6 +5313,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.PIKACHU
@@ -5297,6 +5379,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.PARALYZE
@@ -5373,6 +5456,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.MEWTWO
@@ -5433,6 +5517,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -5493,6 +5578,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -5553,6 +5639,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -5613,6 +5700,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -5685,6 +5773,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.CHARIZARD
@@ -5745,6 +5834,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -5809,6 +5899,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -5870,6 +5961,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -5937,6 +6029,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.PIKACHU,
@@ -5999,6 +6092,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -6064,6 +6158,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PIKACHU,
@@ -6129,6 +6224,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -6189,6 +6285,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -6261,6 +6358,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.PIKACHU,
@@ -6321,6 +6419,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -6381,6 +6480,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -6446,6 +6546,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.RECOIL
@@ -6514,6 +6615,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -6582,6 +6684,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ATTACK_BENCH,
       CardSpecialConditionENUM.RECOIL
@@ -6658,6 +6761,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -6721,6 +6825,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -6788,6 +6893,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.PIKACHU,
@@ -6850,6 +6956,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -6910,6 +7017,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -6975,6 +7083,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.PARALYZE
@@ -7038,6 +7147,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -7105,6 +7215,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -7175,6 +7286,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.PARALYZE
@@ -7239,6 +7351,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -7299,6 +7412,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -7364,6 +7478,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -7424,6 +7539,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -7489,6 +7605,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.CHARIZARD,
@@ -7549,6 +7666,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -7611,6 +7729,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -7673,6 +7792,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -7733,6 +7853,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -7798,6 +7919,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -7870,6 +7992,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -7930,6 +8053,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -8002,6 +8126,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.SLEEP
@@ -8070,6 +8195,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.MEWTWO,
@@ -8134,6 +8260,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEWTWO,
@@ -8198,6 +8325,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.MEWTWO,
@@ -8272,6 +8400,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.MEWTWO,
@@ -8332,6 +8461,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -8392,6 +8522,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -8464,6 +8595,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.MEWTWO,
@@ -8524,6 +8656,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -8586,6 +8719,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -8648,6 +8782,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -8715,6 +8850,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -8780,6 +8916,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -8842,6 +8979,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -8904,6 +9042,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -8969,6 +9108,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.PIKACHU,
@@ -9029,6 +9169,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -9094,6 +9235,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.CHARIZARD,
@@ -9154,6 +9296,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -9214,6 +9357,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -9274,6 +9418,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -9334,6 +9479,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -9394,6 +9540,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -9454,6 +9601,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -9519,6 +9667,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.PIKACHU,
@@ -9579,6 +9728,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -9644,6 +9794,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.MEWTWO,
@@ -9704,6 +9855,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -9769,6 +9921,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -9837,6 +9990,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.MEWTWO,
@@ -9896,6 +10050,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -9955,6 +10110,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -10015,6 +10171,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -10075,6 +10232,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -10140,6 +10298,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.CHARIZARD,
@@ -10200,6 +10359,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -10260,6 +10420,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -10320,6 +10481,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -10387,6 +10549,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -10451,6 +10614,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -10518,6 +10682,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CORNER],
     found: [
       EXPANSION.PIKACHU,
@@ -10585,6 +10750,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CALL],
     found: [
       EXPANSION.PIKACHU,
@@ -10645,6 +10811,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -10710,6 +10877,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -10770,6 +10938,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -10830,6 +10999,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -10895,6 +11065,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.PIKACHU,
@@ -10955,6 +11126,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -11015,6 +11187,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -11080,6 +11253,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.MEWTWO,
@@ -11145,6 +11319,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEWTWO,
@@ -11205,6 +11380,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -11277,6 +11453,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.MEWTWO,
@@ -11342,6 +11519,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.DISCARD
@@ -11405,6 +11583,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -11467,6 +11646,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -11534,6 +11714,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.CHARIZARD,
@@ -11606,6 +11787,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.CHARIZARD,
@@ -11666,6 +11848,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -11726,6 +11909,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -11791,6 +11975,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ATTACK_BENCH,
       CardSpecialConditionENUM.RANDOM_ATTACK
@@ -11854,6 +12039,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -11914,6 +12100,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -11986,6 +12173,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -12048,6 +12236,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -12110,6 +12299,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -12172,6 +12362,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -12237,6 +12428,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.DISCARD
@@ -12300,6 +12492,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -12360,6 +12553,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -12425,6 +12619,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.PIKACHU
@@ -12490,6 +12685,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
     found: [
       EXPANSION.CHARIZARD
@@ -12555,6 +12751,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -12615,6 +12812,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -12677,6 +12875,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -12739,6 +12938,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -12806,6 +13006,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -12869,6 +13070,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -12934,6 +13136,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -12996,6 +13199,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -13061,6 +13265,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -13121,6 +13326,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -13181,6 +13387,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -13241,6 +13448,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -13313,6 +13521,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -13378,6 +13587,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.FORCE_SWITCH
@@ -13441,6 +13651,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -13501,6 +13712,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -13568,6 +13780,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -13630,6 +13843,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -13692,6 +13906,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -13723,6 +13938,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.FOSSIL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -13754,6 +13970,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.FOSSIL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -13785,6 +14002,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.FOSSIL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -13816,6 +14034,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.CHARIZARD,
@@ -13848,6 +14067,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.PIKACHU,
@@ -13878,6 +14098,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.CHARIZARD,
@@ -13909,6 +14130,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.MEWTWO,
@@ -13940,6 +14162,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEWTWO,
@@ -13971,6 +14194,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.PIKACHU,
@@ -14002,6 +14226,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -14035,6 +14260,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.PIKACHU,
@@ -14097,6 +14323,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -14157,6 +14384,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -14222,6 +14450,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -14290,6 +14519,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -14350,6 +14580,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -14410,6 +14641,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -14475,6 +14707,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PIKACHU
@@ -14540,6 +14773,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.CHARIZARD
@@ -14600,6 +14834,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -14665,6 +14900,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.CHARIZARD,
@@ -14725,6 +14961,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -14785,6 +15022,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -14850,6 +15088,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.MEWTWO,
@@ -14915,6 +15154,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -14980,6 +15220,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.PIKACHU,
@@ -15040,6 +15281,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -15112,6 +15354,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.MEWTWO,
@@ -15177,6 +15420,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ATTACK_BENCH,
       CardSpecialConditionENUM.RANDOM_ATTACK
@@ -15252,6 +15496,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -15319,6 +15564,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
     found: [
       EXPANSION.CHARIZARD
@@ -15384,6 +15630,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -15444,6 +15691,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -15516,6 +15764,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -15576,6 +15825,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -15650,6 +15900,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.MEWTWO
@@ -15715,6 +15966,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -15792,6 +16044,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -15857,6 +16110,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.PIKACHU
@@ -15931,6 +16185,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.ADD
@@ -16008,6 +16263,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -16068,6 +16324,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -16142,6 +16399,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.MEWTWO
@@ -16207,6 +16465,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -16281,6 +16540,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -16356,6 +16616,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -16430,6 +16691,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.MEWTWO,
@@ -16490,6 +16752,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -16555,6 +16818,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -16623,6 +16887,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.PIKACHU
@@ -16652,6 +16917,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.CHARIZARD,
@@ -16683,6 +16949,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.PIKACHU,
@@ -16714,6 +16981,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.CHARIZARD,
@@ -16745,6 +17013,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.MEWTWO,
@@ -16776,6 +17045,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEWTWO,
@@ -16807,6 +17077,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.PIKACHU,
@@ -16838,6 +17109,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -16871,6 +17143,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.PIKACHU,
@@ -16947,6 +17220,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.ADD
@@ -17024,6 +17298,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.MEWTWO
@@ -17098,6 +17373,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -17173,6 +17449,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -17233,6 +17510,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -17298,6 +17576,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.PIKACHU
@@ -17372,6 +17651,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -17437,6 +17717,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -17511,6 +17792,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.MEWTWO,
@@ -17576,6 +17858,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.SPECIAL_MISSION
@@ -17655,6 +17938,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PIKACHU,
@@ -17722,6 +18006,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -17798,6 +18083,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PIKACHU,
@@ -17865,6 +18151,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.MEW
@@ -17930,6 +18217,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEW
@@ -17995,6 +18283,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -18058,6 +18347,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -18118,6 +18408,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -18190,6 +18481,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.MEW
@@ -18250,6 +18542,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -18315,6 +18608,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.MEW
@@ -18380,6 +18674,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEW
@@ -18445,6 +18740,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -18513,6 +18809,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -18581,6 +18878,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.MEW
@@ -18641,6 +18939,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -18706,6 +19005,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.DISCARD,
       CardSpecialConditionENUM.ATTACK_BENCH
@@ -18774,6 +19074,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEW
@@ -18839,6 +19140,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.MEW
@@ -18904,6 +19206,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.MEW
@@ -18969,6 +19272,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.MEW
@@ -19041,6 +19345,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.MEW
@@ -19101,6 +19406,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -19166,6 +19472,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.MEW
@@ -19226,6 +19533,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -19291,6 +19599,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.DISCARD
@@ -19359,6 +19668,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.RESIST
@@ -19427,6 +19737,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEW
@@ -19492,6 +19803,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.MEW
@@ -19557,6 +19869,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.MEW
@@ -19617,6 +19930,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -19682,6 +19996,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CORNER],
     found: [
       EXPANSION.MEW
@@ -19747,6 +20062,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.PARALYZE
@@ -19815,6 +20131,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -19889,6 +20206,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -19954,6 +20272,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
     found: [
       EXPANSION.MEW
@@ -20014,6 +20333,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -20079,6 +20399,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEW
@@ -20144,6 +20465,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.MEW
@@ -20209,6 +20531,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.MEW
@@ -20274,6 +20597,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.MEW
@@ -20334,6 +20658,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -20394,6 +20719,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -20459,6 +20785,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.NOTHING
@@ -20522,6 +20849,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -20582,6 +20910,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -20642,6 +20971,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -20707,6 +21037,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.MEW
@@ -20779,6 +21110,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -20844,6 +21176,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -20904,6 +21237,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -20969,6 +21303,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CALL],
     found: [
       EXPANSION.MEW
@@ -21034,6 +21369,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.MEW
@@ -21094,6 +21430,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -21154,6 +21491,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -21214,6 +21552,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -21279,6 +21618,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.MEW
@@ -21344,6 +21684,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEW
@@ -21416,6 +21757,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.MEW
@@ -21476,6 +21818,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -21536,6 +21879,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -21601,6 +21945,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEW
@@ -21666,6 +22011,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEW
@@ -21731,6 +22077,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -21799,6 +22146,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.WITHDRAW_CARD, 
       CardSpecialConditionENUM.PLAY_CARDS
@@ -21831,6 +22179,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.FOSSIL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -21862,6 +22211,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.ITEM,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -21893,6 +22243,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.ITEM,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.CALL
     ],
@@ -21926,6 +22277,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.MEW,
@@ -21957,6 +22309,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.MEW,
@@ -21988,6 +22341,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.MEW,
@@ -22055,6 +22409,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEW
@@ -22127,6 +22482,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ADD
     ],
@@ -22194,6 +22550,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEW
@@ -22266,6 +22623,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.MEW
@@ -22331,6 +22689,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.PARALYZE
@@ -22399,6 +22758,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -22464,6 +22824,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -22532,6 +22893,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.MEW
@@ -22606,6 +22968,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -22678,6 +23041,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -22743,6 +23107,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEW
@@ -22772,6 +23137,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.MEW,
@@ -22803,6 +23169,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.MEW,
@@ -22834,6 +23201,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.MEW,
@@ -22910,6 +23278,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -22982,6 +23351,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -23047,6 +23417,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -23124,6 +23495,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEW
@@ -23189,6 +23561,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.DIALGA,
@@ -23250,6 +23623,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -23311,6 +23685,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -23372,6 +23747,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -23437,6 +23813,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.DIALGA,
@@ -23497,6 +23874,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -23562,6 +23940,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.DIALGA,
@@ -23622,6 +24001,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -23688,6 +24068,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.DIALGA,
@@ -23749,6 +24130,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -23809,6 +24191,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -23874,6 +24257,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.INACTIVE],
     found: [
       EXPANSION.PALKIA
@@ -23934,6 +24318,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -23999,6 +24384,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CONFUSION],
     found: [
       EXPANSION.PALKIA
@@ -24059,6 +24445,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -24125,6 +24512,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -24194,6 +24582,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CALL],
     found: [
       EXPANSION.DIALGA
@@ -24254,6 +24643,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA
@@ -24319,6 +24709,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -24387,6 +24778,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.INACTIVE],
     found: [
       EXPANSION.DIALGA
@@ -24452,6 +24844,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.DISCARD
@@ -24528,6 +24921,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.DIALGA
@@ -24593,6 +24987,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.PALKIA
@@ -24658,6 +25053,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.BURNED],
     found: [
       EXPANSION.PALKIA
@@ -24718,6 +25114,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -24784,6 +25181,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.BURNED],
     found: [
       EXPANSION.DIALGA,
@@ -24845,6 +25243,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -24905,6 +25304,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -24970,6 +25370,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA
@@ -25035,6 +25436,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -25099,6 +25501,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -25171,6 +25574,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -25243,6 +25647,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.DIALGA,
@@ -25315,6 +25720,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.PALKIA
@@ -25380,6 +25786,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PALKIA
@@ -25440,6 +25847,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -25505,6 +25913,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.PALKIA
@@ -25565,6 +25974,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -25631,6 +26041,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -25692,6 +26103,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -25757,6 +26169,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -25822,6 +26235,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.RESIST
@@ -25886,6 +26300,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -25952,6 +26367,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -26013,6 +26429,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -26079,6 +26496,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.PARALYZE
@@ -26142,6 +26560,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -26208,6 +26627,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.DIALGA,
@@ -26283,6 +26703,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.DISCARD,
       CardSpecialConditionENUM.ATTACK_BENCH
@@ -26351,6 +26772,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.PALKIA
@@ -26411,6 +26833,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -26472,6 +26895,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -26538,6 +26962,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.DIALGA,
@@ -26604,6 +27029,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.DIALGA,
@@ -26665,6 +27091,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -26731,6 +27158,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.DIALGA,
@@ -26796,6 +27224,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -26861,6 +27290,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.RESIST
@@ -26924,6 +27354,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -26989,6 +27420,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.DISCARD,
       CardSpecialConditionENUM.ATTACK_BENCH
@@ -27057,6 +27489,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -27122,6 +27555,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PALKIA
@@ -27182,6 +27616,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -27243,6 +27678,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -27309,6 +27745,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -27370,6 +27807,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -27435,6 +27873,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CONFUSION],
     found: [
       EXPANSION.PALKIA
@@ -27500,6 +27939,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.DIALGA
@@ -27560,6 +28000,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -27620,6 +28061,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -27680,6 +28122,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -27752,6 +28195,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.DIALGA,
@@ -27817,6 +28261,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.DIALGA,
@@ -27877,6 +28322,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -27942,6 +28388,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.DIALGA,
@@ -28008,6 +28455,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.DIALGA,
@@ -28074,6 +28522,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.DIALGA,
@@ -28147,6 +28596,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.PALKIA
@@ -28212,6 +28662,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PALKIA
@@ -28272,6 +28723,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -28332,6 +28784,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -28397,6 +28850,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA
@@ -28457,6 +28911,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -28522,6 +28977,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -28585,6 +29041,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -28645,6 +29102,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -28718,6 +29176,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.DIALGA,
@@ -28779,6 +29238,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -28844,6 +29304,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.DIALGA,
@@ -28904,6 +29365,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -28964,6 +29426,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -29036,6 +29499,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -29096,6 +29560,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -29156,6 +29621,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -29221,6 +29687,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -29281,6 +29748,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -29346,6 +29814,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.DIALGA,
@@ -29411,6 +29880,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -29479,6 +29949,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PALKIA
@@ -29539,6 +30010,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -29600,6 +30072,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -29661,6 +30134,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -29726,6 +30200,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.DIALGA,
@@ -29791,6 +30266,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.PALKIA
@@ -29851,6 +30327,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -29917,6 +30394,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE,
@@ -29987,6 +30465,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -30055,6 +30534,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -30123,6 +30603,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.DIALGA,
@@ -30195,6 +30676,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -30260,6 +30742,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -30321,6 +30804,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -30382,6 +30866,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -30454,6 +30939,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.PALKIA
@@ -30519,6 +31005,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -30582,6 +31069,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA
@@ -30647,6 +31135,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.DIALGA
@@ -30712,6 +31201,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -30790,6 +31280,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.DIALGA,
@@ -30855,6 +31346,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.DIALGA,
@@ -30915,6 +31407,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -30975,6 +31468,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -31047,6 +31541,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA,
@@ -31107,6 +31602,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -31172,6 +31668,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -31240,6 +31737,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -31304,6 +31802,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -31364,6 +31863,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -31429,6 +31929,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -31489,6 +31990,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -31555,6 +32057,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -31624,6 +32127,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA,
@@ -31684,6 +32188,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -31749,6 +32254,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CORNER],
     found: [
       EXPANSION.PALKIA,
@@ -31814,6 +32320,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -31874,6 +32381,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -31934,6 +32442,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -31999,6 +32508,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.DIALGA,
@@ -32064,6 +32574,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.NOTHING
@@ -32132,6 +32643,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.PLAY_CARDS],
     found: [
       EXPANSION.PALKIA,
@@ -32197,6 +32709,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -32265,6 +32778,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.FORCE_SWITCH
@@ -32334,6 +32848,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -32364,6 +32879,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.FOSSIL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -32395,6 +32911,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.FOSSIL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -32427,6 +32944,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CALL],
     found: [
       EXPANSION.DIALGA
@@ -32457,6 +32975,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [],
     related: [520, 521],
     found: [
@@ -32487,6 +33006,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     related: [519, 521],
     found: [
@@ -32517,6 +33037,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [],
     related: [519, 520],
     found: [
@@ -32546,6 +33067,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -32579,6 +33101,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CALL],
     found: [
       EXPANSION.DIALGA,
@@ -32610,6 +33133,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PALKIA,
@@ -32641,6 +33165,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.DIALGA,
@@ -32672,6 +33197,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.DIALGA,
@@ -32703,6 +33229,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.PLAY_CARDS],
     found: [
       EXPANSION.PALKIA,
@@ -32770,6 +33297,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.DIALGA,
@@ -32835,6 +33363,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CALL],
     found: [
       EXPANSION.DIALGA
@@ -32900,6 +33429,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -32975,6 +33505,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.DIALGA
@@ -33047,6 +33578,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.DIALGA,
@@ -33112,6 +33644,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -33177,6 +33710,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.PALKIA
@@ -33242,6 +33776,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.RESIST
@@ -33310,6 +33845,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PALKIA
@@ -33375,6 +33911,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.DIALGA,
@@ -33440,6 +33977,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.DIALGA,
@@ -33512,6 +34050,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.PALKIA
@@ -33577,6 +34116,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PALKIA
@@ -33642,6 +34182,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA
@@ -33714,6 +34255,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -33774,6 +34316,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -33839,6 +34382,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.PALKIA
@@ -33904,6 +34448,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -33972,6 +34517,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.DIALGA,
@@ -34044,6 +34590,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA,
@@ -34109,6 +34656,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CORNER],
     found: [
       EXPANSION.PALKIA,
@@ -34174,6 +34722,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -34239,6 +34788,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.NOTHING
@@ -34307,6 +34857,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -34372,6 +34923,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.DIALGA,
@@ -34437,6 +34989,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA
@@ -34511,6 +35064,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.DISCARD,
       CardSpecialConditionENUM.ATTACK_BENCH
@@ -34579,6 +35133,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -34644,6 +35199,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CONFUSION],
     found: [
       EXPANSION.PALKIA
@@ -34709,6 +35265,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -34774,6 +35331,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PALKIA
@@ -34846,6 +35404,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -34920,6 +35479,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.DIALGA,
@@ -34985,6 +35545,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -35017,6 +35578,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -35050,6 +35612,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CALL],
     found: [
       EXPANSION.DIALGA,
@@ -35081,6 +35644,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PALKIA,
@@ -35112,6 +35676,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.DIALGA,
@@ -35143,6 +35708,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.DIALGA,
@@ -35174,6 +35740,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.PLAY_CARDS],
     found: [
       EXPANSION.PALKIA,
@@ -35241,6 +35808,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.DIALGA,
@@ -35306,6 +35874,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA
@@ -35371,6 +35940,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -35436,6 +36006,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CONFUSION],
     found: [
       EXPANSION.PALKIA
@@ -35501,6 +36072,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -35566,6 +36138,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PALKIA
@@ -35638,6 +36211,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -35703,6 +36277,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -35780,6 +36355,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.DISCARD,
       CardSpecialConditionENUM.ATTACK_BENCH
@@ -35857,6 +36433,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.DIALGA,
@@ -35931,6 +36508,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.DISCARD,
       CardSpecialConditionENUM.ATTACK_BENCH
@@ -36009,6 +36587,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.DIALGA,
@@ -36045,6 +36624,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     related: [351, 350, 518, 581, 584, 582, 583, 587, 585]
   },
@@ -36077,6 +36657,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     related: [351, 350, 518, 580, 584, 582, 583, 587, 585]
   },
@@ -36109,6 +36690,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [],
     related: [351, 350, 518, 580, 581, 584, 583, 587, 585]
   },
@@ -36141,6 +36723,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [],
     related: [351, 350, 518, 580, 581, 584, 582, 587, 585]
   },
@@ -36173,6 +36756,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CALL],
     related: [351, 350, 518, 580, 581, 582, 583, 587, 585]
   },
@@ -36205,6 +36789,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.PLAY_CARDS],
     related: [351, 350, 518, 580, 581, 584, 582, 583, 587]
   },
@@ -36237,6 +36822,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
     related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
   },
@@ -36269,6 +36855,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [],
     related: [351, 350, 518, 580, 581, 584, 582, 583, 585]
   },
@@ -36326,6 +36913,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PREMIUM
@@ -36396,6 +36984,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PREMIUM
@@ -36461,6 +37050,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.WONDER_PICK
@@ -36531,6 +37121,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
     found: [
       EXPANSION.WONDER_PICK
@@ -36608,6 +37199,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PROMO_A1
@@ -36678,6 +37270,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PROMO_A1
@@ -36742,6 +37335,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PROMO_A1,
@@ -36807,6 +37401,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PROMO_A1,
@@ -36877,6 +37472,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.PROMO_A1,
@@ -36947,6 +37543,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PROMO_A2
@@ -37024,6 +37621,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.PROMO_A2
@@ -37094,6 +37692,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.NOTHING
@@ -37162,6 +37761,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PROMO_A2,
@@ -37232,6 +37832,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.PROMO_A2
@@ -37297,6 +37898,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.WONDER_PICK
@@ -37362,6 +37964,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.WONDER_PICK,
@@ -37441,6 +38044,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.ADD
@@ -37509,6 +38113,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.SPECIAL_MISSION,
@@ -37574,6 +38179,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PROMO_A3
@@ -37643,6 +38249,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.DISCARD,
       CardSpecialConditionENUM.ATTACK_BENCH
@@ -37716,6 +38323,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PROMO_A3,
@@ -37786,6 +38394,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.PROMO_A3,
@@ -37856,6 +38465,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PROMO_A3
@@ -37926,6 +38536,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.WONDER_PICK
@@ -37991,6 +38602,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.WONDER_PICK,
@@ -38061,6 +38673,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PREMIUM
@@ -38126,6 +38739,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PROMO_A4
@@ -38197,6 +38811,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PROMO_A4
@@ -38274,6 +38889,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PROMO_A4
@@ -38344,6 +38960,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CONFUSION],
     found: [
       EXPANSION.PROMO_A4
@@ -38414,6 +39031,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PROMO_A4
@@ -38479,6 +39097,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.WONDER_PICK
@@ -38544,6 +39163,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.WONDER_PICK
@@ -38614,6 +39234,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.EXTRA_DAMAGE,
       CardSpecialConditionENUM.FLIP
@@ -38677,6 +39298,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -38737,6 +39359,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -38797,6 +39420,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -38862,6 +39486,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.RECOIL
     ],
@@ -38924,6 +39549,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -38989,6 +39615,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.CONFUSION
     ],
@@ -39056,6 +39683,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.HEAL
     ],
@@ -39130,6 +39758,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ARCEUS_LINK,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -39205,6 +39834,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.ARCEUS
@@ -39265,6 +39895,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -39330,6 +39961,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.CORNER
     ],
@@ -39409,6 +40041,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.RETIRE,
       CardSpecialConditionENUM.ARCEUS_LINK,
@@ -39472,6 +40105,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -39532,6 +40166,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -39592,6 +40227,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -39657,6 +40293,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE,
@@ -39721,6 +40358,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -39786,6 +40424,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ATTACK_BENCH
     ],
@@ -39848,6 +40487,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -39920,6 +40560,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ARCEUS_LINK],
     found: [
       EXPANSION.ARCEUS,
@@ -39992,6 +40633,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
@@ -40059,6 +40701,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -40127,6 +40770,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.SLEEP,
     ],
@@ -40194,6 +40838,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ATTACK_BENCH,
     ],
@@ -40273,6 +40918,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.RESIST,
       CardSpecialConditionENUM.ARCEUS_LINK
@@ -40336,6 +40982,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -40401,6 +41048,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP
     ],
@@ -40463,6 +41111,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -40528,6 +41177,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.ARCEUS,
@@ -40593,6 +41243,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.PLAY_CARDS
@@ -40656,6 +41307,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -40721,6 +41373,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.SLEEP
     ],
@@ -40795,6 +41448,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.PLAY_CARDS
     ],
@@ -40874,6 +41528,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ARCEUS_LINK,
       CardSpecialConditionENUM.ATTACK_BENCH,
@@ -40943,6 +41598,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
@@ -41005,6 +41661,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -41070,6 +41727,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
@@ -41132,6 +41790,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -41192,6 +41851,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -41264,6 +41924,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ARCEUS_LINK,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -41327,6 +41988,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -41387,6 +42049,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -41452,6 +42115,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.NOTHING
@@ -41515,6 +42179,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -41575,6 +42240,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -41649,6 +42315,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.ARCEUS,
@@ -41709,6 +42376,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -41769,6 +42437,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -41841,6 +42510,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ARCEUS_LINK,
       CardSpecialConditionENUM.ATTACK_BENCH,
@@ -41905,6 +42575,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -41970,6 +42641,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.POISON,
     ],
@@ -42032,6 +42704,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -42092,6 +42765,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -42164,6 +42838,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ARCEUS_LINK,
       CardSpecialConditionENUM.RESIST
@@ -42232,6 +42907,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
@@ -42299,6 +42975,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.RESIST,
     ],
@@ -42361,6 +43038,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -42426,6 +43104,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.ARCEUS
@@ -42491,6 +43170,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FLIP,
       CardSpecialConditionENUM.INACTIVE
@@ -42559,6 +43239,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.ARCEUS
@@ -42619,6 +43300,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -42684,6 +43366,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.ARCEUS,
@@ -42744,6 +43427,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -42809,6 +43493,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.PLAY_CARDS
     ],
@@ -42871,6 +43556,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -42931,6 +43617,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -42996,6 +43683,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.ARCEUS,
@@ -43068,6 +43756,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.ARCEUS
@@ -43133,6 +43822,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.ARCEUS
@@ -43210,6 +43900,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.ARCEUS
@@ -43239,6 +43930,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.ARCEUS,
@@ -43270,6 +43962,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CALL],
     found: [
       EXPANSION.ARCEUS,
@@ -43301,6 +43994,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.ARCEUS,
@@ -43332,6 +44026,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.ARCEUS,
@@ -43399,6 +44094,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.CORNER
     ],
@@ -43461,6 +44157,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -43533,6 +44230,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.PLAY_CARDS
     ],
@@ -43600,6 +44298,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
@@ -43662,6 +44361,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -43734,6 +44434,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.ARCEUS
@@ -43806,6 +44507,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.ARCEUS
@@ -43878,6 +44580,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
@@ -43954,6 +44657,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.ARCEUS,
@@ -44019,6 +44723,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.RESIST,
     ],
@@ -44098,6 +44803,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.ARCEUS
@@ -44127,6 +44833,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.ARCEUS,
@@ -44158,6 +44865,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CALL],
     found: [
       EXPANSION.ARCEUS,
@@ -44189,6 +44897,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.ARCEUS,
@@ -44220,6 +44929,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.ARCEUS,
@@ -44294,6 +45004,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.ARCEUS
@@ -44366,6 +45077,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
@@ -44442,6 +45154,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.ARCEUS,
@@ -44507,6 +45220,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.RESIST,
     ],
@@ -44586,6 +45300,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.ARCEUS
@@ -44663,6 +45378,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.ARCEUS
@@ -44735,6 +45451,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PREMIUM,
@@ -44800,6 +45517,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.HEAL
     ],
@@ -44879,6 +45597,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.RESIST,
       CardSpecialConditionENUM.ARCEUS_LINK
@@ -44947,6 +45666,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PROMO_A5
@@ -45007,6 +45727,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PROMO_A5
@@ -45079,6 +45800,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.PROMO_A5,
@@ -45144,6 +45866,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ADD],
     found: [
       EXPANSION.WONDER_PICK
@@ -45214,6 +45937,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.WONDER_PICK,

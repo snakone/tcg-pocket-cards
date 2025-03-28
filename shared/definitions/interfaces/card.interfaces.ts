@@ -31,6 +31,7 @@ export interface Card extends BaseCard {
   extra?: Record<LanguageType, string>;
   condition: CardSpecialConditionENUM[];
   info?: PokedexInfo;
+  shiny: boolean;
 }
 
 export interface Attack {

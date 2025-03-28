@@ -19,7 +19,7 @@ import SortCardMenu from '@/components/shared/cards/SortCardMenu';
 import { CollectionScreenModal } from '@/components/modals';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { BACKUP_HEIGHT, COLLECTION_LANGUAGE_MAP, SORT_FIELD_MAP } from '@/shared/definitions/utils/constants';
-import { ScreenStyles, ButtonStyles, CardGridStyles, ModalStyles, offersStyles, CARD_IMAGE_WIDTH_5, TabButtonStyles } from '@/shared/styles/component.styles';
+import { ScreenStyles, ButtonStyles, CardGridStyles, ModalStyles, offersStyles, CARD_IMAGE_WIDTH_5, TabButtonStyles, gridHeightMap } from '@/shared/styles/component.styles';
 import { ThemedText } from '@/components/ThemedText';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { LanguageType } from '@/shared/definitions/types/global.types';
@@ -39,7 +39,7 @@ export default function CollectionCardsScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
-  const [sort, setSort] = useState<SortItem>();
+  const [sort] = useState<SortItem>();
   const [isSortVisible, setIsSortVisible] = useState(false);
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -51,6 +51,38 @@ export default function CollectionCardsScreen() {
   const { confirm } = useConfirmation();
 
   const collection = useMemo(() => state.settingsState.collection, [state.settingsState.collection]);
+
+  const onMenuClose = useCallback(async ({ unmark, markAll, language }: any): Promise<void> => {
+    setIsMenuVisible(false);
+  
+    if (markAll) {
+      markAllCards(language);
+    } else if (unmark) {
+      const userConfirmed = await confirm("unmark", "unmark_cards");
+      if (userConfirmed) {
+        unMarkAllCards(language);
+      }
+    }
+  
+    if (language === undefined) {
+      language = CardLanguageENUM.EN;
+    }
+  
+    if (langCollection !== language) {
+      setLangCollection(language);
+    }
+  }, [collection, langCollection]);
+
+  const onViewStats = useCallback((language: CardLanguageENUM): void => {
+    setIsMenuVisible(false);
+  
+    setTimeout(() => {
+      SoundService.play('CHANGE_VIEW');
+      dispatch({ type: 'SET_COLLECTION_LANGUAGE', value: language });
+      dispatch({ type: 'SET_NAVIGATING', value: true });
+      router.push('/screens/collection_stats');
+    }, 100);
+  }, []);
 
   const memoizedMenu = useMemo(() => {
     return <CollectionCardMenu isVisible={isMenuVisible} 
@@ -73,69 +105,33 @@ export default function CollectionCardsScreen() {
                            isCollection={true}/>
   }, [isFilterVisible]);
 
-  useEffect(() => {
-    if (state.filterState.sort.length > 0) {
-      const active = state.filterState.sort.find(s => s.active);
-      setSort(active);
-    }
-  }, [state.filterState.sort]);
-
-  function onViewStats(language: CardLanguageENUM): void {
-    setIsMenuVisible(false);
-
-    setTimeout(() => {
-      SoundService.play('CHANGE_VIEW');
-      dispatch({type: 'SET_COLLECTION_LANGUAGE', value: language});
-      dispatch({type: 'SET_NAVIGATING', value: true});
-      router.push('/screens/collection_stats');
-    }, 100);
-
-  }
-
-  async function onMenuClose({unmark, markAll, language}: any): Promise<void> {
-    setIsMenuVisible(false);
-
-    if (markAll) {
-      markAllCards(language);
-    } else if (unmark) {
-      const userConfirmed = await confirm("unmark", "unmark_cards");
-      if (userConfirmed) {
-        unMarkAllCards(language);
-      }
-    }
-
-    if (language === undefined) {
-      language = CardLanguageENUM.EN;
-    }
-
-    if (langCollection !== language) {
-      setLangCollection(language);
-    }
-  }
-
-  function markAllCards(language: CardLanguageENUM): void {
-    const allMarked = filtered.map(card => {
-      const item = collection.find(sel => sel.id === card.id);
+  const markAllCards = useCallback((language: CardLanguageENUM): void => {
+    const allMarked = filtered.map((card) => {
+      const item = collection.find((sel) => sel.id === card.id);
       if (!item) {
         return new CollectionUser(card.id, language) as UserCollection;
       }
-
-      if (item && item.amount[language] === 0) {
+  
+      if (item.amount[language] === 0) {
         item.amount[language]++;
       }
-
+  
       return item;
     });
-
-    dispatch({type: 'SET_COLLECTION', value: allMarked});
+  
+    dispatch({ type: 'SET_COLLECTION', value: allMarked });
     Storage.set('collection', allMarked);
-  }
+  }, [filtered, collection, langCollection]);
 
-  function unMarkAllCards(language: CardLanguageENUM): void {
-    dispatch({type: 'RESET_COLLECTION', value: language});
-    collection.forEach(sel => sel.amount[language] = 0);
+  const unMarkAllCards = useCallback((language: CardLanguageENUM): void => {
+    dispatch({ type: 'RESET_COLLECTION', value: language });
+  
+    collection.forEach((sel) => {
+      sel.amount[language] = 0;
+    });
+  
     Storage.set('collection', collection);
-  }
+  }, [collection]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -145,8 +141,6 @@ export default function CollectionCardsScreen() {
     return (() => {
       dispatch({type: 'SET_NAVIGATING', value: false});
     });
-
-
   }, []);
   
   function onClose(): void {
@@ -206,24 +200,26 @@ export default function CollectionCardsScreen() {
     setTimeout(() => goUp(false), 100);
   }, [isFilterVisible, lang]);
 
-  function filterOrSortCards(
-    type: 'sort' | 'filter', 
-    data: Card[], 
-    sort?: SortItem | undefined
-  ): Card[] {
-    switch (type) {
-      case 'sort': {
-        if (!sort) { return data; }
-        return manageSort(sort, data);
+  const filterOrSortCards = useCallback(
+    (type: 'sort' | 'filter', data: Card[], sort?: SortItem): Card[] => {
+      switch (type) {
+        case 'sort': {
+          if (!sort) {
+            return data;
+          }
+          return manageSort(sort, data);
+        }
+  
+        case 'filter': {
+          return manageFilter(data);
+        }
+  
+        default:
+          return data;
       }
+    }, [state.settingsState.favorites, state.filterState.filter]);
 
-      case 'filter': {
-        return manageFilter(data);
-      }
-    }
-  }
-
-  function manageSort(sort: SortItem, data: Card[]): Card[] {
+  const manageSort = useCallback((sort: SortItem, data: Card[]): Card[] => {
     const sortField = SORT_FIELD_MAP[sort.label];
   
     if (!sortField) {
@@ -232,12 +228,13 @@ export default function CollectionCardsScreen() {
     }
   
     return sortCards(sortField, data, sort);
-  }
+  }, [state.settingsState.favorites]);
 
-  function manageFilter(data: Card[]): Card[] {
+  const manageFilter = useCallback((data: Card[]): Card[] => {
     const filter = state.filterState.filter;
     return filterCards(filter, data, state.settingsState.favorites, collection, langCollection);
-  }
+  }, [state.settingsState.favorites, state.filterState.filter]);
+  
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
@@ -245,13 +242,13 @@ export default function CollectionCardsScreen() {
       card.name[lang].toLowerCase()?.includes(text.toLowerCase())));
   }, [lang]);
 
-  const ResetFilterButton = () => (
-    <TouchableOpacity onPress={() => handleSearch('')} 
+  const ResetFilterButton = useCallback(() => (
+    <TouchableOpacity onPress={() => handleSearch('')}
                       style={[CardGridStyles.clearInput, {left: 184}]}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
-  );
+  ), []);
 
   const addToSelection = useCallback((item: Card) => {
     SoundService.play('PICK_CARD_SOUND');
@@ -265,8 +262,18 @@ export default function CollectionCardsScreen() {
     dispatch({type: 'REMOVE_FROM_COLLECTION', value: {id: item.id, lang: langCollection}});
   }, [langCollection]);
 
+  const collectionMap = useMemo(() => {
+    return new Map(collection.map((item) => [item.id, item]));
+  }, [collection]);
+
+  const getItemLayout = useCallback((_: any, index: number) => ({
+    length: gridHeightMap[1],
+    offset: gridHeightMap[1] * index,
+    index, 
+  }), []);
+
   const renderItem = useCallback(({ item }: { item: Card }) => {
-    const selectedItem = collection.find(sel => sel.id === item.id)?.amount[langCollection];
+    const selectedItem = collectionMap.get(item.id)?.amount[langCollection];
     return (
     <View key={item.id} style={[
         CardGridStyles.imageContainer, 
@@ -303,7 +310,7 @@ export default function CollectionCardsScreen() {
         source={getImageLanguage69x96(lang, item.id)}/>
       </TouchableOpacity>
     </View>
-  )}, [lang, langCollection]);
+  )}, [collection, lang, langCollection]);
 
   const keyExtractor = useCallback((item: Card) => String(item.id), []);
 
@@ -395,9 +402,10 @@ export default function CollectionCardsScreen() {
                   numColumns={5}
                   contentContainerStyle={[{width: '100%'}]}
                   keyExtractor={keyExtractor}
-                  initialNumToRender={25}
+                  initialNumToRender={20}
                   maxToRenderPerBatch={25}
-                  windowSize={9}
+                  windowSize={11}
+                  getItemLayout={getItemLayout}
                   removeClippedSubviews={true}
                   showsVerticalScrollIndicator={false}
                   ListEmptyComponent={RenderEmpty}

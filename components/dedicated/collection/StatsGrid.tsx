@@ -21,7 +21,7 @@ export const StatsGrid: React.FC<StatsGridProps> = ({ allRarity, allElements, ex
     <ThemedView style={{left: 1}}>
       {
         (!expansion || (expansion && Number(expansion) !== 99)) &&
-        <ThemedView style={{flexDirection: 'row', gap: 8, flexWrap: 'wrap', marginBottom: 24}}>
+        <ThemedView style={{flexDirection: 'row', gap: 8, flexWrap: 'wrap', marginBottom: 18, width: 356}}>
           {
             allRarity.filter(data => data !== undefined).map((data, i) => {
               return (
@@ -35,7 +35,8 @@ export const StatsGrid: React.FC<StatsGridProps> = ({ allRarity, allElements, ex
                             {marginRight: 2}, 
                             (data.value === CardRarityENUM.INMERSIVE || data.value === CardRarityENUM.SUPER) && {marginRight: 3},
                             i > 2 && {marginRight: 4},
-                            data.value === CardRarityENUM.CROWN && {width: 21, height: 13}
+                            data.value === CardRarityENUM.CROWN && {width: 21, height: 13},
+                            (data.value === CardRarityENUM.RAINBOW || data.value === CardRarityENUM.DOUBLE_RAINBOW) && {height: 13},
                           ]}/>
                   ))}
                 </ThemedView>
@@ -60,8 +61,8 @@ export const StatsGrid: React.FC<StatsGridProps> = ({ allRarity, allElements, ex
         }
       </ThemedView>
       {
-        expansion === undefined && Platform.OS !== 'android' &&
-          <View style={[TabsMenuStyles.separator, {height: 1, marginTop: 28, marginBottom: 26, width: '100%'}]}></View>
+        expansion === undefined && Platform.OS === 'web' &&
+          <View style={[TabsMenuStyles.separator, {height: 1, marginTop: 22, marginBottom: 26, width: '100%'}]}></View>
       }
       {
         expansion === undefined && Platform.OS === 'android' &&

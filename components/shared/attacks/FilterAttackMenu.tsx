@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { BlurView } from "expo-blur";
-import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
+import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
 import { useRef, useState,  } from "react";
 import { Provider, Switch } from "react-native-paper";
@@ -31,11 +31,13 @@ import { Colors } from "@/shared/definitions/utils/colors";
 export default function FilterAttackMenu({isVisible, onClose, animatedStyle}: TabMenu) {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
-  const { dispatch } = context;
+  const { state, dispatch } = context;
   const [isExclusive, setIsExclusive] = useState(false);
+  const [forceRender, setForceRender] = useState(0);
+  const triggerRender = () => setForceRender(prev => prev + 1);
   
   const {i18n} = useI18n();
-  const filterObj = useRef<FilterAttackSearch>(getFilterAttackSearch());
+  const filterObj = useRef<FilterAttackSearch>(state.filterState.attack_filter);
 
   if (!isVisible) return null;
 
@@ -59,19 +61,32 @@ export default function FilterAttackMenu({isVisible, onClose, animatedStyle}: Ta
     await SoundService.play('POP_PICK');
   }
 
+  function handleReset(): void {
+    playSound('POP_PICK');
+    filterObj.current = getFilterAttackSearch();
+    triggerRender();
+  }
+
   return (
-    <Provider>
+    <Provider key={forceRender}>
       <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
                 style={[StyleSheet.absoluteFill]} 
                 tint="light" 
                 experimentalBlurMethod='dimezisBlurView'/>
       <Pressable style={[LayoutStyles.overlay]} onPress={() => closeMenu()}></Pressable>
-      <Animated.View style={[animatedStyle, filterStyles.container, {height: 647}, i18n.locale === 'ja' && {height: 655}]}>
+      <Animated.View style={[animatedStyle, filterStyles.container, {height: 662}, i18n.locale === 'ja' && {height: 670}]}>
         <View style={[ModalStyles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={[ModalStyles.modalHeaderTitle, i18n.locale === 'ja' && {fontSize: 20}]}>{i18n.t('filter')}</ThemedText>
         </View>
-        <SafeAreaView style={[ModalStyles.modalScrollView, {paddingHorizontal: 20, paddingVertical: 0}]}>
+        <SafeAreaView style={[ModalStyles.modalScrollView, {paddingHorizontal: 20, paddingVertical: 0, marginTop: 16}]}>
           <ScrollView showsVerticalScrollIndicator={false} style={filterStyles.list}>
+            <TouchableOpacity onPress={handleReset} style={[
+              filterStyles.button, 
+              filterStyles.gridButton, 
+              {width: 84, borderWidth: 1, borderColor: 'skyblue', position: 'absolute', right: 0, marginLeft: 'auto', boxShadow: 'none', top: -12}
+            ]}>
+              <ThemedText style={[filterStyles.buttonText, {left: 1}]}>{i18n.t('reset')}</ThemedText>
+            </TouchableOpacity>
             <>
               <ThemedView style={filterStyles.row}>
                 <ThemedText style={filterStyles.header}>{i18n.t('damage')}</ThemedText>

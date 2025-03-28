@@ -29,7 +29,7 @@ export const DamageItem = memo(({ filterObj, playSound }: DamageItemProps) => {
         {['min', 'max'].map((k, i) => (
           <SelectInput
             key={i}
-            options={ATTACK_DAMAGES}
+            options={['---', ...ATTACK_DAMAGES]}
             label={k}
             filterObj={filterObj}
             propFilter="damage"

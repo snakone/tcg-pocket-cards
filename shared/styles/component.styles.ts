@@ -17,7 +17,12 @@ export const HEADER_MIN_HEIGHT = 40;
 export const CARD_IMAGE_WIDTH_3 = 116.5;
 export const CARD_IMAGE_WIDTH_5 = 69.2;
 export const CARD_IMAGE_WIDTH_7 = 48.6;
+
+export const CARD_IMAGE_HEIGHT_3 = 164.52;
+export const CARD_IMAGE_HEIGHT_5 = 98.52;
+export const CARD_IMAGE_HEIGHT_7 = 69.78;
 export const CREATE_GRID_HEIGHT = 520;
+
 export const CREATE_GRID_MAX_HEIGHT = CREATE_GRID_HEIGHT + 60;
 export const MAX_WEB_HEIGHT = 844;
 
@@ -25,6 +30,13 @@ export const gridWidthMap: Record<0 | 1 | 2, number> = {
   0: CARD_IMAGE_WIDTH_3,
   1: CARD_IMAGE_WIDTH_5,
   2: CARD_IMAGE_WIDTH_7
+}
+
+export const gridHeightMap: Record<number, number> = {
+  0: CARD_IMAGE_HEIGHT_3,
+  1: CARD_IMAGE_HEIGHT_5,
+  2: CARD_IMAGE_HEIGHT_7,
+  6: 82.34
 }
 
 export const gridColumMap: Record<0 | 1 | 2, number> = {
@@ -542,7 +554,7 @@ export const LoadingStyles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 10,
+    zIndex: 100,
     backgroundColor: 'transparent'
   },
   box: {

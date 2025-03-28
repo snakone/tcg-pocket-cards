@@ -29,7 +29,8 @@ import {
   STEEL_ICON, 
   DRAGON_ICON, 
   NORMAL_ICON,
-  SHINING_REVELRY_ICON
+  SHINING_REVELRY_ICON,
+  RAINBOW_RARITY
 } from "@/shared/definitions/sentences/path.sentences"
 
 interface GraphicSummaryProps {
@@ -66,6 +67,8 @@ export const GraphicSummary = ({data, styles}: GraphicSummaryProps) => {
     { image: STAR_RARITY, length: 1, width: 22, height: 23, value: data.artCardsLength },
     { image: STAR_RARITY, length: 2, width: 22, height: 23, value: data.superCardsLength },
     { image: STAR_RARITY, length: 3, width: 22, height: 23, value: data.inmersiveCardsLength },
+    { image: RAINBOW_RARITY, length: 1, width: 22, height: 23, value: data.rainbowCardsLength,  },
+    { image: RAINBOW_RARITY, length: 2, width: 22, height: 23, value: data.doubleRainbowCardsLength },
     { image: CROWN_RARITY, length: 1, width: 34, height: 23, value: data.crownCardsLength },
   ];
 
@@ -204,11 +207,11 @@ export const GraphicSummary = ({data, styles}: GraphicSummaryProps) => {
         <RainbowDivider height={2}></RainbowDivider>
       </ThemedView>
 
-      <ThemedView style={{flexDirection: 'row', marginTop: 6, justifyContent: 'center'}}>
+      <ThemedView style={{flexDirection: 'row', marginTop: 6, justifyContent: 'center', gap: 50}}>
         {
           gradeRow.map((item, index) => {
             return (
-              <ThemedView style={styles.rowGap} key={index.toString()}>
+              <ThemedView style={[styles.rowGap, {width: 'auto'}]} key={index.toString()}>
                 <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 8}}>
                   {Array.from({ length: item.length }).map((_, i) => (
                     <Image

@@ -7,7 +7,7 @@ import StateButton from "@/components/ui/StateButton";
 import { RARITY_MAP, ICON_WIDTH } from "@/shared/definitions/utils/constants";
 import { filterStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
-import { RarityWithoutSpecial } from "@/shared/definitions/enums/card.enums";
+import { CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 
 interface RarityItemProps {
   filterObj: MutableRefObject<FilterSearch>,
@@ -32,7 +32,7 @@ export const RarityItem = memo(({ filterObj, raritySelectAll$ }: RarityItemProps
               { overflow: 'hidden' },
               filterStyles.button,
               filterStyles.imageContainer,
-              { width: ICON_WIDTH + (amount - 1) * 44 },
+              { width: ICON_WIDTH + (amount - 1) * 25 },
             ]}
           >
             {Array.from({ length: amount }).map((_, i) => (
@@ -41,7 +41,7 @@ export const RarityItem = memo(({ filterObj, raritySelectAll$ }: RarityItemProps
                 source={image}
                 style={[
                   filterStyles.image,
-                  index === 7 && { width: 30, transform: [{ scale: 0.86 }] },
+                  Number(key) === CardRarityENUM.CROWN && { width: 30, transform: [{ scale: 0.86 }] },
                 ]}
               />
             ))}

@@ -56,13 +56,13 @@ export default function CreateDeckScreen() {
     })
   }, [decks]));
 
-  const ResetFilterButton = () => (
+  const ResetFilterButton = useCallback(() => (
     <TouchableOpacity onPress={() => handleSearch('')} 
                       style={[CardGridStyles.clearInput, {left: 250}]}
                       hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
-  );
+  ), []);
 
   const renderEmpty = () => {
     const renderCardState = useCallback(() => {

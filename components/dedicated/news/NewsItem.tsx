@@ -12,16 +12,12 @@ import { ThemedText } from '@/components/ThemedText';
 interface NewsItemProps {
   pocketNew: PocketNews,
   language: LanguageType,
-  i18n: I18n
+  i18n: I18n,
+  focused: boolean;
 }
 
-export default function NewsItem(
-  {
-    pocketNew, 
-    language,
-    i18n
-  }: NewsItemProps
-) {
+export default function NewsItem({pocketNew, language, i18n, focused}: NewsItemProps) {
+  if (!focused) { return; }
 
   const typeElement = (type: 'pocket' | 'game') => {
     return (

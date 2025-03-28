@@ -2,6 +2,7 @@ import { memo, MutableRefObject } from "react";
 import { Subject } from "rxjs";
 import { Image } from 'expo-image';
 import { StyleSheet } from 'react-native';
+import React from "react";
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -10,10 +11,9 @@ import StateButton from "@/components/ui/StateButton";
 import { TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { filterStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
-import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { IsExButtonList } from "./IsExItem";
-import React from "react";
+import { IsShinyButtonList } from "./IsShinyItem";
 
 interface MiscellaniaItemProps {
   filterObj: MutableRefObject<FilterSearch>,
@@ -60,6 +60,7 @@ export const MiscellaniaItem = memo(({
       </ThemedView>
 
       <IsExButtonList filterObj={filterObj}></IsExButtonList>
+      <IsShinyButtonList filterObj={filterObj}></IsShinyButtonList>
     </>
   );
 });

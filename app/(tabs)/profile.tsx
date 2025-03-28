@@ -127,7 +127,7 @@ export default function ProfileScreen() {
               <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                 <MaterialIcons name="style" style={[
                     styles.editInput, 
-                    {fontSize: 23, right: 'auto', left: 12, top: 7}, i18n.locale === 'ja' && {top: 9},
+                    {fontSize: 23, right: 'auto', left: 12, top: 6}, i18n.locale === 'ja' && {top: 9},
                     Platform.OS === 'android' && {top: 5}
                   ]} />
                 <ThemedText style={[

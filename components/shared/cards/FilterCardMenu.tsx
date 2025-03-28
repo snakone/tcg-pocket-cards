@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { BlurView } from "expo-blur";
-import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
+import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
 import { useRef, useState,  } from "react";
 import { Portal, Provider } from "react-native-paper";
@@ -26,7 +26,6 @@ import {
   ModalStyles, 
 } from "@/shared/styles/component.styles";
 
-import { getFilterSearch } from "@/shared/definitions/utils/constants";
 import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ThemedText } from "@/components/ThemedText";
@@ -39,17 +38,20 @@ import { AppContext } from "@/app/_layout";
 import SoundService from "@/core/services/sounds.service";
 import { SpecialItem } from "./components/SpecialItem";
 import { CollectionItem } from "../collection/components/CollectionItem";
+import { getFilterSearch } from "@/shared/definitions/utils/constants";
 
 export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCollection = false}: TabMenuCards) {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
-  const { dispatch } = context;
+  const { state, dispatch } = context;
   
   const {i18n} = useI18n();
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
 
-  const filterObj = useRef<FilterSearch>(getFilterSearch());
+  const filterObj = useRef<FilterSearch>(state.filterState.filter);
   const [expansionSelected, setExpansionSelected] = useState<boolean>(false);
+  const [forceRender, setForceRender] = useState(0);
+  const triggerRender = () => setForceRender(prev => prev + 1);
 
   if (!isVisible) return null;
 
@@ -64,6 +66,13 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCol
     nextValues[subject].next(true);
   }
 
+  useEffect(() => {
+    setExpansionSelected(
+      Object.keys(filterObj.current.expansion)
+       .some(key => (Boolean((filterObj.current.expansion as any)[key])))
+    );
+  }, []);
+
   const playSound = async (value: string) => {
     await SoundService.play(value);
   }
@@ -76,7 +85,6 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCol
 
   async function handleExpansion(value: boolean): Promise<void> {
     if (value) {
-      filterObj.current.resetExpansion();
       await playSound('AUDIO_MENU_OPEN');
     } else {
       await playSound('AUDIO_MENU_CLOSE');
@@ -86,6 +94,12 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCol
       );
     }
     setExpansionVisible(value);
+  }
+
+  function handleReset(): void {
+    playSound('POP_PICK');
+    filterObj.current = getFilterSearch();
+    triggerRender();
   }
 
   const PokemonItem = ({element}: any) => {
@@ -126,7 +140,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCol
   );
 
   return (
-    <Provider>
+    <Provider key={forceRender}>
       <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
                 style={[StyleSheet.absoluteFill]} 
                 tint="light" 
@@ -136,8 +150,17 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCol
         <View style={[ModalStyles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={[ModalStyles.modalHeaderTitle, i18n.locale === 'ja' && {fontSize: 20}]}>{i18n.t('filter')}</ThemedText>
         </View>
-        <SafeAreaView style={[ModalStyles.modalScrollView, {paddingHorizontal: 20, paddingVertical: 0}]}>
+        <SafeAreaView style={[ModalStyles.modalScrollView, {paddingHorizontal: 20, paddingVertical: 0, marginTop: 16, maxHeight: '75.6%'}]}>
           <ScrollView showsVerticalScrollIndicator={false} style={filterStyles.list}>
+
+            <TouchableOpacity onPress={handleReset} style={[
+              filterStyles.button, 
+              filterStyles.gridButton, 
+              {width: 84, borderWidth: 1, borderColor: 'skyblue', position: 'absolute', right: 0, marginLeft: 'auto', boxShadow: 'none', top: -12}
+            ]}>
+              <ThemedText style={[filterStyles.buttonText, {left: 1}]}>{i18n.t('reset')}</ThemedText>
+            </TouchableOpacity>
+
             {
               isCollection &&
               <>

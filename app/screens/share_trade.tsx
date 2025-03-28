@@ -210,7 +210,7 @@ export default function ShareTradeScreen() {
 
             <ThemedView style={{width: '100%'}}>
               <TouchableOpacity style={[
-                                  homeScreenStyles.ctaButton, {marginTop: 24},
+                                  homeScreenStyles.ctaButton, {marginTop: 16},
                                   !trade?.valid && {opacity: 0.6}
                                 ]} 
                                 onPress={handleShare}

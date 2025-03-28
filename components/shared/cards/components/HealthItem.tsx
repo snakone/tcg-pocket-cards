@@ -34,7 +34,7 @@ export const HealthItem = memo(({ filterObj, playSound }: HealthItemProps) => {
         {['min', 'max'].map((k, i) => (
           <SelectInput
             key={i}
-            options={DAMAGES}
+            options={['---', ...DAMAGES]}
             label={k}
             filterObj={filterObj}
             propFilter="health"

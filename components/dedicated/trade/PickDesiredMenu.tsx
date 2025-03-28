@@ -1,13 +1,13 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import React from "react";
 import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import { TabDesiredMenu } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, CardGridStyles, filterStyles, LayoutStyles, ModalStyles, offersStyles, sortStyles } from "@/shared/styles/component.styles";
+import { ButtonStyles, CardGridStyles, filterStyles, gridHeightMap, LayoutStyles, ModalStyles, offersStyles, sortStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE, NO_CONTEXT, SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -26,6 +26,8 @@ import { CardExpansionTypeENUM, CardRarityENUM } from "@/shared/definitions/enum
 import { createDeckStyles } from "@/app/screens/create_deck";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { collectionStyles } from "@/app/screens/collection";
+
+const numColumns = 6;
 
 export default function PickDesiredMenu({
   isVisible,
@@ -72,33 +74,29 @@ export default function PickDesiredMenu({
   useEffect(() => {
     const desiredCard = state.cardState.cards.find(card => desired.includes(card.id));
 
+    let filteredCards;
     if (desiredCard) {
-      const filter = state.cardState.cards
-                      .filter(card => card?.rarity === desiredCard.rarity && 
-                                      card.series !== CardExpansionTypeENUM.A2A &&
-                                      !desired.includes(card.id));
-
-      setCards(filter);
-      setFiltered(filter);
-      setCardsWithFilter(filter);
-
-      setCurrent(prev => 
-        prev.map(p => (state.cardState.cards
-            .find(card => card.id === p)?.rarity === desiredCard.rarity) ? p : null
+      filteredCards = state.cardState.cards.filter(card => 
+        card?.rarity === desiredCard.rarity && card.series !== CardExpansionTypeENUM.A2A
+      );
+  
+      setCurrent(prev =>
+        prev.map(p => 
+          (state.cardState.cards.find(card => card.id === p)?.rarity === desiredCard.rarity) ? p : null
         )
       );
-
+  
       (filterObj.current.rarity as any)[desiredCard.rarity] = true;
       setFilterDisabled(true);
     } else {
-      const filter = state.cardState.cards
-              .filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && 
-                              card.series !== CardExpansionTypeENUM.A2A);
-
-      setCards(filter);
-      setFiltered(filter);
-      setCardsWithFilter(filter);
+      filteredCards = state.cardState.cards.filter(card => 
+        RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2A
+      );
     }
+  
+    setCards(filteredCards);
+    setFiltered(filteredCards);
+    setCardsWithFilter(filteredCards);
 
   }, [state.cardState.cards, desired]);
 
@@ -119,6 +117,8 @@ export default function PickDesiredMenu({
     if (type === 'add' && current.filter(Boolean).length === 5 && !current.includes(id)) { return; }
     if (type === 'remove' && !value) { return; }
 
+    SoundService.play('POP_PICK');
+
     // NEW
     if (type === 'add' && current.filter(Boolean).length === 0) {
       if (!Object.values(filterObj.current.rarity).some(val => Boolean(val))) {
@@ -135,7 +135,6 @@ export default function PickDesiredMenu({
       triggerRender();
     }
 
-    SoundService.play('POP_PICK');
     setCurrent((prev) => {
       if (prev.includes(id)) {
 
@@ -185,7 +184,10 @@ export default function PickDesiredMenu({
                                  {color: 'crimson', fontSize: 31, top: -4}, 
                                  Platform.OS !== 'web' && {fontSize: 24, top: -13, transform: [{scaleX: 1.5}, {scaleY: 1.5}]}]}>-</ThemedText>
               </ThemedView>
-            </>
+              <ThemedView style={collectionStyles.amount}>
+                <ThemedText style={collectionStyles.amountText}>{'1/1'}</ThemedText>
+              </ThemedView>
+            </> 
           }
           <Image accessibilityLabel={item.name[lang]}
                   source={getImageLanguage69x96(lang, item.id)}
@@ -246,6 +248,12 @@ export default function PickDesiredMenu({
     Object.values(filterObj.current.rarity).some(Boolean) && 
     !(filterObj.current.rarity as any)[key]
   );
+
+  const getItemLayout = useCallback((_: any, index: number) => ({
+    length: gridHeightMap[numColumns],
+    offset: gridHeightMap[numColumns] * index,
+    index, 
+  }), []);
 
   const renderRarityGrid = useCallback(() => {
     return (
@@ -309,8 +317,9 @@ export default function PickDesiredMenu({
                       numColumns={6}
                       showsVerticalScrollIndicator={false}
                       maxToRenderPerBatch={20}
-                      initialNumToRender={8}
-                      windowSize={10}
+                      initialNumToRender={20}
+                      windowSize={9}
+                      getItemLayout={getItemLayout}
                       contentContainerStyle={{padding: 16, paddingTop: 0, paddingBottom: 54}}
                       keyExtractor={(item, index) => index + ''}
                       ListHeaderComponent={

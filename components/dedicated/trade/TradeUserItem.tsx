@@ -30,7 +30,7 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
     <ThemedView style={[tradeItemStyles.item, styles, {
         borderColor: !item?.valid ? 'goldenrod' : 'transparent', 
         borderWidth: !item.valid  ? 1 : 0}, 
-        {minHeight: 60, marginBottom: 20, paddingVertical: 0, paddingHorizontal: 0},
+        {minHeight: 60, marginBottom: 16, paddingVertical: 0, paddingHorizontal: 0},
         Platform.OS !== 'web' && {height: share ? 148 : 101, overflow: 'hidden'}
       ]}>
       <ThemedView style={{overflow: 'hidden', padding: 0}}>

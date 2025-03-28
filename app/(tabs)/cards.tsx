@@ -2,6 +2,7 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import { TouchableOpacity, StyleSheet, StyleProp, TextStyle } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
+import { useIsFocused } from '@react-navigation/native';
 
 import { AppContext } from '../_layout';
 import ImageGridWithSearch from '@/components/ui/CardGrid';
@@ -18,6 +19,7 @@ export default function CardsScreen() {
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
   const [sort, setSort] = useState<SortItem>();
+  const focused = useIsFocused();
 
   async function handleActionMenu(action: string): Promise<void> {
     await playSound();
@@ -59,7 +61,8 @@ export default function CardsScreen() {
       <ImageGridWithSearch state={state} 
                            modal={CardsScreenModal()}
                            modalTitle='cards'
-                           title='card_collection'/>
+                           title='card_collection'
+                           focused={focused}/>
       { state.cardState.cards?.length > 0 ? (
         <>
           <TouchableOpacity onPress={() => handleActionMenu('OPEN_SORT')} style={cardStyles.container}>

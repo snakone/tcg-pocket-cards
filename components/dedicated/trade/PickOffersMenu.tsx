@@ -7,7 +7,7 @@ import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import { TabOffersMenu } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, CardGridStyles, filterStyles, LayoutStyles, ModalStyles, offersStyles, sortStyles } from "@/shared/styles/component.styles";
+import { ButtonStyles, CardGridStyles, filterStyles, gridHeightMap, LayoutStyles, ModalStyles, offersStyles, sortStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE, NO_CONTEXT, SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -26,6 +26,8 @@ import { createDeckStyles } from "@/app/screens/create_deck";
 import { CardExpansionTypeENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { collectionStyles } from "@/app/screens/collection";
+
+const numColumns = 6;
 
 export default function PickOffersMenu({
   isVisible,
@@ -136,6 +138,9 @@ export default function PickOffersMenu({
                                  {color: 'crimson', fontSize: 31, top: -4}, 
                                  Platform.OS !== 'web' && {fontSize: 24, top: -13, transform: [{scaleX: 1.5}, {scaleY: 1.5}]}]}>-</ThemedText>
               </ThemedView>
+              <ThemedView style={collectionStyles.amount}>
+                <ThemedText style={collectionStyles.amountText}>{'1/1'}</ThemedText>
+              </ThemedView>
             </>
           }
           <Image accessibilityLabel={item.name[lang]}
@@ -192,6 +197,12 @@ export default function PickOffersMenu({
     Object.values(filterObj.current.rarity).some(Boolean) && 
     !(filterObj.current.rarity as any)[key]
   );
+
+  const getItemLayout = useCallback((_: any, index: number) => ({
+    length: gridHeightMap[numColumns],
+    offset: gridHeightMap[numColumns] * index,
+    index, 
+  }), []);
 
   const renderRarityGrid = useCallback(() => {
     return (
@@ -254,9 +265,10 @@ export default function PickOffersMenu({
                       renderItem={renderCard}
                       numColumns={6}
                       showsVerticalScrollIndicator={false}
-                      maxToRenderPerBatch={24}
-                      initialNumToRender={6}
-                      windowSize={12}
+                      maxToRenderPerBatch={20}
+                      initialNumToRender={20}
+                      windowSize={9}
+                      getItemLayout={getItemLayout}
                       contentContainerStyle={{padding: 16, paddingTop: 0, paddingBottom: 54}}
                       keyExtractor={(item, index) => index + ''}
                       ListHeaderComponent={

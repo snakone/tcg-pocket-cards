@@ -3,6 +3,7 @@ import { FlatList, RefreshControl, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Subscription } from 'rxjs';
 import { useFocusEffect, useRouter } from 'expo-router';
+import { useIsFocused } from '@react-navigation/native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { useI18n } from '@/core/providers/LanguageProvider';
@@ -19,6 +20,7 @@ import { useError } from '@/core/providers/ErrorProvider';
 import SoundService from '@/core/services/sounds.service';
 
 export default function NewsScreen() {
+  const focused = useIsFocused();
   const {i18n} = useI18n();
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
@@ -70,11 +72,11 @@ export default function NewsScreen() {
     flatListRef.current?.scrollToOffset({offset: 0, animated: false});
   }
 
-  function handleClick(id: string): void {
+  const handleClick = useCallback((id: string): void => {
     SoundService.play('CHANGE_VIEW');
-    dispatch({type: 'SET_NAVIGATING', value: true});
+    dispatch({ type: 'SET_NAVIGATING', value: true });
     router.push(`/screens/news_detail?id=${encodeURIComponent(id)}`);
-  }
+  }, []);
 
   const renderItem = useCallback(({item}: {item: PocketNews}) => {
     return (
@@ -82,15 +84,22 @@ export default function NewsScreen() {
                         disabled={state.cardState.navigating}>
         <NewsItem pocketNew={item} 
                   language={i18n.locale as LanguageType} 
-                  i18n={i18n}/>
+                  i18n={i18n}
+                  focused={focused}/>
       </TouchableOpacity>
     )
-  }, [state.cardState.navigating]);
+  }, [state.cardState.navigating, focused]);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     loadPocketNews();
   }, []);
+
+  const getItemLayout = useCallback((_: any, index: number) => ({
+    length: 241,
+    offset: 241 * index,
+    index, 
+  }), []);
   
   return (
     <>
@@ -103,10 +112,12 @@ export default function NewsScreen() {
         <FlatList
           data={state.pocketNewsState.news}
           renderItem={renderItem}
+          getItemLayout={getItemLayout}
           keyExtractor={(item) => item._id}
           showsVerticalScrollIndicator={false}
-          initialNumToRender={3}
-          windowSize={12}
+          initialNumToRender={6}
+          maxToRenderPerBatch={6}
+          windowSize={11}
           ref={flatListRef}
           refreshControl={
             <RefreshControl refreshing={refreshing} 

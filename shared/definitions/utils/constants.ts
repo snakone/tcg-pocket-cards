@@ -130,7 +130,8 @@ import {
   GLACEON_COIN,
   LEAFEON_COIN,
   MANAPHY_COIN,
-  RAINBOW_RARITY
+  RAINBOW_RARITY,
+  GIRATINA_EMBLEM
 } from "../sentences/path.sentences";
 
 import { FilterSearch } from "../classes/filter.class";
@@ -231,8 +232,9 @@ export const RARITY_MAP: Record<CardRarityENUM, {image: any, amount: number | nu
   [CardRarityENUM.DOUBLE]: { image: NORMAL_RARITY, amount: 4 },
   [CardRarityENUM.ART]: { image: STAR_RARITY, amount: 1 },
   [CardRarityENUM.SUPER]: { image: STAR_RARITY, amount: 2 },
-  // [CardRarityENUM.RAINBOW]: { image: RAINBOW_RARITY, amount: null },
   [CardRarityENUM.INMERSIVE]: { image: STAR_RARITY, amount: 3 },
+  [CardRarityENUM.RAINBOW]: { image: RAINBOW_RARITY, amount: 1 },
+  [CardRarityENUM.DOUBLE_RAINBOW]: { image: RAINBOW_RARITY, amount: 2 },
   [CardRarityENUM.CROWN]: { image: CROWN_RARITY, amount: 1 },
   [CardRarityENUM.PROMO]: { image: null, amount: 0 },
   [CardRarityENUM.SPECIAL]: { image: null, amount: 0 },
@@ -341,8 +343,9 @@ export const EXPANSION_POINTS_RARITY: Record<CardRarityENUM, number> = {
   [CardRarityENUM.DOUBLE]: 500,
   [CardRarityENUM.ART]: 400,
   [CardRarityENUM.SUPER]: 1250,
-  // [CardRarityENUM.RAINBOW]: 1500,
   [CardRarityENUM.INMERSIVE]: 1500,
+  [CardRarityENUM.RAINBOW]: 1000,
+  [CardRarityENUM.DOUBLE_RAINBOW]: 1350,
   [CardRarityENUM.CROWN]: 2500,
   [CardRarityENUM.PROMO]: 0,
   [CardRarityENUM.SPECIAL]: 0,
@@ -594,6 +597,7 @@ export const EXPANSION_EMBLEM_LIST: ExpansionEmblem[] = [
   { label: 'expansion_dialga', value: EXPANSION.DIALGA, icon: DIALGA_EMBLEM },
   { label: 'expansion_palkia', value: EXPANSION.PALKIA, icon: PALKIA_EMBLEM },
   { label: 'expansion_arceus', value: EXPANSION.ARCEUS, icon: ARCEUS_EMBLEM },
+  { label: 'expansion_shiny', value: EXPANSION.SHINY, icon: GIRATINA_EMBLEM },
   { label: 'expansion_promo_a', value: 99, icon: PROMO_A_EMBLEM }
 ];
 
@@ -608,12 +612,13 @@ export const EXPANSION_PACK_MAP: any = {
 }
 
 export const STATS_EXPANSION_MAP: any = {
-  0: 2,
-  1: 1,
-  2: 0,
-  8: 3,
-  10: 4,
-  11: 5,
-  13: 6,
-  99: 7
+  [EXPANSION.PIKACHU]: 2,
+  [EXPANSION.MEWTWO]: 1,
+  [EXPANSION.CHARIZARD]: 0,
+  [EXPANSION.MEW]: 3,
+  [EXPANSION.DIALGA]: 4,
+  [EXPANSION.PALKIA]: 5,
+  [EXPANSION.ARCEUS]: 6,
+  [EXPANSION.SHINY]: 7,
+  99: 8
 }

@@ -12,6 +12,7 @@ import {
   ButtonStyles,
   CARD_IMAGE_WIDTH_3,
   CardGridStyles,
+  gridHeightMap,
   homeScreenStyles,
   LayoutStyles, 
   offersStyles, 
@@ -50,6 +51,8 @@ import PreviewList from "@/components/dedicated/create/PreviewList";
 import CreateService from "@/core/services/create.service";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { collectionStyles } from "./collection";
+
+const numColumns = 6;
 
 export default function CreateDeckScreen() {
   const {i18n} = useI18n();
@@ -496,6 +499,12 @@ export default function CreateDeckScreen() {
     setNotSaved(true);
   }, []);
 
+  const getItemLayout = useCallback((_: any, index: number) => ({
+    length: gridHeightMap[numColumns],
+    offset: gridHeightMap[numColumns] * index,
+    index, 
+  }), []);
+
   const renderCard = useCallback(({item, index}: {item: Card, index: number}) => {
     const arr = deck.filter(card => card?.name.es === item.name.es);
     const full = arr.length === 2;
@@ -518,6 +527,13 @@ export default function CreateDeckScreen() {
                   Platform.OS !== 'web' && {fontSize: 24, top: -17, transform: [{scaleX: 1.5}, {scaleY: 2}]}]}>-</ThemedText>
             </TouchableOpacity>
           }
+          {
+            (full || canRemove) &&
+            <ThemedView style={collectionStyles.amount}>
+              <ThemedText style={collectionStyles.amountText}>{full ? '2/2' : '1/2'}</ThemedText>
+            </ThemedView>
+          }
+
           <Image accessibilityLabel={item.name[lang]}
                  source={getImageLanguage69x96(lang, item.id)}
                  style={[
@@ -532,21 +548,22 @@ export default function CreateDeckScreen() {
   const cardListGrid = useCallback(() => (
     <View style={{width: '100%', flex: 1, paddingBottom: 16}}>
       <FlatList data={filtered}
-                numColumns={6}
+                numColumns={numColumns}
                 ref={flatListRef}
                 contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0}]}
                 keyExtractor={keyExtractor}
                 initialNumToRender={25}
-                maxToRenderPerBatch={30}
-                windowSize={7}
+                maxToRenderPerBatch={25}
+                windowSize={8}
                 removeClippedSubviews={true}
+                getItemLayout={getItemLayout}
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={RenderEmpty}
                 renderItem={renderCard}
                 ListFooterComponent={<ThemedView style={{height: 95}}></ThemedView>}
       />
     </View>
-), [searchCard, filtered, deck]);
+), [filtered, deck]);
   
   const memoizedGridMenu = useMemo(() => {
     return (

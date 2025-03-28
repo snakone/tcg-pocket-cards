@@ -1,14 +1,14 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { Image } from "expo-image";
 
 import { ExpansionMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
-import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
+import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -17,7 +17,6 @@ import SoundService from "@/core/services/sounds.service";
 import { EXPANSION_EMBLEM_LIST } from "@/shared/definitions/utils/constants";
 import { ExpansionEmblem } from "@/shared/definitions/interfaces/global.interfaces";
 import { splashStyles } from "@/components/ui/SplashScreen";
-import { AppContext } from "@/app/_layout";
 
 export default function SelectExpansionMenu({
   isVisible,

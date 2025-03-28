@@ -127,7 +127,7 @@ export default function InfoGraphicScreen() {
                             modalContent={GraphicsScreenModal()}
                             styles={{paddingInline: 14}}
                             modalHeight={BACKUP_HEIGHT}>
-          <ScrollView showsVerticalScrollIndicator={false} style={{paddingInline: 14, paddingBottom: 14}}>
+          <ScrollView showsVerticalScrollIndicator={false} style={{paddingInline: 14}}>
             <ThemedView style={{gap: 8}}>
               <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
                 <ThemedText style={[filterStyles.header, {marginBottom: 24}, i18n.locale === 'ja' && {marginBottom: 20}]}>{i18n.t('export')}</ThemedText>
@@ -259,7 +259,7 @@ export default function InfoGraphicScreen() {
             </ThemedView>
           </ScrollView> 
 
-          <TouchableOpacity onPress={download} style={[homeScreenStyles.ctaButton, {marginTop: 0, marginBottom: 18, marginHorizontal: 14}]}>
+          <TouchableOpacity onPress={download} style={[homeScreenStyles.ctaButton, {marginTop: 0, marginBottom: 18, marginHorizontal: 14, top: -14}]}>
             <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>{i18n.t('download')}</ThemedText>
           </TouchableOpacity>
         </ParallaxScrollView>

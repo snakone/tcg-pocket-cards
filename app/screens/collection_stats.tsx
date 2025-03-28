@@ -1,7 +1,6 @@
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { useRouter } from "expo-router";
 import React from "react";
-import { FlatList, Platform, StyleSheet, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity } from 'react-native';
 import { Image } from 'expo-image';
 import { MaterialIcons } from "@expo/vector-icons";
 import { Portal, Provider } from "react-native-paper";
@@ -31,7 +30,6 @@ import { ExpansionGridStats } from "@/components/dedicated/collection/ExpansionG
 import { roundPercentage } from "@/shared/definitions/utils/functions";
 import { StatsCollectionModal } from "@/components/modals";
 import HeaderWithCustomModal from "@/components/shared/HeaderModal";
-import LoadingOverlay from "@/components/ui/LoadingOverlay";
 
 import { 
   ARCEUS_EMBLEM, 
@@ -44,6 +42,7 @@ import {
   ELECTRIC_ICON, 
   FIGHT_ICON, 
   FIRE_ICON, 
+  GIRATINA_EMBLEM, 
   GRASS_ICON, 
   MEW_EMBLEM, 
   MEWTWO_EMBLEM, 
@@ -53,24 +52,20 @@ import {
   PIKACHU_EMBLEM, 
   PROMO_A_EMBLEM, 
   PSYCHIC_ICON, 
+  RAINBOW_RARITY, 
   STAR_RARITY, 
   STEEL_ICON, 
   WATER_ICON
 } from "@/shared/definitions/sentences/path.sentences";
 
-const WAIT_TIME = 1200;
-
 export default function CollectionStatsScreen() {
   const {i18n} = useI18n();
-  const router = useRouter();
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
   const [langCollection, setLangCollection] = useState<CardLanguageENUM>(state.settingsState.collectionLanguage || CardLanguageENUM.EN);
-  const flatListRef = useRef<FlatList<CollectionStat> | any>(null);
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
   const [currentExpansion, setCurrentExpansion] = useState<ExpansionEmblem>();
-  const [loaded, setLoaded] = useState(false);
 
   const [mainStats, setMainStats] = useState<CollectionStat>();
   const [pikachuStats, setPikachuStats] = useState<CollectionStat>();
@@ -80,6 +75,7 @@ export default function CollectionStatsScreen() {
   const [dialgaStats, setDialgaStats] = useState<CollectionStat>();
   const [palkiaStats, setPalkiaStats] = useState<CollectionStat>();
   const [arceusStats, setArceusStats] = useState<CollectionStat>();
+  const [shinyStats, setShinyStats] = useState<CollectionStat>();
   const [promoStats, setPromoStats] = useState<CollectionStat>();
 
   const [missingPacks, setMissingPacks] = useState<CollectionStat[]>([]);
@@ -102,6 +98,8 @@ export default function CollectionStatsScreen() {
   const [artStats, setArtStats] = useState<CollectionRarityStat>();
   const [superStats, setSuperStats] = useState<CollectionRarityStat>();
   const [inmersiveStats, setInmersiveStats] = useState<CollectionRarityStat>();
+  const [rainbowStats, setRainbowStats] = useState<CollectionRarityStat>();
+  const [doubleRainbowStats, setDoubleRainbowStats] = useState<CollectionRarityStat>();
   const [crownStats, setCrownStats] = useState<CollectionRarityStat>();
 
   const [listMenuVisible, setListMenuVisible] = useState<boolean>(false);
@@ -118,18 +116,7 @@ export default function CollectionStatsScreen() {
     setTimeout(() => dispatch({type: 'SET_NAVIGATING', value: false}), 1000);
   }, []);
 
-  function delay(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
   useEffect(() => {
-    const load = async () => {
-      await delay(WAIT_TIME);
-      setLoaded(true);
-    }
-
-    load();
-
     return(() => {
       dispatch({type: 'SET_NAVIGATING', value: false});
     });
@@ -163,6 +150,7 @@ export default function CollectionStatsScreen() {
   const { data: dialgaCards, length: dialgaCardsLength } = useMemo(() => getCards(EXPANSION.DIALGA), [EXPANSION.DIALGA]);
   const { data: palkiaCards, length: palkiaCardsLength } = useMemo(() => getCards(EXPANSION.PALKIA), [EXPANSION.PALKIA]);
   const { data: triumphCards, length: triumphCardsLength } = useMemo(() => getCards(EXPANSION.ARCEUS), [EXPANSION.ARCEUS]);
+  const { data: shinyCards, length: shinyCardsLength } = useMemo(() => getCards(EXPANSION.SHINY), [EXPANSION.SHINY]);
   const { data: promoAPackCards, length: promoAPackCardsLength } = useMemo(() => getCardsExpansion(CardExpansionENUM.PROMO_A), [CardExpansionENUM.PROMO_A]);
 
   const useCardsByType = (type: PokemonTypeENUM) => useMemo(() => getCardByType(type), [type]);
@@ -186,6 +174,8 @@ export default function CollectionStatsScreen() {
   const { data: artCards, length: artCardsLength } = useCardsByRarity(CardRarityENUM.ART);
   const { data: superCards, length: superCardsLength } = useCardsByRarity(CardRarityENUM.SUPER);
   const { data: inmersiveCards, length: inmersiveCardsLength } = useCardsByRarity(CardRarityENUM.INMERSIVE);
+  const { data: rainbowCards, length: rainbowCardsLength } = useCardsByRarity(CardRarityENUM.RAINBOW);
+  const { data: doubleRainbowCards, length: doubleRainbowCardsLength } = useCardsByRarity(CardRarityENUM.DOUBLE_RAINBOW);
   const { data: crownCards, length: crownCardsLength } = useCardsByRarity(CardRarityENUM.CROWN);
 
   const charizardCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.CHARIZARD)), [crownCards]);
@@ -202,6 +192,8 @@ export default function CollectionStatsScreen() {
   const palkiaArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.PALKIA)), [artCards]);
   const arceusCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.ARCEUS)), [crownCards]);
   const arceusdArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.ARCEUS)), [artCards]);
+  const shinyCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.SHINY)), [crownCards]);
+  const shinydArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.SHINY)), [artCards]);
 
   const allStats = [
     charizardStats,
@@ -211,6 +203,7 @@ export default function CollectionStatsScreen() {
     dialgaStats,
     palkiaStats,
     arceusStats,
+    shinyStats,
     promoStats,
   ];
 
@@ -235,6 +228,8 @@ export default function CollectionStatsScreen() {
     artStats,
     superStats,
     inmersiveStats,
+    rainbowStats,
+    doubleRainbowStats,
     crownStats
   ];
 
@@ -256,6 +251,8 @@ export default function CollectionStatsScreen() {
     art: artCards,
     super: superCards,
     inmersive: inmersiveCards,
+    rainbow: rainbowCards,
+    doubleRainbow: doubleRainbowCards,
     crown: crownCards
   }
 
@@ -334,6 +331,16 @@ export default function CollectionStatsScreen() {
       emblem: ARCEUS_EMBLEM,
       crown: arceusCrownCards.map(card => card.id),
       art: arceusdArtCards.map(card => card.id)
+    },
+    {
+      name: 'SHINY',
+      label: 'expansion_shiny',
+      cards: shinyCards.map(card => card.id),
+      length: shinyCardsLength,
+      setter: setShinyStats,
+      emblem: GIRATINA_EMBLEM,
+      crown: shinyCrownCards.map(card => card.id),
+      art: shinydArtCards.map(card => card.id)
     },
     {
       name: 'PROMO',
@@ -466,6 +473,22 @@ export default function CollectionStatsScreen() {
       setter: setInmersiveStats
     },
     {
+      value: CardRarityENUM.RAINBOW,
+      cards: rainbowCards,
+      length: rainbowCardsLength,
+      icon: RAINBOW_RARITY,
+      amount: 1,
+      setter: setRainbowStats
+    },
+    {
+      value: CardRarityENUM.DOUBLE_RAINBOW,
+      cards: doubleRainbowCards,
+      length: doubleRainbowCardsLength,
+      icon: RAINBOW_RARITY,
+      amount: 2,
+      setter: setDoubleRainbowStats
+    },
+    {
       value: CardRarityENUM.CROWN,
       cards: crownCards,
       length: crownCardsLength,
@@ -487,7 +510,6 @@ export default function CollectionStatsScreen() {
     setData(collectionCards);
     setElementData(collectionCards);
     setRarityData(collectionCards);
-    goUp();
     setLangCollection(value);
   }, []);
 
@@ -507,7 +529,7 @@ export default function CollectionStatsScreen() {
   const setData = useCallback((collectionCards: Set<number>) => {
     DATA.forEach(data => {
       const missing = data.cards.filter(id => !collectionCards.has(id)).length;
-      const totalMissing = ((missing / data.length) * 100).toFixed(1);
+      const totalMissing = ((missing / data.length || 1) * 100).toFixed(1);
       const totalOwned = Math.abs(data.length - missing);
       const crownCards = data.crown?.filter(id => collectionCards.has(id)).length || 0;
       const artCards = data.art?.filter(id => collectionCards.has(id)).length || 0;
@@ -562,10 +584,6 @@ export default function CollectionStatsScreen() {
     setMissingPacks(missing as CollectionStat[]);
   }
 
-  function goUp(): void {
-    flatListRef.current?.scrollToOffset({offset: 0, animated: false});
-  }
-
   function onClose(value: ExpansionEmblem): void {
     setExpansionVisible(false);
 
@@ -599,7 +617,6 @@ export default function CollectionStatsScreen() {
 
   return (
     <Provider>
-      { !loaded && <LoadingOverlay/> }
       <HeaderWithCustomModal title={'stats'} 
                              modalContent={StatsCollectionModal()} 
                              modalTitle={'stats'} 
@@ -631,7 +648,10 @@ export default function CollectionStatsScreen() {
           mainStats && <CollectionStatsItem stat={mainStats} round={roundPercentage}></CollectionStatsItem>
         }
 
-        <ThemedView style={[settingsStyles.container, {height: 48, padding: 10, borderRadius: 12, marginBottom: 18}]}>
+        <ThemedView style={[
+            settingsStyles.container, {height: 48, padding: 10, borderRadius: 12, marginBottom: 12},
+            currentExpansion === undefined && {marginBottom: 16}
+          ]}>
           <TouchableOpacity onPress={openExpansion} style={{flex: 1, justifyContent: 'center'}} >
             <ThemedView style={settingsStyles.row}>
               {
@@ -652,11 +672,11 @@ export default function CollectionStatsScreen() {
 
         {
           currentExpansion === undefined &&
-          <>
+          <ThemedView>
             <StatsGrid allRarity={allRarityStats as any} allElements={allElementStats as any}></StatsGrid>
             <ThemedView style={[
                 {flexDirection: 'row', justifyContent: 'center', gap: 26, width: '100%'},
-                missingPacks.length === 0 && {top: -28}
+                missingPacks.length === 0 && {top: -26}
               ]}>
                 {
                   [0, 1, 2, 3].map((_, i) => {
@@ -682,7 +702,7 @@ export default function CollectionStatsScreen() {
                   })
                 }
             </ThemedView>
-          </>
+          </ThemedView>
         }
 
         {

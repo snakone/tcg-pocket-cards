@@ -3,6 +3,7 @@ import React from 'react';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Animated, FlatList, GestureResponderEvent, Platform, StyleProp, TextInput, TextStyle, TouchableOpacity, View } from 'react-native';
+import { useIsFocused } from '@react-navigation/native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { useI18n } from '@/core/providers/LanguageProvider';
@@ -35,19 +36,21 @@ export default function AttacksScreen() {
   const [filtered, setFiltered] = useState<Attack[]>([]);
   const [sort, setSort] = useState<SortItem>();
   const flatListRef = useRef<FlatList<Attack> | null>(null);
+  const focused = useIsFocused();
 
-  const getUniqueItems = (arr: Attack[]): Attack[] => {
+  const getUniqueItems = useCallback((arr: Attack[]): Attack[] => {
     const seen = new Set();
     
-    return arr.filter(item => {
-      const key = `${item.name.es}|${item.damage}|${item.description?.es}`;
-      if (seen.has(key)) {
-        return false;
+    return arr.reduce((acc, item) => {
+      const key = `${item.name.es || ''}|${item.damage}|${item.description?.es || ''}`;
+      
+      if (!seen.has(key)) {
+        seen.add(key);
+        acc.push({ id: acc.length, ...item });
       }
-      seen.add(key);
-      return true;
-    }).map((item, i) => ({id: i, ...item}));
-  };
+      return acc;
+    }, [] as Attack[]);
+  }, []);
 
   useEffect(() => {
     setLang(state.settingsState.language);
@@ -71,11 +74,9 @@ export default function AttacksScreen() {
   }, [state.cardState.cards]);
 
   useFocusEffect(useCallback(() => {
-    goUp(null, false);
-
-    return (() => {
+    if (state.filterState.attack_filter.areAllPropertiesNull()) {
       handleSearch('');
-    })
+    }
   }, [attacks]));
 
   const keyExtractor = useCallback((item: Attack, index: number) => String(item.name) + index, []);
@@ -90,25 +91,27 @@ export default function AttacksScreen() {
     return renderCardState();
   };
 
-  const goToAttackDetail = (item: Attack) => {
+  const goToAttackDetail = useCallback((item: Attack) => {
     SoundService.play('AUDIO_MENU_OPEN');
-    dispatch({type: 'SET_CURRENT_ATTACK', value: item});
-    dispatch({type: 'SET_NAVIGATING', value: true});
+    dispatch({ type: 'SET_CURRENT_ATTACK', value: item });
+    dispatch({ type: 'SET_NAVIGATING', value: true });
     router.push(`/screens/attack_detail`);
-  }
+  }, []);
 
   const handleSearch = useCallback((text: string) => {
     searchQuery.current = text;
     setFiltered((attacks).filter(attack => attack.name[lang].toLowerCase()?.includes(text.toLowerCase())));
   }, [attacks, lang]);
 
-  const ResetFilterButton = () => (
-    <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={[CardGridStyles.clearInput, {left: 246}]}
-                      hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+  const ResetFilterButton = useCallback(() => (
+    <TouchableOpacity 
+      onPress={() => handleSearch('')} 
+      style={[CardGridStyles.clearInput, {left: 246}]}
+      hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+    >
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
-  );
+  ), []);
 
   async function handleActionMenu(action: string): Promise<void> {
     SoundService.play('AUDIO_MENU_OPEN');
@@ -135,43 +138,47 @@ export default function AttacksScreen() {
     setTimeout(() => goUp(null, false), 100);
   }, [state.modalState.filter_attack_opened, attacks]);
 
-  function filterOrSortAttacks(
-    type: 'sort' | 'filter', 
-    data: Attack[], 
-    lang: LanguageType,
-    sort?: SortItem | undefined,
-  ): Attack[] {
-    switch (type) {
-      case 'sort': {
-        if (!sort) { return data; }
-        return manageSort(sort, data, lang);
-      }
-
-      case 'filter': {
-        return manageFilter(data);
-      }
-    }
-  }
-
-  function manageSort(sort: SortItem, data: Attack[], lang: LanguageType): Attack[] {
-    const sortField = SORT_FIELD_MAP[sort.label];
+  const filterOrSortAttacks = useCallback(
+    (type: 'sort' | 'filter', data: Attack[], lang: LanguageType, sort?: SortItem) => {
+      switch (type) {
+        case 'sort': {
+          if (!sort) { return data; }
+          return manageSort(sort, data, lang);
+        }
   
-    if (!sortField) {
-      console.error(`Unsupported sorting option: ${sort.label}`);
-      return data;
-    }
+        case 'filter': {
+          return manageFilter(data);
+        }
+      }
+  }, [state.filterState.attack_filter]);
+
+  const manageSort = useCallback(
+    (sort: SortItem, data: Attack[], lang: LanguageType): Attack[] => {
+      const sortField = SORT_FIELD_MAP[sort.label];
   
-    return sortAttacks(sortField, data, sort, lang);
-  }
+      if (!sortField) {
+        console.error(`Unsupported sorting option: ${sort.label}`);
+        return data;
+      }
+  
+      return sortAttacks(sortField, data, sort, lang);
+  }, [state.filterState.filter]);
 
-  function manageFilter(data: Attack[]): Attack[] {
-    const filter = state.filterState.attack_filter;
-    return filterAttacks(filter, data);
-  }
+  const manageFilter = useCallback(
+    (data: Attack[]): Attack[] => {
+      const filter = state.filterState.attack_filter;
+      return filterAttacks(filter, data);
+  }, [state.filterState.attack_filter]);
 
-  const renderItem = useCallback(({item}: {item: Attack}) => {
-    return renderAttackItem({ item, lang, onPress: () => goToAttackDetail(item), disabled: state.cardState.navigating })
-  }, [lang, state.cardState.navigating]);
+  const renderItem = useCallback(({item}: {item: Attack}) => 
+    renderAttackItem({ 
+      item, 
+      lang, 
+      onPress: () => goToAttackDetail(item), 
+      disabled: state.cardState.navigating,
+      focused
+  })
+  , [lang, state.cardState.navigating, focused]);
 
   const fixFilterIcon = useCallback(() => {
     return [
@@ -204,7 +211,7 @@ export default function AttacksScreen() {
       <View
         style={[
           ModalStyles.modalFooter,
-          { marginBlock: 34, boxShadow: 'none' },
+          { marginBottom: 34, marginTop: 26, boxShadow: 'none' },
           i18n.locale === 'ja' && {top: -2}
         ]}
       >
@@ -223,6 +230,12 @@ export default function AttacksScreen() {
     )
   }, [searchQuery.current, filtered.length]);
 
+  const getItemLayout = useCallback((_: any, index: number) => ({
+    length: 52,
+    offset: 52 * index,
+    index, 
+  }), []);
+
   return (
     <>
       <ParallaxScrollView title={"attack_list"} 
@@ -233,8 +246,9 @@ export default function AttacksScreen() {
                   numColumns={1}
                   keyExtractor={keyExtractor}
                   initialNumToRender={25}
-                  maxToRenderPerBatch={50}
-                  windowSize={25}
+                  maxToRenderPerBatch={25}
+                  windowSize={10}
+                  getItemLayout={getItemLayout}
                   ref={flatListRef}
                   removeClippedSubviews={false}
                   showsVerticalScrollIndicator={false}
@@ -244,8 +258,8 @@ export default function AttacksScreen() {
                   ListFooterComponent={renderFooter}
                   ListHeaderComponent={
                     <Animated.View style={[CardGridStyles.inputContainer]}>
-                      <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '78%', borderRadius: 8,}}>
-                        <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
+                      <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: 280, borderRadius: 8}}>
+                        <TextInput style={[CardGridStyles.searchInput, {width: '100%', left: 1, position: 'relative'}]}
                                     placeholder={i18n.t('search_attack_placeholder')}
                                     value={searchQuery.current}
                                     onChangeText={handleSearch}

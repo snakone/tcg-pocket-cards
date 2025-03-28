@@ -103,7 +103,6 @@ export default function CollectionCardMenu({
                                  textStyle={{left: 6}}
                                  iconStyle={{right: -2}}
                                  itemStyle={{paddingBlock: 6}}
-                                 autoScroll={true}
                                  >
                   </SelectInput>
                 </ThemedView>

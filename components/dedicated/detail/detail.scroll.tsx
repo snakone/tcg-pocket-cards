@@ -14,6 +14,7 @@ import DetailRelatedCards from './detail.related.cards';
 import { AppState } from '@/hooks/root.reducer';
 import ScrollService from '@/core/services/scroll.service';
 import { LanguageType } from '@/shared/definitions/types/global.types';
+import { CardRarityENUM } from '@/shared/definitions/enums/card.enums';
 
 interface CardDetailScroll {
   card: Card,
@@ -55,7 +56,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
                 <Image
                   key={i}
                   source={RARITY_MAP[card.rarity]?.image}
-                  style={[detailScrollStyles.rarityItem, card.rarity === 9 && {width: 38}]}
+                  style={[detailScrollStyles.rarityItem, card.rarity === CardRarityENUM.CROWN && {width: 38}]}
                 />
             ))}
             </ThemedView> :

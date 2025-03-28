@@ -22,7 +22,8 @@ import {
   NORMAL_ICON, 
   NORMAL_RARITY, 
   STAR_RARITY, CROWN_RARITY,
-  BACKWARD_CARD
+  BACKWARD_CARD,
+  RAINBOW_RARITY
 } from "@/shared/definitions/sentences/path.sentences";
 
 import { ThemedView } from "@/components/ThemedView";
@@ -70,6 +71,8 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
   const [artStats, setArtStats] = useState<CollectionRarityStat>();
   const [superStats, setSuperStats] = useState<CollectionRarityStat>();
   const [inmersiveStats, setInmersiveStats] = useState<CollectionRarityStat>();
+  const [rainbowStats, setRainbowStats] = useState<CollectionRarityStat>();
+  const [doubleRainbowStats, setDoubleRainbowStats] = useState<CollectionRarityStat>();
   const [crownStats, setCrownStats] = useState<CollectionRarityStat>();
 
   const [currentStat, setCurrentStat] = useState<CollectionStat>();
@@ -96,6 +99,8 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
     artStats,
     superStats,
     inmersiveStats,
+    rainbowStats,
+    doubleRainbowStats,
     crownStats
   ];
 
@@ -203,6 +208,20 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
       setter: setInmersiveStats
     },
     {
+      value: CardRarityENUM.RAINBOW,
+      cards: allCards.rainbow,
+      icon: RAINBOW_RARITY,
+      amount: 1,
+      setter: setRainbowStats
+    },
+    {
+      value: CardRarityENUM.DOUBLE_RAINBOW,
+      cards: allCards.doubleRainbow,
+      icon: RAINBOW_RARITY,
+      amount: 2,
+      setter: setDoubleRainbowStats
+    },
+    {
       value: CardRarityENUM.CROWN,
       cards: allCards.crown,
       icon: CROWN_RARITY,
@@ -269,7 +288,7 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
       <>
         {
           item && 
-          <ThemedView style={{width: '100%', marginBottom: 10}}>
+          <ThemedView style={{width: '100%', marginBottom: 2}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', }}>
               {
                 item.emblem && 
@@ -325,14 +344,14 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
         }
       </ThemedView>
 
-      <View style={[TabsMenuStyles.separator, {height: 1, marginTop: 0, marginBottom: 20, width: '100%'}]}></View>
+      <View style={[TabsMenuStyles.separator, {height: 1, marginTop: 4, marginBottom: 20, width: '100%'}]}></View>
 
       <StatsGrid allRarity={allRarityStats as any} 
                  allElements={allElementStats as any}
                  expansion={currentExpansion}>
       </StatsGrid>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'center', gap: 24, width: '100%', marginTop: 26}}>
+      <ThemedView style={{flexDirection: 'row', justifyContent: 'center', gap: 24, width: '100%', marginTop: 16}}>
           {
             missingCards && [0, 1, 2, 3].map((_, i) => {
               return (
