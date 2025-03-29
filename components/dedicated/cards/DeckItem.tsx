@@ -39,7 +39,8 @@ import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
                       transform: [{rotate: `${10 + (i * 8)}deg`}],
                       left: i * 25, 
                       zIndex: (1 / (i + 1) * 100),
-                      opacity: 0.8
+                      opacity: 1 - 0.1 * i,
+                      boxShadow: '5px 4px 8px rgba(0, 0, 0, 0.2)'
                     }
                   ]}
                   key={i}/>

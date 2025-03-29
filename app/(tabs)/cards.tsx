@@ -27,13 +27,13 @@ export default function CardsScreen() {
   }
 
   useEffect(() => {
-    if (state.filterState.sort.length > 0) {
-      const active = state.filterState.sort.find(s => s.active);
+    if (state.filterState.filters.cards.sort.length > 0) {
+      const active = state.filterState.filters.cards.sort.find(s => s.active);
       setSort(active);
     } else {
       setSort({active: true, id: 1, icon: 'content-paste-search', label: 'order_by_id', order: 'asc'});
     }
-  }, [state.filterState.sort]);
+  }, [state.filterState.filters.cards.sort]);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_OPEN');
@@ -53,8 +53,8 @@ export default function CardsScreen() {
   }, [sort]);
 
   const getFilterOrderIcon = useCallback(() => {
-    return state.filterState.filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
-  }, [state.filterState.filter]);
+    return state.filterState.filters.cards.filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
+  }, [state.filterState.filters.cards.filter]);
 
   return (
     <>
@@ -62,7 +62,8 @@ export default function CardsScreen() {
                            modal={CardsScreenModal()}
                            modalTitle='cards'
                            title='card_collection'
-                           focused={focused}/>
+                           focused={focused}
+                           filterKey={"cards"}/>
       { state.cardState.cards?.length > 0 ? (
         <>
           <TouchableOpacity onPress={() => handleActionMenu('OPEN_SORT')} style={cardStyles.container}>

@@ -153,6 +153,10 @@ export const DARKRAI_COIN = require("@/assets/images/coins/darkrai.png");
 export const GLACEON_COIN = require("@/assets/images/coins/glaceon.png");
 export const LEAFEON_COIN = require("@/assets/images/coins/leafeon.png");
 export const MANAPHY_COIN = require("@/assets/images/coins/manaphy.png");
+export const ASH_RAINBOW_COIN = require("@/assets/images/coins/ash_rainbow.png");
+export const LUCARIO_COIN = require("@/assets/images/coins/lucario.png");
+export const MEWTWO_SHINY_COIN = require("@/assets/images/coins/mewtwo_shiny.png");
+export const ASH_RED_COIN = require("@/assets/images/coins/red_red.png");
 
 // AVATARS
 export const EEVEE_AVATAR = require("@/assets/images/avatars/eevee.png");
@@ -174,6 +178,7 @@ export const TURTWIG_AVATAR = require("@/assets/images/avatars/turtwig.png");
 export const BLASTOISE_AVATAR = require("@/assets/images/avatars/blastoise.png");
 export const LEKTRO_AVATAR = require("@/assets/images/avatars/lektro.png");
 export const MARIL_AVATAR = require("@/assets/images/avatars/maril.png");
+export const SPRIGATITO_AVATAR = require("@/assets/images/avatars/sprigatito.png");
 
 // DECK BACKGROUND
 export const DECK_BG_TREES = require("@/assets/images/decks/Ilustración_portada_árbol_del_descanso_TCGP.png");
@@ -204,6 +209,10 @@ export const DECK_BG_DARKRAI = require("@/assets/images/decks/covers-file-100380
 export const DECK_BG_PIPLUP = require("@/assets/images/decks/covers-file-100410-manaphy-pochama-text-cardname-vmanaphy-text-cardname-vpochama-.png");
 export const DECK_BG_ARCEUS = require("@/assets/images/decks/covers-file-100420-arceus-arceus.png");
 export const DECK_BG_NAKARA = require("@/assets/images/decks/covers-file-100430-seki-kai-leafia-glacia-adaman-irida-leafeon-glaceon.png");
+export const DECK_BG_LUCARIO = require("@/assets/images/decks/covers-file-100450-lucario-riolu-.png");
+export const DECK_BG_CHARIZARD_SHINY = require("@/assets/images/decks/covers-file-100460-shiny-lizardon-.png");
+export const DECK_BG_ASH = require("@/assets/images/decks/covers-file-100470-red-pikachu-.png");
+export const DECK_BG_SKY = require("@/assets/images/decks/covers-file-100480-shiny-glare-.png");
 
 export const DECK_BG_TREES_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_árbol_del_descanso_TCGP.png");
 export const DECK_BG_FOREST_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_bosque_virgen_TCGP.png");
@@ -233,6 +242,10 @@ export const DECK_BG_DARKRAI_70x70 = require("@/assets/images/decks/thumbs/70x70
 export const DECK_BG_PIPLUP_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100410-manaphy-pochama-text-cardname-vmanaphy-text-cardname-vpochama-.png");
 export const DECK_BG_ARCEUS_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100420-arceus-arceus.png");
 export const DECK_BG_NAKARA_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100430-seki-kai-leafia-glacia-adaman-irida-leafeon-glaceon.png");
+export const DECK_BG_LUCARIO_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100450-lucario-riolu-.png");
+export const DECK_BG_CHARIZARD_SHINY_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100460-shiny-lizardon-.png");
+export const DECK_BG_ASH_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100470-red-pikachu-.png");
+export const DECK_BG_SKY_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100480-shiny-glare-.png");
 
 export const GENETIC_APEX_PACKS = [
   PIKACHU_ICON,

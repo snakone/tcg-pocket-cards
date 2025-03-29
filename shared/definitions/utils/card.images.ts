@@ -723,6 +723,9 @@ export const CARD_IMAGE_MAP_EN: any = {
   '722': require("@/assets/cards/en/Promo/A/StaraptorPromo-A47.png"),
   '723': require("@/assets/cards/en/Promo/A/48.png"),
   '724': require("@/assets/cards/en/Promo/A/49.png"),
+  '725': require("@/assets/cards/en/Shining Revelry/cPK_10_005210_00_BEEDLE_C_M_en_US_UT.png"),
+  '726': require("@/assets/cards/en/Shining Revelry/cPK_10_005220_00_COCOON_U_M_en_US_UT.png"),
+  '727': require("@/assets/cards/en/Shining Revelry/cPK_10_005230_00_SPEARex_RR_M_en_US_UT.png"),
 };
 
 export const CARD_IMAGE_MAP_69x96_EN: any = {
@@ -1450,6 +1453,9 @@ export const CARD_IMAGE_MAP_69x96_EN: any = {
   '722': require("@/assets/cards/en/Promo/A/thumbs/69x96/StaraptorPromo-A47.png"),
   '723': require("@/assets/cards/en/Promo/A/thumbs/69x96/48.png"),
   '724': require("@/assets/cards/en/Promo/A/thumbs/69x96/49.png"),
+  '725': require("@/assets/cards/en/Shining Revelry/thumbs/69x96/cPK_10_005210_00_BEEDLE_C_M_en_US_UT.png"),
+  '726': require("@/assets/cards/en/Shining Revelry/thumbs/69x96/cPK_10_005220_00_COCOON_U_M_en_US_UT.png"),
+  '727': require("@/assets/cards/en/Shining Revelry/thumbs/69x96/cPK_10_005230_00_SPEARex_RR_M_en_US_UT.png"),
 };
 
 export const CARD_IMAGE_MAP_116x162_EN: any = {
@@ -2177,6 +2183,9 @@ export const CARD_IMAGE_MAP_116x162_EN: any = {
   '722': require("@/assets/cards/en/Promo/A/thumbs/116x162/StaraptorPromo-A47.png"),
   '723': require("@/assets/cards/en/Promo/A/thumbs/116x162/48.png"),
   '724': require("@/assets/cards/en/Promo/A/thumbs/116x162/49.png"),
+  '725': require("@/assets/cards/en/Shining Revelry/thumbs/116x162/cPK_10_005210_00_BEEDLE_C_M_en_US_UT.png"),
+  '726': require("@/assets/cards/en/Shining Revelry/thumbs/116x162/cPK_10_005220_00_COCOON_U_M_en_US_UT.png"),
+  '727': require("@/assets/cards/en/Shining Revelry/thumbs/116x162/cPK_10_005230_00_SPEARex_RR_M_en_US_UT.png"),
 };
 
 export const CARD_IMAGE_MAP_ES: any = {
@@ -2904,6 +2913,9 @@ export const CARD_IMAGE_MAP_ES: any = {
   '722': require("@/assets/cards/es/Promo/A/StaraptorPromo-A47.png"),
   '723': require("@/assets/cards/es/Promo/A/48.png"),
   '724': require("@/assets/cards/es/Promo/A/49.png"),
+  '725': require("@/assets/cards/es/Shining Revelry/cPK_10_005210_00_BEEDLE_C_M_es_ES_UT.png"),
+  '726': require("@/assets/cards/es/Shining Revelry/cPK_10_005220_00_COCOON_U_M_es_ES_UT.png"),
+  '727': require("@/assets/cards/es/Shining Revelry/cPK_10_005230_00_SPEARex_RR_M_es_ES_UT.png"),
 };
 
 export const CARD_IMAGE_MAP_69x96_ES: any = {
@@ -3631,6 +3643,9 @@ export const CARD_IMAGE_MAP_69x96_ES: any = {
   '722': require("@/assets/cards/es/Promo/A/thumbs/69x96/StaraptorPromo-A47.png"),
   '723': require("@/assets/cards/es/Promo/A/thumbs/69x96/48.png"),
   '724': require("@/assets/cards/es/Promo/A/thumbs/69x96/49.png"),
+  '725': require("@/assets/cards/es/Shining Revelry/thumbs/69x96/cPK_10_005210_00_BEEDLE_C_M_es_ES_UT.png"),
+  '726': require("@/assets/cards/es/Shining Revelry/thumbs/69x96/cPK_10_005220_00_COCOON_U_M_es_ES_UT.png"),
+  '727': require("@/assets/cards/es/Shining Revelry/thumbs/69x96/cPK_10_005230_00_SPEARex_RR_M_es_ES_UT.png"),
 };
 
 export const CARD_IMAGE_MAP_116x162_ES: any = {
@@ -4358,6 +4373,9 @@ export const CARD_IMAGE_MAP_116x162_ES: any = {
   '722': require("@/assets/cards/es/Promo/A/thumbs/116x162/StaraptorPromo-A47.png"),
   '723': require("@/assets/cards/es/Promo/A/thumbs/116x162/48.png"),
   '724': require("@/assets/cards/es/Promo/A/thumbs/116x162/49.png"),
+  '725': require("@/assets/cards/es/Shining Revelry/thumbs/116x162/cPK_10_005210_00_BEEDLE_C_M_es_ES_UT.png"),
+  '726': require("@/assets/cards/es/Shining Revelry/thumbs/116x162/cPK_10_005220_00_COCOON_U_M_es_ES_UT.png"),
+  '727': require("@/assets/cards/es/Shining Revelry/thumbs/116x162/cPK_10_005230_00_SPEARex_RR_M_es_ES_UT.png"),
 };
 
 export const CARD_IMAGE_MAP_JAP: any = {
@@ -5085,6 +5103,9 @@ export const CARD_IMAGE_MAP_JAP: any = {
   '722': require("@/assets/cards/ja/Promo/A/l721.png"),
   '723': require("@/assets/cards/ja/Promo/A/48.png"),
   '724': require("@/assets/cards/ja/Promo/A/49.png"),
+  '725': require("@/assets/cards/ja/Shining Revelry/cPK_10_005210_00_BEEDLE_C_M_ja_JP_UT.png"),
+  '726': require("@/assets/cards/ja/Shining Revelry/cPK_10_005220_00_COCOON_U_M_ja_JP_UT.png"),
+  '727': require("@/assets/cards/ja/Shining Revelry/cPK_10_005230_00_SPEARex_RR_M_ja_JP_UT.png"),
 };
 
 export const CARD_IMAGE_MAP_69x96_JAP: any = {
@@ -5812,6 +5833,9 @@ export const CARD_IMAGE_MAP_69x96_JAP: any = {
   '722': require("@/assets/cards/ja/Promo/A/thumbs/69x96/l721.png"),
   '723': require("@/assets/cards/ja/Promo/A/thumbs/69x96/48.png"),
   '724': require("@/assets/cards/ja/Promo/A/thumbs/69x96/49.png"),
+  '725': require("@/assets/cards/ja/Shining Revelry/thumbs/69x96/cPK_10_005210_00_BEEDLE_C_M_ja_JP_UT.png"),
+  '726': require("@/assets/cards/ja/Shining Revelry/thumbs/69x96/cPK_10_005220_00_COCOON_U_M_ja_JP_UT.png"),
+  '727': require("@/assets/cards/ja/Shining Revelry/thumbs/69x96/cPK_10_005230_00_SPEARex_RR_M_ja_JP_UT.png"),
 };
 
 export const CARD_IMAGE_MAP_116x162_JAP: any = {
@@ -6539,4 +6563,7 @@ export const CARD_IMAGE_MAP_116x162_JAP: any = {
   '722': require("@/assets/cards/ja/Promo/A/thumbs/116x162/l721.png"),
   '723': require("@/assets/cards/ja/Promo/A/thumbs/116x162/48.png"),
   '724': require("@/assets/cards/ja/Promo/A/thumbs/116x162/49.png"),
+  '725': require("@/assets/cards/ja/Shining Revelry/thumbs/116x162/cPK_10_005210_00_BEEDLE_C_M_ja_JP_UT.png"),
+  '726': require("@/assets/cards/ja/Shining Revelry/thumbs/116x162/cPK_10_005220_00_COCOON_U_M_ja_JP_UT.png"),
+  '727': require("@/assets/cards/ja/Shining Revelry/thumbs/116x162/cPK_10_005230_00_SPEARex_RR_M_ja_JP_UT.png"),
 };

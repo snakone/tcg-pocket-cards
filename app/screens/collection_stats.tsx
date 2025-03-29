@@ -63,7 +63,7 @@ export default function CollectionStatsScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
-  const [langCollection, setLangCollection] = useState<CardLanguageENUM>(state.settingsState.collectionLanguage || CardLanguageENUM.EN);
+  const [langCollection, setLangCollection] = useState<CardLanguageENUM>(state.settingsState.collection_language || CardLanguageENUM.EN);
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
   const [currentExpansion, setCurrentExpansion] = useState<ExpansionEmblem>();
 
@@ -107,10 +107,10 @@ export default function CollectionStatsScreen() {
   const collection = useMemo(() => state.settingsState.collection, [state.settingsState.collection]);
 
   useEffect(() => {
-    if (state.settingsState.collectionLanguage !== undefined) {
-      selectLanguage(state.settingsState.collectionLanguage, false);
+    if (state.settingsState.collection_language !== undefined) {
+      selectLanguage(state.settingsState.collection_language, false);
     }
-  }, [state.settingsState.collectionLanguage]);
+  }, [state.settingsState.collection_language]);
 
   useEffect(() => {
     setTimeout(() => dispatch({type: 'SET_NAVIGATING', value: false}), 1000);
@@ -523,13 +523,14 @@ export default function CollectionStatsScreen() {
     dialgaStats,
     palkiaStats,
     arceusStats,
+    shinyStats,
     promoStats,
   ]);
 
   const setData = useCallback((collectionCards: Set<number>) => {
     DATA.forEach(data => {
       const missing = data.cards.filter(id => !collectionCards.has(id)).length;
-      const totalMissing = ((missing / data.length || 1) * 100).toFixed(1);
+      const totalMissing = missing === 0 ? '0.0' : ((missing / data.length || 1) * 100).toFixed(1);
       const totalOwned = Math.abs(data.length - missing);
       const crownCards = data.crown?.filter(id => collectionCards.has(id)).length || 0;
       const artCards = data.art?.filter(id => collectionCards.has(id)).length || 0;
@@ -691,11 +692,10 @@ export default function CollectionStatsScreen() {
                         </ThemedView>
                         {
                           missed && missed.perct_owned &&
+                          <ThemedView style={{marginTop: 2}}>
                             <ProgressBar percentage={missed.perct_owned}></ProgressBar>
-                        }
-                        {
-                          missed && missed.perct_owned &&
-                          <ThemedText style={{textAlign: 'center', fontSize: 12}}>{roundPercentage(missed.perct_owned)}</ThemedText>
+                            <ThemedText style={{textAlign: 'center', fontSize: 12}}>{roundPercentage(missed.perct_owned)}</ThemedText>    
+                          </ThemedView>
                         }
                       </ThemedView>
                     )

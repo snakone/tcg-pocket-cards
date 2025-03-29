@@ -32,6 +32,7 @@ import { CardLanguageENUM } from '@/shared/definitions/enums/card.enums';
 import { CollectionUser } from '@/shared/definitions/classes/collection.class';
 import { UserCollection } from '@/shared/definitions/interfaces/global.interfaces';
 import { useConfirmation } from '@/core/providers/ConfirmationProvider';
+import { FilterSearch } from '@/shared/definitions/classes/filter.class';
 
 export default function CollectionCardsScreen() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -47,7 +48,7 @@ export default function CollectionCardsScreen() {
   const [lang] = useState<LanguageType>(state.settingsState.language);
   const [filtered, setFiltered] = useState<Card[]>([]);
   const flatListRef = useRef<FlatList<Card> | null>(null);
-  const [langCollection, setLangCollection] = useState<CardLanguageENUM>(state.settingsState.collectionLanguage);
+  const [langCollection, setLangCollection] = useState<CardLanguageENUM>(state.settingsState.collection_language || CardLanguageENUM.EN);
   const { confirm } = useConfirmation();
 
   const collection = useMemo(() => state.settingsState.collection, [state.settingsState.collection]);
@@ -95,14 +96,15 @@ export default function CollectionCardsScreen() {
   const memoizedSort = useMemo(() => {
     return <SortCardMenu isVisible={isSortVisible} 
                          onClose={onClose}
-                         animatedStyle={{}}/>
+                         animatedStyle={{}}
+                         filterKey={"collection"}/>
   }, [isSortVisible, sort]);
 
   const memoizedFilter = useMemo(() => {
     return <FilterCardMenu isVisible={isFilterVisible} 
                            animatedStyle={{}} 
                            onClose={onClose}
-                           isCollection={true}/>
+                           filterKey={"collection"}/>
   }, [isFilterVisible]);
 
   const markAllCards = useCallback((language: CardLanguageENUM): void => {
@@ -152,7 +154,7 @@ export default function CollectionCardsScreen() {
     setFiltered(state.cardState.cards);
 
     return (() => {
-      dispatch({type: 'RESET_CARD_FILTERS'});
+      dispatch({type: 'RESET_FILTER', value: 'collection'});
     })
   }, [state.cardState.cards]);
 
@@ -170,8 +172,8 @@ export default function CollectionCardsScreen() {
   }, [sort]);
 
   const getFilterOrderIcon = useCallback(() => {
-    return state.filterState.filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
-  }, [state.filterState.filter]);
+    return state.filterState.filters.collection.filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
+  }, [state.filterState.filters.collection.filter]);
 
   const goBack = useCallback(async (): Promise<void> => {
     SoundService.play('AUDIO_MENU_CLOSE');
@@ -181,7 +183,7 @@ export default function CollectionCardsScreen() {
   useEffect(() => {
     if (!filtered || filtered.length === 0) { return; }
     if(isSortVisible) { return; }
-    const sorted = filterOrSortCards('sort', filtered, state.filterState.sort.find(s => s.active));
+    const sorted = filterOrSortCards('sort', filtered, state.filterState.filters.collection.sort.find(s => s.active));
     setFiltered(sorted);
     setTimeout(() => goUp(false), 100);
   }, [isSortVisible]);
@@ -189,7 +191,7 @@ export default function CollectionCardsScreen() {
   useEffect(() => {
     if (!filtered) { return; }
     
-    if (!isFilterVisible && state.filterState.filter.areAllPropertiesNull()) {
+    if (!isFilterVisible && state.filterState.filters.collection.filter.areAllPropertiesNull()) {
       handleSearch('');
       return;
     }
@@ -217,7 +219,7 @@ export default function CollectionCardsScreen() {
         default:
           return data;
       }
-    }, [state.settingsState.favorites, state.filterState.filter]);
+    }, [state.settingsState.favorites, state.filterState.filters.collection.filter]);
 
   const manageSort = useCallback((sort: SortItem, data: Card[]): Card[] => {
     const sortField = SORT_FIELD_MAP[sort.label];
@@ -231,9 +233,9 @@ export default function CollectionCardsScreen() {
   }, [state.settingsState.favorites]);
 
   const manageFilter = useCallback((data: Card[]): Card[] => {
-    const filter = state.filterState.filter;
-    return filterCards(filter, data, state.settingsState.favorites, collection, langCollection);
-  }, [state.settingsState.favorites, state.filterState.filter]);
+    const filter = state.filterState.filters.collection.filter;
+    return filterCards(filter as FilterSearch, data, state.settingsState.favorites, collection, langCollection);
+  }, [state.settingsState.favorites, state.filterState.filters.collection.filter]);
   
 
   const handleSearch = useCallback((text: string) => {

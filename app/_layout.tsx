@@ -23,6 +23,7 @@ import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import { SplashScreenMemo } from '@/components/ui/SplashScreen';
 import { ConfirmationProvider } from '@/core/providers/ConfirmationProvider';
 import CardsService from '@/core/services/cards.service';
+import { CardLanguageENUM } from '@/shared/definitions/enums/card.enums';
 
 export const AppContext = createContext<{ state: AppState; dispatch: React.Dispatch<any> } | undefined>(undefined);
 SplashScreen.preventAutoHideAsync();
@@ -57,13 +58,17 @@ export default function RootLayout() {
         if (settings !== null) {
           if (!settings.trades) {
             settings.trades = [];
-            Storage.setSettings({...settings});
           }
 
           if (!settings.collection) {
             settings.collection = [];
-            Storage.setSettings({...settings});
           }
+
+          if (!settings.collection_language) {
+            settings.collection_language = CardLanguageENUM.EN;
+          }
+
+          Storage.setSettings({...settings});
 
           dispatch({type: 'SET_SETTINGS', value: {...settings, version: APP_VERSION}});
           SoundService.setEnabled(settings.sound);

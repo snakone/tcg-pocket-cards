@@ -130,7 +130,7 @@ export const ExpansionsMenu = React.memo(({filterObj, handleExpansion }: Expansi
         </ThemedView>
 
         <ThemedView style={filterStyles.expansionContainer}>
-          <Image source={SHINING_REVELRY_ICON} style={{ width: 115, height: 57 }}></Image>
+          <Image source={SHINING_REVELRY_ICON} style={{ width: 116, height: 57 }}></Image>
           <ThemedView style={{ flexDirection: 'row', marginBlock: 24, gap: 10 }}>
             {SHINING_PACKS.map((icon: any, index: number) => (
               <StateButton

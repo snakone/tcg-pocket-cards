@@ -2,8 +2,9 @@ import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
 import { useEffect, useCallback, useState, useContext } from "react";
+import React from "react";
 
-import { SortItem, TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
+import { SortItem, TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
 import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
@@ -15,13 +16,13 @@ import { AppContext } from "@/app/_layout";
 import { INITIAL_SORT_DATA } from "@/shared/definitions/utils/constants";
 import { cardStyles } from "@/app/(tabs)/cards";
 import SoundService from "@/core/services/sounds.service";
-import React from "react";
 
 export default function SortCardMenu({
   isVisible,
   onClose,
   animatedStyle,
-}: TabMenu) {
+  filterKey
+}: TabMenuCards) {
   const [data, setData] = useState(INITIAL_SORT_DATA);
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
@@ -48,20 +49,20 @@ export default function SortCardMenu({
     );
   
     setData(updated);
-    dispatch({ type: 'SET_SORT', value: updated });
+    dispatch({ type: 'SET_SORT', value: {key: filterKey, sort: updated} });
   };
 
   useEffect(() => {
-    if (state.filterState.sort.length > 0) {
-      const active = [...state.filterState.sort];
+    if (state.filterState.filters[filterKey].sort.length > 0) {
+      const active = [...state.filterState.filters[filterKey].sort];
       setData(active);
     }
-  }, [state.filterState.sort])
+  }, [state.filterState.filters[filterKey].sort])
 
   const getOrderIcon = useCallback((item: SortItem) => {
     return !item?.order ? 'arrow-upward' : 
               item.order === 'asc' ? 'arrow-upward' : 'arrow-downward';
-  }, [state.filterState.sort]);
+  }, [state.filterState.filters[filterKey].sort]);
 
   const renderItem = ({ item } : any) => (
     <TouchableOpacity onPress={() => toggleActive(item.id)} style={sortStyles.itemContainer}>

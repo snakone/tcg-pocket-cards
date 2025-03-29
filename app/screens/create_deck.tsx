@@ -51,6 +51,7 @@ import PreviewList from "@/components/dedicated/create/PreviewList";
 import CreateService from "@/core/services/create.service";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { collectionStyles } from "./collection";
+import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 
 const numColumns = 6;
 
@@ -82,7 +83,7 @@ export default function CreateDeckScreen() {
     setLang(state.settingsState.language);
 
     return (() => {
-      dispatch({type: 'RESET_CARD_FILTERS'});
+      dispatch({type: 'RESET_FILTER', value: 'decks'});
     })
   }, [state.settingsState.language]);
 
@@ -323,13 +324,15 @@ export default function CreateDeckScreen() {
   const memoizedSort = useMemo(() => {
     return <SortCardMenu isVisible={isSortVisible} 
                          onClose={onClose}
-                         animatedStyle={{}}/>
+                         animatedStyle={{}}
+                         filterKey={"decks"}/>
   }, [isSortVisible, sort]);
 
   const memoizedFilter = useMemo(() => {
     return <FilterCardMenu isVisible={isFilterVisible} 
                            animatedStyle={{}} 
-                           onClose={onClose}/>
+                           onClose={onClose}
+                           filterKey={"decks"}/>
   }, [isFilterVisible]);
 
   const memoizedEnergy = useMemo(() => {
@@ -344,15 +347,14 @@ export default function CreateDeckScreen() {
   useEffect(() => {
     if (!filtered || filtered.length === 0) { return; }
     if(isSortVisible) { return; }
-    const sorted = filterOrSortCards('sort', filtered, state.filterState.sort.find(s => s.active));
+    const sorted = filterOrSortCards('sort', filtered, state.filterState.filters.decks.sort.find(s => s.active));
     setFiltered(sorted);
     setTimeout(() => goUp(false), 100);
   }, [isSortVisible]);
 
   useEffect(() => {
     if (!filtered) { return; }
-    
-    if (!isFilterVisible && state.filterState.filter.areAllPropertiesNull()) {
+    if (!isFilterVisible && state.filterState.filters.decks.filter.areAllPropertiesNull()) {
       handleSearch('');
       return;
     }
@@ -372,17 +374,25 @@ export default function CreateDeckScreen() {
   }, [isEnergyVisible]);
 
   useEffect(() => {
-    if (state.filterState.sort.length > 0) {
-      const active = state.filterState.sort.find(s => s.active);
+    if (state.filterState.filters.decks.sort.length > 0) {
+      const active = state.filterState.filters.decks.sort.find(s => s.active);
       setSort(active);
     }
-  }, [state.filterState.sort]);
+  }, [state.filterState.filters.decks.sort]);
 
   useEffect(() => {
     if (state.cardState.cards.length > 0) {
       setFiltered(state.cardState.cards);
     }
   }, [state.cardState.cards]);
+
+  useEffect(() => {
+    if (isGridVisible && !state.filterState.filters.decks.filter.areAllPropertiesNull()) {
+      const sorted = filterOrSortCards('filter', state.cardState.cards);
+      setFiltered(sorted);
+      setTimeout(() => goUp(false), 100);
+    }
+  }, [isGridVisible]); 
 
   function filterOrSortCards(type: 'sort' | 'filter', data: Card[], sort?: SortItem | undefined): Card[] {
     switch (type) {
@@ -396,8 +406,8 @@ export default function CreateDeckScreen() {
   }
 
   function manageFilter(data: Card[]): Card[] {
-    const filter = state.filterState.filter;
-    return filterCards(filter, data, state.settingsState.favorites);
+    const filter = state.filterState.filters.decks.filter;
+    return filterCards(filter as FilterSearch, data, state.settingsState.favorites);
   }
 
   function manageSort(sort: SortItem, data: Card[]): Card[] {
@@ -425,8 +435,8 @@ export default function CreateDeckScreen() {
   }, [sort])
 
   const getFilterOrderIcon = useCallback(() => {
-    return state.filterState.filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
-  }, [state.filterState.filter]);
+    return state.filterState.filters.decks.filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
+  }, [state.filterState.filters.decks.filter]);
 
   function onClose(): void {
     setIsSortVisible(false);

@@ -10,8 +10,8 @@ import { useI18n } from '@/core/providers/LanguageProvider';
 import { ShareScreenModal } from '@/components/modals';
 import { KeyboardAvoidingView, SectionList, TextInput, TouchableOpacity } from 'react-native';
 import { NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
-import { CardGridStyles, CreateScreenStyles } from '@/shared/styles/component.styles';
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import { CardGridStyles, CreateScreenStyles, TabButtonStyles } from '@/shared/styles/component.styles';
+import { IconSymbol, SvgStackSymbol, SvgTradeSymbol } from '@/components/ui/IconSymbol';
 import { Colors } from '@/shared/definitions/utils/colors';
 import { AppContext } from '../_layout';
 import { renderDeckItem } from '@/components/dedicated/cards/DeckItem';
@@ -175,10 +175,26 @@ export default function ShareScreen() {
               }
               renderSectionHeader={({section}) => (
               <ThemedView style={[shareScreenStyles.sectionHeader, Platform.OS !== 'web' && {marginInline: 0}]}>
-                <ThemedText style={{fontSize: 16,
-                                    fontWeight: 'bold',}}>{section.title}
+                <ThemedText style={{fontSize: 16, fontWeight: 'bold'}}>{section.title}
                 </ThemedText>
                 <ThemedText style={{marginBottom: 0, fontWeight: 'bold', color: 'black'}}>
+                  {
+                    section.key === 'decks' &&
+                    <SvgStackSymbol color={Colors.light.icon} 
+                                    style={[
+                                      TabButtonStyles.stacks,
+                                      {top: -6},
+                                      {width: 20, height: 20, position: 'absolute', right: 36}]} />
+                  }
+                  {
+                    section.key === 'trades' &&
+                    <SvgTradeSymbol color={Colors.light.icon}
+                                    style={[
+                                      TabButtonStyles.trade, 
+                                      {top: -1},
+                                      {width: 22, height: 22, position: 'absolute', right: 36}
+                    ]}/>
+                  }
                   {
                     section.key === 'decks' ? `${filtered.length}/${decks.length}` :
                     section.key === 'trades' ? `${filteredTrades.length}/${trades.length}` : null
@@ -215,9 +231,10 @@ export const shareScreenStyles = StyleSheet.create({
     paddingTop: 22,
   },
   sectionHeader: {
-    paddingTop: 8,
-    paddingBottom: 10,
+    paddingTop: 6,
+    paddingBottom: 8,
     paddingHorizontal: 12,
+    paddingLeft: 14,
     borderRadius: 6,
     backgroundColor: 'rgb(250, 250, 241)',
     marginInline: 16,
@@ -225,7 +242,7 @@ export const shareScreenStyles = StyleSheet.create({
     flexDirection: 'row', 
     alignItems: 'center', 
     justifyContent: 'space-between',
-    marginBottom: 12,
+    marginBottom: 0,
   },
   item: {
     padding: 10,
@@ -248,6 +265,7 @@ export const shareScreenStyles = StyleSheet.create({
   noFound: {
     paddingHorizontal: 22,
     paddingTop: 4,
-    paddingBottom: 20
+    paddingBottom: 20,
+    marginTop: 12
   }
 });

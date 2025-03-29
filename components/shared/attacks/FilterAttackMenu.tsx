@@ -5,6 +5,7 @@ import Animated from 'react-native-reanimated'
 import { useRef, useState,  } from "react";
 import { Provider, Switch } from "react-native-paper";
 import { Subject } from "rxjs";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import { 
   ButtonStyles,
@@ -37,7 +38,7 @@ export default function FilterAttackMenu({isVisible, onClose, animatedStyle}: Ta
   const triggerRender = () => setForceRender(prev => prev + 1);
   
   const {i18n} = useI18n();
-  const filterObj = useRef<FilterAttackSearch>(state.filterState.attack_filter);
+  const filterObj = useRef<FilterAttackSearch>(state.filterState.filters.attacks.filter as FilterAttackSearch);
 
   if (!isVisible) return null;
 
@@ -52,7 +53,7 @@ export default function FilterAttackMenu({isVisible, onClose, animatedStyle}: Ta
   async function closeMenu(): Promise<void> {
     await playSound('AUDIO_MENU_CLOSE');
     onClose();
-    dispatch({type: 'SET_ATTACK_FILTER', value: filterObj.current});
+    dispatch({type: 'SET_FILTER', value: {key: 'attacks', filter: filterObj.current}});
   }
 
   async function handleChange(value: boolean): Promise<void> {
@@ -64,6 +65,7 @@ export default function FilterAttackMenu({isVisible, onClose, animatedStyle}: Ta
   function handleReset(): void {
     playSound('POP_PICK');
     filterObj.current = getFilterAttackSearch();
+    setIsExclusive(false);
     triggerRender();
   }
 
@@ -83,9 +85,11 @@ export default function FilterAttackMenu({isVisible, onClose, animatedStyle}: Ta
             <TouchableOpacity onPress={handleReset} style={[
               filterStyles.button, 
               filterStyles.gridButton, 
-              {width: 84, borderWidth: 1, borderColor: 'skyblue', position: 'absolute', right: 0, marginLeft: 'auto', boxShadow: 'none', top: -12}
+              filterStyles.reset
             ]}>
-              <ThemedText style={[filterStyles.buttonText, {left: 1}]}>{i18n.t('reset')}</ThemedText>
+              <MaterialIcons name="filter-alt-off" 
+                             style={{width: 23, height: 23, fontSize: 22, color: Colors.light.icon}}>
+              </MaterialIcons>
             </TouchableOpacity>
             <>
               <ThemedView style={filterStyles.row}>

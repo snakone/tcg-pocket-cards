@@ -23,22 +23,23 @@ export enum CardSpecialConditionENUM {
   SLEEP,
   CONFUSION,
   BURNED,
-  FLIP,
+  FLIP_COIN,
   NOTHING,
   DISCARD,
-  ADD,
+  ADD_ENERGY,
   EXTRA_DAMAGE,
   RESIST,
   CORNER,
   WITHDRAW_CARD,
   RETIRE,
-  CALL,
+  CALL_CARDS,
   INACTIVE,
   FORCE_SWITCH,
   ARCEUS_LINK,
   PLAY_CARDS,
   RANDOM_ATTACK,
-  END_TURN
+  END_TURN,
+  PLUS_EX
 }
 
 export enum CardLanguageENUM {

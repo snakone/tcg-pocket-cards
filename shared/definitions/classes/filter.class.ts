@@ -113,22 +113,23 @@ export class FilterSearch {
       [CardSpecialConditionENUM.SLEEP]: null,
       [CardSpecialConditionENUM.CONFUSION]: null,
       [CardSpecialConditionENUM.BURNED]: null,
-      [CardSpecialConditionENUM.FLIP]: null,
+      [CardSpecialConditionENUM.FLIP_COIN]: null,
       [CardSpecialConditionENUM.NOTHING]: null,
       [CardSpecialConditionENUM.DISCARD]: null,
-      [CardSpecialConditionENUM.ADD]: null,
+      [CardSpecialConditionENUM.ADD_ENERGY]: null,
       [CardSpecialConditionENUM.EXTRA_DAMAGE]: null,
       [CardSpecialConditionENUM.RESIST]: null,
       [CardSpecialConditionENUM.CORNER]: null,
       [CardSpecialConditionENUM.WITHDRAW_CARD]: null,
       [CardSpecialConditionENUM.RETIRE]: null,
-      [CardSpecialConditionENUM.CALL]: null,
+      [CardSpecialConditionENUM.CALL_CARDS]: null,
       [CardSpecialConditionENUM.INACTIVE]: null,
       [CardSpecialConditionENUM.ARCEUS_LINK]: null,
       [CardSpecialConditionENUM.FORCE_SWITCH]: null,
       [CardSpecialConditionENUM.PLAY_CARDS]: null,
       [CardSpecialConditionENUM.END_TURN]: null,
-      [CardSpecialConditionENUM.RANDOM_ATTACK]: null
+      [CardSpecialConditionENUM.RANDOM_ATTACK]: null,
+      [CardSpecialConditionENUM.PLUS_EX]: null
     };
   }
 

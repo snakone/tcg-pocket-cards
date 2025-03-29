@@ -676,6 +676,15 @@ export const filterStyles = StyleSheet.create({
   packImage: {
     width: 58, 
     height: 114
+  },
+  reset: {
+    width: 34, 
+    borderWidth: 0, 
+    position: 'absolute', 
+    right: 0, 
+    marginLeft: 'auto', 
+    boxShadow: '-4px 4px 8px rgba(0, 0, 0, 0.4)', 
+    top: -16
   }
 });
 

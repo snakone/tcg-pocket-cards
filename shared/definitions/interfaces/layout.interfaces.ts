@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { CardLanguageENUM } from "../enums/card.enums";
 import { CollectionStat, ExpansionEmblem } from "./global.interfaces";
+import { FilterKey } from "@/hooks/filter.reducer";
 
 export interface HeaderWithCustomModalProps {
   title: string;
@@ -19,7 +20,7 @@ export interface TabMenu {
 }
 
 export interface TabMenuCards extends TabMenu {
-  isCollection?: boolean;
+  filterKey: FilterKey;
 }
 
 export interface TabMenuCollection extends TabMenu {

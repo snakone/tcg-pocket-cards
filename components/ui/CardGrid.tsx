@@ -43,6 +43,8 @@ import { AppContext } from '@/app/_layout';
 import SoundService from '@/core/services/sounds.service';
 import { LanguageType } from '@/shared/definitions/types/global.types';
 import { settingsStyles } from '@/app/screens/settings';
+import { FilterKey } from '@/hooks/filter.reducer';
+import { FilterSearch } from '@/shared/definitions/classes/filter.class';
 
 interface GridCardProps {
   state: AppState,
@@ -50,7 +52,8 @@ interface GridCardProps {
   modal: JSX.Element,
   modalTitle: string
   type?: 'default' | 'favorites',
-  focused: boolean
+  focused: boolean,
+  filterKey: FilterKey
 }
 
 export default function ImageGridWithSearch({ 
@@ -59,7 +62,8 @@ export default function ImageGridWithSearch({
   modal, 
   modalTitle, 
   type = 'default',
-  focused
+  focused,
+  filterKey
 }: GridCardProps) {
   const searchQuery = useRef('');
   const [filtered, setFiltered] = useState<Card[]>([]);
@@ -87,16 +91,10 @@ export default function ImageGridWithSearch({
     setFiltered(state.cardState.cards);
   }, [state.cardState.cards]);
 
-  useFocusEffect(useCallback(() => {
-    if (state.filterState.filter.areAllPropertiesNull()) {
-      handleSearch('', false);
-    }
-  }, []));
-
   useEffect(() => {
     if (!filtered || filtered.length === 0 || type === 'favorites') { return; }
     if(state.modalState.sort_opened) { return; }
-    const sorted = filterOrSortCards('sort', filtered, state.filterState.sort.find(s => s.active));
+    const sorted = filterOrSortCards('sort', filtered, state.filterState.filters[filterKey].sort.find(s => s.active));
     setFiltered(sorted);
     setTimeout(() => goUp(null, false), 100);
   }, [state.modalState.sort_opened]);
@@ -106,7 +104,7 @@ export default function ImageGridWithSearch({
     if(state.modalState.filter_opened) { return; }
   
     const filterCards = filterOrSortCards('filter', state.cardState.cards);
-    const sorted = filterOrSortCards('sort', filterCards, state.filterState.sort.find(s => s.active));
+    const sorted = filterOrSortCards('sort', filterCards, state.filterState.filters[filterKey].sort.find(s => s.active));
 
     setFiltered(sorted);
     setTimeout(() => goUp(null, false), 100);
@@ -142,7 +140,7 @@ export default function ImageGridWithSearch({
           return manageFilter(data);
         }
       }
-  }, [state.filterState.filter]);
+  }, [state.filterState.filters[filterKey].filter]);
 
   const manageSort = useCallback((sort: SortItem, data: Card[]): Card[] => {
     const sortField = SORT_FIELD_MAP[sort.label];
@@ -153,12 +151,12 @@ export default function ImageGridWithSearch({
     }
   
     return sortCards(sortField, data, sort);
-  }, [state.filterState.filter]);
+  }, [state.filterState.filters[filterKey].filter]);
 
   const manageFilter = useCallback((data: Card[]): Card[] => {
-    const filter = state.filterState.filter;
-    return filterCards(filter, data, state.settingsState.favorites);
-  }, [state.filterState.filter, state.settingsState.favorites]);
+    const filter = state.filterState.filters[filterKey].filter;
+    return filterCards(filter as FilterSearch, data, state.settingsState.favorites);
+  }, [state.filterState.filters[filterKey].filter, state.settingsState.favorites]);
 
   const renderFooter = useCallback(() => {
     if (filtered.length < 34) {

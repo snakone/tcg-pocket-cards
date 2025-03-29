@@ -39,8 +39,15 @@ import SoundService from "@/core/services/sounds.service";
 import { SpecialItem } from "./components/SpecialItem";
 import { CollectionItem } from "../collection/components/CollectionItem";
 import { getFilterSearch } from "@/shared/definitions/utils/constants";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Colors } from "@/shared/definitions/utils/colors";
 
-export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCollection = false}: TabMenuCards) {
+export default function FilterCardMenu({
+  isVisible, 
+  onClose, 
+  animatedStyle, 
+  filterKey
+}: TabMenuCards) {
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
@@ -48,7 +55,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCol
   const {i18n} = useI18n();
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
 
-  const filterObj = useRef<FilterSearch>(state.filterState.filter);
+  const filterObj = useRef<FilterSearch>(state.filterState.filters[filterKey].filter as FilterSearch);
   const [expansionSelected, setExpansionSelected] = useState<boolean>(false);
   const [forceRender, setForceRender] = useState(0);
   const triggerRender = () => setForceRender(prev => prev + 1);
@@ -80,7 +87,7 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCol
   async function closeMenu(): Promise<void> {
     await playSound('AUDIO_MENU_CLOSE');
     onClose();
-    dispatch({type: 'SET_FILTER', value: filterObj.current});
+    dispatch({type: 'SET_FILTER', value: {key: filterKey, filter: filterObj.current}});
   }
 
   async function handleExpansion(value: boolean): Promise<void> {
@@ -156,13 +163,15 @@ export default function FilterCardMenu({isVisible, onClose, animatedStyle, isCol
             <TouchableOpacity onPress={handleReset} style={[
               filterStyles.button, 
               filterStyles.gridButton, 
-              {width: 84, borderWidth: 1, borderColor: 'skyblue', position: 'absolute', right: 0, marginLeft: 'auto', boxShadow: 'none', top: -12}
+              filterStyles.reset
             ]}>
-              <ThemedText style={[filterStyles.buttonText, {left: 1}]}>{i18n.t('reset')}</ThemedText>
+              <MaterialIcons name="filter-alt-off" 
+                             style={{width: 23, height: 23, fontSize: 22, color: Colors.light.icon}}>
+              </MaterialIcons>
             </TouchableOpacity>
 
             {
-              isCollection &&
+              filterKey === 'collection' &&
               <>
                 <ThemedView style={[filterStyles.row, {marginTop: 4}]}>
                   <ThemedText style={filterStyles.header}>{i18n.t('collection')}</ThemedText>

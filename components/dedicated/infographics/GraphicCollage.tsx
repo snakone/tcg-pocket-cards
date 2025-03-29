@@ -270,14 +270,14 @@ export function GraphicCollage({
   const { data: sharedSmack, length: sharedSmackLength } = getSharedCards(CardExpansionENUM.SPACE_TIME_SMACKDOWN);
 
   const { data: benchCondition, length: benchConditionLength } = getCondition(CardSpecialConditionENUM.ATTACK_BENCH);
-  const { data: addCondition, length: addConditionLength } = getCondition(CardSpecialConditionENUM.ADD);
+  const { data: addCondition, length: addConditionLength } = getCondition(CardSpecialConditionENUM.ADD_ENERGY);
   const { data: burnedCondition, length: burnedConditionLength } = getCondition(CardSpecialConditionENUM.BURNED);
-  const { data: callCondition, length: callConditionLength } = getCondition(CardSpecialConditionENUM.CALL);
+  const { data: callCondition, length: callConditionLength } = getCondition(CardSpecialConditionENUM.CALL_CARDS);
   const { data: confusionCondition, length: confusionConditionLength } = getCondition(CardSpecialConditionENUM.CONFUSION);
   const { data: cornerCondition, length: cornerConditionLength } = getCondition(CardSpecialConditionENUM.CORNER);
   const { data: discardCondition, length: discardConditionLength } = getCondition(CardSpecialConditionENUM.DISCARD);
   const { data: extraCondition, length: extraConditionLength } = getCondition(CardSpecialConditionENUM.EXTRA_DAMAGE);
-  const { data: flipCondition, length: flipConditionLength } = getCondition(CardSpecialConditionENUM.FLIP);
+  const { data: flipCondition, length: flipConditionLength } = getCondition(CardSpecialConditionENUM.FLIP_COIN);
   const { data: healCondition, length: healConditionLength } = getCondition(CardSpecialConditionENUM.HEAL);
   const { data: inactiveCondition, length: inactiveConditionLength } = getCondition(CardSpecialConditionENUM.INACTIVE);
   const { data: nothingCondition, length: nothingConditionLength } = getCondition(CardSpecialConditionENUM.NOTHING);
@@ -292,6 +292,7 @@ export function GraphicCollage({
   const { data: playCardsCondition, length: playCardsConditionLength } = getCondition(CardSpecialConditionENUM.PLAY_CARDS);
   const { data: randomCondition, length: randomConditionLength } = getCondition(CardSpecialConditionENUM.RANDOM_ATTACK);
   const { data: endTurnCondition, length: endTurnConditionLength } = getCondition(CardSpecialConditionENUM.END_TURN);
+  const { data: plusEXCondition, length: plusEXConditionLength } = getCondition(CardSpecialConditionENUM.PLUS_EX);
 
   const SUMMARY_DATA: any = {
     geneticPackCardsLength, islandPackCardsLength, spacePackCardsLength, promoAPackCardsLength,
@@ -364,7 +365,8 @@ export function GraphicCollage({
     withdrawConditionLength, withdrawCondition, retireConditionLength, retireCondition,
     callConditionLength, callCondition, inactiveConditionLength, inactiveCondition,
     playCardsConditionLength, playCardsCondition, randomConditionLength, randomCondition,
-    arceusConditionLength, arceusCondition, endTurnConditionLength, endTurnCondition
+    arceusConditionLength, arceusCondition, endTurnConditionLength, endTurnCondition,
+    plusEXCondition, plusEXConditionLength
   };
 
   return (

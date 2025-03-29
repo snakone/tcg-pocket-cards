@@ -20,7 +20,7 @@ export interface SettingsState extends UserProfile {
   decks: StorageDeck[];
   trades: TradeItem[];
   collection: UserCollection[];
-  collectionLanguage: CardLanguageENUM;
+  collection_language: CardLanguageENUM;
 }
 
 export const settingsInitialState: SettingsState = { 
@@ -40,7 +40,7 @@ export const settingsInitialState: SettingsState = {
   best: null,
   trades: [],
   collection: [],
-  collectionLanguage: CardLanguageENUM.EN
+  collection_language: CardLanguageENUM.EN
 };
 
 export const settingsReducer = (state: SettingsState, action: SettingsAction): SettingsState => {
@@ -127,7 +127,7 @@ export const settingsReducer = (state: SettingsState, action: SettingsAction): S
       return { ...state }
     }
     case 'SET_COLLECTION_LANGUAGE':
-      return { ...state, collectionLanguage: action.value };
+      return { ...state, collection_language: action.value };
       
     default:
       return state;

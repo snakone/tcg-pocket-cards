@@ -23,6 +23,7 @@ import { cardStyles } from './cards';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { filterAttacks, sortAttacks } from '@/shared/definitions/utils/functions';
 import { AttacksScreenModal } from '@/components/modals';
+import { FilterAttackSearch } from '@/shared/definitions/classes/filter_attack.class';
 
 export default function AttacksScreen() {
   const {i18n} = useI18n();
@@ -57,11 +58,11 @@ export default function AttacksScreen() {
   }, [state.settingsState.language]);
 
   useEffect(() => {
-    if (state.filterState.attack_sort.length > 0) {
-      const active = state.filterState.attack_sort.find(s => s.active);
+    if (state.filterState.filters.attacks.sort.length > 0) {
+      const active = state.filterState.filters.attacks.sort.find(s => s.active);
       setSort(active);
     }
-  }, [state.filterState.attack_sort]);
+  }, [state.filterState.filters.attacks.sort]);
 
   useEffect(() => {
     const attacks = state.cardState.cards.flatMap(card => card.attacks).filter(Boolean);
@@ -72,12 +73,6 @@ export default function AttacksScreen() {
       dispatch({type: 'SET_ATTACK_LIST', value: unique});
     }
   }, [state.cardState.cards]);
-
-  useFocusEffect(useCallback(() => {
-    if (state.filterState.attack_filter.areAllPropertiesNull()) {
-      handleSearch('');
-    }
-  }, [attacks]));
 
   const keyExtractor = useCallback((item: Attack, index: number) => String(item.name) + index, []);
 
@@ -100,8 +95,8 @@ export default function AttacksScreen() {
 
   const handleSearch = useCallback((text: string) => {
     searchQuery.current = text;
-    setFiltered((attacks).filter(attack => attack.name[lang].toLowerCase()?.includes(text.toLowerCase())));
-  }, [attacks, lang]);
+    setFiltered(state.attacksState.attack_list.filter(attack => attack.name[lang].toLowerCase()?.includes(text.toLowerCase())));
+  }, [state.attacksState.attack_list, lang]);
 
   const ResetFilterButton = useCallback(() => (
     <TouchableOpacity 
@@ -122,7 +117,7 @@ export default function AttacksScreen() {
     if (!filtered || filtered.length === 0) { return; }
     if(state.modalState.sort_attack_opened) { return; }
 
-    const sorted = filterOrSortAttacks('sort', filtered, lang, state.filterState.attack_sort.find(s => s.active));
+    const sorted = filterOrSortAttacks('sort', filtered, lang, state.filterState.filters.attacks.sort.find(s => s.active));
     setFiltered(sorted);
     setTimeout(() => goUp(null, false), 100);
   }, [state.modalState.sort_attack_opened, lang]);
@@ -130,13 +125,13 @@ export default function AttacksScreen() {
   useEffect(() => {
     if (!filtered) { return; }
     if(state.modalState.filter_attack_opened) { return; }
-  
+    
     const filterCards = filterOrSortAttacks('filter', attacks, lang);
-    const sorted = filterOrSortAttacks('sort', filterCards, lang, state.filterState.attack_sort.find(s => s.active));
+    const sorted = filterOrSortAttacks('sort', filterCards, lang, state.filterState.filters.attacks.sort.find(s => s.active));
 
     setFiltered(sorted);
     setTimeout(() => goUp(null, false), 100);
-  }, [state.modalState.filter_attack_opened, attacks]);
+  }, [attacks, state.modalState.filter_attack_opened, lang]);
 
   const filterOrSortAttacks = useCallback(
     (type: 'sort' | 'filter', data: Attack[], lang: LanguageType, sort?: SortItem) => {
@@ -150,7 +145,7 @@ export default function AttacksScreen() {
           return manageFilter(data);
         }
       }
-  }, [state.filterState.attack_filter]);
+  }, [state.filterState.filters.attacks.filter]);
 
   const manageSort = useCallback(
     (sort: SortItem, data: Attack[], lang: LanguageType): Attack[] => {
@@ -162,13 +157,13 @@ export default function AttacksScreen() {
       }
   
       return sortAttacks(sortField, data, sort, lang);
-  }, [state.filterState.filter]);
+  }, [state.filterState.filters.attacks.filter]);
 
   const manageFilter = useCallback(
     (data: Attack[]): Attack[] => {
-      const filter = state.filterState.attack_filter;
-      return filterAttacks(filter, data);
-  }, [state.filterState.attack_filter]);
+      const filter = state.filterState.filters.attacks.filter;
+      return filterAttacks(filter as FilterAttackSearch, data);
+  }, [state.filterState.filters.attacks.filter]);
 
   const renderItem = useCallback(({item}: {item: Attack}) => 
     renderAttackItem({ 
@@ -194,8 +189,8 @@ export default function AttacksScreen() {
   }, [sort]);
 
   const getFilterOrderIcon = useCallback(() => {
-    return state.filterState.attack_filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
-  }, [state.filterState.attack_filter]);
+    return state.filterState.filters.attacks.filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
+  }, [state.filterState.filters.attacks.filter]);
 
   async function goUp(_: GestureResponderEvent | null, sound = true): Promise<void> {
     if (sound) SoundService.play('PICK_CARD_SOUND');

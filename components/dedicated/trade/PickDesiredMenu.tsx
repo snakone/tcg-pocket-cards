@@ -1,7 +1,7 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import React from "react";
 import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -40,7 +40,7 @@ export default function PickDesiredMenu({
   if (!isVisible) return null;
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
+  const { state } = context;
   const [cards, setCards] = useState<Card[]>([]);
   const [filtered, setFiltered] = useState<Card[]>([]);
   const [cardsWithFilter, setCardsWithFilter] = useState<Card[]>([]);
@@ -51,6 +51,7 @@ export default function PickDesiredMenu({
   const [forceRender, setForceRender] = useState(0);
   const triggerRender = () => setForceRender(prev => prev + 1);
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const flatListRef = useRef<FlatList<Card> | null>(null);
 
   useEffect(() => {
     setLang(state.settingsState.language);
@@ -71,13 +72,19 @@ export default function PickDesiredMenu({
     onClose(current);
   }
 
+
+  const filterTradeableCards = useCallback(() => {
+    return state.cardState.cards.filter(
+      card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2B)
+  }, [state.cardState.cards]);
+
   useEffect(() => {
     const desiredCard = state.cardState.cards.find(card => desired.includes(card.id));
 
     let filteredCards;
     if (desiredCard) {
       filteredCards = state.cardState.cards.filter(card => 
-        card?.rarity === desiredCard.rarity && card.series !== CardExpansionTypeENUM.A2A
+        card?.rarity === desiredCard.rarity && card.series !== CardExpansionTypeENUM.A2B
       );
   
       setCurrent(prev =>
@@ -89,9 +96,7 @@ export default function PickDesiredMenu({
       (filterObj.current.rarity as any)[desiredCard.rarity] = true;
       setFilterDisabled(true);
     } else {
-      filteredCards = state.cardState.cards.filter(card => 
-        RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2A
-      );
+      filteredCards = filterTradeableCards();
     }
   
     setCards(filteredCards);
@@ -99,6 +104,10 @@ export default function PickDesiredMenu({
     setCardsWithFilter(filteredCards);
 
   }, [state.cardState.cards, desired]);
+
+  async function goUp(): Promise<void> {
+    flatListRef.current?.scrollToOffset({offset: 0, animated: false});
+  }
 
   const renderEmpty = () => {
     const renderCardState = useCallback(() => {
@@ -123,28 +132,29 @@ export default function PickDesiredMenu({
     if (type === 'add' && current.filter(Boolean).length === 0) {
       if (!Object.values(filterObj.current.rarity).some(val => Boolean(val))) {
         manageFilter((value as Card).rarity);
+        triggerRender();
+        goUp();
       }
       setFilterDisabled(true);
     }
 
     // EMPTY
     if (type === 'remove' && current.filter(Boolean).length === 1) {
-      setFilterDisabled(false);
       resetCardsAndFilter();
       Object.keys(filterObj.current.rarity).forEach(key => (filterObj.current.rarity as any)[key] = false);
       triggerRender();
+      goUp();
     }
 
     setCurrent((prev) => {
       if (prev.includes(id)) {
-
         // EXIST
         const next = prev.map(desired => desired === id ? null : desired).sort((a, b) => b === null ? -1 : 1);
         if (type === 'add' && next.filter(Boolean).length === 0) {
-          setFilterDisabled(false);
           resetCardsAndFilter();
           Object.keys(filterObj.current.rarity).forEach(key => (filterObj.current.rarity as any)[key] = false);
           triggerRender();
+          goUp();
         }
         return next;
       }
@@ -160,10 +170,8 @@ export default function PickDesiredMenu({
   }, [current, filterObj.current.rarity]);
 
   function resetCardsAndFilter(): void {
-    setFiltered(state.cardState.cards
-      .filter(
-        card => RARITY_CAN_TRADE
-                  .includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2A));
+    setFilterDisabled(false);
+    setFiltered(filterTradeableCards());
   }
 
   const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
@@ -204,10 +212,7 @@ export default function PickDesiredMenu({
     const filter = filterObj.current;
     (filter.rarity as any)[index] = !(filter.rarity as any)[index];
 
-    const tradeable = state.cardState.cards
-                        .filter(
-                          card => RARITY_CAN_TRADE
-                                   .includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2A);
+    const tradeable = filterTradeableCards();
 
     const filtered = filterCards(filter, tradeable, []);
     setFiltered(filtered);
@@ -269,7 +274,7 @@ export default function PickDesiredMenu({
           <StateButton
             propFilter="rarity"
             keyFilter={key}
-            onClick={() => manageFilter(key)}
+            onClick={() => (manageFilter(key), triggerRender())}
             key={index}
             filterObj={filterObj}
             disabled={filterDisabled || shouldFilterDisabled(key)}
@@ -292,7 +297,7 @@ export default function PickDesiredMenu({
       })}
     </ThemedView>
     )
-  }, [filterDisabled, filterObj, forceRender]);
+  }, [filterDisabled, filterObj]);
 
   return (
     <>
@@ -311,7 +316,7 @@ export default function PickDesiredMenu({
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_a_desired')}</ThemedText>
         </View>
         <ThemedView style={[styles.modalScrollView, {flex: 1, padding: 0, maxHeight: '100%'}]}>
-          <ThemedView style={{flex: 1, alignItems: 'center', paddingBottom: 16}}>
+          <ThemedView style={{flex: 1, alignItems: 'center', paddingBottom: 16}} key={forceRender}>
             <FlatList data={filtered}
                       renderItem={renderCard}
                       numColumns={6}
@@ -319,6 +324,7 @@ export default function PickDesiredMenu({
                       maxToRenderPerBatch={20}
                       initialNumToRender={20}
                       windowSize={9}
+                      ref={flatListRef}
                       getItemLayout={getItemLayout}
                       contentContainerStyle={{padding: 16, paddingTop: 0, paddingBottom: 54}}
                       keyExtractor={(item, index) => index + ''}

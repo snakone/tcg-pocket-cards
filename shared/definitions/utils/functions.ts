@@ -10,7 +10,7 @@ import { FilterSearch } from "../classes/filter.class";
 import { Attack, Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
 import { CardExpansionENUM, CardLanguageENUM } from "../enums/card.enums";
-import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SMACK_DOWN, TRIUMPH_LIGHT_ARCEUS_ICON } from "../sentences/path.sentences";
+import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SHINING_REVELRY_ICON, SMACK_DOWN, TRIUMPH_LIGHT_ARCEUS_ICON } from "../sentences/path.sentences";
 import { PACK_MAP } from "./constants";
 import { LanguageType } from "../types/global.types";
 import { FilterAttackSearch } from "../classes/filter_attack.class";
@@ -67,6 +67,7 @@ export function sortCards(field: keyof Card | string, data: Card[], sort: SortIt
 }
 
 export function sortAttacks(field: keyof Attack | string, data: Attack[], sort: SortItem, lang: LanguageType): Attack[] {
+  if (field === 'order') { field = 'id'; }
   return [...data].sort((a, b) => {
     let aValue: any = '';
     let bValue: any = '';
@@ -323,6 +324,8 @@ export function getCardPackFrom(card: Card): {image: any, width: number, height:
     }
   } else if (card.expansion === CardExpansionENUM.TRIUMPH_LIGHT) {
     return {image: TRIUMPH_LIGHT_ARCEUS_ICON, width: 95, height: 39};
+  } else if (card.expansion === CardExpansionENUM.SHINING_REVELRY) {
+    return {image: SHINING_REVELRY_ICON, width: 86, height: 42};
   }
 }
 

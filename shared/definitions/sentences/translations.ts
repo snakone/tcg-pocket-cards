@@ -1,5 +1,6 @@
 export const TRANSLATIONS = {
   en: {
+    condition_plus_ex: 'Damage to EX',
     reset: 'Reset',
     ['---']: '---',
     shiny: 'Shiny',
@@ -707,6 +708,7 @@ export const TRANSLATIONS = {
     without_ability: "Without Ability"
   },
   es: {
+    condition_plus_ex: 'Daño a EX',
     reset: 'Reiniciar',
     ['---']: '---',
     shiny: 'Variocolor',
@@ -1417,6 +1419,7 @@ export const TRANSLATIONS = {
     without_ability: "Sin habilidad"
   },
   ja: {
+    condition_plus_ex: 'EXへの損害',
     reset: '再起動',
     ['---']: '---',
     shiny: '色違い',

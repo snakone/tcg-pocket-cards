@@ -131,7 +131,21 @@ import {
   LEAFEON_COIN,
   MANAPHY_COIN,
   RAINBOW_RARITY,
-  GIRATINA_EMBLEM
+  GIRATINA_EMBLEM,
+  SHINY_ICON,
+  ASH_RAINBOW_COIN,
+  LUCARIO_COIN,
+  MEWTWO_SHINY_COIN,
+  ASH_RED_COIN,
+  SPRIGATITO_AVATAR,
+  DECK_BG_LUCARIO,
+  DECK_BG_CHARIZARD_SHINY,
+  DECK_BG_ASH,
+  DECK_BG_SKY,
+  DECK_BG_LUCARIO_70x70,
+  DECK_BG_CHARIZARD_SHINY_70x70,
+  DECK_BG_ASH_70x70,
+  DECK_BG_SKY_70x70,
 } from "../sentences/path.sentences";
 
 import { FilterSearch } from "../classes/filter.class";
@@ -282,22 +296,23 @@ export const CONDITION_MAP: Record<CardSpecialConditionENUM, {label: string}> = 
   [CardSpecialConditionENUM.SLEEP]: { label: 'condition_sleep' },
   [CardSpecialConditionENUM.CONFUSION]: { label: 'condition_confusion' },
   [CardSpecialConditionENUM.BURNED]: { label: 'condition_burned' },
-  [CardSpecialConditionENUM.FLIP]: { label: 'condition_flip' },
+  [CardSpecialConditionENUM.FLIP_COIN]: { label: 'condition_flip' },
   [CardSpecialConditionENUM.NOTHING]: { label: 'condition_nothing' },
   [CardSpecialConditionENUM.DISCARD]: { label: 'condition_discard' },
-  [CardSpecialConditionENUM.ADD]: { label: 'condition_add' },
+  [CardSpecialConditionENUM.ADD_ENERGY]: { label: 'condition_add' },
   [CardSpecialConditionENUM.EXTRA_DAMAGE]: { label: 'condition_extra_damage' },
   [CardSpecialConditionENUM.RESIST]: { label: 'condition_resist' },
   [CardSpecialConditionENUM.CORNER]: { label: 'condition_corner' },
   [CardSpecialConditionENUM.WITHDRAW_CARD]: { label: 'condition_withdraw' },
   [CardSpecialConditionENUM.RETIRE]: { label: 'condition_retire' },
-  [CardSpecialConditionENUM.CALL]: { label: 'condition_call' },
+  [CardSpecialConditionENUM.CALL_CARDS]: { label: 'condition_call' },
   [CardSpecialConditionENUM.INACTIVE]: { label: 'condition_inactive' },
   [CardSpecialConditionENUM.FORCE_SWITCH]: { label: 'condition_force_switch' },
   [CardSpecialConditionENUM.ARCEUS_LINK]: { label: 'condition_arceus' },
   [CardSpecialConditionENUM.PLAY_CARDS]: { label: 'condition_play_cards' },
   [CardSpecialConditionENUM.RANDOM_ATTACK]: { label: 'condition_random_attack' },
-  [CardSpecialConditionENUM.END_TURN]: { label: 'condition_end_turn' }
+  [CardSpecialConditionENUM.END_TURN]: { label: 'condition_end_turn' },
+  [CardSpecialConditionENUM.PLUS_EX]: { label: 'condition_plus_ex' }
 }
 
 export const CONDITION_ATTACK = [
@@ -305,7 +320,8 @@ export const CONDITION_ATTACK = [
   CardSpecialConditionENUM.RECOIL,
   CardSpecialConditionENUM.EXTRA_DAMAGE,
   CardSpecialConditionENUM.RESIST,
-  CardSpecialConditionENUM.RANDOM_ATTACK
+  CardSpecialConditionENUM.RANDOM_ATTACK,
+  CardSpecialConditionENUM.PLUS_EX
 ];
 
 export const CONDITION_STATUS = [
@@ -317,19 +333,21 @@ export const CONDITION_STATUS = [
   CardSpecialConditionENUM.BURNED
 ];
 
-export const CONDITION_OTHERS = [
-  CardSpecialConditionENUM.FLIP,
+interface ConditionOthers extends Array<CardSpecialConditionENUM> {}
+
+export const CONDITION_OTHERS: ConditionOthers = [
+  CardSpecialConditionENUM.FLIP_COIN,
   CardSpecialConditionENUM.NOTHING,
   CardSpecialConditionENUM.DISCARD,
-  CardSpecialConditionENUM.ADD,
+  CardSpecialConditionENUM.ADD_ENERGY,
   CardSpecialConditionENUM.CORNER,
   CardSpecialConditionENUM.WITHDRAW_CARD,
   CardSpecialConditionENUM.RETIRE,
-  CardSpecialConditionENUM.CALL,
+  CardSpecialConditionENUM.CALL_CARDS,
   CardSpecialConditionENUM.INACTIVE,
   CardSpecialConditionENUM.FORCE_SWITCH,
   CardSpecialConditionENUM.PLAY_CARDS,
-  CardSpecialConditionENUM.END_TURN
+  CardSpecialConditionENUM.END_TURN,
 ];
 
 export const CONDITION_LINKS = [
@@ -395,7 +413,11 @@ export const COIN_MAP: Record<string, any> = {
   darkrai: DARKRAI_COIN,
   glaceon: GLACEON_COIN,
   leafeon: LEAFEON_COIN,
-  manaphy: MANAPHY_COIN
+  manaphy: MANAPHY_COIN,
+  ash_rainbow: ASH_RAINBOW_COIN,
+  lucario: LUCARIO_COIN,
+  mewtwo_shiny: MEWTWO_SHINY_COIN,
+  ash_red: ASH_RED_COIN
 }
 
 export const AVATAR_MAP: Record<string, any> = {
@@ -417,7 +439,8 @@ export const AVATAR_MAP: Record<string, any> = {
   piplup: PIPLUP_AVATAR,
   turtwig: TURTWIG_AVATAR,
   lektro: LEKTRO_AVATAR,
-  maril: MARIL_AVATAR
+  maril: MARIL_AVATAR,
+  sprigatito: SPRIGATITO_AVATAR
 }
 
 export const DECK_BACKGROUND_MAP: Record<string, any> = {
@@ -448,7 +471,11 @@ export const DECK_BACKGROUND_MAP: Record<string, any> = {
   darkrai: DECK_BG_DARKRAI,
   piplup: DECK_BG_PIPLUP,
   arceus: DECK_BG_ARCEUS,
-  nakara: DECK_BG_NAKARA
+  nakara: DECK_BG_NAKARA,
+  lucario: DECK_BG_LUCARIO,
+  charizard_shiny: DECK_BG_CHARIZARD_SHINY,
+  ash: DECK_BG_ASH,
+  sky: DECK_BG_SKY
 }
 
 export const AVATAR_LIST: AvatarIcon[] = [
@@ -458,7 +485,7 @@ export const AVATAR_LIST: AvatarIcon[] = [
   { label: 'Erika', value: 'erika', icon: ERIKA_AVATAR },
   { label: 'Gardevoir', value: 'gardevoir', icon: GARDEVOIR_AVATAR },
   { label: 'Giovanni', value: 'giovanni', icon: GIOVANNI_AVATAR },
-  { label: 'Meowth', value: 'meowth', icon: MEWTWO_AVATAR },
+  { label: 'Meowth', value: 'meowth', icon: MEOWTH_AVATAR },
   { label: 'Mewtwo', value: 'mewtwo', icon: MEWTWO_AVATAR },
   { label: 'Pikachu', value: 'pikachu', icon: PIKACHU_AVATAR },
   { label: 'Slowpoke', value: 'slowpoke', icon: SLOWPOKE_AVATAR },
@@ -471,6 +498,7 @@ export const AVATAR_LIST: AvatarIcon[] = [
   { label: 'Turtwig', value: 'turtwig', icon: TURTWIG_AVATAR },
   { label: 'Lektro', value: 'lektro', icon: LEKTRO_AVATAR },
   { label: 'Maril', value: 'maril', icon: MARIL_AVATAR },
+  { label: 'Sprigatito', value: 'sprigatito', icon: SPRIGATITO_AVATAR },
 ];
 
 export const COIN_LIST: AvatarIcon[] = [
@@ -490,6 +518,10 @@ export const COIN_LIST: AvatarIcon[] = [
   { label: 'Glaceon', value: 'glaceon', icon: GLACEON_COIN },
   { label: 'Leafeon', value: 'leafeon', icon: LEAFEON_COIN },
   { label: 'Manaphy', value: 'manaphy', icon: MANAPHY_COIN },
+  { label: 'Ash Rainbow', value: 'ash_rainbow', icon: ASH_RAINBOW_COIN },
+  { label: 'Lucario', value: 'lucario', icon: LUCARIO_COIN },
+  { label: 'Mewtwo Shiny', value: 'mewtwo_shiny', icon: MEWTWO_SHINY_COIN },
+  { label: 'ASh Red', value: 'ash_red', icon: ASH_RED_COIN },
 ];
 
 export const DECK_BACKGROUNDS_70x70: AvatarIcon[] = [
@@ -521,6 +553,10 @@ export const DECK_BACKGROUNDS_70x70: AvatarIcon[] = [
   {label: 'Piplup', value: 'piplup', icon: DECK_BG_PIPLUP_70x70},
   {label: 'Arceus', value: 'arceus', icon: DECK_BG_ARCEUS_70x70},
   {label: 'Nakara', value: 'nakara', icon: DECK_BG_NAKARA_70x70},
+  {label: 'Lucario', value: 'lucario', icon: DECK_BG_LUCARIO_70x70},
+  {label: 'Charizard Shiny', value: 'charizard_shiny', icon: DECK_BG_CHARIZARD_SHINY_70x70},
+  {label: 'Ash', value: 'ash', icon: DECK_BG_ASH_70x70},
+  {label: 'Sky', value: 'sky', icon: DECK_BG_SKY_70x70},
 ];
 
 export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);
@@ -608,7 +644,8 @@ export const EXPANSION_PACK_MAP: any = {
   expansion_mew: MEW_ICON,
   expansion_dialga: DIALGA_ICON,
   expansion_palkia: PALKIA_ICON,
-  expansion_arceus: ARCEUS_ICON
+  expansion_arceus: ARCEUS_ICON,
+  expansion_shiny: SHINY_ICON
 }
 
 export const STATS_EXPANSION_MAP: any = {

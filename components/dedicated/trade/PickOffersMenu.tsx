@@ -105,7 +105,7 @@ export default function PickOffersMenu({
     if (desiredCard) {
       const filter = state.cardState.cards
                       .filter(card => card?.rarity === desiredCard.rarity && 
-                                      card.series !== CardExpansionTypeENUM.A2A &&
+                                      card.series !== CardExpansionTypeENUM.A2B &&
                                       !desired.includes(card.id));
       setCards(filter);
       setFiltered(filter);

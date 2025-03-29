@@ -48,20 +48,20 @@ export default function SortAttackMenu({
     );
   
     setData(updated);
-    dispatch({ type: 'SET_ATTACK_SORT', value: updated });
+    dispatch({ type: 'SET_SORT', value: {key: 'attacks', sort: updated} });
   };
 
   useEffect(() => {
-    if (state.filterState.attack_sort.length > 0) {
-      const active = [...state.filterState.attack_sort];
+    if (state.filterState.filters.attacks.sort.length > 0) {
+      const active = [...state.filterState.filters.attacks.sort];
       setData(active);
     }
-  }, [state.filterState.attack_sort])
+  }, [state.filterState.filters.attacks.sort])
 
   const getOrderIcon = useCallback((item: SortItem) => {
     return !item?.order ? 'arrow-upward' : 
               item.order === 'asc' ? 'arrow-upward' : 'arrow-downward';
-  }, [state.filterState.attack_sort]);
+  }, [state.filterState.filters.attacks.sort]);
 
   const renderItem = ({ item } : {item: SortItem}) => (
     <TouchableOpacity onPress={() => toggleActive(item.id)} style={sortStyles.itemContainer}>
