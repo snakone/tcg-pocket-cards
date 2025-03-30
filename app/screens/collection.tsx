@@ -407,7 +407,7 @@ export default function CollectionCardsScreen() {
                   keyExtractor={keyExtractor}
                   initialNumToRender={20}
                   maxToRenderPerBatch={25}
-                  windowSize={11}
+                  windowSize={12}
                   getItemLayout={getItemLayout}
                   removeClippedSubviews={true}
                   showsVerticalScrollIndicator={false}

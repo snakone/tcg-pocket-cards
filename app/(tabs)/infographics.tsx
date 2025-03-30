@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import React from "react";
-import { TouchableOpacity, View, StyleSheet, ScrollView } from "react-native";
+import { TouchableOpacity, View, StyleSheet, ScrollView, Platform } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Switch } from "react-native-paper";
 import { Slider } from "@miblanchard/react-native-slider";
+import * as MediaLibrary from 'expo-media-library';
 
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
@@ -45,6 +46,16 @@ export default function InfoGraphicScreen() {
     top: setShowTop,
     conditions: setShowConditions
   });
+
+  async function requestPermission() {
+    if (Platform.OS === 'android') {
+      await MediaLibrary.requestPermissionsAsync();
+    }
+  }
+
+  useEffect(() => {
+    requestPermission();
+  }, []);
 
   const [isVisible, setIsVisible] = useState(false);
 

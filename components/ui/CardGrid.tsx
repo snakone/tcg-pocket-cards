@@ -52,7 +52,6 @@ interface GridCardProps {
   modal: JSX.Element,
   modalTitle: string
   type?: 'default' | 'favorites',
-  focused: boolean,
   filterKey: FilterKey
 }
 
@@ -62,7 +61,6 @@ export default function ImageGridWithSearch({
   modal, 
   modalTitle, 
   type = 'default',
-  focused,
   filterKey
 }: GridCardProps) {
   const searchQuery = useRef('');
@@ -200,12 +198,6 @@ export default function ImageGridWithSearch({
         CardGridStyles.imageContainer, 
         {marginHorizontal: 1, marginVertical: 1}
       ]}>
-        { !focused ? 
-        <ThemedView style={[
-            CardGridStyles.image, 
-            {width: gridWidthMap[gridNumber.current]}
-          ]}>
-        </ThemedView> : 
         <Pressable disabled={state.cardState.navigating} 
                  onPress={() => goToDetailScreen(item.id)} 
                  style={{ zIndex: 1, position: 'relative' }}>
@@ -221,9 +213,8 @@ export default function ImageGridWithSearch({
                     getImageLanguage69x96(lang, item.id) : 
                     getImageLanguage116x162(lang, item.id)}/>
       </Pressable>
-      }
     </View>
-  ), [gridNumber, state.cardState.navigating, state.settingsState.favorites, lang, focused]);
+  ), [gridNumber, state.cardState.navigating, state.settingsState.favorites, lang]);
 
   const playSound = useCallback(async (isSwitch: boolean = false) => {
     if (isSwitch) { 
@@ -355,7 +346,7 @@ export default function ImageGridWithSearch({
                 scrollEnabled={state.cardState.loaded}
                 initialNumToRender={25}
                 maxToRenderPerBatch={35}
-                windowSize={numColumns > 3 ? 13 : 15}
+                windowSize={15}
                 getItemLayout={getItemLayout}
                 keyboardDismissMode={'on-drag'}
                 contentContainerStyle={[CardGridStyles.gridContainer]}

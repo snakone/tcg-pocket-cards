@@ -19,7 +19,8 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.snakone.tcgpocketcards",
-      "softwareKeyboardLayoutMode": "pan"
+      "softwareKeyboardLayoutMode": "pan",
+      "permissions": ["WRITE_EXTERNAL_STORAGE", "READ_EXTERNAL_STORAGE"]
     },
     "web": {
       "bundler": "metro",

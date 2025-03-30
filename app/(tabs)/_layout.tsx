@@ -187,6 +187,7 @@ export default function TabLayout() {
         screenOptions={{
           tabBarActiveTintColor: 'skyblue',
           tabBarHideOnKeyboard: false,
+          freezeOnBlur: true,
           headerShown: false,
           tabBarLabel: '',
           tabBarStyle: Platform.select({

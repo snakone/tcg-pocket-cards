@@ -175,26 +175,8 @@ export default function ShareScreen() {
               }
               renderSectionHeader={({section}) => (
               <ThemedView style={[shareScreenStyles.sectionHeader, Platform.OS !== 'web' && {marginInline: 0}]}>
-                <ThemedText style={{fontSize: 16, fontWeight: 'bold'}}>{section.title}
-                </ThemedText>
+                <ThemedText style={{fontSize: 16, fontWeight: 'bold'}}>{section.title}</ThemedText>
                 <ThemedText style={{marginBottom: 0, fontWeight: 'bold', color: 'black'}}>
-                  {
-                    section.key === 'decks' &&
-                    <SvgStackSymbol color={Colors.light.icon} 
-                                    style={[
-                                      TabButtonStyles.stacks,
-                                      {top: -6},
-                                      {width: 20, height: 20, position: 'absolute', right: 36}]} />
-                  }
-                  {
-                    section.key === 'trades' &&
-                    <SvgTradeSymbol color={Colors.light.icon}
-                                    style={[
-                                      TabButtonStyles.trade, 
-                                      {top: -1},
-                                      {width: 22, height: 22, position: 'absolute', right: 36}
-                    ]}/>
-                  }
                   {
                     section.key === 'decks' ? `${filtered.length}/${decks.length}` :
                     section.key === 'trades' ? `${filteredTrades.length}/${trades.length}` : null
