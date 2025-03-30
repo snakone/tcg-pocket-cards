@@ -1,5 +1,7 @@
 export const TRANSLATIONS = {
   en: {
+    save_infographic: 'Export infographic',
+    save_infographic_intro: 'The selected infographics will be downloaded. Please note that this process is done in real time and may take up to 1 minute depending on the number of infographics selected.\n\nDo you wish to continue with the download?',
     condition_plus_ex: 'Damage to EX',
     reset: 'Reset',
     ['---']: '---',
@@ -416,7 +418,7 @@ export const TRANSLATIONS = {
     order_by_weight: "By Weight",
     order_by_name: 'By Name',
     order_by_damage: 'By Damage',
-    order_by_energy: 'By Energies',
+    order_by_energy: 'By type of Energies',
     order_by_number_energy: 'By Nº of Energies',
     others: "Other",
     owner: "Product Owner",
@@ -708,6 +710,8 @@ export const TRANSLATIONS = {
     without_ability: "Without Ability"
   },
   es: {
+    save_infographic: 'Exportar infografía',
+    save_infographic_intro: 'Se van a descargar la infografías seleccionadas. Ten en cuenta que este proceso se realiza en tiempo real y puede tardar hasta 1 minuto dependiendo del número de infografías seleccionadas. Sabiendo esto...\n\n¿Deseas continuar con la descarga?',
     condition_plus_ex: 'Daño a EX',
     reset: 'Reiniciar',
     ['---']: '---',
@@ -1118,7 +1122,7 @@ export const TRANSLATIONS = {
     order_by_weight: "Por Peso total",
     order_by_name: 'Por nombre',
     order_by_damage: 'Por daño',
-    order_by_energy: 'Por energías',
+    order_by_energy: 'Por tipo de energías',
     order_by_number_energy: 'Por nº de energías',
     others: "Otros",
     owner: "Propietario del producto",
@@ -1419,6 +1423,8 @@ export const TRANSLATIONS = {
     without_ability: "Sin habilidad"
   },
   ja: {
+    save_infographic: 'データのエクスポート',
+    save_infographic_intro: '選択したインフォグラフィックがダウンロードされます。このプロセスはリアルタイムで実行され、選択したインフォグラフィックの数に応じて最大 1 分かかる場合があることに注意してください。これを途中で...\n\nダウンロードを続行しますか?',
     condition_plus_ex: 'EXへの損害',
     reset: '再起動',
     ['---']: '---',
@@ -1834,7 +1840,7 @@ export const TRANSLATIONS = {
     order_by_weight: "重量によって",
     order_by_name: '名前で',
     order_by_damage: '損害によって',
-    order_by_energy: 'エネルギーによって',
+    order_by_energy: 'エネルギーの種類によって',
     order_by_number_energy: 'エネルギーの数によって',
     others: "その他",
     owner: "プロダクトオーナー",

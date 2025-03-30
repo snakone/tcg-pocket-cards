@@ -238,6 +238,18 @@ export function filterCards(
       filter.ex.not_ex != filter.ex.is_ex
     ) return false;
 
+    if (
+      filter.shiny.is_shiny !== null &&
+      filter.shiny.is_shiny !== !!card.shiny &&
+      filter.shiny.is_shiny != filter.shiny.not_shiny
+    ) return false;
+
+    if (
+      filter.shiny.not_shiny !== null &&
+      filter.shiny.not_shiny === !!card.shiny && 
+      filter.shiny.not_shiny != filter.shiny.is_shiny
+    ) return false;
+
     const conditions = Object.keys(filter.condition).filter(key => Boolean((filter.condition as any)[key]));
 
     if(conditions.length > 0 && !card.condition?.some(condition => conditions?.includes(String(condition)))) {
@@ -305,28 +317,33 @@ export function forceShowSplash(
          (state.routes[1].params as any).show === 'true';
 }
 
+const EXPANSION_ICON_MAP: Partial<Record<CardExpansionENUM, { image: any; width: number; height: number }>> = {
+  [CardExpansionENUM.PROMO_A]: { image: PROMO_A_ICON, width: 74, height: 40 },
+  [CardExpansionENUM.MYTHICAL_ISLAND]: { image: MYTHICAL_ISLAND_MEW_ICON, width: 74, height: 36 },
+  [CardExpansionENUM.TRIUMPH_LIGHT]: { image: TRIUMPH_LIGHT_ARCEUS_ICON, width: 95, height: 39 },
+  [CardExpansionENUM.SHINING_REVELRY]: { image: SHINING_REVELRY_ICON, width: 85, height: 42 }
+};
+
 export function getCardPackFrom(card: Card): {image: any, width: number, height: number} | undefined {
+  if (card.expansion === undefined) return undefined;
+
   if (card.expansion === CardExpansionENUM.GENETIC_APEX) {
-    if (card.found?.length === 3 || (card.name.en === 'Mew' && card.id === 283)) {
-      return {image: GENETIC_APEX, width: 68, height: 30};
-    } else if (card.found !== undefined) {
-      return {image: PACK_MAP[card.found[0]], width: 60, height: 45};
+    if (card.found?.length === 3 || (card.name.en === "Mew" && card.id === 283)) {
+      return { image: GENETIC_APEX, width: 68, height: 30 };
     }
-  } else if (card.expansion === CardExpansionENUM.PROMO_A) {
-    return {image: PROMO_A_ICON, width: 74, height: 40};
-  } else if (card.expansion === CardExpansionENUM.MYTHICAL_ISLAND) {
-    return {image: MYTHICAL_ISLAND_MEW_ICON, width: 74, height: 36};
-  } else if (card.expansion === CardExpansionENUM.SPACE_TIME_SMACKDOWN) {
-    if (card.found?.length === 2) {
-      return {image: SMACK_DOWN, width: 74, height: 36};
-    } else if (card.found !== undefined) {
-      return {image: PACK_MAP[card.found[0]], width: 81, height: 40};
+    if (card.found) {
+      return { image: PACK_MAP[card.found[0]], width: 60, height: 45 };
     }
-  } else if (card.expansion === CardExpansionENUM.TRIUMPH_LIGHT) {
-    return {image: TRIUMPH_LIGHT_ARCEUS_ICON, width: 95, height: 39};
-  } else if (card.expansion === CardExpansionENUM.SHINING_REVELRY) {
-    return {image: SHINING_REVELRY_ICON, width: 86, height: 42};
   }
+
+  if (card.expansion === CardExpansionENUM.SPACE_TIME_SMACKDOWN) {
+    return card.found?.length === 2
+      ? { image: SMACK_DOWN, width: 74, height: 36 }
+        : card.found
+          ? { image: PACK_MAP[card.found[0]], width: 81, height: 40 } : undefined;
+  }
+
+  return EXPANSION_ICON_MAP[card.expansion];
 }
 
 export function isNotBattleCard(card: Card): boolean {

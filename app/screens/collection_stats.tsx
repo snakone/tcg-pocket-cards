@@ -174,8 +174,8 @@ export default function CollectionStatsScreen() {
   const { data: artCards, length: artCardsLength } = useCardsByRarity(CardRarityENUM.ART);
   const { data: superCards, length: superCardsLength } = useCardsByRarity(CardRarityENUM.SUPER);
   const { data: inmersiveCards, length: inmersiveCardsLength } = useCardsByRarity(CardRarityENUM.INMERSIVE);
-  const { data: rainbowCards, length: rainbowCardsLength } = useCardsByRarity(CardRarityENUM.RAINBOW);
-  const { data: doubleRainbowCards, length: doubleRainbowCardsLength } = useCardsByRarity(CardRarityENUM.DOUBLE_RAINBOW);
+  const { data: rainbowCards, length: rainbowCardsLength } = useCardsByRarity(CardRarityENUM.SHINY);
+  const { data: doubleRainbowCards, length: doubleRainbowCardsLength } = useCardsByRarity(CardRarityENUM.DOUBLE_SHINY);
   const { data: crownCards, length: crownCardsLength } = useCardsByRarity(CardRarityENUM.CROWN);
 
   const charizardCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.CHARIZARD)), [crownCards]);
@@ -473,7 +473,7 @@ export default function CollectionStatsScreen() {
       setter: setInmersiveStats
     },
     {
-      value: CardRarityENUM.RAINBOW,
+      value: CardRarityENUM.SHINY,
       cards: rainbowCards,
       length: rainbowCardsLength,
       icon: RAINBOW_RARITY,
@@ -481,7 +481,7 @@ export default function CollectionStatsScreen() {
       setter: setRainbowStats
     },
     {
-      value: CardRarityENUM.DOUBLE_RAINBOW,
+      value: CardRarityENUM.DOUBLE_SHINY,
       cards: doubleRainbowCards,
       length: doubleRainbowCardsLength,
       icon: RAINBOW_RARITY,

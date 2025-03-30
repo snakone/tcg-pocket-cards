@@ -297,3 +297,4 @@ export const PROMO_A_EMBLEM = require("@/assets/images/emblem/promo_a.png");
 export const BACKWARD_CARD = require("@/assets/images/backward.png");
 export const CHAMPION_ICON = require("@/assets/images/infographics/champion.png");
 export const SEPARATOR = require("@/assets/images/separator.png");
+export const SEPARATOR_RAINBOW = require("@/assets/images/separator_rainbow.png");

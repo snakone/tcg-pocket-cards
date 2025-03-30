@@ -1,6 +1,5 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import Animated from 'react-native-reanimated';
-import { FlatList, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity } from 'react-native';
+import { FlatList, Platform, TextInput, TouchableOpacity, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useFocusEffect, useRouter } from 'expo-router';
 
@@ -131,10 +130,11 @@ export default function TradeScreen() {
           stickyHeaderIndices={[0]}
           windowSize={12}
           ref={flatListRef}
+          bounces={false}
+          overScrollMode='never'
           ListEmptyComponent={renderEmpty}
           ListHeaderComponent={
-            <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
-              <Animated.View style={[
+              <View style={[
                   CardGridStyles.inputContainer, 
                   {paddingHorizontal: Platform.OS !== 'web' ? 0 : 16, paddingBottom: 9}
                 ]}>
@@ -150,7 +150,7 @@ export default function TradeScreen() {
                     {searchQuery.length > 0 && <ResetFilterButton/>}
                   </ThemedView>
 
-                <Animated.View style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && 
+                <View style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && 
                                     {marginRight: 2}, {justifyContent: 'flex-end'}
                                   ]}>
                   <MaterialIcons name="sync" 
@@ -158,9 +158,8 @@ export default function TradeScreen() {
                                  color={Colors.light.skeleton}>
                   </MaterialIcons>
                   <ThemedText style={[CardGridStyles.totalCards]}>{trades?.length}/30</ThemedText>                    
-                </Animated.View>
-              </Animated.View>
-            </KeyboardAvoidingView>
+                </View>
+              </View>
           }
         />
         {renderFooter()}

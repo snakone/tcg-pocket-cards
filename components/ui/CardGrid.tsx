@@ -347,13 +347,15 @@ export default function ImageGridWithSearch({
                 renderItem={renderItem}
                 keyExtractor={keyExtractor}
                 key={numColumns}
+                bounces={false}
+                overScrollMode='never'
                 numColumns={numColumns}
                 onStartReachedThreshold={1}
                 onEndReachedThreshold={0.6}
                 scrollEnabled={state.cardState.loaded}
                 initialNumToRender={25}
                 maxToRenderPerBatch={35}
-                windowSize={15}
+                windowSize={numColumns > 3 ? 13 : 15}
                 getItemLayout={getItemLayout}
                 keyboardDismissMode={'on-drag'}
                 contentContainerStyle={[CardGridStyles.gridContainer]}

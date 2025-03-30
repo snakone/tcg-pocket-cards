@@ -134,7 +134,7 @@ export default function ProfileScreen() {
                     styles.input, {fontSize: 14, width: 207, paddingVertical: 8, left: 34},
                     i18n.locale === 'ja' && {top: 1},
                   ]}>{i18n.t('my_collection')}</ThemedText>
-                <ThemedText style={{textAlign: 'right', minWidth: 50}}>{collection}</ThemedText>
+                <ThemedText style={[{textAlign: 'right', minWidth: 50}, Platform.OS === 'android' && {top: -1}]}>{collection}</ThemedText>
               </ThemedView>
             </ThemedView>
           </TouchableOpacity>

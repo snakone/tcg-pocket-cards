@@ -14,7 +14,8 @@ export enum EXPANSION {
   PROMO_A4,
   ARCEUS,
   PROMO_A5,
-  SHINY
+  SHINY,
+  PROMO_A6
 }
 
 export type PACKS_TYPE = 

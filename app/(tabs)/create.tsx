@@ -1,8 +1,7 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useFocusEffect, useRouter } from 'expo-router';
-import Animated from 'react-native-reanimated';
-import { FlatList, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity } from 'react-native';
+import { FlatList, Platform, TextInput, TouchableOpacity, View } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -126,10 +125,11 @@ export default function CreateDeckScreen() {
                   ListEmptyComponent={renderEmpty}
                   initialNumToRender={6}
                   ref={flatListRef}
+                  bounces={false}
+                  overScrollMode='never'
                   stickyHeaderIndices={[0]}
                   ListHeaderComponent={
-                    <KeyboardAvoidingView behavior={'height'} keyboardVerticalOffset={-550}>
-                      <Animated.View style={[
+                      <View style={[
                           CardGridStyles.inputContainer, 
                           {paddingHorizontal: Platform.OS !== 'web' ? 0 : 16, paddingBottom: 9}
                         ]}>
@@ -144,7 +144,7 @@ export default function CreateDeckScreen() {
                                     />
                             {searchQuery.length > 0 && <ResetFilterButton/>}
                         </ThemedView>
-                        <Animated.View style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && 
+                        <View style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && 
                                         {marginRight: 2}, {justifyContent: 'flex-end', top: 1}
                                           ]}>
                           <MaterialIcons name="photo-library" 
@@ -152,9 +152,8 @@ export default function CreateDeckScreen() {
                                         color={Colors.light.skeleton}>
                           </MaterialIcons>
                           <ThemedText style={[CardGridStyles.totalCards]}>{decks?.length}/30</ThemedText>                    
-                        </Animated.View>
-                      </Animated.View>
-                    </KeyboardAvoidingView>
+                        </View>
+                      </View>
         }/>
         {renderFooter()}              
       </ParallaxScrollView>

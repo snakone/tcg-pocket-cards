@@ -50,7 +50,8 @@ export class FilterSearch {
       [EXPANSION.PROMO_A4]: null,
       [EXPANSION.ARCEUS]: null,
       [EXPANSION.PROMO_A5]: null,
-      [EXPANSION.SHINY]: null
+      [EXPANSION.SHINY]: null,
+      [EXPANSION.PROMO_A6]: null,
     };
 
     this.favorite = {included: null, not_favorite: null};
@@ -65,8 +66,8 @@ export class FilterSearch {
       [CardRarityENUM.ART]: null,
       [CardRarityENUM.SUPER]: null,
       [CardRarityENUM.INMERSIVE]: null,
-      [CardRarityENUM.RAINBOW]: null,
-      [CardRarityENUM.DOUBLE_RAINBOW]: null,
+      [CardRarityENUM.SHINY]: null,
+      [CardRarityENUM.DOUBLE_SHINY]: null,
       [CardRarityENUM.CROWN]: null,
       [CardRarityENUM.PROMO]: null,
     };
@@ -150,7 +151,8 @@ export class FilterSearch {
       [EXPANSION.PROMO_A4]: null,
       [EXPANSION.ARCEUS]: null,
       [EXPANSION.PROMO_A5]: null,
-      [EXPANSION.SHINY]: null
+      [EXPANSION.SHINY]: null,
+      [EXPANSION.PROMO_A6]: null,
     };
   }
 

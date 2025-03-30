@@ -159,6 +159,7 @@ export const MENU_LIST: ItemWithRoute[] = [
   { label: 'share', icon: 'note', route: 'share' },
   { label: 'favorites', icon: 'star', route: 'favorites' },
   { label: 'attacks', icon: 'snowboard', route: 'attacks' },
+  { label: 'infographics', icon: 'info.bubble', route: 'infographics' }
   // { label: 'games', icon: 'poweroutlet.type.j.fill', route: 'games' },
 ];
 
@@ -168,10 +169,9 @@ export const MENU_HELP: ItemWithRoute[] = [
   { label: 'config', icon: 'washer.circle', route: 'settings' },
 ];
 
-export const APP_VERSION = '1.4.0';
+export const APP_VERSION = '1.4.2';
 export const MENU_WIDTH = 250;
-export const MENU_HEIGHT = 225 + (45 * [...MENU_LIST, ...MENU_HELP].length);
-export const MENU_HEIGHT_ANDROID = 180 + (45 * [...MENU_LIST, ...MENU_HELP].length);
+export const MENU_HEIGHT = 180 + (45 * [...MENU_LIST, ...MENU_HELP].length);
 export const PAGE_TITLE = 'TCG Pocket Cards';
 export const LOCAL_HOST = 'http://192.168.1.71:3000';
 export const SERVER_URL = 'https://tcg-pocket-cards.onrender.com';
@@ -247,8 +247,8 @@ export const RARITY_MAP: Record<CardRarityENUM, {image: any, amount: number | nu
   [CardRarityENUM.ART]: { image: STAR_RARITY, amount: 1 },
   [CardRarityENUM.SUPER]: { image: STAR_RARITY, amount: 2 },
   [CardRarityENUM.INMERSIVE]: { image: STAR_RARITY, amount: 3 },
-  [CardRarityENUM.RAINBOW]: { image: RAINBOW_RARITY, amount: 1 },
-  [CardRarityENUM.DOUBLE_RAINBOW]: { image: RAINBOW_RARITY, amount: 2 },
+  [CardRarityENUM.SHINY]: { image: RAINBOW_RARITY, amount: 1 },
+  [CardRarityENUM.DOUBLE_SHINY]: { image: RAINBOW_RARITY, amount: 2 },
   [CardRarityENUM.CROWN]: { image: CROWN_RARITY, amount: 1 },
   [CardRarityENUM.PROMO]: { image: null, amount: 0 },
   [CardRarityENUM.SPECIAL]: { image: null, amount: 0 },
@@ -362,8 +362,8 @@ export const EXPANSION_POINTS_RARITY: Record<CardRarityENUM, number> = {
   [CardRarityENUM.ART]: 400,
   [CardRarityENUM.SUPER]: 1250,
   [CardRarityENUM.INMERSIVE]: 1500,
-  [CardRarityENUM.RAINBOW]: 1000,
-  [CardRarityENUM.DOUBLE_RAINBOW]: 1350,
+  [CardRarityENUM.SHINY]: 1000,
+  [CardRarityENUM.DOUBLE_SHINY]: 1350,
   [CardRarityENUM.CROWN]: 2500,
   [CardRarityENUM.PROMO]: 0,
   [CardRarityENUM.SPECIAL]: 0,
@@ -385,7 +385,8 @@ export const PACK_MAP: Record<EXPANSION, any> = {
   [EXPANSION.PROMO_A4]: PROMO_A_ICON,
   [EXPANSION.ARCEUS]: TRIUMPH_LIGHT_ARCEUS_ICON,
   [EXPANSION.PROMO_A5]: PROMO_A_ICON,
-  [EXPANSION.SHINY]: null
+  [EXPANSION.SHINY]: null,
+  [EXPANSION.PROMO_A6]: PROMO_A_ICON,
 }
 
 export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {

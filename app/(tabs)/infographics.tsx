@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import React from "react";
-import { TouchableOpacity, View, StyleSheet, Platform, ScrollView } from "react-native";
+import { TouchableOpacity, View, StyleSheet, ScrollView } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Switch } from "react-native-paper";
 import { Slider } from "@miblanchard/react-native-slider";
@@ -18,6 +18,7 @@ import { IconSymbol } from "@/components/ui/IconSymbol";
 import { settingsStyles } from "../screens/settings";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { GraphicsScreenModal } from "@/components/modals";
+import { useConfirmation } from "@/core/providers/ConfirmationProvider";
 
 export default function InfoGraphicScreen() {
   const {i18n} = useI18n();
@@ -32,6 +33,7 @@ export default function InfoGraphicScreen() {
   const [showWeak, setShowWeak] = useState<boolean>(false);
   const [showTop, setShowTop] = useState<boolean>(false);
   const [showConditions, setShowConditions] = useState<boolean>(false);
+  const { confirm } = useConfirmation();
 
   const showSet = useRef({
     all: setShowAll,
@@ -49,7 +51,7 @@ export default function InfoGraphicScreen() {
   const MyInfoGraphic = () => (
     <>
       {
-        Platform.OS === 'web' &&
+        
         <View style={[styles.container, {padding: 0}]}>
           <GraphicCollage showExpansion={showExpansion}
                           showGrades={showGrades}
@@ -103,8 +105,12 @@ export default function InfoGraphicScreen() {
 
   const download = async () => {
     SoundService.play('POP_PICK');
-    setLoading(true);
-    setTimeout(() => setIsVisible(true), 333);
+
+    const userConfirmed = await confirm("save_infographic", "save_infographic_intro");
+      if (userConfirmed) {
+        setLoading(true);
+        setTimeout(() => setIsVisible(true), 333);
+    }
   }
 
   function handleAll(): void {
@@ -259,7 +265,9 @@ export default function InfoGraphicScreen() {
             </ThemedView>
           </ScrollView> 
 
-          <TouchableOpacity onPress={download} style={[homeScreenStyles.ctaButton, {marginTop: 0, marginBottom: 18, marginHorizontal: 14, top: -14}]}>
+          <TouchableOpacity onPress={download} 
+                            style={[homeScreenStyles.ctaButton, {marginTop: 0, marginBottom: 18, marginHorizontal: 14, top: -14}]}
+                            disabled={false}>
             <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>{i18n.t('download')}</ThemedText>
           </TouchableOpacity>
         </ParallaxScrollView>

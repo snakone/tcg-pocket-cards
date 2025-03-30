@@ -77,12 +77,6 @@ export default function TabsMenu({
   });
 
   useEffect(() => {
-    if (Platform.OS === 'web') {
-      setList(prev => ([...prev, { label: 'infographics', icon: 'info.bubble', route: 'infographics' }]));
-    }
-  }, []);
-
-  useEffect(() => {
     if(progress) {
       playSound();
       onClose();

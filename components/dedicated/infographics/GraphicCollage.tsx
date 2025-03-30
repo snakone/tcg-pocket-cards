@@ -1,5 +1,6 @@
-import { InteractionManager, StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import ViewShot from "react-native-view-shot";
 
 import { ThemedView } from "@/components/ThemedView";
 import { useI18n } from "@/core/providers/LanguageProvider";
@@ -58,6 +59,8 @@ export function GraphicCollage({
 
   const summaryRef = useRef<any>(null);
   const expansionRef = useRef<any>(null);
+  const expansionRefSecond = useRef<any>(null);
+  const expansionRefThird = useRef<any>(null);
   const gradesRef = useRef<any>(null);
   const typesRef = useRef<any>(null);
   const miscellaniaRef = useRef<any>(null);
@@ -65,49 +68,51 @@ export function GraphicCollage({
   const topRef = useRef<any>(null);
   const conditionsRef = useRef<any>(null);
 
-  const [innerShowExpansion, setInnerShowExpansion] = useState(false);
+  const [innerShowExpansion, setInnerShowExp] = useState(false);
   const [innerShowGrades, setInnerShowGrades] = useState(false);
   const [innerShowTypes, setInnerShowTypes] = useState(false);
-  const [innerShowMiscellania, setInnerShowMiscellania] = useState(false);
+  const [innerShowMiscellania, setInnerShowMisc] = useState(false);
   const [innerShowWeak, setInnerShowWeak] = useState(false);
   const [innerShowTop, setInnerShowTop] = useState(false);
-  const [innerShowCondition, setInnerShowCondition] = useState(false);
+  const [innerShowCondition, setInnerShowCond] = useState(false);
   
   const references = [
-    { value: summaryRef, label: i18n.t('summary') },
-    { value: expansionRef, label: i18n.t('expansions'), func: (value: boolean) => setInnerShowExpansion(value) },
-    { value: gradesRef, label: i18n.t('grade'), func: (value: boolean) => setInnerShowGrades(value) },
-    { value: typesRef, label: i18n.t('types'), func: (value: boolean) => setInnerShowTypes(value) },
-    { value: miscellaniaRef, label: i18n.t('miscellania'), func: (value: boolean) => setInnerShowMiscellania(value) },
-    { value: weakRef, label: i18n.t('weak'), func: (value: boolean) => setInnerShowWeak(value) },
-    { value: topRef, label: i18n.t('top_20'), func: (value: boolean) => setInnerShowTop(value) },
-    { value: conditionsRef, label: i18n.t('conditions'), func: (value: boolean) => setInnerShowCondition(value) },
+    { item: summaryRef, label: i18n.t('summary') },
+    { item: expansionRef, label: i18n.t('expansions') + '-1', func: (_: boolean) => setInnerShowExp(_), value: showExpansion },
+    { item: expansionRefSecond, label: i18n.t('expansions') + '-2', func: (_: boolean) => setInnerShowExp(_), value: showExpansion },
+    { item: expansionRefThird, label: i18n.t('expansions') + '-3', func: (_: boolean) => setInnerShowExp(_), value: showExpansion },
+    { item: gradesRef, label: i18n.t('grade'), func: (_: boolean) => setInnerShowGrades(_), value: showGrades },
+    { item: typesRef, label: i18n.t('types'), func: (_: boolean) => setInnerShowTypes(_), value: showTypes },
+    { item: miscellaniaRef, label: i18n.t('miscellania'), func: (_: boolean) => setInnerShowMisc(_), value: showMiscellania },
+    { item: weakRef, label: i18n.t('weak'), func: (_: boolean) => setInnerShowWeak(_), value: showWeak },
+    { item: topRef, label: i18n.t('top_20'), func: (_: boolean) => setInnerShowTop(_), value: showTop },
+    { item: conditionsRef, label: i18n.t('conditions'), func: (_: boolean) => setInnerShowCond(_), value: showConditions },
   ];
 
   useEffect(() => {
-    setTimeout(() => makeAllPictures(), 2000);
+    setTimeout(() => makeAllPictures(), 3000);
   }, []);
 
   const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
   async function makeAllPictures(): Promise<void> {
+    const WAIT = Platform.OS === 'android' ? 9000 : 2500;
     for (const ref of references) {
-      if (ref && ref.func) {
+      if (!ref) { continue; }
+
+      if (ref && ref.func && ref.value) {
         ref.func(true);
-        await new Promise(resolve => 
-          InteractionManager.runAfterInteractions(() => resolve(null))
-        );
+        await delay(WAIT);
       }
 
-      if (ref.value?.current) {
-        await shareService.makeInfoGraphic(ref.value, 'infographic-tcg-pocket-cards-' + ref.label.toLowerCase(), quality);
+      if (ref.item?.current) {
+        await shareService.makeInfoGraphic(ref.item, 'infographic-tcg-pocket-cards-' + ref.label.toLowerCase(), quality);
       }
 
-      if (ref && ref.func) {
+      if (ref && ref.func && ref.value) {
         ref.func(false);
-      }
-
-      await delay(250);
+        await delay(WAIT / 2);
+      }   
     }
     onFinish();
   }
@@ -219,6 +224,7 @@ export function GraphicCollage({
   const { data: promo3Cards } = getCards(EXPANSION.PROMO_A3);
   const { data: promo4Cards } = getCards(EXPANSION.PROMO_A4);
   const { data: promo5Cards } = getCards(EXPANSION.PROMO_A5);
+  const { data: promo6Cards } = getCards(EXPANSION.PROMO_A6);
   const { data: specialCards, length: specialCardsLength } = getCards(EXPANSION.SPECIAL_MISSION);
   const { data: triumphCards } = getCards(EXPANSION.ARCEUS);
   const { data: shinyCards, length: shinyCardsLength } = getCards(EXPANSION.SHINY);
@@ -235,8 +241,8 @@ export function GraphicCollage({
   const { data: artCards, length: artCardsLength } = getCardRarity(CardRarityENUM.ART);
   const { data: superCards, length: superCardsLength } = getCardRarity(CardRarityENUM.SUPER);
   const { data: inmersiveCards, length: inmersiveCardsLength } = getCardRarity(CardRarityENUM.INMERSIVE);
-  const { data: rainbowCards, length: rainbowCardsLength } = getCardRarity(CardRarityENUM.RAINBOW);
-  const { data: doubleRainbowCards, length: doubleRainbowCardsLength } = getCardRarity(CardRarityENUM.DOUBLE_RAINBOW);
+  const { data: rainbowCards, length: rainbowCardsLength } = getCardRarity(CardRarityENUM.SHINY);
+  const { data: doubleRainbowCards, length: doubleRainbowCardsLength } = getCardRarity(CardRarityENUM.DOUBLE_SHINY);
   const { data: crownCards, length: crownCardsLength } = getCardRarity(CardRarityENUM.CROWN);
 
   const { data: grassCards, length: grassCardsLength } = getCardByType(PokemonTypeENUM.GRASS);
@@ -315,7 +321,7 @@ export function GraphicCollage({
     charizardCardsLength, charizardCards, sharedGeneticLength, sharedGenetic, islandPackCardsLength,
     islandCards, spacePackCardsLength, dialgaCardsLength, dialgaCards, palkiaCardsLength, palkiaCards,
     sharedSmackLength, sharedSmack, triumphPackCardsLength, triumphCards, promoAPackCardsLength, promoAPackCards,
-    promo1Cards, promo2Cards, promo3Cards, promo4Cards, promo5Cards, premiumCardsLength, 
+    promo1Cards, promo2Cards, promo3Cards, promo4Cards, promo5Cards, promo6Cards, premiumCardsLength, 
     specialCards, premiumCards, specialCardsLength, shinyCardsLength, shinyCards
   };
 
@@ -371,72 +377,179 @@ export function GraphicCollage({
 
   return (
     <ThemedView>
-      <View ref={summaryRef} style={styles.content}>
-        <GraphicHeader styles={styles} child={false}></GraphicHeader>
-        <GraphicSummary data={SUMMARY_DATA} styles={styles}></GraphicSummary>
-        <GraphicFooter styles={styles} child={false}></GraphicFooter>
-      </View>
-
+      {
+        Platform.OS === 'web' ? 
+          <View ref={summaryRef} style={styles.content}>
+            <GraphicHeader styles={styles} child={false}></GraphicHeader>
+            <GraphicSummary data={SUMMARY_DATA} styles={styles}></GraphicSummary>
+            <GraphicFooter styles={styles} child={false}></GraphicFooter>
+          </View> : 
+          <ViewShot ref={summaryRef} style={[styles.content]}>
+            <GraphicHeader styles={styles} child={false}></GraphicHeader>
+            <GraphicSummary data={SUMMARY_DATA} styles={styles}></GraphicSummary>
+            <GraphicFooter styles={styles} child={false}></GraphicFooter>
+          </ViewShot>
+      }
+      
       {
         innerShowExpansion && showExpansion &&
-        <View ref={expansionRef} style={styles.content}>
-          <GraphicHeader styles={styles}></GraphicHeader>
-          <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles}></GraphicExpansion>
-          <GraphicFooter styles={styles}></GraphicFooter>
-        </View>
+        <>
+          {
+            Platform.OS === 'web' ? 
+            <>
+              <View ref={expansionRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={0} endIndex={2}></GraphicExpansion>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>
+              <View ref={expansionRefSecond} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={3} endIndex={5}></GraphicExpansion>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>
+              <View ref={expansionRefThird} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={6} endIndex={7} showSeries={true}></GraphicExpansion>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>           
+            </> :
+            <>
+              <ViewShot ref={expansionRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={0} endIndex={2}></GraphicExpansion>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>
+              <ViewShot ref={expansionRefSecond} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={3} endIndex={5}></GraphicExpansion>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>
+              <ViewShot ref={expansionRefThird} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={6} endIndex={7} showSeries={true}></GraphicExpansion>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>  
+            </>
+          }
+        </>
       }
 
       {
         innerShowGrades && showGrades &&
-        <View ref={gradesRef} style={styles.content}>
-          <GraphicHeader styles={styles}></GraphicHeader>
-          <GraphicGrades data={GRADES_DATA} language={lang} styles={styles}></GraphicGrades>
-          <GraphicFooter styles={styles}></GraphicFooter>
-        </View>
+        <>
+          {
+            Platform.OS === 'web' ?
+              <View ref={gradesRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicGrades data={GRADES_DATA} language={lang} styles={styles}></GraphicGrades>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View> : 
+              <ViewShot ref={gradesRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicGrades data={GRADES_DATA} language={lang} styles={styles}></GraphicGrades>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>
+          }
+        </>
       }
 
       {
         innerShowTypes && showTypes &&
-        <View ref={typesRef} style={styles.content}>
-          <GraphicHeader styles={styles}></GraphicHeader>
-          <GraphicTypes data={TYPES_DATA} language={lang} styles={styles}></GraphicTypes>
-          <GraphicFooter styles={styles}></GraphicFooter>
-        </View>
+        <>
+          {
+            Platform.OS === 'web' ?
+              <View ref={typesRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicTypes data={TYPES_DATA} language={lang} styles={styles}></GraphicTypes>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>
+              : 
+              <ViewShot ref={typesRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicTypes data={TYPES_DATA} language={lang} styles={styles}></GraphicTypes>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>
+          }
+        </>
       }
 
       {
         innerShowMiscellania && showMiscellania &&
-         <View ref={miscellaniaRef} style={styles.content}>
-          <GraphicHeader styles={styles}></GraphicHeader>
-           <GraphicMiscellania data={MISCELLANIA_DATA} language={lang} styles={styles}></GraphicMiscellania>
-           <GraphicFooter styles={styles}></GraphicFooter>
-         </View>
+        <>
+          { 
+            Platform.OS === 'web' ?     
+              <View ref={miscellaniaRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicMiscellania data={MISCELLANIA_DATA} language={lang} styles={styles}></GraphicMiscellania>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>
+              :
+              <ViewShot ref={miscellaniaRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicMiscellania data={MISCELLANIA_DATA} language={lang} styles={styles}></GraphicMiscellania>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>          
+          }
+        </>
       }
 
       {
         innerShowWeak && showWeak &&
-        <View ref={weakRef} style={styles.content}>
-          <GraphicHeader styles={styles}></GraphicHeader>
-          <GraphicWeak data={WEAK_DATA} language={lang} styles={styles}></GraphicWeak>
-          <GraphicFooter styles={styles}></GraphicFooter>
-        </View>
+        <>
+          {
+            Platform.OS === 'web' ?
+              <View ref={weakRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicWeak data={WEAK_DATA} language={lang} styles={styles}></GraphicWeak>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>
+              :
+              <ViewShot ref={weakRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicWeak data={WEAK_DATA} language={lang} styles={styles}></GraphicWeak>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>
+          }
+        </>
       }
 
       {
         innerShowTop && showTop &&
-        <View ref={topRef} style={styles.content}>
-          <GraphicHeader styles={styles}></GraphicHeader>
-          <GraphicTop data={TOP_DATA} language={lang} styles={styles}></GraphicTop>
-          <GraphicFooter styles={styles}></GraphicFooter>
-        </View>
+        <>
+          {
+            Platform.OS === 'web' ?
+            <View ref={topRef} style={styles.content}>
+              <GraphicHeader styles={styles}></GraphicHeader>
+              <GraphicTop data={TOP_DATA} language={lang} styles={styles}></GraphicTop>
+              <GraphicFooter styles={styles}></GraphicFooter>
+            </View> :
+            <ViewShot ref={topRef} style={styles.content}>
+              <GraphicHeader styles={styles}></GraphicHeader>
+              <GraphicTop data={TOP_DATA} language={lang} styles={styles}></GraphicTop>
+              <GraphicFooter styles={styles}></GraphicFooter>
+            </ViewShot>           
+          }
+        </>
       }
+
       {
         innerShowCondition && showConditions &&
-        <View ref={conditionsRef} style={styles.content}>
-          <GraphicHeader styles={styles}></GraphicHeader>
-          <GraphicConditions data={CONDITIONS_DATA} language={lang} styles={styles}></GraphicConditions>
-          <GraphicFooter styles={styles}></GraphicFooter>
-        </View>
+        <>
+          {
+            Platform.OS === 'web' ?
+              <View ref={conditionsRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicConditions data={CONDITIONS_DATA} language={lang} styles={styles}></GraphicConditions>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>           
+             :
+              <ViewShot ref={conditionsRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicConditions data={CONDITIONS_DATA} language={lang} styles={styles}></GraphicConditions>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>           
+          }
+        </>
       }
     </ThemedView>
   );
@@ -555,6 +668,7 @@ const styles = StyleSheet.create({
     marginBottom: 8
   },
   content: {
-    padding: 20
+    padding: 20,
+    backgroundColor: 'white'
   }
 });

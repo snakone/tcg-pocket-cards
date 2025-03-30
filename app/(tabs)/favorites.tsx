@@ -20,7 +20,8 @@ export default function FavoritesScreen() {
                            title="favorites"
                            modalTitle="favorites_modal_title"
                            type="favorites"
-                           focused={focused}/>
+                           focused={focused}
+                           filterKey={'cards'}/>
     </>
   );
 }

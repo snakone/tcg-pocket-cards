@@ -373,7 +373,7 @@ export const detailScrollStyles = StyleSheet.create({
   attackEnergy: {
     flexDirection: 'row',
     alignItems: 'center',
-    maxWidth: 94
+    maxWidth: 114
   },
   energy: {
     width: 18, 

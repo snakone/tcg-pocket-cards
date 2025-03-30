@@ -4,7 +4,6 @@ import {
   DEFAULT_MODAL_HEIGHT,
   ICON_WIDTH,
   MENU_HEIGHT,
-  MENU_HEIGHT_ANDROID,
   MENU_WIDTH,
   MIN_MODAL_HEIGHT,
   SORT_MODAL_HEIGHT
@@ -349,7 +348,7 @@ export const MenuStyles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     width: MENU_WIDTH,
-    height: Platform.OS === 'web' ? MENU_HEIGHT : MENU_HEIGHT_ANDROID,
+    height: MENU_HEIGHT,
     borderBottomLeftRadius: 50,
     borderTopLeftRadius: 50,
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
@@ -682,7 +681,7 @@ export const filterStyles = StyleSheet.create({
     borderWidth: 0, 
     position: 'absolute', 
     right: 0, 
-    marginLeft: 'auto', 
+    marginLeft: Platform.OS === 'web' ? 'auto' : '86%', 
     boxShadow: '-4px 4px 8px rgba(0, 0, 0, 0.4)', 
     top: -16
   }

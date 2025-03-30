@@ -8,7 +8,7 @@ import { useI18n } from '@/core/providers/LanguageProvider';
 import RainbowDivider from '../RainbowDivider';
 import { Colors } from '@/shared/definitions/utils/colors';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
+import { getImageLanguage69x96 } from '@/shared/definitions/utils/functions';
 import { CardGridStyles } from '@/shared/styles/component.styles';
 import { LanguageType } from '@/shared/definitions/types/global.types';
 
@@ -30,26 +30,27 @@ interface GraphicExpansionProps {
   styles: any;
   data: any;
   language: LanguageType;
+  startIndex: number;
+  endIndex: number;
+  showSeries?: boolean;
 }
 
 const numColumns = 20;
 const collageWith = 1240;
 
-export const GraphicExpansion = ({styles, data, language}: GraphicExpansionProps) => {
+export const GraphicExpansion = ({styles, data, language, startIndex, endIndex, showSeries}: GraphicExpansionProps) => {
   const {i18n} = useI18n();
 
   const renderItem = useCallback(({item, index}: {item: Card, index: number}) => {
     return (
       <ThemedView style={
-          [{backgroundColor: Colors.light.background, height: 48}, 
-          index > 19 && {boxShadow: '0px -2px 12px rgba(0, 0, 0, 0.7)'}
+          [{backgroundColor: Colors.light.background, height: 48, width: 60}, 
         ]}>
-        <Image accessibilityLabel={item?.name[language]} 
-                style={[
+        <Image style={[
           CardGridStyles.image, 
           {width: 60, borderRadius: 4, height: 82}
         ]} 
-        source={getImageLanguage116x162(language, item?.id)}/>
+        source={getImageLanguage69x96(language, item?.id)}/>
       </ThemedView>
     )
   }, []);
@@ -260,6 +261,8 @@ export const GraphicExpansion = ({styles, data, language}: GraphicExpansionProps
     },
   ];
 
+  const DISPLAY_DATA = DATA.slice(startIndex, endIndex);
+
   const seriesFirstRow = [
     {list: data.promo1Cards},
     {list: data.promo2Cards},
@@ -269,6 +272,7 @@ export const GraphicExpansion = ({styles, data, language}: GraphicExpansionProps
   const seriesSecondRow = [
     {list: data.promo4Cards},
     {list: data.promo5Cards},
+    {list: data.promo6Cards},
   ];
   
   return (
@@ -276,7 +280,7 @@ export const GraphicExpansion = ({styles, data, language}: GraphicExpansionProps
       <ThemedText style={styles.subTitlte}>{i18n.t('expansions')}</ThemedText>
 
       {
-        DATA.map((item, index) => {
+        DISPLAY_DATA.map((item, index) => {
           return (
             <ThemedView key={index.toString()}>
               {
@@ -381,54 +385,59 @@ export const GraphicExpansion = ({styles, data, language}: GraphicExpansionProps
           )
         })
       }
-      
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-          <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9, left: 16}]}></Image>
-          <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('series')}</ThemedText>
-        </ThemedView>
-      </ThemedView>
-      <ThemedText style={[styles.text, {marginBottom: 10}]}>{i18n.t('series_description')}</ThemedText>
 
-      <ThemedView style={{flexDirection: "row", gap: 20}}>
-        {
-          seriesFirstRow.map((series, index) => {
-            return (
-              <ThemedView key={index.toString()}>
-                <ThemedText style={[styles.subTitlte, {marginTop: 10, color: Colors.light.text}]}>A{index +1}</ThemedText>
-                <FlatList data={series.list}
-                          renderItem={renderItem}
-                          numColumns={numColumns}
-                          contentContainerStyle={[styles.list, {width: 'auto'}]}
-                          style={{borderRadius: 8}}
-                          showsVerticalScrollIndicator={false}
-                          keyExtractor={(item, index) => index + ''}/>
-              </ThemedView>
-            )
-          })
-        }
-      </ThemedView>
+      {
+        showSeries &&
+        <>
+          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
+              <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9, left: 16}]}></Image>
+              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('series')}</ThemedText>
+            </ThemedView>
+          </ThemedView>
+          <ThemedText style={[styles.text, {marginBottom: 10}]}>{i18n.t('series_description')}</ThemedText>
 
-      <ThemedView style={{flexDirection: "row", gap: 20, width: '64.8%'}}>
-        {
-          seriesSecondRow.map((series, index) => {
-            return (
-              <ThemedView key={index.toString()}>
-                <ThemedText style={[styles.subTitlte, {marginTop: 0, color: Colors.light.text}]}>A{seriesFirstRow.length + index + 1}</ThemedText>
-                <FlatList data={series.list}
-                          renderItem={renderItem}
-                          numColumns={numColumns}
-                          contentContainerStyle={[styles.list, {width: 'auto'}]}
-                          style={{borderRadius: 8}}
-                          showsVerticalScrollIndicator={false}
-                          keyExtractor={(item, index) => index + ''}/>
-              </ThemedView>
-            )
-          })
-        }
-      </ThemedView>
+          <ThemedView style={{flexDirection: "row", gap: 20}}>
+            {
+              seriesFirstRow.map((series, index) => {
+                return (
+                  <ThemedView key={index.toString()}>
+                    <ThemedText style={[styles.subTitlte, {marginTop: 10, color: Colors.light.text}]}>A{index +1}</ThemedText>
+                    <FlatList data={series.list}
+                              renderItem={renderItem}
+                              numColumns={numColumns}
+                              contentContainerStyle={[styles.list, {width: 'auto'}]}
+                              style={{borderRadius: 8}}
+                              showsVerticalScrollIndicator={false}
+                              keyExtractor={(item, index) => index + ''}/>
+                  </ThemedView>
+                )
+              })
+            }
+          </ThemedView>
 
-      <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
+          <ThemedView style={{flexDirection: "row", gap: 20, width: '64.8%'}}>
+            {
+              seriesSecondRow.map((series, index) => {
+                return (
+                  <ThemedView key={index.toString()}>
+                    <ThemedText style={[styles.subTitlte, {marginTop: 0, color: Colors.light.text}]}>A{seriesFirstRow.length + index + 1}</ThemedText>
+                    <FlatList data={series.list}
+                              renderItem={renderItem}
+                              numColumns={numColumns}
+                              contentContainerStyle={[styles.list, {width: 'auto'}]}
+                              style={{borderRadius: 8}}
+                              showsVerticalScrollIndicator={false}
+                              keyExtractor={(item, index) => index + ''}/>
+                  </ThemedView>
+                )
+              })
+            }
+          </ThemedView>
+
+          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
+        </>
+      } 
     </>
   )
 }

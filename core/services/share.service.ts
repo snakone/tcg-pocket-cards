@@ -77,7 +77,9 @@ export default class ShareService {
         link.click();
         document.body.removeChild(link);
         return;
-      } 
+      } else {
+        await MediaLibrary.saveToLibraryAsync(localUri);
+      }
     } catch (e) {
       console.log(e);
     }

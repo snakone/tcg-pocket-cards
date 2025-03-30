@@ -287,7 +287,8 @@ export default function CollectionCardsScreen() {
           { !selectedItem ?
             <ThemedView style={[
               CardGridStyles.image, 
-              offersStyles.included, 
+              offersStyles.included,
+              Platform.OS === 'android' && {opacity: 0.5}, 
               {width: CARD_IMAGE_WIDTH_5}]}>
             </ThemedView> :
             <>
@@ -413,6 +414,8 @@ export default function CollectionCardsScreen() {
                   ListEmptyComponent={RenderEmpty}
                   renderItem={renderItem}
                   ListFooterComponent={renderFooter}
+                  bounces={false}
+                  overScrollMode='never'
           />
                 
         <View style={ScreenStyles.bottomContent}>
@@ -515,13 +518,15 @@ export const collectionStyles = StyleSheet.create({
     backgroundColor: 'grey',
     minWidth: 38, 
     height: 14,
-    borderTopRightRadius: 10
+    borderTopRightRadius: 10,
+    opacity: 0.8
   },
   amountText: {
     textAlign: 'center', 
     color: 'white', 
     fontWeight: 'bold', 
-    fontSize: 11
+    fontSize: Platform.OS === 'web' ? 11 : 9,
+
   },
   remove: {
     position: 'absolute',

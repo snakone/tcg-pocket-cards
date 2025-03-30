@@ -249,6 +249,8 @@ export default function AttacksScreen() {
                   showsVerticalScrollIndicator={false}
                   ListEmptyComponent={RenderEmpty}
                   renderItem={renderItem}
+                  bounces={false}
+                  overScrollMode='never'
                   stickyHeaderIndices={[0]}
                   ListFooterComponent={renderFooter}
                   ListHeaderComponent={

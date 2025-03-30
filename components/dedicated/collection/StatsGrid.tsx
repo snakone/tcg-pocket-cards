@@ -36,7 +36,7 @@ export const StatsGrid: React.FC<StatsGridProps> = ({ allRarity, allElements, ex
                             (data.value === CardRarityENUM.INMERSIVE || data.value === CardRarityENUM.SUPER) && {marginRight: 3},
                             i > 2 && {marginRight: 4},
                             data.value === CardRarityENUM.CROWN && {width: 21, height: 13},
-                            (data.value === CardRarityENUM.RAINBOW || data.value === CardRarityENUM.DOUBLE_RAINBOW) && {height: 13},
+                            (data.value === CardRarityENUM.SHINY || data.value === CardRarityENUM.DOUBLE_SHINY) && {height: 13},
                           ]}/>
                   ))}
                 </ThemedView>

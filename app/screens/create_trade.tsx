@@ -220,7 +220,7 @@ export default function CreateTradeScreen() {
             <>
               <Image style={[
                   CardGridStyles.image, 
-                  {width: 67.5}
+                  {width: 67.6}
                 ]} 
               source={getImageLanguage116x162(lang, item)}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
@@ -242,7 +242,7 @@ export default function CreateTradeScreen() {
             <>
               <Image style={[
                   CardGridStyles.image, 
-                  {width: 67.5}
+                  {width: 67.6}
                 ]} 
               source={getImageLanguage116x162(lang, item)}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
@@ -285,11 +285,12 @@ export default function CreateTradeScreen() {
     <Provider>
       { loading && <LoadingOverlay/> }
       <SharedScreen title={trade_id ? 'edit_trade' : 'create_trade'} 
-                    styles={{paddingInline: 16, marginTop: 0}} customClose={goBack}>
+                    styles={{paddingInline: 0, marginTop: 0}} customClose={goBack}>
         <FlatList
           data={[0]}
           keyExtractor={(item) => item.toString()}
           nestedScrollEnabled={true}
+          style={{paddingInline: 16}}
           renderItem={({ item }) => (
             <>
               <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 12}}>
@@ -428,7 +429,7 @@ const styles = StyleSheet.create({
   image: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 67.5
+    width: 67.8
   },
   desiredImage: {
     justifyContent: 'center', 
