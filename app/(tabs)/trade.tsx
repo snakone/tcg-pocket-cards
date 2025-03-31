@@ -19,6 +19,7 @@ import { AppContext } from '../_layout';
 import { TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
 
 export default function TradeScreen() {
+  console.log('Trade Screen')
   const {i18n} = useI18n();
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
@@ -118,7 +119,7 @@ export default function TradeScreen() {
     <>
       <ParallaxScrollView title={"trades"} 
                           modalTitle='trades'
-                          modalContent={TradeScreenModal()}
+                          modalContent={<TradeScreenModal></TradeScreenModal>}
                           modalHeight={LARGE_MODAL_HEIGHT}
                           styles={{paddingHorizontal: 0, gap: 0}}>
         <FlatList

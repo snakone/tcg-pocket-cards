@@ -1,5 +1,6 @@
 export const TRANSLATIONS = {
   en: {
+    energy_number: 'Nº of energy',
     save_infographic: 'Export infographic',
     save_infographic_intro: 'The selected infographics will be downloaded. Please note that this process is done in real time and may take up to 1 minute depending on the number of infographics selected.\n\nDo you wish to continue with the download?',
     condition_plus_ex: 'Damage to EX',
@@ -710,6 +711,7 @@ export const TRANSLATIONS = {
     without_ability: "Without Ability"
   },
   es: {
+    energy_number: 'Nº de energías',
     save_infographic: 'Exportar infografía',
     save_infographic_intro: 'Se van a descargar la infografías seleccionadas. Ten en cuenta que este proceso se realiza en tiempo real y puede tardar hasta 1 minuto dependiendo del número de infografías seleccionadas. Sabiendo esto...\n\n¿Deseas continuar con la descarga?',
     condition_plus_ex: 'Daño a EX',
@@ -1423,6 +1425,7 @@ export const TRANSLATIONS = {
     without_ability: "Sin habilidad"
   },
   ja: {
+    energy_number: 'エネルギーの数',
     save_infographic: 'データのエクスポート',
     save_infographic_intro: '選択したインフォグラフィックがダウンロードされます。このプロセスはリアルタイムで実行され、選択したインフォグラフィックの数に応じて最大 1 分かかる場合があることに注意してください。これを途中で...\n\nダウンロードを続行しますか?',
     condition_plus_ex: 'EXへの損害',

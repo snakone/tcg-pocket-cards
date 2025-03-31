@@ -47,7 +47,6 @@ import { FilterKey } from '@/hooks/filter.reducer';
 import { FilterSearch } from '@/shared/definitions/classes/filter.class';
 
 interface GridCardProps {
-  state: AppState,
   title: string,
   modal: JSX.Element,
   modalTitle: string
@@ -56,30 +55,29 @@ interface GridCardProps {
 }
 
 export default function ImageGridWithSearch({ 
-  state, 
   title, 
   modal, 
   modalTitle, 
   type = 'default',
   filterKey
 }: GridCardProps) {
+  console.log('Card Crid')
   const searchQuery = useRef('');
   const [filtered, setFiltered] = useState<Card[]>([]);
-
-  const [favorites, setFavorites] = useState<Card[]>(
-    state.cardState.cards.filter(c => state.settingsState.favorites?.includes(c.id))
-  );
-
   const flatListRef = useRef<FlatList<Card> | null>(null);
   const router = useRouter();
   const {i18n} = useI18n();
   const [numColumns, setNumColumns] = useState(3);
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
-  const { dispatch } = context;
-  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const { state, dispatch } = context;
+  const [lang, setLang] = useState<LanguageType>('en');
   const searchInputRef = useRef<any>();
   const gridNumber = useRef<0 | 1 | 2>(0);
+
+  const [favorites, setFavorites] = useState<Card[]>(
+    state.cardState.cards.filter(c => state.settingsState.favorites?.includes(c.id))
+  );
 
   useEffect(() => {
     setLang(state.settingsState.language);
@@ -265,6 +263,7 @@ export default function ImageGridWithSearch({
   }, []);
 
   const handleColumnChange = useCallback((ev: number[]): void => {
+    if (ev[0] === numColumns) { return; }
     playSound(true);
     const value = ev[0] as 0 | 1 | 2;
     gridNumber.current = value;

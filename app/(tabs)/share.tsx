@@ -14,13 +14,14 @@ import { CardGridStyles, CreateScreenStyles, TabButtonStyles } from '@/shared/st
 import { IconSymbol, SvgStackSymbol, SvgTradeSymbol } from '@/components/ui/IconSymbol';
 import { Colors } from '@/shared/definitions/utils/colors';
 import { AppContext } from '../_layout';
-import { renderDeckItem } from '@/components/dedicated/cards/DeckItem';
+import { RenderDeckItem } from '@/components/dedicated/cards/DeckItem';
 import SoundService from '@/core/services/sounds.service';
 import { StorageDeck, TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
 import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
 import TradeUserItem from '@/components/dedicated/trade/TradeUserItem';
 
 export default function ShareScreen() {
+  console.log('Share Screen')
   const {i18n} = useI18n();
   const [searchQuery, setSearchQuery] = useState('');
   const [decks, setDecks] = useState<any[]>([]);
@@ -122,7 +123,7 @@ export default function ShareScreen() {
   return (
     <ParallaxScrollView title={"share"} 
                         modalTitle='share'
-                        modalContent={ShareScreenModal()}
+                        modalContent={<ShareScreenModal></ShareScreenModal>}
                         modalHeight={LARGE_MODAL_HEIGHT}
                         styles={{gap: 0, paddingHorizontal: 0}}>
       <ThemedView style={{ 
@@ -168,7 +169,7 @@ export default function ShareScreen() {
               renderItem={({item, section, index}) => 
                 section.key === 'decks' ? (
                   <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}}>
-                    {renderDeckItem({item, state, onPress: () => openDeck(item)})}
+                    {RenderDeckItem({item, state, onPress: () => openDeck(item)})}
                   </ThemedView>
                 ) : 
                 section.key === 'trades' ? renderTrade({item}) : null 

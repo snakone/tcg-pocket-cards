@@ -22,6 +22,7 @@ import { GraphicsScreenModal } from "@/components/modals";
 import { useConfirmation } from "@/core/providers/ConfirmationProvider";
 
 export default function InfoGraphicScreen() {
+  console.log('Graphics Screen')
   const {i18n} = useI18n();
   const [loading, setLoading] = useState(false);
   const [quality, setQuality] = useState<number>(0.9);
@@ -141,7 +142,7 @@ export default function InfoGraphicScreen() {
       { loading && <LoadingOverlay/> }
         <ParallaxScrollView title={"infographics"} 
                             modalTitle='infographics'
-                            modalContent={GraphicsScreenModal()}
+                            modalContent={<GraphicsScreenModal></GraphicsScreenModal>}
                             styles={{paddingInline: 14}}
                             modalHeight={BACKUP_HEIGHT}>
           <ScrollView showsVerticalScrollIndicator={false} style={{paddingInline: 14}}>

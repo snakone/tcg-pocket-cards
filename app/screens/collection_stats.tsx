@@ -619,7 +619,7 @@ export default function CollectionStatsScreen() {
   return (
     <Provider>
       <HeaderWithCustomModal title={'stats'} 
-                             modalContent={StatsCollectionModal()} 
+                             modalContent={<StatsCollectionModal></StatsCollectionModal>} 
                              modalTitle={'stats'} 
                              animatedStyle={{}}
                              animatedIconStyle={{}}

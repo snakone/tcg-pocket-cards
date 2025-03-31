@@ -14,6 +14,7 @@ import SoundService from '@/core/services/sounds.service';
 import { CardsScreenModal } from '@/components/modals/CardsScreenModal';
 
 export default function CardsScreen() {
+  console.log('Cards Screen')
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
   const { state, dispatch } = context;
@@ -56,8 +57,7 @@ export default function CardsScreen() {
 
   return (
     <>
-      <ImageGridWithSearch state={state} 
-                           modal={CardsScreenModal()}
+      <ImageGridWithSearch modal={<CardsScreenModal></CardsScreenModal>}
                            modalTitle='cards'
                            title='card_collection'
                            filterKey={"cards"}/>

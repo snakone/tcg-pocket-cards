@@ -5,10 +5,12 @@ export class FilterAttackSearch {
   public damage: { min: number | null, max: number | null }
   public energy: { [key in PokemonTypeENUM]: boolean | null }
   public exclusive: boolean;
+  public amount: { min: number | null, max: number | null }
 
   constructor() {
     this.damage = {min: null, max: null};
     this.exclusive = false;
+    this.amount = {min: null, max: null};
 
     this.energy = {
       [PokemonTypeENUM.GRASS]: null,

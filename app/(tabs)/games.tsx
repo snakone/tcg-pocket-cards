@@ -59,7 +59,7 @@ export default function GamesScreen() {
     <>
       <ParallaxScrollView title={"games"} 
                           modalTitle='games'
-                          modalContent={GamesScreenModal()}
+                          modalContent={<GamesScreenModal></GamesScreenModal>}
                           modalHeight={BACKUP_HEIGHT}>
         <ThemedText style={{marginTop: 4, marginBottom: 10}}>{i18n.t('games_intro')}</ThemedText>
         <TouchableOpacity onPress={() => handleClick()}>

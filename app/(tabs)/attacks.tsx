@@ -26,6 +26,7 @@ import { AttacksScreenModal } from '@/components/modals';
 import { FilterAttackSearch } from '@/shared/definitions/classes/filter_attack.class';
 
 export default function AttacksScreen() {
+  console.log('Attacks Screen')
   const {i18n} = useI18n();
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }
@@ -235,7 +236,7 @@ export default function AttacksScreen() {
     <>
       <ParallaxScrollView title={"attack_list"} 
                           modalTitle='attacks'
-                          modalContent={AttacksScreenModal()}
+                          modalContent={<AttacksScreenModal></AttacksScreenModal>}
                           modalHeight={BACKUP_HEIGHT}>
         <FlatList data={(filtered as Attack[])}
                   numColumns={1}

@@ -310,7 +310,7 @@ export const DetailStyles = StyleSheet.create({
   },
   bottomContainer: {
     position: 'absolute',
-    bottom: 30,
+    bottom: 22,
     left: 0,
     right: 0,
     alignItems: 'center',

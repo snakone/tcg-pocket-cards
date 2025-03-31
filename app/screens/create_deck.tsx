@@ -531,7 +531,7 @@ export default function CreateDeckScreen() {
           { canRemove &&
             <TouchableOpacity onPressIn={(e) => (e.stopPropagation(), createService.onRemoveNumber(item))} 
                               style={[collectionStyles.remove, {width: 18, height: 18}]}
-                              hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+                              hitSlop={{top: 25, bottom: 25, left: 25, right: 25}}>
                 <ThemedText style={[
                   {color: 'crimson', fontSize: 31, top: -4}, 
                   Platform.OS !== 'web' && {fontSize: 24, top: -17, transform: [{scaleX: 1.5}, {scaleY: 2}]}]}>-</ThemedText>

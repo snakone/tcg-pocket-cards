@@ -562,6 +562,7 @@ export const DECK_BACKGROUNDS_70x70: AvatarIcon[] = [
 
 export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);
 export const ATTACK_DAMAGES = Array.from({ length: 20 }, (_, index) => (index + 1) * 10);
+export const ENERGY_AMOUNT = Array.from({ length: 5 }, (_, index) => (index + 1) * 1);
 
 export const ICON_WIDTH = 36;
 

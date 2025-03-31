@@ -288,8 +288,8 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
       <>
         {
           item && 
-          <ThemedView style={{width: '100%', marginBottom: 14}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', }}>
+          <ThemedView style={{width: '100%'}}>
+            <ThemedView style={{flexDirection: 'row', alignItems: 'center', paddingBottom: 8}}>
               {
                 item.emblem && 
                 <Image source={item.emblem} 
@@ -302,19 +302,19 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
               <ThemedView style={{gap: 4}}>
                 {item.name && <ThemedText style={{fontWeight: 'bold'}}>{i18n.t(item.label)}</ThemedText>}
                 <ThemedView style={{flexDirection: 'row', gap: 8}}>
-                  <ThemedView style={styles.chip}>
+                  <ThemedView style={[styles.chip, {boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)'}]}>
                     <ThemedText style={styles.chipText}>{item.owned}/{item.length}</ThemedText>
                   </ThemedView>
                   {
                     !isPromo && 
-                    <ThemedView style={styles.chip}>
+                    <ThemedView style={[styles.chip, {boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)'}]}>
                       <Image source={CROWN_RARITY} style={{width: 20, height: 13, marginRight: 6}}/>
                       <ThemedText style={styles.chipText}>{item.crown}</ThemedText>
                     </ThemedView>
                   }
                   {
                     !isPromo &&
-                    <ThemedView style={styles.chip}>
+                    <ThemedView style={[styles.chip, {boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)'}]}>
                       <Image source={STAR_RARITY} style={{width: 16, height: 15, marginRight: 6}}/>
                       <ThemedText style={styles.chipText}>{item.art}</ThemedText>
                     </ThemedView>

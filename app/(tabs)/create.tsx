@@ -15,10 +15,11 @@ import { LARGE_MODAL_HEIGHT, MAX_CONTENT } from '@/shared/definitions/utils/cons
 import SoundService from '@/core/services/sounds.service';
 import { AppContext } from '../_layout';
 import { StorageDeck } from '@/shared/definitions/interfaces/global.interfaces';
-import { renderDeckItem } from '@/components/dedicated/cards/DeckItem';
+import { RenderDeckItem } from '@/components/dedicated/cards/DeckItem';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 
 export default function CreateDeckScreen() {
+  console.log('Create Screen')
   const {i18n} = useI18n();
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
@@ -49,12 +50,6 @@ export default function CreateDeckScreen() {
     router.push(`/screens/create_deck?deck_id=${encodeURIComponent(deck.id)}`);
   }
 
-  useFocusEffect(useCallback(() => {
-    return (() => {
-      handleSearch('');
-    })
-  }, [decks]));
-
   const ResetFilterButton = useCallback(() => (
     <TouchableOpacity onPress={() => handleSearch('')} 
                       style={[CardGridStyles.clearInput, {left: 250}]}
@@ -63,16 +58,13 @@ export default function CreateDeckScreen() {
     </TouchableOpacity>
   ), []);
 
-  const renderEmpty = () => {
-    const renderCardState = useCallback(() => {
-      return state.cardState.loaded && 
-        <ThemedText style={{ paddingVertical: 12, paddingHorizontal: Platform.OS !== 'web' ? 6 : 22}}>
-          {i18n.t('no_decks_found')}
-        </ThemedText>
-    }, [state.cardState.loaded]);
-  
-    return renderCardState();
-  };
+  const renderEmpty = useCallback(() => {
+    return state.cardState.loaded && 
+      <ThemedText style={{ paddingVertical: 12, paddingHorizontal: Platform.OS !== 'web' ? 6 : 22}}>
+        {i18n.t('no_decks_found')}
+      </ThemedText>
+  }, [state.cardState.loaded]);
+
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
@@ -83,7 +75,7 @@ export default function CreateDeckScreen() {
     })
   }, [decks]);
 
-  const renderFooter = useCallback(() => {
+  const RenderFooter = useCallback(() => {
     return (
       <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16, paddingTop: 16}}>
         <TouchableOpacity style={[
@@ -111,14 +103,14 @@ export default function CreateDeckScreen() {
     <>
       <ParallaxScrollView title={"deck_creation"} 
                           modalTitle='create_deck'
-                          modalContent={CreateScreenModal()}
+                          modalContent={<CreateScreenModal></CreateScreenModal>}
                           modalHeight={LARGE_MODAL_HEIGHT}
                           styles={{paddingHorizontal: 0, gap: 0}}>
         <FlatList data={filtered.sort((a, b) => a?.id > b?.id ? -1 : 1)}
                   numColumns={1}
                   renderItem={({item, index}) => 
                   (<ThemedView style={[{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}, index === 0 && {paddingTop: 12}]}>
-                    {renderDeckItem({item, state, onPress: () => openDeck(item)})}
+                    <RenderDeckItem item={item} state={state} onPress={() => openDeck(item)} />
                   </ThemedView>)}
                   keyExtractor={(item, index) => index + 1 + ''}
                   showsVerticalScrollIndicator={false}
@@ -155,7 +147,7 @@ export default function CreateDeckScreen() {
                         </View>
                       </View>
         }/>
-        {renderFooter()}              
+        <RenderFooter></RenderFooter>           
       </ParallaxScrollView>
     </>
   );

@@ -294,6 +294,23 @@ export function filterAttacks(filter: FilterAttackSearch, data: Attack[]): Attac
       }
     }
 
+    if(
+      filter.amount.max !== null && 
+      filter.amount.max > 0 ||
+      filter.amount.min !== null && 
+      filter.amount.min > 0
+    ) {
+      const energies = attack.energy.length;
+
+      if (filter.amount.min && (energies < filter.amount.min)) {
+        return false;
+      }
+
+      if (filter.amount.max && (energies > filter.amount.max)) {
+        return false;
+      }
+    }
+
     return true;
   });
 }

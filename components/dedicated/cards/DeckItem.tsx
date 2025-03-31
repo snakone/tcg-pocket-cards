@@ -9,7 +9,7 @@ import { CardGridStyles, CreateScreenStyles } from "@/shared/styles/component.st
 import { AppState } from '@/hooks/root.reducer';
 import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
 
-  export const renderDeckItem = (
+  export const RenderDeckItem = (
     {item, state, onPress}: {item: StorageDeck, state: AppState, onPress: any}
   ) => {
     return (

@@ -28,6 +28,7 @@ import { FilterAttackSearch } from "@/shared/definitions/classes/filter_attack.c
 import { EnergyItem } from "./components/EnergyItem";
 import { DamageItem } from "./components/DamageItem";
 import { Colors } from "@/shared/definitions/utils/colors";
+import { AmountItem } from "./components/AmountItem";
 
 export default function FilterAttackMenu({isVisible, onClose, animatedStyle}: TabMenu) {
   const context = useContext(AppContext);
@@ -80,7 +81,7 @@ export default function FilterAttackMenu({isVisible, onClose, animatedStyle}: Ta
         <View style={[ModalStyles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={[ModalStyles.modalHeaderTitle, i18n.locale === 'ja' && {fontSize: 20}]}>{i18n.t('filter')}</ThemedText>
         </View>
-        <SafeAreaView style={[ModalStyles.modalScrollView, {paddingHorizontal: 20, paddingVertical: 0, marginTop: 16}]}>
+        <SafeAreaView style={[ModalStyles.modalScrollView, {paddingHorizontal: 20, paddingVertical: 0, marginTop: 16, maxHeight: '74%'}]}>
           <ScrollView showsVerticalScrollIndicator={false} style={filterStyles.list}>
             <TouchableOpacity onPress={handleReset} style={[
               filterStyles.button, 
@@ -96,6 +97,12 @@ export default function FilterAttackMenu({isVisible, onClose, animatedStyle}: Ta
                 <ThemedText style={filterStyles.header}>{i18n.t('damage')}</ThemedText>
               </ThemedView>
               <DamageItem filterObj={filterObj} playSound={playSound}></DamageItem>
+            </>
+            <>
+              <ThemedView style={filterStyles.row}>
+                <ThemedText style={filterStyles.header}>{i18n.t('energy_number')}</ThemedText>
+              </ThemedView>
+              <AmountItem filterObj={filterObj} playSound={playSound}></AmountItem>
             </>
             <>
               <ThemedView style={[filterStyles.row, {marginTop: 4}]}>

@@ -20,6 +20,7 @@ import { useError } from '@/core/providers/ErrorProvider';
 import SoundService from '@/core/services/sounds.service';
 
 export default function NewsScreen() {
+  console.log('News Screen')
   const focused = useIsFocused();
   const {i18n} = useI18n();
   const context = useContext(AppContext);
@@ -106,7 +107,7 @@ export default function NewsScreen() {
       { loading && <LoadingOverlay/> }
       <ParallaxScrollView title={"news"} 
                           modalTitle='news'
-                          modalContent={NewsScreenModal()}
+                          modalContent={<NewsScreenModal></NewsScreenModal>}
                           styles={{padding: 0, paddingInline: 0}}
                           modalHeight={BACKUP_HEIGHT}>
         <FlatList

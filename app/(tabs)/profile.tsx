@@ -22,6 +22,7 @@ import { getImageLanguage } from '@/shared/definitions/utils/functions';
 import { useRouter } from 'expo-router';
 
 export default function ProfileScreen() {
+  console.log('Profile Screen')
   const {i18n} = useI18n();
   const context = useContext(AppContext);
   if (!context) { throw new Error(NO_CONTEXT); }

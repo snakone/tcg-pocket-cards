@@ -55,7 +55,6 @@ export default function CollectionCardsScreen() {
 
   const onMenuClose = useCallback(async ({ unmark, markAll, language }: any): Promise<void> => {
     setIsMenuVisible(false);
-  
     if (markAll) {
       markAllCards(language);
     } else if (unmark) {
@@ -72,7 +71,7 @@ export default function CollectionCardsScreen() {
     if (langCollection !== language) {
       setLangCollection(language);
     }
-  }, [collection, langCollection]);
+  }, [collection, langCollection, filtered]);
 
   const onViewStats = useCallback((language: CardLanguageENUM): void => {
     setIsMenuVisible(false);
@@ -294,7 +293,7 @@ export default function CollectionCardsScreen() {
             <>
               <TouchableOpacity onPressIn={(e) => (e.stopPropagation(), removeSelected(item))} 
                                 style={collectionStyles.remove}
-                                hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+                                hitSlop={{top: 25, bottom: 25, left: 25, right: 25}}>
                   <ThemedText style={[
                     {color: 'crimson', fontSize: 31, top: -4}, 
                     Platform.OS !== 'web' && {fontSize: 29, top: -10}]}>-</ThemedText>
@@ -371,7 +370,7 @@ export default function CollectionCardsScreen() {
     <Provider>
       <ParallaxScrollView title={"my_collection"} 
                           modalTitle='collection'
-                          modalContent={CollectionScreenModal()}
+                          modalContent={<CollectionScreenModal></CollectionScreenModal>}
                           modalHeight={BACKUP_HEIGHT}
                           styles={{gap: 0}}>
 

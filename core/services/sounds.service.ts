@@ -78,6 +78,11 @@ export class SoundService {
     }
   }
 
+  static async setVolumeSplash(volume: number) {
+    const sound = this.sounds['SPLASH_MUSIC'];
+    (sound as Audio.Sound).setVolumeAsync(volume);
+  }
+
   private static async setVolumeAllSounds(volume: number): Promise<void> {
     for (const key in Sounds) {
       if (this.sounds[key]) {

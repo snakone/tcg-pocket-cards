@@ -17,6 +17,7 @@ import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
 import { AppContext } from '../_layout';
 
 export default function HomeScreen() {
+  console.log('Home Screen')
   const {i18n} = useI18n();
   const styles = homeScreenStyles;
   const router = useRouter();
@@ -37,7 +38,7 @@ export default function HomeScreen() {
   return (
     <ParallaxScrollView title={"tcg"} 
                         modalTitle='welcome' 
-                        modalContent={HomeScreenModal()}
+                        modalContent={<HomeScreenModal></HomeScreenModal>}
                         modalHeight={LARGE_MODAL_HEIGHT}>
       <ThemedView style={styles.container}>
         <Image

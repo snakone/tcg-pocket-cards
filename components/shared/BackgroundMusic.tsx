@@ -13,7 +13,9 @@ const BackgroundMusic = ({state, music}: {state: AppState, music: any}) => {
       const { sound } = await Audio.Sound.createAsync(music);
       try {
         audio.current = sound;
-        await audio.current.setVolumeAsync(.5);
+        await audio.current.setVolumeAsync(
+          state.settingsState.music_volume !== undefined ? 
+            state.settingsState.music_volume : 0.5);
         audio.current.setIsLoopingAsync(true);
         const music = await Storage.get('music');
         if (!music || music === null) { return; }
