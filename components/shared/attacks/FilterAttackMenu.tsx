@@ -16,7 +16,6 @@ import {
 } from "@/shared/styles/component.styles";
 
 import { getFilterAttackSearch } from "@/shared/definitions/utils/constants";
-import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -32,7 +31,7 @@ import { AmountItem } from "./components/AmountItem";
 
 export default function FilterAttackMenu({isVisible, onClose, animatedStyle}: TabMenu) {
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [isExclusive, setIsExclusive] = useState(false);
   const [forceRender, setForceRender] = useState(0);
@@ -127,7 +126,7 @@ export default function FilterAttackMenu({isVisible, onClose, animatedStyle}: Ta
         <View style={[ModalStyles.modalFooter, i18n.locale === 'ja' && {top: -2}]}>
           <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

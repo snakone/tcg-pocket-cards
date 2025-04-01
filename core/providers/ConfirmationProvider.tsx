@@ -25,9 +25,7 @@ export const ConfirmationProvider = ({children}: {children: React.ReactNode}) =>
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
   const [type, setType] = useState<ErrorType | undefined>(undefined);
-  const [resolvePromise, setResolvePromise] = useState<
-    ((value: boolean) => void) | null
-  >(null);
+  const [resolvePromise, setResolvePromise] = useState<((value: boolean) => void) | null>(null);
 
   const confirm = useCallback((
     title: string, 
@@ -48,6 +46,7 @@ export const ConfirmationProvider = ({children}: {children: React.ReactNode}) =>
     if (resolvePromise) {
       resolvePromise(response);
     }
+    
     setVisible(false);
     setMessage("");
     setTitle("");

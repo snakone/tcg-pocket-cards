@@ -3,29 +3,30 @@ import { Image } from 'expo-image';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
+import { useRouter } from 'expo-router';
 
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedView } from '@/components/ThemedView';
-import { ThemedText } from '@/components/ThemedText';
+import SoundService from '@/core/services/sounds.service';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import Storage from '@/core/storage/storage.service';
-import { UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
+
+import { AppContext } from '../_layout';
 import { AVATAR_MAP, COIN_MAP } from '@/shared/definitions/utils/constants';
 import { Colors } from '@/shared/definitions/utils/colors';
-import SoundService from '@/core/services/sounds.service';
-import { NO_CONTEXT, USER_LABEL } from '@/shared/definitions/sentences/global.sentences';
-import { AppContext } from '../_layout';
-import { CardGridStyles, TabsMenuStyles } from '@/shared/styles/component.styles';
-import { createDeckStyles } from '../screens/create_deck';
 import { LanguageType } from '@/shared/definitions/types/global.types';
 import { getImageLanguage } from '@/shared/definitions/utils/functions';
-import { useRouter } from 'expo-router';
+import { UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
+import { CardGridStyles, TabsMenuStyles } from '@/shared/styles/component.styles';
+
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { createDeckStyles } from '@/app/screens/create_deck';
+import { ThemedView } from '@/components/ThemedView';
+import { ThemedText } from '@/components/ThemedText';
 
 export default function ProfileScreen() {
   console.log('Profile Screen')
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [userName, setUserName] = useState('');
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
@@ -51,7 +52,6 @@ export default function ProfileScreen() {
 
   function goToCollection(): void {
     SoundService.play('CHANGE_VIEW');
-    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push('/screens/collection');
   }
 
@@ -94,7 +94,6 @@ export default function ProfileScreen() {
   
   return (
     <ParallaxScrollView title={"profile"} 
-                        modalTitle='profile'
                         showHeader={false}>
       <ThemedView style={{alignItems: 'center', flex: 1}}>
         <ThemedView style={[styles.header, {marginTop: 42}]}>
@@ -114,7 +113,7 @@ export default function ProfileScreen() {
                          value={userName}
                          onChangeText={(text) => (handleText(text))}
                          placeholderTextColor={Colors.light.text}
-                         accessibilityLabel={USER_LABEL}
+                         accessibilityLabel={'USER_LABEL'}
                          inputMode='text'
                          maxLength={15}
                          style={[styles.input, Platform.OS !== 'web' && {top: 0, paddingRight: 6}]}
@@ -123,7 +122,7 @@ export default function ProfileScreen() {
             </ThemedView>
           </ThemedView>
           
-          <TouchableOpacity onPress={goToCollection} disabled={state.cardState.navigating}>
+          <TouchableOpacity onPress={goToCollection}>
             <ThemedView style={[TabsMenuStyles.user, {marginTop: 16, width: 275}]}>
               <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                 <MaterialIcons name="style" style={[

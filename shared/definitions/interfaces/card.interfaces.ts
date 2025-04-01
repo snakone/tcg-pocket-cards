@@ -42,6 +42,11 @@ export interface Attack {
   description?: Record<LanguageType, string>;
 }
 
+export interface AttackMetaData extends Attack {
+  card: number;
+  index: number;
+}
+
 interface Ability {
   name: Record<LanguageType, string>;
   description: Record<LanguageType, string>;

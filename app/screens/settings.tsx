@@ -4,7 +4,6 @@ import { Switch } from 'react-native-paper';
 
 import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AppContext } from "../_layout";
 import { CardGridStyles, filterStyles } from "@/shared/styles/component.styles";
 import { useI18n } from "@/core/providers/LanguageProvider";
@@ -20,7 +19,7 @@ import { LanguageType } from "@/shared/definitions/types/global.types";
 
 export default function SettingsScreen() {
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const {i18n, setLocale} = useI18n();
 

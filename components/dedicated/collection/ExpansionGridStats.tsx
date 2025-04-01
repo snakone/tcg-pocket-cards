@@ -33,7 +33,6 @@ import { useI18n } from "@/core/providers/LanguageProvider";
 import { STATS_EXPANSION_MAP } from "@/shared/definitions/utils/constants";
 import { TabsMenuStyles } from "@/shared/styles/component.styles";
 import { AppContext } from "@/app/_layout";
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import SoundService from "@/core/services/sounds.service";
 
@@ -48,7 +47,7 @@ interface CollectionGridStats {
 export const ExpansionGridStats = ({currentExpansion, allCards, language, collection, allStats}: CollectionGridStats) => {
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
   const router = useRouter();
@@ -278,7 +277,6 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
 
   function goToDetailScreen(id: number): void {
     SoundService.play('PICK_CARD_SOUND');
-    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
   }
 
@@ -358,7 +356,7 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
                 <ThemedView key={i.toString()}>
                   <TouchableOpacity onPress={() => goToDetailScreen(missingCards[i])}
                                     style={{boxShadow: '0px 4px 14px rgba(0, 0, 0, 0.3)'}}
-                                    disabled={!missingCards[i] || state.cardState.navigating}>
+                                    disabled={!missingCards[i]}>
                     <Image style={{width: 71, height: 99}}
                               source={missingCards[i] ? getImageLanguage116x162(lang, missingCards[i]) : BACKWARD_CARD}/>
                   </TouchableOpacity>

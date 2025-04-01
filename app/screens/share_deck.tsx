@@ -11,8 +11,6 @@ import SharedScreen from "@/components/shared/SharedScreen";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AppContext } from "../_layout";
 import DeckCollage from "@/components/dedicated/share/DeckCollage";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
@@ -22,6 +20,7 @@ import { AvatarIcon, ShareContentProps, UserProfile } from "@/shared/definitions
 import { TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { CardGridStyles, CreateScreenStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
 import { Colors } from "@/shared/definitions/utils/colors";
+import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 import { createDeckStyles } from "./create_deck";
 import { settingsStyles } from "./settings";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -36,7 +35,7 @@ export default function ShareDeckScreen() {
   const {i18n} = useI18n();
   const { deck_id } = useLocalSearchParams<{ deck_id: string }>();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [deck, setDeck] = useState<any[]>(Array.from({ length: 20 }, (_, i) => (null)));
   const [deckName, setDeckName] = useState('');
@@ -54,12 +53,6 @@ export default function ShareDeckScreen() {
   useEffect(() => {
     setLang(state.settingsState.language);
   }, [state.settingsState.language]);
-
-  useEffect(() => {
-    return (() => {
-      dispatch({type: 'SET_NAVIGATING', value: false});
-    })
-  }, []);
 
   const [profile, setProfile] = useState<UserProfile>(
     {name: '', avatar: 'eevee', coin: 'eevee', best: null}

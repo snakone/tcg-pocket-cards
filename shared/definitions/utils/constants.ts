@@ -239,6 +239,8 @@ export const INITIAL_ATTACK_SORT_DATA: SortItem[] = [
   { id: 5, label: 'order_by_number_energy', icon: 'pin', active: false, order: 'desc' },
 ];
 
+export const SINGLE_SORT_DATA: SortItem = {active: true, id: 1, icon: 'content-paste-search', label: 'order_by_id', order: 'asc'}
+
 export const RARITY_MAP: Record<CardRarityENUM, {image: any, amount: number | null}> = {
   [CardRarityENUM.COMMON]: { image: NORMAL_RARITY, amount: 1 },
   [CardRarityENUM.UNCOMMON]: { image: NORMAL_RARITY, amount: 2 },

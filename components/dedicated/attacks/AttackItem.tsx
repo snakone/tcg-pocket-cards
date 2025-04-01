@@ -12,11 +12,11 @@ interface AttackItem {
   item: Attack;
   lang: LanguageType;
   onPress: any;
-  disabled: boolean;
+  disabled?: boolean;
   focused: boolean;
 }
 
-  export const renderAttackItem = ({item, lang, onPress, disabled, focused}: AttackItem) => {
+  export const RenderAttackItem = ({item, lang, onPress, disabled, focused}: AttackItem) => {
     return (
       <ThemedView style={[CreateScreenStyles.deckItem]}>
         <TouchableOpacity style={{flex: 1}} onPress={onPress} disabled={disabled}>

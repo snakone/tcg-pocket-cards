@@ -11,7 +11,7 @@ export type ThemeTextType = 'default' | 'title' | 'defaultSemiBold' | 'subtitle'
 export type ParallaxProps = PropsWithChildren<{
   title: string,
   modalContent?: ReactNode,
-  modalTitle: string,
+  modalTitle?: string,
   modalHeight?: number | 'auto',
   styles?: StyleProp<ViewStyle>,
   showHeader?: boolean,

@@ -7,7 +7,6 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Portal, Provider } from "react-native-paper";
 
 import SharedScreen from "@/components/shared/SharedScreen";
-import { NO_CONTEXT, SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
 import { CardGridStyles, homeScreenStyles } from "@/shared/styles/component.styles";
 import SoundService from "@/core/services/sounds.service";
 import { useI18n } from "@/core/providers/LanguageProvider";
@@ -32,7 +31,7 @@ export default function CreateTradeScreen() {
   const {i18n} = useI18n();
   const router = useRouter();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [title, setTitle] = useState<string>('');
   const [discord, setDiscord] = useState<string>('');
@@ -52,12 +51,6 @@ export default function CreateTradeScreen() {
   useEffect(() => {
     setLang(state.settingsState.language);
   }, [state.settingsState.language]);
-
-  useEffect(() => {
-    return (() => {
-      dispatch({type: 'SET_NAVIGATING', value: false});
-    })
-  }, [])
 
   useEffect(() => {
     const checkTrade = async () => {
@@ -302,7 +295,7 @@ export default function CreateTradeScreen() {
                             value={title}
                             onChangeText={(text) => (setTitle(text), setNotSaved(true))}
                             placeholderTextColor={Colors.light.text}
-                            accessibilityLabel={SEARCH_LABEL}
+                            accessibilityLabel={'SEARCH_LABEL'}
                             inputMode='text'
                             maxLength={40}
                           />
@@ -324,7 +317,7 @@ export default function CreateTradeScreen() {
                           value={discord}
                           onChangeText={(text) => (setDiscord(text), setNotSaved(true))}
                           placeholderTextColor={Colors.light.text}
-                          accessibilityLabel={SEARCH_LABEL}
+                          accessibilityLabel={'SEARCH_LABEL'}
                           inputMode='text'
                           maxLength={25}
                         />
@@ -345,7 +338,7 @@ export default function CreateTradeScreen() {
                                   value={tcg[index]}
                                   onChangeText={(text) => handleTCG(text, index)}
                                   placeholderTextColor={Colors.light.text}
-                                  accessibilityLabel={SEARCH_LABEL}
+                                  accessibilityLabel={'SEARCH_LABEL'}
                                   inputMode='numeric'
                                   
                                   maxLength={4}

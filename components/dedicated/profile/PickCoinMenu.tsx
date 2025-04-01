@@ -8,7 +8,6 @@ import { Image } from "expo-image";
 
 import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
-import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -29,7 +28,7 @@ export default function PickCoinMenu({
   const styles = ModalStyles;
   if (!isVisible) return null;
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [selected, setSelected] = useState<string>('');
   const [original, setOriginal] = useState('');
@@ -122,7 +121,7 @@ export default function PickCoinMenu({
         <View style={styles.modalFooter}>
           <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

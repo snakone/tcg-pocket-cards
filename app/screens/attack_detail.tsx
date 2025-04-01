@@ -1,56 +1,58 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Image } from 'expo-image';
-import { FlatList, Platform, StyleSheet, TouchableOpacity, View } from "react-native";
-import { useRouter } from 'expo-router';
+import { FlatList, Platform, TouchableOpacity, View } from "react-native";
+import { useLocalSearchParams, useRouter } from 'expo-router';
 
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
+import { useI18n } from "@/core/providers/LanguageProvider";
+import SoundService from "@/core/services/sounds.service";
+
+import { Attack, AttackMetaData, Card } from "@/shared/definitions/interfaces/card.interfaces";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { TYPE_MAP } from "@/shared/definitions/utils/constants";
+import { getImageLanguage116x162 } from "@/shared/definitions/utils/functions";
+import { CardGridStyles } from "@/shared/styles/component.styles";
+import { Colors } from "@/shared/definitions/utils/colors";
+
 import { AppContext } from "../_layout";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { Attack, Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { LanguageType } from "@/shared/definitions/types/global.types";
 import { detailScrollStyles } from "@/components/dedicated/detail/detail.scroll";
-import { TYPE_MAP } from "@/shared/definitions/utils/constants";
-import { getImageLanguage116x162 } from "@/shared/definitions/utils/functions";
-import { CardGridStyles } from "@/shared/styles/component.styles";
 import SkeletonCardGrid from "@/components/skeletons/SkeletonCardGrid";
-import { Colors } from "@/shared/definitions/utils/colors";
-import { renderAttackItem } from "@/components/dedicated/attacks/AttackItem";
-import SoundService from "@/core/services/sounds.service";
+import { RenderAttackItem } from "@/components/dedicated/attacks/AttackItem";
 
 export default function AttackDetailScreen() {
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
-  const [attack, setAttack] = useState<Attack>();
+  const [attack, setAttack] = useState<AttackMetaData>();
   const [related, setRelated] = useState<Card[]>([]);
-  const [similar, setSimilar] = useState<Attack[]>([]);
+  const [similar, setSimilar] = useState<AttackMetaData[]>([]);
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
   const router = useRouter();
+  const { id } = useLocalSearchParams<{ id: string }>();
 
   useEffect(() => {
-    dispatch({type: 'SET_NAVIGATING', value: false});
-  }, []);
+    const [cardID, index] = id.split('_');
+    const card = state.cardState.cards.find(card => card.id === Number(cardID));
+    const active = card && card.attacks && card?.attacks[Number(index)];
 
-  useEffect(() => {
-    if (state.attacksState.current) {
-      setAttack(state.attacksState.current);
+    if (active) {
+      setAttack(active as AttackMetaData);
     } else {
       setTimeout(() => router.navigate('/attacks'), 150);
       return;
     }
     
     const related = state.cardState.cards.filter(card => {
-      if (card.attacks && card.attacks.length > 0 && state.attacksState.current) {
+      if (card.attacks && card.attacks.length > 0 && active) {
         if (card.attacks.some(att => 
           att !== undefined && 
           (
-            att.name.es === state.attacksState.current?.name.es && 
-            att.description?.es === state.attacksState.current.description?.es && 
-            att.damage === state.attacksState.current.damage
+            att.name.es === active?.name.es && 
+            att.description?.es === active.description?.es && 
+            att.damage === active.damage
           ))) {
           return true;
         }
@@ -60,21 +62,16 @@ export default function AttackDetailScreen() {
     });
 
     setRelated(related);
-  }, [state.attacksState.current, state.cardState.cards]);
+  }, [state.cardState.cards]);
 
-  const RenderEmpty = () => {
-    const renderCardState = useCallback(() => {
-      return state.cardState.loaded ? (
-        <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
-      ) : (<SkeletonCardGrid columns={7} amount={56} width={47}/>);
-    }, [state.cardState.loaded]);
-  
-    return renderCardState();
-  };
+  const RenderEmpty = useCallback(() => {
+    return state.cardState.loaded ? (
+      <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
+    ) : (<SkeletonCardGrid columns={7} amount={56} width={47}/>);
+  }, [state.cardState.loaded]);
 
   useEffect(() => {
-    if (!state.attacksState.current) { return; }
-    const attack = state.attacksState.current;
+    if (!attack) { return; }
     const filtered = state.attacksState.attack_list.filter(att => {
       if (
         (att.energy.length === attack.energy.length && att.damage === attack.damage) &&
@@ -85,20 +82,17 @@ export default function AttackDetailScreen() {
       return false;
     });
 
-    setSimilar(filtered);
-  }, [state.attacksState.current, state.attacksState.attack_list]);
+    setSimilar(filtered as AttackMetaData[]);
+  }, [attack]);
 
   const goToDetailScreen = async (id: number) => {
-    dispatch({type: 'SET_NAVIGATING', value: true});
     SoundService.play('PICK_CARD_SOUND');
     router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
   };
 
-  const goToAttackDetail = (item: Attack) => {
-    dispatch({type: 'SET_NAVIGATING', value: true});
+  const goToAttackDetail = (item: AttackMetaData) => {
     SoundService.play('AUDIO_MENU_OPEN');
-    dispatch({type: 'SET_CURRENT_ATTACK', value: item});
-    router.replace(`/screens/attack_detail`);
+    router.replace(`/screens/attack_detail?id=${encodeURIComponent(`${item.card}_${item.index}`)}`);
   }
 
   const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
@@ -121,9 +115,14 @@ export default function AttackDetailScreen() {
   const keyExtractor = useCallback((item: Card) => String(item.id), []);
   const keyExtractorSimilar = useCallback((item: Attack, index: number) => String(item.name) + index, []);
 
-  const renderItem = useCallback(({item}: {item: Attack}) => {
-    return renderAttackItem({ item, lang, focused: true, onPress: () => goToAttackDetail(item), disabled: state.cardState.navigating })
-  }, [lang, state.cardState.navigating]);
+  const renderItem = useCallback(({item}: {item: AttackMetaData}) => {
+    return <RenderAttackItem 
+              item={item}
+              lang={lang}
+              focused={true}
+              onPress={() => goToAttackDetail(item)}
+            />
+  }, [lang]);
 
   const getItemLayout = useCallback((_: any, index: number) => ({
     length: 52,
@@ -139,24 +138,24 @@ export default function AttackDetailScreen() {
               detailScrollStyles.attackContainer, 
               {width: '100%', alignItems: 'flex-start', marginBottom: 16}
             ]}>
-              <ThemedView style={detailScrollStyles.attackItem}>
-                <ThemedView style={detailScrollStyles.attackEnergy}>
-                  {
-                    attack.energy.map((energy, j) => (
-                      <Image key={j} source={TYPE_MAP[energy].image} style={detailScrollStyles.energy}></Image>
-                    ))
-                  }
-                </ThemedView>
-                <ThemedText style={detailScrollStyles.attackName}>{attack.name[lang]}</ThemedText>
+            <ThemedView style={detailScrollStyles.attackItem}>
+              <ThemedView style={detailScrollStyles.attackEnergy}>
+                {
+                  attack.energy.map((energy, j) => (
+                    <Image key={j} source={TYPE_MAP[energy].image} style={detailScrollStyles.energy}></Image>
+                  ))
+                }
               </ThemedView>
+              <ThemedText style={detailScrollStyles.attackName}>{attack.name[lang]}</ThemedText>
+            </ThemedView>
 
-              { attack.damage > 0 && <ThemedText style={detailScrollStyles.attackDamage}>{attack.damage}</ThemedText>}
+            { attack.damage > 0 && <ThemedText style={detailScrollStyles.attackDamage}>{attack.damage}</ThemedText>}
 
-              { attack.description && 
-                <ThemedView style={[{width: '100%', marginTop: 16}, Platform.OS === 'android' && {top: 16}]}>
-                  <ThemedText style={{fontSize: 12}}>{attack.description[lang]}</ThemedText>
-                </ThemedView>
-              }
+            { attack.description && 
+              <ThemedView style={[{width: '100%', marginTop: 16}, Platform.OS === 'android' && {top: 16}]}>
+                <ThemedText style={{fontSize: 12}}>{attack.description[lang]}</ThemedText>
+              </ThemedView>
+            }
           </ThemedView>
           <ThemedView style={Platform.OS === 'android' && {height: Math.ceil((related.length) / 5) * 94}}>
             <FlatList data={related}

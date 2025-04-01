@@ -5,7 +5,7 @@ import { FilterKey } from "@/hooks/filter.reducer";
 
 export interface HeaderWithCustomModalProps {
   title: string;
-  modalTitle: string;
+  modalTitle?: string;
   modalContent: ReactNode;
   modalHeight?: number;
   animatedStyle?: any,

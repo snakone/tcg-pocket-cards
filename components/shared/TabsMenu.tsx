@@ -51,21 +51,21 @@ export default function TabsMenu({
     onClose();
     await playSound();
     switch(route) {
-      case 'news': router.push('/news');
+      case 'news': router.navigate('/news');
         break;
-      case 'favorites': router.push('/favorites');
+      case 'favorites': router.navigate('/favorites');
         break;
-      case 'share': router.push('/share');
+      case 'share': router.navigate('/share');
         break;
-      case 'infographics': router.push('/infographics');
+      case 'infographics': router.navigate('/infographics');
         break;
       case 'help': router.push('/screens/help');
         break;
       case 'settings': router.push('/screens/settings');
         break;
-      case 'attacks': router.push('/attacks');
+      case 'attacks': router.navigate('/attacks');
         break;
-      case 'games': router.push('/games');
+      case 'games': router.navigate('/games');
         break;
     }
   }

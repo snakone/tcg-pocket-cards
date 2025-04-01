@@ -1,46 +1,58 @@
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import React from 'react';
-import { useFocusEffect, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
-import { Animated, FlatList, GestureResponderEvent, Platform, StyleProp, TextInput, TextStyle, TouchableOpacity, View } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 
-import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { 
+  Animated, 
+  FlatList, 
+  GestureResponderEvent,
+   Platform, 
+   StyleProp, 
+   TextInput, 
+   TextStyle, 
+   TouchableOpacity, 
+   View 
+} from 'react-native';
+
 import { useI18n } from '@/core/providers/LanguageProvider';
-import { BACKUP_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/constants';
-import { GO_UP, NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
-import { AppContext } from '../_layout';
 import SoundService from '@/core/services/sounds.service';
-import { ThemedText } from '@/components/ThemedText';
-import { Attack } from '@/shared/definitions/interfaces/card.interfaces';
-import { ThemedView } from '@/components/ThemedView';
+
+import { cardStyles } from './cards';
+import { AppContext } from '../_layout';
+import { BACKUP_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/constants';
+import { Attack, AttackMetaData } from '@/shared/definitions/interfaces/card.interfaces';
 import { LanguageType } from '@/shared/definitions/types/global.types';
 import { ButtonStyles, CardGridStyles, ModalStyles } from '@/shared/styles/component.styles';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import { Colors } from '@/shared/definitions/utils/colors';
-import { renderAttackItem } from '@/components/dedicated/attacks/AttackItem';
-import { cardStyles } from './cards';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
+import { Colors } from '@/shared/definitions/utils/colors';
 import { filterAttacks, sortAttacks } from '@/shared/definitions/utils/functions';
-import { AttacksScreenModal } from '@/components/modals';
 import { FilterAttackSearch } from '@/shared/definitions/classes/filter_attack.class';
+
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import { RenderAttackItem } from '@/components/dedicated/attacks/AttackItem';
+import { AttacksScreenModal } from '@/components/modals';
 
 export default function AttacksScreen() {
   console.log('Attacks Screen')
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const router = useRouter();
-  const [attacks, setAttacks] = useState<(Attack)[]>([]);
+  const [attacks, setAttacks] = useState<(AttackMetaData)[]>([]);
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
   const searchQuery = useRef('');
-  const [filtered, setFiltered] = useState<Attack[]>([]);
+  const [filtered, setFiltered] = useState<AttackMetaData[]>([]);
   const [sort, setSort] = useState<SortItem>();
-  const flatListRef = useRef<FlatList<Attack> | null>(null);
+  const flatListRef = useRef<FlatList<AttackMetaData> | null>(null);
   const focused = useIsFocused();
 
-  const getUniqueItems = useCallback((arr: Attack[]): Attack[] => {
+  const getUniqueItems = useCallback((arr: AttackMetaData[]): AttackMetaData[] => {
     const seen = new Set();
     
     return arr.reduce((acc, item) => {
@@ -51,7 +63,7 @@ export default function AttacksScreen() {
         acc.push({ id: acc.length, ...item });
       }
       return acc;
-    }, [] as Attack[]);
+    }, [] as AttackMetaData[]);
   }, []);
 
   useEffect(() => {
@@ -66,38 +78,49 @@ export default function AttacksScreen() {
   }, [state.filterState.filters.attacks.sort]);
 
   useEffect(() => {
-    const attacks = state.cardState.cards.flatMap(card => card.attacks).filter(Boolean);
+    const attacks = state.cardState.cards.map(card => {
+      if (card.attacks) {
+        card.attacks = card.attacks.map((att, i) => {
+          return {
+            ...att,
+            card: card.id,
+            index: i
+          } as AttackMetaData
+        })
+      }
+
+      return card;
+
+    }).flatMap(card => card.attacks).filter(Boolean);
+
     if (attacks) {
-      const unique = getUniqueItems(attacks as Attack[]);
-      setAttacks(unique);
-      setFiltered(unique);
+      const unique = getUniqueItems(attacks as AttackMetaData[]);
+      setAttacks(unique as AttackMetaData[]);
+      setFiltered(unique as AttackMetaData[]);
       dispatch({type: 'SET_ATTACK_LIST', value: unique});
     }
   }, [state.cardState.cards]);
 
   const keyExtractor = useCallback((item: Attack, index: number) => String(item.name) + index, []);
 
-  const RenderEmpty = () => {
-    const renderCardState = useCallback(() => {
-      return state.cardState.loaded ? (
-        <ThemedText style={{ padding: 6 }}>{i18n.t('no_attacks_found')}</ThemedText>
-      ) : (<ThemedText>Loading</ThemedText>);
-    }, [state.cardState.loaded]);
-  
-    return renderCardState();
-  };
+  const RenderEmpty = useCallback(() => {
+    return state.cardState.loaded ? (
+      <ThemedText style={{ padding: 6 }}>{i18n.t('no_attacks_found')}</ThemedText>
+    ) : (<ThemedText>Loading</ThemedText>);
+  }, [state.cardState.loaded]);
 
-  const goToAttackDetail = useCallback((item: Attack) => {
+  const goToAttackDetail = useCallback((item: AttackMetaData) => {
     SoundService.play('AUDIO_MENU_OPEN');
-    dispatch({ type: 'SET_CURRENT_ATTACK', value: item });
-    dispatch({ type: 'SET_NAVIGATING', value: true });
-    router.push(`/screens/attack_detail`);
+    router.push(`/screens/attack_detail?id=${encodeURIComponent(`${item.card}_${item.index}`)}`);
   }, []);
 
   const handleSearch = useCallback((text: string) => {
     searchQuery.current = text;
-    setFiltered(state.attacksState.attack_list.filter(attack => attack.name[lang].toLowerCase()?.includes(text.toLowerCase())));
-  }, [state.attacksState.attack_list, lang]);
+    setFiltered(
+      attacks
+      .filter(attack => attack.name[lang]
+        .toLowerCase()?.includes(text.toLowerCase())) as AttackMetaData[]);
+  }, [attacks, lang]);
 
   const ResetFilterButton = useCallback(() => (
     <TouchableOpacity 
@@ -119,7 +142,7 @@ export default function AttacksScreen() {
     if(state.modalState.sort_attack_opened) { return; }
 
     const sorted = filterOrSortAttacks('sort', filtered, lang, state.filterState.filters.attacks.sort.find(s => s.active));
-    setFiltered(sorted);
+    setFiltered(sorted as AttackMetaData[]);
     setTimeout(() => goUp(null, false), 100);
   }, [state.modalState.sort_attack_opened, lang]);
 
@@ -130,7 +153,7 @@ export default function AttacksScreen() {
     const filterCards = filterOrSortAttacks('filter', attacks, lang);
     const sorted = filterOrSortAttacks('sort', filterCards, lang, state.filterState.filters.attacks.sort.find(s => s.active));
 
-    setFiltered(sorted);
+    setFiltered(sorted as AttackMetaData[]);
     setTimeout(() => goUp(null, false), 100);
   }, [attacks, state.modalState.filter_attack_opened, lang]);
 
@@ -166,15 +189,14 @@ export default function AttacksScreen() {
       return filterAttacks(filter as FilterAttackSearch, data);
   }, [state.filterState.filters.attacks.filter]);
 
-  const renderItem = useCallback(({item}: {item: Attack}) => 
-    renderAttackItem({ 
-      item, 
-      lang, 
-      onPress: () => goToAttackDetail(item), 
-      disabled: state.cardState.navigating,
-      focused
-  })
-  , [lang, state.cardState.navigating, focused]);
+  const renderItem = useCallback(({item}: {item: AttackMetaData}) => 
+    <RenderAttackItem 
+      item={item}
+      lang={lang}
+      focused={true}
+      onPress={() => goToAttackDetail(item)}
+    />
+  , [lang, focused]);
 
   const fixFilterIcon = useCallback(() => {
     return [
@@ -214,7 +236,7 @@ export default function AttacksScreen() {
         <TouchableOpacity
           style={ButtonStyles.button}
           onPress={goUp}
-          accessibilityLabel={GO_UP}
+          accessibilityLabel={'GO_UP'}
           accessibilityRole="button"
           accessible={true}
         >
@@ -238,7 +260,7 @@ export default function AttacksScreen() {
                           modalTitle='attacks'
                           modalContent={<AttacksScreenModal></AttacksScreenModal>}
                           modalHeight={BACKUP_HEIGHT}>
-        <FlatList data={(filtered as Attack[])}
+        <FlatList data={(filtered as AttackMetaData[])}
                   numColumns={1}
                   keyExtractor={keyExtractor}
                   initialNumToRender={25}
@@ -262,7 +284,7 @@ export default function AttacksScreen() {
                                     value={searchQuery.current}
                                     onChangeText={handleSearch}
                                     placeholderTextColor={Colors.light.text}
-                                    accessibilityLabel={SEARCH_LABEL}
+                                    accessibilityLabel={'SEARCH_LABEL'}
                                     editable={state.cardState.loaded}
                                     inputMode='text'
                                   />

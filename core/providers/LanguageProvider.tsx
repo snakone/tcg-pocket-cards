@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useState } from 'react';
+import React, { createContext, ReactNode, useContext, useMemo, useState } from 'react';
 import { getLocales } from 'expo-localization';
 import { I18n } from 'i18n-js';
 
@@ -13,16 +13,21 @@ const I18nContext = createContext({
 });
 
 export const I18nProvider = ({ children }: {children: ReactNode}) => {
-  const [_, set] = useState(getLocales()[0]?.languageCode ?? DEFAULT_LANG);
+  const [locale, setLocale] = useState(getLocales()[0]?.languageCode ?? DEFAULT_LANG);
 
   const changeLocale = (newLocale: string) => {
-    set(newLocale);
+    setLocale(newLocale);
     i18n.locale = newLocale;
     return newLocale;
   };
 
+  const contextValue = useMemo(() => ({
+    i18n,
+    setLocale: changeLocale,
+  }), [locale]); 
+
   return (
-    <I18nContext.Provider value={{ i18n, setLocale: changeLocale }}>
+    <I18nContext.Provider value={contextValue}>
       {children}
     </I18nContext.Provider>
   );

@@ -15,7 +15,6 @@ import { AvatarIcon, UserProfile } from "@/shared/definitions/interfaces/global.
 import { filterUniqueItems, getImageLanguage } from "@/shared/definitions/utils/functions";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { AppContext } from "@/app/_layout";
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 
 const COLLAGE_WIDTH = 1920;
 
@@ -42,7 +41,7 @@ export default function DeckCollage({
   const [data, setData] = useState<Card[]>(deck);
   const [ids, setIds] = useState<number[]>([]);
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
 

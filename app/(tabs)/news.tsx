@@ -1,37 +1,35 @@
-import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { FlatList, RefreshControl, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Subscription } from 'rxjs';
-import { useFocusEffect, useRouter } from 'expo-router';
-import { useIsFocused } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 
-import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { useI18n } from '@/core/providers/LanguageProvider';
-import { NewsScreenModal } from '@/components/modals';
-import NewsItem from '@/components/dedicated/news/NewsItem';
-import { LanguageType } from '@/shared/definitions/types/global.types';
-import { BACKUP_HEIGHT } from '@/shared/definitions/utils/constants';
-import { PocketNews } from '@/shared/definitions/interfaces/global.interfaces';
-import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import PocketNewsService from '@/core/services/news.service';
-import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
-import { AppContext } from '../_layout';
 import { useError } from '@/core/providers/ErrorProvider';
 import SoundService from '@/core/services/sounds.service';
 
+import { AppContext } from '../_layout';
+import { LanguageType } from '@/shared/definitions/types/global.types';
+import { BACKUP_HEIGHT } from '@/shared/definitions/utils/constants';
+import { PocketNews } from '@/shared/definitions/interfaces/global.interfaces';
+
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { NewsScreenModal } from '@/components/modals';
+import NewsItem from '@/components/dedicated/news/NewsItem';
+import LoadingOverlay from '@/components/ui/LoadingOverlay';
+
 export default function NewsScreen() {
   console.log('News Screen')
-  const focused = useIsFocused();
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [loading, setLoading] = useState(true);
   const newsService = useMemo(() => new PocketNewsService(), []);
   const { show: showError } = useError();
   const [refreshing, setRefreshing] = React.useState(false);
   const router = useRouter();
-  const flatListRef = useRef<FlatList<PocketNews> | null>(null);
 
   const loadPocketNews = useCallback(() => {
     const sub = newsService
@@ -55,7 +53,6 @@ export default function NewsScreen() {
 
   useEffect(() => {
     let sub: Subscription;
-
     !state.pocketNewsState.loaded ? sub = loadPocketNews() : setLoading(false);
 
     return () => {
@@ -65,31 +62,20 @@ export default function NewsScreen() {
     };
   }, []);
 
-  useFocusEffect(useCallback(() => {
-    goUp();
-  }, []));
-
-  async function goUp(): Promise<void> {
-    flatListRef.current?.scrollToOffset({offset: 0, animated: false});
-  }
-
   const handleClick = useCallback((id: string): void => {
     SoundService.play('CHANGE_VIEW');
-    dispatch({ type: 'SET_NAVIGATING', value: true });
     router.push(`/screens/news_detail?id=${encodeURIComponent(id)}`);
   }, []);
 
   const renderItem = useCallback(({item}: {item: PocketNews}) => {
     return (
-      <TouchableOpacity onPress={() => handleClick(item._id)}
-                        disabled={state.cardState.navigating}>
+      <TouchableOpacity onPress={() => handleClick(item._id)}>
         <NewsItem pocketNew={item} 
                   language={i18n.locale as LanguageType} 
-                  i18n={i18n}
-                  focused={focused}/>
+                  i18n={i18n}/>
       </TouchableOpacity>
     )
-  }, [state.cardState.navigating, focused]);
+  }, []);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -119,7 +105,6 @@ export default function NewsScreen() {
           initialNumToRender={6}
           maxToRenderPerBatch={6}
           windowSize={11}
-          ref={flatListRef}
           refreshControl={
             <RefreshControl refreshing={refreshing} 
                             onRefresh={onRefresh} 

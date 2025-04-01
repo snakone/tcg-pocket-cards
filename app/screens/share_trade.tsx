@@ -11,7 +11,6 @@ import SharedScreen from "@/components/shared/SharedScreen";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AppContext } from "../_layout";
 import Storage from '@/core/storage/storage.service';
 import ShareService from "@/core/services/share.service";
@@ -31,7 +30,7 @@ export default function ShareTradeScreen() {
   const {i18n} = useI18n();
   const { trade_id } = useLocalSearchParams<{ trade_id: string }>();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [trade, setTrade] = useState<TradeItem>();
   const [loading, setLoading] = useState(false);
@@ -63,12 +62,6 @@ export default function ShareTradeScreen() {
     const cards = state.cardState.cards.filter(card => trade?.desired.includes(card.id));
     setRarity(cards[0] && cards[0].rarity);
   }, [state.cardState.cards, trade]);
-
-  useEffect(() => {
-    return (() => {
-      dispatch({type: 'SET_NAVIGATING', value: false});
-    });
-  }, []);
 
   useEffect(() => {
     const getProfile = async () => {

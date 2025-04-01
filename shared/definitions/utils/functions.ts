@@ -106,6 +106,8 @@ export function filterCards(
   collection?: UserCollection[],
   collectionLang?: CardLanguageENUM
 ): Card[] {
+  if (filter.areAllPropertiesNull()) { return data; }
+  
   return data.filter(card => {
     if (
       filter.favorite.included !== null &&
@@ -629,3 +631,21 @@ export function roundPercentage(value: string): string {
   }
   return value + '%';
 }
+
+// FILTER-SORT ICONS
+export const getSortIcon = (sort: SortItem) => {
+  return [
+    { fontSize: 32, position: 'relative' },
+    sort?.label === 'order_by_hp' || sort?.label === 'order_by_rarity' ? { top: 1 } : null,
+    sort?.label === 'order_by_retreat' ? { top: -2 } : null,
+  ];
+};
+
+export const getSortOrderIcon = (sort: SortItem) => {
+  return !sort?.order ? 'arrow-upward' : 
+         sort.order === 'asc' ? 'arrow-upward' : 'arrow-downward';
+};
+
+export const getFilterIcon = (filterSearch: FilterSearch) => {
+  return filterSearch.areAllPropertiesNull() ? 'cancel' : 'check-circle';
+};

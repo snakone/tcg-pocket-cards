@@ -18,7 +18,7 @@ import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
                             borderColor: !item.valid  ? 'goldenrod' : 'transparent', 
                             borderWidth: !item.valid  ? 1 : 0
                           }]}>
-        <TouchableOpacity style={{flex: 1}} disabled={state.cardState.navigating} onPress={onPress}>
+        <TouchableOpacity style={{flex: 1}} onPress={onPress}>
           <ThemedView style={{flexDirection: 'row'}}>
             <ThemedView style={CreateScreenStyles.popularCards}>
               {

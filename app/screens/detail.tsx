@@ -30,7 +30,6 @@ import {
 
 import { ButtonStyles, cardDetailStyles, DetailStyles } from '@/shared/styles/component.styles';
 import { ThemedView } from "@/components/ThemedView";
-import { BACK_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { AppContext } from "../_layout";
 import SoundService from "@/core/services/sounds.service";
@@ -48,7 +47,7 @@ const MOVING_HEIGHT = 110;
 
 export default function DetailScreen() {
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const scrollService = useMemo(() => new ScrollService(), []);
   const styles = DetailStyles;
@@ -213,7 +212,6 @@ export default function DetailScreen() {
   }, []);
 
   async function goBack(): Promise<void> {
-    dispatch({type: 'SET_NAVIGATING', value: false});
     if (router.canGoBack()) {
       await playSound();
       router.back();
@@ -439,7 +437,7 @@ export default function DetailScreen() {
         <ThemedView style={styles.bottomContainer}>
           <TouchableOpacity style={ButtonStyles.button} 
                             onPress={goBack} 
-                            accessibilityLabel={BACK_SENTENCE}>
+                            accessibilityLabel={'BACK_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

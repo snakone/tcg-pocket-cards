@@ -6,7 +6,6 @@ import React from "react";
 
 import { SortItem, TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
-import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -16,6 +15,9 @@ import { AppContext } from "@/app/_layout";
 import { INITIAL_SORT_DATA } from "@/shared/definitions/utils/constants";
 import { cardStyles } from "@/app/(tabs)/cards";
 import SoundService from "@/core/services/sounds.service";
+import { SortRxjs } from "@/core/rxjs/SortRxjs";
+import { filter, firstValueFrom } from "rxjs";
+import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
 
 export default function SortCardMenu({
   isVisible,
@@ -25,7 +27,7 @@ export default function SortCardMenu({
 }: TabMenuCards) {
   const [data, setData] = useState(INITIAL_SORT_DATA);
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const {i18n} = useI18n();
   const styles = ModalStyles;
@@ -35,29 +37,33 @@ export default function SortCardMenu({
     await SoundService.play('AUDIO_MENU_CLOSE')
   }, []);
 
-  async function closeMenu(): Promise<void> {
-    await playSound();
-    onClose();
-  }
-
   const toggleActive = async (id: number) => {
-    await closeMenu();
     const updated: SortItem[] = data.map((item) =>
       item.id === id
-        ? { ...item, active: true, order: item.order === 'asc' ? 'desc' : 'asc' }
-        : { ...item, active: false }
-    );
+    ? { ...item, active: true, order: item.order === 'asc' ? 'desc' : 'asc' }
+    : { ...item, active: false }
+  );
   
     setData(updated);
-    dispatch({ type: 'SET_SORT', value: {key: filterKey, sort: updated} });
+    await closeMenu(updated);
   };
 
+  async function closeMenu(value?: SortItem[]): Promise<void> {
+    await playSound();
+    onClose();
+    
+    if (value) { SortRxjs.setSort({key: filterKey, value}); }
+    ModalRxjs.setModalVisibility({key: 'cardsSort', value: false});
+  }
+
   useEffect(() => {
-    if (state.filterState.filters[filterKey].sort.length > 0) {
-      const active = [...state.filterState.filters[filterKey].sort];
-      setData(active);
-    }
-  }, [state.filterState.filters[filterKey].sort])
+    const getSort = async () => {
+      const sort = await firstValueFrom(SortRxjs.getSort(filterKey));
+      setData(sort);
+    };
+
+    getSort();
+  }, [])
 
   const getOrderIcon = useCallback((item: SortItem) => {
     return !item?.order ? 'arrow-upward' : 
@@ -115,7 +121,7 @@ export default function SortCardMenu({
         <View style={styles.modalFooter}>
           <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

@@ -6,7 +6,6 @@ import Animated from 'react-native-reanimated';
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import StateButton from "@/components/ui/StateButton";
-import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
 import { MenuStyles, filterStyles, TabsMenuStyles, ModalStyles, ButtonStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 
@@ -150,7 +149,7 @@ export const ExpansionsMenu = React.memo(({filterObj, handleExpansion }: Expansi
       <View style={[ModalStyles.modalFooter]}>
           <TouchableOpacity style={ButtonStyles.button} 
                             onPress={() => handleExpansion(false)} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

@@ -7,7 +7,6 @@ import { Portal, Provider } from "react-native-paper";
 
 import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import SoundService from "@/core/services/sounds.service";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { ThemedView } from "@/components/ThemedView";
@@ -61,7 +60,7 @@ import {
 export default function CollectionStatsScreen() {
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [langCollection, setLangCollection] = useState<CardLanguageENUM>(state.settingsState.collection_language || CardLanguageENUM.EN);
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
@@ -112,15 +111,6 @@ export default function CollectionStatsScreen() {
     }
   }, [state.settingsState.collection_language]);
 
-  useEffect(() => {
-    setTimeout(() => dispatch({type: 'SET_NAVIGATING', value: false}), 1000);
-  }, []);
-
-  useEffect(() => {
-    return(() => {
-      dispatch({type: 'SET_NAVIGATING', value: false});
-    });
-  }, [])
 
   const filterAndSort = (filterFn: (card: Card) => boolean) => {
     const filtered = state.cardState.cards.filter(filterFn).sort((a, b) => a.order - b.order);

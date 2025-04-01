@@ -1,22 +1,23 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { FlatList, Platform, TextInput, TouchableOpacity, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useFocusEffect, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 
+import { useI18n } from '@/core/providers/LanguageProvider';
+import { SoundService } from '@/core/services/sounds.service';
+
+import { TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
+import { LARGE_MODAL_HEIGHT, MAX_CONTENT } from '@/shared/definitions/utils/constants';
+import { CardGridStyles, homeScreenStyles } from '@/shared/styles/component.styles';
+import { Colors } from '@/shared/definitions/utils/colors';
+
+import { AppContext } from '../_layout';
 import { TradeScreenModal } from '@/components/modals';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { LARGE_MODAL_HEIGHT, MAX_CONTENT } from '@/shared/definitions/utils/constants';
-import { NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
-import { CardGridStyles, homeScreenStyles } from '@/shared/styles/component.styles';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import { useI18n } from '@/core/providers/LanguageProvider';
-import { Colors } from '@/shared/definitions/utils/colors';
-import { ThemedText } from '@/components/ThemedText';
-import { SoundService } from '@/core/services/sounds.service';
 import TradeUserItem from '@/components/dedicated/trade/TradeUserItem';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { AppContext } from '../_layout';
-import { TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
 
 export default function TradeScreen() {
   console.log('Trade Screen')
@@ -26,9 +27,8 @@ export default function TradeScreen() {
   const [trades, setTrades] = useState<TradeItem[]>([]);
   const [filtered, setFiltered] = useState<TradeItem[]>([]);
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
-  const flatListRef = useRef<FlatList<TradeItem> | null>(null);
 
   const ResetFilterButton = () => (
     <TouchableOpacity onPress={() => handleSearch('')} 
@@ -37,18 +37,6 @@ export default function TradeScreen() {
       <IconSymbol name="clear" size={20} color="gray" />
     </TouchableOpacity>
   );
-
-  useFocusEffect(useCallback(() => {
-    goUp();
-
-    return (() => {
-      handleSearch('');
-    })
-  }, [trades]));
-
-  async function goUp(): Promise<void> {
-    flatListRef.current?.scrollToOffset({offset: 0, animated: false});
-  }
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
@@ -66,7 +54,6 @@ export default function TradeScreen() {
 
   function handleClick(item: TradeItem): void {
     SoundService.play('CHANGE_VIEW');
-    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/create_trade?trade_id=${encodeURIComponent(item.id)}`);
   }
 
@@ -74,7 +61,6 @@ export default function TradeScreen() {
     const rarity = state.cardState.cards.find(card => item.desired && item.desired.includes(card.id))?.rarity;
     return (
       <TouchableOpacity onPress={() => handleClick(item)}
-                        disabled={state.cardState.navigating}
                         style={[
                             {paddingHorizontal: Platform.OS !== 'web' ? 0 : 16},
                             index === 0 && {paddingTop: 12}
@@ -82,7 +68,7 @@ export default function TradeScreen() {
         <TradeUserItem item={item} rarity={rarity} state={state}/>
       </TouchableOpacity>
     )
-  }, [state.cardState.cards, state.settingsState.language, state.cardState.navigating]);
+  }, [state.cardState.cards, state.settingsState.language]);
 
   const renderEmpty = useCallback(() => {
     return <ThemedText style={{ paddingVertical: 12, paddingHorizontal: Platform.OS !== 'web' ? 6 : 22}}>
@@ -92,28 +78,25 @@ export default function TradeScreen() {
 
   function handleTrade(): void {
     SoundService.play('POP_PICK');
-    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/create_trade`);
   }
 
-  const renderFooter = useCallback(() => {
-    return (
-      <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16, paddingTop: 8}}>
-        <TouchableOpacity style={[
-          homeScreenStyles.ctaButton,
-          {marginBottom: 10, marginTop: 6, backgroundColor: 'mediumaquamarine'},
-          Platform.OS !== 'web' && {marginBottom: 16},
-          trades.length >= MAX_CONTENT && {opacity: 0.5}
-        ]} 
-            onPress={() => handleTrade()}
-            disabled={trades.length >= MAX_CONTENT || state.cardState.navigating}>
-          <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>
-            {i18n.t('make_a_trade')}
-          </ThemedText>
-        </TouchableOpacity>
-      </ThemedView>
-      )
-  }, [trades, state.cardState.navigating]);
+  const RenderFooter = useCallback(() => (
+    <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16, paddingTop: 8}}>
+      <TouchableOpacity style={[
+        homeScreenStyles.ctaButton,
+        {marginBottom: 10, marginTop: 6, backgroundColor: 'mediumaquamarine'},
+        Platform.OS !== 'web' && {marginBottom: 16},
+        trades.length >= MAX_CONTENT && {opacity: 0.5}
+      ]} 
+          onPress={() => handleTrade()}
+          disabled={trades.length >= MAX_CONTENT}>
+        <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>
+          {i18n.t('make_a_trade')}
+        </ThemedText>
+      </TouchableOpacity>
+    </ThemedView>
+   ), [trades]);
 
   return (
     <>
@@ -130,7 +113,6 @@ export default function TradeScreen() {
           initialNumToRender={6}
           stickyHeaderIndices={[0]}
           windowSize={12}
-          ref={flatListRef}
           bounces={false}
           overScrollMode='never'
           ListEmptyComponent={renderEmpty}
@@ -145,7 +127,7 @@ export default function TradeScreen() {
                               value={searchQuery}
                               onChangeText={handleSearch}
                               placeholderTextColor={Colors.light.text}
-                              accessibilityLabel={SEARCH_LABEL}
+                              accessibilityLabel={'SEARCH_LABEL'}
                               inputMode='text'
                             />
                     {searchQuery.length > 0 && <ResetFilterButton/>}
@@ -163,7 +145,7 @@ export default function TradeScreen() {
               </View>
           }
         />
-        {renderFooter()}
+        <RenderFooter></RenderFooter>
       </ParallaxScrollView>
     </>
   );

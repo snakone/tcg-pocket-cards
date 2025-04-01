@@ -7,7 +7,6 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
 import { SELECT_ENERGY_HEIGHT, TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 
@@ -116,7 +115,7 @@ export default function EnergyMenu({
           <View style={ScreenStyles.bottomContent}>
             <TouchableOpacity style={ButtonStyles.button} 
                               onPress={() => handleEnergyModal(false)} 
-                              accessibilityLabel={CLOSE_SENTENCE}>
+                              accessibilityLabel={'CLOSE_SENTENCE'}>
               <View style={ButtonStyles.insetBorder}>
                 <IconSymbol name="clear"></IconSymbol>
               </View>

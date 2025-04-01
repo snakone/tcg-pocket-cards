@@ -2,22 +2,23 @@ import { router, useFocusEffect } from 'expo-router';
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import Animated from 'react-native-reanimated';
 import { Platform, StyleSheet } from 'react-native';
+import { KeyboardAvoidingView, SectionList, TextInput, TouchableOpacity } from 'react-native';
+
+import { useI18n } from '@/core/providers/LanguageProvider';
+import SoundService from '@/core/services/sounds.service';
+
+import { AppContext } from '../_layout';
+import { CardGridStyles, CreateScreenStyles } from '@/shared/styles/component.styles';
+import { Colors } from '@/shared/definitions/utils/colors';
+import { StorageDeck, TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
+import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
-import { useI18n } from '@/core/providers/LanguageProvider';
 import { ShareScreenModal } from '@/components/modals';
-import { KeyboardAvoidingView, SectionList, TextInput, TouchableOpacity } from 'react-native';
-import { NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
-import { CardGridStyles, CreateScreenStyles, TabButtonStyles } from '@/shared/styles/component.styles';
-import { IconSymbol, SvgStackSymbol, SvgTradeSymbol } from '@/components/ui/IconSymbol';
-import { Colors } from '@/shared/definitions/utils/colors';
-import { AppContext } from '../_layout';
+import { IconSymbol } from '@/components/ui/IconSymbol';
 import { RenderDeckItem } from '@/components/dedicated/cards/DeckItem';
-import SoundService from '@/core/services/sounds.service';
-import { StorageDeck, TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
-import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
 import TradeUserItem from '@/components/dedicated/trade/TradeUserItem';
 
 export default function ShareScreen() {
@@ -29,7 +30,7 @@ export default function ShareScreen() {
   const [trades, setTrades] = useState<any[]>([]);
   const [filteredTrades, setFilteredTrades] = useState<any[]>([]);
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const flatListRef = useRef<SectionList<any> | null>(null);
 
@@ -46,8 +47,6 @@ export default function ShareScreen() {
   }, [state.settingsState.trades]);
 
   useFocusEffect(useCallback(() => {
-    goUp();
-
     return (() => {
       handleSearch('');
     })
@@ -84,12 +83,11 @@ export default function ShareScreen() {
     const rarity = state.cardState.cards.find(card => item?.desired.includes(card.id))?.rarity;
     return (
       <TouchableOpacity style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}} 
-                        onPress={() => openTrade(item)}
-                        disabled={state.cardState.navigating}>
+                        onPress={() => openTrade(item)}>
         <TradeUserItem item={item} rarity={rarity} state={state}/>
       </TouchableOpacity>
     )
-  }, [state.settingsState.trades, state.settingsState.language, state.cardState.navigating]);
+  }, [state.settingsState.trades, state.settingsState.language]);
 
   const renderEmpty = useCallback(() => {
     if (searchQuery.length > 0) {
@@ -110,13 +108,11 @@ export default function ShareScreen() {
   
   const openDeck = (deck: StorageDeck) => {
     SoundService.play('AUDIO_MENU_OPEN');
-    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/share_deck?deck_id=${encodeURIComponent(deck.id)}`);
   }
 
   const openTrade = (trade: TradeItem) => {
     SoundService.play('AUDIO_MENU_OPEN');
-    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/share_trade?trade_id=${encodeURIComponent(trade.id)}`);
   }
   
@@ -140,7 +136,7 @@ export default function ShareScreen() {
                             value={searchQuery}
                             onChangeText={handleSearch}
                             placeholderTextColor={Colors.light.text}
-                            accessibilityLabel={SEARCH_LABEL}
+                            accessibilityLabel={'SEARCH_LABEL'}
                             inputMode='text'
                           />
                   {searchQuery.length > 0 && <ResetFilterButton/>}

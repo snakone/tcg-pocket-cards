@@ -4,7 +4,6 @@ import { Image } from 'expo-image';
 import { FlatList, StyleSheet, View } from "react-native";
 import { Subscription } from "rxjs";
 
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AppContext } from "../_layout";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
@@ -21,7 +20,7 @@ import { pocketNewsStyles } from "@/components/dedicated/news/NewsItem";
 export default function NewsDetailScreen() {
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const { id } = useLocalSearchParams<{ id: string }>();
   const [loading, setLoading] = useState(true);
@@ -56,8 +55,6 @@ export default function NewsDetailScreen() {
       if (sub) {
         sub.unsubscribe();
       }
-      
-      dispatch({type: 'SET_NAVIGATING', value: false});
     };
   }, []);
 

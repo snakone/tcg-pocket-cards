@@ -22,7 +22,6 @@ import {
 } from "@/shared/styles/component.styles";
 
 import { ThemedView } from "@/components/ThemedView";
-import { CLOSE_SENTENCE, NO_CONTEXT, SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { detailScrollStyles } from "@/components/dedicated/detail/detail.scroll";
@@ -63,7 +62,7 @@ export default function CreateDeckScreen() {
   const [searchCard, setSearchCard] = useState('');
   const [loading, setLoading] = useState(false);
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [deck, setDeck] = useState<any[]>(Array.from({ length: 20 }, (_, i) => (null)));
   const [filtered, setFiltered] = useState<Card[]>(state.cardState.cards);
@@ -81,10 +80,6 @@ export default function CreateDeckScreen() {
 
   useEffect(() => {
     setLang(state.settingsState.language);
-
-    return (() => {
-      dispatch({type: 'RESET_FILTER', value: 'decks'});
-    })
   }, [state.settingsState.language]);
 
   const [element, setElement] = useState({
@@ -124,8 +119,7 @@ export default function CreateDeckScreen() {
   useEffect(() => {
     const sub = createService.currentDeck$.subscribe(deck => setDeck(deck));
     return () => {
-      sub.unsubscribe();
-      dispatch({type: 'SET_NAVIGATING', value: false});
+      if (sub) sub.unsubscribe();
     }
   }, []);
 
@@ -158,22 +152,18 @@ export default function CreateDeckScreen() {
     </View>
   ), []);
 
-  const renderHeader = useCallback(() => (
+  const RenderHeader = useCallback(() => (
     <ThemedView style={createDeckStyles.amount}>
       <MaterialIcons name={'image'} style={{fontSize: 18, top: 1, color: Colors.light.skeleton}}></MaterialIcons>
       <ThemedText style={{fontSize: 13}}>{deck.filter(d => Boolean(d)).length}/20</ThemedText>
     </ThemedView>
   ), [deck]);
 
-  const RenderEmpty = () => {
-    const renderCardState = useCallback(() => {
+  const RenderEmpty = useCallback(() => {
       return state.cardState.loaded ? (
         <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
       ) : (<SkeletonCardGrid columns={7} amount={56} width={47}/>);
-    }, [state.cardState.loaded]);
-  
-    return renderCardState();
-  };
+  }, [state.cardState.loaded]);
 
   const ResetFilterButton = ({style}: any) => (
     <TouchableOpacity onPress={() => (setDeckName(''), handleSearch(''), setNotSaved(true))} 
@@ -555,7 +545,7 @@ export default function CreateDeckScreen() {
     </View>
   )}, [deck]);
 
-  const cardListGrid = useCallback(() => (
+  const CardListGrid = useCallback(() => (
     <View style={{width: '100%', flex: 1, paddingBottom: 16}}>
       <FlatList data={filtered}
                 numColumns={numColumns}
@@ -600,7 +590,7 @@ export default function CreateDeckScreen() {
                          previousDeck={deck}/>
             <ThemedView style={{marginBottom: 20 }}></ThemedView>
 
-            {cardListGrid()}
+            <CardListGrid></CardListGrid>
 
             { loading ? null : state.cardState.cards?.length > 0 && (
               <>
@@ -629,7 +619,7 @@ export default function CreateDeckScreen() {
             <View style={ScreenStyles.bottomContent}>
               <Pressable style={ButtonStyles.button} 
                                 onPress={() => handleGridModal(false)} 
-                                accessibilityLabel={CLOSE_SENTENCE}>
+                                accessibilityLabel={'CLOSE_SENTENCE'}>
                 <View style={ButtonStyles.insetBorder}>
                   <IconSymbol name="clear"></IconSymbol>
                 </View>
@@ -652,7 +642,7 @@ export default function CreateDeckScreen() {
                       value={deckName}
                       onChangeText={(text) => (setDeckName(text), setNotSaved(true))}
                       placeholderTextColor={Colors.light.text}
-                      accessibilityLabel={SEARCH_LABEL}
+                      accessibilityLabel={'SEARCH_LABEL'}
                       inputMode='text'
                       maxLength={21}
                     />
@@ -721,11 +711,11 @@ export default function CreateDeckScreen() {
         {
           Platform.OS !== 'web' &&
            <ThemedView style={{position: 'absolute', right: 16, top: 108, zIndex: 100}}>
-            {renderHeader()}
+            <RenderHeader></RenderHeader>
            </ThemedView>
         }
 
-        <FlatList ListHeaderComponent={Platform.OS === 'web' ? renderHeader : null} 
+        <FlatList ListHeaderComponent={Platform.OS === 'web' ? RenderHeader : null} 
                   data={deck}
                   renderItem={renderItem}
                   numColumns={3}

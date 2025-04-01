@@ -1,9 +1,10 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { settingsInitialState, SettingsState } from '@/hooks/settings.reducer';
 import { CollectionUser } from '@/shared/definitions/classes/collection.class';
 import { CardLanguageENUM } from '@/shared/definitions/enums/card.enums';
 import { StorageDeck, TradeItem, UserCollection, UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
 import { areAllAmountsZero } from '@/shared/definitions/utils/functions';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default class Storage {
 

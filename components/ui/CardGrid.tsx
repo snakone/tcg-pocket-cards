@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 
 import { Image } from 'expo-image';
-import { useFocusEffect, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { Slider } from '@miblanchard/react-native-slider';
 
 import { 
@@ -27,7 +27,6 @@ import {
 } from '@/shared/styles/component.styles';
 
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { GO_UP, NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
 import SkeletonCardGrid from '../skeletons/SkeletonCardGrid';
 import { ThemedView } from '../ThemedView';
 import HeaderWithCustomModal from '../shared/HeaderModal';
@@ -45,6 +44,10 @@ import { LanguageType } from '@/shared/definitions/types/global.types';
 import { settingsStyles } from '@/app/screens/settings';
 import { FilterKey } from '@/hooks/filter.reducer';
 import { FilterSearch } from '@/shared/definitions/classes/filter.class';
+import { ModalRxjs } from '@/core/rxjs/ModalRxjs';
+import { combineLatest, filter, tap, withLatestFrom } from 'rxjs';
+import { FilterRxjs } from '@/core/rxjs/FilterRxjs';
+import { SortRxjs } from '@/core/rxjs/SortRxjs';
 
 interface GridCardProps {
   title: string,
@@ -61,7 +64,7 @@ export default function ImageGridWithSearch({
   type = 'default',
   filterKey
 }: GridCardProps) {
-  console.log('Card Crid')
+  console.log('Card Grid!')
   const searchQuery = useRef('');
   const [filtered, setFiltered] = useState<Card[]>([]);
   const flatListRef = useRef<FlatList<Card> | null>(null);
@@ -69,7 +72,7 @@ export default function ImageGridWithSearch({
   const {i18n} = useI18n();
   const [numColumns, setNumColumns] = useState(3);
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [lang, setLang] = useState<LanguageType>('en');
   const searchInputRef = useRef<any>();
@@ -88,23 +91,30 @@ export default function ImageGridWithSearch({
   }, [state.cardState.cards]);
 
   useEffect(() => {
-    if (!filtered || filtered.length === 0 || type === 'favorites') { return; }
-    if(state.modalState.sort_opened) { return; }
-    const sorted = filterOrSortCards('sort', filtered, state.filterState.filters[filterKey].sort.find(s => s.active));
-    setFiltered(sorted);
-    setTimeout(() => goUp(null, false), 100);
-  }, [state.modalState.sort_opened]);
+    const sub = combineLatest([
+      ModalRxjs.cardsModal$,
+      ModalRxjs.cardsSortModal$
+    ])
+    .pipe(
+      filter(_ => state.cardState.cards.length > 0),
+      withLatestFrom(
+        FilterRxjs.cardsFilter$,
+        SortRxjs.getSortActive('cards')
+      )
+    ).subscribe(([[filterOpen, sortOpen], filters, sort]) => {
+      if (!filterOpen && !sortOpen) {
+        const filterCards = filterOrSortCards('filter', state.cardState.cards, filters);
+        const sorted = filterOrSortCards('sort', filterCards, null, sort);
+    
+        setFiltered(sorted);
+        setTimeout(() => goUp(null, false), 100);
+      }
+    });
 
-  useEffect(() => {
-    if (!filtered || type === 'favorites') { return; }
-    if(state.modalState.filter_opened) { return; }
-  
-    const filterCards = filterOrSortCards('filter', state.cardState.cards);
-    const sorted = filterOrSortCards('sort', filterCards, state.filterState.filters[filterKey].sort.find(s => s.active));
-
-    setFiltered(sorted);
-    setTimeout(() => goUp(null, false), 100);
-  }, [state.modalState.filter_opened]);
+    return (() => {
+      if (sub) sub.unsubscribe();
+    })
+  }, [state.cardState.cards]);
 
   useEffect(() => {
     if (type !== 'favorites') return;
@@ -126,17 +136,18 @@ export default function ImageGridWithSearch({
   }, [(type === 'favorites' ? favorites : state.cardState.cards), lang]);
 
   const filterOrSortCards = useCallback(
-    (type: 'sort' | 'filter', data: Card[], sort?: SortItem): Card[] => {
+    (type: 'sort' | 'filter', data: Card[], filter?: FilterSearch | null, sort?: SortItem): Card[] => {
       switch (type) {
         case 'sort': {
           if (!sort) { return data; }
           return manageSort(sort, data);
         }
         case 'filter': {
-          return manageFilter(data);
+          if (!filter) { return data; }
+          return manageFilter(data, filter);
         }
       }
-  }, [state.filterState.filters[filterKey].filter]);
+  }, []);
 
   const manageSort = useCallback((sort: SortItem, data: Card[]): Card[] => {
     const sortField = SORT_FIELD_MAP[sort.label];
@@ -147,12 +158,11 @@ export default function ImageGridWithSearch({
     }
   
     return sortCards(sortField, data, sort);
-  }, [state.filterState.filters[filterKey].filter]);
+  }, []);
 
-  const manageFilter = useCallback((data: Card[]): Card[] => {
-    const filter = state.filterState.filters[filterKey].filter;
+  const manageFilter = useCallback((data: Card[], filter: FilterSearch): Card[] => {
     return filterCards(filter as FilterSearch, data, state.settingsState.favorites);
-  }, [state.filterState.filters[filterKey].filter, state.settingsState.favorites]);
+  }, [state.settingsState.favorites]);
 
   const renderFooter = useCallback(() => {
     if (filtered.length < 34) {
@@ -168,7 +178,7 @@ export default function ImageGridWithSearch({
         <TouchableOpacity
           style={ButtonStyles.button}
           onPress={goUp}
-          accessibilityLabel={GO_UP}
+          accessibilityLabel={'GO_UP'}
           accessibilityRole="button"
           accessible={true}>
           <View style={ButtonStyles.insetBorder}>
@@ -196,9 +206,8 @@ export default function ImageGridWithSearch({
         CardGridStyles.imageContainer, 
         {marginHorizontal: 1, marginVertical: 1}
       ]}>
-        <Pressable disabled={state.cardState.navigating} 
-                 onPress={() => goToDetailScreen(item.id)} 
-                 style={{ zIndex: 1, position: 'relative' }}>
+        <Pressable onPress={() => goToDetailScreen(item.id)} 
+                   style={{ zIndex: 1, position: 'relative' }}>
           { state.settingsState.favorites?.includes(item.id) && 
             <ThemedView style={CardGridStyles.triangle}></ThemedView>
           }
@@ -212,7 +221,7 @@ export default function ImageGridWithSearch({
                     getImageLanguage116x162(lang, item.id)}/>
       </Pressable>
     </View>
-  ), [gridNumber, state.cardState.navigating, state.settingsState.favorites, lang]);
+  ), [gridNumber, state.settingsState.favorites, lang]);
 
   const playSound = useCallback(async (isSwitch: boolean = false) => {
     if (isSwitch) { 
@@ -223,11 +232,9 @@ export default function ImageGridWithSearch({
   }, []);
 
   const goToDetailScreen = useCallback(async (id: number) => {
-    if (state.cardState.navigating) { return; }
     await playSound();
-    dispatch({ type: 'SET_NAVIGATING', value: true });
     router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
-  }, [state.cardState.navigating]);
+  }, []);
 
   const keyExtractor = useCallback((item: Card) => String(item.id), []);
 
@@ -317,7 +324,7 @@ export default function ImageGridWithSearch({
                               value={searchQuery.current}
                               onChangeText={handleSearch}
                               placeholderTextColor={Colors.light.text}
-                              accessibilityLabel={SEARCH_LABEL}
+                              accessibilityLabel={'SEARCH_LABEL'}
                               editable={state.cardState.loaded}
                               inputMode='text'
                               ref={searchInputRef}

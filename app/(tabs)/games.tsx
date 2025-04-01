@@ -8,7 +8,6 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { GamesScreenModal } from '@/components/modals';
 import { BACKUP_HEIGHT } from '@/shared/definitions/utils/constants';
-import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
 import { AppContext } from '../_layout';
 import SoundService from '@/core/services/sounds.service';
 import { ThemedView } from '@/components/ThemedView';
@@ -19,7 +18,7 @@ import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 export default function GamesScreen() {
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const router = useRouter();
   const [cards, setCards] = useState<Card[]>([]);

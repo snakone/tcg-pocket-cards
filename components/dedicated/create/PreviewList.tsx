@@ -7,7 +7,6 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
 import { CardGridStyles } from "@/shared/styles/component.styles";
 import { SoundService } from "@/core/services/sounds.service";
 import { AppState } from "@/hooks/root.reducer";
@@ -162,7 +161,7 @@ export default function PreviewList({
             <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]} 
                         placeholder={i18n.t('search_card_placeholder')}
                         placeholderTextColor={Colors.light.text}
-                        accessibilityLabel={SEARCH_LABEL}
+                        accessibilityLabel={'SEARCH_LABEL'}
                         inputMode='text'
                         onChangeText={handleSearch}/>
           </ThemedView>

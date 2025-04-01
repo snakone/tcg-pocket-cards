@@ -8,7 +8,6 @@ import { Image } from "expo-image";
 
 import { ExpansionMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
-import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -113,7 +112,7 @@ export default function SelectExpansionMenu({
         <View style={styles.modalFooter}>
           <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

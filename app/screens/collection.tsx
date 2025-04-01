@@ -8,7 +8,6 @@ import { Image } from 'expo-image';
 import { Platform } from 'react-native';
 
 import { AppContext } from '../_layout';
-import { CLOSE_SENTENCE, GO_UP, NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol, SvgStackSymbol } from '@/components/ui/IconSymbol';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
@@ -38,7 +37,7 @@ export default function CollectionCardsScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [sort] = useState<SortItem>();
   const [isSortVisible, setIsSortVisible] = useState(false);
@@ -79,7 +78,6 @@ export default function CollectionCardsScreen() {
     setTimeout(() => {
       SoundService.play('CHANGE_VIEW');
       dispatch({ type: 'SET_COLLECTION_LANGUAGE', value: language });
-      dispatch({ type: 'SET_NAVIGATING', value: true });
       router.push('/screens/collection_stats');
     }, 100);
   }, []);
@@ -133,16 +131,6 @@ export default function CollectionCardsScreen() {
   
     Storage.set('collection', collection);
   }, [collection]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch({type: 'SET_NAVIGATING', value: false});
-    }, 1000);
-    
-    return (() => {
-      dispatch({type: 'SET_NAVIGATING', value: false});
-    });
-  }, []);
   
   function onClose(): void {
     setIsSortVisible(false);
@@ -151,10 +139,6 @@ export default function CollectionCardsScreen() {
 
   useEffect(() => {
     setFiltered(state.cardState.cards);
-
-    return (() => {
-      dispatch({type: 'RESET_FILTER', value: 'collection'});
-    })
   }, [state.cardState.cards]);
 
   const fixFilterIcon = useCallback(() => {
@@ -316,8 +300,9 @@ export default function CollectionCardsScreen() {
 
   const keyExtractor = useCallback((item: Card) => String(item.id), []);
 
-  const getAmountAll = useCallback(() => {
-    return collection.reduce((acc, curr) => acc + curr.amount[langCollection], 0);
+  const GetAmountAll = useCallback(() => {
+    const total = collection.reduce((acc, curr) => acc + curr.amount[langCollection], 0);
+    return <ThemedText style={{fontSize: 13, textAlign: 'right'}}>{total}</ThemedText>;
   }, [collection, langCollection]);
 
   const renderFooter = useCallback(() => {
@@ -335,7 +320,7 @@ export default function CollectionCardsScreen() {
         <TouchableOpacity
           style={ButtonStyles.button}
           onPress={() => goUp()}
-          accessibilityLabel={GO_UP}
+          accessibilityLabel={'GO_UP'}
           accessibilityRole="button"
           accessible={true}
         >
@@ -354,17 +339,13 @@ export default function CollectionCardsScreen() {
     flatListRef.current?.scrollToOffset({offset: 0, animated: false});
   }
 
-  const RenderEmpty = () => {
-    const renderCardState = useCallback(() => {
-      return state.cardState.loaded ? (
-        <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
-      ) : (
-        <SkeletonCardGrid columns={5} />
-      );
-    }, [state.cardState.loaded]);
-  
-    return renderCardState();
-  };
+  const RenderEmpty = useCallback(() => {
+    return state.cardState.loaded ? (
+      <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
+    ) : (
+      <SkeletonCardGrid columns={5} />
+    );
+  }, [state.cardState.loaded]);
 
   return (
     <Provider>
@@ -381,7 +362,7 @@ export default function CollectionCardsScreen() {
                         value={searchQuery}
                         onChangeText={handleSearch}
                         placeholderTextColor={Colors.light.text}
-                        accessibilityLabel={SEARCH_LABEL}
+                        accessibilityLabel={'SEARCH_LABEL'}
                         inputMode='text'
                       />
                   {searchQuery.length > 0 && <ResetFilterButton/>}
@@ -396,7 +377,7 @@ export default function CollectionCardsScreen() {
                             height={18}
                             style={[
                             TabButtonStyles.stacks, {top: -2}]} />
-            <ThemedText style={{fontSize: 13, textAlign: 'right'}}>{getAmountAll()}</ThemedText>
+            <GetAmountAll></GetAmountAll>
           </ThemedView>
         </View>
         <FlatList data={filtered}
@@ -420,7 +401,7 @@ export default function CollectionCardsScreen() {
         <View style={ScreenStyles.bottomContent}>
           <Pressable style={ButtonStyles.button} 
                             onPress={goBack} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

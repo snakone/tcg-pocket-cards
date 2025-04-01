@@ -1,19 +1,17 @@
 import { BlurView } from "expo-blur";
 import { Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useState, useContext, useEffect } from "react";
+import { useCallback, useState, useContext } from "react";
 import { Switch } from "react-native-paper";
 import React from "react";
-import { useRouter } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import { COLLECTION_LANGUAGE_MAP, CollectionLanguageList, LANGUAGE_COLLECTION_MAP } from "@/shared/definitions/utils/constants";
 import { TabMenuCollection } from "@/shared/definitions/interfaces/layout.interfaces";
-import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { useI18n } from "../../../core/providers/LanguageProvider";
+import { useI18n } from "@/core/providers/LanguageProvider";
 import { AppContext } from "@/app/_layout";
 import SoundService from "@/core/services/sounds.service";
 import { Colors } from "@/shared/definitions/utils/colors";
@@ -39,7 +37,7 @@ export default function CollectionCardMenu({
   onViewStats
 }: TabMenuCollection) {
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const {i18n} = useI18n();
   const styles = ModalStyles;
@@ -138,7 +136,6 @@ export default function CollectionCardMenu({
             <ThemedText style={{paddingInline: 12, marginTop: 6, fontSize: 13}}>{'* ' + i18n.t('apply_to_language')}</ThemedText>
 
             <TouchableOpacity onPress={() => goToStats()}
-                              disabled={state.cardState.navigating}
                               style={[
                                 homeScreenStyles.ctaButton,
                                 offersStyles.statsBtn,
@@ -155,7 +152,7 @@ export default function CollectionCardMenu({
         <View style={styles.modalFooter}>
           <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

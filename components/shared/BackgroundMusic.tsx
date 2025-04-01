@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import { Audio } from 'expo-av';
 
 import Storage from '@/core/storage/storage.service';
-import { MUSIC_ERROR } from '@/shared/definitions/sentences/global.sentences';
 import { AppState } from '@/hooks/root.reducer';
 
 const BackgroundMusic = ({state, music}: {state: AppState, music: any}) => {
@@ -21,7 +20,7 @@ const BackgroundMusic = ({state, music}: {state: AppState, music: any}) => {
         if (!music || music === null) { return; }
         audio.current.replayAsync();
       } catch (error) {
-        console.error(MUSIC_ERROR, error);
+        console.error('MUSIC_ERROR', error);
       }
     };
 
