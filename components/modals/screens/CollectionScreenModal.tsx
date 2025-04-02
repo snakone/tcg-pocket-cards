@@ -5,9 +5,9 @@ import { Image } from 'expo-image';
 
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { sharedModalStyles } from "@/shared/styles/component.styles";
-import { ThemedText } from "../ThemedText";
-import { ThemedView } from "../ThemedView";
-import ScrollIndicator from "../ui/ScrollIndicator";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import ScrollIndicator from "@/components//ui/ScrollIndicator";
 import { COLLECTION_MENU, COLLECTION_MENU_BUTTON, COLLECTION_PICK, COLLECTION_SEARCH } from "@/shared/definitions/sentences/path.sentences";
 
 export function CollectionScreenModal() {

@@ -13,7 +13,7 @@ import { HERO_IMAGE } from '@/shared/definitions/sentences/path.sentences';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { HomeScreenModal } from '@/components/modals/HomeScreenModal';
+import { HomeScreenModal } from '@/components/modals/screens/HomeScreenModal';
 
 
 export default function HomeScreen() {

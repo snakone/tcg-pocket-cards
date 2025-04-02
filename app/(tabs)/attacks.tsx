@@ -2,80 +2,71 @@ import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import React from 'react';
 import { useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useIsFocused } from '@react-navigation/native';
+import { combineLatest, filter, withLatestFrom } from 'rxjs';
 
 import { 
-  Animated, 
   FlatList, 
   GestureResponderEvent,
    Platform, 
-   StyleProp, 
    TextInput, 
-   TextStyle, 
-   TouchableOpacity, 
    View 
 } from 'react-native';
 
 import { useI18n } from '@/core/providers/LanguageProvider';
 import SoundService from '@/core/services/sounds.service';
+import { ModalRxjs } from '@/core/rxjs/ModalRxjs';
+import { FilterRxjs } from '@/core/rxjs/FilterRxjs';
+import { SortRxjs } from '@/core/rxjs/SortRxjs';
 
 import { cardStyles } from './cards';
 import { AppContext } from '../_layout';
-import { BACKUP_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/constants';
+import { BACKUP_HEIGHT, SINGLE_SORT_DATA, SORT_FIELD_MAP } from '@/shared/definitions/utils/constants';
 import { Attack, AttackMetaData } from '@/shared/definitions/interfaces/card.interfaces';
 import { LanguageType } from '@/shared/definitions/types/global.types';
-import { ButtonStyles, CardGridStyles, ModalStyles } from '@/shared/styles/component.styles';
+import { CardGridStyles } from '@/shared/styles/component.styles';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { Colors } from '@/shared/definitions/utils/colors';
-import { filterAttacks, sortAttacks } from '@/shared/definitions/utils/functions';
 import { FilterAttackSearch } from '@/shared/definitions/classes/filter_attack.class';
+
+import { 
+  filterAttacks, 
+  getFilterIcon, 
+  getSortIconStyle, 
+  getSortOrderIcon, 
+  getUniqueAttacks, 
+  sortAttacks 
+} from '@/shared/definitions/utils/functions';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import { RenderAttackItem } from '@/components/dedicated/attacks/AttackItem';
 import { AttacksScreenModal } from '@/components/modals';
+import { SortAndFilterButtons } from '@/components/ui/FilterSortButtons';
+import { ResetFilterButton } from '@/components/ui/ResetFilterButton';
+import { FooterList } from '@/components/ui/FooterList';
 
 export default function AttacksScreen() {
   console.log('Attacks Screen')
   const {i18n} = useI18n();
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
+  const { state } = context;
   const router = useRouter();
   const [attacks, setAttacks] = useState<(AttackMetaData)[]>([]);
-  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const [lang, setLang] = useState<LanguageType>('en');
   const searchQuery = useRef('');
   const [filtered, setFiltered] = useState<AttackMetaData[]>([]);
-  const [sort, setSort] = useState<SortItem>();
+  const [sort, setSort] = useState<SortItem>(SINGLE_SORT_DATA);
   const flatListRef = useRef<FlatList<AttackMetaData> | null>(null);
-  const focused = useIsFocused();
-
-  const getUniqueItems = useCallback((arr: AttackMetaData[]): AttackMetaData[] => {
-    const seen = new Set();
-    
-    return arr.reduce((acc, item) => {
-      const key = `${item.name.es || ''}|${item.damage}|${item.description?.es || ''}`;
-      
-      if (!seen.has(key)) {
-        seen.add(key);
-        acc.push({ id: acc.length, ...item });
-      }
-      return acc;
-    }, [] as AttackMetaData[]);
-  }, []);
+  const [_, setFilterSearch] = useState<FilterAttackSearch>(new FilterAttackSearch());
+  const [sortIconStyle, setSortIconStyle] = useState<any>();
+  const [sortOrderIcon, setSortOrderIcon] = useState<any>();
+  const [filterIcon, setFilterIcon] = useState<any>();
 
   useEffect(() => {
     setLang(state.settingsState.language);
   }, [state.settingsState.language]);
-
-  useEffect(() => {
-    if (state.filterState.filters.attacks.sort.length > 0) {
-      const active = state.filterState.filters.attacks.sort.find(s => s.active);
-      setSort(active);
-    }
-  }, [state.filterState.filters.attacks.sort]);
 
   useEffect(() => {
     const attacks = state.cardState.cards.map(card => {
@@ -94,20 +85,72 @@ export default function AttacksScreen() {
     }).flatMap(card => card.attacks).filter(Boolean);
 
     if (attacks) {
-      const unique = getUniqueItems(attacks as AttackMetaData[]);
+      const unique = getUniqueAttacks(attacks as AttackMetaData[]);
       setAttacks(unique as AttackMetaData[]);
       setFiltered(unique as AttackMetaData[]);
-      dispatch({type: 'SET_ATTACK_LIST', value: unique});
     }
   }, [state.cardState.cards]);
 
-  const keyExtractor = useCallback((item: Attack, index: number) => String(item.name) + index, []);
+  function openFilter(): void {
+    ModalRxjs.setModalVisibility({key: 'attacks', value: true});
+  }
 
-  const RenderEmpty = useCallback(() => {
-    return state.cardState.loaded ? (
-      <ThemedText style={{ padding: 6 }}>{i18n.t('no_attacks_found')}</ThemedText>
-    ) : (<ThemedText>Loading</ThemedText>);
-  }, [state.cardState.loaded]);
+  function openSort(): void {
+    ModalRxjs.setModalVisibility({key: 'attacksSort', value: true});
+  }
+
+  useEffect(() => {
+    const sub = FilterRxjs.getFilter('attacks')
+      .subscribe(res => {
+        const value = Object.assign(Object.create(Object.getPrototypeOf(res)), res);
+        setFilterIcon(getFilterIcon(value));
+        setFilterSearch(value as FilterAttackSearch)
+      });
+
+      return (() => {
+        if (sub) sub.unsubscribe();
+      })
+  }, []);
+
+  useEffect(() => {
+    const sub = SortRxjs.getSortActive('attacks')
+      .pipe(filter(Boolean)).subscribe(res => 
+      (
+        setSort(res), 
+        setSortIconStyle(getSortIconStyle(res)),
+        setSortOrderIcon(getSortOrderIcon(res))
+      ));
+
+      return (() => {
+        if (sub) sub.unsubscribe();
+      })
+  }, []);
+
+  useEffect(() => {
+    const sub = combineLatest([
+      ModalRxjs.attacksModal$,
+      ModalRxjs.attacksSortModal$
+    ])
+    .pipe(
+      filter(_ => attacks.length > 0),
+      withLatestFrom(
+        FilterRxjs.getFilter<FilterAttackSearch>('attacks'),
+        SortRxjs.getSortActive('attacks')
+      )
+    ).subscribe(([[filterOpen, sortOpen], filters, sort]) => {
+      if (!filterOpen && !sortOpen) {
+        const filterCards = filterOrSortAttacks('filter', attacks as AttackMetaData[], lang, filters);
+        const sorted = filterOrSortAttacks('sort', filterCards, lang, null, sort);
+    
+        setFiltered(sorted);
+        setTimeout(() => goUp(null, false), 100);
+      }
+    });
+
+    return (() => {
+      if (sub) sub.unsubscribe();
+    })
+  }, [attacks]);
 
   const goToAttackDetail = useCallback((item: AttackMetaData) => {
     SoundService.play('AUDIO_MENU_OPEN');
@@ -122,131 +165,47 @@ export default function AttacksScreen() {
         .toLowerCase()?.includes(text.toLowerCase())) as AttackMetaData[]);
   }, [attacks, lang]);
 
-  const ResetFilterButton = useCallback(() => (
-    <TouchableOpacity 
-      onPress={() => handleSearch('')} 
-      style={[CardGridStyles.clearInput, {left: 246}]}
-      hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-    >
-      <IconSymbol name="clear" size={20} color="gray" />
-    </TouchableOpacity>
-  ), []);
-
-  async function handleActionMenu(action: string): Promise<void> {
-    SoundService.play('AUDIO_MENU_OPEN');
-    dispatch({type: action, value: true});
-  }
-
-  useEffect(() => {
-    if (!filtered || filtered.length === 0) { return; }
-    if(state.modalState.sort_attack_opened) { return; }
-
-    const sorted = filterOrSortAttacks('sort', filtered, lang, state.filterState.filters.attacks.sort.find(s => s.active));
-    setFiltered(sorted as AttackMetaData[]);
-    setTimeout(() => goUp(null, false), 100);
-  }, [state.modalState.sort_attack_opened, lang]);
-
-  useEffect(() => {
-    if (!filtered) { return; }
-    if(state.modalState.filter_attack_opened) { return; }
-    
-    const filterCards = filterOrSortAttacks('filter', attacks, lang);
-    const sorted = filterOrSortAttacks('sort', filterCards, lang, state.filterState.filters.attacks.sort.find(s => s.active));
-
-    setFiltered(sorted as AttackMetaData[]);
-    setTimeout(() => goUp(null, false), 100);
-  }, [attacks, state.modalState.filter_attack_opened, lang]);
-
-  const filterOrSortAttacks = useCallback(
-    (type: 'sort' | 'filter', data: Attack[], lang: LanguageType, sort?: SortItem) => {
+  const filterOrSortAttacks = useCallback((
+    type: 'sort' | 'filter', 
+    data: AttackMetaData[],
+    lang: LanguageType,
+    filter?: FilterAttackSearch | null, 
+    sort?: SortItem,
+  ): AttackMetaData[] => {
       switch (type) {
         case 'sort': {
           if (!sort) { return data; }
           return manageSort(sort, data, lang);
         }
-  
         case 'filter': {
-          return manageFilter(data);
+          if (!filter) { return data; }
+          return filterAttacks(filter as FilterAttackSearch, data);
         }
       }
-  }, [state.filterState.filters.attacks.filter]);
+  }, []);
 
-  const manageSort = useCallback(
-    (sort: SortItem, data: Attack[], lang: LanguageType): Attack[] => {
-      const sortField = SORT_FIELD_MAP[sort.label];
+  const manageSort = useCallback((sort: SortItem, data: AttackMetaData[], lang: LanguageType): AttackMetaData[] => {
+    const sortField = SORT_FIELD_MAP[sort.label];
   
-      if (!sortField) {
-        console.error(`Unsupported sorting option: ${sort.label}`);
-        return data;
-      }
+    if (!sortField) {
+      console.error(`Unsupported sorting option: ${sort.label}`);
+      return data;
+    }
   
-      return sortAttacks(sortField, data, sort, lang);
-  }, [state.filterState.filters.attacks.filter]);
-
-  const manageFilter = useCallback(
-    (data: Attack[]): Attack[] => {
-      const filter = state.filterState.filters.attacks.filter;
-      return filterAttacks(filter as FilterAttackSearch, data);
-  }, [state.filterState.filters.attacks.filter]);
+    return sortAttacks(sortField, data, sort, lang);
+  }, [lang]);
 
   const renderItem = useCallback(({item}: {item: AttackMetaData}) => 
     <RenderAttackItem 
       item={item}
       lang={lang}
-      focused={true}
       onPress={() => goToAttackDetail(item)}
-    />
-  , [lang, focused]);
-
-  const fixFilterIcon = useCallback(() => {
-    return [
-      { fontSize: 32, position: 'relative' }, 
-      sort?.label === 'order_by_hp' || sort?.label === 'order_by_rarity' ? {top: 1} : null,
-      sort?.label === 'order_by_retreat' ? {top: -2} : null
-    ]
-  }, [sort]);
-
-  const getOrderIcon = useCallback(() => {
-    return !sort?.order ? 'arrow-upward' : 
-            sort.order === 'asc' ? 'arrow-upward' : 'arrow-downward'
-  }, [sort]);
-
-  const getFilterOrderIcon = useCallback(() => {
-    return state.filterState.filters.attacks.filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
-  }, [state.filterState.filters.attacks.filter]);
+  />, [lang]);
 
   async function goUp(_: GestureResponderEvent | null, sound = true): Promise<void> {
     if (sound) SoundService.play('PICK_CARD_SOUND');
     flatListRef.current?.scrollToOffset({offset: 0, animated: false});
   }
-
-  const renderFooter = useCallback(() => {
-    if (filtered.length < 15) {
-      return <ThemedView style={{ height: 20 }}></ThemedView>;
-    }
-
-    return (
-      <View
-        style={[
-          ModalStyles.modalFooter,
-          { marginBottom: 34, marginTop: 26, boxShadow: 'none' },
-          i18n.locale === 'ja' && {top: -2}
-        ]}
-      >
-        <TouchableOpacity
-          style={ButtonStyles.button}
-          onPress={goUp}
-          accessibilityLabel={'GO_UP'}
-          accessibilityRole="button"
-          accessible={true}
-        >
-          <View style={ButtonStyles.insetBorder}>
-            <ThemedText>{i18n.t('go_up')}</ThemedText>
-          </View>
-        </TouchableOpacity>
-      </View>
-    )
-  }, [searchQuery.current, filtered.length]);
 
   const getItemLayout = useCallback((_: any, index: number) => ({
     length: 52,
@@ -254,12 +213,38 @@ export default function AttacksScreen() {
     index, 
   }), []);
 
+  const keyExtractor = useCallback((item: Attack, index: number) => String(item.name) + index, []);
+
   return (
     <>
       <ParallaxScrollView title={"attack_list"} 
                           modalTitle='attacks'
                           modalContent={<AttacksScreenModal></AttacksScreenModal>}
                           modalHeight={BACKUP_HEIGHT}>
+        <View style={[CardGridStyles.inputContainer, {paddingBottom: 2}]}>
+          <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: 280, borderRadius: 8}}>
+            <TextInput style={[CardGridStyles.searchInput, {width: '100%', left: 1, position: 'relative'}]}
+                        placeholder={i18n.t('search_attack_placeholder')}
+                        value={searchQuery.current}
+                        onChangeText={handleSearch}
+                        placeholderTextColor={Colors.light.text}
+                        accessibilityLabel={'SEARCH_LABEL'}
+                        editable={state.cardState.loaded}
+                        inputMode='text'
+                      />
+                  {searchQuery.current.length > 0 && 
+                    <ResetFilterButton left={246} onPress={() => handleSearch('')}/>}
+          </ThemedView>
+
+          <ThemedView style={[CardGridStyles.actionsContainer, 
+            Platform.OS !== 'web' && {marginRight: 2}, {justifyContent: 'flex-end', top: 1}]}>
+            <MaterialIcons name="photo-library" 
+                            style={{fontSize: 20, marginLeft: 16, top: 1}} 
+                            color={Colors.light.skeleton}>
+            </MaterialIcons>
+            <ThemedText style={[CardGridStyles.totalCards]}>{filtered.length}</ThemedText>                    
+          </ThemedView>
+        </View>
         <FlatList data={(filtered as AttackMetaData[])}
                   numColumns={1}
                   keyExtractor={keyExtractor}
@@ -270,62 +255,22 @@ export default function AttacksScreen() {
                   ref={flatListRef}
                   removeClippedSubviews={false}
                   showsVerticalScrollIndicator={false}
-                  ListEmptyComponent={RenderEmpty}
+                  ListEmptyComponent={<ThemedText style={{ padding: 6 }}>{i18n.t('no_attacks_found')}</ThemedText>}
                   renderItem={renderItem}
                   bounces={false}
                   overScrollMode='never'
-                  stickyHeaderIndices={[0]}
-                  ListFooterComponent={renderFooter}
-                  ListHeaderComponent={
-                    <Animated.View style={[CardGridStyles.inputContainer]}>
-                      <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: 280, borderRadius: 8}}>
-                        <TextInput style={[CardGridStyles.searchInput, {width: '100%', left: 1, position: 'relative'}]}
-                                    placeholder={i18n.t('search_attack_placeholder')}
-                                    value={searchQuery.current}
-                                    onChangeText={handleSearch}
-                                    placeholderTextColor={Colors.light.text}
-                                    accessibilityLabel={'SEARCH_LABEL'}
-                                    editable={state.cardState.loaded}
-                                    inputMode='text'
-                                  />
-                              {searchQuery.current.length > 0 && <ResetFilterButton/>}
-                      </ThemedView>
-  
-                      <ThemedView style={[CardGridStyles.actionsContainer, 
-                        Platform.OS !== 'web' && {marginRight: 2}, {justifyContent: 'flex-end', top: 1}]}>
-                        <MaterialIcons name="photo-library" 
-                                       style={{fontSize: 20, marginLeft: 16, top: 1}} 
-                                       color={Colors.light.skeleton}>
-                        </MaterialIcons>
-                        <ThemedText style={[CardGridStyles.totalCards]}>{filtered.length}</ThemedText>                    
-                      </ThemedView>
-                    </Animated.View>
+                  ListFooterComponent={
+                    <FooterList filteredLength={filtered.length} onPress={() => goUp(null)}></FooterList>
                   }
-        />
+                  keyboardDismissMode={'on-drag'}/>
       </ParallaxScrollView>
-      { attacks?.length > 0 ? (
-        <>
-          <TouchableOpacity onPress={() => handleActionMenu('OPEN_ATTACK_SORT')} style={[cardStyles.container, {right: 22}]}>
-            <ThemedView>
-              <MaterialIcons name={(sort?.icon as any) || 'content-paste-search'} 
-                              color={'skyblue'} 
-                              style={fixFilterIcon() as StyleProp<TextStyle>}> 
-              </MaterialIcons>
-              <MaterialIcons name={getOrderIcon()} style={cardStyles.sortIcon}></MaterialIcons>
-            </ThemedView>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => (handleActionMenu('OPEN_ATTACK_FILTER'))} 
-                            style={[cardStyles.container, {bottom: 88, right: 22}]}>
-            <ThemedView>
-              <IconSymbol name="cat.circle" 
-                          color={'mediumaquamarine'} 
-                          style={{fontSize: 32}}>
-              </IconSymbol>
-              <MaterialIcons name={getFilterOrderIcon()} style={cardStyles.sortIcon}></MaterialIcons>
-            </ThemedView>
-          </TouchableOpacity>       
-        </>
-      ) : null}
+      <SortAndFilterButtons sort={sort}
+                            filterIcon={filterIcon}
+                            filterPress={openFilter}
+                            sortPress={openSort}
+                            sortIconStyle={sortIconStyle}
+                            sortOrderIcon={sortOrderIcon}
+                            styles={cardStyles}/>
     </>
   );
 }

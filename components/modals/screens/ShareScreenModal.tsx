@@ -4,10 +4,10 @@ import { useSharedValue } from "react-native-reanimated";
 import { Image } from 'expo-image';
 
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { ThemedText } from "../ThemedText";
 import { sharedModalStyles } from "@/shared/styles/component.styles";
-import { ThemedView } from "../ThemedView";
-import ScrollIndicator from "../ui/ScrollIndicator";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import ScrollIndicator from "@/components//ui/ScrollIndicator";
 import { SHARE_BLASTOISE, SHARE_CHARIZARD, SHARE_LIST, SHARE_OPTIONS, SHARE_OPTIONS_TRADE } from "@/shared/definitions/sentences/path.sentences";
 
 export function ShareScreenModal() {

@@ -32,6 +32,7 @@ import { CollectionUser } from '@/shared/definitions/classes/collection.class';
 import { UserCollection } from '@/shared/definitions/interfaces/global.interfaces';
 import { useConfirmation } from '@/core/providers/ConfirmationProvider';
 import { FilterSearch } from '@/shared/definitions/classes/filter.class';
+import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
 
 export default function CollectionCardsScreen() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -293,7 +294,8 @@ export default function CollectionCardsScreen() {
           CardGridStyles.image, 
           {width: CARD_IMAGE_WIDTH_5}
         ]} 
-        source={getImageLanguage69x96(lang, item.id)}/>
+        source={getImageLanguage69x96(lang, item.id)}
+        placeholder={BACKWARD_CARD}/>
       </TouchableOpacity>
     </View>
   )}, [collection, lang, langCollection]);
@@ -388,6 +390,7 @@ export default function CollectionCardsScreen() {
                   initialNumToRender={20}
                   maxToRenderPerBatch={25}
                   windowSize={12}
+                  keyboardDismissMode={'on-drag'}
                   getItemLayout={getItemLayout}
                   removeClippedSubviews={true}
                   showsVerticalScrollIndicator={false}

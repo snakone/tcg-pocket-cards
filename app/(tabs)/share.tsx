@@ -150,6 +150,7 @@ export default function ShareScreen() {
           <SectionList stickySectionHeadersEnabled
               showsVerticalScrollIndicator={false}
               ref={flatListRef}
+              keyboardDismissMode={'on-drag'}
               SectionSeparatorComponent={(section) => <ThemedView style={{height: 16}}></ThemedView>}
               sections={[
               { title: i18n.t('decks'), 

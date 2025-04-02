@@ -1,12 +1,8 @@
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+
 import SoundService from '../services/sounds.service';
-
-export interface ModalStatePayload {
-  key: ModalType;
-  value: boolean;
-}
-
-export type ModalType = 'cards' | 'attacks' | 'cardsSort' | 'attacksSort' | 'avatar' | 'coin' | 'best';
+import { ModalStatePayload } from '@/shared/definitions/interfaces/layout.interfaces';
+import { ModalType } from '@/shared/definitions/types/global.types';
 
 class ModalState {
   public cardsModal$ = new BehaviorSubject<boolean>(false);

@@ -5,9 +5,6 @@ import { useSharedValue } from "react-native-reanimated";
 
 import { sharedModalStyles } from "@/shared/styles/component.styles";
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { ThemedText } from "../ThemedText";
-import { ThemedView } from "../ThemedView";
-import ScrollIndicator from "../ui/ScrollIndicator";
 
 import { 
   GRID_SEARCH,
@@ -16,6 +13,9 @@ import {
   GRID_SORT, 
   GRID_SORT_ICON
 } from "@/shared/definitions/sentences/path.sentences";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import ScrollIndicator from "@/components/ui/ScrollIndicator";
 
 export function CardsScreenModal() {
   const scrollY = useSharedValue(0);

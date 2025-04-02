@@ -25,6 +25,7 @@ import { CardExpansionTypeENUM, CardRarityENUM } from "@/shared/definitions/enum
 import { createDeckStyles } from "@/app/screens/create_deck";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { collectionStyles } from "@/app/screens/collection";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
 const numColumns = 6;
 
@@ -68,7 +69,7 @@ export default function PickDesiredMenu({
 
   async function closeMenu(sound = true): Promise<void> {
     if (sound) { await playSound(); }
-    onClose(current);
+    onClose?.(current);
   }
 
 
@@ -198,6 +199,7 @@ export default function PickDesiredMenu({
           }
           <Image accessibilityLabel={item.name[lang]}
                   source={getImageLanguage69x96(lang, item.id)}
+                  placeholder={BACKWARD_CARD}
                   style={[
                   CardGridStyles.image, 
                   {width: Platform.OS === 'web' ? 57.6 : 58}
@@ -239,7 +241,8 @@ export default function PickDesiredMenu({
                     CardGridStyles.image, 
                     {width: 67.5}
                   ]} 
-                source={getImageLanguage116x162(lang, current[index])}/>
+                source={getImageLanguage116x162(lang, current[index])}
+                placeholder={BACKWARD_CARD}/>
               </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
               }
             </View>
@@ -356,6 +359,7 @@ export default function PickDesiredMenu({
                                     contentContainerStyle={{width: '100%', marginTop: 12}}
                                     style={{width: '100%', borderRadius: 8}}
                                     showsVerticalScrollIndicator={false}
+                                    keyboardDismissMode={'on-drag'}
                                     keyExtractor={(item, index) => index + ''}/>
                         </ThemedView>
                         

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { TouchableOpacity, StyleSheet, StyleProp, TextStyle } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { StyleSheet } from 'react-native';
 import React from 'react';
 import { filter } from 'rxjs';
 
@@ -8,22 +7,21 @@ import { FilterRxjs } from '@/core/rxjs/FilterRxjs';
 import { ModalRxjs } from '@/core/rxjs/ModalRxjs';
 import { SortRxjs } from '@/core/rxjs/SortRxjs';
 
-import { getFilterIcon, getSortIcon, getSortOrderIcon } from '@/shared/definitions/utils/functions';
+import { getFilterIcon, getSortIconStyle, getSortOrderIcon } from '@/shared/definitions/utils/functions';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { SINGLE_SORT_DATA } from '@/shared/definitions/utils/constants';
 import { FilterSearch } from '@/shared/definitions/classes/filter.class';
 import { Colors } from '@/shared/definitions/utils/colors';
 
 import ImageGridWithSearch from '@/components/ui/CardGrid';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import { CardsScreenModal } from '@/components/modals/CardsScreenModal';
+import { CardsScreenModal } from '@/components/modals';
+import { SortAndFilterButtons } from '@/components/ui/FilterSortButtons';
 
 export default function CardsScreen() {
   console.log('Cards Screen')
   const [sort, setSort] = useState<SortItem>(SINGLE_SORT_DATA);
   const [_, setFilterSearch] = useState<FilterSearch>(new FilterSearch());
-  const [sortIcon, setSortIcon] = useState<any>();
+  const [sortIconStyle, setSortIconStyle] = useState<any>();
   const [sortOrderIcon, setSortOrderIcon] = useState<any>();
   const [filterIcon, setFilterIcon] = useState<any>();
 
@@ -40,7 +38,8 @@ export default function CardsScreen() {
       .subscribe(res => {
         const value = Object.assign(Object.create(Object.getPrototypeOf(res)), res);
         setFilterIcon(getFilterIcon(value));
-        setFilterSearch(value as FilterSearch)});
+        setFilterSearch(value as FilterSearch)
+      });
 
      return (() => {
       if (sub) sub.unsubscribe();
@@ -52,7 +51,7 @@ export default function CardsScreen() {
      .pipe(filter(Boolean)).subscribe(res => 
       (
         setSort(res), 
-        setSortIcon(getSortIcon(res)),
+        setSortIconStyle(getSortIconStyle(res)),
         setSortOrderIcon(getSortOrderIcon(res))
       ));
 
@@ -67,27 +66,14 @@ export default function CardsScreen() {
                            modalTitle='cards'
                            title='card_collection'
                            filterKey={"cards"}/>
-        <>
-          <TouchableOpacity onPress={openSort} style={cardStyles.container}>
-            <ThemedView>
-              <MaterialIcons name={(sort?.icon as any) || 'content-paste-search'} 
-                             color={'skyblue'} 
-                             style={sortIcon as StyleProp<TextStyle>}> 
-              </MaterialIcons>
-              <MaterialIcons name={sortOrderIcon} style={cardStyles.sortIcon}></MaterialIcons>
-            </ThemedView>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={openFilter} 
-                            style={[cardStyles.container, {bottom: 88}]}>
-            <ThemedView>
-              <IconSymbol name="cat.circle" 
-                          color={'mediumaquamarine'} 
-                          style={{fontSize: 32}}>
-              </IconSymbol>
-              <MaterialIcons name={filterIcon} style={cardStyles.sortIcon}></MaterialIcons>
-            </ThemedView>
-          </TouchableOpacity>       
-        </>
+
+      <SortAndFilterButtons sort={sort}
+                            filterIcon={filterIcon}
+                            filterPress={openFilter}
+                            sortPress={openSort}
+                            sortIconStyle={sortIconStyle}
+                            sortOrderIcon={sortOrderIcon}
+                            styles={cardStyles}/>
     </>
   );
 }

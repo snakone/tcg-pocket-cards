@@ -20,6 +20,7 @@ import SharedScreen from "@/components/shared/SharedScreen";
 import { detailScrollStyles } from "@/components/dedicated/detail/detail.scroll";
 import SkeletonCardGrid from "@/components/skeletons/SkeletonCardGrid";
 import { RenderAttackItem } from "@/components/dedicated/attacks/AttackItem";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
 export default function AttackDetailScreen() {
   const {i18n} = useI18n();
@@ -103,6 +104,7 @@ export default function AttackDetailScreen() {
         <View>
           <Image accessibilityLabel={item.name[lang]}
                  source={getImageLanguage116x162(lang, item.id)}
+                 placeholder={BACKWARD_CARD}
                  style={[
                   CardGridStyles.image, 
                   {width: 64.6}

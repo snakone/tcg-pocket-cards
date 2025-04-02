@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { FlatList, Platform, TextInput, TouchableOpacity, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
@@ -60,29 +60,19 @@ export default function TradeScreen() {
   const renderItem = useCallback(({item, index}: {item: TradeItem, index: number}) => {
     const rarity = state.cardState.cards.find(card => item.desired && item.desired.includes(card.id))?.rarity;
     return (
-      <TouchableOpacity onPress={() => handleClick(item)}
-                        style={[
-                            {paddingHorizontal: Platform.OS !== 'web' ? 0 : 16},
-                            index === 0 && {paddingTop: 12}
-                          ]}>
+      <TouchableOpacity onPress={() => handleClick(item)}>
         <TradeUserItem item={item} rarity={rarity} state={state}/>
       </TouchableOpacity>
     )
   }, [state.cardState.cards, state.settingsState.language]);
-
-  const renderEmpty = useCallback(() => {
-    return <ThemedText style={{ paddingVertical: 12, paddingHorizontal: Platform.OS !== 'web' ? 6 : 22}}>
-        {i18n.t('no_trades_found')}
-      </ThemedText>
-  }, []);
 
   function handleTrade(): void {
     SoundService.play('POP_PICK');
     router.push(`/screens/create_trade`);
   }
 
-  const RenderFooter = useCallback(() => (
-    <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16, paddingTop: 8}}>
+  const RenderFooter = useMemo(() => (
+    <ThemedView style={{paddingTop: 8}}>
       <TouchableOpacity style={[
         homeScreenStyles.ctaButton,
         {marginBottom: 10, marginTop: 6, backgroundColor: 'mediumaquamarine'},
@@ -98,13 +88,51 @@ export default function TradeScreen() {
     </ThemedView>
    ), [trades]);
 
+   const RenderHeader = useMemo(() => (
+    <View style={CardGridStyles.inputContainer}>
+      <ThemedView
+        style={{
+          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
+          width: "78%",
+          borderRadius: 8,
+        }}>
+        <TextInput
+          style={[CardGridStyles.searchInput, { width: "100%" }]}
+          placeholder={i18n.t("search_trade")}
+          value={searchQuery}
+          onChangeText={handleSearch}
+          placeholderTextColor={Colors.light.text}
+          accessibilityLabel={"SEARCH_LABEL"}
+          inputMode="text"
+        />
+        {searchQuery.length > 0 && <ResetFilterButton />}
+      </ThemedView>
+
+      <View
+        style={[
+          CardGridStyles.actionsContainer,
+          Platform.OS !== "web" && { marginRight: 2 },
+          { justifyContent: "flex-end" },
+        ]}>
+        <MaterialIcons
+          name="sync"
+          style={{ fontSize: 21, marginLeft: 16, top: 1 }}
+          color={Colors.light.skeleton}
+        />
+        <ThemedText style={[CardGridStyles.totalCards]}>
+          {trades?.length}/30
+        </ThemedText>
+      </View>
+    </View>
+  ), [searchQuery, trades.length]);
+
   return (
     <>
       <ParallaxScrollView title={"trades"} 
                           modalTitle='trades'
                           modalContent={<TradeScreenModal></TradeScreenModal>}
                           modalHeight={LARGE_MODAL_HEIGHT}
-                          styles={{paddingHorizontal: 0, gap: 0}}>
+                          styles={{gap: 0}}>
         <FlatList
           data={filtered.sort((b, a) => a?.id - b?.id)}
           renderItem={renderItem}
@@ -114,38 +142,12 @@ export default function TradeScreen() {
           stickyHeaderIndices={[0]}
           windowSize={12}
           bounces={false}
+          keyboardDismissMode={'on-drag'}
           overScrollMode='never'
-          ListEmptyComponent={renderEmpty}
-          ListHeaderComponent={
-              <View style={[
-                  CardGridStyles.inputContainer, 
-                  {paddingHorizontal: Platform.OS !== 'web' ? 0 : 16, paddingBottom: 9}
-                ]}>
-                  <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '78%', borderRadius: 8}}>
-                    <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
-                              placeholder={i18n.t('search_trade')}
-                              value={searchQuery}
-                              onChangeText={handleSearch}
-                              placeholderTextColor={Colors.light.text}
-                              accessibilityLabel={'SEARCH_LABEL'}
-                              inputMode='text'
-                            />
-                    {searchQuery.length > 0 && <ResetFilterButton/>}
-                  </ThemedView>
-
-                <View style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && 
-                                    {marginRight: 2}, {justifyContent: 'flex-end'}
-                                  ]}>
-                  <MaterialIcons name="sync" 
-                                 style={{fontSize: 21, marginLeft: 16, top: 1}} 
-                                 color={Colors.light.skeleton}>
-                  </MaterialIcons>
-                  <ThemedText style={[CardGridStyles.totalCards]}>{trades?.length}/30</ThemedText>                    
-                </View>
-              </View>
-          }
+          ListEmptyComponent={<ThemedText style={{ paddingInline: 6 }}>{i18n.t('no_trades_found')}</ThemedText>}
+          ListHeaderComponent={RenderHeader}
         />
-        <RenderFooter></RenderFooter>
+        {RenderFooter}
       </ParallaxScrollView>
     </>
   );

@@ -358,7 +358,8 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
                                     style={{boxShadow: '0px 4px 14px rgba(0, 0, 0, 0.3)'}}
                                     disabled={!missingCards[i]}>
                     <Image style={{width: 71, height: 99}}
-                              source={missingCards[i] ? getImageLanguage116x162(lang, missingCards[i]) : BACKWARD_CARD}/>
+                           source={getImageLanguage116x162(lang, missingCards[i])}
+                           placeholder={BACKWARD_CARD}/>
                   </TouchableOpacity>
                   {
                     missingCards[i] &&

@@ -2,6 +2,9 @@ import { ReactNode } from "react";
 import { CardLanguageENUM } from "../enums/card.enums";
 import { CollectionStat, ExpansionEmblem } from "./global.interfaces";
 import { FilterKey } from "@/hooks/filter.reducer";
+import { FilterSearch } from "../classes/filter.class";
+import { FilterAttackSearch } from "../classes/filter_attack.class";
+import { ModalType } from "../types/global.types";
 
 export interface HeaderWithCustomModalProps {
   title: string;
@@ -14,9 +17,9 @@ export interface HeaderWithCustomModalProps {
 }
 
 export interface TabMenu {
-  isVisible: boolean;
-  onClose: (value?: any) => void;
-  animatedStyle: any;
+  isVisible?: boolean;
+  onClose?: (value?: any) => void;
+  animatedStyle?: any;
 }
 
 export interface TabMenuCards extends TabMenu {
@@ -71,4 +74,14 @@ export interface SortItem {
   icon: string,
   active: boolean,
   order: 'desc' | 'asc'
+}
+
+export interface FilterStatePayload {
+  key: FilterKey;
+  value: FilterSearch | FilterAttackSearch;
+}
+
+export interface ModalStatePayload {
+  key: ModalType;
+  value: boolean;
 }

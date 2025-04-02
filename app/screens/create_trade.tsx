@@ -22,7 +22,7 @@ import Storage from "@/core/storage/storage.service";
 import { useConfirmation } from "@/core/providers/ConfirmationProvider";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import { tradeCollageStyles } from "@/components/dedicated/share/TradeCollage";
-import { SALE_CARD } from "@/shared/definitions/sentences/path.sentences";
+import { BACKWARD_CARD, SALE_CARD } from "@/shared/definitions/sentences/path.sentences";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { getImageLanguage116x162 } from "@/shared/definitions/utils/functions";
 import { MAX_CONTENT } from "@/shared/definitions/utils/constants";
@@ -215,7 +215,8 @@ export default function CreateTradeScreen() {
                   CardGridStyles.image, 
                   {width: 67.6}
                 ]} 
-              source={getImageLanguage116x162(lang, item)}/>
+              source={getImageLanguage116x162(lang, item)}
+              placeholder={BACKWARD_CARD}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
             }
           </View>
@@ -237,7 +238,8 @@ export default function CreateTradeScreen() {
                   CardGridStyles.image, 
                   {width: 67.6}
                 ]} 
-              source={getImageLanguage116x162(lang, item)}/>
+              source={getImageLanguage116x162(lang, item)}
+              placeholder={BACKWARD_CARD}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
             }
           </View>

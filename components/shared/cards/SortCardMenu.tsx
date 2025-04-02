@@ -1,7 +1,7 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useEffect, useCallback, useState, useContext } from "react";
+import { useEffect, useCallback, useState } from "react";
 import React from "react";
 
 import { SortItem, TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
@@ -11,27 +11,20 @@ import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useI18n } from "../../../core/providers/LanguageProvider";
-import { AppContext } from "@/app/_layout";
 import { INITIAL_SORT_DATA } from "@/shared/definitions/utils/constants";
 import { cardStyles } from "@/app/(tabs)/cards";
 import SoundService from "@/core/services/sounds.service";
 import { SortRxjs } from "@/core/rxjs/SortRxjs";
-import { filter, firstValueFrom } from "rxjs";
+import { firstValueFrom } from "rxjs";
 import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
 
 export default function SortCardMenu({
-  isVisible,
-  onClose,
   animatedStyle,
   filterKey
 }: TabMenuCards) {
   const [data, setData] = useState(INITIAL_SORT_DATA);
-  const context = useContext(AppContext);
-  if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
   const {i18n} = useI18n();
   const styles = ModalStyles;
-  if (!isVisible) return null;
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE')
@@ -44,13 +37,11 @@ export default function SortCardMenu({
     : { ...item, active: false }
   );
   
-    setData(updated);
     await closeMenu(updated);
   };
 
   async function closeMenu(value?: SortItem[]): Promise<void> {
     await playSound();
-    onClose();
     
     if (value) { SortRxjs.setSort({key: filterKey, value}); }
     ModalRxjs.setModalVisibility({key: 'cardsSort', value: false});
@@ -68,7 +59,7 @@ export default function SortCardMenu({
   const getOrderIcon = useCallback((item: SortItem) => {
     return !item?.order ? 'arrow-upward' : 
               item.order === 'asc' ? 'arrow-upward' : 'arrow-downward';
-  }, [state.filterState.filters[filterKey].sort]);
+  }, []);
 
   const renderItem = ({ item } : any) => (
     <TouchableOpacity onPress={() => toggleActive(item.id)} style={sortStyles.itemContainer}>
@@ -88,9 +79,9 @@ export default function SortCardMenu({
                         fontWeight: 'normal'
                       }, item.id === 3 ? sortStyles.diamond : null]}/>
         {
-          item.active && <MaterialIcons name={getOrderIcon(item)} style={cardStyles.sortIconList}></MaterialIcons>
+          item.active && <MaterialIcons name={getOrderIcon(item)} 
+                                        style={cardStyles.sortIconList}/>
         }
-        
       </ThemedView>
     </TouchableOpacity>
   );

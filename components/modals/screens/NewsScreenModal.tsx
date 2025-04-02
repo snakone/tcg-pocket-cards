@@ -3,12 +3,12 @@ import { ScrollView } from "react-native";
 import { useSharedValue } from "react-native-reanimated";
 
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { ThemedText } from "../ThemedText";
 import { sharedModalStyles } from "@/shared/styles/component.styles";
-import { ThemedView } from "../ThemedView";
-import ScrollIndicator from "../ui/ScrollIndicator";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import ScrollIndicator from "@/components//ui/ScrollIndicator";
 
-export function GamesScreenModal() {
+export function NewsScreenModal() {
   const scrollY = useSharedValue(0);
   const [contentHeight, setContentHeight] = useState(1);
   const [scrollViewHeight, setScrollViewHeight] = useState(1);
@@ -42,6 +42,12 @@ export function GamesScreenModal() {
                   onLayout={handleLayout}>
         <ThemedText style={[styles.text, {marginTop: 4}]}>{i18n.t('news_intro')}</ThemedText>
 
+        <ThemedText style={styles.title}>{i18n.t('news_title')}</ThemedText>
+
+        <ThemedText style={styles.text}>{i18n.t('news_app')}</ThemedText>
+        <ThemedText style={styles.text}>{i18n.t('news_official')}</ThemedText>
+        <ThemedText style={styles.text}>{i18n.t('news_care')}</ThemedText>
+        <ThemedText style={styles.text}>{i18n.t('news_help')}</ThemedText>
       </ScrollView>
     </ThemedView>
   )

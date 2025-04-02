@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { BlurView } from "expo-blur";
 import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
@@ -16,7 +16,7 @@ import {
 } from "@/shared/styles/component.styles";
 
 import { getFilterAttackSearch } from "@/shared/definitions/utils/constants";
-import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
+import { TabMenu, TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -28,19 +28,19 @@ import { EnergyItem } from "./components/EnergyItem";
 import { DamageItem } from "./components/DamageItem";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { AmountItem } from "./components/AmountItem";
+import { FilterRxjs } from "@/core/rxjs/FilterRxjs";
+import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
 
-export default function FilterAttackMenu({isVisible, onClose, animatedStyle}: TabMenu) {
-  const context = useContext(AppContext);
-  if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
+export default function FilterAttackMenu({
+  animatedStyle, 
+  filterKey
+}: TabMenuCards) {
   const [isExclusive, setIsExclusive] = useState(false);
   const [forceRender, setForceRender] = useState(0);
   const triggerRender = () => setForceRender(prev => prev + 1);
   
   const {i18n} = useI18n();
-  const filterObj = useRef<FilterAttackSearch>(state.filterState.filters.attacks.filter as FilterAttackSearch);
-
-  if (!isVisible) return null;
+  const filterObj = useRef<FilterAttackSearch>(new FilterAttackSearch());
 
   const nextValues: {[key: string] : Subject<boolean>} = {
     energy$: new Subject<boolean>(),
@@ -50,10 +50,21 @@ export default function FilterAttackMenu({isVisible, onClose, animatedStyle}: Ta
     await SoundService.play(value);
   }
 
+  useEffect(() => {
+    const sub = FilterRxjs.getFilter<FilterAttackSearch>(filterKey)
+    .subscribe(res => {
+      filterObj.current = res;
+      triggerRender();
+    });
+
+    return (() => {
+      if (sub) sub.unsubscribe();
+    })
+  }, []);
+
   async function closeMenu(): Promise<void> {
-    await playSound('AUDIO_MENU_CLOSE');
-    onClose();
-    dispatch({type: 'SET_FILTER', value: {key: 'attacks', filter: filterObj.current}});
+    FilterRxjs.setFilter({key: filterKey, value: filterObj.current});
+    ModalRxjs.setModalVisibility({key: 'attacks', value: false});
   }
 
   async function handleChange(value: boolean): Promise<void> {

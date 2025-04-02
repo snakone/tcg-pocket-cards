@@ -1,11 +1,4 @@
 import { 
-  AttackAction, 
-  attacksInitialState, 
-  attacksReducer, 
-  AttacksState 
-} from './attacks.reducer';
-
-import { 
   cardsReducer, 
   cardsInitialState, 
   CardsState, 
@@ -46,7 +39,6 @@ export interface AppState {
   filterState: FilterState,
   settingsState: SettingsState,
   pocketNewsState: PocketNewsState,
-  attacksState: AttacksState
 }
 
 export const initialRootState: AppState = {
@@ -55,7 +47,6 @@ export const initialRootState: AppState = {
   filterState: filterInitialState,
   settingsState: settingsInitialState,
   pocketNewsState: pocketNewsInitialState,
-  attacksState: attacksInitialState
 };
 
 export const rootReducer = (state: AppState, action: Actions) => ({
@@ -64,7 +55,6 @@ export const rootReducer = (state: AppState, action: Actions) => ({
   filterState: filterReducer(state.filterState, action as FilterAction),
   settingsState: settingsReducer(state.settingsState, action as SettingsAction),
   pocketNewsState: pocketNewsReducer(state.pocketNewsState, action as PocketNewAction),
-  attacksState: attacksReducer(state.attacksState, action as AttackAction)
 });
 
 type Actions = 
@@ -72,5 +62,4 @@ type Actions =
   ModalAction |
   FilterAction |
   SettingsAction |
-  PocketNewAction |
-  AttackAction
+  PocketNewAction

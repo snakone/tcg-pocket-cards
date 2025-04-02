@@ -19,3 +19,5 @@ export type ParallaxProps = PropsWithChildren<{
 
 export type ErrorType = 'error' | 'info' | 'warning' | 'delete';
 export type LanguageType = 'es' | 'en' | 'ja';
+
+export type ModalType = 'cards' | 'attacks' | 'cardsSort' | 'attacksSort' | 'avatar' | 'coin' | 'best';

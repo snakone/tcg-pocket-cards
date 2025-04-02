@@ -5,7 +5,7 @@ import { useEffect, useCallback, useState, useContext } from "react";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { SortItem, TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
+import { SortItem, TabMenu, TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -15,52 +15,55 @@ import { AppContext } from "@/app/_layout";
 import { INITIAL_ATTACK_SORT_DATA } from "@/shared/definitions/utils/constants";
 import { cardStyles } from "@/app/(tabs)/cards";
 import SoundService from "@/core/services/sounds.service";
+import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
+import { SortRxjs } from "@/core/rxjs/SortRxjs";
+import { firstValueFrom } from "rxjs";
 
 export default function SortAttackMenu({
-  isVisible,
-  onClose,
   animatedStyle,
-}: TabMenu) {
+  filterKey
+}: TabMenuCards) {
   const [data, setData] = useState(INITIAL_ATTACK_SORT_DATA);
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const {i18n} = useI18n();
   const styles = ModalStyles;
-  if (!isVisible) return null;
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE')
   }, []);
 
-  async function closeMenu(): Promise<void> {
+  async function closeMenu(value?: SortItem[]): Promise<void> {
     await playSound();
-    onClose();
+    
+    if (value) { SortRxjs.setSort({key: filterKey, value}); }
+    ModalRxjs.setModalVisibility({key: 'attacksSort', value: false});
   }
 
   const toggleActive = async (id: number) => {
-    await closeMenu();
     const updated: SortItem[] = data.map((item) =>
       item.id === id
-        ? { ...item, active: true, order: item.order === 'asc' ? 'desc' : 'asc' }
-        : { ...item, active: false }
-    );
+    ? { ...item, active: true, order: item.order === 'asc' ? 'desc' : 'asc' }
+    : { ...item, active: false }
+  );
   
-    setData(updated);
-    dispatch({ type: 'SET_SORT', value: {key: 'attacks', sort: updated} });
+    await closeMenu(updated);
   };
 
   useEffect(() => {
-    if (state.filterState.filters.attacks.sort.length > 0) {
-      const active = [...state.filterState.filters.attacks.sort];
-      setData(active);
-    }
-  }, [state.filterState.filters.attacks.sort])
+    const getSort = async () => {
+      const sort = await firstValueFrom(SortRxjs.getSort('attacks'));
+      setData(sort);
+    };
+
+    getSort();
+  }, [])
 
   const getOrderIcon = useCallback((item: SortItem) => {
     return !item?.order ? 'arrow-upward' : 
               item.order === 'asc' ? 'arrow-upward' : 'arrow-downward';
-  }, [state.filterState.filters.attacks.sort]);
+  }, []);
 
   const renderItem = ({ item } : {item: SortItem}) => (
     <TouchableOpacity onPress={() => toggleActive(item.id)} style={sortStyles.itemContainer}>
@@ -80,9 +83,9 @@ export default function SortAttackMenu({
                         fontWeight: 'normal'
                       }, item.id === 2 && {top: -2}]}/>
         {
-          item.active && <MaterialIcons name={getOrderIcon(item)} style={cardStyles.sortIconList}></MaterialIcons>
+          item.active && <MaterialIcons name={getOrderIcon(item)} 
+                                        style={cardStyles.sortIconList}/>
         }
-        
       </ThemedView>
     </TouchableOpacity>
   );

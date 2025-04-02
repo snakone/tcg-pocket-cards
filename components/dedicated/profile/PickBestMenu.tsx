@@ -18,6 +18,7 @@ import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
 const numColumns = 6;
 
@@ -46,7 +47,6 @@ export default function PickBestMenu({
 
   async function closeMenu(sound = true): Promise<void> {
     if (sound) { await playSound(); }
-    onClose();
   }
 
   useEffect(() => {
@@ -80,6 +80,7 @@ export default function PickBestMenu({
         <View>
           <Image accessibilityLabel={item.name[lang]}
                   source={getImageLanguage69x96(lang, item.id)}
+                  placeholder={BACKWARD_CARD}
                   style={[
                   CardGridStyles.image, 
                   {width: Platform.OS === 'web' ? 57.6 : 58}
@@ -126,7 +127,7 @@ export default function PickBestMenu({
         <View style={styles.modalFooter}>
           <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

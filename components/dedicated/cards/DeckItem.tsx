@@ -8,6 +8,7 @@ import { TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { CardGridStyles, CreateScreenStyles } from "@/shared/styles/component.styles";
 import { AppState } from '@/hooks/root.reducer';
 import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
+import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
 
   export const RenderDeckItem = (
     {item, state, onPress}: {item: StorageDeck, state: AppState, onPress: any}
@@ -32,6 +33,7 @@ import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
                     }
                   ]} 
                   source={getImageLanguage116x162(state.settingsState.language, item.popular[i])}
+                  placeholder={BACKWARD_CARD}
                   key={i}/> :
                   <ThemedView style={[
                     CardGridStyles.image,

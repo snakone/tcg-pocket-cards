@@ -1,18 +1,15 @@
+import { BehaviorSubject } from 'rxjs';
+
 import { FilterKey } from '@/hooks/filter.reducer';
 import { FilterSearch } from '@/shared/definitions/classes/filter.class';
 import { FilterAttackSearch } from '@/shared/definitions/classes/filter_attack.class';
-import { BehaviorSubject } from 'rxjs';
-
-export interface FilterStatePayload {
-  key: FilterKey;
-  value: FilterSearch | FilterAttackSearch;
-}
+import { FilterStatePayload } from '@/shared/definitions/interfaces/layout.interfaces';
 
 class FilterState {
-  public cardsFilter$ = new BehaviorSubject<FilterSearch>(new FilterSearch());
-  public attacksFilter$ = new BehaviorSubject<FilterAttackSearch>(new FilterAttackSearch());
-  public decksFilter$ = new BehaviorSubject<FilterSearch>(new FilterSearch());
-  public collectionFilter$ = new BehaviorSubject<FilterSearch>(new FilterSearch());
+  private cardsFilter$ = new BehaviorSubject<FilterSearch>(new FilterSearch());
+  private attacksFilter$ = new BehaviorSubject<FilterAttackSearch>(new FilterAttackSearch());
+  private decksFilter$ = new BehaviorSubject<FilterSearch>(new FilterSearch());
+  private collectionFilter$ = new BehaviorSubject<FilterSearch>(new FilterSearch());
 
   private mappedFilters: Record<FilterKey, BehaviorSubject<any>> = {
     'cards': this.cardsFilter$,
@@ -27,7 +24,7 @@ class FilterState {
     this.mappedFilters[key].next(value);
   }
 
-  getFilter(key: FilterKey): BehaviorSubject<FilterSearch | FilterAttackSearch> {
+  getFilter<T>(key: FilterKey): BehaviorSubject<T> {
     return this.mappedFilters[key];
   }
 }

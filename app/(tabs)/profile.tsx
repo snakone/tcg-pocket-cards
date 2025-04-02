@@ -21,6 +21,7 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { createDeckStyles } from '@/app/screens/create_deck';
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
+import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
 
 export default function ProfileScreen() {
   console.log('Profile Screen')
@@ -180,7 +181,8 @@ export default function ProfileScreen() {
                             CardGridStyles.image, 
                             {width: 200}
                           ]} 
-                        source={getImageLanguage(lang, profile.best)}/>        
+                        source={getImageLanguage(lang, profile.best)}
+                        placeholder={BACKWARD_CARD}/>        
                       </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
                     }
                   </TouchableOpacity>

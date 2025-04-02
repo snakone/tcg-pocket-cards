@@ -14,10 +14,11 @@ import { Colors } from '@/shared/definitions/utils/colors';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { CreateScreenModal } from '@/components/modals/CreateScreenModal';
+import { CreateScreenModal } from '@/components/modals/screens/CreateScreenModal';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { RenderDeckItem } from '@/components/dedicated/cards/DeckItem';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { ResetFilterButton } from '@/components/ui/ResetFilterButton';
 
 export default function CreateDeckScreen() {
   console.log('Create Screen')
@@ -40,14 +41,6 @@ export default function CreateDeckScreen() {
     router.push(`/screens/create_deck?deck_id=${encodeURIComponent(deck.id)}`);
   }
 
-  const ResetFilterButton = useCallback(() => (
-    <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={[CardGridStyles.clearInput, {left: 250}]}
-                      hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-      <IconSymbol name="clear" size={20} color="gray" />
-    </TouchableOpacity>
-  ), []);
-
   const renderEmpty = useCallback(() => {
     return state.cardState.loaded && 
       <ThemedText style={{ paddingVertical: 12, paddingHorizontal: Platform.OS !== 'web' ? 6 : 22}}>
@@ -67,7 +60,7 @@ export default function CreateDeckScreen() {
 
   const RenderFooter = useCallback(() => {
     return (
-      <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16, paddingTop: 16}}>
+      <ThemedView style={{paddingTop: 16}}>
         <TouchableOpacity style={[
           homeScreenStyles.ctaButton,
           {marginBottom: 10, marginTop: 6, backgroundColor: 'skyblue'},
@@ -90,19 +83,13 @@ export default function CreateDeckScreen() {
   }, [state.settingsState.decks]);
 
   const ListHeader = useMemo(() => (
-    <View
-      style={[
-        CardGridStyles.inputContainer,
-        { paddingHorizontal: Platform.OS !== 'web' ? 0 : 16, paddingBottom: 9 },
-      ]}
-    >
+    <View style={CardGridStyles.inputContainer}>
       <ThemedView
         style={{
           boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
           width: '78%',
           borderRadius: 8,
-        }}
-      >
+        }}>
         <TextInput
           style={[CardGridStyles.searchInput, { width: '100%' }]}
           placeholder={i18n.t('search_decks_placeholder')}
@@ -112,15 +99,14 @@ export default function CreateDeckScreen() {
           accessibilityLabel={'SEARCH_LABEL'}
           inputMode="text"
         />
-        {searchQuery.length > 0 && <ResetFilterButton />}
+        {searchQuery.length > 0 && <ResetFilterButton left={248} onPress={() => handleSearch('')}/>}
       </ThemedView>
       <View
         style={[
           CardGridStyles.actionsContainer,
           Platform.OS !== 'web' && { marginRight: 2 },
           { justifyContent: 'flex-end', top: 1 },
-        ]}
-      >
+        ]}>
         <MaterialIcons
           name="photo-library"
           style={{ fontSize: 20, marginLeft: 16, top: 1 }}
@@ -137,20 +123,18 @@ export default function CreateDeckScreen() {
                           modalTitle='create_deck'
                           modalContent={<CreateScreenModal></CreateScreenModal>}
                           modalHeight={LARGE_MODAL_HEIGHT}
-                          styles={{paddingHorizontal: 0, gap: 0}}>
+                          styles={{gap: 0}}>
         <FlatList data={filtered.sort((a, b) => a?.id > b?.id ? -1 : 1)}
                   numColumns={1}
-                  renderItem={({item, index}) => 
-                  (<ThemedView style={[{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}, index === 0 && {paddingTop: 12}]}>
-                    <RenderDeckItem item={item} state={state} onPress={() => openDeck(item)} />
-                  </ThemedView>)}
-                  keyExtractor={(item, index) => index + 1 + ''}
+                  renderItem={({item, index}) => <RenderDeckItem item={item} state={state} onPress={openDeck} />}
+                  keyExtractor={(_, index) => index + 1 + ''}
                   showsVerticalScrollIndicator={false}
-                  ListEmptyComponent={renderEmpty}
+                  ListEmptyComponent={<ThemedText style={{ paddingInline: 6 }}>{i18n.t('no_decks_found')}</ThemedText>}
                   initialNumToRender={6}
                   bounces={false}
                   overScrollMode='never'
                   stickyHeaderIndices={[0]}
+                  keyboardDismissMode={'on-drag'}
                   ListHeaderComponent={ListHeader}/>
         <RenderFooter></RenderFooter>           
       </ParallaxScrollView>

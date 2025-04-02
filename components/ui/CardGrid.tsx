@@ -48,6 +48,7 @@ import { ModalRxjs } from '@/core/rxjs/ModalRxjs';
 import { combineLatest, filter, tap, withLatestFrom } from 'rxjs';
 import { FilterRxjs } from '@/core/rxjs/FilterRxjs';
 import { SortRxjs } from '@/core/rxjs/SortRxjs';
+import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
 
 interface GridCardProps {
   title: string,
@@ -75,7 +76,6 @@ export default function ImageGridWithSearch({
   if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [lang, setLang] = useState<LanguageType>('en');
-  const searchInputRef = useRef<any>();
   const gridNumber = useRef<0 | 1 | 2>(0);
 
   const [favorites, setFavorites] = useState<Card[]>(
@@ -98,7 +98,7 @@ export default function ImageGridWithSearch({
     .pipe(
       filter(_ => state.cardState.cards.length > 0),
       withLatestFrom(
-        FilterRxjs.cardsFilter$,
+        FilterRxjs.getFilter<FilterSearch>('cards'),
         SortRxjs.getSortActive('cards')
       )
     ).subscribe(([[filterOpen, sortOpen], filters, sort]) => {
@@ -126,14 +126,12 @@ export default function ImageGridWithSearch({
     setFavorites(favorites);
   }, [state.settingsState.favorites]);
 
-  const handleSearch = useCallback((text: string, focus = true) => {
+  const handleSearch = useCallback((text: string) => {
+    const source = type === 'favorites' ? favorites : state.cardState.cards;
     searchQuery.current = text;
-    setFiltered((type === 'favorites' ? favorites : state.cardState.cards).filter(card =>
+    setFiltered((source).filter(card =>
     card.name[lang].toLowerCase()?.includes(text.toLowerCase())));
-    if (focus) {
-      setTimeout(() => searchInputRef.current.focus(), 250);
-    } 
-  }, [(type === 'favorites' ? favorites : state.cardState.cards), lang]);
+  }, [favorites, state.cardState.cards, lang]);
 
   const filterOrSortCards = useCallback(
     (type: 'sort' | 'filter', data: Card[], filter?: FilterSearch | null, sort?: SortItem): Card[] => {
@@ -189,18 +187,6 @@ export default function ImageGridWithSearch({
     )
   }, [searchQuery.current, filtered.length]);
 
-  const RenderEmpty = () => {
-    const renderCardState = useCallback(() => {
-      return state.cardState.loaded ? (
-        <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
-      ) : (
-        <SkeletonCardGrid columns={numColumns} />
-      );
-    }, [state.cardState.loaded, numColumns]);
-  
-    return renderCardState();
-  };
-
   const renderItem = useCallback(({ item }: { item: Card }) => (
     <View key={item.id} style={[
         CardGridStyles.imageContainer, 
@@ -218,7 +204,8 @@ export default function ImageGridWithSearch({
           ]} 
           source={gridNumber.current === 1 || gridNumber.current === 2 ? 
                     getImageLanguage69x96(lang, item.id) : 
-                    getImageLanguage116x162(lang, item.id)}/>
+                    getImageLanguage116x162(lang, item.id)}
+          placeholder={BACKWARD_CARD}/>
       </Pressable>
     </View>
   ), [gridNumber, state.settingsState.favorites, lang]);
@@ -317,7 +304,7 @@ export default function ImageGridWithSearch({
             <KeyboardAvoidingView style={{ flex: 1 }}
                                   behavior={'height'}
                                   keyboardVerticalOffset={-550}>
-              <View style={[CardGridStyles.inputContainer, {paddingBottom: 18}]}>
+              <View style={CardGridStyles.inputContainer}>
                 <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '60%', borderRadius: 8,}}>
                   <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
                               placeholder={i18n.t('search_card_placeholder')}
@@ -327,7 +314,6 @@ export default function ImageGridWithSearch({
                               accessibilityLabel={'SEARCH_LABEL'}
                               editable={state.cardState.loaded}
                               inputMode='text'
-                              ref={searchInputRef}
                             />
                         {searchQuery.current.length > 0 && <ResetFilterButton/>}
                 </ThemedView>
@@ -358,7 +344,7 @@ export default function ImageGridWithSearch({
                 contentContainerStyle={[CardGridStyles.gridContainer]}
                 keyboardShouldPersistTaps={'never'}
                 showsVerticalScrollIndicator={false}
-                ListEmptyComponent={RenderEmpty}
+                ListEmptyComponent={<ThemedText style={{ paddingInline: 6 }}>{i18n.t('no_cards_found')}</ThemedText>}
                 ListFooterComponent={renderFooter}
               />               
             </KeyboardAvoidingView>

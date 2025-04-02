@@ -3,15 +3,16 @@ import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Platform, Pressable } from 'react-native';
 import { Portal, Provider } from 'react-native-paper';
-import { distinctUntilChanged } from 'rxjs';
+import { map } from 'rxjs';
 
 import SoundService from '@/core/services/sounds.service';
 import { ModalRxjs } from '@/core/rxjs/ModalRxjs';
 import { useI18n } from '@/core/providers/LanguageProvider';
 
 import { AppContext } from '../_layout';
-import { FILTER_CARDS_HEIGHT, MENU_WIDTH, RIPPLE_CONFIG } from '@/shared/definitions/utils/constants';
+import { FILTER_CARDS_HEIGHT, MENU_WIDTH, MODAL_KEYS, RIPPLE_CONFIG } from '@/shared/definitions/utils/constants';
 import { CustomTabButtonStyles, TabButtonStyles } from '@/shared/styles/component.styles';
+import { ModalType } from '@/shared/definitions/types/global.types';
 
 import { IconSymbol, SvgStackSymbol, SvgStylusSymbol, SvgTradeSymbol } from '@/components/ui/IconSymbol';
 import TabsMenu from '@/components/shared/TabsMenu';
@@ -26,29 +27,26 @@ import SortAttackMenu from '@/components/shared/attacks/SortAttackMenu';
 export default function TabLayout() {
   const distanceFromBottom = useSharedValue(FILTER_CARDS_HEIGHT);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const [isSortVisible, setIsSortVisible] = useState(false);
-  const [isFilterVisible, setIsFilterVisible] = useState(false);
-  const [isAttackSortVisible, setIsAttackSortVisible] = useState(false);
-  const [isAttackFilterVisible, setIsAttackFilterVisible] = useState(false);
   const [isAvatarVisible, setIsAvatarVisible] = useState(false);
   const [isCoinVisible, setIsCoinVisible] = useState(false);
   const [isBestVisible, setIsBestVisible] = useState(false);
   const [isMobileEmulator, setIsMobileEmulator] = useState(false);
+
+  const [modalVisibility, setModalVisivility] = useState<Record<ModalType, boolean>>({
+    cards: false,
+    attacks: false,
+    cardsSort: false,
+    attacksSort: false,
+    avatar: false,
+    coin: false,
+    best: false
+  });
+
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const menuRight = useSharedValue(MENU_WIDTH);
   const {i18n} = useI18n();
-
-  const actionsMap: Record<string, (value: boolean) => void> = {
-    cards: setIsFilterVisible,
-    attacks: setIsAttackFilterVisible,
-    cardsSort: setIsSortVisible,
-    attacksSort: setIsAttackSortVisible,
-    avatar: setIsAvatarVisible,
-    coin: setIsCoinVisible,
-    best: setIsBestVisible, 
-  };
 
   // MENU
   const menuAnimatedStyle = useAnimatedStyle(() => {
@@ -84,46 +82,15 @@ export default function TabLayout() {
   }, []);
 
   function isAnyModalVisible(): boolean {
-    return isSortVisible || 
-           isFilterVisible || 
-           isAvatarVisible || 
-           isCoinVisible || 
-           isBestVisible ||
-           isAttackSortVisible ||
-           isAttackFilterVisible;
+    return Object.values(modalVisibility).some(Boolean);
   }
 
   useEffect(() => {
     distanceFromBottom.value = isAnyModalVisible() ? 
                                 withTiming(0, { duration: 150 }) : 
                                 withTiming(FILTER_CARDS_HEIGHT, { duration: 0 });
-  }, [isSortVisible, isAvatarVisible, isCoinVisible, isFilterVisible]);
+  }, [isAnyModalVisible()]);
 
-  const memoizedSort = useMemo(() => {
-    return <SortCardMenu isVisible={isSortVisible} 
-                         animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
-                         onClose={onClose}
-                         filterKey={"cards"}/>
-  }, [isSortVisible]);
-
-  const memoizedFilter = useMemo(() => {
-    return <FilterCardMenu isVisible={isFilterVisible} 
-                           animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
-                           onClose={onClose}
-                           filterKey={"cards"}/>
-  }, [isFilterVisible]);
-
-  const memoizedAttackSort = useMemo(() => {
-    return <SortAttackMenu isVisible={isAttackSortVisible} 
-                           animatedStyle={{}} 
-                           onClose={onClose}/>
-  }, [isAttackSortVisible]);
-
-  const memoizedAttackFilter = useMemo(() => {
-    return <FilterAttackMenu isVisible={isAttackFilterVisible} 
-                             animatedStyle={{}} 
-                             onClose={onClose}/>
-  }, [isAttackFilterVisible]);
 
   const memoizedPickAvatar = useMemo(() => {
     return <PickAvatarMenu isVisible={isAvatarVisible} 
@@ -144,30 +111,19 @@ export default function TabLayout() {
   }, [isBestVisible]);
 
   useEffect(() => {
-    const sub = ModalRxjs.getAllRefs().pipe(distinctUntilChanged())
-    .subscribe(([cards, attacks, cardsSort, attacksSort, avatar, coin, best]) => {
-      Object.entries({ cards, attacks, cardsSort, attacksSort, avatar, coin, best })
-       .forEach(([key, value]) => {
-        if (value && actionsMap[key]) {
-          actionsMap[key](value);
-        } else {
-          actionsMap[key](false);
-        }
-      });
-    })
+    const sub = ModalRxjs.getAllRefs()
+      .pipe(
+        map(values =>
+          Object.fromEntries(
+            MODAL_KEYS.map((key, i) => [key, values[i]])
+          ) as Record<ModalType, boolean>
+        )
+      ).subscribe(setModalVisivility);
 
     return (() => {
       if (sub) sub.unsubscribe()
     })
   }, []);
-
-  useEffect(() => {
-    setIsAttackSortVisible(state.modalState.sort_attack_opened);
-  }, [state.modalState.sort_attack_opened]);
-
-  useEffect(() => {
-    setIsAttackFilterVisible(state.modalState.filter_attack_opened);
-  }, [state.modalState.filter_attack_opened]);
 
   useEffect(() => {
     setIsAvatarVisible(state.modalState.avatar_opened);
@@ -194,8 +150,6 @@ export default function TabLayout() {
     setIsAvatarVisible(false);
     setIsCoinVisible(false);
     setIsBestVisible(false);
-    setIsAttackSortVisible(false);
-    setIsAttackFilterVisible(false);
   }
 
   const emulatorStyle = () => Platform.OS === 'web' && !isMobileEmulator;
@@ -373,8 +327,16 @@ export default function TabLayout() {
 
       {/* // CARDS */}
       <Portal>{isMenuVisible && memoizedMenu}</Portal>
-      <Portal>{isSortVisible && memoizedSort}</Portal>
-      <Portal>{isFilterVisible && memoizedFilter}</Portal>
+      <Portal>
+        {modalVisibility.cards && 
+          <FilterCardMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
+                          filterKey={"cards"}/>}
+      </Portal>
+      <Portal>
+        {modalVisibility.cardsSort && 
+          <SortCardMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
+                        filterKey={"cards"}/>}
+      </Portal>
 
       {/* // PROFILE */}
       <Portal>{isAvatarVisible && memoizedPickAvatar}</Portal>
@@ -382,8 +344,16 @@ export default function TabLayout() {
       <Portal>{isBestVisible && memoizedPickBest}</Portal>
 
       {/* // ATTACKS */}
-      <Portal>{isAttackSortVisible && memoizedAttackSort}</Portal>
-      <Portal>{isAttackFilterVisible && memoizedAttackFilter}</Portal>
+      <Portal>
+        {modalVisibility.attacks && 
+          <FilterAttackMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle}
+                            filterKey={"attacks"}/>}
+      </Portal>
+      <Portal>
+        {modalVisibility.attacksSort && 
+          <SortAttackMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
+                          filterKey={"attacks"}/>}
+      </Portal>
     </Provider>
   );
 }

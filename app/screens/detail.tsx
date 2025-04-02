@@ -39,6 +39,7 @@ import Storage from "@/core/storage/storage.service";
 import ScrollService from "@/core/services/scroll.service";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { getImageLanguage } from "@/shared/definitions/utils/functions";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
 const INITIAL_INFO_HEIGHT = 100;
 const MAX_HEIGHT = 450;
@@ -415,7 +416,7 @@ export default function DetailScreen() {
             <Animated.View style={[opacityStyle, cardAnimatedStyle]}>
               <Image style={[styles.image, cardDetailStyles.card]}
                      source={getImageLanguage(lang, Number(id))}
-                      />
+                     placeholder={BACKWARD_CARD}/>
             </Animated.View>
           ) : (<>
             <GestureDetector gesture={gesture}>
@@ -427,6 +428,7 @@ export default function DetailScreen() {
               ]}>
                 <Image style={[styles.image]}
                       source={getImageLanguage(lang, Number(id))}
+                      placeholder={BACKWARD_CARD}
                       contentFit={'fill'} />
               </Animated.View>
             </GestureDetector>

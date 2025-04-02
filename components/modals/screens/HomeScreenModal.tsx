@@ -3,11 +3,11 @@ import { ScrollView } from "react-native";
 import { useSharedValue } from 'react-native-reanimated';
 
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { ThemedText } from "../ThemedText";
-import { ThemedView } from "../ThemedView";
 import { sharedModalStyles } from "@/shared/styles/component.styles";
-import { IconSymbol } from "../ui/IconSymbol";
-import ScrollIndicator from "../ui/ScrollIndicator";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import ScrollIndicator from "@/components//ui/ScrollIndicator";
 
 export function HomeScreenModal() {
   const {i18n} = useI18n();

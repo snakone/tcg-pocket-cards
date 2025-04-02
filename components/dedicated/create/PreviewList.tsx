@@ -15,6 +15,7 @@ import CreateService from "@/core/services/create.service";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
 import { collectionStyles } from "@/app/screens/collection";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
 interface PreviewListProps {
   handleSearch: (value: string) => void,
@@ -132,7 +133,8 @@ export default function PreviewList({
               CardGridStyles.image, 
               {width: Platform.OS === 'web' ? 31.8 : 49.4, height: 46, borderRadius: 4}
             ]} 
-            source={getImageLanguage69x96(lang, item?.id)}/>
+            source={getImageLanguage69x96(lang, item?.id)}
+            placeholder={BACKWARD_CARD}/>
             { state.settingsState.favorites?.includes(item.id) && 
               <ThemedView style={[CardGridStyles.triangle, {
                 borderRightWidth: 8,

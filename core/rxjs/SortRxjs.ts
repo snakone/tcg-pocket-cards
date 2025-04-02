@@ -10,10 +10,10 @@ export interface SortStatePayload {
 }
 
 class SortState {
-  public cardsSort$ = new BehaviorSubject<SortItem[]>(INITIAL_SORT_DATA);
-  public attacksSort$ = new BehaviorSubject<SortItem[]>(INITIAL_ATTACK_SORT_DATA);
-  public decksSort$ = new BehaviorSubject<SortItem[]>(INITIAL_SORT_DATA);
-  public collectionSort$ = new BehaviorSubject<SortItem[]>(INITIAL_SORT_DATA);
+  private cardsSort$ = new BehaviorSubject<SortItem[]>(INITIAL_SORT_DATA);
+  private attacksSort$ = new BehaviorSubject<SortItem[]>(INITIAL_ATTACK_SORT_DATA);
+  private decksSort$ = new BehaviorSubject<SortItem[]>(INITIAL_SORT_DATA);
+  private collectionSort$ = new BehaviorSubject<SortItem[]>(INITIAL_SORT_DATA);
 
   private mappedSorts: Record<FilterKey, BehaviorSubject<SortItem[]>> = {
     'cards': this.cardsSort$,

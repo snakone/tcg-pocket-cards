@@ -51,6 +51,7 @@ import CreateService from "@/core/services/create.service";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { collectionStyles } from "./collection";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
 const numColumns = 6;
 
@@ -140,7 +141,8 @@ export default function CreateDeckScreen() {
                   CardGridStyles.image, 
                   {width: CARD_IMAGE_WIDTH_3}
                 ]} 
-              source={getImageLanguage116x162(lang, item?.id)}/>        
+              source={getImageLanguage116x162(lang, item?.id)}
+              placeholder={BACKWARD_CARD}/>        
               { state.settingsState.favorites?.includes(item.id) && 
                 <ThemedView style={[CardGridStyles.triangle]}></ThemedView>
               }
@@ -536,6 +538,7 @@ export default function CreateDeckScreen() {
 
           <Image accessibilityLabel={item.name[lang]}
                  source={getImageLanguage69x96(lang, item.id)}
+                 placeholder={BACKWARD_CARD}
                  style={[
                   CardGridStyles.image, 
                   {width: Platform.OS === 'web' ? 57.6 : 58}
@@ -560,6 +563,7 @@ export default function CreateDeckScreen() {
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={RenderEmpty}
                 renderItem={renderCard}
+                keyboardDismissMode={'on-drag'}
                 ListFooterComponent={<ThemedView style={{height: 95}}></ThemedView>}
       />
     </View>
@@ -723,6 +727,7 @@ export default function CreateDeckScreen() {
                   style={{width: '100%', borderRadius: 8}}
                   stickyHeaderIndices={Platform.OS === 'web' ? [0] : []}
                   showsVerticalScrollIndicator={false}
+                  
                   keyExtractor={(item, index) => index + ''}
                   ListFooterComponent={
                     <ThemedView style={Platform.OS !== 'web' && {marginBottom: 55}}>

@@ -663,3 +663,5 @@ export const STATS_EXPANSION_MAP: any = {
   [EXPANSION.SHINY]: 7,
   99: 8
 }
+
+export const MODAL_KEYS = ["cards", "attacks", "cardsSort", "attacksSort", "avatar", "coin", "best"] as const;

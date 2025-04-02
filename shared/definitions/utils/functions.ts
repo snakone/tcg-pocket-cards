@@ -7,7 +7,7 @@ import * as Sharing from 'expo-sharing';
 import * as DocumentPicker from 'expo-document-picker';
 
 import { FilterSearch } from "../classes/filter.class";
-import { Attack, Card } from "../interfaces/card.interfaces";
+import { Attack, AttackMetaData, Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
 import { CardExpansionENUM, CardLanguageENUM } from "../enums/card.enums";
 import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SHINING_REVELRY_ICON, SMACK_DOWN, TRIUMPH_LIGHT_ARCEUS_ICON } from "../sentences/path.sentences";
@@ -28,7 +28,11 @@ import {
   CARD_IMAGE_MAP_JAP
 } from "./card.images";
 
-export function sortCards(field: keyof Card | string, data: Card[], sort: SortItem): Card[] {
+export function sortCards(
+  field: keyof Card | string, 
+  data: Card[], 
+  sort: SortItem
+): Card[] {
   return [...data].sort((a, b) => {
     let aValue: any = '';
     let bValue: any = '';
@@ -66,7 +70,12 @@ export function sortCards(field: keyof Card | string, data: Card[], sort: SortIt
   });
 }
 
-export function sortAttacks(field: keyof Attack | string, data: Attack[], sort: SortItem, lang: LanguageType): Attack[] {
+export function sortAttacks(
+  field: keyof Attack | string, 
+  data: AttackMetaData[], 
+  sort: SortItem, 
+  lang: LanguageType
+): AttackMetaData[] {
   if (field === 'order') { field = 'id'; }
   return [...data].sort((a, b) => {
     let aValue: any = '';
@@ -262,7 +271,7 @@ export function filterCards(
   });
 }
 
-export function filterAttacks(filter: FilterAttackSearch, data: Attack[]): Attack[] {
+export function filterAttacks(filter: FilterAttackSearch, data: AttackMetaData[]): AttackMetaData[] {
   return data.filter(attack => {
     const energy = Object.keys(filter.energy).filter(key => Boolean((filter.energy as any)[key])).map(key => Number(key));
 
@@ -344,7 +353,7 @@ const EXPANSION_ICON_MAP: Partial<Record<CardExpansionENUM, { image: any; width:
 };
 
 export function getCardPackFrom(card: Card): {image: any, width: number, height: number} | undefined {
-  if (card.expansion === undefined) return undefined;
+  if (card.expansion === undefined) return;
 
   if (card.expansion === CardExpansionENUM.GENETIC_APEX) {
     if (card.found?.length === 3 || (card.name.en === "Mew" && card.id === 283)) {
@@ -633,7 +642,7 @@ export function roundPercentage(value: string): string {
 }
 
 // FILTER-SORT ICONS
-export const getSortIcon = (sort: SortItem) => {
+export const getSortIconStyle = (sort: SortItem) => {
   return [
     { fontSize: 32, position: 'relative' },
     sort?.label === 'order_by_hp' || sort?.label === 'order_by_rarity' ? { top: 1 } : null,
@@ -649,3 +658,17 @@ export const getSortOrderIcon = (sort: SortItem) => {
 export const getFilterIcon = (filterSearch: FilterSearch) => {
   return filterSearch.areAllPropertiesNull() ? 'cancel' : 'check-circle';
 };
+
+export const getUniqueAttacks = (arr: AttackMetaData[]): AttackMetaData[] => {
+  const seen = new Set();
+  
+  return arr.reduce((acc, item) => {
+    const key = `${item.name.es || ''}|${item.damage}|${item.description?.es || ''}`;
+    
+    if (!seen.has(key)) {
+      seen.add(key);
+      acc.push({ id: acc.length, ...item });
+    }
+    return acc;
+  }, [] as AttackMetaData[])
+}

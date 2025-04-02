@@ -3,12 +3,12 @@ import { useState } from "react";
 import { useSharedValue } from "react-native-reanimated";
 import { Image } from 'expo-image';
 
-import { ThemedText } from "../ThemedText";
-import { ThemedView } from "../ThemedView";
-import ScrollIndicator from "../ui/ScrollIndicator";
 import { sharedModalStyles } from "@/shared/styles/component.styles";
 import { useI18n } from "@/core/providers/LanguageProvider";
 
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import ScrollIndicator from "@/components//ui/ScrollIndicator";
 import { 
   TRADE_ADD_NEW, 
   TRADE_CREATE_NEW, 

@@ -6,7 +6,7 @@ import { ThemedView } from "@/components/ThemedView";
 import { TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
 import { CardGridStyles, CreateScreenStyles } from '@/shared/styles/component.styles';
 import { SvgTradePassSymbol } from '@/components/ui/IconSymbol';
-import { TRADE_POINTS } from '@/shared/definitions/sentences/path.sentences';
+import { BACKWARD_CARD, TRADE_POINTS } from '@/shared/definitions/sentences/path.sentences';
 import { TRADE_COST_MAP } from '@/shared/definitions/utils/constants';
 import { CardRarityENUM } from '@/shared/definitions/enums/card.enums';
 import { useI18n } from '@/core/providers/LanguageProvider';
@@ -55,6 +55,7 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
                   }
                 ]} 
                 source={getImageLanguage116x162(state?.settingsState.language, item)}
+                placeholder={BACKWARD_CARD}
                 key={i}/> : <ThemedView style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
@@ -101,6 +102,7 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
                   }
                 ]} 
                 source={getImageLanguage116x162(state?.settingsState.language, offer)}
+                placeholder={BACKWARD_CARD}
                 key={i}/> : <ThemedView style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {

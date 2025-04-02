@@ -43,8 +43,6 @@ import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
 import { FilterRxjs } from "@/core/rxjs/FilterRxjs";
 
 export default function FilterCardMenu({
-  isVisible, 
-  onClose, 
   animatedStyle, 
   filterKey
 }: TabMenuCards) {
@@ -54,8 +52,6 @@ export default function FilterCardMenu({
   const [expansionSelected, setExpansionSelected] = useState<boolean>(false);
   const [forceRender, setForceRender] = useState(0);
   const triggerRender = () => setForceRender(prev => prev + 1);
-
-  if (!isVisible) return null;
 
   const nextValues: {[key: string] : Subject<boolean>} = {
     element$: new Subject<boolean>(),
@@ -69,15 +65,15 @@ export default function FilterCardMenu({
   }
 
   useEffect(() => {
-    const sub = FilterRxjs.getFilter(filterKey).subscribe(res => {
-      filterObj.current = res as FilterSearch;
+    const sub = FilterRxjs.getFilter<FilterSearch>(filterKey).subscribe(res => {
+      filterObj.current = res;
       triggerRender();
     });
 
     return (() => {
       if (sub) sub.unsubscribe();
     })
-  }, [])
+  }, []);
 
   useEffect(() => {
     setExpansionSelected(
@@ -91,8 +87,7 @@ export default function FilterCardMenu({
   }
 
   function closeMenu(): void {
-    onClose();
-    FilterRxjs.setFilter({key: 'cards', value: filterObj.current});
+    FilterRxjs.setFilter({key: filterKey, value: filterObj.current});
     ModalRxjs.setModalVisibility({key: 'cards', value: false});
   }
 
@@ -134,9 +129,7 @@ export default function FilterCardMenu({
   });
 
   const StagePokemonItem = React.memo(({ element }: any) => (
-    <>
-      <StageItem filterObj={filterObj} onlyPokemon={true} />
-    </>
+    <StageItem filterObj={filterObj} onlyPokemon={true} />
   ));
 
   const RenderExpansionsMenu = useCallback(() => (

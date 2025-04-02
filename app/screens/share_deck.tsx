@@ -30,6 +30,7 @@ import PickBackgroundMenu from "@/components/dedicated/share/PickCBackgroundMenu
 import { filterUniqueItems, getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { shareTradeStyles } from "./share_trade";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
 export default function ShareDeckScreen() {
   const {i18n} = useI18n();
@@ -143,7 +144,8 @@ export default function ShareDeckScreen() {
               CardGridStyles.image, 
               {width: Platform.OS === 'web' ? 29.1 : 49.4, height: 46, borderRadius: 4}
             ]} 
-            source={getImageLanguage69x96(lang, item?.id)}/>
+            source={getImageLanguage69x96(lang, item?.id)}
+            placeholder={BACKWARD_CARD}/>
             { state.settingsState.favorites?.includes(item.id) && 
               <ThemedView style={[CardGridStyles.triangle, {
                 borderRightWidth: 8,

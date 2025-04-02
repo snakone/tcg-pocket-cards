@@ -13,6 +13,7 @@ import { CardGridStyles, CARD_IMAGE_WIDTH_3 } from "@/shared/styles/component.st
 import ScrollService from "@/core/services/scroll.service";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { getImageLanguage116x162 } from "@/shared/definitions/utils/functions";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
 interface DetailRelatedProps {
   card: Card,
@@ -71,7 +72,8 @@ export default function DetailRelatedCards({card, state, scrollService}: DetailR
           }
           <Image accessibilityLabel={item.name[lang]} 
                  style={[CardGridStyles.image, {width: CARD_IMAGE_WIDTH_3}]} 
-                 source={getImageLanguage116x162(lang, item.id)}/>
+                 source={getImageLanguage116x162(lang, item.id)}
+                 placeholder={BACKWARD_CARD}/>
       </Pressable>
     </Animated.View>
   ), []);

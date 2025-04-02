@@ -3,16 +3,16 @@ import { MaterialIcons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { ThemedText } from "../ThemedText";
 import { filterStyles, sharedModalStyles } from "@/shared/styles/component.styles";
-import { ThemedView } from "../ThemedView";
 import { settingsStyles } from "@/app/screens/settings";
 import SoundService from "@/core/services/sounds.service";
 import { useConfirmation } from "@/core/providers/ConfirmationProvider";
 import Storage from "@/core/storage/storage.service";
 import { settingsInitialState, SettingsState } from "@/hooks/settings.reducer";
-import LoadingOverlay from "../ui/LoadingOverlay";
+import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import ShareService from "@/core/services/share.service";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 
 import { 
   decryptDataAndroid,
