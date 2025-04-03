@@ -13,13 +13,6 @@ import {
 } from './filter.reducer';
 
 import { 
-  ModalAction,
-  modalInitialState,
-  modalsReducer,
-  ModalsState
-} from './modals.reducer';
-
-import { 
   PocketNewAction,
   pocketNewsInitialState,
   pocketNewsReducer,
@@ -35,7 +28,6 @@ import {
 
 export interface AppState {
   cardState: CardsState,
-  modalState: ModalsState,
   filterState: FilterState,
   settingsState: SettingsState,
   pocketNewsState: PocketNewsState,
@@ -43,7 +35,6 @@ export interface AppState {
 
 export const initialRootState: AppState = {
   cardState: cardsInitialState,
-  modalState: modalInitialState,
   filterState: filterInitialState,
   settingsState: settingsInitialState,
   pocketNewsState: pocketNewsInitialState,
@@ -51,7 +42,6 @@ export const initialRootState: AppState = {
 
 export const rootReducer = (state: AppState, action: Actions) => ({
   cardState: cardsReducer(state.cardState, action as CardAction),
-  modalState: modalsReducer(state.modalState, action as ModalAction),
   filterState: filterReducer(state.filterState, action as FilterAction),
   settingsState: settingsReducer(state.settingsState, action as SettingsAction),
   pocketNewsState: pocketNewsReducer(state.pocketNewsState, action as PocketNewAction),
@@ -59,7 +49,6 @@ export const rootReducer = (state: AppState, action: Actions) => ({
 
 type Actions = 
   CardAction |
-  ModalAction |
   FilterAction |
   SettingsAction |
   PocketNewAction

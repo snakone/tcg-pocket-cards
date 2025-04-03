@@ -11,7 +11,7 @@ import SoundService from "@/core/services/sounds.service";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { ThemedView } from "@/components/ThemedView";
 import { AppContext } from "../_layout";
-import { CollectionElementStat, CollectionRarityStat, CollectionStat, ExpansionEmblem, UserCollection } from "@/shared/definitions/interfaces/global.interfaces";
+import { CollectionElementStat, CollectionRarityStat, CollectionStat, ExpansionEmblem, UserCollectionItem } from "@/shared/definitions/interfaces/global.interfaces";
 import { CardExpansionENUM, CardLanguageENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 import { settingsStyles } from "./settings";
 import { COLLECTION_LANGUAGE_MAP, CollectionLanguageList, EXPANSION_PACK_MAP, LARGE_MODAL_HEIGHT } from "@/shared/definitions/utils/constants";

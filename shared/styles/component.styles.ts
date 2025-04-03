@@ -437,16 +437,6 @@ export const WebStyles = StyleSheet.create({
 });
 
 export const TabsMenuStyles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    height: '100%',
-    zIndex: 1,
-    borderRadius: 50,
-    opacity: 0.3,
-    backgroundColor: 'mediumaquamarine'
-  },
   user: {
     justifyContent: 'flex-start', 
     flexDirection: 'row', 

@@ -5,7 +5,7 @@ import { IconSymbol } from "./IconSymbol";
 import { SortItem } from "@/shared/definitions/interfaces/layout.interfaces";
 
 interface SortAndFilterButtonsProps {
-  sort: SortItem;
+  sort: SortItem | undefined;
   sortPress: () => void;
   filterPress: () => void;
   sortIconStyle: string;

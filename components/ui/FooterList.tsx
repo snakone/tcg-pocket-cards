@@ -1,19 +1,22 @@
-import { ModalStyles, ButtonStyles } from "@/shared/styles/component.styles";
 import { View, TouchableOpacity } from "react-native";
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { ModalStyles, ButtonStyles } from "@/shared/styles/component.styles";
+
 import { ThemedText } from "../ThemedText";
 import { ThemedView } from "../ThemedView";
-import { useI18n } from "@/core/providers/LanguageProvider";
 
 interface FooterListProps {
   filteredLength: number;
   onPress: () => void;
+  height: number
 }
 
-export const FooterList: React.FC<FooterListProps> = ({ filteredLength, onPress }) => {
+export const FooterList: React.FC<FooterListProps> = ({ filteredLength, onPress, height }) => {
   const {i18n} = useI18n();
   
   if (filteredLength < 34) {
-    return <ThemedView style={{ height: 148 }} />;
+    return <ThemedView style={{ height }} />;
   }
 
   return (

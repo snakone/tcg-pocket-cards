@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { FlatList, RefreshControl, TouchableOpacity } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Subscription } from 'rxjs';
 import { useRouter } from 'expo-router';
@@ -22,44 +22,46 @@ import LoadingOverlay from '@/components/ui/LoadingOverlay';
 export default function NewsScreen() {
   console.log('News Screen')
   const {i18n} = useI18n();
-  const context = useContext(AppContext);
-  if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
   const [loading, setLoading] = useState(true);
   const newsService = useMemo(() => new PocketNewsService(), []);
   const { show: showError } = useError();
-  const [refreshing, setRefreshing] = React.useState(false);
   const router = useRouter();
-
-  const loadPocketNews = useCallback(() => {
-    const sub = newsService
-      .getPocketNews()
-      .subscribe({
-        next: (res) => {
-          dispatch({ type: 'SET_NEWS', value: res });
-          setLoading(false);
-          setRefreshing(false);
-        },
-        error: (err) => {
-          console.log(err);
-          showError("error_get_cards");
-          setLoading(false);
-          setRefreshing(false);
-        }
-      });
-
-      return sub;
-  }, [dispatch]);
+  const context = useContext(AppContext);
+  if (!context) { throw new Error('NO_CONTEXT'); }
+  const { state, dispatch } = context;
+  const [news, setNews] = useState<PocketNews[]>([]);
 
   useEffect(() => {
     let sub: Subscription;
-    !state.pocketNewsState.loaded ? sub = loadPocketNews() : setLoading(false);
+
+    !state.pocketNewsState.loaded ? 
+      sub = loadPocketNews() : 
+      (setLoading(false), setNews(state.pocketNewsState.news));
 
     return () => {
       if (sub) {
         sub.unsubscribe();
       }
     };
+  }, [state.pocketNewsState.loaded]);
+
+  const loadPocketNews = useCallback(() => {
+    const sub = newsService
+      .getPocketNews()
+      .subscribe({
+        next: (res) => {
+          setNews(res);
+          dispatch({ type: 'SET_NEWS', value: res });
+          setLoading(false);
+        },
+        error: (err) => {
+          console.log(err);
+          showError("error_get_cards");
+          setLoading(false);
+        }
+      });
+
+      return sub;
   }, []);
 
   const handleClick = useCallback((id: string): void => {
@@ -77,11 +79,6 @@ export default function NewsScreen() {
     )
   }, []);
 
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
-    loadPocketNews();
-  }, []);
-
   const getItemLayout = useCallback((_: any, index: number) => ({
     length: 241,
     offset: 241 * index,
@@ -97,7 +94,7 @@ export default function NewsScreen() {
                           styles={{padding: 0, paddingInline: 0}}
                           modalHeight={BACKUP_HEIGHT}>
         <FlatList
-          data={state.pocketNewsState.news}
+          data={news}
           renderItem={renderItem}
           getItemLayout={getItemLayout}
           keyExtractor={(item) => item._id}
@@ -105,11 +102,6 @@ export default function NewsScreen() {
           initialNumToRender={6}
           maxToRenderPerBatch={6}
           windowSize={11}
-          refreshControl={
-            <RefreshControl refreshing={refreshing} 
-                            onRefresh={onRefresh} 
-                            progressBackgroundColor={'white'}/>
-          }
           contentContainerStyle={{paddingHorizontal: 16, paddingTop: 2, paddingBottom: 4}}
         />
       </ParallaxScrollView>

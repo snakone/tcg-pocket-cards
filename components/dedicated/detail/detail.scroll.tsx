@@ -300,7 +300,9 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
           </ThemedView>
 
           <ThemedView style={{padding: 16, paddingRight: 0}}>
-            <DetailRelatedCards card={card} state={state} scrollService={scrollService}></DetailRelatedCards>
+            <DetailRelatedCards card={card} 
+                                state={state} 
+                                scrollService={scrollService}/>
           </ThemedView>
         </ThemedView>
       }

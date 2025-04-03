@@ -4,6 +4,7 @@ import { Card } from "./card.interfaces";
 import { LanguageType } from "../types/global.types";
 import { CardLanguageENUM, CardRarityENUM } from "../enums/card.enums";
 import { EXPANSION } from "../enums/packs.enums";
+import { SortItem } from "./layout.interfaces";
 
 interface ServerResponse {
   ok: boolean;
@@ -27,6 +28,13 @@ export interface StorageDeck {
   energies: PokemonTypeENUM[];
   popular: number[];
   created: number;
+}
+
+export interface UserData {
+  favorites: number[],
+  decks: StorageDeck[],
+  trades: TradeItem[],
+  collection: UserCollectionItem[]
 }
 
 export interface UserProfile {
@@ -73,7 +81,7 @@ export interface TradeItem {
   valid: boolean;
 }
 
-export interface UserCollection {
+export interface UserCollectionItem {
   id: number;
   amount: Record<CardLanguageENUM, number>
 }
@@ -112,4 +120,10 @@ export interface ShareContentProps {
   length: number,
   type: 'deck' | 'trade',
   horizontal?: boolean
+}
+
+export interface SortData {
+  sort: SortItem, 
+  iconStyle: any, 
+  orderIcon: any
 }

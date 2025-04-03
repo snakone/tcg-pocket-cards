@@ -664,4 +664,30 @@ export const STATS_EXPANSION_MAP: any = {
   99: 8
 }
 
-export const MODAL_KEYS = ["cards", "attacks", "cardsSort", "attacksSort", "avatar", "coin", "best"] as const;
+export const MODAL_KEYS = [
+  "cards", 
+  "attacks", 
+  "cardsSort",
+  "attacksSort", 
+  "avatar", 
+  "coin", 
+  "best"
+] as const;
+
+export const DEFAULT_PROFILE = {
+  name: '', 
+  avatar: 'eevee', 
+  coin: 'eevee', 
+  best: null
+};
+
+export const ROUTES_MAP = {
+  profile: "/profile",
+  share: "/share",
+  favorites: "/favorites",
+  attacks: "/attacks",
+  infographics: "/infographics",
+  news: "/news",
+  help: "/screens/help",
+  settings: "/screens/settings",
+} as const;

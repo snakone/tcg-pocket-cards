@@ -33,6 +33,7 @@ import { shareTradeStyles } from "./share_trade";
 import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
 export default function ShareDeckScreen() {
+  console.log('Share Deck Screen');
   const {i18n} = useI18n();
   const { deck_id } = useLocalSearchParams<{ deck_id: string }>();
   const context = useContext(AppContext);

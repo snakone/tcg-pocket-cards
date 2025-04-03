@@ -1,5 +1,6 @@
 import { PropsWithChildren, ReactNode } from "react";
 import { StyleProp, TextProps, ViewStyle } from "react-native";
+import { ROUTES_MAP } from "../utils/constants";
 
 export type ThemedTextProps = TextProps & {
   color?: string;
@@ -19,5 +20,6 @@ export type ParallaxProps = PropsWithChildren<{
 
 export type ErrorType = 'error' | 'info' | 'warning' | 'delete';
 export type LanguageType = 'es' | 'en' | 'ja';
-
 export type ModalType = 'cards' | 'attacks' | 'cardsSort' | 'attacksSort' | 'avatar' | 'coin' | 'best';
+export type DataKey = 'favorites' | 'decks' | 'trades' | 'collection';
+export type RouteKey = keyof typeof ROUTES_MAP;

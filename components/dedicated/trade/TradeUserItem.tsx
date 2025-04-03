@@ -41,7 +41,7 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
           <ThemedView style={{width: '38%'}}>
             {
               item.desired.map((item, i) => (
-                item ? <Image style={[
+                <Image style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
                     left: i * 16,
@@ -54,22 +54,9 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
                     top: Math.abs(i - 2) * 4
                   }
                 ]} 
-                source={getImageLanguage116x162(state?.settingsState.language, item)}
+                source={item ? getImageLanguage116x162(state?.settingsState.language, item) : BACKWARD_CARD}
                 placeholder={BACKWARD_CARD}
-                key={i}/> : <ThemedView style={[
-                  CardGridStyles.image,
-                  CreateScreenStyles.popularImage, {
-                    left: i * 16,
-                    width: 50,
-                    opacity: 1 - 0.1 * i,
-                    zIndex: Math.round((1 / (i + 1) * 100)),
-                    top: Math.abs(i - 2) * 4,
-                    transform: [
-                      { rotate: `${(i - 2) * 8}deg` },
-                    ],
-                    boxShadow: '5px 4px 8px rgba(0, 0, 0, 0.2)'
-                  }
-                ]} key={i}/>
+                key={i}/>
               ))
             }
           </ThemedView>
@@ -88,7 +75,7 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
           <ThemedView style={{width: '38%', borderBottomLeftRadius: 4}}>
             {
               item.offers.map((offer, i) => (
-                offer ? <Image style={[
+                <Image style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
                     left: i * 16,
@@ -101,22 +88,9 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
                     top: Math.abs(i - 2) * 4
                   }
                 ]} 
-                source={getImageLanguage116x162(state?.settingsState.language, offer)}
+                source={offer ? getImageLanguage116x162(state?.settingsState.language, offer) : BACKWARD_CARD}
                 placeholder={BACKWARD_CARD}
-                key={i}/> : <ThemedView style={[
-                  CardGridStyles.image,
-                  CreateScreenStyles.popularImage, {
-                    left: i * 16,
-                    width: 50,
-                    opacity: 1 - 0.1 * i,
-                    zIndex: Math.round((1 / (i + 1) * 100)),
-                    top: Math.abs(i - 2) * 4,
-                    transform: [
-                      { rotate: `${(i - 2) * 8}deg` },
-                    ],
-                    boxShadow: '5px 4px 8px rgba(0, 0, 0, 0.2)'
-                  }
-                ]} key={i}/>
+                key={i}/>
               ))
             }
           </ThemedView>

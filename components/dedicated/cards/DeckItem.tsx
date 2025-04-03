@@ -24,7 +24,7 @@ import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
             <ThemedView style={CreateScreenStyles.popularCards}>
               {
                 [0, 1].map((i) => (
-                  Boolean(item.popular[i]) ? <Image style={[
+                  <Image style={[
                     CardGridStyles.image,
                     CreateScreenStyles.popularImage, {
                       transform: [{rotate: `${10 + (i * 8)}deg`}],
@@ -32,19 +32,8 @@ import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
                       zIndex: (1 / (i + 1) * 100),
                     }
                   ]} 
-                  source={getImageLanguage116x162(state.settingsState.language, item.popular[i])}
+                  source={item.popular[i] ? getImageLanguage116x162(state.settingsState.language, item.popular[i]) : BACKWARD_CARD}
                   placeholder={BACKWARD_CARD}
-                  key={i}/> :
-                  <ThemedView style={[
-                    CardGridStyles.image,
-                    CreateScreenStyles.popularImage, {
-                      transform: [{rotate: `${10 + (i * 8)}deg`}],
-                      left: i * 25, 
-                      zIndex: (1 / (i + 1) * 100),
-                      opacity: 1 - 0.1 * i,
-                      boxShadow: '5px 4px 8px rgba(0, 0, 0, 0.2)'
-                    }
-                  ]}
                   key={i}/>
                 ))
               }

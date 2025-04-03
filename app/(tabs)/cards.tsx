@@ -8,8 +8,7 @@ import { ModalRxjs } from '@/core/rxjs/ModalRxjs';
 import { SortRxjs } from '@/core/rxjs/SortRxjs';
 
 import { getFilterIcon, getSortIconStyle, getSortOrderIcon } from '@/shared/definitions/utils/functions';
-import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
-import { SINGLE_SORT_DATA } from '@/shared/definitions/utils/constants';
+import { SortData } from '@/shared/definitions/interfaces/global.interfaces';
 import { FilterSearch } from '@/shared/definitions/classes/filter.class';
 import { Colors } from '@/shared/definitions/utils/colors';
 
@@ -19,11 +18,8 @@ import { SortAndFilterButtons } from '@/components/ui/FilterSortButtons';
 
 export default function CardsScreen() {
   console.log('Cards Screen')
-  const [sort, setSort] = useState<SortItem>(SINGLE_SORT_DATA);
-  const [_, setFilterSearch] = useState<FilterSearch>(new FilterSearch());
-  const [sortIconStyle, setSortIconStyle] = useState<any>();
-  const [sortOrderIcon, setSortOrderIcon] = useState<any>();
   const [filterIcon, setFilterIcon] = useState<any>();
+  const [sortData, setSortData] = useState<SortData>();
 
   function openFilter(): void {
     ModalRxjs.setModalVisibility({key: 'cards', value: true});
@@ -34,12 +30,8 @@ export default function CardsScreen() {
   }
 
   useEffect(() => {
-    const sub = FilterRxjs.getFilter('cards')
-      .subscribe(res => {
-        const value = Object.assign(Object.create(Object.getPrototypeOf(res)), res);
-        setFilterIcon(getFilterIcon(value));
-        setFilterSearch(value as FilterSearch)
-      });
+    const sub = FilterRxjs.getFilter<FilterSearch>('cards')
+      .subscribe(res => setFilterIcon(getFilterIcon(res)));
 
      return (() => {
       if (sub) sub.unsubscribe();
@@ -50,9 +42,13 @@ export default function CardsScreen() {
     const sub = SortRxjs.getSortActive('cards')
      .pipe(filter(Boolean)).subscribe(res => 
       (
-        setSort(res), 
-        setSortIconStyle(getSortIconStyle(res)),
-        setSortOrderIcon(getSortOrderIcon(res))
+        setSortData(_ => {
+          return {
+            sort: res,
+            iconStyle: getSortIconStyle(res),
+            orderIcon: getSortOrderIcon(res)
+          }
+        })
       ));
 
      return (() => {
@@ -64,15 +60,14 @@ export default function CardsScreen() {
     <>
       <ImageGridWithSearch modal={<CardsScreenModal></CardsScreenModal>}
                            modalTitle='cards'
-                           title='card_collection'
-                           filterKey={"cards"}/>
+                           title='card_collection'/>
 
-      <SortAndFilterButtons sort={sort}
+      <SortAndFilterButtons sort={sortData?.sort}
                             filterIcon={filterIcon}
                             filterPress={openFilter}
                             sortPress={openSort}
-                            sortIconStyle={sortIconStyle}
-                            sortOrderIcon={sortOrderIcon}
+                            sortIconStyle={sortData?.iconStyle}
+                            sortOrderIcon={sortData?.orderIcon}
                             styles={cardStyles}/>
     </>
   );

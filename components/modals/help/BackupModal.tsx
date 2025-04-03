@@ -1,18 +1,18 @@
 import { Platform, ScrollView, TouchableOpacity, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "expo-router";
 
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { filterStyles, sharedModalStyles } from "@/shared/styles/component.styles";
-import { settingsStyles } from "@/app/screens/settings";
 import SoundService from "@/core/services/sounds.service";
-import { useConfirmation } from "@/core/providers/ConfirmationProvider";
 import Storage from "@/core/storage/storage.service";
-import { settingsInitialState, SettingsState } from "@/hooks/settings.reducer";
-import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import ShareService from "@/core/services/share.service";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { useConfirmation } from "@/core/providers/ConfirmationProvider";
+import { SettingsState } from "@/hooks/settings.reducer";
+import { useError } from "@/core/providers/ErrorProvider";
+
+import { settingsStyles } from "@/app/screens/settings";
+import { filterStyles, sharedModalStyles } from "@/shared/styles/component.styles";
 
 import { 
   decryptDataAndroid,
@@ -24,8 +24,9 @@ import {
   saveEncryptedFileWeb 
 } from "@/shared/definitions/utils/functions";
 
-import { useError } from "@/core/providers/ErrorProvider";
-import { useRouter } from "expo-router";
+import LoadingOverlay from "@/components/ui/LoadingOverlay";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 
 export function BackupModal() {
   const {i18n} = useI18n();
@@ -38,14 +39,12 @@ export function BackupModal() {
 
   useEffect(() => {
     const getStorage = async () => {
-      const data = await Storage.loadSettings();
-      const profile = await Storage.getProfile();
-      setSettings({...data, ...profile});
+      const {settings} = await Storage.loadSettings();
+      setSettings({...settings});
     }
 
     getStorage();
   }, []);
-
 
   async function handleImport(): Promise<void> {
     SoundService.play('CHANGE_VIEW');
@@ -106,7 +105,11 @@ export function BackupModal() {
         { loading && <LoadingOverlay/> }
         <ScrollView style={{flex: 1}} 
                     showsVerticalScrollIndicator={false} >
-          <ThemedText style={[styles.text, {marginTop: 4, marginBottom: Platform.OS !== 'web' ? 24 : i18n.locale === 'ja' ? 20 : 28}]}>{i18n.t('backup_intro')}</ThemedText>
+          <ThemedText style={[
+            styles.text, 
+            {marginTop: 4, marginBottom: Platform.OS !== 'web' ? 24 : i18n.locale === 'ja' ? 20 : 28}
+            ]}>{i18n.t('backup_intro')}
+          </ThemedText>
 
           <ThemedText style={[filterStyles.header, {fontSize: i18n.locale === 'ja' ? 16 : 17}]}>{i18n.t('import')}</ThemedText>
 

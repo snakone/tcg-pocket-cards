@@ -27,6 +27,7 @@ import TradeCollage from "@/components/dedicated/share/TradeCollage";
 import { CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 
 export default function ShareTradeScreen() {
+  console.log('Share Trade Screen');
   const {i18n} = useI18n();
   const { trade_id } = useLocalSearchParams<{ trade_id: string }>();
   const context = useContext(AppContext);

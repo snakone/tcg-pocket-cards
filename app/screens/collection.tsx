@@ -29,7 +29,7 @@ import CollectionCardMenu from '@/components/shared/collection/CollectionCardMen
 import Storage from '@/core/storage/storage.service';
 import { CardLanguageENUM } from '@/shared/definitions/enums/card.enums';
 import { CollectionUser } from '@/shared/definitions/classes/collection.class';
-import { UserCollection } from '@/shared/definitions/interfaces/global.interfaces';
+import { UserCollectionItem } from '@/shared/definitions/interfaces/global.interfaces';
 import { useConfirmation } from '@/core/providers/ConfirmationProvider';
 import { FilterSearch } from '@/shared/definitions/classes/filter.class';
 import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
@@ -109,7 +109,7 @@ export default function CollectionCardsScreen() {
     const allMarked = filtered.map((card) => {
       const item = collection.find((sel) => sel.id === card.id);
       if (!item) {
-        return new CollectionUser(card.id, language) as UserCollection;
+        return new CollectionUser(card.id, language) as UserCollectionItem;
       }
   
       if (item.amount[language] === 0) {

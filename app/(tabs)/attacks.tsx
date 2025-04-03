@@ -27,6 +27,7 @@ import { CardGridStyles } from '@/shared/styles/component.styles';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { Colors } from '@/shared/definitions/utils/colors';
 import { FilterAttackSearch } from '@/shared/definitions/classes/filter_attack.class';
+import { SortData } from '@/shared/definitions/interfaces/global.interfaces';
 
 import { 
   filterAttacks, 
@@ -57,12 +58,9 @@ export default function AttacksScreen() {
   const [lang, setLang] = useState<LanguageType>('en');
   const searchQuery = useRef('');
   const [filtered, setFiltered] = useState<AttackMetaData[]>([]);
-  const [sort, setSort] = useState<SortItem>(SINGLE_SORT_DATA);
   const flatListRef = useRef<FlatList<AttackMetaData> | null>(null);
-  const [_, setFilterSearch] = useState<FilterAttackSearch>(new FilterAttackSearch());
-  const [sortIconStyle, setSortIconStyle] = useState<any>();
-  const [sortOrderIcon, setSortOrderIcon] = useState<any>();
   const [filterIcon, setFilterIcon] = useState<any>();
+  const [sortData, setSortData] = useState<SortData>();
 
   useEffect(() => {
     setLang(state.settingsState.language);
@@ -100,25 +98,16 @@ export default function AttacksScreen() {
   }
 
   useEffect(() => {
-    const sub = FilterRxjs.getFilter('attacks')
-      .subscribe(res => {
-        const value = Object.assign(Object.create(Object.getPrototypeOf(res)), res);
-        setFilterIcon(getFilterIcon(value));
-        setFilterSearch(value as FilterAttackSearch)
-      });
-
-      return (() => {
-        if (sub) sub.unsubscribe();
-      })
-  }, []);
-
-  useEffect(() => {
     const sub = SortRxjs.getSortActive('attacks')
       .pipe(filter(Boolean)).subscribe(res => 
       (
-        setSort(res), 
-        setSortIconStyle(getSortIconStyle(res)),
-        setSortOrderIcon(getSortOrderIcon(res))
+        setSortData(_ => {
+          return {
+            sort: res,
+            iconStyle: getSortIconStyle(res),
+            orderIcon: getSortOrderIcon(res)
+          }
+        })
       ));
 
       return (() => {
@@ -128,23 +117,21 @@ export default function AttacksScreen() {
 
   useEffect(() => {
     const sub = combineLatest([
-      ModalRxjs.attacksModal$,
-      ModalRxjs.attacksSortModal$
+      ModalRxjs.getModal('attacks'),
+      ModalRxjs.getModal('attacksSort')
     ])
     .pipe(
-      filter(_ => attacks.length > 0),
+      filter(([filterOpen, sortOpen]) => (attacks.length > 0) && !filterOpen && !sortOpen),
       withLatestFrom(
         FilterRxjs.getFilter<FilterAttackSearch>('attacks'),
         SortRxjs.getSortActive('attacks')
       )
-    ).subscribe(([[filterOpen, sortOpen], filters, sort]) => {
-      if (!filterOpen && !sortOpen) {
-        const filterCards = filterOrSortAttacks('filter', attacks as AttackMetaData[], lang, filters);
+    ).subscribe(([[_], filter, sort]) => {
+        const filterCards = filterOrSortAttacks('filter', attacks as AttackMetaData[], lang, filter);
         const sorted = filterOrSortAttacks('sort', filterCards, lang, null, sort);
-    
+        setFilterIcon(getFilterIcon(filter as FilterAttackSearch));
         setFiltered(sorted);
         setTimeout(() => goUp(null, false), 100);
-      }
     });
 
     return (() => {
@@ -157,7 +144,7 @@ export default function AttacksScreen() {
     router.push(`/screens/attack_detail?id=${encodeURIComponent(`${item.card}_${item.index}`)}`);
   }, []);
 
-  const handleSearch = useCallback((text: string) => {
+  const handleSearch = useCallback((text: string = '') => {
     searchQuery.current = text;
     setFiltered(
       attacks
@@ -260,16 +247,19 @@ export default function AttacksScreen() {
                   bounces={false}
                   overScrollMode='never'
                   ListFooterComponent={
-                    <FooterList filteredLength={filtered.length} onPress={() => goUp(null)}></FooterList>
+                    <FooterList filteredLength={filtered.length} 
+                                onPress={() => goUp(null)}
+                                height={148}>
+                    </FooterList>
                   }
                   keyboardDismissMode={'on-drag'}/>
       </ParallaxScrollView>
-      <SortAndFilterButtons sort={sort}
+      <SortAndFilterButtons sort={sortData?.sort}
                             filterIcon={filterIcon}
                             filterPress={openFilter}
                             sortPress={openSort}
-                            sortIconStyle={sortIconStyle}
-                            sortOrderIcon={sortOrderIcon}
+                            sortIconStyle={sortData?.iconStyle}
+                            sortOrderIcon={sortData?.orderIcon}
                             styles={cardStyles}/>
     </>
   );

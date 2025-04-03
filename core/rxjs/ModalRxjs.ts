@@ -5,13 +5,13 @@ import { ModalStatePayload } from '@/shared/definitions/interfaces/layout.interf
 import { ModalType } from '@/shared/definitions/types/global.types';
 
 class ModalState {
-  public cardsModal$ = new BehaviorSubject<boolean>(false);
-  public attacksModal$ = new BehaviorSubject<boolean>(false);
-  public cardsSortModal$ = new BehaviorSubject<boolean>(false);
-  public attacksSortModal$ = new BehaviorSubject<boolean>(false);
-  public avatarModal$ = new BehaviorSubject<boolean>(false);
-  public coinModal$ = new BehaviorSubject<boolean>(false);
-  public bestModal$ = new BehaviorSubject<boolean>(false);
+  private cardsModal$ = new BehaviorSubject<boolean>(false);
+  private attacksModal$ = new BehaviorSubject<boolean>(false);
+  private cardsSortModal$ = new BehaviorSubject<boolean>(false);
+  private attacksSortModal$ = new BehaviorSubject<boolean>(false);
+  private avatarModal$ = new BehaviorSubject<boolean>(false);
+  private coinModal$ = new BehaviorSubject<boolean>(false);
+  private bestModal$ = new BehaviorSubject<boolean>(false);
 
   private mappedModals: Record<ModalType, BehaviorSubject<boolean>> = {
     'cards': this.cardsModal$,
@@ -24,6 +24,10 @@ class ModalState {
   }
 
   constructor() {}
+
+  public getModal(key: ModalType): BehaviorSubject<boolean> {
+    return this.mappedModals[key];
+  }
 
   public setModalVisibility({key, value}: ModalStatePayload) {
     this.mappedModals[key].next(value);

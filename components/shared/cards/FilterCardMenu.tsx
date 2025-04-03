@@ -5,6 +5,31 @@ import Animated from 'react-native-reanimated'
 import { useRef, useState,  } from "react";
 import { Portal, Provider } from "react-native-paper";
 import { Subject } from "rxjs";
+import { MaterialIcons } from "@expo/vector-icons";
+
+import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
+import { FilterRxjs } from "@/core/rxjs/FilterRxjs";
+import SoundService from "@/core/services/sounds.service";
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
+import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import { getFilterSearch } from "@/shared/definitions/utils/constants";
+
+import { 
+  ButtonStyles,
+  filterStyles,
+  LayoutStyles,  
+  ModalStyles, 
+} from "@/shared/styles/component.styles";
+
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import InvertButton from "@/components/ui/InvertButton";
+import { SpecialItem } from "./components/SpecialItem";
+import { CollectionItem } from "../collection/components/CollectionItem";
+import { Colors } from "@/shared/definitions/utils/colors";
 
 import { 
   AttackItem,
@@ -19,32 +44,10 @@ import {
   StageItem
 } from './components/index';
 
-import { 
-  ButtonStyles,
-  filterStyles,
-  LayoutStyles,  
-  ModalStyles, 
-} from "@/shared/styles/component.styles";
-
-import { TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import InvertButton from "@/components/ui/InvertButton";
-import { FilterSearch } from "@/shared/definitions/classes/filter.class";
-import SoundService from "@/core/services/sounds.service";
-import { SpecialItem } from "./components/SpecialItem";
-import { CollectionItem } from "../collection/components/CollectionItem";
-import { getFilterSearch } from "@/shared/definitions/utils/constants";
-import { MaterialIcons } from "@expo/vector-icons";
-import { Colors } from "@/shared/definitions/utils/colors";
-import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
-import { FilterRxjs } from "@/core/rxjs/FilterRxjs";
-
 export default function FilterCardMenu({
   animatedStyle, 
-  filterKey
+  filterKey,
+  isVisible
 }: TabMenuCards) {
   const {i18n} = useI18n();
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
@@ -53,19 +56,13 @@ export default function FilterCardMenu({
   const [forceRender, setForceRender] = useState(0);
   const triggerRender = () => setForceRender(prev => prev + 1);
 
-  const nextValues: {[key: string] : Subject<boolean>} = {
-    element$: new Subject<boolean>(),
-    rarity$: new Subject<boolean>(),
-    stage$: new Subject<boolean>(),
-    miscellania$: new Subject<boolean>()
-  }
-
   function onNext(subject: string): void {
     nextValues[subject].next(true);
   }
 
   useEffect(() => {
-    const sub = FilterRxjs.getFilter<FilterSearch>(filterKey).subscribe(res => {
+    const sub = FilterRxjs.getFilter<FilterSearch>(filterKey)
+     .subscribe(res => {
       filterObj.current = res;
       triggerRender();
     });
@@ -81,6 +78,13 @@ export default function FilterCardMenu({
        .some(key => (Boolean((filterObj.current.expansion as any)[key])))
     );
   }, []);
+
+  const nextValues: {[key: string] : Subject<boolean>} = {
+    element$: new Subject<boolean>(),
+    rarity$: new Subject<boolean>(),
+    stage$: new Subject<boolean>(),
+    miscellania$: new Subject<boolean>()
+  }
 
   const playSound = async (value: string) => {
     await SoundService.play(value);
@@ -139,6 +143,8 @@ export default function FilterCardMenu({
       )}
     </>
   ), [expansionVisible, filterObj]);
+
+  if (!isVisible) { return null; }
 
   return (
     <Provider key={forceRender}>

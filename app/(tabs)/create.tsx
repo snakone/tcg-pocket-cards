@@ -1,10 +1,11 @@
 import { MaterialIcons } from '@expo/vector-icons';
-import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'expo-router';
 import { FlatList, Platform, TextInput, TouchableOpacity, View } from 'react-native';
 
 import { useI18n } from '@/core/providers/LanguageProvider';
 import SoundService from '@/core/services/sounds.service';
+import { DataRxjs } from '@/core/rxjs/DataRxjs';
 
 import { AppContext } from '../_layout';
 import { CardGridStyles, homeScreenStyles } from '@/shared/styles/component.styles';
@@ -15,7 +16,6 @@ import { Colors } from '@/shared/definitions/utils/colors';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { CreateScreenModal } from '@/components/modals/screens/CreateScreenModal';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import { RenderDeckItem } from '@/components/dedicated/cards/DeckItem';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ResetFilterButton } from '@/components/ui/ResetFilterButton';
@@ -25,11 +25,26 @@ export default function CreateDeckScreen() {
   const {i18n} = useI18n();
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
-  const [decks, setDecks] = useState<any[]>([]);
-  const [filtered, setFiltered] = useState<any[]>([]);
+  const [decks, setDecks] = useState<StorageDeck[]>([]);
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
+  const { state } = context;
+
+  useEffect(() => {
+    const sub = DataRxjs.getData<StorageDeck[]>('decks')
+     .subscribe(res => setDecks(res));
+
+     return (() => {
+      if (sub) sub.unsubscribe();
+     })
+  }, []);
+
+  const filtered = useMemo(() => {
+    if(decks.length === 0) { return decks; }
+    return decks
+      .filter(deck => deck.name.toLowerCase()?.includes(searchQuery.toLowerCase()))
+      .sort((a, b) => a?.id > b?.id ? -1 : 1);
+  }, [decks, searchQuery])
 
   const createNewDeck = () => {
     SoundService.play('AUDIO_MENU_OPEN');
@@ -41,22 +56,9 @@ export default function CreateDeckScreen() {
     router.push(`/screens/create_deck?deck_id=${encodeURIComponent(deck.id)}`);
   }
 
-  const renderEmpty = useCallback(() => {
-    return state.cardState.loaded && 
-      <ThemedText style={{ paddingVertical: 12, paddingHorizontal: Platform.OS !== 'web' ? 6 : 22}}>
-        {i18n.t('no_decks_found')}
-      </ThemedText>
-  }, [state.cardState.loaded]);
-
-
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
-    setFiltered(prev => {
-      if(decks.length === 0) { return prev; }
-      return decks.filter(deck =>
-        deck.name.toLowerCase()?.includes(text.toLowerCase()));
-    })
-  }, [decks]);
+  }, []);
 
   const RenderFooter = useCallback(() => {
     return (
@@ -77,11 +79,6 @@ export default function CreateDeckScreen() {
       )
   }, [decks]);
 
-  useEffect(() => {
-    setDecks(state.settingsState.decks);
-    setFiltered(state.settingsState.decks);
-  }, [state.settingsState.decks]);
-
   const ListHeader = useMemo(() => (
     <View style={CardGridStyles.inputContainer}>
       <ThemedView
@@ -99,7 +96,8 @@ export default function CreateDeckScreen() {
           accessibilityLabel={'SEARCH_LABEL'}
           inputMode="text"
         />
-        {searchQuery.length > 0 && <ResetFilterButton left={248} onPress={() => handleSearch('')}/>}
+        {searchQuery.length > 0 && 
+          <ResetFilterButton left={248} onPress={() => handleSearch('')}/>}
       </ThemedView>
       <View
         style={[
@@ -124,7 +122,7 @@ export default function CreateDeckScreen() {
                           modalContent={<CreateScreenModal></CreateScreenModal>}
                           modalHeight={LARGE_MODAL_HEIGHT}
                           styles={{gap: 0}}>
-        <FlatList data={filtered.sort((a, b) => a?.id > b?.id ? -1 : 1)}
+        <FlatList data={filtered}
                   numColumns={1}
                   renderItem={({item, index}) => <RenderDeckItem item={item} state={state} onPress={openDeck} />}
                   keyExtractor={(_, index) => index + 1 + ''}

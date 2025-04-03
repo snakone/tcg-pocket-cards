@@ -14,7 +14,7 @@ import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SHINING_REVELRY_I
 import { PACK_MAP } from "./constants";
 import { LanguageType } from "../types/global.types";
 import { FilterAttackSearch } from "../classes/filter_attack.class";
-import { UserCollection } from "../interfaces/global.interfaces";
+import { UserCollectionItem } from "../interfaces/global.interfaces";
 
 import { 
   CARD_IMAGE_MAP_116x162_EN, 
@@ -112,7 +112,7 @@ export function filterCards(
   filter: FilterSearch, 
   data: Card[], 
   favorites: number[], 
-  collection?: UserCollection[],
+  collection?: UserCollectionItem[],
   collectionLang?: CardLanguageENUM
 ): Card[] {
   if (filter.areAllPropertiesNull()) { return data; }
@@ -629,7 +629,7 @@ export function getMetrics(type: 'height' | 'weight', lang: LanguageType): strin
   return METRICS_MAP[type][lang];
 }
 
-export function areAllAmountsZero(collection: UserCollection): boolean {
+export function areAllAmountsZero(collection: UserCollectionItem): boolean {
   return Object.values(collection.amount).every(value => value === 0);
 }
 
@@ -655,7 +655,7 @@ export const getSortOrderIcon = (sort: SortItem) => {
          sort.order === 'asc' ? 'arrow-upward' : 'arrow-downward';
 };
 
-export const getFilterIcon = (filterSearch: FilterSearch) => {
+export const getFilterIcon = (filterSearch: FilterSearch | FilterAttackSearch) => {
   return filterSearch.areAllPropertiesNull() ? 'cancel' : 'check-circle';
 };
 

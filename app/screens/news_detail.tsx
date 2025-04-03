@@ -4,17 +4,19 @@ import { Image } from 'expo-image';
 import { FlatList, StyleSheet, View } from "react-native";
 import { Subscription } from "rxjs";
 
+import PocketNewsService from "@/core/services/news.service";
+import { useI18n } from "@/core/providers/LanguageProvider";
+import { useError } from "@/core/providers/ErrorProvider";
+
 import { AppContext } from "../_layout";
+import { NewsContent, PocketNews } from "@/shared/definitions/interfaces/global.interfaces";
+import { formatDate } from "@/shared/definitions/utils/functions";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
-import { NewsContent, PocketNews } from "@/shared/definitions/interfaces/global.interfaces";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import PocketNewsService from "@/core/services/news.service";
-import { useError } from "@/core/providers/ErrorProvider";
-import { formatDate } from "@/shared/definitions/utils/functions";
-import { LanguageType } from "@/shared/definitions/types/global.types";
 import { pocketNewsStyles } from "@/components/dedicated/news/NewsItem";
 
 export default function NewsDetailScreen() {
@@ -56,7 +58,7 @@ export default function NewsDetailScreen() {
         sub.unsubscribe();
       }
     };
-  }, []);
+  }, [state.pocketNewsState.loaded]);
 
   useEffect(() => {
     if (id !== undefined) {

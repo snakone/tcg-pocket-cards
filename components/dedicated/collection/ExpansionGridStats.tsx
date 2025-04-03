@@ -5,7 +5,7 @@ import { useRouter } from "expo-router";
 
 import { CardExpansionENUM, CardLanguageENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 import { EXPANSION } from "@/shared/definitions/enums/packs.enums";
-import { CollectionElementStat, CollectionRarityStat, CollectionStat, UserCollection } from "@/shared/definitions/interfaces/global.interfaces";
+import { CollectionElementStat, CollectionRarityStat, CollectionStat, UserCollectionItem } from "@/shared/definitions/interfaces/global.interfaces";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { StatsGrid } from "./StatsGrid";
 
@@ -40,7 +40,7 @@ interface CollectionGridStats {
   currentExpansion: EXPANSION;
   allCards: {[key: string]: Card[]},
   language: CardLanguageENUM,
-  collection: UserCollection[];
+  collection: UserCollectionItem[];
   allStats: CollectionStat[];
 }
 

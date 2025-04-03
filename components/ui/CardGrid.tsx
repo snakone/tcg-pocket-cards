@@ -5,7 +5,6 @@ import {
   TextInput, 
   SafeAreaView, 
   Pressable, 
-  TouchableOpacity, 
   View, 
   Platform, 
   KeyboardAvoidingView,
@@ -15,55 +14,53 @@ import {
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { Slider } from '@miblanchard/react-native-slider';
+import { combineLatest, filter, withLatestFrom } from 'rxjs';
 
 import { 
-  ButtonStyles,
   CardGridStyles,
   gridColumMap,
   gridHeightMap,
   gridWidthMap,
-  ModalStyles,
   ParallaxStyles
 } from '@/shared/styles/component.styles';
 
-import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import SkeletonCardGrid from '../skeletons/SkeletonCardGrid';
-import { ThemedView } from '../ThemedView';
-import HeaderWithCustomModal from '../shared/HeaderModal';
-import { ThemedText } from '../ThemedText';
-import { IconSymbol } from './IconSymbol';
-import { Colors } from '@/shared/definitions/utils/colors';
-import { AppState } from '@/hooks/root.reducer';
-import { LARGE_MODAL_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/constants';
-import { useI18n } from '@/core/providers/LanguageProvider';
-import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
-import { filterCards, getImageLanguage116x162, getImageLanguage69x96, sortCards } from '@/shared/definitions/utils/functions';
-import { AppContext } from '@/app/_layout';
-import SoundService from '@/core/services/sounds.service';
-import { LanguageType } from '@/shared/definitions/types/global.types';
-import { settingsStyles } from '@/app/screens/settings';
-import { FilterKey } from '@/hooks/filter.reducer';
-import { FilterSearch } from '@/shared/definitions/classes/filter.class';
+import { DataRxjs } from '@/core/rxjs/DataRxjs';
 import { ModalRxjs } from '@/core/rxjs/ModalRxjs';
-import { combineLatest, filter, tap, withLatestFrom } from 'rxjs';
+import { useI18n } from '@/core/providers/LanguageProvider';
+import SoundService from '@/core/services/sounds.service';
 import { FilterRxjs } from '@/core/rxjs/FilterRxjs';
 import { SortRxjs } from '@/core/rxjs/SortRxjs';
+
+import { AppContext } from '@/app/_layout';
+import { Card } from '@/shared/definitions/interfaces/card.interfaces';
+import { Colors } from '@/shared/definitions/utils/colors';
+import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
+import { filterCards, getImageLanguage116x162, getImageLanguage69x96, sortCards } from '@/shared/definitions/utils/functions';
+import { LanguageType } from '@/shared/definitions/types/global.types';
+import { LARGE_MODAL_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/constants';
+import { FilterSearch } from '@/shared/definitions/classes/filter.class';
+import { ThemedView } from '../ThemedView';
+import { settingsStyles } from '@/app/screens/settings';
 import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
+
+import HeaderWithCustomModal from '../shared/HeaderModal';
+import { ThemedText } from '../ThemedText';
+import { FooterList } from './FooterList';
+import { ResetFilterButton } from './ResetFilterButton';
+import { TrackItem } from './TrackItem';
 
 interface GridCardProps {
   title: string,
   modal: JSX.Element,
   modalTitle: string
   type?: 'default' | 'favorites',
-  filterKey: FilterKey
 }
 
 export default function ImageGridWithSearch({ 
   title, 
   modal, 
   modalTitle, 
-  type = 'default',
-  filterKey
+  type = 'default'
 }: GridCardProps) {
   console.log('Card Grid!')
   const searchQuery = useRef('');
@@ -74,13 +71,10 @@ export default function ImageGridWithSearch({
   const [numColumns, setNumColumns] = useState(3);
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
+  const { state } = context;
   const [lang, setLang] = useState<LanguageType>('en');
   const gridNumber = useRef<0 | 1 | 2>(0);
-
-  const [favorites, setFavorites] = useState<Card[]>(
-    state.cardState.cards.filter(c => state.settingsState.favorites?.includes(c.id))
-  );
+  const [favorites, setFavorites] = useState<Card[]>([]);
 
   useEffect(() => {
     setLang(state.settingsState.language);
@@ -92,8 +86,8 @@ export default function ImageGridWithSearch({
 
   useEffect(() => {
     const sub = combineLatest([
-      ModalRxjs.cardsModal$,
-      ModalRxjs.cardsSortModal$
+      ModalRxjs.getModal('cards'),
+      ModalRxjs.getModal('cardsSort')
     ])
     .pipe(
       filter(_ => state.cardState.cards.length > 0),
@@ -116,25 +110,37 @@ export default function ImageGridWithSearch({
     })
   }, [state.cardState.cards]);
 
-  useEffect(() => {
-    if (type !== 'favorites') return;
-    const favorites = state.cardState.cards.filter(
-      card => state.settingsState.favorites?.includes(card.id)
-    );
+  const favIds = useMemo(() => favorites.map(fav => fav.id), [favorites]);
 
-    setFiltered(favorites);
-    setFavorites(favorites);
-  }, [state.settingsState.favorites]);
+  useEffect(() => {
+    const sub = DataRxjs.getData<number[]>('favorites')
+     .subscribe(res => {
+      const favorites = state.cardState.cards.filter(
+        card => res?.includes(card.id)
+      );
+
+      setFavorites(favorites);
+      setFiltered(prev => type === 'favorites' ? favorites : prev);
+    });
+
+    return (() => {
+      if (sub) sub.unsubscribe();
+    })
+  }, []);
 
   const handleSearch = useCallback((text: string) => {
     const source = type === 'favorites' ? favorites : state.cardState.cards;
     searchQuery.current = text;
     setFiltered((source).filter(card =>
-    card.name[lang].toLowerCase()?.includes(text.toLowerCase())));
+      card.name[lang].toLowerCase()?.includes(text.toLowerCase())));
   }, [favorites, state.cardState.cards, lang]);
 
-  const filterOrSortCards = useCallback(
-    (type: 'sort' | 'filter', data: Card[], filter?: FilterSearch | null, sort?: SortItem): Card[] => {
+  const filterOrSortCards = useCallback((
+    type: 'sort' | 'filter', 
+    data: Card[], 
+    filter?: FilterSearch | null, 
+    sort?: SortItem
+    ): Card[] => {
       switch (type) {
         case 'sort': {
           if (!sort) { return data; }
@@ -142,10 +148,10 @@ export default function ImageGridWithSearch({
         }
         case 'filter': {
           if (!filter) { return data; }
-          return manageFilter(data, filter);
+          return filterCards(filter as FilterSearch, data, favIds)
         }
       }
-  }, []);
+  }, [favorites]);
 
   const manageSort = useCallback((sort: SortItem, data: Card[]): Card[] => {
     const sortField = SORT_FIELD_MAP[sort.label];
@@ -158,35 +164,6 @@ export default function ImageGridWithSearch({
     return sortCards(sortField, data, sort);
   }, []);
 
-  const manageFilter = useCallback((data: Card[], filter: FilterSearch): Card[] => {
-    return filterCards(filter as FilterSearch, data, state.settingsState.favorites);
-  }, [state.settingsState.favorites]);
-
-  const renderFooter = useCallback(() => {
-    if (filtered.length < 34) {
-      return <ThemedView style={{ height: 20 }}></ThemedView>;
-    }
-
-    return (
-      <View
-        style={[
-          ModalStyles.modalFooter,
-          { marginBlock: 34, boxShadow: 'none', paddingTop: 20 },
-        ]}>
-        <TouchableOpacity
-          style={ButtonStyles.button}
-          onPress={goUp}
-          accessibilityLabel={'GO_UP'}
-          accessibilityRole="button"
-          accessible={true}>
-          <View style={ButtonStyles.insetBorder}>
-            <ThemedText>{i18n.t('go_up')}</ThemedText>
-          </View>
-        </TouchableOpacity>
-      </View>
-    )
-  }, [searchQuery.current, filtered.length]);
-
   const renderItem = useCallback(({ item }: { item: Card }) => (
     <View key={item.id} style={[
         CardGridStyles.imageContainer, 
@@ -194,7 +171,7 @@ export default function ImageGridWithSearch({
       ]}>
         <Pressable onPress={() => goToDetailScreen(item.id)} 
                    style={{ zIndex: 1, position: 'relative' }}>
-          { state.settingsState.favorites?.includes(item.id) && 
+          { favIds?.includes(item.id) && 
             <ThemedView style={CardGridStyles.triangle}></ThemedView>
           }
           <Image accessibilityLabel={item.name[lang]} 
@@ -208,7 +185,7 @@ export default function ImageGridWithSearch({
           placeholder={BACKWARD_CARD}/>
       </Pressable>
     </View>
-  ), [gridNumber, state.settingsState.favorites, lang]);
+  ), [gridNumber, favorites, lang]);
 
   const playSound = useCallback(async (isSwitch: boolean = false) => {
     if (isSwitch) { 
@@ -228,32 +205,6 @@ export default function ImageGridWithSearch({
   const goUp = useCallback(async (_: GestureResponderEvent | null, sound = true): Promise<void> => {
     if (sound) await playSound();
     flatListRef.current?.scrollToOffset({ offset: 0, animated: false });
-  }, []);
-
-  const ResetFilterButton = React.memo(() => (
-    <TouchableOpacity 
-      onPress={() => handleSearch('')} 
-      style={[CardGridStyles.clearInput, {left: 183}]}
-      hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-    >
-      <IconSymbol name="clear" size={20} color="gray" />
-    </TouchableOpacity>
-  ));
-
-  const TrackItem = useCallback((index: any) => {
-    if (index === 0 || index === 10) return null;
-    return (
-      <ThemedView style={{
-        width: 2,
-        height: 4,
-        right: -10,
-        backgroundColor: '#777',
-        position: 'relative',
-        zIndex: 1000,
-        opacity: 1
-      }}>  
-      </ThemedView>
-    )
   }, []);
 
   const handleColumnChange = useCallback((ev: number[]): void => {
@@ -280,7 +231,7 @@ export default function ImageGridWithSearch({
       value={gridNumber.current}
       onSlidingComplete={handleColumnChange}
       trackMarks={[0, 1, 2]}
-      renderTrackMarkComponent={(index) => <TrackItem index={index} />}
+      renderTrackMarkComponent={(i) => <TrackItem index={i} />}
     />
   ), [gridNumber.current]);
 
@@ -315,7 +266,9 @@ export default function ImageGridWithSearch({
                               editable={state.cardState.loaded}
                               inputMode='text'
                             />
-                        {searchQuery.current.length > 0 && <ResetFilterButton/>}
+                        {searchQuery.current.length > 0 && 
+                          <ResetFilterButton left={183} onPress={() => handleSearch('')}/>
+                        }
                 </ThemedView>
 
                 <ThemedView style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && {marginRight: 2}, {width: '20%'}]}>
@@ -345,7 +298,12 @@ export default function ImageGridWithSearch({
                 keyboardShouldPersistTaps={'never'}
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={<ThemedText style={{ paddingInline: 6 }}>{i18n.t('no_cards_found')}</ThemedText>}
-                ListFooterComponent={renderFooter}
+                ListFooterComponent={
+                  <FooterList filteredLength={filtered.length} 
+                              onPress={() => goUp(null)}
+                              height={20}>
+                  </FooterList>
+                }
               />               
             </KeyboardAvoidingView>
           </SafeAreaView>

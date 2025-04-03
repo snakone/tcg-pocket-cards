@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Platform, Pressable } from 'react-native';
 import { Portal, Provider } from 'react-native-paper';
-import { map } from 'rxjs';
+import { map, skip } from 'rxjs';
 
 import SoundService from '@/core/services/sounds.service';
 import { ModalRxjs } from '@/core/rxjs/ModalRxjs';
@@ -27,10 +27,12 @@ import SortAttackMenu from '@/components/shared/attacks/SortAttackMenu';
 export default function TabLayout() {
   const distanceFromBottom = useSharedValue(FILTER_CARDS_HEIGHT);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const [isAvatarVisible, setIsAvatarVisible] = useState(false);
-  const [isCoinVisible, setIsCoinVisible] = useState(false);
-  const [isBestVisible, setIsBestVisible] = useState(false);
   const [isMobileEmulator, setIsMobileEmulator] = useState(false);
+  const context = useContext(AppContext);
+  if (!context) { throw new Error('NO_CONTEXT'); }
+  const { state } = context;
+  const menuRight = useSharedValue(MENU_WIDTH);
+  const {i18n} = useI18n();
 
   const [modalVisibility, setModalVisivility] = useState<Record<ModalType, boolean>>({
     cards: false,
@@ -42,11 +44,11 @@ export default function TabLayout() {
     best: false
   });
 
-  const context = useContext(AppContext);
-  if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
-  const menuRight = useSharedValue(MENU_WIDTH);
-  const {i18n} = useI18n();
+  useEffect(() => {
+    if (Platform.OS === 'web' && window && window.devicePixelRatio > 1) {
+      setIsMobileEmulator(true);
+    }
+  }, []);
 
   // MENU
   const menuAnimatedStyle = useAnimatedStyle(() => {
@@ -68,18 +70,11 @@ export default function TabLayout() {
                      onClose={() => setIsMenuVisible(false)} />;
   }, [isMenuVisible]);
 
-  // SORT CARDS
   const modalAnimatedStyle = useAnimatedStyle(() => {
     return {
       transform: [{ translateY: distanceFromBottom.value }]
     };
   });
-
-  useEffect(() => {
-    if (Platform.OS === 'web' && window && window.devicePixelRatio > 1) {
-      setIsMobileEmulator(true);
-    }
-  }, []);
 
   function isAnyModalVisible(): boolean {
     return Object.values(modalVisibility).some(Boolean);
@@ -91,28 +86,10 @@ export default function TabLayout() {
                                 withTiming(FILTER_CARDS_HEIGHT, { duration: 0 });
   }, [isAnyModalVisible()]);
 
-
-  const memoizedPickAvatar = useMemo(() => {
-    return <PickAvatarMenu isVisible={isAvatarVisible} 
-                           animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
-                           onClose={onClose}/>
-  }, [isAvatarVisible]);
-
-  const memoizedPickCoin = useMemo(() => {
-    return <PickCoinMenu isVisible={isCoinVisible} 
-                         animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
-                         onClose={onClose}/>
-  }, [isCoinVisible]);
-
-  const memoizedPickBest = useMemo(() => {
-    return <PickBestMenu isVisible={isBestVisible} 
-                         animatedStyle={{}} 
-                         onClose={onClose}/>
-  }, [isBestVisible]);
-
   useEffect(() => {
     const sub = ModalRxjs.getAllRefs()
       .pipe(
+        skip(1),
         map(values =>
           Object.fromEntries(
             MODAL_KEYS.map((key, i) => [key, values[i]])
@@ -125,18 +102,6 @@ export default function TabLayout() {
     })
   }, []);
 
-  useEffect(() => {
-    setIsAvatarVisible(state.modalState.avatar_opened);
-  }, [state.modalState.avatar_opened]);
-
-  useEffect(() => {
-    setIsCoinVisible(state.modalState.coin_opened);
-  }, [state.modalState.coin_opened]);
-
-  useEffect(() => {
-    setIsBestVisible(state.modalState.best_opened);
-  }, [state.modalState.best_opened]);
-
   function handleMenu(value: boolean): void {
     setIsMenuVisible(value);
     playSound();
@@ -145,12 +110,6 @@ export default function TabLayout() {
   const playSound = async () => {
     await SoundService.play('CHANGE_VIEW');
   };
-
-  function onClose(): void {
-    setIsAvatarVisible(false);
-    setIsCoinVisible(false);
-    setIsBestVisible(false);
-  }
 
   const emulatorStyle = () => Platform.OS === 'web' && !isMobileEmulator;
   const emulatorStyleNot = () => Platform.OS === 'web' && window.innerWidth < 1500;
@@ -162,6 +121,7 @@ export default function TabLayout() {
           tabBarActiveTintColor: 'skyblue',
           tabBarHideOnKeyboard: false,
           freezeOnBlur: true,
+          animation: 'none',
           headerShown: false,
           tabBarLabel: '',
           tabBarStyle: Platform.select({
@@ -189,7 +149,6 @@ export default function TabLayout() {
                         style={[
                           TabButtonStyles.icon, 
                           emulatorStyleNot() ? {top: 0} : emulatorStyle() && {top: -5}]} />,
-            animation: 'shift',
             title: i18n.t('home')
           }}
         />
@@ -202,7 +161,6 @@ export default function TabLayout() {
                               style={[
                                 TabButtonStyles.stacks, 
                                 emulatorStyleNot() ? {top: 2} : emulatorStyle() && {top: -3, left: 4}]} />,
-            animation: 'shift',
           }}
         />
         <Tabs.Screen
@@ -213,7 +171,6 @@ export default function TabLayout() {
                                style={[
                                 TabButtonStyles.stylus, 
                                 emulatorStyleNot() ? {top: 2} : emulatorStyle() && {top: -3, left: 4}]} />,
-            animation: 'shift',
             title: i18n.t('create')
           }}
         />
@@ -226,14 +183,12 @@ export default function TabLayout() {
                                 TabButtonStyles.trade, 
                                 emulatorStyleNot() ? {top: 5} : emulatorStyle() && {top: 1, left: 3}, 
                                 Platform.OS !== 'web' && {top: 5}]} />,
-            animation: 'shift',
             title: i18n.t('trade')
           }}
         />
         <Tabs.Screen
           name="menu"
           options={{
-            animation: 'shift',
             tabBarButton: () => (
               <Pressable onPress={() => handleMenu(true)} 
                          style={{padding: 5, flex: 1}} 
@@ -249,7 +204,6 @@ export default function TabLayout() {
         <Tabs.Screen
           name="profile"
           options={{
-            animation: 'shift',
             tabBarItemStyle: {
               display: 'none'
             },
@@ -260,7 +214,6 @@ export default function TabLayout() {
         <Tabs.Screen
           name="news"
           options={{
-            animation: 'shift',
             tabBarItemStyle: {
               display: 'none'
             },
@@ -271,7 +224,6 @@ export default function TabLayout() {
         <Tabs.Screen
           name="share"
           options={{
-            animation: 'shift',
             tabBarItemStyle: {
               display: 'none'
             },
@@ -282,7 +234,6 @@ export default function TabLayout() {
         <Tabs.Screen
           name="favorites"
           options={{
-            animation: 'shift',
             tabBarItemStyle: {
               display: 'none'
             },
@@ -293,7 +244,6 @@ export default function TabLayout() {
         <Tabs.Screen
           name="infographics"
           options={{
-            animation: 'shift',
             tabBarItemStyle: {
               display: 'none'
             },
@@ -304,7 +254,6 @@ export default function TabLayout() {
         <Tabs.Screen
           name="attacks"
           options={{
-            animation: 'shift',
             tabBarItemStyle: {
               display: 'none'
             },
@@ -315,7 +264,6 @@ export default function TabLayout() {
         <Tabs.Screen
           name="games"
           options={{
-            animation: 'shift',
             tabBarItemStyle: {
               display: 'none'
             },
@@ -324,24 +272,20 @@ export default function TabLayout() {
           }}
         />
       </Tabs>
+      
+      <Portal>{isMenuVisible && memoizedMenu}</Portal>
 
       {/* // CARDS */}
-      <Portal>{isMenuVisible && memoizedMenu}</Portal>
       <Portal>
-        {modalVisibility.cards && 
-          <FilterCardMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
-                          filterKey={"cards"}/>}
+       <FilterCardMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
+                       filterKey={"cards"}
+                       isVisible={modalVisibility.cards}/>
       </Portal>
       <Portal>
         {modalVisibility.cardsSort && 
           <SortCardMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
                         filterKey={"cards"}/>}
       </Portal>
-
-      {/* // PROFILE */}
-      <Portal>{isAvatarVisible && memoizedPickAvatar}</Portal>
-      <Portal>{isCoinVisible && memoizedPickCoin}</Portal>
-      <Portal>{isBestVisible && memoizedPickBest}</Portal>
 
       {/* // ATTACKS */}
       <Portal>
@@ -353,6 +297,22 @@ export default function TabLayout() {
         {modalVisibility.attacksSort && 
           <SortAttackMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
                           filterKey={"attacks"}/>}
+      </Portal>
+
+      {/* // PROFILE */}
+      <Portal>
+        {modalVisibility.avatar && 
+          <PickAvatarMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle}/>
+        }
+      </Portal>
+      <Portal>
+        {modalVisibility.coin && 
+          <PickCoinMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle}/>}
+      </Portal>
+      <Portal>
+        <PickBestMenu cards={state.cardState.cards} 
+                      language={state.settingsState.language}
+                      isVisible={modalVisibility.best}/>
       </Portal>
     </Provider>
   );

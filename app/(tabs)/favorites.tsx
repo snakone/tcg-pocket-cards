@@ -9,7 +9,6 @@ export default function FavoritesScreen() {
     <ImageGridWithSearch modal={<FavoritesScreenModal></FavoritesScreenModal>}
                           title="favorites"
                           modalTitle="favorites_modal_title"
-                          type="favorites"
-                          filterKey={'cards'}/>
+                          type="favorites"/>
   );
 }

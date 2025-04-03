@@ -8,24 +8,34 @@ import { Provider } from 'react-native-paper';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as NavigationBar from "expo-navigation-bar";
 
+import { DataRxjs } from '@/core/rxjs/DataRxjs';
 import { rootReducer, initialRootState, AppState } from '@/hooks/root.reducer';
-import BackgroundMusic from '@/components/shared/BackgroundMusic';
-import { BACKGROUND_MUSIC, FONT_REGULAR } from '@/shared/definitions/sentences/path.sentences';
-import { WebStyles } from '@/shared/styles/component.styles';
+import { SettingsState } from '@/hooks/settings.reducer';
 import { I18nProvider, useI18n } from '@/core/providers/LanguageProvider';
 import { ErrorProvider } from '@/core/providers/ErrorProvider';
 import Storage from '@/core/storage/storage.service';
-import { APP_VERSION } from '@/shared/definitions/utils/constants';
 import { SoundService } from '@/core/services/sounds.service';
+import CardsService from '@/core/services/cards.service';
+import { ConfirmationProvider } from '@/core/providers/ConfirmationProvider';
+
+import { Card } from '@/shared/definitions/interfaces/card.interfaces';
+import { CardLanguageENUM } from '@/shared/definitions/enums/card.enums';
+import { WebStyles } from '@/shared/styles/component.styles';
+import { UserData } from '@/shared/definitions/interfaces/global.interfaces';
+import { BACKGROUND_MUSIC, FONT_REGULAR } from '@/shared/definitions/sentences/path.sentences';
 import { handleWebInit, forceShowSplash } from '@/shared/definitions/utils/functions';
+import { APP_VERSION } from '@/shared/definitions/utils/constants';
+
+import BackgroundMusic from '@/components/shared/BackgroundMusic';
 import { ThemedView } from '@/components/ThemedView';
 import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import { SplashScreenMemo } from '@/components/ui/SplashScreen';
-import { ConfirmationProvider } from '@/core/providers/ConfirmationProvider';
-import CardsService from '@/core/services/cards.service';
-import { CardLanguageENUM } from '@/shared/definitions/enums/card.enums';
 
-export const AppContext = createContext<{ state: AppState; dispatch: React.Dispatch<any> } | undefined>(undefined);
+export const AppContext = createContext<{ 
+  state: AppState, 
+  dispatch: React.Dispatch<any> 
+} | undefined>(undefined);
+
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -54,43 +64,13 @@ export default function RootLayout() {
         Storage.setSettings(settings);
         loadCards();
       } else {
-        const settings = await Storage.loadSettings();
+        const {cards, settings, data} = await Storage.loadSettings();
         if (settings !== null) {
-          if (!settings.trades) {
-            settings.trades = [];
-          }
-
-          if (!settings.collection) {
-            settings.collection = [];
-          }
-
-          if (!settings.collection_language) {
-            settings.collection_language = CardLanguageENUM.EN;
-          }
-
-          Storage.setSettings({...settings});
-
-          dispatch({type: 'SET_SETTINGS', value: {...settings, version: APP_VERSION}});
-          SoundService.setEnabled(settings.sound);
-          
-          setLocale(settings.language);
-          setShowStartScreen(settings.show_intro);
-
-          if (version !== APP_VERSION || settings.cards.length === 0) {
-            Storage.set('version', APP_VERSION);
-            Storage.set('cards', []);
-            dispatch({type: 'RESET_CARDS'});
-            loadCards();
-          } 
-
-          if (settings.cards.length !== 0) {
-            dispatch({ type: 'SET_CARDS', value: settings.cards });
-            setLoading(false);
-          }
-
-          setTimeout(() => {
-            SoundService.setVolume(settings.sound_volume);
-          }, 333);
+          checkMissingProps(data, settings);
+          configure(settings);
+          DataRxjs.setAllData(data);
+          checkForData(version, cards);
+          setTimeout(() => SoundService.setVolume(settings.sound_volume), 333);
         }
       }
       setTimeout(() => setWaiting(false), 1500);
@@ -117,6 +97,36 @@ export default function RootLayout() {
 
       return sub;
   }, []);
+
+  function checkMissingProps(data: UserData, settings: SettingsState): void {
+    if (!data.trades) { data.trades = []; }
+    if (!data.collection) { data.collection = []; }
+
+    if (settings.collection_language === null) {
+      settings.collection_language = CardLanguageENUM.EN;
+    }
+  }
+
+  function configure(settings: SettingsState): void {
+    Storage.setSettings({...settings});
+    SoundService.setEnabled(settings.sound);
+    setLocale(settings.language);
+    setShowStartScreen(settings.show_intro);
+  }
+
+  function checkForData(version: string, cards: Card[]): void {
+    if (version !== APP_VERSION || cards.length === 0) {
+      Storage.set('version', APP_VERSION);
+      Storage.set('cards', []);
+      dispatch({type: 'RESET_CARDS'});
+      loadCards();
+    } 
+
+    if (cards.length !== 0) {
+      dispatch({ type: 'SET_CARDS', value: cards });
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
     if (loaded) SplashScreen.hideAsync();
@@ -176,7 +186,7 @@ export default function RootLayout() {
           <ConfirmationProvider>
             <ErrorProvider>
               <I18nProvider>
-                <Stack screenOptions={{headerShown: false}}>
+                <Stack screenOptions={{headerShown: false, animation: 'fade_from_bottom'}}>
                   <Stack.Screen name="(tabs)" options={{ headerShown: false }}/>
                   <Stack.Screen name="+not-found" options={{ headerShown: false }}/>
                 </Stack>

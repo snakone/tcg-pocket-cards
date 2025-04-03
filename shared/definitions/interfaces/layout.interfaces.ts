@@ -4,7 +4,8 @@ import { CollectionStat, ExpansionEmblem } from "./global.interfaces";
 import { FilterKey } from "@/hooks/filter.reducer";
 import { FilterSearch } from "../classes/filter.class";
 import { FilterAttackSearch } from "../classes/filter_attack.class";
-import { ModalType } from "../types/global.types";
+import { DataKey, LanguageType, ModalType, RouteKey } from "../types/global.types";
+import { Card } from "./card.interfaces";
 
 export interface HeaderWithCustomModalProps {
   title: string;
@@ -24,6 +25,11 @@ export interface TabMenu {
 
 export interface TabMenuCards extends TabMenu {
   filterKey: FilterKey;
+}
+
+export interface TabWithCards extends TabMenu {
+  cards: Card[];
+  language: LanguageType;
 }
 
 export interface TabMenuCollection extends TabMenu {
@@ -65,7 +71,7 @@ export interface IconItemWithModal {
 export interface ItemWithRoute {
   label: string;
   icon: string;
-  route: string;
+  route: RouteKey;
 }
 
 export interface SortItem {
@@ -84,4 +90,9 @@ export interface FilterStatePayload {
 export interface ModalStatePayload {
   key: ModalType;
   value: boolean;
+}
+
+export interface DataStatePayload {
+  key: DataKey;
+  value: any;
 }

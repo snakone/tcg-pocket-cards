@@ -65,11 +65,9 @@ export default function HelpScreen() {
 
   async function reloadSettings(): Promise<void> {
     const settings = {...settingsInitialState};
-    if (settings !== null) {
-      SoundService.setEnabled(settings.sound);
-      setLocale(settings.language);
-      SoundService.setVolume(settings.sound_volume);
-    }
+    SoundService.setEnabled(settings.sound);
+    setLocale(settings.language);
+    SoundService.setVolume(settings.sound_volume);
   }
   
 

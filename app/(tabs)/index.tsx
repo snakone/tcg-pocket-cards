@@ -15,7 +15,6 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { HomeScreenModal } from '@/components/modals/screens/HomeScreenModal';
 
-
 export default function HomeScreen() {
   const {i18n} = useI18n();
   const styles = homeScreenStyles;
@@ -40,7 +39,6 @@ export default function HomeScreen() {
           source={HERO_IMAGE}
           style={styles.heroImage}
           alt='Hero'/>
-
         <ScrollView showsVerticalScrollIndicator={false}>
           <ThemedText style={[styles.title, {paddingTop: 2}]}>{i18n.t('hero_title')}</ThemedText>
           <ThemedText style={styles.subtitle}>

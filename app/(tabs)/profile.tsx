@@ -1,20 +1,23 @@
 import { Platform, Pressable, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Image } from 'expo-image';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
+import { combineLatest, filter, map } from 'rxjs';
 import { useRouter } from 'expo-router';
 
 import SoundService from '@/core/services/sounds.service';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import Storage from '@/core/storage/storage.service';
+import { ModalRxjs } from '@/core/rxjs/ModalRxjs';
+import { DataRxjs } from '@/core/rxjs/DataRxjs';
 
 import { AppContext } from '../_layout';
-import { AVATAR_MAP, COIN_MAP } from '@/shared/definitions/utils/constants';
+import { AVATAR_MAP, COIN_MAP, DEFAULT_PROFILE } from '@/shared/definitions/utils/constants';
 import { Colors } from '@/shared/definitions/utils/colors';
-import { LanguageType } from '@/shared/definitions/types/global.types';
+import { LanguageType, ModalType } from '@/shared/definitions/types/global.types';
 import { getImageLanguage } from '@/shared/definitions/utils/functions';
-import { UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
+import { UserCollectionItem, UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
 import { CardGridStyles, TabsMenuStyles } from '@/shared/styles/component.styles';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -28,28 +31,32 @@ export default function ProfileScreen() {
   const {i18n} = useI18n();
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
-  const [userName, setUserName] = useState('');
-  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
-  const [collection, setCollection] = useState<number>(0);
+  const { state } = context;
+  const [lang, setLang] = useState<LanguageType>('en');
   const router = useRouter();
+  const [profile, setProfile] = useState<UserProfile>(DEFAULT_PROFILE);
+  const [collection, setCollection] = useState<number>(0);
+
+  function openModal(key: ModalType): void {
+    ModalRxjs.setModalVisibility({key, value: true});
+  }
 
   useEffect(() => {
     setLang(state.settingsState.language);
   }, [state.settingsState.language]);
 
   useEffect(() => {
-    const totalCollection = state.settingsState.collection.reduce((acc, curr) => {
+    const sub = DataRxjs.getData<UserCollectionItem[]>('collection')
+     .pipe(map(res => res.reduce((acc, curr) => {
       const length = Object.values(curr.amount).reduce((acc, curr) => acc + curr, 0);
       return length + acc;
-    }, 0);
-    
-    setCollection(totalCollection);
-  }, [state.settingsState.collection]);
+    }, 0)))
+     .subscribe(res => setCollection(res));
 
-  const [profile, setProfile] = useState<UserProfile>(
-    {name: '', avatar: 'eevee', coin: 'eevee', best: null}
-  );
+     return (() => {
+      if (sub) sub.unsubscribe();
+     })
+  }, []);
 
   function goToCollection(): void {
     SoundService.play('CHANGE_VIEW');
@@ -58,39 +65,29 @@ export default function ProfileScreen() {
 
   function handleText(text: string): void {
     if (text.length > 15) return;
-    setUserName(text);
+    setProfile(prev => ({...prev, name: text}));
     Storage.set('name', text);
   }
 
-  useEffect(() => {
-    const getProfile = async () => {
-      const profile: UserProfile = await Storage.getProfile();
-      setProfile(profile);
-      setUserName(profile.name);
-    };
-
-    getProfile();
-  }, []);
+  const profileModals = [
+    ModalRxjs.getModal('avatar'),
+    ModalRxjs.getModal('coin'),
+    ModalRxjs.getModal('best')
+  ];
 
   useEffect(() => {
-    setProfile(prev => ({...prev, avatar: state.settingsState.avatar}))
-  }, [state.settingsState.avatar]);
+    const sub = combineLatest([...profileModals]).pipe(
+        filter(([
+          avatarOpen, 
+          coinOpen, 
+          bestOpen
+        ]) => !avatarOpen && !coinOpen && !bestOpen
+        ),
+      ).subscribe(async _ => setProfile({...await Storage.getProfile()}));
 
-  useEffect(() => {
-    setProfile(prev => ({...prev, coin: state.settingsState.coin}))
-  }, [state.settingsState.coin]);
-
-  useEffect(() => {
-    setProfile(prev => ({...prev, best: state.settingsState.best}))
-  }, [state.settingsState.best]);
-
-  async function handleActionMenu(action: string): Promise<void> {
-    await playSound();
-    dispatch({type: action, value: true});
-  }
-
-  const playSound = useCallback(async () => {
-    await SoundService.play('AUDIO_MENU_OPEN');
+    return (() => {
+      if (sub) sub.unsubscribe();
+    })
   }, []);
   
   return (
@@ -99,11 +96,11 @@ export default function ProfileScreen() {
       <ThemedView style={{alignItems: 'center', flex: 1}}>
         <ThemedView style={[styles.header, {marginTop: 42}]}>
           <ThemedView style={[styles.avatarContainer, {top: 10}]}>
-            <Pressable onPress={() => handleActionMenu('OPEN_AVATAR')}>
+            <Pressable onPress={() => openModal('avatar')}>
               <Image source={AVATAR_MAP[profile.avatar]} style={styles.avatar}/>
             </Pressable>
             <ThemedView style={styles.editContainer}>
-              <Pressable onPress={() => handleActionMenu('OPEN_AVATAR')}>
+            <Pressable onPress={() => openModal('avatar')}>
                 <MaterialIcons name="mode-edit-outline" style={styles.editIcon} />
               </Pressable>
             </ThemedView>
@@ -111,8 +108,8 @@ export default function ProfileScreen() {
           <ThemedView style={[TabsMenuStyles.user, {marginTop: 40, width: 275}]}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
               <TextInput placeholder={i18n.t('name_placeholder')}
-                         value={userName}
-                         onChangeText={(text) => (handleText(text))}
+                         value={profile.name}
+                         onChangeText={handleText}
                          placeholderTextColor={Colors.light.text}
                          accessibilityLabel={'USER_LABEL'}
                          inputMode='text'
@@ -135,7 +132,10 @@ export default function ProfileScreen() {
                     styles.input, {fontSize: 14, width: 207, paddingVertical: 8, left: 34},
                     i18n.locale === 'ja' && {top: 1},
                   ]}>{i18n.t('my_collection')}</ThemedText>
-                <ThemedText style={[{textAlign: 'right', minWidth: 50}, Platform.OS === 'android' && {top: -1}]}>{collection}</ThemedText>
+                <ThemedText style={[
+                  {textAlign: 'right', minWidth: 50}, Platform.OS === 'android' && {top: -1}
+                  ]}>{collection}
+                </ThemedText>
               </ThemedView>
             </ThemedView>
           </TouchableOpacity>
@@ -147,7 +147,7 @@ export default function ProfileScreen() {
                    style={TabsMenuStyles.avatar}>
             </Image>
             <Pressable style={{flex: 1}} 
-                       onPress={() => handleActionMenu('OPEN_COIN')}
+                       onPress={() => openModal('coin')}
                        hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}>
               <ThemedView style={{
                 paddingInline: Platform.OS === 'web' ? 18 : 16, 
@@ -173,7 +173,7 @@ export default function ProfileScreen() {
                   Boolean(!profile.best) && {opacity: 0.8} 
                 ]}>
                 <ThemedView style={{flex: 1, backgroundColor: 'white'}}>
-                  <TouchableOpacity onPress={() => handleActionMenu('OPEN_BEST')} 
+                  <TouchableOpacity onPress={() => openModal('best')} 
                                     style={styles.previewCard}>
                     { profile.best ? 
                       <>

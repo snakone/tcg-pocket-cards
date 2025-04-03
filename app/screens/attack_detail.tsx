@@ -6,85 +6,84 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
 
+import { AppContext } from "../_layout";
 import { Attack, AttackMetaData, Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { TYPE_MAP } from "@/shared/definitions/utils/constants";
-import { getImageLanguage116x162 } from "@/shared/definitions/utils/functions";
+import { getImageLanguage116x162, getUniqueAttacks } from "@/shared/definitions/utils/functions";
 import { CardGridStyles } from "@/shared/styles/component.styles";
 import { Colors } from "@/shared/definitions/utils/colors";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
-import { AppContext } from "../_layout";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
 import { detailScrollStyles } from "@/components/dedicated/detail/detail.scroll";
-import SkeletonCardGrid from "@/components/skeletons/SkeletonCardGrid";
 import { RenderAttackItem } from "@/components/dedicated/attacks/AttackItem";
-import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
 export default function AttackDetailScreen() {
+  console.log('Attack Detail Screen')
   const {i18n} = useI18n();
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
+  const { state } = context;
   const [attack, setAttack] = useState<AttackMetaData>();
   const [related, setRelated] = useState<Card[]>([]);
   const [similar, setSimilar] = useState<AttackMetaData[]>([]);
-  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const [lang, setLang] = useState<LanguageType>('en');
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
 
   useEffect(() => {
-    const [cardID, index] = id.split('_');
-    const card = state.cardState.cards.find(card => card.id === Number(cardID));
-    const active = card && card.attacks && card?.attacks[Number(index)];
-
-    if (active) {
-      setAttack(active as AttackMetaData);
-    } else {
-      setTimeout(() => router.navigate('/attacks'), 150);
-      return;
-    }
-    
-    const related = state.cardState.cards.filter(card => {
-      if (card.attacks && card.attacks.length > 0 && active) {
-        if (card.attacks.some(att => 
-          att !== undefined && 
-          (
-            att.name.es === active?.name.es && 
-            att.description?.es === active.description?.es && 
-            att.damage === active.damage
-          ))) {
-          return true;
-        }
-      }
-
-      return false
-    });
-
-    setRelated(related);
-  }, [state.cardState.cards]);
-
-  const RenderEmpty = useCallback(() => {
-    return state.cardState.loaded ? (
-      <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
-    ) : (<SkeletonCardGrid columns={7} amount={56} width={47}/>);
-  }, [state.cardState.loaded]);
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   useEffect(() => {
-    if (!attack) { return; }
-    const filtered = state.attacksState.attack_list.filter(att => {
-      if (
-        (att.energy.length === attack.energy.length && att.damage === attack.damage) &&
-        att.name.es !== attack.name.es
-      ) {
-        return true;
+    const [card_id, index] = id.split('_');
+    const cards = state.cardState.cards;
+    const card = cards.find(c => c.id === Number(card_id));
+    const active = card?.attacks?.[Number(index)];
+  
+    if (!active) {
+      router.replace('/attacks');
+      return;
+    }
+  
+    setAttack(active as AttackMetaData);
+  
+    const related = cards.filter(c =>
+      c.attacks?.some(att =>
+        att &&
+        att.name.es === active.name.es &&
+        att.description?.es === active.description?.es &&
+        att.damage === active.damage
+      )
+    );
+  
+    setRelated(related);
+  
+    const allAttacks = cards.reduce<AttackMetaData[]>((acc, c) => {
+      if (c.attacks) {
+        acc.push(...c.attacks.map((att, i) => ({
+          ...att,
+          card: c.id,
+          index: i
+        })));
       }
-      return false;
-    });
-
-    setSimilar(filtered as AttackMetaData[]);
-  }, [attack]);
+      return acc;
+    }, []);
+  
+    if (allAttacks.length > 0) {
+      const uniqueAttacks = getUniqueAttacks(allAttacks);
+      const similar = uniqueAttacks.filter(att =>
+        att.energy.length === active.energy.length &&
+        att.damage === active.damage &&
+        att.name.es !== active.name.es
+      );
+  
+      setSimilar(similar);
+    }
+  }, [state.cardState.cards]);
 
   const goToDetailScreen = async (id: number) => {
     SoundService.play('PICK_CARD_SOUND');
@@ -121,7 +120,6 @@ export default function AttackDetailScreen() {
     return <RenderAttackItem 
               item={item}
               lang={lang}
-              focused={true}
               onPress={() => goToAttackDetail(item)}
             />
   }, [lang]);
@@ -169,7 +167,7 @@ export default function AttackDetailScreen() {
                       windowSize={15}
                       removeClippedSubviews={false}
                       showsVerticalScrollIndicator={false}
-                      ListEmptyComponent={RenderEmpty}
+                      ListEmptyComponent={<ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>}
                       renderItem={renderCard}
                       ListFooterComponent={<ThemedView style={{height: 16}}></ThemedView>}
             />

@@ -3,14 +3,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { settingsInitialState, SettingsState } from '@/hooks/settings.reducer';
 import { CollectionUser } from '@/shared/definitions/classes/collection.class';
 import { CardLanguageENUM } from '@/shared/definitions/enums/card.enums';
-import { StorageDeck, TradeItem, UserCollection, UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
+import { StorageDeck, TradeItem, UserCollectionItem, UserData, UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
 import { areAllAmountsZero } from '@/shared/definitions/utils/functions';
+import { DEFAULT_PROFILE } from '@/shared/definitions/utils/constants';
+import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 
 export default class Storage {
 
   constructor() {}
 
-  static keys = [
+  static settingsKeys: (keyof SettingsState)[]  = [
     'music', 
     'sound',
     'language',
@@ -18,19 +20,30 @@ export default class Storage {
     'music_volume',
     'sound_volume',
     'show_intro',
+  ];
+
+  static dataKeys: (keyof UserData)[] = [
     'favorites',
-    'cards',
     'decks',
     'trades',
     'collection'
   ];
 
-  static profileKeys = [
+  static profileKeys: (keyof UserProfile)[] = [
     'name',
     'avatar',
     'coin',
     'best'
   ];
+
+  private static async loadCategory<T extends Record<any, any>>(
+    keys: (keyof T)[]
+  ): Promise<T> {
+    const entries = await Promise.all(
+      keys.map(async (key) => [key, await this.get(key as string)])
+    );
+    return Object.fromEntries(entries) as T;
+  }
 
   public static async set(key: string, value: any): Promise<void> {
     try {
@@ -49,29 +62,39 @@ export default class Storage {
     }
   }
 
-  public static setSettings(settings: SettingsState): void {
-    for (const key of Object.keys(settings)) {
-      this.set(key, (settings as any)[key]);
+  public static async setSettings(settings: SettingsState): Promise<void> {
+    try {
+      const entries: [string, string][] = Object.entries(settings).map(
+        ([key, value]) => [key, JSON.stringify(value)]
+      );
+
+      await AsyncStorage.multiSet(entries);
+    } catch (e) {
+      console.error(e);
     }
   }
 
-  public static deleteSettings(settings: SettingsState = settingsInitialState): void {
-    for (const key of Object.keys(settings).filter(key => key !== 'cards')) {
-      this.set(key, (settings as any)[key]);
+  public static deleteSettings(): void {
+    for (const key of Object.keys(settingsInitialState)) {
+      this.set(key, (settingsInitialState as any)[key]);
     }
   }
 
-  public static async loadSettings(): Promise<SettingsState> {
-    let settings: {[key: string]: any} = {}
+  public static async loadSettings(): Promise<{
+    cards: Card[],
+    settings: SettingsState;
+    data: UserData;
+  }> {
+    const [cards, settings, data] = await Promise.all([
+      this.get('cards'),
+      this.loadCategory<SettingsState>(this.settingsKeys),
+      this.loadCategory<UserData>(this.dataKeys),
+    ]);
 
-    for (const key of [...this.keys, ...this.profileKeys]) {
-      settings[key] = await this.get(key);
-    }
-
-    return settings as SettingsState;
+    return { cards, settings, data };
   }
 
-  public static async setFavorite(id: number): Promise<any | null> {
+  public static async addFavorite(id: number): Promise<any | null> {
     try {
       const favorites: number[] = await this.get('favorites');
       if (favorites !== null) {
@@ -160,7 +183,7 @@ export default class Storage {
   }
 
   public static async getProfile(): Promise<UserProfile> {
-    let profile: UserProfile = {name: '', avatar: 'eevee', coin: 'eevee', best: null};
+    let profile: UserProfile = DEFAULT_PROFILE;
 
     for (const key of this.profileKeys) {
       (profile as any)[key] = await this.get(key);
@@ -171,7 +194,7 @@ export default class Storage {
 
   public static async addToCollection(id: number, lang: CardLanguageENUM): Promise<any | null> {
     try {
-      let collection: UserCollection[] = await this.get('collection');
+      let collection: UserCollectionItem[] = await this.get('collection');
       if (collection !== null) {
         const item = collection.find(d => d.id === id);
         
@@ -190,7 +213,7 @@ export default class Storage {
 
   public static async removeFromCollection(id: number, lang: CardLanguageENUM): Promise<any | null> {
     try {
-      let collection: UserCollection[] = await this.get('collection');
+      let collection: UserCollectionItem[] = await this.get('collection');
       if (collection !== null) {
         const item = collection.find(d => d.id === id);
         
