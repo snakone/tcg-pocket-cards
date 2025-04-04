@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
+
 import { CardLanguageENUM } from "../enums/card.enums";
 import { CollectionStat, ExpansionEmblem } from "./global.interfaces";
-import { FilterKey } from "@/hooks/filter.reducer";
 import { FilterSearch } from "../classes/filter.class";
 import { FilterAttackSearch } from "../classes/filter_attack.class";
-import { DataKey, LanguageType, ModalType, RouteKey } from "../types/global.types";
+import { DataKey, FilterKey, LanguageType, ModalType, RouteKey } from "../types/global.types";
 import { Card } from "./card.interfaces";
 
 export interface HeaderWithCustomModalProps {

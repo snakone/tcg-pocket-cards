@@ -5,10 +5,17 @@ import { Image } from 'expo-image';
 
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { sharedModalStyles } from "@/shared/styles/component.styles";
+
+import { 
+  COLLECTION_MENU, 
+  COLLECTION_MENU_BUTTON, 
+  COLLECTION_PICK, 
+  COLLECTION_SEARCH
+} from "@/shared/definitions/sentences/path.sentences";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import ScrollIndicator from "@/components//ui/ScrollIndicator";
-import { COLLECTION_MENU, COLLECTION_MENU_BUTTON, COLLECTION_PICK, COLLECTION_SEARCH } from "@/shared/definitions/sentences/path.sentences";
 
 export function CollectionScreenModal() {
   const scrollY = useSharedValue(0);

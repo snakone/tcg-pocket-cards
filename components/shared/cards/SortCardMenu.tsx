@@ -3,20 +3,22 @@ import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } fro
 import Animated from 'react-native-reanimated'
 import { useEffect, useCallback, useState } from "react";
 import React from "react";
+import { MaterialIcons } from "@expo/vector-icons";
 
+import SoundService from "@/core/services/sounds.service";
+import { SortRxjs } from "@/core/rxjs/SortRxjs";
+import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { cardStyles } from "@/app/(tabs)/cards";
+import { INITIAL_SORT_DATA } from "@/shared/definitions/utils/constants";
 import { SortItem, TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { MaterialIcons } from "@expo/vector-icons";
-import { useI18n } from "../../../core/providers/LanguageProvider";
-import { INITIAL_SORT_DATA } from "@/shared/definitions/utils/constants";
-import { cardStyles } from "@/app/(tabs)/cards";
-import SoundService from "@/core/services/sounds.service";
-import { SortRxjs } from "@/core/rxjs/SortRxjs";
-import { firstValueFrom } from "rxjs";
-import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
+
 
 export default function SortCardMenu({
   animatedStyle,

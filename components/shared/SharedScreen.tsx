@@ -2,12 +2,14 @@ import { View, Pressable } from "react-native";
 import { useCallback } from "react";
 import { useRouter } from "expo-router";
 
-import { ThemedView } from "@/components/ThemedView";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import { ButtonStyles, ParallaxStyles, ScreenStyles } from "@/shared/styles/component.styles";
-import { ThemedText } from "@/components/ThemedText";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
+
+import { ButtonStyles, ParallaxStyles, ScreenStyles } from "@/shared/styles/component.styles";
+
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import { ThemedText } from "@/components/ThemedText";
 
 interface SharedScreenProps {
   title: string,

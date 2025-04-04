@@ -3,12 +3,14 @@ import { View, TouchableOpacity, Platform, Pressable } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { Modal as PaperModal, Portal } from 'react-native-paper';
 
+import { useI18n } from '@/core/providers/LanguageProvider';
+import SoundService from '@/core/services/sounds.service';
+
 import { HeaderWithCustomModalProps } from '@/shared/definitions/interfaces/layout.interfaces';
 import { ButtonStyles, IconStyles, ModalStyles, ThemeTextStyles, WebStyles } from '@/shared/styles/component.styles';
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
-import { useI18n } from '../../core/providers/LanguageProvider';
-import SoundService from '@/core/services/sounds.service';
+
 
 export default function HeaderWithCustomModal({ 
   title, 

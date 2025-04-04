@@ -11,6 +11,7 @@ import { TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
 import { LARGE_MODAL_HEIGHT, MAX_CONTENT } from '@/shared/definitions/utils/constants';
 import { CardGridStyles, homeScreenStyles } from '@/shared/styles/component.styles';
 import { Colors } from '@/shared/definitions/utils/colors';
+import { LanguageType } from '@/shared/definitions/types/global.types';
 
 import { AppContext } from '../_layout';
 import { TradeScreenModal } from '@/components/modals';
@@ -31,10 +32,11 @@ export default function TradeScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
   const { state } = context;
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
 
-  const handleSearch = useCallback((text: string) => {
-    setSearchQuery(text);
-  }, [trades]);
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   useEffect(() => {
     const sub = DataRxjs.getData<TradeItem[]>('trades')
@@ -57,9 +59,9 @@ export default function TradeScreen() {
 
   const renderItem = useCallback(({item, index}: {item: TradeItem, index: number}) => (
     <TouchableOpacity onPress={() => handleClick(item)}>
-      <TradeUserItem item={item} state={state}/>
+      <TradeUserItem item={item} language={lang}/>
     </TouchableOpacity>
-  ), [state.cardState.cards, state.settingsState.language]);
+  ), [trades, lang]);
 
   function handleTrade(): void {
     SoundService.play('POP_PICK');
@@ -95,12 +97,12 @@ export default function TradeScreen() {
           style={[CardGridStyles.searchInput, { width: "100%" }]}
           placeholder={i18n.t("search_trade")}
           value={searchQuery}
-          onChangeText={handleSearch}
+          onChangeText={setSearchQuery}
           placeholderTextColor={Colors.light.text}
           accessibilityLabel={"SEARCH_LABEL"}
           inputMode="text"
         />
-        {searchQuery.length > 0 && <ResetFilterButton left={248} onPress={() => handleSearch('')}/>}
+        {searchQuery.length > 0 && <ResetFilterButton left={248} onPress={() => setSearchQuery('')}/>}
       </ThemedView>
 
       <View
@@ -114,7 +116,7 @@ export default function TradeScreen() {
           style={{ fontSize: 21, marginLeft: 16, top: 1 }}
           color={Colors.light.skeleton}
         />
-        <ThemedText style={[CardGridStyles.totalCards]}>
+        <ThemedText style={[CardGridStyles.totalCards, {top: 0}]}>
           {trades?.length}/{TOTAL_TRADES_LENGTH}
         </ThemedText>
       </View>

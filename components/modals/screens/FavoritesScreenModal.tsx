@@ -1,13 +1,21 @@
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { sharedModalStyles } from "@/shared/styles/component.styles";
 import { useState } from "react";
 import { Image } from 'expo-image';
-import { Platform, ScrollView } from "react-native";
 import { useSharedValue } from "react-native-reanimated";
+import { ScrollView } from "react-native";
+
+import { useI18n } from "@/core/providers/LanguageProvider";
+import { sharedModalStyles } from "@/shared/styles/component.styles";
+
+import { 
+  FAVORITE_FILTER, 
+  FAVORITE_HOW_TO, 
+  FAVORITE_MEW, 
+  FAVORITE_SYMBOL
+} from "@/shared/definitions/sentences/path.sentences";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import ScrollIndicator from "@/components//ui/ScrollIndicator";
-import { FAVORITE_FILTER, FAVORITE_HOW_TO, FAVORITE_MEW, FAVORITE_SYMBOL } from "@/shared/definitions/sentences/path.sentences";
 
 export function FavoritesScreenModal() {
   const scrollY = useSharedValue(0);

@@ -13,8 +13,8 @@ import { useConfirmation } from "@/core/providers/ConfirmationProvider";
 import { CardGridStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { settingsStyles } from "@/app/screens/settings";
-
 import { BACKUP_HEIGHT } from "@/shared/definitions/utils/constants";
+
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import { GraphicCollage } from "@/components/dedicated/infographics/GraphicCollage";

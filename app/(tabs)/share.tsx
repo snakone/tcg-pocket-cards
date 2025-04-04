@@ -22,6 +22,7 @@ import { ShareScreenModal } from '@/components/modals';
 import { RenderDeckItem } from '@/components/dedicated/cards/DeckItem';
 import TradeUserItem from '@/components/dedicated/trade/TradeUserItem';
 import { ResetFilterButton } from '@/components/ui/ResetFilterButton';
+import { LanguageType } from '@/shared/definitions/types/global.types';
 
 export default function ShareScreen() {
   console.log('Share Screen')
@@ -32,6 +33,7 @@ export default function ShareScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
   const { state } = context;
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
 
   useEffect(() => {
     const sub = DataRxjs.getData<StorageDeck[]>('decks')
@@ -40,6 +42,10 @@ export default function ShareScreen() {
 
     return () => sub.unsubscribe();
   }, []);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   useEffect(() => {
     const sub = DataRxjs.getData<TradeItem[]>('trades')
@@ -68,7 +74,7 @@ export default function ShareScreen() {
     return (
       <TouchableOpacity style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}} 
                         onPress={() => openTrade(item)}>
-        <TradeUserItem item={item} state={state}/>
+        <TradeUserItem item={item} language={lang}/>
       </TouchableOpacity>
     )
   }, []);
@@ -150,7 +156,7 @@ export default function ShareScreen() {
                 section.key === 'decks' ? (
                   <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}}>
                     <RenderDeckItem item={item} 
-                                    language={state.settingsState.language} 
+                                    language={lang} 
                                     onPress={() => openDeck(item)}/>
                   </ThemedView>
                 ) : 

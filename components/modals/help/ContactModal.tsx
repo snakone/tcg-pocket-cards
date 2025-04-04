@@ -1,12 +1,15 @@
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { sharedModalStyles } from "@/shared/styles/component.styles";
 import { useState } from "react";
-import { useSharedValue } from "react-native-reanimated";
 import { Linking, Pressable, ScrollView } from "react-native";
+import { useSharedValue } from "react-native-reanimated";
+
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { sharedModalStyles } from "@/shared/styles/component.styles";
+import { Colors } from "@/shared/definitions/utils/colors";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import ScrollIndicator from "@/components//ui/ScrollIndicator";
-import { Colors } from "@/shared/definitions/utils/colors";
 
 export function ContactModal() {
   const scrollY = useSharedValue(0);

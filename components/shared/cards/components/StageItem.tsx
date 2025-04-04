@@ -1,12 +1,13 @@
 import React, { memo, MutableRefObject } from "react";
 import { Subject } from "rxjs";
 
-import { ThemedView } from "@/components/ThemedView";
-import StateButton from "@/components/ui/StateButton";
 import { STAGE_MAP } from "@/shared/definitions/utils/constants";
 import { filterStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { CardStageENUM } from "@/shared/definitions/enums/card.enums";
+
+import { ThemedView } from "@/components/ThemedView";
+import StateButton from "@/components/ui/StateButton";
 
 interface StageItemProps {
   filterObj: MutableRefObject<FilterSearch>,

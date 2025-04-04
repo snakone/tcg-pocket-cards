@@ -1,8 +1,8 @@
 import { BehaviorSubject, map, Observable } from 'rxjs';
 
-import { FilterKey } from '@/hooks/filter.reducer';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { INITIAL_ATTACK_SORT_DATA, INITIAL_SORT_DATA } from '@/shared/definitions/utils/constants';
+import { FilterKey } from '@/shared/definitions/types/global.types';
 
 export interface SortStatePayload {
   key: FilterKey;

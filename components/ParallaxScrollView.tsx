@@ -1,7 +1,7 @@
 import { SafeAreaView, View } from 'react-native';
 
-import HeaderWithCustomModal from './shared/HeaderModal';
 import { ThemedView } from './ThemedView';
+import HeaderWithCustomModal from './shared/HeaderModal';
 import { ParallaxProps } from '@/shared/definitions/types/global.types';
 import { ParallaxStyles } from '@/shared/styles/component.styles';
 import { MIN_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';

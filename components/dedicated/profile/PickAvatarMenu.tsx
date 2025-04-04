@@ -63,7 +63,10 @@ export default function PickAvatarMenu({
 
   const renderItem = ({ item } : {item: AvatarIcon}) => (
     <TouchableOpacity onPress={() => handleClick(item.value)}>
-      <ThemedView style={[pickAvatarStyles.avatarCircle, selected === item.value && {backgroundColor: 'slategray'}]}>
+      <ThemedView style={[
+        pickAvatarStyles.avatarCircle, 
+        selected === item.value && {backgroundColor: 'slategray'}
+      ]}>
         <Image source={item.icon} style={pickAvatarStyles.avatar}/>
         {
           selected === item.value && 

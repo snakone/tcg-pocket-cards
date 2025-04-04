@@ -1,9 +1,9 @@
 import { BehaviorSubject } from 'rxjs';
 
-import { FilterKey } from '@/hooks/filter.reducer';
 import { FilterSearch } from '@/shared/definitions/classes/filter.class';
 import { FilterAttackSearch } from '@/shared/definitions/classes/filter_attack.class';
 import { FilterStatePayload } from '@/shared/definitions/interfaces/layout.interfaces';
+import { FilterKey } from '@/shared/definitions/types/global.types';
 
 class FilterState {
   private cardsFilter$ = new BehaviorSubject<FilterSearch>(new FilterSearch());

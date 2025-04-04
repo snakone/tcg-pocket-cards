@@ -8,7 +8,6 @@ import SoundService from "@/core/services/sounds.service";
 import Storage from "@/core/storage/storage.service";
 import ShareService from "@/core/services/share.service";
 import { useConfirmation } from "@/core/providers/ConfirmationProvider";
-import { SettingsState } from "@/hooks/settings.reducer";
 import { useError } from "@/core/providers/ErrorProvider";
 
 import { settingsStyles } from "@/app/screens/settings";
@@ -32,15 +31,15 @@ export function BackupModal() {
   const {i18n} = useI18n();
   const { confirm } = useConfirmation();
   const styles = sharedModalStyles;
-  const [settings, setSettings] = useState<SettingsState | undefined>(undefined);
   const [loading, setLoading] = useState(false);
   const { show: showError } = useError();
   const router = useRouter();
+  const [data, setData] = useState<any>(undefined);
 
   useEffect(() => {
     const getStorage = async () => {
-      const {settings} = await Storage.loadSettings();
-      setSettings({...settings});
+      const {settings, data, profile} = await Storage.loadSettings();
+      setData({...data, ...settings, ...profile})
     }
 
     getStorage();
@@ -51,7 +50,7 @@ export function BackupModal() {
     const userConfirmed = await confirm("backup_replace", "backup_replace_question");
     if (userConfirmed) {
       try {
-        let unsavedSettings: SettingsState;
+        let unsavedSettings: any;
 
         if (Platform.OS === 'web') {
           const encrypted = await importEncryptedFileWeb();
@@ -64,6 +63,7 @@ export function BackupModal() {
         }
 
         if (isObjectSettings(unsavedSettings)) {
+          console.log(unsavedSettings)
           ShareService.onSettingsImport(unsavedSettings);
         }
       } catch (err) {
@@ -71,7 +71,14 @@ export function BackupModal() {
         showError("error_on_import");
       }
 
-      setTimeout(() => setLoading(false), 1000);
+      setTimeout(() => {
+        setLoading(false);
+        if (Platform.OS === 'web') {
+          window.location.href = '/';
+        } else {
+          router.reload()
+        }
+      }, 1000);
     }
   }
 
@@ -80,10 +87,10 @@ export function BackupModal() {
 
     if (Platform.OS === 'web') {
       setLoading(true);
-      saveEncryptedFileWeb(settings);
+      saveEncryptedFileWeb(data);
     } else {
       setLoading(true);
-      await saveEncryptedFileAndroid(settings);
+      await saveEncryptedFileAndroid(data);
     }
 
     setTimeout(() => setLoading(false), 1000);
@@ -95,7 +102,12 @@ export function BackupModal() {
     if (userConfirmed) {
       ShareService.onDeleteSettings();
       Storage.deleteSettings();
-      router.replace('/?show=true');
+
+      if (Platform.OS === 'web') {
+        window.location.href = '/';
+      } else {
+        router.reload()
+      }
     }
   }
   

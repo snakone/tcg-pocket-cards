@@ -3,12 +3,9 @@ import { useState } from "react";
 import { useSharedValue } from "react-native-reanimated";
 import { Image } from 'expo-image';
 
-import { sharedModalStyles } from "@/shared/styles/component.styles";
 import { useI18n } from "@/core/providers/LanguageProvider";
+import { sharedModalStyles } from "@/shared/styles/component.styles";
 
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import ScrollIndicator from "@/components//ui/ScrollIndicator";
 import { 
   TRADE_ADD_NEW, 
   TRADE_CREATE_NEW, 
@@ -20,6 +17,10 @@ import {
   TRADE_LIST, 
   TRADE_DELETE
 } from "@/shared/definitions/sentences/path.sentences";
+
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import ScrollIndicator from "@/components//ui/ScrollIndicator";
 
 export function TradeScreenModal() {
   const scrollY = useSharedValue(0);

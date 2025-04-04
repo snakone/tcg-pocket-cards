@@ -4,11 +4,13 @@ import { useSharedValue } from "react-native-reanimated";
 import { Image } from 'expo-image';
 
 import { useI18n } from "@/core/providers/LanguageProvider";
+
 import { sharedModalStyles } from "@/shared/styles/component.styles";
+import { EXPORT_GRAPHIC, EXPORT_GRAPHIC_QUALITY } from "@/shared/definitions/sentences/path.sentences";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import ScrollIndicator from "@/components//ui/ScrollIndicator";
-import { EXPORT_GRAPHIC, EXPORT_GRAPHIC_QUALITY } from "@/shared/definitions/sentences/path.sentences";
 
 export function GraphicsScreenModal() {
   const scrollY = useSharedValue(0);

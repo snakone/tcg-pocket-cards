@@ -15,6 +15,7 @@ import { useI18n } from "@/core/providers/LanguageProvider";
 import { TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { getFilterSearch } from "@/shared/definitions/utils/constants";
+import { Colors } from "@/shared/definitions/utils/colors";
 
 import { 
   ButtonStyles,
@@ -29,7 +30,6 @@ import { IconSymbol } from "@/components/ui/IconSymbol";
 import InvertButton from "@/components/ui/InvertButton";
 import { SpecialItem } from "./components/SpecialItem";
 import { CollectionItem } from "../collection/components/CollectionItem";
-import { Colors } from "@/shared/definitions/utils/colors";
 
 import { 
   AttackItem,
@@ -159,7 +159,7 @@ export default function FilterCardMenu({
                 tint="light" 
                 experimentalBlurMethod='dimezisBlurView'/>
       <Pressable style={[LayoutStyles.overlay]} onPress={() => closeMenu()}></Pressable>
-      <Animated.View style={[animatedStyle, filterStyles.container, {height: 718}]}>
+      <Animated.View style={[animatedStyle, filterStyles.container, {height: 712}]}>
         <View style={[ModalStyles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={[ModalStyles.modalHeaderTitle, i18n.locale === 'ja' && {fontSize: 20}]}>{i18n.t('filter')}</ThemedText>
         </View>

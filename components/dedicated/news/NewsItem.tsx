@@ -6,6 +6,7 @@ import { I18n } from 'i18n-js';
 
 import { LanguageType } from '@/shared/definitions/types/global.types';
 import { formatDate } from '@/shared/definitions/utils/functions';
+
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
 

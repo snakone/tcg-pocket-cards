@@ -276,25 +276,25 @@ export default function TabLayout() {
       {/* // CARDS */}
       <Portal>
        {modalVisibility.cards &&
-        <FilterCardMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
+        <FilterCardMenu animatedStyle={{}} 
                         filterKey={"cards"}
                         isVisible={modalVisibility.cards}/>}
       </Portal>
       <Portal>
         {modalVisibility.cardsSort && 
-          <SortCardMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
+          <SortCardMenu animatedStyle={{}} 
                         filterKey={"cards"}/>}
       </Portal>
 
       {/* // ATTACKS */}
       <Portal>
         {modalVisibility.attacks && 
-          <FilterAttackMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle}
+          <FilterAttackMenu animatedStyle={{}}
                             filterKey={"attacks"}/>}
       </Portal>
       <Portal>
         {modalVisibility.attacksSort && 
-          <SortAttackMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
+          <SortAttackMenu animatedStyle={{}} 
                           filterKey={"attacks"}/>}
       </Portal>
 

@@ -6,15 +6,16 @@ import { Image, ImageBackground } from 'expo-image';
 import { StyleSheet } from "react-native";
 import Svg, { Polygon, Text } from "react-native-svg";
 
+import { AppContext } from "@/app/_layout";
+import { Card } from "@/shared/definitions/interfaces/card.interfaces";
+import { CardGridStyles, TabsMenuStyles } from "@/shared/styles/component.styles";
+import { AvatarIcon, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
+import { COIN_MAP, DECK_BACKGROUND_MAP, FRONTEND_URL, TYPE_MAP } from "@/shared/definitions/utils/constants";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { filterUniqueItems, getImageLanguage } from "@/shared/definitions/utils/functions";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { CardGridStyles, TabsMenuStyles } from "@/shared/styles/component.styles";
-import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { COIN_MAP, DECK_BACKGROUND_MAP, FRONTEND_URL, TYPE_MAP } from "@/shared/definitions/utils/constants";
-import { AvatarIcon, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
-import { filterUniqueItems, getImageLanguage } from "@/shared/definitions/utils/functions";
-import { LanguageType } from "@/shared/definitions/types/global.types";
-import { AppContext } from "@/app/_layout";
 
 const COLLAGE_WIDTH = 1920;
 
@@ -42,7 +43,7 @@ export default function DeckCollage({
   const [ids, setIds] = useState<number[]>([]);
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
+  const { state } = context;
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
 
   useEffect(() => {
@@ -68,10 +69,10 @@ export default function DeckCollage({
     }
   }, [duplicated]);
 
-  const HexagonView = () => {
+  const HexagonView = (styles: any) => {
     return (
       <View>
-        <Svg width="60" height="60" viewBox="0 0 120 120">
+        <Svg width={styles.width} height={styles.height} viewBox="0 0 120 120">
           <Polygon
             points="60,0 120,30 120,90 60,120 0,90 0,30"
             fill="crimson"
@@ -110,8 +111,8 @@ export default function DeckCollage({
           </>
           }
           {ids.includes(item?.id) && 
-            <ThemedView style={{position: 'absolute', bottom: 30, right: 30}}>
-              {HexagonView()}
+            <ThemedView style={[{position: 'absolute', bottom: 30, right: 30}, horizontal && {bottom: 20, right: 20}]}>
+              {HexagonView(horizontal ? {width: 40, height: 40} : {width: 60, height: 60})}
             </ThemedView>
           }
         </View>
@@ -123,7 +124,7 @@ export default function DeckCollage({
     <>
       <View style={{width: COLLAGE_WIDTH}}>
         <ImageBackground source={background && DECK_BACKGROUND_MAP[background.value]} 
-                         contentFit="cover" 
+                         contentFit={horizontal ? 'none' : 'cover'}
                          style={{padding: 20}}>
           <FlatList data={data}
             renderItem={renderItem}

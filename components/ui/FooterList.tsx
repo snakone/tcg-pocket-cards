@@ -1,4 +1,5 @@
 import { View, TouchableOpacity } from "react-native";
+
 import { useI18n } from "@/core/providers/LanguageProvider";
 
 import { ModalStyles, ButtonStyles } from "@/shared/styles/component.styles";

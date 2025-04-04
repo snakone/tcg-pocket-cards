@@ -34,7 +34,7 @@ export default class ShareService {
       const height = getDynamicHeight(length, type, horizontal);
       const localUri = await captureRef(ref, {
         quality,
-        format: 'jpg',
+        format: 'png',
         fileName: name || 'deck-tcg-pocket-cards',
         width: 1920,
         height,

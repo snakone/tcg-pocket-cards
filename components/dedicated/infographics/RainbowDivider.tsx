@@ -2,9 +2,16 @@ import React from 'react';
 import { View, StyleSheet, Platform } from 'react-native';
 import Svg, { Rect, LinearGradient, Stop } from 'react-native-svg';
 import { Image } from 'expo-image';
+
 import { SEPARATOR_RAINBOW } from '@/shared/definitions/sentences/path.sentences';
 
-const RainbowDivider = ({width, height, style}: {width?: any, height?: number, style?: any} = {width: '100%', height: 2}) => {
+interface RainbowDividerProps {
+  width?: string | number, 
+  height?: number, 
+  style?: any
+}
+
+const RainbowDivider = ({width, height, style}: RainbowDividerProps = {width: '100%', height: 2}) => {
   if (Platform.OS === 'android') {
     return (
       <Image source={SEPARATOR_RAINBOW} style={{height: 27, width: 1200}}></Image>

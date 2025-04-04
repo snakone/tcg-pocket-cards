@@ -1,32 +1,30 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useEffect, useCallback, useState, useContext } from "react";
+import { useEffect, useCallback, useState } from "react";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
+import { firstValueFrom } from "rxjs";
 
-import { SortItem, TabMenu, TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { AppContext } from "@/app/_layout";
-import { INITIAL_ATTACK_SORT_DATA } from "@/shared/definitions/utils/constants";
-import { cardStyles } from "@/app/(tabs)/cards";
 import SoundService from "@/core/services/sounds.service";
 import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
 import { SortRxjs } from "@/core/rxjs/SortRxjs";
-import { firstValueFrom } from "rxjs";
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { cardStyles } from "@/app/(tabs)/cards";
+import { SortItem, TabMenu, TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
+import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
+import { INITIAL_ATTACK_SORT_DATA } from "@/shared/definitions/utils/constants";
+
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
 
 export default function SortAttackMenu({
   animatedStyle,
   filterKey
 }: TabMenuCards) {
   const [data, setData] = useState(INITIAL_ATTACK_SORT_DATA);
-  const context = useContext(AppContext);
-  if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
   const {i18n} = useI18n();
   const styles = ModalStyles;
 

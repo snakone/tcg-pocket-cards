@@ -765,6 +765,8 @@ export function filterOrSortCards(
   favorites: number[],
   filter?: FilterSearch | null, 
   sort?: SortItem,
+  collection?: UserCollectionItem[],
+  coll_lang?: CardLanguageENUM
   ): Card[] {
     switch (type) {
       case 'sort': {
@@ -773,7 +775,7 @@ export function filterOrSortCards(
       }
       case 'filter': {
         if (!filter) { return data; }
-        return filterCards(filter as FilterSearch, data, favorites)
+        return filterCards(filter as FilterSearch, data, favorites, collection, coll_lang)
       }
     }
 }
@@ -802,8 +804,8 @@ export function getUsedEnergies(element: any): PokemonTypeENUM[] {
   .map(key => key as unknown as PokemonTypeENUM);
 }
 
-export function getNewID(id: string, decks: StorageDeck[]) {
-  return Number(id) || (decks.filter(d => Boolean(d))
+export function getNewID(id: string, data: any[]) {
+  return Number(id) || (data.filter(d => Boolean(d))
           .sort((a, b) => b.id > a.id ? -1 : 1)
           .findLast(d => Boolean(d))?.id || 0) + 1
 }
@@ -814,4 +816,34 @@ export function getSimilarAttacks(attacks: AttackMetaData[], active: AttackMetaD
     att.damage === active.damage &&
     att.name.es !== active.name.es
   );
+}
+
+export const manageSortAttacks = (sort: SortItem, data: AttackMetaData[], lang: LanguageType) => {
+  const sortField = SORT_FIELD_MAP[sort.label];
+
+  if (!sortField) {
+    console.error(`Unsupported sorting option: ${sort.label}`);
+    return data;
+  }
+
+  return sortAttacks(sortField, data, sort, lang);
+}
+
+export const filterOrSortAttacks = (
+  type: 'sort' | 'filter', 
+  data: AttackMetaData[],
+  lang: LanguageType,
+  filter?: FilterAttackSearch | null, 
+  sort?: SortItem,
+) => {
+  switch (type) {
+    case 'sort': {
+      if (!sort) { return data; }
+      return manageSortAttacks(sort, data, lang);
+    }
+    case 'filter': {
+      if (!filter) { return data; }
+      return filterAttacks(filter as FilterAttackSearch, data);
+    }
+  }
 }

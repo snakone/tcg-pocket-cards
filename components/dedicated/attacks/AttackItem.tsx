@@ -22,7 +22,10 @@ interface AttackItem {
         <TouchableOpacity style={{flex: 1}} onPress={onPress} disabled={disabled}>
           {
            <ThemedView style={{flexDirection: 'row'}}>
-              <ThemedView style={[CreateScreenStyles.deckName, {justifyContent: 'space-between', width: '100%', minHeight: 30}]}>
+              <ThemedView style={[
+                CreateScreenStyles.deckName, 
+                {justifyContent: 'space-between', width: '100%', minHeight: 30}
+              ]}>
                 <ThemedText style={[{left: 6, color: 'none'}]}>
                   {item.name[lang]}
                   {

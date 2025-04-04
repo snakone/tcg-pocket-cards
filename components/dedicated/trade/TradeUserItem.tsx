@@ -10,16 +10,16 @@ import { BACKWARD_CARD, TRADE_POINTS } from '@/shared/definitions/sentences/path
 import { TRADE_COST_MAP } from '@/shared/definitions/utils/constants';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
-import { AppState } from '@/hooks/root.reducer';
+import { LanguageType } from '@/shared/definitions/types/global.types';
 
 interface TradeUserItemProps {
   item: TradeItem,
   styles?: any,
-  state: AppState,
+  language: LanguageType,
   share?: boolean
 }
 
-export default function TradeUserItem({item, styles, state, share}: TradeUserItemProps) {
+export default function TradeUserItem({item, styles, language, share}: TradeUserItemProps) {
   const {i18n} = useI18n();
 
   if (!item) { return; }
@@ -52,7 +52,7 @@ export default function TradeUserItem({item, styles, state, share}: TradeUserIte
                     top: Math.abs(i - 2) * 4
                   }
                 ]} 
-                source={item ? getImageLanguage116x162(state?.settingsState.language, item) : BACKWARD_CARD}
+                source={item ? getImageLanguage116x162(language, item) : BACKWARD_CARD}
                 placeholder={BACKWARD_CARD}
                 key={i}/>
               ))
@@ -86,7 +86,7 @@ export default function TradeUserItem({item, styles, state, share}: TradeUserIte
                     top: Math.abs(i - 2) * 4
                   }
                 ]} 
-                source={offer ? getImageLanguage116x162(state?.settingsState.language, offer) : BACKWARD_CARD}
+                source={offer ? getImageLanguage116x162(language, offer) : BACKWARD_CARD}
                 placeholder={BACKWARD_CARD}
                 key={i}/>
               ))
@@ -97,7 +97,7 @@ export default function TradeUserItem({item, styles, state, share}: TradeUserIte
 
       <ThemedView style={[tradeItemStyles.token]}>
         <Image source={TRADE_POINTS} style={{width: 20, height: 20, left: 0, position: 'absolute', top: 2}}/>
-        <ThemedText style={{top: -1, left: 12, fontSize: 13}}>{item.rarity !== undefined && (TRADE_COST_MAP as any)[item.rarity] || 0}</ThemedText>
+        <ThemedText style={{top: -1, left: 12, fontSize: 13}}>{item.rarity && (TRADE_COST_MAP as any)[item.rarity] || 0}</ThemedText>
       </ThemedView>
     </ThemedView> 
   )

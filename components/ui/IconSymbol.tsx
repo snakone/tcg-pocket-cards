@@ -1,9 +1,10 @@
-import { ICONS_MAPPING, IconSymbolName } from '@/shared/definitions/utils/switches';
+import React from 'react';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { SymbolWeight } from 'expo-symbols';
-import React from 'react';
 import { OpaqueColorValue, StyleProp, TextStyle } from 'react-native';
-import Svg, { G, Path, Polygon, SvgProps } from 'react-native-svg';
+import Svg, { Path, Polygon, SvgProps } from 'react-native-svg';
+
+import { ICONS_MAPPING, IconSymbolName } from '@/shared/definitions/utils/switches';
 
 export function IconSymbol({
   name,

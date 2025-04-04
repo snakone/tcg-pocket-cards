@@ -1,4 +1,5 @@
 import { StyleProp, TextStyle, ImageStyle } from "react-native";
+
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { Card } from "./card.interfaces";
 import { LanguageType } from "../types/global.types";
@@ -77,9 +78,9 @@ export interface TradeItem {
   discord: string;
   desired: (number | null)[];
   offers: (number | null)[];
-  created: number;
+  created?: number | null;
   valid: boolean;
-  rarity?: CardRarityENUM;
+  rarity?: CardRarityENUM | null;
 }
 
 export interface UserCollectionItem {

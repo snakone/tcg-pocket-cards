@@ -1,6 +1,7 @@
-import ErrorPortal from "@/components/shared/ErrorPortal";
-import { ErrorType } from "@/shared/definitions/types/global.types";
 import React, { createContext, useContext, useState, useCallback, useMemo } from "react";
+
+import { ErrorType } from "@/shared/definitions/types/global.types";
+import ErrorPortal from "@/components/shared/ErrorPortal";
 
 interface ErrorContextType {
   show: (message: string, type?: ErrorType) => void;

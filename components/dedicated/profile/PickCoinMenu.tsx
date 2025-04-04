@@ -63,7 +63,10 @@ export default function PickCoinMenu({
 
   const renderItem = ({ item } : {item: AvatarIcon}) => (
     <TouchableOpacity onPress={() => handleClick(item.value)}>
-      <ThemedView style={[pickCoinStyles.coinCircle, selected === item.value && {backgroundColor: 'slategray'}]}>
+      <ThemedView style={[
+        pickCoinStyles.coinCircle, 
+        selected === item.value && {backgroundColor: 'slategray'}
+      ]}>
         <Image source={item.icon} style={pickCoinStyles.coin}/>
         {
           selected === item.value && 

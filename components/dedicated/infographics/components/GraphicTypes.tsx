@@ -2,15 +2,7 @@ import { DimensionValue, FlatList } from 'react-native';
 import { useCallback } from 'react';
 import { Image } from 'expo-image';
 
-import { LanguageType } from "@/shared/definitions/types/global.types";
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 import { useI18n } from '@/core/providers/LanguageProvider';
-import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { getImageLanguage69x96 } from '@/shared/definitions/utils/functions';
-import { CardGridStyles } from '@/shared/styles/component.styles';
-import RainbowDivider from '../RainbowDivider';
-import { Colors } from '@/shared/definitions/utils/colors';
 
 import { 
   GRASS_ICON, 
@@ -24,6 +16,16 @@ import {
   DRAGON_ICON, 
   NORMAL_ICON 
 } from '@/shared/definitions/sentences/path.sentences';
+
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { Card } from '@/shared/definitions/interfaces/card.interfaces';
+import { Colors } from '@/shared/definitions/utils/colors';
+import { CardGridStyles } from '@/shared/styles/component.styles';
+import { getImageLanguage69x96 } from '@/shared/definitions/utils/functions';
+
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+import RainbowDivider from '../RainbowDivider';
 
 interface GraphicTypesProps {
   styles: any;

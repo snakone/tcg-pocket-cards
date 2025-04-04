@@ -1,38 +1,64 @@
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { TouchableOpacity, StyleSheet, StyleProp, TextStyle, Pressable, View, TextInput, FlatList } from 'react-native';
+import { TouchableOpacity, StyleSheet, Pressable, View, TextInput, FlatList } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
 import { useRouter } from 'expo-router';
 import { Portal, Provider } from 'react-native-paper';
 import { Image } from 'expo-image';
 import { Platform } from 'react-native';
+import { combineLatest } from 'rxjs';
+
+import SoundService from '@/core/services/sounds.service';
+import { useI18n } from '@/core/providers/LanguageProvider';
+import Storage from '@/core/storage/storage.service';
+import { useConfirmation } from '@/core/providers/ConfirmationProvider';
+import { FilterRxjs } from '@/core/rxjs/FilterRxjs';
+import { SortRxjs } from '@/core/rxjs/SortRxjs';
+import { DataRxjs } from '@/core/rxjs/DataRxjs';
+
+import { 
+  areAllAmountsZero, 
+  filterOrSortCards, 
+  getFilterIcon, 
+  getImageLanguage69x96, 
+  getSortIconStyle, 
+  getSortOrderIcon, 
+} from '@/shared/definitions/utils/functions';
 
 import { AppContext } from '../_layout';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol, SvgStackSymbol } from '@/components/ui/IconSymbol';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { Colors } from '@/shared/definitions/utils/colors';
-import SoundService from '@/core/services/sounds.service';
+import { BACKUP_HEIGHT, COLLECTION_LANGUAGE_MAP } from '@/shared/definitions/utils/constants';
+import { LanguageType } from '@/shared/definitions/types/global.types';
+import { Card } from '@/shared/definitions/interfaces/card.interfaces';
+import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
+import { CardLanguageENUM } from '@/shared/definitions/enums/card.enums';
+import { CollectionUser } from '@/shared/definitions/classes/collection.class';
+import { SortData, UserCollectionItem } from '@/shared/definitions/interfaces/global.interfaces';
+import { FilterSearch } from '@/shared/definitions/classes/filter.class';
+
+import { 
+  ScreenStyles,
+  ButtonStyles, 
+  CardGridStyles, 
+  ModalStyles, 
+  offersStyles, 
+  CARD_IMAGE_WIDTH_5, 
+  TabButtonStyles, 
+  gridHeightMap 
+} from '@/shared/styles/component.styles';
+
+import { cardStyles } from '../(tabs)/cards';
+import { ThemedView } from '@/components/ThemedView';
+import { IconSymbol, SvgStackSymbol } from '@/components/ui/IconSymbol';
 import FilterCardMenu from '@/components/shared/cards/FilterCardMenu';
 import SortCardMenu from '@/components/shared/cards/SortCardMenu';
 import { CollectionScreenModal } from '@/components/modals';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { BACKUP_HEIGHT, COLLECTION_LANGUAGE_MAP, SORT_FIELD_MAP } from '@/shared/definitions/utils/constants';
-import { ScreenStyles, ButtonStyles, CardGridStyles, ModalStyles, offersStyles, CARD_IMAGE_WIDTH_5, TabButtonStyles, gridHeightMap } from '@/shared/styles/component.styles';
 import { ThemedText } from '@/components/ThemedText';
-import { useI18n } from '@/core/providers/LanguageProvider';
-import { LanguageType } from '@/shared/definitions/types/global.types';
-import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { filterCards, getImageLanguage69x96, sortCards } from '@/shared/definitions/utils/functions';
-import SkeletonCardGrid from '@/components/skeletons/SkeletonCardGrid';
 import CollectionCardMenu from '@/components/shared/collection/CollectionCardMenu';
-import Storage from '@/core/storage/storage.service';
-import { CardLanguageENUM } from '@/shared/definitions/enums/card.enums';
-import { CollectionUser } from '@/shared/definitions/classes/collection.class';
-import { UserCollectionItem } from '@/shared/definitions/interfaces/global.interfaces';
-import { useConfirmation } from '@/core/providers/ConfirmationProvider';
-import { FilterSearch } from '@/shared/definitions/classes/filter.class';
-import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
+import { ResetFilterButton } from '@/components/ui/ResetFilterButton';
+import { SortAndFilterButtonsWithMenu } from '@/components/ui/FilterSortButtons';
 
 export default function CollectionCardsScreen() {
   console.log('Collection Screen')
@@ -40,22 +66,68 @@ export default function CollectionCardsScreen() {
   const {i18n} = useI18n();
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
-  const [sort] = useState<SortItem>();
-  const [isSortVisible, setIsSortVisible] = useState(false);
-  const [isFilterVisible, setIsFilterVisible] = useState(false);
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const { state } = context;
   const router = useRouter();
   const [lang] = useState<LanguageType>(state.settingsState.language);
-  const [filtered, setFiltered] = useState<Card[]>([]);
+  const [filtered, setFiltered] = useState<Card[]>(state.cardState.cards);
   const flatListRef = useRef<FlatList<Card> | null>(null);
-  const [langCollection, setLangCollection] = useState<CardLanguageENUM>(state.settingsState.collection_language || CardLanguageENUM.EN);
   const { confirm } = useConfirmation();
+  const [favorites, setFavorites] = useState<number[]>([]);
+  const [collection, setCollection] = useState<UserCollectionItem[]>([]);
+  const [sortData, setSortData] = useState<SortData>();
+  const [langColl, setLangColl] = useState<CardLanguageENUM>(CardLanguageENUM.EN);
 
-  const collection = useMemo(() => state.settingsState.collection, [state.settingsState.collection]);
+  const [modalVisibility, setModalVisivility] = useState<Record<string, boolean>>({
+    sort: false,
+    filter: false,
+    menu: false,
+  });
+
+  useEffect(() => {
+    const sub = DataRxjs.getData<UserCollectionItem[]>('collection')
+      .subscribe(res => setCollection(res));
+
+    return () => sub.unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const sub = DataRxjs.getData<number[]>("favorites").subscribe((res) => {
+      setFavorites(state.cardState.cards
+        .filter(card => res?.includes(card.id))
+        .map(card => card.id)
+      );
+    });
+  
+    return () => sub.unsubscribe();
+  }, [state.cardState.cards]);
+
+  useEffect(() => {
+    const sub = combineLatest([
+      FilterRxjs.getFilter<FilterSearch>('collection'),
+      SortRxjs.getSortActive('collection')
+    ])
+      .subscribe(([filters, sort]) => {
+        const filterCards = filterOrSortCards('filter', state.cardState.cards, favorites, filters, sort, collection, langColl);
+        const sorted = filterOrSortCards('sort', filterCards, favorites, null, sort);
+        setFiltered(sorted);
+        if (sort) {
+          setSortData(_ => {
+            return {
+              sort,
+              iconStyle: getSortIconStyle(sort as SortItem),
+              orderIcon: getSortOrderIcon(sort as SortItem),
+              filterIcon: getFilterIcon(filters)
+            }
+          })
+        }
+        setTimeout(() => goUp(false), 100);
+      });
+
+    return () => sub.unsubscribe();
+  }, [favorites, langColl]);
 
   const onMenuClose = useCallback(async ({ unmark, markAll, language }: any): Promise<void> => {
-    setIsMenuVisible(false);
+    handleModal('menu', false);
     if (markAll) {
       markAllCards(language);
     } else if (unmark) {
@@ -69,42 +141,41 @@ export default function CollectionCardsScreen() {
       language = CardLanguageENUM.EN;
     }
   
-    if (langCollection !== language) {
-      setLangCollection(language);
+    if (langColl !== language) {
+      setLangColl(language);
     }
-  }, [collection, langCollection, filtered]);
+  }, [collection, langColl, filtered]);
 
   const onViewStats = useCallback((language: CardLanguageENUM): void => {
-    setIsMenuVisible(false);
+    handleModal('menu', false);
   
     setTimeout(() => {
       SoundService.play('CHANGE_VIEW');
-      dispatch({ type: 'SET_COLLECTION_LANGUAGE', value: language });
-      router.push('/screens/collection_stats');
+      router.push(`/screens/collection_stats?language=${encodeURIComponent(language)}`);
     }, 100);
   }, []);
 
   const memoizedMenu = useMemo(() => {
-    return <CollectionCardMenu isVisible={isMenuVisible} 
+    return <CollectionCardMenu isVisible={modalVisibility.menu} 
                                onClose={onMenuClose}
                                animatedStyle={{}}
-                               selectedLanguage={langCollection}
+                               selectedLanguage={langColl}
                                onViewStats={onViewStats}/>
-  }, [isMenuVisible, langCollection]);
+  }, [modalVisibility.menu, langColl]);
 
   const memoizedSort = useMemo(() => {
-    return <SortCardMenu isVisible={isSortVisible} 
-                         onClose={onClose}
+    return <SortCardMenu isVisible={modalVisibility.sort} 
+                         onClose={() => handleModal('sort', false)}
                          animatedStyle={{}}
                          filterKey={"collection"}/>
-  }, [isSortVisible, sort]);
+  }, [modalVisibility.sort]);
 
   const memoizedFilter = useMemo(() => {
-    return <FilterCardMenu isVisible={isFilterVisible} 
+    return <FilterCardMenu isVisible={modalVisibility.filter} 
                            animatedStyle={{}} 
-                           onClose={onClose}
+                           onClose={() => handleModal('filter', false)}
                            filterKey={"collection"}/>
-  }, [isFilterVisible]);
+  }, [modalVisibility.filter]);
 
   const markAllCards = useCallback((language: CardLanguageENUM): void => {
     const allMarked = filtered.map((card) => {
@@ -120,108 +191,35 @@ export default function CollectionCardsScreen() {
       return item;
     });
   
-    dispatch({ type: 'SET_COLLECTION', value: allMarked });
+    setCollection(allMarked);
     Storage.set('collection', allMarked);
-  }, [filtered, collection, langCollection]);
+  }, [filtered, collection, langColl]);
 
   const unMarkAllCards = useCallback((language: CardLanguageENUM): void => {
-    dispatch({ type: 'RESET_COLLECTION', value: language });
+    setCollection(prev => {
+      const update = prev.map(sel => ({
+        ...sel,
+        amount: { ...sel.amount, [language]: 0 }
+      }));
   
-    collection.forEach((sel) => {
-      sel.amount[language] = 0;
+      Storage.set('collection', update);
+      return update;
     });
-  
-    Storage.set('collection', collection);
   }, [collection]);
-  
-  function onClose(): void {
-    setIsSortVisible(false);
-    setIsFilterVisible(false);
+
+  function handleModal(key: string, value: boolean): void {
+    setModalVisivility(prev => ({...prev, [key]: value}));
+
+    if (value) {
+      SoundService.play('AUDIO_MENU_OPEN');
+    }
   }
-
-  useEffect(() => {
-    setFiltered(state.cardState.cards);
-  }, [state.cardState.cards]);
-
-  const fixFilterIcon = useCallback(() => {
-    return [
-      { fontSize: 32, position: 'relative' }, 
-      sort?.label === 'order_by_hp' || sort?.label === 'order_by_rarity' ? {top: 1} : null,
-      sort?.label === 'order_by_retreat' ? {top: -2} : null
-    ]
-  }, [sort]);
-
-  const getOrderIcon = useCallback(() => {
-    return !sort?.order ? 'arrow-upward' : 
-            sort.order === 'asc' ? 'arrow-upward' : 'arrow-downward'
-  }, [sort]);
-
-  const getFilterOrderIcon = useCallback(() => {
-    return state.filterState.filters.collection.filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
-  }, [state.filterState.filters.collection.filter]);
 
   const goBack = useCallback(async (): Promise<void> => {
     SoundService.play('AUDIO_MENU_CLOSE');
+    DataRxjs.setData({key: 'collection', value: collection})
     router.canGoBack() ? router.back() : router.replace('/');
-  }, []);
-
-  useEffect(() => {
-    if (!filtered || filtered.length === 0) { return; }
-    if(isSortVisible) { return; }
-    const sorted = filterOrSortCards('sort', filtered, state.filterState.filters.collection.sort.find(s => s.active));
-    setFiltered(sorted);
-    setTimeout(() => goUp(false), 100);
-  }, [isSortVisible]);
-
-  useEffect(() => {
-    if (!filtered) { return; }
-    
-    if (!isFilterVisible && state.filterState.filters.collection.filter.areAllPropertiesNull()) {
-      handleSearch('');
-      return;
-    }
-
-    if(isFilterVisible) { return; }
-    const sorted = filterOrSortCards('filter', state.cardState.cards);
-    setFiltered(sorted);
-    setTimeout(() => goUp(false), 100);
-  }, [isFilterVisible, lang]);
-
-  const filterOrSortCards = useCallback(
-    (type: 'sort' | 'filter', data: Card[], sort?: SortItem): Card[] => {
-      switch (type) {
-        case 'sort': {
-          if (!sort) {
-            return data;
-          }
-          return manageSort(sort, data);
-        }
-  
-        case 'filter': {
-          return manageFilter(data);
-        }
-  
-        default:
-          return data;
-      }
-    }, [state.settingsState.favorites, state.filterState.filters.collection.filter]);
-
-  const manageSort = useCallback((sort: SortItem, data: Card[]): Card[] => {
-    const sortField = SORT_FIELD_MAP[sort.label];
-  
-    if (!sortField) {
-      console.error(`Unsupported sorting option: ${sort.label}`);
-      return data;
-    }
-  
-    return sortCards(sortField, data, sort);
-  }, [state.settingsState.favorites]);
-
-  const manageFilter = useCallback((data: Card[]): Card[] => {
-    const filter = state.filterState.filters.collection.filter;
-    return filterCards(filter as FilterSearch, data, state.settingsState.favorites, collection, langCollection);
-  }, [state.settingsState.favorites, state.filterState.filters.collection.filter]);
-  
+  }, [collection]);
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
@@ -229,25 +227,42 @@ export default function CollectionCardsScreen() {
       card.name[lang].toLowerCase()?.includes(text.toLowerCase())));
   }, [lang]);
 
-  const ResetFilterButton = useCallback(() => (
-    <TouchableOpacity onPress={() => handleSearch('')}
-                      style={[CardGridStyles.clearInput, {left: 184}]}
-                      hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-      <IconSymbol name="clear" size={20} color="gray" />
-    </TouchableOpacity>
-  ), []);
-
-  const addToSelection = useCallback((item: Card) => {
+  const addToSelection = useCallback((card: Card) => {
     SoundService.play('PICK_CARD_SOUND');
-    Storage.addToCollection(item.id, langCollection);
-    dispatch({type: 'ADD_TO_COLLECTION', value: {id: item.id, lang: langCollection}});
-  }, [langCollection]);
+    Storage.addToCollection(card.id, langColl);
+  
+    setCollection(prev => {
+      const existingIndex = prev.findIndex(coll => coll.id === card.id);
+  
+      if (existingIndex !== -1) {
+        return prev.map((coll, index) =>
+          index === existingIndex
+            ? { ...coll, amount: { ...coll.amount, [langColl]: (coll.amount[langColl] || 0) + 1 } }
+            : coll
+        );
+      } else {
+        return [...prev, new CollectionUser(card.id, langColl)];
+      }
+    });
+  }, [langColl]);
 
-  const removeSelected = useCallback((item: Card) => {
+  const removeSelected = useCallback((card: Card) => {
     SoundService.play('DELETE_SOUND');
-    Storage.removeFromCollection(item.id, langCollection);
-    dispatch({type: 'REMOVE_FROM_COLLECTION', value: {id: item.id, lang: langCollection}});
-  }, [langCollection]);
+    Storage.removeFromCollection(card.id, langColl);
+    setCollection(prev => {
+      const item = prev.find(coll => coll.id === card.id);
+
+      if (item) {
+        item.amount[langColl]--;
+      } 
+
+      if (item && areAllAmountsZero(item)) {
+        prev = prev.filter(coll => coll.id !== card.id);
+      }
+
+      return [...prev];
+    })
+  }, [collection, langColl]);
 
   const collectionMap = useMemo(() => {
     return new Map(collection.map((item) => [item.id, item]));
@@ -260,7 +275,7 @@ export default function CollectionCardsScreen() {
   }), []);
 
   const renderItem = useCallback(({ item }: { item: Card }) => {
-    const selectedItem = collectionMap.get(item.id)?.amount[langCollection];
+    const selectedItem = collectionMap.get(item.id)?.amount[langColl];
     return (
     <View key={item.id} style={[
         CardGridStyles.imageContainer, 
@@ -299,14 +314,14 @@ export default function CollectionCardsScreen() {
         placeholder={BACKWARD_CARD}/>
       </TouchableOpacity>
     </View>
-  )}, [collection, lang, langCollection]);
+  )}, [collection, lang, langColl]);
 
   const keyExtractor = useCallback((item: Card) => String(item.id), []);
 
   const GetAmountAll = useCallback(() => {
-    const total = collection.reduce((acc, curr) => acc + curr.amount[langCollection], 0);
+    const total = collection.reduce((acc, curr) => acc + curr.amount[langColl], 0);
     return <ThemedText style={{fontSize: 13, textAlign: 'right'}}>{total}</ThemedText>;
-  }, [collection, langCollection]);
+  }, [collection, langColl]);
 
   const renderFooter = useCallback(() => {
     if (filtered.length < 34) {
@@ -342,14 +357,6 @@ export default function CollectionCardsScreen() {
     flatListRef.current?.scrollToOffset({offset: 0, animated: false});
   }
 
-  const RenderEmpty = useCallback(() => {
-    return state.cardState.loaded ? (
-      <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
-    ) : (
-      <SkeletonCardGrid columns={5} />
-    );
-  }, [state.cardState.loaded]);
-
   return (
     <Provider>
       <ParallaxScrollView title={"my_collection"} 
@@ -368,11 +375,11 @@ export default function CollectionCardsScreen() {
                         accessibilityLabel={'SEARCH_LABEL'}
                         inputMode='text'
                       />
-                  {searchQuery.length > 0 && <ResetFilterButton/>}
+                  {searchQuery.length > 0 && <ResetFilterButton left={184} onPress={() => handleSearch('')}/>}
           </ThemedView>
           <ThemedView style={{flexDirection: 'row', gap: 10, alignItems: 'center'}}>
             <MaterialIcons name='language' color={'#8E8E8F'} size={20} style={{width: 20, height: 20, top: 2}}></MaterialIcons>
-            <ThemedText style={{fontSize: 13, fontWeight: 'semibold', textAlign: 'right'}}>{COLLECTION_LANGUAGE_MAP[langCollection]}</ThemedText>
+            <ThemedText style={{fontSize: 13, fontWeight: 'semibold', textAlign: 'right'}}>{COLLECTION_LANGUAGE_MAP[langColl]}</ThemedText>
           </ThemedView>
           <ThemedView style={[{flexDirection: 'row', gap: 10, alignItems: 'center', left: -4}, Platform.OS !== 'web' && {left: -6}]}>
             <SvgStackSymbol color={'#8E8E8F'}
@@ -395,7 +402,7 @@ export default function CollectionCardsScreen() {
                   getItemLayout={getItemLayout}
                   removeClippedSubviews={true}
                   showsVerticalScrollIndicator={false}
-                  ListEmptyComponent={RenderEmpty}
+                  ListEmptyComponent={<ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>}
                   renderItem={renderItem}
                   ListFooterComponent={renderFooter}
                   bounces={false}
@@ -413,41 +420,21 @@ export default function CollectionCardsScreen() {
         </View>
         { state.cardState.cards?.length > 0 ? (
           <>
-            <TouchableOpacity onPress={() => (setIsMenuVisible(true), SoundService.play('AUDIO_MENU_OPEN'))} 
-                              style={[collectionStyles.container]}>
-              <ThemedView>
-                <IconSymbol name="menubar.rectangle" 
-                            color={'#8E8E8F'}
-                            style={{fontSize: 28}} />
-              </ThemedView>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => (setIsSortVisible(true), SoundService.play('AUDIO_MENU_OPEN'))} 
-                              style={[collectionStyles.container, {bottom: 88}]}>
-              <ThemedView>
-                <MaterialIcons name={(sort?.icon as any) || 'content-paste-search'} 
-                              color={'skyblue'} 
-                              style={fixFilterIcon() as StyleProp<TextStyle>}> 
-                </MaterialIcons>
-                <MaterialIcons name={getOrderIcon()} style={collectionStyles.sortIcon}></MaterialIcons>
-              </ThemedView>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => (setIsFilterVisible(true), SoundService.play('AUDIO_MENU_OPEN'))} 
-                              style={[collectionStyles.container, {bottom: 152}]}>
-              <ThemedView>
-                <IconSymbol name="cat.circle" 
-                            color={'mediumaquamarine'} 
-                            style={{fontSize: 32}}>
-                </IconSymbol>
-                <MaterialIcons name={getFilterOrderIcon()} style={collectionStyles.sortIcon}></MaterialIcons>
-              </ThemedView>
-            </TouchableOpacity>       
+            <SortAndFilterButtonsWithMenu sort={sortData?.sort}
+                                          filterIcon={sortData?.filterIcon}
+                                          filterPress={() => handleModal('filter', true)}
+                                          sortPress={() => handleModal('sort', true)}
+                                          menuPress={() => handleModal('menu', true)}
+                                          sortIconStyle={sortData?.iconStyle}
+                                          sortOrderIcon={sortData?.orderIcon}
+                                          styles={cardStyles}/>
           </>
         ) : null}
       </ParallaxScrollView>
 
-      <Portal>{isSortVisible && memoizedSort}</Portal>
-      <Portal>{isFilterVisible && memoizedFilter}</Portal>
-      <Portal>{isMenuVisible && memoizedMenu}</Portal>
+      <Portal>{modalVisibility.sort && memoizedSort}</Portal>
+      <Portal>{modalVisibility.filter && memoizedFilter}</Portal>
+      <Portal>{modalVisibility.menu && memoizedMenu}</Portal>
     </Provider>
   );
 }

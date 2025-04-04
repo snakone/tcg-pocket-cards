@@ -22,4 +22,5 @@ export type ErrorType = 'error' | 'info' | 'warning' | 'delete';
 export type LanguageType = 'es' | 'en' | 'ja';
 export type ModalType = 'cards' | 'attacks' | 'cardsSort' | 'attacksSort' | 'avatar' | 'coin' | 'best';
 export type DataKey = 'favorites' | 'decks' | 'trades' | 'collection';
+export type FilterKey = 'cards' | 'attacks' | 'collection' | 'decks';
 export type RouteKey = keyof typeof ROUTES_MAP;

@@ -69,6 +69,7 @@ export default function HelpScreen() {
     SoundService.setEnabled(settings.sound);
     setLocale(settings.language);
     SoundService.setVolume(settings.sound_volume);
+    await Storage.reload()
   }
   
 

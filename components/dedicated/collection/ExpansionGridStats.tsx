@@ -3,11 +3,18 @@ import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 import { Image } from 'expo-image';
 import { useRouter } from "expo-router";
 
+import { useI18n } from "@/core/providers/LanguageProvider";
+import SoundService from "@/core/services/sounds.service";
+
 import { CardExpansionENUM, CardLanguageENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
-import { EXPANSION } from "@/shared/definitions/enums/packs.enums";
 import { CollectionElementStat, CollectionRarityStat, CollectionStat, UserCollectionItem } from "@/shared/definitions/interfaces/global.interfaces";
+import { EXPANSION } from "@/shared/definitions/enums/packs.enums";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { StatsGrid } from "./StatsGrid";
+import { AppContext } from "@/app/_layout";
+import { getImageLanguage116x162, roundPercentage } from "@/shared/definitions/utils/functions";
+import { STATS_EXPANSION_MAP } from "@/shared/definitions/utils/constants";
+import { TabsMenuStyles } from "@/shared/styles/component.styles";
+import { LanguageType } from "@/shared/definitions/types/global.types";
 
 import { 
   GRASS_ICON, 
@@ -26,15 +33,9 @@ import {
   RAINBOW_RARITY
 } from "@/shared/definitions/sentences/path.sentences";
 
+import { StatsGrid } from "./StatsGrid";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
-import { getImageLanguage116x162, roundPercentage } from "@/shared/definitions/utils/functions";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { STATS_EXPANSION_MAP } from "@/shared/definitions/utils/constants";
-import { TabsMenuStyles } from "@/shared/styles/component.styles";
-import { AppContext } from "@/app/_layout";
-import { LanguageType } from "@/shared/definitions/types/global.types";
-import SoundService from "@/core/services/sounds.service";
 
 interface CollectionGridStats {
   currentExpansion: EXPANSION;
@@ -48,8 +49,8 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
   const {i18n} = useI18n();
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
-  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const { state } = context;
+  const [lang] = useState<LanguageType>(state.settingsState.language);
   const router = useRouter();
 
   const [waterStats, setWaterStats] = useState<CollectionElementStat>();

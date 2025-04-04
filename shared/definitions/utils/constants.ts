@@ -152,7 +152,7 @@ import { FilterSearch } from "../classes/filter.class";
 import { EXPANSION } from "../enums/packs.enums";
 import { CardExpansionENUM, CardLanguageENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
-import { AvatarIcon, ExpansionEmblem } from "../interfaces/global.interfaces";
+import { AvatarIcon, ExpansionEmblem, TradeItem } from "../interfaces/global.interfaces";
 import { FilterAttackSearch } from "../classes/filter_attack.class";
 
 export const MENU_LIST: ItemWithRoute[] = [
@@ -703,4 +703,16 @@ export const DEFAULT_ELEMENT = {
   [PokemonTypeENUM.STEEL]: null,
   [PokemonTypeENUM.DRAGON]: null,
   [PokemonTypeENUM.NORMAL]: null
+};
+
+export const DEFAUL_TRADE_ITEM: TradeItem = {
+  id: 0,
+  created: null,
+  desired: [null, null, null, null, null],
+  valid: false,
+  discord: '',
+  offers: [null, null, null, null, null],
+  tcg: ['', '', '', ''],
+  title: '',
+  rarity: null
 }

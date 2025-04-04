@@ -3,11 +3,8 @@ import React, { MutableRefObject } from "react";
 import { View, TouchableOpacity, ScrollView } from "react-native";
 import Animated from 'react-native-reanimated';
 
-import { ThemedView } from "@/components/ThemedView";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import StateButton from "@/components/ui/StateButton";
-import { MenuStyles, filterStyles, TabsMenuStyles, ModalStyles, ButtonStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import { MenuStyles, filterStyles, TabsMenuStyles, ModalStyles, ButtonStyles } from "@/shared/styles/component.styles";
 
 import { 
   GENETIC_APEX,
@@ -21,6 +18,10 @@ import {
   TRIUMPH_LIGHT_ARCEUS_ICON,
   TRIUMPH_LIGHT_PACKS
 } from "@/shared/definitions/sentences/path.sentences";
+
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import StateButton from "@/components/ui/StateButton";
 
 interface ExpansionMenuProps {
   filterObj: MutableRefObject<FilterSearch>,

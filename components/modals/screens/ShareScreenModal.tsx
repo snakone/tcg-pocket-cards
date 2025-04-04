@@ -5,10 +5,18 @@ import { Image } from 'expo-image';
 
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { sharedModalStyles } from "@/shared/styles/component.styles";
+
+import { 
+  SHARE_BLASTOISE, 
+  SHARE_CHARIZARD, 
+  SHARE_LIST, 
+  SHARE_OPTIONS, 
+  SHARE_OPTIONS_TRADE
+} from "@/shared/definitions/sentences/path.sentences";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import ScrollIndicator from "@/components//ui/ScrollIndicator";
-import { SHARE_BLASTOISE, SHARE_CHARIZARD, SHARE_LIST, SHARE_OPTIONS, SHARE_OPTIONS_TRADE } from "@/shared/definitions/sentences/path.sentences";
 
 export function ShareScreenModal() {
   const scrollY = useSharedValue(0);

@@ -6,26 +6,37 @@ import React from "react";
 import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { TabOffersMenu } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, CardGridStyles, filterStyles, gridHeightMap, LayoutStyles, ModalStyles, offersStyles, sortStyles } from "@/shared/styles/component.styles";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
+
+import { 
+  ButtonStyles, 
+  CardGridStyles, 
+  filterStyles, 
+  gridHeightMap, 
+  LayoutStyles, 
+  ModalStyles, 
+  offersStyles, 
+  sortStyles
+} from "@/shared/styles/component.styles";
+
 import { AppContext } from "@/app/_layout";
+import { createDeckStyles } from "@/app/screens/create_deck";
+import { collectionStyles } from "@/app/screens/collection";
+import { TabOffersMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { getFilterSearch, ICON_WIDTH, RARITY_CAN_TRADE, RARITY_MAP } from "@/shared/definitions/utils/constants";
-import SkeletonCardGrid from "@/components/skeletons/SkeletonCardGrid";
-import StateButton from "@/components/ui/StateButton";
-import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { filterCards, getImageLanguage116x162, getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
-import { createDeckStyles } from "@/app/screens/create_deck";
 import { CardExpansionTypeENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 import { LanguageType } from "@/shared/definitions/types/global.types";
-import { collectionStyles } from "@/app/screens/collection";
 import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
+import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import StateButton from "@/components/ui/StateButton";
 
 const numColumns = 6;
 
@@ -41,7 +52,7 @@ export default function PickOffersMenu({
   if (!isVisible) return null;
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
+  const { state } = context;
   const [cards, setCards] = useState<Card[]>([]);
   const [filtered, setFiltered] = useState<Card[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -67,18 +78,6 @@ export default function PickOffersMenu({
     if (sound) { await playSound(); }
     onClose?.(current);
   }
-
-  const renderEmpty = () => {
-    const renderCardState = useCallback(() => {
-      return state.cardState.loaded ? (
-        <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
-      ) : (
-        <SkeletonCardGrid columns={5} />
-      );
-    }, [state.cardState.loaded]);
-  
-    return renderCardState();
-  };
 
   const handleClick = useCallback((value: number, type: 'add' | 'remove') => {
     if (type === 'add' && current.filter(Boolean).length === 5 && !current.includes(value)) { return; }
@@ -143,6 +142,13 @@ export default function PickOffersMenu({
               </ThemedView>
             </>
           }
+          <Image source={BACKWARD_CARD}
+                  style={[
+                  CardGridStyles.image, 
+                  {width: Platform.OS === 'web' ? 57.6 : 58},
+                  {position: 'absolute', zIndex: 10, opacity: 0},
+                  ((current.filter(Boolean).length === 5) && !current.includes(item.id)) && {opacity: 1}
+                ]}/>
           <Image accessibilityLabel={item.name[lang]}
                   source={getImageLanguage69x96(lang, item.id)}
                   placeholder={BACKWARD_CARD}
@@ -307,7 +313,7 @@ export default function PickOffersMenu({
                       }
                       stickyHeaderIndices={[0]}
                       ListFooterComponent={<ThemedView style={{height: 22}}/>}
-                      ListEmptyComponent={renderEmpty}
+                      ListEmptyComponent={<ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>}
                     />
           </ThemedView>
         </ThemedView>

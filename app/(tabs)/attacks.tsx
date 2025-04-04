@@ -20,8 +20,8 @@ import { SortRxjs } from '@/core/rxjs/SortRxjs';
 
 import { cardStyles } from './cards';
 import { AppContext } from '../_layout';
-import { BACKUP_HEIGHT, SINGLE_SORT_DATA, SORT_FIELD_MAP } from '@/shared/definitions/utils/constants';
-import { Attack, AttackMetaData } from '@/shared/definitions/interfaces/card.interfaces';
+import { BACKUP_HEIGHT } from '@/shared/definitions/utils/constants';
+import { AttackMetaData } from '@/shared/definitions/interfaces/card.interfaces';
 import { LanguageType } from '@/shared/definitions/types/global.types';
 import { CardGridStyles } from '@/shared/styles/component.styles';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
@@ -30,12 +30,11 @@ import { FilterAttackSearch } from '@/shared/definitions/classes/filter_attack.c
 import { SortData } from '@/shared/definitions/interfaces/global.interfaces';
 
 import { 
-  filterAttacks, 
+  filterOrSortAttacks, 
   getFilterIcon, 
   getSortIconStyle, 
   getSortOrderIcon, 
   getUniqueAttacks, 
-  sortAttacks 
 } from '@/shared/definitions/utils/functions';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -141,36 +140,6 @@ export default function AttacksScreen() {
         .toLowerCase()?.includes(text.toLowerCase())) as AttackMetaData[]);
   }, [attacks, lang]);
 
-  const filterOrSortAttacks = useCallback((
-    type: 'sort' | 'filter', 
-    data: AttackMetaData[],
-    lang: LanguageType,
-    filter?: FilterAttackSearch | null, 
-    sort?: SortItem,
-  ): AttackMetaData[] => {
-      switch (type) {
-        case 'sort': {
-          if (!sort) { return data; }
-          return manageSort(sort, data, lang);
-        }
-        case 'filter': {
-          if (!filter) { return data; }
-          return filterAttacks(filter as FilterAttackSearch, data);
-        }
-      }
-  }, []);
-
-  const manageSort = useCallback((sort: SortItem, data: AttackMetaData[], lang: LanguageType): AttackMetaData[] => {
-    const sortField = SORT_FIELD_MAP[sort.label];
-  
-    if (!sortField) {
-      console.error(`Unsupported sorting option: ${sort.label}`);
-      return data;
-    }
-  
-    return sortAttacks(sortField, data, sort, lang);
-  }, [lang]);
-
   const renderItem = useCallback(({item}: {item: AttackMetaData}) => 
     <RenderAttackItem 
       item={item}
@@ -188,8 +157,6 @@ export default function AttacksScreen() {
     offset: 52 * index,
     index, 
   }), []);
-
-  const keyExtractor = useCallback((item: Attack, index: number) => String(item.name) + index, []);
 
   return (
     <>
@@ -223,7 +190,7 @@ export default function AttacksScreen() {
         </View>
         <FlatList data={(filtered as AttackMetaData[])}
                   numColumns={1}
-                  keyExtractor={keyExtractor}
+                  keyExtractor={(_, index) => index.toString()}
                   initialNumToRender={25}
                   maxToRenderPerBatch={25}
                   windowSize={10}

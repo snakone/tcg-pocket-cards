@@ -1,7 +1,6 @@
-import { StyleProp, TouchableOpacity, ViewStyle } from "react-native";
+import { TouchableOpacity } from "react-native";
 
 import { CardGridStyles } from "@/shared/styles/component.styles";
-
 import { IconSymbol } from "./IconSymbol";
 
 interface ResetFilterButtonProps {

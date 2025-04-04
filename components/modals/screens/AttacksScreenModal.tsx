@@ -5,7 +5,15 @@ import { Image } from 'expo-image';
 
 import { useI18n } from "@/core/providers/LanguageProvider";
 import { sharedModalStyles } from "@/shared/styles/component.styles";
-import { ATTACK_SEARCH, ATTACK_FILTER, ATTACK_SORT_ICON, ATTACK_SORT, ATTACK_OPTION } from "@/shared/definitions/sentences/path.sentences";
+
+import { 
+  ATTACK_SEARCH, 
+  ATTACK_FILTER, 
+  ATTACK_SORT_ICON, 
+  ATTACK_SORT, 
+  ATTACK_OPTION
+} from "@/shared/definitions/sentences/path.sentences";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import ScrollIndicator from "@/components/ui/ScrollIndicator";

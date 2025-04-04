@@ -2,15 +2,7 @@ import { DimensionValue, FlatList } from 'react-native';
 import { useCallback } from 'react';
 import { Image } from 'expo-image';
 
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 import { useI18n } from '@/core/providers/LanguageProvider';
-import RainbowDivider from '../RainbowDivider';
-import { Colors } from '@/shared/definitions/utils/colors';
-import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { getImageLanguage69x96 } from '@/shared/definitions/utils/functions';
-import { CardGridStyles } from '@/shared/styles/component.styles';
-import { LanguageType } from '@/shared/definitions/types/global.types';
 
 import { 
   GENETIC_APEX, 
@@ -26,6 +18,16 @@ import {
   SHINING_REVELRY_ICON
 } from '@/shared/definitions/sentences/path.sentences';
 
+import { Colors } from '@/shared/definitions/utils/colors';
+import { Card } from '@/shared/definitions/interfaces/card.interfaces';
+import { getImageLanguage69x96 } from '@/shared/definitions/utils/functions';
+import { CardGridStyles } from '@/shared/styles/component.styles';
+import { LanguageType } from '@/shared/definitions/types/global.types';
+
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+import RainbowDivider from '../RainbowDivider';
+
 interface GraphicExpansionProps {
   styles: any;
   data: any;
@@ -38,7 +40,14 @@ interface GraphicExpansionProps {
 const numColumns = 20;
 const collageWith = 1240;
 
-export const GraphicExpansion = ({styles, data, language, startIndex, endIndex, showSeries}: GraphicExpansionProps) => {
+export const GraphicExpansion = ({
+  styles, 
+  data, 
+  language, 
+  startIndex, 
+  endIndex, 
+  showSeries
+}: GraphicExpansionProps) => {
   const {i18n} = useI18n();
 
   const renderItem = useCallback(({item, index}: {item: Card, index: number}) => {
@@ -297,11 +306,17 @@ export const GraphicExpansion = ({styles, data, language, startIndex, endIndex, 
                                 {left: 16}
                               ]}>
                       </Image>
-                      <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t(item.intro.label)}</ThemedText>
+                      <ThemedText style={[
+                        styles.subTitlte, 
+                        {marginBottom: 40, color: Colors.light.text}
+                      ]}>{i18n.t(item.intro.label)}</ThemedText>
                     </ThemedView>
                     <ThemedText style={styles.subTitlte}>{item.intro.value}</ThemedText>
                   </ThemedView>
-                  <ThemedText style={[styles.textMargin, {marginBottom: item.intro.bottom}]}>{i18n.t(item.intro.description)}</ThemedText>
+                  <ThemedText style={[
+                    styles.textMargin, 
+                    {marginBottom: item.intro.bottom}]
+                  }>{i18n.t(item.intro.description)}</ThemedText>
                 </>
               }
 
@@ -319,7 +334,10 @@ export const GraphicExpansion = ({styles, data, language, startIndex, endIndex, 
                                     pack.image.height && {height: pack.image.height},
                                     {left: 16}
                                   ]}></Image>
-                          <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t(pack.label)}</ThemedText>
+                          <ThemedText style={[
+                            styles.subTitlte, 
+                            {marginBottom: 40, color: Colors.light.text}
+                          ]}>{i18n.t(pack.label)}</ThemedText>
                         </ThemedView>
                         <ThemedText style={styles.subTitlte}>{pack.value}</ThemedText>
                       </ThemedView>
@@ -335,7 +353,6 @@ export const GraphicExpansion = ({styles, data, language, startIndex, endIndex, 
                         pack.divider && <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
                       }             
                     </ThemedView>
-
                   )
                 })
               }
@@ -345,7 +362,10 @@ export const GraphicExpansion = ({styles, data, language, startIndex, endIndex, 
                   <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                     <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
                       <Image source={item.intro.image.href} style={[styles.expansionImage, {left: 16}]}></Image>
-                      <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('shareds')}</ThemedText>
+                      <ThemedText style={[
+                        styles.subTitlte, 
+                        {marginBottom: 40, color: Colors.light.text}
+                      ]}>{i18n.t('shareds')}</ThemedText>
                     </ThemedView>
                     <ThemedText style={styles.subTitlte}>{item.shared.value}</ThemedText>
                   </ThemedView>
@@ -372,7 +392,10 @@ export const GraphicExpansion = ({styles, data, language, startIndex, endIndex, 
                             renderItem={renderItem}
                             numColumns={numColumns}
                             contentContainerStyle={styles.list}
-                            style={[{width: collageWith, borderRadius: 8}, item.getWidth && {width: getItemWidth(item.main.list.length)}]}
+                            style={[
+                              {width: collageWith, borderRadius: 8}, 
+                              item.getWidth && {width: getItemWidth(item.main.list.length)}
+                            ]}
                             showsVerticalScrollIndicator={false}
                             keyExtractor={(item, index) => index + ''}/>
 
@@ -391,8 +414,14 @@ export const GraphicExpansion = ({styles, data, language, startIndex, endIndex, 
         <>
           <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9, left: 16}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('series')}</ThemedText>
+              <Image source={PROMO_A_ICON} style={[
+                styles.expansionImage, 
+                {width: 94, height: 52, top: -9, left: 16}
+              ]}></Image>
+              <ThemedText style={[
+                styles.subTitlte, 
+                {marginBottom: 40, color: Colors.light.text}
+              ]}>{i18n.t('series')}</ThemedText>
             </ThemedView>
           </ThemedView>
           <ThemedText style={[styles.text, {marginBottom: 10}]}>{i18n.t('series_description')}</ThemedText>
@@ -402,7 +431,9 @@ export const GraphicExpansion = ({styles, data, language, startIndex, endIndex, 
               seriesFirstRow.map((series, index) => {
                 return (
                   <ThemedView key={index.toString()}>
-                    <ThemedText style={[styles.subTitlte, {marginTop: 10, color: Colors.light.text}]}>A{index +1}</ThemedText>
+                    <ThemedText style={[
+                      styles.subTitlte, {marginTop: 10, color: Colors.light.text}
+                    ]}>A{index +1}</ThemedText>
                     <FlatList data={series.list}
                               renderItem={renderItem}
                               numColumns={numColumns}
@@ -421,7 +452,9 @@ export const GraphicExpansion = ({styles, data, language, startIndex, endIndex, 
               seriesSecondRow.map((series, index) => {
                 return (
                   <ThemedView key={index.toString()}>
-                    <ThemedText style={[styles.subTitlte, {marginTop: 0, color: Colors.light.text}]}>A{seriesFirstRow.length + index + 1}</ThemedText>
+                    <ThemedText style={[
+                      styles.subTitlte, {marginTop: 0, color: Colors.light.text}
+                    ]}>A{seriesFirstRow.length + index + 1}</ThemedText>
                     <FlatList data={series.list}
                               renderItem={renderItem}
                               numColumns={numColumns}

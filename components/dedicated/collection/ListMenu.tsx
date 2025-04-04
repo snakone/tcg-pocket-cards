@@ -5,17 +5,19 @@ import { useCallback, useContext } from "react";
 import React from "react";
 import { Image } from "expo-image";
 
+import { useI18n } from "@/core/providers/LanguageProvider";
+import SoundService from "@/core/services/sounds.service";
+
+import { AppContext } from "@/app/_layout";
 import { CollectionListMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
+import { roundPercentage } from "@/shared/definitions/utils/functions";
+import { CollectionStat } from "@/shared/definitions/interfaces/global.interfaces";
+import { CROWN_RARITY, STAR_RARITY } from "@/shared/definitions/sentences/path.sentences";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import SoundService from "@/core/services/sounds.service";
-import { CollectionStat } from "@/shared/definitions/interfaces/global.interfaces";
-import { AppContext } from "@/app/_layout";
-import { CROWN_RARITY, STAR_RARITY } from "@/shared/definitions/sentences/path.sentences";
-import { roundPercentage } from "@/shared/definitions/utils/functions";
 
 export default function ListMenu({
   isVisible,
@@ -35,7 +37,9 @@ export default function ListMenu({
 
   async function closeMenu(): Promise<void> {
     await playSound();
-    onClose();
+    if (onClose) {
+      onClose();
+    }
   }
 
   const renderItem = useCallback(({item}: {item: CollectionStat}) => {

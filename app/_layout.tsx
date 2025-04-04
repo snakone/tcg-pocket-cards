@@ -19,12 +19,11 @@ import CardsService from '@/core/services/cards.service';
 import { ConfirmationProvider } from '@/core/providers/ConfirmationProvider';
 
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { CardLanguageENUM } from '@/shared/definitions/enums/card.enums';
 import { WebStyles } from '@/shared/styles/component.styles';
 import { UserData } from '@/shared/definitions/interfaces/global.interfaces';
 import { BACKGROUND_MUSIC, FONT_REGULAR } from '@/shared/definitions/sentences/path.sentences';
 import { handleWebInit, forceShowSplash } from '@/shared/definitions/utils/functions';
-import { APP_VERSION } from '@/shared/definitions/utils/constants';
+import { APP_VERSION, DEFAULT_PROFILE } from '@/shared/definitions/utils/constants';
 
 import BackgroundMusic from '@/components/shared/BackgroundMusic';
 import { ThemedView } from '@/components/ThemedView';
@@ -62,6 +61,7 @@ export default function RootLayout() {
         dispatch({type: 'SET_SETTINGS', value: settings});
         setLocale(settings.language);
         Storage.setSettings(settings);
+        Storage.setProfile({...DEFAULT_PROFILE})
         loadCards();
       } else {
         const {cards, settings, data} = await Storage.loadSettings();
@@ -101,10 +101,6 @@ export default function RootLayout() {
   function checkMissingProps(data: UserData, settings: SettingsState): void {
     if (!data.trades) { data.trades = []; }
     if (!data.collection) { data.collection = []; }
-
-    if (settings.collection_language === null) {
-      settings.collection_language = CardLanguageENUM.EN;
-    }
   }
 
   function configure(settings: SettingsState): void {

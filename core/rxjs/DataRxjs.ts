@@ -1,4 +1,4 @@
-import { BehaviorSubject, filter } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 import Storage from "@/core/storage/storage.service";
 
@@ -74,6 +74,28 @@ class DataState {
     this.decks$.next(value);
     Storage.removeDeck(id);
   }
+
+  // TRADES
+  public addTrade(trade: TradeItem): void {
+    const trades = this.trades$.getValue();
+    const index = trades.findIndex(d => d.id === trade.id);
+  
+    const updatedTrades =
+      index !== -1
+        ? trades.map((d, i) => (i === index ? trade : d))
+        : [trade, ...trades.filter(d => d !== null)];
+  
+    this.trades$.next(updatedTrades);
+    Storage.addTrade(trade);
+  }
+
+  public removeTrade(id: number): void {
+    const trades = this.trades$.getValue();
+    const value = trades.filter(k => k.id !== id);
+    this.trades$.next(value);
+    Storage.removeTrade(id);
+  }
+
 }
 
 export const DataRxjs = new DataState();

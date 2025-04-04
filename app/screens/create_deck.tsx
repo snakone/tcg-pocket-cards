@@ -31,7 +31,6 @@ import {
 import { 
   addCardToList, 
   canAddToDeck, 
-  filterCards, 
   filterOrSortCards, 
   getFilterIcon, 
   getHighlightCards, 
@@ -429,8 +428,7 @@ export default function CreateDeckScreen() {
             </ThemedView>
           }
 
-          <Image accessibilityLabel={item.name[lang]}
-                 source={BACKWARD_CARD}
+          <Image source={BACKWARD_CARD}
                  style={[
                   CardGridStyles.image, 
                   {width: Platform.OS === 'web' ? 57.6 : 58},

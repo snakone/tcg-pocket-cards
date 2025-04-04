@@ -56,6 +56,8 @@ import {
   STEEL_ICON, 
   WATER_ICON
 } from "@/shared/definitions/sentences/path.sentences";
+import { DataRxjs } from "@/core/rxjs/DataRxjs";
+import { useLocalSearchParams } from "expo-router";
 
 export default function CollectionStatsScreen() {
   console.log('Collection Stats Screen')
@@ -63,7 +65,7 @@ export default function CollectionStatsScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
-  const [langCollection, setLangCollection] = useState<CardLanguageENUM>(state.settingsState.collection_language || CardLanguageENUM.EN);
+  
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
   const [currentExpansion, setCurrentExpansion] = useState<ExpansionEmblem>();
 
@@ -104,14 +106,20 @@ export default function CollectionStatsScreen() {
 
   const [listMenuVisible, setListMenuVisible] = useState<boolean>(false);
 
-  const collection = useMemo(() => state.settingsState.collection, [state.settingsState.collection]);
+  const [collection, setCollection] = useState<UserCollectionItem[]>([]);
+  const { language } = useLocalSearchParams<{ language: string }>();
+  const [langCollection, setLangCollection] = useState<CardLanguageENUM>(Number(language));
 
   useEffect(() => {
-    if (state.settingsState.collection_language !== undefined) {
-      selectLanguage(state.settingsState.collection_language, false);
-    }
-  }, [state.settingsState.collection_language]);
+    selectLanguage(Number(language), false);
+  }, []);
 
+  useEffect(() => {
+    const sub = DataRxjs.getData<UserCollectionItem[]>('collection')
+      .subscribe(res => setCollection(res));
+
+    return () => sub.unsubscribe();
+  }, []);
 
   const filterAndSort = (filterFn: (card: Card) => boolean) => {
     const filtered = state.cardState.cards.filter(filterFn).sort((a, b) => a.order - b.order);

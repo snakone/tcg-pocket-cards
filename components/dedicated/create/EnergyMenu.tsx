@@ -3,10 +3,8 @@ import { Image } from 'expo-image';
 import React from "react";
 import { Platform, Pressable, Animated, View, TouchableOpacity, StyleSheet } from "react-native";
 
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
+
 import { SELECT_ENERGY_HEIGHT, TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 
@@ -18,6 +16,10 @@ import {
   ScreenStyles, 
   ButtonStyles
 } from "@/shared/styles/component.styles";
+
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
 
 interface EnergyMenuProps {
   element: any,

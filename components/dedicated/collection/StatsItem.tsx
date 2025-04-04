@@ -2,10 +2,18 @@ import { CollectionStat } from '@/shared/definitions/interfaces/global.interface
 import React from 'react';
 import { Platform, StyleSheet } from 'react-native';
 
+import { CreateScreenStyles } from '@/shared/styles/component.styles';
+
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
-import { CreateScreenStyles } from '@/shared/styles/component.styles';
-import { ApprovedCheck, ClockSymbol, CrossSquareIcon, PercentageSymbol, StarSymbol, SvgStackSymbol } from '@/components/ui/IconSymbol';
+
+import {
+   ApprovedCheck, 
+   ClockSymbol, 
+   CrossSquareIcon, 
+   PercentageSymbol, 
+   StarSymbol
+} from '@/components/ui/IconSymbol';
 
 interface CollectionStatsProps {
   stat: CollectionStat,

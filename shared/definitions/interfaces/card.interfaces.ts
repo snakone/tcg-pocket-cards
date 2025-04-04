@@ -1,7 +1,14 @@
 import { PACKS_TYPE } from "../enums/packs.enums";
-import { CardExpansionENUM, CardExpansionTypeENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { LanguageType } from "../types/global.types";
+
+import { 
+  CardExpansionENUM, 
+  CardExpansionTypeENUM, 
+  CardRarityENUM, 
+  CardSpecialConditionENUM, 
+  CardStageENUM 
+} from "../enums/card.enums";
 
 interface BaseCard {
   id: number,

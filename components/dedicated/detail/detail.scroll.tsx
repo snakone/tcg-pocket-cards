@@ -2,19 +2,30 @@ import { Image } from 'expo-image';
 import { StyleSheet } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { Colors } from "@/shared/definitions/utils/colors";
-import { cardDetailStyles } from "@/shared/styles/component.styles";
-import { RARITY_MAP, TYPE_MAP, STAGE_MAP, EXPANSION_MAP, PACK_AMOUNT_MAP } from "@/shared/definitions/utils/constants";
-import { fillWithZeros, getCardPackFrom, getMetrics, isCardPromo, isCardPromoAndBattle, isCardPromoAndNoBattle, isNotBattleCard } from '@/shared/definitions/utils/functions';
-import DetailRelatedCards from './detail.related.cards';
-import { AppState } from '@/hooks/root.reducer';
 import ScrollService from '@/core/services/scroll.service';
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { 
+  fillWithZeros, 
+  getCardPackFrom, 
+  getMetrics, 
+  isCardPromo, 
+  isCardPromoAndBattle, 
+  isCardPromoAndNoBattle, 
+  isNotBattleCard
+} from '@/shared/definitions/utils/functions';
+
+import { AppState } from '@/hooks/root.reducer';
 import { LanguageType } from '@/shared/definitions/types/global.types';
 import { CardRarityENUM } from '@/shared/definitions/enums/card.enums';
+import { Card } from "@/shared/definitions/interfaces/card.interfaces";
+import { cardDetailStyles } from "@/shared/styles/component.styles";
+import { Colors } from "@/shared/definitions/utils/colors";
+import { RARITY_MAP, TYPE_MAP, STAGE_MAP, EXPANSION_MAP, PACK_AMOUNT_MAP } from "@/shared/definitions/utils/constants";
+
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import DetailRelatedCards from './detail.related.cards';
 
 interface CardDetailScroll {
   card: Card,
@@ -105,7 +116,10 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             {
               card.expansion !== undefined &&
               <>
-                <ThemedView style={[{backgroundColor: EXPANSION_MAP[card.expansion].background}, cardDetailStyles.expansionTag]}>
+                <ThemedView style={[
+                  {backgroundColor: EXPANSION_MAP[card.expansion].background}, 
+                  cardDetailStyles.expansionTag
+                ]}>
                   <ThemedText style={{color: EXPANSION_MAP[card.expansion].color, fontWeight: 'bold', top: -1}}>
                     { card.series !== undefined && EXPANSION_MAP[card.expansion].tag}
                   </ThemedText>
@@ -242,7 +256,7 @@ export default function DetailCardScroll({card, state, scrollService}: CardDetai
             </ThemedView>
             <ThemedView style={[detailScrollStyles.infoValue, {justifyContent: 'center', alignItems: 'flex-start'}]}>
               <ThemedView style={{flexDirection: 'row', gap: 2, position: 'relative'}}>
-                <Image source={card.weak !== null && card.weak !== undefined && TYPE_MAP[card.weak].image} style={detailScrollStyles.element}></Image>
+                <Image source={card.weak && TYPE_MAP[card.weak].image} style={detailScrollStyles.element}></Image>
                 <ThemedText style={[detailScrollStyles.text, {top: 1, position: 'absolute', left: 25}]}>+20</ThemedText>
               </ThemedView>
             </ThemedView>

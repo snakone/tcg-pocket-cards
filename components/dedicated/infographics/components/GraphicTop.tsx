@@ -3,15 +3,17 @@ import { useCallback } from 'react';
 import { Image } from 'expo-image';
 import { MaterialIcons } from '@expo/vector-icons';
 
+import { useI18n } from '@/core/providers/LanguageProvider';
+
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { Colors } from '@/shared/definitions/utils/colors';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { useI18n } from '@/core/providers/LanguageProvider';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 import { CHAMPION_ICON } from '@/shared/definitions/sentences/path.sentences';
-import { getImageLanguage69x96 } from '@/shared/definitions/utils/functions';
 import { CardGridStyles } from '@/shared/styles/component.styles';
+import { getImageLanguage69x96 } from '@/shared/definitions/utils/functions';
+
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 import RainbowDivider from '../RainbowDivider';
 
 interface GraphicTopProps {

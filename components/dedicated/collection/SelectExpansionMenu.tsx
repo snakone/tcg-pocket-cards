@@ -6,15 +6,17 @@ import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { Image } from "expo-image";
 
+import { useI18n } from "@/core/providers/LanguageProvider";
+import SoundService from "@/core/services/sounds.service";
+
 import { ExpansionMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
+import { EXPANSION_EMBLEM_LIST } from "@/shared/definitions/utils/constants";
+import { ExpansionEmblem } from "@/shared/definitions/interfaces/global.interfaces";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import SoundService from "@/core/services/sounds.service";
-import { EXPANSION_EMBLEM_LIST } from "@/shared/definitions/utils/constants";
-import { ExpansionEmblem } from "@/shared/definitions/interfaces/global.interfaces";
 import { splashStyles } from "@/components/ui/SplashScreen";
 
 export default function SelectExpansionMenu({
@@ -42,12 +44,16 @@ export default function SelectExpansionMenu({
 
   async function handleSelect(): Promise<void> {
     await playSound();
-    onClose(selected);
+    if (onClose) {
+      onClose(selected);
+    }
   }
 
   async function closeMenu(): Promise<void> {
     await playSound();
-    onClose(null);
+    if (onClose) {
+      onClose(null);
+    }
   }
 
   const handleClick = useCallback((value: ExpansionEmblem) => {

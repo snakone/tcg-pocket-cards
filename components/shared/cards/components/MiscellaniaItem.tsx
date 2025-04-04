@@ -4,16 +4,18 @@ import { Image } from 'expo-image';
 import { StyleSheet } from 'react-native';
 import React from "react";
 
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { TYPE_MAP } from "@/shared/definitions/utils/constants";
+import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import { filterStyles } from "@/shared/styles/component.styles";
+
+import { IsExButtonList } from "./IsExItem";
+import { IsShinyButtonList } from "./IsShinyItem";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import InvertButton from "@/components/ui/InvertButton";
 import StateButton from "@/components/ui/StateButton";
-import { TYPE_MAP } from "@/shared/definitions/utils/constants";
-import { filterStyles } from "@/shared/styles/component.styles";
-import { FilterSearch } from "@/shared/definitions/classes/filter.class";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { IsExButtonList } from "./IsExItem";
-import { IsShinyButtonList } from "./IsShinyItem";
 
 interface MiscellaniaItemProps {
   filterObj: MutableRefObject<FilterSearch>,

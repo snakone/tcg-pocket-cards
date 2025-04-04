@@ -4,20 +4,22 @@ import { FlatList, View } from "react-native";
 import React from "react";
 import { Image, ImageBackground } from 'expo-image';
 import { StyleSheet } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { AppState } from "@/hooks/root.reducer";
+import { Colors } from "@/shared/definitions/utils/colors";
 import { CardGridStyles, TabsMenuStyles } from "@/shared/styles/component.styles";
 import { COIN_MAP, DECK_BACKGROUND_MAP, FRONTEND_URL, TRADE_COST_MAP } from "@/shared/definitions/utils/constants";
 import { AvatarIcon, TradeItem, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { DISCORD_LOGO, SALE_CARD, TRADE_POINTS } from "@/shared/definitions/sentences/path.sentences";
 import { CardRarityENUM } from "@/shared/definitions/enums/card.enums";
-import { MaterialIcons } from "@expo/vector-icons";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { Colors } from "@/shared/definitions/utils/colors";
-import { AppState } from "@/hooks/root.reducer";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { getImageLanguage } from "@/shared/definitions/utils/functions";
+
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 
 const COLLAGE_WIDTH = 1920;
 
@@ -38,7 +40,6 @@ export default function TradeCollage({
 }: TradeCollageProps) {
   const [status, requestPermission] = MediaLibrary.usePermissions();
   const [data, setData] = useState<TradeItem | undefined>(trade);
-  const {i18n} = useI18n();
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
 
   useEffect(() => {

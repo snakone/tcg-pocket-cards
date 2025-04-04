@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useCallback, useMemo } from "react";
-import ConfirmationPortal from "@/components/shared/ConfirmationPortal";
+
 import { ErrorType } from "@/shared/definitions/types/global.types";
+import ConfirmationPortal from "@/components/shared/ConfirmationPortal";
 
 interface ConfirmationContextType {
   confirm: (title: string, message: string, type?: ErrorType) => Promise<boolean>;

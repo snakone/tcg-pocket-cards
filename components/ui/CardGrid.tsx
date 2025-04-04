@@ -41,8 +41,8 @@ import { FilterSearch } from '@/shared/definitions/classes/filter.class';
 import { ThemedView } from '../ThemedView';
 import { settingsStyles } from '@/app/screens/settings';
 import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
-
 import HeaderWithCustomModal from '../shared/HeaderModal';
+
 import { ThemedText } from '../ThemedText';
 import { FooterList } from './FooterList';
 import { ResetFilterButton } from './ResetFilterButton';

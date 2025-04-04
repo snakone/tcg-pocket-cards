@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { BlurView } from "expo-blur";
 import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
@@ -6,6 +6,11 @@ import { useRef, useState,  } from "react";
 import { Provider, Switch } from "react-native-paper";
 import { Subject } from "rxjs";
 import { MaterialIcons } from "@expo/vector-icons";
+
+import { FilterRxjs } from "@/core/rxjs/FilterRxjs";
+import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
+import { useI18n } from "@/core/providers/LanguageProvider";
+import SoundService from "@/core/services/sounds.service";
 
 import { 
   ButtonStyles,
@@ -16,20 +21,16 @@ import {
 } from "@/shared/styles/component.styles";
 
 import { getFilterAttackSearch } from "@/shared/definitions/utils/constants";
-import { TabMenu, TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
+import { TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
+import { Colors } from "@/shared/definitions/utils/colors";
+import { FilterAttackSearch } from "@/shared/definitions/classes/filter_attack.class";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { AppContext } from "@/app/_layout";
-import SoundService from "@/core/services/sounds.service";
-import { FilterAttackSearch } from "@/shared/definitions/classes/filter_attack.class";
 import { EnergyItem } from "./components/EnergyItem";
 import { DamageItem } from "./components/DamageItem";
-import { Colors } from "@/shared/definitions/utils/colors";
 import { AmountItem } from "./components/AmountItem";
-import { FilterRxjs } from "@/core/rxjs/FilterRxjs";
-import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
 
 export default function FilterAttackMenu({
   animatedStyle, 

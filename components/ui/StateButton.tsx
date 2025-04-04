@@ -2,10 +2,11 @@ import React, { ReactNode, useEffect, useState } from 'react';
 import { StyleProp, TouchableOpacity, ViewStyle } from 'react-native';
 import { Observable, Subscription } from 'rxjs';
 
-import { ThemedText } from '../ThemedText';
-import { filterStyles } from '@/shared/styles/component.styles';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import SoundService from '@/core/services/sounds.service';
+
+import { ThemedText } from '../ThemedText';
+import { filterStyles } from '@/shared/styles/component.styles';
 import { FilterSearch } from '@/shared/definitions/classes/filter.class';
 import { FilterAttackSearch } from '@/shared/definitions/classes/filter_attack.class';
 
