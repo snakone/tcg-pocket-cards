@@ -32,7 +32,7 @@ export default function ProfileScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
   const { state } = context;
-  const [lang, setLang] = useState<LanguageType>('en');
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
   const router = useRouter();
   const [profile, setProfile] = useState<UserProfile>(DEFAULT_PROFILE);
   const [collection, setCollection] = useState<number>(0);
@@ -53,9 +53,7 @@ export default function ProfileScreen() {
     }, 0)))
      .subscribe(res => setCollection(res));
 
-     return (() => {
-      if (sub) sub.unsubscribe();
-     })
+    return () => sub.unsubscribe();
   }, []);
 
   function goToCollection(): void {
@@ -85,9 +83,7 @@ export default function ProfileScreen() {
         ),
       ).subscribe(async _ => setProfile({...await Storage.getProfile()}));
 
-    return (() => {
-      if (sub) sub.unsubscribe();
-    })
+    return () => sub.unsubscribe();
   }, []);
   
   return (

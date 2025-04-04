@@ -59,7 +59,7 @@ export default function TabLayout() {
 
   useEffect(() => { 
     if (Platform.OS === 'web') {
-      menuRight.value = withTiming(0, { duration: 0 });
+      menuRight.value = 0;
     }
     menuRight.value = isMenuVisible ? withTiming(0, { duration: 150 }) : MENU_WIDTH;
   }, [isMenuVisible]);
@@ -82,7 +82,7 @@ export default function TabLayout() {
 
   useEffect(() => {
     distanceFromBottom.value = isAnyModalVisible() ? 
-                                withTiming(0, { duration: 150 }) : 
+                                withTiming(0, { duration: 250 }) : 
                                 withTiming(FILTER_CARDS_HEIGHT, { duration: 0 });
   }, [isAnyModalVisible()]);
 
@@ -97,9 +97,7 @@ export default function TabLayout() {
         )
       ).subscribe(setModalVisivility);
 
-    return (() => {
-      if (sub) sub.unsubscribe()
-    })
+    return () => sub.unsubscribe();
   }, []);
 
   function handleMenu(value: boolean): void {
@@ -277,9 +275,10 @@ export default function TabLayout() {
 
       {/* // CARDS */}
       <Portal>
-       <FilterCardMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
-                       filterKey={"cards"}
-                       isVisible={modalVisibility.cards}/>
+       {modalVisibility.cards &&
+        <FilterCardMenu animatedStyle={Platform.OS !== 'web' && modalAnimatedStyle} 
+                        filterKey={"cards"}
+                        isVisible={modalVisibility.cards}/>}
       </Portal>
       <Portal>
         {modalVisibility.cardsSort && 

@@ -32,6 +32,10 @@ class SortState {
     return this.mappedSorts[key];
   }
 
+  public getSortSync(key: FilterKey): SortItem[] {
+    return this.mappedSorts[key].getValue();
+  }
+
   public getSortActive(key: FilterKey): Observable<SortItem | undefined> {
     return this.mappedSorts[key].pipe(map(res => res.find(sort => sort.active)));
   }

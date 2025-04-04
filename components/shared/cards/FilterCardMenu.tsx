@@ -47,8 +47,10 @@ import {
 export default function FilterCardMenu({
   animatedStyle, 
   filterKey,
-  isVisible
+  isVisible,
+  onClose
 }: TabMenuCards) {
+  console.log('Filter Card Menu')
   const {i18n} = useI18n();
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
   const filterObj = useRef<FilterSearch>(new FilterSearch());
@@ -67,9 +69,7 @@ export default function FilterCardMenu({
       triggerRender();
     });
 
-    return (() => {
-      if (sub) sub.unsubscribe();
-    })
+    return () => sub.unsubscribe();
   }, []);
 
   useEffect(() => {
@@ -92,6 +92,12 @@ export default function FilterCardMenu({
 
   function closeMenu(): void {
     FilterRxjs.setFilter({key: filterKey, value: filterObj.current});
+
+    if (onClose !== undefined) {
+      playSound('AUDIO_MENU_CLOSE');
+      onClose();
+      return;
+    }
     ModalRxjs.setModalVisibility({key: 'cards', value: false});
   }
 

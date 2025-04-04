@@ -18,6 +18,7 @@ import SelectInput from "@/components/ui/SelectInput";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 
 export default function SettingsScreen() {
+  console.log('Settings Screen')
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;

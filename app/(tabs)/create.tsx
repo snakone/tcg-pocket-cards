@@ -12,6 +12,7 @@ import { CardGridStyles, homeScreenStyles } from '@/shared/styles/component.styl
 import { LARGE_MODAL_HEIGHT, MAX_CONTENT } from '@/shared/definitions/utils/constants';
 import { StorageDeck } from '@/shared/definitions/interfaces/global.interfaces';
 import { Colors } from '@/shared/definitions/utils/colors';
+import { LanguageType } from '@/shared/definitions/types/global.types';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -29,14 +30,17 @@ export default function CreateDeckScreen() {
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
   const { state } = context;
+  const [lang, setLang] = useState(state.settingsState.language);
+
+  useEffect(() => {
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   useEffect(() => {
     const sub = DataRxjs.getData<StorageDeck[]>('decks')
      .subscribe(res => setDecks(res));
 
-     return (() => {
-      if (sub) sub.unsubscribe();
-     })
+    return () => sub.unsubscribe();
   }, []);
 
   const filtered = useMemo(() => {
@@ -56,10 +60,6 @@ export default function CreateDeckScreen() {
     router.push(`/screens/create_deck?deck_id=${encodeURIComponent(deck.id)}`);
   }
 
-  const handleSearch = useCallback((text: string) => {
-    setSearchQuery(text);
-  }, []);
-
   const RenderFooter = useCallback(() => {
     return (
       <ThemedView style={{paddingTop: 16}}>
@@ -69,7 +69,7 @@ export default function CreateDeckScreen() {
           Platform.OS !== 'web' && {marginBottom: 16},
           decks.length >= MAX_CONTENT && {opacity: 0.5}
         ]} 
-            onPress={() => createNewDeck()}
+            onPress={createNewDeck}
             disabled={decks.length >= MAX_CONTENT}>
           <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>
             {i18n.t('add_new_deck')}
@@ -91,13 +91,13 @@ export default function CreateDeckScreen() {
           style={[CardGridStyles.searchInput, { width: '100%' }]}
           placeholder={i18n.t('search_decks_placeholder')}
           value={searchQuery}
-          onChangeText={handleSearch}
+          onChangeText={setSearchQuery}
           placeholderTextColor={Colors.light.text}
           accessibilityLabel={'SEARCH_LABEL'}
           inputMode="text"
         />
         {searchQuery.length > 0 && 
-          <ResetFilterButton left={248} onPress={() => handleSearch('')}/>}
+          <ResetFilterButton left={248} onPress={() => setSearchQuery('')}/>}
       </ThemedView>
       <View
         style={[
@@ -124,7 +124,10 @@ export default function CreateDeckScreen() {
                           styles={{gap: 0}}>
         <FlatList data={filtered}
                   numColumns={1}
-                  renderItem={({item, index}) => <RenderDeckItem item={item} state={state} onPress={openDeck} />}
+                  renderItem={({item, index}) => 
+                    <RenderDeckItem item={item} 
+                                    language={lang} 
+                                    onPress={() => openDeck(item)} />}
                   keyExtractor={(_, index) => index + 1 + ''}
                   showsVerticalScrollIndicator={false}
                   ListEmptyComponent={<ThemedText style={{ paddingInline: 6 }}>{i18n.t('no_decks_found')}</ThemedText>}

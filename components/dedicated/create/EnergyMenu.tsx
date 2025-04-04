@@ -22,14 +22,14 @@ import {
 interface EnergyMenuProps {
   element: any,
   isVisible: boolean,
-  handleEnergyModal: (value: boolean) => void,
+  onClose: () => void,
   handleEnergy: (value: string) => void,
 }
 
 export default function EnergyMenu({
   element, 
   isVisible, 
-  handleEnergyModal, 
+  onClose, 
   handleEnergy
 }: EnergyMenuProps) {
   if (!isVisible) {return; }
@@ -52,7 +52,7 @@ export default function EnergyMenu({
                 tint="light" 
                 experimentalBlurMethod='dimezisBlurView'/>
         <Pressable style={LayoutStyles.overlay} 
-                    onPress={() => handleEnergyModal(false)}>
+                    onPress={onClose}>
         </Pressable>
         <Animated.View style={[sortStyles.container, {height: SELECT_ENERGY_HEIGHT}]}>
           <View style={[ModalStyles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
@@ -114,7 +114,7 @@ export default function EnergyMenu({
           </ThemedView>
           <View style={ScreenStyles.bottomContent}>
             <TouchableOpacity style={ButtonStyles.button} 
-                              onPress={() => handleEnergyModal(false)} 
+                              onPress={onClose} 
                               accessibilityLabel={'CLOSE_SENTENCE'}>
               <View style={ButtonStyles.insetBorder}>
                 <IconSymbol name="clear"></IconSymbol>

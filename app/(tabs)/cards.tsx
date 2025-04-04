@@ -18,7 +18,6 @@ import { SortAndFilterButtons } from '@/components/ui/FilterSortButtons';
 
 export default function CardsScreen() {
   console.log('Cards Screen')
-  const [filterIcon, setFilterIcon] = useState<any>();
   const [sortData, setSortData] = useState<SortData>();
 
   function openFilter(): void {
@@ -31,11 +30,14 @@ export default function CardsScreen() {
 
   useEffect(() => {
     const sub = FilterRxjs.getFilter<FilterSearch>('cards')
-      .subscribe(res => setFilterIcon(getFilterIcon(res)));
+      .subscribe(res => setSortData((prev: any) => {
+        return {
+          ...prev,
+          filterIcon: getFilterIcon(res)
+        }
+      }));
 
-     return (() => {
-      if (sub) sub.unsubscribe();
-     })
+    return () => sub.unsubscribe();
   }, []);
 
   useEffect(() => {
@@ -46,14 +48,13 @@ export default function CardsScreen() {
           return {
             sort: res,
             iconStyle: getSortIconStyle(res),
-            orderIcon: getSortOrderIcon(res)
+            orderIcon: getSortOrderIcon(res),
+            filterIcon: _?.filterIcon
           }
         })
       ));
 
-     return (() => {
-      if (sub) sub.unsubscribe();
-     })
+    return () => sub.unsubscribe();
   }, []);
 
   return (
@@ -63,7 +64,7 @@ export default function CardsScreen() {
                            title='card_collection'/>
 
       <SortAndFilterButtons sort={sortData?.sort}
-                            filterIcon={filterIcon}
+                            filterIcon={sortData?.filterIcon}
                             filterPress={openFilter}
                             sortPress={openSort}
                             sortIconStyle={sortData?.iconStyle}

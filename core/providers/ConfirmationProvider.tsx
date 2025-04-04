@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback, useMemo } from "react";
 import ConfirmationPortal from "@/components/shared/ConfirmationPortal";
 import { ErrorType } from "@/shared/definitions/types/global.types";
 
@@ -54,8 +54,10 @@ export const ConfirmationProvider = ({children}: {children: React.ReactNode}) =>
     setResolvePromise(null);
   };
 
+  const contextValue = useMemo(() => ({ confirm }), [confirm]);
+
   return (
-    <ConfirmationContext.Provider value={{ confirm }}>
+    <ConfirmationContext.Provider value={contextValue}>
       {children}
       <ConfirmationPortal
         visible={visible}

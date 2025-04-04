@@ -20,6 +20,7 @@ import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import { pocketNewsStyles } from "@/components/dedicated/news/NewsItem";
 
 export default function NewsDetailScreen() {
+  console.log('News Detail Screen')
   const {i18n} = useI18n();
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
@@ -50,14 +51,9 @@ export default function NewsDetailScreen() {
 
   useEffect(() => {
     let sub: Subscription;
-
     !state.pocketNewsState.loaded ? sub = loadPocketNews() : setLoading(false);
 
-    return () => {
-      if (sub) {
-        sub.unsubscribe();
-      }
-    };
+    return () => sub.unsubscribe();
   }, [state.pocketNewsState.loaded]);
 
   useEffect(() => {

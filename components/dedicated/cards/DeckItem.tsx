@@ -1,18 +1,23 @@
 import { Image } from 'expo-image';
 import { TouchableOpacity } from "react-native";
 
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
 import { StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
 import { TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { CardGridStyles, CreateScreenStyles } from "@/shared/styles/component.styles";
-import { AppState } from '@/hooks/root.reducer';
 import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
 import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
+import { LanguageType } from '@/shared/definitions/types/global.types';
 
-  export const RenderDeckItem = (
-    {item, state, onPress}: {item: StorageDeck, state: AppState, onPress: any}
-  ) => {
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+
+interface DeckItemProps {
+  item: StorageDeck, 
+  language: LanguageType, 
+  onPress: () => void
+}
+
+export const RenderDeckItem = ({item, language, onPress}: DeckItemProps) => {
     return (
       <ThemedView style={[CreateScreenStyles.deckItem,
                           {
@@ -32,7 +37,10 @@ import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
                       zIndex: (1 / (i + 1) * 100),
                     }
                   ]} 
-                  source={item.popular[i] ? getImageLanguage116x162(state.settingsState.language, item.popular[i]) : BACKWARD_CARD}
+                  source={
+                    item.popular[i] ? 
+                      getImageLanguage116x162(language, item.popular[i]) : 
+                        BACKWARD_CARD}
                   placeholder={BACKWARD_CARD}
                   key={i}/>
                 ))

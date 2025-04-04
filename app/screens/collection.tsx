@@ -35,6 +35,7 @@ import { FilterSearch } from '@/shared/definitions/classes/filter.class';
 import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
 
 export default function CollectionCardsScreen() {
+  console.log('Collection Screen')
   const [searchQuery, setSearchQuery] = useState('');
   const {i18n} = useI18n();
   const context = useContext(AppContext);

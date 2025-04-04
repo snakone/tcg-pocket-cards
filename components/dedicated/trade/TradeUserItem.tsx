@@ -8,20 +8,18 @@ import { CardGridStyles, CreateScreenStyles } from '@/shared/styles/component.st
 import { SvgTradePassSymbol } from '@/components/ui/IconSymbol';
 import { BACKWARD_CARD, TRADE_POINTS } from '@/shared/definitions/sentences/path.sentences';
 import { TRADE_COST_MAP } from '@/shared/definitions/utils/constants';
-import { CardRarityENUM } from '@/shared/definitions/enums/card.enums';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
 import { AppState } from '@/hooks/root.reducer';
 
 interface TradeUserItemProps {
   item: TradeItem,
-  rarity: CardRarityENUM | undefined,
   styles?: any,
   state: AppState,
   share?: boolean
 }
 
-export default function TradeUserItem({item, rarity, styles, state, share}: TradeUserItemProps) {
+export default function TradeUserItem({item, styles, state, share}: TradeUserItemProps) {
   const {i18n} = useI18n();
 
   if (!item) { return; }
@@ -99,7 +97,7 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
 
       <ThemedView style={[tradeItemStyles.token]}>
         <Image source={TRADE_POINTS} style={{width: 20, height: 20, left: 0, position: 'absolute', top: 2}}/>
-        <ThemedText style={{top: -1, left: 12, fontSize: 13}}>{rarity !== undefined && (TRADE_COST_MAP as any)[rarity] || 0}</ThemedText>
+        <ThemedText style={{top: -1, left: 12, fontSize: 13}}>{item.rarity !== undefined && (TRADE_COST_MAP as any)[item.rarity] || 0}</ThemedText>
       </ThemedView>
     </ThemedView> 
   )

@@ -34,6 +34,7 @@ import {
 } from '@/components/modals/index';
 
 export default function HelpScreen() {
+  console.log('Help Screen')
   const styles = HelpItemStyles;
   const {i18n, setLocale } = useI18n();
   const router = useRouter();

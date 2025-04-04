@@ -1,4 +1,4 @@
-import { FlatList, TextInput, TouchableOpacity, View, StyleSheet, Platform, ScrollView } from "react-native";
+import { FlatList, TextInput, TouchableOpacity, View, StyleSheet, Platform } from "react-native";
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React from "react";
@@ -6,28 +6,33 @@ import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Portal, Provider } from "react-native-paper";
 
-import SharedScreen from "@/components/shared/SharedScreen";
-import { CardGridStyles, homeScreenStyles } from "@/shared/styles/component.styles";
+import { DataRxjs } from "@/core/rxjs/DataRxjs";
 import SoundService from "@/core/services/sounds.service";
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { ThemedView } from "@/components/ThemedView";
+import Storage from "@/core/storage/storage.service";
+
 import { AppContext } from "../_layout";
-import { Colors } from "@/shared/definitions/utils/colors";
-import { ThemedText } from "@/components/ThemedText";
 import { createDeckStyles } from "./create_deck";
+import { CardGridStyles, homeScreenStyles } from "@/shared/styles/component.styles";
+import { Colors } from "@/shared/definitions/utils/colors";
+import { TradeItem } from "@/shared/definitions/interfaces/global.interfaces";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { BACKWARD_CARD, SALE_CARD } from "@/shared/definitions/sentences/path.sentences";
+import { getImageLanguage116x162 } from "@/shared/definitions/utils/functions";
+import { CardRarityENUM } from "@/shared/definitions/enums/card.enums";
+import { MAX_CONTENT } from "@/shared/definitions/utils/constants";
+
+import SharedScreen from "@/components/shared/SharedScreen";
+import { ThemedView } from "@/components/ThemedView";
+import { ThemedText } from "@/components/ThemedText";
 import PickDesiredMenu from "@/components/dedicated/trade/PickDesiredMenu";
 import PickOffersMenu from "@/components/dedicated/trade/PickOffersMenu";
-import { TradeItem } from "@/shared/definitions/interfaces/global.interfaces";
-import Storage from "@/core/storage/storage.service";
 import { useConfirmation } from "@/core/providers/ConfirmationProvider";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import { tradeCollageStyles } from "@/components/dedicated/share/TradeCollage";
-import { BACKWARD_CARD, SALE_CARD } from "@/shared/definitions/sentences/path.sentences";
-import { LanguageType } from "@/shared/definitions/types/global.types";
-import { getImageLanguage116x162 } from "@/shared/definitions/utils/functions";
-import { MAX_CONTENT } from "@/shared/definitions/utils/constants";
 
 export default function CreateTradeScreen() {
+  console.log('Create Trade Screen')
   const {i18n} = useI18n();
   const router = useRouter();
   const context = useContext(AppContext);
@@ -47,27 +52,34 @@ export default function CreateTradeScreen() {
   const { trade_id } = useLocalSearchParams<{ trade_id: string }>();
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
   const [disabled, setDisabled] = useState(false);
+  const [trades, setTrades] = useState<TradeItem[]>([]);
 
   useEffect(() => {
     setLang(state.settingsState.language);
   }, [state.settingsState.language]);
 
   useEffect(() => {
-    const checkTrade = async () => {
-      if (trade_id !== undefined) {
-        const selected = state.settingsState.trades.find(trade => trade.id === Number(trade_id));
-        if (selected) {
-          setTitle(selected.title);
-          setDiscord(selected.discord);
-          setTcg(selected.tcg);
-          setDesired(selected.desired);
-          setOffers(selected.offers);
-        }
-      }
-    };
+    const trades = DataRxjs.getDataSync<TradeItem[]>('trades');
+    const selected = trades.find(trade => trade.id === Number(trade_id));
+    setTrades(trades);
 
-    checkTrade();
-  }, [state.settingsState.trades]);
+    console.log(selected);
+
+    // const checkTrade = async () => {
+    //   if (trade_id !== undefined) {
+    //     const selected = state.settingsState.trades.find(trade => trade.id === Number(trade_id));
+    //     if (selected) {
+    //       setTitle(selected.title);
+    //       setDiscord(selected.discord);
+    //       setTcg(selected.tcg);
+    //       setDesired(selected.desired);
+    //       setOffers(selected.offers);
+    //     }
+    //   }
+    // };
+
+    // checkTrade();
+  }, []);
 
   const memoizedPickDesired = useMemo(() => {
     return <PickDesiredMenu isVisible={isDesiredVisible} 
@@ -131,7 +143,7 @@ export default function CreateTradeScreen() {
   async function createTrade(): Promise<void> {
     SoundService.play('POP_PICK');
     const item = convertTrade();
-    item.valid = isTradeValid(item);
+    Object.assign(item, isTradeValid());
 
     if (!item.valid) {
       const userConfirmed = await confirm("save_a_trade", "save_invalid_trade");
@@ -154,37 +166,36 @@ export default function CreateTradeScreen() {
   }
 
   function convertTrade(): TradeItem {
-    const trades = state.settingsState.trades;
     const lastTrade = trades[0];
     const tradeID = trade_id ? Number(trade_id) : lastTrade ? lastTrade.id + 1 : trades.length + 1;
 
     return {
-        id: tradeID,
-        created: new Date().getTime(),
-        desired,
-        title: title || i18n.t('trade') + ' ' + (tradeID),
-        discord,
-        offers,
-        tcg,
-        valid: false
+      id: tradeID,
+      created: new Date().getTime(),
+      desired,
+      title: title || i18n.t('trade') + ' ' + (tradeID),
+      discord,
+      offers,
+      tcg,
+      valid: false,
     }
   }
 
-  function isTradeValid(item: TradeItem): boolean {
+  function isTradeValid(): {valid: boolean, rarity: CardRarityENUM | undefined} {
     const desiredRarity = desired.filter(Boolean)
-                                .map(id => state.cardState.cards
-                                  .find(card => card.id === id))[0]?.rarity;
+                                 .map(id => state.cardState.cards
+                                 .find(card => card.id === id))[0]?.rarity;
 
     const offeredCards = offers.filter(Boolean)
                                .map(id => state.cardState.cards
-                                .find(card => card.id === id));
+                               .find(card => card.id === id));
     if (
       (!desired || !title) ||
       !tcg.every(num => num && num.length === 4) ||
       offers.filter(Boolean).length === 0 ||
       !offeredCards.every(card => card?.rarity === desiredRarity)
-    ) { return false; }
-    return true;
+    ) { return {valid: false, rarity: desiredRarity}; }
+    return { valid: true, rarity: desiredRarity };
   }
 
   function handleDesired(): void {
@@ -401,10 +412,10 @@ export default function CreateTradeScreen() {
                 <TouchableOpacity style={[
                   homeScreenStyles.ctaButton,
                   {marginBottom: 10, marginTop: 6, backgroundColor: 'mediumaquamarine'},
-                  state.settingsState.trades.length >= MAX_CONTENT && {opacity: 0.5}
+                  trades.length >= MAX_CONTENT && {opacity: 0.5}
                 ]} 
                     onPress={() => createTrade()}
-                    disabled={state.settingsState.trades.length >= MAX_CONTENT}>
+                    disabled={trades.length >= MAX_CONTENT}>
                   <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>
                     {i18n.t('save_a_trade')}
                   </ThemedText>

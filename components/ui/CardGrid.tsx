@@ -34,10 +34,9 @@ import { SortRxjs } from '@/core/rxjs/SortRxjs';
 import { AppContext } from '@/app/_layout';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 import { Colors } from '@/shared/definitions/utils/colors';
-import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
-import { filterCards, getImageLanguage116x162, getImageLanguage69x96, sortCards } from '@/shared/definitions/utils/functions';
+import { filterOrSortCards, getImageLanguage116x162, getImageLanguage69x96, manageSort, sortCards } from '@/shared/definitions/utils/functions';
 import { LanguageType } from '@/shared/definitions/types/global.types';
-import { LARGE_MODAL_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/constants';
+import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
 import { FilterSearch } from '@/shared/definitions/classes/filter.class';
 import { ThemedView } from '../ThemedView';
 import { settingsStyles } from '@/app/screens/settings';
@@ -72,7 +71,7 @@ export default function ImageGridWithSearch({
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
   const { state } = context;
-  const [lang, setLang] = useState<LanguageType>('en');
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
   const gridNumber = useRef<0 | 1 | 2>(0);
   const [favorites, setFavorites] = useState<Card[]>([]);
 
@@ -84,33 +83,30 @@ export default function ImageGridWithSearch({
     setFiltered(state.cardState.cards);
   }, [state.cardState.cards]);
 
+  const favIds = useMemo(() => favorites.map(fav => fav.id), [favorites]);
+
   useEffect(() => {
     const sub = combineLatest([
       ModalRxjs.getModal('cards'),
       ModalRxjs.getModal('cardsSort')
     ])
     .pipe(
-      filter(_ => state.cardState.cards.length > 0),
+      filter(_ => state.cardState.cards.length > 0 && type !== 'favorites'),
       withLatestFrom(
         FilterRxjs.getFilter<FilterSearch>('cards'),
         SortRxjs.getSortActive('cards')
       )
     ).subscribe(([[filterOpen, sortOpen], filters, sort]) => {
       if (!filterOpen && !sortOpen) {
-        const filterCards = filterOrSortCards('filter', state.cardState.cards, filters);
-        const sorted = filterOrSortCards('sort', filterCards, null, sort);
-    
+        const filterCards = filterOrSortCards('filter', state.cardState.cards, favIds, filters);
+        const sorted = filterOrSortCards('sort', filterCards, favIds, null, sort);
         setFiltered(sorted);
         setTimeout(() => goUp(null, false), 100);
       }
     });
 
-    return (() => {
-      if (sub) sub.unsubscribe();
-    })
-  }, [state.cardState.cards]);
-
-  const favIds = useMemo(() => favorites.map(fav => fav.id), [favorites]);
+    return () => sub.unsubscribe();
+  }, [state.cardState.cards, favorites]);
 
   useEffect(() => {
     const sub = DataRxjs.getData<number[]>('favorites')
@@ -123,9 +119,7 @@ export default function ImageGridWithSearch({
       setFiltered(prev => type === 'favorites' ? favorites : prev);
     });
 
-    return (() => {
-      if (sub) sub.unsubscribe();
-    })
+    return () => sub.unsubscribe();
   }, []);
 
   const handleSearch = useCallback((text: string) => {
@@ -134,35 +128,6 @@ export default function ImageGridWithSearch({
     setFiltered((source).filter(card =>
       card.name[lang].toLowerCase()?.includes(text.toLowerCase())));
   }, [favorites, state.cardState.cards, lang]);
-
-  const filterOrSortCards = useCallback((
-    type: 'sort' | 'filter', 
-    data: Card[], 
-    filter?: FilterSearch | null, 
-    sort?: SortItem
-    ): Card[] => {
-      switch (type) {
-        case 'sort': {
-          if (!sort) { return data; }
-          return manageSort(sort, data);
-        }
-        case 'filter': {
-          if (!filter) { return data; }
-          return filterCards(filter as FilterSearch, data, favIds)
-        }
-      }
-  }, [favorites]);
-
-  const manageSort = useCallback((sort: SortItem, data: Card[]): Card[] => {
-    const sortField = SORT_FIELD_MAP[sort.label];
-  
-    if (!sortField) {
-      console.error(`Unsupported sorting option: ${sort.label}`);
-      return data;
-    }
-  
-    return sortCards(sortField, data, sort);
-  }, []);
 
   const renderItem = useCallback(({ item }: { item: Card }) => (
     <View key={item.id} style={[
@@ -199,8 +164,6 @@ export default function ImageGridWithSearch({
     await playSound();
     router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
   }, []);
-
-  const keyExtractor = useCallback((item: Card) => String(item.id), []);
 
   const goUp = useCallback(async (_: GestureResponderEvent | null, sound = true): Promise<void> => {
     if (sound) await playSound();
@@ -281,7 +244,7 @@ export default function ImageGridWithSearch({
                 ref={flatListRef}
                 removeClippedSubviews={false}
                 renderItem={renderItem}
-                keyExtractor={keyExtractor}
+                keyExtractor={(_, index) => index.toString()}
                 key={numColumns}
                 bounces={false}
                 overScrollMode='never'

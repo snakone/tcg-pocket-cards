@@ -39,6 +39,7 @@ class DataState {
     return this.mappedData[key].getValue();
   }
 
+  // FAVORITES
   public addFavorite(id: number): void {
     const favorites = this.favorites$.getValue();
     const value = Array.from(new Set([...favorites, id]));
@@ -51,6 +52,27 @@ class DataState {
     const value = favorites.filter(k => k !== id);
     this.favorites$.next(value);
     Storage.removeFavorite(id);
+  }
+
+  // DECKS
+  public addDeck(deck: StorageDeck): void {
+    const decks = this.decks$.getValue();
+    const index = decks.findIndex(d => d.id === deck.id);
+  
+    const updatedDecks =
+      index !== -1
+        ? decks.map((d, i) => (i === index ? deck : d))
+        : [deck, ...decks.filter(d => d !== null)];
+  
+    this.decks$.next(updatedDecks);
+    Storage.addDeck(deck);
+  }
+
+  public removeDeck(id: number): void {
+    const decks = this.decks$.getValue();
+    const value = decks.filter(k => k.id !== id);
+    this.decks$.next(value);
+    Storage.removeDeck(id);
   }
 }
 

@@ -177,7 +177,7 @@ export const LOCAL_HOST = 'http://192.168.1.71:3000';
 export const SERVER_URL = 'https://tcg-pocket-cards.onrender.com';
 export const FRONTEND_URL = 'https://tcg-pocket-cards.netlify.app/';
 export const DEFAULT_LANG = 'es';
-export const FILTER_CARDS_HEIGHT = 350;
+export const FILTER_CARDS_HEIGHT = 718;
 export const MAX_CONTENT = 30;
 
 // MODALS
@@ -691,3 +691,16 @@ export const ROUTES_MAP = {
   help: "/screens/help",
   settings: "/screens/settings",
 } as const;
+
+export const DEFAULT_ELEMENT = {
+  [PokemonTypeENUM.GRASS]: null, 
+  [PokemonTypeENUM.FIRE]: null,
+  [PokemonTypeENUM.WATER]: null,
+  [PokemonTypeENUM.ELECTRIC]: null,
+  [PokemonTypeENUM.PSYCHIC]: null,
+  [PokemonTypeENUM.FIGHT]: null,
+  [PokemonTypeENUM.DARK]: null,
+  [PokemonTypeENUM.STEEL]: null,
+  [PokemonTypeENUM.DRAGON]: null,
+  [PokemonTypeENUM.NORMAL]: null
+}

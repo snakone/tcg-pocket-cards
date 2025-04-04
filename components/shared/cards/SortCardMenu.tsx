@@ -20,8 +20,10 @@ import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
 
 export default function SortCardMenu({
   animatedStyle,
-  filterKey
+  filterKey,
+  onClose,
 }: TabMenuCards) {
+  console.log('Sort Card Menu')
   const [data, setData] = useState(INITIAL_SORT_DATA);
   const {i18n} = useI18n();
   const styles = ModalStyles;
@@ -42,19 +44,19 @@ export default function SortCardMenu({
 
   async function closeMenu(value?: SortItem[]): Promise<void> {
     await playSound();
-    
     if (value) { SortRxjs.setSort({key: filterKey, value}); }
+
+    if (onClose !== undefined) {
+      onClose();
+      return;
+    }
+    
     ModalRxjs.setModalVisibility({key: 'cardsSort', value: false});
   }
 
   useEffect(() => {
-    const getSort = async () => {
-      const sort = await firstValueFrom(SortRxjs.getSort(filterKey));
-      setData(sort);
-    };
-
-    getSort();
-  }, [])
+    setData(SortRxjs.getSortSync(filterKey));
+  }, []);
 
   const getOrderIcon = useCallback((item: SortItem) => {
     return !item?.order ? 'arrow-upward' : 

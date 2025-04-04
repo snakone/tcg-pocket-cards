@@ -55,11 +55,10 @@ export default function AttacksScreen() {
   const { state } = context;
   const router = useRouter();
   const [attacks, setAttacks] = useState<(AttackMetaData)[]>([]);
-  const [lang, setLang] = useState<LanguageType>('en');
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
   const searchQuery = useRef('');
   const [filtered, setFiltered] = useState<AttackMetaData[]>([]);
   const flatListRef = useRef<FlatList<AttackMetaData> | null>(null);
-  const [filterIcon, setFilterIcon] = useState<any>();
   const [sortData, setSortData] = useState<SortData>();
 
   useEffect(() => {
@@ -98,24 +97,6 @@ export default function AttacksScreen() {
   }
 
   useEffect(() => {
-    const sub = SortRxjs.getSortActive('attacks')
-      .pipe(filter(Boolean)).subscribe(res => 
-      (
-        setSortData(_ => {
-          return {
-            sort: res,
-            iconStyle: getSortIconStyle(res),
-            orderIcon: getSortOrderIcon(res)
-          }
-        })
-      ));
-
-      return (() => {
-        if (sub) sub.unsubscribe();
-      })
-  }, []);
-
-  useEffect(() => {
     const sub = combineLatest([
       ModalRxjs.getModal('attacks'),
       ModalRxjs.getModal('attacksSort')
@@ -126,17 +107,25 @@ export default function AttacksScreen() {
         FilterRxjs.getFilter<FilterAttackSearch>('attacks'),
         SortRxjs.getSortActive('attacks')
       )
-    ).subscribe(([[_], filter, sort]) => {
-        const filterCards = filterOrSortAttacks('filter', attacks as AttackMetaData[], lang, filter);
+    ).subscribe(([[_], filters, sort]) => {
+        const filterCards = filterOrSortAttacks('filter', attacks as AttackMetaData[], lang, filters);
         const sorted = filterOrSortAttacks('sort', filterCards, lang, null, sort);
-        setFilterIcon(getFilterIcon(filter as FilterAttackSearch));
         setFiltered(sorted);
+        if (sort) {
+          setSortData(_ => {
+            return {
+              sort,
+              iconStyle: getSortIconStyle(sort as SortItem),
+              orderIcon: getSortOrderIcon(sort as SortItem),
+              filterIcon: getFilterIcon(filters as FilterAttackSearch)
+            }
+          })
+        }
+
         setTimeout(() => goUp(null, false), 100);
     });
 
-    return (() => {
-      if (sub) sub.unsubscribe();
-    })
+    return () => sub.unsubscribe();
   }, [attacks]);
 
   const goToAttackDetail = useCallback((item: AttackMetaData) => {
@@ -255,7 +244,7 @@ export default function AttacksScreen() {
                   keyboardDismissMode={'on-drag'}/>
       </ParallaxScrollView>
       <SortAndFilterButtons sort={sortData?.sort}
-                            filterIcon={filterIcon}
+                            filterIcon={sortData?.filterIcon}
                             filterPress={openFilter}
                             sortPress={openSort}
                             sortIconStyle={sortData?.iconStyle}

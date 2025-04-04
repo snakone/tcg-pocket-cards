@@ -7,10 +7,10 @@ import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
 
 import { AppContext } from "../_layout";
-import { Attack, AttackMetaData, Card } from "@/shared/definitions/interfaces/card.interfaces";
+import { AttackMetaData, Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { TYPE_MAP } from "@/shared/definitions/utils/constants";
-import { getImageLanguage116x162, getUniqueAttacks } from "@/shared/definitions/utils/functions";
+import { getImageLanguage116x162, getSimilarAttacks, getUniqueAttacks } from "@/shared/definitions/utils/functions";
 import { CardGridStyles } from "@/shared/styles/component.styles";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
@@ -21,18 +21,22 @@ import SharedScreen from "@/components/shared/SharedScreen";
 import { detailScrollStyles } from "@/components/dedicated/detail/detail.scroll";
 import { RenderAttackItem } from "@/components/dedicated/attacks/AttackItem";
 
+interface AttackDetailData {
+  attack: AttackMetaData,
+  related: Card[],
+  similar: AttackMetaData[]
+}
+
 export default function AttackDetailScreen() {
   console.log('Attack Detail Screen')
   const {i18n} = useI18n();
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
   const { state } = context;
-  const [attack, setAttack] = useState<AttackMetaData>();
-  const [related, setRelated] = useState<Card[]>([]);
-  const [similar, setSimilar] = useState<AttackMetaData[]>([]);
-  const [lang, setLang] = useState<LanguageType>('en');
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
+  const [data, setData] = useState<AttackDetailData>();
 
   useEffect(() => {
     setLang(state.settingsState.language);
@@ -42,16 +46,30 @@ export default function AttackDetailScreen() {
     const [card_id, index] = id.split('_');
     const cards = state.cardState.cards;
     const card = cards.find(c => c.id === Number(card_id));
-    const active = card?.attacks?.[Number(index)];
+    const active = card?.attacks?.[Number(index)] as AttackMetaData;
   
     if (!active) {
       router.replace('/attacks');
       return;
     }
   
-    setAttack(active as AttackMetaData);
+    const related = getRelatedCards(cards, active);
+    const allAttacks = getAllAttacks(cards);
   
-    const related = cards.filter(c =>
+    if (allAttacks.length > 0) {
+      const uniqueAttacks = getUniqueAttacks(allAttacks);
+      const similar = getSimilarAttacks(uniqueAttacks, active);
+  
+      setData({
+        attack: active,
+        related,
+        similar
+      })
+    }
+  }, [state.cardState.cards]);
+
+  const getRelatedCards = useCallback((cards: Card[], active: AttackMetaData) => {
+    return cards.filter(c =>
       c.attacks?.some(att =>
         att &&
         att.name.es === active.name.es &&
@@ -59,10 +77,10 @@ export default function AttackDetailScreen() {
         att.damage === active.damage
       )
     );
-  
-    setRelated(related);
-  
-    const allAttacks = cards.reduce<AttackMetaData[]>((acc, c) => {
+  }, []);
+
+  const getAllAttacks = useCallback((cards: Card[]) => {
+    return cards.reduce<AttackMetaData[]>((acc, c) => {
       if (c.attacks) {
         acc.push(...c.attacks.map((att, i) => ({
           ...att,
@@ -72,18 +90,7 @@ export default function AttackDetailScreen() {
       }
       return acc;
     }, []);
-  
-    if (allAttacks.length > 0) {
-      const uniqueAttacks = getUniqueAttacks(allAttacks);
-      const similar = uniqueAttacks.filter(att =>
-        att.energy.length === active.energy.length &&
-        att.damage === active.damage &&
-        att.name.es !== active.name.es
-      );
-  
-      setSimilar(similar);
-    }
-  }, [state.cardState.cards]);
+  }, []);
 
   const goToDetailScreen = async (id: number) => {
     SoundService.play('PICK_CARD_SOUND');
@@ -113,9 +120,6 @@ export default function AttackDetailScreen() {
     </View>
   ), [lang]);
 
-  const keyExtractor = useCallback((item: Card) => String(item.id), []);
-  const keyExtractorSimilar = useCallback((item: Attack, index: number) => String(item.name) + index, []);
-
   const renderItem = useCallback(({item}: {item: AttackMetaData}) => {
     return <RenderAttackItem 
               item={item}
@@ -132,7 +136,7 @@ export default function AttackDetailScreen() {
 
   return (
     <>
-      {  attack && 
+      {  data && data.attack && 
         <SharedScreen title={'attack_name'}>
           <ThemedView style={[
               detailScrollStyles.attackContainer, 
@@ -141,27 +145,27 @@ export default function AttackDetailScreen() {
             <ThemedView style={detailScrollStyles.attackItem}>
               <ThemedView style={detailScrollStyles.attackEnergy}>
                 {
-                  attack.energy.map((energy, j) => (
+                  data.attack.energy.map((energy, j) => (
                     <Image key={j} source={TYPE_MAP[energy].image} style={detailScrollStyles.energy}></Image>
                   ))
                 }
               </ThemedView>
-              <ThemedText style={detailScrollStyles.attackName}>{attack.name[lang]}</ThemedText>
+              <ThemedText style={detailScrollStyles.attackName}>{data.attack.name[lang]}</ThemedText>
             </ThemedView>
 
-            { attack.damage > 0 && <ThemedText style={detailScrollStyles.attackDamage}>{attack.damage}</ThemedText>}
+            { data.attack.damage > 0 && <ThemedText style={detailScrollStyles.attackDamage}>{data.attack.damage}</ThemedText>}
 
-            { attack.description && 
+            { data.attack.description && 
               <ThemedView style={[{width: '100%', marginTop: 16}, Platform.OS === 'android' && {top: 16}]}>
-                <ThemedText style={{fontSize: 12}}>{attack.description[lang]}</ThemedText>
+                <ThemedText style={{fontSize: 12}}>{data.attack.description[lang]}</ThemedText>
               </ThemedView>
             }
           </ThemedView>
-          <ThemedView style={Platform.OS === 'android' && {height: Math.ceil((related.length) / 5) * 94}}>
-            <FlatList data={related}
+          <ThemedView style={Platform.OS === 'android' && {height: Math.ceil((data.related.length) / 5) * 94}}>
+            <FlatList data={data.related}
                       numColumns={5}
                       contentContainerStyle={[{width: '100%'}]}
-                      keyExtractor={keyExtractor}
+                      keyExtractor={(_, index) => index.toString()}
                       initialNumToRender={25}
                       maxToRenderPerBatch={35}
                       windowSize={15}
@@ -178,10 +182,10 @@ export default function AttackDetailScreen() {
                           marginTop: Platform.OS === 'android' ? 20 : 10,
                           marginBottom: 20}}>{i18n.t('related_attacks')}
             </ThemedText>
-            <FlatList data={similar}
+            <FlatList data={data.similar}
                       numColumns={1}
                       contentContainerStyle={[{width: '100%', paddingBottom: 68}]}
-                      keyExtractor={keyExtractorSimilar}
+                      keyExtractor={(_, index) => index.toString()}
                       getItemLayout={getItemLayout}
                       initialNumToRender={25}
                       maxToRenderPerBatch={35}

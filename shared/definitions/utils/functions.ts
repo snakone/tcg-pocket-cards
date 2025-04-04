@@ -9,12 +9,12 @@ import * as DocumentPicker from 'expo-document-picker';
 import { FilterSearch } from "../classes/filter.class";
 import { Attack, AttackMetaData, Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
-import { CardExpansionENUM, CardLanguageENUM } from "../enums/card.enums";
+import { CardExpansionENUM, CardLanguageENUM, CardStageENUM } from "../enums/card.enums";
 import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SHINING_REVELRY_ICON, SMACK_DOWN, TRIUMPH_LIGHT_ARCEUS_ICON } from "../sentences/path.sentences";
-import { PACK_MAP } from "./constants";
+import { PACK_MAP, SORT_FIELD_MAP } from "./constants";
 import { LanguageType } from "../types/global.types";
 import { FilterAttackSearch } from "../classes/filter_attack.class";
-import { UserCollectionItem } from "../interfaces/global.interfaces";
+import { StorageDeck, UserCollectionItem } from "../interfaces/global.interfaces";
 
 import { 
   CARD_IMAGE_MAP_116x162_EN, 
@@ -27,6 +27,7 @@ import {
   CARD_IMAGE_MAP_ES, 
   CARD_IMAGE_MAP_JAP
 } from "./card.images";
+import { PokemonTypeENUM } from "../enums/pokemon.enums";
 
 export function sortCards(
   field: keyof Card | string, 
@@ -671,4 +672,146 @@ export const getUniqueAttacks = (arr: AttackMetaData[]): AttackMetaData[] => {
     }
     return acc;
   }, [] as AttackMetaData[])
+}
+
+// CREATE DECK
+export function sortFunction(a: Card | null, b: Card | null): number {
+  if (a === null) return 1;
+  if (b === null) return -1;
+  if (a.pokedex === -1 && b.pokedex !== -1) return 1;
+  if (a.pokedex !== -1 && b.pokedex === -1) return -1;
+  return a.order - b.order;
+}
+
+export function addCardToList(active: Card[], card: Card): Card[] {
+  if (active.filter(card => Boolean(card)).length === 20) { active; }
+  const emptyIndex = (active as any[]).indexOf(null);
+  const newDeck = [...active] as Card[];
+  newDeck[emptyIndex] = card;
+  return newDeck.sort(sortFunction);
+}
+
+export function canAddToDeck(active: Card[], card: Card): boolean {
+  const maxRepeats: number = 2;
+
+  const sameNameCards = active.filter(
+    (c) => c && c.name.es === card.name.es
+  ) as Card[];
+
+  if (sameNameCards.length < maxRepeats) {
+    const emptyIndex = (active as any[]).indexOf(null);
+
+    if (emptyIndex !== -1) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+export const isElementWithEnergy = (element: any): boolean => {
+  return Object.keys(element).some(key => element[key]);
+}
+
+export function manageSort(sort: SortItem, data: Card[]): Card[] {
+  const sortField = SORT_FIELD_MAP[sort.label];
+
+  if (!sortField) {
+    console.error(`Unsupported sorting option: ${sort.label}`);
+    return data;
+  }
+
+  return sortCards(sortField, data, sort);
+}
+
+export function isPokemonNormalWithEnergy(deck: Card[]): boolean {
+  return deck.some(card => 
+      card.attacks?.some(att => 
+        att.energy.every(ener => ener === PokemonTypeENUM.NORMAL)));
+}
+
+export function getUniqueEnergies(cards: Card[]): PokemonTypeENUM[] {
+  const energySet = new Set<PokemonTypeENUM>();
+
+  cards.forEach(card => {
+    card?.attacks?.forEach(attack => {
+      attack.energy.forEach(energy => energySet.add(energy));
+    });
+  });
+
+  return Array.from(energySet).sort();
+}
+
+export function isDeckValid(name: string, deck: Card[], energies: PokemonTypeENUM[]): boolean {
+  if (
+    name.length <= 0 ||
+    energies.length === 0 || 
+    deck.filter(card => Boolean(card)).length !== 20 ||
+    !deck.find(card => card.stage === CardStageENUM.BASIC) ||
+    (
+      !getUniqueEnergies(deck).some(type => energies.map(energy => Number(energy)).includes(type)) && 
+      !isPokemonNormalWithEnergy(deck)
+    )
+  ) {
+    return false;
+  }
+
+  return true;
+}
+
+export function filterOrSortCards(
+  type: 'sort' | 'filter', 
+  data: Card[], 
+  favorites: number[],
+  filter?: FilterSearch | null, 
+  sort?: SortItem,
+  ): Card[] {
+    switch (type) {
+      case 'sort': {
+        if (!sort) { return data; }
+        return manageSort(sort, data);
+      }
+      case 'filter': {
+        if (!filter) { return data; }
+        return filterCards(filter as FilterSearch, data, favorites)
+      }
+    }
+}
+
+export function getHighlightCards(deck: Card[]): number[] {
+  const filteredDecks = deck
+   .filter(card => card && card.health > 0)
+   .sort((a, b) => b.rarity - a.rarity);
+
+  const result = filteredDecks.slice(0, Math.min(filteredDecks.length, 3));
+
+  if (
+    result.length > 2 && result[0].name === result[1].name && 
+    result[0].id === result[1].id
+  ) {
+    result[1] = result[2];
+  }
+
+  result.length = 2;
+  return result.map(card => card.id);
+}
+
+export function getUsedEnergies(element: any): PokemonTypeENUM[] {
+  return Object.keys(element)
+  .filter(key => (element as any)[key])
+  .map(key => key as unknown as PokemonTypeENUM);
+}
+
+export function getNewID(id: string, decks: StorageDeck[]) {
+  return Number(id) || (decks.filter(d => Boolean(d))
+          .sort((a, b) => b.id > a.id ? -1 : 1)
+          .findLast(d => Boolean(d))?.id || 0) + 1
+}
+
+export function getSimilarAttacks(attacks: AttackMetaData[], active: AttackMetaData): AttackMetaData[] {
+  return attacks.filter(att =>
+    att.energy.length === active.energy.length &&
+    att.damage === active.damage &&
+    att.name.es !== active.name.es
+  );
 }

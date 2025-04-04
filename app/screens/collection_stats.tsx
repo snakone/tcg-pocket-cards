@@ -58,6 +58,7 @@ import {
 } from "@/shared/definitions/sentences/path.sentences";
 
 export default function CollectionStatsScreen() {
+  console.log('Collection Stats Screen')
   const {i18n} = useI18n();
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }

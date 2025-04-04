@@ -1,4 +1,4 @@
-import { router, useFocusEffect } from 'expo-router';
+import { router } from 'expo-router';
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import Animated from 'react-native-reanimated';
 import { Platform, StyleSheet } from 'react-native';
@@ -6,6 +6,8 @@ import { KeyboardAvoidingView, SectionList, TextInput, TouchableOpacity } from '
 
 import { useI18n } from '@/core/providers/LanguageProvider';
 import SoundService from '@/core/services/sounds.service';
+import { DataRxjs } from '@/core/rxjs/DataRxjs';
+import { map } from 'rxjs/operators';
 
 import { AppContext } from '../_layout';
 import { CardGridStyles, CreateScreenStyles } from '@/shared/styles/component.styles';
@@ -17,12 +19,9 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
 import { ShareScreenModal } from '@/components/modals';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import { RenderDeckItem } from '@/components/dedicated/cards/DeckItem';
 import TradeUserItem from '@/components/dedicated/trade/TradeUserItem';
 import { ResetFilterButton } from '@/components/ui/ResetFilterButton';
-import { DataRxjs } from '@/core/rxjs/DataRxjs';
-import { filter, map } from 'rxjs/operators';
 
 export default function ShareScreen() {
   console.log('Share Screen')
@@ -39,9 +38,7 @@ export default function ShareScreen() {
      .pipe(map(res => res.filter(d => d.valid)))
       .subscribe(res => setDecks(res));
 
-    return (() => {
-      if (sub) sub.unsubscribe();
-    })
+    return () => sub.unsubscribe();
   }, []);
 
   useEffect(() => {
@@ -49,9 +46,7 @@ export default function ShareScreen() {
      .pipe(map(res => res.filter(d => d.valid)))
       .subscribe(res => setTrades(res));
 
-    return (() => {
-      if (sub) sub.unsubscribe();
-    })
+    return () => sub.unsubscribe();
   }, []);
 
   const filteredData = useMemo(() => {
@@ -73,7 +68,7 @@ export default function ShareScreen() {
     return (
       <TouchableOpacity style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}} 
                         onPress={() => openTrade(item)}>
-        <TradeUserItem item={item} rarity={rarity} state={state}/>
+        <TradeUserItem item={item} state={state}/>
       </TouchableOpacity>
     )
   }, []);
@@ -154,7 +149,9 @@ export default function ShareScreen() {
               renderItem={({item, section, index}) => 
                 section.key === 'decks' ? (
                   <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}}>
-                    <RenderDeckItem item={item} state={state} onPress={() => openDeck(item)}></RenderDeckItem>
+                    <RenderDeckItem item={item} 
+                                    language={state.settingsState.language} 
+                                    onPress={() => openDeck(item)}/>
                   </ThemedView>
                 ) : 
                 section.key === 'trades' ? <RenderTrade item={item}/> : null 

@@ -38,11 +38,7 @@ export default function NewsScreen() {
       sub = loadPocketNews() : 
       (setLoading(false), setNews(state.pocketNewsState.news));
 
-    return () => {
-      if (sub) {
-        sub.unsubscribe();
-      }
-    };
+    return () => sub.unsubscribe();
   }, [state.pocketNewsState.loaded]);
 
   const loadPocketNews = useCallback(() => {

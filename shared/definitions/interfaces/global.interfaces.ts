@@ -79,6 +79,7 @@ export interface TradeItem {
   offers: (number | null)[];
   created: number;
   valid: boolean;
+  rarity?: CardRarityENUM;
 }
 
 export interface UserCollectionItem {
@@ -125,5 +126,6 @@ export interface ShareContentProps {
 export interface SortData {
   sort: SortItem, 
   iconStyle: any, 
-  orderIcon: any
+  orderIcon: any,
+  filterIcon: any
 }

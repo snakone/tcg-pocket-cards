@@ -51,7 +51,7 @@ export default function DetailScreen() {
   console.log('Detail Screen')
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
+  const { state } = context;
   const scrollService = useMemo(() => new ScrollService(), []);
   const styles = DetailStyles;
   const router = useRouter();
@@ -69,7 +69,7 @@ export default function DetailScreen() {
   const scrollRef = useRef<Animated.ScrollView>(null);
   const scrollYAndroid = useSharedValue(0);
   const [card, setCard] = useState<Card>();
-  const [lang, setLang] = useState<LanguageType>('en');
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
   const [canScroll, setCanScroll] = useState<boolean>(false);
 
   useEffect(() => {
@@ -96,11 +96,7 @@ export default function DetailScreen() {
         }
     });
     
-    return () => {
-      if (sub) {
-        sub.unsubscribe();
-      }
-    };
+    return () => sub.unsubscribe();
   }, [state.cardState.loaded]);
   
   useEffect(() => {
@@ -172,22 +168,22 @@ export default function DetailScreen() {
   }
 
   function startSwipe(): void {
-    heightAndroid.value = withTiming(ANDROID_INFO_HEIGHT, { duration: 250 }, () => {
+    heightAndroid.value = withTiming(0, { duration: 250 }, () => {
       runOnJS(setIsSwiping)(true);
     });
 
     setTimeout(() => {
       setShowContent(false);
-    }, 20);
+    }, 200);
   }
 
   function stopSwipe(): void {
-    heightAndroid.value = withTiming(ANDROID_INFO_HEIGHT, { duration: 250 }, () => {
+    heightAndroid.value = withTiming(ANDROID_INFO_HEIGHT, { duration: 300 }, () => {
       runOnJS(setIsSwiping)(false)
     });
     setTimeout(() => {
       setShowContent(true);
-    }, 275);
+    }, 666);
   }
 
   function onGestureFinish() {
@@ -254,7 +250,7 @@ export default function DetailScreen() {
 
   const panGesture = Gesture.Pan()
     .onUpdate((event) => {
-      let deltaY = event.translationY < 0 ? 10 : -10;
+      let deltaY = event.translationY < 0 ? 25 : -25;
       if (isAtMaxHeight.value) {
         if (scrollYAndroid.value === 0 && deltaY < 0) {
           isAtMaxHeight.value = false;

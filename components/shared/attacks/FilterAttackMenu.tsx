@@ -57,9 +57,7 @@ export default function FilterAttackMenu({
       triggerRender();
     });
 
-    return (() => {
-      if (sub) sub.unsubscribe();
-    })
+    return () => sub.unsubscribe();
   }, []);
 
   async function closeMenu(): Promise<void> {

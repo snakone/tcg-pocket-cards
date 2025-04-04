@@ -16,6 +16,7 @@ import { ThemedView } from '@/components/ThemedView';
 import { HomeScreenModal } from '@/components/modals/screens/HomeScreenModal';
 
 export default function HomeScreen() {
+  console.log('Home Screen')
   const {i18n} = useI18n();
   const styles = homeScreenStyles;
   const router = useRouter();

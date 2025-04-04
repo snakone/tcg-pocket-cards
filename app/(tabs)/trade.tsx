@@ -5,6 +5,7 @@ import { useRouter } from 'expo-router';
 
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { SoundService } from '@/core/services/sounds.service';
+import { DataRxjs } from '@/core/rxjs/DataRxjs';
 
 import { TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
 import { LARGE_MODAL_HEIGHT, MAX_CONTENT } from '@/shared/definitions/utils/constants';
@@ -15,9 +16,11 @@ import { AppContext } from '../_layout';
 import { TradeScreenModal } from '@/components/modals';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import TradeUserItem from '@/components/dedicated/trade/TradeUserItem';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { ResetFilterButton } from '@/components/ui/ResetFilterButton';
+
+const TOTAL_TRADES_LENGTH = 30;
 
 export default function TradeScreen() {
   console.log('Trade Screen')
@@ -25,46 +28,38 @@ export default function TradeScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
   const [trades, setTrades] = useState<TradeItem[]>([]);
-  const [filtered, setFiltered] = useState<TradeItem[]>([]);
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
-
-  const ResetFilterButton = () => (
-    <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={[CardGridStyles.clearInput, {left: 248}]}
-                      hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-      <IconSymbol name="clear" size={20} color="gray" />
-    </TouchableOpacity>
-  );
+  const { state } = context;
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
-    setFiltered(prev => {
-      if(trades.length === 0) { return prev; }
-      return trades.filter(trade =>
-        trade.title.toLowerCase()?.includes(text.toLowerCase()));
-    })
   }, [trades]);
 
   useEffect(() => {
-    setTrades(state.settingsState.trades);
-    setFiltered(state.settingsState.trades);
-  }, [state.settingsState.trades])
+    const sub = DataRxjs.getData<TradeItem[]>('trades')
+     .subscribe(res => setTrades(res));
+
+    return () => sub.unsubscribe();
+  }, []);
+
+  const filtered = useMemo(() => {
+    return trades
+    .filter(
+      trade => trade.title.toLowerCase()?.includes(searchQuery.toLowerCase())
+    ).sort((b, a) => a?.id - b?.id);
+  }, [trades, searchQuery])
 
   function handleClick(item: TradeItem): void {
     SoundService.play('CHANGE_VIEW');
     router.push(`/screens/create_trade?trade_id=${encodeURIComponent(item.id)}`);
   }
 
-  const renderItem = useCallback(({item, index}: {item: TradeItem, index: number}) => {
-    const rarity = state.cardState.cards.find(card => item.desired && item.desired.includes(card.id))?.rarity;
-    return (
-      <TouchableOpacity onPress={() => handleClick(item)}>
-        <TradeUserItem item={item} rarity={rarity} state={state}/>
-      </TouchableOpacity>
-    )
-  }, [state.cardState.cards, state.settingsState.language]);
+  const renderItem = useCallback(({item, index}: {item: TradeItem, index: number}) => (
+    <TouchableOpacity onPress={() => handleClick(item)}>
+      <TradeUserItem item={item} state={state}/>
+    </TouchableOpacity>
+  ), [state.cardState.cards, state.settingsState.language]);
 
   function handleTrade(): void {
     SoundService.play('POP_PICK');
@@ -79,7 +74,7 @@ export default function TradeScreen() {
         Platform.OS !== 'web' && {marginBottom: 16},
         trades.length >= MAX_CONTENT && {opacity: 0.5}
       ]} 
-          onPress={() => handleTrade()}
+          onPress={handleTrade}
           disabled={trades.length >= MAX_CONTENT}>
         <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>
           {i18n.t('make_a_trade')}
@@ -105,7 +100,7 @@ export default function TradeScreen() {
           accessibilityLabel={"SEARCH_LABEL"}
           inputMode="text"
         />
-        {searchQuery.length > 0 && <ResetFilterButton />}
+        {searchQuery.length > 0 && <ResetFilterButton left={248} onPress={() => handleSearch('')}/>}
       </ThemedView>
 
       <View
@@ -120,7 +115,7 @@ export default function TradeScreen() {
           color={Colors.light.skeleton}
         />
         <ThemedText style={[CardGridStyles.totalCards]}>
-          {trades?.length}/30
+          {trades?.length}/{TOTAL_TRADES_LENGTH}
         </ThemedText>
       </View>
     </View>
@@ -134,7 +129,7 @@ export default function TradeScreen() {
                           modalHeight={LARGE_MODAL_HEIGHT}
                           styles={{gap: 0}}>
         <FlatList
-          data={filtered.sort((b, a) => a?.id - b?.id)}
+          data={filtered}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
           showsVerticalScrollIndicator={false}
