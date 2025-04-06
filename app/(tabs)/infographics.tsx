@@ -6,20 +6,22 @@ import { Switch } from "react-native-paper";
 import { Slider } from "@miblanchard/react-native-slider";
 import * as MediaLibrary from 'expo-media-library';
 
+import { useI18n } from "@/core/providers/LanguageProvider";
+import SoundService from "@/core/services/sounds.service";
+import { useConfirmation } from "@/core/providers/ConfirmationProvider";
+
+import { CardGridStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
+import { Colors } from "@/shared/definitions/utils/colors";
+import { settingsStyles } from "@/app/screens/settings";
+import { BACKUP_HEIGHT } from "@/shared/definitions/utils/constants";
+
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import { GraphicCollage } from "@/components/dedicated/infographics/GraphicCollage";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { BACKUP_HEIGHT } from "@/shared/definitions/utils/constants";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { CardGridStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
-import SoundService from "@/core/services/sounds.service";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { settingsStyles } from "../screens/settings";
-import { Colors } from "@/shared/definitions/utils/colors";
 import { GraphicsScreenModal } from "@/components/modals";
-import { useConfirmation } from "@/core/providers/ConfirmationProvider";
 
 export default function InfoGraphicScreen() {
   console.log('Graphics Screen')
@@ -61,22 +63,17 @@ export default function InfoGraphicScreen() {
   const [isVisible, setIsVisible] = useState(false);
 
   const MyInfoGraphic = () => (
-    <>
-      {
-        
-        <View style={[styles.container, {padding: 0}]}>
-          <GraphicCollage showExpansion={showExpansion}
-                          showGrades={showGrades}
-                          showTypes={showTypes}
-                          showMiscellania={showMiscellania}
-                          showWeak={showWeak}
-                          showTop={showTop}
-                          showConditions={showConditions}
-                          quality={quality}
-                          onFinish={() => (setLoading(false), setIsVisible(false))}/>
-        </View>
-      }
-    </>
+    <View style={[styles.container, {padding: 0}]}>
+      <GraphicCollage showExpansion={showExpansion}
+                      showGrades={showGrades}
+                      showTypes={showTypes}
+                      showMiscellania={showMiscellania}
+                      showWeak={showWeak}
+                      showTop={showTop}
+                      showConditions={showConditions}
+                      quality={quality}
+                      onFinish={() => (setLoading(false), setIsVisible(false))}/>
+    </View>
   );
 
   async function handleChange(key: string, value: boolean): Promise<void> {
@@ -119,9 +116,9 @@ export default function InfoGraphicScreen() {
     SoundService.play('POP_PICK');
 
     const userConfirmed = await confirm("save_infographic", "save_infographic_intro");
-      if (userConfirmed) {
-        setLoading(true);
-        setTimeout(() => setIsVisible(true), 333);
+    if (userConfirmed) {
+      setLoading(true);
+      setTimeout(() => setIsVisible(true), 333);
     }
   }
 
@@ -278,8 +275,7 @@ export default function InfoGraphicScreen() {
           </ScrollView> 
 
           <TouchableOpacity onPress={download} 
-                            style={[homeScreenStyles.ctaButton, {marginTop: 0, marginBottom: 18, marginHorizontal: 14, top: -14}]}
-                            disabled={false}>
+                            style={[homeScreenStyles.ctaButton, {marginTop: 0, marginBottom: 18, marginHorizontal: 14, top: -14}]}>
             <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>{i18n.t('download')}</ThemedText>
           </TouchableOpacity>
         </ParallaxScrollView>

@@ -3,12 +3,14 @@ import { DimensionValue, Platform, StyleProp, StyleSheet, TextStyle, ViewStyle }
 import { MaterialIcons } from "@expo/vector-icons";
 import SelectDropdown from "react-native-select-dropdown";
 
-import { ThemedView } from "../ThemedView";
-import { ThemedText } from "../ThemedText";
 import { useI18n } from "@/core/providers/LanguageProvider";
+
 import { filterStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+
 import { FilterAttackSearch } from "@/shared/definitions/classes/filter_attack.class";
+import { ThemedView } from "../ThemedView";
+import { ThemedText } from "../ThemedText";
 
 interface SelectInputProps {
   options: any[], 

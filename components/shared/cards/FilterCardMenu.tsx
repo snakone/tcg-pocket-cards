@@ -1,10 +1,35 @@
-import React, { useContext, useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { BlurView } from "expo-blur";
 import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
 import { useRef, useState,  } from "react";
-import { Portal, Provider } from "react-native-paper";
+import { Portal } from "react-native-paper";
 import { Subject } from "rxjs";
+import { MaterialIcons } from "@expo/vector-icons";
+
+import { FilterRxjs } from "@/core/rxjs/FilterRxjs";
+import SoundService from "@/core/services/sounds.service";
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
+import { TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
+import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import { getFilterSearch } from "@/shared/definitions/utils/constants";
+import { Colors } from "@/shared/definitions/utils/colors";
+
+import { 
+  ButtonStyles,
+  filterStyles,
+  LayoutStyles,  
+  ModalStyles, 
+} from "@/shared/styles/component.styles";
+
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import InvertButton from "@/components/ui/InvertButton";
+import { SpecialItem } from "./components/SpecialItem";
+import { CollectionItem } from "../collection/components/CollectionItem";
 
 import { 
   AttackItem,
@@ -19,59 +44,35 @@ import {
   StageItem
 } from './components/index';
 
-import { 
-  ButtonStyles,
-  filterStyles,
-  LayoutStyles,  
-  ModalStyles, 
-} from "@/shared/styles/component.styles";
-
-import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
-import { TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import InvertButton from "@/components/ui/InvertButton";
-import { FilterSearch } from "@/shared/definitions/classes/filter.class";
-import { AppContext } from "@/app/_layout";
-import SoundService from "@/core/services/sounds.service";
-import { SpecialItem } from "./components/SpecialItem";
-import { CollectionItem } from "../collection/components/CollectionItem";
-import { getFilterSearch } from "@/shared/definitions/utils/constants";
-import { MaterialIcons } from "@expo/vector-icons";
-import { Colors } from "@/shared/definitions/utils/colors";
+const MODAL_HEIGHT = 712;
 
 export default function FilterCardMenu({
-  isVisible, 
-  onClose, 
-  animatedStyle, 
-  filterKey
+  filterKey,
+  isVisible,
+  onClose
 }: TabMenuCards) {
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
-  
+  console.log('Filter Card Menu')
   const {i18n} = useI18n();
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
-
-  const filterObj = useRef<FilterSearch>(state.filterState.filters[filterKey].filter as FilterSearch);
+  const filterObj = useRef<FilterSearch>(new FilterSearch());
   const [expansionSelected, setExpansionSelected] = useState<boolean>(false);
   const [forceRender, setForceRender] = useState(0);
   const triggerRender = () => setForceRender(prev => prev + 1);
-
-  if (!isVisible) return null;
-
-  const nextValues: {[key: string] : Subject<boolean>} = {
-    element$: new Subject<boolean>(),
-    rarity$: new Subject<boolean>(),
-    stage$: new Subject<boolean>(),
-    miscellania$: new Subject<boolean>()
-  }
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   function onNext(subject: string): void {
     nextValues[subject].next(true);
   }
+
+  useEffect(() => {
+    const sub = FilterRxjs.getFilter<FilterSearch>(filterKey)
+     .subscribe(res => {
+      filterObj.current = res;
+      triggerRender();
+    });
+
+    return () => sub.unsubscribe();
+  }, []);
 
   useEffect(() => {
     setExpansionSelected(
@@ -80,14 +81,25 @@ export default function FilterCardMenu({
     );
   }, []);
 
+  const nextValues: {[key: string] : Subject<boolean>} = {
+    element$: new Subject<boolean>(),
+    rarity$: new Subject<boolean>(),
+    stage$: new Subject<boolean>(),
+    miscellania$: new Subject<boolean>()
+  }
+
   const playSound = async (value: string) => {
     await SoundService.play(value);
   }
 
-  async function closeMenu(): Promise<void> {
-    await playSound('AUDIO_MENU_CLOSE');
-    onClose();
-    dispatch({type: 'SET_FILTER', value: {key: filterKey, filter: filterObj.current}});
+  function closeMenu(): void {
+    FilterRxjs.setFilter({key: filterKey, value: filterObj.current});
+
+    if (onClose !== undefined) {
+      playSound('AUDIO_MENU_CLOSE');
+      onClose();
+      return;
+    }
   }
 
   async function handleExpansion(value: boolean): Promise<void> {
@@ -109,56 +121,51 @@ export default function FilterCardMenu({
     triggerRender();
   }
 
-  const PokemonItem = ({element}: any) => {
+  const PokemonItem = React.memo(({ element }: any) => {
     return (
       <>
         <ThemedView style={filterStyles.row}>
-          <ThemedText type="defaultSemiBold" style={{marginBottom: 12}}>{i18n.t('type')}</ThemedText>
-          <InvertButton onClick={() => onNext('element$')}></InvertButton>
+          <ThemedText type="defaultSemiBold" style={{ marginBottom: 12 }}>
+            {i18n.t('type')}
+          </ThemedText>
+          <InvertButton onClick={() => onNext('element$')} />
         </ThemedView>
-
-        <ElementItem filterObj={filterObj} element={element} typeSelectAll$={nextValues.element$}></ElementItem>
-        <HealthItem filterObj={filterObj} playSound={playSound}></HealthItem>
-        <AttackItem filterObj={filterObj} playSound={playSound}></AttackItem>
-        <OtherItems filterObj={filterObj}></OtherItems>
+  
+        <ElementItem filterObj={filterObj} element={element} typeSelectAll$={nextValues.element$} />
+        <HealthItem filterObj={filterObj} playSound={playSound} />
+        <AttackItem filterObj={filterObj} playSound={playSound} />
+        <OtherItems filterObj={filterObj} />
       </>
-    )
-  }
+    );
+  });
 
-  const StagePokemonItem = ({element}: any) => {
-    return (
-      <>
-        <StageItem filterObj={filterObj}
-                   onlyPokemon={true}>
-        </StageItem>
-      </>
-    )
-  }
+  const StagePokemonItem = React.memo(({ element }: any) => (
+    <StageItem filterObj={filterObj} onlyPokemon={true} />
+  ));
 
-  const renderExpansionsMenu = () => (
+  const RenderExpansionsMenu = useCallback(() => (
     <>
       {expansionVisible && (
-        <ExpansionsMenu
-          filterObj={filterObj}
-          handleExpansion={handleExpansion}
-        />
+        <ExpansionsMenu filterObj={filterObj} handleExpansion={handleExpansion} />
       )}
     </>
-  );
+  ), [expansionVisible, filterObj]);
+
+  if (!isVisible) { return null; }
 
   return (
-    <Provider key={forceRender}>
+    <>
       <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
                 style={[StyleSheet.absoluteFill]} 
                 tint="light" 
                 experimentalBlurMethod='dimezisBlurView'/>
       <Pressable style={[LayoutStyles.overlay]} onPress={() => closeMenu()}></Pressable>
-      <Animated.View style={[animatedStyle, filterStyles.container, {height: 718}]}>
+      <Animated.View style={[Platform.OS === 'web' && animatedStyle, filterStyles.container, {height: MODAL_HEIGHT}]}>
         <View style={[ModalStyles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={[ModalStyles.modalHeaderTitle, i18n.locale === 'ja' && {fontSize: 20}]}>{i18n.t('filter')}</ThemedText>
         </View>
         <SafeAreaView style={[ModalStyles.modalScrollView, {paddingHorizontal: 20, paddingVertical: 0, marginTop: 16, maxHeight: '75.6%'}]}>
-          <ScrollView showsVerticalScrollIndicator={false} style={filterStyles.list}>
+          <ScrollView key={forceRender} showsVerticalScrollIndicator={false} style={filterStyles.list}>
 
             <TouchableOpacity onPress={handleReset} style={[
               filterStyles.button, 
@@ -244,14 +251,16 @@ export default function FilterCardMenu({
         <View style={[ModalStyles.modalFooter, i18n.locale === 'ja' && {top: -2}]}>
           <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>
           </Pressable>
         </View>
       </Animated.View>
-      <Portal>{renderExpansionsMenu()}</Portal>
-    </Provider>
+      <Portal>
+        <RenderExpansionsMenu></RenderExpansionsMenu>
+      </Portal>
+    </>
   );
 }

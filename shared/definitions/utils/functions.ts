@@ -7,14 +7,16 @@ import * as Sharing from 'expo-sharing';
 import * as DocumentPicker from 'expo-document-picker';
 
 import { FilterSearch } from "../classes/filter.class";
-import { Attack, Card } from "../interfaces/card.interfaces";
+import { Attack, AttackMetaData, Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
-import { CardExpansionENUM, CardLanguageENUM } from "../enums/card.enums";
+import { CardExpansionENUM, CardLanguageENUM, CardStageENUM } from "../enums/card.enums";
 import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SHINING_REVELRY_ICON, SMACK_DOWN, TRIUMPH_LIGHT_ARCEUS_ICON } from "../sentences/path.sentences";
-import { PACK_MAP } from "./constants";
+import { PACK_MAP, SORT_FIELD_MAP } from "./constants";
 import { LanguageType } from "../types/global.types";
 import { FilterAttackSearch } from "../classes/filter_attack.class";
-import { UserCollection } from "../interfaces/global.interfaces";
+import { UserCollectionItem } from "../interfaces/global.interfaces";
+import { CARD_IMAGE_MAP_EN_GRAPHIC } from "./card.graphic.images";
+import { PokemonTypeENUM } from "../enums/pokemon.enums";
 
 import { 
   CARD_IMAGE_MAP_116x162_EN, 
@@ -28,7 +30,11 @@ import {
   CARD_IMAGE_MAP_JAP
 } from "./card.images";
 
-export function sortCards(field: keyof Card | string, data: Card[], sort: SortItem): Card[] {
+export function sortCards(
+  field: keyof Card | string, 
+  data: Card[], 
+  sort: SortItem
+): Card[] {
   return [...data].sort((a, b) => {
     let aValue: any = '';
     let bValue: any = '';
@@ -66,7 +72,12 @@ export function sortCards(field: keyof Card | string, data: Card[], sort: SortIt
   });
 }
 
-export function sortAttacks(field: keyof Attack | string, data: Attack[], sort: SortItem, lang: LanguageType): Attack[] {
+export function sortAttacks(
+  field: keyof Attack | string, 
+  data: AttackMetaData[], 
+  sort: SortItem, 
+  lang: LanguageType
+): AttackMetaData[] {
   if (field === 'order') { field = 'id'; }
   return [...data].sort((a, b) => {
     let aValue: any = '';
@@ -103,9 +114,11 @@ export function filterCards(
   filter: FilterSearch, 
   data: Card[], 
   favorites: number[], 
-  collection?: UserCollection[],
+  collection?: UserCollectionItem[],
   collectionLang?: CardLanguageENUM
 ): Card[] {
+  if (filter.areAllPropertiesNull()) { return data; }
+  
   return data.filter(card => {
     if (
       filter.favorite.included !== null &&
@@ -260,7 +273,7 @@ export function filterCards(
   });
 }
 
-export function filterAttacks(filter: FilterAttackSearch, data: Attack[]): Attack[] {
+export function filterAttacks(filter: FilterAttackSearch, data: AttackMetaData[]): AttackMetaData[] {
   return data.filter(attack => {
     const energy = Object.keys(filter.energy).filter(key => Boolean((filter.energy as any)[key])).map(key => Number(key));
 
@@ -342,7 +355,7 @@ const EXPANSION_ICON_MAP: Partial<Record<CardExpansionENUM, { image: any; width:
 };
 
 export function getCardPackFrom(card: Card): {image: any, width: number, height: number} | undefined {
-  if (card.expansion === undefined) return undefined;
+  if (card.expansion === undefined) return;
 
   if (card.expansion === CardExpansionENUM.GENETIC_APEX) {
     if (card.found?.length === 3 || (card.name.en === "Mew" && card.id === 283)) {
@@ -573,8 +586,12 @@ const IMAGE_LANGUAGE_MAP = {
   ja: CARD_IMAGE_MAP_JAP
 }
 
-export function getImageLanguage(lang: LanguageType, id: number): any {
+export function getImageLanguage(lang: LanguageType, id: number): string {
   return IMAGE_LANGUAGE_MAP[lang][id];
+}
+
+export function getImageLanguageForGraphic(id: number): any {
+  return CARD_IMAGE_MAP_EN_GRAPHIC[id];
 }
 
 const IMAGE_LANGUAGE_MAP_69x96 = {
@@ -582,7 +599,6 @@ const IMAGE_LANGUAGE_MAP_69x96 = {
   en: CARD_IMAGE_MAP_69x96_EN,
   ja: CARD_IMAGE_MAP_69x96_JAP
 }
-
 export function getImageLanguage69x96(lang: LanguageType, id: number): any {
   return IMAGE_LANGUAGE_MAP_69x96[lang][id];
 }
@@ -618,7 +634,7 @@ export function getMetrics(type: 'height' | 'weight', lang: LanguageType): strin
   return METRICS_MAP[type][lang];
 }
 
-export function areAllAmountsZero(collection: UserCollection): boolean {
+export function areAllAmountsZero(collection: UserCollectionItem): boolean {
   return Object.values(collection.amount).every(value => value === 0);
 }
 
@@ -628,4 +644,210 @@ export function roundPercentage(value: string): string {
     return split[0] + '%';
   }
   return value + '%';
+}
+
+// FILTER-SORT ICONS
+export const getSortIconStyle = (sort: SortItem) => {
+  return [
+    { fontSize: 32, position: 'relative' },
+    sort?.label === 'order_by_hp' || sort?.label === 'order_by_rarity' ? { top: 1 } : null,
+    sort?.label === 'order_by_retreat' ? { top: -2 } : null,
+  ];
+};
+
+export const getSortOrderIcon = (sort: SortItem) => {
+  return !sort?.order ? 'arrow-upward' : 
+         sort.order === 'asc' ? 'arrow-upward' : 'arrow-downward';
+};
+
+export const getFilterIcon = (filterSearch: FilterSearch | FilterAttackSearch) => {
+  return filterSearch.areAllPropertiesNull() ? 'cancel' : 'check-circle';
+};
+
+export const getUniqueAttacks = (arr: AttackMetaData[]): AttackMetaData[] => {
+  const seen = new Set();
+  
+  return arr.reduce((acc, item) => {
+    const key = `${item.name.es || ''}|${item.damage}|${item.description?.es || ''}`;
+    
+    if (!seen.has(key)) {
+      seen.add(key);
+      acc.push({ id: acc.length, ...item });
+    }
+    return acc;
+  }, [] as AttackMetaData[])
+}
+
+// CREATE DECK
+export function sortFunction(a: Card | null, b: Card | null): number {
+  if (a === null) return 1;
+  if (b === null) return -1;
+  if (a.pokedex === -1 && b.pokedex !== -1) return 1;
+  if (a.pokedex !== -1 && b.pokedex === -1) return -1;
+  return a.order - b.order;
+}
+
+export function addCardToList(active: Card[], card: Card): Card[] {
+  if (active.filter(card => Boolean(card)).length === 20) { active; }
+  const emptyIndex = (active as any[]).indexOf(null);
+  const newDeck = [...active] as Card[];
+  newDeck[emptyIndex] = card;
+  return newDeck.sort(sortFunction);
+}
+
+export function canAddToDeck(active: Card[], card: Card): boolean {
+  const maxRepeats: number = 2;
+
+  const sameNameCards = active.filter(
+    (c) => c && c.name.es === card.name.es
+  ) as Card[];
+
+  if (sameNameCards.length < maxRepeats) {
+    const emptyIndex = (active as any[]).indexOf(null);
+
+    if (emptyIndex !== -1) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+export const isElementWithEnergy = (element: any): boolean => {
+  return Object.keys(element).some(key => element[key]);
+}
+
+export function manageSort(sort: SortItem, data: Card[]): Card[] {
+  const sortField = SORT_FIELD_MAP[sort.label];
+
+  if (!sortField) {
+    console.error(`Unsupported sorting option: ${sort.label}`);
+    return data;
+  }
+
+  return sortCards(sortField, data, sort);
+}
+
+export function isPokemonNormalWithEnergy(deck: Card[]): boolean {
+  return deck.some(card => 
+      card.attacks?.some(att => 
+        att.energy.every(ener => ener === PokemonTypeENUM.NORMAL)));
+}
+
+export function getUniqueEnergies(cards: Card[]): PokemonTypeENUM[] {
+  const energySet = new Set<PokemonTypeENUM>();
+
+  cards.forEach(card => {
+    card?.attacks?.forEach(attack => {
+      attack.energy.forEach(energy => energySet.add(energy));
+    });
+  });
+
+  return Array.from(energySet).sort();
+}
+
+export function isDeckValid(name: string, deck: Card[], energies: PokemonTypeENUM[]): boolean {
+  if (
+    name.length <= 0 ||
+    energies.length === 0 || 
+    deck.filter(card => Boolean(card)).length !== 20 ||
+    !deck.find(card => card.stage === CardStageENUM.BASIC) ||
+    (
+      !getUniqueEnergies(deck).some(type => energies.map(energy => Number(energy)).includes(type)) && 
+      !isPokemonNormalWithEnergy(deck)
+    )
+  ) {
+    return false;
+  }
+
+  return true;
+}
+
+export function filterOrSortCards(
+  type: 'sort' | 'filter', 
+  data: Card[], 
+  favorites: number[],
+  filter?: FilterSearch | null, 
+  sort?: SortItem,
+  collection?: UserCollectionItem[],
+  coll_lang?: CardLanguageENUM
+  ): Card[] {
+    switch (type) {
+      case 'sort': {
+        if (!sort) { return data; }
+        return manageSort(sort, data);
+      }
+      case 'filter': {
+        if (!filter) { return data; }
+        return filterCards(filter as FilterSearch, data, favorites, collection, coll_lang)
+      }
+    }
+}
+
+export function getHighlightCards(deck: Card[]): number[] {
+  const filteredDecks = deck
+   .filter(card => card && card.health > 0)
+   .sort((a, b) => b.rarity - a.rarity);
+
+  const result = filteredDecks.slice(0, Math.min(filteredDecks.length, 3));
+
+  if (
+    result.length > 2 && result[0].name === result[1].name && 
+    result[0].id === result[1].id
+  ) {
+    result[1] = result[2];
+  }
+
+  result.length = 2;
+  return result.map(card => card.id);
+}
+
+export function getUsedEnergies(element: any): PokemonTypeENUM[] {
+  return Object.keys(element)
+  .filter(key => (element as any)[key])
+  .map(key => key as unknown as PokemonTypeENUM);
+}
+
+export function getNewID(id: string, data: any[]) {
+  return Number(id) || (data.filter(d => Boolean(d))
+          .sort((a, b) => b.id > a.id ? -1 : 1)
+          .findLast(d => Boolean(d))?.id || 0) + 1
+}
+
+export function getSimilarAttacks(attacks: AttackMetaData[], active: AttackMetaData): AttackMetaData[] {
+  return attacks.filter(att =>
+    att.energy.length === active.energy.length &&
+    att.damage === active.damage &&
+    att.name.es !== active.name.es
+  );
+}
+
+export const manageSortAttacks = (sort: SortItem, data: AttackMetaData[], lang: LanguageType) => {
+  const sortField = SORT_FIELD_MAP[sort.label];
+
+  if (!sortField) {
+    console.error(`Unsupported sorting option: ${sort.label}`);
+    return data;
+  }
+
+  return sortAttacks(sortField, data, sort, lang);
+}
+
+export const filterOrSortAttacks = (
+  type: 'sort' | 'filter', 
+  data: AttackMetaData[],
+  lang: LanguageType,
+  filter?: FilterAttackSearch | null, 
+  sort?: SortItem,
+) => {
+  switch (type) {
+    case 'sort': {
+      if (!sort) { return data; }
+      return manageSortAttacks(sort, data, lang);
+    }
+    case 'filter': {
+      if (!filter) { return data; }
+      return filterAttacks(filter as FilterAttackSearch, data);
+    }
+  }
 }

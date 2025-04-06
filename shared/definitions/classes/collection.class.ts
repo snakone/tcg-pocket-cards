@@ -1,7 +1,7 @@
 import { CardLanguageENUM } from "../enums/card.enums";
-import { UserCollection } from "../interfaces/global.interfaces";
+import { UserCollectionItem } from "../interfaces/global.interfaces";
 
-export class CollectionUser implements UserCollection {
+export class CollectionUser implements UserCollectionItem {
   id: number;
   amount: Record<CardLanguageENUM, number>;
 

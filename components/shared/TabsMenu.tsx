@@ -1,21 +1,24 @@
 import { StyleSheet, Platform, Pressable, View, FlatList, TouchableOpacity } from 'react-native';
 import { BlurView } from 'expo-blur';
-import Animated, { Easing, runOnJS, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { useEffect, useState, useCallback } from 'react';
 import React from 'react';
 
-import { LayoutStyles, MenuStyles, TabsMenuStyles } from '@/shared/styles/component.styles';
-import { TabMenu } from '@/shared/definitions/interfaces/layout.interfaces';
-import { IconSymbolName } from '@/shared/definitions/utils/switches';
+import Storage from '@/core/storage/storage.service';
+import { useI18n } from '@/core/providers/LanguageProvider';
+import SoundService from '@/core/services/sounds.service';
+
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
-import { MENU_LIST, MENU_HELP, COIN_MAP } from '@/shared/definitions/utils/constants';
-import { useI18n } from '../../core/providers/LanguageProvider';
-import SoundService from '@/core/services/sounds.service';
-import Storage from '@/core/storage/storage.service';
+import { LayoutStyles, MenuStyles, TabsMenuStyles, WebStyles } from '@/shared/styles/component.styles';
+import { TabMenu } from '@/shared/definitions/interfaces/layout.interfaces';
+import { MENU_LIST, MENU_HELP, COIN_MAP, DEFAULT_PROFILE, ROUTES_MAP } from '@/shared/definitions/utils/constants';
 import { UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
+import { IconSymbolName } from '@/shared/definitions/utils/switches';
+import { RouteKey } from '@/shared/definitions/types/global.types';
+import { ThemedView } from '../ThemedView';
 
 export default function TabsMenu({
   isVisible,
@@ -24,98 +27,44 @@ export default function TabsMenu({
 }: TabMenu) {
   if (!isVisible) return null;
   const router = useRouter();
-  const [progress, setProgress] = useState(false);
-  const fillProgress = useSharedValue(0.26);
   const {i18n} = useI18n();
-  const [list, setList] = useState(MENU_LIST);
-  const [profile, setProfile] = useState<UserProfile>(
-    {name: '', avatar: 'eevee', coin: 'eevee', best: null}
-  );
-
-  const startAnimation = () => {
-    fillProgress.value = withTiming(1, {
-      duration: 500,
-      easing: Easing.poly(1.2),
-    }, function (isFinished) {
-      if (isFinished !== undefined) {
-        runOnJS(setProgress)(isFinished);
-      }
-    });
-  };
-
-  const playSound = useCallback(async () => {
-    await SoundService.play('CHANGE_VIEW');
-  }, []);
-
-  const handleRoute = async (route: string) => {
-    onClose();
-    await playSound();
-    switch(route) {
-      case 'news': router.push('/news');
-        break;
-      case 'favorites': router.push('/favorites');
-        break;
-      case 'share': router.push('/share');
-        break;
-      case 'infographics': router.push('/infographics');
-        break;
-      case 'help': router.push('/screens/help');
-        break;
-      case 'settings': router.push('/screens/settings');
-        break;
-      case 'attacks': router.push('/attacks');
-        break;
-      case 'games': router.push('/games');
-        break;
-    }
-  }
-
-  const animatedFillStyle = useAnimatedStyle(() => {
-    return {
-      width: `${fillProgress.value * 100}%`,
-    };
-  });
-
-  useEffect(() => {
-    if(progress) {
-      playSound();
-      onClose();
-      setTimeout(() => {
-        router.push('/profile')
-      }, 50);
-    }
-  }, [progress]);
+  const [profile, setProfile] = useState<UserProfile>(DEFAULT_PROFILE);
 
   useEffect(() => {
     const getProfile = async () => {
       const profile: UserProfile = await Storage.getProfile();
-      setProfile(profile);
+      setProfile({...profile});
     };
 
     getProfile();
   }, []);
 
-  const resetAnimation = () => {
-    fillProgress.value = withTiming(0.26, {
-      duration: 300,
-      easing: Easing.out(Easing.ease),
-    });
+  const playSound = useCallback(async () => {
+    await SoundService.play('CHANGE_VIEW');
+  }, []);
+
+  const handleRoute = async (route: RouteKey) => {
+    onClose?.();
+    await playSound();
+  
+    const targetRoute = ROUTES_MAP[route];
+  
+    if (targetRoute) {
+      router.navigate(targetRoute);
+    }
   };
 
   return (
-    <>
+    <ThemedView style={Platform.OS === 'web' ? [WebStyles.view, {boxShadow: 'none'}] : { flex: 1 }}>
       <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
                 style={StyleSheet.absoluteFill} 
                 tint="light" 
                 experimentalBlurMethod='dimezisBlurView'/>
       <Pressable style={LayoutStyles.overlay} 
-                 onPress={() => onClose()}>
+                 onPress={() => (onClose?.(), playSound())}>
       </Pressable>
       <Animated.View style={[MenuStyles.container, animatedStyle]}>
-        <Pressable onPressIn={startAnimation}
-                   onTouchStart={startAnimation}
-                   onPressOut={resetAnimation}>
-          <Animated.View style={[TabsMenuStyles.container, animatedFillStyle]} />
+        <Pressable onPress={() => handleRoute('profile')}>
           <View style={TabsMenuStyles.user}>
             <Image source={COIN_MAP[profile.coin]} 
                   style={TabsMenuStyles.avatar}>
@@ -128,7 +77,7 @@ export default function TabsMenu({
           </View>
         </Pressable>
         <View>
-          <FlatList data={list}
+          <FlatList data={MENU_LIST}
                     style={[{paddingBlock: 22, paddingInline: 10}, Platform.OS !== 'web' && {paddingBottom: 20}]}
                     renderItem={({item}) => 
             <View style={TabsMenuStyles.listItem}>
@@ -156,6 +105,6 @@ export default function TabsMenu({
           </FlatList>
         </View>
       </Animated.View>
-    </>
+    </ThemedView>
   )
 }

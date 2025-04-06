@@ -1,6 +1,7 @@
-import ErrorPortal from "@/components/shared/ErrorPortal";
+import React, { createContext, useContext, useState, useCallback, useMemo } from "react";
+
 import { ErrorType } from "@/shared/definitions/types/global.types";
-import React, { createContext, useContext, useState, useCallback } from "react";
+import ErrorPortal from "@/components/shared/ErrorPortal";
 
 interface ErrorContextType {
   show: (message: string, type?: ErrorType) => void;
@@ -33,8 +34,10 @@ export const ErrorProvider = ({ children }: { children: React.ReactNode}) => {
     setMessage('');
   }, [])
 
+  const contextValue = useMemo(() => ({ show, close }), [show, close]);
+
   return (
-    <ErrorContext.Provider value={{ show, close }}>
+    <ErrorContext.Provider value={contextValue}>
       {children}
       <ErrorPortal
         visible={visible}

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Pressable, TouchableOpacity } from 'react-native';
+import { Pressable } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { Sound } from 'expo-av/build/Audio';
-
-import { ThemedText } from '../ThemedText';
-import { useI18n } from '@/core/providers/LanguageProvider';
-import { ThemedView } from '../ThemedView';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
-import { Colors } from '@/shared/definitions/utils/colors';
+
+import { useI18n } from '@/core/providers/LanguageProvider';
 import SoundService from '@/core/services/sounds.service';
+
+import { Colors } from '@/shared/definitions/utils/colors';
+import { ThemedText } from '../ThemedText';
+import { ThemedView } from '../ThemedView';
 
 interface InvertButtonProps {
   onClick: () => void,

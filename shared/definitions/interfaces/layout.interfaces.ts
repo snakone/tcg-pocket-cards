@@ -1,11 +1,16 @@
 import { ReactNode } from "react";
+
+import { CardsState } from "@/hooks/cards.reducer";
 import { CardLanguageENUM } from "../enums/card.enums";
 import { CollectionStat, ExpansionEmblem } from "./global.interfaces";
-import { FilterKey } from "@/hooks/filter.reducer";
+import { FilterSearch } from "../classes/filter.class";
+import { FilterAttackSearch } from "../classes/filter_attack.class";
+import { DataKey, FilterKey, LanguageType, ModalType, RouteKey } from "../types/global.types";
+import { Card } from "./card.interfaces";
 
 export interface HeaderWithCustomModalProps {
   title: string;
-  modalTitle: string;
+  modalTitle?: string;
   modalContent: ReactNode;
   modalHeight?: number;
   animatedStyle?: any,
@@ -15,12 +20,21 @@ export interface HeaderWithCustomModalProps {
 
 export interface TabMenu {
   isVisible: boolean;
-  onClose: (value?: any) => void;
-  animatedStyle: any;
+  onClose?: (value?: any) => void;
+  animatedStyle?: any;
 }
 
 export interface TabMenuCards extends TabMenu {
   filterKey: FilterKey;
+}
+
+export interface TabWithCards extends TabMenu {
+  cards: Card[];
+  language: LanguageType;
+}
+
+export interface TabMenuGames extends TabMenu {
+  selectedMode: 4 | 6 | 8;
 }
 
 export interface TabMenuCollection extends TabMenu {
@@ -30,11 +44,15 @@ export interface TabMenuCollection extends TabMenu {
 
 export interface TabDesiredMenu extends TabMenu {
   desired: (number | null)[];
+  language: LanguageType,
+  cardsState: CardsState;
 }
 
 export interface TabOffersMenu extends TabMenu {
   desired: (number | null)[];
   offers: (number | null)[];
+  language: LanguageType,
+  cardsState: CardsState;
 }
 
 export interface ExpansionMenu extends TabMenu {
@@ -62,7 +80,7 @@ export interface IconItemWithModal {
 export interface ItemWithRoute {
   label: string;
   icon: string;
-  route: string;
+  route: RouteKey;
 }
 
 export interface SortItem {
@@ -71,4 +89,19 @@ export interface SortItem {
   icon: string,
   active: boolean,
   order: 'desc' | 'asc'
+}
+
+export interface FilterStatePayload {
+  key: FilterKey;
+  value: FilterSearch | FilterAttackSearch;
+}
+
+export interface ModalStatePayload {
+  key: ModalType;
+  value: boolean;
+}
+
+export interface DataStatePayload {
+  key: DataKey;
+  value: any;
 }

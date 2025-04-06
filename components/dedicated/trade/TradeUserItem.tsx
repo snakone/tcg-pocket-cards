@@ -6,22 +6,20 @@ import { ThemedView } from "@/components/ThemedView";
 import { TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
 import { CardGridStyles, CreateScreenStyles } from '@/shared/styles/component.styles';
 import { SvgTradePassSymbol } from '@/components/ui/IconSymbol';
-import { TRADE_POINTS } from '@/shared/definitions/sentences/path.sentences';
+import { BACKWARD_CARD, TRADE_POINTS } from '@/shared/definitions/sentences/path.sentences';
 import { TRADE_COST_MAP } from '@/shared/definitions/utils/constants';
-import { CardRarityENUM } from '@/shared/definitions/enums/card.enums';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
-import { AppState } from '@/hooks/root.reducer';
+import { LanguageType } from '@/shared/definitions/types/global.types';
 
 interface TradeUserItemProps {
   item: TradeItem,
-  rarity: CardRarityENUM | undefined,
   styles?: any,
-  state: AppState,
+  language: LanguageType,
   share?: boolean
 }
 
-export default function TradeUserItem({item, rarity, styles, state, share}: TradeUserItemProps) {
+export default function TradeUserItem({item, styles, language, share}: TradeUserItemProps) {
   const {i18n} = useI18n();
 
   if (!item) { return; }
@@ -41,7 +39,7 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
           <ThemedView style={{width: '38%'}}>
             {
               item.desired.map((item, i) => (
-                item ? <Image style={[
+                <Image style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
                     left: i * 16,
@@ -54,21 +52,9 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
                     top: Math.abs(i - 2) * 4
                   }
                 ]} 
-                source={getImageLanguage116x162(state?.settingsState.language, item)}
-                key={i}/> : <ThemedView style={[
-                  CardGridStyles.image,
-                  CreateScreenStyles.popularImage, {
-                    left: i * 16,
-                    width: 50,
-                    opacity: 1 - 0.1 * i,
-                    zIndex: Math.round((1 / (i + 1) * 100)),
-                    top: Math.abs(i - 2) * 4,
-                    transform: [
-                      { rotate: `${(i - 2) * 8}deg` },
-                    ],
-                    boxShadow: '5px 4px 8px rgba(0, 0, 0, 0.2)'
-                  }
-                ]} key={i}/>
+                source={item ? getImageLanguage116x162(language, item) : BACKWARD_CARD}
+                placeholder={BACKWARD_CARD}
+                key={i}/>
               ))
             }
           </ThemedView>
@@ -87,7 +73,7 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
           <ThemedView style={{width: '38%', borderBottomLeftRadius: 4}}>
             {
               item.offers.map((offer, i) => (
-                offer ? <Image style={[
+                <Image style={[
                   CardGridStyles.image,
                   CreateScreenStyles.popularImage, {
                     left: i * 16,
@@ -100,21 +86,9 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
                     top: Math.abs(i - 2) * 4
                   }
                 ]} 
-                source={getImageLanguage116x162(state?.settingsState.language, offer)}
-                key={i}/> : <ThemedView style={[
-                  CardGridStyles.image,
-                  CreateScreenStyles.popularImage, {
-                    left: i * 16,
-                    width: 50,
-                    opacity: 1 - 0.1 * i,
-                    zIndex: Math.round((1 / (i + 1) * 100)),
-                    top: Math.abs(i - 2) * 4,
-                    transform: [
-                      { rotate: `${(i - 2) * 8}deg` },
-                    ],
-                    boxShadow: '5px 4px 8px rgba(0, 0, 0, 0.2)'
-                  }
-                ]} key={i}/>
+                source={offer ? getImageLanguage116x162(language, offer) : BACKWARD_CARD}
+                placeholder={BACKWARD_CARD}
+                key={i}/>
               ))
             }
           </ThemedView>
@@ -123,7 +97,7 @@ export default function TradeUserItem({item, rarity, styles, state, share}: Trad
 
       <ThemedView style={[tradeItemStyles.token]}>
         <Image source={TRADE_POINTS} style={{width: 20, height: 20, left: 0, position: 'absolute', top: 2}}/>
-        <ThemedText style={{top: -1, left: 12, fontSize: 13}}>{rarity !== undefined && (TRADE_COST_MAP as any)[rarity] || 0}</ThemedText>
+        <ThemedText style={{top: -1, left: 12, fontSize: 13}}>{item.rarity && (TRADE_COST_MAP as any)[item.rarity] || 0}</ThemedText>
       </ThemedView>
     </ThemedView> 
   )

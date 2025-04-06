@@ -1,12 +1,19 @@
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { FlatList, Platform, Pressable, StyleProp, TextInput, TextStyle, TouchableOpacity, View } from "react-native";
+import { FlatList, Platform, Pressable, TextInput, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { StyleSheet } from 'react-native';
 import { Portal, Provider } from "react-native-paper";
 import { Image } from 'expo-image';
 import { BlurView } from "expo-blur";
-import Animated from "react-native-reanimated";
+import { combineLatest } from "rxjs";
+
+import SoundService from "@/core/services/sounds.service";
+import { useI18n } from "@/core/providers/LanguageProvider";
+import { useConfirmation } from "@/core/providers/ConfirmationProvider";
+import { DataRxjs } from "@/core/rxjs/DataRxjs";
+import { FilterRxjs } from "@/core/rxjs/FilterRxjs";
+import { SortRxjs } from "@/core/rxjs/SortRxjs";
 
 import { 
   ButtonStyles,
@@ -18,125 +25,178 @@ import {
   offersStyles, 
   ParallaxStyles, 
   ScreenStyles, 
-  sortStyles 
+  sortStyles,
+  cardStyles
 } from "@/shared/styles/component.styles";
 
-import { ThemedView } from "@/components/ThemedView";
-import { CLOSE_SENTENCE, NO_CONTEXT, SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import { Colors } from "@/shared/definitions/utils/colors";
-import { detailScrollStyles } from "@/components/dedicated/detail/detail.scroll";
-import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
-import { MAX_CONTENT, SORT_FIELD_MAP, TYPE_MAP } from "@/shared/definitions/utils/constants";
+import { 
+  addCardToList, 
+  canAddToDeck, 
+  filterOrSortCards, 
+  getFilterIcon, 
+  getHighlightCards, 
+  getImageLanguage116x162, 
+  getImageLanguage69x96, 
+  getNewID, 
+  getSortIconStyle, 
+  getSortOrderIcon, 
+  getUsedEnergies, 
+  isDeckValid, 
+  isElementWithEnergy, 
+  sortFunction
+} from "@/shared/definitions/utils/functions";
+
 import { AppContext } from "../_layout";
-import { Card } from "@/shared/definitions/interfaces/card.interfaces";
+import { Colors } from "@/shared/definitions/utils/colors";
+import { DEFAULT_ELEMENT, MAX_CONTENT, TYPE_MAP } from "@/shared/definitions/utils/constants";
+import { Card, CardWithMeta } from "@/shared/definitions/interfaces/card.interfaces";
+import { SortItem } from "@/shared/definitions/interfaces/layout.interfaces";
+import { SortData, StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
+
+import { collectionStyles } from "./collection";
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import { detailScrollStyles } from "@/components/dedicated/detail/detail.scroll";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
-import Storage from '@/core/storage/storage.service';
 import FilterCardMenu from "@/components/shared/cards/FilterCardMenu";
 import SortCardMenu from "@/components/shared/cards/SortCardMenu";
-import { SortItem } from "@/shared/definitions/interfaces/layout.interfaces";
-import { filterCards, getImageLanguage116x162, getImageLanguage69x96, sortCards } from "@/shared/definitions/utils/functions";
-import { cardStyles } from "../(tabs)/cards";
-
-import { useConfirmation } from "@/core/providers/ConfirmationProvider";
 import EnergyMenu from "@/components/dedicated/create/EnergyMenu";
-import SkeletonCardGrid from "@/components/skeletons/SkeletonCardGrid";
 import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
-import SoundService from "@/core/services/sounds.service";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
-import { CardStageENUM } from "@/shared/definitions/enums/card.enums";
+import { ResetFilterButton } from "@/components/ui/ResetFilterButton";
 import PreviewList from "@/components/dedicated/create/PreviewList";
-import CreateService from "@/core/services/create.service";
-import { LanguageType } from "@/shared/definitions/types/global.types";
-import { collectionStyles } from "./collection";
-import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import { SortAndFilterButtons } from "@/components/ui/FilterSortButtons";
+
+interface CreateDeckData {
+  active: Card[] | null[],
+  name: string,
+  energy: boolean;
+  decks: StorageDeck[] 
+}
 
 const numColumns = 6;
 
 export default function CreateDeckScreen() {
+  console.log('Create Deck Screen')
   const {i18n} = useI18n();
-  const [isEnergyVisible, setIsEnergyVisible] = useState(false);
-  const [isGridVisible, setIsGridVisible] = useState(false);
-  const [isWithEnergy, setIsWithEnergy] = useState(false);
-  const [searchCard, setSearchCard] = useState('');
   const [loading, setLoading] = useState(false);
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
-  const [deck, setDeck] = useState<any[]>(Array.from({ length: 20 }, (_, i) => (null)));
-  const [filtered, setFiltered] = useState<Card[]>(state.cardState.cards);
-  const [isSortVisible, setIsSortVisible] = useState(false);
-  const [isFilterVisible, setIsFilterVisible] = useState(false);
-  const [sort, setSort] = useState<SortItem>();
+  if (!context) { throw new Error('NO_CONTEXT'); }
+  const { state } = context;
+  const [filtered, setFiltered] = useState<Card[]>([]);
   const [notSaved, setNotSaved] = useState(false);
-  const flatListRef = useRef<FlatList<Card> | null>(null);
+  const flatListRef = useRef<FlatList<CardWithMeta> | null>(null);
   const router = useRouter();
-  const [deckName, setDeckName] = useState(i18n.t('new_deck_value'));
   const { confirm } = useConfirmation();
   const { deck_id } = useLocalSearchParams<{ deck_id: string }>();
-  const createService = useMemo(() => new CreateService(), []);
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const [favorites, setFavorites] = useState<number[]>([]);
+  const [sortData, setSortData] = useState<SortData>();
+  const [element, setElement] = useState({...DEFAULT_ELEMENT});
 
-  useEffect(() => {
-    setLang(state.settingsState.language);
+  const [modalVisibility, setModalVisivility] = useState<Record<string, boolean>>({
+    energy: false,
+    cards: false,
+    sort: false,
+    filter: false,
+  });
 
-    return (() => {
-      dispatch({type: 'RESET_FILTER', value: 'decks'});
-    })
-  }, [state.settingsState.language]);
-
-  const [element, setElement] = useState({
-    [PokemonTypeENUM.GRASS]: null, 
-    [PokemonTypeENUM.FIRE]: null,
-    [PokemonTypeENUM.WATER]: null,
-    [PokemonTypeENUM.ELECTRIC]: null,
-    [PokemonTypeENUM.PSYCHIC]: null,
-    [PokemonTypeENUM.FIGHT]: null,
-    [PokemonTypeENUM.DARK]: null,
-    [PokemonTypeENUM.STEEL]: null,
-    [PokemonTypeENUM.DRAGON]: null,
-    [PokemonTypeENUM.NORMAL]: null
+  const [data, setData] = useState<CreateDeckData>({
+    active: Array(20).fill(null),
+    name: '',
+    decks: [],
+    energy: false
   });
 
   useEffect(() => {
-    const checkDeck = async () => {
-      if (deck_id !== undefined) {
-        const selected = state.settingsState.decks.find(deck => deck.id === Number(deck_id));
-        if (selected) {
-          const deck = selected.cards.map(card => state.cardState.cards.find(c => c.id === card) || null);
-          setDeck(deck);
-          setDeckName(selected.name);
-          setIsWithEnergy(selected.energies.length > 0);
-          Object.keys(element).forEach((key: any) => {
-            if (selected.energies?.includes(key)) {
-              (element as any)[key] = true;
-            }
-          })
-        }
-      }
-    };
-
-    checkDeck();
+    setFiltered(state.cardState.cards);
   }, [state.cardState.cards]);
 
   useEffect(() => {
-    const sub = createService.currentDeck$.subscribe(deck => setDeck(deck));
-    return () => {
-      sub.unsubscribe();
-      dispatch({type: 'SET_NAVIGATING', value: false});
-    }
-  }, []);
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
-  const playSound = async () => {
-    SoundService.play('POP_PICK');
-  }
+  useEffect(() => {
+    setData(prev => ({...prev, energy: !modalVisibility.energy && isElementWithEnergy(element)}));
+  }, [modalVisibility.energy]);
+
+  useEffect(() => {
+    const decks = DataRxjs.getDataSync<StorageDeck[]>('decks')
+     
+    if (deck_id !== undefined) {
+      const selected = decks.find(deck => deck.id === Number(deck_id));
+
+      if (selected) {
+        const deck = selected.cards.map(
+          card => state.cardState.cards.find(c => c.id === card) || null);
+
+        setData({
+          active: deck as Card[],
+          name: selected.name,
+          energy: selected.energies.length > 0,
+          decks
+        })
+
+        Object.keys(element).forEach((key: any) => {
+          if (selected.energies?.includes(key)) {
+            (element as any)[key] = true;
+          }
+        });
+      }
+    } else {
+      setData({
+        active: Array(20).fill(null),
+        name: '',
+        energy: false,
+        decks
+      })
+    }
+  }, [state.cardState.cards]);
+
+  useEffect(() => {
+    const sub = DataRxjs.getData<number[]>("favorites")
+    .subscribe((res) => {
+      setFavorites(state.cardState.cards
+        .filter(card => res?.includes(card.id))
+        .map(card => card.id)
+      );
+    });
+  
+    return () => sub.unsubscribe();
+  }, [state.cardState.cards]);
+
+  useEffect(() => {
+    const sub = combineLatest([
+      FilterRxjs.getFilter<FilterSearch>('decks'),
+      SortRxjs.getSortActive('decks')
+    ])
+     .subscribe(([filters, sort]) => {
+        const filterCards = filterOrSortCards('filter', state.cardState.cards, favorites, filters, sort);
+        const sorted = filterOrSortCards('sort', filterCards, favorites, null, sort);
+        setFiltered(sorted);
+        if (sort) {
+          setSortData(_ => {
+            return {
+              sort,
+              iconStyle: getSortIconStyle(sort as SortItem),
+              orderIcon: getSortOrderIcon(sort as SortItem),
+              filterIcon: getFilterIcon(filters)
+            }
+          })
+        }
+        setTimeout(() => goUp(false), 100);
+     });
+
+    return () => sub.unsubscribe();
+  }, [favorites]);
 
   const renderItem = useCallback(({item, index}: {item: Card, index: number}) => (
     <View style={[CardGridStyles.imageContainer, !item && {opacity: 0.8}]}>
       <View style={{flex: 1, backgroundColor: 'white'}}>
-        <TouchableOpacity onPress={() => handlePick(index)}
+        <TouchableOpacity onPress={handlePick}
               style={[CardGridStyles.image, {justifyContent: 'center', alignItems: 'center'}]}>
           <View>
             { item ? 
@@ -146,69 +206,36 @@ export default function CreateDeckScreen() {
                   CardGridStyles.image, 
                   {width: CARD_IMAGE_WIDTH_3}
                 ]} 
-              source={getImageLanguage116x162(lang, item?.id)}/>        
-              { state.settingsState.favorites?.includes(item.id) && 
-                <ThemedView style={[CardGridStyles.triangle]}></ThemedView>
-              }
+              source={getImageLanguage116x162(lang, item?.id)}
+              placeholder={BACKWARD_CARD}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
             }
           </View>
         </TouchableOpacity>
       </View>
     </View>
-  ), []);
+  ), [lang]);
 
-  const renderHeader = useCallback(() => (
+  const RenderHeader = useCallback(() => (
     <ThemedView style={createDeckStyles.amount}>
       <MaterialIcons name={'image'} style={{fontSize: 18, top: 1, color: Colors.light.skeleton}}></MaterialIcons>
-      <ThemedText style={{fontSize: 13}}>{deck.filter(d => Boolean(d)).length}/20</ThemedText>
+      <ThemedText style={{fontSize: 13}}>{data.active.filter(d => Boolean(d)).length}/20</ThemedText>
     </ThemedView>
-  ), [deck]);
+  ), [data.active]);
 
-  const RenderEmpty = () => {
-    const renderCardState = useCallback(() => {
-      return state.cardState.loaded ? (
-        <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
-      ) : (<SkeletonCardGrid columns={7} amount={56} width={47}/>);
-    }, [state.cardState.loaded]);
-  
-    return renderCardState();
-  };
+  const handleModal = useCallback((value: boolean, key: string) => {
+    setModalVisivility(prev => ({...prev, [key]: value}));
+    const sound = value ? 'AUDIO_MENU_OPEN' : 'AUDIO_MENU_CLOSE';
+    SoundService.play(sound);
+  }, []);
 
-  const ResetFilterButton = ({style}: any) => (
-    <TouchableOpacity onPress={() => (setDeckName(''), handleSearch(''), setNotSaved(true))} 
-                      style={[CardGridStyles.clearInput, style]}
-                      hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-      <IconSymbol name="clear" size={20} color="gray" />
-    </TouchableOpacity>
-  );
-
-  const handleEnergyModal = (value: boolean) => {
-    if (value) {
-      SoundService.play('AUDIO_MENU_OPEN');
-    } else {
-      SoundService.play('AUDIO_MENU_CLOSE');
-    }
-    setIsEnergyVisible(value);
-  }
-
-  const handleGridModal = (value: boolean) => {
-    if (value) {
-      SoundService.play('AUDIO_MENU_OPEN');
-    } else {
-      SoundService.play('AUDIO_MENU_CLOSE');
-      handleSearch('');
-    }
-    setIsGridVisible(value);
-  }
-
-  const handlePick = (index: number) => {
+  const handlePick = useCallback(() => {
     SoundService.play('CHANGE_VIEW');
-    setIsGridVisible(true);
-  }
+    setModalVisivility(prev => ({...prev, cards: true}));
+  }, []);
 
-  const handleEnergy = (key: any) => {
-    playSound();
+  const handleEnergy = useCallback((key: any) => {
+    SoundService.play('POP_PICK');
     setNotSaved(true);
 
     setElement(prev => {
@@ -217,10 +244,9 @@ export default function CreateDeckScreen() {
         [key]: !(prev as any)[key]
       };
     })
-  }
+  }, [])
 
   const handleSearch = useCallback((text: string) => {
-    setSearchCard(text);
     setFiltered(prev => {
       if(state.cardState.cards.length === 0) { return prev; }
       return state.cardState.cards.filter(card =>
@@ -229,7 +255,7 @@ export default function CreateDeckScreen() {
   }, [state.cardState.cards, lang]);
 
   async function handleSave(): Promise<void> {
-    playSound();
+    SoundService.play('POP_PICK')
     const newDeck = await convertDeckToStorage();
     
     if (!newDeck.valid) {
@@ -242,206 +268,80 @@ export default function CreateDeckScreen() {
 
   function saveDeck(deck: StorageDeck): void {
     setLoading(true);
-    Storage.addDeck(deck);
-    dispatch({type: 'ADD_DECK', value: deck});
+    DataRxjs.addDeck(deck);
 
     setTimeout(() => {
       setNotSaved(false);
       setLoading(false);
       router.canGoBack() ? router.back() : router.replace('/');
-    }, 1000);
+    }, 777);
+  }
+
+  function manageAddDeck(card: Card): void {
+    if (canAddToDeck(data.active as Card[], card)) {
+      SoundService.play('PICK_CARD_SOUND');
+      setNotSaved(true);
+      addToList(card);
+    }
+  }
+
+  function addToList(card: Card): void {
+    const sortedDeck = addCardToList(data.active as Card[], card);
+    setData(prev => ({...prev, active: sortedDeck}));
+  }
+
+  function previewItemPress(card: Card): void {
+    if (!card) { return; }
+    setData(prev => {
+      const index = prev.active.findIndex(c => c?.id === card.id);
+      if (index === -1) return prev;
+
+      const newDeck = [...prev.active];
+      newDeck[index] = null;
+      SoundService.play("DELETE_SOUND");
+      setNotSaved(true);
+      const sortedDeck = newDeck.sort(sortFunction);
+      return { ...prev, active: sortedDeck as Card[] };
+    });
   }
 
   async function convertDeckToStorage(): Promise<StorageDeck> {
-    const filteredDecks = (deck as Card[]).filter(card => Boolean(card) && card.health > 0)
-                                          .sort((a, b) => b.rarity > a.rarity ? 1 : -1);
+    const energies = getUsedEnergies(element);
+    const id = getNewID(deck_id, data.decks);
 
-    const result = filteredDecks.slice(0, filteredDecks.length > 2 ? 3 : filteredDecks.length);
-
-    if (
-      (filteredDecks.length > 2 && result.length > 1) && 
-      (result[0].name === result[1].name && result[0].id === result[1].id)) {
-      result.splice(1, 1, result[2]);
-    }
-
-    result.length = 2;
-    const popular = result.map(card => card.id);
-
-    const energies = Object.keys(element).filter(key => Boolean((element as any)[key]))
-                                         .map(key => (key as unknown as PokemonTypeENUM));
-
-    const data: StorageDeck = {
-      id: Number(deck_id) ? Number(deck_id) : 
-            (state.settingsState.decks.filter(d => Boolean(d))
-                                      .sort((a, b) => b.id > a.id ? -1 : 1)
-                                      .findLast(d => Boolean(d))?.id || 0) + 1,
-      name: deckName,
-      cards: deck.map(card => card?.id || null),
+    const item: StorageDeck = {
+      id,
+      name: data?.name || (i18n.t('deck') + ` ${id}`),
+      cards: data.active.map(card => card?.id || null) as number[],
       energies,
-      popular,
-      valid: isDeckValid(deck, energies),
+      popular: getHighlightCards(data.active as Card[]),
+      valid: isDeckValid(data?.name || '', data.active as Card[], energies),
       created: new Date().getTime()
     };
 
-    return data;
-  }
-
-  function isDeckValid(deck: Card[], energies: PokemonTypeENUM[]): boolean {
-    if (
-      deckName.length <= 0 ||
-      energies.length === 0 || 
-      deck.filter(card => Boolean(card)).length !== 20 ||
-      !deck.find(card => card.stage === CardStageENUM.BASIC) ||
-      (
-        !getUniqueEnergies(deck).some(type => energies.map(energy => Number(energy)).includes(type)) && 
-        !isPokemonNormalWithEnergy(deck)
-      )
-    ) {
-      return false;
-    }
-
-    return true;
-  }
-
-  function getUniqueEnergies(cards: Card[]): PokemonTypeENUM[] {
-    const energySet = new Set<PokemonTypeENUM>();
-  
-    cards.forEach(card => {
-      card?.attacks?.forEach(attack => {
-        attack.energy.forEach(energy => energySet.add(energy));
-      });
-    });
-  
-    return Array.from(energySet).sort();
-  }
-
-  function isPokemonNormalWithEnergy(deck: Card[]): boolean {
-    return deck.some(card => 
-        card.attacks?.some(att => 
-          att.energy.every(ener => ener === PokemonTypeENUM.NORMAL)));
+    return item;
   }
 
   const memoizedSort = useMemo(() => {
-    return <SortCardMenu isVisible={isSortVisible} 
-                         onClose={onClose}
+    return <SortCardMenu isVisible={modalVisibility.sort} 
+                         onClose={() => handleModal(false, 'sort')}
                          animatedStyle={{}}
                          filterKey={"decks"}/>
-  }, [isSortVisible, sort]);
+  }, [modalVisibility.sort]);
 
   const memoizedFilter = useMemo(() => {
-    return <FilterCardMenu isVisible={isFilterVisible} 
+    return <FilterCardMenu isVisible={modalVisibility.filter} 
                            animatedStyle={{}} 
-                           onClose={onClose}
+                           onClose={() => handleModal(false, 'filter')}
                            filterKey={"decks"}/>
-  }, [isFilterVisible]);
+  }, [modalVisibility.filter]);
 
   const memoizedEnergy = useMemo(() => {
-    return <EnergyMenu isVisible={isEnergyVisible} 
+    return <EnergyMenu isVisible={modalVisibility.energy} 
                        element={element} 
-                       handleEnergyModal={handleEnergyModal}
+                       onClose={() => handleModal(false, 'energy')}
                        handleEnergy={handleEnergy}/>
-  }, [isEnergyVisible, element]);
-
-  const keyExtractor = useCallback((item: Card) => String(item.id), []);
-
-  useEffect(() => {
-    if (!filtered || filtered.length === 0) { return; }
-    if(isSortVisible) { return; }
-    const sorted = filterOrSortCards('sort', filtered, state.filterState.filters.decks.sort.find(s => s.active));
-    setFiltered(sorted);
-    setTimeout(() => goUp(false), 100);
-  }, [isSortVisible]);
-
-  useEffect(() => {
-    if (!filtered) { return; }
-    if (!isFilterVisible && state.filterState.filters.decks.filter.areAllPropertiesNull()) {
-      handleSearch('');
-      return;
-    }
-
-    if(isFilterVisible) { return; }
-    const sorted = filterOrSortCards('filter', state.cardState.cards);
-    setFiltered(sorted);
-    setTimeout(() => goUp(false), 100);
-  }, [isFilterVisible, lang]);
-
-  useEffect(() => {
-    if (!isEnergyVisible && isElementWithEnergy(element)) {
-      setIsWithEnergy(true);
-    } else {
-      setIsWithEnergy(false);
-    }
-  }, [isEnergyVisible]);
-
-  useEffect(() => {
-    if (state.filterState.filters.decks.sort.length > 0) {
-      const active = state.filterState.filters.decks.sort.find(s => s.active);
-      setSort(active);
-    }
-  }, [state.filterState.filters.decks.sort]);
-
-  useEffect(() => {
-    if (state.cardState.cards.length > 0) {
-      setFiltered(state.cardState.cards);
-    }
-  }, [state.cardState.cards]);
-
-  useEffect(() => {
-    if (isGridVisible && !state.filterState.filters.decks.filter.areAllPropertiesNull()) {
-      const sorted = filterOrSortCards('filter', state.cardState.cards);
-      setFiltered(sorted);
-      setTimeout(() => goUp(false), 100);
-    }
-  }, [isGridVisible]); 
-
-  function filterOrSortCards(type: 'sort' | 'filter', data: Card[], sort?: SortItem | undefined): Card[] {
-    switch (type) {
-      case 'sort': {
-        if (!sort) { return data; }
-        return manageSort(sort, data);
-      }
-
-      case 'filter': return manageFilter(data);
-    }
-  }
-
-  function manageFilter(data: Card[]): Card[] {
-    const filter = state.filterState.filters.decks.filter;
-    return filterCards(filter as FilterSearch, data, state.settingsState.favorites);
-  }
-
-  function manageSort(sort: SortItem, data: Card[]): Card[] {
-    const sortField = SORT_FIELD_MAP[sort.label];
-  
-    if (!sortField) {
-      console.error(`Unsupported sorting option: ${sort.label}`);
-      return data;
-    }
-  
-    return sortCards(sortField, data, sort);
-  }
-
-  const fixFilterIcon = useCallback(() => {
-    return [
-      { fontSize: 32, position: 'relative' }, 
-      sort?.label === 'order_by_hp' || sort?.label === 'order_by_rarity' ? {top: 1} : null,
-      sort?.label === 'order_by_retreat' ? {top: -2} : null
-    ]
-  }, [sort]);
-
-  const getOrderIcon = useCallback(() => {
-    return !sort?.order ? 'arrow-upward' : 
-            sort.order === 'asc' ? 'arrow-upward' : 'arrow-downward'
-  }, [sort])
-
-  const getFilterOrderIcon = useCallback(() => {
-    return state.filterState.filters.decks.filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
-  }, [state.filterState.filters.decks.filter]);
-
-  function onClose(): void {
-    setIsSortVisible(false);
-    setIsFilterVisible(false);
-  }
+  }, [modalVisibility.energy, element]);
 
   async function goUp(sound = true): Promise<void> {
     if (sound) {
@@ -462,16 +362,10 @@ export default function CreateDeckScreen() {
     }
   }, [notSaved]);
 
-  const isElementWithEnergy = (element: any): boolean => {
-    return Object.keys(element).some(key => element[key]);
-  }
-
   async function handleReset(): Promise<void> {
     SoundService.play('AUDIO_MENU_OPEN');
     const userConfirmed = await confirm("clean_deck", "clean_deck_question");
-    if (userConfirmed) {
-      resetAll();
-    }
+    if (userConfirmed) { resetAll(); }
   }
 
   async function handleDelete(): Promise<void> {
@@ -479,8 +373,7 @@ export default function CreateDeckScreen() {
     const userConfirmed = await confirm("delete_deck", "delete_deck_question", 'delete');
     if (userConfirmed) {
       setLoading(true);
-      Storage.removeDeck(Number(deck_id));
-      dispatch({type: 'REMOVE_DECK', value: Number(deck_id)});
+      DataRxjs.removeDeck(Number(deck_id));
 
       setTimeout(() => {
         setNotSaved(false);
@@ -491,21 +384,13 @@ export default function CreateDeckScreen() {
   }
 
   const resetAll = useCallback(() => {
-    setDeckName(i18n.t('new_deck_value'));
-    setElement({
-      [PokemonTypeENUM.GRASS]: null, 
-      [PokemonTypeENUM.FIRE]: null,
-      [PokemonTypeENUM.WATER]: null,
-      [PokemonTypeENUM.ELECTRIC]: null,
-      [PokemonTypeENUM.PSYCHIC]: null,
-      [PokemonTypeENUM.FIGHT]: null,
-      [PokemonTypeENUM.DARK]: null,
-      [PokemonTypeENUM.STEEL]: null,
-      [PokemonTypeENUM.DRAGON]: null,
-      [PokemonTypeENUM.NORMAL]: null
-    });
-    setDeck(Array.from({ length: 20 }, (_, i) => (null)));
-    setIsWithEnergy(false);
+    setData(prev => ({
+      ...prev, 
+      energy: false, 
+      active: Array.from({ length: 20 }, (_, i) => (null)),
+      name: i18n.t('new_deck_value')
+    }));
+    setElement(DEFAULT_ELEMENT);
     setNotSaved(true);
   }, []);
 
@@ -515,21 +400,40 @@ export default function CreateDeckScreen() {
     index, 
   }), []);
 
-  const renderCard = useCallback(({item, index}: {item: Card, index: number}) => {
-    const arr = deck.filter(card => card?.name.es === item.name.es);
-    const full = arr.length === 2;
-    const canRemove = arr.length >= 1;
+  const processedCards = useMemo(() => {
+    return filtered.map((card) => {
+      const arr = data.active.filter(c => c?.id === card.id);
+      const names = data.active.filter(c => c?.name.es === card.name.es);
+      const same = data.active.find(d => d?.id === card.id) || null;
+      const full = arr.length === 2 || names.length === 2;
+      const canRemove = arr.length >= 1;
+  
+      return {
+        ...card,
+        meta: {
+          full,
+          canRemove,
+          same,
+          count: arr.length
+        }
+      } satisfies CardWithMeta;
+    });
+  }, [filtered, data.active]);
+
+  const renderCard = useCallback(({item, index}: {item: CardWithMeta, index: number}) => {
+    const { full, canRemove, same, count } = item.meta;
+
     return (
     <View style={{margin: 1, backgroundColor: Colors.light.skeleton, borderRadius: 8}}>
       <TouchableOpacity
-            onPress={() => createService.onAddNumber(item)}
+            onPress={() => manageAddDeck(item)}
             style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
-        <View>
+        <View style={{position: 'relative'}}>
           { full &&
             <ThemedView style={[CardGridStyles.image, offersStyles.included]}></ThemedView>
           }
-          { canRemove &&
-            <TouchableOpacity onPressIn={(e) => (e.stopPropagation(), createService.onRemoveNumber(item))} 
+          { canRemove && same && 
+            <TouchableOpacity onPress={(e) => (e.stopPropagation(), previewItemPress(item))} 
                               style={[collectionStyles.remove, {width: 18, height: 18}]}
                               hitSlop={{top: 25, bottom: 25, left: 25, right: 25}}>
                 <ThemedText style={[
@@ -538,14 +442,23 @@ export default function CreateDeckScreen() {
             </TouchableOpacity>
           }
           {
-            (full || canRemove) &&
+            (full || canRemove) && same &&
             <ThemedView style={collectionStyles.amount}>
-              <ThemedText style={collectionStyles.amountText}>{full ? '2/2' : '1/2'}</ThemedText>
+              <ThemedText style={collectionStyles.amountText}>{count + '/2'}</ThemedText>
             </ThemedView>
           }
 
+          <Image source={BACKWARD_CARD}
+                 style={[
+                  CardGridStyles.image, 
+                  {width: Platform.OS === 'web' ? 57.6 : 58},
+                  {position: 'absolute', zIndex: 10, opacity: 0},
+                  ((data.active.filter(Boolean).length === 20) && (!full && !same && !canRemove)) && {opacity: 1}
+                ]}/>
+
           <Image accessibilityLabel={item.name[lang]}
                  source={getImageLanguage69x96(lang, item.id)}
+                 placeholder={BACKWARD_CARD}
                  style={[
                   CardGridStyles.image, 
                   {width: Platform.OS === 'web' ? 57.6 : 58}
@@ -553,28 +466,29 @@ export default function CreateDeckScreen() {
         </View>
       </TouchableOpacity>
     </View>
-  )}, [deck]);
+  )}, [data.active]);
 
-  const cardListGrid = useCallback(() => (
+  const CardListGrid = useCallback(() => (
     <View style={{width: '100%', flex: 1, paddingBottom: 16}}>
-      <FlatList data={filtered}
+      <FlatList data={processedCards}
                 numColumns={numColumns}
                 ref={flatListRef}
                 contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0}]}
-                keyExtractor={keyExtractor}
+                keyExtractor={(_, index) => index.toString()}
                 initialNumToRender={25}
                 maxToRenderPerBatch={25}
-                windowSize={8}
-                removeClippedSubviews={true}
+                windowSize={10}
+                removeClippedSubviews={false}
                 getItemLayout={getItemLayout}
                 showsVerticalScrollIndicator={false}
-                ListEmptyComponent={RenderEmpty}
+                ListEmptyComponent={<ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>}
                 renderItem={renderCard}
+                keyboardDismissMode={'on-drag'}
                 ListFooterComponent={<ThemedView style={{height: 95}}></ThemedView>}
       />
     </View>
-), [filtered, deck]);
-  
+  ), [filtered, data.active]);
+
   const memoizedGridMenu = useMemo(() => {
     return (
       <>
@@ -583,62 +497,56 @@ export default function CreateDeckScreen() {
                   tint="light" 
                   experimentalBlurMethod='dimezisBlurView'/>
           <Pressable style={LayoutStyles.overlay} 
-                     onPress={() => handleGridModal(false)}>
+                     onPress={() => handleModal(false, 'cards')}>
           </Pressable>
-          <Animated.View style={[sortStyles.container, {height: '100%'}]}>
+          <View style={[sortStyles.container, {height: '100%'}]}>
             { loading && <LoadingOverlay/> }
-            <Animated.View style={[ParallaxStyles.header, { backgroundColor: "#fff", marginBottom: 0 }]}>
-              <Animated.View>
+            <View style={[ParallaxStyles.header, { backgroundColor: "#fff", marginBottom: 0 }]}>
+              <View>
                 <ThemedText type="headerTitle">{i18n.t('card_selection')}</ThemedText>
-              </Animated.View>
-            </Animated.View>
-            <PreviewList state={state} 
-                         handleSearch={handleSearch} 
-                         setNotSaved={setNotSaved} 
+              </View>
+            </View>
+            <PreviewList handleSearch={handleSearch} 
                          styles={createDeckStyles}
-                         service={createService}
-                         previousDeck={deck}/>
+                         previousDeck={data.active}
+                         onPreviewPress={previewItemPress}/>
             <ThemedView style={{marginBottom: 20 }}></ThemedView>
 
-            {cardListGrid()}
+            {CardListGrid()}
 
             { loading ? null : state.cardState.cards?.length > 0 && (
-              <>
-                <TouchableOpacity onPress={() => (setIsSortVisible(true), SoundService.play('AUDIO_MENU_OPEN'))} 
-                                  style={cardStyles.container}>
-                  <ThemedView>
-                    <MaterialIcons name={(sort?.icon as any) || 'content-paste-search'} 
-                                  color={'skyblue'} 
-                                  style={fixFilterIcon() as StyleProp<TextStyle>}> 
-                    </MaterialIcons>
-                    <MaterialIcons name={getOrderIcon()} style={cardStyles.sortIcon}></MaterialIcons>
-                  </ThemedView>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => (setIsFilterVisible(true), SoundService.play('AUDIO_MENU_OPEN'))} 
-                                  style={[cardStyles.container, {bottom: 88}]}>
-                  <ThemedView>
-                    <IconSymbol name="cat.circle" 
-                                color={'mediumaquamarine'} 
-                                style={{fontSize: 32}}>
-                    </IconSymbol>
-                    <MaterialIcons name={getFilterOrderIcon()} style={cardStyles.sortIcon}></MaterialIcons>
-                  </ThemedView>
-                </TouchableOpacity>       
-              </>
+              <SortAndFilterButtons sort={sortData?.sort}
+                                    filterIcon={sortData?.filterIcon}
+                                    filterPress={() => (handleModal(true, 'filter'), SoundService.play('AUDIO_MENU_OPEN'))}
+                                    sortPress={() => (handleModal(true, 'sort'), SoundService.play('AUDIO_MENU_OPEN'))}
+                                    sortIconStyle={sortData?.iconStyle}
+                                    sortOrderIcon={sortData?.orderIcon}
+                                    styles={cardStyles}/>
             )}
             <View style={ScreenStyles.bottomContent}>
               <Pressable style={ButtonStyles.button} 
-                                onPress={() => handleGridModal(false)} 
-                                accessibilityLabel={CLOSE_SENTENCE}>
+                                onPress={() => handleModal(false, 'cards')} 
+                                accessibilityLabel={'CLOSE_SENTENCE'}>
                 <View style={ButtonStyles.insetBorder}>
                   <IconSymbol name="clear"></IconSymbol>
                 </View>
               </Pressable>
             </View>
-          </Animated.View>
+          </View>
       </>
     )
-  }, [isGridVisible, filtered, deck]);
+  }, [modalVisibility.cards, filtered, data.active]);
+
+  const handleText = useCallback((text: string) => {
+    setData(prev => ({...prev, name: text}));
+    setNotSaved(true);
+  }, []);
+
+  const handleResetText = useCallback(() => {
+    setData(prev => ({...prev, name: ''}));
+    handleSearch('');
+    setNotSaved(true);
+  }, []);
 
   return (
     <Provider>
@@ -649,14 +557,15 @@ export default function CreateDeckScreen() {
           <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '76%', borderRadius: 8}}>
             <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
                       placeholder={i18n.t('new_deck_placeholder')}
-                      value={deckName}
-                      onChangeText={(text) => (setDeckName(text), setNotSaved(true))}
+                      value={data.name}
+                      onChangeText={(text) => handleText(text)}
                       placeholderTextColor={Colors.light.text}
-                      accessibilityLabel={SEARCH_LABEL}
+                      accessibilityLabel={'SEARCH_LABEL'}
                       inputMode='text'
                       maxLength={21}
                     />
-              {deckName.length > 0 && <ResetFilterButton style={{left: 240}}/>}
+              {data.name.length > 0 && 
+                <ResetFilterButton left={240} onPress={handleResetText}/>}
           </ThemedView>
 
           <ThemedView style={{flexDirection: 'row', gap: 8}}>
@@ -677,18 +586,18 @@ export default function CreateDeckScreen() {
             }
           </ThemedView>
         </ThemedView>
-        <TouchableOpacity style={{width: '100%'}} onPress={() => handleEnergyModal(true)}>
+        <TouchableOpacity style={{width: '100%'}} onPress={() => handleModal(true, 'energy')}>
           <ThemedView style={[detailScrollStyles.artistContainer, createDeckStyles.selectButton]}>
             <ThemedView style={[detailScrollStyles.infoValue, createDeckStyles.selectEnergy, {paddingHorizontal: 16}]}>
               <ThemedView>
                 {
-                  isWithEnergy ? 
+                  data?.energy ? 
                   <ThemedText style={[detailScrollStyles.text]}>{i18n.t('energy_selected')}</ThemedText>
                   : <ThemedText style={detailScrollStyles.text}>{i18n.t('energy_select')}</ThemedText>
                 } 
               </ThemedView>
               <ThemedView>
-              { isWithEnergy ?
+              { data?.energy ?
                   <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6}}>
                     {
                       Object.keys(element).map((key, i) => {
@@ -721,36 +630,37 @@ export default function CreateDeckScreen() {
         {
           Platform.OS !== 'web' &&
            <ThemedView style={{position: 'absolute', right: 16, top: 108, zIndex: 100}}>
-            {renderHeader()}
+            <RenderHeader></RenderHeader>
            </ThemedView>
         }
 
-        <FlatList ListHeaderComponent={Platform.OS === 'web' ? renderHeader : null} 
-                  data={deck}
+        <FlatList ListHeaderComponent={Platform.OS === 'web' ? RenderHeader : null} 
+                  data={data.active as Card[]}
                   renderItem={renderItem}
                   numColumns={3}
                   contentContainerStyle={{width: '100%', marginBottom: 65}}
                   style={{width: '100%', borderRadius: 8}}
                   stickyHeaderIndices={Platform.OS === 'web' ? [0] : []}
                   showsVerticalScrollIndicator={false}
+                  
                   keyExtractor={(item, index) => index + ''}
                   ListFooterComponent={
                     <ThemedView style={Platform.OS !== 'web' && {marginBottom: 55}}>
                       <TouchableOpacity style={[
                         homeScreenStyles.ctaButton, {marginTop: 45, marginBottom: 30},
-                        state.settingsState.decks.length >= MAX_CONTENT && {opacity: 0.5}
+                        data && data.decks?.length >= MAX_CONTENT && {opacity: 0.5}
                       ]} 
                           onPress={() => handleSave()}
-                          disabled={state.settingsState.decks.length >= MAX_CONTENT}>
+                          disabled={data && data.decks.length >= MAX_CONTENT}>
                         <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>{i18n.t('save_deck')}</ThemedText>
                       </TouchableOpacity>
                     </ThemedView>
         }/>
       </SharedScreen>
-      <Portal>{isSortVisible && memoizedSort}</Portal>
-      <Portal>{isFilterVisible && memoizedFilter}</Portal>
-      <Portal>{isEnergyVisible && memoizedEnergy}</Portal>
-      <Portal>{isGridVisible && memoizedGridMenu}</Portal>
+      <Portal>{modalVisibility.sort && memoizedSort}</Portal>
+      <Portal>{modalVisibility.filter && memoizedFilter}</Portal>
+      <Portal>{modalVisibility.energy && memoizedEnergy}</Portal>
+      <Portal>{modalVisibility.cards && memoizedGridMenu}</Portal>
     </Provider>
   )
 }
@@ -805,4 +715,3 @@ export const createDeckStyles = StyleSheet.create({
     borderRadius: 4
   }
 });
-

@@ -1,34 +1,35 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useContext } from "react";
+import { useCallback } from "react";
 import React from "react";
 import { Image } from "expo-image";
 
+import { useI18n } from "@/core/providers/LanguageProvider";
+import SoundService from "@/core/services/sounds.service";
+
 import { CollectionListMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
-import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
+import { roundPercentage } from "@/shared/definitions/utils/functions";
+import { CollectionStat } from "@/shared/definitions/interfaces/global.interfaces";
+import { CROWN_RARITY, STAR_RARITY } from "@/shared/definitions/sentences/path.sentences";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import SoundService from "@/core/services/sounds.service";
-import { CollectionStat } from "@/shared/definitions/interfaces/global.interfaces";
-import { AppContext } from "@/app/_layout";
-import { CROWN_RARITY, STAR_RARITY } from "@/shared/definitions/sentences/path.sentences";
-import { roundPercentage } from "@/shared/definitions/utils/functions";
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
+
+const MODAL_HEIGHT = 590;
 
 export default function ListMenu({
   isVisible,
   onClose,
-  animatedStyle,
   stats
 }: CollectionListMenu) {
   const {i18n} = useI18n();
   const styles = ModalStyles;
   if (!isVisible) return null;
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
@@ -36,7 +37,9 @@ export default function ListMenu({
 
   async function closeMenu(): Promise<void> {
     await playSound();
-    onClose();
+    if (onClose) {
+      onClose();
+    }
   }
 
   const renderItem = useCallback(({item}: {item: CollectionStat}) => {
@@ -101,7 +104,7 @@ export default function ListMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: 590}]}>
+      <Animated.View style={[animatedStyle, sortStyles.container, {height: MODAL_HEIGHT}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('expansions')}</ThemedText>
         </View>
@@ -123,7 +126,7 @@ export default function ListMenu({
         <View style={styles.modalFooter}>
           <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

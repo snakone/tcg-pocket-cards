@@ -2,14 +2,14 @@ import React from "react";
 import { StyleSheet, View, Platform, ScrollView, TouchableOpacity } from "react-native";
 import { Portal } from "react-native-paper";
 import { BlurView } from "expo-blur";
+import { MaterialIcons } from "@expo/vector-icons";
+
+import { useI18n } from "@/core/providers/LanguageProvider";
 
 import { ErrorType } from "@/shared/definitions/types/global.types";
-import { ThemedText } from "../ThemedText";
 import { ButtonStyles, ModalStyles, WebStyles } from "@/shared/styles/component.styles";
-import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
+import { ThemedText } from "../ThemedText";
 import { IconSymbol } from "../ui/IconSymbol";
-import { MaterialIcons } from "@expo/vector-icons";
-import { useI18n } from "../../core/providers/LanguageProvider";
 
 export interface ErrorPortalProps {
   visible: boolean,
@@ -60,7 +60,7 @@ const ErrorPortal = ({ visible, message, type = "error", close}: ErrorPortalProp
             <View style={styles.modalFooter}>
               <TouchableOpacity style={ButtonStyles.button} 
                                 onPress={close} 
-                                accessibilityLabel={CLOSE_SENTENCE}
+                                accessibilityLabel={'CLOSE_SENTENCE'}
                                 accessibilityRole="button"
                                 accessible={true}>
                 <View style={ButtonStyles.insetBorder}>

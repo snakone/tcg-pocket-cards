@@ -2,25 +2,27 @@ import { useCallback, useContext, useMemo } from "react";
 import { Platform, StyleSheet } from 'react-native';
 import { Switch } from 'react-native-paper';
 
-import { ThemedText } from "@/components/ThemedText";
-import SharedScreen from "@/components/shared/SharedScreen";
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
-import { AppContext } from "../_layout";
-import { CardGridStyles, filterStyles } from "@/shared/styles/component.styles";
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { ThemedView } from "@/components/ThemedView";
-import { Colors } from "@/shared/definitions/utils/colors";
-import { IconSymbol } from "@/components/ui/IconSymbol";
 import Storage from "@/core/storage/storage.service";
 import SoundService from "@/core/services/sounds.service";
 import { Slider } from "@miblanchard/react-native-slider";
+
+import { AppContext } from "../_layout";
 import { SettingsState } from "@/hooks/settings.reducer";
-import SelectInput from "@/components/ui/SelectInput";
+import { CardGridStyles, filterStyles } from "@/shared/styles/component.styles";
+import { Colors } from "@/shared/definitions/utils/colors";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 
+import { ThemedText } from "@/components/ThemedText";
+import SharedScreen from "@/components/shared/SharedScreen";
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import SelectInput from "@/components/ui/SelectInput";
+
 export default function SettingsScreen() {
+  console.log('Settings Screen')
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const {i18n, setLocale} = useI18n();
 

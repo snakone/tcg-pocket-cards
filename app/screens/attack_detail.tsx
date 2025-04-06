@@ -1,104 +1,105 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Image } from 'expo-image';
-import { FlatList, Platform, StyleSheet, TouchableOpacity, View } from "react-native";
-import { useRouter } from 'expo-router';
+import { FlatList, Platform, TouchableOpacity, View } from "react-native";
+import { useLocalSearchParams, useRouter } from 'expo-router';
 
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
+import { useI18n } from "@/core/providers/LanguageProvider";
+import SoundService from "@/core/services/sounds.service";
+
 import { AppContext } from "../_layout";
+import { AttackMetaData, Card } from "@/shared/definitions/interfaces/card.interfaces";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { TYPE_MAP } from "@/shared/definitions/utils/constants";
+import { getImageLanguage116x162, getSimilarAttacks, getUniqueAttacks } from "@/shared/definitions/utils/functions";
+import { CardGridStyles } from "@/shared/styles/component.styles";
+import { Colors } from "@/shared/definitions/utils/colors";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
+
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { Attack, Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { LanguageType } from "@/shared/definitions/types/global.types";
 import { detailScrollStyles } from "@/components/dedicated/detail/detail.scroll";
-import { TYPE_MAP } from "@/shared/definitions/utils/constants";
-import { getImageLanguage116x162 } from "@/shared/definitions/utils/functions";
-import { CardGridStyles } from "@/shared/styles/component.styles";
-import SkeletonCardGrid from "@/components/skeletons/SkeletonCardGrid";
-import { Colors } from "@/shared/definitions/utils/colors";
-import { renderAttackItem } from "@/components/dedicated/attacks/AttackItem";
-import SoundService from "@/core/services/sounds.service";
+import { RenderAttackItem } from "@/components/dedicated/attacks/AttackItem";
+
+interface AttackDetailData {
+  attack: AttackMetaData,
+  related: Card[],
+  similar: AttackMetaData[]
+}
 
 export default function AttackDetailScreen() {
+  console.log('Attack Detail Screen')
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
-  const [attack, setAttack] = useState<Attack>();
-  const [related, setRelated] = useState<Card[]>([]);
-  const [similar, setSimilar] = useState<Attack[]>([]);
+  if (!context) { throw new Error('NO_CONTEXT'); }
+  const { state } = context;
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
   const router = useRouter();
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const [data, setData] = useState<AttackDetailData>();
 
   useEffect(() => {
-    dispatch({type: 'SET_NAVIGATING', value: false});
-  }, []);
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
   useEffect(() => {
-    if (state.attacksState.current) {
-      setAttack(state.attacksState.current);
-    } else {
-      setTimeout(() => router.navigate('/attacks'), 150);
+    const [card_id, index] = id.split('_');
+    const cards = state.cardState.cards;
+    const card = cards.find(c => c.id === Number(card_id));
+    const active = card?.attacks?.[Number(index)] as AttackMetaData;
+  
+    if (!active) {
+      router.replace('/attacks');
       return;
     }
-    
-    const related = state.cardState.cards.filter(card => {
-      if (card.attacks && card.attacks.length > 0 && state.attacksState.current) {
-        if (card.attacks.some(att => 
-          att !== undefined && 
-          (
-            att.name.es === state.attacksState.current?.name.es && 
-            att.description?.es === state.attacksState.current.description?.es && 
-            att.damage === state.attacksState.current.damage
-          ))) {
-          return true;
-        }
-      }
-
-      return false
-    });
-
-    setRelated(related);
-  }, [state.attacksState.current, state.cardState.cards]);
-
-  const RenderEmpty = () => {
-    const renderCardState = useCallback(() => {
-      return state.cardState.loaded ? (
-        <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
-      ) : (<SkeletonCardGrid columns={7} amount={56} width={47}/>);
-    }, [state.cardState.loaded]);
   
-    return renderCardState();
-  };
+    const related = getRelatedCards(cards, active);
+    const allAttacks = getAllAttacks(cards);
+  
+    if (allAttacks.length > 0) {
+      const uniqueAttacks = getUniqueAttacks(allAttacks);
+      const similar = getSimilarAttacks(uniqueAttacks, active);
+  
+      setData({
+        attack: active,
+        related,
+        similar
+      })
+    }
+  }, [state.cardState.cards]);
 
-  useEffect(() => {
-    if (!state.attacksState.current) { return; }
-    const attack = state.attacksState.current;
-    const filtered = state.attacksState.attack_list.filter(att => {
-      if (
-        (att.energy.length === attack.energy.length && att.damage === attack.damage) &&
-        att.name.es !== attack.name.es
-      ) {
-        return true;
+  const getRelatedCards = useCallback((cards: Card[], active: AttackMetaData) => {
+    return cards.filter(c =>
+      c.attacks?.some(att =>
+        att &&
+        att.name.es === active.name.es &&
+        att.description?.es === active.description?.es &&
+        att.damage === active.damage
+      )
+    );
+  }, []);
+
+  const getAllAttacks = useCallback((cards: Card[]) => {
+    return cards.reduce<AttackMetaData[]>((acc, c) => {
+      if (c.attacks) {
+        acc.push(...c.attacks.map((att, i) => ({
+          ...att,
+          card: c.id,
+          index: i
+        })));
       }
-      return false;
-    });
-
-    setSimilar(filtered);
-  }, [state.attacksState.current, state.attacksState.attack_list]);
+      return acc;
+    }, []);
+  }, []);
 
   const goToDetailScreen = async (id: number) => {
-    dispatch({type: 'SET_NAVIGATING', value: true});
     SoundService.play('PICK_CARD_SOUND');
     router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
   };
 
-  const goToAttackDetail = (item: Attack) => {
-    dispatch({type: 'SET_NAVIGATING', value: true});
+  const goToAttackDetail = (item: AttackMetaData) => {
     SoundService.play('AUDIO_MENU_OPEN');
-    dispatch({type: 'SET_CURRENT_ATTACK', value: item});
-    router.replace(`/screens/attack_detail`);
+    router.replace(`/screens/attack_detail?id=${encodeURIComponent(`${item.card}_${item.index}`)}`);
   }
 
   const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
@@ -109,6 +110,7 @@ export default function AttackDetailScreen() {
         <View>
           <Image accessibilityLabel={item.name[lang]}
                  source={getImageLanguage116x162(lang, item.id)}
+                 placeholder={BACKWARD_CARD}
                  style={[
                   CardGridStyles.image, 
                   {width: 64.6}
@@ -118,12 +120,13 @@ export default function AttackDetailScreen() {
     </View>
   ), [lang]);
 
-  const keyExtractor = useCallback((item: Card) => String(item.id), []);
-  const keyExtractorSimilar = useCallback((item: Attack, index: number) => String(item.name) + index, []);
-
-  const renderItem = useCallback(({item}: {item: Attack}) => {
-    return renderAttackItem({ item, lang, focused: true, onPress: () => goToAttackDetail(item), disabled: state.cardState.navigating })
-  }, [lang, state.cardState.navigating]);
+  const renderItem = useCallback(({item}: {item: AttackMetaData}) => {
+    return <RenderAttackItem 
+              item={item}
+              lang={lang}
+              onPress={() => goToAttackDetail(item)}
+            />
+  }, [lang]);
 
   const getItemLayout = useCallback((_: any, index: number) => ({
     length: 52,
@@ -133,42 +136,42 @@ export default function AttackDetailScreen() {
 
   return (
     <>
-      {  attack && 
+      {  data && data.attack && 
         <SharedScreen title={'attack_name'}>
           <ThemedView style={[
               detailScrollStyles.attackContainer, 
               {width: '100%', alignItems: 'flex-start', marginBottom: 16}
             ]}>
-              <ThemedView style={detailScrollStyles.attackItem}>
-                <ThemedView style={detailScrollStyles.attackEnergy}>
-                  {
-                    attack.energy.map((energy, j) => (
-                      <Image key={j} source={TYPE_MAP[energy].image} style={detailScrollStyles.energy}></Image>
-                    ))
-                  }
-                </ThemedView>
-                <ThemedText style={detailScrollStyles.attackName}>{attack.name[lang]}</ThemedText>
+            <ThemedView style={detailScrollStyles.attackItem}>
+              <ThemedView style={detailScrollStyles.attackEnergy}>
+                {
+                  data.attack.energy.map((energy, j) => (
+                    <Image key={j} source={TYPE_MAP[energy].image} style={detailScrollStyles.energy}></Image>
+                  ))
+                }
               </ThemedView>
+              <ThemedText style={detailScrollStyles.attackName}>{data.attack.name[lang]}</ThemedText>
+            </ThemedView>
 
-              { attack.damage > 0 && <ThemedText style={detailScrollStyles.attackDamage}>{attack.damage}</ThemedText>}
+            { data.attack.damage > 0 && <ThemedText style={detailScrollStyles.attackDamage}>{data.attack.damage}</ThemedText>}
 
-              { attack.description && 
-                <ThemedView style={[{width: '100%', marginTop: 16}, Platform.OS === 'android' && {top: 16}]}>
-                  <ThemedText style={{fontSize: 12}}>{attack.description[lang]}</ThemedText>
-                </ThemedView>
-              }
+            { data.attack.description && 
+              <ThemedView style={[{width: '100%', marginTop: 16}, Platform.OS === 'android' && {top: 16}]}>
+                <ThemedText style={{fontSize: 12}}>{data.attack.description[lang]}</ThemedText>
+              </ThemedView>
+            }
           </ThemedView>
-          <ThemedView style={Platform.OS === 'android' && {height: Math.ceil((related.length) / 5) * 94}}>
-            <FlatList data={related}
+          <ThemedView style={Platform.OS === 'android' && {height: Math.ceil((data.related.length) / 5) * 94}}>
+            <FlatList data={data.related}
                       numColumns={5}
                       contentContainerStyle={[{width: '100%'}]}
-                      keyExtractor={keyExtractor}
+                      keyExtractor={(_, index) => index.toString()}
                       initialNumToRender={25}
                       maxToRenderPerBatch={35}
                       windowSize={15}
                       removeClippedSubviews={false}
                       showsVerticalScrollIndicator={false}
-                      ListEmptyComponent={RenderEmpty}
+                      ListEmptyComponent={<ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>}
                       renderItem={renderCard}
                       ListFooterComponent={<ThemedView style={{height: 16}}></ThemedView>}
             />
@@ -179,10 +182,10 @@ export default function AttackDetailScreen() {
                           marginTop: Platform.OS === 'android' ? 20 : 10,
                           marginBottom: 20}}>{i18n.t('related_attacks')}
             </ThemedText>
-            <FlatList data={similar}
+            <FlatList data={data.similar}
                       numColumns={1}
                       contentContainerStyle={[{width: '100%', paddingBottom: 68}]}
-                      keyExtractor={keyExtractorSimilar}
+                      keyExtractor={(_, index) => index.toString()}
                       getItemLayout={getItemLayout}
                       initialNumToRender={25}
                       maxToRenderPerBatch={35}

@@ -4,11 +4,12 @@ import { Portal } from "react-native-paper";
 import { BlurView } from "expo-blur";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { ErrorType } from "@/shared/definitions/types/global.types";
-import { ThemedText } from "../ThemedText";
-import { ModalStyles, WebStyles } from "@/shared/styles/component.styles";
-import { useI18n } from "../../core/providers/LanguageProvider";
+import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
+
+import { ErrorType } from "@/shared/definitions/types/global.types";
+import { ModalStyles, WebStyles } from "@/shared/styles/component.styles";
+import { ThemedText } from "../ThemedText";
 import { splashStyles } from "../ui/SplashScreen";
 
 export interface ErrorPortalProps {

@@ -1,6 +1,7 @@
+import { useI18n } from "@/core/providers/LanguageProvider";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { useI18n } from "@/core/providers/LanguageProvider";
 
 export const GraphicFooter = ({styles, child = true}: {styles: any, child?: boolean}) => {
   const {i18n} = useI18n();

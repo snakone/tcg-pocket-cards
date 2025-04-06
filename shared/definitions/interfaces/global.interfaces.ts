@@ -1,9 +1,13 @@
 import { StyleProp, TextStyle, ImageStyle } from "react-native";
+
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { Card } from "./card.interfaces";
 import { LanguageType } from "../types/global.types";
 import { CardLanguageENUM, CardRarityENUM } from "../enums/card.enums";
 import { EXPANSION } from "../enums/packs.enums";
+import { SortItem } from "./layout.interfaces";
+import { MutableRefObject } from "react";
+import { FilterSearch } from "../classes/filter.class";
 
 interface ServerResponse {
   ok: boolean;
@@ -27,6 +31,13 @@ export interface StorageDeck {
   energies: PokemonTypeENUM[];
   popular: number[];
   created: number;
+}
+
+export interface UserData {
+  favorites: number[],
+  decks: StorageDeck[],
+  trades: TradeItem[],
+  collection: UserCollectionItem[]
 }
 
 export interface UserProfile {
@@ -69,11 +80,12 @@ export interface TradeItem {
   discord: string;
   desired: (number | null)[];
   offers: (number | null)[];
-  created: number;
+  created?: number | null;
   valid: boolean;
+  rarity?: CardRarityENUM | null;
 }
 
-export interface UserCollection {
+export interface UserCollectionItem {
   id: number;
   amount: Record<CardLanguageENUM, number>
 }
@@ -112,4 +124,16 @@ export interface ShareContentProps {
   length: number,
   type: 'deck' | 'trade',
   horizontal?: boolean
+}
+
+export interface SortData {
+  sort: SortItem, 
+  iconStyle: any, 
+  orderIcon: any,
+  filterIcon: any
+}
+
+export interface MemoryGameMenuData {
+  mode: 4 | 6 | 8,
+  filter: MutableRefObject<FilterSearch>
 }

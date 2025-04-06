@@ -1,95 +1,83 @@
-import { router, useFocusEffect } from 'expo-router';
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { router } from 'expo-router';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import Animated from 'react-native-reanimated';
 import { Platform, StyleSheet } from 'react-native';
+import { KeyboardAvoidingView, SectionList, TextInput, TouchableOpacity } from 'react-native';
+
+import { useI18n } from '@/core/providers/LanguageProvider';
+import SoundService from '@/core/services/sounds.service';
+import { DataRxjs } from '@/core/rxjs/DataRxjs';
+import { map } from 'rxjs/operators';
+
+import { AppContext } from '../_layout';
+import { CardGridStyles, CreateScreenStyles } from '@/shared/styles/component.styles';
+import { Colors } from '@/shared/definitions/utils/colors';
+import { StorageDeck, TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
+import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
-import { useI18n } from '@/core/providers/LanguageProvider';
 import { ShareScreenModal } from '@/components/modals';
-import { KeyboardAvoidingView, SectionList, TextInput, TouchableOpacity } from 'react-native';
-import { NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
-import { CardGridStyles, CreateScreenStyles, TabButtonStyles } from '@/shared/styles/component.styles';
-import { IconSymbol, SvgStackSymbol, SvgTradeSymbol } from '@/components/ui/IconSymbol';
-import { Colors } from '@/shared/definitions/utils/colors';
-import { AppContext } from '../_layout';
 import { RenderDeckItem } from '@/components/dedicated/cards/DeckItem';
-import SoundService from '@/core/services/sounds.service';
-import { StorageDeck, TradeItem } from '@/shared/definitions/interfaces/global.interfaces';
-import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
 import TradeUserItem from '@/components/dedicated/trade/TradeUserItem';
+import { ResetFilterButton } from '@/components/ui/ResetFilterButton';
+import { LanguageType } from '@/shared/definitions/types/global.types';
 
 export default function ShareScreen() {
   console.log('Share Screen')
   const {i18n} = useI18n();
   const [searchQuery, setSearchQuery] = useState('');
   const [decks, setDecks] = useState<any[]>([]);
-  const [filtered, setFiltered] = useState<any[]>([]);
   const [trades, setTrades] = useState<any[]>([]);
-  const [filteredTrades, setFilteredTrades] = useState<any[]>([]);
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
-  const flatListRef = useRef<SectionList<any> | null>(null);
+  if (!context) { throw new Error('NO_CONTEXT'); }
+  const { state } = context;
+  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
 
   useEffect(() => {
-    const valid = state.settingsState.decks.filter(d => d.valid);
-    setDecks(valid);
-    setFiltered(valid);
-  }, [state.settingsState.decks]);
+    const sub = DataRxjs.getData<StorageDeck[]>('decks')
+     .pipe(map(res => res.filter(d => d.valid)))
+      .subscribe(res => setDecks(res));
+
+    return () => sub.unsubscribe();
+  }, []);
 
   useEffect(() => {
-    const valid = state.settingsState.trades.filter(t => t?.valid);
-    setTrades(valid);
-    setFilteredTrades(valid);
-  }, [state.settingsState.trades]);
+    setLang(state.settingsState.language);
+  }, [state.settingsState.language]);
 
-  useFocusEffect(useCallback(() => {
-    goUp();
+  useEffect(() => {
+    const sub = DataRxjs.getData<TradeItem[]>('trades')
+     .pipe(map(res => res.filter(d => d.valid)))
+      .subscribe(res => setTrades(res));
 
-    return (() => {
-      handleSearch('');
-    })
-  }, [decks, trades]));
+    return () => sub.unsubscribe();
+  }, []);
 
-  async function goUp(): Promise<void> {
-    flatListRef.current?.scrollToLocation({viewPosition: 0, itemIndex: 0, sectionIndex: 0, animated: false});
-  }
-
-  const ResetFilterButton = () => (
-    <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={[CardGridStyles.clearInput, {left: 326}]}
-                      hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-      <IconSymbol name="clear" size={20} color="gray" />
-    </TouchableOpacity>
-  );
+  const filteredData = useMemo(() => {
+    return {
+      decks: decks.filter(deck =>
+              deck.name.toLowerCase()?.includes(searchQuery.toLowerCase()))
+              .sort((a, b) => b?.id - a?.id),
+      trades: trades.filter(trade =>
+                trade.title.toLowerCase()?.includes(searchQuery.toLowerCase()))
+    }
+  }, [decks, trades, searchQuery]);
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
-    setFiltered(prev => {
-      if(decks.length === 0) { return prev; }
-      return decks.filter(deck =>
-        deck.name.toLowerCase()?.includes(text.toLowerCase()));
-    });
+  }, []);
 
-    setFilteredTrades(prev => {
-      if(trades.length === 0) { return prev; }
-      return trades.filter(trade =>
-        trade.title.toLowerCase()?.includes(text.toLowerCase()));
-    });
-  }, [decks]);
-
-  const renderTrade = useCallback(({item}: {item: TradeItem}) => {
+  const RenderTrade = useCallback(({item}: {item: TradeItem}) => {
     const rarity = state.cardState.cards.find(card => item?.desired.includes(card.id))?.rarity;
     return (
       <TouchableOpacity style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}} 
-                        onPress={() => openTrade(item)}
-                        disabled={state.cardState.navigating}>
-        <TradeUserItem item={item} rarity={rarity} state={state}/>
+                        onPress={() => openTrade(item)}>
+        <TradeUserItem item={item} language={lang}/>
       </TouchableOpacity>
     )
-  }, [state.settingsState.trades, state.settingsState.language, state.cardState.navigating]);
+  }, []);
 
   const renderEmpty = useCallback(() => {
     if (searchQuery.length > 0) {
@@ -110,13 +98,11 @@ export default function ShareScreen() {
   
   const openDeck = (deck: StorageDeck) => {
     SoundService.play('AUDIO_MENU_OPEN');
-    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/share_deck?deck_id=${encodeURIComponent(deck.id)}`);
   }
 
   const openTrade = (trade: TradeItem) => {
     SoundService.play('AUDIO_MENU_OPEN');
-    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/share_trade?trade_id=${encodeURIComponent(trade.id)}`);
   }
   
@@ -140,10 +126,10 @@ export default function ShareScreen() {
                             value={searchQuery}
                             onChangeText={handleSearch}
                             placeholderTextColor={Colors.light.text}
-                            accessibilityLabel={SEARCH_LABEL}
+                            accessibilityLabel={'SEARCH_LABEL'}
                             inputMode='text'
                           />
-                  {searchQuery.length > 0 && <ResetFilterButton/>}
+                  {searchQuery.length > 0 && <ResetFilterButton left={326} onPress={() => handleSearch('')}/>}
               </ThemedView>
             </Animated.View>
         </KeyboardAvoidingView>
@@ -153,34 +139,36 @@ export default function ShareScreen() {
         <ThemedView style={{flex: 1}}>
           <SectionList stickySectionHeadersEnabled
               showsVerticalScrollIndicator={false}
-              ref={flatListRef}
+              keyboardDismissMode={'on-drag'}
               SectionSeparatorComponent={(section) => <ThemedView style={{height: 16}}></ThemedView>}
               sections={[
               { title: i18n.t('decks'), 
-                data: filtered.sort((a, b) => b?.id - a?.id), 
+                data: filteredData.decks, 
                 key: 'decks',
               },
               {
                 title: i18n.t('trades'),
-                data: filteredTrades,
+                data: filteredData.trades,
                 key: 'trades'
                 },
               ]}
               renderItem={({item, section, index}) => 
                 section.key === 'decks' ? (
                   <ThemedView style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}}>
-                    {RenderDeckItem({item, state, onPress: () => openDeck(item)})}
+                    <RenderDeckItem item={item} 
+                                    language={lang} 
+                                    onPress={() => openDeck(item)}/>
                   </ThemedView>
                 ) : 
-                section.key === 'trades' ? renderTrade({item}) : null 
+                section.key === 'trades' ? <RenderTrade item={item}/> : null 
               }
               renderSectionHeader={({section}) => (
               <ThemedView style={[shareScreenStyles.sectionHeader, Platform.OS !== 'web' && {marginInline: 0}]}>
                 <ThemedText style={{fontSize: 16, fontWeight: 'bold'}}>{section.title}</ThemedText>
                 <ThemedText style={{marginBottom: 0, fontWeight: 'bold', color: 'black'}}>
                   {
-                    section.key === 'decks' ? `${filtered.length}/${decks.length}` :
-                    section.key === 'trades' ? `${filteredTrades.length}/${trades.length}` : null
+                    section.key === 'decks' ? `${filteredData.decks.length}/${decks.length}` :
+                    section.key === 'trades' ? `${filteredData.trades.length}/${trades.length}` : null
                   }
                 </ThemedText>
               </ThemedView>
@@ -191,11 +179,11 @@ export default function ShareScreen() {
               renderSectionFooter={({section}) => (
                 <>
                   {
-                    section.title === i18n.t('decks') && filtered.length === 0 && 
+                    section.title === i18n.t('decks') && filteredData.decks.length === 0 && 
                       <ThemedText style={shareScreenStyles.noFound}>{i18n.t('no_decks_found')}</ThemedText>
                   }
                   {
-                    section.title === i18n.t('trades') && filteredTrades.length === 0 && 
+                    section.title === i18n.t('trades') && filteredData.trades.length === 0 && 
                       <ThemedText style={shareScreenStyles.noFound}>{i18n.t('no_trades_found')}</ThemedText>
                   }
                 </>

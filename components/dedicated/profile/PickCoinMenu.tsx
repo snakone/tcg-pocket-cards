@@ -1,38 +1,37 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { Image } from "expo-image";
 
-import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
+import Storage from "@/core/storage/storage.service";
+import SoundService from "@/core/services/sounds.service";
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
-import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
+import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
+import { COIN_LIST } from "@/shared/definitions/utils/constants";
+import { AvatarIcon } from "@/shared/definitions/interfaces/global.interfaces";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import SoundService from "@/core/services/sounds.service";
-import { COIN_LIST } from "@/shared/definitions/utils/constants";
-import { AvatarIcon } from "@/shared/definitions/interfaces/global.interfaces";
-import Storage from "@/core/storage/storage.service";
 import { splashStyles } from "@/components/ui/SplashScreen";
-import { AppContext } from "@/app/_layout";
+
+const MODAL_HEIGHT = 605;
 
 export default function PickCoinMenu({
   isVisible,
-  onClose,
-  animatedStyle,
+  onClose
 }: TabMenu) {
   const {i18n} = useI18n();
   const styles = ModalStyles;
-  if (!isVisible) return null;
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
   const [selected, setSelected] = useState<string>('');
   const [original, setOriginal] = useState('');
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
@@ -40,7 +39,7 @@ export default function PickCoinMenu({
 
   async function closeMenu(): Promise<void> {
     await playSound();
-    onClose();
+    onClose?.();
   }
 
   const handleClick = useCallback((value: string) => {
@@ -53,8 +52,6 @@ export default function PickCoinMenu({
 
   function handleSave(): void {
     Storage.set('coin', selected);
-    const settings = {...state.settingsState, coin: selected};
-    dispatch({type: 'SET_SETTINGS', value: settings});
     closeMenu();
   }
 
@@ -70,7 +67,10 @@ export default function PickCoinMenu({
 
   const renderItem = ({ item } : {item: AvatarIcon}) => (
     <TouchableOpacity onPress={() => handleClick(item.value)}>
-      <ThemedView style={[pickCoinStyles.coinCircle, selected === item.value && {backgroundColor: 'slategray'}]}>
+      <ThemedView style={[
+        pickCoinStyles.coinCircle, 
+        selected === item.value && {backgroundColor: 'slategray'}
+      ]}>
         <Image source={item.icon} style={pickCoinStyles.coin}/>
         {
           selected === item.value && 
@@ -90,7 +90,7 @@ export default function PickCoinMenu({
               tint="light" 
               experimentalBlurMethod='dimezisBlurView'/>
       <Pressable style={LayoutStyles.overlay} 
-                 onPress={() => closeMenu()}>
+                 onPress={closeMenu}>
       </Pressable>
       <Animated.View style={[animatedStyle, sortStyles.container, {height: 605}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
@@ -106,7 +106,7 @@ export default function PickCoinMenu({
                       contentContainerStyle={{paddingBottom: 96}}
                     />
             <ThemedView style={{alignItems: 'center', position: 'absolute', bottom: 30}}>
-              <TouchableOpacity onPress={() => handleSave()}
+              <TouchableOpacity onPress={handleSave}
                                 disabled={selected === original || selected === ''}  
                                 style={[
                                   splashStyles.button,
@@ -121,8 +121,8 @@ export default function PickCoinMenu({
         </ThemedView>
         <View style={styles.modalFooter}>
           <Pressable style={ButtonStyles.button} 
-                            onPress={() => closeMenu()} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            onPress={closeMenu} 
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

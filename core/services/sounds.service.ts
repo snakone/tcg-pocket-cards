@@ -8,7 +8,10 @@ import {
   PICK_CARD_SOUND, 
   POP_PICK,
   SCALE,
-  SPLASH_MUSIC
+  SPLASH_MUSIC,
+  FLIP_CARD,
+  FLIP_CARD_REVERSE,
+  SUCCESS_SOUND
 } from '@/shared/definitions/sentences/path.sentences';
 
 export const Sounds: {[key: string]: AVPlaybackSource} = {
@@ -19,7 +22,10 @@ export const Sounds: {[key: string]: AVPlaybackSource} = {
   POP_PICK,
   SCALE,
   SPLASH_MUSIC,
-  DELETE_SOUND
+  DELETE_SOUND,
+  FLIP_CARD,
+  FLIP_CARD_REVERSE,
+  SUCCESS_SOUND
 };
 
 export class SoundService {

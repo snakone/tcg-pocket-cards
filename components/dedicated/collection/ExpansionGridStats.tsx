@@ -1,13 +1,19 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 import { Image } from 'expo-image';
 import { useRouter } from "expo-router";
 
+import { useI18n } from "@/core/providers/LanguageProvider";
+import SoundService from "@/core/services/sounds.service";
+
 import { CardExpansionENUM, CardLanguageENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
+import { CollectionElementStat, CollectionRarityStat, CollectionStat, UserCollectionItem } from "@/shared/definitions/interfaces/global.interfaces";
 import { EXPANSION } from "@/shared/definitions/enums/packs.enums";
-import { CollectionElementStat, CollectionRarityStat, CollectionStat, UserCollection } from "@/shared/definitions/interfaces/global.interfaces";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import { StatsGrid } from "./StatsGrid";
+import { getImageLanguage116x162, roundPercentage } from "@/shared/definitions/utils/functions";
+import { STATS_EXPANSION_MAP } from "@/shared/definitions/utils/constants";
+import { TabsMenuStyles } from "@/shared/styles/component.styles";
+import { LanguageType } from "@/shared/definitions/types/global.types";
 
 import { 
   GRASS_ICON, 
@@ -26,31 +32,31 @@ import {
   RAINBOW_RARITY
 } from "@/shared/definitions/sentences/path.sentences";
 
+import { StatsGrid } from "./StatsGrid";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
-import { getImageLanguage116x162, roundPercentage } from "@/shared/definitions/utils/functions";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { STATS_EXPANSION_MAP } from "@/shared/definitions/utils/constants";
-import { TabsMenuStyles } from "@/shared/styles/component.styles";
-import { AppContext } from "@/app/_layout";
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
-import { LanguageType } from "@/shared/definitions/types/global.types";
-import SoundService from "@/core/services/sounds.service";
 
 interface CollectionGridStats {
   currentExpansion: EXPANSION;
   allCards: {[key: string]: Card[]},
-  language: CardLanguageENUM,
-  collection: UserCollection[];
+  langColl: CardLanguageENUM,
+  collection: UserCollectionItem[];
   allStats: CollectionStat[];
+  language: LanguageType;
+  cards: Card[];
 }
 
-export const ExpansionGridStats = ({currentExpansion, allCards, language, collection, allStats}: CollectionGridStats) => {
+export const ExpansionGridStats = ({
+  currentExpansion, 
+  allCards, 
+  langColl, 
+  collection, 
+  allStats,
+  language,
+  cards
+}: CollectionGridStats) => {
   const {i18n} = useI18n();
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
-  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const [lang] = useState<LanguageType>(language);
   const router = useRouter();
 
   const [waterStats, setWaterStats] = useState<CollectionElementStat>();
@@ -233,14 +239,14 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
   useEffect(() => {
     const collectionCards = new Set(
       Array.from(collection
-        .filter(coll => coll.amount[language] > 0).map(coll => coll.id))
+        .filter(coll => coll.amount[langColl] > 0).map(coll => coll.id))
     );
 
     setCurrentStat(allStats[STATS_EXPANSION_MAP[currentExpansion]])
     setElementData(collectionCards, currentExpansion);
     setRarityData(collectionCards, currentExpansion);
     getMissingCards(collectionCards, currentExpansion)
-  }, [language, currentExpansion]);
+  }, [langColl, currentExpansion]);
 
   const setElementData = useCallback((collectionCards: Set<number>, expansion: EXPANSION) => {
     DATA_ELEMENTS.forEach(data => {
@@ -269,16 +275,15 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
   }, []);
 
   const getMissingCards = useCallback((collectionCards: Set<number>, expansion: EXPANSION) => {
-    const cards = state.cardState.cards.filter(card => !collectionCards.has(card.id));
+    const data = cards.filter(card => !collectionCards.has(card.id));
     const missing = Number(expansion) === 99 ? 
-                     cards.filter(card => card.expansion === CardExpansionENUM.PROMO_A) :
-                      cards.filter(card => card.found?.includes(expansion))
+                     data.filter(card => card.expansion === CardExpansionENUM.PROMO_A) :
+                      data.filter(card => card.found?.includes(expansion))
     setMissingCards(missing.sort((b, a) => a.rarity - b.rarity).slice(0, 4).map(card => card.id));
-  }, []);
+  }, [cards]);
 
   function goToDetailScreen(id: number): void {
     SoundService.play('PICK_CARD_SOUND');
-    dispatch({type: 'SET_NAVIGATING', value: true});
     router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
   }
 
@@ -358,9 +363,10 @@ export const ExpansionGridStats = ({currentExpansion, allCards, language, collec
                 <ThemedView key={i.toString()}>
                   <TouchableOpacity onPress={() => goToDetailScreen(missingCards[i])}
                                     style={{boxShadow: '0px 4px 14px rgba(0, 0, 0, 0.3)'}}
-                                    disabled={!missingCards[i] || state.cardState.navigating}>
+                                    disabled={!missingCards[i]}>
                     <Image style={{width: 71, height: 99}}
-                              source={missingCards[i] ? getImageLanguage116x162(lang, missingCards[i]) : BACKWARD_CARD}/>
+                           source={getImageLanguage116x162(lang, missingCards[i])}
+                           placeholder={BACKWARD_CARD}/>
                   </TouchableOpacity>
                   {
                     missingCards[i] &&

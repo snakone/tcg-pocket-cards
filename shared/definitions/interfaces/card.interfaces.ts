@@ -1,7 +1,14 @@
 import { PACKS_TYPE } from "../enums/packs.enums";
-import { CardExpansionENUM, CardExpansionTypeENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageENUM } from "../enums/card.enums";
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { LanguageType } from "../types/global.types";
+
+import { 
+  CardExpansionENUM, 
+  CardExpansionTypeENUM, 
+  CardRarityENUM, 
+  CardSpecialConditionENUM, 
+  CardStageENUM 
+} from "../enums/card.enums";
 
 interface BaseCard {
   id: number,
@@ -34,12 +41,26 @@ export interface Card extends BaseCard {
   shiny: boolean;
 }
 
+export interface CardWithMeta extends Card {
+  meta: {
+    full: boolean
+    canRemove: boolean,
+    same: Card | null,
+    count: number
+  }
+}
+
 export interface Attack {
   id?: number;
   name: Record<LanguageType, string>;
   damage: number;
   energy: PokemonTypeENUM[];
   description?: Record<LanguageType, string>;
+}
+
+export interface AttackMetaData extends Attack {
+  card: number;
+  index: number;
 }
 
 interface Ability {

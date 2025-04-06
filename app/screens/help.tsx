@@ -8,7 +8,6 @@ import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
 import HelpItem from "@/components/ui/HelpItem";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { IconItemWithModal } from "@/shared/definitions/interfaces/layout.interfaces";
 import { IconSymbolName } from "@/shared/definitions/utils/switches";
@@ -35,12 +34,13 @@ import {
 } from '@/components/modals/index';
 
 export default function HelpScreen() {
+  console.log('Help Screen')
   const styles = HelpItemStyles;
   const {i18n, setLocale } = useI18n();
   const router = useRouter();
   const [currentModal, setCurrentModal] = useState<string | null>(null);
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const [disabled, setDisabled] = useState<boolean>(false);
 
@@ -61,17 +61,15 @@ export default function HelpScreen() {
     return () => {
       subImport.unsubscribe();
       subDelete.unsubscribe();
-      dispatch({type: 'SET_NAVIGATING', value: false});
     }
   }, []);
 
   async function reloadSettings(): Promise<void> {
     const settings = {...settingsInitialState};
-    if (settings !== null) {
-      SoundService.setEnabled(settings.sound);
-      setLocale(settings.language);
-      SoundService.setVolume(settings.sound_volume);
-    }
+    SoundService.setEnabled(settings.sound);
+    setLocale(settings.language);
+    SoundService.setVolume(settings.sound_volume);
+    await Storage.reload()
   }
   
 
@@ -189,7 +187,7 @@ export default function HelpScreen() {
                       <View style={[ModalStyles.modalFooter, {paddingTop: 14}, (i18n.locale === 'ja' || Platform.OS === 'android') && {paddingTop: 16}]}>
                         <Pressable style={ButtonStyles.button} 
                                           onPress={close} 
-                                          accessibilityLabel={CLOSE_SENTENCE}>
+                                          accessibilityLabel={'CLOSE_SENTENCE'}>
                           <View style={ButtonStyles.insetBorder}>
                             <IconSymbol name="clear"></IconSymbol>
                           </View>

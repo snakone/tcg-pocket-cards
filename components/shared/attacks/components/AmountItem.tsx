@@ -2,12 +2,14 @@ import { memo, MutableRefObject } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 
-import { ThemedView } from "@/components/ThemedView";
-import SelectInput from "@/components/ui/SelectInput";
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { FilterAttackSearch } from "@/shared/definitions/classes/filter_attack.class";
 import { ENERGY_AMOUNT } from "@/shared/definitions/utils/constants";
 import { filterStyles } from "@/shared/styles/component.styles";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { FilterAttackSearch } from "@/shared/definitions/classes/filter_attack.class";
+
+import { ThemedView } from "@/components/ThemedView";
+import SelectInput from "@/components/ui/SelectInput";
 
 interface AmountItemProps {
   filterObj: MutableRefObject<FilterAttackSearch>,

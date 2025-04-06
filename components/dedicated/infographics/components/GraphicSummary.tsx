@@ -1,8 +1,5 @@
 import { Image } from 'expo-image';
 
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import RainbowDivider from "../RainbowDivider";
 import { useI18n } from '@/core/providers/LanguageProvider';
 
 import { 
@@ -32,6 +29,10 @@ import {
   SHINING_REVELRY_ICON,
   RAINBOW_RARITY
 } from "@/shared/definitions/sentences/path.sentences"
+
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import RainbowDivider from "../RainbowDivider";
 
 interface GraphicSummaryProps {
   styles: any;
@@ -150,9 +151,15 @@ export const GraphicSummary = ({data, styles}: GraphicSummaryProps) => {
         {
           firstRow.map((item, index) => {
             return (
-              <ThemedView style={[{width: '25%'}, (index === firstRow.length - 1) && {width: '20%'}]} key={index.toString()}>
+              <ThemedView style={[{
+                width: '25%'}, 
+                (index === firstRow.length - 1) && {width: '20%'}
+              ]} key={index.toString()}>
                 <ThemedView style={styles.summaryRow}>
-                  <Image source={item.image} style={[styles.summaryImage, {width: item.width, height: item.height}]}></Image>
+                  <Image source={item.image} style={[
+                    styles.summaryImage, 
+                    {width: item.width, height: item.height}
+                  ]}></Image>
                   <ThemedText style={[styles.summaryText]} 
                               numberOfLines={1} 
                               ellipsizeMode="tail">{i18n.t(item.label)}
@@ -173,7 +180,10 @@ export const GraphicSummary = ({data, styles}: GraphicSummaryProps) => {
             return (
               <ThemedView style={{width: '21%'}} key={index.toString()}>
                 <ThemedView style={styles.summaryRow}>
-                  <Image source={item.image} style={[styles.summaryImage, item.width && {width: item.width}, item.height && {height: item.height}]}></Image>
+                  <Image source={item.image} style={[
+                    styles.summaryImage, item.width && {width: item.width}, 
+                    item.height && {height: item.height}
+                  ]}></Image>
                   <ThemedText style={styles.summaryText}>{i18n.t(item.label)}</ThemedText>
                   <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
                     {item.value}
@@ -191,7 +201,10 @@ export const GraphicSummary = ({data, styles}: GraphicSummaryProps) => {
             return (
               <ThemedView style={{width: '23%'}} key={index.toString()}>
                 <ThemedView style={styles.summaryRow}>
-                  <Image source={item.image} style={[styles.summaryImage, {width: item.width, height: item.height}]}></Image>
+                  <Image source={item.image} style={[
+                    styles.summaryImage, 
+                    {width: item.width, height: item.height}
+                  ]}></Image>
                   <ThemedText style={styles.summaryText}>{i18n.t(item.label)}</ThemedText>
                   <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
                     {item.value}

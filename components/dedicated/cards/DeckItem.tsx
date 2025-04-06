@@ -1,29 +1,35 @@
 import { Image } from 'expo-image';
 import { TouchableOpacity } from "react-native";
 
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
 import { StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
 import { TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { CardGridStyles, CreateScreenStyles } from "@/shared/styles/component.styles";
-import { AppState } from '@/hooks/root.reducer';
 import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
+import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
+import { LanguageType } from '@/shared/definitions/types/global.types';
 
-  export const RenderDeckItem = (
-    {item, state, onPress}: {item: StorageDeck, state: AppState, onPress: any}
-  ) => {
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+
+interface DeckItemProps {
+  item: StorageDeck, 
+  language: LanguageType, 
+  onPress: () => void
+}
+
+export const RenderDeckItem = ({item, language, onPress}: DeckItemProps) => {
     return (
       <ThemedView style={[CreateScreenStyles.deckItem,
                           {
                             borderColor: !item.valid  ? 'goldenrod' : 'transparent', 
                             borderWidth: !item.valid  ? 1 : 0
                           }]}>
-        <TouchableOpacity style={{flex: 1}} disabled={state.cardState.navigating} onPress={onPress}>
+        <TouchableOpacity style={{flex: 1}} onPress={onPress}>
           <ThemedView style={{flexDirection: 'row'}}>
             <ThemedView style={CreateScreenStyles.popularCards}>
               {
                 [0, 1].map((i) => (
-                  Boolean(item.popular[i]) ? <Image style={[
+                  <Image style={[
                     CardGridStyles.image,
                     CreateScreenStyles.popularImage, {
                       transform: [{rotate: `${10 + (i * 8)}deg`}],
@@ -31,18 +37,11 @@ import { getImageLanguage116x162 } from '@/shared/definitions/utils/functions';
                       zIndex: (1 / (i + 1) * 100),
                     }
                   ]} 
-                  source={getImageLanguage116x162(state.settingsState.language, item.popular[i])}
-                  key={i}/> :
-                  <ThemedView style={[
-                    CardGridStyles.image,
-                    CreateScreenStyles.popularImage, {
-                      transform: [{rotate: `${10 + (i * 8)}deg`}],
-                      left: i * 25, 
-                      zIndex: (1 / (i + 1) * 100),
-                      opacity: 1 - 0.1 * i,
-                      boxShadow: '5px 4px 8px rgba(0, 0, 0, 0.2)'
-                    }
-                  ]}
+                  source={
+                    item.popular[i] ? 
+                      getImageLanguage116x162(language, item.popular[i]) : 
+                        BACKWARD_CARD}
+                  placeholder={BACKWARD_CARD}
                   key={i}/>
                 ))
               }

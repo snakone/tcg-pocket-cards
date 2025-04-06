@@ -3,13 +3,14 @@ import { View, TouchableOpacity, Platform, Pressable } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { Modal as PaperModal, Portal } from 'react-native-paper';
 
+import { useI18n } from '@/core/providers/LanguageProvider';
+import SoundService from '@/core/services/sounds.service';
+
 import { HeaderWithCustomModalProps } from '@/shared/definitions/interfaces/layout.interfaces';
-import { CLOSE_MODAL, CLOSE_SENTENCE } from '@/shared/definitions/sentences/global.sentences';
 import { ButtonStyles, IconStyles, ModalStyles, ThemeTextStyles, WebStyles } from '@/shared/styles/component.styles';
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
-import { useI18n } from '../../core/providers/LanguageProvider';
-import SoundService from '@/core/services/sounds.service';
+
 
 export default function HeaderWithCustomModal({ 
   title, 
@@ -36,7 +37,7 @@ export default function HeaderWithCustomModal({
     <Animated.View style={[IconStyles.iconContainer, animatedIconStyle, {zIndex: 10}]}>
       <TouchableOpacity onPress={toggleModal}
                         hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
-                        accessibilityLabel={CLOSE_MODAL}
+                        accessibilityLabel={'CLOSE_MODAL'}
                         accessibilityRole="button"
                         accessible={true}>
         <IconSymbol name="questionmark.app.fill" style={IconStyles.icon} />
@@ -64,13 +65,16 @@ export default function HeaderWithCustomModal({
               <View style={[styles.centeredView, {flex: 1}]}>
                 <View style={styles.modalView}>
                   <View style={styles.modalHeader}>
-                    <ThemedText style={[styles.modalHeaderTitle, i18n.locale === 'ja' && {fontSize: 20}]}>{i18n.t(modalTitle)}</ThemedText>
+                    {
+                      modalTitle &&
+                      <ThemedText style={[styles.modalHeaderTitle, i18n.locale === 'ja' && {fontSize: 20}]}>{i18n.t(modalTitle)}</ThemedText>
+                    }
                   </View>
                   <View style={[styles.modalScrollView, {minHeight: modalHeight}]}>{modalContent}</View>
                   <View style={[styles.modalFooter, {paddingTop: 12}, Platform.OS === 'android' && {paddingTop: 18}]}>
                     <Pressable style={ButtonStyles.button} 
                                               onPress={toggleModal} 
-                                              accessibilityLabel={CLOSE_SENTENCE}
+                                              accessibilityLabel={'CLOSE_SENTENCE'}
                                               accessibilityRole="button"
                                               accessible={true}>
                       <View style={ButtonStyles.insetBorder}>

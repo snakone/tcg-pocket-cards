@@ -1,23 +1,22 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { Image } from "expo-image";
 
+import SoundService from "@/core/services/sounds.service";
+import { useI18n } from "@/core/providers/LanguageProvider";
 import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
+import { AvatarIcon } from "@/shared/definitions/interfaces/global.interfaces";
+import { DECK_BACKGROUNDS_70x70 } from "@/shared/definitions/utils/constants";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
-import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import SoundService from "@/core/services/sounds.service";
-import { DECK_BACKGROUNDS_70x70 } from "@/shared/definitions/utils/constants";
-import { AvatarIcon } from "@/shared/definitions/interfaces/global.interfaces";
 import { splashStyles } from "@/components/ui/SplashScreen";
-import { AppContext } from "@/app/_layout";
 
 export default function PickBackgroundMenu({
   isVisible,
@@ -35,7 +34,9 @@ export default function PickBackgroundMenu({
 
   async function closeMenu(value = false): Promise<void> {
     await playSound();
-    onClose(value ? selected : null);
+    if (onClose) {
+      onClose(value ? selected : null);
+    }
   }
 
   async function handleClick(value: AvatarIcon): Promise<void> {
@@ -104,7 +105,7 @@ export default function PickBackgroundMenu({
         <View style={styles.modalFooter}>
           <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

@@ -4,24 +4,26 @@ import { Image } from 'expo-image';
 import { FlatList, StyleSheet, View } from "react-native";
 import { Subscription } from "rxjs";
 
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
+import PocketNewsService from "@/core/services/news.service";
+import { useI18n } from "@/core/providers/LanguageProvider";
+import { useError } from "@/core/providers/ErrorProvider";
+
 import { AppContext } from "../_layout";
+import { NewsContent, PocketNews } from "@/shared/definitions/interfaces/global.interfaces";
+import { formatDate } from "@/shared/definitions/utils/functions";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
-import { NewsContent, PocketNews } from "@/shared/definitions/interfaces/global.interfaces";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import PocketNewsService from "@/core/services/news.service";
-import { useError } from "@/core/providers/ErrorProvider";
-import { formatDate } from "@/shared/definitions/utils/functions";
-import { LanguageType } from "@/shared/definitions/types/global.types";
 import { pocketNewsStyles } from "@/components/dedicated/news/NewsItem";
 
 export default function NewsDetailScreen() {
+  console.log('News Detail Screen')
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const { id } = useLocalSearchParams<{ id: string }>();
   const [loading, setLoading] = useState(true);
@@ -49,17 +51,10 @@ export default function NewsDetailScreen() {
 
   useEffect(() => {
     let sub: Subscription;
-
     !state.pocketNewsState.loaded ? sub = loadPocketNews() : setLoading(false);
 
-    return () => {
-      if (sub) {
-        sub.unsubscribe();
-      }
-      
-      dispatch({type: 'SET_NAVIGATING', value: false});
-    };
-  }, []);
+    return () => sub?.unsubscribe();
+  }, [state.pocketNewsState.loaded]);
 
   useEffect(() => {
     if (id !== undefined) {

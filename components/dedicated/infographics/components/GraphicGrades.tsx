@@ -3,15 +3,17 @@ import { DimensionValue, FlatList } from 'react-native';
 import RainbowDivider from '../RainbowDivider';
 import { useCallback } from 'react';
 
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 import { useI18n } from '@/core/providers/LanguageProvider';
+
 import { NORMAL_RARITY, STAR_RARITY, CROWN_RARITY, RAINBOW_RARITY } from '@/shared/definitions/sentences/path.sentences';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { getImageLanguage69x96 } from '@/shared/definitions/utils/functions';
 import { CardGridStyles } from '@/shared/styles/component.styles';
 import { LanguageType } from '@/shared/definitions/types/global.types';
+import { getImageLanguageForGraphic } from '@/shared/definitions/utils/functions';
 import { Colors } from '@/shared/definitions/utils/colors';
+
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 
 interface GraphicGradesProps {
   styles: any;
@@ -47,7 +49,7 @@ export const GraphicGrades = ({data, styles, language}: GraphicGradesProps) => {
           CardGridStyles.image, 
           {width: 60, borderRadius: 4, height: 82}
         ]} 
-        source={getImageLanguage69x96(language, item?.id)}/>
+        source={getImageLanguageForGraphic(item?.id)}/>
       </ThemedView>
     )
   }, []);

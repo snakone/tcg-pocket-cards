@@ -11,14 +11,12 @@ import
   withTiming 
 } from "react-native-reanimated";
 
+import React from "react";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useLocalSearchParams, useRouter } from 'expo-router/build/hooks';
 import { Image } from 'expo-image';
 import { Platform, Pressable, TouchableOpacity, View } from "react-native";
-import { useNavigation } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Subscription } from "rxjs";
-import React from "react";
 
 import { 
   Gesture,
@@ -28,38 +26,39 @@ import {
   PanGestureHandlerEventPayload, 
 } from "react-native-gesture-handler";
 
-import { ButtonStyles, cardDetailStyles, DetailStyles } from '@/shared/styles/component.styles';
-import { ThemedView } from "@/components/ThemedView";
-import { BACK_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import { AppContext } from "../_layout";
-import SoundService from "@/core/services/sounds.service";
-import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import DetailCardScroll from "@/components/dedicated/detail/detail.scroll";
-import Storage from "@/core/storage/storage.service";
 import ScrollService from "@/core/services/scroll.service";
+import SoundService from "@/core/services/sounds.service";
+import { DataRxjs } from "@/core/rxjs/DataRxjs";
+
+import { AppContext } from "../_layout";
+import { ButtonStyles, cardDetailStyles, DetailStyles } from '@/shared/styles/component.styles';
+import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { getImageLanguage } from "@/shared/definitions/utils/functions";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
+
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import DetailCardScroll from "@/components/dedicated/detail/detail.scroll";
 
 const INITIAL_INFO_HEIGHT = 100;
 const MAX_HEIGHT = 450;
 const ANDROID_INFO_HEIGHT = 220;
 const MOVING_HEIGHT = 110;
+const SCROLL_CONTENT_HEIGHT = 800;
 
 export default function DetailScreen() {
+  console.log('Detail Screen')
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
+  if (!context) { throw new Error('NO_CONTEXT'); }
+  const { state } = context;
   const scrollService = useMemo(() => new ScrollService(), []);
   const styles = DetailStyles;
   const router = useRouter();
-  const navigation = useNavigation();
-  const opacity = useSharedValue(0.5);
-  const opacityDuration = Platform.OS === 'web' ? 500 : 1000;
   const rotateX = useSharedValue(0);
   const rotateY = useSharedValue(0);
   const { id } = useLocalSearchParams<{ id: string }>();
-  const [isFavorite, setIsFavorite] = useState<boolean>(!!state.settingsState.favorites?.includes(Number(id)));
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const [isSwiping, setIsSwiping] = useState<boolean>(false);
   const [showContent, setShowContent] = useState<boolean>(true);
   const top = useSharedValue<number>(0);
@@ -78,9 +77,17 @@ export default function DetailScreen() {
   }, [state.settingsState.language]);
 
   useEffect(() => {
+    setCard(state.cardState.cards.find(card => card.id === Number(id)));
+  }, [state.cardState.loaded]);
+
+  useEffect(() => {
+    const favorites = DataRxjs.getDataSync<number[]>('favorites');
+    setIsFavorite(favorites.includes(Number(id)))
+  }, [])
+
+  useEffect(() => {
     if (Platform.OS !== 'web' || !state.cardState.loaded) return;
-    let sub: Subscription;
-    sub = scrollService.isReLatedCardScrollAtBegin$
+    const sub = scrollService.isReLatedCardScrollAtBegin$
       .subscribe(res => {
         if (!res) {
           window.removeEventListener('wheel', handleWheel);
@@ -89,11 +96,7 @@ export default function DetailScreen() {
         }
     });
     
-    return () => {
-      if (sub) {
-        sub.unsubscribe();
-      }
-    };
+    return () => sub.unsubscribe();
   }, [state.cardState.loaded]);
   
   useEffect(() => {
@@ -107,19 +110,9 @@ export default function DetailScreen() {
     };
   });
 
-  useEffect(() => {
-    setCard(state.cardState.cards.find(card => card.id === Number(id)));
-  }, [state.cardState.loaded])
-
   const playSound = async () => {
     SoundService.play('AUDIO_MENU_CLOSE');
   }
-
-  const opacityStyle = useAnimatedStyle(() => {
-    return {
-      opacity: opacity.value,
-    };
-  });
 
   const rotationStyle = useAnimatedStyle(() => {
     return {
@@ -175,22 +168,22 @@ export default function DetailScreen() {
   }
 
   function startSwipe(): void {
-    heightAndroid.value = withTiming(ANDROID_INFO_HEIGHT, { duration: 250 }, () => {
+    heightAndroid.value = withTiming(0, { duration: 250 }, () => {
       runOnJS(setIsSwiping)(true);
     });
 
     setTimeout(() => {
       setShowContent(false);
-    }, 20);
+    }, 200);
   }
 
   function stopSwipe(): void {
-    heightAndroid.value = withTiming(ANDROID_INFO_HEIGHT, { duration: 250 }, () => {
+    heightAndroid.value = withTiming(ANDROID_INFO_HEIGHT, { duration: 300 }, () => {
       runOnJS(setIsSwiping)(false)
     });
     setTimeout(() => {
       setShowContent(true);
-    }, 275);
+    }, 666);
   }
 
   function onGestureFinish() {
@@ -204,16 +197,7 @@ export default function DetailScreen() {
                           .onUpdate(onGestureUpdate)
                           .onFinalize(onGestureFinish);
 
-  useEffect(() => {
-    navigation.setOptions({ headerShown: false });
-  }, [navigation]);
-
-  useEffect(() => {
-    opacity.value = withTiming(1, { duration: opacityDuration });
-  }, []);
-
   async function goBack(): Promise<void> {
-    dispatch({type: 'SET_NAVIGATING', value: false});
     if (router.canGoBack()) {
       await playSound();
       router.back();
@@ -227,11 +211,10 @@ export default function DetailScreen() {
     setIsFavorite(prev => {
       if (!prev) {
         SoundService.play('POP_PICK');
-        dispatch({type: 'SET_FAVORITE', value});
-        Storage.setFavorite(value);
+        DataRxjs.addFavorite(value);
       } else {
-        dispatch({type: 'REMOVE_FAVORITE', value});
-        Storage.removeFavorite(value);
+        SoundService.play('AUDIO_MENU_CLOSE');
+        DataRxjs.removeFavorite(value);
       }
       return !prev;
     });
@@ -250,8 +233,7 @@ export default function DetailScreen() {
         height.value = Math.max(height.value + deltaY, INITIAL_INFO_HEIGHT);
       } else {
         if (scrollRef.current) {
-          scrollY.value = Math.min(scrollY.value + deltaY, 800); 
-          // Change depending on the Scroll content height
+          scrollY.value = Math.min(scrollY.value + deltaY, SCROLL_CONTENT_HEIGHT); 
           scrollRef.current.scrollTo({ y: scrollY.value, animated: false });
         }
       }
@@ -268,7 +250,7 @@ export default function DetailScreen() {
 
   const panGesture = Gesture.Pan()
     .onUpdate((event) => {
-      let deltaY = event.translationY < 0 ? 10 : -10;
+      let deltaY = event.translationY < 0 ? 25 : -25;
       if (isAtMaxHeight.value) {
         if (scrollYAndroid.value === 0 && deltaY < 0) {
           isAtMaxHeight.value = false;
@@ -414,21 +396,21 @@ export default function DetailScreen() {
       <Animated.View style={Platform.OS !== 'web' && topAnimatedStyle}>
         {
           Platform.OS === 'web' ? (
-            <Animated.View style={[opacityStyle, cardAnimatedStyle]}>
+            <Animated.View style={[cardAnimatedStyle]}>
               <Image style={[styles.image, cardDetailStyles.card]}
                      source={getImageLanguage(lang, Number(id))}
-                      />
+                     placeholder={BACKWARD_CARD}/>
             </Animated.View>
           ) : (<>
             <GestureDetector gesture={gesture}>
               <Animated.View style={[
-                opacityStyle,
                 rotationStyle,
                 cardDetailStyles.card,
                 cardAndroidAnimatedStyle
               ]}>
                 <Image style={[styles.image]}
                       source={getImageLanguage(lang, Number(id))}
+                      placeholder={BACKWARD_CARD}
                       contentFit={'fill'} />
               </Animated.View>
             </GestureDetector>
@@ -439,7 +421,7 @@ export default function DetailScreen() {
         <ThemedView style={styles.bottomContainer}>
           <TouchableOpacity style={ButtonStyles.button} 
                             onPress={goBack} 
-                            accessibilityLabel={BACK_SENTENCE}>
+                            accessibilityLabel={'BACK_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

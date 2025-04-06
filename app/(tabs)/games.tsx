@@ -8,7 +8,6 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import { GamesScreenModal } from '@/components/modals';
 import { BACKUP_HEIGHT } from '@/shared/definitions/utils/constants';
-import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
 import { AppContext } from '../_layout';
 import SoundService from '@/core/services/sounds.service';
 import { ThemedView } from '@/components/ThemedView';
@@ -17,10 +16,11 @@ import { CreateScreenStyles } from '@/shared/styles/component.styles';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 
 export default function GamesScreen() {
+  console.log('Games Screen')
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
+  if (!context) { throw new Error('NO_CONTEXT'); }
+  const { state } = context;
   const router = useRouter();
   const [cards, setCards] = useState<Card[]>([]);
 
@@ -33,6 +33,11 @@ export default function GamesScreen() {
     // router.push(`/screens/news_detail?id=${encodeURIComponent(id)}`);
     const foo = generateQuestion();
     console.log(foo);
+  }
+
+  function handleRoute(route?: string): void {
+    SoundService.play('CHANGE_VIEW');
+    router.push(`/screens/games/memory/memory_game`);
   }
 
   function getRandomItem<T>(array: T[]): T {
@@ -65,7 +70,6 @@ export default function GamesScreen() {
         <TouchableOpacity onPress={() => handleClick()}>
           <ThemedView style={[CreateScreenStyles.deckItem, {paddingHorizontal: 14, paddingVertical: 14}]}>
             <ThemedView style={{flexDirection: 'row', gap: 24, alignItems: 'center'}}>
-              
               <ThemedView>
                 <ThemedText type='subtitle' style={{fontSize: 18, marginBottom: 4}}>{i18n.t('random_deck_challenge')}</ThemedText>
                 <ThemedText>{i18n.t('game_challenge')}</ThemedText>    
@@ -77,7 +81,6 @@ export default function GamesScreen() {
         <TouchableOpacity>
           <ThemedView style={[CreateScreenStyles.deckItem, {paddingHorizontal: 14, paddingVertical: 14}]}>
             <ThemedView style={{flexDirection: 'row', gap: 24, alignItems: 'center'}}>
-              
               <ThemedView>
                 <ThemedText type='subtitle' style={{fontSize: 18, marginBottom: 4}}>{i18n.t('quiz_game')}</ThemedText>
                 <ThemedText>{i18n.t('quiz_game_desc')}</ThemedText>    
@@ -86,6 +89,16 @@ export default function GamesScreen() {
           </ThemedView>
         </TouchableOpacity>
 
+        <TouchableOpacity onPress={() => handleRoute()}>
+          <ThemedView style={[CreateScreenStyles.deckItem, {paddingHorizontal: 14, paddingVertical: 14}]}>
+            <ThemedView style={{flexDirection: 'row', gap: 24, alignItems: 'center'}}>
+              <ThemedView>
+                <ThemedText type='subtitle' style={{fontSize: 18, marginBottom: 4}}>{i18n.t('memory_game')}</ThemedText>
+                <ThemedText>{i18n.t('memory_game_desc')}</ThemedText>    
+              </ThemedView>
+            </ThemedView>
+          </ThemedView>
+        </TouchableOpacity>
       </ParallaxScrollView>
     </>
   );

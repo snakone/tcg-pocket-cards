@@ -7,90 +7,88 @@ import { Portal, Provider } from "react-native-paper";
 import ViewShot from "react-native-view-shot";
 import { Slider } from "@miblanchard/react-native-slider";
 
-import SharedScreen from "@/components/shared/SharedScreen";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
-import { AppContext } from "../_layout";
 import Storage from '@/core/storage/storage.service';
 import ShareService from "@/core/services/share.service";
+import SoundService from "@/core/services/sounds.service";
+import { DataRxjs } from "@/core/rxjs/DataRxjs";
+
+import { AppContext } from "../_layout";
+import { settingsStyles } from "./settings";
+import { CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 import { AvatarIcon, ShareContentProps, TradeItem, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
 import { Colors } from "@/shared/definitions/utils/colors";
-import { settingsStyles } from "./settings";
+import { DEFAULT_PROFILE } from "@/shared/definitions/utils/constants";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+
+import SharedScreen from "@/components/shared/SharedScreen";
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import SoundService from "@/core/services/sounds.service";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import PickBackgroundMenu from "@/components/dedicated/share/PickCBackgroundMenu";
 import TradeUserItem from "@/components/dedicated/trade/TradeUserItem";
 import TradeCollage from "@/components/dedicated/share/TradeCollage";
-import { CardRarityENUM } from "@/shared/definitions/enums/card.enums";
+
+interface ShareTradeData {
+  trade: TradeItem | undefined,
+  background: AvatarIcon | null,
+  quality: number,
+  profile: UserProfile
+}
 
 export default function ShareTradeScreen() {
+  console.log('Share Trade Screen');
   const {i18n} = useI18n();
   const { trade_id } = useLocalSearchParams<{ trade_id: string }>();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
-  const [trade, setTrade] = useState<TradeItem>();
+  if (!context) { throw new Error('NO_CONTEXT'); }
+  const { state } = context;
   const [loading, setLoading] = useState(false);
   const shareService = useMemo(() => new ShareService(), []);
   const ref = useRef<any>(null);
   const [isBackgroundVisible, setIsBackgroundVisible] = useState(false);
-  const [background, setBackground] = useState<AvatarIcon>();
-  const [quality, setQuality] = useState<number>(0.8);
-  const [rarity, setRarity] = useState<CardRarityENUM>();
+  const [lang] = useState<LanguageType>(state.settingsState.language);
 
-  const [profile, setProfile] = useState<UserProfile>(
-    {name: '', avatar: 'eevee', coin: 'eevee', best: null}
-  );
-
-  useEffect(() => {
-    const checkTrade = async () => {
-      if (trade_id !== undefined) {
-        const selected = state.settingsState.trades.find(trade => trade.id === Number(trade_id));
-        if (selected) {
-          setTrade(selected);
-        }
-      }
-    };
-
-    checkTrade();
-  }, [state.settingsState.trades]);
+  const [data, setData] = useState<ShareTradeData>({
+    trade: undefined,
+    background: null,
+    quality: 0.8,
+    profile: {...DEFAULT_PROFILE}
+  });
 
   useEffect(() => {
-    const cards = state.cardState.cards.filter(card => trade?.desired.includes(card.id));
-    setRarity(cards[0] && cards[0].rarity);
-  }, [state.cardState.cards, trade]);
-
-  useEffect(() => {
-    return (() => {
-      dispatch({type: 'SET_NAVIGATING', value: false});
-    });
-  }, []);
-
-  useEffect(() => {
-    const getProfile = async () => {
+    const getData = async () => {
       const profile: UserProfile = await Storage.getProfile();
-      setProfile(profile);
-    };
+      const trades = DataRxjs.getDataSync<TradeItem[]>('trades');
+      let selected: TradeItem | undefined;
 
-    getProfile();
+      if (trade_id !== undefined) {
+        selected = trades.find(trade => trade.id === Number(trade_id));
+      }
+      setData(prev => ({...prev, profile, trade: selected}));
+    };
+    getData();
   }, []);
 
-  const handleShare = () => {
+  const handleShare = useCallback(() => {
     SoundService.play('POP_PICK');
     setLoading(true);
-
+  
     const payload: ShareContentProps = {
-      ref, name: (trade?.title || 'Trade'), quality, length: 10, type: 'deck'
-    }
-    shareService.makeScreenShot(payload).then(_ => setLoading(false));
-  }
+      ref, 
+      name: data.trade?.title || 'Trade', 
+      quality: data.quality, 
+      length: 10, 
+      type: 'deck'
+    };
+  
+    shareService.makeScreenShot(payload).then(() => setLoading(false));
+  }, [ref, data.trade?.title, data.quality]);
 
   function onClose(value: AvatarIcon): void {
-    setBackground(value);
+    setData(prev => ({...prev, background: value}));
     setIsBackgroundVisible(false);
   }
 
@@ -124,40 +122,39 @@ export default function ShareTradeScreen() {
   function handleQualityChange(ev: number[]): void {
     SoundService.play('SCALE');
     const value = ev[0] / 10;
-    setQuality(value);
+    setData(prev => ({...prev, quality: value}));
   }
 
   return (
-    <Provider>
+    <>
       { loading && <LoadingOverlay/> }
       <SharedScreen title={'share_trade'} styles={{marginTop: 0, alignItems: 'inherit'}}>
         <ThemedView style={{position: 'absolute', left: -9999}} >
           {
             Platform.OS === 'web' ?
             <View ref={ref} style={{width: 'auto'}}>
-              <TradeCollage trade={trade} 
-                            background={background} 
-                            profile={profile}
-                            rarity={rarity}
+              <TradeCollage trade={data.trade} 
+                            background={data.background as AvatarIcon} 
+                            profile={data.profile}
+                            rarity={data.trade?.rarity as CardRarityENUM}
                             state={state}>
               </TradeCollage>
             </View> :
             <ViewShot ref={ref} style={{width: 'auto'}}>
-              <TradeCollage trade={trade} 
-                            background={background} 
-                            profile={profile}
-                            rarity={rarity}
+              <TradeCollage trade={data.trade} 
+                            background={data.background as AvatarIcon} 
+                            profile={data.profile}
+                            rarity={data.trade?.rarity as CardRarityENUM}
                             state={state}>
               </TradeCollage>
             </ViewShot>
           }
         </ThemedView>
         {
-          trade && <TradeUserItem item={trade} 
-                                  rarity={rarity} 
-                                  styles={shareTradeStyles.tradeItem} 
-                                  state={state}
-                                  share={true}/>
+          data.trade && <TradeUserItem item={data.trade} 
+                                       styles={shareTradeStyles.tradeItem} 
+                                       language={lang}
+                                       share={true}/>
         }
         <ScrollView showsVerticalScrollIndicator={false} style={{paddingHorizontal: 14, marginLeft: -14, marginRight: -14}}>
           <ThemedView style={shareTradeStyles.options}>
@@ -167,8 +164,8 @@ export default function ShareTradeScreen() {
                 <ThemedView style={settingsStyles.row}>
                   <ThemedText>{i18n.t('background_image')}</ThemedText>
                   {
-                    Boolean(background) && 
-                      <Image source={background?.icon} style={shareTradeStyles.coin}/>
+                    Boolean(data.background as AvatarIcon) && 
+                      <Image source={(data.background as AvatarIcon)?.icon} style={shareTradeStyles.coin}/>
                   }
                   <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
                     <MaterialIcons name={'chevron-right'} 
@@ -202,7 +199,7 @@ export default function ShareTradeScreen() {
                       thumbStyle={settingsStyles.thumb}
                       trackStyle={settingsStyles.track}
                       trackClickable={true}
-                      value={quality * 10}
+                      value={data.quality * 10}
                       onSlidingComplete={handleQualityChange}
                       trackMarks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
                       renderTrackMarkComponent={(index) => <TrackItem index={index}></TrackItem>}/>
@@ -211,16 +208,16 @@ export default function ShareTradeScreen() {
             <ThemedView style={{width: '100%'}}>
               <TouchableOpacity style={[
                                   homeScreenStyles.ctaButton, {marginTop: 16},
-                                  !trade?.valid && {opacity: 0.6}
+                                  !data.trade?.valid && {opacity: 0.6}
                                 ]} 
                                 onPress={handleShare}
-                                disabled={!trade?.valid}>
+                                disabled={!data.trade?.valid}>
                 <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>
                   {i18n.t('download')}
                 </ThemedText>
               </TouchableOpacity>
               {
-                !trade?.valid && 
+                !data.trade?.valid && 
                   <ThemedText style={{color: 'crimson', fontSize: 12, paddingLeft: 4, top: -36}}>
                     {i18n.t('invalid_cant_share')}
                   </ThemedText>
@@ -231,7 +228,7 @@ export default function ShareTradeScreen() {
 
       </SharedScreen>
       <Portal>{isBackgroundVisible && memoizedPickBackground}</Portal>
-    </Provider>
+    </>
   )
 }
 

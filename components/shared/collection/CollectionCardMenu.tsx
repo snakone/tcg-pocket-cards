@@ -1,25 +1,25 @@
 import { BlurView } from "expo-blur";
 import { Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useState, useContext, useEffect } from "react";
+import { useCallback, useState } from "react";
 import { Switch } from "react-native-paper";
 import React from "react";
-import { useRouter } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { COLLECTION_LANGUAGE_MAP, CollectionLanguageList, LANGUAGE_COLLECTION_MAP } from "@/shared/definitions/utils/constants";
+import { useI18n } from "@/core/providers/LanguageProvider";
+import SoundService from "@/core/services/sounds.service";
+
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
+import { settingsStyles } from "@/app/screens/settings";
+import { CardLanguageENUM } from "@/shared/definitions/enums/card.enums";
 import { TabMenuCollection } from "@/shared/definitions/interfaces/layout.interfaces";
-import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
+import { COLLECTION_LANGUAGE_MAP, CollectionLanguageList, LANGUAGE_COLLECTION_MAP } from "@/shared/definitions/utils/constants";
+import { Colors } from "@/shared/definitions/utils/colors";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { useI18n } from "../../../core/providers/LanguageProvider";
-import { AppContext } from "@/app/_layout";
-import SoundService from "@/core/services/sounds.service";
-import { Colors } from "@/shared/definitions/utils/colors";
-import { settingsStyles } from "@/app/screens/settings";
 import SelectInput from "@/components/ui/SelectInput";
-import { CardLanguageENUM } from "@/shared/definitions/enums/card.enums";
 
 import { 
   ButtonStyles,
@@ -31,22 +31,21 @@ import {
   sortStyles 
 } from "@/shared/styles/component.styles";
 
+const MODAL_HEIGHT = 540;
+
 export default function CollectionCardMenu({
   isVisible,
   onClose,
-  animatedStyle,
   selectedLanguage,
   onViewStats
 }: TabMenuCollection) {
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
   const {i18n} = useI18n();
   const styles = ModalStyles;
   if (!isVisible) return null;
   const [markAll, setMarkAll] = useState<boolean>(false);
   const [unmark, setUnmark] = useState<boolean>(false);
   const [language, setLanguage] = useState<CardLanguageENUM>(selectedLanguage);
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE')
@@ -54,7 +53,9 @@ export default function CollectionCardMenu({
 
   async function closeMenu(): Promise<void> {
     await playSound();
-    onClose({markAll, unmark, language});
+    if (onClose) {
+      onClose({markAll, unmark, language});
+    }
   }
 
   function handleLanguage(value: CardLanguageENUM): void {
@@ -83,7 +84,7 @@ export default function CollectionCardMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: 540}]}>
+      <Animated.View style={[animatedStyle, sortStyles.container, {height: MODAL_HEIGHT}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('menu')}</ThemedText>
         </View>
@@ -137,8 +138,7 @@ export default function CollectionCardMenu({
 
             <ThemedText style={{paddingInline: 12, marginTop: 6, fontSize: 13}}>{'* ' + i18n.t('apply_to_language')}</ThemedText>
 
-            <TouchableOpacity onPress={() => goToStats()}
-                              disabled={state.cardState.navigating}
+            <TouchableOpacity onPress={goToStats}
                               style={[
                                 homeScreenStyles.ctaButton,
                                 offersStyles.statsBtn,
@@ -155,7 +155,7 @@ export default function CollectionCardMenu({
         <View style={styles.modalFooter}>
           <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

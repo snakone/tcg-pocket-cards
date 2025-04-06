@@ -1,9 +1,10 @@
-import { ICONS_MAPPING, IconSymbolName } from '@/shared/definitions/utils/switches';
+import React from 'react';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { SymbolWeight } from 'expo-symbols';
-import React from 'react';
 import { OpaqueColorValue, StyleProp, TextStyle } from 'react-native';
 import Svg, { G, Path, Polygon, SvgProps } from 'react-native-svg';
+
+import { ICONS_MAPPING, IconSymbolName } from '@/shared/definitions/utils/switches';
 
 export function IconSymbol({
   name,
@@ -131,7 +132,7 @@ export const ClockSymbol = (props?: any) => (
   <Svg
     width={props.width || 22}
     height={props.height || 22}
-    viewBox="0 0 22 22"
+    viewBox="0 0 24 24"
     fill="none"
     stroke={props.color || '#8E8E8F'}
   >
@@ -144,17 +145,20 @@ export const ClockSymbol = (props?: any) => (
       d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
       strokeWidth="2"
     />
+    <G rotation={props.rotation} origin={[12, 12]}>
     <Path
       d="M12 7L12 12"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
+    </G>
+
     <Path
       d="M21 4L20 3"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeLinejoin="round" 
     />
   </Svg>
 );

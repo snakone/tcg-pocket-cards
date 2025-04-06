@@ -2,12 +2,13 @@ import { memo, MutableRefObject } from "react";
 import { Subject } from "rxjs";
 import { Image } from 'expo-image';
 
-import { ThemedView } from "@/components/ThemedView";
-import StateButton from "@/components/ui/StateButton";
 import { RARITY_MAP, ICON_WIDTH } from "@/shared/definitions/utils/constants";
 import { filterStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { CardRarityENUM } from "@/shared/definitions/enums/card.enums";
+
+import { ThemedView } from "@/components/ThemedView";
+import StateButton from "@/components/ui/StateButton";
 
 interface RarityItemProps {
   filterObj: MutableRefObject<FilterSearch>,

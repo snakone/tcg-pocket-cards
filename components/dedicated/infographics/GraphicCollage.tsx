@@ -2,10 +2,10 @@ import { Platform, StyleSheet, View } from "react-native";
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import ViewShot from "react-native-view-shot";
 
-import { ThemedView } from "@/components/ThemedView";
 import { useI18n } from "@/core/providers/LanguageProvider";
+import ShareService from "@/core/services/share.service";
+
 import { AppContext } from "@/app/_layout";
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { CardExpansionENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageENUM } from "@/shared/definitions/enums/card.enums";
 import { sortCards } from "@/shared/definitions/utils/functions";
 import { LanguageType } from "@/shared/definitions/types/global.types";
@@ -15,7 +15,7 @@ import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { SortItem } from "@/shared/definitions/interfaces/layout.interfaces";
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 
-import ShareService from "@/core/services/share.service";
+import { ThemedView } from "@/components/ThemedView";
 import { GraphicSummary } from "./components/GraphicSummary";
 import { GraphicExpansion } from "./components/GraphicExpansion";
 import { GraphicGrades } from "./components/GraphicGrades";
@@ -52,7 +52,7 @@ export function GraphicCollage({
 }: GraphicCollageProps) {
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state } = context;
   const [lang] = useState<LanguageType>(state.settingsState.language);
   const shareService = useMemo(() => new ShareService(), []);
@@ -106,7 +106,9 @@ export function GraphicCollage({
       }
 
       if (ref.item?.current) {
-        await shareService.makeInfoGraphic(ref.item, 'infographic-tcg-pocket-cards-' + ref.label.toLowerCase(), quality);
+        await shareService.makeInfoGraphic(
+          ref.item, 'infographic-tcg-pocket-cards-' + ref.label.toLowerCase(), quality
+        );
       }
 
       if (ref && ref.func && ref.value) {
