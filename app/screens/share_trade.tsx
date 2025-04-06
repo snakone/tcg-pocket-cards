@@ -73,7 +73,6 @@ export default function ShareTradeScreen() {
   }, []);
 
   const handleShare = useCallback(() => {
-    console.log(data.quality)
     SoundService.play('POP_PICK');
     setLoading(true);
   
@@ -127,7 +126,7 @@ export default function ShareTradeScreen() {
   }
 
   return (
-    <Provider>
+    <>
       { loading && <LoadingOverlay/> }
       <SharedScreen title={'share_trade'} styles={{marginTop: 0, alignItems: 'inherit'}}>
         <ThemedView style={{position: 'absolute', left: -9999}} >
@@ -229,7 +228,7 @@ export default function ShareTradeScreen() {
 
       </SharedScreen>
       <Portal>{isBackgroundVisible && memoizedPickBackground}</Portal>
-    </Provider>
+    </>
   )
 }
 

@@ -78,6 +78,7 @@ export const ThemeTextStyles = StyleSheet.create({
 export const ParallaxStyles = StyleSheet.create({
   container: {
     flex: 1,
+    overflow: 'visible'
   },
   header: {
     height: HEADER_HEIGHT,
@@ -433,6 +434,7 @@ export const WebStyles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
     boxShadow: '0px 0px 25px 10px rgba(0, 0, 0, .8)',
+    overflow: 'hidden'
   }
 });
 
@@ -564,7 +566,7 @@ export const filterStyles = StyleSheet.create({
     position: 'absolute', 
     width: '100%',
     bottom: 0,
-    zIndex: 100,
+    zIndex: 200,
     backgroundColor: 'white',
     borderTopLeftRadius: 40, 
     borderTopRightRadius: 40,
@@ -1007,5 +1009,39 @@ export const offersStyles = StyleSheet.create({
     justifyContent: 'center', 
     gap: 10, 
     alignItems: 'center'
+  }
+});
+
+export const cardStyles = StyleSheet.create({
+  container: {
+    position: 'absolute', 
+    right: 24, 
+    bottom: 24,
+    width: 50,
+    height: 50,
+    borderRadius: 48,
+    backgroundColor: 'white',
+    padding: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)',
+    opacity: 0.8
+  },
+  sortIcon: {
+    position: 'absolute',
+    fontSize: 16,
+    backgroundColor: 'rgba(120, 120, 120, .8)',
+    borderRadius: 20,
+    color: 'white',
+    right: -16,
+    top: 8.5
+  },
+  sortIconList: {
+    position: 'absolute',
+    fontSize: 20,
+    borderRadius: 20,
+    right: -30,
+    top: 9,
+    color: Colors.light.text,
   }
 });

@@ -14,7 +14,7 @@ import {
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { Slider } from '@miblanchard/react-native-slider';
-import { combineLatest, filter, withLatestFrom } from 'rxjs';
+import { combineLatest } from 'rxjs';
 
 import { 
   CardGridStyles,
@@ -25,7 +25,6 @@ import {
 } from '@/shared/styles/component.styles';
 
 import { DataRxjs } from '@/core/rxjs/DataRxjs';
-import { ModalRxjs } from '@/core/rxjs/ModalRxjs';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import SoundService from '@/core/services/sounds.service';
 import { FilterRxjs } from '@/core/rxjs/FilterRxjs';
@@ -34,7 +33,7 @@ import { SortRxjs } from '@/core/rxjs/SortRxjs';
 import { AppContext } from '@/app/_layout';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 import { Colors } from '@/shared/definitions/utils/colors';
-import { filterOrSortCards, getImageLanguage116x162, getImageLanguage69x96, manageSort, sortCards } from '@/shared/definitions/utils/functions';
+import { filterOrSortCards, getImageLanguage116x162, getImageLanguage69x96 } from '@/shared/definitions/utils/functions';
 import { LanguageType } from '@/shared/definitions/types/global.types';
 import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
 import { FilterSearch } from '@/shared/definitions/classes/filter.class';
@@ -52,14 +51,12 @@ interface GridCardProps {
   title: string,
   modal: JSX.Element,
   modalTitle: string
-  type?: 'default' | 'favorites',
 }
 
 export default function ImageGridWithSearch({ 
   title, 
   modal, 
   modalTitle, 
-  type = 'default'
 }: GridCardProps) {
   console.log('Card Grid!')
   const searchQuery = useRef('');
@@ -87,22 +84,14 @@ export default function ImageGridWithSearch({
 
   useEffect(() => {
     const sub = combineLatest([
-      ModalRxjs.getModal('cards'),
-      ModalRxjs.getModal('cardsSort')
+      FilterRxjs.getFilter<FilterSearch>('cards'),
+      SortRxjs.getSortActive('cards')
     ])
-    .pipe(
-      filter(_ => state.cardState.cards.length > 0 && type !== 'favorites'),
-      withLatestFrom(
-        FilterRxjs.getFilter<FilterSearch>('cards'),
-        SortRxjs.getSortActive('cards')
-      )
-    ).subscribe(([[filterOpen, sortOpen], filters, sort]) => {
-      if (!filterOpen && !sortOpen) {
-        const filterCards = filterOrSortCards('filter', state.cardState.cards, favIds, filters);
-        const sorted = filterOrSortCards('sort', filterCards, favIds, null, sort);
-        setFiltered(sorted);
-        setTimeout(() => goUp(null, false), 100);
-      }
+    .subscribe(([filters, sort]) => {
+      const filterCards = filterOrSortCards('filter', state.cardState.cards, favIds, filters);
+      const sorted = filterOrSortCards('sort', filterCards, favIds, null, sort);
+      setFiltered(sorted);
+      setTimeout(() => goUp(null, false), 100);
     });
 
     return () => sub.unsubscribe();
@@ -116,16 +105,14 @@ export default function ImageGridWithSearch({
       );
 
       setFavorites(favorites);
-      setFiltered(prev => type === 'favorites' ? favorites : prev);
     });
 
     return () => sub.unsubscribe();
   }, []);
 
   const handleSearch = useCallback((text: string) => {
-    const source = type === 'favorites' ? favorites : state.cardState.cards;
     searchQuery.current = text;
-    setFiltered((source).filter(card =>
+    setFiltered((state.cardState.cards).filter(card =>
       card.name[lang].toLowerCase()?.includes(text.toLowerCase())));
   }, [favorites, state.cardState.cards, lang]);
 
@@ -180,10 +167,10 @@ export default function ImageGridWithSearch({
 
   const sliderComponent = useMemo(() => (
     <Slider
-      maximumValue={2}
+      maximumValue={1}
       minimumValue={0}
       step={1}
-      containerStyle={{ width: '100%', left: Platform.OS === 'web' ? -44 : -48 }}
+      containerStyle={{ width: '75%', left: Platform.OS === 'web' ? -34 : -38 }}
       maximumTrackTintColor={Colors.light.skeleton}
       minimumTrackTintColor="mediumaquamarine"
       animateTransitions={true}
@@ -193,7 +180,7 @@ export default function ImageGridWithSearch({
       trackClickable={true}
       value={gridNumber.current}
       onSlidingComplete={handleColumnChange}
-      trackMarks={[0, 1, 2]}
+      trackMarks={[0, 1]}
       renderTrackMarkComponent={(i) => <TrackItem index={i} />}
     />
   ), [gridNumber.current]);
@@ -236,13 +223,16 @@ export default function ImageGridWithSearch({
 
                 <ThemedView style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && {marginRight: 2}, {width: '20%'}]}>
                   {sliderComponent}
-                  <ThemedText style={[CardGridStyles.totalCards, {left: Platform.OS === 'web' ? -32 : -36}]}>{filtered.length}</ThemedText>                    
+                  <ThemedText style={[
+                    CardGridStyles.totalCards, 
+                    {left: Platform.OS === 'web' ? -17 : -27, top: 0}]}>{filtered.length}
+                  </ThemedText>                    
                 </ThemedView>
               </View>
               <FlatList
                 data={filtered}
                 ref={flatListRef}
-                removeClippedSubviews={false}
+                removeClippedSubviews={true}
                 renderItem={renderItem}
                 keyExtractor={(_, index) => index.toString()}
                 key={numColumns}
@@ -254,7 +244,7 @@ export default function ImageGridWithSearch({
                 scrollEnabled={state.cardState.loaded}
                 initialNumToRender={25}
                 maxToRenderPerBatch={35}
-                windowSize={15}
+                windowSize={13}
                 getItemLayout={getItemLayout}
                 keyboardDismissMode={'on-drag'}
                 contentContainerStyle={[CardGridStyles.gridContainer]}

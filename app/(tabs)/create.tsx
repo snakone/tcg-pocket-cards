@@ -12,7 +12,6 @@ import { CardGridStyles, homeScreenStyles } from '@/shared/styles/component.styl
 import { LARGE_MODAL_HEIGHT, MAX_CONTENT } from '@/shared/definitions/utils/constants';
 import { StorageDeck } from '@/shared/definitions/interfaces/global.interfaces';
 import { Colors } from '@/shared/definitions/utils/colors';
-import { LanguageType } from '@/shared/definitions/types/global.types';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -88,7 +87,7 @@ export default function CreateDeckScreen() {
           borderRadius: 8,
         }}>
         <TextInput
-          style={[CardGridStyles.searchInput, { width: '100%' }]}
+          style={[CardGridStyles.searchInput, { width: 280 }]}
           placeholder={i18n.t('search_decks_placeholder')}
           value={searchQuery}
           onChangeText={setSearchQuery}

@@ -25,7 +25,8 @@ import {
   offersStyles, 
   ParallaxStyles, 
   ScreenStyles, 
-  sortStyles 
+  sortStyles,
+  cardStyles
 } from "@/shared/styles/component.styles";
 
 import { 
@@ -48,14 +49,13 @@ import {
 import { AppContext } from "../_layout";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { DEFAULT_ELEMENT, MAX_CONTENT, TYPE_MAP } from "@/shared/definitions/utils/constants";
-import { Card } from "@/shared/definitions/interfaces/card.interfaces";
+import { Card, CardWithMeta } from "@/shared/definitions/interfaces/card.interfaces";
 import { SortItem } from "@/shared/definitions/interfaces/layout.interfaces";
 import { SortData, StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
-import { cardStyles } from "../(tabs)/cards";
 import { collectionStyles } from "./collection";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
@@ -88,7 +88,7 @@ export default function CreateDeckScreen() {
   const { state } = context;
   const [filtered, setFiltered] = useState<Card[]>([]);
   const [notSaved, setNotSaved] = useState(false);
-  const flatListRef = useRef<FlatList<Card> | null>(null);
+  const flatListRef = useRef<FlatList<CardWithMeta> | null>(null);
   const router = useRouter();
   const { confirm } = useConfirmation();
   const { deck_id } = useLocalSearchParams<{ deck_id: string }>();
@@ -124,43 +124,41 @@ export default function CreateDeckScreen() {
   }, [modalVisibility.energy]);
 
   useEffect(() => {
-    const sub = DataRxjs.getData<StorageDeck[]>('decks')
-      .subscribe(res => {
-        if (deck_id !== undefined) {
-          const selected = res.find(deck => deck.id === Number(deck_id));
+    const decks = DataRxjs.getDataSync<StorageDeck[]>('decks')
+     
+    if (deck_id !== undefined) {
+      const selected = decks.find(deck => deck.id === Number(deck_id));
 
-          if (selected) {
-            const deck = selected.cards.map(
-              card => state.cardState.cards.find(c => c.id === card) || null);
-  
-            setData({
-              active: deck as Card[],
-              name: selected.name,
-              energy: selected.energies.length > 0,
-              decks: res
-            })
-  
-            Object.keys(element).forEach((key: any) => {
-              if (selected.energies?.includes(key)) {
-                (element as any)[key] = true;
-              }
-            });
+      if (selected) {
+        const deck = selected.cards.map(
+          card => state.cardState.cards.find(c => c.id === card) || null);
+
+        setData({
+          active: deck as Card[],
+          name: selected.name,
+          energy: selected.energies.length > 0,
+          decks
+        })
+
+        Object.keys(element).forEach((key: any) => {
+          if (selected.energies?.includes(key)) {
+            (element as any)[key] = true;
           }
-        } else {
-          setData({
-            active: Array(20).fill(null),
-            name: '',
-            energy: false,
-            decks: res
-          })
-        }
-    });
-
-    return () => sub.unsubscribe();
+        });
+      }
+    } else {
+      setData({
+        active: Array(20).fill(null),
+        name: '',
+        energy: false,
+        decks
+      })
+    }
   }, [state.cardState.cards]);
 
   useEffect(() => {
-    const sub = DataRxjs.getData<number[]>("favorites").subscribe((res) => {
+    const sub = DataRxjs.getData<number[]>("favorites")
+    .subscribe((res) => {
       setFavorites(state.cardState.cards
         .filter(card => res?.includes(card.id))
         .map(card => card.id)
@@ -237,7 +235,7 @@ export default function CreateDeckScreen() {
   }, []);
 
   const handleEnergy = useCallback((key: any) => {
-    SoundService.play('POP_PICK')
+    SoundService.play('POP_PICK');
     setNotSaved(true);
 
     setElement(prev => {
@@ -309,10 +307,11 @@ export default function CreateDeckScreen() {
 
   async function convertDeckToStorage(): Promise<StorageDeck> {
     const energies = getUsedEnergies(element);
+    const id = getNewID(deck_id, data.decks);
 
     const item: StorageDeck = {
-      id: getNewID(deck_id, data.decks),
-      name: data?.name || i18n.t('new_deck_value'),
+      id,
+      name: data?.name || (i18n.t('deck') + ` ${id}`),
       cards: data.active.map(card => card?.id || null) as number[],
       energies,
       popular: getHighlightCards(data.active as Card[]),
@@ -340,7 +339,7 @@ export default function CreateDeckScreen() {
   const memoizedEnergy = useMemo(() => {
     return <EnergyMenu isVisible={modalVisibility.energy} 
                        element={element} 
-                       onClose={() => (handleModal(false, 'energy'), SoundService.play('AUDIO_MENU_CLOSE'))}
+                       onClose={() => handleModal(false, 'energy')}
                        handleEnergy={handleEnergy}/>
   }, [modalVisibility.energy, element]);
 
@@ -385,8 +384,12 @@ export default function CreateDeckScreen() {
   }
 
   const resetAll = useCallback(() => {
-    setData(prev => ({...prev, name: i18n.t('new_deck_value')}));
-    setData(prev => ({...prev, energy: false, active: Array.from({ length: 20 }, (_, i) => (null))}));
+    setData(prev => ({
+      ...prev, 
+      energy: false, 
+      active: Array.from({ length: 20 }, (_, i) => (null)),
+      name: i18n.t('new_deck_value')
+    }));
     setElement(DEFAULT_ELEMENT);
     setNotSaved(true);
   }, []);
@@ -397,12 +400,29 @@ export default function CreateDeckScreen() {
     index, 
   }), []);
 
-  const renderCard = useCallback(({item, index}: {item: Card, index: number}) => {
-    const arr = data.active.filter(card => card?.name.es === item.name.es && card?.rarity === item.rarity && card.id === item.id);
-    const foo = data.active.filter(card => card?.name.es === item.name.es);
-    const same = data.active.find(d => d?.id === item.id);
-    const full = arr.length === 2 || foo.length === 2;
-    const canRemove = arr.length >= 1;
+  const processedCards = useMemo(() => {
+    return filtered.map((card) => {
+      const arr = data.active.filter(c => c?.id === card.id);
+      const names = data.active.filter(c => c?.name.es === card.name.es);
+      const same = data.active.find(d => d?.id === card.id) || null;
+      const full = arr.length === 2 || names.length === 2;
+      const canRemove = arr.length >= 1;
+  
+      return {
+        ...card,
+        meta: {
+          full,
+          canRemove,
+          same,
+          count: arr.length
+        }
+      } satisfies CardWithMeta;
+    });
+  }, [filtered, data.active]);
+
+  const renderCard = useCallback(({item, index}: {item: CardWithMeta, index: number}) => {
+    const { full, canRemove, same, count } = item.meta;
+
     return (
     <View style={{margin: 1, backgroundColor: Colors.light.skeleton, borderRadius: 8}}>
       <TouchableOpacity
@@ -424,7 +444,7 @@ export default function CreateDeckScreen() {
           {
             (full || canRemove) && same &&
             <ThemedView style={collectionStyles.amount}>
-              <ThemedText style={collectionStyles.amountText}>{arr.length + '/2'}</ThemedText>
+              <ThemedText style={collectionStyles.amountText}>{count + '/2'}</ThemedText>
             </ThemedView>
           }
 
@@ -450,7 +470,7 @@ export default function CreateDeckScreen() {
 
   const CardListGrid = useCallback(() => (
     <View style={{width: '100%', flex: 1, paddingBottom: 16}}>
-      <FlatList data={filtered}
+      <FlatList data={processedCards}
                 numColumns={numColumns}
                 ref={flatListRef}
                 contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0}]}

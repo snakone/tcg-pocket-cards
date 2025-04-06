@@ -2,7 +2,6 @@ export { AttacksScreenModal } from "@/components/modals/screens/AttacksScreenMod
 export { CardsScreenModal } from "@/components/modals/screens/CardsScreenModal";
 export { CollectionScreenModal } from "@/components/modals/screens/CollectionScreenModal";
 export { CreateScreenModal } from "@/components/modals/screens/CreateScreenModal";
-export { FavoritesScreenModal } from "@/components/modals/screens/FavoritesScreenModal";
 export { GamesScreenModal } from "@/components/modals/screens/GamesScreenModal";
 export { GraphicsScreenModal } from "@/components/modals/screens/GraphicsScreenModal";
 export { HomeScreenModal } from "@/components/modals/screens/HomeScreenModal";

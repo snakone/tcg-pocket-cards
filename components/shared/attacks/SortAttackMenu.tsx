@@ -7,26 +7,29 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { firstValueFrom } from "rxjs";
 
 import SoundService from "@/core/services/sounds.service";
-import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
 import { SortRxjs } from "@/core/rxjs/SortRxjs";
 import { useI18n } from "@/core/providers/LanguageProvider";
 
-import { cardStyles } from "@/app/(tabs)/cards";
-import { SortItem, TabMenu, TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
+import { SortItem, TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
+import { ButtonStyles, cardStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
 import { INITIAL_ATTACK_SORT_DATA } from "@/shared/definitions/utils/constants";
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 
+const MODAL_HEIGHT = 446;
+
 export default function SortAttackMenu({
-  animatedStyle,
-  filterKey
+  filterKey,
+  onClose,
+  isVisible
 }: TabMenuCards) {
   const [data, setData] = useState(INITIAL_ATTACK_SORT_DATA);
   const {i18n} = useI18n();
   const styles = ModalStyles;
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE')
@@ -36,7 +39,7 @@ export default function SortAttackMenu({
     await playSound();
     
     if (value) { SortRxjs.setSort({key: filterKey, value}); }
-    ModalRxjs.setModalVisibility({key: 'attacksSort', value: false});
+    onClose?.();
   }
 
   const toggleActive = async (id: number) => {
@@ -97,7 +100,12 @@ export default function SortAttackMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: 446}, i18n.locale === 'ja' && {height: 450}]}>
+      <Animated.View style={[
+        animatedStyle, 
+        sortStyles.container, 
+        {height: MODAL_HEIGHT}, 
+        i18n.locale === 'ja' && {height: MODAL_HEIGHT + 4}
+      ]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('order')}</ThemedText>
         </View>

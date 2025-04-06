@@ -3,7 +3,7 @@ import { FlatList, Platform, Pressable, View, StyleSheet, TouchableOpacity, Scro
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Image } from 'expo-image';
-import { Portal, Provider, Switch } from "react-native-paper";
+import { Portal, Switch } from "react-native-paper";
 import ViewShot from "react-native-view-shot";
 import { Slider } from "@miblanchard/react-native-slider";
 
@@ -23,7 +23,6 @@ import { CardGridStyles, CreateScreenStyles, filterStyles, homeScreenStyles } fr
 import { DEFAULT_ELEMENT, DEFAULT_PROFILE, TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { filterUniqueItems, getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
-import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
@@ -200,7 +199,7 @@ export default function ShareDeckScreen() {
   }
 
   return (
-    <Provider>
+    <>
       { loading && <LoadingOverlay/> }
       <SharedScreen title={'share_deck'} styles={{marginTop: 0, alignItems: 'inherit', paddingInline: 0}}>
         <ThemedView style={{position: 'absolute', left: -9999}}  >
@@ -359,7 +358,7 @@ export default function ShareDeckScreen() {
 
       </SharedScreen>
       <Portal>{isBackgroundVisible && memoizedPickBackground}</Portal>
-    </Provider>
+    </>
   )
 }
 

@@ -12,10 +12,11 @@ import { CardGridStyles, TabsMenuStyles } from "@/shared/styles/component.styles
 import { AvatarIcon, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { COIN_MAP, DECK_BACKGROUND_MAP, FRONTEND_URL, TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { LanguageType } from "@/shared/definitions/types/global.types";
-import { filterUniqueItems, getImageLanguage } from "@/shared/definitions/utils/functions";
+import { filterUniqueItems, getImageLanguage, getImageLanguageForGraphic } from "@/shared/definitions/utils/functions";
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
 const COLLAGE_WIDTH = 1920;
 
@@ -107,7 +108,8 @@ export default function DeckCollage({
                 CardGridStyles.image, 
                 {width: horizontal ? 184.1 : 372.3}
               ]} 
-            source={getImageLanguage(lang, (item?.id))}/>        
+            source={getImageLanguageForGraphic(item?.id)}
+            placeholder={BACKWARD_CARD}/>        
           </>
           }
           {ids.includes(item?.id) && 

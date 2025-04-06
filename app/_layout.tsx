@@ -4,7 +4,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { createContext, useCallback, useEffect, useMemo, useReducer, useState } from 'react';
 import { Platform } from 'react-native';
-import { Provider } from 'react-native-paper';
+import { Portal, Provider } from 'react-native-paper';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as NavigationBar from "expo-navigation-bar";
 
@@ -29,6 +29,7 @@ import BackgroundMusic from '@/components/shared/BackgroundMusic';
 import { ThemedView } from '@/components/ThemedView';
 import LoadingOverlay from '@/components/ui/LoadingOverlay';
 import { SplashScreenMemo } from '@/components/ui/SplashScreen';
+import { MenuOverlay } from '@/core/providers/MenuProvider';
 
 export const AppContext = createContext<{ 
   state: AppState, 
@@ -178,20 +179,23 @@ export default function RootLayout() {
   return (
     <Provider>
       <GestureHandlerRootView style={Platform.OS === 'web' ? WebStyles.view : { flex: 1 }}>
-        <AppContext.Provider value={contextValue}>
-          <ConfirmationProvider>
-            <ErrorProvider>
-              <I18nProvider>
-                <Stack screenOptions={{headerShown: false, animation: 'fade_from_bottom'}}>
-                  <Stack.Screen name="(tabs)" options={{ headerShown: false }}/>
-                  <Stack.Screen name="+not-found" options={{ headerShown: false }}/>
-                </Stack>
-                <StatusBar hidden={true} />
-                <BackgroundMusic state={contextValue.state} music={BACKGROUND_MUSIC}/>      
-              </I18nProvider>
-            </ErrorProvider>
-          </ConfirmationProvider>
-        </AppContext.Provider>
+        <Portal.Host>
+          <MenuOverlay></MenuOverlay>
+            <AppContext.Provider value={contextValue}>
+              <ConfirmationProvider>
+                <ErrorProvider>
+                  <I18nProvider>
+                    <Stack screenOptions={{headerShown: false, animation: 'fade_from_bottom'}}>
+                      <Stack.Screen name="(tabs)" options={{ headerShown: false }}/>
+                      <Stack.Screen name="+not-found" options={{ headerShown: false }}/>
+                    </Stack>
+                    <StatusBar hidden={true} />
+                    <BackgroundMusic state={contextValue.state} music={BACKGROUND_MUSIC}/>      
+                  </I18nProvider>
+                </ErrorProvider>
+              </ConfirmationProvider>
+            </AppContext.Provider>
+        </Portal.Host>
       </GestureHandlerRootView>
     </Provider>
   );

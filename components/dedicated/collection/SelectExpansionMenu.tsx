@@ -9,6 +9,7 @@ import { Image } from "expo-image";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
 
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
 import { ExpansionMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
 import { EXPANSION_EMBLEM_LIST } from "@/shared/definitions/utils/constants";
@@ -19,10 +20,11 @@ import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { splashStyles } from "@/components/ui/SplashScreen";
 
+const MODAL_HEIGHT = 592;
+
 export default function SelectExpansionMenu({
   isVisible,
   onClose,
-  animatedStyle,
   current
 }: ExpansionMenu) {
   const {i18n} = useI18n();
@@ -30,6 +32,7 @@ export default function SelectExpansionMenu({
   if (!isVisible) return null;
   const [selected, setSelected] = useState<ExpansionEmblem | undefined>();
   const [original, setOriginal] = useState<ExpansionEmblem>();
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   useEffect(() => {
     if (current && current.value !== undefined) {
@@ -66,8 +69,14 @@ export default function SelectExpansionMenu({
 
   const renderItem = ({ item } : {item: ExpansionEmblem}) => (
     <TouchableOpacity onPress={() => handleClick(item)}>
-      <ThemedView style={[selectExpansionStyles.coinCircle, selected?.value === item.value && {backgroundColor: 'slategray'}]}>
-        <Image source={item.icon} style={[selectExpansionStyles.coin, {backgroundColor: 'transparent', width: 80, height: 80}]}/>
+      <ThemedView style={[
+        selectExpansionStyles.coinCircle, 
+        selected?.value === item.value && {backgroundColor: 'slategray'}
+      ]}>
+        <Image source={item.icon} style={[
+          selectExpansionStyles.coin, 
+          {backgroundColor: 'transparent', width: 80, height: 80}
+        ]}/>
         {
           selected?.value === item.value && 
           <MaterialIcons name="check" 
@@ -88,7 +97,12 @@ export default function SelectExpansionMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: 592}, i18n.locale === 'ja' && {height: 596}]}>
+      <Animated.View style={[
+        animatedStyle, 
+        sortStyles.container, 
+        {height: MODAL_HEIGHT}, 
+        i18n.locale === 'ja' && {height: MODAL_HEIGHT + 4}
+      ]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_expansion')}</ThemedText>
         </View>

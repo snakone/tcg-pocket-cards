@@ -53,7 +53,7 @@ export default function NewsDetailScreen() {
     let sub: Subscription;
     !state.pocketNewsState.loaded ? sub = loadPocketNews() : setLoading(false);
 
-    return () => sub.unsubscribe();
+    return () => sub?.unsubscribe();
   }, [state.pocketNewsState.loaded]);
 
   useEffect(() => {

@@ -157,10 +157,9 @@ import { FilterAttackSearch } from "../classes/filter_attack.class";
 
 export const MENU_LIST: ItemWithRoute[] = [
   { label: 'share', icon: 'note', route: 'share' },
-  { label: 'favorites', icon: 'star', route: 'favorites' },
   { label: 'attacks', icon: 'snowboard', route: 'attacks' },
-  { label: 'infographics', icon: 'info.bubble', route: 'infographics' }
-  // { label: 'games', icon: 'poweroutlet.type.j.fill', route: 'games' },
+  { label: 'infographics', icon: 'info.bubble', route: 'infographics' },
+  { label: 'games', icon: 'poweroutlet.type.j.fill', route: 'games' },
 ];
 
 export const MENU_HELP: ItemWithRoute[] = [
@@ -169,7 +168,7 @@ export const MENU_HELP: ItemWithRoute[] = [
   { label: 'config', icon: 'washer.circle', route: 'settings' },
 ];
 
-export const APP_VERSION = '1.4.2';
+export const APP_VERSION = '1.5.0';
 export const MENU_WIDTH = 250;
 export const MENU_HEIGHT = 180 + (45 * [...MENU_LIST, ...MENU_HELP].length);
 export const PAGE_TITLE = 'TCG Pocket Cards';
@@ -183,10 +182,10 @@ export const MAX_CONTENT = 30;
 // MODALS
 export const MIN_MODAL_HEIGHT = 96;
 export const DEFAULT_MODAL_HEIGHT = 236;
-export const LARGE_MODAL_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 505;
-export const SORT_MODAL_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 640;
-export const SELECT_ENERGY_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 580;
-export const BACKUP_HEIGHT = (Platform.OS === 'web' && window.innerWidth < 550) ? 'auto' : 506;
+export const LARGE_MODAL_HEIGHT = (Platform.OS === 'web' && window?.innerWidth < 550) ? 'auto' : 505;
+export const SORT_MODAL_HEIGHT = (Platform.OS === 'web' && window?.innerWidth < 550) ? 'auto' : 640;
+export const SELECT_ENERGY_HEIGHT = (Platform.OS === 'web' && window?.innerWidth < 550) ? 'auto' : 580;
+export const BACKUP_HEIGHT = (Platform.OS === 'web' && window?.innerWidth < 550) ? 'auto' : 506;
 
 export const RIPPLE_CONFIG: PressableAndroidRippleConfig = {
   color: 'rgba(0, 0, 0, .32)', 
@@ -664,16 +663,6 @@ export const STATS_EXPANSION_MAP: any = {
   99: 8
 }
 
-export const MODAL_KEYS = [
-  "cards", 
-  "attacks", 
-  "cardsSort",
-  "attacksSort", 
-  "avatar", 
-  "coin", 
-  "best"
-] as const;
-
 export const DEFAULT_PROFILE = {
   name: '', 
   avatar: 'eevee', 
@@ -684,12 +673,12 @@ export const DEFAULT_PROFILE = {
 export const ROUTES_MAP = {
   profile: "/profile",
   share: "/share",
-  favorites: "/favorites",
   attacks: "/attacks",
   infographics: "/infographics",
   news: "/news",
   help: "/screens/help",
   settings: "/screens/settings",
+  games: "/games"
 } as const;
 
 export const DEFAULT_ELEMENT = {
@@ -716,3 +705,20 @@ export const DEFAUL_TRADE_ITEM: TradeItem = {
   title: '',
   rarity: null
 }
+
+export const MODE_MAP: any = {
+  4: "4x4",
+  6: "6x6",
+  8: "8x8"
+};
+
+export const EXPANSION_MAP_STRING: Partial<Record<EXPANSION, string>> = {
+  [EXPANSION.CHARIZARD]: 'charizard',
+  [EXPANSION.PIKACHU]: 'pikachu',
+  [EXPANSION.MEWTWO]: 'mewtwo',
+  [EXPANSION.MEW]: 'mew',
+  [EXPANSION.DIALGA]: 'dialga',
+  [EXPANSION.PALKIA]: 'palkia',
+  [EXPANSION.ARCEUS]: 'arceus',
+  [EXPANSION.SHINY]: 'shiny',
+};

@@ -3,7 +3,7 @@ import { TouchableOpacity, StyleSheet, Pressable, View, TextInput, FlatList } fr
 import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
 import { useRouter } from 'expo-router';
-import { Portal, Provider } from 'react-native-paper';
+import { Portal } from 'react-native-paper';
 import { Image } from 'expo-image';
 import { Platform } from 'react-native';
 import { combineLatest } from 'rxjs';
@@ -45,10 +45,10 @@ import {
   offersStyles, 
   CARD_IMAGE_WIDTH_5, 
   TabButtonStyles, 
-  gridHeightMap 
+  gridHeightMap, 
+  cardStyles
 } from '@/shared/styles/component.styles';
 
-import { cardStyles } from '../(tabs)/cards';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol, SvgStackSymbol } from '@/components/ui/IconSymbol';
 import FilterCardMenu from '@/components/shared/cards/FilterCardMenu';
@@ -91,7 +91,8 @@ export default function CollectionCardsScreen() {
   }, []);
 
   useEffect(() => {
-    const sub = DataRxjs.getData<number[]>("favorites").subscribe((res) => {
+    const sub = DataRxjs.getData<number[]>("favorites")
+    .subscribe((res) => {
       setFavorites(state.cardState.cards
         .filter(card => res?.includes(card.id))
         .map(card => card.id)
@@ -158,7 +159,6 @@ export default function CollectionCardsScreen() {
   const memoizedMenu = useMemo(() => {
     return <CollectionCardMenu isVisible={modalVisibility.menu} 
                                onClose={onMenuClose}
-                               animatedStyle={{}}
                                selectedLanguage={langColl}
                                onViewStats={onViewStats}/>
   }, [modalVisibility.menu, langColl]);
@@ -166,13 +166,11 @@ export default function CollectionCardsScreen() {
   const memoizedSort = useMemo(() => {
     return <SortCardMenu isVisible={modalVisibility.sort} 
                          onClose={() => handleModal('sort', false)}
-                         animatedStyle={{}}
                          filterKey={"collection"}/>
   }, [modalVisibility.sort]);
 
   const memoizedFilter = useMemo(() => {
     return <FilterCardMenu isVisible={modalVisibility.filter} 
-                           animatedStyle={{}} 
                            onClose={() => handleModal('filter', false)}
                            filterKey={"collection"}/>
   }, [modalVisibility.filter]);
@@ -193,6 +191,7 @@ export default function CollectionCardsScreen() {
   
     setCollection(allMarked);
     Storage.set('collection', allMarked);
+    DataRxjs.setData({key: 'collection', value: allMarked});
   }, [filtered, collection, langColl]);
 
   const unMarkAllCards = useCallback((language: CardLanguageENUM): void => {
@@ -203,6 +202,7 @@ export default function CollectionCardsScreen() {
       }));
   
       Storage.set('collection', update);
+      DataRxjs.setData({key: 'collection', value: update});
       return update;
     });
   }, [collection]);
@@ -232,37 +232,41 @@ export default function CollectionCardsScreen() {
     Storage.addToCollection(card.id, langColl);
   
     setCollection(prev => {
-      const existingIndex = prev.findIndex(coll => coll.id === card.id);
+      const existing = prev.find(coll => coll.id === card.id);
+      let newColl: UserCollectionItem[] = [];
   
-      if (existingIndex !== -1) {
-        return prev.map((coll, index) =>
-          index === existingIndex
-            ? { ...coll, amount: { ...coll.amount, [langColl]: (coll.amount[langColl] || 0) + 1 } }
-            : coll
-        );
+      if (existing) {
+        existing.amount[langColl]++,
+        newColl = [...prev];
       } else {
-        return [...prev, new CollectionUser(card.id, langColl)];
+        newColl = [...prev, new CollectionUser(card.id, langColl)];
       }
+
+      DataRxjs.setData({key: 'collection', value: newColl});
+      return newColl;
     });
   }, [langColl]);
 
   const removeSelected = useCallback((card: Card) => {
     SoundService.play('DELETE_SOUND');
     Storage.removeFromCollection(card.id, langColl);
+
     setCollection(prev => {
       const item = prev.find(coll => coll.id === card.id);
+      let newColl: UserCollectionItem[] = [];
 
       if (item) {
         item.amount[langColl]--;
+        newColl = [...prev];
       } 
 
       if (item && areAllAmountsZero(item)) {
-        prev = prev.filter(coll => coll.id !== card.id);
+        newColl = prev.filter(coll => coll.id !== card.id);
       }
 
-      return [...prev];
+      return newColl;
     })
-  }, [collection, langColl]);
+  }, [langColl]);
 
   const collectionMap = useMemo(() => {
     return new Map(collection.map((item) => [item.id, item]));
@@ -358,7 +362,7 @@ export default function CollectionCardsScreen() {
   }
 
   return (
-    <Provider>
+    <>
       <ParallaxScrollView title={"my_collection"} 
                           modalTitle='collection'
                           modalContent={<CollectionScreenModal></CollectionScreenModal>}
@@ -435,7 +439,7 @@ export default function CollectionCardsScreen() {
       <Portal>{modalVisibility.sort && memoizedSort}</Portal>
       <Portal>{modalVisibility.filter && memoizedFilter}</Portal>
       <Portal>{modalVisibility.menu && memoizedMenu}</Portal>
-    </Provider>
+    </>
   );
 }
 

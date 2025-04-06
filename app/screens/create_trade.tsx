@@ -70,16 +70,20 @@ export default function CreateTradeScreen() {
     return <PickDesiredMenu isVisible={isDesiredVisible} 
                             animatedStyle={{}} 
                             onClose={onDesiredClose}
-                            desired={data.desired}/>
-  }, [isDesiredVisible]);
+                            desired={data.desired}
+                            language={lang}
+                            cardsState={state.cardState}/>
+  }, [isDesiredVisible, lang]);
 
   const memoizedPickOffers = useMemo(() => {
     return <PickOffersMenu isVisible={isOffersVisible} 
                            animatedStyle={{}} 
                            onClose={onOffersClose}
                            desired={data.desired}
-                           offers={data.offers}/>
-  }, [isOffersVisible, data.offers]);
+                           offers={data.offers}
+                           language={lang}
+                          cardsState={state.cardState}/>
+  }, [isOffersVisible, data.offers, lang]);
 
   function handleTCG(value: string, index: number): void {
     setNotSaved(true);
@@ -150,11 +154,12 @@ export default function CreateTradeScreen() {
   }
 
   function convertTrade(): TradeItem {
+    const id = getNewID(trade_id, trades);
     return {
-      id: getNewID(trade_id, trades),
+      id,
       created: new Date().getTime(),
       desired: data.desired,
-      title: data.title || i18n.t('trade'),
+      title: data.title || (i18n.t('trade') + ` ${id}`),
       discord: data.discord,
       offers: data.offers,
       tcg: data.tcg,
@@ -268,7 +273,7 @@ export default function CreateTradeScreen() {
   }, [notSaved]);
 
   return (
-    <Provider>
+    <>
       { loading && <LoadingOverlay/> }
       <SharedScreen title={trade_id ? 'edit_trade' : 'create_trade'} 
                     styles={{paddingInline: 0, marginTop: 0}} customClose={goBack}>
@@ -407,7 +412,7 @@ export default function CreateTradeScreen() {
       </SharedScreen>
       <Portal>{isDesiredVisible && memoizedPickDesired}</Portal>
       <Portal>{isOffersVisible && memoizedPickOffers}</Portal>
-    </Provider>
+    </>
   )
 }
 

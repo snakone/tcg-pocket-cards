@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from "react";
 import React from "react";
 import { Image } from "expo-image";
 
-import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
 import Storage from "@/core/storage/storage.service";
@@ -34,7 +33,8 @@ const numColumns = 6;
 export default function PickBestMenu({
   cards,
   language,
-  isVisible
+  isVisible,
+  onClose
 }: TabWithCards) {
   const {i18n} = useI18n();
   const styles = ModalStyles;
@@ -46,7 +46,7 @@ export default function PickBestMenu({
 
   async function closeMenu(): Promise<void> {
     await playSound();
-    ModalRxjs.setModalVisibility({key: 'best', value: false});
+    onClose?.();
   }
 
   useEffect(() => {

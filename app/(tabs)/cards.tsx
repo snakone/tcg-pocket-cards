@@ -1,31 +1,42 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
 import React from 'react';
 import { filter } from 'rxjs';
+import { Portal } from 'react-native-paper';
 
+import SoundService from '@/core/services/sounds.service';
 import { FilterRxjs } from '@/core/rxjs/FilterRxjs';
-import { ModalRxjs } from '@/core/rxjs/ModalRxjs';
 import { SortRxjs } from '@/core/rxjs/SortRxjs';
 
 import { getFilterIcon, getSortIconStyle, getSortOrderIcon } from '@/shared/definitions/utils/functions';
 import { SortData } from '@/shared/definitions/interfaces/global.interfaces';
 import { FilterSearch } from '@/shared/definitions/classes/filter.class';
-import { Colors } from '@/shared/definitions/utils/colors';
+import { ModalType } from '@/shared/definitions/types/global.types';
+import { cardStyles } from '@/shared/styles/component.styles';
 
 import ImageGridWithSearch from '@/components/ui/CardGrid';
 import { CardsScreenModal } from '@/components/modals';
 import { SortAndFilterButtons } from '@/components/ui/FilterSortButtons';
+import FilterCardMenu from '@/components/shared/cards/FilterCardMenu';
+import SortCardMenu from '@/components/shared/cards/SortCardMenu';
+
 
 export default function CardsScreen() {
   console.log('Cards Screen')
   const [sortData, setSortData] = useState<SortData>();
 
-  function openFilter(): void {
-    ModalRxjs.setModalVisibility({key: 'cards', value: true});
+  const [modalVisibility, setModalVisivility] = useState<Partial<Record<ModalType, boolean>>>({
+    cards: false,
+    cardsSort: false,
+  });
+
+  function handleModalVisibility(key: ModalType, value: boolean): void {
+    setModalVisivility(prev => ({...prev, [key]: value}));
+    value ? SoundService.play('AUDIO_MENU_OPEN') :
+      SoundService.play('AUDIO_MENU_CLOSE');
   }
 
-  function openSort(): void {
-    ModalRxjs.setModalVisibility({key: 'cardsSort', value: true});
+  function handleClose(key: ModalType): void {
+    handleModalVisibility(key, false);
   }
 
   useEffect(() => {
@@ -65,47 +76,28 @@ export default function CardsScreen() {
 
       <SortAndFilterButtons sort={sortData?.sort}
                             filterIcon={sortData?.filterIcon}
-                            filterPress={openFilter}
-                            sortPress={openSort}
+                            filterPress={() => handleModalVisibility('cards', true)}
+                            sortPress={() => handleModalVisibility('cardsSort', true)}
                             sortIconStyle={sortData?.iconStyle}
                             sortOrderIcon={sortData?.orderIcon}
                             styles={cardStyles}/>
+                          
+      <Portal>
+       {modalVisibility.cards &&
+        <FilterCardMenu animatedStyle={{}} 
+                        filterKey={"cards"}
+                        isVisible={modalVisibility.cards}
+                        onClose={() => handleClose('cards')}/>}
+      </Portal>
+      <Portal>
+        {modalVisibility.cardsSort && 
+          <SortCardMenu animatedStyle={{}} 
+                        filterKey={"cards"}
+                        isVisible={modalVisibility.cardsSort}
+                        onClose={() => handleClose('cardsSort')}/>}
+      </Portal>
     </>
   );
 }
-
-export const cardStyles = StyleSheet.create({
-  container: {
-    position: 'absolute', 
-    right: 24, 
-    bottom: 24,
-    width: 50,
-    height: 50,
-    borderRadius: 48,
-    backgroundColor: 'white',
-    padding: 4,
-    alignItems: 'center',
-    justifyContent: 'center',
-    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)',
-    opacity: 0.8
-  },
-  sortIcon: {
-    position: 'absolute',
-    fontSize: 16,
-    backgroundColor: 'rgba(120, 120, 120, .8)',
-    borderRadius: 20,
-    color: 'white',
-    right: -16,
-    top: 8.5
-  },
-  sortIconList: {
-    position: 'absolute',
-    fontSize: 20,
-    borderRadius: 20,
-    right: -30,
-    top: 9,
-    color: Colors.light.text,
-  }
-});
 
 

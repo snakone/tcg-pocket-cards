@@ -1,16 +1,16 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
-import Animated from 'react-native-reanimated'
+import Animated from 'react-native-reanimated';
 import { useCallback, useEffect, useState } from "react";
 import React from "react";
 import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
 import Storage from "@/core/storage/storage.service";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
 
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
 import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
 import { AVATAR_LIST } from "@/shared/definitions/utils/constants";
@@ -21,13 +21,17 @@ import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { splashStyles } from "@/components/ui/SplashScreen";
 
+const MODAL_HEIGHT = 605;
+
 export default function PickAvatarMenu({
-  animatedStyle,
+  isVisible,
+  onClose
 }: TabMenu) {
   const {i18n} = useI18n();
   const styles = ModalStyles;
   const [selected, setSelected] = useState('');
   const [original, setOriginal] = useState('');
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
@@ -35,7 +39,7 @@ export default function PickAvatarMenu({
 
   async function closeMenu(): Promise<void> {
     await playSound();
-    ModalRxjs.setModalVisibility({key: 'avatar', value: false})
+    onClose?.();
   }
 
   const handleClick = useCallback((value: string) => {
@@ -88,7 +92,7 @@ export default function PickAvatarMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={closeMenu}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: 706}]}>
+      <Animated.View style={[animatedStyle, sortStyles.container, {height: MODAL_HEIGHT}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_avatar')}</ThemedText>
         </View>

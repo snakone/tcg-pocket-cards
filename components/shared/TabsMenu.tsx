@@ -12,12 +12,13 @@ import SoundService from '@/core/services/sounds.service';
 
 import { ThemedText } from '../ThemedText';
 import { IconSymbol } from '../ui/IconSymbol';
-import { LayoutStyles, MenuStyles, TabsMenuStyles } from '@/shared/styles/component.styles';
+import { LayoutStyles, MenuStyles, TabsMenuStyles, WebStyles } from '@/shared/styles/component.styles';
 import { TabMenu } from '@/shared/definitions/interfaces/layout.interfaces';
 import { MENU_LIST, MENU_HELP, COIN_MAP, DEFAULT_PROFILE, ROUTES_MAP } from '@/shared/definitions/utils/constants';
 import { UserProfile } from '@/shared/definitions/interfaces/global.interfaces';
 import { IconSymbolName } from '@/shared/definitions/utils/switches';
 import { RouteKey } from '@/shared/definitions/types/global.types';
+import { ThemedView } from '../ThemedView';
 
 export default function TabsMenu({
   isVisible,
@@ -54,13 +55,13 @@ export default function TabsMenu({
   };
 
   return (
-    <>
+    <ThemedView style={Platform.OS === 'web' ? [WebStyles.view, {boxShadow: 'none'}] : { flex: 1 }}>
       <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
                 style={StyleSheet.absoluteFill} 
                 tint="light" 
                 experimentalBlurMethod='dimezisBlurView'/>
       <Pressable style={LayoutStyles.overlay} 
-                 onPress={onClose}>
+                 onPress={() => (onClose?.(), playSound())}>
       </Pressable>
       <Animated.View style={[MenuStyles.container, animatedStyle]}>
         <Pressable onPress={() => handleRoute('profile')}>
@@ -104,6 +105,6 @@ export default function TabsMenu({
           </FlatList>
         </View>
       </Animated.View>
-    </>
+    </ThemedView>
   )
 }

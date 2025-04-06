@@ -6,8 +6,6 @@ import { Image, ImageBackground } from 'expo-image';
 import { StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { useI18n } from "@/core/providers/LanguageProvider";
-
 import { AppState } from "@/hooks/root.reducer";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { CardGridStyles, TabsMenuStyles } from "@/shared/styles/component.styles";
@@ -16,7 +14,7 @@ import { AvatarIcon, TradeItem, UserProfile } from "@/shared/definitions/interfa
 import { DISCORD_LOGO, SALE_CARD, TRADE_POINTS } from "@/shared/definitions/sentences/path.sentences";
 import { CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 import { LanguageType } from "@/shared/definitions/types/global.types";
-import { getImageLanguage } from "@/shared/definitions/utils/functions";
+import { getImageLanguageForGraphic } from "@/shared/definitions/utils/functions";
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -64,7 +62,7 @@ export default function TradeCollage({
                 CardGridStyles.image, 
                 {width: 355}
               ]} 
-            source={getImageLanguage(lang, item)}/>        
+            source={getImageLanguageForGraphic(item)}/>        
           </>
           }
           <ThemedView style={{position: 'absolute', top: -24, right: -24}}>
@@ -86,7 +84,7 @@ export default function TradeCollage({
                 CardGridStyles.image, 
                 {width: 355}
               ]} 
-            source={getImageLanguage(lang, item)}/>        
+            source={getImageLanguageForGraphic(item)}/>        
           </>
           }
           <ThemedView style={tradeCollageStyles.like}>

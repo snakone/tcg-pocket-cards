@@ -14,7 +14,9 @@ import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SHINING_REVELRY_I
 import { PACK_MAP, SORT_FIELD_MAP } from "./constants";
 import { LanguageType } from "../types/global.types";
 import { FilterAttackSearch } from "../classes/filter_attack.class";
-import { StorageDeck, UserCollectionItem } from "../interfaces/global.interfaces";
+import { UserCollectionItem } from "../interfaces/global.interfaces";
+import { CARD_IMAGE_MAP_EN_GRAPHIC } from "./card.graphic.images";
+import { PokemonTypeENUM } from "../enums/pokemon.enums";
 
 import { 
   CARD_IMAGE_MAP_116x162_EN, 
@@ -27,7 +29,6 @@ import {
   CARD_IMAGE_MAP_ES, 
   CARD_IMAGE_MAP_JAP
 } from "./card.images";
-import { PokemonTypeENUM } from "../enums/pokemon.enums";
 
 export function sortCards(
   field: keyof Card | string, 
@@ -585,8 +586,12 @@ const IMAGE_LANGUAGE_MAP = {
   ja: CARD_IMAGE_MAP_JAP
 }
 
-export function getImageLanguage(lang: LanguageType, id: number): any {
+export function getImageLanguage(lang: LanguageType, id: number): string {
   return IMAGE_LANGUAGE_MAP[lang][id];
+}
+
+export function getImageLanguageForGraphic(id: number): any {
+  return CARD_IMAGE_MAP_EN_GRAPHIC[id];
 }
 
 const IMAGE_LANGUAGE_MAP_69x96 = {
@@ -594,7 +599,6 @@ const IMAGE_LANGUAGE_MAP_69x96 = {
   en: CARD_IMAGE_MAP_69x96_EN,
   ja: CARD_IMAGE_MAP_69x96_JAP
 }
-
 export function getImageLanguage69x96(lang: LanguageType, id: number): any {
   return IMAGE_LANGUAGE_MAP_69x96[lang][id];
 }

@@ -1,118 +1,65 @@
-import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import React from "react";
 import { Platform, StyleSheet, TouchableOpacity } from 'react-native';
 import { Image } from 'expo-image';
 import { MaterialIcons } from "@expo/vector-icons";
-import { Portal, Provider } from "react-native-paper";
+import { Portal } from "react-native-paper";
+import { DataRxjs } from "@/core/rxjs/DataRxjs";
+import { useLocalSearchParams } from "expo-router";
 
-import { ThemedText } from "@/components/ThemedText";
-import SharedScreen from "@/components/shared/SharedScreen";
 import SoundService from "@/core/services/sounds.service";
 import { useI18n } from "@/core/providers/LanguageProvider";
-import { ThemedView } from "@/components/ThemedView";
+
 import { AppContext } from "../_layout";
-import { CollectionElementStat, CollectionRarityStat, CollectionStat, ExpansionEmblem, UserCollectionItem } from "@/shared/definitions/interfaces/global.interfaces";
-import { CardExpansionENUM, CardLanguageENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 import { settingsStyles } from "./settings";
-import { COLLECTION_LANGUAGE_MAP, CollectionLanguageList, EXPANSION_PACK_MAP, LARGE_MODAL_HEIGHT } from "@/shared/definitions/utils/constants";
+import { CollectionElementStat, CollectionRarityStat, CollectionStat, ExpansionEmblem, UserCollectionItem } from "@/shared/definitions/interfaces/global.interfaces";
+import { COLLECTION_LANGUAGE_MAP, CollectionLanguageList, EXPANSION_MAP_STRING, EXPANSION_PACK_MAP, LARGE_MODAL_HEIGHT } from "@/shared/definitions/utils/constants";
+import { CardExpansionENUM, CardLanguageENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { EXPANSION } from "@/shared/definitions/enums/packs.enums";
+import { roundPercentage } from "@/shared/definitions/utils/functions";
+import { cardStyles } from "@/shared/styles/component.styles";
+
+import { 
+  ARCEUS_EMBLEM, BACKWARD_CARD, CHARIZARD_EMBLEM, CROWN_RARITY, DARK_ICON, 
+  DIALGA_EMBLEM, DRAGON_ICON, ELECTRIC_ICON, FIGHT_ICON, FIRE_ICON, GIRATINA_EMBLEM, 
+  GRASS_ICON, MEW_EMBLEM, MEWTWO_EMBLEM, NORMAL_ICON, NORMAL_RARITY, PALKIA_EMBLEM, 
+  PIKACHU_EMBLEM, PROMO_A_EMBLEM, PSYCHIC_ICON, RAINBOW_RARITY, STAR_RARITY, 
+  STEEL_ICON, WATER_ICON
+} from "@/shared/definitions/sentences/path.sentences";
+
+import { ThemedText } from "@/components/ThemedText";
+import SharedScreen from "@/components/shared/SharedScreen";
+import { ThemedView } from "@/components/ThemedView";
 import CollectionStatsItem from "@/components/dedicated/collection/StatsItem";
 import SelectExpansionMenu from "@/components/dedicated/collection/SelectExpansionMenu";
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
 import ProgressBar from "@/components/dedicated/collection/ProgressBar";
-import { cardStyles } from "../(tabs)/cards";
 import ListMenu from "@/components/dedicated/collection/ListMenu";
 import { StatsGrid } from "@/components/dedicated/collection/StatsGrid";
 import { ExpansionGridStats } from "@/components/dedicated/collection/ExpansionGridStats";
-import { roundPercentage } from "@/shared/definitions/utils/functions";
 import { StatsCollectionModal } from "@/components/modals";
 import HeaderWithCustomModal from "@/components/shared/HeaderModal";
-
-import { 
-  ARCEUS_EMBLEM, 
-  BACKWARD_CARD, 
-  CHARIZARD_EMBLEM, 
-  CROWN_RARITY, 
-  DARK_ICON, 
-  DIALGA_EMBLEM, 
-  DRAGON_ICON, 
-  ELECTRIC_ICON, 
-  FIGHT_ICON, 
-  FIRE_ICON, 
-  GIRATINA_EMBLEM, 
-  GRASS_ICON, 
-  MEW_EMBLEM, 
-  MEWTWO_EMBLEM, 
-  NORMAL_ICON, 
-  NORMAL_RARITY, 
-  PALKIA_EMBLEM, 
-  PIKACHU_EMBLEM, 
-  PROMO_A_EMBLEM, 
-  PSYCHIC_ICON, 
-  RAINBOW_RARITY, 
-  STAR_RARITY, 
-  STEEL_ICON, 
-  WATER_ICON
-} from "@/shared/definitions/sentences/path.sentences";
-import { DataRxjs } from "@/core/rxjs/DataRxjs";
-import { useLocalSearchParams } from "expo-router";
 
 export default function CollectionStatsScreen() {
   console.log('Collection Stats Screen')
   const {i18n} = useI18n();
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state, dispatch } = context;
+  const { state } = context;
   
   const [expansionVisible, setExpansionVisible] = useState<boolean>(false);
   const [currentExpansion, setCurrentExpansion] = useState<ExpansionEmblem>();
-
-  const [mainStats, setMainStats] = useState<CollectionStat>();
-  const [pikachuStats, setPikachuStats] = useState<CollectionStat>();
-  const [mewtwoStats, setMewtwoStats] = useState<CollectionStat>();
-  const [charizardStats, setCharizardStats] = useState<CollectionStat>();
-  const [mewStats, setMewStats] = useState<CollectionStat>();
-  const [dialgaStats, setDialgaStats] = useState<CollectionStat>();
-  const [palkiaStats, setPalkiaStats] = useState<CollectionStat>();
-  const [arceusStats, setArceusStats] = useState<CollectionStat>();
-  const [shinyStats, setShinyStats] = useState<CollectionStat>();
-  const [promoStats, setPromoStats] = useState<CollectionStat>();
-
   const [missingPacks, setMissingPacks] = useState<CollectionStat[]>([]);
-
-  const [waterStats, setWaterStats] = useState<CollectionElementStat>();
-  const [grassStats, setGrassStats] = useState<CollectionElementStat>();
-  const [fireStats, setFireStats] = useState<CollectionElementStat>();
-  const [electricStats, setElectricStats] = useState<CollectionElementStat>();
-  const [fightStats, setFightStats] = useState<CollectionElementStat>();
-  const [darkStats, setDarkStats] = useState<CollectionElementStat>();
-  const [psychicStats, setPsychicStats] = useState<CollectionElementStat>();
-  const [steelStats, setSteelStats] = useState<CollectionElementStat>();
-  const [dragonStats, setDragonStats] = useState<CollectionElementStat>();
-  const [normalStats, setNormalStats] = useState<CollectionElementStat>();
-
-  const [commonStats, setCommonStats] = useState<CollectionRarityStat>();
-  const [unCommonStats, setUnCommonStats] = useState<CollectionRarityStat>();
-  const [rareStats, setRareStats] = useState<CollectionRarityStat>();
-  const [doubleStats, setDoubleStats] = useState<CollectionRarityStat>();
-  const [artStats, setArtStats] = useState<CollectionRarityStat>();
-  const [superStats, setSuperStats] = useState<CollectionRarityStat>();
-  const [inmersiveStats, setInmersiveStats] = useState<CollectionRarityStat>();
-  const [rainbowStats, setRainbowStats] = useState<CollectionRarityStat>();
-  const [doubleRainbowStats, setDoubleRainbowStats] = useState<CollectionRarityStat>();
-  const [crownStats, setCrownStats] = useState<CollectionRarityStat>();
-
   const [listMenuVisible, setListMenuVisible] = useState<boolean>(false);
-
   const [collection, setCollection] = useState<UserCollectionItem[]>([]);
   const { language } = useLocalSearchParams<{ language: string }>();
   const [langCollection, setLangCollection] = useState<CardLanguageENUM>(Number(language));
 
   useEffect(() => {
     selectLanguage(Number(language), false);
-  }, []);
+  }, [collection]);
 
   useEffect(() => {
     const sub = DataRxjs.getData<UserCollectionItem[]>('collection')
@@ -121,6 +68,63 @@ export default function CollectionStatsScreen() {
     return () => sub.unsubscribe();
   }, []);
 
+  const selectLanguage = useCallback((value: CardLanguageENUM, sound = true) => {
+    if (sound) {
+      SoundService.play('POP_PICK');
+    }
+
+    const collectionCards = new Set(
+      collection.filter(coll => coll.amount[value] > 0).map(coll => coll.id)
+    );
+
+    setData(collectionCards);
+    setElementData(collectionCards);
+    setRarityData(collectionCards);
+    setLangCollection(value);
+  }, [collection]);
+
+  const [stats, setStats] = useState<{[key: string]: CollectionStat | undefined}>({
+    mainStats: undefined,
+    pikachuStats: undefined, mewtwoStats: undefined, charizardStats: undefined,
+    mewStats: undefined, dialgaStats: undefined, palkiaStats: undefined,
+    arceusStats: undefined, shinyStats: undefined, promoStats: undefined,
+  });
+
+  const updateStats = (key: string, value: CollectionStat) => {
+    setStats(prevStats => ({
+      ...prevStats,
+      [key]: value,
+    }));
+  };
+
+  const [elementStats, setElementStats] = useState<{[key: string]: CollectionElementStat | undefined}>({
+    waterStats: undefined, grassStats: undefined, fireStats: undefined,
+    electricStats: undefined, fightStats: undefined, darkStats: undefined,
+    psychicStats: undefined, steelStats: undefined, dragonStats: undefined,
+    normalStats: undefined,
+  });
+
+  const updateElementStats = (key: string, value: CollectionElementStat) => {
+    setElementStats(prevStats => ({
+      ...prevStats,
+      [key]: value,
+    }));
+  };
+
+  const [rarityStats, setRarityStats] = useState<{[key: string]: CollectionRarityStat | undefined}>({
+    commonStats: undefined, unCommonStats: undefined, rareStats: undefined,
+    doubleStats: undefined, artStats: undefined, superStats: undefined,
+    inmersiveStats: undefined, rainbowStats: undefined, doubleRainbowStats: undefined,
+    crownStats: undefined,
+  });
+
+  const updateRarityStats = (key: string, value: CollectionRarityStat) => {
+    setRarityStats(prevStats => ({
+      ...prevStats,
+      [key]: value,
+    }));
+  };
+  
   const filterAndSort = (filterFn: (card: Card) => boolean) => {
     const filtered = state.cardState.cards.filter(filterFn).sort((a, b) => a.order - b.order);
     return { data: filtered, length: filtered.length };
@@ -152,106 +156,101 @@ export default function CollectionStatsScreen() {
   const { data: shinyCards, length: shinyCardsLength } = useMemo(() => getCards(EXPANSION.SHINY), [EXPANSION.SHINY]);
   const { data: promoAPackCards, length: promoAPackCardsLength } = useMemo(() => getCardsExpansion(CardExpansionENUM.PROMO_A), [CardExpansionENUM.PROMO_A]);
 
-  const useCardsByType = (type: PokemonTypeENUM) => useMemo(() => getCardByType(type), [type]);
-  const useCardsByRarity = (rarity: CardRarityENUM) => useMemo(() => getCardRarity(rarity), [rarity]);
+  const useCards = (category: 'type' | 'rarity', value: PokemonTypeENUM | CardRarityENUM) => {
+    return useMemo(() => {
+      return category === 'type' ? 
+              getCardByType(value as PokemonTypeENUM) : 
+              getCardRarity(value as CardRarityENUM);
+    }, [category, value]);
+  };
 
-  const { data: grassCards, length: grassCardsLength } = useCardsByType(PokemonTypeENUM.GRASS);
-  const { data: darkCards, length: darkCardsLength } = useCardsByType(PokemonTypeENUM.DARK);
-  const { data: dragonCards, length: dragonCardsLength } = useCardsByType(PokemonTypeENUM.DRAGON);
-  const { data: electricCards, length: electricCardsLength } = useCardsByType(PokemonTypeENUM.ELECTRIC);
-  const { data: fightCards, length: fightCardsLength } = useCardsByType(PokemonTypeENUM.FIGHT);
-  const { data: fireCards, length: fireCardsLength } = useCardsByType(PokemonTypeENUM.FIRE);
-  const { data: normalCards, length: normalCardsLength } = useCardsByType(PokemonTypeENUM.NORMAL);
-  const { data: psychicCards, length: psychicCardsLength } = useCardsByType(PokemonTypeENUM.PSYCHIC);
-  const { data: steelCards, length: steelCardsLength } = useCardsByType(PokemonTypeENUM.STEEL);
-  const { data: waterCards, length: waterCardsLength } = useCardsByType(PokemonTypeENUM.WATER);
+  const cardTypes = Object.values(PokemonTypeENUM);
+  const cardRarities = Object.values(CardRarityENUM);
+
+  const cardsByType = cardTypes.reduce((acc, type) => {
+    acc[type as PokemonTypeENUM] = useCards('type', type as PokemonTypeENUM);
+    return acc;
+  }, {} as Record<PokemonTypeENUM, { data: Card[]; length: number }>);
   
-  const { data: commonCards, length: commonCardsLength } = useCardsByRarity(CardRarityENUM.COMMON);
-  const { data: unCommonCards, length: unCommonCardsLength } = useCardsByRarity(CardRarityENUM.UNCOMMON);
-  const { data: rareCards, length: rareCardsLength } = useCardsByRarity(CardRarityENUM.RARE);
-  const { data: doubleCards, length: doubleCardsLength } = useCardsByRarity(CardRarityENUM.DOUBLE);
-  const { data: artCards, length: artCardsLength } = useCardsByRarity(CardRarityENUM.ART);
-  const { data: superCards, length: superCardsLength } = useCardsByRarity(CardRarityENUM.SUPER);
-  const { data: inmersiveCards, length: inmersiveCardsLength } = useCardsByRarity(CardRarityENUM.INMERSIVE);
-  const { data: rainbowCards, length: rainbowCardsLength } = useCardsByRarity(CardRarityENUM.SHINY);
-  const { data: doubleRainbowCards, length: doubleRainbowCardsLength } = useCardsByRarity(CardRarityENUM.DOUBLE_SHINY);
-  const { data: crownCards, length: crownCardsLength } = useCardsByRarity(CardRarityENUM.CROWN);
+  const cardsByRarity = cardRarities.reduce((acc, rarity) => {
+    acc[rarity as CardRarityENUM] = useCards('rarity', rarity as CardRarityENUM);
+    return acc;
+  }, {} as Record<CardRarityENUM, { data: Card[]; length: number }>);
 
-  const charizardCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.CHARIZARD)), [crownCards]);
-  const charizardArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.CHARIZARD)), [artCards]);
-  const pikachuCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.PIKACHU)), [crownCards]);
-  const pikachuArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.PIKACHU)), [artCards]);
-  const mewtwoCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.MEWTWO)), [crownCards]);
-  const mewtwoArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.MEWTWO)), [artCards]);
-  const mewCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.MEW)), [crownCards]);
-  const mewArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.MEW)), [artCards]);
-  const dialgaCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.DIALGA)), [crownCards]);
-  const dialgaArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.DIALGA)), [artCards]);
-  const palkiaCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.PALKIA)), [crownCards]);
-  const palkiaArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.PALKIA)), [artCards]);
-  const arceusCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.ARCEUS)), [crownCards]);
-  const arceusdArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.ARCEUS)), [artCards]);
-  const shinyCrownCards = useMemo(() => crownCards.filter(card => card.found?.includes(EXPANSION.SHINY)), [crownCards]);
-  const shinydArtCards = useMemo(() => artCards.filter(card => card.found?.includes(EXPANSION.SHINY)), [artCards]);
+  const { data: grassCards, length: grassCardsLength } = cardsByType[PokemonTypeENUM.GRASS];
+  const { data: darkCards, length: darkCardsLength } = cardsByType[PokemonTypeENUM.DARK];
+  const { data: dragonCards, length: dragonCardsLength } = cardsByType[PokemonTypeENUM.DRAGON];
+  const { data: electricCards, length: electricCardsLength } = cardsByType[PokemonTypeENUM.ELECTRIC];
+  const { data: fightCards, length: fightCardsLength } = cardsByType[PokemonTypeENUM.FIGHT];
+  const { data: fireCards, length: fireCardsLength } = cardsByType[PokemonTypeENUM.FIRE];
+  const { data: normalCards, length: normalCardsLength } = cardsByType[PokemonTypeENUM.NORMAL];
+  const { data: psychicCards, length: psychicCardsLength } = cardsByType[PokemonTypeENUM.PSYCHIC];
+  const { data: steelCards, length: steelCardsLength } = cardsByType[PokemonTypeENUM.STEEL];
+  const { data: waterCards, length: waterCardsLength } = cardsByType[PokemonTypeENUM.WATER];
+  
+  const { data: commonCards, length: commonCardsLength } = cardsByRarity[CardRarityENUM.COMMON];
+  const { data: unCommonCards, length: unCommonCardsLength } = cardsByRarity[CardRarityENUM.UNCOMMON];
+  const { data: rareCards, length: rareCardsLength } = cardsByRarity[CardRarityENUM.RARE];
+  const { data: doubleCards, length: doubleCardsLength } = cardsByRarity[CardRarityENUM.DOUBLE];
+  const { data: artCards, length: artCardsLength } = cardsByRarity[CardRarityENUM.ART];
+  const { data: superCards, length: superCardsLength } = cardsByRarity[CardRarityENUM.SUPER];
+  const { data: inmersiveCards, length: inmersiveCardsLength } = cardsByRarity[CardRarityENUM.INMERSIVE];
+  const { data: rainbowCards, length: rainbowCardsLength } = cardsByRarity[CardRarityENUM.SHINY];
+  const { data: doubleRainbowCards, length: doubleRainbowCardsLength } = cardsByRarity[CardRarityENUM.DOUBLE_SHINY];
+  const { data: crownCards, length: crownCardsLength } = cardsByRarity[CardRarityENUM.CROWN];
+
+  const filterCardsByExpansion = (cards: Card[], expansion: EXPANSION) => {
+    return cards.filter(card => card.found?.includes(expansion));
+  };
+
+  const useFilteredCards = () => {
+    const filteredCards = useMemo(() => {
+      const result: {[key: string]: Card[]} = {};
+  
+      Object.entries(EXPANSION_MAP_STRING).forEach(([key, value]) => {
+        result[`${value}CrownCards`] = filterCardsByExpansion(crownCards, key as any);
+        result[`${value}ArtCards`] = filterCardsByExpansion(artCards, key as any);
+      });
+  
+      return result;
+    }, [crownCards, artCards]);
+  
+    return filteredCards;
+  };
+
+  const { 
+    charizardCrownCards, charizardArtCards, pikachuCrownCards, pikachuArtCards,
+    mewtwoCrownCards, mewtwoArtCards, mewCrownCards, mewArtCards,
+    dialgaCrownCards, dialgaArtCards, palkiaCrownCards, palkiaArtCards,
+    arceusCrownCards, arceusArtCards, shinyCrownCards, shinyArtCards
+  } = useFilteredCards();
 
   const allStats = [
-    charizardStats,
-    mewtwoStats,
-    pikachuStats,
-    mewStats,
-    dialgaStats,
-    palkiaStats,
-    arceusStats,
-    shinyStats,
-    promoStats,
+    stats.charizardStats, stats.mewtwoStats, stats.pikachuStats,
+    stats.mewStats, stats.dialgaStats, stats.palkiaStats,
+    stats.arceusStats, stats.shinyStats, stats.promoStats,
   ];
 
   const allElementStats = [
-    grassStats,
-    waterStats,
-    fireStats,
-    electricStats,
-    fightStats,
-    darkStats,
-    psychicStats,
-    steelStats,
-    dragonStats,
-    normalStats
+    elementStats.grassStats, elementStats.waterStats, elementStats.fireStats,
+    elementStats.electricStats, elementStats.fightStats, elementStats.darkStats,
+    elementStats.psychicStats, elementStats.steelStats, elementStats.dragonStats,
+    elementStats.normalStats
   ];
 
   const allRarityStats = [
-    commonStats,
-    unCommonStats,
-    rareStats,
-    doubleStats,
-    artStats,
-    superStats,
-    inmersiveStats,
-    rainbowStats,
-    doubleRainbowStats,
-    crownStats
+    rarityStats.commonStats, rarityStats.unCommonStats, rarityStats.rareStats,
+    rarityStats.doubleStats, rarityStats.artStats, rarityStats.superStats,
+    rarityStats.inmersiveStats, rarityStats.rainbowStats, rarityStats.doubleRainbowStats,
+    rarityStats.crownStats
   ];
 
   const allCards = {
-    grass: grassCards,
-    dark: darkCards,
-    dragon: dragonCards,
-    electric: electricCards,
-    fight: fightCards,
-    fire: fireCards,
-    normal: normalCards,
-    psychic: psychicCards,
-    steel: steelCards,
-    water: waterCards,
-    common: commonCards,
-    uncommon: unCommonCards,
-    rare: rareCards,
-    double: doubleCards,
-    art: artCards,
-    super: superCards,
-    inmersive: inmersiveCards,
-    rainbow: rainbowCards,
-    doubleRainbow: doubleRainbowCards,
+    grass: grassCards, dark: darkCards, dragon: dragonCards, electric: electricCards,
+    fight: fightCards, fire: fireCards, normal: normalCards, psychic: psychicCards,
+    steel: steelCards, water: waterCards, common: commonCards, uncommon: unCommonCards,
+    rare: rareCards, double: doubleCards, art: artCards, super: superCards,
+    inmersive: inmersiveCards, rainbow: rainbowCards, doubleRainbow: doubleRainbowCards,
     crown: crownCards
   }
 
@@ -259,14 +258,14 @@ export default function CollectionStatsScreen() {
     {
       cards: state.cardState.cards.map(card => card.id),
       length: state.cardState.cards.length,
-      setter: setMainStats,
+      setter: 'mainStats',
     },
     {
       name: 'PIKACHU',
       label: 'expansion_pikachu',
       cards: pikachuCards.map(card => card.id),
       length: pikachuCardsLength,
-      setter: setPikachuStats,
+      setter: 'pikachuStats',
       emblem: PIKACHU_EMBLEM,
       crown: pikachuCrownCards.map(card => card.id),
       art: pikachuArtCards.map(card => card.id)
@@ -276,7 +275,7 @@ export default function CollectionStatsScreen() {
       label: 'expansion_mewtwo',
       cards: mewtwoCards.map(card => card.id),
       length: mewtwoCardsLength,
-      setter: setMewtwoStats,
+      setter: 'mewtwoStats',
       emblem: MEWTWO_EMBLEM,
       crown: mewtwoCrownCards.map(card => card.id),
       art: mewtwoArtCards.map(card => card.id)
@@ -286,7 +285,7 @@ export default function CollectionStatsScreen() {
       label: 'expansion_charizard',
       cards: charizardCards.map(card => card.id),
       length: charizardCardsLength,
-      setter: setCharizardStats,
+      setter: 'charizardStats',
       emblem: CHARIZARD_EMBLEM,
       crown: charizardCrownCards.map(card => card.id),
       art: charizardArtCards.map(card => card.id)
@@ -296,7 +295,7 @@ export default function CollectionStatsScreen() {
       label: 'expansion_mew',
       cards: islandCards.map(card => card.id),
       length: islandCardsLength,
-      setter: setMewStats,
+      setter: 'mewStats',
       emblem: MEW_EMBLEM,
       crown: mewCrownCards.map(card => card.id),
       art: mewArtCards.map(card => card.id)
@@ -306,7 +305,7 @@ export default function CollectionStatsScreen() {
       label: 'expansion_dialga',
       cards: dialgaCards.map(card => card.id),
       length: dialgaCardsLength,
-      setter: setDialgaStats,
+      setter: 'dialgaStats',
       emblem: DIALGA_EMBLEM,
       crown: dialgaCrownCards.map(card => card.id),
       art: dialgaArtCards.map(card => card.id)
@@ -316,7 +315,7 @@ export default function CollectionStatsScreen() {
       label: 'expansion_palkia',
       cards: palkiaCards.map(card => card.id),
       length: palkiaCardsLength,
-      setter: setPalkiaStats,
+      setter: 'palkiaStats',
       emblem: PALKIA_EMBLEM,
       crown: palkiaCrownCards.map(card => card.id),
       art: palkiaArtCards.map(card => card.id)
@@ -326,27 +325,27 @@ export default function CollectionStatsScreen() {
       label: 'expansion_arceus',
       cards: triumphCards.map(card => card.id),
       length: triumphCardsLength,
-      setter: setArceusStats,
+      setter: 'arceusStats',
       emblem: ARCEUS_EMBLEM,
       crown: arceusCrownCards.map(card => card.id),
-      art: arceusdArtCards.map(card => card.id)
+      art: arceusArtCards.map(card => card.id)
     },
     {
       name: 'SHINY',
       label: 'expansion_shiny',
       cards: shinyCards.map(card => card.id),
       length: shinyCardsLength,
-      setter: setShinyStats,
+      setter: 'shinyStats',
       emblem: GIRATINA_EMBLEM,
       crown: shinyCrownCards.map(card => card.id),
-      art: shinydArtCards.map(card => card.id)
+      art: shinyArtCards.map(card => card.id)
     },
     {
       name: 'PROMO',
       label: 'expansion_promo_a',
       cards: promoAPackCards.map(card => card.id),
       length: promoAPackCardsLength,
-      setter: setPromoStats,
+      setter: 'promoStats',
       emblem: PROMO_A_EMBLEM,
     },
   ];
@@ -356,61 +355,61 @@ export default function CollectionStatsScreen() {
       cards: grassCards,
       length: grassCardsLength,
       icon: GRASS_ICON,
-      setter: setGrassStats,
+      setter: 'grassStats',
     },
     {
       cards: waterCards,
       length: waterCardsLength,
       icon: WATER_ICON,
-      setter: setWaterStats,
+      setter: 'waterStats',
     },
     {
       cards: fireCards,
       length: fireCardsLength,
       icon: FIRE_ICON,
-      setter: setFireStats,
+      setter: 'fireStats',
     },
     {
       cards: electricCards,
       length: electricCardsLength,
       icon: ELECTRIC_ICON,
-      setter: setElectricStats,
+      setter: 'electricStats',
     },
     {
       cards: fightCards,
       length: fightCardsLength,
       icon: FIGHT_ICON,
-      setter: setFightStats,
+      setter: 'fightStats',
     },
     {
       cards: darkCards,
       length: darkCardsLength,
       icon: DARK_ICON,
-      setter: setDarkStats,
+      setter: 'darkStats',
     },
     {
       cards: psychicCards,
       length: psychicCardsLength,
       icon: PSYCHIC_ICON,
-      setter: setPsychicStats,
+      setter: 'psychicStats',
     },
     {
       cards: steelCards,
       length: steelCardsLength,
       icon: STEEL_ICON,
-      setter: setSteelStats,
+      setter: 'steelStats',
     },
     {
       cards: dragonCards,
       length: dragonCardsLength,
       icon: DRAGON_ICON,
-      setter: setDragonStats,
+      setter: 'dragonStats',
     },
     {
       cards: normalCards,
       length: normalCardsLength,
       icon: NORMAL_ICON,
-      setter: setNormalStats,
+      setter: 'normalStats',
     },
   ];
 
@@ -421,7 +420,7 @@ export default function CollectionStatsScreen() {
       length: commonCardsLength,
       icon: NORMAL_RARITY,
       amount: 1,
-      setter: setCommonStats
+      setter: 'commonStats'
     },
     {
       value: CardRarityENUM.UNCOMMON,
@@ -429,7 +428,7 @@ export default function CollectionStatsScreen() {
       length: unCommonCardsLength,
       icon: NORMAL_RARITY,
       amount: 2,
-      setter: setUnCommonStats
+      setter: 'unCommonStats'
     },
     {
       value: CardRarityENUM.RARE,
@@ -437,7 +436,7 @@ export default function CollectionStatsScreen() {
       length: rareCardsLength,
       icon: NORMAL_RARITY,
       amount: 3,
-      setter: setRareStats
+      setter: 'rareStats'
     },
     {
       value: CardRarityENUM.DOUBLE,
@@ -445,7 +444,7 @@ export default function CollectionStatsScreen() {
       length: doubleCardsLength,
       icon: NORMAL_RARITY,
       amount: 4,
-      setter: setDoubleStats
+      setter: 'doubleStats'
     },
     {
       value: CardRarityENUM.ART,
@@ -453,7 +452,7 @@ export default function CollectionStatsScreen() {
       length: artCardsLength,
       icon: STAR_RARITY,
       amount: 1,
-      setter: setArtStats
+      setter: 'artStats'
     },
     {
       value: CardRarityENUM.SUPER,
@@ -461,7 +460,7 @@ export default function CollectionStatsScreen() {
       length: superCardsLength,
       icon: STAR_RARITY,
       amount: 2,
-      setter: setSuperStats
+      setter: 'superStats'
     },
     {
       value: CardRarityENUM.INMERSIVE,
@@ -469,7 +468,7 @@ export default function CollectionStatsScreen() {
       length: inmersiveCardsLength,
       icon: STAR_RARITY,
       amount: 3,
-      setter: setInmersiveStats
+      setter: 'inmersiveStats'
     },
     {
       value: CardRarityENUM.SHINY,
@@ -477,7 +476,7 @@ export default function CollectionStatsScreen() {
       length: rainbowCardsLength,
       icon: RAINBOW_RARITY,
       amount: 1,
-      setter: setRainbowStats
+      setter: 'rainbowStats'
     },
     {
       value: CardRarityENUM.DOUBLE_SHINY,
@@ -485,7 +484,7 @@ export default function CollectionStatsScreen() {
       length: doubleRainbowCardsLength,
       icon: RAINBOW_RARITY,
       amount: 2,
-      setter: setDoubleRainbowStats
+      setter: 'doubleRainbowStats'
     },
     {
       value: CardRarityENUM.CROWN,
@@ -493,37 +492,16 @@ export default function CollectionStatsScreen() {
       length: crownCardsLength,
       icon: CROWN_RARITY,
       amount: 1,
-      setter: setCrownStats
+      setter: 'crownStats'
     },
   ];
-
-  const selectLanguage = useCallback((value: CardLanguageENUM, sound = true) => {
-    if (sound) {
-      SoundService.play('POP_PICK');
-    }
-
-    const collectionCards = new Set(
-      collection.filter(coll => coll.amount[value] > 0).map(coll => coll.id)
-    );
-
-    setData(collectionCards);
-    setElementData(collectionCards);
-    setRarityData(collectionCards);
-    setLangCollection(value);
-  }, []);
 
   useEffect(() => {
     getMostMissingPacks();
   }, [
-    charizardStats,
-    mewtwoStats,
-    pikachuStats,
-    mewStats,
-    dialgaStats,
-    palkiaStats,
-    arceusStats,
-    shinyStats,
-    promoStats,
+    stats.charizardStats, stats.mewtwoStats, stats.pikachuStats,
+    stats.mewStats, stats.dialgaStats, stats.palkiaStats,
+    stats.arceusStats, stats.shinyStats, stats.promoStats,
   ]);
 
   const setData = useCallback((collectionCards: Set<number>) => {
@@ -533,8 +511,8 @@ export default function CollectionStatsScreen() {
       const totalOwned = Math.abs(data.length - missing);
       const crownCards = data.crown?.filter(id => collectionCards.has(id)).length || 0;
       const artCards = data.art?.filter(id => collectionCards.has(id)).length || 0;
-  
-      data.setter({
+
+      updateStats(data.setter, {
         name: data?.name,
         missing,
         perct_missing: totalMissing,
@@ -545,14 +523,14 @@ export default function CollectionStatsScreen() {
         crown: crownCards,
         art: artCards,
         perct_owned: (100 - Number(totalMissing)).toFixed(1)
-      });
+      })
     });
   }, []);
 
   const setElementData = useCallback((collectionCards: Set<number>) => {
     DATA_ELEMENTS.forEach(data => {
-      const owned = data.cards.filter(card => collectionCards.has(card.id)).length || 0;
-      data.setter({owned, length: data.length, icon: data.icon});
+      const owned = data.cards.filter((card: Card) => collectionCards.has(card.id)).length || 0;
+      updateElementStats(data.setter, {owned, length: data.length, icon: data.icon});
     });
 
   }, []);
@@ -560,7 +538,7 @@ export default function CollectionStatsScreen() {
   const setRarityData = useCallback((collectionCards: Set<number>) => {
     DATA_RARITY.forEach(data => {
       const owned = data.cards.filter(card => collectionCards.has(card.id)).length || 0;
-      data.setter({
+      updateRarityStats(data.setter, {
         owned, 
         length: data.length, 
         icon: data.icon,
@@ -616,7 +594,7 @@ export default function CollectionStatsScreen() {
   }
 
   return (
-    <Provider>
+    <>
       <HeaderWithCustomModal title={'stats'} 
                              modalContent={<StatsCollectionModal></StatsCollectionModal>} 
                              modalTitle={'stats'} 
@@ -645,7 +623,7 @@ export default function CollectionStatsScreen() {
         </ThemedView>
         
         {
-          mainStats && <CollectionStatsItem stat={mainStats} round={roundPercentage}></CollectionStatsItem>
+          stats.mainStats && <CollectionStatsItem stat={stats.mainStats} round={roundPercentage}></CollectionStatsItem>
         }
 
         <ThemedView style={[
@@ -707,10 +685,12 @@ export default function CollectionStatsScreen() {
         {
           currentExpansion !== undefined &&
           <ExpansionGridStats allCards={allCards} 
-                              language={langCollection} 
+                              langColl={langCollection} 
                               collection={collection} 
                               currentExpansion={currentExpansion?.value}
-                              allStats={allStats as CollectionStat[]}>
+                              allStats={allStats as CollectionStat[]}
+                              language={state.settingsState.language}
+                              cards={state.cardState.cards}>
           </ExpansionGridStats>
         }        
 
@@ -725,7 +705,7 @@ export default function CollectionStatsScreen() {
       </SharedScreen>
       <Portal>{expansionVisible && memoizedExpansion}</Portal>
       <Portal>{listMenuVisible && memoizedListMenu}</Portal>
-    </Provider>
+    </>
   )
 }
 

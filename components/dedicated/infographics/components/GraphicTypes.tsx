@@ -21,7 +21,7 @@ import { LanguageType } from "@/shared/definitions/types/global.types";
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 import { Colors } from '@/shared/definitions/utils/colors';
 import { CardGridStyles } from '@/shared/styles/component.styles';
-import { getImageLanguage69x96 } from '@/shared/definitions/utils/functions';
+import { getImageLanguageForGraphic } from '@/shared/definitions/utils/functions';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -50,7 +50,7 @@ export const GraphicTypes = ({data, styles, language}: GraphicTypesProps) => {
           CardGridStyles.image, 
           {width: 60, borderRadius: 4, height: 82}
         ]} 
-        source={getImageLanguage69x96(language, item?.id)}/>
+        source={getImageLanguageForGraphic(item?.id)}/>
       </ThemedView>
     )
   }, []);

@@ -9,6 +9,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
 
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
 import { settingsStyles } from "@/app/screens/settings";
 import { CardLanguageENUM } from "@/shared/definitions/enums/card.enums";
 import { TabMenuCollection } from "@/shared/definitions/interfaces/layout.interfaces";
@@ -30,10 +31,11 @@ import {
   sortStyles 
 } from "@/shared/styles/component.styles";
 
+const MODAL_HEIGHT = 540;
+
 export default function CollectionCardMenu({
   isVisible,
   onClose,
-  animatedStyle,
   selectedLanguage,
   onViewStats
 }: TabMenuCollection) {
@@ -43,6 +45,7 @@ export default function CollectionCardMenu({
   const [markAll, setMarkAll] = useState<boolean>(false);
   const [unmark, setUnmark] = useState<boolean>(false);
   const [language, setLanguage] = useState<CardLanguageENUM>(selectedLanguage);
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE')
@@ -81,7 +84,7 @@ export default function CollectionCardMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: 540}]}>
+      <Animated.View style={[animatedStyle, sortStyles.container, {height: MODAL_HEIGHT}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('menu')}</ThemedText>
         </View>
@@ -135,7 +138,7 @@ export default function CollectionCardMenu({
 
             <ThemedText style={{paddingInline: 12, marginTop: 6, fontSize: 13}}>{'* ' + i18n.t('apply_to_language')}</ThemedText>
 
-            <TouchableOpacity onPress={() => goToStats()}
+            <TouchableOpacity onPress={goToStats}
                               style={[
                                 homeScreenStyles.ctaButton,
                                 offersStyles.statsBtn,

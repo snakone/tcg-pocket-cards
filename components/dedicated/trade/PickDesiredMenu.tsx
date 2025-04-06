@@ -1,7 +1,7 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import React from "react";
 import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -20,7 +20,6 @@ import {
    sortStyles 
   } from "@/shared/styles/component.styles";
 
-import { AppContext } from "@/app/_layout";
 import { collectionStyles } from "@/app/screens/collection";
 import { createDeckStyles } from "@/app/screens/create_deck";
 import { TabDesiredMenu } from "@/shared/definitions/interfaces/layout.interfaces";
@@ -30,7 +29,6 @@ import { getFilterSearch, ICON_WIDTH, RARITY_CAN_TRADE, RARITY_MAP } from "@/sha
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { filterCards, getImageLanguage116x162, getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
 import { CardExpansionTypeENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
-import { LanguageType } from "@/shared/definitions/types/global.types";
 import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
 import { ThemedText } from "@/components/ThemedText";
@@ -44,14 +42,13 @@ export default function PickDesiredMenu({
   isVisible,
   onClose,
   animatedStyle,
-  desired
+  desired,
+  language,
+  cardsState
 }: TabDesiredMenu) {
   const {i18n} = useI18n();
   const styles = ModalStyles;
   if (!isVisible) return null;
-  const context = useContext(AppContext);
-  if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state } = context;
   const [filtered, setFiltered] = useState<Card[]>([]);
   const [cardsWithFilter, setCardsWithFilter] = useState<Card[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -60,18 +57,13 @@ export default function PickDesiredMenu({
   const [filterDisabled, setFilterDisabled] = useState<boolean>(false);
   const [forceRender, setForceRender] = useState(0);
   const triggerRender = () => setForceRender(prev => prev + 1);
-  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
   const flatListRef = useRef<FlatList<Card> | null>(null);
-
-  useEffect(() => {
-    setLang(state.settingsState.language);
-  }, [state.settingsState.language]);
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
     setFiltered(cardsWithFilter.filter(card =>
-      card.name[lang].toLowerCase()?.includes(text.toLowerCase())
-  ))}, [cardsWithFilter, lang]);
+      card.name[language].toLowerCase()?.includes(text.toLowerCase())
+  ))}, [cardsWithFilter, language]);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
@@ -83,22 +75,22 @@ export default function PickDesiredMenu({
   }
 
   const filterTradeableCards = useCallback(() => {
-    return state.cardState.cards.filter(
+    return cardsState.cards.filter(
       card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2B)
-  }, [state.cardState.cards]);
+  }, [cardsState.cards]);
 
   useEffect(() => {
-    const desiredCard = state.cardState.cards.find(card => desired.includes(card.id));
+    const desiredCard = cardsState.cards.find(card => desired.includes(card.id));
 
     let filteredCards;
     if (desiredCard) {
-      filteredCards = state.cardState.cards.filter(card => 
+      filteredCards = cardsState.cards.filter(card => 
         card?.rarity === desiredCard.rarity && card.series !== CardExpansionTypeENUM.A2B
       );
   
       setCurrent(prev =>
         prev.map(p => 
-          (state.cardState.cards.find(card => card.id === p)?.rarity === desiredCard.rarity) ? p : null
+          (cardsState.cards.find(card => card.id === p)?.rarity === desiredCard.rarity) ? p : null
         )
       );
   
@@ -110,7 +102,7 @@ export default function PickDesiredMenu({
   
     setFiltered(filteredCards);
     setCardsWithFilter(filteredCards);
-  }, [state.cardState.cards, desired]);
+  }, [cardsState.cards, desired]);
 
   async function goUp(): Promise<void> {
     flatListRef.current?.scrollToOffset({offset: 0, animated: false});
@@ -200,8 +192,8 @@ export default function PickDesiredMenu({
                   {position: 'absolute', zIndex: 10, opacity: 0},
                   ((current.filter(Boolean).length === 5) && !current.includes(item.id)) && {opacity: 1}
                 ]}/>
-          <Image accessibilityLabel={item.name[lang]}
-                  source={getImageLanguage69x96(lang, item.id)}
+          <Image accessibilityLabel={item.name[language]}
+                  source={getImageLanguage69x96(language, item.id)}
                   placeholder={BACKWARD_CARD}
                   style={[
                   CardGridStyles.image, 
@@ -243,7 +235,7 @@ export default function PickDesiredMenu({
                     CardGridStyles.image, 
                     {width: 67.5}
                   ]} 
-                source={getImageLanguage116x162(lang, current[index])}
+                source={getImageLanguage116x162(language, current[index])}
                 placeholder={BACKWARD_CARD}/>
               </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
               }
@@ -346,7 +338,7 @@ export default function PickDesiredMenu({
                                         onChangeText={handleSearch}
                                         placeholderTextColor={Colors.light.text}
                                         accessibilityLabel={'SEARCH_LABEL'}
-                                        editable={state.cardState.loaded}
+                                        editable={cardsState.loaded}
                                         inputMode='text'
                                         style={[
                                           CardGridStyles.searchInput,

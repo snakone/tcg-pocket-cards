@@ -2,7 +2,8 @@ import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import React from 'react';
 import { useRouter } from 'expo-router';
 import { MaterialIcons } from '@expo/vector-icons';
-import { combineLatest, filter, withLatestFrom } from 'rxjs';
+import { combineLatest } from 'rxjs';
+import { Portal } from 'react-native-paper';
 
 import { 
   FlatList, 
@@ -14,16 +15,14 @@ import {
 
 import { useI18n } from '@/core/providers/LanguageProvider';
 import SoundService from '@/core/services/sounds.service';
-import { ModalRxjs } from '@/core/rxjs/ModalRxjs';
 import { FilterRxjs } from '@/core/rxjs/FilterRxjs';
 import { SortRxjs } from '@/core/rxjs/SortRxjs';
 
-import { cardStyles } from './cards';
 import { AppContext } from '../_layout';
 import { BACKUP_HEIGHT } from '@/shared/definitions/utils/constants';
 import { AttackMetaData } from '@/shared/definitions/interfaces/card.interfaces';
-import { LanguageType } from '@/shared/definitions/types/global.types';
-import { CardGridStyles } from '@/shared/styles/component.styles';
+import { LanguageType, ModalType } from '@/shared/definitions/types/global.types';
+import { CardGridStyles, cardStyles } from '@/shared/styles/component.styles';
 import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
 import { Colors } from '@/shared/definitions/utils/colors';
 import { FilterAttackSearch } from '@/shared/definitions/classes/filter_attack.class';
@@ -45,6 +44,8 @@ import { AttacksScreenModal } from '@/components/modals';
 import { SortAndFilterButtons } from '@/components/ui/FilterSortButtons';
 import { ResetFilterButton } from '@/components/ui/ResetFilterButton';
 import { FooterList } from '@/components/ui/FooterList';
+import FilterAttackMenu from '@/components/shared/attacks/FilterAttackMenu';
+import SortAttackMenu from '@/components/shared/attacks/SortAttackMenu';
 
 export default function AttacksScreen() {
   console.log('Attacks Screen')
@@ -59,6 +60,11 @@ export default function AttacksScreen() {
   const [filtered, setFiltered] = useState<AttackMetaData[]>([]);
   const flatListRef = useRef<FlatList<AttackMetaData> | null>(null);
   const [sortData, setSortData] = useState<SortData>();
+
+  const [modalVisibility, setModalVisivility] = useState<Partial<Record<ModalType, boolean>>>({
+    attacks: false,
+    attacksSort: false,
+  });
 
   useEffect(() => {
     setLang(state.settingsState.language);
@@ -87,26 +93,21 @@ export default function AttacksScreen() {
     }
   }, [state.cardState.cards]);
 
-  function openFilter(): void {
-    ModalRxjs.setModalVisibility({key: 'attacks', value: true});
+  function handleModalVisibility(key: ModalType, value: boolean): void {
+    setModalVisivility(prev => ({...prev, [key]: value}));
+    value ? SoundService.play('AUDIO_MENU_OPEN') :
+      SoundService.play('AUDIO_MENU_CLOSE');
   }
 
-  function openSort(): void {
-    ModalRxjs.setModalVisibility({key: 'attacksSort', value: true});
+  function handleClose(key: ModalType): void {
+    handleModalVisibility(key, false);
   }
 
   useEffect(() => {
     const sub = combineLatest([
-      ModalRxjs.getModal('attacks'),
-      ModalRxjs.getModal('attacksSort')
-    ])
-    .pipe(
-      filter(([filterOpen, sortOpen]) => (attacks.length > 0) && !filterOpen && !sortOpen),
-      withLatestFrom(
-        FilterRxjs.getFilter<FilterAttackSearch>('attacks'),
-        SortRxjs.getSortActive('attacks')
-      )
-    ).subscribe(([[_], filters, sort]) => {
+      FilterRxjs.getFilter<FilterAttackSearch>('attacks'),
+      SortRxjs.getSortActive('attacks')
+    ]).subscribe(([filters, sort]) => {
         const filterCards = filterOrSortAttacks('filter', attacks as AttackMetaData[], lang, filters);
         const sorted = filterOrSortAttacks('sort', filterCards, lang, null, sort);
         setFiltered(sorted);
@@ -166,7 +167,7 @@ export default function AttacksScreen() {
                           modalHeight={BACKUP_HEIGHT}>
         <View style={[CardGridStyles.inputContainer, {paddingBottom: 2}]}>
           <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: 280, borderRadius: 8}}>
-            <TextInput style={[CardGridStyles.searchInput, {width: '100%', left: 1, position: 'relative'}]}
+            <TextInput style={[CardGridStyles.searchInput, {width: '100%', position: 'relative'}]}
                         placeholder={i18n.t('search_attack_placeholder')}
                         value={searchQuery.current}
                         onChangeText={handleSearch}
@@ -212,11 +213,26 @@ export default function AttacksScreen() {
       </ParallaxScrollView>
       <SortAndFilterButtons sort={sortData?.sort}
                             filterIcon={sortData?.filterIcon}
-                            filterPress={openFilter}
-                            sortPress={openSort}
+                            filterPress={() => handleModalVisibility('attacks', true)}
+                            sortPress={() => handleModalVisibility('attacksSort', true)}
                             sortIconStyle={sortData?.iconStyle}
                             sortOrderIcon={sortData?.orderIcon}
                             styles={cardStyles}/>
+
+      <Portal>
+        {modalVisibility.attacks && 
+          <FilterAttackMenu animatedStyle={{}}
+                            filterKey={"attacks"}
+                            isVisible={modalVisibility.attacks}
+                            onClose={() => handleClose('attacks')}/>}
+      </Portal>
+      <Portal>
+        {modalVisibility.attacksSort && 
+          <SortAttackMenu animatedStyle={{}} 
+                          filterKey={"attacks"}
+                          isVisible={modalVisibility.attacksSort}
+                          onClose={() => handleClose('attacksSort')}/>}
+      </Portal>
     </>
   );
 }

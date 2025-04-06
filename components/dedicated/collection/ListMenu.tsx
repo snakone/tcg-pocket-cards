@@ -1,14 +1,13 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useContext } from "react";
+import { useCallback } from "react";
 import React from "react";
 import { Image } from "expo-image";
 
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
 
-import { AppContext } from "@/app/_layout";
 import { CollectionListMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
 import { roundPercentage } from "@/shared/definitions/utils/functions";
@@ -18,18 +17,19 @@ import { CROWN_RARITY, STAR_RARITY } from "@/shared/definitions/sentences/path.s
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
+
+const MODAL_HEIGHT = 590;
 
 export default function ListMenu({
   isVisible,
   onClose,
-  animatedStyle,
   stats
 }: CollectionListMenu) {
   const {i18n} = useI18n();
   const styles = ModalStyles;
   if (!isVisible) return null;
-  const context = useContext(AppContext);
-  if (!context) { throw new Error('NO_CONTEXT'); }
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
@@ -104,7 +104,7 @@ export default function ListMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: 590}]}>
+      <Animated.View style={[animatedStyle, sortStyles.container, {height: MODAL_HEIGHT}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('expansions')}</ThemedText>
         </View>

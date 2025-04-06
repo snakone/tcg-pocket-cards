@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 
+import { CardsState } from "@/hooks/cards.reducer";
 import { CardLanguageENUM } from "../enums/card.enums";
 import { CollectionStat, ExpansionEmblem } from "./global.interfaces";
 import { FilterSearch } from "../classes/filter.class";
@@ -18,7 +19,7 @@ export interface HeaderWithCustomModalProps {
 }
 
 export interface TabMenu {
-  isVisible?: boolean;
+  isVisible: boolean;
   onClose?: (value?: any) => void;
   animatedStyle?: any;
 }
@@ -32,6 +33,10 @@ export interface TabWithCards extends TabMenu {
   language: LanguageType;
 }
 
+export interface TabMenuGames extends TabMenu {
+  selectedMode: 4 | 6 | 8;
+}
+
 export interface TabMenuCollection extends TabMenu {
   selectedLanguage: CardLanguageENUM;
   onViewStats: (language: CardLanguageENUM) => void
@@ -39,11 +44,15 @@ export interface TabMenuCollection extends TabMenu {
 
 export interface TabDesiredMenu extends TabMenu {
   desired: (number | null)[];
+  language: LanguageType,
+  cardsState: CardsState;
 }
 
 export interface TabOffersMenu extends TabMenu {
   desired: (number | null)[];
   offers: (number | null)[];
+  language: LanguageType,
+  cardsState: CardsState;
 }
 
 export interface ExpansionMenu extends TabMenu {

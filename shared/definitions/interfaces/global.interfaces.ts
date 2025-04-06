@@ -6,6 +6,8 @@ import { LanguageType } from "../types/global.types";
 import { CardLanguageENUM, CardRarityENUM } from "../enums/card.enums";
 import { EXPANSION } from "../enums/packs.enums";
 import { SortItem } from "./layout.interfaces";
+import { MutableRefObject } from "react";
+import { FilterSearch } from "../classes/filter.class";
 
 interface ServerResponse {
   ok: boolean;
@@ -129,4 +131,9 @@ export interface SortData {
   iconStyle: any, 
   orderIcon: any,
   filterIcon: any
+}
+
+export interface MemoryGameMenuData {
+  mode: 4 | 6 | 8,
+  filter: MutableRefObject<FilterSearch>
 }

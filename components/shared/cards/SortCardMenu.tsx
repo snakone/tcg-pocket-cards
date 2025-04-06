@@ -7,28 +7,29 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 import SoundService from "@/core/services/sounds.service";
 import { SortRxjs } from "@/core/rxjs/SortRxjs";
-import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
 import { useI18n } from "@/core/providers/LanguageProvider";
 
-import { cardStyles } from "@/app/(tabs)/cards";
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
 import { INITIAL_SORT_DATA } from "@/shared/definitions/utils/constants";
 import { SortItem, TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
+import { ButtonStyles, cardStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 
+const MODAL_HEIGHT = 640;
 
 export default function SortCardMenu({
-  animatedStyle,
   filterKey,
   onClose,
+  isVisible
 }: TabMenuCards) {
   console.log('Sort Card Menu')
   const [data, setData] = useState(INITIAL_SORT_DATA);
   const {i18n} = useI18n();
   const styles = ModalStyles;
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE')
@@ -52,8 +53,6 @@ export default function SortCardMenu({
       onClose();
       return;
     }
-    
-    ModalRxjs.setModalVisibility({key: 'cardsSort', value: false});
   }
 
   useEffect(() => {
@@ -99,7 +98,12 @@ export default function SortCardMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, i18n.locale === 'ja' && {height: 646}]}>
+      <Animated.View style={[
+        animatedStyle, 
+        sortStyles.container,
+        {zIndex: 200},
+        i18n.locale === 'ja' && {height: MODAL_HEIGHT + 6}
+      ]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('order')}</ThemedText>
         </View>

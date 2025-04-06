@@ -20,7 +20,7 @@ import {
 
 import { Colors } from '@/shared/definitions/utils/colors';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { getImageLanguage69x96 } from '@/shared/definitions/utils/functions';
+import { getImageLanguageForGraphic } from '@/shared/definitions/utils/functions';
 import { CardGridStyles } from '@/shared/styles/component.styles';
 import { LanguageType } from '@/shared/definitions/types/global.types';
 
@@ -59,7 +59,7 @@ export const GraphicExpansion = ({
           CardGridStyles.image, 
           {width: 60, borderRadius: 4, height: 82}
         ]} 
-        source={getImageLanguage69x96(language, item?.id)}/>
+        source={getImageLanguageForGraphic(item?.id)}/>
       </ThemedView>
     )
   }, []);

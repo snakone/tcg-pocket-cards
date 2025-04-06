@@ -1,7 +1,7 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import React from "react";
 import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -20,7 +20,6 @@ import {
   sortStyles
 } from "@/shared/styles/component.styles";
 
-import { AppContext } from "@/app/_layout";
 import { createDeckStyles } from "@/app/screens/create_deck";
 import { collectionStyles } from "@/app/screens/collection";
 import { TabOffersMenu } from "@/shared/definitions/interfaces/layout.interfaces";
@@ -29,7 +28,6 @@ import { Colors } from "@/shared/definitions/utils/colors";
 import { getFilterSearch, ICON_WIDTH, RARITY_CAN_TRADE, RARITY_MAP } from "@/shared/definitions/utils/constants";
 import { filterCards, getImageLanguage116x162, getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
 import { CardExpansionTypeENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
-import { LanguageType } from "@/shared/definitions/types/global.types";
 import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 
@@ -45,30 +43,24 @@ export default function PickOffersMenu({
   onClose,
   animatedStyle,
   desired,
-  offers
+  offers,
+  language,
+  cardsState
 }: TabOffersMenu) {
   const {i18n} = useI18n();
   const styles = ModalStyles;
   if (!isVisible) return null;
-  const context = useContext(AppContext);
-  if (!context) { throw new Error('NO_CONTEXT'); }
-  const { state } = context;
   const [cards, setCards] = useState<Card[]>([]);
   const [filtered, setFiltered] = useState<Card[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const filterObj = useRef<FilterSearch>(getFilterSearch());
   const [current, setCurrent] = useState<(number | null)[]>(offers);
-  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
-
-  useEffect(() => {
-    setLang(state.settingsState.language);
-  }, [state.settingsState.language]);
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
     setFiltered(cards.filter(card =>
-      card.name[lang].toLowerCase()?.includes(text.toLowerCase())
-  ))}, [cards, lang]);
+      card.name[language].toLowerCase()?.includes(text.toLowerCase())
+  ))}, [cards, language]);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
@@ -99,10 +91,10 @@ export default function PickOffersMenu({
   }, [current])
 
   useEffect(() => {
-    const desiredCard = state.cardState.cards.find(card => desired.includes(card.id));
+    const desiredCard = cardsState.cards.find(card => desired.includes(card.id));
 
     if (desiredCard) {
-      const filter = state.cardState.cards
+      const filter = cardsState.cards
                       .filter(card => card?.rarity === desiredCard.rarity && 
                                       card.series !== CardExpansionTypeENUM.A2B &&
                                       !desired.includes(card.id));
@@ -110,14 +102,14 @@ export default function PickOffersMenu({
       setFiltered(filter);
 
       setCurrent(prev => 
-        prev.map(p => (state.cardState.cards
+        prev.map(p => (cardsState.cards
             .find(card => card.id === p)?.rarity === desiredCard.rarity) ? p : null
         )
       );
 
       (filterObj.current.rarity as any)[desiredCard.rarity] = true;
     }
-  }, [state.cardState.cards, desired]);
+  }, [cardsState.cards, desired]);
 
   const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
     <View style={{margin: 1, backgroundColor: Colors.light.skeleton, borderRadius: 8}}>
@@ -149,8 +141,8 @@ export default function PickOffersMenu({
                   {position: 'absolute', zIndex: 10, opacity: 0},
                   ((current.filter(Boolean).length === 5) && !current.includes(item.id)) && {opacity: 1}
                 ]}/>
-          <Image accessibilityLabel={item.name[lang]}
-                  source={getImageLanguage69x96(lang, item.id)}
+          <Image accessibilityLabel={item.name[language]}
+                  source={getImageLanguage69x96(language, item.id)}
                   placeholder={BACKWARD_CARD}
                   style={[
                   CardGridStyles.image, 
@@ -183,7 +175,7 @@ export default function PickOffersMenu({
                   CardGridStyles.image, 
                   {width: 67.5}
                 ]} 
-              source={getImageLanguage116x162(lang, current[index])}
+              source={getImageLanguage116x162(language, current[index])}
               placeholder={BACKWARD_CARD}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
             }
@@ -293,7 +285,7 @@ export default function PickOffersMenu({
                                       onChangeText={handleSearch}
                                       placeholderTextColor={Colors.light.text}
                                       accessibilityLabel={'SEARCH_LABEL'}
-                                      editable={state.cardState.loaded}
+                                      editable={cardsState.loaded}
                                       inputMode='text'
                                       style={[CardGridStyles.searchInput, {width: '100%'}]}
                                     />

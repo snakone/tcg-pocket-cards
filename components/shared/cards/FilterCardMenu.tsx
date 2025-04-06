@@ -3,15 +3,15 @@ import { BlurView } from "expo-blur";
 import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
 import { useRef, useState,  } from "react";
-import { Portal, Provider } from "react-native-paper";
+import { Portal } from "react-native-paper";
 import { Subject } from "rxjs";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
 import { FilterRxjs } from "@/core/rxjs/FilterRxjs";
 import SoundService from "@/core/services/sounds.service";
 import { useI18n } from "@/core/providers/LanguageProvider";
 
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
 import { TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { getFilterSearch } from "@/shared/definitions/utils/constants";
@@ -44,8 +44,9 @@ import {
   StageItem
 } from './components/index';
 
+const MODAL_HEIGHT = 712;
+
 export default function FilterCardMenu({
-  animatedStyle, 
   filterKey,
   isVisible,
   onClose
@@ -57,6 +58,7 @@ export default function FilterCardMenu({
   const [expansionSelected, setExpansionSelected] = useState<boolean>(false);
   const [forceRender, setForceRender] = useState(0);
   const triggerRender = () => setForceRender(prev => prev + 1);
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   function onNext(subject: string): void {
     nextValues[subject].next(true);
@@ -98,7 +100,6 @@ export default function FilterCardMenu({
       onClose();
       return;
     }
-    ModalRxjs.setModalVisibility({key: 'cards', value: false});
   }
 
   async function handleExpansion(value: boolean): Promise<void> {
@@ -153,18 +154,18 @@ export default function FilterCardMenu({
   if (!isVisible) { return null; }
 
   return (
-    <Provider key={forceRender}>
+    <>
       <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
                 style={[StyleSheet.absoluteFill]} 
                 tint="light" 
                 experimentalBlurMethod='dimezisBlurView'/>
       <Pressable style={[LayoutStyles.overlay]} onPress={() => closeMenu()}></Pressable>
-      <Animated.View style={[animatedStyle, filterStyles.container, {height: 712}]}>
+      <Animated.View style={[Platform.OS === 'web' && animatedStyle, filterStyles.container, {height: MODAL_HEIGHT}]}>
         <View style={[ModalStyles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={[ModalStyles.modalHeaderTitle, i18n.locale === 'ja' && {fontSize: 20}]}>{i18n.t('filter')}</ThemedText>
         </View>
         <SafeAreaView style={[ModalStyles.modalScrollView, {paddingHorizontal: 20, paddingVertical: 0, marginTop: 16, maxHeight: '75.6%'}]}>
-          <ScrollView showsVerticalScrollIndicator={false} style={filterStyles.list}>
+          <ScrollView key={forceRender} showsVerticalScrollIndicator={false} style={filterStyles.list}>
 
             <TouchableOpacity onPress={handleReset} style={[
               filterStyles.button, 
@@ -260,6 +261,6 @@ export default function FilterCardMenu({
       <Portal>
         <RenderExpansionsMenu></RenderExpansionsMenu>
       </Portal>
-    </Provider>
+    </>
   );
 }

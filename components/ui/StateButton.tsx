@@ -55,7 +55,7 @@ const StateButton = ({
   };
 
   useEffect(() => {
-    if ((filterObj?.current as any)[propFilter][keyFilter] === true) {
+    if (filterObj && (filterObj?.current as any)[propFilter][keyFilter] === true) {
       setPressed(true);
     }
 
@@ -78,9 +78,9 @@ const StateButton = ({
     <TouchableOpacity
       style={[
         style,
-        (pressed || (filterObj?.current as any)[propFilter][keyFilter]) && { backgroundColor: color },
+        (pressed || filterObj && (filterObj?.current as any)[propFilter][keyFilter]) && { backgroundColor: color },
         isImage && { opacity: 0.5 },
-        (pressed || (filterObj?.current as any)[propFilter][keyFilter]) && isImage && { opacity: 1}
+        (pressed || filterObj && (filterObj?.current as any)[propFilter][keyFilter]) && isImage && { opacity: 1 }
       ]}
       onPress={handlePress}
       disabled={disabled} 
@@ -91,7 +91,7 @@ const StateButton = ({
       <ThemedText style={[
         filterStyles.buttonText, 
         labelMargin && {left: 18}, 
-        (pressed || (filterObj?.current as any)[propFilter][keyFilter]) && {color: 'white'}]}>{i18n.t(label || '')}
+        (pressed || filterObj && (filterObj?.current as any)[propFilter][keyFilter]) && {color: 'white'}]}>{i18n.t(label || '')}
       </ThemedText>}
     </TouchableOpacity>
   );

@@ -6,11 +6,11 @@ import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { Image } from "expo-image";
 
-import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
 import Storage from "@/core/storage/storage.service";
 import SoundService from "@/core/services/sounds.service";
 import { useI18n } from "@/core/providers/LanguageProvider";
 
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
 import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { COIN_LIST } from "@/shared/definitions/utils/constants";
@@ -21,13 +21,17 @@ import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { splashStyles } from "@/components/ui/SplashScreen";
 
+const MODAL_HEIGHT = 605;
+
 export default function PickCoinMenu({
-  animatedStyle,
+  isVisible,
+  onClose
 }: TabMenu) {
   const {i18n} = useI18n();
   const styles = ModalStyles;
   const [selected, setSelected] = useState<string>('');
   const [original, setOriginal] = useState('');
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
@@ -35,7 +39,7 @@ export default function PickCoinMenu({
 
   async function closeMenu(): Promise<void> {
     await playSound();
-    ModalRxjs.setModalVisibility({key: 'coin', value: false});
+    onClose?.();
   }
 
   const handleClick = useCallback((value: string) => {

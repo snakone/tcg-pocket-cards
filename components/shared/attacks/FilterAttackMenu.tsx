@@ -3,12 +3,11 @@ import { BlurView } from "expo-blur";
 import { Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
 import { useRef, useState,  } from "react";
-import { Provider, Switch } from "react-native-paper";
+import { Switch } from "react-native-paper";
 import { Subject } from "rxjs";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import { FilterRxjs } from "@/core/rxjs/FilterRxjs";
-import { ModalRxjs } from "@/core/rxjs/ModalRxjs";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
 
@@ -20,6 +19,7 @@ import {
   ModalStyles, 
 } from "@/shared/styles/component.styles";
 
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
 import { getFilterAttackSearch } from "@/shared/definitions/utils/constants";
 import { TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
 import { Colors } from "@/shared/definitions/utils/colors";
@@ -32,13 +32,17 @@ import { EnergyItem } from "./components/EnergyItem";
 import { DamageItem } from "./components/DamageItem";
 import { AmountItem } from "./components/AmountItem";
 
+const MODAL_HEIGHT = 662;
+
 export default function FilterAttackMenu({
-  animatedStyle, 
-  filterKey
+  filterKey,
+  isVisible,
+  onClose
 }: TabMenuCards) {
   const [isExclusive, setIsExclusive] = useState(false);
   const [forceRender, setForceRender] = useState(0);
   const triggerRender = () => setForceRender(prev => prev + 1);
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
   
   const {i18n} = useI18n();
   const filterObj = useRef<FilterAttackSearch>(new FilterAttackSearch());
@@ -63,7 +67,7 @@ export default function FilterAttackMenu({
 
   async function closeMenu(): Promise<void> {
     FilterRxjs.setFilter({key: filterKey, value: filterObj.current});
-    ModalRxjs.setModalVisibility({key: 'attacks', value: false});
+    onClose?.();
   }
 
   async function handleChange(value: boolean): Promise<void> {
@@ -80,13 +84,19 @@ export default function FilterAttackMenu({
   }
 
   return (
-    <Provider key={forceRender}>
+    <>
       <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
                 style={[StyleSheet.absoluteFill]} 
                 tint="light" 
                 experimentalBlurMethod='dimezisBlurView'/>
       <Pressable style={[LayoutStyles.overlay]} onPress={() => closeMenu()}></Pressable>
-      <Animated.View style={[animatedStyle, filterStyles.container, {height: 662}, i18n.locale === 'ja' && {height: 670}]}>
+      <Animated.View key={forceRender} 
+                    style={[
+                      animatedStyle, 
+                      filterStyles.container, 
+                      {height: MODAL_HEIGHT}, 
+                      i18n.locale === 'ja' && {height: MODAL_HEIGHT + 8}
+                    ]}>
         <View style={[ModalStyles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={[ModalStyles.modalHeaderTitle, i18n.locale === 'ja' && {fontSize: 20}]}>{i18n.t('filter')}</ThemedText>
         </View>
@@ -143,6 +153,6 @@ export default function FilterAttackMenu({
           </Pressable>
         </View>
       </Animated.View>
-    </Provider>
+    </>
   );
 }

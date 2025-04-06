@@ -41,6 +41,15 @@ export interface Card extends BaseCard {
   shiny: boolean;
 }
 
+export interface CardWithMeta extends Card {
+  meta: {
+    full: boolean
+    canRemove: boolean,
+    same: Card | null,
+    count: number
+  }
+}
+
 export interface Attack {
   id?: number;
   name: Record<LanguageType, string>;
