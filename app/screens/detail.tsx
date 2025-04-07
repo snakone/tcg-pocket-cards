@@ -3,7 +3,6 @@ import
   Extrapolation, 
   interpolate, 
   runOnJS, 
-  useAnimatedScrollHandler, 
   useAnimatedStyle, 
   useDerivedValue, 
   useSharedValue, 
@@ -11,12 +10,13 @@ import
   withTiming 
 } from "react-native-reanimated";
 
-import React from "react";
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useLocalSearchParams, useRouter } from 'expo-router/build/hooks';
 import { Image } from 'expo-image';
 import { Platform, Pressable, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import BottomSheet from "@gorhom/bottom-sheet";
 
 import { 
   Gesture,
@@ -26,7 +26,6 @@ import {
   PanGestureHandlerEventPayload, 
 } from "react-native-gesture-handler";
 
-import ScrollService from "@/core/services/scroll.service";
 import SoundService from "@/core/services/sounds.service";
 import { DataRxjs } from "@/core/rxjs/DataRxjs";
 
@@ -41,18 +40,15 @@ import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import DetailCardScroll from "@/components/dedicated/detail/detail.scroll";
 
-const INITIAL_INFO_HEIGHT = 100;
-const MAX_HEIGHT = 450;
-const ANDROID_INFO_HEIGHT = 220;
-const MOVING_HEIGHT = 110;
-const SCROLL_CONTENT_HEIGHT = 800;
+const MAX_HEIGHT = 618;
+const MIN_HEIGHT = 268;
+const MOVING_HEIGHT = 70;
 
 export default function DetailScreen() {
   console.log('Detail Screen')
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
   const { state } = context;
-  const scrollService = useMemo(() => new ScrollService(), []);
   const styles = DetailStyles;
   const router = useRouter();
   const rotateX = useSharedValue(0);
@@ -62,15 +58,11 @@ export default function DetailScreen() {
   const [isSwiping, setIsSwiping] = useState<boolean>(false);
   const [showContent, setShowContent] = useState<boolean>(true);
   const top = useSharedValue<number>(0);
-  const height = useSharedValue(INITIAL_INFO_HEIGHT);
-  const heightAndroid = useSharedValue(ANDROID_INFO_HEIGHT);
-  const scrollY = useSharedValue(0);
-  const isAtMaxHeight = useSharedValue(false);
-  const scrollRef = useRef<Animated.ScrollView>(null);
-  const scrollYAndroid = useSharedValue(0);
   const [card, setCard] = useState<Card>();
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
-  const [canScroll, setCanScroll] = useState<boolean>(false);
+  const sheetRef = useRef<BottomSheet>(null);
+  const [scrollIndex, setScrollIndex] = useState<number>(0);
+  const animatedPosition = useSharedValue(0);
 
   useEffect(() => {
     setLang(state.settingsState.language);
@@ -84,24 +76,10 @@ export default function DetailScreen() {
     const favorites = DataRxjs.getDataSync<number[]>('favorites');
     setIsFavorite(favorites.includes(Number(id)))
   }, [])
-
-  useEffect(() => {
-    if (Platform.OS !== 'web' || !state.cardState.loaded) return;
-    const sub = scrollService.isReLatedCardScrollAtBegin$
-      .subscribe(res => {
-        if (!res) {
-          window.removeEventListener('wheel', handleWheel);
-        } else {
-          window.addEventListener('wheel', handleWheel);
-        }
-    });
-    
-    return () => sub.unsubscribe();
-  }, [state.cardState.loaded]);
   
   useEffect(() => {
     if (Platform.OS === 'web') return;
-    top.value = withTiming(isSwiping ? 0 : (MOVING_HEIGHT * -1), { duration: 300 });
+    top.value = withTiming(isSwiping ? 0 : (MOVING_HEIGHT * -1), { duration: 200 });
   }, [isSwiping]);
 
   const topAnimatedStyle = useAnimatedStyle(() => {
@@ -168,22 +146,14 @@ export default function DetailScreen() {
   }
 
   function startSwipe(): void {
-    heightAndroid.value = withTiming(0, { duration: 250 }, () => {
-      runOnJS(setIsSwiping)(true);
-    });
-
-    setTimeout(() => {
-      setShowContent(false);
-    }, 200);
+    setTimeout(() => runOnJS(setIsSwiping)(true), 200);
+    setTimeout(() => sheetRef.current?.close(), 400);
+    
   }
 
   function stopSwipe(): void {
-    heightAndroid.value = withTiming(ANDROID_INFO_HEIGHT, { duration: 300 }, () => {
-      runOnJS(setIsSwiping)(false)
-    });
-    setTimeout(() => {
-      setShowContent(true);
-    }, 666);
+    runOnJS(setIsSwiping)(false);
+    setTimeout(() => sheetRef.current?.snapToIndex(0), 400);
   }
 
   function onGestureFinish() {
@@ -220,72 +190,17 @@ export default function DetailScreen() {
     });
   }
 
-  const scrollHandler = useAnimatedScrollHandler((event) => {
-    scrollY.value = event.contentOffset.y;
-  });
-
-  const handleWheel = (event: WheelEvent) => {
-    const deltaY = event.deltaY * 0.5;
-
-    if (isAtMaxHeight.value) {
-      if (scrollY.value === 0 && deltaY < 0) {
-        isAtMaxHeight.value = false;
-        height.value = Math.max(height.value + deltaY, INITIAL_INFO_HEIGHT);
-      } else {
-        if (scrollRef.current) {
-          scrollY.value = Math.min(scrollY.value + deltaY, SCROLL_CONTENT_HEIGHT); 
-          scrollRef.current.scrollTo({ y: scrollY.value, animated: false });
-        }
-      }
-    } else {
-      height.value = Math.min(
-        Math.max(height.value + deltaY, INITIAL_INFO_HEIGHT), 
-        MAX_HEIGHT
-      );
-      if (height.value >= MAX_HEIGHT) {
-        isAtMaxHeight.value = true;
-      }
-    }
-  };
-
-  const panGesture = Gesture.Pan()
-    .onUpdate((event) => {
-      let deltaY = event.translationY < 0 ? 25 : -25;
-      if (isAtMaxHeight.value) {
-        if (scrollYAndroid.value === 0 && deltaY < 0) {
-          isAtMaxHeight.value = false;
-          heightAndroid.value = Math.max(
-            heightAndroid.value + deltaY, 
-            ANDROID_INFO_HEIGHT
-          );
-
-          runOnJS(setCanScroll)(false);
-        }
-      } else {
-        heightAndroid.value = Math.min(
-          Math.max(heightAndroid.value + deltaY, ANDROID_INFO_HEIGHT), 
-          MAX_HEIGHT
-        );
-        if (heightAndroid.value >= MAX_HEIGHT) {
-          isAtMaxHeight.value = true;
-          heightAndroid.value = MAX_HEIGHT;
-          runOnJS(setCanScroll)(true);
-        }
-      }
-    }
-  );
-
   const cardAnimatedScale = useDerivedValue(() =>
     withSpring(
       interpolate(
-        height.value, 
-        [INITIAL_INFO_HEIGHT, MAX_HEIGHT], 
-        [1, 0.5], 
-        'clamp'
+        animatedPosition.value, 
+        [MAX_HEIGHT, MIN_HEIGHT], 
+        [1, 0.35],
+         'clamp'
       ),
       {
-        damping: 20,
-        stiffness: 90,
+        damping: 30,
+        stiffness: 150,
         restDisplacementThreshold: 0.01,
         restSpeedThreshold: 0.01,
       }
@@ -295,10 +210,10 @@ export default function DetailScreen() {
   const cardAnimatedTranslateY = useDerivedValue(() =>
     withSpring(
       interpolate(
-        height.value, 
-        [INITIAL_INFO_HEIGHT, MAX_HEIGHT], 
-        [0, -225], 
-        'clamp'
+        animatedPosition.value, 
+        [MAX_HEIGHT, MIN_HEIGHT], 
+        [-70, -270],
+         'clamp'
       ),
       {
         damping: 20,
@@ -312,9 +227,9 @@ export default function DetailScreen() {
   const cardAndroidAnimatedScale = useDerivedValue(() =>
     withSpring(
       interpolate(
-        heightAndroid.value, 
-        [ANDROID_INFO_HEIGHT, MAX_HEIGHT], 
-        [1, 0.5],
+        animatedPosition.value, 
+        [MAX_HEIGHT, MIN_HEIGHT], 
+        [1, 0.35],
         'clamp'
       ),
       {
@@ -329,9 +244,9 @@ export default function DetailScreen() {
   const cardAndroidAnimatedTranslateY = useDerivedValue(() =>
     withSpring(
       interpolate(
-        heightAndroid.value, 
-        [ANDROID_INFO_HEIGHT, MAX_HEIGHT], 
-        [0, -225 + MOVING_HEIGHT], 
+        animatedPosition.value, 
+        [MAX_HEIGHT, MIN_HEIGHT], 
+        [0, -200],
         'clamp'
       ),
       {
@@ -346,7 +261,7 @@ export default function DetailScreen() {
   const cardAnimatedStyle = useAnimatedStyle(() => ({
     transform: [
       { translateY: cardAnimatedTranslateY.value },
-      { scale: cardAnimatedScale.value },
+      { scale: Math.min(cardAnimatedScale.value, 1) },
     ],
   }));
   
@@ -372,17 +287,9 @@ export default function DetailScreen() {
     </ThemedView>
   );
 
-  const scrollAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      height: withSpring(height.value, { damping: 20, stiffness: 90 }),
-    };
-  });
-
-  const scrollAndroidAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      height: withSpring(heightAndroid.value, { damping: 20, stiffness: 90 }),
-    };
-  });
+  const handleSheetChanges = useCallback((index: number) => {
+    setScrollIndex(index);
+  }, []);
 
   return (
     <Animated.View style={styles.container}>
@@ -406,12 +313,13 @@ export default function DetailScreen() {
               <Animated.View style={[
                 rotationStyle,
                 cardDetailStyles.card,
-                cardAndroidAnimatedStyle
+                cardAndroidAnimatedStyle,
+                
               ]}>
                 <Image style={[styles.image]}
-                      source={getImageLanguage(lang, Number(id))}
-                      placeholder={BACKWARD_CARD}
-                      contentFit={'fill'} />
+                       source={getImageLanguage(lang, Number(id))}
+                       placeholder={BACKWARD_CARD}
+                       contentFit={'fill'} />
               </Animated.View>
             </GestureDetector>
           </>)
@@ -428,39 +336,29 @@ export default function DetailScreen() {
           </TouchableOpacity>
         </ThemedView>
       }
-      { Platform.OS !== 'web' && showContent && card ?
-          <ThemedView style={cardDetailStyles.scrollContainer}>
-            <GestureDetector gesture={panGesture} touchAction="pan-y">
-              <ThemedView style={cardDetailStyles.panContainer}>
-                <ThemedView style={cardDetailStyles.panIndicator}></ThemedView>
-              </ThemedView>
-            </GestureDetector>
-            <Animated.ScrollView 
-              showsVerticalScrollIndicator={false}
-              scrollEventThrottle={69}
-              scrollEnabled={canScroll}
-              bounces={false}
-              contentContainerStyle={{alignItems: 'center', justifyContent: 'center'}}
-              style={[scrollAndroidAnimatedStyle]}>
-              <DetailCardScroll card={card} state={state}></DetailCardScroll>
-            </Animated.ScrollView>
-          </ThemedView> : 
-        Platform.OS === 'web' && showContent && card &&
-          <ThemedView style={[cardDetailStyles.scrollContainer]}>
-            <ThemedView style={cardDetailStyles.panContainer}>
-              <ThemedView style={cardDetailStyles.panIndicator}></ThemedView>
-            </ThemedView>
-            <Animated.ScrollView 
-                showsVerticalScrollIndicator={false}
-                scrollEventThrottle={69}
-                onScroll={scrollHandler}
-                scrollEnabled={false}
-                ref={scrollRef}
-                contentContainerStyle={{alignItems: 'center', justifyContent: 'center'}}
-                style={scrollAnimatedStyle}>
-              <DetailCardScroll card={card} state={state} scrollService={scrollService}></DetailCardScroll>
-            </Animated.ScrollView>
-          </ThemedView>
+      {
+        card &&
+        <BottomSheet
+          ref={sheetRef}
+          index={scrollIndex}
+          snapPoints={[210, 500]}
+          enableDynamicSizing={false}
+          overDragResistanceFactor={1}
+          onChange={handleSheetChanges}
+          animatedPosition={animatedPosition}
+          handleStyle={{
+            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)', 
+            borderTopLeftRadius: 20, 
+            borderTopRightRadius: 20, 
+            height: 32,
+            width: '100%',
+          }}
+          handleIndicatorStyle={{width: 80}}>
+          
+          <DetailCardScroll card={card} 
+                            state={state} 
+                            index={scrollIndex}/>
+        </BottomSheet>
       }
     </Animated.View>  
   );

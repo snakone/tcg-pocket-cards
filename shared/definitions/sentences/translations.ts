@@ -1,5 +1,6 @@
 export const TRANSLATIONS = {
   en: {
+    press_to_click: '*Long press for card details',
     deck: 'Deck',
     view_ranking: 'View ranking',
     grid_mode: 'Grid mode',
@@ -711,6 +712,7 @@ export const TRANSLATIONS = {
     without_ability: "Without Ability"
   },
   es: {
+    press_to_click: '*Manten pulsado para ver los detalles',
     deck: 'Mazo',
     view_ranking: 'Ver el ranking',
     grid_mode: 'Modo cuadrícula',
@@ -1425,6 +1427,7 @@ export const TRANSLATIONS = {
     without_ability: "Sin habilidad"
   },
   ja: {
+    press_to_click: '*長押しすると詳細が表示されます',
     deck: 'マレット',
     view_ranking: 'ランキングを見る',
     grid_mode: 'グリッドモード',
