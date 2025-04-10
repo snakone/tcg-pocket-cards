@@ -20,6 +20,8 @@ import { RenderDeckItem } from '@/components/dedicated/cards/DeckItem';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ResetFilterButton } from '@/components/ui/ResetFilterButton';
 
+const TOTAL_DECKS_LENGTH = 30;
+
 export default function CreateDeckScreen() {
   console.log('Create Screen')
   const {i18n} = useI18n();
@@ -83,11 +85,11 @@ export default function CreateDeckScreen() {
       <ThemedView
         style={{
           boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
-          width: '78%',
+          width: 272,
           borderRadius: 8,
         }}>
         <TextInput
-          style={[CardGridStyles.searchInput, { width: 280 }]}
+          style={[CardGridStyles.searchInput, { width: '100%'}]}
           placeholder={i18n.t('search_decks_placeholder')}
           value={searchQuery}
           onChangeText={setSearchQuery}
@@ -96,20 +98,19 @@ export default function CreateDeckScreen() {
           inputMode="text"
         />
         {searchQuery.length > 0 && 
-          <ResetFilterButton left={248} onPress={() => setSearchQuery('')}/>}
+          <ResetFilterButton left={242} onPress={() => setSearchQuery('')}/>}
       </ThemedView>
       <View
         style={[
           CardGridStyles.actionsContainer,
-          Platform.OS !== 'web' && { marginRight: 2 },
-          { justifyContent: 'flex-end', top: 1 },
+          { justifyContent: 'flex-end', top: 1},
         ]}>
         <MaterialIcons
           name="photo-library"
           style={{ fontSize: 20, marginLeft: 16, top: 1 }}
           color={Colors.light.skeleton}
         />
-        <ThemedText style={[CardGridStyles.totalCards]}>{decks?.length}/30</ThemedText>
+        <ThemedText style={[CardGridStyles.totalCards]}>{decks?.length}/{TOTAL_DECKS_LENGTH}</ThemedText>
       </View>
     </View>
   ), [decks.length, searchQuery]);
@@ -121,6 +122,7 @@ export default function CreateDeckScreen() {
                           modalContent={<CreateScreenModal></CreateScreenModal>}
                           modalHeight={LARGE_MODAL_HEIGHT}
                           styles={{gap: 0}}>
+        {ListHeader}
         <FlatList data={filtered}
                   numColumns={1}
                   renderItem={({item, index}) => 
@@ -133,9 +135,7 @@ export default function CreateDeckScreen() {
                   initialNumToRender={6}
                   bounces={false}
                   overScrollMode='never'
-                  stickyHeaderIndices={[0]}
-                  keyboardDismissMode={'on-drag'}
-                  ListHeaderComponent={ListHeader}/>
+                  keyboardDismissMode={'on-drag'}/>
         <RenderFooter></RenderFooter>           
       </ParallaxScrollView>
     </>

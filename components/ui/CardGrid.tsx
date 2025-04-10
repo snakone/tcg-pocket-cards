@@ -170,7 +170,7 @@ export default function ImageGridWithSearch({
       maximumValue={1}
       minimumValue={0}
       step={1}
-      containerStyle={{ width: '75%', left: Platform.OS === 'web' ? -34 : -38 }}
+      containerStyle={{ width: '75%', left: Platform.OS === 'web' ? -36 : -38, top: 1 }}
       maximumTrackTintColor={Colors.light.skeleton}
       minimumTrackTintColor="mediumaquamarine"
       animateTransitions={true}
@@ -225,7 +225,7 @@ export default function ImageGridWithSearch({
                   {sliderComponent}
                   <ThemedText style={[
                     CardGridStyles.totalCards, 
-                    {left: Platform.OS === 'web' ? -17 : -27, top: 0}]}>{filtered.length}
+                    {left: -27, top: 0}]}>{filtered.length}
                   </ThemedText>                    
                 </ThemedView>
               </View>
