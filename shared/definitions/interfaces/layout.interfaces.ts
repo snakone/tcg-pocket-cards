@@ -16,6 +16,7 @@ export interface HeaderWithCustomModalProps {
   animatedStyle?: any,
   animatedIconStyle?: any,
   showHeader?: boolean;
+  showToggle?: boolean;
 }
 
 export interface TabMenu {
@@ -35,6 +36,7 @@ export interface TabWithCards extends TabMenu {
 
 export interface TabMenuGames extends TabMenu {
   selectedMode: 4 | 6 | 8;
+  filterObj: React.MutableRefObject<FilterSearch>;
 }
 
 export interface TabMenuCollection extends TabMenu {

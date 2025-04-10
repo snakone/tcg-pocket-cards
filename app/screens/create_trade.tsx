@@ -227,7 +227,7 @@ export default function CreateTradeScreen() {
                   CardGridStyles.image, 
                   {width: 67.6}
                 ]} 
-              source={getImageLanguage116x162(lang, item)}
+              source={{uri: getImageLanguage116x162(lang, item)}}
               placeholder={BACKWARD_CARD}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
             }
@@ -250,7 +250,7 @@ export default function CreateTradeScreen() {
                   CardGridStyles.image, 
                   {width: 67.6}
                 ]} 
-              source={getImageLanguage116x162(lang, item)}
+              source={{uri: getImageLanguage116x162(lang, item)}}
               placeholder={BACKWARD_CARD}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
             }

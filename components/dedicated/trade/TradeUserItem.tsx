@@ -29,13 +29,19 @@ export default function TradeUserItem({item, styles, language, share}: TradeUser
         borderColor: !item?.valid ? 'goldenrod' : 'transparent', 
         borderWidth: !item.valid  ? 1 : 0}, 
         {minHeight: 60, marginBottom: 16, paddingVertical: 0, paddingHorizontal: 0},
-        Platform.OS !== 'web' && {height: share ? 148 : 101, overflow: 'hidden'}
+        Platform.OS !== 'web' && {height: share ? 148 : 97, overflow: 'hidden'}
       ]}>
       <ThemedView style={{overflow: 'hidden', padding: 0}}>
-        <ThemedText style={[tradeItemStyles.title, share && {marginBottom: 14}, 
-          Platform.OS !== 'web' && {marginBottom: 12}]}>{item?.title || i18n.t('trade') + ' ' + (item.id)}
+        <ThemedText style={[
+          tradeItemStyles.title, 
+          share && {marginBottom: 16, paddingHorizontal: 8}
+        ]}>{item?.title || i18n.t('trade') + ' ' + (item.id)}
         </ThemedText>
-        <ThemedView style={[tradeItemStyles.container, {height: share ? 101 : 46, paddingHorizontal: 22}]}>
+        <ThemedView style={[
+          tradeItemStyles.container, 
+          {height: share ? 101 : 46, paddingHorizontal: share ? 16 : 22},
+          !share && { paddingRight: 25}
+        ]}>
           <ThemedView style={{width: '38%'}}>
             {
               item.desired.map((item, i) => (
@@ -52,25 +58,26 @@ export default function TradeUserItem({item, styles, language, share}: TradeUser
                     top: Math.abs(i - 2) * 4
                   }
                 ]} 
-                source={item ? getImageLanguage116x162(language, item) : BACKWARD_CARD}
+                source={item ? {uri: getImageLanguage116x162(language, item)} : BACKWARD_CARD}
                 placeholder={BACKWARD_CARD}
                 key={i}/>
               ))
             }
           </ThemedView>
           <ThemedView style={[{
-            width: '25%', top: 4, left: -2}, 
-            Platform.OS !== 'web' && {left: 15}, 
+            width: '25%', top: 0, left: -3}, 
+            Platform.OS !== 'web' && {left: 13}, 
             share && {top: 10}
           ]}>
             {
               SvgTradePassSymbol(
-                Platform.OS !== 'web' &&
-                {width: 45, height: 52, transform: [{scale: 0.6}], top: -4}
+                Platform.OS !== 'web' ?
+                {width: 45, height: 52, transform: [{scale: 0.7}], top: 4} :
+                share ? {transform: [{scale: 0.8}]} : null
               )
             }
           </ThemedView>
-          <ThemedView style={{width: '38%', borderBottomLeftRadius: 4}}>
+          <ThemedView style={{width: share ? '35%' : '36%', borderBottomLeftRadius: 4}}>
             {
               item.offers.map((offer, i) => (
                 <Image style={[
@@ -86,7 +93,7 @@ export default function TradeUserItem({item, styles, language, share}: TradeUser
                     top: Math.abs(i - 2) * 4
                   }
                 ]} 
-                source={offer ? getImageLanguage116x162(language, offer) : BACKWARD_CARD}
+                source={offer ? {uri: getImageLanguage116x162(language, offer)} : BACKWARD_CARD}
                 placeholder={BACKWARD_CARD}
                 key={i}/>
               ))
@@ -95,7 +102,7 @@ export default function TradeUserItem({item, styles, language, share}: TradeUser
         </ThemedView>
       </ThemedView>
 
-      <ThemedView style={[tradeItemStyles.token]}>
+      <ThemedView style={[tradeItemStyles.token, {right: share ? 6 : 10}]}>
         <Image source={TRADE_POINTS} style={{width: 20, height: 20, left: 0, position: 'absolute', top: 2}}/>
         <ThemedText style={{top: -1, left: 12, fontSize: 13}}>{item.rarity && (TRADE_COST_MAP as any)[item.rarity] || 0}</ThemedText>
       </ThemedView>
@@ -126,7 +133,7 @@ const tradeItemStyles = StyleSheet.create({
     gap: 6,
     opacity: 0.9,
     top: 10,
-    right: 12
+    right: 10
   },
   container: {
     flexDirection: 'row', 

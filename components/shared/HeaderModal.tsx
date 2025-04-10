@@ -19,7 +19,8 @@ export default function HeaderWithCustomModal({
   modalHeight,
   animatedStyle = {},
   animatedIconStyle = {},
-  showHeader = true
+  showHeader = true,
+  showToggle = true
 }: HeaderWithCustomModalProps) {
   const [visible, setVisible] = useState(false);
   const styles = ModalStyles;
@@ -53,10 +54,8 @@ export default function HeaderWithCustomModal({
 
   return (
     <>
-      <RenderModalToggle></RenderModalToggle>
-        {
-          showHeader && <RenderHeader></RenderHeader>
-        }
+        { showToggle && <RenderModalToggle></RenderModalToggle> }
+        { showHeader && <RenderHeader></RenderHeader> }
         {visible && (
           <Portal>
             <PaperModal visible={visible}

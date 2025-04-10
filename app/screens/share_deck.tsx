@@ -162,7 +162,7 @@ export default function ShareDeckScreen() {
               CardGridStyles.image, 
               {width: Platform.OS === 'web' ? 29.1 : 49.4, height: 46, borderRadius: 4}
             ]} 
-            source={getImageLanguage69x96(lang, item?.id)}
+            source={{uri: getImageLanguage69x96(lang, item?.id)}}
             placeholder={BACKWARD_CARD}/>
           </ThemedView> : <MaterialIcons name="add" 
                                          style={{fontSize: 16, color: Colors.light.icon}}/>

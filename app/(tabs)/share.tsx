@@ -70,11 +70,10 @@ export default function ShareScreen() {
   }, []);
 
   const RenderTrade = useCallback(({item}: {item: TradeItem}) => {
-    const rarity = state.cardState.cards.find(card => item?.desired.includes(card.id))?.rarity;
     return (
       <TouchableOpacity style={{paddingHorizontal: Platform.OS !== 'web' ? 0 : 16}} 
                         onPress={() => openTrade(item)}>
-        <TradeUserItem item={item} language={lang}/>
+        <TradeUserItem  item={item} language={lang}/>
       </TouchableOpacity>
     )
   }, []);

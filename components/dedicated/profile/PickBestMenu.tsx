@@ -77,7 +77,7 @@ export default function PickBestMenu({
             </ThemedView>
           }
           <Image accessibilityLabel={item.name[language]}
-                  source={getImageLanguage69x96(language, item.id)}
+                  source={{uri: getImageLanguage69x96(language, item.id)}}
                   placeholder={BACKWARD_CARD}
                   style={[
                   CardGridStyles.image, 

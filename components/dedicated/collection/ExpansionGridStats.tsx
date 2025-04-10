@@ -283,8 +283,9 @@ export const ExpansionGridStats = ({
   }, [cards]);
 
   function goToDetailScreen(id: number): void {
+    if (id == null) { return; }
     SoundService.play('PICK_CARD_SOUND');
-    router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
+    router.push(`/screens/card_detail?id=${encodeURIComponent(id)}`);
   }
 
   const renderItem = useCallback(({item}: {item: CollectionStat}) => {
@@ -365,7 +366,7 @@ export const ExpansionGridStats = ({
                                     style={{boxShadow: '0px 4px 14px rgba(0, 0, 0, 0.3)'}}
                                     disabled={!missingCards[i]}>
                     <Image style={{width: 71, height: 99}}
-                           source={getImageLanguage116x162(lang, missingCards[i])}
+                           source={missingCards[i] ? {uri: getImageLanguage116x162(lang, missingCards[i])} : BACKWARD_CARD}
                            placeholder={BACKWARD_CARD}/>
                   </TouchableOpacity>
                   {

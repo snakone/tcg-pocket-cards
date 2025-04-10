@@ -142,7 +142,7 @@ export default function PickOffersMenu({
                   ((current.filter(Boolean).length === 5) && !current.includes(item.id)) && {opacity: 1}
                 ]}/>
           <Image accessibilityLabel={item.name[language]}
-                  source={getImageLanguage69x96(language, item.id)}
+                  source={{uri: getImageLanguage69x96(language, item.id)}}
                   placeholder={BACKWARD_CARD}
                   style={[
                   CardGridStyles.image, 
@@ -175,7 +175,7 @@ export default function PickOffersMenu({
                   CardGridStyles.image, 
                   {width: 67.5}
                 ]} 
-              source={getImageLanguage116x162(language, current[index])}
+              source={{uri: getImageLanguage116x162(language, current[index])}}
               placeholder={BACKWARD_CARD}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
             }

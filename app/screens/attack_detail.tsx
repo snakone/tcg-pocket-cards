@@ -94,7 +94,7 @@ export default function AttackDetailScreen() {
 
   const goToDetailScreen = async (id: number) => {
     SoundService.play('PICK_CARD_SOUND');
-    router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
+    router.push(`/screens/card_detail?id=${encodeURIComponent(id)}`);
   };
 
   const goToAttackDetail = (item: AttackMetaData) => {
@@ -109,7 +109,7 @@ export default function AttackDetailScreen() {
             style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
         <View>
           <Image accessibilityLabel={item.name[lang]}
-                 source={getImageLanguage116x162(lang, item.id)}
+                 source={{uri: getImageLanguage116x162(lang, item.id)}}
                  placeholder={BACKWARD_CARD}
                  style={[
                   CardGridStyles.image, 

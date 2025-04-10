@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Image, StyleSheet, View, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, View, TouchableOpacity, Platform } from "react-native";
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from "react-native-reanimated";
 
 import { useI18n } from "@/core/providers/LanguageProvider";
@@ -55,7 +55,7 @@ export const MemoryCard: React.FC<CardProps> = ({ onPress, card, isFlipped, isIn
         </Animated.View>
 
         <Animated.View style={[styles.cardFace, styles.backFace, backStyle]}>
-          <Image source={getImageLanguage116x162(i18n.locale as LanguageType, card.id)} 
+          <Image source={{uri: getImageLanguage116x162(i18n.locale as LanguageType, card.id)}} 
                  style={[
                   styles.image, 
                   mode === 6 && {width: 54, height: 76},
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   disabled: {
-    opacity: 0.8
+    opacity: Platform.OS === 'android' ? 0.6 : 0.8
   },
   image: {
     width: 80,

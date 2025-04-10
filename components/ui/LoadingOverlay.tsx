@@ -6,7 +6,11 @@ import Svg, { Circle } from 'react-native-svg';
 
 import { LoadingStyles } from '@/shared/styles/component.styles';
 
-const LoadingOverlay = () => {
+interface LoadingProps {
+  fullWidth?: boolean;
+}
+
+const LoadingOverlay = ({fullWidth}: LoadingProps = {fullWidth: false}) => {
   const rotation = useSharedValue(0);
   const [isReanimatedReady, setIsReanimatedReady] = useState(false);
   const dots = 10;
@@ -37,7 +41,7 @@ const LoadingOverlay = () => {
   }
 
   return (
-    <SafeAreaView style={[LoadingStyles.size]}>
+    <SafeAreaView style={[LoadingStyles.size, fullWidth && {width: '110%'}]}>
       <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
                 style={StyleSheet.absoluteFill} 
                 tint="light" 

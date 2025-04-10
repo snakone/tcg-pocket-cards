@@ -118,6 +118,7 @@ export default function FilterCardMenu({
   function handleReset(): void {
     playSound('POP_PICK');
     filterObj.current = getFilterSearch();
+    setExpansionSelected(false);
     triggerRender();
   }
 
@@ -146,7 +147,9 @@ export default function FilterCardMenu({
   const RenderExpansionsMenu = useCallback(() => (
     <>
       {expansionVisible && (
-        <ExpansionsMenu filterObj={filterObj} handleExpansion={handleExpansion} />
+        <ExpansionsMenu filterObj={filterObj} 
+                        handleExpansion={handleExpansion}
+                        isVisible={expansionVisible}/>
       )}
     </>
   ), [expansionVisible, filterObj]);

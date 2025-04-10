@@ -9,7 +9,7 @@ import { SortItem } from "./layout.interfaces";
 import { MutableRefObject } from "react";
 import { FilterSearch } from "../classes/filter.class";
 
-interface ServerResponse {
+export interface ServerResponse {
   ok: boolean;
   message: string;
   err: string;
@@ -21,6 +21,10 @@ export interface CardsResponse extends ServerResponse {
 
 export interface PocketNewsResponse extends ServerResponse {
   news: PocketNews[];
+}
+
+export interface MemoryCardResponse extends ServerResponse {
+  ranking: MemoryUserRanking[];
 }
 
 export interface StorageDeck {
@@ -136,4 +140,19 @@ export interface SortData {
 export interface MemoryGameMenuData {
   mode: 4 | 6 | 8,
   filter: MutableRefObject<FilterSearch>
+}
+
+export interface MemoryUserRanking {
+  name: string,
+  mode: 4 | 6 | 8,
+  time: string,
+  avatar: string,
+  moves: number;
+}
+
+export interface CreateDeckData {
+  active: Card[] | null[],
+  name: string,
+  energy: boolean;
+  decks: StorageDeck[] 
 }

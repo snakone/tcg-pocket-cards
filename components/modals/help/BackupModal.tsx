@@ -63,7 +63,6 @@ export function BackupModal() {
         }
 
         if (isObjectSettings(unsavedSettings)) {
-          console.log(unsavedSettings)
           ShareService.onSettingsImport(unsavedSettings);
         }
       } catch (err) {

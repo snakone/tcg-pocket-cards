@@ -16,6 +16,7 @@ export type ParallaxProps = PropsWithChildren<{
   modalHeight?: number | 'auto',
   styles?: StyleProp<ViewStyle>,
   showHeader?: boolean,
+  showToggle?: boolean;
 }>;
 
 export type ErrorType = 'error' | 'info' | 'warning' | 'delete';
@@ -24,3 +25,5 @@ export type ModalType = 'cards' | 'attacks' | 'cardsSort' | 'attacksSort' | 'ava
 export type DataKey = 'favorites' | 'decks' | 'trades' | 'collection';
 export type FilterKey = 'cards' | 'attacks' | 'collection' | 'decks';
 export type RouteKey = keyof typeof ROUTES_MAP;
+
+export type GamesType = 'memory' | 'quiz';

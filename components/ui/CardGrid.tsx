@@ -131,9 +131,9 @@ export default function ImageGridWithSearch({
             CardGridStyles.image, 
             {width: gridWidthMap[gridNumber.current]}
           ]} 
-          source={gridNumber.current === 1 || gridNumber.current === 2 ? 
+          source={{uri: gridNumber.current === 1 || gridNumber.current === 2 ? 
                     getImageLanguage69x96(lang, item.id) : 
-                    getImageLanguage116x162(lang, item.id)}
+                    getImageLanguage116x162(lang, item.id)}}
           placeholder={BACKWARD_CARD}/>
       </Pressable>
     </View>
@@ -149,7 +149,7 @@ export default function ImageGridWithSearch({
 
   const goToDetailScreen = useCallback(async (id: number) => {
     await playSound();
-    router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
+    router.push(`/screens/card_detail?id=${encodeURIComponent(id)}`);
   }, []);
 
   const goUp = useCallback(async (_: GestureResponderEvent | null, sound = true): Promise<void> => {

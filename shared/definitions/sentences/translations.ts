@@ -1,5 +1,10 @@
 export const TRANSLATIONS = {
   en: {
+    refresh: 'Refresh',
+    refresh_ranking: '¿Do you want to refresh now?',
+    no_ranking_found: 'No ranking found.',
+    ranking: 'Leaderboard',
+    memory_game_desc: 'Test your memory with this simple game using your favorite cards.',
     press_to_click: '*Long press for card details',
     deck: 'Deck',
     view_ranking: 'View ranking',
@@ -712,6 +717,12 @@ export const TRANSLATIONS = {
     without_ability: "Without Ability"
   },
   es: {
+    deck_detail: 'Detalle del mazo',
+    refresh: 'Refrescar',
+    refresh_ranking: '¿Quieres refrescar el ranking ahora?',
+    no_ranking_found: 'No se ha encontrado ningún registro.',
+    ranking: 'Clasificación',
+    memory_game_desc: 'Pon a prueba tu memoria con este juego simple usando tus cartas preferidas.',
     press_to_click: '*Manten pulsado para ver los detalles',
     deck: 'Mazo',
     view_ranking: 'Ver el ranking',
@@ -1380,7 +1391,7 @@ export const TRANSLATIONS = {
     user_data_local_storage_use_security_local: "Los datos almacenados localmente no son compartidos con servidores externos ni con terceros bajo ningún concepto.\n\n",
     user_data_local_storage_use_security_sync: "La aplicación no realiza sincronización automática de datos, lo que garantiza que todo permanece únicamente en tu dispositivo.\n\n",
     user_data_no_internet: "3. Sin Conexión a Internet",
-    user_data_no_internet_create: "No se transmitan datos creados por el usuario a través de la red u otro sistema externo.\n\n",
+    user_data_no_internet_create: "No se transmiten datos creados por el usuario a través de la red u otro sistema externo.\n\n",
     user_data_no_internet_intro: "La aplicación está diseñada para funcionar principalmente sin requerir conexión a internet.\n\nEs posible que la primera vez si sea necesaria una conexión a internet para descargar las cartas y todos sus datos en el dispositivo.\n\n",
     user_data_no_internet_main: "La funcionalidad principal esté disponible sin depender de servidores externos.\n\n\n",
     user_data_options: "8. Opciones para el Usuario",
@@ -1427,6 +1438,11 @@ export const TRANSLATIONS = {
     without_ability: "Sin habilidad"
   },
   ja: {
+    refresh: 'リフレッシュ',
+    refresh_ranking: '今、ランキングを更新したいですか？',
+    no_ranking_found: '記録は見つかりませんでした。',
+    ranking: 'ランキング',
+    memory_game_desc: 'お気に入りのカードを使ってこのシンプルなゲームで記憶力を試してください。',
     press_to_click: '*長押しすると詳細が表示されます',
     deck: 'マレット',
     view_ranking: 'ランキングを見る',

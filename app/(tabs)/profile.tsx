@@ -184,7 +184,7 @@ export default function ProfileScreen() {
                               CardGridStyles.image, 
                               {width: 200}
                             ]} 
-                          source={getImageLanguage(lang, profile.best)}
+                          source={{uri: getImageLanguage(lang, profile.best)}}
                           placeholder={BACKWARD_CARD}/>        
                         </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
                       }

@@ -72,21 +72,19 @@ export default function DetailCardScroll({card, state, index}: CardDetailScroll)
                     style={detailScrollStyles.sheet} 
                     showsVerticalScrollIndicator={false}>
           <ThemedText style={detailScrollStyles.name}>{card.name[lang]}</ThemedText>
-          
-            {
-              RARITY_MAP[card.rarity]?.amount !== 0 ?
-                <ThemedView style={detailScrollStyles.rarityContainer}>
-                  { Array.from({ length: RARITY_MAP[card.rarity]?.amount as number }).map((_, i) => (
-                    <Image
-                      key={i}
-                      source={RARITY_MAP[card.rarity]?.image}
-                      style={[detailScrollStyles.rarityItem, card.rarity === CardRarityENUM.CROWN && {width: 38}]}
-                    />
-                ))}
-                </ThemedView> :
-                <ThemedView style={{height: 20}}></ThemedView>
-            }
-
+          {
+            RARITY_MAP[card.rarity]?.amount !== 0 ?
+              <ThemedView style={detailScrollStyles.rarityContainer}>
+                { Array.from({ length: RARITY_MAP[card.rarity]?.amount as number }).map((_, i) => (
+                  <Image
+                    key={i}
+                    source={RARITY_MAP[card.rarity]?.image}
+                    style={[detailScrollStyles.rarityItem, card.rarity === CardRarityENUM.CROWN && {width: 38}]}
+                  />
+              ))}
+              </ThemedView> :
+              <ThemedView style={{height: 20}}></ThemedView>
+          }
           { !!card.info && 
             <ThemedView style={[
                 cardDetailStyles.itemInfo, 
@@ -591,7 +589,8 @@ export default function DetailCardScroll({card, state, index}: CardDetailScroll)
           </ThemedView>
 
           { card.related && card.related?.length > 0 &&
-            <ThemedView style={[cardDetailStyles.itemInfo, {padding: 0, overflow: 'hidden', marginBottom: 80}]}>
+          <>
+            <ThemedView style={[cardDetailStyles.itemInfo, {padding: 0, overflow: 'hidden', marginBottom: Platform.OS === 'android' ? 100 : 96}]}>
               <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
                 <ThemedText style={[detailScrollStyles.textWhite]}>{i18n.t('related_cards')}</ThemedText>
               </ThemedView>
@@ -599,9 +598,12 @@ export default function DetailCardScroll({card, state, index}: CardDetailScroll)
               <ThemedView style={{padding: 0}}>
                 <DetailRelatedCards card={card} 
                                     state={state}/>
-                <ThemedText style={{fontSize: 11, textAlign: 'right', top: -18}}>{i18n.t('press_to_click')}</ThemedText>
               </ThemedView>
             </ThemedView>
+            <ThemedText style={{fontSize: 11, textAlign: 'right', top: Platform.OS === 'android' ? -88 : -18}}>
+              {i18n.t('press_to_click')}
+            </ThemedText>          
+          </>
           }
 
         </BottomSheetScrollView>

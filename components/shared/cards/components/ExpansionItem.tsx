@@ -28,7 +28,10 @@ export const ExpansionItem = memo(({expansionSelected, handleExpansion}: any) =>
         >
           {i18n.t(expansionSelected ? 'with_select' : 'no_select')}
         </ThemedText>
-        <MaterialIcons name="keyboard-arrow-right" style={expansionStyles.icon} />
+        <MaterialIcons name="keyboard-arrow-right" style={[
+          expansionStyles.icon, 
+          expansionSelected && {color: 'white'}
+        ]} />
       </ThemedView>
     </Pressable>
   );

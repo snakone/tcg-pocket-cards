@@ -101,6 +101,7 @@ export const PROMO_A2 = require('@/assets/images/packs/promoA2.png');
 export const PROMO_A3 = require('@/assets/images/packs/promoA3.png');
 export const PROMO_A4 = require('@/assets/images/packs/promoA4.png');
 export const PROMO_A5 = require('@/assets/images/packs/promoA5.png');
+export const PROMO_A6 = require('@/assets/images/packs/promoA6.png');
 
 // PACKS
 // GENETIC APEX
@@ -270,7 +271,8 @@ export const TRIUMPH_LIGHT_PACKS = [
 ];
 
 export const SHINING_PACKS = [
-  SHINY_ICON
+  SHINY_ICON,
+  PROMO_A6
 ];
 
 export const SPLASH = [

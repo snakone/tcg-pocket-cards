@@ -43,7 +43,7 @@ export default function DetailRelatedCards({card, state}: DetailRelatedProps) {
 
   const goToDetailScreen = async (id: number) => {
     await playSound();
-    router.replace(`/screens/detail?id=${encodeURIComponent(id)}`);
+    router.replace(`/screens/card_detail?id=${encodeURIComponent(id)}`);
   };
 
   const renderItem = useCallback(({ item }: { item: Card}) => (
@@ -54,7 +54,7 @@ export default function DetailRelatedCards({card, state}: DetailRelatedProps) {
       <Pressable onLongPress={() => goToDetailScreen(item.id)} style={{ zIndex: 1, position: 'relative' }}>
         <Image accessibilityLabel={item.name[lang]} 
                style={[CardGridStyles.image, {width: CARD_IMAGE_WIDTH_3}]} 
-               source={getImageLanguage116x162(lang, item.id)}
+               source={{uri: getImageLanguage116x162(lang, item.id)}}
                placeholder={BACKWARD_CARD}/>
       </Pressable>
     </Animated.View>
@@ -95,11 +95,10 @@ export default function DetailRelatedCards({card, state}: DetailRelatedProps) {
           </PanGestureHandler>
         </> :
         <AndroidFlatList horizontal={true} 
-                  showsHorizontalScrollIndicator={false}
-                  data={relatedCards}
-                  ref={flatListRef}
-                  renderItem={renderItem}
-                  keyExtractor={(card) => card.id + ''}/>
+                         showsHorizontalScrollIndicator={false}
+                         data={relatedCards}
+                         renderItem={renderItem}
+                         keyExtractor={(card) => card.id + ''}/>
       }
     </>
   )

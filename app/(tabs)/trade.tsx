@@ -90,7 +90,7 @@ export default function TradeScreen() {
       <ThemedView
         style={{
           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
-          width: "78%",
+          width: 280,
           borderRadius: 8,
         }}>
         <TextInput

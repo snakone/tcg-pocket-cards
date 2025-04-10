@@ -39,7 +39,7 @@ export const RenderDeckItem = ({item, language, onPress}: DeckItemProps) => {
                   ]} 
                   source={
                     item.popular[i] ? 
-                      getImageLanguage116x162(language, item.popular[i]) : 
+                      {uri: getImageLanguage116x162(language, item.popular[i])} : 
                         BACKWARD_CARD}
                   placeholder={BACKWARD_CARD}
                   key={i}/>

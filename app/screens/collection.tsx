@@ -314,7 +314,7 @@ export default function CollectionCardsScreen() {
           CardGridStyles.image, 
           {width: CARD_IMAGE_WIDTH_5}
         ]} 
-        source={getImageLanguage69x96(lang, item.id)}
+        source={{uri: getImageLanguage69x96(lang, item.id)}}
         placeholder={BACKWARD_CARD}/>
       </TouchableOpacity>
     </View>
@@ -399,9 +399,9 @@ export default function CollectionCardsScreen() {
                   numColumns={5}
                   contentContainerStyle={[{width: '100%'}]}
                   keyExtractor={keyExtractor}
-                  initialNumToRender={20}
-                  maxToRenderPerBatch={25}
-                  windowSize={12}
+                  initialNumToRender={25}
+                  maxToRenderPerBatch={30}
+                  windowSize={7}
                   keyboardDismissMode={'on-drag'}
                   getItemLayout={getItemLayout}
                   removeClippedSubviews={true}

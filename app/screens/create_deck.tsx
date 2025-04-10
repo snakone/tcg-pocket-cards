@@ -51,7 +51,7 @@ import { Colors } from "@/shared/definitions/utils/colors";
 import { DEFAULT_ELEMENT, MAX_CONTENT, TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { Card, CardWithMeta } from "@/shared/definitions/interfaces/card.interfaces";
 import { SortItem } from "@/shared/definitions/interfaces/layout.interfaces";
-import { SortData, StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
+import { CreateDeckData, SortData, StorageDeck } from "@/shared/definitions/interfaces/global.interfaces";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
@@ -69,13 +69,6 @@ import SharedScreen from "@/components/shared/SharedScreen";
 import { ResetFilterButton } from "@/components/ui/ResetFilterButton";
 import PreviewList from "@/components/dedicated/create/PreviewList";
 import { SortAndFilterButtons } from "@/components/ui/FilterSortButtons";
-
-interface CreateDeckData {
-  active: Card[] | null[],
-  name: string,
-  energy: boolean;
-  decks: StorageDeck[] 
-}
 
 const numColumns = 6;
 
@@ -206,7 +199,7 @@ export default function CreateDeckScreen() {
                   CardGridStyles.image, 
                   {width: CARD_IMAGE_WIDTH_3}
                 ]} 
-              source={getImageLanguage116x162(lang, item?.id)}
+              source={{uri: getImageLanguage116x162(lang, item?.id)}}
               placeholder={BACKWARD_CARD}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
             }
@@ -457,7 +450,7 @@ export default function CreateDeckScreen() {
                 ]}/>
 
           <Image accessibilityLabel={item.name[lang]}
-                 source={getImageLanguage69x96(lang, item.id)}
+                 source={{uri: getImageLanguage69x96(lang, item.id)}}
                  placeholder={BACKWARD_CARD}
                  style={[
                   CardGridStyles.image, 
@@ -476,9 +469,9 @@ export default function CreateDeckScreen() {
                 contentContainerStyle={[{width: '100%', padding: 16, paddingTop: 0}]}
                 keyExtractor={(_, index) => index.toString()}
                 initialNumToRender={25}
-                maxToRenderPerBatch={25}
-                windowSize={10}
-                removeClippedSubviews={false}
+                maxToRenderPerBatch={30}
+                windowSize={7}
+                removeClippedSubviews={true}
                 getItemLayout={getItemLayout}
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={<ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>}
@@ -548,13 +541,18 @@ export default function CreateDeckScreen() {
     setNotSaved(true);
   }, []);
 
+  const openDetail = useCallback(() => {
+    SoundService.play('POP_PICK');
+    router.push(`/screens/deck_detail?deck_id=${encodeURIComponent(deck_id)}`);
+  }, [])
+
   return (
     <Provider>
       { loading && <LoadingOverlay/> }
       <SharedScreen title={deck_id ? 'edit_deck' : 'create_new_deck'} 
                     styles={{paddingInline: 16, marginTop: 0, paddingBottom: 16}} customClose={goBack}>
         <ThemedView style={{width: '100%', flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 6}}>
-          <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '76%', borderRadius: 8}}>
+          <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: Boolean(deck_id) ? '65%' : '84%', borderRadius: 8}}>
             <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
                       placeholder={i18n.t('new_deck_placeholder')}
                       value={data.name}
@@ -565,10 +563,19 @@ export default function CreateDeckScreen() {
                       maxLength={21}
                     />
               {data.name.length > 0 && 
-                <ResetFilterButton left={240} onPress={handleResetText}/>}
+                <ResetFilterButton left={Boolean(deck_id) ? 200 : 268} onPress={handleResetText}/>}
           </ThemedView>
 
           <ThemedView style={{flexDirection: 'row', gap: 8}}>
+            { Boolean(deck_id) && 
+              <TouchableOpacity onPress={openDetail}>
+                <MaterialIcons name="open-with" 
+                              style={{fontSize: 26, left: -6, top: 5, opacity: 0.4}} 
+                              color={Colors.light.icon}>
+                </MaterialIcons>
+              </TouchableOpacity>
+            }
+
             <TouchableOpacity onPress={handleReset}>
               <MaterialIcons name="sync" 
                             style={{fontSize: 26, left: -4, top: 5, opacity: 0.5}} 

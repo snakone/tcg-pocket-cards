@@ -44,7 +44,7 @@ const MAX_HEIGHT = 618;
 const MIN_HEIGHT = 268;
 const MOVING_HEIGHT = 70;
 
-export default function DetailScreen() {
+export default function CardDetailScreen() {
   console.log('Detail Screen')
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
@@ -56,7 +56,6 @@ export default function DetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const [isSwiping, setIsSwiping] = useState<boolean>(false);
-  const [showContent, setShowContent] = useState<boolean>(true);
   const top = useSharedValue<number>(0);
   const [card, setCard] = useState<Card>();
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
@@ -293,19 +292,19 @@ export default function DetailScreen() {
 
   return (
     <Animated.View style={styles.container}>
-      { showContent && <RenderFavoriteToggle></RenderFavoriteToggle>}
-      { isSwiping && <ThemedView style={cardDetailStyles.overlay}>
+      { isSwiping ? <ThemedView style={cardDetailStyles.overlay}>
                       <Pressable style={{flex: 1, width: '100%'}} 
                                  onPress={stopSwipe}>
                       </Pressable>
-                    </ThemedView>
+                    </ThemedView> :
+                  <RenderFavoriteToggle></RenderFavoriteToggle>
       }
       <Animated.View style={Platform.OS !== 'web' && topAnimatedStyle}>
         {
           Platform.OS === 'web' ? (
             <Animated.View style={[cardAnimatedStyle]}>
               <Image style={[styles.image, cardDetailStyles.card]}
-                     source={getImageLanguage(lang, Number(id))}
+                     source={{uri: getImageLanguage(lang, Number(id))}}
                      placeholder={BACKWARD_CARD}/>
             </Animated.View>
           ) : (<>
@@ -317,7 +316,7 @@ export default function DetailScreen() {
                 
               ]}>
                 <Image style={[styles.image]}
-                       source={getImageLanguage(lang, Number(id))}
+                       source={{uri: getImageLanguage(lang, Number(id))}}
                        placeholder={BACKWARD_CARD}
                        contentFit={'fill'} />
               </Animated.View>
@@ -325,7 +324,7 @@ export default function DetailScreen() {
           </>)
         }
       </Animated.View>
-      { showContent &&       
+      { !isSwiping &&       
         <ThemedView style={styles.bottomContainer}>
           <TouchableOpacity style={ButtonStyles.button} 
                             onPress={goBack} 

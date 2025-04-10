@@ -1,9 +1,10 @@
 import { BlurView } from "expo-blur";
 import { Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Image } from 'expo-image';
 import { MaterialIcons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 import { useI18n } from "@/core/providers/LanguageProvider";
 
@@ -11,8 +12,7 @@ import { settingsStyles } from "../../settings";
 import { TabMenuGames } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, filterStyles, homeScreenStyles, LayoutStyles, ModalStyles, offersStyles, sortStyles } from "@/shared/styles/component.styles";
 import { CardRarityENUM } from "@/shared/definitions/enums/card.enums";
-import { RARITY_MAP, ICON_WIDTH, MODE_MAP, getFilterSearch } from "@/shared/definitions/utils/constants";
-import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import { RARITY_MAP, ICON_WIDTH, MODE_MAP } from "@/shared/definitions/utils/constants";
 import { MemoryGameMenuData } from "@/shared/definitions/interfaces/global.interfaces";
 import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
 
@@ -34,11 +34,12 @@ const MAP_MODE: any = {
 export default function MemoryGameMenu({
   onClose,
   selectedMode,
-  isVisible
+  isVisible,
+  filterObj
 }: TabMenuGames) {
   const {i18n} = useI18n();
   const styles = ModalStyles;
-  const filterObj = useRef<FilterSearch>(getFilterSearch());
+  const router = useRouter();
   const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   const [data, setData] = useState<MemoryGameMenuData>({
@@ -59,7 +60,8 @@ export default function MemoryGameMenu({
   }
 
   function openRanking(): void {
-    console.log('ranking');
+    SoundService.play('AUDIO_MENU_OPEN'); 
+    router.push('/screens/games/ranking/memory_ranking');
   }
 
   return (

@@ -200,7 +200,7 @@ export default function CollectionStatsScreen() {
   const { data: crownCards, length: crownCardsLength } = cardsByRarity[CardRarityENUM.CROWN];
 
   const filterCardsByExpansion = (cards: Card[], expansion: EXPANSION) => {
-    return cards.filter(card => card.found?.includes(expansion));
+    return cards.filter(card => card.found?.includes(Number(expansion)));
   };
 
   const useFilteredCards = () => {
@@ -211,9 +211,9 @@ export default function CollectionStatsScreen() {
         result[`${value}CrownCards`] = filterCardsByExpansion(crownCards, key as any);
         result[`${value}ArtCards`] = filterCardsByExpansion(artCards, key as any);
       });
-  
+      
       return result;
-    }, [crownCards, artCards]);
+    }, [artCards, crownCards]);
   
     return filteredCards;
   };

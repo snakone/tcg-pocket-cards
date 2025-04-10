@@ -1,27 +1,31 @@
-import React, { useEffect, useState, useRef, useContext, useCallback } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, FlatList, Platform } from "react-native";
+import React, { useEffect, useState, useRef, useContext, useCallback, useMemo } from "react";
+import { View, TouchableOpacity, StyleSheet, FlatList, Platform } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
+import { Portal } from "react-native-paper";
+import { firstValueFrom } from "rxjs";
 
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
+import Storage from '@/core/storage/storage.service';
+import GamesService from "@/core/services/games.service";
 
 import { AppContext } from '@/app/_layout';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 import { Colors } from "@/shared/definitions/utils/colors";
 import { cardStyles, CreateScreenStyles, homeScreenStyles, ModalStyles, WebStyles } from "@/shared/styles/component.styles";
+import { filterCards } from "@/shared/definitions/utils/functions";
+import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import { DEFAULT_PROFILE, getFilterSearch, MODE_MAP } from "@/shared/definitions/utils/constants";
+import { MemoryGameMenuData, MemoryUserRanking, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 
 import { MemoryCard } from "./memory_card";
 import SharedScreen from "@/components/shared/SharedScreen";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { ClockSymbol, IconSymbol } from "@/components/ui/IconSymbol";
-import { Portal, Provider } from "react-native-paper";
 import { splashStyles } from "@/components/ui/SplashScreen";
 import MemoryGameMenu from "./memory_menu";
-import { MODE_MAP } from "@/shared/definitions/utils/constants";
-import { MemoryGameMenuData } from "@/shared/definitions/interfaces/global.interfaces";
-import { filterCards } from "@/shared/definitions/utils/functions";
 
 const shuffleCards = (array: any[]) => {
   const shuffled = [...array, ...array].sort(() => Math.random() - 0.5);
@@ -42,10 +46,25 @@ export default function MemoryGame() {
   if (!context) { throw new Error('NO_CONTEXT'); }
   const { state } = context;
   const [seconds, setSeconds] = useState(0);
-  const intervalRef = useRef<any>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const [disabled, setDisabled] = useState(true);
   const [mode, setMode] = useState<4 | 6 | 8>(4);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const filterObj = useRef<FilterSearch>(getFilterSearch());
+  const [profile, setProfile] = useState<UserProfile>(DEFAULT_PROFILE);
+  const gamesService = useMemo(() => new GamesService(), []);
+  const [forceRender, setForceRender] = useState(0);
+  const triggerRender = () => setForceRender(prev => prev + 1);
+  const [finished, setFinished] = useState(false);
+
+  useEffect(() => {
+    const getProfile = async () => {
+      const profile: UserProfile = await Storage.getProfile();
+      setProfile({...profile});
+    };
+
+    getProfile();
+  }, []);
 
   const MODE_LENGTH: any = {
     4: 8,
@@ -82,6 +101,7 @@ export default function MemoryGame() {
     if (Object.keys(clearedCards).length === (MODE_LENGTH[mode])) {
       setTimeout(() => {
         setShowModal(true);
+        setFinished(true);
         stopTimer();
       }, 500);
     }
@@ -95,18 +115,30 @@ export default function MemoryGame() {
   function closeModal(save = false): void {
     setShowModal(false);
     SoundService.play('AUDIO_MENU_CLOSE');
-    if (save) {
-      console.log('SAVE')
+    if (save) { saveRanking(); }
+  }
+
+  async function saveRanking(): Promise<void> {
+    const payload: MemoryUserRanking = {
+      avatar: profile.avatar,
+      name: profile.name,
+      mode,
+      time: formatTime(seconds),
+      moves
     }
+
+    await firstValueFrom(gamesService.registerRanking('memory', payload));
   }
 
   function handleMenuClose(data: MemoryGameMenuData): void {
     setIsMenuVisible(false);
     SoundService.play('AUDIO_MENU_CLOSE');
     const empty = data.filter.current.areAllPropertiesNull();
+    filterObj.current = data.filter.current;
 
     if (data.mode !== mode) {
       setMode(_ => data.mode);
+      triggerRender();
     }
     
     if (data.mode !== mode || !empty) {
@@ -163,30 +195,32 @@ export default function MemoryGame() {
   const checkIsFlipped = (card: any) => openCards.some(c => c._id === card._id) && !pairedCards.includes(card._id);
   const checkIsInactive = (card: Card) => Boolean(clearedCards[JSON.stringify(`${card.name.es}_${card.rarity}`)]);
 
-  const handleRestart = (cards = true, sound = true) => {
-    if (sound) SoundService.play('AUDIO_MENU_CLOSE');
-    if (cards) setCards(getCards(mode));
-    
-    setClearedCards({});
+  const handleRestart = () => {
+    SoundService.play('AUDIO_MENU_CLOSE');
+    setCards(getCards(mode));
+  
+    setPairedCards([]);
+    stopTimer();
+    setClearedCards(prev => ({}));
     setOpenCards([]);
     setShowModal(false);
     setMoves(0);
     setShouldDisableAllCards(false);
     setDisabled(true);
-    stopTimer();
     setSeconds(0);
+    triggerRender();
+    setFinished(false);
   };
 
-  const startTimer = (cards = true, sound = true) => {
-    handleRestart(cards, sound);
+  const startTimer = () => {
+    if (finished) { return; }
     if (!intervalRef.current) {
       intervalRef.current = setInterval(() => {
         setSeconds((prev) => prev + 1);
       }, 1000);
     }
 
-    if (sound) SoundService.play('POP_PICK');
-    setDisabled(false)
+    setDisabled(false);
   };
 
   const stopTimer = () => {
@@ -205,8 +239,11 @@ export default function MemoryGame() {
 
   return (
     <>
-      <SharedScreen title={'memory_game'} styles={{paddingHorizontal: 0, alignItems: 'center', marginTop: 0}}>
-        <ThemedView style={[CreateScreenStyles.deckItem, {width: '90%', paddingHorizontal: 14}]}>
+      <SharedScreen title={'memory_game'} styles={{paddingInline: 16, alignItems: 'center', marginTop: 0}}>
+        <ThemedView style={[
+          CreateScreenStyles.deckItem, 
+          {width: '100%', paddingHorizontal: 14},
+        ]}>
           <ThemedView style={{flexDirection: 'row', gap: 12}}>
             <>
               <ThemedView style={{top: 0}}>
@@ -230,12 +267,12 @@ export default function MemoryGame() {
 
           </ThemedView>
         </ThemedView>
-        <View style={styles.container} key={mode}>
+        <View style={[styles.container, {width: '100%'}]} key={forceRender}>
           <FlatList
             data={cards}
             keyExtractor={(item) => item.id.toString()}
             numColumns={mode}
-            contentContainerStyle={{minHeight: 486, width: 360}}
+            contentContainerStyle={{minHeight: 486, width: '100%', left: 0}}
             renderItem={({ item, index }) => (
               <MemoryCard
                 card={item}
@@ -248,12 +285,12 @@ export default function MemoryGame() {
             )}
           />
 
-          <TouchableOpacity disabled={intervalRef.current}
-                            onPress={() => startTimer(false, false)}
+          <TouchableOpacity disabled={!!intervalRef.current || finished}
+                            onPress={() => startTimer()}
                             style={[
                               homeScreenStyles.ctaButton,
-                              {marginBottom: 10, marginTop: 24, backgroundColor: 'mediumaquamarine', width: '96%'},
-                              intervalRef.current && {backgroundColor: 'grey', opacity: 0.3}
+                              {marginBottom: 10, marginTop: 24, backgroundColor: 'mediumaquamarine', width: '100%'},
+                              (!!intervalRef.current || finished) && {backgroundColor: 'grey', opacity: 0.3}
                             ]}>
             <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center'}]}>
               {i18n.t('start')}
@@ -306,7 +343,7 @@ export default function MemoryGame() {
           }
         </View>
         <TouchableOpacity onPress={openMenu} 
-                          disabled={intervalRef.current} 
+                          disabled={!!intervalRef.current || finished} 
                           style={[cardStyles.container]}>
           <ThemedView>
             <IconSymbol name="menubar.rectangle" 
@@ -318,7 +355,8 @@ export default function MemoryGame() {
       {
         isMenuVisible && <MemoryGameMenu onClose={(data) => handleMenuClose(data)}
                                          selectedMode={mode}
-                                         isVisible={isMenuVisible}/>
+                                         isVisible={isMenuVisible}
+                                         filterObj={filterObj}/>
       }
     </>
   );

@@ -13,7 +13,8 @@ export default function ParallaxScrollView({
   modalTitle,
   modalHeight = MIN_MODAL_HEIGHT,
   styles = {},
-  showHeader = true
+  showHeader = true,
+  showToggle = true
 }: ParallaxProps) {
  
   return (
@@ -24,7 +25,8 @@ export default function ParallaxScrollView({
             <HeaderWithCustomModal title={title} 
                                    modalContent={modalContent} 
                                    modalTitle={modalTitle}
-                                   modalHeight={modalHeight as number}/>
+                                   modalHeight={modalHeight as number}
+                                   showToggle={showToggle}/>
           </View>
         }
         <ThemedView style={[ParallaxStyles.content, styles]}>{children}</ThemedView>

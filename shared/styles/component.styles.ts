@@ -327,6 +327,7 @@ export const ButtonStyles = StyleSheet.create({
     padding: 3, // Inset
     elevation: 2,
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
+    zIndex: 1000
   },
   insetBorder: {
     paddingVertical: 10,
@@ -364,7 +365,6 @@ export const MenuStyles = StyleSheet.create({
   expansions: {
     backgroundColor: 'white',
     width: '100%',
-    height: 656,
     position: 'absolute',
     right: 0,
     bottom: 0,
@@ -653,9 +653,12 @@ export const filterStyles = StyleSheet.create({
     paddingRight: 16
   },
   expansionContainer: {
-    padding: 10, 
     justifyContent: 'flex-start', 
-    alignItems: 'center', 
+    alignItems: 'center',
+    flexDirection: 'row',
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
+    borderRadius: 8,
+    marginBottom: 12
   },
   expansionShadow: {
     width: '100%', 
@@ -665,8 +668,11 @@ export const filterStyles = StyleSheet.create({
     top: -6
   },
   packImage: {
-    width: 58, 
-    height: 114
+    width: 37, 
+    height: 73
+  },
+  expansionImage: {
+    marginRight: 10,
   },
   reset: {
     width: 34, 
