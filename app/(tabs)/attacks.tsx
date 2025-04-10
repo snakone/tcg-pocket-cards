@@ -166,7 +166,7 @@ export default function AttacksScreen() {
                           modalContent={<AttacksScreenModal></AttacksScreenModal>}
                           modalHeight={BACKUP_HEIGHT}>
         <View style={[CardGridStyles.inputContainer, {paddingBottom: 2}]}>
-          <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: 280, borderRadius: 8}}>
+          <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: 272, borderRadius: 8}}>
             <TextInput style={[CardGridStyles.searchInput, {width: '100%', position: 'relative'}]}
                         placeholder={i18n.t('search_attack_placeholder')}
                         value={searchQuery.current}
@@ -177,7 +177,7 @@ export default function AttacksScreen() {
                         inputMode='text'
                       />
                   {searchQuery.current.length > 0 && 
-                    <ResetFilterButton left={246} onPress={() => handleSearch('')}/>}
+                    <ResetFilterButton left={242} onPress={() => handleSearch('')}/>}
           </ThemedView>
 
           <ThemedView style={[CardGridStyles.actionsContainer, 

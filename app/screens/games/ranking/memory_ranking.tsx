@@ -124,7 +124,7 @@ export default function RankingMemoryScreen() {
   return (
     <>
       <SharedScreen title={'ranking'} styles={{alignItems: 'center', paddingInline: 16, marginTop: 2}}>
-      { loading && <LoadingOverlay fullWidth={true}/> }
+      { loading && <LoadingOverlay fullWidth={Platform.OS === 'android'}/> }
         <ThemedView style={[
           CreateScreenStyles.deckItem, 
           styles.mode

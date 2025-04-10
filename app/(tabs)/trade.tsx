@@ -90,8 +90,8 @@ export default function TradeScreen() {
       <ThemedView
         style={{
           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
-          width: 280,
-          borderRadius: 8,
+          width: 272,
+          borderRadius: 8
         }}>
         <TextInput
           style={[CardGridStyles.searchInput, { width: "100%" }]}
@@ -102,13 +102,12 @@ export default function TradeScreen() {
           accessibilityLabel={"SEARCH_LABEL"}
           inputMode="text"
         />
-        {searchQuery.length > 0 && <ResetFilterButton left={248} onPress={() => setSearchQuery('')}/>}
+        {searchQuery.length > 0 && <ResetFilterButton left={242} onPress={() => setSearchQuery('')}/>}
       </ThemedView>
 
       <View
         style={[
           CardGridStyles.actionsContainer,
-          Platform.OS !== "web" && { marginRight: 2 },
           { justifyContent: "flex-end" },
         ]}>
         <MaterialIcons
@@ -130,19 +129,18 @@ export default function TradeScreen() {
                           modalContent={<TradeScreenModal></TradeScreenModal>}
                           modalHeight={LARGE_MODAL_HEIGHT}
                           styles={{gap: 0}}>
+        {RenderHeader}
         <FlatList
           data={filtered}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
           showsVerticalScrollIndicator={false}
           initialNumToRender={6}
-          stickyHeaderIndices={[0]}
           windowSize={12}
           bounces={false}
           keyboardDismissMode={'on-drag'}
           overScrollMode='never'
           ListEmptyComponent={<ThemedText style={{ paddingInline: 6 }}>{i18n.t('no_trades_found')}</ThemedText>}
-          ListHeaderComponent={RenderHeader}
         />
         {RenderFooter}
       </ParallaxScrollView>

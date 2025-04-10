@@ -174,7 +174,7 @@ export const CardGridStyles = StyleSheet.create({
   totalCards: {
     marginLeft: 8,
     fontSize: 13,
-    minWidth: 24,
+    minWidth: 34,
     left: -2,
     position: 'relative',
     top: -1,
@@ -199,7 +199,6 @@ export const CardGridStyles = StyleSheet.create({
   actionsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginRight: 4
   }
 });
 
