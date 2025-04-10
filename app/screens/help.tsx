@@ -1,5 +1,5 @@
 import { Platform, Pressable, View } from "react-native";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Modal as PaperModal, Portal } from "react-native-paper";
 import { useRouter } from "expo-router";
 import React from "react";
@@ -8,7 +8,6 @@ import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
 import HelpItem from "@/components/ui/HelpItem";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { IconItemWithModal } from "@/shared/definitions/interfaces/layout.interfaces";
 import { IconSymbolName } from "@/shared/definitions/utils/switches";
@@ -22,6 +21,7 @@ import ShareService from "@/core/services/share.service";
 import { AppContext } from "../_layout";
 import { ErrorProvider } from "@/core/providers/ErrorProvider";
 import Storage from "@/core/storage/storage.service";
+import { settingsInitialState } from "@/hooks/settings.reducer";
 
 import {
   AboutModal,
@@ -32,34 +32,30 @@ import {
   TermsModal,
   UserDataModal
 } from '@/components/modals/index';
-import CardsService from "@/core/services/cards.service";
 
 export default function HelpScreen() {
+  console.log('Help Screen')
   const styles = HelpItemStyles;
-  const {i18n} = useI18n();
+  const {i18n, setLocale } = useI18n();
   const router = useRouter();
   const [currentModal, setCurrentModal] = useState<string | null>(null);
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
-  const cardsService = new CardsService();
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   useEffect(() => {
     // NO CONTEXT ON SHARED SCREEN
     const subImport = ShareService.importedSettings$.subscribe(res => {
       if (res !== null) {
-        if (state.cardState.cards.length > 0) {
-          res.cards = state.cardState.cards;
-        }
         dispatch({type: 'SET_SETTINGS', value: res});
         Storage.setSettings(res);
       }
     });
-
+    
     const subDelete = ShareService.deleteSettings$.subscribe(_ => {
-        dispatch({type: 'RESET_SETTINGS'});
-        dispatch({type: 'RESET_CARDS'});
-        loadCards();
+      dispatch({type: 'RESET_SETTINGS'});
+      reloadSettings();
     });
 
     return () => {
@@ -68,22 +64,14 @@ export default function HelpScreen() {
     }
   }, []);
 
-  const loadCards = useCallback(() => {
-    const sub = cardsService
-      .getCards()
-      .subscribe({
-        next: (res) => {
-          dispatch({ type: 'SET_CARDS', value: res });
-          Storage.set('cards', res);
-        },
-        error: (err) => {
-          console.log(err);
-          Storage.set('cards', []);
-        }
-      });
-
-      return sub;
-  }, []);
+  async function reloadSettings(): Promise<void> {
+    const settings = {...settingsInitialState};
+    SoundService.setEnabled(settings.sound);
+    setLocale(settings.language);
+    SoundService.setVolume(settings.sound_volume);
+    await Storage.reload()
+  }
+  
 
   const items: IconItemWithModal[] = [
     { 
@@ -141,12 +129,14 @@ export default function HelpScreen() {
       return;
     }
 
+    setDisabled(true);
     setCurrentModal(modalName);
   };
 
   const close = async () => {
     await playSound();
     setCurrentModal(null);
+    setDisabled(false);
   };
 
   const playSound = async () => {
@@ -159,7 +149,7 @@ export default function HelpScreen() {
         <View style={styles.content}>
           {
             items.map(item => (
-            <HelpItem onClick={() => open(item.modal)} key={item.modal} item={item}>
+            <HelpItem onClick={() => open(item.modal)} key={item.modal} item={item} disabled={disabled}>
               <IconSymbol name={item.icon as IconSymbolName} 
                           style={[
                             styles.icon, 
@@ -185,7 +175,7 @@ export default function HelpScreen() {
                   <View style={[
                     ModalStyles.centeredView, Platform.OS === 'web' ? 
                     {...WebStyles.view} : {flex: 1, top: 0}]}>
-                    <View style={ModalStyles.modalView}>
+                    <View style={[ModalStyles.modalView, i18n.locale === 'ja' && {maxHeight: '79%'}]}>
                       <View style={ModalStyles.modalHeader}>
                         <ThemedText style={[ModalStyles.modalHeaderTitle, {marginTop: 4}]}>
                           {i18n.t(item.modal)}
@@ -194,10 +184,10 @@ export default function HelpScreen() {
                       <ThemedView style={[ModalStyles.modalScrollView, {height: item.height}]}>
                         {item.content}
                       </ThemedView>
-                      <View style={ModalStyles.modalFooter}>
+                      <View style={[ModalStyles.modalFooter, {paddingTop: 14}, (i18n.locale === 'ja' || Platform.OS === 'android') && {paddingTop: 16}]}>
                         <Pressable style={ButtonStyles.button} 
                                           onPress={close} 
-                                          accessibilityLabel={CLOSE_SENTENCE}>
+                                          accessibilityLabel={'CLOSE_SENTENCE'}>
                           <View style={ButtonStyles.insetBorder}>
                             <IconSymbol name="clear"></IconSymbol>
                           </View>

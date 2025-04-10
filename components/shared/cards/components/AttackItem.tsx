@@ -1,14 +1,16 @@
 import { memo, MutableRefObject } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
+import React from "react";
+
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { DAMAGES } from "@/shared/definitions/utils/constants";
+import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import { filterStyles } from "@/shared/styles/component.styles";
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import SelectInput from "@/components/ui/SelectInput";
-import { DAMAGES } from "@/shared/definitions/utils/constants";
-import { filterStyles } from "@/shared/styles/component.styles";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { FilterSearch } from "@/shared/definitions/classes/filter.class";
-import React from "react";
 
 interface AttackItemProps {
   filterObj: MutableRefObject<FilterSearch>,
@@ -34,7 +36,7 @@ export const AttackItem = memo(({ filterObj, playSound }: AttackItemProps) => {
         {['min', 'max'].map((k, i) => (
           <SelectInput
             key={i}
-            options={DAMAGES}
+            options={['---', ...DAMAGES]}
             label={k}
             filterObj={filterObj}
             propFilter="attack"

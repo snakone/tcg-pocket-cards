@@ -1,38 +1,37 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
-import Animated from 'react-native-reanimated'
-import { useCallback, useContext, useEffect, useState } from "react";
+import Animated from 'react-native-reanimated';
+import { useCallback, useEffect, useState } from "react";
 import React from "react";
 import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
 
+import Storage from "@/core/storage/storage.service";
+import { useI18n } from "@/core/providers/LanguageProvider";
+import SoundService from "@/core/services/sounds.service";
+
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
 import { TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
-import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
+import { AVATAR_LIST } from "@/shared/definitions/utils/constants";
+import { AvatarIcon } from "@/shared/definitions/interfaces/global.interfaces";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { AppContext } from "@/app/_layout";
-import SoundService from "@/core/services/sounds.service";
-import { AVATAR_LIST } from "@/shared/definitions/utils/constants";
-import { AvatarIcon } from "@/shared/definitions/interfaces/global.interfaces";
-import Storage from "@/core/storage/storage.service";
 import { splashStyles } from "@/components/ui/SplashScreen";
+
+const MODAL_HEIGHT = 605;
 
 export default function PickAvatarMenu({
   isVisible,
-  onClose,
-  animatedStyle,
+  onClose
 }: TabMenu) {
   const {i18n} = useI18n();
   const styles = ModalStyles;
-  if (!isVisible) return null;
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
   const [selected, setSelected] = useState('');
   const [original, setOriginal] = useState('');
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
@@ -40,18 +39,19 @@ export default function PickAvatarMenu({
 
   async function closeMenu(): Promise<void> {
     await playSound();
-    onClose();
+    onClose?.();
   }
 
-  async function handleClick(value: string): Promise<void> {
-    await SoundService.play('POP_PICK');
+  const handleClick = useCallback((value: string) => {
+    SoundService.play('POP_PICK');
     setSelected(value);
-  }
+    if (value === selected) {
+      setSelected('');
+    }
+  }, [selected]);
 
   function handleSave(): void {
     Storage.set('avatar', selected);
-    const settings = {...state.settingsState, avatar: selected};
-    dispatch({type: 'SET_SETTINGS', value: settings});
     closeMenu();
   }
 
@@ -67,7 +67,10 @@ export default function PickAvatarMenu({
 
   const renderItem = ({ item } : {item: AvatarIcon}) => (
     <TouchableOpacity onPress={() => handleClick(item.value)}>
-      <ThemedView style={[pickAvatarStyles.avatarCircle, selected === item.value && {backgroundColor: 'slategray'}]}>
+      <ThemedView style={[
+        pickAvatarStyles.avatarCircle, 
+        selected === item.value && {backgroundColor: 'slategray'}
+      ]}>
         <Image source={item.icon} style={pickAvatarStyles.avatar}/>
         {
           selected === item.value && 
@@ -87,9 +90,9 @@ export default function PickAvatarMenu({
               tint="light" 
               experimentalBlurMethod='dimezisBlurView'/>
       <Pressable style={LayoutStyles.overlay} 
-                 onPress={() => closeMenu()}>
+                 onPress={closeMenu}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, {height: 706}]}>
+      <Animated.View style={[animatedStyle, sortStyles.container, {height: MODAL_HEIGHT}]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_avatar')}</ThemedText>
         </View>
@@ -103,7 +106,7 @@ export default function PickAvatarMenu({
                       contentContainerStyle={{paddingBottom: 96}}
                     />
             <ThemedView style={{alignItems: 'center', position: 'absolute', bottom: 30}}>
-              <TouchableOpacity onPress={() => handleSave()}
+              <TouchableOpacity onPress={handleSave}
                                 disabled={selected === original}  
                                 style={[
                                   splashStyles.button,
@@ -118,8 +121,8 @@ export default function PickAvatarMenu({
         </ThemedView>
         <View style={styles.modalFooter}>
           <Pressable style={ButtonStyles.button} 
-                            onPress={() => closeMenu()} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            onPress={closeMenu} 
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

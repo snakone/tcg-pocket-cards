@@ -7,12 +7,16 @@ import * as Sharing from 'expo-sharing';
 import * as DocumentPicker from 'expo-document-picker';
 
 import { FilterSearch } from "../classes/filter.class";
-import { Attack, Card } from "../interfaces/card.interfaces";
+import { Attack, AttackMetaData, Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
-import { CardExpansionENUM } from "../enums/card.enums";
-import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SMACK_DOWN, TRIUMPH_LIGHT_ARCEUS_ICON } from "../sentences/path.sentences";
-import { PACK_MAP } from "./constants";
+import { CardExpansionENUM, CardLanguageENUM, CardStageENUM } from "../enums/card.enums";
+import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SHINING_REVELRY_ICON, SMACK_DOWN, TRIUMPH_LIGHT_ARCEUS_ICON } from "../sentences/path.sentences";
+import { PACK_MAP, SORT_FIELD_MAP } from "./constants";
 import { LanguageType } from "../types/global.types";
+import { FilterAttackSearch } from "../classes/filter_attack.class";
+import { UserCollectionItem } from "../interfaces/global.interfaces";
+import { CARD_IMAGE_MAP_EN_GRAPHIC } from "./card.graphic.images";
+import { PokemonTypeENUM } from "../enums/pokemon.enums";
 
 import { 
   CARD_IMAGE_MAP_116x162_EN, 
@@ -25,9 +29,12 @@ import {
   CARD_IMAGE_MAP_ES, 
   CARD_IMAGE_MAP_JAP
 } from "./card.images";
-import { FilterAttackSearch } from "../classes/filter_attack.class";
 
-export function sortCards(field: keyof Card | string, data: Card[], sort: SortItem): Card[] {
+export function sortCards(
+  field: keyof Card | string, 
+  data: Card[], 
+  sort: SortItem
+): Card[] {
   return [...data].sort((a, b) => {
     let aValue: any = '';
     let bValue: any = '';
@@ -48,6 +55,11 @@ export function sortCards(field: keyof Card | string, data: Card[], sort: SortIt
       if (bValue === 0 && aValue !== 0) return -1;
     }
 
+    if (field === 'retreat') {
+      if (aValue === 0 && a?.pokedex === -1) return 1;
+      if (bValue === 0 && b?.pokedex === -1) return -1;
+    }
+
     if (aValue < bValue) return sort.order === 'asc' ? -1 : 1;
     if (aValue > bValue) return sort.order === 'asc' ? 1 : -1;
 
@@ -60,7 +72,13 @@ export function sortCards(field: keyof Card | string, data: Card[], sort: SortIt
   });
 }
 
-export function sortAttacks(field: keyof Attack | string, data: Attack[], sort: SortItem, lang: LanguageType): Attack[] {
+export function sortAttacks(
+  field: keyof Attack | string, 
+  data: AttackMetaData[], 
+  sort: SortItem, 
+  lang: LanguageType
+): AttackMetaData[] {
+  if (field === 'order') { field = 'id'; }
   return [...data].sort((a, b) => {
     let aValue: any = '';
     let bValue: any = '';
@@ -92,13 +110,40 @@ export function sortAttacks(field: keyof Attack | string, data: Attack[], sort: 
   });
 }
 
-export function filterCards(filter: FilterSearch, data: Card[], favorites: number[]): Card[] {
+export function filterCards(
+  filter: FilterSearch, 
+  data: Card[], 
+  favorites: number[], 
+  collection?: UserCollectionItem[],
+  collectionLang?: CardLanguageENUM
+): Card[] {
+  if (filter.areAllPropertiesNull()) { return data; }
+  
   return data.filter(card => {
     if (
       filter.favorite.included !== null &&
       !favorites?.includes(card.id) &&
       filter.favorite.included != filter.favorite.not_favorite
     ) return false;
+
+    if (collection && collectionLang !== undefined) {
+      const item = collection.find(coll => coll.id === card.id);
+      if (
+        filter.collection.owned !== null &&
+        ((item && item.amount[collectionLang] <= 0) || !item) &&
+        filter.collection.owned != filter.collection.not_owned
+      ) {
+        return false;
+      }
+
+      if (
+        filter.collection.not_owned !== null &&
+        ((item && item.amount[collectionLang] > 0)) &&
+        filter.collection.not_owned != filter.collection.owned
+      ) {
+        return false;
+      }
+    }
 
     if (
       filter.favorite.not_favorite !== null &&
@@ -130,21 +175,24 @@ export function filterCards(filter: FilterSearch, data: Card[], favorites: numbe
       return false;
     }
 
-    if (card.health && 
-      (filter.health.min !== null && 
-      filter.health.min > 0 &&
-      filter.health.min > card.health)
-    ) {
-      return false;
-    }
-
-    if (
-      card.health &&
+    if(
       filter.health.max !== null && 
-      filter.health.max > 0 &&
-      filter.health.max < card.health 
+      filter.health.max > 0 ||
+      filter.health.min !== null && 
+      filter.health.min > 0
     ) {
-      return false;
+
+      if (!card.health) {
+        return false;
+      }
+
+      if (filter.health.max && filter.health.max > card.health) {
+        return false;
+      }
+
+      if (filter.health.min && filter.health.min > card.health) {
+        return false;
+      }
     }
 
     if(
@@ -177,8 +225,11 @@ export function filterCards(filter: FilterSearch, data: Card[], favorites: numbe
     }
 
     const expansion = Object.keys(filter.expansion).filter(key => Boolean((filter.expansion as any)[key]));
+
+    const isMewInmersive = card.id === 283 && card.name.es === 'Mew';
+    const allGenetic = ['0', '1', '2'].every(num => expansion.includes(num));
     
-    if(expansion.length > 0 && !card.found?.some(pack => expansion?.includes(String(pack)))) {
+    if((expansion.length > 0 && !card.found?.some(pack => expansion?.includes(String(pack)))) && !(isMewInmersive && allGenetic)) {
       return false;
     }
 
@@ -200,6 +251,18 @@ export function filterCards(filter: FilterSearch, data: Card[], favorites: numbe
       filter.ex.not_ex != filter.ex.is_ex
     ) return false;
 
+    if (
+      filter.shiny.is_shiny !== null &&
+      filter.shiny.is_shiny !== !!card.shiny &&
+      filter.shiny.is_shiny != filter.shiny.not_shiny
+    ) return false;
+
+    if (
+      filter.shiny.not_shiny !== null &&
+      filter.shiny.not_shiny === !!card.shiny && 
+      filter.shiny.not_shiny != filter.shiny.is_shiny
+    ) return false;
+
     const conditions = Object.keys(filter.condition).filter(key => Boolean((filter.condition as any)[key]));
 
     if(conditions.length > 0 && !card.condition?.some(condition => conditions?.includes(String(condition)))) {
@@ -210,11 +273,11 @@ export function filterCards(filter: FilterSearch, data: Card[], favorites: numbe
   });
 }
 
-export function filterAttacks(filter: FilterAttackSearch, data: Attack[]): Attack[] {
+export function filterAttacks(filter: FilterAttackSearch, data: AttackMetaData[]): AttackMetaData[] {
   return data.filter(attack => {
     const energy = Object.keys(filter.energy).filter(key => Boolean((filter.energy as any)[key])).map(key => Number(key));
 
-    if (filter.exclusive) {
+    if (filter.exclusive && energy.length > 0) {
       if (!(energy.every(item => attack.energy.includes(item)) && attack.energy.every(item => energy.includes(item)))) {
         return false;
       }
@@ -244,6 +307,23 @@ export function filterAttacks(filter: FilterAttackSearch, data: Attack[]): Attac
       }
     }
 
+    if(
+      filter.amount.max !== null && 
+      filter.amount.max > 0 ||
+      filter.amount.min !== null && 
+      filter.amount.min > 0
+    ) {
+      const energies = attack.energy.length;
+
+      if (filter.amount.min && (energies < filter.amount.min)) {
+        return false;
+      }
+
+      if (filter.amount.max && (energies > filter.amount.max)) {
+        return false;
+      }
+    }
+
     return true;
   });
 }
@@ -267,26 +347,33 @@ export function forceShowSplash(
          (state.routes[1].params as any).show === 'true';
 }
 
+const EXPANSION_ICON_MAP: Partial<Record<CardExpansionENUM, { image: any; width: number; height: number }>> = {
+  [CardExpansionENUM.PROMO_A]: { image: PROMO_A_ICON, width: 74, height: 40 },
+  [CardExpansionENUM.MYTHICAL_ISLAND]: { image: MYTHICAL_ISLAND_MEW_ICON, width: 74, height: 36 },
+  [CardExpansionENUM.TRIUMPH_LIGHT]: { image: TRIUMPH_LIGHT_ARCEUS_ICON, width: 95, height: 39 },
+  [CardExpansionENUM.SHINING_REVELRY]: { image: SHINING_REVELRY_ICON, width: 85, height: 42 }
+};
+
 export function getCardPackFrom(card: Card): {image: any, width: number, height: number} | undefined {
+  if (card.expansion === undefined) return;
+
   if (card.expansion === CardExpansionENUM.GENETIC_APEX) {
-    if (card.found?.length === 3 || (card.name.en === 'Mew' && card.id === 283)) {
-      return {image: GENETIC_APEX, width: 68, height: 30};
-    } else if (card.found !== undefined) {
-      return {image: PACK_MAP[card.found[0]], width: 60, height: 45};
+    if (card.found?.length === 3 || (card.name.en === "Mew" && card.id === 283)) {
+      return { image: GENETIC_APEX, width: 68, height: 30 };
     }
-  } else if (card.expansion === CardExpansionENUM.PROMO_A) {
-    return {image: PROMO_A_ICON, width: 74, height: 40};
-  } else if (card.expansion === CardExpansionENUM.MYTHICAL_ISLAND) {
-    return {image: MYTHICAL_ISLAND_MEW_ICON, width: 74, height: 36};
-  } else if (card.expansion === CardExpansionENUM.SPACE_TIME_SMACKDOWN) {
-    if (card.found?.length === 2) {
-      return {image: SMACK_DOWN, width: 74, height: 36};
-    } else if (card.found !== undefined) {
-      return {image: PACK_MAP[card.found[0]], width: 81, height: 40};
+    if (card.found) {
+      return { image: PACK_MAP[card.found[0]], width: 60, height: 45 };
     }
-  } else if (card.expansion === CardExpansionENUM.TRIUMPH_LIGHT) {
-    return {image: TRIUMPH_LIGHT_ARCEUS_ICON, width: 95, height: 39};
   }
+
+  if (card.expansion === CardExpansionENUM.SPACE_TIME_SMACKDOWN) {
+    return card.found?.length === 2
+      ? { image: SMACK_DOWN, width: 74, height: 36 }
+        : card.found
+          ? { image: PACK_MAP[card.found[0]], width: 81, height: 40 } : undefined;
+  }
+
+  return EXPANSION_ICON_MAP[card.expansion];
 }
 
 export function isNotBattleCard(card: Card): boolean {
@@ -298,28 +385,11 @@ export function isCardPromo(card: Card): boolean {
 }
 
 export function isCardPromoAndNoBattle(card: Card): boolean {
-  return isNotBattleCard(card) && card.expansion === CardExpansionENUM.PROMO_A;
+  return isNotBattleCard(card) && isCardPromo(card);
 }
 
 export function isCardPromoAndBattle(card: Card): boolean {
-  return !isNotBattleCard(card) && card.expansion === CardExpansionENUM.PROMO_A;
-}
-
-export function convertBase64ToJpeg(base64Png: string, quality = 1): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx?.drawImage(img, 0, 0);
-      const jpegBase64 = canvas.toDataURL('image/jpeg', quality);
-      resolve(jpegBase64);
-    };
-    img.onerror = reject;
-    img.src = base64Png;
-  });
+  return !isNotBattleCard(card) && isCardPromo(card);
 }
 
 export const filterUniqueItems = (array: Card[]): { items: Card[]; ids: number[] } => {
@@ -341,21 +411,35 @@ export const filterUniqueItems = (array: Card[]): { items: Card[]; ids: number[]
   };
 };
 
-export const getDynamicHeight = (length: number, type: 'deck' | 'trade'): number => {
+export const getDynamicHeight = (length: number, type: 'deck' | 'trade', horizontal?: boolean): number => {
   const maxHeight = 2229;
-  const minHeight = 1225;
-  const midHeight = 1633;
+  const minHeight = 1182;
+  const midHeight = 1705;
+  const minTradeHeight = 1243;
 
-  if (type === 'trade') { return minHeight; }
+  const maxHorizontalHeight = 581;
+  const minHorizontalHeight = 345;
 
-  if (length <= 10) {
-    return minHeight;
-  } else if (length <= 15) {
-    return midHeight;
-  } else if (length <= 20) {
-    return maxHeight;
+  if (type === 'trade') { return minTradeHeight; }
+
+  if (horizontal) {
+    if (length <= 10) {
+      return minHorizontalHeight;
+    } else if (length <= 20) {
+      return maxHorizontalHeight;
+    } else {
+      throw new Error("TotalLength must be between 1 and 20.");
+    }
   } else {
-    throw new Error("El totalLength debe estar entre 1 y 20.");
+    if (length <= 10) {
+      return minHeight;
+    } else if (length <= 15) {
+      return midHeight;
+    } else if (length <= 20) {
+      return maxHeight;
+    } else {
+      throw new Error("TotalLength must be between 1 and 20.");
+    }
   }
 };
 
@@ -404,6 +488,7 @@ export function saveEncryptedFileWeb(
 ): Promise<void> {
   return new Promise((res) => {
     if (Platform.OS !== 'web') { return ; }
+    delete data.cards;
     const encryptedData = encryptDataWeb(data);
     const blob = new Blob([encryptedData], { type: "text/plain" });
     const link = document.createElement("a");
@@ -501,8 +586,12 @@ const IMAGE_LANGUAGE_MAP = {
   ja: CARD_IMAGE_MAP_JAP
 }
 
-export function getImageLanguage(lang: LanguageType, id: number): any {
+export function getImageLanguage(lang: LanguageType, id: number): string {
   return IMAGE_LANGUAGE_MAP[lang][id];
+}
+
+export function getImageLanguageForGraphic(id: number): any {
+  return CARD_IMAGE_MAP_EN_GRAPHIC[id];
 }
 
 const IMAGE_LANGUAGE_MAP_69x96 = {
@@ -510,7 +599,6 @@ const IMAGE_LANGUAGE_MAP_69x96 = {
   en: CARD_IMAGE_MAP_69x96_EN,
   ja: CARD_IMAGE_MAP_69x96_JAP
 }
-
 export function getImageLanguage69x96(lang: LanguageType, id: number): any {
   return IMAGE_LANGUAGE_MAP_69x96[lang][id];
 }
@@ -544,4 +632,222 @@ const METRICS_MAP: any = {
 
 export function getMetrics(type: 'height' | 'weight', lang: LanguageType): string {
   return METRICS_MAP[type][lang];
+}
+
+export function areAllAmountsZero(collection: UserCollectionItem): boolean {
+  return Object.values(collection.amount).every(value => value === 0);
+}
+
+export function roundPercentage(value: string): string {
+  const split = value.split('.');
+  if ((split[0] === '0' || split[0] === '100') && split[1] === '0') {
+    return split[0] + '%';
+  }
+  return value + '%';
+}
+
+// FILTER-SORT ICONS
+export const getSortIconStyle = (sort: SortItem) => {
+  return [
+    { fontSize: 32, position: 'relative' },
+    sort?.label === 'order_by_hp' || sort?.label === 'order_by_rarity' ? { top: 1 } : null,
+    sort?.label === 'order_by_retreat' ? { top: -2 } : null,
+  ];
+};
+
+export const getSortOrderIcon = (sort: SortItem) => {
+  return !sort?.order ? 'arrow-upward' : 
+         sort.order === 'asc' ? 'arrow-upward' : 'arrow-downward';
+};
+
+export const getFilterIcon = (filterSearch: FilterSearch | FilterAttackSearch) => {
+  return filterSearch.areAllPropertiesNull() ? 'cancel' : 'check-circle';
+};
+
+export const getUniqueAttacks = (arr: AttackMetaData[]): AttackMetaData[] => {
+  const seen = new Set();
+  
+  return arr.reduce((acc, item) => {
+    const key = `${item.name.es || ''}|${item.damage}|${item.description?.es || ''}`;
+    
+    if (!seen.has(key)) {
+      seen.add(key);
+      acc.push({ id: acc.length, ...item });
+    }
+    return acc;
+  }, [] as AttackMetaData[])
+}
+
+// CREATE DECK
+export function sortFunction(a: Card | null, b: Card | null): number {
+  if (a === null) return 1;
+  if (b === null) return -1;
+  if (a.pokedex === -1 && b.pokedex !== -1) return 1;
+  if (a.pokedex !== -1 && b.pokedex === -1) return -1;
+  return a.order - b.order;
+}
+
+export function addCardToList(active: Card[], card: Card): Card[] {
+  if (active.filter(card => Boolean(card)).length === 20) { active; }
+  const emptyIndex = (active as any[]).indexOf(null);
+  const newDeck = [...active] as Card[];
+  newDeck[emptyIndex] = card;
+  return newDeck.sort(sortFunction);
+}
+
+export function canAddToDeck(active: Card[], card: Card): boolean {
+  const maxRepeats: number = 2;
+
+  const sameNameCards = active.filter(
+    (c) => c && c.name.es === card.name.es
+  ) as Card[];
+
+  if (sameNameCards.length < maxRepeats) {
+    const emptyIndex = (active as any[]).indexOf(null);
+
+    if (emptyIndex !== -1) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+export const isElementWithEnergy = (element: any): boolean => {
+  return Object.keys(element).some(key => element[key]);
+}
+
+export function manageSort(sort: SortItem, data: Card[]): Card[] {
+  const sortField = SORT_FIELD_MAP[sort.label];
+
+  if (!sortField) {
+    console.error(`Unsupported sorting option: ${sort.label}`);
+    return data;
+  }
+
+  return sortCards(sortField, data, sort);
+}
+
+export function isPokemonNormalWithEnergy(deck: Card[]): boolean {
+  return deck.some(card => 
+      card.attacks?.some(att => 
+        att.energy.every(ener => ener === PokemonTypeENUM.NORMAL)));
+}
+
+export function getUniqueEnergies(cards: Card[]): PokemonTypeENUM[] {
+  const energySet = new Set<PokemonTypeENUM>();
+
+  cards.forEach(card => {
+    card?.attacks?.forEach(attack => {
+      attack.energy.forEach(energy => energySet.add(energy));
+    });
+  });
+
+  return Array.from(energySet).sort();
+}
+
+export function isDeckValid(name: string, deck: Card[], energies: PokemonTypeENUM[]): boolean {
+  if (
+    name.length <= 0 ||
+    energies.length === 0 || 
+    deck.filter(card => Boolean(card)).length !== 20 ||
+    !deck.find(card => card.stage === CardStageENUM.BASIC) ||
+    (
+      !getUniqueEnergies(deck).some(type => energies.map(energy => Number(energy)).includes(type)) && 
+      !isPokemonNormalWithEnergy(deck)
+    )
+  ) {
+    return false;
+  }
+
+  return true;
+}
+
+export function filterOrSortCards(
+  type: 'sort' | 'filter', 
+  data: Card[], 
+  favorites: number[],
+  filter?: FilterSearch | null, 
+  sort?: SortItem,
+  collection?: UserCollectionItem[],
+  coll_lang?: CardLanguageENUM
+  ): Card[] {
+    switch (type) {
+      case 'sort': {
+        if (!sort) { return data; }
+        return manageSort(sort, data);
+      }
+      case 'filter': {
+        if (!filter) { return data; }
+        return filterCards(filter as FilterSearch, data, favorites, collection, coll_lang)
+      }
+    }
+}
+
+export function getHighlightCards(deck: Card[]): number[] {
+  const filteredDecks = deck
+   .filter(card => card && card.health > 0)
+   .sort((a, b) => b.rarity - a.rarity);
+
+  const result = filteredDecks.slice(0, Math.min(filteredDecks.length, 3));
+
+  if (
+    result.length > 2 && result[0].name === result[1].name && 
+    result[0].id === result[1].id
+  ) {
+    result[1] = result[2];
+  }
+
+  result.length = 2;
+  return result.map(card => card.id);
+}
+
+export function getUsedEnergies(element: any): PokemonTypeENUM[] {
+  return Object.keys(element)
+  .filter(key => (element as any)[key])
+  .map(key => key as unknown as PokemonTypeENUM);
+}
+
+export function getNewID(id: string, data: any[]) {
+  return Number(id) || (data.filter(d => Boolean(d))
+          .sort((a, b) => b.id > a.id ? -1 : 1)
+          .findLast(d => Boolean(d))?.id || 0) + 1
+}
+
+export function getSimilarAttacks(attacks: AttackMetaData[], active: AttackMetaData): AttackMetaData[] {
+  return attacks.filter(att =>
+    att.energy.length === active.energy.length &&
+    att.damage === active.damage &&
+    att.name.es !== active.name.es
+  );
+}
+
+export const manageSortAttacks = (sort: SortItem, data: AttackMetaData[], lang: LanguageType) => {
+  const sortField = SORT_FIELD_MAP[sort.label];
+
+  if (!sortField) {
+    console.error(`Unsupported sorting option: ${sort.label}`);
+    return data;
+  }
+
+  return sortAttacks(sortField, data, sort, lang);
+}
+
+export const filterOrSortAttacks = (
+  type: 'sort' | 'filter', 
+  data: AttackMetaData[],
+  lang: LanguageType,
+  filter?: FilterAttackSearch | null, 
+  sort?: SortItem,
+) => {
+  switch (type) {
+    case 'sort': {
+      if (!sort) { return data; }
+      return manageSortAttacks(sort, data, lang);
+    }
+    case 'filter': {
+      if (!filter) { return data; }
+      return filterAttacks(filter as FilterAttackSearch, data);
+    }
+  }
 }

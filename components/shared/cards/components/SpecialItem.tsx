@@ -2,12 +2,21 @@ import { memo, MutableRefObject } from "react";
 import { Platform } from "react-native";
 import React from "react";
 
-import { ThemedView } from "@/components/ThemedView";
-import StateButton from "@/components/ui/StateButton";
 import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { 
+  CONDITION_ATTACK, 
+  CONDITION_LINKS, 
+  CONDITION_MAP, 
+  CONDITION_OTHERS, 
+  CONDITION_STATUS
+} from "@/shared/definitions/utils/constants";
+
 import { filterStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
-import { CONDITION_ATTACK, CONDITION_LINKS, CONDITION_MAP, CONDITION_OTHERS, CONDITION_STATUS } from "@/shared/definitions/utils/constants";
+
+import { ThemedView } from "@/components/ThemedView";
+import StateButton from "@/components/ui/StateButton";
 import { ThemedText } from "@/components/ThemedText";
 
 interface SpecialItemProps {

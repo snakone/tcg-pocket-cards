@@ -1,14 +1,16 @@
-import React from "react";
-import { Platform, StyleProp, StyleSheet, TextStyle, ViewStyle } from 'react-native'
+import React, { useEffect, useRef, useState } from "react";
+import { DimensionValue, Platform, StyleProp, StyleSheet, TextStyle, ViewStyle } from 'react-native'
 import { MaterialIcons } from "@expo/vector-icons";
-
 import SelectDropdown from "react-native-select-dropdown";
-import { ThemedView } from "../ThemedView";
-import { ThemedText } from "../ThemedText";
+
 import { useI18n } from "@/core/providers/LanguageProvider";
+
 import { filterStyles } from "@/shared/styles/component.styles";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+
 import { FilterAttackSearch } from "@/shared/definitions/classes/filter_attack.class";
+import { ThemedView } from "../ThemedView";
+import { ThemedText } from "../ThemedText";
 
 interface SelectInputProps {
   options: any[], 
@@ -24,6 +26,8 @@ interface SelectInputProps {
   textStyle?: StyleProp<TextStyle>,
   iconStyle?: StyleProp<TextStyle>,
   itemStyle?: StyleProp<ViewStyle>,
+  translate?: boolean,
+  autoScroll?: boolean
 }
 
 export default function SelectInput({
@@ -38,34 +42,64 @@ export default function SelectInput({
   shadow = true,
   textStyle = {},
   iconStyle = {},
-  itemStyle = {}
+  itemStyle = {},
+  translate = true,
+  autoScroll = false
 }: SelectInputProps) {
   const {i18n} = useI18n();
+  const dropdownRef = useRef<SelectDropdown>(null);
+
+  const [value, setValue] = useState(filterObj && propFilter && keyFilter && 
+    ((filterObj.current as any)[propFilter][keyFilter] ?? keyFilter));
+
+  useEffect(() => {
+    const index = options.filter(x => x !== '---').findIndex(x => x === label);
+    if (index !== -1) {
+      dropdownRef.current?.selectIndex(index);
+    }
+  }, [label]);
+
+  function handleClick(item: string | null, index: number): void {
+    if (item === '---') {
+      setValue(null);
+      if (propFilter && keyFilter) {
+        item = null;
+      }
+    }
+
+    onSelect(item, index);
+  }
 
   return (
     <SelectDropdown
       data={options}
-      onSelect={onSelect}
+      ref={dropdownRef}
+      onSelect={handleClick}
       statusBarTranslucent={true}
-      disableAutoScroll={true}
-      defaultValue={
-        filterObj && propFilter && keyFilter && 
-        ((filterObj.current as any)[propFilter][keyFilter] ?? keyFilter)
-      }
+      disableAutoScroll={!autoScroll}
+      defaultValue={value}
       dropdownOverlayColor="transparent"
       showsVerticalScrollIndicator={false}
       dropdownStyle={{...styles.dropDown, height}}
       renderButton={(item, isOpened) => {
-        const selected = filterObj && item;
+        const selected = filterObj && item && (item as string) !== '---';
         return (
           <ThemedView style={[
             filterStyles.button, 
             filterStyles.gridButton, {width}, 
-            {...(selected && {backgroundColor: '#444444'})},
+            selected && {backgroundColor: '#444444'},
             !shadow && {boxShadow: 'none'},
           ]}>
-            <ThemedText style={[filterStyles.buttonText, {...(selected && {color: 'white'})}, textStyle]}>
-             {(selected && item) ? item : (!selected && item) ? i18n.t(item) : i18n.t(label)}
+            <ThemedText style={[filterStyles.buttonText, selected && {color: 'white'}, textStyle]}>
+             {
+             (selected && item) ? 
+                item : 
+                  (!selected && item && (item as string) !== '---') ? 
+                    translate ? i18n.t(item) : 
+                      item : 
+                  translate ? i18n.t(label) 
+                : label
+            }
             </ThemedText>
             <MaterialIcons name={isOpened ? 'keyboard-arrow-up' : 'keyboard-arrow-down'} 
                            style={[styles.icon, {color: selected ? 'white' : '#555'}, iconStyle]}/>
@@ -73,12 +107,18 @@ export default function SelectInput({
         );
       }}
       renderItem={(item, _, isSelected) => {
-        const selected = filterObj && item;
+        const selected = filterObj && item && (item as string) !== '---';
         return (
-          <ThemedView style={[styles.item, itemStyle, {...(isSelected && {backgroundColor: '#444444'})}]}>
+          <ThemedView style={[
+            styles.item, 
+            itemStyle, 
+            ((isSelected && (item as string) !== '---') || label === item) && 
+              {backgroundColor: '#444444'}]}>
             <ThemedText style={[
-                filterStyles.buttonText, {...(isSelected && {color: 'white'})}
-              ]}>{!selected ? i18n.t(item) : item}
+                filterStyles.buttonText, 
+                ((isSelected && (item as string) !== '---') || label === item) 
+                  && {color: 'white'}
+              ]}>{!selected && translate ? i18n.t(item) : item}
             </ThemedText>
           </ThemedView>
         );

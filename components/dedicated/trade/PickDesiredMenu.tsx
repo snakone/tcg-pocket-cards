@@ -1,44 +1,54 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import React from "react";
 import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { TabDesiredMenu } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, CardGridStyles, filterStyles, LayoutStyles, ModalStyles, offersStyles, sortStyles } from "@/shared/styles/component.styles";
-import { CLOSE_SENTENCE, NO_CONTEXT, SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
-import { AppContext } from "@/app/_layout";
+
+import { 
+  ButtonStyles,
+   CardGridStyles, 
+   filterStyles, 
+   gridHeightMap, 
+   LayoutStyles, 
+   ModalStyles, 
+   offersStyles, 
+   sortStyles 
+  } from "@/shared/styles/component.styles";
+
+import { collectionStyles } from "@/app/screens/collection";
+import { createDeckStyles } from "@/app/screens/create_deck";
+import { TabDesiredMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { getFilterSearch, ICON_WIDTH, RARITY_CAN_TRADE, RARITY_MAP } from "@/shared/definitions/utils/constants";
-import SkeletonCardGrid from "@/components/skeletons/SkeletonCardGrid";
-import StateButton from "@/components/ui/StateButton";
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { filterCards, getImageLanguage116x162, getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
 import { CardExpansionTypeENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
-import { createDeckStyles } from "@/app/screens/create_deck";
-import { LanguageType } from "@/shared/definitions/types/global.types";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
+
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import StateButton from "@/components/ui/StateButton";
+
+const numColumns = 6;
 
 export default function PickDesiredMenu({
   isVisible,
   onClose,
   animatedStyle,
-  desired
+  desired,
+  language,
+  cardsState
 }: TabDesiredMenu) {
   const {i18n} = useI18n();
   const styles = ModalStyles;
   if (!isVisible) return null;
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
-  const [cards, setCards] = useState<Card[]>([]);
   const [filtered, setFiltered] = useState<Card[]>([]);
   const [cardsWithFilter, setCardsWithFilter] = useState<Card[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -47,17 +57,13 @@ export default function PickDesiredMenu({
   const [filterDisabled, setFilterDisabled] = useState<boolean>(false);
   const [forceRender, setForceRender] = useState(0);
   const triggerRender = () => setForceRender(prev => prev + 1);
-  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
-
-  useEffect(() => {
-    setLang(state.settingsState.language);
-  }, [state.settingsState.language]);
+  const flatListRef = useRef<FlatList<Card> | null>(null);
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
     setFiltered(cardsWithFilter.filter(card =>
-      card.name[lang].toLowerCase()?.includes(text.toLowerCase())
-  ))}, [cardsWithFilter, lang]);
+      card.name[language].toLowerCase()?.includes(text.toLowerCase())
+  ))}, [cardsWithFilter, language]);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
@@ -65,79 +71,77 @@ export default function PickDesiredMenu({
 
   async function closeMenu(sound = true): Promise<void> {
     if (sound) { await playSound(); }
-    onClose(current);
+    onClose?.(current);
   }
 
+  const filterTradeableCards = useCallback(() => {
+    return cardsState.cards.filter(
+      card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2B)
+  }, [cardsState.cards]);
+
   useEffect(() => {
-    const desiredCard = state.cardState.cards.find(card => desired.includes(card.id));
+    const desiredCard = cardsState.cards.find(card => desired.includes(card.id));
 
+    let filteredCards;
     if (desiredCard) {
-      const filter = state.cardState.cards
-                      .filter(card => card?.rarity === desiredCard.rarity && 
-                                      card.series !== CardExpansionTypeENUM.A2A);
-      setCards(filter);
-      setFiltered(filter);
-      setCardsWithFilter(filter);
-
-      setCurrent(prev => 
-        prev.map(p => (state.cardState.cards
-            .find(card => card.id === p)?.rarity === desiredCard.rarity) ? p : null
+      filteredCards = cardsState.cards.filter(card => 
+        card?.rarity === desiredCard.rarity && card.series !== CardExpansionTypeENUM.A2B
+      );
+  
+      setCurrent(prev =>
+        prev.map(p => 
+          (cardsState.cards.find(card => card.id === p)?.rarity === desiredCard.rarity) ? p : null
         )
       );
-
+  
       (filterObj.current.rarity as any)[desiredCard.rarity] = true;
       setFilterDisabled(true);
-      return;
+    } else {
+      filteredCards = filterTradeableCards();
     }
-
-    const filter = state.cardState.cards
-                    .filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && 
-                                    card.series !== CardExpansionTypeENUM.A2A);
-    setCards(filter);
-    setFiltered(filter);
-    setCardsWithFilter(filter);
-  }, [state.cardState.cards]);
-
-  const renderEmpty = () => {
-    const renderCardState = useCallback(() => {
-      return state.cardState.loaded ? (
-        <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
-      ) : (
-        <SkeletonCardGrid columns={5} />
-      );
-    }, [state.cardState.loaded]);
   
-    return renderCardState();
-  };
+    setFiltered(filteredCards);
+    setCardsWithFilter(filteredCards);
+  }, [cardsState.cards, desired]);
+
+  async function goUp(): Promise<void> {
+    flatListRef.current?.scrollToOffset({offset: 0, animated: false});
+  }
 
   const handleClick = useCallback((value: Card | number, type: 'add' | 'remove') => {
     const id = type === 'remove' ? (value as number) : (value as Card).id;
     if (type === 'add' && current.filter(Boolean).length === 5 && !current.includes(id)) { return; }
     if (type === 'remove' && !value) { return; }
 
+    SoundService.play('POP_PICK');
+
+    // NEW
     if (type === 'add' && current.filter(Boolean).length === 0) {
       if (!Object.values(filterObj.current.rarity).some(val => Boolean(val))) {
         manageFilter((value as Card).rarity);
+        triggerRender();
+        goUp();
       }
       setFilterDisabled(true);
     }
 
+    // EMPTY
     if (type === 'remove' && current.filter(Boolean).length === 1) {
-      setFilterDisabled(false);
-      resetCardsAndFilter(id);
+      resetCardsAndFilter();
       Object.keys(filterObj.current.rarity).forEach(key => (filterObj.current.rarity as any)[key] = false);
       triggerRender();
+      goUp();
     }
 
-    SoundService.play('POP_PICK');
     setCurrent((prev) => {
       if (prev.includes(id)) {
+        // EXIST
         const next = prev.map(desired => desired === id ? null : desired).sort((a, b) => b === null ? -1 : 1);
         if (type === 'add' && next.filter(Boolean).length === 0) {
-          setFilterDisabled(false);
-          resetCardsAndFilter(id);
+          resetCardsAndFilter();
           Object.keys(filterObj.current.rarity).forEach(key => (filterObj.current.rarity as any)[key] = false);
           triggerRender();
+          goUp();
         }
         return next;
       }
@@ -152,8 +156,9 @@ export default function PickDesiredMenu({
     });
   }, [current, filterObj.current.rarity]);
 
-  function resetCardsAndFilter(value: number): void {
-    setFiltered(state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2A));
+  function resetCardsAndFilter(): void {
+    setFilterDisabled(false);
+    setFiltered(filterTradeableCards());
   }
 
   const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
@@ -162,19 +167,38 @@ export default function PickDesiredMenu({
             onPress={() => handleClick(item, 'add')}
             style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
         <View>
-          { current.includes(item.id) && 
+          { current.includes(item.id) &&
+            <>
               <ThemedView style={[
-              CardGridStyles.image, 
-              offersStyles.included,
-            ]}>
+                  CardGridStyles.image, 
+                  offersStyles.included,
+                ]}>
               </ThemedView>
+              <ThemedView style={[collectionStyles.remove, {width: 18, height: 18}]}>
+                <ThemedText style={[
+                                 {color: 'crimson', fontSize: 31, top: -4}, 
+                                 Platform.OS !== 'web' && 
+                                  {fontSize: 24, top: -13, transform: [{scaleX: 1.5}, {scaleY: 1.5}]}]}>-</ThemedText>
+              </ThemedView>
+              <ThemedView style={collectionStyles.amount}>
+                <ThemedText style={collectionStyles.amountText}>{'1/1'}</ThemedText>
+              </ThemedView>
+            </> 
           }
-          <Image accessibilityLabel={item.name[lang]}
-                  source={getImageLanguage69x96(lang, item.id)}
+          <Image source={BACKWARD_CARD}
+                  style={[
+                  CardGridStyles.image, 
+                  {width: Platform.OS === 'web' ? 57.6 : 58},
+                  {position: 'absolute', zIndex: 10, opacity: 0},
+                  ((current.filter(Boolean).length === 5) && !current.includes(item.id)) && {opacity: 1}
+                ]}/>
+          <Image accessibilityLabel={item.name[language]}
+                  source={{uri: getImageLanguage69x96(language, item.id)}}
+                  placeholder={BACKWARD_CARD}
                   style={[
                   CardGridStyles.image, 
                   {width: Platform.OS === 'web' ? 57.6 : 58}
-                ]}/>
+            ]}/>
         </View>
       </TouchableOpacity>
     </View>
@@ -183,7 +207,8 @@ export default function PickDesiredMenu({
   const manageFilter = useCallback((index: number) => {
     const filter = filterObj.current;
     (filter.rarity as any)[index] = !(filter.rarity as any)[index];
-    const tradeable = state.cardState.cards.filter(card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2A);
+
+    const tradeable = filterTradeableCards();
     const filtered = filterCards(filter, tradeable, []);
     setFiltered(filtered);
     setCardsWithFilter(filtered);
@@ -201,11 +226,17 @@ export default function PickDesiredMenu({
             <View>
               { current[index] ? 
               <>
+                <ThemedView style={[collectionStyles.remove, {width: 20, height: 20}]}>
+                <ThemedText style={[
+                  {color: 'crimson', fontSize: 31, top: -4}, 
+                  Platform.OS !== 'web' && {fontSize: 24, top: -10, transform: [{scaleX: 1.5}, {scaleY: 1.2}]}]}>-</ThemedText>
+                </ThemedView>
                 <Image style={[
                     CardGridStyles.image, 
                     {width: 67.5}
                   ]} 
-                source={getImageLanguage116x162(lang, current[index])}/>
+                source={{uri: getImageLanguage116x162(language, current[index])}}
+                placeholder={BACKWARD_CARD}/>
               </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
               }
             </View>
@@ -214,10 +245,16 @@ export default function PickDesiredMenu({
       </View>
     ), [current]);
 
-  const shouldFilterDisabled = (key: CardRarityENUM) =>  (
+  const shouldFilterDisabled = useCallback((key: CardRarityENUM) =>  (
     Object.values(filterObj.current.rarity).some(Boolean) && 
     !(filterObj.current.rarity as any)[key]
-  );
+  ), []);
+
+  const getItemLayout = useCallback((_: any, index: number) => ({
+    length: gridHeightMap[numColumns],
+    offset: gridHeightMap[numColumns] * index,
+    index, 
+  }), []);
 
   const renderRarityGrid = useCallback(() => {
     return (
@@ -233,7 +270,7 @@ export default function PickDesiredMenu({
           <StateButton
             propFilter="rarity"
             keyFilter={key}
-            onClick={() => manageFilter(key)}
+            onClick={() => (manageFilter(key), triggerRender())}
             key={index}
             filterObj={filterObj}
             disabled={filterDisabled || shouldFilterDisabled(key)}
@@ -260,91 +297,91 @@ export default function PickDesiredMenu({
 
   return (
     <>
-    <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
-              style={StyleSheet.absoluteFill} 
-              tint="light" 
-              experimentalBlurMethod='dimezisBlurView'/>
+      <BlurView intensity={Platform.OS === 'web' ? 15 : 5} 
+                style={StyleSheet.absoluteFill} 
+                tint="light" 
+                experimentalBlurMethod='dimezisBlurView'/>
       <Pressable style={LayoutStyles.overlay} 
-                 onPress={() => closeMenu(true)}>
+                onPress={() => closeMenu(true)}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container, 
-        {
-          width: '100%', flex: 1, height: (Platform.OS === 'web' && window.innerWidth < 550) ? 600 : 765
-        }]}>
-        <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
-          <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_a_desired')}</ThemedText>
-        </View>
-        <ThemedView style={[styles.modalScrollView, {flex: 1, padding: 0, maxHeight: '100%'}]}>
-          <ThemedView style={{flex: 1, alignItems: 'center', paddingBottom: 16}}>
-            <FlatList data={filtered}
-                      renderItem={renderCard}
-                      numColumns={6}
-                      showsVerticalScrollIndicator={false}
-                      maxToRenderPerBatch={24}
-                      initialNumToRender={6}
-                      windowSize={12}
-                      contentContainerStyle={{padding: 16, paddingTop: 0, paddingBottom: 54}}
-                      keyExtractor={(item, index) => index + ''}
-                      ListHeaderComponent={
-                        <ThemedView style={{height: 236, backgroundColor: 'white'}}>
-                          <ThemedView style={{
-                              boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', 
-                              width: '100%', 
-                              borderRadius: 8, 
-                              marginBottom: 10, 
-                              marginTop: 16
-                            }}>
-                            <TextInput placeholder={i18n.t('search')}
-                                      value={searchQuery}
-                                      onChangeText={handleSearch}
-                                      placeholderTextColor={Colors.light.text}
-                                      accessibilityLabel={SEARCH_LABEL}
-                                      editable={state.cardState.loaded}
-                                      inputMode='text'
-                                      style={[
-                                        CardGridStyles.searchInput,
-                                        {width: '100%'}
-                                      ]}
-                                    />
-                          </ThemedView>
-
-                          <View key={forceRender}>
-                            {renderRarityGrid()}
-                          </View>
-                          <FlatList data={current}
-                                    renderItem={renderDesired}
-                                    numColumns={5}
-                                    contentContainerStyle={{width: '100%', marginTop: 12}}
-                                    style={{width: '100%', borderRadius: 8}}
-                                    showsVerticalScrollIndicator={false}
-                                    keyExtractor={(item, index) => index + ''}/>
-                        </ThemedView>
-                        
-                      }
-                      stickyHeaderIndices={[0]}
-                      ListFooterComponent={<ThemedView style={{height: 12}}/>}
-                      ListEmptyComponent={renderEmpty}
-                    />
-          </ThemedView>
-        </ThemedView>
-        <View style={[styles.modalFooter, 
+        <Animated.View style={[animatedStyle, sortStyles.container, 
           {
-            position: 'absolute', 
-            bottom: 0, 
-            marginInline: 'auto', 
-            backgroundColor: 'none', 
-            boxShadow: 'none',
-            width: '100%'
+            width: '100%', flex: 1, height: (Platform.OS === 'web' && window.innerWidth < 550) ? 600 : 765
           }]}>
-          <Pressable style={ButtonStyles.button} 
-                            onPress={() => closeMenu(true)} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
-            <View style={ButtonStyles.insetBorder}>
-              <IconSymbol name="clear"></IconSymbol>
-            </View>
-          </Pressable>
-        </View>
-      </Animated.View>
+          <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
+            <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('select_a_desired')}</ThemedText>
+          </View>
+          <ThemedView style={[styles.modalScrollView, {flex: 1, padding: 0, maxHeight: '100%'}]}>
+            <ThemedView style={{flex: 1, alignItems: 'center', paddingBottom: 16}} key={forceRender}>
+              <FlatList data={filtered}
+                        renderItem={renderCard}
+                        numColumns={6}
+                        showsVerticalScrollIndicator={false}
+                        maxToRenderPerBatch={20}
+                        initialNumToRender={20}
+                        windowSize={9}
+                        ref={flatListRef}
+                        getItemLayout={getItemLayout}
+                        contentContainerStyle={{padding: 16, paddingTop: 0, paddingBottom: 54}}
+                        keyExtractor={(item, index) => index + ''}
+                        ListHeaderComponent={
+                          <ThemedView style={{height: 236, backgroundColor: 'white'}}>
+                            <ThemedView style={{
+                                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', 
+                                width: '100%', 
+                                borderRadius: 8, 
+                                marginBottom: 10, 
+                                marginTop: 16
+                              }}>
+                              <TextInput placeholder={i18n.t('search')}
+                                        value={searchQuery}
+                                        onChangeText={handleSearch}
+                                        placeholderTextColor={Colors.light.text}
+                                        accessibilityLabel={'SEARCH_LABEL'}
+                                        editable={cardsState.loaded}
+                                        inputMode='text'
+                                        style={[
+                                          CardGridStyles.searchInput,
+                                          {width: '100%'}
+                                        ]}
+                                      />
+                            </ThemedView>
+                              {renderRarityGrid()}
+                            <FlatList data={current}
+                                      renderItem={renderDesired}
+                                      numColumns={5}
+                                      contentContainerStyle={{width: '100%', marginTop: 12}}
+                                      style={{width: '100%', borderRadius: 8}}
+                                      showsVerticalScrollIndicator={false}
+                                      keyboardDismissMode={'on-drag'}
+                                      keyExtractor={(item, index) => index + ''}/>
+                          </ThemedView>
+                          
+                        }
+                        stickyHeaderIndices={[0]}
+                        ListFooterComponent={<ThemedView style={{height: 22}}/>}
+                        ListEmptyComponent={<ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>}
+                      />
+            </ThemedView>
+          </ThemedView>
+          <View style={[styles.modalFooter, 
+            {
+              position: 'absolute', 
+              bottom: 0, 
+              marginInline: 'auto', 
+              backgroundColor: 'none', 
+              boxShadow: 'none',
+              width: '100%'
+            }]}>
+            <Pressable style={ButtonStyles.button} 
+                              onPress={() => closeMenu(true)} 
+                              accessibilityLabel={'CLOSE_SENTENCE'}>
+              <View style={ButtonStyles.insetBorder}>
+                <IconSymbol name="clear"></IconSymbol>
+              </View>
+            </Pressable>
+          </View>
+        </Animated.View>
     </>
   );
 }

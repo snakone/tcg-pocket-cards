@@ -1,13 +1,15 @@
 import { memo, MutableRefObject } from "react";
 import { Platform } from "react-native";
+import React from "react";
+
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { filterStyles } from "@/shared/styles/component.styles";
+import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import StateButton from "@/components/ui/StateButton";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { filterStyles } from "@/shared/styles/component.styles";
-import { FilterSearch } from "@/shared/definitions/classes/filter.class";
-import React from "react";
 
 export const IsExButtonList = memo(({ filterObj }: { filterObj: MutableRefObject<FilterSearch> }) => {
   const {i18n} = useI18n();

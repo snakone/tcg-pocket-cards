@@ -1,10 +1,9 @@
-import { Platform, StyleSheet, useWindowDimensions } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 import { 
   DEFAULT_MODAL_HEIGHT,
   ICON_WIDTH,
   MENU_HEIGHT,
-  MENU_HEIGHT_ANDROID,
   MENU_WIDTH,
   MIN_MODAL_HEIGHT,
   SORT_MODAL_HEIGHT
@@ -15,10 +14,35 @@ import { Colors } from '../definitions/utils/colors';
 export const HEADER_HEIGHT = 100;
 export const HEADER_MIN_HEIGHT = 40;
 export const CARD_IMAGE_WIDTH_3 = 116.5;
-export const CARD_IMAGE_WIDTH_5 = 69.1;
+export const CARD_IMAGE_WIDTH_5 = 69.2;
+export const CARD_IMAGE_WIDTH_7 = 48.6;
+
+export const CARD_IMAGE_HEIGHT_3 = 164.52;
+export const CARD_IMAGE_HEIGHT_5 = 98.52;
+export const CARD_IMAGE_HEIGHT_7 = 69.78;
 export const CREATE_GRID_HEIGHT = 520;
+
 export const CREATE_GRID_MAX_HEIGHT = CREATE_GRID_HEIGHT + 60;
 export const MAX_WEB_HEIGHT = 844;
+
+export const gridWidthMap: Record<0 | 1 | 2, number> = {
+  0: CARD_IMAGE_WIDTH_3,
+  1: CARD_IMAGE_WIDTH_5,
+  2: CARD_IMAGE_WIDTH_7
+}
+
+export const gridHeightMap: Record<number, number> = {
+  0: CARD_IMAGE_HEIGHT_3,
+  1: CARD_IMAGE_HEIGHT_5,
+  2: CARD_IMAGE_HEIGHT_7,
+  6: 82.34
+}
+
+export const gridColumMap: Record<0 | 1 | 2, number> = {
+  0: 3,
+  1: 5,
+  2: 7
+}
 
 export const ThemeTextStyles = StyleSheet.create({
   default: {
@@ -54,6 +78,7 @@ export const ThemeTextStyles = StyleSheet.create({
 export const ParallaxStyles = StyleSheet.create({
   container: {
     flex: 1,
+    overflow: 'visible'
   },
   header: {
     height: HEADER_HEIGHT,
@@ -241,9 +266,9 @@ export const ModalStyles = StyleSheet.create({
   },
   modalFooter: {
     backgroundColor: Colors.light.background,
-    paddingTop: 14,
+    paddingTop: 20,
     paddingInline: 14,
-    paddingBottom: 16,
+    paddingBottom: 22,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     alignItems: 'center',
@@ -286,7 +311,7 @@ export const DetailStyles = StyleSheet.create({
   },
   bottomContainer: {
     position: 'absolute',
-    bottom: 30,
+    bottom: 22,
     left: 0,
     right: 0,
     alignItems: 'center',
@@ -302,6 +327,7 @@ export const ButtonStyles = StyleSheet.create({
     padding: 3, // Inset
     elevation: 2,
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
+    zIndex: 1000
   },
   insetBorder: {
     paddingVertical: 10,
@@ -324,7 +350,7 @@ export const MenuStyles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     width: MENU_WIDTH,
-    height: Platform.OS === 'web' ? MENU_HEIGHT : MENU_HEIGHT_ANDROID,
+    height: MENU_HEIGHT,
     borderBottomLeftRadius: 50,
     borderTopLeftRadius: 50,
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)',
@@ -339,7 +365,6 @@ export const MenuStyles = StyleSheet.create({
   expansions: {
     backgroundColor: 'white',
     width: '100%',
-    height: '74.9%',
     position: 'absolute',
     right: 0,
     bottom: 0,
@@ -409,20 +434,11 @@ export const WebStyles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
     boxShadow: '0px 0px 25px 10px rgba(0, 0, 0, .8)',
+    overflow: 'hidden'
   }
 });
 
 export const TabsMenuStyles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    height: '100%',
-    zIndex: 1,
-    borderRadius: 50,
-    opacity: 0.3,
-    backgroundColor: 'mediumaquamarine'
-  },
   user: {
     justifyContent: 'flex-start', 
     flexDirection: 'row', 
@@ -485,7 +501,7 @@ export const ScreenStyles = StyleSheet.create({
   },
   bottomContent: {
     position: 'absolute',
-    bottom: 16,
+    bottom: 22,
     alignSelf: 'center'
   }
 });
@@ -529,7 +545,7 @@ export const LoadingStyles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 10,
+    zIndex: 100,
     backgroundColor: 'transparent'
   },
   box: {
@@ -547,14 +563,14 @@ export const LoadingStyles = StyleSheet.create({
 
 export const filterStyles = StyleSheet.create({
   container: {
-    height: '82.1%', 
     position: 'absolute', 
     width: '100%',
     bottom: 0,
-    zIndex: 100,
+    zIndex: 200,
     backgroundColor: 'white',
     borderTopLeftRadius: 40, 
     borderTopRightRadius: 40,
+    overflow: 'hidden'
   },
   header: {
     fontSize: 20, 
@@ -637,10 +653,12 @@ export const filterStyles = StyleSheet.create({
     paddingRight: 16
   },
   expansionContainer: {
-    flex: 1, 
-    padding: 20, 
     justifyContent: 'flex-start', 
-    alignItems: 'center', 
+    alignItems: 'center',
+    flexDirection: 'row',
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.3)',
+    borderRadius: 8,
+    marginBottom: 12
   },
   expansionShadow: {
     width: '100%', 
@@ -650,8 +668,20 @@ export const filterStyles = StyleSheet.create({
     top: -6
   },
   packImage: {
-    width: 58, 
-    height: 114
+    width: 37, 
+    height: 73
+  },
+  expansionImage: {
+    marginRight: 10,
+  },
+  reset: {
+    width: 34, 
+    borderWidth: 0, 
+    position: 'absolute', 
+    right: 0, 
+    marginLeft: Platform.OS === 'web' ? 'auto' : '86%', 
+    boxShadow: '-4px 4px 8px rgba(0, 0, 0, 0.4)', 
+    top: -16
   }
 });
 
@@ -972,9 +1002,52 @@ export const offersStyles = StyleSheet.create({
     position: 'absolute', 
     zIndex: 10, 
     opacity: 0.7, 
-    backgroundColor: 'rgba(0, 0, 0, 0.7)', 
+    backgroundColor: 'rgba(0, 0, 0, 0.8)', 
     borderRadius: 4,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  statsBtn: {
+    marginBottom: 10, 
+    marginTop: 40, 
+    backgroundColor: 'mediumaquamarine', 
+    flexDirection: 'row', 
+    justifyContent: 'center', 
+    gap: 10, 
+    alignItems: 'center'
+  }
+});
+
+export const cardStyles = StyleSheet.create({
+  container: {
+    position: 'absolute', 
+    right: 24, 
+    bottom: 24,
+    width: 50,
+    height: 50,
+    borderRadius: 48,
+    backgroundColor: 'white',
+    padding: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)',
+    opacity: 0.8
+  },
+  sortIcon: {
+    position: 'absolute',
+    fontSize: 16,
+    backgroundColor: 'rgba(120, 120, 120, .8)',
+    borderRadius: 20,
+    color: 'white',
+    right: -16,
+    top: 8.5
+  },
+  sortIconList: {
+    position: 'absolute',
+    fontSize: 20,
+    borderRadius: 20,
+    right: -30,
+    top: 9,
+    color: Colors.light.text,
   }
 });

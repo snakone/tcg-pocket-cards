@@ -2,13 +2,14 @@ import { View, Pressable } from "react-native";
 import { useCallback } from "react";
 import { useRouter } from "expo-router";
 
-import { ThemedView } from "@/components/ThemedView";
-import { IconSymbol } from "@/components/ui/IconSymbol";
-import { CLOSE_SENTENCE } from "@/shared/definitions/sentences/global.sentences";
-import { ButtonStyles, ParallaxStyles, ScreenStyles } from "@/shared/styles/component.styles";
-import { ThemedText } from "@/components/ThemedText";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
+
+import { ButtonStyles, ParallaxStyles, ScreenStyles } from "@/shared/styles/component.styles";
+
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import { ThemedText } from "@/components/ThemedText";
 
 interface SharedScreenProps {
   title: string,
@@ -41,7 +42,7 @@ export default function SharedScreen({title, children, styles, customClose}: Sha
       <View style={ScreenStyles.bottomContent}>
         <Pressable style={ButtonStyles.button} 
                           onPress={customClose ?? goBack} 
-                          accessibilityLabel={CLOSE_SENTENCE}>
+                          accessibilityLabel={'CLOSE_SENTENCE'}>
           <View style={ButtonStyles.insetBorder}>
             <IconSymbol name="clear"></IconSymbol>
           </View>

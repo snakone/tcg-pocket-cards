@@ -3,117 +3,141 @@ import { FlatList, Platform, Pressable, View, StyleSheet, TouchableOpacity, Scro
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Image } from 'expo-image';
-import { Portal, Provider, Switch } from "react-native-paper";
+import { Portal, Switch } from "react-native-paper";
 import ViewShot from "react-native-view-shot";
 import { Slider } from "@miblanchard/react-native-slider";
+
+import { useI18n } from "@/core/providers/LanguageProvider";
+import Storage from '@/core/storage/storage.service';
+import SoundService from "@/core/services/sounds.service";
+import ShareService from "@/core/services/share.service";
+import { DataRxjs } from "@/core/rxjs/DataRxjs";
+
+import { settingsStyles } from "./settings";
+import { createDeckStyles } from "./create_deck";
+import { AppContext } from "../_layout";
+import { shareTradeStyles } from "./share_trade";
+import { Card } from "@/shared/definitions/interfaces/card.interfaces";
+import { AvatarIcon, ShareContentProps, StorageDeck, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
+import { CardGridStyles, CreateScreenStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
+import { DEFAULT_ELEMENT, DEFAULT_PROFILE, TYPE_MAP } from "@/shared/definitions/utils/constants";
+import { Colors } from "@/shared/definitions/utils/colors";
+import { filterUniqueItems, getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 
 import SharedScreen from "@/components/shared/SharedScreen";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
-import { AppContext } from "../_layout";
 import DeckCollage from "@/components/dedicated/share/DeckCollage";
-import { Card } from "@/shared/definitions/interfaces/card.interfaces";
-import Storage from '@/core/storage/storage.service';
-import ShareService from "@/core/services/share.service";
-import { AvatarIcon, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
-import { TYPE_MAP } from "@/shared/definitions/utils/constants";
-import { CardGridStyles, CreateScreenStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
-import { Colors } from "@/shared/definitions/utils/colors";
-import { createDeckStyles } from "./create_deck";
-import { settingsStyles } from "./settings";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import SoundService from "@/core/services/sounds.service";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
 import PickBackgroundMenu from "@/components/dedicated/share/PickCBackgroundMenu";
-import { filterUniqueItems, getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
-import { LanguageType } from "@/shared/definitions/types/global.types";
+
+interface ShareDeckData {
+  background: AvatarIcon | null,
+  quality: number,
+  duplicated: boolean,
+  horizontal: boolean,
+  profile: UserProfile,
+  valid: boolean,
+  name: string,
+  deck: Card[] | null[]
+}
 
 export default function ShareDeckScreen() {
+  console.log('Share Deck Screen');
   const {i18n} = useI18n();
   const { deck_id } = useLocalSearchParams<{ deck_id: string }>();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
-  const [deck, setDeck] = useState<any[]>(Array.from({ length: 20 }, (_, i) => (null)));
-  const [deckName, setDeckName] = useState('');
+  if (!context) { throw new Error('NO_CONTEXT'); }
+  const { state } = context;
   const [loading, setLoading] = useState(false);
   const shareService = useMemo(() => new ShareService(), []);
   const ref = useRef<any>(null);
   const [isBackgroundVisible, setIsBackgroundVisible] = useState(false);
-  const [background, setBackground] = useState<AvatarIcon>();
-  const [quality, setQuality] = useState<number>(0.8);
-  const [duplicated, setDuplicated] = useState<boolean>(true);
-  const [valid, setValid] = useState<boolean>(true);
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const [element] = useState({...DEFAULT_ELEMENT});
+
+  const [data, setData] = useState<ShareDeckData>({
+    background: null,
+    quality: 0.8,
+    duplicated: true,
+    horizontal: false,
+    profile: {...DEFAULT_PROFILE},
+    valid: false,
+    name: '',
+    deck: Array.from({ length: 20 }, (_, i) => (null))
+  });
 
   useEffect(() => {
     setLang(state.settingsState.language);
   }, [state.settingsState.language]);
 
-  const [profile, setProfile] = useState<UserProfile>(
-    {name: '', avatar: 'eevee', coin: 'eevee', best: null}
-  );
-
-  const [element, setElement] = useState({
-    [PokemonTypeENUM.GRASS]: null, 
-    [PokemonTypeENUM.FIRE]: null,
-    [PokemonTypeENUM.WATER]: null,
-    [PokemonTypeENUM.ELECTRIC]: null,
-    [PokemonTypeENUM.PSYCHIC]: null,
-    [PokemonTypeENUM.FIGHT]: null,
-    [PokemonTypeENUM.DARK]: null,
-    [PokemonTypeENUM.STEEL]: null,
-    [PokemonTypeENUM.DRAGON]: null,
-    [PokemonTypeENUM.NORMAL]: null
-  });
-
   useEffect(() => {
-    const checkDeck = async () => {
-      if (deck_id !== undefined) {
-        const selected = state.settingsState.decks.find(deck => deck.id === Number(deck_id));
-        if (selected) {
-          const deck = selected.cards.map(card => state.cardState.cards.find(c => c.id === card) || null);
-          setDeck(deck);
-          setDeckName(selected.name);
-          setValid(selected.valid);
-          Object.keys(element).forEach((key: any) => {
-            if (selected.energies?.includes(key)) {
-              (element as any)[key] = true;
-            }
-          })
-        }
-      }
-    };
+    const sub = DataRxjs.getData<StorageDeck[]>('decks')
+      .subscribe(res => {
+        if (deck_id !== undefined) {
+          const selected = res.find(deck => deck.id === Number(deck_id));
 
-    checkDeck();
+          if (selected) {
+            setData({
+              background: data.background,
+              quality: data.quality,
+              name: selected.name,
+              duplicated: data.duplicated,
+              horizontal: data.horizontal,
+              profile: data.profile,
+              valid: selected.valid,
+              deck: selected.cards.map(card => state.cardState.cards.find(c => c.id === card) || null) as Card[]
+            })
+  
+            Object.keys(element).forEach((key: any) => {
+              if (selected.energies?.includes(key)) {
+                (element as any)[key] = true;
+              }
+            });
+          }
+        }
+    });
+
+    return () => sub.unsubscribe();
   }, [state.cardState.cards]);
 
   useEffect(() => {
     const getProfile = async () => {
       const profile: UserProfile = await Storage.getProfile();
-      setProfile(profile);
+      setData(prev => ({...prev, profile}));
     };
 
     getProfile();
   }, []);
 
-  const handleShare = () => {
+  const handleShare = useCallback(() => {
     SoundService.play('POP_PICK');
     setLoading(true);
+  
     const length = getFilteredLength();
-    shareService.makeScreenShot(ref, deckName, quality, length, 'deck').then(_ => setLoading(false));
-  }
+  
+    const payload: ShareContentProps = {
+      ref, 
+      name: data.name, 
+      quality: data.quality, 
+      length, 
+      type: 'deck', 
+      horizontal: data.horizontal
+    };
+  
+    shareService.makeScreenShot(payload).then(() => setLoading(false));
+  }, [ref, data]);
 
   function getFilteredLength(): number {
-    const {items} = filterUniqueItems(deck);
-    return duplicated ? deck.length : items.length;
+    const {items} = filterUniqueItems(data.deck as Card[]);
+    return data.duplicated ? data.deck.length : items.length;
   }
 
   function onClose(value: AvatarIcon): void {
-    setBackground(value);
+    setData(prev => ({...prev, background: value}));
     setIsBackgroundVisible(false);
   }
 
@@ -138,13 +162,8 @@ export default function ShareDeckScreen() {
               CardGridStyles.image, 
               {width: Platform.OS === 'web' ? 29.1 : 49.4, height: 46, borderRadius: 4}
             ]} 
-            source={getImageLanguage69x96(lang, item?.id)}/>
-            { state.settingsState.favorites?.includes(item.id) && 
-              <ThemedView style={[CardGridStyles.triangle, {
-                borderRightWidth: 8,
-                borderBottomWidth: 8
-              }]}></ThemedView>
-            }
+            source={{uri: getImageLanguage69x96(lang, item?.id)}}
+            placeholder={BACKWARD_CARD}/>
           </ThemedView> : <MaterialIcons name="add" 
                                          style={{fontSize: 16, color: Colors.light.icon}}/>
           }
@@ -171,43 +190,45 @@ export default function ShareDeckScreen() {
   function handleQualityChange(ev: number[]): void {
     SoundService.play('SCALE');
     const value = ev[0] / 10;
-    setQuality(value);
+    setData(prev => ({...prev, quality: value}));
   }
 
-  function handleDuplicatedChange(value: boolean): void {
+  function handleChange(key: string, value: boolean): void {
     SoundService.play('CHANGE_VIEW');
-    setDuplicated(value);
+    setData(prev => ({...prev, [key]: value}));
   }
 
   return (
-    <Provider>
+    <>
       { loading && <LoadingOverlay/> }
-      <SharedScreen title={'share_deck'} styles={{marginTop: 0, alignItems: 'inherit', paddingInline: 14}}>
+      <SharedScreen title={'share_deck'} styles={{marginTop: 0, alignItems: 'inherit', paddingInline: 0}}>
         <ThemedView style={{position: 'absolute', left: -9999}}  >
           {
             Platform.OS === 'web' ?
             <View ref={ref} style={{width: 'auto'}}>
-              <DeckCollage deck={deck} 
+              <DeckCollage deck={data.deck as Card[]} 
                            element={element} 
-                           name={deckName}
-                           profile={profile}
-                           background={background}
-                           duplicated={duplicated}/>
+                           name={data.name}
+                           profile={data.profile}
+                           background={data.background as AvatarIcon}
+                           duplicated={data.duplicated}
+                           horizontal={data.horizontal}/>
             </View> :
             <ViewShot ref={ref} style={{width: 'auto'}}>
-              <DeckCollage deck={deck} 
+              <DeckCollage deck={data.deck as Card[]} 
                            element={element} 
-                           name={deckName}
-                           profile={profile}
-                           background={background}
-                           duplicated={duplicated}/>
+                           name={data.name}
+                           profile={data.profile}
+                           background={data.background as AvatarIcon}
+                           duplicated={data.duplicated}
+                           horizontal={data.horizontal}/>
             </ViewShot>
           }
         </ThemedView>
-        <ScrollView showsVerticalScrollIndicator={false} style={{paddingHorizontal: 14}}>
-          <ThemedView style={{width: '100%', marginBottom: 8}}>
+        <ThemedView style={{paddingHorizontal: 14}}>
+          <ThemedView style={{width: '100%', marginBottom: 8, paddingInline: 14}}>
             <ThemedView style={[CreateScreenStyles.deckName, {justifyContent: 'space-between', width: '100%'}]}>
-              <ThemedText style={{fontSize: 15}}>{deckName}</ThemedText>
+              <ThemedText style={{color: 'black'}}>{data.name}</ThemedText>
                 <ThemedView style={[CreateScreenStyles.energies, {backgroundColor: 'white'}]}>
                   {
                     Object.keys(element).map((key, i) => {
@@ -229,7 +250,7 @@ export default function ShareDeckScreen() {
                 </ThemedView>
             </ThemedView>
             <ThemedView style={{marginBlock: 20, left: -1}}>
-              <FlatList data={deck}
+              <FlatList data={data.deck as Card[]}
                         numColumns={10}
                         contentContainerStyle={{width: '100%'}}
                         renderItem={renderPreviewItem}
@@ -239,8 +260,9 @@ export default function ShareDeckScreen() {
             </ThemedView>
           </ThemedView>
 
+          <ScrollView style={{width: '100%', paddingInline: 14}}>
           <ThemedView style={styles.options}>
-            <ThemedText style={filterStyles.header}>{i18n.t('export')}</ThemedText>
+            <ThemedText style={[filterStyles.header, {marginBottom: 16}]}>{i18n.t('export')}</ThemedText>
 
             <ThemedView style={settingsStyles.container}>
               <ThemedView style={settingsStyles.row}>
@@ -248,9 +270,22 @@ export default function ShareDeckScreen() {
                 <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
                   <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
                                       color={'white'}
-                                      onValueChange={handleDuplicatedChange}
+                                      onValueChange={(value) => handleChange('duplicated', value)}
                                       style={CardGridStyles.switch}
-                                      value={duplicated}/>
+                                      value={data.duplicated}/>
+                </ThemedView>
+              </ThemedView>
+            </ThemedView>
+
+            <ThemedView style={settingsStyles.container}>
+              <ThemedView style={settingsStyles.row}>
+                <ThemedText>{i18n.t('horizontal')}</ThemedText>
+                <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
+                  <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
+                                      color={'white'}
+                                      onValueChange={(value) => handleChange('horizontal', value)}
+                                      style={CardGridStyles.switch}
+                                      value={data.horizontal}/>
                 </ThemedView>
               </ThemedView>
             </ThemedView>
@@ -260,8 +295,8 @@ export default function ShareDeckScreen() {
                 <ThemedView style={settingsStyles.row}>
                   <ThemedText>{i18n.t('background_image')}</ThemedText>
                   {
-                    Boolean(background) && 
-                      <Image source={background?.icon} style={styles.coin}/>
+                    Boolean(data.background) && 
+                      <Image source={data.background?.icon} style={shareTradeStyles.coin}/>
                   }
                   <ThemedView style={[settingsStyles.rightContainer, {width: 38}]}>
                     <MaterialIcons name={'chevron-right'} 
@@ -295,33 +330,35 @@ export default function ShareDeckScreen() {
                       thumbStyle={settingsStyles.thumb}
                       trackStyle={settingsStyles.track}
                       trackClickable={true}
-                      value={quality * 10}
+                      value={data.quality * 10}
                       onSlidingComplete={handleQualityChange}
                       trackMarks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
                       renderTrackMarkComponent={(index) => <TrackItem index={index}></TrackItem>}/>
             </ThemedView>
 
             <ThemedView style={{width: '100%'}}>
-              <TouchableOpacity style={[homeScreenStyles.ctaButton, {marginBlock: 45, marginBottom: 80}]} 
+              <TouchableOpacity style={[homeScreenStyles.ctaButton, {marginTop: 16}]} 
                                 onPress={handleShare}
-                                disabled={!valid}>
+                                disabled={!data.valid}>
                 <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>
                   {i18n.t('download')}
                 </ThemedText>
               </TouchableOpacity>
               {
-                !valid && 
+                !data.valid && 
                   <ThemedText style={{color: 'crimson', fontSize: 12, paddingLeft: 4, top: -36}}>
                     {i18n.t('invalid_cant_share')}
                   </ThemedText>
               }
             </ThemedView>
           </ThemedView>
-        </ScrollView>
+          </ScrollView>
+
+        </ThemedView>
 
       </SharedScreen>
       <Portal>{isBackgroundVisible && memoizedPickBackground}</Portal>
-    </Provider>
+    </>
   )
 }
 
@@ -329,14 +366,5 @@ const styles = StyleSheet.create({
   options: {
     width: '100%',
     gap: 8
-  },
-  coin: {
-    width: 34, 
-    height: 34, 
-    zIndex: 4, 
-    backgroundColor: 'mediumaquamarine', 
-    borderRadius: 10,
-    position: 'absolute',
-    right: 41
   },
 });

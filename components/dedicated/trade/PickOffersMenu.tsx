@@ -1,60 +1,66 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import React from "react";
 import { Image } from "expo-image";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { TabOffersMenu } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, CardGridStyles, filterStyles, LayoutStyles, ModalStyles, offersStyles, sortStyles } from "@/shared/styles/component.styles";
-import { CLOSE_SENTENCE, NO_CONTEXT, SEARCH_LABEL } from "@/shared/definitions/sentences/global.sentences";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { IconSymbol } from "@/components/ui/IconSymbol";
 import { useI18n } from "@/core/providers/LanguageProvider";
 import SoundService from "@/core/services/sounds.service";
-import { AppContext } from "@/app/_layout";
+
+import { 
+  ButtonStyles, 
+  CardGridStyles, 
+  filterStyles, 
+  gridHeightMap, 
+  LayoutStyles, 
+  ModalStyles, 
+  offersStyles, 
+  sortStyles
+} from "@/shared/styles/component.styles";
+
+import { createDeckStyles } from "@/app/screens/create_deck";
+import { collectionStyles } from "@/app/screens/collection";
+import { TabOffersMenu } from "@/shared/definitions/interfaces/layout.interfaces";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { Colors } from "@/shared/definitions/utils/colors";
 import { getFilterSearch, ICON_WIDTH, RARITY_CAN_TRADE, RARITY_MAP } from "@/shared/definitions/utils/constants";
-import SkeletonCardGrid from "@/components/skeletons/SkeletonCardGrid";
-import StateButton from "@/components/ui/StateButton";
-import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { filterCards, getImageLanguage116x162, getImageLanguage69x96 } from "@/shared/definitions/utils/functions";
-import { createDeckStyles } from "@/app/screens/create_deck";
 import { CardExpansionTypeENUM, CardRarityENUM } from "@/shared/definitions/enums/card.enums";
-import { LanguageType } from "@/shared/definitions/types/global.types";
+import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
+import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { IconSymbol } from "@/components/ui/IconSymbol";
+import StateButton from "@/components/ui/StateButton";
+
+const numColumns = 6;
 
 export default function PickOffersMenu({
   isVisible,
   onClose,
   animatedStyle,
   desired,
-  offers
+  offers,
+  language,
+  cardsState
 }: TabOffersMenu) {
   const {i18n} = useI18n();
   const styles = ModalStyles;
   if (!isVisible) return null;
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
   const [cards, setCards] = useState<Card[]>([]);
   const [filtered, setFiltered] = useState<Card[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const filterObj = useRef<FilterSearch>(getFilterSearch());
   const [current, setCurrent] = useState<(number | null)[]>(offers);
-  const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
-
-  useEffect(() => {
-    setLang(state.settingsState.language);
-  }, [state.settingsState.language]);
 
   const handleSearch = useCallback((text: string) => {
     setSearchQuery(text);
     setFiltered(cards.filter(card =>
-      card.name[lang].toLowerCase()?.includes(text.toLowerCase())
-  ))}, [cards, lang]);
+      card.name[language].toLowerCase()?.includes(text.toLowerCase())
+  ))}, [cards, language]);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE');
@@ -62,20 +68,8 @@ export default function PickOffersMenu({
 
   async function closeMenu(sound = true): Promise<void> {
     if (sound) { await playSound(); }
-    onClose(current);
+    onClose?.(current);
   }
-
-  const renderEmpty = () => {
-    const renderCardState = useCallback(() => {
-      return state.cardState.loaded ? (
-        <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
-      ) : (
-        <SkeletonCardGrid columns={5} />
-      );
-    }, [state.cardState.loaded]);
-  
-    return renderCardState();
-  };
 
   const handleClick = useCallback((value: number, type: 'add' | 'remove') => {
     if (type === 'add' && current.filter(Boolean).length === 5 && !current.includes(value)) { return; }
@@ -97,25 +91,25 @@ export default function PickOffersMenu({
   }, [current])
 
   useEffect(() => {
-    const desiredCard = state.cardState.cards.find(card => desired.includes(card.id));
+    const desiredCard = cardsState.cards.find(card => desired.includes(card.id));
 
     if (desiredCard) {
-      const filter = state.cardState.cards
+      const filter = cardsState.cards
                       .filter(card => card?.rarity === desiredCard.rarity && 
-                                      card.series !== CardExpansionTypeENUM.A2A &&
+                                      card.series !== CardExpansionTypeENUM.A2B &&
                                       !desired.includes(card.id));
       setCards(filter);
       setFiltered(filter);
 
       setCurrent(prev => 
-        prev.map(p => (state.cardState.cards
+        prev.map(p => (cardsState.cards
             .find(card => card.id === p)?.rarity === desiredCard.rarity) ? p : null
         )
       );
 
       (filterObj.current.rarity as any)[desiredCard.rarity] = true;
     }
-  }, [state.cardState.cards, desired]);
+  }, [cardsState.cards, desired]);
 
   const renderCard = useCallback(({item, index}: {item: Card, index: number}) => (
     <View style={{margin: 1, backgroundColor: Colors.light.skeleton, borderRadius: 8}}>
@@ -123,15 +117,33 @@ export default function PickOffersMenu({
             onPress={() => handleClick(item.id, 'add')}
             style={[{justifyContent: 'center', alignItems: 'center', flex: 1}]}>
         <View>
-          { current.includes(item.id) && 
-             <ThemedView style={[
-              CardGridStyles.image, 
-              offersStyles.included,
-            ]}>
-             </ThemedView>
+          { current.includes(item.id) &&
+            <>
+              <ThemedView style={[
+                  CardGridStyles.image, 
+                  offersStyles.included,
+                ]}>
+              </ThemedView>
+              <ThemedView style={[collectionStyles.remove, {width: 18, height: 18}]}>
+                <ThemedText style={[
+                                 {color: 'crimson', fontSize: 31, top: -4}, 
+                                 Platform.OS !== 'web' && {fontSize: 24, top: -13, transform: [{scaleX: 1.5}, {scaleY: 1.5}]}]}>-</ThemedText>
+              </ThemedView>
+              <ThemedView style={collectionStyles.amount}>
+                <ThemedText style={collectionStyles.amountText}>{'1/1'}</ThemedText>
+              </ThemedView>
+            </>
           }
-          <Image accessibilityLabel={item.name[lang]}
-                  source={getImageLanguage69x96(lang, item.id)}
+          <Image source={BACKWARD_CARD}
+                  style={[
+                  CardGridStyles.image, 
+                  {width: Platform.OS === 'web' ? 57.6 : 58},
+                  {position: 'absolute', zIndex: 10, opacity: 0},
+                  ((current.filter(Boolean).length === 5) && !current.includes(item.id)) && {opacity: 1}
+                ]}/>
+          <Image accessibilityLabel={item.name[language]}
+                  source={{uri: getImageLanguage69x96(language, item.id)}}
+                  placeholder={BACKWARD_CARD}
                   style={[
                   CardGridStyles.image, 
                   {width: Platform.OS === 'web' ? 57.6 : 58}
@@ -153,12 +165,18 @@ export default function PickOffersMenu({
           <View>
             { current[index] ? 
             <>
+              <ThemedView style={[collectionStyles.remove, {width: 18, height: 18}]}>
+                <ThemedText style={[
+                  {color: 'crimson', fontSize: 31, top: -4}, 
+                  Platform.OS !== 'web' && {fontSize: 24, top: -10, transform: [{scaleX: 1.5}, {scaleY: 1.2}]}]}>-</ThemedText>
+              </ThemedView>
               <Image accessibilityLabel={item?.name} 
                      style={[
                   CardGridStyles.image, 
                   {width: 67.5}
                 ]} 
-              source={getImageLanguage116x162(lang, current[index])}/>
+              source={{uri: getImageLanguage116x162(language, current[index])}}
+              placeholder={BACKWARD_CARD}/>
             </> : <MaterialIcons name="add" style={createDeckStyles.addIcon}></MaterialIcons>
             }
           </View>
@@ -179,6 +197,12 @@ export default function PickOffersMenu({
     Object.values(filterObj.current.rarity).some(Boolean) && 
     !(filterObj.current.rarity as any)[key]
   );
+
+  const getItemLayout = useCallback((_: any, index: number) => ({
+    length: gridHeightMap[numColumns],
+    offset: gridHeightMap[numColumns] * index,
+    index, 
+  }), []);
 
   const renderRarityGrid = useCallback(() => {
     return (
@@ -241,9 +265,10 @@ export default function PickOffersMenu({
                       renderItem={renderCard}
                       numColumns={6}
                       showsVerticalScrollIndicator={false}
-                      maxToRenderPerBatch={24}
-                      initialNumToRender={6}
-                      windowSize={12}
+                      maxToRenderPerBatch={20}
+                      initialNumToRender={20}
+                      windowSize={9}
+                      getItemLayout={getItemLayout}
                       contentContainerStyle={{padding: 16, paddingTop: 0, paddingBottom: 54}}
                       keyExtractor={(item, index) => index + ''}
                       ListHeaderComponent={
@@ -259,8 +284,8 @@ export default function PickOffersMenu({
                                       value={searchQuery}
                                       onChangeText={handleSearch}
                                       placeholderTextColor={Colors.light.text}
-                                      accessibilityLabel={SEARCH_LABEL}
-                                      editable={state.cardState.loaded}
+                                      accessibilityLabel={'SEARCH_LABEL'}
+                                      editable={cardsState.loaded}
                                       inputMode='text'
                                       style={[CardGridStyles.searchInput, {width: '100%'}]}
                                     />
@@ -273,13 +298,14 @@ export default function PickOffersMenu({
                                             contentContainerStyle={{width: '100%', marginTop: 12}}
                                             style={{width: '100%', borderRadius: 8}}
                                             showsVerticalScrollIndicator={false}
-                                            keyExtractor={(item, index) => index + ''}/>
+                                            keyExtractor={(item, index) => index + ''}
+                                            keyboardDismissMode={'on-drag'}/>
                         </ThemedView>
                         
                       }
                       stickyHeaderIndices={[0]}
-                      ListFooterComponent={<ThemedView style={{height: 12}}/>}
-                      ListEmptyComponent={renderEmpty}
+                      ListFooterComponent={<ThemedView style={{height: 22}}/>}
+                      ListEmptyComponent={<ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>}
                     />
           </ThemedView>
         </ThemedView>
@@ -294,7 +320,7 @@ export default function PickOffersMenu({
                   }]}>
           <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

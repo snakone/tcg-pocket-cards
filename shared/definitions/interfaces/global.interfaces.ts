@@ -1,9 +1,15 @@
 import { StyleProp, TextStyle, ImageStyle } from "react-native";
+
 import { PokemonTypeENUM } from "../enums/pokemon.enums";
 import { Card } from "./card.interfaces";
 import { LanguageType } from "../types/global.types";
+import { CardLanguageENUM, CardRarityENUM } from "../enums/card.enums";
+import { EXPANSION } from "../enums/packs.enums";
+import { SortItem } from "./layout.interfaces";
+import { MutableRefObject } from "react";
+import { FilterSearch } from "../classes/filter.class";
 
-interface ServerResponse {
+export interface ServerResponse {
   ok: boolean;
   message: string;
   err: string;
@@ -17,6 +23,10 @@ export interface PocketNewsResponse extends ServerResponse {
   news: PocketNews[];
 }
 
+export interface MemoryCardResponse extends ServerResponse {
+  ranking: MemoryUserRanking[];
+}
+
 export interface StorageDeck {
   id: number;
   name: string;
@@ -25,6 +35,13 @@ export interface StorageDeck {
   energies: PokemonTypeENUM[];
   popular: number[];
   created: number;
+}
+
+export interface UserData {
+  favorites: number[],
+  decks: StorageDeck[],
+  trades: TradeItem[],
+  collection: UserCollectionItem[]
 }
 
 export interface UserProfile {
@@ -37,6 +54,12 @@ export interface UserProfile {
 export interface AvatarIcon {
   label: string;
   value: string;
+  icon: any;
+}
+
+export interface ExpansionEmblem {
+  label: string;
+  value: EXPANSION | number;
   icon: any;
 }
 
@@ -61,6 +84,75 @@ export interface TradeItem {
   discord: string;
   desired: (number | null)[];
   offers: (number | null)[];
-  created: number;
+  created?: number | null;
   valid: boolean;
+  rarity?: CardRarityENUM | null;
+}
+
+export interface UserCollectionItem {
+  id: number;
+  amount: Record<CardLanguageENUM, number>
+}
+
+export interface CollectionStat {
+  name: any;
+  label: string;
+  owned: number;
+  missing?: number;
+  perct_owned: string;
+  perct_missing?: string;
+  length: number;
+  emblem: any;
+  crown: number,
+  art: number
+}
+
+export interface CollectionElementStat {
+  owned: number;
+  length: number;
+  icon: any;
+}
+
+export interface CollectionRarityStat {
+  owned: number;
+  length: number;
+  icon: any;
+  amount: number;
+  value: CardRarityENUM
+}
+
+export interface ShareContentProps {
+  ref: React.MutableRefObject<any>, 
+  name: string, 
+  quality: number,
+  length: number,
+  type: 'deck' | 'trade',
+  horizontal?: boolean
+}
+
+export interface SortData {
+  sort: SortItem, 
+  iconStyle: any, 
+  orderIcon: any,
+  filterIcon: any
+}
+
+export interface MemoryGameMenuData {
+  mode: 4 | 6 | 8,
+  filter: MutableRefObject<FilterSearch>
+}
+
+export interface MemoryUserRanking {
+  name: string,
+  mode: 4 | 6 | 8,
+  time: string,
+  avatar: string,
+  moves: number;
+}
+
+export interface CreateDeckData {
+  active: Card[] | null[],
+  name: string,
+  energy: boolean;
+  decks: StorageDeck[] 
 }

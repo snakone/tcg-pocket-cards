@@ -1,122 +1,103 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
-import { TouchableOpacity, StyleSheet, StyleProp, TextStyle } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { useEffect, useState } from 'react';
 import React from 'react';
+import { filter } from 'rxjs';
+import { Portal } from 'react-native-paper';
 
-import { AppContext } from '../_layout';
-import ImageGridWithSearch from '@/components/ui/CardGrid';
-import { NO_CONTEXT } from '@/shared/definitions/sentences/global.sentences';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
-import { Colors } from '@/shared/definitions/utils/colors';
 import SoundService from '@/core/services/sounds.service';
-import { CardsScreenModal } from '@/components/modals/CardsScreenModal';
+import { FilterRxjs } from '@/core/rxjs/FilterRxjs';
+import { SortRxjs } from '@/core/rxjs/SortRxjs';
+
+import { getFilterIcon, getSortIconStyle, getSortOrderIcon } from '@/shared/definitions/utils/functions';
+import { SortData } from '@/shared/definitions/interfaces/global.interfaces';
+import { FilterSearch } from '@/shared/definitions/classes/filter.class';
+import { ModalType } from '@/shared/definitions/types/global.types';
+import { cardStyles } from '@/shared/styles/component.styles';
+
+import ImageGridWithSearch from '@/components/ui/CardGrid';
+import { CardsScreenModal } from '@/components/modals';
+import { SortAndFilterButtons } from '@/components/ui/FilterSortButtons';
+import FilterCardMenu from '@/components/shared/cards/FilterCardMenu';
+import SortCardMenu from '@/components/shared/cards/SortCardMenu';
+
 
 export default function CardsScreen() {
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
-  const [sort, setSort] = useState<SortItem>();
+  console.log('Cards Screen')
+  const [sortData, setSortData] = useState<SortData>();
 
-  async function handleActionMenu(action: string): Promise<void> {
-    await playSound();
-    dispatch({type: action, value: true});
+  const [modalVisibility, setModalVisivility] = useState<Partial<Record<ModalType, boolean>>>({
+    cards: false,
+    cardsSort: false,
+  });
+
+  function handleModalVisibility(key: ModalType, value: boolean): void {
+    setModalVisivility(prev => ({...prev, [key]: value}));
+    value ? SoundService.play('AUDIO_MENU_OPEN') :
+      SoundService.play('AUDIO_MENU_CLOSE');
+  }
+
+  function handleClose(key: ModalType): void {
+    handleModalVisibility(key, false);
   }
 
   useEffect(() => {
-    if (state.filterState.sort.length > 0) {
-      const active = state.filterState.sort.find(s => s.active);
-      setSort(active);
-    }
-  }, [state.filterState.sort]);
+    const sub = FilterRxjs.getFilter<FilterSearch>('cards')
+      .subscribe(res => setSortData((prev: any) => {
+        return {
+          ...prev,
+          filterIcon: getFilterIcon(res)
+        }
+      }));
 
-  const playSound = useCallback(async () => {
-    await SoundService.play('AUDIO_MENU_OPEN');
+    return () => sub.unsubscribe();
   }, []);
 
-  const fixFilterIcon = useCallback(() => {
-    return [
-      { fontSize: 32, position: 'relative' }, 
-      sort?.label === 'order_by_hp' || sort?.label === 'order_by_rarity' ? {top: 1} : null,
-      sort?.label === 'order_by_retreat' ? {top: -2} : null
-    ]
-  }, [sort]);
+  useEffect(() => {
+    const sub = SortRxjs.getSortActive('cards')
+     .pipe(filter(Boolean)).subscribe(res => 
+      (
+        setSortData(_ => {
+          return {
+            sort: res,
+            iconStyle: getSortIconStyle(res),
+            orderIcon: getSortOrderIcon(res),
+            filterIcon: _?.filterIcon
+          }
+        })
+      ));
 
-  const getOrderIcon = useCallback(() => {
-    return !sort?.order ? 'arrow-upward' : 
-            sort.order === 'asc' ? 'arrow-upward' : 'arrow-downward'
-  }, [sort]);
-
-  const getFilterOrderIcon = useCallback(() => {
-    return state.filterState.filter.areAllPropertiesNull() ? 'cancel' : 'check-circle';
-  }, [state.filterState.filter]);
+    return () => sub.unsubscribe();
+  }, []);
 
   return (
     <>
-      <ImageGridWithSearch state={state} 
-                           modal={CardsScreenModal()}
+      <ImageGridWithSearch modal={<CardsScreenModal></CardsScreenModal>}
                            modalTitle='cards'
                            title='card_collection'/>
-      { state.cardState.cards?.length > 0 ? (
-        <>
-          <TouchableOpacity onPress={() => handleActionMenu('OPEN_SORT')} style={cardStyles.container}>
-            <ThemedView>
-              <MaterialIcons name={(sort?.icon as any) || 'content-paste-search'} 
-                             color={'skyblue'} 
-                             style={fixFilterIcon() as StyleProp<TextStyle>}> 
-              </MaterialIcons>
-              <MaterialIcons name={getOrderIcon()} style={cardStyles.sortIcon}></MaterialIcons>
-            </ThemedView>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => (handleActionMenu('OPEN_FILTER'))} 
-                            style={[cardStyles.container, {bottom: 88}]}>
-            <ThemedView>
-              <IconSymbol name="cat.circle" 
-                          color={'mediumaquamarine'} 
-                          style={{fontSize: 32}}>
-              </IconSymbol>
-              <MaterialIcons name={getFilterOrderIcon()} style={cardStyles.sortIcon}></MaterialIcons>
-            </ThemedView>
-          </TouchableOpacity>       
-        </>
-      ) : null}
+
+      <SortAndFilterButtons sort={sortData?.sort}
+                            filterIcon={sortData?.filterIcon}
+                            filterPress={() => handleModalVisibility('cards', true)}
+                            sortPress={() => handleModalVisibility('cardsSort', true)}
+                            sortIconStyle={sortData?.iconStyle}
+                            sortOrderIcon={sortData?.orderIcon}
+                            styles={cardStyles}/>
+                          
+      <Portal>
+       {modalVisibility.cards &&
+        <FilterCardMenu animatedStyle={{}} 
+                        filterKey={"cards"}
+                        isVisible={modalVisibility.cards}
+                        onClose={() => handleClose('cards')}/>}
+      </Portal>
+      <Portal>
+        {modalVisibility.cardsSort && 
+          <SortCardMenu animatedStyle={{}} 
+                        filterKey={"cards"}
+                        isVisible={modalVisibility.cardsSort}
+                        onClose={() => handleClose('cardsSort')}/>}
+      </Portal>
     </>
   );
 }
-
-export const cardStyles = StyleSheet.create({
-  container: {
-    position: 'absolute', 
-    right: 24, 
-    bottom: 24,
-    width: 50,
-    height: 50,
-    borderRadius: 48,
-    backgroundColor: 'white',
-    padding: 4,
-    alignItems: 'center',
-    justifyContent: 'center',
-    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)',
-    opacity: 0.8
-  },
-  sortIcon: {
-    position: 'absolute',
-    fontSize: 16,
-    backgroundColor: 'rgba(120, 120, 120, .8)',
-    borderRadius: 20,
-    color: 'white',
-    right: -16,
-    top: 8.5
-  },
-  sortIconList: {
-    position: 'absolute',
-    fontSize: 20,
-    borderRadius: 20,
-    right: -30,
-    top: 9,
-    color: Colors.light.text,
-  }
-});
 
 

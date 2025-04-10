@@ -1,67 +1,70 @@
 import { BlurView } from "expo-blur";
 import { FlatList, Platform, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
 import Animated from 'react-native-reanimated'
-import { useEffect, useCallback, useState, useContext } from "react";
+import { useEffect, useCallback, useState } from "react";
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
+import { firstValueFrom } from "rxjs";
 
-import { SortItem, TabMenu } from "@/shared/definitions/interfaces/layout.interfaces";
-import { ButtonStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
-import { CLOSE_SENTENCE, NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
+import SoundService from "@/core/services/sounds.service";
+import { SortRxjs } from "@/core/rxjs/SortRxjs";
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { useBottomSlideAnimation } from "@/hooks/modalBottomAnimation";
+import { SortItem, TabMenuCards } from "@/shared/definitions/interfaces/layout.interfaces";
+import { ButtonStyles, cardStyles, LayoutStyles, ModalStyles, sortStyles } from "@/shared/styles/component.styles";
+import { INITIAL_ATTACK_SORT_DATA } from "@/shared/definitions/utils/constants";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { useI18n } from "../../../core/providers/LanguageProvider";
-import { AppContext } from "@/app/_layout";
-import { INITIAL_ATTACK_SORT_DATA } from "@/shared/definitions/utils/constants";
-import { cardStyles } from "@/app/(tabs)/cards";
-import SoundService from "@/core/services/sounds.service";
+
+const MODAL_HEIGHT = 446;
 
 export default function SortAttackMenu({
-  isVisible,
+  filterKey,
   onClose,
-  animatedStyle,
-}: TabMenu) {
+  isVisible
+}: TabMenuCards) {
   const [data, setData] = useState(INITIAL_ATTACK_SORT_DATA);
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state, dispatch } = context;
   const {i18n} = useI18n();
   const styles = ModalStyles;
-  if (!isVisible) return null;
+  const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);
 
   const playSound = useCallback(async () => {
     await SoundService.play('AUDIO_MENU_CLOSE')
   }, []);
 
-  async function closeMenu(): Promise<void> {
+  async function closeMenu(value?: SortItem[]): Promise<void> {
     await playSound();
-    onClose();
+    
+    if (value) { SortRxjs.setSort({key: filterKey, value}); }
+    onClose?.();
   }
 
   const toggleActive = async (id: number) => {
-    await closeMenu();
     const updated: SortItem[] = data.map((item) =>
       item.id === id
-        ? { ...item, active: true, order: item.order === 'asc' ? 'desc' : 'asc' }
-        : { ...item, active: false }
-    );
+    ? { ...item, active: true, order: item.order === 'asc' ? 'desc' : 'asc' }
+    : { ...item, active: false }
+  );
   
-    setData(updated);
-    dispatch({ type: 'SET_ATTACK_SORT', value: updated });
+    await closeMenu(updated);
   };
 
   useEffect(() => {
-    if (state.filterState.attack_sort.length > 0) {
-      const active = [...state.filterState.attack_sort];
-      setData(active);
-    }
-  }, [state.filterState.attack_sort])
+    const getSort = async () => {
+      const sort = await firstValueFrom(SortRxjs.getSort('attacks'));
+      setData(sort);
+    };
+
+    getSort();
+  }, [])
 
   const getOrderIcon = useCallback((item: SortItem) => {
     return !item?.order ? 'arrow-upward' : 
               item.order === 'asc' ? 'arrow-upward' : 'arrow-downward';
-  }, [state.filterState.attack_sort]);
+  }, []);
 
   const renderItem = ({ item } : {item: SortItem}) => (
     <TouchableOpacity onPress={() => toggleActive(item.id)} style={sortStyles.itemContainer}>
@@ -81,9 +84,9 @@ export default function SortAttackMenu({
                         fontWeight: 'normal'
                       }, item.id === 2 && {top: -2}]}/>
         {
-          item.active && <MaterialIcons name={getOrderIcon(item)} style={cardStyles.sortIconList}></MaterialIcons>
+          item.active && <MaterialIcons name={getOrderIcon(item)} 
+                                        style={cardStyles.sortIconList}/>
         }
-        
       </ThemedView>
     </TouchableOpacity>
   );
@@ -97,7 +100,12 @@ export default function SortAttackMenu({
       <Pressable style={LayoutStyles.overlay} 
                  onPress={() => closeMenu()}>
       </Pressable>
-      <Animated.View style={[animatedStyle, sortStyles.container,{height: 434}]}>
+      <Animated.View style={[
+        animatedStyle, 
+        sortStyles.container, 
+        {height: MODAL_HEIGHT}, 
+        i18n.locale === 'ja' && {height: MODAL_HEIGHT + 4}
+      ]}>
         <View style={[styles.modalHeader, {borderTopLeftRadius: 40, borderTopRightRadius: 40}]}>
           <ThemedText style={ModalStyles.modalHeaderTitle}>{i18n.t('order')}</ThemedText>
         </View>
@@ -114,7 +122,7 @@ export default function SortAttackMenu({
         <View style={styles.modalFooter}>
           <Pressable style={ButtonStyles.button} 
                             onPress={() => closeMenu()} 
-                            accessibilityLabel={CLOSE_SENTENCE}>
+                            accessibilityLabel={'CLOSE_SENTENCE'}>
             <View style={ButtonStyles.insetBorder}>
               <IconSymbol name="clear"></IconSymbol>
             </View>

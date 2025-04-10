@@ -4,20 +4,20 @@ import { FlatList, View } from "react-native";
 import React from "react";
 import { Image, ImageBackground } from 'expo-image';
 import { StyleSheet } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
+import { AppState } from "@/hooks/root.reducer";
+import { Colors } from "@/shared/definitions/utils/colors";
 import { CardGridStyles, TabsMenuStyles } from "@/shared/styles/component.styles";
 import { COIN_MAP, DECK_BACKGROUND_MAP, FRONTEND_URL, TRADE_COST_MAP } from "@/shared/definitions/utils/constants";
 import { AvatarIcon, TradeItem, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
 import { DISCORD_LOGO, SALE_CARD, TRADE_POINTS } from "@/shared/definitions/sentences/path.sentences";
 import { CardRarityENUM } from "@/shared/definitions/enums/card.enums";
-import { MaterialIcons } from "@expo/vector-icons";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { Colors } from "@/shared/definitions/utils/colors";
-import { AppState } from "@/hooks/root.reducer";
 import { LanguageType } from "@/shared/definitions/types/global.types";
-import { getImageLanguage } from "@/shared/definitions/utils/functions";
+import { getImageLanguageForGraphic } from "@/shared/definitions/utils/functions";
+
+import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 
 const COLLAGE_WIDTH = 1920;
 
@@ -38,7 +38,6 @@ export default function TradeCollage({
 }: TradeCollageProps) {
   const [status, requestPermission] = MediaLibrary.usePermissions();
   const [data, setData] = useState<TradeItem | undefined>(trade);
-  const {i18n} = useI18n();
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
 
   useEffect(() => {
@@ -61,9 +60,9 @@ export default function TradeCollage({
           <>
             <Image style={[
                 CardGridStyles.image, 
-                {width: 354}
+                {width: 355}
               ]} 
-            source={getImageLanguage(lang, item)}/>        
+            source={getImageLanguageForGraphic(item)}/>        
           </>
           }
           <ThemedView style={{position: 'absolute', top: -24, right: -24}}>
@@ -83,9 +82,9 @@ export default function TradeCollage({
             <Image accessibilityLabel={'desired'} 
                   style={[
                 CardGridStyles.image, 
-                {width: 354}
+                {width: 355}
               ]} 
-            source={getImageLanguage(lang, item)}/>        
+            source={getImageLanguageForGraphic(item)}/>        
           </>
           }
           <ThemedView style={tradeCollageStyles.like}>
@@ -103,30 +102,33 @@ export default function TradeCollage({
                          contentFit="cover" 
                          style={{padding: 20}}>
           {/* DISCORD */}
-          <ThemedView style={[tradeCollageStyles.footerContent, {position: 'absolute', left: 20, top: 20, height: 50}]}>
-            <Image source={DISCORD_LOGO} style={{width: 50, height: 28, left: -5, top: 1}}/>
-            <ThemedText style={[tradeCollageStyles.text, tradeCollageStyles.discordText]}>{trade?.discord}</ThemedText>
-          </ThemedView>
+          {
+            trade?.discord && 
+            <ThemedView style={[tradeCollageStyles.footerContent, {position: 'absolute', left: 25, top: 20, height: 50}]}>
+              <Image source={DISCORD_LOGO} style={{width: 50, height: 28, left: -5, top: 1}}/>
+              <ThemedText style={[tradeCollageStyles.text, tradeCollageStyles.discordText]}>{trade?.discord}</ThemedText>
+            </ThemedView>
+          }
           {/* FRIEND ID */}
           <ThemedView style={[tradeCollageStyles.container, {marginTop: 0, marginBottom: 40, width: '25%', marginInline: 'auto', height: 50}]}>
             <ThemedText style={[tradeCollageStyles.text, {fontWeight: 'bold', top: -2}]}>{trade?.tcg.join(' - ')}</ThemedText>
           </ThemedView>
           {/* LEYEND */}
           <ThemedView style={[tradeCollageStyles.container, tradeCollageStyles.leyend]}>
-            <ThemedView style={[tradeCollageStyles.like, {position: 'relative', top: 0, left: -4, width: 25, height: 25, marginRight: 6}]}>
-              <MaterialIcons name={"favorite-outline"} style={{color: 'white', fontSize: 19, top: 0}}></MaterialIcons>
+            <ThemedView style={[tradeCollageStyles.like, {position: 'relative', top: 0, left: -4, width: 28, height: 28, marginRight: 6}]}>
+              <MaterialIcons name={"favorite-outline"} style={{color: 'white', fontSize: 22, top: 0,}}></MaterialIcons>
             </ThemedView>
             <ThemedText style={[tradeCollageStyles.text, {marginLeft: 2, top: -3, fontSize: 18, width: 75, textAlign: 'center'}]}>
-              {i18n.t('i_search')}
+              Search
             </ThemedText>
 
             <ThemedView style={tradeCollageStyles.separator}></ThemedView>
 
             <ThemedView style={{position: 'relative', top: 0, right: 0}}>
-              <Image source={SALE_CARD} style={{width: 32, height: 32}}/>
+              <Image source={SALE_CARD} style={{width: 36, height: 36}}/>
             </ThemedView>
             <ThemedText style={[tradeCollageStyles.text, {marginLeft: 6, top: -2, fontSize: 18, width: 106, textAlign: 'center'}]}>
-              {i18n.t('i_offer')}
+              Offer
             </ThemedText>
           </ThemedView>
           {/* TRADE POINTS */}
@@ -230,7 +232,7 @@ export const tradeCollageStyles = StyleSheet.create({
     marginBottom: 20, 
     width: 108, 
     position: 'absolute', 
-    right: 20, 
+    right: 25, 
     height: 50
   },
   leyend: {
@@ -238,7 +240,7 @@ export const tradeCollageStyles = StyleSheet.create({
     marginBottom: 20, 
     width: 240, 
     position: 'absolute', 
-    right: 152, 
+    right: 154, 
     height: 50
   },
   separator: {

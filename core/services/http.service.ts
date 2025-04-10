@@ -18,4 +18,16 @@ export default class HttpService {
       );
   }
 
+  public post<T>(url: string, payload: any, headers?: Headers): Observable<T> {
+    return from(fetch(url, { method: 'POST', headers: {
+      "Content-Type": "application/json",
+    }, body: JSON.stringify(payload) }))
+      .pipe(
+        switchMap((response: Response) => response.json() as Promise<T>),
+        catchError((err: Error) => {
+          return throwError(() => err);
+        })
+      );
+  }
+
 }

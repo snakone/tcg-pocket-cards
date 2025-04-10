@@ -1,7 +1,7 @@
 import { SafeAreaView, View } from 'react-native';
 
-import HeaderWithCustomModal from './shared/HeaderModal';
 import { ThemedView } from './ThemedView';
+import HeaderWithCustomModal from './shared/HeaderModal';
 import { ParallaxProps } from '@/shared/definitions/types/global.types';
 import { ParallaxStyles } from '@/shared/styles/component.styles';
 import { MIN_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
@@ -13,7 +13,8 @@ export default function ParallaxScrollView({
   modalTitle,
   modalHeight = MIN_MODAL_HEIGHT,
   styles = {},
-  showHeader = true
+  showHeader = true,
+  showToggle = true
 }: ParallaxProps) {
  
   return (
@@ -24,7 +25,8 @@ export default function ParallaxScrollView({
             <HeaderWithCustomModal title={title} 
                                    modalContent={modalContent} 
                                    modalTitle={modalTitle}
-                                   modalHeight={modalHeight as number}/>
+                                   modalHeight={modalHeight as number}
+                                   showToggle={showToggle}/>
           </View>
         }
         <ThemedView style={[ParallaxStyles.content, styles]}>{children}</ThemedView>

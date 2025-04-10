@@ -1,14 +1,17 @@
 import { memo, MutableRefObject } from "react";
+import React from "react";
+import { MaterialIcons } from "@expo/vector-icons";
+
+import { useI18n } from "@/core/providers/LanguageProvider";
+
+import { filterStyles } from "@/shared/styles/component.styles";
+import { FilterSearch } from "@/shared/definitions/classes/filter.class";
+import { DAMAGES } from "@/shared/definitions/utils/constants";
 
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import SelectInput from "@/components/ui/SelectInput";
-import { DAMAGES } from "@/shared/definitions/utils/constants";
-import { filterStyles } from "@/shared/styles/component.styles";
-import { MaterialIcons } from "@expo/vector-icons";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { FilterSearch } from "@/shared/definitions/classes/filter.class";
-import React from "react";
+
 
 interface HealthItemProps {
   filterObj: MutableRefObject<FilterSearch>,
@@ -34,7 +37,7 @@ export const HealthItem = memo(({ filterObj, playSound }: HealthItemProps) => {
         {['min', 'max'].map((k, i) => (
           <SelectInput
             key={i}
-            options={DAMAGES}
+            options={['---', ...DAMAGES]}
             label={k}
             filterObj={filterObj}
             propFilter="health"

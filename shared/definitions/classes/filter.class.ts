@@ -12,8 +12,10 @@ export class FilterSearch {
   public stage: { [key in CardStageENUM] : boolean | null}
   public expansion: { [key in EXPANSION]: boolean | null }
   public ex: { is_ex: boolean | null, not_ex: boolean | null }
+  public shiny: { is_shiny: boolean | null, not_shiny: boolean | null }
   public weak: { [key in PokemonTypeENUM]: boolean | null }
   public condition: { [key in CardSpecialConditionENUM]: boolean | null }
+  public collection: { owned: boolean | null, not_owned: boolean | null }
 
   constructor() {
     this.ability = {with_ability: null, without_ability: null};
@@ -41,16 +43,20 @@ export class FilterSearch {
       [EXPANSION.PREMIUM]: null,
       [EXPANSION.WONDER_PICK]: null,
       [EXPANSION.SPECIAL_MISSION]: null,
-      [EXPANSION.MYTHICAL_ISLAND]: null,
+      [EXPANSION.MEW]: null,
       [EXPANSION.PROMO_A3]: null,
       [EXPANSION.DIALGA]: null,
       [EXPANSION.PALKIA]: null,
       [EXPANSION.PROMO_A4]: null,
       [EXPANSION.ARCEUS]: null,
+      [EXPANSION.PROMO_A5]: null,
+      [EXPANSION.SHINY]: null,
+      [EXPANSION.PROMO_A6]: null,
     };
 
     this.favorite = {included: null, not_favorite: null};
     this.health = {min: null, max: null};
+    this.collection = {owned: null, not_owned: null};
 
     this.rarity = {
       [CardRarityENUM.COMMON]: null,
@@ -60,6 +66,8 @@ export class FilterSearch {
       [CardRarityENUM.ART]: null,
       [CardRarityENUM.SUPER]: null,
       [CardRarityENUM.INMERSIVE]: null,
+      [CardRarityENUM.SHINY]: null,
+      [CardRarityENUM.DOUBLE_SHINY]: null,
       [CardRarityENUM.CROWN]: null,
       [CardRarityENUM.PROMO]: null,
     };
@@ -78,6 +86,11 @@ export class FilterSearch {
       is_ex: null,
       not_ex: null
     };
+
+    this.shiny = {
+      is_shiny: null,
+      not_shiny: null
+    }
 
     this.weak = {
       [PokemonTypeENUM.GRASS]: null,
@@ -101,19 +114,23 @@ export class FilterSearch {
       [CardSpecialConditionENUM.SLEEP]: null,
       [CardSpecialConditionENUM.CONFUSION]: null,
       [CardSpecialConditionENUM.BURNED]: null,
-      [CardSpecialConditionENUM.FLIP]: null,
+      [CardSpecialConditionENUM.FLIP_COIN]: null,
       [CardSpecialConditionENUM.NOTHING]: null,
       [CardSpecialConditionENUM.DISCARD]: null,
-      [CardSpecialConditionENUM.ADD]: null,
+      [CardSpecialConditionENUM.ADD_ENERGY]: null,
       [CardSpecialConditionENUM.EXTRA_DAMAGE]: null,
       [CardSpecialConditionENUM.RESIST]: null,
       [CardSpecialConditionENUM.CORNER]: null,
       [CardSpecialConditionENUM.WITHDRAW_CARD]: null,
       [CardSpecialConditionENUM.RETIRE]: null,
-      [CardSpecialConditionENUM.CALL]: null,
+      [CardSpecialConditionENUM.CALL_CARDS]: null,
       [CardSpecialConditionENUM.INACTIVE]: null,
       [CardSpecialConditionENUM.ARCEUS_LINK]: null,
-      [CardSpecialConditionENUM.FORCE_SWITCH]: null
+      [CardSpecialConditionENUM.FORCE_SWITCH]: null,
+      [CardSpecialConditionENUM.PLAY_CARDS]: null,
+      [CardSpecialConditionENUM.END_TURN]: null,
+      [CardSpecialConditionENUM.RANDOM_ATTACK]: null,
+      [CardSpecialConditionENUM.PLUS_EX]: null
     };
   }
 
@@ -127,12 +144,15 @@ export class FilterSearch {
       [EXPANSION.PREMIUM]: null,
       [EXPANSION.WONDER_PICK]: null,
       [EXPANSION.SPECIAL_MISSION]: null,
-      [EXPANSION.MYTHICAL_ISLAND]: null,
+      [EXPANSION.MEW]: null,
       [EXPANSION.PROMO_A3]: null,
       [EXPANSION.DIALGA]: null,
       [EXPANSION.PALKIA]: null,
       [EXPANSION.PROMO_A4]: null,
-      [EXPANSION.ARCEUS]: null
+      [EXPANSION.ARCEUS]: null,
+      [EXPANSION.PROMO_A5]: null,
+      [EXPANSION.SHINY]: null,
+      [EXPANSION.PROMO_A6]: null,
     };
   }
 
@@ -144,7 +164,7 @@ export class FilterSearch {
         }
         return Object.values(obj).every(value => isAllNull(value));
       }
-      return obj === null;
+      return (obj === null || obj === false);
     };
 
     return Object.values(this).every(isAllNull);

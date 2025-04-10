@@ -6,23 +6,17 @@ import { I18n } from 'i18n-js';
 
 import { LanguageType } from '@/shared/definitions/types/global.types';
 import { formatDate } from '@/shared/definitions/utils/functions';
+
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
 
 interface NewsItemProps {
   pocketNew: PocketNews,
   language: LanguageType,
-  i18n: I18n
+  i18n: I18n,
 }
 
-export default function NewsItem(
-  {
-    pocketNew, 
-    language,
-    i18n
-  }: NewsItemProps
-) {
-
+export default function NewsItem({pocketNew, language, i18n}: NewsItemProps) {
   const typeElement = (type: 'pocket' | 'game') => {
     return (
       <ThemedView style={[
@@ -52,7 +46,7 @@ export default function NewsItem(
 
 export const pocketNewsStyles = StyleSheet.create({
   item: {
-    borderRadius: 20,
+    borderRadius: 8,
     boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.4)',
     marginBottom: 20
   },
@@ -66,8 +60,8 @@ export const pocketNewsStyles = StyleSheet.create({
   image: { 
     width: '100%', 
     height: 140,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
     objectFit: 'cover'
   },
   date: {

@@ -8,6 +8,9 @@ export const POP_PICK = require('@/assets/sounds/pop.mp3');
 export const SCALE = require('@/assets/sounds/scale.mp3');
 export const SPLASH_MUSIC = require('@/assets/sounds/splash_music.mp3');
 export const DELETE_SOUND = require('@/assets/sounds/delete_sound.mp3');
+export const FLIP_CARD = require('@/assets/sounds/flipcard.mp3');
+export const FLIP_CARD_REVERSE = require('@/assets/sounds/flipcard_reverse.mp3');
+export const SUCCESS_SOUND = require('@/assets/sounds/success.mp3');
 
 export const FONT_REGULAR = require('@/assets/fonts/SpaceMono-Regular.ttf');
 
@@ -15,6 +18,7 @@ export const FONT_REGULAR = require('@/assets/fonts/SpaceMono-Regular.ttf');
 export const NORMAL_RARITY = require('@/assets/images/rarity/normal_rarity.png');
 export const STAR_RARITY = require('@/assets/images/rarity/stars_rarity.png');
 export const CROWN_RARITY = require('@/assets/images/rarity/crown.png');
+export const RAINBOW_RARITY = require('@/assets/images/rarity/rainbow.png');
 
 export const DARK_ICON = require('@/assets/images/types/dark.png');
 export const DRAGON_ICON = require('@/assets/images/types/dragon.png');
@@ -26,11 +30,6 @@ export const NORMAL_ICON = require('@/assets/images/types/normal.png');
 export const PSYCHIC_ICON = require('@/assets/images/types/psychic.png');
 export const STEEL_ICON = require('@/assets/images/types/steel.png');
 export const WATER_ICON = require('@/assets/images/types/water.png');
-
-export const FAVORITE_HOW_TO = require('@/assets/images/favorites/how_to.png');
-export const FAVORITE_SYMBOL = require('@/assets/images/favorites/symbol.png');
-export const FAVORITE_MEW = require('@/assets/images/favorites/mew_favorite.png');
-export const FAVORITE_FILTER = require('@/assets/images/favorites/filter.png');
 
 export const GRID_SEARCH = require('@/assets/images/grid/search.png');
 export const GRID_FILTER = require('@/assets/images/grid/filter_icon.png');
@@ -70,6 +69,17 @@ export const SHARE_OPTIONS_TRADE = require('@/assets/images/share/export_trade.p
 export const SHARE_CHARIZARD = require('@/assets/images/share/Charizard.jpeg');
 export const SHARE_BLASTOISE = require('@/assets/images/share/Blastoise.jpeg');
 
+export const COLLECTION_SEARCH = require('@/assets/images/collection/search.png');
+export const COLLECTION_PICK = require('@/assets/images/collection/pick_card.png');
+export const COLLECTION_MENU = require('@/assets/images/collection/menu.png');
+export const COLLECTION_MENU_BUTTON = require('@/assets/images/collection/menu_button.png');
+
+export const STATS_ACTION_BAR = require('@/assets/images/stats/action_bar.png');
+export const STATS_EXPANSION_MENU = require('@/assets/images/stats/expansion_menu.png');
+export const STATS_LIST = require('@/assets/images/stats/list.png');
+export const STATS_MAIN = require('@/assets/images/stats/main.png');
+export const STATS_SELECT_EXPANSION = require('@/assets/images/stats/select_expansion.png');
+
 export const TRADE_POINTS = require('@/assets/images/trade_token.png');
 export const SALE_CARD = require('@/assets/images/Discount-512.png');
 export const DISCORD_LOGO = require('@/assets/images/Discord-Nouveau-Logo.png');
@@ -91,8 +101,10 @@ export const PROMO_A2 = require('@/assets/images/packs/promoA2.png');
 export const PROMO_A3 = require('@/assets/images/packs/promoA3.png');
 export const PROMO_A4 = require('@/assets/images/packs/promoA4.png');
 export const PROMO_A5 = require('@/assets/images/packs/promoA5.png');
+export const PROMO_A6 = require('@/assets/images/packs/promoA6.png');
 
 // PACKS
+// GENETIC APEX
 export const GENETIC_APEX = require('@/assets/images/packs/geneticapex.png');
 export const PIKACHU_ICON = require('@/assets/images/packs/pikachu.png');
 export const MEWTWO_ICON = require('@/assets/images/packs/mewtwo.png');
@@ -100,19 +112,28 @@ export const CHARIZARD_ICON = require('@/assets/images/packs/charizard.png');
 export const GENETIC_APEX_PIKACHU_ICON = require('@/assets/images/packs/genetic-apex-pikachu.png');
 export const GENETIC_APEX_MEWTWO_ICON = require('@/assets/images/packs/genetic-apex-mewtwo.png');
 export const GENETIC_APEX_CHARIZARD_ICON = require('@/assets/images/packs/genetic-apex-charizard.png');
-export const PROMO_A_ICON = require('@/assets/images/packs/promo_a.png');
 
+// MYTHICAL ISLAND
 export const MEW_ICON = require('@/assets/images/packs/mew.png');
 export const MYTHICAL_ISLAND_MEW_ICON = require('@/assets/images/packs/mythical-island-mew.png');
 
+// SPACE TIME SMACKDOWN
 export const SMACK_DOWN = require('@/assets/images/packs/smackdown.png');
 export const DIALGA_ICON = require('@/assets/images/packs/dialga.png');
 export const PALKIA_ICON = require('@/assets/images/packs/palkia.png');
 export const SMACK_DOWN_DIALGA_ICON = require('@/assets/images/packs/smackdown-dialga.png');
 export const SMACK_DOWN_PALKIA_ICON = require('@/assets/images/packs/smackdown-palkia.png');
 
+// TRIUMPANT LIGHT
 export const ARCEUS_ICON = require('@/assets/images/packs/arceus.png');
 export const TRIUMPH_LIGHT_ARCEUS_ICON = require('@/assets/images/packs/triumphlight.png');
+
+// SHINING REVELRY
+export const SHINY_ICON = require('@/assets/images/packs/shiny.png');
+export const SHINING_REVELRY_ICON = require('@/assets/images/packs/shining_revelry.png');
+
+// PROMO
+export const PROMO_A_ICON = require('@/assets/images/packs/promo_a.png');
 
 // COINS
 export const EEVEE_COIN = require("@/assets/images/coins/eevee.png");
@@ -126,6 +147,15 @@ export const SPECIAL1_COIN = require("@/assets/images/coins/special1.png");
 export const CHARIZARD_COIN = require("@/assets/images/coins/charizard.png");
 export const CYNTHIA_COIN = require("@/assets/images/coins/cynthia.png");
 export const MEW_COIN = require("@/assets/images/coins/mew.png");
+export const ARCEUS_COIN = require("@/assets/images/coins/arceus.png");
+export const DARKRAI_COIN = require("@/assets/images/coins/darkrai.png");
+export const GLACEON_COIN = require("@/assets/images/coins/glaceon.png");
+export const LEAFEON_COIN = require("@/assets/images/coins/leafeon.png");
+export const MANAPHY_COIN = require("@/assets/images/coins/manaphy.png");
+export const ASH_RAINBOW_COIN = require("@/assets/images/coins/ash_rainbow.png");
+export const LUCARIO_COIN = require("@/assets/images/coins/lucario.png");
+export const MEWTWO_SHINY_COIN = require("@/assets/images/coins/mewtwo_shiny.png");
+export const ASH_RED_COIN = require("@/assets/images/coins/red_red.png");
 
 // AVATARS
 export const EEVEE_AVATAR = require("@/assets/images/avatars/eevee.png");
@@ -145,6 +175,9 @@ export const CHIMCHAR_AVATAR = require("@/assets/images/avatars/chimchar.png");
 export const PIPLUP_AVATAR = require("@/assets/images/avatars/piplup.png");
 export const TURTWIG_AVATAR = require("@/assets/images/avatars/turtwig.png");
 export const BLASTOISE_AVATAR = require("@/assets/images/avatars/blastoise.png");
+export const LEKTRO_AVATAR = require("@/assets/images/avatars/lektro.png");
+export const MARIL_AVATAR = require("@/assets/images/avatars/maril.png");
+export const SPRIGATITO_AVATAR = require("@/assets/images/avatars/sprigatito.png");
 
 // DECK BACKGROUND
 export const DECK_BG_TREES = require("@/assets/images/decks/Ilustración_portada_árbol_del_descanso_TCGP.png");
@@ -169,6 +202,16 @@ export const DECK_BG_SPECIAL_1 = require("@/assets/images/decks/Ilustración_tap
 export const DECK_BG_VENUSAUR = require("@/assets/images/decks/Ilustración_tapete_Venusaur_TCGP.png");
 export const DECK_BG_DIALGA = require("@/assets/images/decks/600px-TCGP_Cover_Space-Time_Smackdown_Dialga.png");
 export const DECK_BG_PALKIA = require("@/assets/images/decks/TCGP_Cover_Space-Time_Smackdown_Palkia.png");
+export const DECK_BG_CYNTHIA = require("@/assets/images/decks/covers-file-100360-shirona-gaburias-cynthia-garchomp.png");
+export const DECK_BG_CHIMCHAR = require("@/assets/images/decks/covers-file-100370-hikozaru-moukazaru-goukazaru-chimchar-monferno-infernape.png");
+export const DECK_BG_DARKRAI = require("@/assets/images/decks/covers-file-100380-darkrai-darkrai.png");
+export const DECK_BG_PIPLUP = require("@/assets/images/decks/covers-file-100410-manaphy-pochama-text-cardname-vmanaphy-text-cardname-vpochama-.png");
+export const DECK_BG_ARCEUS = require("@/assets/images/decks/covers-file-100420-arceus-arceus.png");
+export const DECK_BG_NAKARA = require("@/assets/images/decks/covers-file-100430-seki-kai-leafia-glacia-adaman-irida-leafeon-glaceon.png");
+export const DECK_BG_LUCARIO = require("@/assets/images/decks/covers-file-100450-lucario-riolu-.png");
+export const DECK_BG_CHARIZARD_SHINY = require("@/assets/images/decks/covers-file-100460-shiny-lizardon-.png");
+export const DECK_BG_ASH = require("@/assets/images/decks/covers-file-100470-red-pikachu-.png");
+export const DECK_BG_SKY = require("@/assets/images/decks/covers-file-100480-shiny-glare-.png");
 
 export const DECK_BG_TREES_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_árbol_del_descanso_TCGP.png");
 export const DECK_BG_FOREST_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_bosque_virgen_TCGP.png");
@@ -192,6 +235,16 @@ export const DECK_BG_SPECIAL_1_70x70 = require("@/assets/images/decks/thumbs/70x
 export const DECK_BG_VENUSAUR_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_tapete_Venusaur_TCGP.png");
 export const DECK_BG_DIALGA_70x70 = require("@/assets/images/decks/thumbs/70x70/600px-TCGP_Cover_Space-Time_Smackdown_Dialga.png");
 export const DECK_BG_PALKIA_70x70 = require("@/assets/images/decks/thumbs/70x70/TCGP_Cover_Space-Time_Smackdown_Palkia.png");
+export const DECK_BG_CYNTHIA_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100360-shirona-gaburias-cynthia-garchomp.png");
+export const DECK_BG_CHIMCHAR_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100370-hikozaru-moukazaru-goukazaru-chimchar-monferno-infernape.png");
+export const DECK_BG_DARKRAI_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100380-darkrai-darkrai.png");
+export const DECK_BG_PIPLUP_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100410-manaphy-pochama-text-cardname-vmanaphy-text-cardname-vpochama-.png");
+export const DECK_BG_ARCEUS_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100420-arceus-arceus.png");
+export const DECK_BG_NAKARA_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100430-seki-kai-leafia-glacia-adaman-irida-leafeon-glaceon.png");
+export const DECK_BG_LUCARIO_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100450-lucario-riolu-.png");
+export const DECK_BG_CHARIZARD_SHINY_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100460-shiny-lizardon-.png");
+export const DECK_BG_ASH_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100470-red-pikachu-.png");
+export const DECK_BG_SKY_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100480-shiny-glare-.png");
 
 export const GENETIC_APEX_PACKS = [
   PIKACHU_ICON,
@@ -217,11 +270,9 @@ export const TRIUMPH_LIGHT_PACKS = [
   PROMO_A5
 ];
 
-export const ALL_PACKS = [
-  ...GENETIC_APEX_PACKS,
-  ...MYTHICAL_ISLAND_PACKS,
-  ...SMACK_DOWN_PACKS,
-  ...TRIUMPH_LIGHT_PACKS
+export const SHINING_PACKS = [
+  SHINY_ICON,
+  PROMO_A6
 ];
 
 export const SPLASH = [
@@ -232,8 +283,18 @@ export const SPLASH = [
   FALL_SPLASH,
 ];
 
-// INFOGRAPHICS
+// EMBLEMS
+export const ARCEUS_EMBLEM = require("@/assets/images/emblem/arceus.png");
+export const CHARIZARD_EMBLEM = require("@/assets/images/emblem/charizard.png");
+export const DIALGA_EMBLEM = require("@/assets/images/emblem/dialga.png");
+export const MEW_EMBLEM = require("@/assets/images/emblem/mew.png");
+export const MEWTWO_EMBLEM = require("@/assets/images/emblem/mewtwo.png");
+export const PALKIA_EMBLEM = require("@/assets/images/emblem/palkia.png");
+export const PIKACHU_EMBLEM = require("@/assets/images/emblem/pikachu.png");
+export const GIRATINA_EMBLEM = require("@/assets/images/emblem/giratina.png");
+export const PROMO_A_EMBLEM = require("@/assets/images/emblem/promo_a.png");
+
+export const BACKWARD_CARD = require("@/assets/images/backward.png");
 export const CHAMPION_ICON = require("@/assets/images/infographics/champion.png");
-export const DIAMOND_ICON = require("@/assets/images/infographics/diamond.png");
-export const ELEMENT_ICON = require("@/assets/images/infographics/types.png");
-export const MISCELLANIA_ICON = require("@/assets/images/infographics/miscellania.png");
+export const SEPARATOR = require("@/assets/images/separator.png");
+export const SEPARATOR_RAINBOW = require("@/assets/images/separator_rainbow.png");

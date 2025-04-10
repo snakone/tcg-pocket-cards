@@ -2,10 +2,11 @@ import React, { ReactNode, useEffect, useState } from 'react';
 import { StyleProp, TouchableOpacity, ViewStyle } from 'react-native';
 import { Observable, Subscription } from 'rxjs';
 
-import { ThemedText } from '../ThemedText';
-import { filterStyles } from '@/shared/styles/component.styles';
 import { useI18n } from '@/core/providers/LanguageProvider';
 import SoundService from '@/core/services/sounds.service';
+
+import { ThemedText } from '../ThemedText';
+import { filterStyles } from '@/shared/styles/component.styles';
 import { FilterSearch } from '@/shared/definitions/classes/filter.class';
 import { FilterAttackSearch } from '@/shared/definitions/classes/filter_attack.class';
 
@@ -48,15 +49,21 @@ const StateButton = ({
     if(onClick !== undefined) onClick();
     setPressed((prevPressed) => !prevPressed);
     if(filterObj?.current) {
-      (filterObj.current as any)[propFilter][keyFilter] = !pressed;
+      const value = !pressed || null;
+      (filterObj.current as any)[propFilter][keyFilter] = value;
     }
   };
 
   useEffect(() => {
+    if (filterObj && (filterObj?.current as any)[propFilter][keyFilter] === true) {
+      setPressed(true);
+    }
+
     const sub: Subscription | undefined = onPress?.subscribe(() => {
       setPressed((prevPressed) => {
         if(filterObj?.current) {
-          (filterObj.current as any)[propFilter][keyFilter] = !prevPressed;
+          const value = !prevPressed || null;
+          (filterObj.current as any)[propFilter][keyFilter] = value;
         }
         return !prevPressed
       });
@@ -65,15 +72,15 @@ const StateButton = ({
     return () => {
       sub?.unsubscribe();
     }
-  }, [])
+  }, []);
 
   return (
     <TouchableOpacity
       style={[
         style,
-        (pressed || (filterObj?.current as any)[propFilter][keyFilter]) && { backgroundColor: color },
+        (pressed || filterObj && (filterObj?.current as any)[propFilter][keyFilter]) && { backgroundColor: color },
         isImage && { opacity: 0.5 },
-        (pressed || (filterObj?.current as any)[propFilter][keyFilter]) && isImage && { opacity: 1}
+        (pressed || filterObj && (filterObj?.current as any)[propFilter][keyFilter]) && isImage && { opacity: 1 }
       ]}
       onPress={handlePress}
       disabled={disabled} 
@@ -84,7 +91,7 @@ const StateButton = ({
       <ThemedText style={[
         filterStyles.buttonText, 
         labelMargin && {left: 18}, 
-        (pressed || (filterObj?.current as any)[propFilter][keyFilter]) && {color: 'white'}]}>{i18n.t(label || '')}
+        (pressed || filterObj && (filterObj?.current as any)[propFilter][keyFilter]) && {color: 'white'}]}>{i18n.t(label || '')}
       </ThemedText>}
     </TouchableOpacity>
   );

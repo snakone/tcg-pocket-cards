@@ -58,6 +58,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -118,6 +119,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -183,6 +185,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.HEAL
     ],
@@ -259,6 +262,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.HEAL
     ],
@@ -326,7 +330,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
-    condition: [CardSpecialConditionENUM.CALL],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.CALL_CARDS],
     found: [
       EXPANSION.PIKACHU
     ],
@@ -386,6 +391,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -458,6 +464,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.HEAL
     ],
@@ -520,6 +527,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -580,6 +588,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -640,6 +649,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -700,6 +710,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -760,6 +771,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -825,6 +837,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.SLEEP
     ],
@@ -887,6 +900,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -947,6 +961,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -1007,6 +1022,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -1072,6 +1088,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.POISON
     ],
@@ -1134,6 +1151,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -1194,6 +1212,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -1266,6 +1285,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -1328,6 +1348,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -1393,8 +1414,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -1461,8 +1483,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -1529,6 +1552,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.CHARIZARD
@@ -1589,6 +1613,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -1653,8 +1678,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -1718,6 +1744,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -1780,6 +1807,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -1847,6 +1875,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PIKACHU,
@@ -1914,7 +1943,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.PIKACHU,
       EXPANSION.MEWTWO,
@@ -1981,8 +2011,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.NOTHING
     ],
     found: [
@@ -2044,6 +2075,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -2109,6 +2141,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -2169,6 +2202,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -2234,6 +2268,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -2308,6 +2343,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -2373,8 +2409,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.RESIST
     ],
     found: [
@@ -2441,6 +2478,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -2501,6 +2539,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -2566,6 +2605,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.PIKACHU
@@ -2631,6 +2671,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.PIKACHU
@@ -2691,6 +2732,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -2753,6 +2795,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -2815,6 +2858,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -2880,6 +2924,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -2945,8 +2990,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.NOTHING
     ],
     found: [
@@ -3021,9 +3067,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
-      CardSpecialConditionENUM.ADD
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.ADD_ENERGY
     ],
     found: [
       EXPANSION.CHARIZARD
@@ -3084,6 +3131,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -3145,6 +3193,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -3205,6 +3254,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -3265,6 +3315,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -3332,6 +3383,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PIKACHU,
@@ -3394,6 +3446,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -3454,6 +3507,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -3519,6 +3573,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -3593,6 +3648,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -3658,6 +3714,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -3720,6 +3777,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -3782,6 +3840,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -3842,6 +3901,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -3914,6 +3974,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.CHARIZARD
@@ -3974,6 +4035,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -4039,6 +4101,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.MEWTWO
@@ -4099,6 +4162,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -4159,6 +4223,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -4219,6 +4284,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -4291,6 +4357,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.MEWTWO
@@ -4351,6 +4418,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO
@@ -4416,8 +4484,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -4479,6 +4548,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -4544,6 +4614,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.PIKACHU
@@ -4604,6 +4675,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -4669,8 +4741,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.NOTHING
     ],
     found: [
@@ -4732,6 +4805,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -4792,6 +4866,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -4852,6 +4927,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -4912,6 +4988,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -4977,6 +5054,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PIKACHU
@@ -5042,6 +5120,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU
@@ -5107,6 +5186,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PIKACHU
@@ -5167,6 +5247,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -5232,6 +5313,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.PIKACHU
@@ -5297,8 +5379,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.PARALYZE
     ],
     found: [
@@ -5373,6 +5456,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.MEWTWO
@@ -5433,6 +5517,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -5493,6 +5578,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -5553,6 +5639,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -5613,6 +5700,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -5685,6 +5773,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.CHARIZARD
@@ -5745,6 +5834,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -5809,6 +5899,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -5870,6 +5961,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -5937,6 +6029,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.PIKACHU,
@@ -5999,6 +6092,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -6064,6 +6158,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PIKACHU,
@@ -6129,6 +6224,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -6189,6 +6285,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -6261,7 +6358,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.PIKACHU,
     ],
@@ -6321,6 +6419,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -6381,6 +6480,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -6446,8 +6546,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.RECOIL
     ],
     found: [
@@ -6514,8 +6615,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -6582,6 +6684,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ATTACK_BENCH,
       CardSpecialConditionENUM.RECOIL
@@ -6658,8 +6761,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -6721,6 +6825,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -6788,6 +6893,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.PIKACHU,
@@ -6850,6 +6956,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -6910,6 +7017,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -6975,8 +7083,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.PARALYZE
     ],
     found: [
@@ -7038,6 +7147,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -7105,8 +7215,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -7175,8 +7286,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.PARALYZE
     ],
     found: [
@@ -7239,6 +7351,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -7299,6 +7412,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -7364,6 +7478,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -7424,6 +7539,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -7489,6 +7605,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.CHARIZARD,
@@ -7549,6 +7666,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -7611,6 +7729,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -7673,6 +7792,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -7733,6 +7853,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -7798,6 +7919,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -7870,6 +7992,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -7930,6 +8053,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -8002,8 +8126,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.SLEEP
     ],
     found: [
@@ -8070,10 +8195,12 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: []
   },
   {
     id: 127,
@@ -8134,6 +8261,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEWTWO,
@@ -8198,6 +8326,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.MEWTWO,
@@ -8272,6 +8401,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.MEWTWO,
@@ -8332,6 +8462,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -8392,6 +8523,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -8464,7 +8596,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.MEWTWO,
     ],
@@ -8524,6 +8657,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -8586,6 +8720,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -8648,6 +8783,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -8715,8 +8851,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -8780,6 +8917,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -8842,6 +8980,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -8904,6 +9043,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -8969,6 +9109,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.PIKACHU,
@@ -9029,6 +9170,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -9094,6 +9236,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.CHARIZARD,
@@ -9154,6 +9297,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -9214,6 +9358,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -9274,6 +9419,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -9334,6 +9480,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -9394,6 +9541,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -9454,6 +9602,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -9519,6 +9668,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.PIKACHU,
@@ -9579,6 +9729,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -9644,6 +9795,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.MEWTWO,
@@ -9704,6 +9856,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -9769,8 +9922,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -9837,10 +9991,12 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.MEWTWO,
     ],
+    related: []
   },
   {
     id: 155,
@@ -9896,10 +10052,12 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
     ],
+    related: []
   },
   {
     id: 156,
@@ -9955,6 +10113,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -10015,6 +10174,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -10075,6 +10235,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -10140,6 +10301,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.CHARIZARD,
@@ -10200,6 +10362,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -10260,6 +10423,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -10320,6 +10484,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -10387,6 +10552,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -10451,6 +10617,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -10518,6 +10685,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CORNER],
     found: [
       EXPANSION.PIKACHU,
@@ -10585,7 +10753,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
-    condition: [CardSpecialConditionENUM.CALL],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.CALL_CARDS],
     found: [
       EXPANSION.PIKACHU,
     ],
@@ -10645,6 +10814,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -10710,6 +10880,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -10770,6 +10941,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -10830,6 +11002,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -10895,6 +11068,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.PIKACHU,
@@ -10955,6 +11129,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -11015,6 +11190,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -11080,6 +11256,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.MEWTWO,
@@ -11145,6 +11322,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEWTWO,
@@ -11205,6 +11383,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -11277,6 +11456,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.MEWTWO,
@@ -11342,8 +11522,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.DISCARD
     ],
     found: [
@@ -11405,6 +11586,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -11467,6 +11649,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -11534,7 +11717,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.CHARIZARD,
     ],
@@ -11606,6 +11790,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.CHARIZARD,
@@ -11666,6 +11851,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -11726,6 +11912,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -11791,7 +11978,11 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ATTACK_BENCH],
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH,
+      CardSpecialConditionENUM.RANDOM_ATTACK
+    ],
     found: [
       EXPANSION.MEWTWO,
     ],
@@ -11851,6 +12042,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -11911,6 +12103,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -11983,6 +12176,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -12045,6 +12239,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -12107,6 +12302,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -12169,6 +12365,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -12234,8 +12431,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.DISCARD
     ],
     found: [
@@ -12297,6 +12495,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -12357,6 +12556,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU
@@ -12422,6 +12622,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.PIKACHU
@@ -12487,6 +12688,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
     found: [
       EXPANSION.CHARIZARD
@@ -12552,6 +12754,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -12612,6 +12815,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -12674,6 +12878,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -12736,6 +12941,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -12803,8 +13009,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -12866,6 +13073,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -12931,8 +13139,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -12993,6 +13202,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -13058,6 +13268,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -13118,6 +13329,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -13178,6 +13390,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -13238,6 +13451,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -13310,6 +13524,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -13375,8 +13590,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
     found: [
@@ -13438,6 +13654,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -13498,6 +13715,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -13565,6 +13783,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -13627,6 +13846,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -13689,6 +13909,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -13720,6 +13941,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.FOSSIL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -13751,6 +13973,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.FOSSIL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -13782,6 +14005,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.FOSSIL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -13813,13 +14037,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.CHARIZARD,
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 220,
@@ -13845,12 +14075,18 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.PIKACHU,
     ],
     element: -1,
-    related: [219, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 221,
@@ -13875,13 +14111,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.CHARIZARD,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 222,
@@ -13906,13 +14148,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.MEWTWO,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 223,
@@ -13937,13 +14185,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEWTWO,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 224,
@@ -13968,13 +14222,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.PIKACHU,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 225,
@@ -13999,6 +14259,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -14007,7 +14268,12 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 226,
@@ -14032,13 +14298,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.PIKACHU,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 227,
@@ -14094,6 +14366,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -14154,6 +14427,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -14219,8 +14493,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -14287,6 +14562,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -14347,6 +14623,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -14407,6 +14684,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -14472,6 +14750,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PIKACHU
@@ -14537,6 +14816,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.CHARIZARD
@@ -14597,6 +14877,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -14662,6 +14943,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.CHARIZARD,
@@ -14722,6 +15004,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -14782,6 +15065,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -14847,6 +15131,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.MEWTWO,
@@ -14912,6 +15197,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -14977,6 +15263,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.PIKACHU,
@@ -15037,6 +15324,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -15109,6 +15397,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.MEWTWO,
@@ -15174,7 +15463,11 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ATTACK_BENCH],
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH,
+      CardSpecialConditionENUM.RANDOM_ATTACK
+    ],
     found: [
       EXPANSION.MEWTWO,
     ],
@@ -15246,6 +15539,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -15313,6 +15607,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
     found: [
       EXPANSION.CHARIZARD
@@ -15378,6 +15673,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -15438,6 +15734,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -15510,6 +15807,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -15570,6 +15868,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PIKACHU,
@@ -15644,6 +15943,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.MEWTWO
@@ -15709,8 +16009,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -15786,6 +16087,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -15851,6 +16153,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.PIKACHU
@@ -15925,9 +16228,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
-      CardSpecialConditionENUM.ADD
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.ADD_ENERGY
     ],
     found: [
       EXPANSION.CHARIZARD
@@ -16002,6 +16306,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -16062,6 +16367,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD
@@ -16136,6 +16442,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.MEWTWO
@@ -16201,6 +16508,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -16275,8 +16583,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -16350,6 +16659,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -16424,6 +16734,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.MEWTWO,
@@ -16484,6 +16795,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -16549,8 +16861,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -16617,6 +16930,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.PIKACHU
@@ -16646,13 +16960,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.CHARIZARD,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 267,
@@ -16677,13 +16997,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.PIKACHU,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 268,
@@ -16708,13 +17034,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.CHARIZARD,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 269,
@@ -16739,13 +17071,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.MEWTWO,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 270,
@@ -16770,13 +17108,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.MEWTWO,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 271,
@@ -16801,13 +17145,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.PIKACHU,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 272,
@@ -16832,6 +17182,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -16840,7 +17191,12 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 273,
@@ -16865,13 +17221,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.PIKACHU,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 274,
@@ -16941,9 +17303,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
-      CardSpecialConditionENUM.ADD
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.ADD_ENERGY
     ],
     found: [
       EXPANSION.CHARIZARD
@@ -17018,6 +17381,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.MEWTWO
@@ -17092,8 +17456,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -17167,6 +17532,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.MEWTWO,
@@ -17227,6 +17593,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.CHARIZARD,
@@ -17292,6 +17659,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.PIKACHU
@@ -17366,6 +17734,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.CHARIZARD
@@ -17431,6 +17800,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -17505,6 +17875,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.MEWTWO,
@@ -17570,6 +17941,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.SPECIAL_MISSION
@@ -17649,6 +18021,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PIKACHU,
@@ -17716,6 +18089,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PIKACHU,
@@ -17792,6 +18166,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PIKACHU,
@@ -17859,9 +18234,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [21, 22, 23, 288, 252, 355]
   },
@@ -17924,9 +18300,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [21, 22, 287, 355]
   },
@@ -17989,12 +18366,13 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [361, 371]
   },
@@ -18052,9 +18430,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [291, 292, 356, 606]
   },
@@ -18112,9 +18491,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [290, 292, 356, 606]
   },  
@@ -18184,9 +18564,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [290, 291, 356, 606]
   },
@@ -18244,9 +18625,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [294]
   },
@@ -18309,9 +18691,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [293]
   },
@@ -18374,9 +18757,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: []
   },
@@ -18439,12 +18823,13 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [42, 43, 297, 231]
   },
@@ -18507,12 +18892,13 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [42, 43, 296, 231]
   },
@@ -18575,9 +18961,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [44, 395, 396]
   },
@@ -18635,9 +19022,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [300, 607] 
   },
@@ -18700,12 +19088,13 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.DISCARD,
       CardSpecialConditionENUM.ATTACK_BENCH
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [299, 607]
   },
@@ -18768,9 +19157,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [49, 50, 302, 357]
   },
@@ -18833,9 +19223,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [49, 50, 301, 357]
   },
@@ -18898,9 +19289,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [77, 78, 304, 233, 362]
   },
@@ -18963,9 +19355,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [77, 303, 362]
   },
@@ -19035,9 +19428,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [80, 206, 207, 208, 347, 498, 682, 248, 358, 609]
   },
@@ -19095,9 +19489,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [307, 414, 415]
   },
@@ -19160,9 +19555,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [306, 414, 415]
   },
@@ -19220,9 +19616,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [309]
   },
@@ -19285,12 +19682,13 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.DISCARD
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [308]
   },
@@ -19353,12 +19751,13 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.RESIST
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: []
   },
@@ -19421,9 +19820,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [94, 95, 312, 645, 646, 605, 594, 588, 719]
   },
@@ -19486,9 +19886,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [94, 95, 311, 645, 646, 605, 594, 588, 719]
   },
@@ -19551,9 +19952,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [101, 428, 429, 615]
   },
@@ -19611,9 +20013,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [315]
   },
@@ -19676,9 +20079,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CORNER],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [314]
   },
@@ -19741,12 +20145,13 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.PARALYZE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [359]
   },
@@ -19809,9 +20214,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: []
   },
@@ -19883,9 +20289,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [363, 369, 372]
   },
@@ -19948,9 +20355,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: []
   },
@@ -20008,9 +20416,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [321]
   },
@@ -20073,9 +20482,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [320]
   },
@@ -20138,9 +20548,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [323, 324]
   },
@@ -20203,9 +20614,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [322, 324]
   },
@@ -20268,9 +20680,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [322, 323]
   },
@@ -20328,9 +20741,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [326]
   },
@@ -20388,9 +20802,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [325]
   },
@@ -20453,12 +20868,13 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.NOTHING
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [141, 142, 328, 596]
   },
@@ -20516,9 +20932,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [141, 142, 327, 596]
   },
@@ -20576,9 +20993,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [147, 148, 149, 330, 331]
   },
@@ -20636,9 +21054,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [147, 148, 149, 329, 331]
   },
@@ -20701,9 +21120,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [147, 148, 149, 329, 330]
   },
@@ -20773,9 +21193,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [364, 370, 349]
   },
@@ -20838,9 +21259,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [360]
   },
@@ -20898,9 +21320,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: []
   },
@@ -20963,9 +21386,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
-    condition: [CardSpecialConditionENUM.CALL],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.CALL_CARDS],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [176, 177, 336, 243]
   },
@@ -21028,9 +21452,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [176, 177, 335, 243]
   },
@@ -21088,9 +21513,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [338]
   },
@@ -21148,9 +21574,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [337]
   },
@@ -21208,9 +21635,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [340, 341]
   },
@@ -21273,9 +21701,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [339, 341]
   },
@@ -21338,9 +21767,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [339, 340]
   },
@@ -21410,9 +21840,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: []
   },
@@ -21470,9 +21901,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [186, 187, 188, 344, 345, 245, 365]
   },
@@ -21530,9 +21962,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [186, 187, 188, 343, 345, 245, 365]
   },
@@ -21595,9 +22028,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [186, 187, 343, 344, 365]
   },
@@ -21639,7 +22073,7 @@ export const MOCK_DB_CARDS: Card[] = [
         damage: 40,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
         description: {
-          es: 'Si el Pokémon activo de tu rival es un Pokémon ex, este ataque hace 80 puntos de daño más.',
+          es: 'Si el Pokémon activo de tu rival es un Pokémon EX, este ataque hace 80 puntos de daño más.',
           en: 'If your opponent\'s Active Pokémon is a Pokémon ex, this attack does 80 more damage.',
           ja: '相手のバトルポケモンが「ポケモンex」なら、80ダメージ追加。' 
         }
@@ -21660,9 +22094,13 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
-    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.EXTRA_DAMAGE,
+      CardSpecialConditionENUM.PLUS_EX
+    ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [204]
   },
@@ -21725,12 +22163,13 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [45, 80, 102, 206, 207, 208, 305, 392, 418, 498, 630, 642, 682, 248, 358, 702, 711, 703, 712, 609]
   },
@@ -21793,12 +22232,13 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.WITHDRAW_CARD, 
       CardSpecialConditionENUM.PLAY_CARDS
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [513]
   },
@@ -21825,9 +22265,10 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.FOSSIL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     element: -1,
     pokedex: -1,
@@ -21856,9 +22297,10 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.ITEM,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     element: -1,
     pokedex: -1,
@@ -21887,11 +22329,12 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.ITEM,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.CALL
+      CardSpecialConditionENUM.CALL_CARDS
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     element: -1,
     pokedex: -1,
@@ -21920,13 +22363,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND,
+      EXPANSION.MEW,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 353,
@@ -21951,13 +22400,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
-      EXPANSION.MYTHICAL_ISLAND,
+      EXPANSION.MEW,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 354,
@@ -21982,13 +22437,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND,
+      EXPANSION.MEW,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 355,
@@ -22049,9 +22510,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [21, 22, 287, 288]
   },
@@ -22121,11 +22583,12 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.ADD
+      CardSpecialConditionENUM.ADD_ENERGY
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [290, 291, 292, 606]
   },
@@ -22188,9 +22651,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [49, 50, 301, 302]
   },
@@ -22260,9 +22724,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [80, 206, 207, 208, 305, 347, 498, 682, 248, 609]
   },
@@ -22325,12 +22790,13 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.PARALYZE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [316]
   },
@@ -22393,9 +22859,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [333]
   },
@@ -22458,12 +22925,13 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [289, 371]
   },
@@ -22526,9 +22994,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [77, 303, 304]
   },
@@ -22600,9 +23069,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [318, 369, 372]
   },
@@ -22672,9 +23142,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [332, 370, 349]
   },
@@ -22737,9 +23208,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [186, 187, 343, 344, 345]
   },
@@ -22766,13 +23238,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND,
+      EXPANSION.MEW,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 367,
@@ -22797,13 +23275,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
-      EXPANSION.MYTHICAL_ISLAND,
+      EXPANSION.MEW,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 368,
@@ -22828,13 +23312,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
-      EXPANSION.MYTHICAL_ISLAND,
+      EXPANSION.MEW,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 
+      562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 369,
@@ -22904,9 +23394,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [318, 363, 372]
   },
@@ -22976,9 +23467,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [332, 364, 349]
   },
@@ -23041,12 +23533,13 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [289, 361]
   },
@@ -23118,9 +23611,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
-      EXPANSION.MYTHICAL_ISLAND
+      EXPANSION.MEW
     ],
     related: [318, 363, 369]
   },
@@ -23183,6 +23677,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.DIALGA,
@@ -23244,6 +23739,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -23305,6 +23801,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -23366,6 +23863,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -23431,6 +23929,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.DIALGA,
@@ -23491,6 +23990,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -23556,6 +24056,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.DIALGA,
@@ -23616,6 +24117,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -23682,6 +24184,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.DIALGA,
@@ -23743,6 +24246,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -23803,6 +24307,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -23868,6 +24373,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.INACTIVE],
     found: [
       EXPANSION.PALKIA
@@ -23928,6 +24434,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -23993,6 +24500,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CONFUSION],
     found: [
       EXPANSION.PALKIA
@@ -24053,6 +24561,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -24119,8 +24628,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -24188,7 +24698,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
-    condition: [CardSpecialConditionENUM.CALL],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.CALL_CARDS],
     found: [
       EXPANSION.DIALGA
     ],
@@ -24248,6 +24759,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA
@@ -24313,8 +24825,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -24381,6 +24894,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.INACTIVE],
     found: [
       EXPANSION.DIALGA
@@ -24446,8 +24960,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.DISCARD
     ],
     found: [
@@ -24522,6 +25037,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.DIALGA
@@ -24587,7 +25103,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.PALKIA
     ],
@@ -24652,6 +25169,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.BURNED],
     found: [
       EXPANSION.PALKIA
@@ -24712,6 +25230,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -24778,6 +25297,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.BURNED],
     found: [
       EXPANSION.DIALGA,
@@ -24839,6 +25359,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -24899,6 +25420,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -24964,6 +25486,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA
@@ -25029,8 +25552,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -25093,6 +25617,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -25165,6 +25690,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -25237,6 +25763,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.DIALGA,
@@ -25309,6 +25836,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.PALKIA
@@ -25374,6 +25902,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PALKIA
@@ -25434,6 +25963,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -25499,6 +26029,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.PALKIA
@@ -25559,6 +26090,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -25625,6 +26157,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -25686,6 +26219,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -25751,6 +26285,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -25816,8 +26351,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.RESIST
     ],
     found: [
@@ -25880,6 +26416,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -25946,6 +26483,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -26007,6 +26545,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -26073,8 +26612,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.PARALYZE
     ],
     found: [
@@ -26136,6 +26676,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -26202,6 +26743,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.DIALGA,
@@ -26277,6 +26819,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.DISCARD,
       CardSpecialConditionENUM.ATTACK_BENCH
@@ -26345,7 +26888,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.PALKIA
     ],
@@ -26405,6 +26949,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -26466,6 +27011,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -26532,6 +27078,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.DIALGA,
@@ -26598,6 +27145,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.DIALGA,
@@ -26659,6 +27207,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -26725,7 +27274,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.DIALGA,
     ],
@@ -26790,6 +27340,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -26855,8 +27406,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.RESIST
     ],
     found: [
@@ -26918,6 +27470,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -26983,6 +27536,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.DISCARD,
       CardSpecialConditionENUM.ATTACK_BENCH
@@ -27051,6 +27605,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -27116,6 +27671,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PALKIA
@@ -27176,6 +27732,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -27237,6 +27794,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -27303,6 +27861,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -27364,6 +27923,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -27429,6 +27989,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CONFUSION],
     found: [
       EXPANSION.PALKIA
@@ -27494,6 +28055,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.DIALGA
@@ -27554,6 +28116,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -27614,6 +28177,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -27674,6 +28238,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -27746,6 +28311,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.DIALGA,
@@ -27811,6 +28377,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.DIALGA,
@@ -27871,6 +28438,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -27936,7 +28504,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
@@ -28002,6 +28571,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.DIALGA,
@@ -28068,6 +28638,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.DIALGA,
@@ -28141,6 +28712,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.PALKIA
@@ -28206,6 +28778,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PALKIA
@@ -28266,6 +28839,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -28326,6 +28900,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -28391,6 +28966,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA
@@ -28451,6 +29027,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -28516,8 +29093,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -28579,6 +29157,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -28639,6 +29218,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -28712,6 +29292,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.DIALGA,
@@ -28773,6 +29354,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -28838,6 +29420,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.DIALGA,
@@ -28898,6 +29481,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -28958,6 +29542,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -29030,6 +29615,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -29090,6 +29676,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -29150,6 +29737,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -29215,6 +29803,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -29275,6 +29864,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -29340,6 +29930,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.DIALGA,
@@ -29405,8 +29996,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -29473,6 +30065,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PALKIA
@@ -29533,6 +30126,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -29594,6 +30188,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -29655,6 +30250,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -29720,6 +30316,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.POISON],
     found: [
       EXPANSION.DIALGA,
@@ -29785,6 +30382,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.PALKIA
@@ -29845,6 +30443,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -29911,8 +30510,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE,
       CardSpecialConditionENUM.POISON
     ],
@@ -29981,8 +30581,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -30049,8 +30650,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -30117,6 +30719,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.DIALGA,
@@ -30189,6 +30792,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -30254,6 +30858,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -30315,6 +30920,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -30376,6 +30982,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -30448,6 +31055,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.PALKIA
@@ -30513,8 +31121,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -30576,6 +31185,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA
@@ -30641,6 +31251,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.DIALGA
@@ -30706,8 +31317,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -30784,7 +31396,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.DIALGA,
     ],
@@ -30849,6 +31462,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.DIALGA,
@@ -30909,6 +31523,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -30969,6 +31584,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -31041,6 +31657,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA,
@@ -31101,6 +31718,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -31166,8 +31784,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -31234,8 +31853,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -31298,6 +31918,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -31358,6 +31979,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -31423,6 +32045,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -31483,6 +32106,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -31549,8 +32173,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -31618,6 +32243,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA,
@@ -31678,6 +32304,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -31743,6 +32370,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CORNER],
     found: [
       EXPANSION.PALKIA,
@@ -31808,6 +32436,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -31868,6 +32497,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -31928,6 +32558,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -31993,6 +32624,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.DIALGA,
@@ -32058,8 +32690,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.NOTHING
     ],
     found: [
@@ -32126,6 +32759,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.PLAY_CARDS],
     found: [
       EXPANSION.PALKIA,
@@ -32191,8 +32825,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -32259,8 +32894,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
     found: [
@@ -32328,6 +32964,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -32358,6 +32995,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.FOSSIL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -32389,6 +33027,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.FOSSIL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA,
@@ -32421,7 +33060,8 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
-    condition: [CardSpecialConditionENUM.CALL],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.CALL_CARDS],
     found: [
       EXPANSION.DIALGA
     ],
@@ -32451,6 +33091,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [],
     related: [520, 521],
     found: [
@@ -32481,6 +33122,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     related: [519, 521],
     found: [
@@ -32511,6 +33153,7 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [],
     related: [519, 520],
     found: [
@@ -32540,6 +33183,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -32548,7 +33192,12 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 523,
@@ -32573,13 +33222,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.CALL],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.CALL_CARDS],
     found: [
       EXPANSION.DIALGA,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 524,
@@ -32604,13 +33259,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PALKIA,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 525,
@@ -32635,13 +33296,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.DIALGA,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 526,
@@ -32666,13 +33333,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.DIALGA,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 527,
@@ -32697,13 +33370,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.PLAY_CARDS],
     found: [
       EXPANSION.PALKIA,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 528,
@@ -32764,6 +33443,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.DIALGA,
@@ -32829,7 +33509,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
-    condition: [CardSpecialConditionENUM.CALL],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.CALL_CARDS],
     found: [
       EXPANSION.DIALGA
     ],
@@ -32894,8 +33575,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -32969,6 +33651,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.DIALGA
@@ -33041,6 +33724,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.DIALGA,
@@ -33106,6 +33790,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -33171,7 +33856,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.PALKIA
     ],
@@ -33236,8 +33922,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.RESIST
     ],
     found: [
@@ -33304,6 +33991,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PALKIA
@@ -33369,6 +34057,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.DIALGA,
@@ -33434,6 +34123,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.DIALGA,
@@ -33506,6 +34196,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.PALKIA
@@ -33571,6 +34262,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PALKIA
@@ -33636,6 +34328,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA
@@ -33708,6 +34401,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -33768,6 +34462,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PALKIA
@@ -33833,6 +34528,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.PALKIA
@@ -33898,8 +34594,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -33966,6 +34663,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.DIALGA,
@@ -34038,6 +34736,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA,
@@ -34103,6 +34802,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CORNER],
     found: [
       EXPANSION.PALKIA,
@@ -34168,6 +34868,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -34233,8 +34934,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.NOTHING
     ],
     found: [
@@ -34301,6 +35003,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -34366,6 +35069,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.DIALGA,
@@ -34431,6 +35135,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA
@@ -34505,6 +35210,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.DISCARD,
       CardSpecialConditionENUM.ATTACK_BENCH
@@ -34573,6 +35279,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -34638,6 +35345,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CONFUSION],
     found: [
       EXPANSION.PALKIA
@@ -34703,6 +35411,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -34768,6 +35477,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PALKIA
@@ -34840,6 +35550,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -34914,7 +35625,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.DIALGA,
     ],
@@ -34979,8 +35691,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -35011,6 +35724,7 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.FORCE_SWITCH
     ],
@@ -35019,7 +35733,12 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 563,
@@ -35044,13 +35763,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.CALL],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.CALL_CARDS],
     found: [
       EXPANSION.DIALGA,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 564,
@@ -35075,13 +35800,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PALKIA,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 565, 566, 567, 586
+    ]
   },
   {
     id: 565,
@@ -35106,13 +35837,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.DIALGA,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 566, 567, 586
+    ]
   },
   {
     id: 566,
@@ -35137,13 +35874,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.DIALGA,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 567, 586
+    ]
   },
   {
     id: 567,
@@ -35168,13 +35911,19 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.PLAY_CARDS],
     found: [
       EXPANSION.PALKIA,
     ],
     element: -1,
     pokedex: -1,
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 586
+    ]
   },
   {
     id: 568,
@@ -35235,6 +35984,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.DIALGA,
@@ -35300,6 +36050,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PALKIA
@@ -35365,6 +36116,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -35430,6 +36182,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CONFUSION],
     found: [
       EXPANSION.PALKIA
@@ -35495,6 +36248,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.DIALGA,
@@ -35560,6 +36314,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PALKIA
@@ -35632,6 +36387,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.DIALGA,
@@ -35697,8 +36453,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -35774,6 +36531,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.DISCARD,
       CardSpecialConditionENUM.ATTACK_BENCH
@@ -35851,7 +36609,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.DIALGA,
     ],
@@ -35925,6 +36684,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.DISCARD,
       CardSpecialConditionENUM.ATTACK_BENCH
@@ -36003,7 +36763,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.DIALGA,
       EXPANSION.PALKIA
@@ -36012,7 +36773,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 580,
-    order: 676,
+    order: 787,
     number: 1,
     name: {
       es: 'Poción',
@@ -36039,12 +36800,13 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     related: [351, 350, 518, 581, 584, 582, 583, 587, 585]
   },
   {
     id: 581,
-    order: 677,
+    order: 788,
     number: 2,
     name: {
       es: 'Velocidad X',
@@ -36071,12 +36833,13 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     related: [351, 350, 518, 580, 584, 582, 583, 587, 585]
   },
   {
     id: 582,
-    order: 678,
+    order: 789,
     number: 3,
     name: {
       es: 'Periscopio',
@@ -36103,12 +36866,13 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [],
     related: [351, 350, 518, 580, 581, 584, 583, 587, 585]
   },
   {
     id: 583,
-    order: 679,
+    order: 790,
     number: 4,
     name: {
       es: 'Pokédex',
@@ -36135,12 +36899,13 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [],
     related: [351, 350, 518, 580, 581, 584, 582, 587, 585]
   },
   {
     id: 584,
-    order: 680,
+    order: 791,
     number: 5,
     name: {
       es: 'Poké Ball',
@@ -36167,12 +36932,13 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
-    condition: [CardSpecialConditionENUM.CALL],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.CALL_CARDS],
     related: [351, 350, 518, 580, 581, 582, 583, 587, 585]
   },
   {
     id: 585,
-    order: 681,
+    order: 792,
     number: 6,
     name: {
       es: 'Tarjeta Roja',
@@ -36199,12 +36965,13 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.PLAY_CARDS],
     related: [351, 350, 518, 580, 581, 584, 582, 583, 587]
   },
   {
     id: 586,
-    order: 682,
+    order: 793,
     number: 7,
     name: {
       es: 'Investigación de Profesores',
@@ -36231,12 +36998,18 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
-    related: [219, 220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 586]
+    related: [
+      219, 220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
   },
   {
     id: 587,
-    order: 683,
+    order: 794,
     number: 8,
     name: {
       es: 'Pokédex',
@@ -36263,12 +37036,13 @@ export const MOCK_DB_CARDS: Card[] = [
     health: -1,
     retreat: -1,
     isEX: false,
+    shiny: false,
     condition: [],
     related: [351, 350, 518, 580, 581, 584, 582, 583, 585]
   },
   {
     id: 588,
-    order: 684,
+    order: 795,
     number: 9,
     pokedex: 25,
     name: {
@@ -36320,6 +37094,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PREMIUM
@@ -36333,7 +37108,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 589,
-    order: 685,
+    order: 796,
     number: 10,
     pokedex: 150,
     name: {
@@ -36390,6 +37165,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.PREMIUM
@@ -36403,7 +37179,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 590,
-    order: 686,
+    order: 797,
     number: 11,
     pokedex: 113,
     name: {
@@ -36455,6 +37231,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.WONDER_PICK
@@ -36468,7 +37245,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 591,
-    order: 687,
+    order: 798,
     number: 12,
     pokedex: 52,
     name: {
@@ -36525,6 +37302,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.WITHDRAW_CARD],
     found: [
       EXPANSION.WONDER_PICK
@@ -36538,7 +37316,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 592,
-    order: 688,
+    order: 799,
     number: 13,
     pokedex: 12,
     name: {
@@ -36602,6 +37380,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PROMO_A1
@@ -36615,7 +37394,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 593,
-    order: 689,
+    order: 800,
     number: 14,
     pokedex: 131,
     name: {
@@ -36672,6 +37451,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PROMO_A1
@@ -36684,7 +37464,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 594,
-    order: 690,
+    order: 801,
     number: 15,
     pokedex: 25,
     name: {
@@ -36736,6 +37516,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PROMO_A1,
@@ -36749,7 +37530,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 595,
-    order: 691,
+    order: 802,
     number: 16,
     pokedex: 35,
     name: {
@@ -36801,6 +37582,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PROMO_A1,
@@ -36814,7 +37596,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 596,
-    order: 692,
+    order: 803,
     number: 17,
     pokedex: 56,
     name: {
@@ -36871,6 +37653,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.PROMO_A1,
@@ -36884,7 +37667,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 597,
-    order: 693,
+    order: 804,
     number: 18,
     pokedex: 3,
     name: {
@@ -36941,6 +37724,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PROMO_A2
@@ -36954,7 +37738,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 598,
-    order: 694,
+    order: 805,
     number: 19,
     pokedex: 658,
     name: {
@@ -37018,6 +37802,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.PROMO_A2
@@ -37031,7 +37816,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 599,
-    order: 695,
+    order: 806,
     number: 20,
     pokedex: 93,
     name: {
@@ -37088,8 +37873,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.NOTHING
     ],
     found: [
@@ -37104,7 +37890,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 600,
-    order: 696,
+    order: 807,
     number: 21,
     pokedex: 95,
     name: {
@@ -37156,6 +37942,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PROMO_A2,
@@ -37169,7 +37956,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 601,
-    order: 697,
+    order: 808,
     number: 22,
     pokedex: 39,
     name: {
@@ -37226,6 +38013,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.PROMO_A2
@@ -37239,7 +38027,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 602,
-    order: 698,
+    order: 809,
     number: 23,
     pokedex: 1,
     name: {
@@ -37291,6 +38079,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.WONDER_PICK
@@ -37304,7 +38093,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 603,
-    order: 699,
+    order: 810,
     number: 24,
     pokedex: 81,
     name: {
@@ -37356,6 +38145,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.WONDER_PICK,
@@ -37369,7 +38159,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 604,
-    order: 700,
+    order: 811,
     number: 25,
     pokedex: 145,
     name: {
@@ -37435,9 +38225,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: true,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
-      CardSpecialConditionENUM.ADD
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.ADD_ENERGY
     ],
     found: [
       EXPANSION.PREMIUM
@@ -37451,7 +38242,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 605,
-    order: 701,
+    order: 812,
     number: 26,
     pokedex: 25,
     name: {
@@ -37503,6 +38294,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.SPECIAL_MISSION,
@@ -37516,7 +38308,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 606,
-    order: 702,
+    order: 813,
     number: 27,
     pokedex: 495,
     name: {
@@ -37568,6 +38360,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PROMO_A3
@@ -37581,7 +38374,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 607,
-    order: 703,
+    order: 814,
     number: 28,
     pokedex: 637,
     name: {
@@ -37637,6 +38430,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.DISCARD,
       CardSpecialConditionENUM.ATTACK_BENCH
@@ -37653,7 +38447,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 608,
-    order: 704,
+    order: 815,
     number: 29,
     pokedex: 9,
     name: {
@@ -37710,6 +38504,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PROMO_A3,
@@ -37723,7 +38518,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 609,
-    order: 705,
+    order: 816,
     number: 30,
     pokedex: 133,
     name: {
@@ -37780,6 +38575,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.PROMO_A3,
@@ -37793,7 +38589,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 610,
-    order: 706,
+    order: 817,
     number: 31,
     pokedex: 573,
     name: {
@@ -37850,6 +38646,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PROMO_A3
@@ -37863,7 +38660,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 611,
-    order: 707,
+    order: 818,
     number: 32,
     pokedex: 4,
     name: {
@@ -37920,6 +38717,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.WONDER_PICK
@@ -37933,7 +38731,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 612,
-    order: 708,
+    order: 819,
     number: 33,
     pokedex: 7,
     name: {
@@ -37985,6 +38783,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.WONDER_PICK,
@@ -37998,7 +38797,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 613,
-    order: 709,
+    order: 820,
     number: 34,
     pokedex: 393,
     name: {
@@ -38055,6 +38854,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PREMIUM
@@ -38068,7 +38868,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 614,
-    order: 710,
+    order: 821,
     number: 35,
     pokedex: 387,
     name: {
@@ -38120,6 +38920,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PROMO_A4
@@ -38134,7 +38935,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 615,
-    order: 711,
+    order: 822,
     number: 36,
     pokedex: 466,
     name: {
@@ -38191,6 +38992,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PROMO_A4
@@ -38204,7 +39006,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 616,
-    order: 712,
+    order: 823,
     number: 37,
     pokedex: 488,
     name: {
@@ -38268,6 +39070,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.PROMO_A4
@@ -38281,7 +39084,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 617,
-    order: 713,
+    order: 824,
     number: 38,
     pokedex: 200,
     name: {
@@ -38338,6 +39141,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.CONFUSION],
     found: [
       EXPANSION.PROMO_A4
@@ -38351,7 +39155,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 618,
-    order: 714,
+    order: 825,
     number: 39,
     pokedex: 227,
     name: {
@@ -38408,6 +39212,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.PROMO_A4
@@ -38421,7 +39226,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 619,
-    order: 715,
+    order: 826,
     number: 40,
     pokedex: 390,
     name: {
@@ -38473,6 +39278,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.WONDER_PICK
@@ -38486,7 +39292,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 620,
-    order: 716,
+    order: 827,
     number: 41,
     pokedex: 175,
     name: {
@@ -38538,6 +39344,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.WONDER_PICK
@@ -38608,9 +39415,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.EXTRA_DAMAGE,
-      CardSpecialConditionENUM.FLIP
+      CardSpecialConditionENUM.FLIP_COIN
     ],
     found: [
       EXPANSION.ARCEUS
@@ -38671,6 +39479,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -38731,6 +39540,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -38791,6 +39601,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -38856,6 +39667,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.RECOIL
     ],
@@ -38918,6 +39730,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -38983,6 +39796,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.CONFUSION
     ],
@@ -39050,6 +39864,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.HEAL
     ],
@@ -39124,6 +39939,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ARCEUS_LINK,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -39199,7 +40015,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.ARCEUS
     ],
@@ -39259,6 +40076,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -39324,6 +40142,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.CORNER
     ],
@@ -39403,6 +40222,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.RETIRE,
       CardSpecialConditionENUM.ARCEUS_LINK,
@@ -39466,6 +40286,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -39526,6 +40347,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -39586,6 +40408,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -39651,8 +40474,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE,
       CardSpecialConditionENUM.RECOIL
     ],
@@ -39715,6 +40539,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -39780,6 +40605,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ATTACK_BENCH
     ],
@@ -39842,6 +40668,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -39914,6 +40741,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ARCEUS_LINK],
     found: [
       EXPANSION.ARCEUS,
@@ -39986,6 +40814,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
@@ -40053,8 +40882,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
@@ -40121,6 +40951,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.SLEEP,
     ],
@@ -40188,6 +41019,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ATTACK_BENCH,
     ],
@@ -40267,6 +41099,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.RESIST,
       CardSpecialConditionENUM.ARCEUS_LINK
@@ -40330,6 +41163,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -40395,8 +41229,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP
+      CardSpecialConditionENUM.FLIP_COIN
     ],
     found: [
       EXPANSION.ARCEUS
@@ -40457,6 +41292,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -40522,6 +41358,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.STEEL,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.ARCEUS,
@@ -40587,8 +41424,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.PLAY_CARDS
     ],
     found: [
@@ -40650,6 +41488,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -40715,6 +41554,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.SLEEP
     ],
@@ -40789,6 +41629,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.PLAY_CARDS
     ],
@@ -40868,6 +41709,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ARCEUS_LINK,
       CardSpecialConditionENUM.ATTACK_BENCH,
@@ -40937,8 +41779,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.EXTRA_DAMAGE
+      CardSpecialConditionENUM.EXTRA_DAMAGE,
+      CardSpecialConditionENUM.PLUS_EX
     ],
     found: [
       EXPANSION.ARCEUS
@@ -40999,6 +41843,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -41064,6 +41909,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
@@ -41126,6 +41972,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -41186,6 +42033,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -41258,6 +42106,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ARCEUS_LINK,
       CardSpecialConditionENUM.EXTRA_DAMAGE
@@ -41321,6 +42170,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -41381,6 +42231,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -41446,8 +42297,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.PSYCHIC,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.NOTHING
     ],
     found: [
@@ -41509,6 +42361,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -41569,6 +42422,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -41643,6 +42497,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.ARCEUS,
@@ -41703,6 +42558,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -41763,6 +42619,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -41835,6 +42692,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ARCEUS_LINK,
       CardSpecialConditionENUM.ATTACK_BENCH,
@@ -41899,6 +42757,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -41964,6 +42823,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.POISON,
     ],
@@ -42026,6 +42886,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -42086,6 +42947,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -42158,6 +43020,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.ARCEUS_LINK,
       CardSpecialConditionENUM.RESIST
@@ -42226,6 +43089,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
@@ -42293,6 +43157,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.RESIST,
     ],
@@ -42355,6 +43220,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS
@@ -42420,6 +43286,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.ARCEUS
@@ -42485,8 +43352,9 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.FLIP,
+      CardSpecialConditionENUM.FLIP_COIN,
       CardSpecialConditionENUM.INACTIVE
     ],
     found: [
@@ -42553,6 +43421,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DRAGON,
     weak: null,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.ARCEUS
@@ -42613,6 +43482,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -42678,6 +43548,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.ARCEUS,
@@ -42738,6 +43609,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -42803,6 +43675,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.PLAY_CARDS
     ],
@@ -42865,6 +43738,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -42925,6 +43799,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -42990,6 +43865,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.ARCEUS,
@@ -43062,6 +43938,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.ARCEUS
@@ -43127,6 +44004,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.DISCARD],
     found: [
       EXPANSION.ARCEUS
@@ -43204,6 +44082,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.ARCEUS
@@ -43233,13 +44112,20 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.ARCEUS,
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 693, 694, 695, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 707, 708, 709, 710, 586]
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      693, 694, 695, 266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 
+      707, 708, 709, 710, 586
+    ]
   },
   {
     id: 693,
@@ -43264,13 +44150,20 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.CALL],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.CALL_CARDS],
     found: [
       EXPANSION.ARCEUS,
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 694, 695, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 707, 708, 709, 710, 586]
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 694, 695, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 
+      707, 708, 709, 710, 586
+    ]
   },
   {
     id: 694,
@@ -43295,13 +44188,20 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.ARCEUS,
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 695, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 707, 708, 709, 710, 586]
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 695, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 
+      707, 708, 709, 710, 586
+    ]
   },
   {
     id: 695,
@@ -43326,13 +44226,20 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.ARCEUS,
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 707, 708, 709, 710, 586]
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 
+      707, 708, 709, 710, 586
+    ]
   },
   {
     id: 696,
@@ -43393,6 +44300,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIRE,
     weak: PokemonTypeENUM.WATER,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.CORNER
     ],
@@ -43455,6 +44363,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -43527,6 +44436,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.PSYCHIC,
     weak: PokemonTypeENUM.DARK,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.PLAY_CARDS
     ],
@@ -43594,8 +44504,10 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [
-      CardSpecialConditionENUM.EXTRA_DAMAGE
+      CardSpecialConditionENUM.EXTRA_DAMAGE,
+      CardSpecialConditionENUM.PLUS_EX
     ],
     found: [
       EXPANSION.ARCEUS
@@ -43656,6 +44568,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.ARCEUS,
@@ -43728,6 +44641,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RETIRE],
     found: [
       EXPANSION.ARCEUS
@@ -43800,7 +44714,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.ARCEUS
     ],
@@ -43872,6 +44787,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
@@ -43948,6 +44864,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.ARCEUS,
@@ -44013,6 +44930,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.RESIST,
     ],
@@ -44092,6 +45010,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.ARCEUS
@@ -44121,13 +45040,20 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.HEAL],
     found: [
       EXPANSION.ARCEUS,
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 695, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 708, 709, 710, 586]
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 695, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 
+      708, 709, 710, 586
+    ]
   },
   {
     id: 708,
@@ -44152,13 +45078,20 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.CALL],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.CALL_CARDS],
     found: [
       EXPANSION.ARCEUS,
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 695, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 707, 709, 710, 586]
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 695, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 
+      707, 709, 710, 586
+    ]
   },
   {
     id: 709,
@@ -44183,13 +45116,20 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.ARCEUS,
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 695, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 707, 708, 710, 586]
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 695, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 
+      707, 708, 710, 586
+    ]
   },
   {
     id: 710,
@@ -44214,13 +45154,20 @@ export const MOCK_DB_CARDS: Card[] = [
     retreat: 0,
     stage: CardStageENUM.SUPPORTER,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RESIST],
     found: [
       EXPANSION.ARCEUS,
     ],
     element: -1,
     pokedex: -1,
-    related: [220, 221, 222, 223, 224, 225, 226, 353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 695, 266, 267, 268, 269, 270, 271, 272, 273, 367, 366, 368, 562, 563, 564, 565, 566, 567, 707, 708, 709, 586]
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 692, 693, 694, 695, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 
+      707, 708, 709, 586
+    ]
   },
   {
     id: 711,
@@ -44288,7 +45235,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.ARCEUS
     ],
@@ -44360,6 +45308,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.STEEL,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
@@ -44436,6 +45385,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.ATTACK_BENCH],
     found: [
       EXPANSION.ARCEUS,
@@ -44501,6 +45451,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.STEEL,
     weak: PokemonTypeENUM.FIRE,
     isEX: true,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.RESIST,
     ],
@@ -44580,6 +45531,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.ARCEUS
@@ -44657,6 +45609,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: true,
+    shiny: false,
     condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
     found: [
       EXPANSION.ARCEUS
@@ -44665,7 +45618,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 717,
-    order: 717,
+    order: 828,
     number: 42,
     pokedex: 491,
     name: {
@@ -44729,15 +45682,21 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.DARK,
     weak: PokemonTypeENUM.GRASS,
     isEX: true,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PREMIUM,
     ],
-    related: [482, 559, 574]
+    related: [482, 559, 574],
+    extra: {
+      es: 'Pase Premium',
+      en: 'Premium Pass',
+      ja: 'プレミアムパス' 
+    },
   },
   {
     id: 718,
-    order: 718,
+    order: 829,
     number: 43,
     pokedex: 421,
     name: {
@@ -44794,6 +45753,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.GRASS,
     weak: PokemonTypeENUM.FIRE,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.HEAL
     ],
@@ -44804,7 +45764,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 719,
-    order: 719,
+    order: 830,
     number: 44,
     pokedex: 26,
     name: {
@@ -44873,6 +45833,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.ELECTRIC,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [
       CardSpecialConditionENUM.RESIST,
       CardSpecialConditionENUM.ARCEUS_LINK
@@ -44884,7 +45845,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 720,
-    order: 720,
+    order: 831,
     number: 45,
     pokedex: 299,
     name: {
@@ -44941,6 +45902,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PROMO_A5
@@ -44949,7 +45911,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 721,
-    order: 721,
+    order: 832,
     number: 46,
     pokedex: 443,
     name: {
@@ -45001,6 +45963,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.FIGHT,
     weak: PokemonTypeENUM.GRASS,
     isEX: false,
+    shiny: false,
     condition: [],
     found: [
       EXPANSION.PROMO_A5
@@ -45009,7 +45972,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 722,
-    order: 722,
+    order: 833,
     number: 47,
     pokedex: 398,
     name: {
@@ -45042,7 +46005,7 @@ export const MOCK_DB_CARDS: Card[] = [
           en: 'Wing Attack',
           ja: 'つばさでうつ' 
         },
-        damage: 140,
+        damage: 90,
         energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
       },
     ],
@@ -45073,6 +46036,7 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.RECOIL],
     found: [
       EXPANSION.PROMO_A5,
@@ -45081,7 +46045,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 723,
-    order: 723,
+    order: 834,
     number: 48,
     pokedex: 490,
     name: {
@@ -45138,7 +46102,8 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.WATER,
     weak: PokemonTypeENUM.ELECTRIC,
     isEX: false,
-    condition: [CardSpecialConditionENUM.ADD],
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
     found: [
       EXPANSION.WONDER_PICK
     ],
@@ -45151,7 +46116,7 @@ export const MOCK_DB_CARDS: Card[] = [
   },
   {
     id: 724,
-    order: 724,
+    order: 835,
     number: 49,
     pokedex: 143,
     name: {
@@ -45208,11 +46173,7838 @@ export const MOCK_DB_CARDS: Card[] = [
     element: PokemonTypeENUM.NORMAL,
     weak: PokemonTypeENUM.FIGHT,
     isEX: false,
+    shiny: false,
     condition: [CardSpecialConditionENUM.SLEEP],
     found: [
       EXPANSION.WONDER_PICK,
     ],
     related: [211, 683, 250],
+    extra: {
+      es: 'Elección Mágica',
+      en: 'Wonder Pick',
+      ja: 'ワンダーピック' 
+    },
+  },
+  {
+    id: 725,
+    order: 676,
+    number: 1,
+    pokedex: 13,
+    name: {
+      es: 'Weedle',
+      en: 'Weedle',
+      ja: 'ビードル'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Oruga',
+        en: 'Hairy Bug Pokémon',
+        ja: 'けむしポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '3.2',
+        en: '7.1',
+        ja: '3.2'
+      }
+    },
+    artist: 'Akira Komayama',
+    attacks: [
+      {
+        name: {
+          es: 'Multiplicar',
+          en: 'Multiply',
+          ja: 'ふえる'
+        },
+        damage: 0,
+        energy: [PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Pon 1 Weedle aleatorio de tu baraja en tu Banca.',
+          en: 'Put 1 random Weedle from your deck onto your Bench.',
+          ja: '自分の山札から「ビードル」をランダムに1枚、ベンチに出す。'
+        }
+      }
+    ],
+    evolve: [726],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Suele habitar bosques y praderas. Tiene un afilado y venenoso aguijón de unos 5 cm encima de la cabeza.',
+      en: 'Often found in forests and grasslands. It has a sharp, toxic barb of around two inches on top of its head.',
+      ja: '森や 草地に 多く 生息｡ 頭の 先に ５センチぐらいの 小さく 鋭い 毒針を持つ｡'
+    },
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.CALL_CARDS],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [9, 10]
+  },
+  {
+    id: 726,
+    order: 677,
+    number: 2,
+    pokedex: 12,
+    name: {
+      es: 'Kakuna',
+      en: 'Kakuna',
+      ja: 'コクーン'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Capullo',
+        en: 'Cocoon Pokémon',
+        ja: 'さなぎポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '10.0',
+        en: '22',
+        ja: '10.0'
+      }
+    },
+    artist: 'Yuka Morii',
+    attacks: [
+      {
+        name: {
+          es: 'Disparo Demora',
+          en: 'String Shot',
+          ja: 'いとをはく'
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, el Pokémon Activo de tu rival pasa a estar Paralizado.',
+          en: 'Flip a coin. If heads, your opponent’s Active Pokémon is now Paralyzed.',
+          ja: 'コインを1回投げてオモテなら、相手のバトルポケモンをマヒにする。' 
+        }
+      }
+    ],
+    evolve: [727],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Casi incapaz de moverse, este Pokémon solo puede endurecer su caparazón para protegerse.',
+      en: 'Almost incapable of moving, this Pokémon can only harden its shell to protect itself when it is in danger.',
+      ja: '自分では　ほとんど　動けないが 危ないときは　硬くなって 身を守っているようだ｡'
+    },
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.PARALYZE
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [8, 10]
+  },
+  {
+    id: 727,
+    order: 678,
+    number: 3,
+    pokedex: 15,
+    name: {
+      es: 'Beedrill EX',
+      en: 'Beedrill EX',
+      ja: 'スピアー EX'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Abeja Veneno',
+        en: 'Poison Bee Pokémon',
+        ja: 'どくばちポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '29.5',
+        en: '65',
+        ja: '29.5'
+      }
+    },
+    artist: 'PLANETA Igarashi',
+    attacks: [
+      {
+        name: {
+          es: 'Lanza Devastadora',
+          en: 'Crushing Spear',
+          ja: 'クラッシュスピア'
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Descarta 1 Energía aleatoria del Pokémon Activo de tu rival.',
+          en: 'Discard a random Energy from your opponent\'s Active Pokémon.',
+          ja: '相手のバトルポケモンからエネルギーをランダムに1個トラッシュ。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Tiene 3 aguijones venenosos en sus patas y cola. Suelen pinchar a sus enemigos repetidas veces.',
+      en: 'It has three poisonous stingers on its forelegs and its tail. They are used to jab its enemy repeatedly.',
+      ja: '両手と　お尻にある　３本の　毒針で 相手を　刺して　刺して 刺しまくって　攻撃する｡'
+    },
+    health: 170,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.DISCARD],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [8, 9]
+  },
+  {
+    id: 728,
+    order: 679,
+    number: 4,
+    pokedex: 127,
+    name: {
+      es: 'Pinsir',
+      en: 'Pinsir',
+      ja: 'カイロス'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Escarabajo',
+        en: 'Stag Beetle Pokémon',
+        ja: 'くわがたポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '55.0',
+        en: '121.3',
+        ja: '55.0'
+      }
+    },
+    artist: 'Satoshi Shirai',
+    attacks: [
+      {
+        name: {
+          es: 'Guilloatina',
+          en: 'Guillotine Rush',
+          ja: 'ギロチンラッシュ'
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Lanza 1 moneda hasta que salga cruz. Este ataque hace 40 puntos de daño más por cada cara.',
+          en: 'Flip a coin until you get tails. This attack does 40 more damage for each heads.',
+          ja: 'ウラが出るまでコインを投げ、オモテの数×40ダメージ追加。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Los Pinsir se juzgan entre ellos por la robustez de la cornamenta. Cuanto más imponente sea, más agradará a sus congéneres del sexo puesto.',
+      en: 'These Pokémon judge one another based on pincers. Thicker, more impressive pincers make for more popularity with the opposite gender.',
+      ja: 'ツノで　互いを　格付けする｡ 太く　立派な　ツノを　持つ カイロスほど　異性に　人気｡'
+    },
+    health: 90,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [229]
+  },
+  {
+    id: 729,
+    order: 680,
+    number: 5,
+    pokedex: 906,
+    name: {
+      es: 'Sprigatito',
+      en: 'Sprigatito',
+      ja: 'ニャオハ'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gato Planta',
+        en: 'Grass Cat Pokémon',
+        ja: 'くさねこポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '4.1',
+        en: '9',
+        ja: '4.1'
+      }
+    },
+    artist: 'mashu',
+    attacks: [
+      {
+        name: {
+          es: 'Pedir Ayuda',
+          en: 'Cry for Help',
+          ja: 'ともだちをよぶ'
+        },
+        damage: 0,
+        energy: [PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Pon 1 Pokémon Planta aleatorio de tu baraja en tu mano.',
+          en: 'Put 1 random Grass Pokémon from your deck into your hand.',
+          ja: '自分の山札から草ポケモンをランダムに1枚、手札に加える。'
+        }
+      }
+    ],
+    evolve: [730],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Su sedoso pelaje se semeja en composición a las plantas. Se lava la cara con diligencia pra que no se le seque.',
+      en: 'Its fluffy fur is similar in composition to plants. This Pokémon frequently washes its face to keep it from drying out.',
+      ja: 'フワフワの 体毛は 植物に 近い 成分。 こまめに 顔を 洗って 乾燥を 防ぐ。'
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.CALL_CARDS
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 730,
+    order: 681,
+    number: 6,
+    pokedex: 907,
+    name: {
+      es: 'Floragato',
+      en: 'Floragato',
+      ja: 'ニャローテ'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gato Planta',
+        en: 'Grass Cat Pokémon',
+        ja: 'くさねこポケモン'
+      },
+      height: {
+        es: '0.9',
+        en: '2\'11"',
+        ja: '0.9'
+      },
+      weight: {
+        es: '12.2',
+        en: '26.9',
+        ja: '12.2'
+      }
+    },
+    artist: 'mashu',
+    attacks: [
+      {
+        name: {
+          es: 'Cuchillada',
+          en: 'Slash',
+          ja: 'きりさく'
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
+      }
+    ],
+    evolve: [731],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Maneja diestramente la vid oculta bajo su largo pelaje y propina latigazos al enemigo con el capullo endurecido de la punta.',
+      en: 'Floragato deftly wields the vine hidden beneath its long fur, slamming the hard flower bud against its opponents.',
+      ja: '長い 体毛の下に 隠した ツタを 器用に 操り 硬い つぼみを 敵に 叩きつける。'
+    },
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 731,
+    order: 682,
+    number: 7,
+    pokedex: 908,
+    name: {
+      es: 'Meowscarada',
+      en: 'Meowscarada',
+      ja: 'マスカーニャ'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mago',
+        en: 'Magician Pokémon',
+        ja: 'マジシャンポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '31.2',
+        en: '68.8',
+        ja: '31.2'
+      }
+    },
+    artist: 'mashu',
+    attacks: [
+      {
+        name: {
+          es: 'Garras Luchadoras',
+          en: 'Fighting Claws',
+          ja: 'とうしのツメ'
+        },
+        damage: 60,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Si el Pokémon Activo de tu rival es un Pokémon EX. este ataque hace 70 puntos de daño más',
+          en: 'If your opponent\'s Active Pokémon is a Pokémon ex, this attack does 70 more damage.',
+          ja: '相手のバトルポケモンが「ポケモンex」なら、70ダメージを追加。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Se sirve de la luz que reflejan los tricomas de su manto de hojas para camuflar la vid y crear la ilusión óptica de que la flor flota en el aire.',
+      en: 'This Pokémon uses the reflective fur lining its cape to camouflage the stem of its flower, creating the illusion that the flower is floating.',
+      ja: '浮いているように 見える 花は マント裏の 毛の 反射で 茎を カモフラージュしているのだ。'
+    },
+    health: 140,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.PLUS_EX
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 732,
+    order: 683,
+    number: 8,
+    pokedex: 4,
+    name: {
+      es: 'Charmander',
+      en: 'Charmander',
+      ja: 'ヒトカゲ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Lagartija',
+        en: 'Lizard Pokémon',
+        ja: 'とかげポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '8.5',
+        en: '18.7',
+        ja: '8.5'
+      }
+    },
+    artist: 'Megumi Mizutani',
+    attacks: [
+      {
+        name: {
+          es: 'Combustión',
+          en: 'Combustion',
+          ja: 'かえん' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.FIRE],
+      }
+    ],
+    evolve: [733],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Prefiere las cosas calientes. Dicen que cuando llueve le sale vapor de la punta de la cola.',
+      en: 'It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail.',
+      ja: '熱いものを　好む　性格｡ 雨に濡れると　しっぽの　先から 煙が　出るという｡' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [34, 35, 36, 230, 253, 280, 284, 611]
+  },
+  {
+    id: 733,
+    order: 684,
+    number: 9,
+    pokedex: 5,
+    name: {
+      es: 'Charmeleon',
+      en: 'Charmeleon',
+      ja: 'リザード' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Llama',
+        en: 'Flame Pokémon',
+        ja: 'かえんポケモン'
+      },
+      height: {
+        es: '1.1',
+        en: '3\'7"',
+        ja: '1.1'
+      },
+      weight: {
+        es: '19.0',
+        en: '41.9',
+        ja: '19.0'
+      }
+    },
+    artist: 'kodama',
+    attacks: [
+      {
+        name: {
+          es: 'Combustión',
+          en: 'Combustion',
+          ja: 'かえん' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE],
+      }
+    ],
+    evolve: [734],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Este Pokémon de naturaleza agresiva ataca en combate con su cola llameante y hace trizas al rival con sus afiladas garras.',
+      en: 'It has a barbaric nature. In battle, it whips its fiery tail around and slashes away with sharp claws.',
+      ja: '燃える　しっぽを　振りまわし するどい　ツメで　相手を 切り裂く　荒々しい　性格｡' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [33, 35, 36, 230, 253, 280, 284, 611]
+  },
+  {
+    id: 734,
+    order: 685,
+    number: 10,
+    pokedex: 6,
+    name: {
+      es: 'Charizard EX',
+      en: 'Charizard EX',
+      ja: 'リザードン EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Llama',
+        en: 'Flame Pokémon',
+        ja: 'かえんポケモン'
+      },
+      height: {
+        es: '1.7',
+        en: '5\'7"',
+        ja: '1.7'
+      },
+      weight: {
+        es: '90.5',
+        en: '199.5',
+        ja: '90.5'
+      }
+    },
+    artist: 'PLANETA Igarashi',
+    attacks: [
+      {
+        name: {
+          es: 'Atizador',
+          en: 'Stoke',
+          ja: 'もえあがる' 
+        },
+        damage: 0,
+        energy: [PokemonTypeENUM.FIRE],
+        description: {
+          es: 'Une 3 Energías Fuego de tu área de Energía a este Pokémon.',
+          en: 'Take 3 Fire Energy from your Energy Zone and attach it to this Pokémon.',
+          ja: '自分のエネルギーゾーンから炎エネルギーを3個出し、このポケモンにつける。' 
+        }
+      },
+      {
+        name: {
+          es: 'Artillería de Vapor',
+          en: 'Steam Artillery',
+          ja: 'ばくねつほう' 
+        },
+        damage: 150,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Escupe un fuego tan caliente que funde las rocas. Causa incendios forestales sin querer.',
+      en: 'It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames.',
+      ja: '岩石も　焼けるような 灼熱の　炎を　吐いて 山火事を　起こすことが　ある｡' 
+    },
+    health: 180,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 3,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [33, 34, 230, 611]
+  },
+  {
+    id: 735,
+    order: 686,
+    number: 11,
+    pokedex: 126,
+    name: {
+      es: 'Magmar',
+      en: 'Magmar',
+      ja: 'ブーバー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Escupefuego',
+        en: 'Spitfire Pokémon',
+        ja: 'ひふきポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '4\'3"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '44.5',
+        en: '98.1',
+        ja: '44.5'
+      }
+    },
+    artist: 'Miki Tanaka',
+    attacks: [
+      {
+        name: {
+          es: 'Llama',
+          en: 'Flare',
+          ja: 'ほのお' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.FIRE],
+      }
+    ],
+    evolve: [736],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Abate a sus presas con las llamas que genera y con frecuencia acaba reduciéndolas a carbonilla por accidente.',
+      en: 'Magmar dispatches its prey with fire. But it regrets this habit once it realizes that it has burned its intended prey to a charred crisp.',
+      ja: '炎で　獲物を　しとめる｡ ついつい　焼きすぎて 黒コゲに　してしまい　後悔する｡' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [298, 395, 396]
+  },
+  {
+    id: 736,
+    order: 687,
+    number: 12,
+    pokedex: 467,
+    name: {
+      es: 'Magmortar',
+      en: 'Magmortar',
+      ja: 'ブーバーン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Explosión',
+        en: 'Blast Pokémon',
+        ja: 'ばくえんポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '68.0',
+        en: '149.9',
+        ja: '68.0'
+      }
+    },
+    artist: 'Miki Tanaka',
+    attacks: [
+      {
+        name: {
+          es: 'Bomba de Humo',
+          en: 'Smoke Bomb',
+          ja: 'えんばく' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Durante el próximo turno de tu rival, si el Pokémon Defensor intenta usar un ataque, tu rival lanza 1 moneda. Si sale cruz, ese ataque no se lleva a cabo.',
+          en: 'During your opponent\'s next turn, if the Defending Pokémon tries to use an attack, your opponent flips a coin. If tails, that attack doesn\'t happen.',
+          ja: '次の相手の番、このワザを受けたポケモンがワザを使うとき、相手はコインを1回投げる。ウラならそのワザは失敗。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Al respirar profundamente, el fuego del interior de su vientre gana intensidad y puede alcanzar los 2000 ºC.',
+      en: 'When Magmortar inhales deeply, the fire burning in its belly intensifies, rising in temperature to over 3,600 degrees Fahrenheit.',
+      ja: '大きく 息を 吸いこむと 腹の 中の 炎が 勢いを 増して 摂氏2000度に 達する。' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.RARE,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.RESIST
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [44, 298, 395]
+  },
+  {
+    id: 737,
+    order: 688,
+    number: 13,
+    pokedex: 128,
+    name: {
+      es: 'Tauros de Paldea',
+      en: 'Paldean Tauros',
+      ja: 'パルデアケンタロス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Toro Bravo',
+        en: 'Wild Bull Pokémon',
+        ja: 'あばれうしポケモン'
+      },
+      height: {
+        es: '1.4',
+        en: '4\'7"',
+        ja: '1.4'
+      },
+      weight: {
+        es: '85.0',
+        en: '187.4',
+        ja: '85.0'
+      }
+    },
+    artist: 'Minahamu',
+    attacks: [
+      {
+        name: {
+          es: 'Placaje LLameante',
+          en: 'Blaze Tackle',
+          ja: 'ブレイズタックル' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este Pokémon también se hace 10 puntos de daño a sí mismo.',
+          en: 'This Pokémon also does 10 damage to itself.',
+          ja: 'このポケモンにも10ダメージ。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Sus cuernos alcanzan los 1000 ºC cuando los calienta con energía ígnea. Quienes reciben una de sus cornadas sufren heridas y quemaduras.',
+      en: 'When heated by fire energy, its horns can get hotter than 1,800 degrees Fahrenheit. Those gored by them will suffer both wounds and burns.',
+      ja: '炎のエネルギーで 熱した ツノは 摂氏1000度になり 突き刺された 敵は 傷と 火傷に 苦しむ。' 
+    },
+    health: 110,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.RECOIL,
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 738,
+    order: 689,
+    number: 14,
+    pokedex: 72,
+    name: {
+      es: 'Tentacool',
+      en: 'Tentacool',
+      ja: 'メノクラゲ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Medusa',
+        en: 'Jellyfish Pokémon',
+        ja: 'くらげポケモン'
+      },
+      height: {
+        es: '0.9',
+        en: '2\'11"',
+        ja: '0.9'
+      },
+      weight: {
+        es: '45.5',
+        en: '100.3',
+        ja: '45.5'
+      }
+    },
+    artist: 'Shibuzoh.',
+    attacks: [
+      {
+        name: {
+          es: 'Golpe de Lluvia',
+          en: 'Rain Splash',
+          ja: 'みずかけ' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: [739],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Sus facultades natatorias son más bien escasas, por lo que se limita a flotar a la deriva en aguas poco profundas en busca de alimento.',
+      en: 'Tentacool is not a particularly strong swimmer. It drifts across the surface of shallow seas as it searches for prey.',
+      ja: '泳ぐ　力は　強くは　ない｡ 浅い　海の　水面を 漂いながら　獲物を　探す｡' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [63]
+  },
+  {
+    id: 739,
+    order: 690,
+    number: 15,
+    pokedex: 73,
+    name: {
+      es: 'Tentacruel',
+      en: 'Tentacruel',
+      ja: 'ドククラゲ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Medusa',
+        en: 'Jellyfish Pokémon',
+        ja: 'くらげポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '55.0',
+        en: '121.3',
+        ja: '55.0'
+      }
+    },
+    artist: 'match',
+    attacks: [
+      {
+        name: {
+          es: 'Chapoteo Ondulante',
+          en: 'Wave Splash',
+          ja: 'スプラッシュ' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Si las esferas rojas que tiene a ambos lados de la cabeza brillan con intensidad, indica que está a punto de lanzar ondas ultrasónicas.',
+      en: 'When the red orbs on Tentacruel’s head glow brightly, watch out. The Pokémon is about to fire off a burst of ultrasonic waves.',
+      ja: '頭の　赤い　玉の　光が 強くなったら　要注意｡ 超音波を　放つ　前触れだ｡' 
+    },
+    health: 100,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [62]
+  },
+  {
+    id: 740,
+    order: 691,
+    number: 16,
+    pokedex: 418,
+    name: {
+      es: 'Buizel',
+      en: 'Buizel',
+      ja: 'ブイゼル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Nutria Marina',
+        en: 'Sea Weasel Pokémon',
+        ja: 'うみイタチポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '29.5',
+        en: '65',
+        ja: '29.5'
+      }
+    },
+    artist: 'sui',
+    attacks: [
+      {
+        name: {
+          es: 'Pistola Agua',
+          en: 'Water Gun',
+          ja: 'みずでっぽう' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'La vejiga natatoria alrededor del cuello le permite flotar en el agua con la cabeza fuera para divisar a sus presas.',
+      en: 'It inflates its flotation sac, keeping its face above water in order to watch for prey movement.',
+      ja: 'くびの うきぶくろを ふくらませて すいめんに かおを だし ちじょうの えものの うごきを さぐるのだ。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [741]
+  },
+  {
+    id: 741,
+    order: 692,
+    number: 17,
+    pokedex: 419,
+    name: {
+      es: 'Floatzel',
+      en: 'Floatzel',
+      ja: 'フローゼル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Nutria Marina',
+        en: 'Sea Weasel Pokémon',
+        ja: 'うみイタチポケモン'
+      },
+      height: {
+        es: '1.1',
+        en: '3\'7"',
+        ja: '1.1'
+      },
+      weight: {
+        es: '33.5',
+        en: '73.9',
+        ja: '33.5'
+      }
+    },
+    artist: 'Kouki Saitou',
+    attacks: [
+      {
+        name: {
+          es: 'Flecha de Agua',
+          en: 'Water Arrow',
+          ja: 'ウォーターアロー' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER],
+        description: {
+          es: 'Este ataque hace 30 puntos de daño a 1 de los Pokémon de tu rival.',
+          en: 'This attack does 30 damage to 1 of your opponent\'s Pokémon.',
+          ja: '相手のポケモン1匹に30ダメージ。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'La vejiga natatoria inflada, puede llevar a personas sobre su espalda. Antes de bucear, la desinfla.',
+      en: 'With its flotation sac inflated, it can carry people on its back. It deflates the sac before it dives.',
+      ja: '浮き袋を ふくらませると 人を 背中に 乗せることが できる。 浮き袋を しぼませて 潜る。' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ATTACK_BENCH],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [740]
+  },
+  {
+    id: 742,
+    order: 693,
+    number: 18,
+    pokedex: 960,
+    name: {
+      es: 'Wiglett',
+      en: 'Wiglett',
+      ja: 'ウミディグダ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cóngrido',
+        en: 'Garden Eel Pokémon',
+        ja: 'あなごポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '1.8',
+        en: '4',
+        ja: '1.8'
+      }
+    },
+    artist: 'miki kudo',
+    attacks: [
+      {
+        name: {
+          es: 'Saltar en Resorte',
+          en: 'Spring Out',
+          ja: 'とびだす' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER],
+        description: {
+          es: 'Se elige a un Pokémon aleatorio de tu rival. Hazle 30 puntos de daño.',
+          en: '1 of your opponent\'s Pokémon is chosen at random. Do 30 damage to it.',
+          ja: '相手のポケモンがランダムに1匹選ばれ、選ばれたポケモンに、30ダメージ。' 
+        }
+      }
+    ],
+    evolve: [743],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Puede percibir el olor de los Veluza a 20m de distancia, lo que le permite ocultarse bajo la arena a tiempo.',
+      en: 'This Pokémon can pick up the scent of a Veluza just over 65 feet away and will hide itself in the sand.',
+      ja: '２０メートル先の ミガルーサが 放つ 匂いも 嗅ぎとって 砂の中に 身を 隠すのだ。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH,
+      CardSpecialConditionENUM.RANDOM_ATTACK
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [743]
+  },
+  {
+    id: 743,
+    order: 694,
+    number: 19,
+    pokedex: 961,
+    name: {
+      es: 'Wugtrio EX',
+      en: 'Wugtrio EX',
+      ja: 'ウミトリオ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cóngrido',
+        en: 'Garden Eel Pokémon',
+        ja: 'あなごポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '5.4',
+        en: '11.9',
+        ja: '5.4'
+      }
+    },
+    artist: 'PLANETA Tsuji',
+    attacks: [
+      {
+        name: {
+          es: 'Vapuleo por Sorteo',
+          en: 'Pop Out Throughout',
+          ja: 'あちこちとびだす' 
+        },
+        damage: 150,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+        description: {
+          es: 'Se elige 3 veces a un Pokémon aleatorio de tu rival. Haz a cada uno 50 puntos de daño por cada vez que haya resultado elegido.',
+          en: '1 of your opponent\'s Pokémon is chosen at random 3 times. For each time a Pokémon is chosen, do 50 damage to it.',
+          ja: '相手のポケモンがランダムに3回選ばれ、選ばれたポケモン全員に、選ばれた回数×50ダメージ。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Es de temperamento agresivo, aunque no lo parezca. Envuelve a sus presas con sus largos cuerpos y las arrastra a su nido.',
+      en: 'It has a vicious temperament, contrary to what its appearance may suggest. It wraps its long bodies around prey, then drags the prey into its den.',
+      ja: '見かけによらず　気性が　荒い。　長い　体で　獲物を　締め上げ　巣穴に　引きずりこむぞ。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: true,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH,
+      CardSpecialConditionENUM.RANDOM_ATTACK
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [742]
+  },
+  {
+    id: 744,
+    order: 695,
+    number: 20,
+    pokedex: 977,
+    name: {
+      es: 'Dondozo',
+      en: 'Dondozo',
+      ja: 'ヘイラッシャ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gran Siluro',
+        en: 'Big Catfish Pokémon',
+        ja: 'おおなまずポケモン'
+      },
+      height: {
+        es: '12',
+        en: '39\'4"',
+        ja: '12'
+      },
+      weight: {
+        es: '220.0',
+        en: '485',
+        ja: '220.0'
+      }
+    },
+    artist: 'Tomowaka',
+    attacks: [
+      {
+        name: {
+          es: 'Ciclón Oceánico',
+          en: 'Ocean Cyclone',
+          ja: 'オーシャンサイクロン' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este ataque también hace 10 puntos de daño a cada uno de los Pokémon en Banca de tu rival.',
+          en: 'This attack also does 10 damage to each of your opponent’s Benched Pokémon.',
+          ja: '相手のベンチポケモン全員にも10ダメージ。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Le gusta mucho comer, pero no se le da bien cazar, por lo que aúna fuerzas con Tatsugiri con el fin de capturar presas.',
+      en: 'This Pokémon is a glutton, but it\'s bad at getting food. It teams up with a Tatsugiri to catch prey.',
+      ja: '大食らいだが エサを 取るのは 苦手。 シャリタツと コンビを 組んで 獲物を 捕らえるのだ。' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.RARE,
+    retreat: 3,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH,
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 745,
+    order: 696,
+    number: 21,
+    pokedex: 978,
+    name: {
+      es: 'Tatsugiri',
+      en: 'Tatsugiri',
+      ja: 'シャリタツ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mimetismo',
+        en: 'Mimicry Pokémon',
+        ja: 'ぎたいポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '8.0',
+        en: '17.6',
+        ja: '8.0'
+      }
+    },
+    artist: 'Tomowaka',
+    attacks: [
+      {
+        name: {
+          es: 'Golpe de Lluvia',
+          en: 'Rain Splash',
+          ja: 'みずかけ' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Orden de Retirada',
+        en: 'Retreat Directive',
+        ja: 'てったいしじ' 
+      },
+      description: {
+        es: 'Tu Dodonzo Activo no tiene ningún Coste de Retirada.',
+        en: 'Your Active Dondozo has no Retreat Cost.',
+        ja: 'このポケモンがいるかぎり、自分のバトル場の「ヘイラッシャ」のにげるためのエネルギーを、すべてなくす。' 
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Pokémon dragón de pequeño tamaño. Vive en la boca de un Dodonzo para protegerse de los ataques de los depredadores.',
+      en: 'This is a small dragon Pokémon. It lives inside the mouth of Dondozo to protect itself from enemies on the outside.',
+      ja: '小型の ドラゴンポケモン。 ヘイラッシャの 口の中に 棲み 外敵から 身を 守っている。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.RETIRE,
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 746,
+    order: 697,
+    number: 22,
+    pokedex: 25,
+    name: {
+      es: 'Pikachu EX',
+      en: 'Pikachu EX',
+      ja: 'ピカチュウ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '6.0',
+        en: '13.2',
+        ja: '6.0'
+      }
+    },
+    artist: 'PLANETA Igarashi',
+    attacks: [
+      {
+        name: {
+          es: 'Rayo',
+          en: 'Thunderbolt',
+          ja: '10まんボルト' 
+        },
+        damage: 150,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+        description: {
+          es: 'Descarta todas las Energías de este Pokémon.',
+          en: 'Discard all Energy from this Pokémon.',
+          ja: 'このポケモンからエネルギーをすべてトラッシュ。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Cuando se enfada, este Pokémon descarga la energía que almacena en el interior de las bolsas de las mejillas.',
+      en: 'When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.',
+      ja: '両頬には　電気を　溜めこむ 袋がある｡　怒ると　溜めこんだ 電気を　一気に　放ってくる｡' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.DISCARD],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [259, 281, 285]
+  },
+  {
+    id: 747,
+    order: 698,
+    number: 23,
+    pokedex: 100,
+    name: {
+      es: 'Voltorb',
+      en: 'Voltorb',
+      ja: 'ビリリダマ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Bola',
+        en: 'Ball Pokémon',
+        ja: 'ボールポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '10.4',
+        en: '22.9',
+        ja: '10.4'
+      }
+    },
+    artist: 'Masakazu Fukuda',
+    attacks: [
+      {
+        name: {
+          es: 'Bola Relámpago',
+          en: 'Lightning Ball',
+          ja: 'ピッカリだま' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.ELECTRIC],
+      },
+    ],
+    evolve: [748],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Se mueve rodando. Si el terreno es irregular, una chispa provocada por algún bache lo hará explotar.',
+      en: 'It rolls to move. If the ground is uneven, a sudden jolt from hitting a bump can cause it to explode.',
+      ja: '転がって　移動するので 地面が　デコボコだと ショックで　爆発してしまう｡' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [100, 426, 427, 235]
+  },
+  {
+    id: 748,
+    order: 699,
+    number: 24,
+    pokedex: 101,
+    name: {
+      es: 'Electrode',
+      en: 'Electrode',
+      ja: 'マルマイン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Bola',
+        en: 'Sphere Pokémon',
+        ja: 'きゅうたいポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '66.6',
+        en: '146.8',
+        ja: '66.6'
+      }
+    },
+    artist: 'Shigenori Negishi',
+    attacks: [
+      {
+        name: {
+          es: 'Ataque Tambaleante',
+          en: 'Tumbling Attack',
+          ja: 'ローリングアタック' 
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, este ataque hace 30 puntos de daño más',
+          en: 'Flip a coin. If heads, this attack does 30 more damage.',
+          ja: 'コインを1回投げオモテなら、30ダメージ追加。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Cuanta más energía almacena, mayor velocidad alcanza, aunque aumenta también el riesgo de que explote.',
+      en: 'The more energy it charges up, the faster it gets. But this also makes it more likely to explode.',
+      ja: '電気エネルギーを　溜めこむほど 高速で　動けるようになるが そのぶん　爆発　しやすい｡' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [99, 426, 427, 235]
+  },
+  {
+    id: 749,
+    order: 700,
+    number: 25,
+    pokedex: 417,
+    name: {
+      es: 'Pachirisu',
+      en: 'Pachirisu',
+      ja: 'パチリス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ardillalec',
+        en: 'EleSquirrel Pokémon',
+        ja: 'でんきリスポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '3.9',
+        en: '8.6',
+        ja: '3.9'
+      }
+    },
+    artist: 'imoniii',
+    attacks: [
+      {
+        name: {
+          es: 'Plasma',
+          en: 'Plasma',
+          ja: 'プラズマ' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+        description: {
+          es: 'Une 1 Energía Eléctrica de tu área de Energía a 1 de tus Pokémon Eléctricos en Banca.',
+          en: 'Take a Lightning Energy from your Energy Zone and attach it to 1 of your Benched Pokémon.',
+          ja: '自分のエネルギーゾーンから雷エネルギーを1個出し、ベンチの雷ポケモンにつける。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Forma parte del grupo de Pokémon que posee bolsas de electricidad en las mejillas. Descarga por la cola la electricidad que acumula.',
+      en: 'It\'s one of the kinds of Pokémon with electric cheek pouches. It shoots charges from its tail.',
+      ja: 'ほっぺに 電気袋を 持つ ポケモンの 仲間。 尻尾から 溜まった 電気を 放出する。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [555, 570]
+  },
+  {
+    id: 750,
+    order: 701,
+    number: 26,
+    pokedex: 921,
+    name: {
+      es: 'Pawmi',
+      en: 'Pawmi',
+      ja: 'パモ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '2.5',
+        en: '5.5',
+        ja: '2.5'
+      }
+    },
+    artist: 'Saboteri',
+    attacks: [
+      {
+        name: {
+          es: 'Puño',
+          en: 'Punch',
+          ja: 'パンチ' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.ELECTRIC],
+      }
+    ],
+    evolve: [751],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Como las bolsas de sus mejillas están poco desarrolladas, genera electricidad frotándolas con las almohadillas de sus patas delanteras.',
+      en: 'It has underdeveloped electric sacs on its cheeks. These sacs can produce electricity only if Pawmi rubs them furiously with the pads on its forepaws.',
+      ja: '頬の 電気袋は 未発達。 前脚の 肉球で 懸命に 擦ると ようやく 発電できる。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: []
+  },
+  {
+    id: 751,
+    order: 702,
+    number: 27,
+    pokedex: 922,
+    name: {
+      es: 'Pawmo',
+      en: 'Pawmo',
+      ja: 'パモット' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4',
+        ja: '0.4'
+      },
+      weight: {
+        es: '6.5',
+        en: '14.3',
+        ja: '6.5'
+      }
+    },
+    artist: 'Saboteri',
+    attacks: [
+      {
+        name: {
+          es: 'Puño',
+          en: 'Punch',
+          ja: 'パンチ' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+      }
+    ],
+    evolve: [752],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Cuando su manada se ve amenazada, atacan a la vanguardia usando un arte marcial caracterizado por el empleo de descargas eléctricas.',
+      en: 'When its group is attacked, Pawmo is the first to leap into battle, defeating enemies with a fighting technique that utilizes electric shocks.',
+      ja: '群れが 襲われたときは 電撃を 駆使した 格闘技で 真っ先に 戦いを 挑み 敵を 倒す。' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: []
+  },
+  {
+    id: 752,
+    order: 703,
+    number: 28,
+    pokedex: 923,
+    name: {
+      es: 'Pawmot',
+      en: 'Pawmot',
+      ja: 'パーモット' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Palmada',
+        en: 'Hands-On Pokémonn',
+        ja: 'てあてポケモン'
+      },
+      height: {
+        es: '0.9',
+        en: '2\'11',
+        ja: '0.9'
+      },
+      weight: {
+        es: '41.0',
+        en: '90.4',
+        ja: '41.0'
+      }
+    },
+    artist: 'Saboteri',
+    attacks: [
+      {
+        name: {
+          es: 'Puño Eléctrico',
+          en: 'Electric Punch',
+          ja: 'ビリリパンチ' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+      }
+    ],
+    ability: {
+      name: {
+          es: 'Contragolpe',
+          en: 'Counterattack',
+          ja: 'はんげき' 
+        },
+      description: {
+       es: 'Si este Pokémon está en el Puesto Activo y resulta dañado por un ataque de los Pokémon de tu rival, el Pokémon atacante sufre 20 puntos de daño.',
+       en: 'If this Pokémon is in the Active Spot and is damaged by an attack from your opponent’s Pokémon, do 20 damage to the Attacking Pokémon.',
+       ja: 'このポケモンが、バトル場で相手のポケモンからワザのダメージを受けたとき、ワザを使ったポケモンに20ダメージ。' 
+     }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Este Pokémon es normalmente bastante calmado, pero, una vez en combate, derriba a sus rivales con movimientos de una velocidad vertiginosa.',
+      en: 'This Pokémon normally is slow to react, but once it enters battle, it will strike down its enemies with lightning-fast movements.',
+      ja: '普段は おっとりしているが いざ 戦いになると 電光石火の 身のこなしで 敵を 叩きのめす。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.RARE,
+    retreat: 0,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.RECOIL],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: []
+  },
+  {
+    id: 753,
+    order: 704,
+    number: 29,
+    pokedex: 63,
+    name: {
+      es: 'Abra',
+      en: 'Abra',
+      ja: 'ケーシィ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Psi',
+        en: 'Psi Pokémon',
+        ja: 'ねんりきポケモン'
+      },
+      height: {
+        es: '0.9',
+        en: '2\'11"',
+        ja: '0.9'
+      },
+      weight: {
+        es: '19.5',
+        en: '43',
+        ja: '19.5'
+      }
+    },
+    artist: 'Mousho',
+    attacks: [
+      {
+        name: {
+          es: 'Disparo Psi',
+          en: 'Psyshot',
+          ja: 'サイコショット' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.PSYCHIC],
+      },
+    ],
+    evolve: [754],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Es capaz de usar sus poderes psíquicos aun estando dormido. Al parecer, el contenido del sueño influye en sus facultades.',
+      en: 'This Pokémon uses its psychic powers while it sleeps. The contents of Abra’s dreams affect the powers that the Pokémon wields.',
+      ja: '寝ながら　超能力を　操る｡ 夢の　内容が　使う　力に　影響する｡' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [116, 117, 236]
+  },
+  {
+    id: 754,
+    order: 705,
+    number: 30,
+    pokedex: 64,
+    name: {
+      es: 'Kadabra',
+      en: 'Kadabra',
+      ja: 'ユンゲラー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Psi',
+        en: 'Psi Pokémon',
+        ja: 'ねんりきポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '4\'3"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '56.5',
+        en: '124.6',
+        ja: '56.5'
+      }
+    },
+    artist: 'Mousho',
+    attacks: [
+      {
+        name: {
+          es: 'Disparo Psi',
+          en: 'Psyshot',
+          ja: 'サイコショット' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.PSYCHIC],
+      },
+    ],
+    evolve: [755],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Duerme suspendido en el aire gracias a sus poderes psíquicos. La cola, de una flexibilidad extraordinaria, hace las veces de almohada.',
+      en: 'Using its psychic power, Kadabra levitates as it sleeps. It uses its springy tail as a pillow.',
+      ja: 'サイコパワーで　宙に　浮いたまま 眠る｡　弾力に　優れた　しっぽを 枕がわりに　するぞ｡' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [115, 117, 236]
+  },
+  {
+    id: 755,
+    order: 706,
+    number: 31,
+    pokedex: 65,
+    name: {
+      es: 'Alakazam',
+      en: 'Alakazam',
+      ja: 'フーディン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Psi',
+        en: 'Psi Pokémon',
+        ja: 'ねんりきポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '48.0',
+        en: '105.8',
+        ja: '48.0'
+      }
+    },
+    artist: 'Mousho',
+    attacks: [
+      {
+        name: {
+          es: 'Represión Psíquica',
+          en: 'Psychic Suppression',
+          ja: 'サイコサプレッション' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC],
+        description: {
+          es: 'Este ataque también hace 20 puntos de daño a cada uno de los Pokémon en Banca de tu rival que tenga alguna Energía unida a él.',
+          en: 'This attack also does 20 damage to each of your opponent\'s Benched Pokémon that has any Energy attached.',
+          ja: 'エネルギーがついている相手のベンチポケモン全員にも20ダメージ。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Posee una capacidad intelectual fuera de lo común que le permite recordar todo lo sucedido desde el instante de su nacimiento.',
+      en: 'It has an incredibly high level of intelligence. Some say that Alakazam remembers everything that ever happens to it, from birth till death.',
+      ja: '非常に　高い　知能を　持つ｡ 生まれてから　死ぬまでの　できごとを すべて　覚えている　という｡' 
+    },
+    health: 130,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [115, 116, 236]
+  },
+  {
+    id: 756,
+    order: 707,
+    number: 32,
+    pokedex: 122,
+    name: {
+      es: 'Mr.Mime',
+      en: 'Mr.Mime',
+      ja: 'バリヤード' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Barrera',
+        en: 'Barrier Pokémon',
+        ja: 'バリアーポケモン'
+      },
+      height: {
+        es: '1.3',
+        en: '4\'3"',
+        ja: '1.3'
+      },
+      weight: {
+        es: '54.5',
+        en: '120.2',
+        ja: '54.5'
+      }
+    },
+    artist: 'Atsuko Nishida',
+    attacks: [
+      {
+        name: {
+          es: 'Malabarismo',
+          en: 'Juggling',
+          ja: 'ジャグリング' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 4 monedas. Este ataque hace 20 puntos de daño por cada cara.',
+          en: 'Flip 4 coins. This attack does 20 damage for each heads.',
+          ja: 'コインを4回投げ、オモテの数×20ダメージ。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Muchos estudiosos sostienen que el desarrollo de sus enormes manos se debe a su afán por practicar la pantomima.',
+      en: 'The broadness of its hands may be no coincidence—many scientists believe its palms became enlarged specifically for pantomiming.',
+      ja: '大きな　手のひらは　パントマイムを するために　発達　したと 考える　学者も　多い｡' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: []
+  },
+  {
+    id: 757,
+    order: 708,
+    number: 33,
+    pokedex: 425,
+    name: {
+      es: 'Drifloon',
+      en: 'Drifloon',
+      ja: 'フワンテ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Globo',
+        en: 'Balloon Pokémon',
+        ja: 'ふうせんポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '1.2',
+        en: '2.6',
+        ja: '1.2'
+      }
+    },
+    artist: 'kodama',
+    attacks: [
+      {
+        name: {
+          es: 'Apisonar',
+          en: 'Ram',
+          ja: 'ぶつかる'
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.PSYCHIC]
+      }
+    ],
+    evolve: [758],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Se dice que a veces desaparecen niños qua agarran un Drifloon pensando que es un globo.',
+      en: 'It is whispered that any child who mistakes Drifloon for a balloon and holds on to it could wind up missing.',
+      ja: '風船と 間違えて フワンテを 持っていた 小さな 子どもが 消えてしまうことが あるという。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [446, 537]
+  },
+  {
+    id: 758,
+    order: 709,
+    number: 34,
+    pokedex: 426,
+    name: {
+      es: 'Drifblim',
+      en: 'Drifblim',
+      ja: 'フワライド' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Dirigible',
+        en: 'Blimp Pokémon',
+        ja: 'ききゅうポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '15.0',
+        en: '33.1',
+        ja: '15.0'
+      }
+    },
+    artist: 'Hajime Kusajima',
+    attacks: [
+      {
+        name: {
+          es: 'Tornado',
+          en: 'Gust',
+          ja: 'かぜおこし'
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.PSYCHIC]
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Se dice que esta formado por almas en pena. Al caer la noche, flota a la deriva en silencio sepulcral.',
+      en: 'Some say this Pokémon is a collection of souls burdened with regrets, silently drifting through the dusk.',
+      ja: '無念の 死を とげた 魂が 集まった 姿とも いわれる。 宵闇を 音も なく 漂う。' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 0,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [445, 537]
+  },
+  {
+    id: 759,
+    order: 710,
+    number: 35,
+    pokedex: 487,
+    name: {
+      es: 'Giratina EX',
+      en: 'Giratina EX',
+      ja: 'ギラティナ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Renegado',
+        en: 'Renegade Pokémon',
+        ja: 'はんこつポケモン'
+      },
+      height: {
+        es: '6.9',
+        en: '22\'8"',
+        ja: '6.9'
+      },
+      weight: {
+        es: '650.0',
+        en: '1433',
+        ja: '650.0'
+      }
+    },
+    artist: 'PLANETA Yamashita',
+    attacks: [
+      {
+        name: {
+          es: 'Impacto Caótico',
+          en: 'Chaotic Impact',
+          ja: 'カオスインパクト' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este Pokémon también se hace 20 puntos de daño a sí mismo.',
+          en: 'This Pokémon also does 20 damage to itself.',
+          ja: 'このポケモンにも20ダメージ。' 
+        }
+      }
+    ],
+    ability: {
+      name: {
+          es: 'Bramido de Espacio Fracturado',
+          en: 'Broken-Space Bellow',
+          ja: 'はくうのさけび' 
+        },
+      description: {
+       es: 'Una vez durante tu turno, puedes unir 1 Energía Psíquica de tu área de Energía a este Pokémon. Si usas esta habilidad, tu turno termina.',
+       en: 'Once during your turn, you may take a Psychic Energy from your Energy Zone and attach it to this Pokémon. If you use this Ability, your turn ends.',
+       ja: '自分の番に1回使えて、使ったなら、番は終わる。自分のエネルギーゾーンから超エネルギーを1個出し、このポケモンにつける。' 
+     }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Vive en el Mundo Distorsión, un mundo opuesto al nuestro y cuyas leyes desafían el sentido común.',
+      en: 'This Pokémon is said to live in a world on the reverse side of ours, where common knowledge is distorted and strange.',
+      ja: '常識の 通用しない この世の 裏側にあると 言われる 破れた世界に 生息する。' 
+    },
+    health: 150,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: true,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.ADD_ENERGY,
+      CardSpecialConditionENUM.RECOIL,
+      CardSpecialConditionENUM.END_TURN
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [681, 539]
+  },
+  {
+    id: 760,
+    order: 711,
+    number: 36,
+    pokedex: 487,
+    name: {
+      es: 'Gimmighoul',
+      en: 'Gimmighoul',
+      ja: 'コレクレー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cofre',
+        en: 'Coin Chest Pokémon',
+        ja: 'たからばこポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '5.0',
+        en: '11',
+        ja: '5.0'
+      }
+    },
+    artist: 'HYOGONOSUKE',
+    attacks: [
+      {
+        name: {
+          es: 'Encofrarse',
+          en: 'Chest-ouflage',
+          ja: 'はこにかくれる' 
+        },
+        damage: 0,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, durante el próximo turno de tu rival, evita todo el daño y todos los efectos de los ataques infligidos a este Pokémon.',
+          en: 'Flip a coin. If heads, during your opponent’s next turn, prevent all damage from—and effects of—attacks done to this Pokémon.',
+          ja: 'コインを1回投げオモテなら、次の相手の番、このポケモンはワザのダメージや効果を受けない。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'El cofre en el que nació data de hace 1500 años aproximadamente. Absorbe la energía vital de los granujas que intentan hacerse con su tesoro.',
+      en: 'This Pokémon was born inside a treasure chest about 1,500 years ago. It sucks the life-force out of scoundrels who try to steal the treasure.',
+      ja: 'およそ1500年前 宝箱の中で 生まれた。 宝を 盗む 不埒者の 生気を 吸い取る。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.RESIST,
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 761,
+    order: 712,
+    number: 37,
+    pokedex: 66,
+    name: {
+      es: 'Machop',
+      en: 'Machop',
+      ja: 'ワンリキー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Superpoder',
+        en: 'Superpower Pokémon',
+        ja: 'かいりきポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '19.5',
+        en: '43',
+        ja: '19.5'
+      }
+    },
+    artist: 'Mina Nakai',
+    attacks: [
+      {
+        name: {
+          es: 'Patada Baja',
+          en: 'Low Kick',
+          ja: 'けたぐり' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.FIGHT],
+      },
+    ],
+    evolve: [762],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Es una masa de músculos y, pese a su pequeño tamaño, tiene fuerza de sobra para levantar en brazos a 100 personas.',
+      en: 'Its whole body is composed of muscles. Even though it’s the size of a human child, it can hurl 100 grown-ups.',
+      ja: '全身が　筋肉になっており 子どもほどの　大きさしかないのに 大人　１００人を　投げ飛ばせる｡' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [144, 145, 146, 263, 278]
+  },
+  {
+    id: 762,
+    order: 713,
+    number: 38,
+    pokedex: 67,
+    name: {
+      es: 'Machoke',
+      en: 'Machoke',
+      ja: 'ゴーリキー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Superpoder',
+        en: 'Superpower Pokémon',
+        ja: 'かいりきポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '70.5',
+        en: '155.4',
+        ja: '70.5'
+      }
+    },
+    artist: 'Kouki Saitou',
+    attacks: [
+      {
+        name: {
+          es: 'Aporrear',
+          en: 'Pummel',
+          ja: 'ぶんなぐる' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, este ataque hace 30 puntos de daño más.',
+          en: 'Flip a coin. If heads, this attack does 30 more damage.',
+          ja: 'コインを1回投げオモテなら、30ダメージ追加。' 
+        }
+      },
+    ],
+    evolve: [763],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Su musculoso cuerpo es tan fuerte que usa un cinto antifuerza para controlar sus movimientos.',
+      en: 'Its muscular body is so powerful, it must wear a power-save belt to be able to regulate its motions.',
+      ja: 'すごく　強靭な　肉体なので パワーセーブ　ベルトを　つけて 強さを　制御している｡' 
+    },
+    health: 100,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [143, 145, 146, 263, 278]
+  },
+  {
+    id: 763,
+    order: 714,
+    number: 39,
+    pokedex: 68,
+    name: {
+      es: 'Machamp',
+      en: 'Machamp',
+      ja: 'カイリキー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Superpoder',
+        en: 'Superpower Pokémon',
+        ja: 'かいりきポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '130.0',
+        en: '286.6',
+        ja: '130.0'
+      }
+    },
+    artist: 'Kouki Saitou',
+    attacks: [
+      {
+        name: {
+          es: 'Constricción Poderosa',
+          en: 'Power Press',
+          ja: 'パワープレス' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
+        description: {
+          es: 'Si este Pokémon tiene por lo menos 2 Energías Lucha adicionales unidas a él, este ataque hace 50 puntos de daño más.',
+          en: 'If this Pokémon has at least 2 extra Fighting Energy attached, this attack does 50 more damage.',
+          ja: '追加で闘エネルギーが2個ついているなら、50ダメージ追加。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Mueve rápidamente sus cuatro brazos para asestar incesantes golpes y puñetazos desde todos los ángulos.',
+      en: 'It quickly swings its four arms to rock its opponents with ceaseless punches and chops from all angles.',
+      ja: '４本の腕を　すばやく　動かし あらゆる　角度から　休むことなく パンチや　チョップを　叩きこむ｡' 
+    },
+    health: 150,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [143, 144]
+  },
+  {
+    id: 764,
+    order: 715,
+    number: 40,
+    pokedex: 106,
+    name: {
+      es: 'Hitmonlee',
+      en: 'Hitmonlee',
+      ja: 'サワムラー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Patada',
+        en: 'Kicking Pokémon',
+        ja: 'キックポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '49.8',
+        en: '109.8',
+        ja: '49.8'
+      }
+    },
+    artist: 'Tomokazu Komiya',
+    attacks: [
+      {
+        name: {
+          es: 'Patada',
+          en: 'Kick',
+          ja: 'キック' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.FIGHT],
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Este Pokémon tiene un sentido del equilibrio increíble. Puede dar patadas desde cualquier posición.',
+      en: 'This amazing Pokémon has an awesome sense of balance. It can kick in succession from any position.',
+      ja: '見事な　バランス感覚｡ どんな　姿勢でも　連続で キックを　放てる　すごい　やつ｡' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: []
+  },
+  {
+    id: 765,
+    order: 716,
+    number: 41,
+    pokedex: 107,
+    name: {
+      es: 'Hitmonchan',
+      en: 'Hitmonchan',
+      ja: 'エビワラー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Puñetazo',
+        en: 'Punching Pokémon',
+        ja: 'パンチポケモン'
+      },
+      height: {
+        es: '1.4',
+        en: '4\'7"',
+        ja: '1.4'
+      },
+      weight: {
+        es: '50.2',
+        en: '110.7',
+        ja: '50.2'
+      }
+    },
+    artist: 'Tomokazu Komiya',
+    attacks: [
+      {
+        name: {
+          es: 'Puño Mágnum',
+          en: 'Magnum Punch',
+          ja: 'マグナムパンチ' 
+        },
+        damage: 90,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Sus puñetazos cortan el aire. Son tan veloces que el mínimo roce podría causar una quemadura.',
+      en: 'Its punches slice the air. They are launched at such high speed, even a slight graze could cause a burn.',
+      ja: '空気を　切り裂く　パンチ｡ かすっただけで　火傷に　なるほど パンチの　スピードは　速いのだ｡' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: []
+  },
+  {
+    id: 766,
+    order: 717,
+    number: 42,
+    pokedex: 447,
+    name: {
+      es: 'Riolu',
+      en: 'Riolu',
+      ja: 'リオル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Emanación',
+        en: 'Emanation Pokémon',
+        ja: 'はもんポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '20.2',
+        en: '44.5',
+        ja: '20.2'
+      }
+    },
+    artist: 'You Iribi',
+    attacks: [
+      {
+        name: {
+          es: 'Puño',
+          en: 'Punch',
+          ja: 'パンチ' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT]
+      }
+    ],
+    evolve: [767],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Se comunica con los suyos emitiendo ondas. Puede pasarse toda una noche corriendo.',
+      en: 'They communicate with one another using their auras. They are able to run all through the night.',
+      ja: '仲間同士で 波動を 出して コミュニケーションを とっている。 一晩中 走り続けられる。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [464, 542]
+  },
+  {
+    id: 767,
+    order: 718,
+    number: 43,
+    pokedex: 448,
+    name: {
+      es: 'Lucario EX',
+      en: 'Lucario EX',
+      ja: 'ルカリオ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Aura',
+        en: 'Aura Pokémon',
+        ja: 'はどうポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '54.0',
+        en: '119',
+        ja: '54.0'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Esfera Aural',
+          en: 'Aura Sphere',
+          ja: 'はどうだん' 
+        },
+        damage: 100,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
+        description: {
+          es: 'Este ataque también hace 30 puntos de daño a 1 de los Pokémon en Banca de tu rival.',
+          en: 'This attack also does 30 damage to 1 of your opponent\'s Benched Pokémon.',
+          ja: '相手のベンチポケモン1匹にも30ダメージ。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Dicen que, como es capaz de detectar auras, puede percibir a sus rivales aunque no los vea.',
+      en: 'It’s said that no foe can remain invisible to Lucario, since it can detect auras—even those of foes it could not otherwise see.',
+      ja: '波動を キャッチすることで 見えない 相手の 姿でも 見えると 言われている。' 
+    },
+    health: 150,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ATTACK_BENCH],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [463, 542]
+  },
+  {
+    id: 768,
+    order: 719,
+    number: 44,
+    pokedex: 448,
+    name: {
+      es: 'Flamigo',
+      en: 'Flamigo',
+      ja: 'カラミンゴ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Sincronizado',
+        en: 'Synchronize Pokémon',
+        ja: 'シンクロポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '37.0',
+        en: '81.6',
+        ja: '37.0'
+      }
+    },
+    artist: 'REND',
+    attacks: [
+      {
+        name: {
+          es: 'Doble Patada',
+          en: 'Double Kick',
+          ja: 'にどげり' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
+        description: {
+          es: 'Lanza 2 monedas. Este ataque hace 50 puntos de daño por cada cara.',
+          en: 'Flip 2 coins. This attack does 50 damage for each heads.',
+          ja: 'コインを2回投げ、オモテの数×50ダメージ。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: '	Al parecer, se anudan la base del cuello para impedir que la energía que tienen almacenada en el estómago escape por el pico.',
+      en: 'This Pokémon apparently ties the base of its neck into a knot so that the energy stored in its belly does not escape from its beak.',
+      ja: 'お腹に 溜めた エネルギーが くちばしから 漏れないように 首を 根元で 結んでいるらしい。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: []
+  },
+  {
+    id: 769,
+    order: 720,
+    number: 45,
+    pokedex: 23,
+    name: {
+      es: 'Ekans',
+      en: 'Ekans',
+      ja: 'アーボ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Serpiente',
+        en: 'Snake Pokémon',
+        ja: 'へびポケモン'
+      },
+      height: {
+        es: '2.0',
+        en: '6\'7"',
+        ja: '2.0'
+      },
+      weight: {
+        es: '6.9',
+        en: '15.2',
+        ja: '6.9'
+      }
+    },
+    artist: 'Midori Harada',
+    attacks: [
+      {
+        name: {
+          es: 'Apisonar',
+          en: 'Ram',
+          ja: 'ぶつかる'
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [770],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Es capaz de desencajar la mandíbula para engullir presas enteras mayores que él mismo, tras lo cual se enrosca para descansar.',
+      en: 'By dislocating its jaw, it can swallow prey larger than itself. After a meal, it curls up and rests.',
+      ja: '顎を　外すことで　自分より 大きな　獲物も　丸呑みに　する｡ 食後は　身体を　丸め　休む｡' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [165]
+  },
+  {
+    id: 770,
+    order: 721,
+    number: 46,
+    pokedex: 24,
+    name: {
+      es: 'Arbok',
+      en: 'Arbok',
+      ja: 'アーボック' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cobra',
+        en: 'Cobra Pokémon',
+        ja: 'コブラポケモン'
+      },
+      height: {
+        es: '3.5',
+        en: '11\'6"',
+        ja: '3.5'
+      },
+      weight: {
+        es: '65.0',
+        en: '143.3',
+        ja: '65.0'
+      }
+    },
+    artist: 'Midori Harada',
+    attacks: [
+      {
+        name: {
+          es: 'Colmillo Nocivo',
+          en: 'Venomous Fang',
+          ja: 'どくのキバ' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'El Pokémon Activo de tu rival pasa a estar Envenenado.',
+          en: 'Your opponent\'s Active Pokémon is now Poisoned.',
+          ja: '相手のバトルポケモンをどくにする。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Tras confundir a su presa con el motivo de su cuerpo, se enrosca a su alrededor y la aferra, a la espera de que su pulso se detenga.',
+      en: 'After stunning its opponents with the pattern on its stomach, it quickly wraps them up in its body and waits for them to stop moving.',
+      ja: 'お腹の 模様で ひるませると 素早く 身体で 締め上げて 相手の 鼓動が 止まるのを 待つ。' 
+    },
+    health: 110,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.POISON],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [164]
+  },
+  {
+    id: 771,
+    order: 722,
+    number: 47,
+    pokedex: 194,
+    name: {
+      es: 'Wooper de Paldea',
+      en: 'Paldean Wooper',
+      ja: 'パルデアウパー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pez Veneno',
+        en: 'Poison Fish Pokémon',
+        ja: 'どくうおポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '11.0',
+        en: '24.3',
+        ja: '11.0'
+      }
+    },
+    artist: 'Mori Yuu',
+    attacks: [
+      {
+        name: {
+          es: 'Puya Nociva',
+          en: 'Poison Jab',
+          ja: 'どくづき' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.DARK],
+        description: {
+          es: 'El Pokémon Activo de tu rival pasa a estar Envenenado.',
+          en: 'Your opponent\'s Active Pokémon is now Poisoned.',
+          ja: '相手のバトルポケモンをどくにする。' 
+        }
+      },
+    ],
+    evolve: [772],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Tras perder una disputa territorial, se vio forzado a vivir en tierra firme y desarrolló una membrana mucosa tóxica con la que proteger su cuerpo.',
+      en: 'After losing a territorial struggle, Wooper began living on land. The Pokémon changed over time, developing a poisonous film to protect its body.',
+      ja: '縄張り争いに 敗れて 陸で 暮らすうちに 毒の 粘膜で 体を 保護するように 変わった。' 
+    },
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.POISON],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 772,
+    order: 723,
+    number: 48,
+    pokedex: 194,
+    name: {
+      es: 'Clodsire de Paldea EX',
+      en: 'Paldean Clodsire EX',
+      ja: 'パルデアドオー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pez Púas',
+        en: 'Spiny Fish Pokémon',
+        ja: 'とげうおポケモン'
+      },
+      height: {
+        es: '1.8',
+        en: '5\'11"',
+        ja: '1.8'
+      },
+      weight: {
+        es: '223.0',
+        en: '491.6',
+        ja: '223.0'
+      }
+    },
+    artist: 'PLANETA Mochizuki',
+    attacks: [
+      {
+        name: {
+          es: 'Carga Tóxica',
+          en: 'Venoshock',
+          ja: 'ベノムショック' 
+        },
+        damage: 60,
+        energy: [PokemonTypeENUM.DARK],
+        description: {
+          es: 'Si el Pokémon Activo de tu rival está Envenenado, este ataque hace 60 puntos de daño más.',
+          en: 'If your opponent\'s Active Pokémon is Poisoned, this attack does 60 more damage.',
+          ja: '相手のバトルポケモンがどくなら、60ダメージ追加。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Cuando se siente amenazado, repele al enemigo con sus gruesas púas retráctiles. Esta técnica tan peligrosa es un arma de doble filo.',
+      en: 'When attacked, this Pokémon will retaliate by sticking thick spines out from its body. It’s a risky move that puts everything on the line.',
+      ja: '敵に 襲われると 太い 棘を 胴体から 突き出して 反撃。 身を切る 覚悟の 危険な 技。' 
+    },
+    health: 160,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 773,
+    order: 724,
+    number: 49,
+    pokedex: 442,
+    name: {
+      es: 'Spiritomb',
+      en: 'Spiritomb',
+      ja: 'ミカルゲ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Prohibido',
+        en: 'Forbidden Pokémon',
+        ja: 'ふういんポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '108.0',
+        en: '238.1',
+        ja: '108.0'
+      }
+    },
+    artist: 'Shin Nagasawa',
+    attacks: [
+      {
+        name: {
+          es: 'Rayo Confuso',
+          en: 'Confuse Ray',
+          ja: 'あやしいひかり' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.DARK],
+        description: {
+          es: 'Lanza 1 moneda, Si sale cara, el Pokémon Activo de tu rival pasa a estar Confundido.',
+          en: 'Flip a coin. If heads, your opponent\'s Active Pokémon is now Confused.',
+          ja: 'コインを1回投げオモテなら、相手のバトルポケモンをこんらんにする。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Por sus contantes fechorías se le acabó uniendo a una Piedra Espíritu con un misterioso hechizo.',
+      en: 'Its constant mischief and misdeeds resulted in it being bound to an Odd Keystone by a mysterious spell.',
+      ja: 'いつも 悪さばかり していたら 不思議な 術で 本体を 要石に 縛りつけられた。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.GRASS,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.CONFUSION
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [544]
+  },
+  {
+    id: 774,
+    order: 725,
+    number: 50,
+    pokedex: 944,
+    name: {
+      es: 'Shroodle',
+      en: 'Shroodle',
+      ja: 'シルシュルー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón Tóxico',
+        en: 'Toxic Mouse Pokémon',
+        ja: 'どくねずみポケモン'
+      },
+      height: {
+        es: '0.2',
+        en: '0\'08"',
+        ja: '0.2'
+      },
+      weight: {
+        es: '0.7',
+        en: '1.5',
+        ja: '0.7'
+      }
+    },
+    artist: 'Krgc',
+    attacks: [
+      {
+        name: {
+          es: 'Roer',
+          en: 'Gnaw',
+          ja: 'かじる' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.DARK],
+      }
+    ],
+    evolve: [774],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Es manso, pero muerde y paraliza a quien lo enfada con sus afilados incisivos impregnados de toxinas.',
+      en: 'Though usually a mellow Pokémon, it will sink its sharp, poison-soaked front teeth into any that anger it, causing paralysis in the object of its ire.',
+      ja: '温厚だが 怒らせると 毒が 染みこんだ 鋭い 前歯で 咬みつき 痺れさせてくるぞ。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 775,
+    order: 726,
+    number: 51,
+    pokedex: 945,
+    name: {
+      es: 'Grafaiai',
+      en: 'Grafaiai',
+      ja: 'タギングル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mono Veneno',
+        en: 'Toxic Monkey Pokémon',
+        ja: 'どくざるポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '27.2',
+        en: '60',
+        ja: '27.2'
+      }
+    },
+    artist: 'Krgc',
+    attacks: [
+      {
+        name: {
+          es: 'Mordisco',
+          en: 'Bite',
+          ja: 'かみつく' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK],
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Recubrimiento Venenoso',
+        en: 'Poison Coating',
+        ja: 'どくぬり'
+      },
+      description: {
+        es: 'Una vez durante tu turno, puedes lanzar 1 moneda. Si sale cara, el Pokémon Activo de tu rival pasa a estar Envenenado.',
+        en: 'Once during your turn, you may flip a coin. If heads, your opponent\'s Active Pokémon is now Poisoned.',
+        ja: '自分の番に1回使える。コインを1回投げオモテなら、相手のバトルポケモンをどくにする。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'El color de su saliva venenosa varía según su alimentación. Se embadurna los dedos con ella para pintar motivos en los árboles del bosque.',
+      en: 'The color of the poisonous saliva depends on what the Pokémon eats. Grafaiai covers its fingers in its saliva and draws patterns on trees in forests.',
+      ja: 'エサによって 色が 変化する 毒の 唾液を 指に 塗して 森の 木々に 模様を 描く' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.RARE,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.POISON
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 776,
+    order: 727,
+    number: 52,
+    pokedex: 957,
+    name: {
+      es: 'Tinkatink',
+      en: 'Tinkatink',
+      ja: 'カヌチャン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Forja',
+        en: 'Metalsmith Pokémon',
+        ja: 'かなうちポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'04"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '8.9',
+        en: '19.6',
+        ja: '8.9'
+      }
+    },
+    artist: 'miki kudo',
+    attacks: [
+      {
+        name: {
+          es: 'Puño Tirabuzón',
+          en: 'Corkscrew Punch',
+          ja: 'どつく' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.STEEL],
+      }
+    ],
+    evolve: [776],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Agita su martillo forjado a mano para ahuyentar a posibles amenazas, pero los Pokémon que se alimentan a base de metal suelen robárselo.',
+      en: 'It swings its handmade hammer around to protect itself, but the hammer is often stolen by Pokémon that eat metal.',
+      ja: '手作りの ハンマーを 振りまわして 身を 守るが 金属を 食べる ポケモンには よく 奪われる。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 777,
+    order: 728,
+    number: 53,
+    pokedex: 958,
+    name: {
+      es: 'Tinkatuff',
+      en: 'Tinkatuff',
+      ja: 'ナカヌチャン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Martillo',
+        en: 'Hammer Pokémon',
+        ja: 'ハンマーポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'04"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '59.1',
+        en: '130.3',
+        ja: '59.1'
+      }
+    },
+    artist: 'miki kudo',
+    attacks: [
+      {
+        name: {
+          es: 'Martillo Tenaz',
+          en: 'Tenacious Hammer',
+          ja: 'がんばりハンマー' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, este ataque hace 30 puntos de daño más.',
+          en: 'Flip a coin. If heads, this attack does 30 more damage.',
+          ja: 'コインを1回投げてオモテなら、30ダメージ追加。' 
+        }
+      }
+    ],
+    evolve: [777],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Asalta el séquito entero de un Bisharp para reunir metal con el que forjar su enorme y robusto martillo.',
+      en: 'This Pokémon will attack groups of Pawniard and Bisharp, gathering metal from them in order to create a large and sturdy hammer.',
+      ja: '大きくて 頑丈な ハンマーを 作るために キリキザンの 群れを 襲って 金属を 集める。' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 778,
+    order: 729,
+    number: 54,
+    pokedex: 959,
+    name: {
+      es: 'Tinkaton EX',
+      en: 'Tinkaton EX',
+      ja: 'デカヌチャン EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Martillo',
+        en: 'Hammer Pokémon',
+        ja: 'ハンマーポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'04"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '112.8',
+        en: '248.7',
+        ja: '112.8'
+      }
+    },
+    artist: 'PLANETA Mochizuki',
+    attacks: [
+      {
+        name: {
+          es: 'Martillo Descomunal',
+          en: 'Terrific Thumping',
+          ja: 'ごうかいスタンプ' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, este ataque hace 80 puntos de daño más.',
+          en: 'Flip a coin. If tails, this attack does 80 more damage.',
+          ja: 'コインを1回投げてオモテなら、80ダメージ追加。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Posee una notable inteligencia y una exacerbada personalidad. Si ve Corviknight volando, golpea y lanza rocas con su martillo para derribarlos.',
+      en: 'This intelligent Pokémon has a very daring disposition. It knocks rocks into the sky with its hammer, aiming for flying Corviknight.',
+      ja: '知能が 高く とても 豪快。 ハンマーで 岩を 殴り飛ばして 空飛ぶ アーマーガアを 狙う。' 
+    },
+    health: 170,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 779,
+    order: 730,
+    number: 55,
+    pokedex: 965,
+    name: {
+      es: 'Varoom',
+      en: 'Varoom',
+      ja: 'ブロロン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Monocilindro',
+        en: 'Single-Cyl Pokémon',
+        ja: 'たんきとうポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '35.0',
+        en: '77.2',
+        ja: '35.0'
+      }
+    },
+    artist: 'Souichirou Gunjima',
+    attacks: [
+      {
+        name: {
+          es: 'Golpe Cabeza',
+          en: 'Headbutt',
+          ja: 'ずつき' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.STEEL],
+      }
+    ],
+    evolve: [779],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Se dice que surgió cuando un misterioso Pokémon venenoso tomó posesión de un motor abandonado en un desguace.',
+      en: 'It is said that this Pokémon was born when an unknown poison Pokémon entered and inspirited an engine left at a scrap-processing factory.',
+      ja: 'スクラップ工場に 放置された エンジンに 謎の 毒ポケモンが 入り込んで 生まれたと 言われる。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 780,
+    order: 731,
+    number: 56,
+    pokedex: 966,
+    name: {
+      es: 'Revavroom',
+      en: 'Revavroom',
+      ja: 'ブロロローム' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Policilindro',
+        en: 'Multi-Cyl Pokémon',
+        ja: 'たきとうポケモン'
+      },
+      height: {
+        es: '1.8',
+        en: '5\'11"',
+        ja: '1.8'
+      },
+      weight: {
+        es: '120.0',
+        en: '264.6',
+        ja: '120.0'
+      }
+    },
+    artist: 'Souichirou Gunjima',
+    attacks: [
+      {
+        name: {
+          es: 'Corriente Giratoria',
+          en: 'Spinning Drift',
+          ja: 'スピンドリフト' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, durante el próximo turno de tu rival, evita todo el daño y todos los efectos de los ataques infligidos a este Pokémon.',
+          en: 'Flip a coin. If heads, during your opponent\'s next turn, prevent all damage from—and effects of—attacks done to this Pokémon.',
+          ja: 'コインを1回投げオモテなら、次の相手の番、このポケモンはワザのダメージや効果を受けない。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Posee ocho cilindros, con los que genera energía haciendo estallar el gas que produce al mezclar los minerales de las rocas con su veneno.',
+      en: 'It creates a gas out of poison and minerals from rocks. It then detonates the gas in its cylinders—now numbering eight—to generate energy.',
+      ja: '毒素と 岩の 成分を 混ぜた ガスを ８つに 増えた シリンダーで 爆発させ エネルギーを 作る。' 
+    },
+    health: 110,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.RESIST
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 781,
+    order: 732,
+    number: 57,
+    pokedex: 1000,
+    name: {
+      es: 'Gholdengo',
+      en: 'Gholdengo',
+      ja: 'サーフゴー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Tesoro',
+        en: 'Coin Entity Pokémon',
+        ja: 'たからものポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '30.0',
+        en: '66.1',
+        ja: '30.0'
+      }
+    },
+    artist: 'HYOGONOSUKE',
+    attacks: [
+      {
+        name: {
+          es: 'Surfeo Resplandeciente',
+          en: 'Scintillating Surfing',
+          ja: 'ゴージャスサーフ' 
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 1 moneda por cada Energia Metálica unida a este Pokémon. Este ataque hace 50 puntos de daño por cada cara.',
+          en: 'Flip a coin for each Metal Energy attached to this Pokémon. This attack does 50 damage for each heads.',
+          ja: 'このポケモンの鋼エネルギーの数ぶんコインを投げ、オモテの数×50ダメージ。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Se dice que su cuerpo está formado por 1000 monedas. Es capaz de hacer buenas migas con cualquiera rápidamente por su sociabilidad.',
+      en: 'Its body seems to be made up of 1,000 coins. This Pokémon gets along well with others and is quick to make friends with anybody.',
+      ja: '1000枚の コインで 体が できているらしい。 人懐こく だれとでも すぐに 仲良くなれる。' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 782,
+    order: 733,
+    number: 58,
+    pokedex: 19,
+    name: {
+      es: 'Rattata',
+      en: 'Rattata',
+      ja: 'コラッタ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '3.5',
+        en: '7.7',
+        ja: '3.5'
+      }
+    },
+    artist: 'Eri Yamaki',
+    attacks: [
+      {
+        name: {
+          es: 'Placaje',
+          en: 'Tackle',
+          ja: 'たいあたり' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [782],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Sus incisivos crecen durante toda su vida. Si aumentan demasiado de tamaño, no puede alimentarse y muere de inanición.',
+      en: 'Its incisors grow continuously throughout its life. If its incisors get too long, this Pokémon becomes unable to eat, and it starves to death.',
+      ja: '一生　前歯が　伸び続ける｡ あまりに　伸びすぎると　エサが 食べられなくなって　餓死　する｡' 
+    },
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [190]
+  },
+  {
+    id: 783,
+    order: 734,
+    number: 59,
+    pokedex: 20,
+    name: {
+      es: 'Raticate',
+      en: 'Raticate',
+      ja: 'ラッタ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '18.5',
+        en: '40.8',
+        ja: '18.5'
+      }
+    },
+    artist: 'Kyoko Umemoto',
+    attacks: [
+      {
+        name: {
+          es: 'Placaje',
+          en: 'Tackle',
+          ja: 'たいあたり' 
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Las pequeñas membranas que tiene en las patas traseras le permiten nadar entre las islas de Alola y escapar así de sus depredadores.',
+      en: 'People say that it fled from its enemies by using its small webbed hind feet to swim from island to island in Alola.',
+      ja: '後ろ足の　小さい　水かきで 海を　泳いで　島を　渡り 敵から　逃げていた　という｡' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [189]
+  },
+  {
+    id: 784,
+    order: 735,
+    number: 60,
+    pokedex: 39,
+    name: {
+      es: 'Jigglypuff',
+      en: 'Jigglypuff',
+      ja: 'プリン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Globo',
+        en: 'Balloon Pokémon',
+        ja: 'ふうせんポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8',
+        ja: '0.5'
+      },
+      weight: {
+        es: '5.5',
+        en: '12.1',
+        ja: '5.5'
+      }
+    },
+    artist: 'Kanako Eo',
+    attacks: [
+      {
+        name: {
+          es: 'Rodar',
+          en: 'Rollout',
+          ja: 'ころがる' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [784],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Cuando le tiemblan sus redondos y adorables ojos, entona una melodía agradable y misteriosa con la que duerme a sus enemigos.',
+      en: 'When its huge eyes waver, it sings a mysteriously soothing melody that lulls its enemies to sleep.',
+      ja: 'つぶらな　瞳が　揺れるとき 眠たくなるような　不思議で 気持ちのいい　歌を　歌う｡' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [194, 195, 265, 279, 601]
+  },
+  {
+    id: 785,
+    order: 736,
+    number: 61,
+    pokedex: 40,
+    name: {
+      es: 'Wigglytuff',
+      en: 'Wigglytuff',
+      ja: 'プクリン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Globo',
+        en: 'Balloon Pokémon',
+        ja: 'ふうせんポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '12.0',
+        en: '26.5',
+        ja: '12.0'
+      }
+    },
+    artist: 'miki kudo',
+    attacks: [
+      {
+        name: {
+          es: 'Bofetada Gentil',
+          en: 'Gentle Slap',
+          ja: 'ひっぱたく' 
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    ability: {
+      name: {
+        es: 'Canción Reconfortante',
+        en: 'Comforting Song',
+        ja: 'やすらぎのうた' 
+      },
+      description: {
+        es: 'Una vez durante tu turno, puedes curar 20 puntos de daño a tu Pokémon Activo.',
+        en: 'Once during your turn, you may heal 20 damage from your Active Pokémon.',
+        ja: '自分の番に1回使える。自分のバトルポケモンのHPを20回復。' 
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Tiene un pelaje muy fino. Se recomienda no enfadarlo, o se inflará y golpeará con todo su cuerpo.',
+      en: 'It has a very fine fur. Take care not to make it angry, or it may inflate steadily and hit with a body slam.',
+      ja: 'キメ細やかな　毛皮の　持ち主｡ 怒らせると　どんどん　ふくらみ のしかかってくるので　注意｡' 
+    },
+    health: 100,
+    rarity: CardRarityENUM.RARE,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.HEAL],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [193, 601]
+  },
+  {
+    id: 786,
+    order: 737,
+    number: 62,
+    pokedex: 108,
+    name: {
+      es: 'Lickitung',
+      en: 'Lickitung',
+      ja: 'ベロリンガ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Lametazo',
+        en: 'Licking Pokémon',
+        ja: 'なめまわしポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '65.5',
+        en: '144.4',
+        ja: '65.5'
+      }
+    },
+    artist: 'Sumiyoshi Kizuki',
+    attacks: [
+      {
+        name: {
+          es: 'Rodar',
+          en: 'Rollout',
+          ja: 'ころがる' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [786],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Si sus lametones no se tratan a tiempo, su saliva pegajosa y urticante puede provocar picores persistentes.',
+      en: 'If this Pokémon’s sticky saliva gets on you and you don’t clean it off, an intense itch will set in. The itch won’t go away, either.',
+      ja: 'ネバネバした　唾液に　触れたまま 放っておくと　ものすごい　痒みが はじまり　とまらなくなるぞ｡' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [496, 497, 561, 575]
+  },
+  {
+    id: 787,
+    order: 738,
+    number: 63,
+    pokedex: 463,
+    name: {
+      es: 'Lickilicky',
+      en: 'Lickilicky',
+      ja: 'ベロベルト' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Lametazo',
+        en: 'Licking Pokémon',
+        ja: 'なめまわしポケモン'
+      },
+      height: {
+        es: '1.7',
+        en: '5\'07"',
+        ja: '1.7'
+      },
+      weight: {
+        es: '140.0',
+        en: '308.6',
+        ja: '140.0'
+      }
+    },
+    artist: 'Suwama Chiaki',
+    attacks: [
+      {
+        name: {
+          es: 'Rodar',
+          en: 'Rollout',
+          ja: 'ころがる' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Posee una lengua retráctil que, extendida, alcanza más de diez veces su tamaño. Su saliva contiene agentes disolventes que es mejor evitar.',
+      en: 'Lickilicky\'s strange tongue can stretch to many times the length of its body. No one has figured out how Lickilicky\'s tongue can stretch so far.',
+      ja: '体の 何倍もの 長さまで 伸びる 不思議な ベロを もつ。 その 不思議は 未解明のまま。' 
+    },
+    health: 130,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [201, 496, 561, 575]
+  },
+  {
+    id: 788,
+    order: 739,
+    number: 64,
+    pokedex: 399,
+    name: {
+      es: 'Bidoof',
+      en: 'Bidoof',
+      ja: 'ビッパ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gran Ratón',
+        en: 'Plump Mouse Pokémon',
+        ja: 'まるねずみポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '20.0',
+        en: '44.1',
+        ja: '20.0'
+      }
+    },
+    artist: 'Sekio',
+    attacks: [
+      {
+        name: {
+          es: 'Golpe Cabeza',
+          en: 'Headbutt',
+          ja: 'ずつき' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [788],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Tiene nervios de acero y nada puede perturbarlo. Es más ágil y activo de lo que aparenta.',
+      en: 'With nerves of steel, nothing can perturb it. It is more agile and active than it appears.',
+      ja: 'なにごとにも 動じない 図太い 神経の 持ち主。 見かけの 割には 機敏に 活動する。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [508, 549]
+  },
+  {
+    id: 789,
+    order: 740,
+    number: 65,
+    pokedex: 400,
+    name: {
+      es: 'Bibarel EX',
+      en: 'Bibarel EX',
+      ja: 'ビーダル EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Castor',
+        en: 'Beaver Pokémon',
+        ja: 'ビーバーポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '31.5',
+        en: '69.4',
+        ja: '31.5'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Presión Despreocupada',
+          en: 'Carefree Press',
+          ja: 'のびのびプレス' 
+        },
+        damage: 100,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Cura 30 puntos de daño a este Pokémon.',
+          en: 'Heal 30 damage from this Pokémon.',
+          ja: 'このポケモンのHPを30回復。'
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Con sus incisivos roe ramas y raíces y las apila para construir sus madrigueras junto al río.',
+      en: 'It busily makes its nest with stacks of branches and roots it has cut up with its sharp incisors.',
+      ja: '鋭い 前歯で 削り取った 木の枝や 根っこを 積み上げて 水辺に せっせと 巣を 作る。' 
+    },
+    health: 160,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.HEAL],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [507, 549]
+  },
+  {
+    id: 790,
+    order: 741,
+    number: 66,
+    pokedex: 427,
+    name: {
+      es: 'Buneary',
+      en: 'Buneary',
+      ja: 'ミミロル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Conejo',
+        en: 'Rabbit Pokémon',
+        ja: 'うさぎポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '5.5',
+        en: '12.1',
+        ja: '5.5'
+      }
+    },
+    artist: 'Kagemaru Himeno',
+    attacks: [
+      {
+        name: {
+          es: 'Destructor',
+          en: 'Pound',
+          ja: 'はたく' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL]
+      },
+    ],
+    evolve: [790],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Cuando enrolla ambas orejas, es señal de que tiene algún tipo de malestar físico o emocional y necesita cuidados.',
+      en: 'If both of Buneary’s ears are rolled up, something is wrong with its body or mind. It’s a sure sign the Pokémon is in need of care.',
+      ja: '左右の 耳を 丸めているときは 体や 心の 不調が 原因なので ケアが 必要。' 
+    },
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [510]
+  },
+  {
+    id: 791,
+    order: 742,
+    number: 67,
+    pokedex: 428,
+    name: {
+      es: 'Lopunny',
+      en: 'Lopunny',
+      ja: 'ミミロップ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Conejo',
+        en: 'Rabbit Pokémon',
+        ja: 'うさぎポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '33.3',
+        en: '73.4',
+        ja: '33.3'
+      }
+    },
+    artist: 'Minahamu',
+    attacks: [
+      {
+        name: {
+          es: 'Disparo Salto',
+          en: 'Hopping Shot',
+          ja: 'ホッピングシュート' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Está siempre atento a lo que ocurre a su alrededor. Si advierte peligro, se defenderá con patadas de potencia devastadora.',
+      en: 'Lopunny is constantly monitoring its surroundings. If danger approaches, this Pokémon responds with superdestructive kicks.',
+      ja: 'まわりの 様子を つねに 気にして 危険が およぶと 破壊力 抜群の キックを おみまいする。' 
+    },
+    health: 100,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [509]
+  },
+  {
+    id: 792,
+    order: 743,
+    number: 68,
+    pokedex: 967,
+    name: {
+      es: 'Cyclizar',
+      en: 'Cyclizar',
+      ja: 'モトトカゲ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Montura',
+        en: 'Mount Pokémon',
+        ja: 'ライドポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '63.0',
+        en: '138.9',
+        ja: '63.0'
+      }
+    },
+    artist: 'HAGIYA Kaoru',
+    attacks: [
+      {
+        name: {
+          es: 'Alta Aceleración',
+          en: 'Overacceleration',
+          ja: 'オーバーアクセル' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Durante tu próximo turno, el ataque Alta Aceleración de este Pokémon hace +20 puntos de daño.',
+          en: 'During your next turn, this Pokémon\'s Overacceleration attack does +20 damage.',
+          ja: '次の自分の番、このポケモンの「オーバーアクセル」のダメージを+20する。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Según parece, ha permitido que los humanos monten en él desde tiempos remotos. Aparece en pinturas rupestres de hace diez mil años.',
+      en: 'Apparently Cyclizar has been allowing people to ride on its back since ancient times. Depictions of this have been found in 10,000-year-old murals.',
+      ja: '大昔から 人を 背中に 乗せていたらしい。 1万年前の 壁画に 様子が 描かれている。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: []
+  },
+  {
+    id: 793,
+    order: 744,
+    number: 69,
+    name: {
+      es: 'e-Nigma',
+      en: 'Iono',
+      ja: 'ナンジャモ' 
+    },
+    artist: 'saino misaki',
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Cada jugador pone las cartas de su mano en su baraja y las baraja todas. Después, roba ese mismo número de cartas.',
+      en: 'Each player shuffles the cards in their hand into their deck, then draws that many cards.',
+      ja: 'おたがいのプレイヤーは、それぞれの手札をすべて山札にもどす。その後、それぞれもどした枚数ぶん、山札を引く。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.PLAY_CARDS],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
+  },
+  {
+    id: 794,
+    order: 745,
+    number: 70,
+    name: {
+      es: 'Chica del Centro Pokémon',
+      en: 'Pokémon Center Lady',
+      ja: 'ポケモンセンターのお姉さん' 
+    },
+    artist: 'Susumu Maeya',
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Cura 30 puntos de daño a 1 de tus Pokémon, y este se recupera de todas las Condiciones Especiales.',
+      en: 'Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.',
+      ja: '自分のポケモン1匹のHPを30回復し、特殊状態もすべて回復。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.HEAL],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
+  },
+  {
+    id: 795,
+    order: 746,
+    number: 71,
+    name: {
+      es: 'Rojo',
+      en: 'Red',
+      ja: 'レッド' 
+    },
+    artist: 'Teeziro',
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Durante este turno, los ataques de tus Pokémon hacen +20 puntos de daño al Pokémon EX Activo de tu rival.',
+      en: 'During this turn, attacks used by your Pokémon do +20 damage to your opponent\'s Active Pokémon ex.',
+      ja: 'この番、自分のポケモンが使うワザの、相手のバトル上の「ポケモンex」へのダメージを+20する。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.EXTRA_DAMAGE,
+      CardSpecialConditionENUM.PLUS_EX
+    ],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
+  },
+  {
+    id: 796,
+    order: 747,
+    number: 72,
+    name: {
+      es: 'Recluta del Team Rocket',
+      en: 'Team Rocket Grunt',
+      ja: 'ロケット団のしたっぱ' 
+    },
+    artist: 'kantaro',
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Lanza 1 moneda hasta que salga cruz. Por cada cara, descarta 1 Energía aleatoria del Pokémon Activo de tu rival.',
+      en: 'Flip a coin until you get tails. For each heads, discard a random Energy from your opponent\'s Active Pokémon.',
+      ja: 'ウラが出るまでコインを投げ、オモテの数ぶん、相手のバトルポケモンからエネルギーをランダムにトラッシュ。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.DISCARD
+    ],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
+  },
+  {
+    id: 797,
+    order: 748,
+    number: 73,
+    pokedex: 908,
+    name: {
+      es: 'Meowscarada',
+      en: 'Meowscarada',
+      ja: 'マスカーニャ'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mago',
+        en: 'Magician Pokémon',
+        ja: 'マジシャンポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '31.2',
+        en: '68.8',
+        ja: '31.2'
+      }
+    },
+    artist: 'danciao',
+    attacks: [
+      {
+        name: {
+          es: 'Garras Luchadoras',
+          en: 'Fighting Claws',
+          ja: 'とうしのツメ'
+        },
+        damage: 60,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Si el Pokémon Activo de tu rival es un Pokémon EX. este ataque hace 70 puntos de daño más',
+          en: 'If your opponent\'s Active Pokémon is a Pokémon ex, this attack does 70 more damage.',
+          ja: '相手のバトルポケモンが「ポケモンex」なら、70ダメージを追加。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Se sirve de la luz que reflejan los tricomas de su manto de hojas para camuflar la vid y crear la ilusión óptica de que la flor flota en el aire.',
+      en: 'This Pokémon uses the reflective fur lining its cape to camouflage the stem of its flower, creating the illusion that the flower is floating.',
+      ja: '浮いているように 見える 花は マント裏の 毛の 反射で 茎を カモフラージュしているのだ。'
+    },
+    health: 140,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.PLUS_EX
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 798,
+    order: 749,
+    number: 74,
+    pokedex: 418,
+    name: {
+      es: 'Buizel',
+      en: 'Buizel',
+      ja: 'ブイゼル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Nutria Marina',
+        en: 'Sea Weasel Pokémon',
+        ja: 'うみイタチポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '29.5',
+        en: '65',
+        ja: '29.5'
+      }
+    },
+    artist: 'Shimaris Yukichi',
+    attacks: [
+      {
+        name: {
+          es: 'Pistola Agua',
+          en: 'Water Gun',
+          ja: 'みずでっぽう' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'La vejiga natatoria alrededor del cuello le permite flotar en el agua con la cabeza fuera para divisar a sus presas.',
+      en: 'It inflates its flotation sac, keeping its face above water in order to watch for prey movement.',
+      ja: 'くびの うきぶくろを ふくらませて すいめんに かおを だし ちじょうの えものの うごきを さぐるのだ。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [741]
+  },
+  {
+    id: 799,
+    order: 750,
+    number: 75,
+    pokedex: 978,
+    name: {
+      es: 'Tatsugiri',
+      en: 'Tatsugiri',
+      ja: 'シャリタツ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mimetismo',
+        en: 'Mimicry Pokémon',
+        ja: 'ぎたいポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '8.0',
+        en: '17.6',
+        ja: '8.0'
+      }
+    },
+    artist: 'cochi8i',
+    attacks: [
+      {
+        name: {
+          es: 'Golpe de Lluvia',
+          en: 'Rain Splash',
+          ja: 'みずかけ' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.WATER],
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Orden de Retirada',
+        en: 'Retreat Directive',
+        ja: 'てったいしじ' 
+      },
+      description: {
+        es: 'Tu Dodonzo Activo no tiene ningún Coste de Retirada.',
+        en: 'Your Active Dondozo has no Retreat Cost.',
+        ja: 'このポケモンがいるかぎり、自分のバトル場の「ヘイラッシャ」のにげるためのエネルギーを、すべてなくす。' 
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Pokémon dragón de pequeño tamaño. Vive en la boca de un Dodonzo para protegerse de los ataques de los depredadores.',
+      en: 'This is a small dragon Pokémon. It lives inside the mouth of Dondozo to protect itself from enemies on the outside.',
+      ja: '小型の ドラゴンポケモン。 ヘイラッシャの 口の中に 棲み 外敵から 身を 守っている。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.RETIRE,
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 800,
+    order: 751,
+    number: 76,
+    pokedex: 945,
+    name: {
+      es: 'Grafaiai',
+      en: 'Grafaiai',
+      ja: 'タギングル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Mono Veneno',
+        en: 'Toxic Monkey Pokémon',
+        ja: 'どくざるポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '27.2',
+        en: '60',
+        ja: '27.2'
+      }
+    },
+    artist: 'Teeziro',
+    attacks: [
+      {
+        name: {
+          es: 'Mordisco',
+          en: 'Bite',
+          ja: 'かみつく' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.DARK, PokemonTypeENUM.DARK],
+      }
+    ],
+    ability: {
+      name: {
+        es: 'Recubrimiento Venenoso',
+        en: 'Poison Coating',
+        ja: 'どくぬり'
+      },
+      description: {
+        es: 'Una vez durante tu turno, puedes lanzar 1 moneda. Si sale cara, el Pokémon Activo de tu rival pasa a estar Envenenado.',
+        en: 'Once during your turn, you may flip a coin. If heads, your opponent\'s Active Pokémon is now Poisoned.',
+        ja: '自分の番に1回使える。コインを1回投げオモテなら、相手のバトルポケモンをどくにする。'
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'El color de su saliva venenosa varía según su alimentación. Se embadurna los dedos con ella para pintar motivos en los árboles del bosque.',
+      en: 'The color of the poisonous saliva depends on what the Pokémon eats. Grafaiai covers its fingers in its saliva and draws patterns on trees in forests.',
+      ja: 'エサによって 色が 変化する 毒の 唾液を 指に 塗して 森の 木々に 模様を 描く' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.ART,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.POISON
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 801,
+    order: 752,
+    number: 77,
+    pokedex: 1000,
+    name: {
+      es: 'Gholdengo',
+      en: 'Gholdengo',
+      ja: 'サーフゴー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Tesoro',
+        en: 'Coin Entity Pokémon',
+        ja: 'たからものポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '30.0',
+        en: '66.1',
+        ja: '30.0'
+      }
+    },
+    artist: 'Jerky',
+    attacks: [
+      {
+        name: {
+          es: 'Surfeo Resplandeciente',
+          en: 'Scintillating Surfing',
+          ja: 'ゴージャスサーフ' 
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 1 moneda por cada Energia Metálica unida a este Pokémon. Este ataque hace 50 puntos de daño por cada cara.',
+          en: 'Flip a coin for each Metal Energy attached to this Pokémon. This attack does 50 damage for each heads.',
+          ja: 'このポケモンの鋼エネルギーの数ぶんコインを投げ、オモテの数×50ダメージ。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Se dice que su cuerpo está formado por 1000 monedas. Es capaz de hacer buenas migas con cualquiera rápidamente por su sociabilidad.',
+      en: 'Its body seems to be made up of 1,000 coins. This Pokémon gets along well with others and is quick to make friends with anybody.',
+      ja: '1000枚の コインで 体が できているらしい。 人懐こく だれとでも すぐに 仲良くなれる。' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.ART,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 802,
+    order: 753,
+    number: 78,
+    pokedex: 40,
+    name: {
+      es: 'Wigglytuff',
+      en: 'Wigglytuff',
+      ja: 'プクリン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Globo',
+        en: 'Balloon Pokémon',
+        ja: 'ふうせんポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '12.0',
+        en: '26.5',
+        ja: '12.0'
+      }
+    },
+    artist: '5ban Graphics',
+    attacks: [
+      {
+        name: {
+          es: 'Bofetada Gentil',
+          en: 'Gentle Slap',
+          ja: 'ひっぱたく' 
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    ability: {
+      name: {
+        es: 'Canción Reconfortante',
+        en: 'Comforting Song',
+        ja: 'やすらぎのうた' 
+      },
+      description: {
+        es: 'Una vez durante tu turno, puedes curar 20 puntos de daño a tu Pokémon Activo.',
+        en: 'Once during your turn, you may heal 20 damage from your Active Pokémon.',
+        ja: '自分の番に1回使える。自分のバトルポケモンのHPを20回復。' 
+      }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Tiene un pelaje muy fino. Se recomienda no enfadarlo, o se inflará y golpeará con todo su cuerpo.',
+      en: 'It has a very fine fur. Take care not to make it angry, or it may inflate steadily and hit with a body slam.',
+      ja: 'キメ細やかな　毛皮の　持ち主｡ 怒らせると　どんどん　ふくらみ のしかかってくるので　注意｡' 
+    },
+    health: 100,
+    rarity: CardRarityENUM.ART,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.HEAL],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [193, 601]
+  },
+  {
+    id: 803,
+    order: 754,
+    number: 79,
+    pokedex: 15,
+    name: {
+      es: 'Beedrill EX',
+      en: 'Beedrill EX',
+      ja: 'スピアー EX'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Abeja Veneno',
+        en: 'Poison Bee Pokémon',
+        ja: 'どくばちポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '29.5',
+        en: '65',
+        ja: '29.5'
+      }
+    },
+    artist: 'PLANETA Igarashi',
+    attacks: [
+      {
+        name: {
+          es: 'Lanza Devastadora',
+          en: 'Crushing Spear',
+          ja: 'クラッシュスピア'
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Descarta 1 Energía aleatoria del Pokémon Activo de tu rival.',
+          en: 'Discard a random Energy from your opponent\'s Active Pokémon.',
+          ja: '相手のバトルポケモンからエネルギーをランダムに1個トラッシュ。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Tiene 3 aguijones venenosos en sus patas y cola. Suelen pinchar a sus enemigos repetidas veces.',
+      en: 'It has three poisonous stingers on its forelegs and its tail. They are used to jab its enemy repeatedly.',
+      ja: '両手と　お尻にある　３本の　毒針で 相手を　刺して　刺して 刺しまくって　攻撃する｡'
+    },
+    health: 170,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.DISCARD],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [8, 9]
+  },
+  {
+    id: 804,
+    order: 755,
+    number: 80,
+    pokedex: 6,
+    name: {
+      es: 'Charizard EX',
+      en: 'Charizard EX',
+      ja: 'リザードン EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Llama',
+        en: 'Flame Pokémon',
+        ja: 'かえんポケモン'
+      },
+      height: {
+        es: '1.7',
+        en: '5\'7"',
+        ja: '1.7'
+      },
+      weight: {
+        es: '90.5',
+        en: '199.5',
+        ja: '90.5'
+      }
+    },
+    artist: 'PLANETA Igarashi',
+    attacks: [
+      {
+        name: {
+          es: 'Atizador',
+          en: 'Stoke',
+          ja: 'もえあがる' 
+        },
+        damage: 0,
+        energy: [PokemonTypeENUM.FIRE],
+        description: {
+          es: 'Une 3 Energías Fuego de tu área de Energía a este Pokémon.',
+          en: 'Take 3 Fire Energy from your Energy Zone and attach it to this Pokémon.',
+          ja: '自分のエネルギーゾーンから炎エネルギーを3個出し、このポケモンにつける。' 
+        }
+      },
+      {
+        name: {
+          es: 'Artillería de Vapor',
+          en: 'Steam Artillery',
+          ja: 'ばくねつほう' 
+        },
+        damage: 150,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Escupe un fuego tan caliente que funde las rocas. Causa incendios forestales sin querer.',
+      en: 'It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames.',
+      ja: '岩石も　焼けるような 灼熱の　炎を　吐いて 山火事を　起こすことが　ある｡' 
+    },
+    health: 180,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 3,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [33, 34, 230, 611]
+  },
+  {
+    id: 805,
+    order: 756,
+    number: 81,
+    pokedex: 961,
+    name: {
+      es: 'Wugtrio EX',
+      en: 'Wugtrio EX',
+      ja: 'ウミトリオ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cóngrido',
+        en: 'Garden Eel Pokémon',
+        ja: 'あなごポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '5.4',
+        en: '11.9',
+        ja: '5.4'
+      }
+    },
+    artist: 'PLANETA Tsuji',
+    attacks: [
+      {
+        name: {
+          es: 'Vapuleo por Sorteo',
+          en: 'Pop Out Throughout',
+          ja: 'あちこちとびだす' 
+        },
+        damage: 150,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+        description: {
+          es: 'Se elige 3 veces a un Pokémon aleatorio de tu rival. Haz a cada uno 50 puntos de daño por cada vez que haya resultado elegido.',
+          en: '1 of your opponent\'s Pokémon is chosen at random 3 times. For each time a Pokémon is chosen, do 50 damage to it.',
+          ja: '相手のポケモンがランダムに3回選ばれ、選ばれたポケモン全員に、選ばれた回数×50ダメージ。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Es de temperamento agresivo, aunque no lo parezca. Envuelve a sus presas con sus largos cuerpos y las arrastra a su nido.',
+      en: 'It has a vicious temperament, contrary to what its appearance may suggest. It wraps its long bodies around prey, then drags the prey into its den.',
+      ja: '見かけによらず　気性が　荒い。　長い　体で　獲物を　締め上げ　巣穴に　引きずりこむぞ。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: true,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH,
+      CardSpecialConditionENUM.RANDOM_ATTACK
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [742]
+  },
+  {
+    id: 806,
+    order: 757,
+    number: 82,
+    pokedex: 25,
+    name: {
+      es: 'Pikachu EX',
+      en: 'Pikachu EX',
+      ja: 'ピカチュウ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '6.0',
+        en: '13.2',
+        ja: '6.0'
+      }
+    },
+    artist: 'PLANETA Igarashi',
+    attacks: [
+      {
+        name: {
+          es: 'Rayo',
+          en: 'Thunderbolt',
+          ja: '10まんボルト' 
+        },
+        damage: 150,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+        description: {
+          es: 'Descarta todas las Energías de este Pokémon.',
+          en: 'Discard all Energy from this Pokémon.',
+          ja: 'このポケモンからエネルギーをすべてトラッシュ。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Cuando se enfada, este Pokémon descarga la energía que almacena en el interior de las bolsas de las mejillas.',
+      en: 'When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.',
+      ja: '両頬には　電気を　溜めこむ 袋がある｡　怒ると　溜めこんだ 電気を　一気に　放ってくる｡' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.DISCARD],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [259, 281, 285]
+  },
+  {
+    id: 807,
+    order: 758,
+    number: 83,
+    pokedex: 487,
+    name: {
+      es: 'Giratina EX',
+      en: 'Giratina EX',
+      ja: 'ギラティナ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Renegado',
+        en: 'Renegade Pokémon',
+        ja: 'はんこつポケモン'
+      },
+      height: {
+        es: '6.9',
+        en: '22\'8"',
+        ja: '6.9'
+      },
+      weight: {
+        es: '650.0',
+        en: '1433',
+        ja: '650.0'
+      }
+    },
+    artist: 'PLANETA Yamashita',
+    attacks: [
+      {
+        name: {
+          es: 'Impacto Caótico',
+          en: 'Chaotic Impact',
+          ja: 'カオスインパクト' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este Pokémon también se hace 20 puntos de daño a sí mismo.',
+          en: 'This Pokémon also does 20 damage to itself.',
+          ja: 'このポケモンにも20ダメージ。' 
+        }
+      }
+    ],
+    ability: {
+      name: {
+          es: 'Bramido de Espacio Fracturado',
+          en: 'Broken-Space Bellow',
+          ja: 'はくうのさけび' 
+        },
+      description: {
+       es: 'Una vez durante tu turno, puedes unir 1 Energía Psíquica de tu área de Energía a este Pokémon. Si usas esta habilidad, tu turno termina.',
+       en: 'Once during your turn, you may take a Psychic Energy from your Energy Zone and attach it to this Pokémon. If you use this Ability, your turn ends.',
+       ja: '自分の番に1回使えて、使ったなら、番は終わる。自分のエネルギーゾーンから超エネルギーを1個出し、このポケモンにつける。' 
+     }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Vive en el Mundo Distorsión, un mundo opuesto al nuestro y cuyas leyes desafían el sentido común.',
+      en: 'This Pokémon is said to live in a world on the reverse side of ours, where common knowledge is distorted and strange.',
+      ja: '常識の 通用しない この世の 裏側にあると 言われる 破れた世界に 生息する。' 
+    },
+    health: 150,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: true,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.ADD_ENERGY,
+      CardSpecialConditionENUM.RECOIL,
+      CardSpecialConditionENUM.END_TURN
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [681, 539]
+  },
+  {
+    id: 808,
+    order: 759,
+    number: 84,
+    pokedex: 448,
+    name: {
+      es: 'Lucario EX',
+      en: 'Lucario EX',
+      ja: 'ルカリオ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Aura',
+        en: 'Aura Pokémon',
+        ja: 'はどうポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '54.0',
+        en: '119',
+        ja: '54.0'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Esfera Aural',
+          en: 'Aura Sphere',
+          ja: 'はどうだん' 
+        },
+        damage: 100,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
+        description: {
+          es: 'Este ataque también hace 30 puntos de daño a 1 de los Pokémon en Banca de tu rival.',
+          en: 'This attack also does 30 damage to 1 of your opponent\'s Benched Pokémon.',
+          ja: '相手のベンチポケモン1匹にも30ダメージ。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Dicen que, como es capaz de detectar auras, puede percibir a sus rivales aunque no los vea.',
+      en: 'It’s said that no foe can remain invisible to Lucario, since it can detect auras—even those of foes it could not otherwise see.',
+      ja: '波動を キャッチすることで 見えない 相手の 姿でも 見えると 言われている。' 
+    },
+    health: 150,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ATTACK_BENCH],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [463, 542]
+  },
+  {
+    id: 809,
+    order: 760,
+    number: 85,
+    pokedex: 194,
+    name: {
+      es: 'Clodsire de Paldea EX',
+      en: 'Paldean Clodsire EX',
+      ja: 'パルデアドオー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pez Púas',
+        en: 'Spiny Fish Pokémon',
+        ja: 'とげうおポケモン'
+      },
+      height: {
+        es: '1.8',
+        en: '5\'11"',
+        ja: '1.8'
+      },
+      weight: {
+        es: '223.0',
+        en: '491.6',
+        ja: '223.0'
+      }
+    },
+    artist: 'PLANETA Igarashi',
+    attacks: [
+      {
+        name: {
+          es: 'Carga Tóxica',
+          en: 'Venoshock',
+          ja: 'ベノムショック' 
+        },
+        damage: 60,
+        energy: [PokemonTypeENUM.DARK],
+        description: {
+          es: 'Si el Pokémon Activo de tu rival está Envenenado, este ataque hace 60 puntos de daño más.',
+          en: 'If your opponent\'s Active Pokémon is Poisoned, this attack does 60 more damage.',
+          ja: '相手のバトルポケモンがどくなら、60ダメージ追加。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Cuando se siente amenazado, repele al enemigo con sus gruesas púas retráctiles. Esta técnica tan peligrosa es un arma de doble filo.',
+      en: 'When attacked, this Pokémon will retaliate by sticking thick spines out from its body. It’s a risky move that puts everything on the line.',
+      ja: '敵に 襲われると 太い 棘を 胴体から 突き出して 反撃。 身を切る 覚悟の 危険な 技。' 
+    },
+    health: 160,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 810,
+    order: 761,
+    number: 86,
+    pokedex: 86,
+    name: {
+      es: 'Tinkaton EX',
+      en: 'Tinkaton EX',
+      ja: 'デカヌチャン EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Martillo',
+        en: 'Hammer Pokémon',
+        ja: 'ハンマーポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'04"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '112.8',
+        en: '248.7',
+        ja: '112.8'
+      }
+    },
+    artist: 'PLANETA Igarashi',
+    attacks: [
+      {
+        name: {
+          es: 'Martillo Descomunal',
+          en: 'Terrific Thumping',
+          ja: 'ごうかいスタンプ' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, este ataque hace 80 puntos de daño más.',
+          en: 'Flip a coin. If tails, this attack does 80 more damage.',
+          ja: 'コインを1回投げてオモテなら、80ダメージ追加。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Posee una notable inteligencia y una exacerbada personalidad. Si ve Corviknight volando, golpea y lanza rocas con su martillo para derribarlos.',
+      en: 'This intelligent Pokémon has a very daring disposition. It knocks rocks into the sky with its hammer, aiming for flying Corviknight.',
+      ja: '知能が 高く とても 豪快。 ハンマーで 岩を 殴り飛ばして 空飛ぶ アーマーガアを 狙う。' 
+    },
+    health: 170,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 811,
+    order: 762,
+    number: 87,
+    pokedex: 400,
+    name: {
+      es: 'Bibarel EX',
+      en: 'Bibarel EX',
+      ja: 'ビーダル EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Castor',
+        en: 'Beaver Pokémon',
+        ja: 'ビーバーポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '31.5',
+        en: '69.4',
+        ja: '31.5'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Presión Despreocupada',
+          en: 'Carefree Press',
+          ja: 'のびのびプレス' 
+        },
+        damage: 100,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Cura 30 puntos de daño a este Pokémon.',
+          en: 'Heal 30 damage from this Pokémon.',
+          ja: 'このポケモンのHPを30回復。'
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Con sus incisivos roe ramas y raíces y las apila para construir sus madrigueras junto al río.',
+      en: 'It busily makes its nest with stacks of branches and roots it has cut up with its sharp incisors.',
+      ja: '鋭い 前歯で 削り取った 木の枝や 根っこを 積み上げて 水辺に せっせと 巣を 作る。' 
+    },
+    health: 160,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.HEAL],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [507, 549]
+  },
+  {
+    id: 812,
+    order: 763,
+    number: 88,
+    name: {
+      es: 'e-Nigma',
+      en: 'Iono',
+      ja: 'ナンジャモ' 
+    },
+    artist: 'saino misaki',
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Cada jugador pone las cartas de su mano en su baraja y las baraja todas. Después, roba ese mismo número de cartas.',
+      en: 'Each player shuffles the cards in their hand into their deck, then draws that many cards.',
+      ja: 'おたがいのプレイヤーは、それぞれの手札をすべて山札にもどす。その後、それぞれもどした枚数ぶん、山札を引く。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.PLAY_CARDS],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
+  },
+  {
+    id: 813,
+    order: 764,
+    number: 89,
+    name: {
+      es: 'Chica del Centro Pokémon',
+      en: 'Pokémon Center Lady',
+      ja: 'ポケモンセンターのお姉さん' 
+    },
+    artist: 'Susumu Maeya',
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Cura 30 puntos de daño a 1 de tus Pokémon, y este se recupera de todas las Condiciones Especiales.',
+      en: 'Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.',
+      ja: '自分のポケモン1匹のHPを30回復し、特殊状態もすべて回復。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.HEAL],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
+  },
+  {
+    id: 814,
+    order: 765,
+    number: 90,
+    name: {
+      es: 'Rojo',
+      en: 'Red',
+      ja: 'レッド' 
+    },
+    artist: 'Teeziro',
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Durante este turno, los ataques de tus Pokémon hacen +20 puntos de daño al Pokémon EX Activo de tu rival.',
+      en: 'During this turn, attacks used by your Pokémon do +20 damage to your opponent\'s Active Pokémon ex.',
+      ja: 'この番、自分のポケモンが使うワザの、相手のバトル上の「ポケモンex」へのダメージを+20する。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.EXTRA_DAMAGE,
+      CardSpecialConditionENUM.PLUS_EX
+    ],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
+  },
+  {
+    id: 815,
+    order: 766,
+    number: 91,
+    name: {
+      es: 'Recluta del Team Rocket',
+      en: 'Team Rocket Grunt',
+      ja: 'ロケット団のしたっぱ' 
+    },
+    artist: 'kantaro',
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Lanza 1 moneda hasta que salga cruz. Por cada cara, descarta 1 Energía aleatoria del Pokémon Activo de tu rival.',
+      en: 'Flip a coin until you get tails. For each heads, discard a random Energy from your opponent\'s Active Pokémon.',
+      ja: 'ウラが出るまでコインを投げ、オモテの数ぶん、相手のバトルポケモンからエネルギーをランダムにトラッシュ。' 
+    },
+    health: 0,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 0,
+    stage: CardStageENUM.SUPPORTER,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.DISCARD
+    ],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    element: -1,
+    pokedex: -1,
+    related: [
+      220, 221, 222, 223, 224, 225, 226, 
+      353, 352, 354, 522, 523, 524, 525, 526, 527, 
+      266, 267, 268, 269, 270, 271, 272, 273, 
+      367, 366, 368, 562, 563, 564, 565, 566, 567, 586
+    ]
+  },
+  {
+    id: 816,
+    order: 767,
+    number: 92,
+    pokedex: 25,
+    name: {
+      es: 'Pikachu EX',
+      en: 'Pikachu EX',
+      ja: 'ピカチュウ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ratón',
+        en: 'Mouse Pokémon',
+        ja: 'ねずみポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '6.0',
+        en: '13.2',
+        ja: '6.0'
+      }
+    },
+    artist: 'You Iribi',
+    attacks: [
+      {
+        name: {
+          es: 'Rayo',
+          en: 'Thunderbolt',
+          ja: '10まんボルト' 
+        },
+        damage: 150,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+        description: {
+          es: 'Descarta todas las Energías de este Pokémon.',
+          en: 'Discard all Energy from this Pokémon.',
+          ja: 'このポケモンからエネルギーをすべてトラッシュ。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Cuando se enfada, este Pokémon descarga la energía que almacena en el interior de las bolsas de las mejillas.',
+      en: 'When it is angered, it immediately discharges the energy stored in the pouches in its cheeks.',
+      ja: '両頬には　電気を　溜めこむ 袋がある｡　怒ると　溜めこんだ 電気を　一気に　放ってくる｡' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.DISCARD],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [259, 281, 285]
+  },
+  {
+    id: 817,
+    order: 768,
+    number: 93,
+    pokedex: 194,
+    name: {
+      es: 'Clodsire de Paldea EX',
+      en: 'Paldean Clodsire EX',
+      ja: 'パルデアドオー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pez Púas',
+        en: 'Spiny Fish Pokémon',
+        ja: 'とげうおポケモン'
+      },
+      height: {
+        es: '1.8',
+        en: '5\'11"',
+        ja: '1.8'
+      },
+      weight: {
+        es: '223.0',
+        en: '491.6',
+        ja: '223.0'
+      }
+    },
+    artist: 'REND',
+    attacks: [
+      {
+        name: {
+          es: 'Carga Tóxica',
+          en: 'Venoshock',
+          ja: 'ベノムショック' 
+        },
+        damage: 60,
+        energy: [PokemonTypeENUM.DARK],
+        description: {
+          es: 'Si el Pokémon Activo de tu rival está Envenenado, este ataque hace 60 puntos de daño más.',
+          en: 'If your opponent\'s Active Pokémon is Poisoned, this attack does 60 more damage.',
+          ja: '相手のバトルポケモンがどくなら、60ダメージ追加。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Cuando se siente amenazado, repele al enemigo con sus gruesas púas retráctiles. Esta técnica tan peligrosa es un arma de doble filo.',
+      en: 'When attacked, this Pokémon will retaliate by sticking thick spines out from its body. It’s a risky move that puts everything on the line.',
+      ja: '敵に 襲われると 太い 棘を 胴体から 突き出して 反撃。 身を切る 覚悟の 危険な 技。' 
+    },
+    health: 160,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 818,
+    order: 769,
+    number: 94,
+    pokedex: 86,
+    name: {
+      es: 'Tinkaton EX',
+      en: 'Tinkaton EX',
+      ja: 'デカヌチャン EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Martillo',
+        en: 'Hammer Pokémon',
+        ja: 'ハンマーポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'04"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '112.8',
+        en: '248.7',
+        ja: '112.8'
+      }
+    },
+    artist: 'kurumitsu',
+    attacks: [
+      {
+        name: {
+          es: 'Martillo Descomunal',
+          en: 'Terrific Thumping',
+          ja: 'ごうかいスタンプ' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, este ataque hace 80 puntos de daño más.',
+          en: 'Flip a coin. If tails, this attack does 80 more damage.',
+          ja: 'コインを1回投げてオモテなら、80ダメージ追加。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Posee una notable inteligencia y una exacerbada personalidad. Si ve Corviknight volando, golpea y lanza rocas con su martillo para derribarlos.',
+      en: 'This intelligent Pokémon has a very daring disposition. It knocks rocks into the sky with its hammer, aiming for flying Corviknight.',
+      ja: '知能が 高く とても 豪快。 ハンマーで 岩を 殴り飛ばして 空飛ぶ アーマーガアを 狙う。' 
+    },
+    health: 170,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 819,
+    order: 770,
+    number: 95,
+    pokedex: 400,
+    name: {
+      es: 'Bibarel EX',
+      en: 'Bibarel EX',
+      ja: 'ビーダル EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Castor',
+        en: 'Beaver Pokémon',
+        ja: 'ビーバーポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '31.5',
+        en: '69.4',
+        ja: '31.5'
+      }
+    },
+    artist: 'USGMEN',
+    attacks: [
+      {
+        name: {
+          es: 'Presión Despreocupada',
+          en: 'Carefree Press',
+          ja: 'のびのびプレス' 
+        },
+        damage: 100,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Cura 30 puntos de daño a este Pokémon.',
+          en: 'Heal 30 damage from this Pokémon.',
+          ja: 'このポケモンのHPを30回復。'
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Con sus incisivos roe ramas y raíces y las apila para construir sus madrigueras junto al río.',
+      en: 'It busily makes its nest with stacks of branches and roots it has cut up with its sharp incisors.',
+      ja: '鋭い 前歯で 削り取った 木の枝や 根っこを 積み上げて 水辺に せっせと 巣を 作る。' 
+    },
+    health: 160,
+    rarity: CardRarityENUM.SUPER,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: true,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.HEAL],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [507, 549]
+  },
+  {
+    id: 820,
+    order: 771,
+    number: 96,
+    pokedex: 487,
+    name: {
+      es: 'Giratina EX',
+      en: 'Giratina EX',
+      ja: 'ギラティナ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Renegado',
+        en: 'Renegade Pokémon',
+        ja: 'はんこつポケモン'
+      },
+      height: {
+        es: '6.9',
+        en: '22\'8"',
+        ja: '6.9'
+      },
+      weight: {
+        es: '650.0',
+        en: '1433',
+        ja: '650.0'
+      }
+    },
+    artist: 'Shinji Kanda',
+    attacks: [
+      {
+        name: {
+          es: 'Impacto Caótico',
+          en: 'Chaotic Impact',
+          ja: 'カオスインパクト' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este Pokémon también se hace 20 puntos de daño a sí mismo.',
+          en: 'This Pokémon also does 20 damage to itself.',
+          ja: 'このポケモンにも20ダメージ。' 
+        }
+      }
+    ],
+    ability: {
+      name: {
+          es: 'Bramido de Espacio Fracturado',
+          en: 'Broken-Space Bellow',
+          ja: 'はくうのさけび' 
+        },
+      description: {
+       es: 'Una vez durante tu turno, puedes unir 1 Energía Psíquica de tu área de Energía a este Pokémon. Si usas esta habilidad, tu turno termina.',
+       en: 'Once during your turn, you may take a Psychic Energy from your Energy Zone and attach it to this Pokémon. If you use this Ability, your turn ends.',
+       ja: '自分の番に1回使えて、使ったなら、番は終わる。自分のエネルギーゾーンから超エネルギーを1個出し、このポケモンにつける。' 
+     }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Vive en el Mundo Distorsión, un mundo opuesto al nuestro y cuyas leyes desafían el sentido común.',
+      en: 'This Pokémon is said to live in a world on the reverse side of ours, where common knowledge is distorted and strange.',
+      ja: '常識の 通用しない この世の 裏側にあると 言われる 破れた世界に 生息する。' 
+    },
+    health: 150,
+    rarity: CardRarityENUM.INMERSIVE,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: true,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.ADD_ENERGY,
+      CardSpecialConditionENUM.RECOIL,
+      CardSpecialConditionENUM.END_TURN
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [681, 539]
+  },
+  {
+    id: 821,
+    order: 772,
+    number: 97,
+    pokedex: 13,
+    name: {
+      es: 'Weedle',
+      en: 'Weedle',
+      ja: 'ビードル'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Oruga',
+        en: 'Hairy Bug Pokémon',
+        ja: 'けむしポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '1\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '3.2',
+        en: '7.1',
+        ja: '3.2'
+      }
+    },
+    artist: 'Sanosuke Sakuma',
+    attacks: [
+      {
+        name: {
+          es: 'Multiplicar',
+          en: 'Multiply',
+          ja: 'ふえる'
+        },
+        damage: 0,
+        energy: [PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Pon 1 Weedle aleatorio de tu baraja en tu Banca.',
+          en: 'Put 1 random Weedle from your deck onto your Bench.',
+          ja: '自分の山札から「ビードル」をランダムに1枚、ベンチに出す。'
+        }
+      }
+    ],
+    evolve: [726],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Suele habitar bosques y praderas. Tiene un afilado y venenoso aguijón de unos 5 cm encima de la cabeza.',
+      en: 'Often found in forests and grasslands. It has a sharp, toxic barb of around two inches on top of its head.',
+      ja: '森や 草地に 多く 生息｡ 頭の 先に ５センチぐらいの 小さく 鋭い 毒針を持つ｡'
+    },
+    health: 50,
+    rarity: CardRarityENUM.SHINY,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: true,
+    condition: [CardSpecialConditionENUM.CALL_CARDS],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [9, 10]
+  },
+  {
+    id: 822,
+    order: 773,
+    number: 98,
+    pokedex: 12,
+    name: {
+      es: 'Kakuna',
+      en: 'Kakuna',
+      ja: 'コクーン'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Capullo',
+        en: 'Cocoon Pokémon',
+        ja: 'さなぎポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '10.0',
+        en: '22',
+        ja: '10.0'
+      }
+    },
+    artist: 'Sanosuke Sakuma',
+    attacks: [
+      {
+        name: {
+          es: 'Disparo Demora',
+          en: 'String Shot',
+          ja: 'いとをはく'
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, el Pokémon Activo de tu rival pasa a estar Paralizado.',
+          en: 'Flip a coin. If heads, your opponent’s Active Pokémon is now Paralyzed.',
+          ja: 'コインを1回投げてオモテなら、相手のバトルポケモンをマヒにする。' 
+        }
+      }
+    ],
+    evolve: [727],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Casi incapaz de moverse, este Pokémon solo puede endurecer su caparazón para protegerse.',
+      en: 'Almost incapable of moving, this Pokémon can only harden its shell to protect itself when it is in danger.',
+      ja: '自分では　ほとんど　動けないが 危ないときは　硬くなって 身を守っているようだ｡'
+    },
+    health: 80,
+    rarity: CardRarityENUM.SHINY,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: true,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.PARALYZE
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [8, 10]
+  },
+  {
+    id: 823,
+    order: 774,
+    number: 99,
+    pokedex: 4,
+    name: {
+      es: 'Charmander',
+      en: 'Charmander',
+      ja: 'ヒトカゲ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Lagartija',
+        en: 'Lizard Pokémon',
+        ja: 'とかげポケモン'
+      },
+      height: {
+        es: '0.6',
+        en: '2\'',
+        ja: '0.6'
+      },
+      weight: {
+        es: '8.5',
+        en: '18.7',
+        ja: '8.5'
+      }
+    },
+    artist: 'Souichirou Gunjima',
+    attacks: [
+      {
+        name: {
+          es: 'Combustión',
+          en: 'Combustion',
+          ja: 'かえん' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.FIRE],
+      }
+    ],
+    evolve: [733],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Prefiere las cosas calientes. Dicen que cuando llueve le sale vapor de la punta de la cola.',
+      en: 'It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail.',
+      ja: '熱いものを　好む　性格｡ 雨に濡れると　しっぽの　先から 煙が　出るという｡' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.SHINY,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    shiny: true,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [34, 35, 36, 230, 253, 280, 284, 611]
+  },
+  {
+    id: 824,
+    order: 775,
+    number: 100,
+    pokedex: 5,
+    name: {
+      es: 'Charmeleon',
+      en: 'Charmeleon',
+      ja: 'リザード' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Llama',
+        en: 'Flame Pokémon',
+        ja: 'かえんポケモン'
+      },
+      height: {
+        es: '1.1',
+        en: '3\'7"',
+        ja: '1.1'
+      },
+      weight: {
+        es: '19.0',
+        en: '41.9',
+        ja: '19.0'
+      }
+    },
+    artist: 'Souichirou Gunjima',
+    attacks: [
+      {
+        name: {
+          es: 'Combustión',
+          en: 'Combustion',
+          ja: 'かえん' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE],
+      }
+    ],
+    evolve: [734],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Este Pokémon de naturaleza agresiva ataca en combate con su cola llameante y hace trizas al rival con sus afiladas garras.',
+      en: 'It has a barbaric nature. In battle, it whips its fiery tail around and slashes away with sharp claws.',
+      ja: '燃える　しっぽを　振りまわし するどい　ツメで　相手を 切り裂く　荒々しい　性格｡' 
+    },
+    health: 90,
+    rarity: CardRarityENUM.SHINY,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: false,
+    shiny: true,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [33, 35, 36, 230, 253, 280, 284, 611]
+  },
+  {
+    id: 825,
+    order: 776,
+    number: 101,
+    pokedex: 960,
+    name: {
+      es: 'Wiglett',
+      en: 'Wiglett',
+      ja: 'ウミディグダ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cóngrido',
+        en: 'Garden Eel Pokémon',
+        ja: 'あなごポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '1.8',
+        en: '4',
+        ja: '1.8'
+      }
+    },
+    artist: 'Souichirou Gunjima',
+    attacks: [
+      {
+        name: {
+          es: 'Saltar en Resorte',
+          en: 'Spring Out',
+          ja: 'とびだす' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.WATER],
+        description: {
+          es: 'Se elige a un Pokémon aleatorio de tu rival. Hazle 30 puntos de daño.',
+          en: '1 of your opponent\'s Pokémon is chosen at random. Do 30 damage to it.',
+          ja: '相手のポケモンがランダムに1匹選ばれ、選ばれたポケモンに、30ダメージ。' 
+        }
+      }
+    ],
+    evolve: [743],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Puede percibir el olor de los Veluza a 20m de distancia, lo que le permite ocultarse bajo la arena a tiempo.',
+      en: 'This Pokémon can pick up the scent of a Veluza just over 65 feet away and will hide itself in the sand.',
+      ja: '２０メートル先の ミガルーサが 放つ 匂いも 嗅ぎとって 砂の中に 身を 隠すのだ。' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.SHINY,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    shiny: true,
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH,
+      CardSpecialConditionENUM.RANDOM_ATTACK
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [743]
+  },
+  {
+    id: 826,
+    order: 777,
+    number: 102,
+    pokedex: 977,
+    name: {
+      es: 'Dondozo',
+      en: 'Dondozo',
+      ja: 'ヘイラッシャ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gran Siluro',
+        en: 'Big Catfish Pokémon',
+        ja: 'おおなまずポケモン'
+      },
+      height: {
+        es: '12',
+        en: '39\'4"',
+        ja: '12'
+      },
+      weight: {
+        es: '220.0',
+        en: '485',
+        ja: '220.0'
+      }
+    },
+    artist: 'GOSSAN',
+    attacks: [
+      {
+        name: {
+          es: 'Ciclón Oceánico',
+          en: 'Ocean Cyclone',
+          ja: 'オーシャンサイクロン' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este ataque también hace 10 puntos de daño a cada uno de los Pokémon en Banca de tu rival.',
+          en: 'This attack also does 10 damage to each of your opponent’s Benched Pokémon.',
+          ja: '相手のベンチポケモン全員にも10ダメージ。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Le gusta mucho comer, pero no se le da bien cazar, por lo que aúna fuerzas con Tatsugiri con el fin de capturar presas.',
+      en: 'This Pokémon is a glutton, but it\'s bad at getting food. It teams up with a Tatsugiri to catch prey.',
+      ja: '大食らいだが エサを 取るのは 苦手。 シャリタツと コンビを 組んで 獲物を 捕らえるのだ。' 
+    },
+    health: 120,
+    rarity: CardRarityENUM.SHINY,
+    retreat: 3,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    shiny: true,
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH,
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 827,
+    order: 778,
+    number: 103,
+    pokedex: 417,
+    name: {
+      es: 'Pachirisu',
+      en: 'Pachirisu',
+      ja: 'パチリス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ardillalec',
+        en: 'EleSquirrel Pokémon',
+        ja: 'でんきリスポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '3.9',
+        en: '8.6',
+        ja: '3.9'
+      }
+    },
+    artist: 'Tomowaka',
+    attacks: [
+      {
+        name: {
+          es: 'Plasma',
+          en: 'Plasma',
+          ja: 'プラズマ' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+        description: {
+          es: 'Une 1 Energía Eléctrica de tu área de Energía a 1 de tus Pokémon Eléctricos en Banca.',
+          en: 'Take a Lightning Energy from your Energy Zone and attach it to 1 of your Benched Pokémon.',
+          ja: '自分のエネルギーゾーンから雷エネルギーを1個出し、ベンチの雷ポケモンにつける。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Forma parte del grupo de Pokémon que posee bolsas de electricidad en las mejillas. Descarga por la cola la electricidad que acumula.',
+      en: 'It\'s one of the kinds of Pokémon with electric cheek pouches. It shoots charges from its tail.',
+      ja: 'ほっぺに 電気袋を 持つ ポケモンの 仲間。 尻尾から 溜まった 電気を 放出する。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.SHINY,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: true,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [555, 570]
+  },
+  {
+    id: 828,
+    order: 779,
+    number: 104,
+    pokedex: 447,
+    name: {
+      es: 'Riolu',
+      en: 'Riolu',
+      ja: 'リオル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Emanación',
+        en: 'Emanation Pokémon',
+        ja: 'はもんポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '20.2',
+        en: '44.5',
+        ja: '20.2'
+      }
+    },
+    artist: 'GOSSAN',
+    attacks: [
+      {
+        name: {
+          es: 'Puño',
+          en: 'Punch',
+          ja: 'パンチ' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT]
+      }
+    ],
+    evolve: [767],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Se comunica con los suyos emitiendo ondas. Puede pasarse toda una noche corriendo.',
+      en: 'They communicate with one another using their auras. They are able to run all through the night.',
+      ja: '仲間同士で 波動を 出して コミュニケーションを とっている。 一晩中 走り続けられる。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.SHINY,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    shiny: true,
+    condition: [],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [464, 542]
+  },
+  {
+    id: 829,
+    order: 780,
+    number: 105,
+    pokedex: 965,
+    name: {
+      es: 'Varoom',
+      en: 'Varoom',
+      ja: 'ブロロン' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Monocilindro',
+        en: 'Single-Cyl Pokémon',
+        ja: 'たんきとうポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '35.0',
+        en: '77.2',
+        ja: '35.0'
+      }
+    },
+    artist: 'nagimiso',
+    attacks: [
+      {
+        name: {
+          es: 'Golpe Cabeza',
+          en: 'Headbutt',
+          ja: 'ずつき' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.STEEL],
+      }
+    ],
+    evolve: [779],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Se dice que surgió cuando un misterioso Pokémon venenoso tomó posesión de un motor abandonado en un desguace.',
+      en: 'It is said that this Pokémon was born when an unknown poison Pokémon entered and inspirited an engine left at a scrap-processing factory.',
+      ja: 'スクラップ工場に 放置された エンジンに 謎の 毒ポケモンが 入り込んで 生まれたと 言われる。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.SHINY,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: true,
+    condition: [],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 830,
+    order: 781,
+    number: 106,
+    pokedex: 966,
+    name: {
+      es: 'Revavroom',
+      en: 'Revavroom',
+      ja: 'ブロロローム' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Policilindro',
+        en: 'Multi-Cyl Pokémon',
+        ja: 'たきとうポケモン'
+      },
+      height: {
+        es: '1.8',
+        en: '5\'11"',
+        ja: '1.8'
+      },
+      weight: {
+        es: '120.0',
+        en: '264.6',
+        ja: '120.0'
+      }
+    },
+    artist: 'nagimiso',
+    attacks: [
+      {
+        name: {
+          es: 'Corriente Giratoria',
+          en: 'Spinning Drift',
+          ja: 'スピンドリフト' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.STEEL, PokemonTypeENUM.STEEL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, durante el próximo turno de tu rival, evita todo el daño y todos los efectos de los ataques infligidos a este Pokémon.',
+          en: 'Flip a coin. If heads, during your opponent\'s next turn, prevent all damage from—and effects of—attacks done to this Pokémon.',
+          ja: 'コインを1回投げオモテなら、次の相手の番、このポケモンはワザのダメージや効果を受けない。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Posee ocho cilindros, con los que genera energía haciendo estallar el gas que produce al mezclar los minerales de las rocas con su veneno.',
+      en: 'It creates a gas out of poison and minerals from rocks. It then detonates the gas in its cylinders—now numbering eight—to generate energy.',
+      ja: '毒素と 岩の 成分を 混ぜた ガスを ８つに 増えた シリンダーで 爆発させ エネルギーを 作る。' 
+    },
+    health: 110,
+    rarity: CardRarityENUM.SHINY,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.STEEL,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: true,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.RESIST
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: []
+  },
+  {
+    id: 831,
+    order: 782,
+    number: 107,
+    pokedex: 15,
+    name: {
+      es: 'Beedrill EX',
+      en: 'Beedrill EX',
+      ja: 'スピアー EX'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Abeja Veneno',
+        en: 'Poison Bee Pokémon',
+        ja: 'どくばちポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '29.5',
+        en: '65',
+        ja: '29.5'
+      }
+    },
+    artist: 'PLANETA Igarashi',
+    attacks: [
+      {
+        name: {
+          es: 'Lanza Devastadora',
+          en: 'Crushing Spear',
+          ja: 'クラッシュスピア'
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Descarta 1 Energía aleatoria del Pokémon Activo de tu rival.',
+          en: 'Discard a random Energy from your opponent\'s Active Pokémon.',
+          ja: '相手のバトルポケモンからエネルギーをランダムに1個トラッシュ。'
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Tiene 3 aguijones venenosos en sus patas y cola. Suelen pinchar a sus enemigos repetidas veces.',
+      en: 'It has three poisonous stingers on its forelegs and its tail. They are used to jab its enemy repeatedly.',
+      ja: '両手と　お尻にある　３本の　毒針で 相手を　刺して　刺して 刺しまくって　攻撃する｡'
+    },
+    health: 170,
+    rarity: CardRarityENUM.DOUBLE_SHINY,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    shiny: true,
+    condition: [CardSpecialConditionENUM.DISCARD],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [8, 9]
+  },
+  {
+    id: 832,
+    order: 783,
+    number: 108,
+    pokedex: 6,
+    name: {
+      es: 'Charizard EX',
+      en: 'Charizard EX',
+      ja: 'リザードン EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Llama',
+        en: 'Flame Pokémon',
+        ja: 'かえんポケモン'
+      },
+      height: {
+        es: '1.7',
+        en: '5\'7"',
+        ja: '1.7'
+      },
+      weight: {
+        es: '90.5',
+        en: '199.5',
+        ja: '90.5'
+      }
+    },
+    artist: 'PLANETA Igarashi',
+    attacks: [
+      {
+        name: {
+          es: 'Atizador',
+          en: 'Stoke',
+          ja: 'もえあがる' 
+        },
+        damage: 0,
+        energy: [PokemonTypeENUM.FIRE],
+        description: {
+          es: 'Une 3 Energías Fuego de tu área de Energía a este Pokémon.',
+          en: 'Take 3 Fire Energy from your Energy Zone and attach it to this Pokémon.',
+          ja: '自分のエネルギーゾーンから炎エネルギーを3個出し、このポケモンにつける。' 
+        }
+      },
+      {
+        name: {
+          es: 'Artillería de Vapor',
+          en: 'Steam Artillery',
+          ja: 'ばくねつほう' 
+        },
+        damage: 150,
+        energy: [PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.FIRE, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Escupe un fuego tan caliente que funde las rocas. Causa incendios forestales sin querer.',
+      en: 'It spits fire that is hot enough to melt boulders. It may cause forest fires by blowing flames.',
+      ja: '岩石も　焼けるような 灼熱の　炎を　吐いて 山火事を　起こすことが　ある｡' 
+    },
+    health: 180,
+    rarity: CardRarityENUM.DOUBLE_SHINY,
+    retreat: 3,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIRE,
+    weak: PokemonTypeENUM.WATER,
+    isEX: true,
+    shiny: true,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [33, 34, 230, 611]
+  },
+  {
+    id: 833,
+    order: 784,
+    number: 109,
+    pokedex: 961,
+    name: {
+      es: 'Wugtrio EX',
+      en: 'Wugtrio EX',
+      ja: 'ウミトリオ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cóngrido',
+        en: 'Garden Eel Pokémon',
+        ja: 'あなごポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '5.4',
+        en: '11.9',
+        ja: '5.4'
+      }
+    },
+    artist: 'PLANETA Tsuji',
+    attacks: [
+      {
+        name: {
+          es: 'Vapuleo por Sorteo',
+          en: 'Pop Out Throughout',
+          ja: 'あちこちとびだす' 
+        },
+        damage: 150,
+        energy: [PokemonTypeENUM.WATER, PokemonTypeENUM.WATER, PokemonTypeENUM.WATER],
+        description: {
+          es: 'Se elige 3 veces a un Pokémon aleatorio de tu rival. Haz a cada uno 50 puntos de daño por cada vez que haya resultado elegido.',
+          en: '1 of your opponent\'s Pokémon is chosen at random 3 times. For each time a Pokémon is chosen, do 50 damage to it.',
+          ja: '相手のポケモンがランダムに3回選ばれ、選ばれたポケモン全員に、選ばれた回数×50ダメージ。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Es de temperamento agresivo, aunque no lo parezca. Envuelve a sus presas con sus largos cuerpos y las arrastra a su nido.',
+      en: 'It has a vicious temperament, contrary to what its appearance may suggest. It wraps its long bodies around prey, then drags the prey into its den.',
+      ja: '見かけによらず　気性が　荒い。　長い　体で　獲物を　締め上げ　巣穴に　引きずりこむぞ。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.DOUBLE_SHINY,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: true,
+    shiny: true,
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH,
+      CardSpecialConditionENUM.RANDOM_ATTACK
+    ],
+    found: [
+      EXPANSION.SHINY
+    ],
+    related: [742]
+  },
+  {
+    id: 834,
+    order: 785,
+    number: 110,
+    pokedex: 448,
+    name: {
+      es: 'Lucario EX',
+      en: 'Lucario EX',
+      ja: 'ルカリオ EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Aura',
+        en: 'Aura Pokémon',
+        ja: 'はどうポケモン'
+      },
+      height: {
+        es: '1.2',
+        en: '3\'11"',
+        ja: '1.2'
+      },
+      weight: {
+        es: '54.0',
+        en: '119',
+        ja: '54.0'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Esfera Aural',
+          en: 'Aura Sphere',
+          ja: 'はどうだん' 
+        },
+        damage: 100,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
+        description: {
+          es: 'Este ataque también hace 30 puntos de daño a 1 de los Pokémon en Banca de tu rival.',
+          en: 'This attack also does 30 damage to 1 of your opponent\'s Benched Pokémon.',
+          ja: '相手のベンチポケモン1匹にも30ダメージ。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Dicen que, como es capaz de detectar auras, puede percibir a sus rivales aunque no los vea.',
+      en: 'It’s said that no foe can remain invisible to Lucario, since it can detect auras—even those of foes it could not otherwise see.',
+      ja: '波動を キャッチすることで 見えない 相手の 姿でも 見えると 言われている。' 
+    },
+    health: 150,
+    rarity: CardRarityENUM.DOUBLE_SHINY,
+    retreat: 2,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: true,
+    shiny: true,
+    condition: [CardSpecialConditionENUM.ATTACK_BENCH],
+    found: [
+      EXPANSION.SHINY,
+    ],
+    related: [463, 542]
+  },
+  {
+    id: 835,
+    order: 786,
+    number: 111,
+    name: {
+      es: 'Poké Ball',
+      en: 'Poké Ball',
+      ja: 'モンスターボール' 
+    },
+    artist: 'Toyste Beach',
+    expansion: CardExpansionENUM.SHINING_REVELRY,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Pon 1 Pokémon Básico aleatorio de tu baraja en tu mano.',
+      en: 'Put 1 random Basic Pokémon from your deck into your hand.',
+      ja: '自分の山札からたねポケモンをランダムに1枚、手札に加える。' 
+    },
+    rarity: CardRarityENUM.CROWN,
+    stage: CardStageENUM.ITEM,
+    found: [
+      EXPANSION.SHINY
+    ],
+    element: -1,
+    pokedex: -1,
+    health: -1,
+    retreat: -1,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.CALL_CARDS],
+    related: [351, 350, 518, 580, 581, 582, 583, 587, 585]
+  },
+  {
+    id: 836,
+    order: 836,
+    number: 50,
+    pokedex: 150,
+    name: {
+      es: 'Mewtwo EX',
+      en: 'Mewtwo EX',
+      ja: 'ミュウツー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Genético',
+        en: 'Genetic Pokémon',
+        ja: 'いでんしポケモン'
+      },
+      height: {
+        es: '2.0',
+        en: '6\'7"',
+        ja: '2.0'
+      },
+      weight: {
+        es: '122.0',
+        en: '269',
+        ja: '122.0'
+      }
+    },
+    artist: 'PLANETA Mochizuki',
+    attacks: [
+      {
+        name: {
+          es: 'Esfera Psíquica',
+          en: 'Psychic Sphere',
+          ja: 'ねんどうだん' 
+        },
+        damage: 50,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL],
+      },
+      {
+        name: {
+          es: 'Guía Psi',
+          en: 'Psydrive',
+          ja: 'サイコドライブ' 
+        },
+        damage: 150,
+        energy: [PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.PSYCHIC, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Descarta 2 Energías Psíquica de este Pokémon.',
+          en: 'Discard 2 Psychic Energy from this Pokémon.',
+          ja: 'このポケモンから超エネルギーを2個トラッシュ。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Fue creado por un científico tras años de horribles experimentos de ingeniería genética.',
+      en: 'It was created by a scientist after years of horrific gene-splicing and DNA-engineering experiments.',
+      ja: '１人の　科学者が　何年も 恐ろしい　遺伝子　研究を 続けた　結果　誕生した｡' 
+    },
+    health: 150,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.PSYCHIC,
+    weak: PokemonTypeENUM.DARK,
+    isEX: true,
+    shiny: true,
+    condition: [CardSpecialConditionENUM.DISCARD],
+    related: [262, 282, 286],
+    extra: {
+      es: 'En la tienda',
+      en: 'Obtained from the shop',
+      ja: '店から取得した' 
+    },
+  },
+  {
+    id: 837,
+    order: 837,
+    number: 51,
+    pokedex: 967,
+    name: {
+      es: 'Cyclizar',
+      en: 'Cyclizar',
+      ja: 'モトトカゲ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Montura',
+        en: 'Mount Pokémon',
+        ja: 'ライドポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '63.0',
+        en: '138.9',
+        ja: '63.0'
+      }
+    },
+    artist: 'Shigenori Negishi',
+    attacks: [
+      {
+        name: {
+          es: 'Alta Aceleración',
+          en: 'Overacceleration',
+          ja: 'オーバーアクセル' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Durante tu próximo turno, el ataque Alta Aceleración de este Pokémon hace +20 puntos de daño.',
+          en: 'During your next turn, this Pokémon\'s Overacceleration attack does +20 damage.',
+          ja: '次の自分の番、このポケモンの「オーバーアクセル」のダメージを+20する。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Según parece, ha permitido que los humanos monten en él desde tiempos remotos. Aparece en pinturas rupestres de hace diez mil años.',
+      en: 'Apparently Cyclizar has been allowing people to ride on its back since ancient times. Depictions of this have been found in 10,000-year-old murals.',
+      ja: '大昔から 人を 背中に 乗せていたらしい。 1万年前の 壁画に 様子が 描かれている。' 
+    },
+    health: 80,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: true,
+    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    found: [
+      EXPANSION.SPECIAL_MISSION
+    ],
+    extra: {
+      es: 'Misión Especial',
+      en: 'Special Mission',
+      ja: '特別任務' 
+    },
+    related: []
+  },
+  {
+    id: 838,
+    order: 838,
+    number: 52,
+    pokedex: 906,
+    name: {
+      es: 'Sprigatito',
+      en: 'Sprigatito',
+      ja: 'ニャオハ'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gato Planta',
+        en: 'Grass Cat Pokémon',
+        ja: 'くさねこポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '4.1',
+        en: '9',
+        ja: '4.1'
+      }
+    },
+    artist: 'MINAMINAMI Take',
+    attacks: [
+      {
+        name: {
+          es: 'Pedir Ayuda',
+          en: 'Cry for Help',
+          ja: 'ともだちをよぶ'
+        },
+        damage: 0,
+        energy: [PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Pon 1 Pokémon Planta aleatorio de tu baraja en tu mano.',
+          en: 'Put 1 random Grass Pokémon from your deck into your hand.',
+          ja: '自分の山札から草ポケモンをランダムに1枚、手札に加える。'
+        }
+      }
+    ],
+    evolve: [730],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Su sedoso pelaje se semeja en composición a las plantas. Se lava la cara con diligencia pra que no se le seque.',
+      en: 'Its fluffy fur is similar in composition to plants. This Pokémon frequently washes its face to keep it from drying out.',
+      ja: 'フワフワの 体毛は 植物に 近い 成分。 こまめに 顔を 洗って 乾燥を 防ぐ。'
+    },
+    health: 60,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.CALL_CARDS
+    ],
+    found: [
+      EXPANSION.PREMIUM
+    ],
+    related: [],
+    extra: {
+      es: 'Pase Premium',
+      en: 'Premium Pass',
+      ja: 'プレミアムパス' 
+    },
+  },
+  {
+    id: 839,
+    order: 839,
+    number: 53,
+    pokedex: 419,
+    name: {
+      es: 'Floatzel',
+      en: 'Floatzel',
+      ja: 'フローゼル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Nutria Marina',
+        en: 'Sea Weasel Pokémon',
+        ja: 'うみイタチポケモン'
+      },
+      height: {
+        es: '1.1',
+        en: '3\'7"',
+        ja: '1.1'
+      },
+      weight: {
+        es: '33.5',
+        en: '73.9',
+        ja: '33.5'
+      }
+    },
+    artist: 'Shin Nagasawa',
+    attacks: [
+      {
+        name: {
+          es: 'Ataque a la Herida',
+          en: 'Attack the Wound',
+          ja: 'きずにうちこむ' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.WATER],
+        description: {
+          es: 'Si el Pokémon Activo de tu rival ya tiene daño, este ataque hace 60 puntos de daño más.',
+          en: 'If your opponent\'s Active Pokémon has damage on it, this attack does 60 more damage.',
+          ja: '相手のバトルポケモンがダメージを受けているなら、60ダメージ追加。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'La vejiga natatoria inflada, puede llevar a personas sobre su espalda. Antes de bucear, la desinfla.',
+      en: 'With its flotation sac inflated, it can carry people on its back. It deflates the sac before it dives.',
+      ja: '浮き袋を ふくらませると 人を 背中に 乗せることが できる。 浮き袋を しぼませて 潜る。' 
+    },
+    health: 100,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.WATER,
+    weak: PokemonTypeENUM.ELECTRIC,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    found: [
+      EXPANSION.PROMO_A6
+    ],
+    related: [740],
+    extra: {
+      es: 'Promoción',
+      en: 'Promo Pack',
+      ja: '昇進' 
+    },
+  },
+  {
+    id: 840,
+    order: 840,
+    number: 54,
+    pokedex: 923,
+    name: {
+      es: 'Pawmot',
+      en: 'Pawmot',
+      ja: 'パーモット' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Palmada',
+        en: 'Hands-On Pokémonn',
+        ja: 'てあてポケモン'
+      },
+      height: {
+        es: '0.9',
+        en: '2\'11',
+        ja: '0.9'
+      },
+      weight: {
+        es: '41.0',
+        en: '90.4',
+        ja: '41.0'
+      }
+    },
+    artist: 'REND',
+    attacks: [
+      {
+        name: {
+          es: 'Puño Eléctrico',
+          en: 'Electric Punch',
+          ja: 'ビリリパンチ' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+      }
+    ],
+    ability: {
+      name: {
+          es: 'Contragolpe',
+          en: 'Counterattack',
+          ja: 'はんげき' 
+        },
+      description: {
+       es: 'Si este Pokémon está en el Puesto Activo y resulta dañado por un ataque de los Pokémon de tu rival, el Pokémon atacante sufre 20 puntos de daño.',
+       en: 'If this Pokémon is in the Active Spot and is damaged by an attack from your opponent’s Pokémon, do 20 damage to the Attacking Pokémon.',
+       ja: 'このポケモンが、バトル場で相手のポケモンからワザのダメージを受けたとき、ワザを使ったポケモンに20ダメージ。' 
+     }
+    },
+    evolve: [],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Este Pokémon es normalmente bastante calmado, pero, una vez en combate, derriba a sus rivales con movimientos de una velocidad vertiginosa.',
+      en: 'This Pokémon normally is slow to react, but once it enters battle, it will strike down its enemies with lightning-fast movements.',
+      ja: '普段は おっとりしているが いざ 戦いになると 電光石火の 身のこなしで 敵を 叩きのめす。' 
+    },
+    health: 140,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 0,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.RECOIL],
+    found: [
+      EXPANSION.PROMO_A6,
+    ],
+    related: [],
+    extra: {
+      es: 'Promoción',
+      en: 'Promo Pack',
+      ja: '昇進' 
+    },
+  },
+  {
+    id: 841,
+    order: 841,
+    number: 55,
+    pokedex: 68,
+    name: {
+      es: 'Machamp',
+      en: 'Machamp',
+      ja: 'カイリキー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Superpoder',
+        en: 'Superpower Pokémon',
+        ja: 'かいりきポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'3"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '130.0',
+        en: '286.6',
+        ja: '130.0'
+      }
+    },
+    artist: 'Masakazu Fukuda',
+    attacks: [
+      {
+        name: {
+          es: 'Constricción Poderosa',
+          en: 'Power Press',
+          ja: 'パワープレス' 
+        },
+        damage: 70,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT],
+        description: {
+          es: 'Si este Pokémon tiene por lo menos 2 Energías Lucha adicionales unidas a él, este ataque hace 50 puntos de daño más.',
+          en: 'If this Pokémon has at least 2 extra Fighting Energy attached, this attack does 50 more damage.',
+          ja: '追加で闘エネルギーが2個ついているなら、50ダメージ追加。' 
+        }
+      },
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Mueve rápidamente sus cuatro brazos para asestar incesantes golpes y puñetazos desde todos los ángulos.',
+      en: 'It quickly swings its four arms to rock its opponents with ceaseless punches and chops from all angles.',
+      ja: '４本の腕を　すばやく　動かし あらゆる　角度から　休むことなく パンチや　チョップを　叩きこむ｡' 
+    },
+    health: 150,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 2,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.EXTRA_DAMAGE],
+    found: [
+      EXPANSION.PROMO_A6,
+    ],
+    related: [143, 144],
+    extra: {
+      es: 'Promoción',
+      en: 'Promo Pack',
+      ja: '昇進' 
+    },
+  },
+  {
+    id: 842,
+    order: 842,
+    number: 56,
+    pokedex: 23,
+    name: {
+      es: 'Ekans',
+      en: 'Ekans',
+      ja: 'アーボ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Serpiente',
+        en: 'Snake Pokémon',
+        ja: 'へびポケモン'
+      },
+      height: {
+        es: '2.0',
+        en: '6\'7"',
+        ja: '2.0'
+      },
+      weight: {
+        es: '6.9',
+        en: '15.2',
+        ja: '6.9'
+      }
+    },
+    artist: 'Krgc',
+    attacks: [
+      {
+        name: {
+          es: 'Picotazo Veneno',
+          en: 'Poison Sting',
+          ja: 'どくばり' 
+        },
+        damage: 0,
+        energy: [PokemonTypeENUM.DARK],
+        description: {
+          es: 'El Pokémon Activo de tu rival pasa a estar Envenenado.',
+          en: 'Your opponent\'s Active Pokémon is now Poisoned.',
+          ja: '相手のバトルポケモンをどくにする。' 
+        }
+      },
+    ],
+    evolve: [165],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Es capaz de desencajar la mandíbula para engullir presas enteras mayores que él mismo, tras lo cual se enrosca para descansar.',
+      en: 'By dislocating its jaw, it can swallow prey larger than itself. After a meal, it curls up and rests.',
+      ja: '顎を　外すことで　自分より 大きな　獲物も　丸呑みに　する｡ 食後は　身体を　丸め　休む｡' 
+    },
+    health: 60,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.DARK,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.POISON],
+    found: [
+      EXPANSION.PROMO_A6
+    ],
+    related: [165],
+    extra: {
+      es: 'Promoción',
+      en: 'Promo Pack',
+      ja: '昇進' 
+    },
+  },
+  {
+    id: 843,
+    order: 843,
+    number: 57,
+    pokedex: 399,
+    name: {
+      es: 'Bidoof',
+      en: 'Bidoof',
+      ja: 'ビッパ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Gran Ratón',
+        en: 'Plump Mouse Pokémon',
+        ja: 'まるねずみポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '20.0',
+        en: '44.1',
+        ja: '20.0'
+      }
+    },
+    artist: 'Kouki Saitou',
+    attacks: [
+      {
+        name: {
+          es: 'Golpe Cabeza',
+          en: 'Headbutt',
+          ja: 'ずつき' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+      },
+    ],
+    evolve: [788],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Tiene nervios de acero y nada puede perturbarlo. Es más ágil y activo de lo que aparenta.',
+      en: 'With nerves of steel, nothing can perturb it. It is more agile and active than it appears.',
+      ja: 'なにごとにも 動じない 図太い 神経の 持ち主。 見かけの 割には 機敏に 活動する。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 2,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.NORMAL,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.PROMO_A6,
+    ],
+    related: [508, 549],
+    extra: {
+      es: 'Promoción',
+      en: 'Promo Pack',
+      ja: '昇進' 
+    },
+  },
+  {
+    id: 844,
+    order: 844,
+    number: 58,
+    pokedex: 417,
+    name: {
+      es: 'Pachirisu',
+      en: 'Pachirisu',
+      ja: 'パチリス' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Ardillalec',
+        en: 'EleSquirrel Pokémon',
+        ja: 'でんきリスポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '3.9',
+        en: '8.6',
+        ja: '3.9'
+      }
+    },
+    artist: 'OOYAMA',
+    attacks: [
+      {
+        name: {
+          es: 'Plasma',
+          en: 'Plasma',
+          ja: 'プラズマ' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.ELECTRIC, PokemonTypeENUM.ELECTRIC],
+        description: {
+          es: 'Une 1 Energía Eléctrica de tu área de Energía a 1 de tus Pokémon Eléctricos en Banca.',
+          en: 'Take a Lightning Energy from your Energy Zone and attach it to 1 of your Benched Pokémon.',
+          ja: '自分のエネルギーゾーンから雷エネルギーを1個出し、ベンチの雷ポケモンにつける。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Forma parte del grupo de Pokémon que posee bolsas de electricidad en las mejillas. Descarga por la cola la electricidad que acumula.',
+      en: 'It\'s one of the kinds of Pokémon with electric cheek pouches. It shoots charges from its tail.',
+      ja: 'ほっぺに 電気袋を 持つ ポケモンの 仲間。 尻尾から 溜まった 電気を 放出する。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.ELECTRIC,
+    weak: PokemonTypeENUM.FIGHT,
+    isEX: false,
+    shiny: false,
+    condition: [CardSpecialConditionENUM.ADD_ENERGY],
+    found: [
+      EXPANSION.WONDER_PICK
+    ],
+    related: [555, 570],
+    extra: {
+      es: 'Elección Mágica',
+      en: 'Wonder Pick',
+      ja: 'ワンダーピック' 
+    },
+  },
+  {
+    id: 845,
+    order: 845,
+    number: 59,
+    pokedex: 447,
+    name: {
+      es: 'Riolu',
+      en: 'Riolu',
+      ja: 'リオル' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Emanación',
+        en: 'Emanation Pokémon',
+        ja: 'はもんポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '20.2',
+        en: '44.5',
+        ja: '20.2'
+      }
+    },
+    artist: 'Akira Komayama',
+    attacks: [
+      {
+        name: {
+          es: 'Puño',
+          en: 'Punch',
+          ja: 'パンチ' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.FIGHT, PokemonTypeENUM.FIGHT]
+      }
+    ],
+    evolve: [767],
+    expansion: CardExpansionENUM.PROMO_A,
+    series: CardExpansionTypeENUM.A2B,
+    flavor: {
+      es: 'Se comunica con los suyos emitiendo ondas. Puede pasarse toda una noche corriendo.',
+      en: 'They communicate with one another using their auras. They are able to run all through the night.',
+      ja: '仲間同士で 波動を 出して コミュニケーションを とっている。 一晩中 走り続けられる。' 
+    },
+    health: 70,
+    rarity: CardRarityENUM.PROMO,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.FIGHT,
+    weak: PokemonTypeENUM.PSYCHIC,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.WONDER_PICK,
+    ],
+    related: [464, 542],
     extra: {
       es: 'Elección Mágica',
       en: 'Wonder Pick',

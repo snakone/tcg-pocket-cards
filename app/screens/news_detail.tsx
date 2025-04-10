@@ -1,36 +1,29 @@
 import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { Subscription } from "rxjs";
 
-import Animated, { 
-  Extrapolation, 
-  interpolate, 
-  useAnimatedScrollHandler, 
-  useAnimatedStyle, 
-  useDerivedValue, 
-  useSharedValue 
-} from "react-native-reanimated";
+import PocketNewsService from "@/core/services/news.service";
+import { useI18n } from "@/core/providers/LanguageProvider";
+import { useError } from "@/core/providers/ErrorProvider";
 
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { AppContext } from "../_layout";
+import { NewsContent, PocketNews } from "@/shared/definitions/interfaces/global.interfaces";
+import { formatDate } from "@/shared/definitions/utils/functions";
+import { LanguageType } from "@/shared/definitions/types/global.types";
+
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import SharedScreen from "@/components/shared/SharedScreen";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
-import { NewsContent, PocketNews } from "@/shared/definitions/interfaces/global.interfaces";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import PocketNewsService from "@/core/services/news.service";
-import { useError } from "@/core/providers/ErrorProvider";
-import { formatDate } from "@/shared/definitions/utils/functions";
-import { LanguageType } from "@/shared/definitions/types/global.types";
 import { pocketNewsStyles } from "@/components/dedicated/news/NewsItem";
 
 export default function NewsDetailScreen() {
+  console.log('News Detail Screen')
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state, dispatch } = context;
   const { id } = useLocalSearchParams<{ id: string }>();
   const [loading, setLoading] = useState(true);
@@ -58,21 +51,18 @@ export default function NewsDetailScreen() {
 
   useEffect(() => {
     let sub: Subscription;
-
     !state.pocketNewsState.loaded ? sub = loadPocketNews() : setLoading(false);
 
-    return () => {
-      if (sub) {
-        sub.unsubscribe();
-      }
-    };
-  }, []);
+    return () => sub?.unsubscribe();
+  }, [state.pocketNewsState.loaded]);
 
   useEffect(() => {
     if (id !== undefined) {
-      const data = state.pocketNewsState.news.find(pocketNew => pocketNew._id === id)
-      setPocketNew(data);
-      setLoading(false);
+      const data = state.pocketNewsState.news.find(pocketNew => pocketNew._id === id);
+      if (data) {
+        setPocketNew(data);
+        setLoading(false);
+      }
     }
   }, [state.pocketNewsState.news]);
 
@@ -92,7 +82,7 @@ export default function NewsDetailScreen() {
   const renderContent = useCallback(({item}: {item: NewsContent}) => {
       switch (item.type) {
         case 'title':
-          return <ThemedText style={[item.style, styles.item]}>
+          return <ThemedText style={[item.style, styles.item, {marginTop: 10}]}>
                     {item.value}
                   </ThemedText>;
         case 'text':
@@ -116,12 +106,12 @@ export default function NewsDetailScreen() {
           pocketNew && 
           <>
             <ThemedView style={[pocketNewsStyles.item, styles.content]}>
-              <Animated.View>
-                <Animated.Image source={{uri: pocketNew.image}} 
+              <View>
+                <Image source={{uri: pocketNew.image}} 
                                 style={[
                                   pocketNewsStyles.image, 
                                   styles.animatedImage]} />
-              </Animated.View>
+              </View>
               <ThemedView style={[pocketNewsStyles.info, styles.time]}>
                 <ThemedView style={pocketNewsStyles.date}>
                   {typeElement(pocketNew.type)}
@@ -134,7 +124,7 @@ export default function NewsDetailScreen() {
                 </ThemedText>
               </ThemedView>
 
-              <Animated.FlatList
+              <FlatList
                 data={(pocketNew.content as any)[i18n.locale]}
                 renderItem={renderContent}
                 keyExtractor={(item, index) => `${item.type}-${index}`}

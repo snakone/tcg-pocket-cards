@@ -3,25 +3,29 @@ import { Audio, AVPlaybackSource } from 'expo-av';
 import { 
   AUDIO_MENU_CLOSE,
   AUDIO_MENU_OPEN,
-  BACKGROUND_MUSIC,
   CHANGE_VIEW, 
   DELETE_SOUND, 
   PICK_CARD_SOUND, 
   POP_PICK,
   SCALE,
-  SPLASH_MUSIC
+  SPLASH_MUSIC,
+  FLIP_CARD,
+  FLIP_CARD_REVERSE,
+  SUCCESS_SOUND
 } from '@/shared/definitions/sentences/path.sentences';
 
 export const Sounds: {[key: string]: AVPlaybackSource} = {
   AUDIO_MENU_OPEN,
   AUDIO_MENU_CLOSE,
   PICK_CARD_SOUND,
-  BACKGROUND_MUSIC,
   CHANGE_VIEW,
   POP_PICK,
   SCALE,
   SPLASH_MUSIC,
-  DELETE_SOUND
+  DELETE_SOUND,
+  FLIP_CARD,
+  FLIP_CARD_REVERSE,
+  SUCCESS_SOUND
 };
 
 export class SoundService {
@@ -80,9 +84,14 @@ export class SoundService {
     }
   }
 
+  static async setVolumeSplash(volume: number) {
+    const sound = this.sounds['SPLASH_MUSIC'];
+    (sound as Audio.Sound).setVolumeAsync(volume);
+  }
+
   private static async setVolumeAllSounds(volume: number): Promise<void> {
     for (const key in Sounds) {
-      if (Sounds.hasOwnProperty(key) && this.sounds[key]) {
+      if (this.sounds[key]) {
         (this.sounds[key] as Audio.Sound).setVolumeAsync(volume);
       }
     }

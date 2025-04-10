@@ -1,8 +1,10 @@
-import { ThemedView } from "@/components/ThemedView";
-import StateButton from "@/components/ui/StateButton";
+import { memo, MutableRefObject } from "react";
+
 import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { filterStyles } from "@/shared/styles/component.styles";
-import { memo, MutableRefObject } from "react";
+
+import { ThemedView } from "@/components/ThemedView";
+import StateButton from "@/components/ui/StateButton";
 
 export const FavoriteItem = memo(({filterObj}: {filterObj: MutableRefObject<FilterSearch>}) => {
   return (

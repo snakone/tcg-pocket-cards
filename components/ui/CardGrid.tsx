@@ -1,11 +1,10 @@
-import React, { useState, useCallback, useEffect, useRef, useContext } from 'react';
+import React, { useState, useCallback, useEffect, useRef, useContext, useMemo } from 'react';
 
 import { 
   FlatList, 
   TextInput, 
   SafeAreaView, 
   Pressable, 
-  TouchableOpacity, 
   View, 
   Platform, 
   KeyboardAvoidingView,
@@ -14,322 +13,254 @@ import {
 
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
-import { Switch } from 'react-native-paper';
-
-import Animated, { 
-  useAnimatedScrollHandler, 
-  useSharedValue, 
-} from 'react-native-reanimated';
+import { Slider } from '@miblanchard/react-native-slider';
+import { combineLatest } from 'rxjs';
 
 import { 
-  ButtonStyles,
-  CARD_IMAGE_WIDTH_3,
-  CARD_IMAGE_WIDTH_5,
   CardGridStyles,
-  ModalStyles,
+  gridColumMap,
+  gridHeightMap,
+  gridWidthMap,
   ParallaxStyles
 } from '@/shared/styles/component.styles';
 
-import { Card } from '@/shared/definitions/interfaces/card.interfaces';
-import { GO_UP, NO_CONTEXT, SEARCH_LABEL } from '@/shared/definitions/sentences/global.sentences';
-import SkeletonCardGrid from '../skeletons/SkeletonCardGrid';
-import { ThemedView } from '../ThemedView';
-import HeaderWithCustomModal from '../shared/HeaderModal';
-import { ThemedText } from '../ThemedText';
-import { IconSymbol } from './IconSymbol';
-import { Colors } from '@/shared/definitions/utils/colors';
-import useHeaderAnimation from './HeaderAnimation';
-import { AppState } from '@/hooks/root.reducer';
-import { LARGE_MODAL_HEIGHT, SORT_FIELD_MAP } from '@/shared/definitions/utils/constants';
+import { DataRxjs } from '@/core/rxjs/DataRxjs';
 import { useI18n } from '@/core/providers/LanguageProvider';
-import { SortItem } from '@/shared/definitions/interfaces/layout.interfaces';
-import { filterCards, getImageLanguage116x162, getImageLanguage69x96, sortCards } from '@/shared/definitions/utils/functions';
-import { AppContext } from '@/app/_layout';
 import SoundService from '@/core/services/sounds.service';
+import { FilterRxjs } from '@/core/rxjs/FilterRxjs';
+import { SortRxjs } from '@/core/rxjs/SortRxjs';
+
+import { AppContext } from '@/app/_layout';
+import { Card } from '@/shared/definitions/interfaces/card.interfaces';
+import { Colors } from '@/shared/definitions/utils/colors';
+import { filterOrSortCards, getImageLanguage116x162, getImageLanguage69x96 } from '@/shared/definitions/utils/functions';
 import { LanguageType } from '@/shared/definitions/types/global.types';
+import { LARGE_MODAL_HEIGHT } from '@/shared/definitions/utils/constants';
+import { FilterSearch } from '@/shared/definitions/classes/filter.class';
+import { ThemedView } from '../ThemedView';
+import { settingsStyles } from '@/app/screens/settings';
+import { BACKWARD_CARD } from '@/shared/definitions/sentences/path.sentences';
+import HeaderWithCustomModal from '../shared/HeaderModal';
+
+import { ThemedText } from '../ThemedText';
+import { FooterList } from './FooterList';
+import { ResetFilterButton } from './ResetFilterButton';
+import { TrackItem } from './TrackItem';
 
 interface GridCardProps {
-  state: AppState,
   title: string,
   modal: JSX.Element,
   modalTitle: string
-  type?: 'default' | 'favorites'
 }
 
-export default function ImageGridWithSearch({ state, title, modal, modalTitle, type = 'default' }: GridCardProps) {
+export default function ImageGridWithSearch({ 
+  title, 
+  modal, 
+  modalTitle, 
+}: GridCardProps) {
+  console.log('Card Grid!')
   const searchQuery = useRef('');
   const [filtered, setFiltered] = useState<Card[]>([]);
-
-  const [favorites, setFavorites] = useState<Card[]>(
-    state.cardState.cards.filter(c => state.settingsState.favorites?.includes(c.id))
-  );
-
   const flatListRef = useRef<FlatList<Card> | null>(null);
   const router = useRouter();
   const {i18n} = useI18n();
-  const scrollY = useSharedValue(0);
   const [numColumns, setNumColumns] = useState(3);
-  const [isGrid5, setIsGrid5] = useState(false);
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { dispatch } = context;
+  if (!context) { throw new Error('NO_CONTEXT'); }
+  const { state } = context;
   const [lang, setLang] = useState<LanguageType>(state.settingsState.language);
+  const gridNumber = useRef<0 | 1 | 2>(0);
+  const [favorites, setFavorites] = useState<Card[]>([]);
 
   useEffect(() => {
     setLang(state.settingsState.language);
   }, [state.settingsState.language]);
 
-  const { 
-    animatedHeaderStyle, 
-    animatedIconStyle, 
-    animatedTitleStyle 
-  } = useHeaderAnimation(scrollY);
-
-  const scrollHandler = useAnimatedScrollHandler({
-    onScroll: (event) => {
-      scrollY.value = event.contentOffset.y;
-    },
-  });
-
-  const toggleSwitch = () => {
-    !isGrid5 ? setNumColumns(5) : setNumColumns(3);
-    setIsGrid5(previousState => !previousState);
-    playSound(true);
-  };
-
   useEffect(() => {
     setFiltered(state.cardState.cards);
   }, [state.cardState.cards]);
 
-  useEffect(() => {
-    if (!filtered || filtered.length === 0) { return; }
-    if(state.modalState.sort_opened) { return; }
-    const sorted = filterOrSortCards('sort', filtered, state.filterState.sort.find(s => s.active));
-    setFiltered(sorted);
-    setTimeout(() => goUp(null, false), 100);
-  }, [state.modalState.sort_opened]);
+  const favIds = useMemo(() => favorites.map(fav => fav.id), [favorites]);
 
   useEffect(() => {
-    if (!filtered) { return; }
-    if(state.modalState.filter_opened) { return; }
-  
-    const filterCards = filterOrSortCards('filter', state.cardState.cards);
-    const sorted = filterOrSortCards('sort', filterCards, state.filterState.sort.find(s => s.active));
+    const sub = combineLatest([
+      FilterRxjs.getFilter<FilterSearch>('cards'),
+      SortRxjs.getSortActive('cards')
+    ])
+    .subscribe(([filters, sort]) => {
+      const filterCards = filterOrSortCards('filter', state.cardState.cards, favIds, filters);
+      const sorted = filterOrSortCards('sort', filterCards, favIds, null, sort);
+      setFiltered(sorted);
+      setTimeout(() => goUp(null, false), 100);
+    });
 
-    setFiltered(sorted);
-    setTimeout(() => goUp(null, false), 100);
-  }, [state.modalState.filter_opened]);
+    return () => sub.unsubscribe();
+  }, [state.cardState.cards, favorites]);
 
   useEffect(() => {
-    if (modalTitle !== 'favorites_modal_title') return;
-    const favorites = state.cardState.cards.filter(
-      card => state.settingsState.favorites?.includes(card.id)
-    );
+    const sub = DataRxjs.getData<number[]>('favorites')
+     .subscribe(res => {
+      const favorites = state.cardState.cards.filter(
+        card => res?.includes(card.id)
+      );
 
-    setFiltered(favorites);
-    setFavorites(favorites);
-  }, [state.settingsState.favorites]);
+      setFavorites(favorites);
+    });
+
+    return () => sub.unsubscribe();
+  }, []);
 
   const handleSearch = useCallback((text: string) => {
     searchQuery.current = text;
-    setFiltered((type === 'favorites' ? favorites : state.cardState.cards).filter(card =>
-    card.name[lang].toLowerCase()?.includes(text.toLowerCase())));
-  }, [(type === 'favorites' ? favorites : state.cardState.cards), lang]);
-
-  function filterOrSortCards(
-    type: 'sort' | 'filter', 
-    data: Card[], 
-    sort?: SortItem | undefined
-  ): Card[] {
-    switch (type) {
-      case 'sort': {
-        if (!sort) { return data; }
-        return manageSort(sort, data);
-      }
-
-      case 'filter': {
-        return manageFilter(data);
-      }
-    }
-  }
-
-  function manageSort(sort: SortItem, data: Card[]): Card[] {
-    const sortField = SORT_FIELD_MAP[sort.label];
-  
-    if (!sortField) {
-      console.error(`Unsupported sorting option: ${sort.label}`);
-      return data;
-    }
-  
-    return sortCards(sortField, data, sort);
-  }
-
-  function manageFilter(data: Card[]): Card[] {
-    const filter = state.filterState.filter;
-    return filterCards(filter, data, state.settingsState.favorites);
-  }
-
-  const renderFooter = useCallback(() => {
-    if (filtered.length < 34) {
-      return <ThemedView style={{ height: 20 }}></ThemedView>;
-    }
-
-    return (
-      <View
-        style={[
-          ModalStyles.modalFooter,
-          { marginBlock: 34, boxShadow: 'none', paddingTop: 20 },
-        ]}
-      >
-        <TouchableOpacity
-          style={ButtonStyles.button}
-          onPress={goUp}
-          accessibilityLabel={GO_UP}
-          accessibilityRole="button"
-          accessible={true}
-        >
-          <View style={ButtonStyles.insetBorder}>
-            <ThemedText>{i18n.t('go_up')}</ThemedText>
-          </View>
-        </TouchableOpacity>
-      </View>
-    )
-  }, [searchQuery.current, filtered.length]);
-
-  const RenderEmpty = () => {
-    const renderCardState = useCallback(() => {
-      return state.cardState.loaded ? (
-        <ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>
-      ) : (
-        <SkeletonCardGrid columns={numColumns} />
-      );
-    }, [state.cardState.loaded, numColumns]);
-  
-    return renderCardState();
-  };
+    setFiltered((state.cardState.cards).filter(card =>
+      card.name[lang].toLowerCase()?.includes(text.toLowerCase())));
+  }, [favorites, state.cardState.cards, lang]);
 
   const renderItem = useCallback(({ item }: { item: Card }) => (
     <View key={item.id} style={[
         CardGridStyles.imageContainer, 
         {marginHorizontal: 1, marginVertical: 1}
       ]}>
-      <Pressable disabled={state.cardState.navigating} 
-                 onPress={() => goToDetailScreen(item.id)} 
-                 style={{ zIndex: 1, position: 'relative' }}>
-          { state.settingsState.favorites?.includes(item.id) && 
+        <Pressable onPress={() => goToDetailScreen(item.id)} 
+                   style={{ zIndex: 1, position: 'relative' }}>
+          { favIds?.includes(item.id) && 
             <ThemedView style={CardGridStyles.triangle}></ThemedView>
           }
           <Image accessibilityLabel={item.name[lang]} 
                  style={[
             CardGridStyles.image, 
-            {width: isGrid5 ? CARD_IMAGE_WIDTH_5 : CARD_IMAGE_WIDTH_3}
+            {width: gridWidthMap[gridNumber.current]}
           ]} 
-          source={isGrid5 ? getImageLanguage69x96(lang, item.id) : 
-                            getImageLanguage116x162(lang, item.id)}/>
+          source={{uri: gridNumber.current === 1 || gridNumber.current === 2 ? 
+                    getImageLanguage69x96(lang, item.id) : 
+                    getImageLanguage116x162(lang, item.id)}}
+          placeholder={BACKWARD_CARD}/>
       </Pressable>
     </View>
-  ), [isGrid5, state.cardState.navigating, state.settingsState.favorites, lang]);
+  ), [gridNumber, favorites, lang]);
 
-  const playSound = async (isSwitch: boolean = false) => {
+  const playSound = useCallback(async (isSwitch: boolean = false) => {
     if (isSwitch) { 
       await SoundService.play('CHANGE_VIEW');
       return;
     }
     SoundService.play('PICK_CARD_SOUND');
-  };
+  }, []);
 
-  const goToDetailScreen = async (id: number) => {
-    if(state.cardState.navigating) { return; }
+  const goToDetailScreen = useCallback(async (id: number) => {
     await playSound();
-    dispatch({type: 'SET_NAVIGATING', value: true});
-    router.push(`/screens/detail?id=${encodeURIComponent(id)}`);
-  };
+    router.push(`/screens/card_detail?id=${encodeURIComponent(id)}`);
+  }, []);
 
-  const keyExtractor = useCallback((item: Card) => String(item.id), []);
-
-  async function goUp(_: GestureResponderEvent | null, sound = true): Promise<void> {
+  const goUp = useCallback(async (_: GestureResponderEvent | null, sound = true): Promise<void> => {
     if (sound) await playSound();
-    flatListRef.current?.scrollToOffset({offset: 0, animated: false});
-  }
+    flatListRef.current?.scrollToOffset({ offset: 0, animated: false });
+  }, []);
 
-  const ResetFilterButton = () => (
-    <TouchableOpacity onPress={() => handleSearch('')} 
-                      style={CardGridStyles.clearInput}
-                      hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-      <IconSymbol name="clear" size={20} color="gray" />
-    </TouchableOpacity>
-  );
+  const handleColumnChange = useCallback((ev: number[]): void => {
+    if (ev[0] === numColumns) { return; }
+    playSound(true);
+    const value = ev[0] as 0 | 1 | 2;
+    gridNumber.current = value;
+    setNumColumns(gridColumMap[value]);
+  }, []);
+
+  const sliderComponent = useMemo(() => (
+    <Slider
+      maximumValue={1}
+      minimumValue={0}
+      step={1}
+      containerStyle={{ width: '75%', left: Platform.OS === 'web' ? -34 : -38 }}
+      maximumTrackTintColor={Colors.light.skeleton}
+      minimumTrackTintColor="mediumaquamarine"
+      animateTransitions={true}
+      animationType={'timing'}
+      thumbStyle={settingsStyles.thumb}
+      trackStyle={settingsStyles.trackCard}
+      trackClickable={true}
+      value={gridNumber.current}
+      onSlidingComplete={handleColumnChange}
+      trackMarks={[0, 1]}
+      renderTrackMarkComponent={(i) => <TrackItem index={i} />}
+    />
+  ), [gridNumber.current]);
+
+  const getItemLayout = useCallback((_: any, index: number) => ({
+    length: gridHeightMap[gridNumber.current],
+    offset: gridHeightMap[gridNumber.current] * index,
+    index, 
+  }), [gridNumber.current]);
 
   return (
     <ThemedView style={ParallaxStyles.container}>
       <SafeAreaView style={{flex: 1}}>
-        <Animated.View style={[ParallaxStyles.header, animatedHeaderStyle]}>
+        <View style={[ParallaxStyles.header, {marginBottom: 18}]}>
           <HeaderWithCustomModal title={title} 
                                  modalContent={modal} 
                                  modalTitle={modalTitle} 
-                                 animatedStyle={animatedTitleStyle}
-                                 animatedIconStyle={animatedIconStyle}
                                  modalHeight={LARGE_MODAL_HEIGHT as number}/>
-        </Animated.View>
-        <Animated.View style={[ParallaxStyles.content]}>
+        </View>
+        <View style={[ParallaxStyles.content]}>
           <SafeAreaView style={CardGridStyles.container}>
             <KeyboardAvoidingView style={{ flex: 1 }}
                                   behavior={'height'}
                                   keyboardVerticalOffset={-550}>
-              <Animated.FlatList
+              <View style={CardGridStyles.inputContainer}>
+                <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '60%', borderRadius: 8,}}>
+                  <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
+                              placeholder={i18n.t('search_card_placeholder')}
+                              value={searchQuery.current}
+                              onChangeText={handleSearch}
+                              placeholderTextColor={Colors.light.text}
+                              accessibilityLabel={'SEARCH_LABEL'}
+                              editable={state.cardState.loaded}
+                              inputMode='text'
+                            />
+                        {searchQuery.current.length > 0 && 
+                          <ResetFilterButton left={183} onPress={() => handleSearch('')}/>
+                        }
+                </ThemedView>
+
+                <ThemedView style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && {marginRight: 2}, {width: '20%'}]}>
+                  {sliderComponent}
+                  <ThemedText style={[
+                    CardGridStyles.totalCards, 
+                    {left: Platform.OS === 'web' ? -17 : -27, top: 0}]}>{filtered.length}
+                  </ThemedText>                    
+                </ThemedView>
+              </View>
+              <FlatList
                 data={filtered}
                 ref={flatListRef}
-                removeClippedSubviews={false}
-                onScroll={scrollHandler}
+                removeClippedSubviews={true}
                 renderItem={renderItem}
-                keyExtractor={keyExtractor}
+                keyExtractor={(_, index) => index.toString()}
                 key={numColumns}
+                bounces={false}
+                overScrollMode='never'
                 numColumns={numColumns}
                 onStartReachedThreshold={1}
                 onEndReachedThreshold={0.6}
                 scrollEnabled={state.cardState.loaded}
                 initialNumToRender={25}
                 maxToRenderPerBatch={35}
-                windowSize={15}
+                windowSize={13}
+                getItemLayout={getItemLayout}
                 keyboardDismissMode={'on-drag'}
                 contentContainerStyle={[CardGridStyles.gridContainer]}
                 keyboardShouldPersistTaps={'never'}
                 showsVerticalScrollIndicator={false}
-                stickyHeaderIndices={[0]}
-                ListEmptyComponent={RenderEmpty}
-                scrollEventThrottle={16}
-                ListFooterComponent={renderFooter}
-                ListHeaderComponent={
-                  <Animated.View style={[CardGridStyles.inputContainer]}>
-                    <ThemedView style={{boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', width: '71%', borderRadius: 8,}}>
-                      <TextInput style={[CardGridStyles.searchInput, {width: '100%'}]}
-                                  placeholder={i18n.t('search_card_placeholder')}
-                                  value={searchQuery.current}
-                                  onChangeText={handleSearch}
-                                  placeholderTextColor={Colors.light.text}
-                                  accessibilityLabel={SEARCH_LABEL}
-                                  editable={state.cardState.loaded}
-                                  inputMode='text'
-                                />
-                            {searchQuery.current.length > 0 && <ResetFilterButton/>}
-                    </ThemedView>
-
-                    <ThemedView style={[CardGridStyles.actionsContainer, Platform.OS !== 'web' && {marginRight: 2}]}>
-                      <Switch trackColor={{false: Colors.light.skeleton, true: 'mediumaquamarine'}}
-                              color={'white'}
-                              onValueChange={toggleSwitch}
-                              value={isGrid5}
-                              style={CardGridStyles.switch}
-                              disabled={filtered.length <= 4}
-                      />
-                      <ThemedText style={[CardGridStyles.totalCards]}>{filtered.length}</ThemedText>                    
-                    </ThemedView>
-                  </Animated.View>
+                ListEmptyComponent={<ThemedText style={{ paddingInline: 6 }}>{i18n.t('no_cards_found')}</ThemedText>}
+                ListFooterComponent={
+                  <FooterList filteredLength={filtered.length} 
+                              onPress={() => goUp(null)}
+                              height={20}>
+                  </FooterList>
                 }
               />               
             </KeyboardAvoidingView>
           </SafeAreaView>
-        </Animated.View>
+        </View>
       </SafeAreaView>
     </ThemedView>
   );

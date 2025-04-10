@@ -1,54 +1,31 @@
-import { StyleSheet, FlatList, DimensionValue } from "react-native";
-import { Image } from 'expo-image';
-import { useCallback, useContext, useState } from "react";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Platform, StyleSheet, View } from "react-native";
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import ViewShot from "react-native-view-shot";
 
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
 import { useI18n } from "@/core/providers/LanguageProvider";
+import ShareService from "@/core/services/share.service";
+
 import { AppContext } from "@/app/_layout";
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
 import { CardExpansionENUM, CardRarityENUM, CardSpecialConditionENUM, CardStageENUM } from "@/shared/definitions/enums/card.enums";
-import { Colors } from "@/shared/definitions/utils/colors";
-import { getImageLanguage116x162, sortCards } from "@/shared/definitions/utils/functions";
-import { CardGridStyles } from "@/shared/styles/component.styles";
+import { sortCards } from "@/shared/definitions/utils/functions";
 import { LanguageType } from "@/shared/definitions/types/global.types";
 import { EXPANSION } from "@/shared/definitions/enums/packs.enums";
 import { PACK_PER_EXPANSION_MAP } from "@/shared/definitions/utils/constants";
 import { Card } from "@/shared/definitions/interfaces/card.interfaces";
 import { SortItem } from "@/shared/definitions/interfaces/layout.interfaces";
 import { PokemonTypeENUM } from "@/shared/definitions/enums/pokemon.enums";
-import RainbowDivider from "./RainbowDivider";
 
-import { 
-  CHAMPION_ICON, 
-  CROWN_RARITY, 
-  DARK_ICON, 
-  DRAGON_ICON, 
-  ELECTRIC_ICON, 
-  FIGHT_ICON, 
-  FIRE_ICON, 
-  GENETIC_APEX, 
-  GENETIC_APEX_CHARIZARD_ICON, 
-  GENETIC_APEX_MEWTWO_ICON, 
-  GENETIC_APEX_PIKACHU_ICON, 
-  GRASS_ICON, 
-  MYTHICAL_ISLAND_MEW_ICON, 
-  NORMAL_ICON, 
-  NORMAL_RARITY, 
-  PROMO_A_ICON, 
-  PSYCHIC_ICON, 
-  SMACK_DOWN, 
-  SMACK_DOWN_DIALGA_ICON, 
-  SMACK_DOWN_PALKIA_ICON,
-  STAR_RARITY,
-  STEEL_ICON,
-  WATER_ICON,
-  TRIUMPH_LIGHT_ARCEUS_ICON
-} from "@/shared/definitions/sentences/path.sentences";
-
-const numColumns = 20;
-const collageWith = 1240;
+import { ThemedView } from "@/components/ThemedView";
+import { GraphicSummary } from "./components/GraphicSummary";
+import { GraphicExpansion } from "./components/GraphicExpansion";
+import { GraphicGrades } from "./components/GraphicGrades";
+import { GraphicTypes } from "./components/GraphicTypes";
+import { GraphicMiscellania } from "./components/GraphicMiscellania";
+import { GraphicWeak } from "./components/GraphicWeak";
+import { GraphicTop } from "./components/GraphicTop";
+import { GraphicConditions } from "./components/GraphicConditions";
+import { GraphicHeader } from "./components/GraphicHeader";
+import { GraphicFooter } from "./components/GraphicFooter";
 
 interface GraphicCollageProps {
   showExpansion: boolean,
@@ -57,7 +34,9 @@ interface GraphicCollageProps {
   showMiscellania: boolean,
   showWeak: boolean,
   showTop: boolean,
-  showConditions: boolean
+  showConditions: boolean,
+  quality: number,
+  onFinish: () => void
 }
 
 export function GraphicCollage({
@@ -68,12 +47,77 @@ export function GraphicCollage({
   showWeak,
   showTop,
   showConditions,
+  quality,
+  onFinish
 }: GraphicCollageProps) {
   const {i18n} = useI18n();
   const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
+  if (!context) { throw new Error('NO_CONTEXT'); }
   const { state } = context;
   const [lang] = useState<LanguageType>(state.settingsState.language);
+  const shareService = useMemo(() => new ShareService(), []);
+
+  const summaryRef = useRef<any>(null);
+  const expansionRef = useRef<any>(null);
+  const expansionRefSecond = useRef<any>(null);
+  const expansionRefThird = useRef<any>(null);
+  const gradesRef = useRef<any>(null);
+  const typesRef = useRef<any>(null);
+  const miscellaniaRef = useRef<any>(null);
+  const weakRef = useRef<any>(null);
+  const topRef = useRef<any>(null);
+  const conditionsRef = useRef<any>(null);
+
+  const [innerShowExpansion, setInnerShowExp] = useState(false);
+  const [innerShowGrades, setInnerShowGrades] = useState(false);
+  const [innerShowTypes, setInnerShowTypes] = useState(false);
+  const [innerShowMiscellania, setInnerShowMisc] = useState(false);
+  const [innerShowWeak, setInnerShowWeak] = useState(false);
+  const [innerShowTop, setInnerShowTop] = useState(false);
+  const [innerShowCondition, setInnerShowCond] = useState(false);
+  
+  const references = [
+    { item: summaryRef, label: i18n.t('summary') },
+    { item: expansionRef, label: i18n.t('expansions') + '-1', func: (_: boolean) => setInnerShowExp(_), value: showExpansion },
+    { item: expansionRefSecond, label: i18n.t('expansions') + '-2', func: (_: boolean) => setInnerShowExp(_), value: showExpansion },
+    { item: expansionRefThird, label: i18n.t('expansions') + '-3', func: (_: boolean) => setInnerShowExp(_), value: showExpansion },
+    { item: gradesRef, label: i18n.t('grade'), func: (_: boolean) => setInnerShowGrades(_), value: showGrades },
+    { item: typesRef, label: i18n.t('types'), func: (_: boolean) => setInnerShowTypes(_), value: showTypes },
+    { item: miscellaniaRef, label: i18n.t('miscellania'), func: (_: boolean) => setInnerShowMisc(_), value: showMiscellania },
+    { item: weakRef, label: i18n.t('weak'), func: (_: boolean) => setInnerShowWeak(_), value: showWeak },
+    { item: topRef, label: i18n.t('top_20'), func: (_: boolean) => setInnerShowTop(_), value: showTop },
+    { item: conditionsRef, label: i18n.t('conditions'), func: (_: boolean) => setInnerShowCond(_), value: showConditions },
+  ];
+
+  useEffect(() => {
+    setTimeout(() => makeAllPictures(), 3000);
+  }, []);
+
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+  async function makeAllPictures(): Promise<void> {
+    const WAIT = Platform.OS === 'android' ? 9000 : 2500;
+    for (const ref of references) {
+      if (!ref) { continue; }
+
+      if (ref && ref.func && ref.value) {
+        ref.func(true);
+        await delay(WAIT);
+      }
+
+      if (ref.item?.current) {
+        await shareService.makeInfoGraphic(
+          ref.item, 'infographic-tcg-pocket-cards-' + ref.label.toLowerCase(), quality
+        );
+      }
+
+      if (ref && ref.func && ref.value) {
+        ref.func(false);
+        await delay(WAIT / 2);
+      }   
+    }
+    onFinish();
+  }
 
   const filterAndSort = (filterFn: (card: Card) => boolean) => {
     const filtered = state.cardState.cards.filter(filterFn).sort((a, b) => a.order - b.order);
@@ -170,31 +214,10 @@ export function GraphicCollage({
       .slice(0, 20);
   }, [state.cardState.cards]);
 
-  function getItemWidth(length: number): DimensionValue {
-    if (length >= 20) { return '100%'}
-    return (length * 60) + 40;
-  }
-
-  const renderItem = useCallback(({item, index}: {item: Card, index: number}) => {
-    return (
-      <ThemedView style={
-          [{backgroundColor: Colors.light.background, height: 48}, 
-          index > 19 && {boxShadow: '0px -2px 12px rgba(0, 0, 0, 0.7)'}
-        ]}>
-        <Image accessibilityLabel={item?.name[lang]} 
-                style={[
-          CardGridStyles.image, 
-          {width: 60, borderRadius: 4, height: 82}
-        ]} 
-        source={getImageLanguage116x162(lang, item?.id)}/>
-      </ThemedView>
-    )
-  }, []);
-
   const { data: pikachuCards, length: pikachuCardsLength } = getCards(EXPANSION.PIKACHU);
   const { data: mewtwoCards, length: mewtwoCardsLength } = getCards(EXPANSION.MEWTWO);
   const { data: charizardCards, length: charizardCardsLength } = getCards(EXPANSION.CHARIZARD);
-  const { data: islandCards } = getCards(EXPANSION.MYTHICAL_ISLAND);
+  const { data: islandCards } = getCards(EXPANSION.MEW);
   const { data: dialgaCards, length: dialgaCardsLength } = getCards(EXPANSION.DIALGA);
   const { data: palkiaCards, length: palkiaCardsLength } = getCards(EXPANSION.PALKIA);
   const { data: premiumCards, length: premiumCardsLength } = getCards(EXPANSION.PREMIUM);
@@ -202,13 +225,17 @@ export function GraphicCollage({
   const { data: promo2Cards } = getCards(EXPANSION.PROMO_A2);
   const { data: promo3Cards } = getCards(EXPANSION.PROMO_A3);
   const { data: promo4Cards } = getCards(EXPANSION.PROMO_A4);
+  const { data: promo5Cards } = getCards(EXPANSION.PROMO_A5);
+  const { data: promo6Cards } = getCards(EXPANSION.PROMO_A6);
   const { data: specialCards, length: specialCardsLength } = getCards(EXPANSION.SPECIAL_MISSION);
   const { data: triumphCards } = getCards(EXPANSION.ARCEUS);
+  const { data: shinyCards, length: shinyCardsLength } = getCards(EXPANSION.SHINY);
 
   const { length: geneticPackCardsLength } = getCardsExpansion(CardExpansionENUM.GENETIC_APEX);
   const { length: islandPackCardsLength } = getCardsExpansion(CardExpansionENUM.MYTHICAL_ISLAND);
   const { length: spacePackCardsLength } = getCardsExpansion(CardExpansionENUM.SPACE_TIME_SMACKDOWN);
   const { length: triumphPackCardsLength } = getCardsExpansion(CardExpansionENUM.TRIUMPH_LIGHT);
+  const { length: shiningCardsLength } = getCardsExpansion(CardExpansionENUM.SHINING_REVELRY);
   const { data: promoAPackCards, length: promoAPackCardsLength } = getCardsExpansion(CardExpansionENUM.PROMO_A);
 
   const { data: rareCards, length: rareCardsLength } = getCardRarity(CardRarityENUM.RARE);
@@ -216,6 +243,8 @@ export function GraphicCollage({
   const { data: artCards, length: artCardsLength } = getCardRarity(CardRarityENUM.ART);
   const { data: superCards, length: superCardsLength } = getCardRarity(CardRarityENUM.SUPER);
   const { data: inmersiveCards, length: inmersiveCardsLength } = getCardRarity(CardRarityENUM.INMERSIVE);
+  const { data: rainbowCards, length: rainbowCardsLength } = getCardRarity(CardRarityENUM.SHINY);
+  const { data: doubleRainbowCards, length: doubleRainbowCardsLength } = getCardRarity(CardRarityENUM.DOUBLE_SHINY);
   const { data: crownCards, length: crownCardsLength } = getCardRarity(CardRarityENUM.CROWN);
 
   const { data: grassCards, length: grassCardsLength } = getCardByType(PokemonTypeENUM.GRASS);
@@ -249,14 +278,14 @@ export function GraphicCollage({
   const { data: sharedSmack, length: sharedSmackLength } = getSharedCards(CardExpansionENUM.SPACE_TIME_SMACKDOWN);
 
   const { data: benchCondition, length: benchConditionLength } = getCondition(CardSpecialConditionENUM.ATTACK_BENCH);
-  const { data: addCondition, length: addConditionLength } = getCondition(CardSpecialConditionENUM.ADD);
+  const { data: addCondition, length: addConditionLength } = getCondition(CardSpecialConditionENUM.ADD_ENERGY);
   const { data: burnedCondition, length: burnedConditionLength } = getCondition(CardSpecialConditionENUM.BURNED);
-  const { data: callCondition, length: callConditionLength } = getCondition(CardSpecialConditionENUM.CALL);
+  const { data: callCondition, length: callConditionLength } = getCondition(CardSpecialConditionENUM.CALL_CARDS);
   const { data: confusionCondition, length: confusionConditionLength } = getCondition(CardSpecialConditionENUM.CONFUSION);
   const { data: cornerCondition, length: cornerConditionLength } = getCondition(CardSpecialConditionENUM.CORNER);
   const { data: discardCondition, length: discardConditionLength } = getCondition(CardSpecialConditionENUM.DISCARD);
   const { data: extraCondition, length: extraConditionLength } = getCondition(CardSpecialConditionENUM.EXTRA_DAMAGE);
-  const { data: flipCondition, length: flipConditionLength } = getCondition(CardSpecialConditionENUM.FLIP);
+  const { data: flipCondition, length: flipConditionLength } = getCondition(CardSpecialConditionENUM.FLIP_COIN);
   const { data: healCondition, length: healConditionLength } = getCondition(CardSpecialConditionENUM.HEAL);
   const { data: inactiveCondition, length: inactiveConditionLength } = getCondition(CardSpecialConditionENUM.INACTIVE);
   const { data: nothingCondition, length: nothingConditionLength } = getCondition(CardSpecialConditionENUM.NOTHING);
@@ -268,1940 +297,262 @@ export function GraphicCollage({
   const { data: sleepCondition, length: sleepConditionLength } = getCondition(CardSpecialConditionENUM.SLEEP);
   const { data: withdrawCondition, length: withdrawConditionLength } = getCondition(CardSpecialConditionENUM.WITHDRAW_CARD);
   const { data: arceusCondition, length: arceusConditionLength } = getCondition(CardSpecialConditionENUM.ARCEUS_LINK);
+  const { data: playCardsCondition, length: playCardsConditionLength } = getCondition(CardSpecialConditionENUM.PLAY_CARDS);
+  const { data: randomCondition, length: randomConditionLength } = getCondition(CardSpecialConditionENUM.RANDOM_ATTACK);
+  const { data: endTurnCondition, length: endTurnConditionLength } = getCondition(CardSpecialConditionENUM.END_TURN);
+  const { data: plusEXCondition, length: plusEXConditionLength } = getCondition(CardSpecialConditionENUM.PLUS_EX);
+
+  const SUMMARY_DATA: any = {
+    geneticPackCardsLength, islandPackCardsLength, spacePackCardsLength, promoAPackCardsLength,
+    pikachuCardsLength, mewtwoCardsLength, charizardCardsLength, dialgaCardsLength, palkiaCardsLength, triumphPackCardsLength,
+    rareCardsLength, doubleCardsLength, artCardsLength, superCardsLength, inmersiveCardsLength, crownCardsLength,
+    grassCardsLength, fireCardsLength, waterCardsLength, electricCardsLength, psychicCardsLength,
+    fightCardsLength, darkCardsLength, steelCardsLength, dragonCardsLength, normalCardsLength,
+    withAbilityCardsLength, itemCardsLength, toolCardsLength, fossilCardsLength, supporterCardsLength,
+    benchConditionLength, recoilConditionLength, extraConditionLength, resistConditionLength, healConditionLength,
+    poisonConditionLength, paralizeConditionLength, sleepConditionLength, confusionConditionLength, burnedConditionLength,
+    flipConditionLength, nothingConditionLength, discardConditionLength, addConditionLength, cornerConditionLength,
+    withdrawConditionLength, retireConditionLength, callConditionLength, inactiveConditionLength,
+    arceusConditionLength, weakGrassCardsLength, weakFireCardsLength, weakWaterCardsLength, weakElectricCardsLength,
+    weakPsychicCardsLength, weakFightCardsLength, weakDarkCardsLength, weakSteelCardsLength, shiningCardsLength,
+    rainbowCardsLength, doubleRainbowCardsLength
+  };
+
+  const EXPANSION_DATA: any = {
+    geneticPackCardsLength, pikachuCardsLength, pikachuCards, mewtwoCardsLength, mewtwoCards,
+    charizardCardsLength, charizardCards, sharedGeneticLength, sharedGenetic, islandPackCardsLength,
+    islandCards, spacePackCardsLength, dialgaCardsLength, dialgaCards, palkiaCardsLength, palkiaCards,
+    sharedSmackLength, sharedSmack, triumphPackCardsLength, triumphCards, promoAPackCardsLength, promoAPackCards,
+    promo1Cards, promo2Cards, promo3Cards, promo4Cards, promo5Cards, promo6Cards, premiumCardsLength, 
+    specialCards, premiumCards, specialCardsLength, shinyCardsLength, shinyCards
+  };
+
+  const GRADES_DATA: any = {
+    rareCardsLength, rareCards, doubleCardsLength, doubleCards, artCardsLength, artCards,
+    superCardsLength, superCards, inmersiveCardsLength, inmersiveCards,
+    crownCardsLength, crownCards, rainbowCards, rainbowCardsLength, doubleRainbowCards, doubleRainbowCardsLength
+  };
+
+  const TYPES_DATA: any = {
+    grassCardsLength, grassCards, fireCardsLength, fireCards, waterCardsLength, waterCards,
+    electricCardsLength, electricCards, psychicCardsLength, psychicCards,
+    fightCardsLength, fightCards, darkCardsLength, darkCards, steelCardsLength, steelCards,
+    dragonCardsLength, dragonCards, normalCardsLength, normalCards
+  };
+
+  const MISCELLANIA_DATA: any = {
+    withAbilityCardsLength, withAbilityCards, itemCardsLength, itemCards,
+    toolCardsLength, toolCards, fossilCardsLength, fossilCards,
+    supporterCardsLength, supporterCards
+  };
+
+  const WEAK_DATA: any = {
+    weakGrassCardsLength, weakGrassCards, weakFireCardsLength, weakFireCards,
+    weakWaterCardsLength, weakWaterCards, weakElectricCardsLength, weakElectricCards,
+    weakPsychicCardsLength, weakPsychicCards, weakFightCardsLength, weakFightCards,
+    weakDarkCardsLength, weakDarkCards, weakSteelCardsLength, weakSteelCards
+  };
+
+  const TOP_DATA: any = {
+    rarity: getTop20('rarity'),
+    retreat: getRetreatTop20(),
+    health: getTop20('health'),
+    height: getTop20('height'),
+    weight: getTop20('weight'),
+    attack: getAttackTop20()
+  };
+
+  const CONDITIONS_DATA: any = {
+    benchConditionLength, benchCondition, recoilConditionLength, recoilCondition, extraConditionLength,
+    extraCondition, resistConditionLength, resistCondition, healConditionLength, healCondition,
+    poisonConditionLength, poisonCondition, paralizeConditionLength, paralizeCondition,
+    sleepConditionLength, sleepCondition, confusionConditionLength, confusionCondition,
+    burnedConditionLength, burnedCondition, flipConditionLength, flipCondition,
+    nothingConditionLength, nothingCondition, discardConditionLength, discardCondition,
+    addConditionLength, addCondition, cornerConditionLength, cornerCondition,
+    withdrawConditionLength, withdrawCondition, retireConditionLength, retireCondition,
+    callConditionLength, callCondition, inactiveConditionLength, inactiveCondition,
+    playCardsConditionLength, playCardsCondition, randomConditionLength, randomCondition,
+    arceusConditionLength, arceusCondition, endTurnConditionLength, endTurnCondition,
+    plusEXCondition, plusEXConditionLength
+  };
 
   return (
     <ThemedView>
-      <ThemedText style={styles.mainTitle}>{i18n.t('graphic_title')}</ThemedText>
-      <ThemedView style={{marginBottom: 10}}>
-        <ThemedText style={styles.text}>{i18n.t('infographics_intro')}</ThemedText>
-      </ThemedView>
-      <ThemedText style={styles.subTitlte}>{i18n.t('summary')}</ThemedText>
-      <ThemedView>
-        <ThemedText style={styles.text}>{i18n.t('infographics_summary')}</ThemedText>
-      </ThemedView>
-
-      <ThemedView style={styles.summary}>
-        <ThemedView style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 20}}>
-          <ThemedView style={{width: '23%'}}>
-            <ThemedView style={styles.summaryRow}>
-              <Image source={GENETIC_APEX} style={[styles.summaryImage, {width: 68, height: 30}]}></Image>
-              <ThemedText style={[styles.summaryText, {width: 90, textOverflow: 'ellipsis', overflow: 'hidden'}]} 
-                          numberOfLines={1} 
-                          ellipsizeMode="tail">{i18n.t('genetic_apex')}
-              </ThemedText>
-              <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {geneticPackCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-          <ThemedView style={{width: '23%'}}>
-            <ThemedView style={styles.summaryRow}>
-              <Image source={MYTHICAL_ISLAND_MEW_ICON} style={[styles.summaryImage, {width: 68, height: 34}]}></Image>
-              <ThemedText style={[styles.summaryText, {width: 90, textOverflow: 'ellipsis', overflow: 'hidden'}]} 
-                          numberOfLines={1} 
-                          ellipsizeMode="tail">{i18n.t('mythical_island')}
-              </ThemedText>
-              <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {islandPackCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-          <ThemedView style={{width: '23%'}}>
-            <ThemedView style={styles.summaryRow}>
-              <Image source={SMACK_DOWN} style={[styles.summaryImage, {width: 70, height: 33}]}></Image>
-              <ThemedText style={[styles.summaryText, {width: 90, textOverflow: 'ellipsis', overflow: 'hidden'}]} 
-                          numberOfLines={1} 
-                          ellipsizeMode="tail">{i18n.t('smack_down')}
-              </ThemedText>
-              <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {spacePackCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-          <ThemedView style={{width: '23%'}}>
-            <ThemedView style={styles.summaryRow}>
-              <Image source={PROMO_A_ICON} style={[styles.summaryImage, {width: 69, height: 34, top: -1}]}></Image>
-              <ThemedText style={[styles.summaryText, {width: 90, textOverflow: 'ellipsis', overflow: 'hidden'}]} 
-                          numberOfLines={1} 
-                          ellipsizeMode="tail">{i18n.t('promo_a')}
-              </ThemedText>
-              <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {promoAPackCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-        </ThemedView>
-
-        <ThemedView style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 22}}>
-          <ThemedView style={{width: '20%'}}>
-            <ThemedView style={styles.summaryRow}>
-              <Image source={GENETIC_APEX_PIKACHU_ICON} style={[styles.summaryImage]}></Image>
-              <ThemedText style={styles.summaryText}>{i18n.t('pikachu')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {pikachuCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-          <ThemedView style={{width: '20%'}}>
-            <ThemedView style={styles.summaryRow}>
-              <Image source={GENETIC_APEX_MEWTWO_ICON} style={[styles.summaryImage]}></Image>
-              <ThemedText style={styles.summaryText}>{i18n.t('mewtwo')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {mewtwoCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-          <ThemedView style={{width: '20%'}}>
-            <ThemedView style={styles.summaryRow}>
-              <Image source={GENETIC_APEX_CHARIZARD_ICON} style={[styles.summaryImage]}></Image>
-              <ThemedText style={styles.summaryText}>{i18n.t('charizard')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {charizardCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-          <ThemedView style={{width: '20%'}}>
-            <ThemedView style={styles.summaryRow}>
-              <Image source={SMACK_DOWN_DIALGA_ICON} style={[styles.summaryImage, {width: 68, height: 34}]}></Image>
-              <ThemedText style={styles.summaryText}>{i18n.t('dialga')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {dialgaCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-          <ThemedView style={{width: '20%'}}>
-            <ThemedView style={styles.summaryRow}>
-              <Image source={SMACK_DOWN_PALKIA_ICON} style={[styles.summaryImage, {width: 68, height: 34}]}></Image>
-              <ThemedText style={styles.summaryText}>{i18n.t('palkia')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {palkiaCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-        </ThemedView>
-
-        <ThemedView style={{flexDirection: 'row', justifyContent: 'center'}}>
-          <ThemedView style={{width: '20%'}}>
-            <ThemedView style={styles.summaryRow}>
-              <Image source={TRIUMPH_LIGHT_ARCEUS_ICON} style={[styles.summaryImage, {width: 80, height: 34}]}></Image>
-              <ThemedText style={styles.summaryText}>{i18n.t('triumphal_light')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
-                {triumphPackCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-        </ThemedView>
-
-        <ThemedView style={{marginTop: 10}}>
-          <RainbowDivider height={2}></RainbowDivider>
-        </ThemedView>
-
-        <ThemedView style={{flexDirection: 'row', marginTop: 6, justifyContent: 'center'}}>
-          <ThemedView style={styles.rowGap}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 8}}>
-              {Array.from({ length: 3 }).map((_, i) => (
-                <Image
-                  key={(i + 1)}
-                  source={NORMAL_RARITY}
-                  style={{
-                    width: 22,
-                    height: 23,
-                    top: 1
-                  }}
-                />
-              ))}
-            </ThemedView>
-            <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-              {rareCardsLength}
-            </ThemedText>
-          </ThemedView>
-          <ThemedView style={styles.rowGap}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 8}}>
-              {Array.from({ length: 4 }).map((_, i) => (
-                <Image
-                  key={(i + 1)}
-                  source={NORMAL_RARITY}
-                  style={{
-                    width: 22,
-                    height: 23,
-                    top: 1
-                  }}
-                />
-              ))}
-            </ThemedView>
-            <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-              {doubleCardsLength}
-            </ThemedText>
-          </ThemedView>
-          <ThemedView style={styles.rowGap}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 8}}>
-              {Array.from({ length: 1 }).map((_, i) => (
-                <Image
-                  key={(i + 1)}
-                  source={STAR_RARITY}
-                  style={{
-                    width: 22,
-                    height: 23,
-                    top: 1
-                  }}
-                />
-              ))}
-            </ThemedView>
-            <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-              {artCardsLength}
-            </ThemedText>
-          </ThemedView>
-          <ThemedView style={styles.rowGap}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 8}}>
-              {Array.from({ length: 2 }).map((_, i) => (
-                <Image
-                  key={(i + 1)}
-                  source={STAR_RARITY}
-                  style={{
-                    width: 22,
-                    height: 23,
-                    top: 1
-                  }}
-                />
-              ))}
-            </ThemedView>
-            <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-              {superCardsLength}
-            </ThemedText>
-          </ThemedView>
-          <ThemedView style={styles.rowGap}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 8}}>
-              {Array.from({ length: 3 }).map((_, i) => (
-                <Image
-                  key={(i + 1)}
-                  source={STAR_RARITY}
-                  style={{
-                    width: 22,
-                    height: 23,
-                    top: 1
-                  }}
-                />
-              ))}
-            </ThemedView>
-            <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-              {inmersiveCardsLength}
-            </ThemedText>
-          </ThemedView>
-          <ThemedView style={styles.rowGap}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 8}}>
-              {Array.from({ length: 1 }).map((_, i) => (
-                <Image
-                  key={(i + 1)}
-                  source={CROWN_RARITY}
-                  style={{
-                    width: 34,
-                    height: 23,
-                    top: 1
-                  }}
-                />
-              ))}
-            </ThemedView>
-            <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-              {crownCardsLength}
-            </ThemedText>
-          </ThemedView>
-        </ThemedView>
-
-        <ThemedView style={{marginTop: 6}}>
-          <RainbowDivider height={2}></RainbowDivider>
-        </ThemedView>
-
-        <ThemedView style={{flexDirection: 'row', marginTop: 8, justifyContent: 'center', gap: 40}}>
-          <ThemedView style={styles.energyRow}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={GRASS_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('grass')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {grassCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-          
-          <ThemedView style={styles.energyRow}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={FIRE_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('fire')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {fireCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={styles.energyRow}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={WATER_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('water')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {waterCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={styles.energyRow}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={ELECTRIC_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('electric')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {electricCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={styles.energyRow}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={PSYCHIC_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('psychic')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {psychicCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={styles.energyRow}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={FIGHT_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('fight')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {fightCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-        </ThemedView>
-        <ThemedView style={{flexDirection: 'row', marginTop: 20, justifyContent: 'center', gap: 40}}>
-          <ThemedView style={[styles.energyRow, {width: '16.6%'}]}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={DARK_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('dark')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {darkCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={[styles.energyRow, {width: '16.6%'}]}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={STEEL_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('steel')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {steelCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={[styles.energyRow, {width: '16.6%'}]}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={DRAGON_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('dragon')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {dragonCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={[styles.energyRow, {width: '16.6%'}]}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={NORMAL_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('normal')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {normalCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-        </ThemedView>
-
-        <ThemedView style={{marginTop: 8}}>
-          <RainbowDivider height={2}></RainbowDivider>
-        </ThemedView>
-
-        <ThemedView style={{flexDirection: 'row', marginTop: 2, justifyContent: 'center'}}>
-          <ThemedView style={[styles.energyRow, {width: '21%'}]}>
-            <ThemedView>
-              <ThemedText style={[styles.summaryText, {marginBottom: 20, fontWeight: 'bold'}]}>
-                {i18n.t('miscellania')}
-              </ThemedText>
-              <ThemedView style={styles.listItem}>
-                <ThemedText style={styles.summaryText}>-  {i18n.t('abilities')}</ThemedText>
-                <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                  {withAbilityCardsLength}
-                </ThemedText>
-              </ThemedView>
-
-              <ThemedView style={styles.listItem}>
-                <ThemedText style={styles.summaryText}>-  {i18n.t('items')}</ThemedText>
-                <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                  {itemCardsLength}
-                </ThemedText>
-              </ThemedView>
-
-              <ThemedView style={styles.listItem}>
-                <ThemedText style={styles.summaryText}>-  {i18n.t('tools')}</ThemedText>
-                <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                  {toolCardsLength}
-                </ThemedText>
-              </ThemedView>
-
-              <ThemedView style={styles.listItem}>
-                <ThemedText style={styles.summaryText}>-  {i18n.t('fossils')}</ThemedText>
-                <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                  {fossilCardsLength}
-                </ThemedText>
-              </ThemedView>
-
-              <ThemedView style={styles.listItem}>
-                <ThemedText style={styles.summaryText}>-  {i18n.t('supporter')}</ThemedText>
-                <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                  {supporterCardsLength}
-                </ThemedText>
-              </ThemedView>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={[styles.energyRow, {width: '78%'}]}>
-            <ThemedView>
-              <ThemedText style={[styles.summaryText, {marginBottom: 20, fontWeight: 'bold'}]}>
-                {i18n.t('conditions')}
-              </ThemedText>
-              <ThemedView style={{flexDirection: 'row', gap: 45}}>
-                <ThemedView>
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('condition_attack_bench')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {benchConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('status_recoil')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {recoilConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('condition_extra_damage')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {extraConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('condition_resist')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {resistConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('condition_heal')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {healConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-                </ThemedView>
-
-                <ThemedView>
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('status_poison')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {poisonConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('status_paralyze')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                     {paralizeConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('status_sleep')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {sleepConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('status_confusion')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {confusionConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('status_burned')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {burnedConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-                </ThemedView>
-
-                <ThemedView>
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('condition_flip')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {flipConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('condition_nothing')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {nothingConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('condition_discard')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {discardConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('condition_add')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {addConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('condition_corner')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                      {cornerConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-                </ThemedView>
-
-                <ThemedView>
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('condition_withdraw')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                    {withdrawConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('condition_retire')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                    {retireConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('status_call')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                    {callConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                  <ThemedView style={styles.listItem}>
-                    <ThemedText style={styles.summaryText}>-  {i18n.t('condition_inactive')}</ThemedText>
-                    <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                    {inactiveConditionLength}
-                    </ThemedText>
-                  </ThemedView>
-
-                </ThemedView>
-              </ThemedView>
-              
-            </ThemedView>
-          </ThemedView>
-        </ThemedView>
-
-        <ThemedView style={{marginTop: 0}}>
-          <RainbowDivider height={2}></RainbowDivider>
-        </ThemedView>
-
-        <ThemedText style={[styles.summaryText, {marginBottom: 20, fontWeight: 'bold', marginLeft: 20, marginTop: 2}]}>
-          {i18n.t('weakness')}
-        </ThemedText>
-
-        <ThemedView style={{flexDirection: 'row', marginTop: 4, justifyContent: 'center', gap: 40}}>
-          <ThemedView style={styles.energyRow}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={GRASS_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('grass')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {weakGrassCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-          
-          <ThemedView style={styles.energyRow}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={FIRE_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('fire')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {weakFireCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={styles.energyRow}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={WATER_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('water')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {weakWaterCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={styles.energyRow}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={ELECTRIC_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('electric')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {weakElectricCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={styles.energyRow}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={PSYCHIC_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('psychic')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {weakPsychicCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={styles.energyRow}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={FIGHT_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('fight')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {weakFightCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-        </ThemedView>
-        <ThemedView style={{flexDirection: 'row', marginTop: 20, justifyContent: 'center', gap: 40, marginBottom: 8}}>
-          <ThemedView style={[styles.energyRow, {width: '16.6%'}]}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={DARK_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('dark')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {weakDarkCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={[styles.energyRow, {width: '16.6%'}]}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={STEEL_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('steel')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {weakSteelCardsLength}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={[styles.energyRow, {width: '16.6%'}]}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={DRAGON_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('dragon')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {0}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={[styles.energyRow, {width: '16.6%'}]}>
-            <ThemedView style={styles.flexRow}>
-              <Image source={NORMAL_ICON} style={[styles.energy, styles.summaryEnergy]}/>
-              <ThemedText style={[styles.summaryText]}>{i18n.t('normal')}</ThemedText>
-              <ThemedText style={[styles.summaryText, {fontWeight: 'bold', color: 'black'}]}>
-                {0}
-              </ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-        </ThemedView>
-      </ThemedView>
-
       {
-        showExpansion &&
+        Platform.OS === 'web' ? 
+          <View ref={summaryRef} style={styles.content}>
+            <GraphicHeader styles={styles} child={false}></GraphicHeader>
+            <GraphicSummary data={SUMMARY_DATA} styles={styles}></GraphicSummary>
+            <GraphicFooter styles={styles} child={false}></GraphicFooter>
+          </View> : 
+          <ViewShot ref={summaryRef} style={[styles.content]}>
+            <GraphicHeader styles={styles} child={false}></GraphicHeader>
+            <GraphicSummary data={SUMMARY_DATA} styles={styles}></GraphicSummary>
+            <GraphicFooter styles={styles} child={false}></GraphicFooter>
+          </ViewShot>
+      }
+      
+      {
+        innerShowExpansion && showExpansion &&
         <>
-          <ThemedText style={styles.subTitlte}>{i18n.t('expansions')}</ThemedText>
-          
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={GENETIC_APEX} style={styles.expansionImage}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('genetic_apex')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{geneticPackCardsLength}</ThemedText>
-          </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('genetic_apex_description')}</ThemedText>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={GENETIC_APEX_PIKACHU_ICON} style={[styles.expansionImage, { width: 92, height: 64}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('pikachu')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{pikachuCardsLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={pikachuCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={GENETIC_APEX_MEWTWO_ICON} style={[styles.expansionImage, { width: 92, height: 64}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('mewtwo')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{mewtwoCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={mewtwoCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={GENETIC_APEX_CHARIZARD_ICON} style={[styles.expansionImage, { width: 92, height: 64}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('charizard')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{charizardCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={charizardCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={GENETIC_APEX} style={styles.expansionImage}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('shareds')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{sharedGeneticLength}</ThemedText>
-          </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('shareds_description')}</ThemedText>
-
-          <FlatList data={sharedGenetic}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={MYTHICAL_ISLAND_MEW_ICON} style={[styles.expansionImage, {height: 48}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('mythical_island')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{islandPackCardsLength}</ThemedText>
-          </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('mythical_island_description')}</ThemedText>
-
-          <FlatList data={islandCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={SMACK_DOWN} style={[styles.expansionImage, {height: 44}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('smack_down')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{spacePackCardsLength}</ThemedText>
-          </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 16}]}>{i18n.t('smack_down_description')}</ThemedText>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={SMACK_DOWN_DIALGA_ICON} style={[styles.expansionImage, { width: 92, height: 46}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('dialga')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{dialgaCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={dialgaCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={SMACK_DOWN_PALKIA_ICON} style={[styles.expansionImage, { width: 92, height: 46}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('palkia')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{palkiaCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={palkiaCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={SMACK_DOWN} style={styles.expansionImage}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('shareds')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{sharedSmackLength}</ThemedText>
-          </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('shareds_description')}</ThemedText>
-
-          <FlatList data={sharedSmack}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={TRIUMPH_LIGHT_ARCEUS_ICON} style={[styles.expansionImage, { width: 92, height: 39}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('arceus')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{triumphPackCardsLength}</ThemedText>
-          </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('triumph_description')}</ThemedText>
-
-          <FlatList data={triumphCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('promo_a')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{promoAPackCardsLength}</ThemedText>
-          </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('promo_description')}</ThemedText>
-
-          <FlatList data={promoAPackCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('series')}</ThemedText>
-            </ThemedView>
-          </ThemedView>
-          <ThemedText style={[styles.text, {marginBottom: 10}]}>{i18n.t('series_description')}</ThemedText>
-
-          <ThemedView style={{flexDirection: "row", gap: 20}}>
-            <ThemedView>
-              <ThemedText style={[styles.subTitlte, {marginTop: 10, color: Colors.light.text}]}>A1</ThemedText>
-              <FlatList data={promo1Cards}
-                        renderItem={renderItem}
-                        numColumns={numColumns}
-                        contentContainerStyle={[styles.list, {width: 'auto'}]}
-                        style={{borderRadius: 8}}
-                        showsVerticalScrollIndicator={false}
-                        keyExtractor={(item, index) => index + ''}/>
-            </ThemedView>
-            <ThemedView>
-              <ThemedText style={[styles.subTitlte, {marginTop: 10, color: Colors.light.text}]}>A2</ThemedText>
-              <FlatList data={promo2Cards}
-                        renderItem={renderItem}
-                        numColumns={numColumns}
-                        contentContainerStyle={[styles.list, {width: 'auto'}]}
-                        style={{borderRadius: 8}}
-                        showsVerticalScrollIndicator={false}
-                        keyExtractor={(item, index) => index + ''}/>
-            </ThemedView>
-            <ThemedView>
-              <ThemedText style={[styles.subTitlte, {marginTop: 10, color: Colors.light.text}]}>A3</ThemedText>
-              <FlatList data={promo3Cards}
-                        renderItem={renderItem}
-                        numColumns={numColumns}
-                        contentContainerStyle={[styles.list, {width: 'auto'}]}
-                        style={{borderRadius: 8}}
-                        showsVerticalScrollIndicator={false}
-                        keyExtractor={(item, index) => index + ''}/>
-            </ThemedView>
-          </ThemedView>
-
-          <ThemedView style={{flexDirection: "row", gap: 20, width: '32.4%'}}>
-            <ThemedView>
-              <ThemedText style={[styles.subTitlte, {marginTop: 0, color: Colors.light.text}]}>A4</ThemedText>
-              <FlatList data={promo4Cards}
-                        renderItem={renderItem}
-                        numColumns={numColumns}
-                        contentContainerStyle={[styles.list, {width: 'auto'}]}
-                        style={{borderRadius: 8}}
-                        showsVerticalScrollIndicator={false}
-                        keyExtractor={(item, index) => index + ''}/>
-            </ThemedView>
-          </ThemedView>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('premium')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{premiumCardsLength}</ThemedText>
-          </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('premium_description')}</ThemedText>
-          
-          <FlatList data={premiumCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {width: 'auto'}]}
-                    style={{borderRadius: 8, width: getItemWidth(premiumCardsLength)}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <Image source={PROMO_A_ICON} style={[styles.expansionImage, {width: 94, height: 52, top: -9}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 40, color: Colors.light.text}]}>{i18n.t('mission')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{specialCardsLength}</ThemedText>
-          </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 20}]}>{i18n.t('mission_description')}</ThemedText>
-
-          <FlatList data={specialCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={styles.list}
-                    style={{width: getItemWidth(specialCardsLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider> 
+          {
+            Platform.OS === 'web' ? 
+            <>
+              <View ref={expansionRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={0} endIndex={2}></GraphicExpansion>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>
+              <View ref={expansionRefSecond} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={3} endIndex={5}></GraphicExpansion>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>
+              <View ref={expansionRefThird} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={6} endIndex={7} showSeries={true}></GraphicExpansion>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>           
+            </> :
+            <>
+              <ViewShot ref={expansionRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={0} endIndex={2}></GraphicExpansion>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>
+              <ViewShot ref={expansionRefSecond} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={3} endIndex={5}></GraphicExpansion>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>
+              <ViewShot ref={expansionRefThird} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={6} endIndex={7} showSeries={true}></GraphicExpansion>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>  
+            </>
+          }
         </>
       }
 
       {
-        showGrades && 
+        innerShowGrades && showGrades &&
         <>
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 30}}>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20}]}>{i18n.t('grade')}</ThemedText>
-            </ThemedView>
-          </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 10}]}>{i18n.t('grade_description')}</ThemedText>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 8}}>
-              {Array.from({ length: 3 }).map((_, i) => (
-                <Image
-                  key={(i + 1)}
-                  source={NORMAL_RARITY}
-                  style={{
-                    width: 26,
-                    height: 27,
-                    top: 2
-                  }}
-                />
-              ))}
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{rareCardsLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={rareCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 6, marginLeft: 8}}>
-              {Array.from({ length: 4 }).map((_, i) => (
-                <Image
-                  key={(i + 1)}
-                  source={NORMAL_RARITY}
-                  style={{
-                    width: 26,
-                    height: 27,
-                    top: 2
-                  }}
-                />
-              ))}
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{doubleCardsLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={doubleCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 8}}>
-                {Array.from({ length: 1 }).map((_, i) => (
-                  <Image
-                    key={(i + 1)}
-                    source={STAR_RARITY}
-                    style={{
-                      width: 28,
-                      height: 29,
-                      top: 2
-                    }}
-                  />
-                ))}
-              </ThemedView>
-            <ThemedText style={styles.subTitlte}>{artCardsLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={artCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 12, marginLeft: 8}}>
-                {Array.from({ length: 2 }).map((_, i) => (
-                  <Image
-                    key={(i + 1)}
-                    source={STAR_RARITY}
-                    style={{
-                      width: 28,
-                      height: 29,
-                      top: 2
-                    }}
-                  />
-                ))}
-              </ThemedView>
-            <ThemedText style={styles.subTitlte}>{superCardsLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={superCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 12, marginLeft: 8}}>
-                {Array.from({ length: 3}).map((_, i) => (
-                  <Image
-                    key={(i + 1)}
-                    source={STAR_RARITY}
-                    style={{
-                      width: 28,
-                      height: 29,
-                      top: 2
-                    }}
-                  />
-                ))}
-              </ThemedView>
-            <ThemedText style={styles.subTitlte}>{inmersiveCardsLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={inmersiveCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
-                    style={{width: getItemWidth(inmersiveCardsLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 12, marginLeft: 8}}>
-                {Array.from({ length: 1}).map((_, i) => (
-                  <Image
-                    key={(i + 1)}
-                    source={CROWN_RARITY}
-                    style={{
-                      width: 49,
-                      height: 32,
-                      top: 2
-                    }}
-                  />
-                ))}
-              </ThemedView>
-            <ThemedText style={styles.subTitlte}>{crownCardsLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={crownCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
-                    style={{width: getItemWidth(crownCardsLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>        
+          {
+            Platform.OS === 'web' ?
+              <View ref={gradesRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicGrades data={GRADES_DATA} language={lang} styles={styles}></GraphicGrades>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View> : 
+              <ViewShot ref={gradesRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicGrades data={GRADES_DATA} language={lang} styles={styles}></GraphicGrades>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>
+          }
         </>
       }
 
       {
-        showTypes && 
+        innerShowTypes && showTypes &&
         <>
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 28}}>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20}]}>{i18n.t('types')}</ThemedText>
-            </ThemedView>
-          </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 10}]}>{i18n.t('types_description')}</ThemedText>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={GRASS_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('grass')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{grassCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={grassCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/> 
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={FIRE_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('fire')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{fireCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={fireCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={WATER_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('water')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{waterCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={waterCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-                    
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={ELECTRIC_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('electric')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{electricCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={electricCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={PSYCHIC_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('psychic')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{psychicCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={psychicCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-                    
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={FIGHT_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('fight')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{fightCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={fightCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={DARK_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('dark')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{darkCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={darkCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={STEEL_ICON} style={[styles.energy]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('steel')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{steelCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={steelCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={DRAGON_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('dragon')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{dragonCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={dragonCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: getItemWidth(dragonCardsLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={NORMAL_ICON} style={[styles.energy]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('normal')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{normalCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={normalCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>      
+          {
+            Platform.OS === 'web' ?
+              <View ref={typesRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicTypes data={TYPES_DATA} language={lang} styles={styles}></GraphicTypes>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>
+              : 
+              <ViewShot ref={typesRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicTypes data={TYPES_DATA} language={lang} styles={styles}></GraphicTypes>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>
+          }
         </>
       }
 
       {
-        showMiscellania &&
+        innerShowMiscellania && showMiscellania &&
         <>
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 28}}>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20}]}>{i18n.t('miscellania')}</ThemedText>
-            </ThemedView>
-          </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 10}]}>{i18n.t('miscellania_description')}</ThemedText>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('abilities')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{withAbilityCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={withAbilityCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-          
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('items')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{itemCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={itemCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
-                    style={{width: getItemWidth(itemCardsLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('tools')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{toolCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={toolCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
-                    style={{width: getItemWidth(toolCardsLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('fossils')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{fossilCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={fossilCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
-                    style={{width: getItemWidth(fossilCardsLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('supporter')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{supporterCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={supporterCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginBottom: 10}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>        
+          { 
+            Platform.OS === 'web' ?     
+              <View ref={miscellaniaRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicMiscellania data={MISCELLANIA_DATA} language={lang} styles={styles}></GraphicMiscellania>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>
+              :
+              <ViewShot ref={miscellaniaRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicMiscellania data={MISCELLANIA_DATA} language={lang} styles={styles}></GraphicMiscellania>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>          
+          }
         </>
       }
 
       {
-        showWeak && 
+        innerShowWeak && showWeak &&
         <>
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', gap: 28}}>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20}]}>{i18n.t('weakness')}</ThemedText>
-            </ThemedView>
-          </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 10}]}>{i18n.t('weakness_description')}</ThemedText>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={GRASS_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('grass')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{weakGrassCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={weakGrassCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={FIRE_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('fire')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{weakFireCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={weakFireCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={WATER_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('water')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{weakWaterCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={weakWaterCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-                    
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={ELECTRIC_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('electric')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{weakElectricCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={weakElectricCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={PSYCHIC_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('psychic')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{weakPsychicCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={weakPsychicCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-                    
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={FIGHT_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('fight')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{weakFightCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={weakFightCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={DARK_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('dark')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{weakDarkCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={weakDarkCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginLeft: 12}}>
-              <Image source={STEEL_ICON} style={styles.energy}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('steel')}</ThemedText>
-            </ThemedView>
-            <ThemedText style={styles.subTitlte}>{weakSteelCardsLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={weakSteelCards}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>        
+          {
+            Platform.OS === 'web' ?
+              <View ref={weakRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicWeak data={WEAK_DATA} language={lang} styles={styles}></GraphicWeak>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>
+              :
+              <ViewShot ref={weakRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicWeak data={WEAK_DATA} language={lang} styles={styles}></GraphicWeak>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>
+          }
         </>
       }
 
       {
-        showTop &&
+        innerShowTop && showTop &&
         <>
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center', marginTop: 4}}>
-              <Image source={CHAMPION_ICON} style={[styles.expansionImage, {width: 58, height: 46, top: -4, marginRight: 0}]}></Image>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 30}]}>{i18n.t('top_20')}</ThemedText>
-            </ThemedView>
-          </ThemedView>
-          <ThemedText style={[styles.textMargin, {marginBottom: 14}]}>{i18n.t('top_20_description')}</ThemedText>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-              <MaterialIcons name="diamond" style={[styles.stageIcon, {color: 'skyblue'}]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('rarity')}</ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <FlatList data={getTop20('rarity')}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-            
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-              <MaterialIcons name="grass" style={[styles.stageIcon, {top: 3}]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('retire_cost')}</ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <FlatList data={getRetreatTop20()}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-              <MaterialIcons name="favorite-outline" style={[styles.stageIcon, {color: 'skyblue', top: 6}]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('health_points')}</ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <FlatList data={getTop20('health')}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-              <MaterialIcons name="height" style={[styles.stageIcon, {top: 6}]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('height')}</ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <FlatList data={getTop20('height')}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-              <MaterialIcons name="scale" style={[styles.stageIcon, {color: 'skyblue', fontSize: 34, left: 13, top: 11}]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('weight')}</ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <FlatList data={getTop20('weight')}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedView style={{flexDirection: 'row', alignItems: 'center'}}>
-                <MaterialIcons name="bolt" style={[styles.stageIcon]}/>
-              <ThemedText style={[styles.subTitlte, {marginBottom: 20, color: Colors.light.text}]}>{i18n.t('attack')}</ThemedText>
-            </ThemedView>
-          </ThemedView>
-
-          <FlatList data={getAttackTop20()}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>       
+          {
+            Platform.OS === 'web' ?
+            <View ref={topRef} style={styles.content}>
+              <GraphicHeader styles={styles}></GraphicHeader>
+              <GraphicTop data={TOP_DATA} language={lang} styles={styles}></GraphicTop>
+              <GraphicFooter styles={styles}></GraphicFooter>
+            </View> :
+            <ViewShot ref={topRef} style={styles.content}>
+              <GraphicHeader styles={styles}></GraphicHeader>
+              <GraphicTop data={TOP_DATA} language={lang} styles={styles}></GraphicTop>
+              <GraphicFooter styles={styles}></GraphicFooter>
+            </ViewShot>           
+          }
         </>
       }
+
       {
-        showConditions &&
+        innerShowCondition && showConditions &&
         <>
-          <ThemedText style={styles.subTitlte}>{i18n.t('conditions')}</ThemedText>
-          <ThemedText style={[styles.textMargin, {marginBottom: 10}]}>{i18n.t('conditions_description')}</ThemedText>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_attack_bench')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{benchConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={benchCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_recoil')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{recoilConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={recoilCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: getItemWidth(recoilConditionLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_extra_damage')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{extraConditionLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={extraCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-          <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_resist')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{resistConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={resistCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_heal')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{healConditionLength}</ThemedText>
-          </ThemedView>
-    
-          <FlatList data={healCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_poison')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{poisonConditionLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={poisonCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: getItemWidth(poisonConditionLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_paralyze')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{paralizeConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={paralizeCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: getItemWidth(paralizeConditionLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_sleep')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{sleepConditionLength}</ThemedText>
-          </ThemedView>
-
-          <FlatList data={sleepCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: getItemWidth(sleepConditionLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_confusion')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{confusionConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={confusionCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: getItemWidth(confusionConditionLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_burned')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{burnedConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={burnedCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: getItemWidth(burnedConditionLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_flip')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{flipConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={flipCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_nothing')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{nothingConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={nothingCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: getItemWidth(nothingConditionLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_discard')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{discardConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={discardCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_add')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{addConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={addCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: collageWith, borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_corner')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{cornerConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={cornerCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: getItemWidth(cornerConditionLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_withdraw')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{withdrawConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={withdrawCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: getItemWidth(withdrawConditionLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_retire')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{retireConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={retireCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: getItemWidth(retireConditionLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_call')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{callConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={callCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: getItemWidth(callConditionLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('condition_inactive')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{inactiveConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={inactiveCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: getItemWidth(inactiveConditionLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>
-
-          <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <ThemedText style={[styles.subTitlte, {color: Colors.light.text}]}>{i18n.t('arceus_link')}</ThemedText>
-            <ThemedText style={styles.subTitlte}>{arceusConditionLength}</ThemedText>
-          </ThemedView>
-          
-          <FlatList data={arceusCondition}
-                    renderItem={renderItem}
-                    numColumns={numColumns}
-                    contentContainerStyle={[styles.list, {marginTop: 0, marginBottom: 10}]}
-                    style={{width: getItemWidth(arceusConditionLength), borderRadius: 8}}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={(item, index) => index + ''}/>                    
-
-          <RainbowDivider style={{marginBlock: 10}}></RainbowDivider>       
+          {
+            Platform.OS === 'web' ?
+              <View ref={conditionsRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicConditions data={CONDITIONS_DATA} language={lang} styles={styles}></GraphicConditions>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>           
+             :
+              <ViewShot ref={conditionsRef} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicConditions data={CONDITIONS_DATA} language={lang} styles={styles}></GraphicConditions>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>           
+          }
         </>
       }
-
-      <ThemedView style={{height: 16}}></ThemedView>
-      <ThemedView style={[styles.summary, {marginHorizontal: 16, marginTop: 0, padding: 16, marginBottom: 0}]}>
-        <ThemedText style={[styles.text, {textAlign: 'center', fontWeight: 'bold'}]}>
-          {i18n.t('infographics_footer')}
-        </ThemedText>
-      </ThemedView>
     </ThemedView>
   );
 }
@@ -2251,7 +602,8 @@ const styles = StyleSheet.create({
     padding: 20, 
     borderRadius: 8, 
     backgroundColor: 'rgb(240, 240, 240)',
-    marginBlock: 30,
+    marginTop: 30,
+    marginBottom: 20,
     marginHorizontal: 20
   },
   stageIcon: {
@@ -2316,5 +668,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between', 
     gap: 50,
     marginBottom: 8
+  },
+  content: {
+    padding: 20,
+    backgroundColor: 'white'
   }
 });

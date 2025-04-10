@@ -1,35 +1,31 @@
-import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import React from "react";
-import ViewShot from "react-native-view-shot";
-import { TouchableOpacity, View, StyleSheet, Platform, ScrollView } from "react-native";
+import { TouchableOpacity, View, StyleSheet, ScrollView, Platform } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Switch } from "react-native-paper";
+import { Slider } from "@miblanchard/react-native-slider";
+import * as MediaLibrary from 'expo-media-library';
 
-import { NO_CONTEXT } from "@/shared/definitions/sentences/global.sentences";
-import { AppContext } from "../_layout";
+import { useI18n } from "@/core/providers/LanguageProvider";
+import SoundService from "@/core/services/sounds.service";
+import { useConfirmation } from "@/core/providers/ConfirmationProvider";
+
+import { CardGridStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
+import { Colors } from "@/shared/definitions/utils/colors";
+import { settingsStyles } from "@/app/screens/settings";
+import { BACKUP_HEIGHT } from "@/shared/definitions/utils/constants";
+
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
-import ShareService from "@/core/services/share.service";
 import { GraphicCollage } from "@/components/dedicated/infographics/GraphicCollage";
 import LoadingOverlay from "@/components/ui/LoadingOverlay";
-import { useI18n } from "@/core/providers/LanguageProvider";
-import { BACKUP_HEIGHT } from "@/shared/definitions/utils/constants";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { GraphicsScreenModal } from "@/components/modals/GraphicsScreenModal";
-import { CardGridStyles, filterStyles, homeScreenStyles } from "@/shared/styles/component.styles";
-import SoundService from "@/core/services/sounds.service";
 import { IconSymbol } from "@/components/ui/IconSymbol";
-import { Slider } from "@miblanchard/react-native-slider";
-import { settingsStyles } from "../screens/settings";
-import { Colors } from "@/shared/definitions/utils/colors";
-import { Switch } from "react-native-paper";
-import { MaterialIcons } from "@expo/vector-icons";
+import { GraphicsScreenModal } from "@/components/modals";
 
 export default function InfoGraphicScreen() {
+  console.log('Graphics Screen')
   const {i18n} = useI18n();
-  const context = useContext(AppContext);
-  if (!context) { throw new Error(NO_CONTEXT); }
-  const { state } = context;
-  const ref = useRef<any>(null);
-  const shareService = useMemo(() => new ShareService(), []);
   const [loading, setLoading] = useState(false);
   const [quality, setQuality] = useState<number>(0.9);
 
@@ -41,6 +37,7 @@ export default function InfoGraphicScreen() {
   const [showWeak, setShowWeak] = useState<boolean>(false);
   const [showTop, setShowTop] = useState<boolean>(false);
   const [showConditions, setShowConditions] = useState<boolean>(false);
+  const { confirm } = useConfirmation();
 
   const showSet = useRef({
     all: setShowAll,
@@ -53,23 +50,30 @@ export default function InfoGraphicScreen() {
     conditions: setShowConditions
   });
 
+  async function requestPermission() {
+    if (Platform.OS === 'android') {
+      await MediaLibrary.requestPermissionsAsync();
+    }
+  }
+
+  useEffect(() => {
+    requestPermission();
+  }, []);
+
   const [isVisible, setIsVisible] = useState(false);
 
   const MyInfoGraphic = () => (
-    <>
-      {
-        Platform.OS === 'web' &&
-        <View ref={ref} style={styles.container}>
-          <GraphicCollage showExpansion={showExpansion}
-                          showGrades={showGrades}
-                          showTypes={showTypes}
-                          showMiscellania={showMiscellania}
-                          showWeak={showWeak}
-                          showTop={showTop}
-                          showConditions={showConditions}/>
-        </View>
-      }
-    </>
+    <View style={[styles.container, {padding: 0}]}>
+      <GraphicCollage showExpansion={showExpansion}
+                      showGrades={showGrades}
+                      showTypes={showTypes}
+                      showMiscellania={showMiscellania}
+                      showWeak={showWeak}
+                      showTop={showTop}
+                      showConditions={showConditions}
+                      quality={quality}
+                      onFinish={() => (setLoading(false), setIsVisible(false))}/>
+    </View>
   );
 
   async function handleChange(key: string, value: boolean): Promise<void> {
@@ -110,12 +114,12 @@ export default function InfoGraphicScreen() {
 
   const download = async () => {
     SoundService.play('POP_PICK');
-    setLoading(true);
-    setTimeout(() => setIsVisible(true), 666);
-    setTimeout(() => {
-      shareService.makeInfoGraphic(ref, 'infographic-tcg-pocket-cards', quality)
-       .then(_ => (setLoading(false), setIsVisible(false)));
-    }, 4000);
+
+    const userConfirmed = await confirm("save_infographic", "save_infographic_intro");
+    if (userConfirmed) {
+      setLoading(true);
+      setTimeout(() => setIsVisible(true), 333);
+    }
   }
 
   function handleAll(): void {
@@ -135,13 +139,13 @@ export default function InfoGraphicScreen() {
       { loading && <LoadingOverlay/> }
         <ParallaxScrollView title={"infographics"} 
                             modalTitle='infographics'
-                            modalContent={GraphicsScreenModal()}
+                            modalContent={<GraphicsScreenModal></GraphicsScreenModal>}
                             styles={{paddingInline: 14}}
                             modalHeight={BACKUP_HEIGHT}>
-          <ScrollView showsVerticalScrollIndicator={false} style={{paddingInline: 14, paddingBottom: 14}}>
+          <ScrollView showsVerticalScrollIndicator={false} style={{paddingInline: 14}}>
             <ThemedView style={{gap: 8}}>
               <ThemedView style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-                <ThemedText style={[filterStyles.header, {marginBottom: 24}]}>{i18n.t('export')}</ThemedText>
+                <ThemedText style={[filterStyles.header, {marginBottom: 24}, i18n.locale === 'ja' && {marginBottom: 20}]}>{i18n.t('export')}</ThemedText>
                 <TouchableOpacity onPress={handleAll}>
                   <MaterialIcons name="sync" 
                                 style={{fontSize: 26, left: -4, top: -7, opacity: 0.5}} 
@@ -270,7 +274,8 @@ export default function InfoGraphicScreen() {
             </ThemedView>
           </ScrollView> 
 
-          <TouchableOpacity onPress={download} style={[homeScreenStyles.ctaButton, {marginTop: 0, marginBottom: 24, marginHorizontal: 14}]}>
+          <TouchableOpacity onPress={download} 
+                            style={[homeScreenStyles.ctaButton, {marginTop: 0, marginBottom: 18, marginHorizontal: 14, top: -14}]}>
             <ThemedText style={[homeScreenStyles.ctaText, {textAlign: 'center', height: 22}]}>{i18n.t('download')}</ThemedText>
           </TouchableOpacity>
         </ParallaxScrollView>
