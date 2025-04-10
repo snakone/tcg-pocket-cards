@@ -1,5 +1,7 @@
 export const TRANSLATIONS = {
   en: {
+    save_first: 'If you don\'t see the latest changes, save the deck first.',
+    deck_detail: 'Deck detail',
     refresh: 'Refresh',
     refresh_ranking: '¿Do you want to refresh now?',
     no_ranking_found: 'No ranking found.',
@@ -717,6 +719,7 @@ export const TRANSLATIONS = {
     without_ability: "Without Ability"
   },
   es: {
+    save_first: 'Si no ves los últimos cambios, guarda el mazo primero.',
     deck_detail: 'Detalle del mazo',
     refresh: 'Refrescar',
     refresh_ranking: '¿Quieres refrescar el ranking ahora?',
@@ -1438,6 +1441,8 @@ export const TRANSLATIONS = {
     without_ability: "Sin habilidad"
   },
   ja: {
+    save_first: '最後の変更が見えない場合は、まずデッキを保存してください',
+    deck_detail: 'デッキの詳細',
     refresh: 'リフレッシュ',
     refresh_ranking: '今、ランキングを更新したいですか？',
     no_ranking_found: '記録は見つかりませんでした。',

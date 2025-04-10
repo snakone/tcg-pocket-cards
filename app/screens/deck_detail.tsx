@@ -115,7 +115,11 @@ export default function DeckDetailScreen() {
                 ListEmptyComponent={<ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>}
                 renderItem={renderItem}
                 keyboardDismissMode={'on-drag'}
-                ListFooterComponent={<ThemedView style={{height: 95}}></ThemedView>}/>
+                ListFooterComponent={
+                <ThemedView style={{height: 95}}>
+                  <ThemedText style={{padding: 6, marginTop: 20, fontSize: 12}}>*{i18n.t('save_first')}</ThemedText>
+                </ThemedView>
+              }/>
     </SharedScreen>
   )
 }
