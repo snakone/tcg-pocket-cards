@@ -5,13 +5,14 @@ import CryptoES from 'crypto-es';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import * as DocumentPicker from 'expo-document-picker';
+import { getLocales } from "expo-localization";
 
 import { FilterSearch } from "../classes/filter.class";
 import { Attack, AttackMetaData, Card } from "../interfaces/card.interfaces";
 import { SortItem } from "../interfaces/layout.interfaces";
 import { CardExpansionENUM, CardLanguageENUM, CardStageENUM } from "../enums/card.enums";
-import { GENETIC_APEX, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SHINING_REVELRY_ICON, SMACK_DOWN, TRIUMPH_LIGHT_ARCEUS_ICON } from "../sentences/path.sentences";
-import { PACK_MAP, SORT_FIELD_MAP } from "./constants";
+import { CELESTIAL_ICON, GENETIC_APEX_ICON, MYTHICAL_ISLAND_MEW_ICON, PROMO_A_ICON, SHINING_REVELRY_ICON, SMACK_DOWN_ICON, TRIUMPH_LIGHT_ARCEUS_ICON } from "../sentences/path.sentences";
+import { ALLOWED_LANGS, DEFAULT_LANG, PACK_MAP, SORT_FIELD_MAP } from "./constants";
 import { LanguageType } from "../types/global.types";
 import { FilterAttackSearch } from "../classes/filter_attack.class";
 import { UserCollectionItem } from "../interfaces/global.interfaces";
@@ -359,18 +360,25 @@ export function getCardPackFrom(card: Card): {image: any, width: number, height:
 
   if (card.expansion === CardExpansionENUM.GENETIC_APEX) {
     if (card.found?.length === 3 || (card.name.en === "Mew" && card.id === 283)) {
-      return { image: GENETIC_APEX, width: 68, height: 30 };
+      return { image: GENETIC_APEX_ICON, width: 68, height: 30 };
     }
     if (card.found) {
       return { image: PACK_MAP[card.found[0]], width: 60, height: 45 };
     }
   }
 
-  if (card.expansion === CardExpansionENUM.SPACE_TIME_SMACKDOWN) {
+  else if (card.expansion === CardExpansionENUM.SPACE_TIME_SMACKDOWN) {
     return card.found?.length === 2
-      ? { image: SMACK_DOWN, width: 74, height: 36 }
+      ? { image: SMACK_DOWN_ICON, width: 74, height: 36 }
         : card.found
           ? { image: PACK_MAP[card.found[0]], width: 81, height: 40 } : undefined;
+  }
+
+  else if (card.expansion === CardExpansionENUM.CELESTIAL_GUARDIANS) {
+    return card.found?.length === 2
+      ? { image: CELESTIAL_ICON, width: 74, height: 36 }
+        : card.found
+          ? { image: PACK_MAP[card.found[0]], width: 76, height: 42 } : undefined;
   }
 
   return EXPANSION_ICON_MAP[card.expansion];
@@ -850,4 +858,17 @@ export const filterOrSortAttacks = (
       return filterAttacks(filter as FilterAttackSearch, data);
     }
   }
+}
+
+export function getAppLocale(): LanguageType {
+  const locale = getLocales()[0]?.languageCode;
+  if (!locale) {
+    return DEFAULT_LANG;
+  }
+
+  if (!ALLOWED_LANGS.includes(locale)) {
+    return DEFAULT_LANG;
+  }
+
+  return locale as LanguageType;
 }

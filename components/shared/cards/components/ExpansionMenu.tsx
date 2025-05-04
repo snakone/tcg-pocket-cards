@@ -8,13 +8,15 @@ import { FilterSearch } from "@/shared/definitions/classes/filter.class";
 import { MenuStyles, filterStyles, ModalStyles, ButtonStyles } from "@/shared/styles/component.styles";
 
 import { 
-  GENETIC_APEX,
+  CELESTIAL_ICON,
+  CELESTIAL_PACKS,
+  GENETIC_APEX_ICON,
   GENETIC_APEX_PACKS,
   MYTHICAL_ISLAND_MEW_ICON,
   MYTHICAL_ISLAND_PACKS, 
   SHINING_PACKS, 
   SHINING_REVELRY_ICON, 
-  SMACK_DOWN,
+  SMACK_DOWN_ICON,
   SMACK_DOWN_PACKS,
   TRIUMPH_LIGHT_ARCEUS_ICON,
   TRIUMPH_LIGHT_PACKS
@@ -36,7 +38,7 @@ interface ExpansionMenuProps {
 const DATA = [
   {
     logo: {
-      value: GENETIC_APEX,
+      value: GENETIC_APEX_ICON,
       width: 70,
       height: 30
     },
@@ -54,7 +56,7 @@ const DATA = [
   },
   {
     logo: {
-      value: SMACK_DOWN,
+      value: SMACK_DOWN_ICON,
       width: 70,
       height: 32
     },
@@ -78,8 +80,17 @@ const DATA = [
     },
     packs: SHINING_PACKS,
     filterOffset: 15
+  },
+  {
+    logo: {
+      value: CELESTIAL_ICON,
+      width: 78,
+      height: 28
+    },
+    packs: CELESTIAL_PACKS,
+    filterOffset: 17
   }
-]
+];
 
 export const ExpansionsMenu = React.memo(({filterObj, handleExpansion, isVisible }: ExpansionMenuProps) => {
   const animatedStyle = useBottomSlideAnimation(isVisible, MODAL_HEIGHT);

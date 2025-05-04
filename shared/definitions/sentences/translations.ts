@@ -1,5 +1,10 @@
 export const TRANSLATIONS = {
   en: {
+    solgaleo: 'Solgaleo',
+    lunala: 'Lunala',
+    celestial_short: 'Celestial Guar',
+    celestial_guardians: 'Celestial Guardians',
+    celestial_guardians_description: 'At the heart of Celestial Guardians are two themed booster pack variants — each spotlighting a major Legendary Pokemon from Generation 7. There are Solgaleo- and Lunala-themed packs from which to choose, with each offering a different set of card distributions. The legendary guardians not only constitute the thematic essence of the set but also provide strong new approaches.',
     save_first: 'If you don\'t see the latest changes, save the deck first.',
     deck_detail: 'Deck detail',
     refresh: 'Refresh',
@@ -252,6 +257,8 @@ export const TRANSLATIONS = {
     expansion_pikachu: "Genetic Apex: Pikachu",
     expansion_promo_a: "Promotional: Promo A",
     expansion_shiny: "Shining Revelry: Shiny",
+    expansion_solgaleo: "Celestial Guardians: Solgaleo",
+    expansion_lunala: "Celestial Guardians: Lunala",
     expansions: "Expansions",
     export: "Export",
     favorites: "Favorites",
@@ -719,6 +726,10 @@ export const TRANSLATIONS = {
     without_ability: "Without Ability"
   },
   es: {
+    solgaleo: 'Solgaleo',
+    lunala: 'Lunala',
+    celestial_guardians: 'Guardianes Celestiales',
+    celestial_guardians_description: 'En el corazón de Guardianes Celestiales hay dos variantes de paquetes de refuerzo temáticos, cada uno de los cuales destaca a un Pokémon legendario importante de la Generación 7. Hay paquetes temáticos de Solgaleo y Lunala entre los que elegir, y cada uno ofrece un conjunto diferente de distribuciones de cartas. Los guardianes legendarios no solo constituyen la esencia temática de la colección, sino que también aportan nuevos y sólidos enfoques.',
     save_first: 'Si no ves los últimos cambios, guarda el mazo primero.',
     deck_detail: 'Detalle del mazo',
     refresh: 'Refrescar',
@@ -971,6 +982,8 @@ export const TRANSLATIONS = {
     expansion_pikachu: "Genes Formidables: Pikachu",
     expansion_promo_a: "Promocional: Promo A",
     expansion_shiny: "Festival Brillante: Variocolor",
+    expansion_solgaleo: "Guardianes Celestiales: Solgaleo",
+    expansion_lunala: "Guardianes Celestiales: Lunala",
     expansions: "Expansiones",
     export: "Exportar",
     favorites: "Favoritas",
@@ -1234,6 +1247,7 @@ export const TRANSLATIONS = {
     smack_down: "Pugna Espacio-Temporal",
     smack_down_description: "Los Pokémon legendarios Dialga y Palkia de la región de Sinnoh han distorsionado el espacio-tiempo para dar una nueva dimensión a los combates como Pokémon ex. La expansión Pugna Espaciotemporal está compuesta por más de 140 cartas, entre ellas, poderosos Pokémon ex, nuevas cartas de Entrenador e increíbles cartas inmersivas que te transportarán al universo de Pokémon.",
     smack_down_short: "Pugna Esp/Temp",
+    celestial_short: 'Guardianes Celes',
     sound: "Sonido",
     sound_effects: "Efectos de sonido",
     special: "Especial",
@@ -1441,6 +1455,11 @@ export const TRANSLATIONS = {
     without_ability: "Sin habilidad"
   },
   ja: {
+    solgaleo: 'ソルガレオ',
+    lunala: 'ルナアーラ',
+    celestial_short: '双天の守護者',
+    celestial_guardians: '双天の守護者',
+    celestial_guardians_description: 'セレスティアルガーディアンズの中心には、各々第7世代の主要な伝説のポケモンをフィーチャーした2種類のテーマブースターパックがあります。ソルガレオとルナアラをテーマにしたパックから選ぶことができ、各パックは異なるカード分配のセットを提供します。伝説の守護者たちは、このセットのテーマ本質を構成するだけでなく、強力な新しいアプローチも提供します。',
     save_first: '最後の変更が見えない場合は、まずデッキを保存してください',
     deck_detail: 'デッキの詳細',
     refresh: 'リフレッシュ',
@@ -1693,6 +1712,8 @@ export const TRANSLATIONS = {
     expansion_pikachu: "最強の遺伝子: ピカチュウ",
     expansion_promo_a: "プロモーション: プロモーションA",
     expansion_shiny: "シャイニングハイ - 色違い",
+    expansion_solgaleo: "双天の守護者: ソルガレオ",
+    expansion_lunala: "双天の守護者: ルナアーラ",
     expansions: "カード拡張",
     export: "輸出",
     favorites: "お気に入り",

@@ -844,6 +844,10 @@ export const CARD_IMAGE_MAP_EN: any = {
   '843': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Promo/A/cPK_90_005040_00_BIPPA_C_M_en_US_UT.png",
   '844': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Promo/A/cPK_90_005060_00_PACHIRISU_R_M_en_US_UT.png",
   '845': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Promo/A/cPK_90_005070_00_RIOLU_R_M_en_US_UT.png",
+  '846': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Celestial Guardians/ExeggcuteCelestialGuardians1.png",
+  '847': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Celestial Guardians/AlolanExeggutorCelestialGuardians2.png",
+  '848': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Celestial Guardians/SurskitCelestialGuardians3.png",
+  '849': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Celestial Guardians/MasquerainCelestialGuardians4.png",
 };
 
 export const CARD_IMAGE_MAP_69x96_EN: any = {
@@ -1692,6 +1696,10 @@ export const CARD_IMAGE_MAP_69x96_EN: any = {
   '843': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Promo/A/thumbs/69x96/cPK_90_005040_00_BIPPA_C_M_en_US_UT.png",
   '844': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Promo/A/thumbs/69x96/cPK_90_005060_00_PACHIRISU_R_M_en_US_UT.png",
   '845': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Promo/A/thumbs/69x96/cPK_90_005070_00_RIOLU_R_M_en_US_UT.png",
+  '846': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Celestial Guardians/thumbs/69x96/ExeggcuteCelestialGuardians1.png",
+  '847': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Celestial Guardians/thumbs/69x96/AlolanExeggutorCelestialGuardians2.png",
+  '848': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Celestial Guardians/thumbs/69x96/SurskitCelestialGuardians3.png",
+  '849': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Celestial Guardians/thumbs/69x96/MasquerainCelestialGuardians4.png",
 };
 
 export const CARD_IMAGE_MAP_116x162_EN: any = {
@@ -2540,6 +2548,10 @@ export const CARD_IMAGE_MAP_116x162_EN: any = {
   '843': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Promo/A/thumbs/116x162/cPK_90_005040_00_BIPPA_C_M_en_US_UT.png",
   '844': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Promo/A/thumbs/116x162/cPK_90_005060_00_PACHIRISU_R_M_en_US_UT.png",
   '845': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Promo/A/thumbs/116x162/cPK_90_005070_00_RIOLU_R_M_en_US_UT.png",
+  '846': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Celestial Guardians/thumbs/116x162/ExeggcuteCelestialGuardians1.png",
+  '847': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Celestial Guardians/thumbs/116x162/AlolanExeggutorCelestialGuardians2.png",
+  '848': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Celestial Guardians/thumbs/116x162/SurskitCelestialGuardians3.png",
+  '849': "https://snakone.github.io/tcg-pocket-cards/assets/cards/en/Celestial Guardians/thumbs/116x162/MasquerainCelestialGuardians4.png",
 };
 
 export const CARD_IMAGE_MAP_ES: any = {
@@ -3388,6 +3400,10 @@ export const CARD_IMAGE_MAP_ES: any = {
   '843': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Promo/A/cPK_90_005040_00_BIPPA_C_M_es_ES_UT.png",
   '844': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Promo/A/cPK_90_005060_00_PACHIRISU_R_M_es_ES_UT.png",
   '845': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Promo/A/cPK_90_005070_00_RIOLU_R_M_es_ES_UT.png",
+  '846': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Celestial Guardians/Exeggcute_(Guardianes_Celestiales_1_TCG_Pocket).png",
+  '847': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Celestial Guardians/Exeggutor_de_Alola_(Guardianes_Celestiales_2_TCG_Pocket).png",
+  '848': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Celestial Guardians/Surskit_(Guardianes_Celestiales_TCG_Pocket).png",
+  '849': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Celestial Guardians/Masquerain_(Guardianes_Celestiales_TCG_Pocket).png",
 };
 
 export const CARD_IMAGE_MAP_69x96_ES: any = {
@@ -4236,6 +4252,10 @@ export const CARD_IMAGE_MAP_69x96_ES: any = {
   '843': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Promo/A/thumbs/69x96/cPK_90_005040_00_BIPPA_C_M_es_ES_UT.png",
   '844': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Promo/A/thumbs/69x96/cPK_90_005060_00_PACHIRISU_R_M_es_ES_UT.png",
   '845': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Promo/A/thumbs/69x96/cPK_90_005070_00_RIOLU_R_M_es_ES_UT.png",
+  '846': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Celestial Guardians/thumbs/69x96/Exeggcute_(Guardianes_Celestiales_1_TCG_Pocket).png",
+  '847': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Celestial Guardians/thumbs/69x96/Exeggutor_de_Alola_(Guardianes_Celestiales_2_TCG_Pocket).png",
+  '848': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Celestial Guardians/thumbs/69x96/Surskit_(Guardianes_Celestiales_TCG_Pocket).png",
+  '849': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Celestial Guardians/thumbs/69x96/Masquerain_(Guardianes_Celestiales_TCG_Pocket).png",
 };
 
 export const CARD_IMAGE_MAP_116x162_ES: any = {
@@ -5084,6 +5104,10 @@ export const CARD_IMAGE_MAP_116x162_ES: any = {
   '843': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Promo/A/thumbs/116x162/cPK_90_005040_00_BIPPA_C_M_es_ES_UT.png",
   '844': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Promo/A/thumbs/116x162/cPK_90_005060_00_PACHIRISU_R_M_es_ES_UT.png",
   '845': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Promo/A/thumbs/116x162/cPK_90_005070_00_RIOLU_R_M_es_ES_UT.png",
+  '846': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Celestial Guardians/thumbs/116x162/Exeggcute_(Guardianes_Celestiales_1_TCG_Pocket).png",
+  '847': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Celestial Guardians/thumbs/116x162/Exeggutor_de_Alola_(Guardianes_Celestiales_2_TCG_Pocket).png",
+  '848': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Celestial Guardians/thumbs/116x162/Surskit_(Guardianes_Celestiales_TCG_Pocket).png",
+  '849': "https://snakone.github.io/tcg-pocket-cards/assets/cards/es/Celestial Guardians/thumbs/116x162/Masquerain_(Guardianes_Celestiales_TCG_Pocket).png",
 };
 
 export const CARD_IMAGE_MAP_JAP: any = {
@@ -5932,6 +5956,10 @@ export const CARD_IMAGE_MAP_JAP: any = {
   '843': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005040_00_BIPPA_C_M_ja_JP_UT.png",
   '844': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005060_00_PACHIRISU_R_M_ja_JP_UT.png",
   '845': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005070_00_RIOLU_R_M_ja_JP_UT.png",
+  '846': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Celestial Guardians/l882.png",
+  '847': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Celestial Guardians/l883.png",
+  '848': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Celestial Guardians/l884.png",
+  '849': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Celestial Guardians/l885.png",
 };
 
 export const CARD_IMAGE_MAP_69x96_JAP: any = {
@@ -6770,16 +6798,20 @@ export const CARD_IMAGE_MAP_69x96_JAP: any = {
   '833': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Shining Revelry/thumbs/69x96/cPK_20_005380_01_UMITRIOex_SSR_M_ja_JP_UT.png",
   '834': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Shining Revelry/thumbs/69x96/cPK_20_005580_01_LUCARIOex_SSR_M_ja_JP_UT.png",
   '835': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Shining Revelry/thumbs/69x96/cTR_20_000030_00_MONSTERBALL_UR_M_ja_JP_UT.png",
-  '836': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_001290_00_MEWTWOex_SSR_M_ja_JP_UT.png",
-  '837': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005090_00_MOTOTOKAGE_S_M_ja_JP_UT.png",
-  '838': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005080_00_NYAHOJA_AR_M_ja_JP_UT.png",
-  '839': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005000_00_FLOAZEL_C_M_ja_JP_UT.png",
-  '840': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005010_00_PARMOT_AR_M_ja_JP_UT.png",
-  '841': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005020_00_KAIRIKY_R_M_ja_JP_UT.png",
-  '842': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005030_00_ARBO_C_M_ja_JP_UT.png",
-  '843': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005040_00_BIPPA_C_M_ja_JP_UT.png",
-  '844': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005060_00_PACHIRISU_R_M_ja_JP_UT.png",
-  '845': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005070_00_RIOLU_R_M_ja_JP_UT.png",
+  '836': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/69x96/cPK_90_001290_00_MEWTWOex_SSR_M_ja_JP_UT.png",
+  '837': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/69x96/cPK_90_005090_00_MOTOTOKAGE_S_M_ja_JP_UT.png",
+  '838': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/69x96/cPK_90_005080_00_NYAHOJA_AR_M_ja_JP_UT.png",
+  '839': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/69x96/cPK_90_005000_00_FLOAZEL_C_M_ja_JP_UT.png",
+  '840': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/69x96/cPK_90_005010_00_PARMOT_AR_M_ja_JP_UT.png",
+  '841': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/69x96/cPK_90_005020_00_KAIRIKY_R_M_ja_JP_UT.png",
+  '842': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/69x96/cPK_90_005030_00_ARBO_C_M_ja_JP_UT.png",
+  '843': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/69x96/cPK_90_005040_00_BIPPA_C_M_ja_JP_UT.png",
+  '844': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/69x96/cPK_90_005060_00_PACHIRISU_R_M_ja_JP_UT.png",
+  '845': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/69x96/cPK_90_005070_00_RIOLU_R_M_ja_JP_UT.png",
+  '846': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Celestial Guardians/thumbs/69x96/l882.png",
+  '847': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Celestial Guardians/thumbs/69x96/l883.png",
+  '848': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Celestial Guardians/thumbs/69x96/l884.png",
+  '849': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Celestial Guardians/thumbs/69x96/l885.png",
 };
 
 export const CARD_IMAGE_MAP_116x162_JAP: any = {
@@ -7618,14 +7650,18 @@ export const CARD_IMAGE_MAP_116x162_JAP: any = {
   '833': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Shining Revelry/thumbs/116x162/cPK_20_005380_01_UMITRIOex_SSR_M_ja_JP_UT.png",
   '834': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Shining Revelry/thumbs/116x162/cPK_20_005580_01_LUCARIOex_SSR_M_ja_JP_UT.png",
   '835': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Shining Revelry/thumbs/116x162/cTR_20_000030_00_MONSTERBALL_UR_M_ja_JP_UT.png",
-  '836': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_001290_00_MEWTWOex_SSR_M_ja_JP_UT.png",
-  '837': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005090_00_MOTOTOKAGE_S_M_ja_JP_UT.png",
-  '838': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005080_00_NYAHOJA_AR_M_ja_JP_UT.png",
-  '839': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005000_00_FLOAZEL_C_M_ja_JP_UT.png",
-  '840': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005010_00_PARMOT_AR_M_ja_JP_UT.png",
-  '841': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005020_00_KAIRIKY_R_M_ja_JP_UT.png",
-  '842': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005030_00_ARBO_C_M_ja_JP_UT.png",
-  '843': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005040_00_BIPPA_C_M_ja_JP_UT.png",
-  '844': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005060_00_PACHIRISU_R_M_ja_JP_UT.png",
-  '845': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/cPK_90_005070_00_RIOLU_R_M_ja_JP_UT.png",
+  '836': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/116x162/cPK_90_001290_00_MEWTWOex_SSR_M_ja_JP_UT.png",
+  '837': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/116x162/cPK_90_005090_00_MOTOTOKAGE_S_M_ja_JP_UT.png",
+  '838': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/116x162/cPK_90_005080_00_NYAHOJA_AR_M_ja_JP_UT.png",
+  '839': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/116x162/cPK_90_005000_00_FLOAZEL_C_M_ja_JP_UT.png",
+  '840': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/116x162/cPK_90_005010_00_PARMOT_AR_M_ja_JP_UT.png",
+  '841': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/116x162/cPK_90_005020_00_KAIRIKY_R_M_ja_JP_UT.png",
+  '842': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/116x162/cPK_90_005030_00_ARBO_C_M_ja_JP_UT.png",
+  '843': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/116x162/cPK_90_005040_00_BIPPA_C_M_ja_JP_UT.png",
+  '844': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/116x162/cPK_90_005060_00_PACHIRISU_R_M_ja_JP_UT.png",
+  '845': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Promo/A/thumbs/116x162/cPK_90_005070_00_RIOLU_R_M_ja_JP_UT.png",
+  '846': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Celestial Guardians/thumbs/116x162/l882.png",
+  '847': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Celestial Guardians/thumbs/116x162/l883.png",
+  '848': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Celestial Guardians/thumbs/116x162/l884.png",
+  '849': "https://snakone.github.io/tcg-pocket-cards/assets/cards/ja/Celestial Guardians/thumbs/116x162/l885.png",
 };

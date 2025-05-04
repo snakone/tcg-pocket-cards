@@ -1992,7 +1992,7 @@ export const MOCK_DB_CARDS: Card[] = [
         description: {
           es: 'Lanza 1 moneda. Si sale cruz, este ataque no hace nada.',
           en: 'Flip a coin. If tails, this attack does nothing.',
-          ja: 'コインを1回投げてウラなら、このワザは失敗。' 
+          ja: 'コインを1回投げウラなら、このワザは失敗。' 
         }
       }
     ],
@@ -20847,10 +20847,10 @@ export const MOCK_DB_CARDS: Card[] = [
         damage: 50,
         energy: [PokemonTypeENUM.FIGHT],
         description: {
-         es: 'Lanza 1 moneda. Si sale cruz, este ataque no hace nada.',
-         en: 'Flip a coin. If tails, this attack does nothing.',
-         ja: 'コインを1回投げウラなら、このワザは失敗。' 
-       }
+          es: 'Lanza 1 moneda. Si sale cruz, este ataque no hace nada.',
+          en: 'Flip a coin. If tails, this attack does nothing.',
+          ja: 'コインを1回投げウラなら、このワザは失敗。' 
+        }
       }
     ],
     evolve: [328],
@@ -31832,9 +31832,9 @@ export const MOCK_DB_CARDS: Card[] = [
         damage: 10,
         energy: [PokemonTypeENUM.NORMAL],
         description: {
-        es: 'Lanza 1 moneda. Si sale cara, este ataque hace 20 puntos de daño más.',
-        en: 'Flip a coin. If heads, this attack does 20 more damage.',
-        ja: 'コインを1回投げオモテなら、20ダメージ追加。' 
+          es: 'Lanza 1 moneda. Si sale cara, este ataque hace 20 puntos de daño más.',
+          en: 'Flip a coin. If heads, this attack does 20 more damage.',
+          ja: 'コインを1回投げオモテなら、20ダメージ追加。' 
       }
       },
     ],
@@ -54010,6 +54010,266 @@ export const MOCK_DB_CARDS: Card[] = [
       en: 'Wonder Pick',
       ja: 'ワンダーピック' 
     },
+  },
+  {
+    id: 846,
+    order: 846,
+    number: 1,
+    pokedex: 102,
+    name: {
+      es: 'Exeggcute',
+      en: 'Exeggcute',
+      ja: 'タマタマ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Huevo',
+        en: 'Egg Pokémon',
+        ja: 'たまごポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '2.5',
+        en: '5.5',
+        ja: '2.5'
+      }
+    },
+    artist: 'HYOGONOSUKE',
+    attacks: [
+      {
+        name: {
+          es: 'Placaje Giro',
+          en: 'Rolling Tackle',
+          ja: 'ころがりタックル'
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [847],
+    expansion: CardExpansionENUM.CELESTIAL_GUARDIANS,
+    series: CardExpansionTypeENUM.A3,
+    flavor: {
+      es: 'Pese a su aspecto de mera piña de huevos, se trata de un Pokémon. Al parecer, sus cabezas se comunican entre sí por telepatía.',
+      en: 'Though it may look like it’s just a bunch of eggs, it’s a proper Pokémon. Exeggcute communicates with others of its kind via telepathy, apparently.',
+      ja: 'タマゴのように　見えるが　立派な ポケモン｡　テレパシーで　仲間と 交信している　らしいぞ｡'
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.LUNALA
+    ],
+    related: [22, 23, 287, 288, 252, 355]
+  },
+  {
+    id: 847,
+    order: 847,
+    number: 2,
+    pokedex: 103,
+    name: {
+      es: 'Exeggutor de Alola',
+      en: 'Alolan Exeggutor',
+      ja: 'アローラナッシー'
+    },
+    info: {
+      type: {
+        es: 'Pokémon Coco',
+        en: 'Coconut Pokémon',
+        ja: 'やしのみポケモン'
+      },
+      height: {
+        es: '10.9',
+        en: '35\'9"',
+        ja: '10.9'
+      },
+      weight: {
+        es: '415.6',
+        en: '916.2',
+        ja: '415.6'
+      }
+    },
+    artist: 'Anesaki Dynamic',
+    attacks: [
+      {
+        name: {
+          es: 'Mazazo Tropical',
+          en: 'Tropical Hammer',
+          ja: 'トロピカルハンマー'
+        },
+        damage: 150,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cruz, este ataque no hace nada.',
+          en: 'Flip a coin. If tails, this attack does nothing.',
+          ja: 'コインを1回投げウラなら、このワザは失敗。' 
+        }
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.CELESTIAL_GUARDIANS,
+    series: CardExpansionTypeENUM.A3,
+    flavor: {
+      es: 'Los intensos rayos solares que bañan su hábitat le han conferido un poder y aspecto que muchos consideran su forma original.',
+      en: 'Blazing sunlight has brought out the true form and powers of this Pokémon',
+      ja: 'ギラギラと 照りつける 太陽の 光を 浴びた 結果 本来の 姿と 能力が 目覚めた。'
+    },
+    health: 150,
+    rarity: CardRarityENUM.RARE,
+    retreat: 4,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.NOTHING
+    ],
+    found: [
+      EXPANSION.LUNALA
+    ],
+    related: [21, 287, 288, 355]
+  },
+  {
+    id: 848,
+    order: 848,
+    number: 3,
+    pokedex: 283,
+    name: {
+      es: 'Surskit',
+      en: 'Surskit',
+      ja: 'アメタマ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Zapatero',
+        en: 'Pond Skater Pokémon',
+        ja: 'あめんぼポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '1.7',
+        en: '3.7',
+        ja: '1.7'
+      }
+    },
+    artist: 'Miki Tanaka',
+    attacks: [
+      {
+        name: {
+          es: 'Ataque Rápido',
+          en: 'Quick Attack',
+          ja: 'でんこうせっか' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Lanza 1 moneda. Si sale cara, este ataque hace 20 puntos de daño más.',
+          en: 'Flip a coin. If heads, this attack does 20 more damage.',
+          ja: 'コインを1回投げオモテなら、20ダメージ追加。' 
+        }
+      }
+    ],
+    evolve: [849],
+    expansion: CardExpansionENUM.CELESTIAL_GUARDIANS,
+    series: CardExpansionTypeENUM.A3,
+    flavor: {
+      es: 'Vive en estanques, pero, cuando se desata una tormenta, puede aparecer en los charcos que se forman en las ciudades.',
+      en: 'They usually live on ponds, but after an evening shower, they may appear on puddles in towns.',
+      ja: '普段は 池に 棲んでいるが 夕立の 後には 街中の 水たまりに 姿を 現す。'
+    },
+    health: 50,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.FLIP_COIN,
+      CardSpecialConditionENUM.EXTRA_DAMAGE
+    ],
+    found: [
+      EXPANSION.SOLGALEO
+    ],
+    related: [849]
+  },
+  {
+    id: 849,
+    order: 849,
+    number: 4,
+    pokedex: 284,
+    name: {
+      es: 'Masquerain',
+      en: 'Masquerain',
+      ja: 'アメモース' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Globocular',
+        en: 'Eyeball Pokémon',
+        ja: 'めだまポケモン'
+      },
+      height: {
+        es: '0.8',
+        en: '2\'7"',
+        ja: '0.8'
+      },
+      weight: {
+        es: '3.6',
+        en: '7.9',
+        ja: '3.6'
+      }
+    },
+    artist: 'Kanako Eo',
+    attacks: [
+      {
+        name: {
+          es: 'Zumbido',
+          en: 'Bug Buzz',
+          ja: 'むしのさざめき' 
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.GRASS],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.CELESTIAL_GUARDIANS,
+    series: CardExpansionTypeENUM.A3,
+    flavor: {
+      es: 'Sus cuatro alas le permiten volar en cualquier dirección a su antojo.',
+      en: 'It flaps its four wings to hover and fly freely in any direction—to and fro and sideways',
+      ja: '4枚の　羽で　浮かび上がり　前後　左右　自由自在に　飛び回る　ことが　できる。'
+    },
+    health: 90,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 0,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SOLGALEO
+    ],
+    related: [848]
   },
 ];
 

@@ -146,6 +146,33 @@ import {
   DECK_BG_CHARIZARD_SHINY_70x70,
   DECK_BG_ASH_70x70,
   DECK_BG_SKY_70x70,
+  SOLGALEO_EMBLEM,
+  LUNALA_EMBLEM,
+  SOLGALEO_ICON,
+  LUNALA_ICON,
+  SHINING_REVELRY_ICON,
+  SOLGALEO_COIN,
+  LILLIE_COIN,
+  ROWLET_COIN,
+  CYNTHIA_AVATAR,
+  ROWLET_AVATAR,
+  LITTEN_AVATAR,
+  LILLIE_AVATAR,
+  POPPLIO_AVATAR,
+  DECK_BG_SOLGALEO,
+  DECK_BG_SHINY,
+  DECK_BG_SOLGALEO_ART,
+  DECK_BG_ROWLET,
+  DECK_BG_LILLIE,
+  DECK_BG_CITY_PARK,
+  DECK_BG_LUNALA,
+  DECK_BG_SOLGALEO_70x70,
+  DECK_BG_SHINY_70x70,
+  DECK_BG_SOLGALEO_ART_70x70,
+  DECK_BG_ROWLET_70x70,
+  DECK_BG_LILLIE_70x70,
+  DECK_BG_CITY_PARK_70x70,
+  DECK_BG_LUNALA_70x70,
 } from "../sentences/path.sentences";
 
 import { FilterSearch } from "../classes/filter.class";
@@ -178,6 +205,7 @@ export const FRONTEND_URL = 'https://tcg-pocket-cards.netlify.app/';
 export const DEFAULT_LANG = 'es';
 export const FILTER_CARDS_HEIGHT = 718;
 export const MAX_CONTENT = 30;
+export const ALLOWED_LANGS = ['es', 'en', 'ja'];
 
 // MODALS
 export const MIN_MODAL_HEIGHT = 96;
@@ -286,6 +314,7 @@ export const EXPANSION_MAP: Record<CardExpansionENUM, CardPackTag> = {
   [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: { label: 'A', tag: 'A2', color: 'white', background: 'black', promo_amount: 'P-A' },
   [CardExpansionENUM.TRIUMPH_LIGHT]: { label: 'A', tag: 'A2a', color: 'white', background: 'black', promo_amount: 'P-A' },
   [CardExpansionENUM.SHINING_REVELRY]: { label: 'A', tag: 'A2b', color: 'white', background: 'black', promo_amount: 'P-A' },
+  [CardExpansionENUM.CELESTIAL_GUARDIANS]: { label: 'A', tag: 'A3', color: 'white', background: 'black', promo_amount: 'P-A' },
 }
 
 export const CONDITION_MAP: Record<CardSpecialConditionENUM, {label: string}> = {
@@ -386,17 +415,22 @@ export const PACK_MAP: Record<EXPANSION, any> = {
   [EXPANSION.PROMO_A4]: PROMO_A_ICON,
   [EXPANSION.ARCEUS]: TRIUMPH_LIGHT_ARCEUS_ICON,
   [EXPANSION.PROMO_A5]: PROMO_A_ICON,
-  [EXPANSION.SHINY]: null,
+  [EXPANSION.SHINY]: SHINING_REVELRY_ICON,
   [EXPANSION.PROMO_A6]: PROMO_A_ICON,
+  [EXPANSION.SOLGALEO]: SOLGALEO_ICON,
+  [EXPANSION.LUNALA]: LUNALA_ICON,
+  [EXPANSION.PROMO_A7]: PROMO_A_ICON,
+  [EXPANSION.PROMO_A8]: PROMO_A_ICON,
 }
 
 export const PACK_AMOUNT_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.GENETIC_APEX]: 286,
-  [CardExpansionENUM.PROMO_A]: 41,
+  [CardExpansionENUM.PROMO_A]: 73,
   [CardExpansionENUM.MYTHICAL_ISLAND]: 86,
   [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 207,
   [CardExpansionENUM.TRIUMPH_LIGHT]: 96,
-  [CardExpansionENUM.SHINING_REVELRY]: 110
+  [CardExpansionENUM.SHINING_REVELRY]: 110,
+  [CardExpansionENUM.CELESTIAL_GUARDIANS]: 239
 }
 
 export const COIN_MAP: Record<string, any> = {
@@ -419,7 +453,10 @@ export const COIN_MAP: Record<string, any> = {
   ash_rainbow: ASH_RAINBOW_COIN,
   lucario: LUCARIO_COIN,
   mewtwo_shiny: MEWTWO_SHINY_COIN,
-  ash_red: ASH_RED_COIN
+  ash_red: ASH_RED_COIN,
+  solgaleo: SOLGALEO_COIN,
+  lillie: LILLIE_COIN,
+  rowlet: ROWLET_COIN,
 }
 
 export const AVATAR_MAP: Record<string, any> = {
@@ -442,7 +479,12 @@ export const AVATAR_MAP: Record<string, any> = {
   turtwig: TURTWIG_AVATAR,
   lektro: LEKTRO_AVATAR,
   maril: MARIL_AVATAR,
-  sprigatito: SPRIGATITO_AVATAR
+  sprigatito: SPRIGATITO_AVATAR,
+  cynthia: CYNTHIA_AVATAR,
+  rowlet: ROWLET_AVATAR,
+  litten: LITTEN_AVATAR,
+  lillie: LILLIE_AVATAR,
+  poppplio: POPPLIO_AVATAR
 }
 
 export const DECK_BACKGROUND_MAP: Record<string, any> = {
@@ -477,7 +519,14 @@ export const DECK_BACKGROUND_MAP: Record<string, any> = {
   lucario: DECK_BG_LUCARIO,
   charizard_shiny: DECK_BG_CHARIZARD_SHINY,
   ash: DECK_BG_ASH,
-  sky: DECK_BG_SKY
+  sky: DECK_BG_SKY,
+  solgaleo: DECK_BG_SOLGALEO,
+  shiny: DECK_BG_SHINY,
+  solgaleo_art: DECK_BG_SOLGALEO_ART,
+  rowlet: DECK_BG_ROWLET,
+  lillie: DECK_BG_LILLIE,
+  city_park: DECK_BG_CITY_PARK,
+  lunala: DECK_BG_LUNALA
 }
 
 export const AVATAR_LIST: AvatarIcon[] = [
@@ -501,6 +550,11 @@ export const AVATAR_LIST: AvatarIcon[] = [
   { label: 'Lektro', value: 'lektro', icon: LEKTRO_AVATAR },
   { label: 'Maril', value: 'maril', icon: MARIL_AVATAR },
   { label: 'Sprigatito', value: 'sprigatito', icon: SPRIGATITO_AVATAR },
+  { label: 'Cynthia', value: 'cynthia', icon: CYNTHIA_AVATAR },
+  { label: 'Rowlet', value: 'rowlet', icon: ROWLET_AVATAR },
+  { label: 'Litten', value: 'litten', icon: LITTEN_AVATAR },
+  { label: 'Popplio', value: 'popplio', icon: POPPLIO_AVATAR },
+  { label: 'Lillie', value: 'lillie', icon: LILLIE_AVATAR },
 ];
 
 export const COIN_LIST: AvatarIcon[] = [
@@ -523,7 +577,10 @@ export const COIN_LIST: AvatarIcon[] = [
   { label: 'Ash Rainbow', value: 'ash_rainbow', icon: ASH_RAINBOW_COIN },
   { label: 'Lucario', value: 'lucario', icon: LUCARIO_COIN },
   { label: 'Mewtwo Shiny', value: 'mewtwo_shiny', icon: MEWTWO_SHINY_COIN },
-  { label: 'ASh Red', value: 'ash_red', icon: ASH_RED_COIN },
+  { label: 'Ash Red', value: 'ash_red', icon: ASH_RED_COIN },
+  { label: 'Lillie', value: 'lillie', icon: LILLIE_COIN },
+  { label: 'Rowlet', value: 'rowlet', icon: ROWLET_COIN },
+  { label: 'Solgaleo', value: 'solgaleo', icon: SOLGALEO_COIN },
 ];
 
 export const DECK_BACKGROUNDS_70x70: AvatarIcon[] = [
@@ -559,6 +616,13 @@ export const DECK_BACKGROUNDS_70x70: AvatarIcon[] = [
   {label: 'Charizard Shiny', value: 'charizard_shiny', icon: DECK_BG_CHARIZARD_SHINY_70x70},
   {label: 'Ash', value: 'ash', icon: DECK_BG_ASH_70x70},
   {label: 'Sky', value: 'sky', icon: DECK_BG_SKY_70x70},
+  {label: 'Solgaleo', value: 'solgaleo', icon: DECK_BG_SOLGALEO_70x70},
+  {label: 'Shiny', value: 'shiny', icon: DECK_BG_SHINY_70x70},
+  {label: 'Solgaleo Art', value: 'solgaleo_art', icon: DECK_BG_SOLGALEO_ART_70x70},
+  {label: 'Rowlet', value: 'rowlet', icon: DECK_BG_ROWLET_70x70},
+  {label: 'Lillie', value: 'lillie', icon: DECK_BG_LILLIE_70x70},
+  {label: 'City Park', value: 'city_park', icon: DECK_BG_CITY_PARK_70x70},
+  {label: 'Lunala', value: 'lunala', icon: DECK_BG_LUNALA_70x70},
 ];
 
 export const DAMAGES = Array.from({ length: 30 }, (_, index) => (index + 1) * 10);
@@ -589,7 +653,8 @@ export const PACK_PER_EXPANSION_MAP: Record<CardExpansionENUM, number> = {
   [CardExpansionENUM.SPACE_TIME_SMACKDOWN]: 2,
   [CardExpansionENUM.PROMO_A]: 0,
   [CardExpansionENUM.TRIUMPH_LIGHT]: 1,
-  [CardExpansionENUM.SHINING_REVELRY]: 1
+  [CardExpansionENUM.SHINING_REVELRY]: 1,
+  [CardExpansionENUM.CELESTIAL_GUARDIANS]: 2
 }
 
 export const COLLECTION_LANGUAGE_MAP: Record<CardLanguageENUM, string> = {
@@ -637,6 +702,8 @@ export const EXPANSION_EMBLEM_LIST: ExpansionEmblem[] = [
   { label: 'expansion_palkia', value: EXPANSION.PALKIA, icon: PALKIA_EMBLEM },
   { label: 'expansion_arceus', value: EXPANSION.ARCEUS, icon: ARCEUS_EMBLEM },
   { label: 'expansion_shiny', value: EXPANSION.SHINY, icon: GIRATINA_EMBLEM },
+  { label: 'expansion_solgaleo', value: EXPANSION.SOLGALEO, icon: SOLGALEO_EMBLEM },
+  { label: 'expansion_lunala', value: EXPANSION.LUNALA, icon: LUNALA_EMBLEM },
   { label: 'expansion_promo_a', value: 99, icon: PROMO_A_EMBLEM }
 ];
 
@@ -648,7 +715,9 @@ export const EXPANSION_PACK_MAP: any = {
   expansion_dialga: DIALGA_ICON,
   expansion_palkia: PALKIA_ICON,
   expansion_arceus: ARCEUS_ICON,
-  expansion_shiny: SHINY_ICON
+  expansion_shiny: SHINY_ICON,
+  expansion_solgaleo: SOLGALEO_ICON,
+  expansion_lunala: LUNALA_ICON
 }
 
 export const STATS_EXPANSION_MAP: any = {
@@ -660,6 +729,8 @@ export const STATS_EXPANSION_MAP: any = {
   [EXPANSION.PALKIA]: 5,
   [EXPANSION.ARCEUS]: 6,
   [EXPANSION.SHINY]: 7,
+  [EXPANSION.SOLGALEO]: 8,
+  [EXPANSION.LUNALA]: 9,
   99: 8
 }
 
@@ -721,4 +792,6 @@ export const EXPANSION_MAP_STRING: Partial<Record<EXPANSION, string>> = {
   [EXPANSION.PALKIA]: 'palkia',
   [EXPANSION.ARCEUS]: 'arceus',
   [EXPANSION.SHINY]: 'shiny',
+  [EXPANSION.SOLGALEO]: 'solgaleo',
+  [EXPANSION.LUNALA]: 'lunala',
 };

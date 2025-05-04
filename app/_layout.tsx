@@ -106,6 +106,7 @@ export default function RootLayout() {
 
   function configure(settings: SettingsState): void {
     Storage.setSettings({...settings});
+    dispatch({type: 'SET_SETTINGS', value: settings});
     SoundService.setEnabled(settings.sound);
     setLocale(settings.language);
     setShowStartScreen(settings.show_intro);

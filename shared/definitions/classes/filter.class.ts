@@ -52,6 +52,10 @@ export class FilterSearch {
       [EXPANSION.PROMO_A5]: null,
       [EXPANSION.SHINY]: null,
       [EXPANSION.PROMO_A6]: null,
+      [EXPANSION.SOLGALEO]: null,
+      [EXPANSION.LUNALA]: null,
+      [EXPANSION.PROMO_A7]: null,
+      [EXPANSION.PROMO_A8]: null,
     };
 
     this.favorite = {included: null, not_favorite: null};
@@ -153,6 +157,10 @@ export class FilterSearch {
       [EXPANSION.PROMO_A5]: null,
       [EXPANSION.SHINY]: null,
       [EXPANSION.PROMO_A6]: null,
+      [EXPANSION.SOLGALEO]: null,
+      [EXPANSION.LUNALA]: null,
+      [EXPANSION.PROMO_A7]: null,
+      [EXPANSION.PROMO_A8]: null,
     };
   }
 

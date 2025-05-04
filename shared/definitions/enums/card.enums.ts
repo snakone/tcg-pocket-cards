@@ -7,11 +7,17 @@ export enum CardRarityENUM {
 }
 
 export enum CardExpansionENUM {
-  GENETIC_APEX, PROMO_A, MYTHICAL_ISLAND, SPACE_TIME_SMACKDOWN, TRIUMPH_LIGHT, SHINING_REVELRY
+  GENETIC_APEX, 
+  PROMO_A, 
+  MYTHICAL_ISLAND, 
+  SPACE_TIME_SMACKDOWN, 
+  TRIUMPH_LIGHT, 
+  SHINING_REVELRY,
+  CELESTIAL_GUARDIANS
 }
 
 export enum CardExpansionTypeENUM {
-  A1, A1A, A2, A2A, A2B
+  A1, A1A, A2, A2A, A2B, A3
 }
 
 export enum CardSpecialConditionENUM {

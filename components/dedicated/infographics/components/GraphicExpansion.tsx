@@ -5,24 +5,26 @@ import { Image } from 'expo-image';
 import { useI18n } from '@/core/providers/LanguageProvider';
 
 import { 
-  GENETIC_APEX, 
+  GENETIC_APEX_ICON, 
   GENETIC_APEX_PIKACHU_ICON, 
   GENETIC_APEX_MEWTWO_ICON, 
   GENETIC_APEX_CHARIZARD_ICON, 
   MYTHICAL_ISLAND_MEW_ICON, 
-  SMACK_DOWN, 
+  SMACK_DOWN_ICON, 
   SMACK_DOWN_DIALGA_ICON, 
   SMACK_DOWN_PALKIA_ICON, 
   TRIUMPH_LIGHT_ARCEUS_ICON, 
   PROMO_A_ICON, 
-  SHINING_REVELRY_ICON
+  SHINING_REVELRY_ICON,
+  SOLGALEO_ICON,
+  LUNALA_ICON,
+  CELESTIAL_ICON_GAP
 } from '@/shared/definitions/sentences/path.sentences';
 
 import { Colors } from '@/shared/definitions/utils/colors';
 import { Card } from '@/shared/definitions/interfaces/card.interfaces';
 import { getImageLanguageForGraphic } from '@/shared/definitions/utils/functions';
 import { CardGridStyles } from '@/shared/styles/component.styles';
-import { LanguageType } from '@/shared/definitions/types/global.types';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -31,9 +33,8 @@ import RainbowDivider from '../RainbowDivider';
 interface GraphicExpansionProps {
   styles: any;
   data: any;
-  language: LanguageType;
-  startIndex: number;
-  endIndex: number;
+  startIndex?: number;
+  endIndex?: number;
   showSeries?: boolean;
 }
 
@@ -43,7 +44,6 @@ const collageWith = 1240;
 export const GraphicExpansion = ({
   styles, 
   data, 
-  language, 
   startIndex, 
   endIndex, 
   showSeries
@@ -73,7 +73,7 @@ export const GraphicExpansion = ({
     {
       intro: {
         image: {
-          href: GENETIC_APEX
+          href: GENETIC_APEX_ICON
         },
         label: 'genetic_apex',
         value: data.geneticPackCardsLength,
@@ -140,7 +140,7 @@ export const GraphicExpansion = ({
     {
       intro: {
         image: {
-          href: SMACK_DOWN,
+          href: SMACK_DOWN_ICON,
           height: 44
         },
         label: 'smack_down',
@@ -215,6 +215,47 @@ export const GraphicExpansion = ({
     {
       intro: {
         image: {
+          href: CELESTIAL_ICON_GAP,
+          height: 44
+        },
+        label: 'celestial_guardians',
+        value: data.celestialCardsLength,
+        description: 'celestial_guardians_description',
+        bottom: 16
+      },
+      shared: {
+        value: data.sharedCelestialLength,
+        list: data.sharedCelestial,
+        divider: true,
+      },
+      packs: [
+        {
+          image: {
+            href: SOLGALEO_ICON,
+            width: 92,
+            height: 46
+          },
+          label: 'solgaleo',
+          value: data.solgaleoCardsLength,
+          list: data.solgaleoCards,
+          divider: true,
+        },
+        {
+          image: {
+            href: LUNALA_ICON,
+            width: 92,
+            height: 46
+          },
+          label: 'lunala',
+          value: data.lunalaCardsLength,
+          list: data.lunalaCards,
+          divider: true,
+        }
+      ],
+    },
+    {
+      intro: {
+        image: {
           href: PROMO_A_ICON,
           width: 94,
           height: 52,
@@ -282,6 +323,11 @@ export const GraphicExpansion = ({
     {list: data.promo4Cards},
     {list: data.promo5Cards},
     {list: data.promo6Cards},
+  ];
+
+  const seriesThirdRow = [
+    {list: data.promo7Cards},
+    {list: data.promo8Cards},
   ];
   
   return (
@@ -433,7 +479,7 @@ export const GraphicExpansion = ({
                   <ThemedView key={index.toString()}>
                     <ThemedText style={[
                       styles.subTitlte, {marginTop: 10, color: Colors.light.text}
-                    ]}>A{index +1}</ThemedText>
+                    ]}>A{index + 1}</ThemedText>
                     <FlatList data={series.list}
                               renderItem={renderItem}
                               numColumns={numColumns}
@@ -455,6 +501,27 @@ export const GraphicExpansion = ({
                     <ThemedText style={[
                       styles.subTitlte, {marginTop: 0, color: Colors.light.text}
                     ]}>A{seriesFirstRow.length + index + 1}</ThemedText>
+                    <FlatList data={series.list}
+                              renderItem={renderItem}
+                              numColumns={numColumns}
+                              contentContainerStyle={[styles.list, {width: 'auto'}]}
+                              style={{borderRadius: 8}}
+                              showsVerticalScrollIndicator={false}
+                              keyExtractor={(item, index) => index + ''}/>
+                  </ThemedView>
+                )
+              })
+            }
+          </ThemedView>
+
+          <ThemedView style={{flexDirection: "row", gap: 20, width: '64.8%'}}>
+            {
+              seriesThirdRow.map((series, index) => {
+                return (
+                  <ThemedView key={index.toString()}>
+                    <ThemedText style={[
+                      styles.subTitlte, {marginTop: 0, color: Colors.light.text}
+                    ]}>A{seriesFirstRow.length + seriesThirdRow.length + index + 2}</ThemedText>
                     <FlatList data={series.list}
                               renderItem={renderItem}
                               numColumns={numColumns}

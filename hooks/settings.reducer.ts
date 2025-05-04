@@ -1,7 +1,5 @@
-import { getLocales } from "expo-localization";
-
 import { LanguageType } from "@/shared/definitions/types/global.types";
-import { DEFAULT_LANG } from "@/shared/definitions/utils/constants";
+import { getAppLocale } from "@/shared/definitions/utils/functions";
 
 export interface SettingsState {
   music: boolean;
@@ -18,7 +16,7 @@ export const settingsInitialState: SettingsState = {
   sound: true,
   music_volume: 0.3,
   sound_volume: 0.3,
-  language: (getLocales()[0]?.languageCode ?? DEFAULT_LANG) as LanguageType,
+  language: getAppLocale(),
   version: null,
   show_intro: true,
 };

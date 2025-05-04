@@ -96,16 +96,22 @@ export const FALL_SPLASH = require('@/assets/images/splash/fall.webp');
 export const TCG_LOGO = require('@/assets/images/tcgpocketlogo_en.webp');
 
 export const HERO_IMAGE = require('@/assets/images/hero.png');
+
+// PROMO
 export const PROMO_A1 = require('@/assets/images/packs/promoA1.png');
 export const PROMO_A2 = require('@/assets/images/packs/promoA2.png');
 export const PROMO_A3 = require('@/assets/images/packs/promoA3.png');
 export const PROMO_A4 = require('@/assets/images/packs/promoA4.png');
 export const PROMO_A5 = require('@/assets/images/packs/promoA5.png');
 export const PROMO_A6 = require('@/assets/images/packs/promoA6.png');
+export const PROMO_A7 = require('@/assets/images/packs/promoA5.png');
+export const PROMO_A8 = require('@/assets/images/packs/promoA6.png');
+
+export const PROMO_A_ICON = require('@/assets/images/packs/promo_a.png');
 
 // PACKS
 // GENETIC APEX
-export const GENETIC_APEX = require('@/assets/images/packs/geneticapex.png');
+export const GENETIC_APEX_ICON = require('@/assets/images/packs/geneticapex.png');
 export const PIKACHU_ICON = require('@/assets/images/packs/pikachu.png');
 export const MEWTWO_ICON = require('@/assets/images/packs/mewtwo.png');
 export const CHARIZARD_ICON = require('@/assets/images/packs/charizard.png');
@@ -118,7 +124,7 @@ export const MEW_ICON = require('@/assets/images/packs/mew.png');
 export const MYTHICAL_ISLAND_MEW_ICON = require('@/assets/images/packs/mythical-island-mew.png');
 
 // SPACE TIME SMACKDOWN
-export const SMACK_DOWN = require('@/assets/images/packs/smackdown.png');
+export const SMACK_DOWN_ICON = require('@/assets/images/packs/smackdown.png');
 export const DIALGA_ICON = require('@/assets/images/packs/dialga.png');
 export const PALKIA_ICON = require('@/assets/images/packs/palkia.png');
 export const SMACK_DOWN_DIALGA_ICON = require('@/assets/images/packs/smackdown-dialga.png');
@@ -132,8 +138,13 @@ export const TRIUMPH_LIGHT_ARCEUS_ICON = require('@/assets/images/packs/triumphl
 export const SHINY_ICON = require('@/assets/images/packs/shiny.png');
 export const SHINING_REVELRY_ICON = require('@/assets/images/packs/shining_revelry.png');
 
-// PROMO
-export const PROMO_A_ICON = require('@/assets/images/packs/promo_a.png');
+// CELESTIAL GUARDIANS
+export const CELESTIAL_ICON = require('@/assets/images/packs/celestialguardians.png');
+export const CELESTIAL_ICON_GAP = require('@/assets/images/packs/celestialguardians_gap.png');
+export const SOLGALEO_ICON = require('@/assets/images/packs/celestial-solgaleo.png');
+export const LUNALA_ICON = require('@/assets/images/packs/celestial-lunala.png');
+export const CELESTIAL_SOLGALEO_ICON = require('@/assets/images/packs/solgaleo.png');
+export const CELESTIAL_LUNALA_ICON = require('@/assets/images/packs/lunala.png');
 
 // COINS
 export const EEVEE_COIN = require("@/assets/images/coins/eevee.png");
@@ -156,6 +167,9 @@ export const ASH_RAINBOW_COIN = require("@/assets/images/coins/ash_rainbow.png")
 export const LUCARIO_COIN = require("@/assets/images/coins/lucario.png");
 export const MEWTWO_SHINY_COIN = require("@/assets/images/coins/mewtwo_shiny.png");
 export const ASH_RED_COIN = require("@/assets/images/coins/red_red.png");
+export const SOLGALEO_COIN = require("@/assets/images/coins/solgaleo.png");
+export const LILLIE_COIN = require("@/assets/images/coins/lillie.png");
+export const ROWLET_COIN = require("@/assets/images/coins/rowlet.png");
 
 // AVATARS
 export const EEVEE_AVATAR = require("@/assets/images/avatars/eevee.png");
@@ -178,6 +192,11 @@ export const BLASTOISE_AVATAR = require("@/assets/images/avatars/blastoise.png")
 export const LEKTRO_AVATAR = require("@/assets/images/avatars/lektro.png");
 export const MARIL_AVATAR = require("@/assets/images/avatars/maril.png");
 export const SPRIGATITO_AVATAR = require("@/assets/images/avatars/sprigatito.png");
+export const CYNTHIA_AVATAR = require("@/assets/images/avatars/cynthia.png");
+export const LITTEN_AVATAR = require("@/assets/images/avatars/litten.png");
+export const LILLIE_AVATAR = require("@/assets/images/avatars/lillie.png");
+export const POPPLIO_AVATAR = require("@/assets/images/avatars/popplio.png");
+export const ROWLET_AVATAR = require("@/assets/images/avatars/rowlet.png");
 
 // DECK BACKGROUND
 export const DECK_BG_TREES = require("@/assets/images/decks/Ilustración_portada_árbol_del_descanso_TCGP.png");
@@ -212,6 +231,13 @@ export const DECK_BG_LUCARIO = require("@/assets/images/decks/covers-file-100450
 export const DECK_BG_CHARIZARD_SHINY = require("@/assets/images/decks/covers-file-100460-shiny-lizardon-.png");
 export const DECK_BG_ASH = require("@/assets/images/decks/covers-file-100470-red-pikachu-.png");
 export const DECK_BG_SKY = require("@/assets/images/decks/covers-file-100480-shiny-glare-.png");
+export const DECK_BG_SOLGALEO = require("@/assets/images/decks/emblems-emblem-100140-solgaleo-solgaleo.png");
+export const DECK_BG_SHINY = require("@/assets/images/decks/covers-file-100490-a2b-shiny-pokemons-shining-revelry-shiny-pokemon.png");
+export const DECK_BG_SOLGALEO_ART = require("@/assets/images/decks/covers-file-100500-solgaleo-solgaleo.png");
+export const DECK_BG_ROWLET = require("@/assets/images/decks/covers-file-100510-mokuroh-rowlet.png");
+export const DECK_BG_LILLIE = require("@/assets/images/decks/covers-file-100520-lilie-lunala-lillie.png");
+export const DECK_BG_CITY_PARK = require("@/assets/images/decks/covers-file-100530-city-celebration-street-party.png");
+export const DECK_BG_LUNALA = require("@/assets/images/decks/covers-file-100550-a3-lunala-celestial-guardians-lunala.png");
 
 export const DECK_BG_TREES_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_árbol_del_descanso_TCGP.png");
 export const DECK_BG_FOREST_70x70 = require("@/assets/images/decks/thumbs/70x70/Ilustración_portada_bosque_virgen_TCGP.png");
@@ -245,6 +271,13 @@ export const DECK_BG_LUCARIO_70x70 = require("@/assets/images/decks/thumbs/70x70
 export const DECK_BG_CHARIZARD_SHINY_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100460-shiny-lizardon-.png");
 export const DECK_BG_ASH_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100470-red-pikachu-.png");
 export const DECK_BG_SKY_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100480-shiny-glare-.png");
+export const DECK_BG_SOLGALEO_70x70 = require("@/assets/images/decks/thumbs/70x70/emblems-emblem-100140-solgaleo-solgaleo.png");
+export const DECK_BG_SHINY_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100490-a2b-shiny-pokemons-shining-revelry-shiny-pokemon.png");
+export const DECK_BG_SOLGALEO_ART_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100500-solgaleo-solgaleo.png");
+export const DECK_BG_ROWLET_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100510-mokuroh-rowlet.png");
+export const DECK_BG_LILLIE_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100520-lilie-lunala-lillie.png");
+export const DECK_BG_CITY_PARK_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100530-city-celebration-street-party.png");
+export const DECK_BG_LUNALA_70x70 = require("@/assets/images/decks/thumbs/70x70/covers-file-100550-a3-lunala-celestial-guardians-lunala.png");
 
 export const GENETIC_APEX_PACKS = [
   PIKACHU_ICON,
@@ -275,6 +308,13 @@ export const SHINING_PACKS = [
   PROMO_A6
 ];
 
+export const CELESTIAL_PACKS = [
+  CELESTIAL_SOLGALEO_ICON,
+  CELESTIAL_LUNALA_ICON,
+  PROMO_A7,
+  PROMO_A8
+];
+
 export const SPLASH = [
   WINTER_SPLASH,
   SPRING_SPLASH,
@@ -292,6 +332,8 @@ export const MEWTWO_EMBLEM = require("@/assets/images/emblem/mewtwo.png");
 export const PALKIA_EMBLEM = require("@/assets/images/emblem/palkia.png");
 export const PIKACHU_EMBLEM = require("@/assets/images/emblem/pikachu.png");
 export const GIRATINA_EMBLEM = require("@/assets/images/emblem/giratina.png");
+export const SOLGALEO_EMBLEM = require("@/assets/images/emblem/solgaleo.png");
+export const LUNALA_EMBLEM = require("@/assets/images/emblem/lunala.png");
 export const PROMO_A_EMBLEM = require("@/assets/images/emblem/promo_a.png");
 
 export const BACKWARD_CARD = require("@/assets/images/backward.png");

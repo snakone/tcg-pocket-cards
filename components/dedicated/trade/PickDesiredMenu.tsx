@@ -76,7 +76,7 @@ export default function PickDesiredMenu({
 
   const filterTradeableCards = useCallback(() => {
     return cardsState.cards.filter(
-      card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A2B)
+      card => RARITY_CAN_TRADE.includes(card?.rarity) && card.series !== CardExpansionTypeENUM.A3)
   }, [cardsState.cards]);
 
   useEffect(() => {
@@ -85,7 +85,7 @@ export default function PickDesiredMenu({
     let filteredCards;
     if (desiredCard) {
       filteredCards = cardsState.cards.filter(card => 
-        card?.rarity === desiredCard.rarity && card.series !== CardExpansionTypeENUM.A2B
+        card?.rarity === desiredCard.rarity && card.series !== CardExpansionTypeENUM.A3
       );
   
       setCurrent(prev =>

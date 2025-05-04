@@ -61,6 +61,7 @@ export function GraphicCollage({
   const expansionRef = useRef<any>(null);
   const expansionRefSecond = useRef<any>(null);
   const expansionRefThird = useRef<any>(null);
+  const expansionRefFourth = useRef<any>(null);
   const gradesRef = useRef<any>(null);
   const typesRef = useRef<any>(null);
   const miscellaniaRef = useRef<any>(null);
@@ -81,6 +82,7 @@ export function GraphicCollage({
     { item: expansionRef, label: i18n.t('expansions') + '-1', func: (_: boolean) => setInnerShowExp(_), value: showExpansion },
     { item: expansionRefSecond, label: i18n.t('expansions') + '-2', func: (_: boolean) => setInnerShowExp(_), value: showExpansion },
     { item: expansionRefThird, label: i18n.t('expansions') + '-3', func: (_: boolean) => setInnerShowExp(_), value: showExpansion },
+    { item: expansionRefFourth, label: i18n.t('expansions') + '-4', func: (_: boolean) => setInnerShowExp(_), value: showExpansion },
     { item: gradesRef, label: i18n.t('grade'), func: (_: boolean) => setInnerShowGrades(_), value: showGrades },
     { item: typesRef, label: i18n.t('types'), func: (_: boolean) => setInnerShowTypes(_), value: showTypes },
     { item: miscellaniaRef, label: i18n.t('miscellania'), func: (_: boolean) => setInnerShowMisc(_), value: showMiscellania },
@@ -227,15 +229,20 @@ export function GraphicCollage({
   const { data: promo4Cards } = getCards(EXPANSION.PROMO_A4);
   const { data: promo5Cards } = getCards(EXPANSION.PROMO_A5);
   const { data: promo6Cards } = getCards(EXPANSION.PROMO_A6);
+  const { data: promo7Cards } = getCards(EXPANSION.PROMO_A7);
+  const { data: promo8Cards } = getCards(EXPANSION.PROMO_A8);
   const { data: specialCards, length: specialCardsLength } = getCards(EXPANSION.SPECIAL_MISSION);
   const { data: triumphCards } = getCards(EXPANSION.ARCEUS);
   const { data: shinyCards, length: shinyCardsLength } = getCards(EXPANSION.SHINY);
+  const { data: solgaleoCards, length: solgaleoCardsLength } = getCards(EXPANSION.SOLGALEO);
+  const { data: lunalaCards, length: lunalaCardsLength } = getCards(EXPANSION.LUNALA);
 
   const { length: geneticPackCardsLength } = getCardsExpansion(CardExpansionENUM.GENETIC_APEX);
   const { length: islandPackCardsLength } = getCardsExpansion(CardExpansionENUM.MYTHICAL_ISLAND);
   const { length: spacePackCardsLength } = getCardsExpansion(CardExpansionENUM.SPACE_TIME_SMACKDOWN);
   const { length: triumphPackCardsLength } = getCardsExpansion(CardExpansionENUM.TRIUMPH_LIGHT);
   const { length: shiningCardsLength } = getCardsExpansion(CardExpansionENUM.SHINING_REVELRY);
+  const { length: celestialCardsLength } = getCardsExpansion(CardExpansionENUM.CELESTIAL_GUARDIANS);
   const { data: promoAPackCards, length: promoAPackCardsLength } = getCardsExpansion(CardExpansionENUM.PROMO_A);
 
   const { data: rareCards, length: rareCardsLength } = getCardRarity(CardRarityENUM.RARE);
@@ -276,6 +283,7 @@ export function GraphicCollage({
 
   const { data: sharedGenetic, length: sharedGeneticLength } = getSharedCards(CardExpansionENUM.GENETIC_APEX);
   const { data: sharedSmack, length: sharedSmackLength } = getSharedCards(CardExpansionENUM.SPACE_TIME_SMACKDOWN);
+  const { data: sharedCelestial, length: sharedCelestialLength } = getSharedCards(CardExpansionENUM.CELESTIAL_GUARDIANS);
 
   const { data: benchCondition, length: benchConditionLength } = getCondition(CardSpecialConditionENUM.ATTACK_BENCH);
   const { data: addCondition, length: addConditionLength } = getCondition(CardSpecialConditionENUM.ADD_ENERGY);
@@ -315,7 +323,7 @@ export function GraphicCollage({
     withdrawConditionLength, retireConditionLength, callConditionLength, inactiveConditionLength,
     arceusConditionLength, weakGrassCardsLength, weakFireCardsLength, weakWaterCardsLength, weakElectricCardsLength,
     weakPsychicCardsLength, weakFightCardsLength, weakDarkCardsLength, weakSteelCardsLength, shiningCardsLength,
-    rainbowCardsLength, doubleRainbowCardsLength
+    rainbowCardsLength, doubleRainbowCardsLength, celestialCardsLength, solgaleoCardsLength, lunalaCardsLength
   };
 
   const EXPANSION_DATA: any = {
@@ -323,8 +331,9 @@ export function GraphicCollage({
     charizardCardsLength, charizardCards, sharedGeneticLength, sharedGenetic, islandPackCardsLength,
     islandCards, spacePackCardsLength, dialgaCardsLength, dialgaCards, palkiaCardsLength, palkiaCards,
     sharedSmackLength, sharedSmack, triumphPackCardsLength, triumphCards, promoAPackCardsLength, promoAPackCards,
-    promo1Cards, promo2Cards, promo3Cards, promo4Cards, promo5Cards, promo6Cards, premiumCardsLength, 
-    specialCards, premiumCards, specialCardsLength, shinyCardsLength, shinyCards
+    promo1Cards, promo2Cards, promo3Cards, promo4Cards, promo5Cards, promo6Cards, promo7Cards, promo8Cards, premiumCardsLength, 
+    specialCards, premiumCards, specialCardsLength, shinyCardsLength, shinyCards, celestialCardsLength,
+    solgaleoCardsLength, solgaleoCards, lunalaCardsLength, lunalaCards, sharedCelestial, sharedCelestialLength
   };
 
   const GRADES_DATA: any = {
@@ -401,34 +410,44 @@ export function GraphicCollage({
             <>
               <View ref={expansionRef} style={styles.content}>
                 <GraphicHeader styles={styles}></GraphicHeader>
-                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={0} endIndex={2}></GraphicExpansion>
+                <GraphicExpansion data={EXPANSION_DATA} styles={styles} startIndex={0} endIndex={2}></GraphicExpansion>
                 <GraphicFooter styles={styles}></GraphicFooter>
               </View>
               <View ref={expansionRefSecond} style={styles.content}>
                 <GraphicHeader styles={styles}></GraphicHeader>
-                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={3} endIndex={5}></GraphicExpansion>
+                <GraphicExpansion data={EXPANSION_DATA} styles={styles} startIndex={2} endIndex={5}></GraphicExpansion>
                 <GraphicFooter styles={styles}></GraphicFooter>
               </View>
               <View ref={expansionRefThird} style={styles.content}>
                 <GraphicHeader styles={styles}></GraphicHeader>
-                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={6} endIndex={7} showSeries={true}></GraphicExpansion>
+                <GraphicExpansion data={EXPANSION_DATA} styles={styles} startIndex={5} endIndex={8}></GraphicExpansion>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </View>
+              <View ref={expansionRefFourth} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicExpansion data={EXPANSION_DATA} styles={styles} startIndex={8} endIndex={9} showSeries={true}></GraphicExpansion>
                 <GraphicFooter styles={styles}></GraphicFooter>
               </View>           
             </> :
             <>
               <ViewShot ref={expansionRef} style={styles.content}>
                 <GraphicHeader styles={styles}></GraphicHeader>
-                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={0} endIndex={2}></GraphicExpansion>
+                <GraphicExpansion data={EXPANSION_DATA} styles={styles} startIndex={0} endIndex={2}></GraphicExpansion>
                 <GraphicFooter styles={styles}></GraphicFooter>
               </ViewShot>
               <ViewShot ref={expansionRefSecond} style={styles.content}>
                 <GraphicHeader styles={styles}></GraphicHeader>
-                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={3} endIndex={5}></GraphicExpansion>
+                <GraphicExpansion data={EXPANSION_DATA} styles={styles} startIndex={2} endIndex={5}></GraphicExpansion>
                 <GraphicFooter styles={styles}></GraphicFooter>
               </ViewShot>
               <ViewShot ref={expansionRefThird} style={styles.content}>
                 <GraphicHeader styles={styles}></GraphicHeader>
-                <GraphicExpansion data={EXPANSION_DATA} language={lang} styles={styles} startIndex={6} endIndex={7} showSeries={true}></GraphicExpansion>
+                <GraphicExpansion data={EXPANSION_DATA} styles={styles} startIndex={5} endIndex={8}></GraphicExpansion>
+                <GraphicFooter styles={styles}></GraphicFooter>
+              </ViewShot>
+              <ViewShot ref={expansionRefFourth} style={styles.content}>
+                <GraphicHeader styles={styles}></GraphicHeader>
+                <GraphicExpansion data={EXPANSION_DATA} styles={styles} startIndex={8} endIndex={9} showSeries={true}></GraphicExpansion>
                 <GraphicFooter styles={styles}></GraphicFooter>
               </ViewShot>  
             </>

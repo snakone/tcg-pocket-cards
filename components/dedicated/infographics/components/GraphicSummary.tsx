@@ -3,9 +3,9 @@ import { Image } from 'expo-image';
 import { useI18n } from '@/core/providers/LanguageProvider';
 
 import { 
-  GENETIC_APEX, 
+  GENETIC_APEX_ICON, 
   MYTHICAL_ISLAND_MEW_ICON, 
-  SMACK_DOWN, 
+  SMACK_DOWN_ICON, 
   PROMO_A_ICON, 
   GENETIC_APEX_PIKACHU_ICON, 
   GENETIC_APEX_MEWTWO_ICON, 
@@ -27,7 +27,10 @@ import {
   DRAGON_ICON, 
   NORMAL_ICON,
   SHINING_REVELRY_ICON,
-  RAINBOW_RARITY
+  RAINBOW_RARITY,
+  CELESTIAL_ICON_GAP,
+  SOLGALEO_ICON,
+  LUNALA_ICON
 } from "@/shared/definitions/sentences/path.sentences"
 
 import { ThemedText } from "@/components/ThemedText";
@@ -43,9 +46,9 @@ export const GraphicSummary = ({data, styles}: GraphicSummaryProps) => {
   const {i18n} = useI18n();
 
   const firstRow: any[] = [
-    { label: 'genetic_apex', image: GENETIC_APEX, width: 68, height: 30, value: data.geneticPackCardsLength },
+    { label: 'genetic_apex', image: GENETIC_APEX_ICON, width: 68, height: 30, value: data.geneticPackCardsLength },
     { label: 'mythical_island', image: MYTHICAL_ISLAND_MEW_ICON, width: 68, height: 34, value: data.islandPackCardsLength },
-    { label: 'smack_down_short', image: SMACK_DOWN, width: 70, height: 33, value: data.spacePackCardsLength },
+    { label: 'smack_down_short', image: SMACK_DOWN_ICON, width: 70, height: 33, value: data.spacePackCardsLength },
     { label: 'promo_a', image: PROMO_A_ICON, width: 69, height: 34, value: data.promoAPackCardsLength },
   ];
 
@@ -60,6 +63,12 @@ export const GraphicSummary = ({data, styles}: GraphicSummaryProps) => {
   const thirdRow: any[] = [
     { label: 'triumphant_light', image: TRIUMPH_LIGHT_ARCEUS_ICON,  width: 80, height: 34, value: data.triumphPackCardsLength },
     { label: 'shining_revelry', image: SHINING_REVELRY_ICON,  width: 69, height: 34, value: data.shiningCardsLength },
+    { label: 'celestial_short', image: CELESTIAL_ICON_GAP,  width: 97, height: 34, value: data.celestialCardsLength },
+  ];
+
+  const fourthRow: any[] = [
+    { label: 'solgaleo', image: SOLGALEO_ICON, value: data.solgaleoCardsLength },
+    { label: 'lunala', image: LUNALA_ICON, value: data.lunalaCardsLength },
   ];
 
   const gradeRow: any[] = [
@@ -195,15 +204,36 @@ export const GraphicSummary = ({data, styles}: GraphicSummaryProps) => {
         }
       </ThemedView>
 
-      <ThemedView style={{flexDirection: 'row', justifyContent: 'center'}}>
+      <ThemedView style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 24}}>
         {
           thirdRow.map((item, index) => {
             return (
-              <ThemedView style={{width: '23%'}} key={index.toString()}>
+              <ThemedView style={{width: '26%'}} key={index.toString()}>
                 <ThemedView style={styles.summaryRow}>
                   <Image source={item.image} style={[
                     styles.summaryImage, 
                     {width: item.width, height: item.height}
+                  ]}></Image>
+                  <ThemedText style={styles.summaryText}>{i18n.t(item.label)}</ThemedText>
+                  <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>
+                    {item.value}
+                  </ThemedText>
+                </ThemedView>
+              </ThemedView>
+            )
+          })
+        }
+      </ThemedView>
+
+      <ThemedView style={{flexDirection: 'row', justifyContent: 'center'}}>
+        {
+          fourthRow.map((item, index) => {
+            return (
+              <ThemedView style={{width: '19%'}} key={index.toString()}>
+                <ThemedView style={styles.summaryRow}>
+                  <Image source={item.image} style={[
+                    styles.summaryImage, item.width && {width: item.width}, 
+                    item.height && {height: item.height}
                   ]}></Image>
                   <ThemedText style={styles.summaryText}>{i18n.t(item.label)}</ThemedText>
                   <ThemedText style={[styles.summaryText, {left: -2, fontWeight: 'bold', color: 'black'}]}>

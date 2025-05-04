@@ -24,8 +24,8 @@ import { cardStyles } from "@/shared/styles/component.styles";
 import { 
   ARCEUS_EMBLEM, BACKWARD_CARD, CHARIZARD_EMBLEM, CROWN_RARITY, DARK_ICON, 
   DIALGA_EMBLEM, DRAGON_ICON, ELECTRIC_ICON, FIGHT_ICON, FIRE_ICON, GIRATINA_EMBLEM, 
-  GRASS_ICON, MEW_EMBLEM, MEWTWO_EMBLEM, NORMAL_ICON, NORMAL_RARITY, PALKIA_EMBLEM, 
-  PIKACHU_EMBLEM, PROMO_A_EMBLEM, PSYCHIC_ICON, RAINBOW_RARITY, STAR_RARITY, 
+  GRASS_ICON, LUNALA_EMBLEM, MEW_EMBLEM, MEWTWO_EMBLEM, NORMAL_ICON, NORMAL_RARITY, PALKIA_EMBLEM, 
+  PIKACHU_EMBLEM, PROMO_A_EMBLEM, PSYCHIC_ICON, RAINBOW_RARITY, SOLGALEO_EMBLEM, STAR_RARITY, 
   STEEL_ICON, WATER_ICON
 } from "@/shared/definitions/sentences/path.sentences";
 
@@ -87,7 +87,8 @@ export default function CollectionStatsScreen() {
     mainStats: undefined,
     pikachuStats: undefined, mewtwoStats: undefined, charizardStats: undefined,
     mewStats: undefined, dialgaStats: undefined, palkiaStats: undefined,
-    arceusStats: undefined, shinyStats: undefined, promoStats: undefined,
+    arceusStats: undefined, shinyStats: undefined, solgaleoStats: undefined,
+    lunalaStats: undefined, promoStats: undefined,
   });
 
   const updateStats = (key: string, value: CollectionStat) => {
@@ -154,6 +155,8 @@ export default function CollectionStatsScreen() {
   const { data: palkiaCards, length: palkiaCardsLength } = useMemo(() => getCards(EXPANSION.PALKIA), [EXPANSION.PALKIA]);
   const { data: triumphCards, length: triumphCardsLength } = useMemo(() => getCards(EXPANSION.ARCEUS), [EXPANSION.ARCEUS]);
   const { data: shinyCards, length: shinyCardsLength } = useMemo(() => getCards(EXPANSION.SHINY), [EXPANSION.SHINY]);
+  const { data: solgaleoCards, length: solgaleoCardsLength } = useMemo(() => getCards(EXPANSION.SOLGALEO), [EXPANSION.SOLGALEO]);
+  const { data: lunalaCards, length: lunalaCardsLength } = useMemo(() => getCards(EXPANSION.LUNALA), [EXPANSION.LUNALA]);
   const { data: promoAPackCards, length: promoAPackCardsLength } = useMemo(() => getCardsExpansion(CardExpansionENUM.PROMO_A), [CardExpansionENUM.PROMO_A]);
 
   const useCards = (category: 'type' | 'rarity', value: PokemonTypeENUM | CardRarityENUM) => {
@@ -222,13 +225,15 @@ export default function CollectionStatsScreen() {
     charizardCrownCards, charizardArtCards, pikachuCrownCards, pikachuArtCards,
     mewtwoCrownCards, mewtwoArtCards, mewCrownCards, mewArtCards,
     dialgaCrownCards, dialgaArtCards, palkiaCrownCards, palkiaArtCards,
-    arceusCrownCards, arceusArtCards, shinyCrownCards, shinyArtCards
+    arceusCrownCards, arceusArtCards, shinyCrownCards, shinyArtCards,
+    solgaleoCrownCards, solgaleoArtCards, lunalaCrownCards, lunalaArtCards
   } = useFilteredCards();
 
   const allStats = [
     stats.charizardStats, stats.mewtwoStats, stats.pikachuStats,
     stats.mewStats, stats.dialgaStats, stats.palkiaStats,
-    stats.arceusStats, stats.shinyStats, stats.promoStats,
+    stats.arceusStats, stats.shinyStats, stats.solgaleoStats,
+    stats.lunalaStats, stats.promoStats,
   ];
 
   const allElementStats = [
@@ -339,6 +344,26 @@ export default function CollectionStatsScreen() {
       emblem: GIRATINA_EMBLEM,
       crown: shinyCrownCards.map(card => card.id),
       art: shinyArtCards.map(card => card.id)
+    },
+    {
+      name: 'SOLGALEO',
+      label: 'expansion_solgaleo',
+      cards: solgaleoCards.map(card => card.id),
+      length: solgaleoCardsLength,
+      setter: 'solgaleoStats',
+      emblem: SOLGALEO_EMBLEM,
+      crown: solgaleoCrownCards.map(card => card.id),
+      art: solgaleoArtCards.map(card => card.id)
+    },
+    {
+      name: 'LUNALA',
+      label: 'expansion_lunala',
+      cards: lunalaCards.map(card => card.id),
+      length: lunalaCardsLength,
+      setter: 'lunalaStats',
+      emblem: LUNALA_EMBLEM,
+      crown: lunalaCrownCards.map(card => card.id),
+      art: lunalaArtCards.map(card => card.id)
     },
     {
       name: 'PROMO',
@@ -501,7 +526,8 @@ export default function CollectionStatsScreen() {
   }, [
     stats.charizardStats, stats.mewtwoStats, stats.pikachuStats,
     stats.mewStats, stats.dialgaStats, stats.palkiaStats,
-    stats.arceusStats, stats.shinyStats, stats.promoStats,
+    stats.arceusStats, stats.shinyStats, stats.solgaleoStats,
+    stats.lunalaStats, stats.promoStats,
   ]);
 
   const setData = useCallback((collectionCards: Set<number>) => {

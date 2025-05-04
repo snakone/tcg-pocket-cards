@@ -844,4 +844,8 @@ export const CARD_IMAGE_MAP_EN_GRAPHIC: any = {
   '843': require("@/assets/cards/en/Promo/A/cPK_90_005040_00_BIPPA_C_M_en_US_UT.png"),
   '844': require("@/assets/cards/en/Promo/A/cPK_90_005060_00_PACHIRISU_R_M_en_US_UT.png"),
   '845': require("@/assets/cards/en/Promo/A/cPK_90_005070_00_RIOLU_R_M_en_US_UT.png"),
+  '846': require("@/assets/cards/en/Celestial Guardians/ExeggcuteCelestialGuardians1.png"),
+  '847': require("@/assets/cards/en/Celestial Guardians/AlolanExeggutorCelestialGuardians2.png"),
+  '848': require("@/assets/cards/en/Celestial Guardians/SurskitCelestialGuardians3.png"),
+  '849': require("@/assets/cards/en/Celestial Guardians/MasquerainCelestialGuardians4.png"),
 };
