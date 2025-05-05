@@ -118,7 +118,7 @@ export interface CollectionRarityStat {
   length: number;
   icon: any;
   amount: number;
-  value: CardRarityENUM
+  value: CardRarityENUM;
 }
 
 export interface ShareContentProps {
@@ -154,5 +154,6 @@ export interface CreateDeckData {
   active: Card[] | null[],
   name: string,
   energy: boolean;
-  decks: StorageDeck[] 
+  decks: StorageDeck[],
+  element?: Record<PokemonTypeENUM, null | boolean>;
 }

@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import Storage from "@/core/storage/storage.service";
 
 import { DataStatePayload } from '@/shared/definitions/interfaces/layout.interfaces';
-import { StorageDeck, TradeItem, UserCollectionItem, UserData } from '@/shared/definitions/interfaces/global.interfaces';
+import { CreateDeckData, StorageDeck, TradeItem, UserCollectionItem, UserData } from '@/shared/definitions/interfaces/global.interfaces';
 import { DataKey } from '@/shared/definitions/types/global.types';
 
 class DataState {
@@ -11,6 +11,13 @@ class DataState {
   private decks$ = new BehaviorSubject<StorageDeck[]>([]);
   private trades$ = new BehaviorSubject<TradeItem[]>([]);
   private collection$ = new BehaviorSubject<UserCollectionItem[]>([]);
+
+  public deckPreview$ = new BehaviorSubject<CreateDeckData>({
+    active: Array(20).fill(null),
+    name: '',
+    decks: [],
+    energy: false
+  });
 
   private mappedData: Record<DataKey, BehaviorSubject<any>> = {
     'favorites': this.favorites$,
@@ -94,6 +101,10 @@ class DataState {
     const value = trades.filter(k => k.id !== id);
     this.trades$.next(value);
     Storage.removeTrade(id);
+  }
+
+  public onDeckPreview(data: any): void {
+    this.deckPreview$.next(data);
   }
 
 }

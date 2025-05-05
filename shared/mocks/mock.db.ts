@@ -54206,7 +54206,8 @@ export const MOCK_DB_CARDS: Card[] = [
       CardSpecialConditionENUM.EXTRA_DAMAGE
     ],
     found: [
-      EXPANSION.SOLGALEO
+      EXPANSION.SOLGALEO,
+      EXPANSION.LUNALA
     ],
     related: [849]
   },
@@ -54267,9 +54268,71 @@ export const MOCK_DB_CARDS: Card[] = [
     shiny: false,
     condition: [],
     found: [
-      EXPANSION.SOLGALEO
+      EXPANSION.SOLGALEO,
+      EXPANSION.LUNALA
     ],
     related: [848]
+  },
+  {
+    id: 850,
+    order: 850,
+    number: 5,
+    pokedex: 556,
+    name: {
+      es: 'Maractus',
+      en: 'Maractus',
+      ja: 'マラカッチ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Cáctus',
+        en: 'Cactus Pokémon',
+        ja: 'サボテンポケモン'
+      },
+      height: {
+        es: '1.0',
+        en: '3\'3"',
+        ja: '1.0'
+      },
+      weight: {
+        es: '28.0',
+        en: '61.7',
+        ja: '28.0'
+      }
+    },
+    artist: 'Kagemaru Himeno',
+    attacks: [
+      {
+        name: {
+          es: 'Aguijonazo',
+          en: 'Sting',
+          ja: 'チクチクさす'
+        },
+        damage: 40,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.CELESTIAL_GUARDIANS,
+    series: CardExpansionTypeENUM.A3,
+    flavor: {
+      es: 'Emite un sonido parecido a unas maracas. Se mueve con un ritmo marchoso para sorprender a los Pokémon pájaro, que huyen espantados.',
+      en: 'With noises that could be mistaken for the rattles of maracas, it creates an upbeat rhythm, startling bird Pokémon and making them fly off in a hurry.',
+      ja: 'マラカスの ような 音を だす。 陽気な リズムに 鳥ポケモンは 驚き 慌て 飛び去っていく。'
+    },
+    health: 90,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.LUNALA
+    ],
+    related: []
   },
 ];
 

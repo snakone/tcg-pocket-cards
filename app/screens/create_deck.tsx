@@ -543,8 +543,10 @@ export default function CreateDeckScreen() {
 
   const openDetail = useCallback(() => {
     SoundService.play('POP_PICK');
+    data.element = element;
+    DataRxjs.onDeckPreview(data);
     router.push(`/screens/deck_detail?deck_id=${encodeURIComponent(deck_id)}`);
-  }, [])
+  }, [data, element])
 
   return (
     <Provider>

@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback, useContext } from "react";
 import { Image } from 'expo-image';
 import { Platform, StyleSheet } from "react-native";
 import { FlatList, View } from "react-native";
+import { useLocalSearchParams } from "expo-router";
+import { combineLatest, filter } from "rxjs";
 
 import Storage from '@/core/storage/storage.service';
 import { DataRxjs } from "@/core/rxjs/DataRxjs";
@@ -10,7 +12,7 @@ import { useI18n } from "@/core/providers/LanguageProvider";
 import { AppContext } from "../_layout";
 import { CARD_IMAGE_WIDTH_5, CardGridStyles, CreateScreenStyles } from "@/shared/styles/component.styles";
 import { StorageDeck, UserProfile } from "@/shared/definitions/interfaces/global.interfaces";
-import { AVATAR_MAP, DEFAULT_PROFILE, TYPE_MAP } from "@/shared/definitions/utils/constants";
+import { AVATAR_MAP, DEFAULT_ELEMENT, DEFAULT_PROFILE, TYPE_MAP } from "@/shared/definitions/utils/constants";
 import { BACKWARD_CARD } from "@/shared/definitions/sentences/path.sentences";
 import { getImageLanguage116x162 } from "@/shared/definitions/utils/functions";
 import { LanguageType } from "@/shared/definitions/types/global.types";
@@ -18,26 +20,43 @@ import { LanguageType } from "@/shared/definitions/types/global.types";
 import SharedScreen from "@/components/shared/SharedScreen";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { useLocalSearchParams } from "expo-router";
 
 export default function DeckDetailScreen() {
   console.log('Deck Screen Detail')
   const [profile, setProfile] = useState<UserProfile>(DEFAULT_PROFILE);
   const {i18n} = useI18n();
   const { deck_id } = useLocalSearchParams<{ deck_id: string }>();
-  const [current, setCurrent] = useState<StorageDeck>();
+  const [current, setCurrent] = useState<any>();
   const context = useContext(AppContext);
   if (!context) { throw new Error('NO_CONTEXT'); }
   const { state } = context;
   const [lang] = useState<LanguageType>(state.settingsState.language);
+  const [element, setElement] = useState<any>({...DEFAULT_ELEMENT});
 
   useEffect(() => {
-    DataRxjs.getData<StorageDeck[]>('decks')
-     .subscribe(res => {
-      const related = res.find(d => d.id === Number(deck_id));
-      if (related) setCurrent(related);
-     })
+    const sub = combineLatest([
+      DataRxjs.getData<StorageDeck[]>('decks'),
+      DataRxjs.deckPreview$.pipe(filter(Boolean))
+    ]).subscribe(([decks, preview]) => {
+      if (preview.element !== undefined) {
+        setElement(preview.element);
 
+        setCurrent((prev: any) => {
+          return {
+            ...prev,
+            name: preview.name,
+            cards: preview.active.map(card => card?.id) as number[]
+          }
+        });
+      } else {
+        const related = decks.find(d => d.id === Number(deck_id));
+        if (related) {
+          setCurrent(related);
+          related.energies.forEach(energy => element[String(energy)] = true);
+        };
+      }
+    })
+    return (() => sub.unsubscribe());
   }, []);
 
   useEffect(() => {
@@ -83,9 +102,10 @@ export default function DeckDetailScreen() {
           <ThemedText type='defaultSemiBold' style={{fontSize: 16, left: 2, marginBottom: 0}}>{current?.name}</ThemedText>
           <ThemedView style={[CreateScreenStyles.energies, {backgroundColor: 'white'}]}>
             {
-              current?.energies.map((key, i) => {
+              Object.keys(element).map((key, i) => {
                 const image = (TYPE_MAP as any)[key]?.image;
                 return (
+                  (element as any)[key] &&
                     <Image
                       key={i}
                       source={image}
@@ -114,16 +134,10 @@ export default function DeckDetailScreen() {
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={<ThemedText style={{ padding: 6 }}>{i18n.t('no_cards_found')}</ThemedText>}
                 renderItem={renderItem}
-                keyboardDismissMode={'on-drag'}
-                ListFooterComponent={
-                <ThemedView style={{height: 95}}>
-                  <ThemedText style={{padding: 6, marginTop: 20, fontSize: 12}}>*{i18n.t('save_first')}</ThemedText>
-                </ThemedView>
-              }/>
+                keyboardDismissMode={'on-drag'}/>
     </SharedScreen>
   )
 }
-
 
 const styles = StyleSheet.create({
   header: {

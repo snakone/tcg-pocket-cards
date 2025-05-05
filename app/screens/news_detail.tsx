@@ -80,9 +80,10 @@ export default function NewsDetailScreen() {
   }
   
   const renderContent = useCallback(({item}: {item: NewsContent}) => {
+    console.log(item.style)
       switch (item.type) {
         case 'title':
-          return <ThemedText style={[item.style, styles.item, {marginTop: 10}]}>
+          return <ThemedText style={[styles.item, item.style, {marginTop: 10}]}>
                     {item.value}
                   </ThemedText>;
         case 'text':
@@ -91,7 +92,7 @@ export default function NewsDetailScreen() {
                   </ThemedText>;
         case 'image':
           return <ThemedView style={styles.imageContainer}>
-                  <Image source={item.value} style={[item.style, styles.image]} />
+                  <Image source={item.value} style={[styles.image, item.style]} />
                 </ThemedView>;
         default:
           return null;
