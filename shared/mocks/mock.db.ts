@@ -54334,6 +54334,457 @@ export const MOCK_DB_CARDS: Card[] = [
     ],
     related: []
   },
+  {
+    id: 851,
+    order: 851,
+    number: 6,
+    pokedex: 588,
+    name: {
+      es: 'Karrablast',
+      en: 'Karrablast',
+      ja: 'カブルモ' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Bocado',
+        en: 'Clamping Pokémon',
+        ja: 'かぶりつきポケモン'
+      },
+      height: {
+        es: '0.5',
+        en: '1\'8"',
+        ja: '0.5'
+      },
+      weight: {
+        es: '5.9',
+        en: '13',
+        ja: '5.9'
+      }
+    },
+    artist: 'OOYAMA',
+    attacks: [
+      {
+        name: {
+          es: 'Golpe Cabeza',
+          en: 'Headbutt',
+          ja: 'ずつき' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.CELESTIAL_GUARDIANS,
+    series: CardExpansionTypeENUM.A3,
+    flavor: {
+      es: 'Su misterioso cuepro reacciona a la energía eléctrica. Si se encuentra en presencia de un Shelment, evoluciona.',
+      en: 'Its strange physiology reacts to electrical energy in interesting ways. The presence of a Shelmet will cause this Pokémon to evolve.',
+      ja: '電気エネルギーに 反応する 不思議な 体質。 チョボマキと ともに いると 進化する。'
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SOLGALEO,
+      EXPANSION.LUNALA
+    ],
+    related: []
+  },
+  {
+    id: 852,
+    order: 852,
+    number: 7,
+    pokedex: 708,
+    name: {
+      es: 'Phantump',
+      en: 'Phantump',
+      ja: 'ボクレー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Tocón',
+        en: 'Stump Pokémon',
+        ja: 'きりかぶポケモン'
+      },
+      height: {
+        es: '0.4',
+        en: '1\'4"',
+        ja: '0.4'
+      },
+      weight: {
+        es: '7.0',
+        en: '15.4',
+        ja: '7.0'
+      }
+    },
+    artist: 'miki kudo',
+    attacks: [
+      {
+        name: {
+          es: 'Garfio',
+          en: 'Hook',
+          ja: 'ひっかける' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS],
+      }
+    ],
+    evolve: [853],
+    expansion: CardExpansionENUM.CELESTIAL_GUARDIANS,
+    series: CardExpansionTypeENUM.A3,
+    flavor: {
+      es: 'Se dice que en realidad son almas de niños que pasaron a mejor vida tras perderse en el bosque y se conviertieron en Pokémon al habitar un tocón.',
+      en: 'After a lost child perished in the forest, their spirit possessed a tree stump, causing the spirit\'s rebirth as this Pokémon.',
+      ja: '森で さまよい 命を 落とした 子どもの 魂が 切り株に 宿り ポケモンに 生まれ変わった。'
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SOLGALEO,
+    ],
+    related: [853]
+  },
+  {
+    id: 853,
+    order: 853,
+    number: 8,
+    pokedex: 709,
+    name: {
+      es: 'Trevenant',
+      en: 'Trevenant',
+      ja: 'オーロット' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Árbol Viejo',
+        en: 'Elder Tree Pokémon',
+        ja: 'ろうぼくポケモン'
+      },
+      height: {
+        es: '1.5',
+        en: '4\'11"',
+        ja: '1.5'
+      },
+      weight: {
+        es: '71.0',
+        en: '156.5',
+        ja: '71.0'
+      }
+    },
+    artist: 'Shin Nagasawa',
+    attacks: [
+      {
+        name: {
+          es: 'Cuchillada Garra',
+          en: 'Claw Slash',
+          ja: 'ツメできりさく' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS, PokemonTypeENUM.NORMAL],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.CELESTIAL_GUARDIANS,
+    series: CardExpansionTypeENUM.A3,
+    flavor: {
+      es: 'Los humanos lo temen porque devora a quienes osen talar los árboles, pero es amable con los Pokémon que habitan en el bosque.',
+      en: 'People fear it due to a belief that it devours any who try to cut down trees in its forest, but to the Pokémon it shares its woods with, it\'s kind.',
+      ja: '森の 木を 伐り倒す 人間を 食べると 恐れられているが 森で 暮らす ポケモンたちには 優しい。'
+    },
+    health: 130,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 3,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SOLGALEO,
+    ],
+    related: [852]
+  },
+  {
+    id: 854,
+    order: 854,
+    number: 9,
+    pokedex: 722,
+    name: {
+      es: 'Rowlet',
+      en: 'Rowlet',
+      ja: 'モクロー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pluma Hoja',
+        en: 'Grass Quill Pokémon',
+        ja: 'くさばねポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '4\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '1.5',
+        en: '3.3',
+        ja: '1.5'
+      }
+    },
+    artist: 'Megumi Mizutani',
+    attacks: [
+      {
+        name: {
+          es: 'Follaje',
+          en: 'Leafage',
+          ja: 'このは' 
+        },
+        damage: 20,
+        energy: [PokemonTypeENUM.GRASS],
+      }
+    ],
+    evolve: [856],
+    expansion: CardExpansionENUM.CELESTIAL_GUARDIANS,
+    series: CardExpansionTypeENUM.A3,
+    flavor: {
+      es: 'Usa sus afiladas plumas como arma arrojadiza y la fuerza de sus patas le permite asestar poderosas patadas que es mejor no subestimar.',
+      en: 'It sends its feathers, which are as sharp as blades, flying in attack. Its legs are strong, so its kicks are also formidable.',
+      ja: '刃物の ように 鋭い 羽を 飛ばして 攻撃。 足の力も 強く キックも 侮れないのだ。'
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.SOLGALEO,
+    ],
+    related: []
+  },
+  {
+    id: 855,
+    order: 855,
+    number: 10,
+    pokedex: 722,
+    name: {
+      es: 'Rowlet',
+      en: 'Rowlet',
+      ja: 'モクロー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pluma Hoja',
+        en: 'Grass Quill Pokémon',
+        ja: 'くさばねポケモン'
+      },
+      height: {
+        es: '0.3',
+        en: '4\'',
+        ja: '0.3'
+      },
+      weight: {
+        es: '1.5',
+        en: '3.3',
+        ja: '1.5'
+      }
+    },
+    artist: 'Saya Tsuruta',
+    attacks: [
+      {
+        name: {
+          es: 'Técnica de Buceo',
+          en: 'Skill Dive',
+          ja: 'ちょくげきひこう' 
+        },
+        damage: 10,
+        energy: [PokemonTypeENUM.GRASS],
+        description: {
+          es: 'Este ataque hace 10 puntos de daño a 1 de los Pokémon de tu rival.',
+          en: 'This attack does 10 damage to 1 of your opponent\'s Pokémon.',
+          ja: '相手のポケモン1匹に10ダメージ。'
+        }
+      }
+    ],
+    evolve: [856],
+    expansion: CardExpansionENUM.CELESTIAL_GUARDIANS,
+    series: CardExpansionTypeENUM.A3,
+    flavor: {
+      es: 'Usa sus afiladas plumas como arma arrojadiza y la fuerza de sus patas le permite asestar poderosas patadas que es mejor no subestimar.',
+      en: 'It sends its feathers, which are as sharp as blades, flying in attack. Its legs are strong, so its kicks are also formidable.',
+      ja: '刃物の ように 鋭い 羽を 飛ばして 攻撃。 足の力も 強く キックも 侮れないのだ。'
+    },
+    health: 60,
+    rarity: CardRarityENUM.COMMON,
+    retreat: 1,
+    stage: CardStageENUM.BASIC,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH
+    ],
+    found: [
+      EXPANSION.LUNALA,
+    ],
+    related: []
+  },
+  {
+    id: 856,
+    order: 856,
+    number: 11,
+    pokedex: 723,
+    name: {
+      es: 'Dartrix',
+      en: 'Dartrix',
+      ja: 'フクスロー' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pluma Filo',
+        en: 'Blade Quill Pokémon',
+        ja: 'はばねポケモン'
+      },
+      height: {
+        es: '0.7',
+        en: '2\'4"',
+        ja: '0.7'
+      },
+      weight: {
+        es: '16.0',
+        en: '28.7',
+        ja: '16.0'
+      }
+    },
+    artist: 'Mizue',
+    attacks: [
+      {
+        name: {
+          es: 'Ala Cortante',
+          en: 'Razor Wing',
+          ja: 'するどいはね' 
+        },
+        damage: 30,
+        energy: [PokemonTypeENUM.GRASS],
+      }
+    ],
+    evolve: [857],
+    expansion: CardExpansionENUM.CELESTIAL_GUARDIANS,
+    series: CardExpansionTypeENUM.A3,
+    flavor: {
+      es: 'Es narcisista y bastante pulcro, por lo que, si no se le dedica suficiente atención a su aseo, se niega a obedecer cualquier orden.',
+      en: 'This narcissistic Pokémon is a clean freak. If you don\'t groom it diligently, it will stop listening to you.',
+      ja: 'ナルシストで 綺麗好き。 マメに お手入れ してあげないと いうことを 聞かなく なることも。'
+    },
+    health: 80,
+    rarity: CardRarityENUM.UNCOMMON,
+    retreat: 1,
+    stage: CardStageENUM.ONE,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: false,
+    shiny: false,
+    condition: [],
+    found: [
+      EXPANSION.LUNALA,
+    ],
+    related: []
+  },
+  {
+    id: 857,
+    order: 857,
+    number: 12,
+    pokedex: 724,
+    name: {
+      es: 'Decidueye EX',
+      en: 'Decidueye EX',
+      ja: 'ジュナイパー EX' 
+    },
+    info: {
+      type: {
+        es: 'Pokémon Pluma Flecha',
+        en: 'Arrow Quill Pokémon',
+        ja: 'やばねポケモン'
+      },
+      height: {
+        es: '1.6',
+        en: '5\'03"',
+        ja: '1.6'
+      },
+      weight: {
+        es: '36.6',
+        en: '80.7',
+        ja: '36.6'
+      }
+    },
+    artist: 'PLANETA CG Works',
+    attacks: [
+      {
+        name: {
+          es: 'Hurgaheridas',
+          en: 'Pierce the Pain',
+          ja: 'きずをうちぬく' 
+        },
+        damage: 100,
+        energy: [PokemonTypeENUM.NORMAL, PokemonTypeENUM.NORMAL],
+        description: {
+          es: 'Este ataque hace 100 puntos de daño a 1 de los Pokémon de tu rival que ya tengo daño.',
+          en: 'This attack does 100 damage to 1 of your opponent\'s Pokémon that has damage on it.',
+          ja: 'ダメージを受けている相手のポケモン1匹に100ダメージ。'
+        }
+      },
+      {
+        name: {
+          es: 'Hoja Afilada',
+          en: 'Razor Leaf',
+          ja: 'はっぱカッター' 
+        },
+        damage: 80,
+        energy: [PokemonTypeENUM.GRASS, PokemonTypeENUM.GRASS],
+      }
+    ],
+    evolve: [],
+    expansion: CardExpansionENUM.CELESTIAL_GUARDIANS,
+    series: CardExpansionTypeENUM.A3,
+    flavor: {
+      es: 'Usa sus plumas como flechas para atacar a los rivales. Una vez que ha fijado el blanco, no falla jamás.',
+      en: 'It fires arrow quills from its wings with such precision, they can pierce a pebble at distances over a hundred yards.',
+      ja: 'つばさに しこまれた やばねを つがえてはなつ。 100メートルさきの こいしも つらぬく せいど。'
+    },
+    health: 170,
+    rarity: CardRarityENUM.DOUBLE,
+    retreat: 1,
+    stage: CardStageENUM.TWO,
+    element: PokemonTypeENUM.GRASS,
+    weak: PokemonTypeENUM.FIRE,
+    isEX: true,
+    shiny: false,
+    condition: [
+      CardSpecialConditionENUM.ATTACK_BENCH
+    ],
+    found: [
+      EXPANSION.LUNALA,
+    ],
+    related: []
+  },
 ];
 
 export default MOCK_DB_CARDS;
