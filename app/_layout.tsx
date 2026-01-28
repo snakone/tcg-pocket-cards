@@ -102,6 +102,8 @@ export default function RootLayout() {
   function checkMissingProps(data: UserData, settings: SettingsState): void {
     if (!data.trades) { data.trades = []; }
     if (!data.collection) { data.collection = []; }
+    if (!data.favorites) { data.favorites = []; }
+    if (!data.decks) { data.decks = []; }
   }
 
   function configure(settings: SettingsState): void {
